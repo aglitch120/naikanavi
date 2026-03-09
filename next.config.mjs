@@ -7,12 +7,12 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   async rewrites() {
-    return [
-      {
-        source: '/app',
-        destination: '/app.html',
-      },
-    ]
+    return {
+      beforeFiles: [
+        // アプリ本体: public/app.html を配信（API は app.html 内で Worker に直接通信）
+        { source: '/app', destination: '/app.html' },
+      ],
+    }
   },
 }
 

@@ -333,6 +333,102 @@ input, select { -webkit-appearance: none; appearance: none; }
 <body>
 
 <!-- ═══════════════════════════════════
+  LOGIN OVERLAY（未ログイン時に表示）
+═══════════════════════════════════ -->
+<div class="ob-overlay" id="login-overlay">
+<div class="ob-inner" style="justify-content:center;min-height:100dvh">
+<div class="ob-card" style="max-width:440px;margin:0 auto">
+  <div class="ob-logo">
+    <div class="ob-logo-mark"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="5" rx="1.5" fill="#fff" opacity="0.4"/><rect x="3" y="9.5" width="18" height="5" rx="1.5" fill="#fff" opacity="0.7"/><rect x="3" y="16" width="18" height="5" rx="1.5" fill="#fff"/></svg></div>
+    <div><div style="font-size:12px;font-weight:700;letter-spacing:.07em;color:var(--ac)">NAIKA NAVI</div><div style="font-size:10px;color:var(--m);letter-spacing:.04em;margin-top:2px">内科専門医 取得ナビ</div></div>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="v-login">
+    <div class="ob-title">ログイン</div>
+    <div class="ob-sub">アカウントにサインインして進捗を確認する</div>
+    <div class="ob-err" id="auth-login-err" style="display:none">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span id="auth-login-err-msg"></span>
+    </div>
+    <div class="ob-field"><div class="ob-label">メールアドレス</div><input class="ob-input" type="email" id="auth-un" placeholder="例: taro@example.com" autocomplete="email" autocorrect="off" autocapitalize="none" inputmode="email"></div>
+    <div class="ob-field"><div class="ob-label">パスワード</div><input class="ob-input" type="password" id="auth-pw" placeholder="••••••••" autocomplete="current-password"></div>
+    <button class="ob-btn" id="auth-login-btn" onclick="authDoLogin()">サインイン</button>
+    <p style="text-align:center;margin-top:12px"><a class="ob-skip" onclick="authShow('reset')">パスワードを忘れた方 →</a></p>
+    <hr style="border:none;border-top:1px solid var(--br);margin:22px 0">
+    <p style="font-size:13px;color:var(--m);text-align:center;line-height:1.9">BOOTHで購入済みの方は<a style="color:var(--ac);cursor:pointer;text-decoration:none" onclick="authShow('register')">アカウント発行 →</a></p>
+    <p style="font-size:13px;color:var(--m);text-align:center;margin-top:6px">まだ購入していない方は<a style="color:var(--ac);text-decoration:none" href="https://naikanavi.booth.pm/items/8058590" target="_blank" rel="noopener">BOOTHで購入 →</a></p>
+    <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px;line-height:1.6"><a href="https://naika-navi.mightyaddnine.workers.dev/terms" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">利用規約</a> ・ <a href="https://naika-navi.mightyaddnine.workers.dev/privacy" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">プライバシーポリシー</a></p>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="v-register" style="display:none">
+    <div id="auth-reg-form">
+      <div class="ob-title">アカウントを作成</div>
+      <div class="ob-sub">BOOTHで購入後に届いたメールの注文番号を入力してください</div>
+      <div style="background:#EEF4FF;color:#1E40AF;border:1px solid #BFDBFE;padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>注文番号1つにつきアカウント1つが発行されます</div>
+      <div class="ob-err" id="auth-reg-err" style="display:none">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="auth-reg-err-msg"></span>
+      </div>
+      <div style="display:none;background:#FEE2E2;border:1px solid #FCA5A5;border-radius:10px;padding:14px 16px;margin-bottom:14px;text-align:center" id="auth-reg-notfound">
+        <div style="font-size:13px;color:#991B1B;font-weight:600;margin-bottom:6px">注文番号が見つかりません</div>
+        <div style="font-size:12px;color:#888;line-height:1.6;margin-bottom:8px">番号をお確かめください。BOOTHの購入履歴または確認メールに記載されています。</div>
+        <div style="font-size:12px;color:#888;line-height:1.6">購入直後の場合は反映に少しお時間をいただくことがあります。<br><a href="#" onclick="authStartRetryMode();return false" style="color:#1B4F3A;font-weight:600;text-decoration:underline">たった今購入した方はこちら（自動で再確認します）→</a></div>
+      </div>
+      <div style="display:none;background:#FFF8E1;border:1px solid #FFE082;border-radius:10px;padding:14px 16px;margin-bottom:14px;text-align:center" id="auth-reg-waiting">
+        <div style="font-size:14px;font-weight:600;color:#F57F17;margin-bottom:6px">⏳ 注文番号を確認中です…</div>
+        <div style="font-size:12px;color:#888;line-height:1.6">購入直後は登録の反映に少しお時間をいただく場合があります。<br>通常30秒〜1分ほどで準備が完了しますので、このままお待ちください。</div>
+        <div style="margin-top:10px;font-size:12px;color:#aaa" id="auth-reg-retry-count"></div>
+        <button onclick="authCancelRegRetry()" style="margin-top:10px;background:none;border:1px solid #ccc;color:#888;padding:6px 18px;border-radius:6px;font-size:12px;cursor:pointer">キャンセル</button>
+      </div>
+      <div class="ob-field"><div class="ob-label">注文番号</div><input class="ob-input" type="text" id="auth-order-no" placeholder="例: 7843210" inputmode="numeric"><div style="font-size:12px;color:var(--m);margin-top:5px">BOOTHからのメールに記載されています</div></div>
+      <div class="ob-field"><div class="ob-label">メールアドレス</div><input class="ob-input" type="email" id="auth-reg-un" placeholder="例: taro@example.com" autocorrect="off" autocapitalize="none" inputmode="email"><div style="font-size:12px;color:var(--m);margin-top:5px">ログインに使用します</div></div>
+      <p style="font-size:11px;color:#aaa;text-align:center;margin:8px 0 4px;line-height:1.6">アカウント発行をもって<a href="https://naika-navi.mightyaddnine.workers.dev/terms" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">利用規約</a>および<a href="https://naika-navi.mightyaddnine.workers.dev/privacy" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">プライバシーポリシー</a>に同意したものとみなされます</p>
+      <button class="ob-btn" id="auth-reg-btn" onclick="authDoRegister()">アカウントを発行する</button>
+      <hr style="border:none;border-top:1px solid var(--br);margin:22px 0">
+      <p style="text-align:center"><a style="color:var(--ac);cursor:pointer;text-decoration:none;font-size:13px" onclick="authShow('login')">← ログインに戻る</a></p>
+    </div>
+    <div id="auth-reg-done" style="display:none;text-align:center">
+      <div style="width:54px;height:54px;border-radius:50%;background:var(--okl);border:2px solid var(--okb);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px">✓</div>
+      <div class="ob-title" style="margin-bottom:6px">発行完了！</div>
+      <p style="font-size:13px;color:var(--m);margin-bottom:3px">メールアドレス: <strong id="auth-done-un" style="color:var(--tx);font-family:var(--mono)"></strong></p>
+      <p style="font-size:13px;color:var(--m)">発行されたパスワード（一度だけ表示）</p>
+      <div style="background:var(--bg);border:1.5px dashed var(--br);border-radius:9px;padding:14px 20px;margin:14px 0;font-family:var(--mono);font-size:clamp(18px,5vw,24px);font-weight:500;color:var(--ac);letter-spacing:.12em;text-align:center" id="auth-done-pw"></div>
+      <div style="padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;background:var(--okl);color:var(--ok);border:1px solid var(--okb);text-align:left"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>このパスワードを必ずメモしてください。このページを閉じると二度と表示されません。</div>
+      <button class="ob-btn" onclick="authShow('login')" style="margin-top:6px">ログインする →</button>
+    </div>
+  </div>
+
+  <!-- RESET PASSWORD -->
+  <div id="v-reset" style="display:none">
+    <div id="auth-reset-form">
+      <div class="ob-title">パスワード再発行</div>
+      <div class="ob-sub">登録時のメールアドレスとBOOTHの注文番号で本人確認を行います</div>
+      <div class="ob-err" id="auth-reset-err" style="display:none">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="auth-reset-err-msg"></span>
+      </div>
+      <div class="ob-field"><div class="ob-label">メールアドレス</div><input class="ob-input" type="email" id="auth-reset-email" placeholder="登録時のメールアドレス" autocomplete="email" inputmode="email"></div>
+      <div class="ob-field"><div class="ob-label">注文番号</div><input class="ob-input" type="text" id="auth-reset-order" placeholder="BOOTHの注文番号" inputmode="numeric"></div>
+      <button class="ob-btn" id="auth-reset-btn" onclick="authDoReset()">パスワードを再発行する</button>
+      <hr style="border:none;border-top:1px solid var(--br);margin:22px 0">
+      <p style="text-align:center"><a style="color:var(--ac);cursor:pointer;text-decoration:none;font-size:13px" onclick="authShow('login')">← ログインに戻る</a></p>
+    </div>
+    <div id="auth-reset-done" style="display:none;text-align:center">
+      <div style="width:54px;height:54px;border-radius:50%;background:var(--okl);border:2px solid var(--okb);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px">✓</div>
+      <div class="ob-title" style="margin-bottom:6px">再発行完了！</div>
+      <p style="font-size:13px;color:var(--m)">新しいパスワード（一度だけ表示）</p>
+      <div style="background:var(--bg);border:1.5px dashed var(--br);border-radius:9px;padding:14px 20px;margin:14px 0;font-family:var(--mono);font-size:clamp(18px,5vw,24px);font-weight:500;color:var(--ac);letter-spacing:.12em;text-align:center" id="auth-reset-done-pw"></div>
+      <div style="padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;background:var(--okl);color:var(--ok);border:1px solid var(--okb);text-align:left"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>このパスワードを必ずメモしてください。このページを閉じると二度と表示されません。</div>
+      <button class="ob-btn" onclick="authShow('login')" style="margin-top:6px">ログインする →</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
   ONBOARDING OVERLAY
 ═══════════════════════════════════ -->
 <div class="ob-overlay" id="onboarding">
@@ -620,7 +716,9 @@ const S = {
 /* ══════════════════════════════════════════
    永続化 / 自動保存
 ══════════════════════════════════════════ */
-const NAIKA_API_URL = ''; // Worker と同一オリジン → 相対パス
+const NAIKA_API_URL = 'https://naika-navi.mightyaddnine.workers.dev'; // Worker API エンドポイント
+// 相対パスの fetch を Worker に向けるヘルパー
+function apiFetch(path, opts) { return fetch(NAIKA_API_URL + path, opts); }
 let authToken  = null;
 let authUser   = null;
 let userProfile = null;  // プロフィールデータ
@@ -1541,7 +1639,7 @@ window.tmplGenerate = async function() {
 
   try {
     const spObj = SP.find(sp=>sp.id===tmplState.selectedSp);
-    const res = await fetch('/credits/generate-template', {
+    const res = await apiFetch('/credits/generate-template', {
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
       body: JSON.stringify({
@@ -1593,7 +1691,7 @@ window.tmplRedeem = async function() {
   render();
 
   try {
-    const res = await fetch('/credits/redeem', {
+    const res = await apiFetch('/credits/redeem', {
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
       body: JSON.stringify({ orderNumber: orderNo })
@@ -1617,7 +1715,7 @@ window.tmplRedeem = async function() {
 async function fetchCredits() {
   if (!authToken) return;
   try {
-    const res = await fetch('/credits', {
+    const res = await apiFetch('/credits', {
       headers: { 'Authorization': 'Bearer ' + authToken }
     });
     if (res.ok) {
@@ -1632,7 +1730,7 @@ async function fetchCredits() {
 async function fetchTemplateHistory() {
   if (!authToken) return;
   try {
-    const res = await fetch('/credits/template-history', {
+    const res = await apiFetch('/credits/template-history', {
       headers: { 'Authorization': 'Bearer ' + authToken }
     });
     if (res.ok) {
@@ -2025,7 +2123,7 @@ window.quizStart = async function() {
     const body = { mode: qs.mode, count: 5 };
     if (qs.mode === 'group') body.groupId = qs.groupId;
 
-    const res = await fetch('/credits/quiz/generate', {
+    const res = await apiFetch('/credits/quiz/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
       body: JSON.stringify(body)
@@ -2139,7 +2237,7 @@ window.quizAbort = function() {
 
   if (answeredResults.length > 0) {
     // 途中経過を記録
-    fetch('/credits/quiz/record', {
+    apiFetch('/credits/quiz/record', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
       body: JSON.stringify({ results: answeredResults })
@@ -2175,7 +2273,7 @@ window.quizRedeem = async function() {
   render();
 
   try {
-    const res = await fetch('/credits/redeem', {
+    const res = await apiFetch('/credits/redeem', {
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
       body: JSON.stringify({ orderNumber: orderNo })
@@ -2204,7 +2302,7 @@ async function quizRecordResults() {
   }));
 
   try {
-    await fetch('/credits/quiz/record', {
+    await apiFetch('/credits/quiz/record', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
       body: JSON.stringify({ results })
@@ -2215,7 +2313,7 @@ async function quizRecordResults() {
 async function fetchQuizStats() {
   if (!authToken) return;
   try {
-    const res = await fetch('/credits/quiz/stats', {
+    const res = await apiFetch('/credits/quiz/stats', {
       headers: { 'Authorization': 'Bearer ' + authToken }
     });
     if (res.ok) {
@@ -2383,7 +2481,7 @@ function renderProfile(){
     <div style="background:${S0};border:1px solid var(--dnb);border-radius:12px;padding:20px;margin-bottom:16px">
       ${secLbl('アカウント操作','var(--dn)')}
       <p style="font-size:13px;color:${M};margin-bottom:14px;line-height:1.6">ログアウトしてもデータはサーバーに保存されており失われません。</p>
-      <button onclick="saveData(true).then(()=>{stopAutoSave();fetch('/logout',{method:'POST',headers:{'Authorization':'Bearer '+authToken}}).finally(()=>{authToken=null;authUser=null;localStorage.removeItem('naika_session');location.href='/';});})"
+      <button onclick="saveData(true).then(()=>{stopAutoSave();apiFetch('/logout',{method:'POST',headers:{'Authorization':'Bearer '+authToken}}).finally(()=>{authToken=null;authUser=null;localStorage.removeItem('naika_session');showLoginOverlay();});})"
         style="display:inline-flex;align-items:center;justify-content:center;width:100%;background:transparent;color:var(--dn);border:1.5px solid var(--dnb);border-radius:9px;padding:11px 20px;font-size:14px;font-weight:500;cursor:pointer;min-height:44px"
         onmouseover="this.style.background='var(--dnl)'" onmouseout="this.style.background='transparent'">
         ログアウト
@@ -2411,7 +2509,7 @@ function doChangePw(){
   if(btn){btn.textContent='更新中…';btn.disabled=true;}
   (async()=>{
     try{
-      const res=await fetch('/change-password',{
+      const res=await apiFetch('/change-password',{
         method:'PUT',
         headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
         body:JSON.stringify({currentPassword:cur,newPassword:nw})
@@ -2474,7 +2572,7 @@ async function submitOnboarding() {
 
   btn.textContent = '保存中…'; btn.disabled = true;
   try {
-    const res = await fetch('/profile', {
+    const res = await apiFetch('/profile', {
       method: 'PUT',
       headers: { 'Content-Type':'application/json', 'Authorization':'Bearer '+authToken },
       body: JSON.stringify({ profile })
@@ -2498,7 +2596,7 @@ async function submitOnboarding() {
 
 window.skipOptional = async function() {
   try {
-    await fetch('/profile/onboarding-state', {
+    await apiFetch('/profile/onboarding-state', {
       method:'PUT',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
       body: JSON.stringify({ action:'skip' })
@@ -2510,7 +2608,7 @@ window.skipOptional = async function() {
 
 window.dismissOptional = async function() {
   try {
-    await fetch('/profile/onboarding-state', {
+    await apiFetch('/profile/onboarding-state', {
       method:'PUT',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
       body: JSON.stringify({ action:'dismiss' })
@@ -2583,7 +2681,7 @@ if (obEl) {
 
 async function fetchProfile() {
   try {
-    const res = await fetch('/profile', {
+    const res = await apiFetch('/profile', {
       headers: { 'Authorization': 'Bearer ' + authToken }
     });
     if (res.ok) {
@@ -2603,6 +2701,104 @@ document.addEventListener('keydown',e=>{
   if(active.id==='screen-app'&&S.currentTab==='profile'&&pwState.open)doChangePw();
 });
 
+/* ═══ AUTH UI（ログイン・登録・パスワードリセット）═══ */
+function authShow(v) {
+  document.getElementById('v-login').style.display    = v === 'login'    ? '' : 'none';
+  document.getElementById('v-register').style.display  = v === 'register' ? '' : 'none';
+  document.getElementById('v-reset').style.display     = v === 'reset'    ? '' : 'none';
+  // エラー非表示
+  document.getElementById('auth-login-err').style.display = 'none';
+  document.getElementById('auth-reg-err').style.display = 'none';
+  document.getElementById('auth-reset-err').style.display = 'none';
+  if (v === 'register') { document.getElementById('auth-reg-form').style.display = ''; document.getElementById('auth-reg-done').style.display = 'none'; document.getElementById('auth-reg-notfound').style.display = 'none'; authStopRegRetry(); }
+  if (v === 'reset') { document.getElementById('auth-reset-form').style.display = ''; document.getElementById('auth-reset-done').style.display = 'none'; }
+}
+function authShowErr(id, msg) { const el = document.getElementById(id); el.style.display = 'flex'; el.querySelector('span').textContent = msg; }
+
+function showLoginOverlay() { document.getElementById('login-overlay').classList.add('active'); }
+function hideLoginOverlay() { document.getElementById('login-overlay').classList.remove('active'); }
+
+async function authDoLogin() {
+  const un = document.getElementById('auth-un').value.trim();
+  const pw = document.getElementById('auth-pw').value;
+  const btn = document.getElementById('auth-login-btn');
+  document.getElementById('auth-login-err').style.display = 'none';
+  if (!un || !pw) { authShowErr('auth-login-err', 'メールアドレスとパスワードを入力してください'); return; }
+  btn.textContent = 'サインイン中…'; btn.disabled = true;
+  try {
+    const res = await apiFetch('/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({username:un, password:pw}) });
+    const j = await res.json();
+    if (!res.ok) { authShowErr('auth-login-err', j.error || 'ログインに失敗しました'); return; }
+    localStorage.setItem('naika_session', JSON.stringify({ token: j.token, username: j.username }));
+    location.reload();
+  } catch(e) {
+    authShowErr('auth-login-err', '通信エラーが発生しました。再度お試しください。');
+  } finally { btn.textContent = 'サインイン'; btn.disabled = false; }
+}
+
+let _authRegRetryTimer = null, _authRegRetryCount = 0, _authRegRetryMode = false;
+function authStopRegRetry() { if(_authRegRetryTimer){clearTimeout(_authRegRetryTimer);_authRegRetryTimer=null;} _authRegRetryCount=0; _authRegRetryMode=false; document.getElementById('auth-reg-waiting').style.display='none'; }
+function authCancelRegRetry() { authStopRegRetry(); document.getElementById('auth-reg-btn').textContent='アカウントを発行する'; document.getElementById('auth-reg-btn').disabled=false; authShowErr('auth-reg-err','確認をキャンセルしました。番号をお確かめの上、再度お試しください。'); }
+function authStartRetryMode() { _authRegRetryMode=true; document.getElementById('auth-reg-notfound').style.display='none'; authDoRegister(); }
+
+async function authDoRegister() {
+  const on = document.getElementById('auth-order-no').value.trim();
+  const un = document.getElementById('auth-reg-un').value.trim();
+  const btn = document.getElementById('auth-reg-btn');
+  document.getElementById('auth-reg-err').style.display='none'; document.getElementById('auth-reg-notfound').style.display='none'; authStopRegRetry();
+  if (!on || !un) { authShowErr('auth-reg-err','すべての項目を入力してください'); return; }
+  if (!/^\d+$/.test(on)) { authShowErr('auth-reg-err','注文番号は数字のみで入力してください'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(un)) { authShowErr('auth-reg-err','正しいメールアドレスを入力してください'); return; }
+  btn.textContent='確認中…'; btn.disabled=true;
+  if (_authRegRetryMode) { await authTryRegister(on,un,btn); return; }
+  try {
+    const res = await apiFetch('/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({orderNumber:on, username:un}) });
+    const j = await res.json();
+    if (res.status===404) { document.getElementById('auth-reg-notfound').style.display='block'; btn.textContent='アカウントを発行する'; btn.disabled=false; return; }
+    if (!res.ok) { authShowErr('auth-reg-err', j.error||'アカウント発行に失敗しました'); btn.textContent='アカウントを発行する'; btn.disabled=false; return; }
+    document.getElementById('auth-reg-form').style.display='none'; document.getElementById('auth-reg-done').style.display='block';
+    document.getElementById('auth-done-un').textContent=j.username; document.getElementById('auth-done-pw').textContent=j.password;
+    btn.textContent='アカウントを発行する'; btn.disabled=false;
+  } catch(e) { authShowErr('auth-reg-err','通信エラーが発生しました。再度お試しください。'); btn.textContent='アカウントを発行する'; btn.disabled=false; }
+}
+
+async function authTryRegister(on,un,btn) {
+  try {
+    const res = await apiFetch('/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({orderNumber:on, username:un}) });
+    const j = await res.json();
+    if (res.status===404 && _authRegRetryCount<12) { _authRegRetryCount++; document.getElementById('auth-reg-err').style.display='none'; document.getElementById('auth-reg-waiting').style.display='block'; document.getElementById('auth-reg-retry-count').textContent='確認中… ('+(_authRegRetryCount*10)+'秒経過)'; _authRegRetryTimer=setTimeout(()=>authTryRegister(on,un,btn),10000); return; }
+    if (res.status===404) { authStopRegRetry(); authShowErr('auth-reg-err','注文番号が見つかりません。'); btn.textContent='アカウントを発行する'; btn.disabled=false; return; }
+    if (!res.ok) { authStopRegRetry(); authShowErr('auth-reg-err',j.error||'失敗しました'); btn.textContent='アカウントを発行する'; btn.disabled=false; return; }
+    authStopRegRetry(); document.getElementById('auth-reg-form').style.display='none'; document.getElementById('auth-reg-done').style.display='block';
+    document.getElementById('auth-done-un').textContent=j.username; document.getElementById('auth-done-pw').textContent=j.password;
+  } catch(e) { authStopRegRetry(); authShowErr('auth-reg-err','通信エラー'); btn.textContent='アカウントを発行する'; btn.disabled=false; }
+}
+
+async function authDoReset() {
+  const email = document.getElementById('auth-reset-email').value.trim().toLowerCase();
+  const order = document.getElementById('auth-reset-order').value.trim();
+  const btn = document.getElementById('auth-reset-btn');
+  document.getElementById('auth-reset-err').style.display='none';
+  if (!email||!order) { authShowErr('auth-reset-err','メールアドレスと注文番号を入力してください'); return; }
+  btn.textContent='確認中…'; btn.disabled=true;
+  try {
+    const res = await apiFetch('/reset-password', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email, orderNumber:order}) });
+    const j = await res.json();
+    if (!res.ok) { authShowErr('auth-reset-err', j.error||'パスワードの再発行に失敗しました'); return; }
+    document.getElementById('auth-reset-form').style.display='none'; document.getElementById('auth-reset-done').style.display='block';
+    document.getElementById('auth-reset-done-pw').textContent=j.password;
+  } catch(e) { authShowErr('auth-reset-err','通信エラーが発生しました。再度お試しください。'); }
+  finally { btn.textContent='パスワードを再発行する'; btn.disabled=false; }
+}
+
+// ログイン画面でのEnterキー対応
+document.getElementById('login-overlay').addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  if (document.getElementById('v-login').style.display !== 'none') authDoLogin();
+  else if (document.getElementById('v-register').style.display !== 'none' && document.getElementById('auth-reg-form').style.display !== 'none') authDoRegister();
+  else if (document.getElementById('v-reset').style.display !== 'none' && document.getElementById('auth-reset-form').style.display !== 'none') authDoReset();
+});
+
 /* ═══ INIT ═══ */
 // リロード後のセッション復元
 // 戦略: localStorage から即復元 → 裏で API 同期（高速＆オフライン対応）
@@ -2611,8 +2807,8 @@ document.addEventListener('keydown',e=>{
   try {
     const sess = localStorage.getItem('naika_session');
     if (!sess) {
-      // セッションなし → Worker のログインページへリダイレクト
-      location.href = '/';
+      // セッションなし → ログイン画面を表示
+      showLoginOverlay();
       return;
     }
 
@@ -2657,11 +2853,11 @@ document.addEventListener('keydown',e=>{
           render(); // API データで画面を更新
         }
       } else if (res.status === 401) {
-        // トークン期限切れ → ログインページへ
+        // トークン期限切れ → ログイン画面を表示
         stopAutoSave();
         authToken = null; authUser = null;
         localStorage.removeItem('naika_session');
-        location.href = '/';
+        showLoginOverlay();
       }
       // その他のエラー(500等)は無視してローカルデータで継続
     } catch(e) {
@@ -2669,7 +2865,7 @@ document.addEventListener('keydown',e=>{
       console.warn('[NAIKA] API unreachable, using local data');
     }
   } catch(e) {
-    location.href = '/';
+    showLoginOverlay();
   }
 })();
 </script>
