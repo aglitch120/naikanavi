@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostsByCategory } from '@/lib/mdx'
-import { categories, type CategorySlug } from '@/lib/blog-config'
+import { categories, clusterColors, type CategorySlug } from '@/lib/blog-config'
 import { generateMetadata as genMeta, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 
@@ -60,7 +60,13 @@ export default async function CategoryPage({ params }: Props) {
         <span>{categoryData.name}</span>
       </nav>
 
-      <h1 className="text-2xl font-bold mb-2">{categoryData.name}</h1>
+      <div className="flex items-center gap-3 mb-2">
+        <span
+          className="inline-block w-1 h-8 rounded-full flex-shrink-0"
+          style={{ backgroundColor: clusterColors[categoryData.cluster]?.bg || '#1B4F3A' }}
+        />
+        <h1 className="text-2xl font-bold">{categoryData.name}</h1>
+      </div>
       <p className="text-muted mb-8">{posts.length}件の記事</p>
 
       {/* 他カテゴリへのリンク */}
@@ -74,8 +80,12 @@ export default async function CategoryPage({ params }: Props) {
               <Link
                 key={slug}
                 href={`/blog/category/${slug}`}
-                className="text-xs bg-s1 text-muted px-3 py-1.5 rounded-full hover:bg-ac hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs bg-s1 text-muted px-3 py-1.5 rounded-full hover:opacity-90 hover:text-white transition-colors"
               >
+                <span
+                  className="inline-block w-2 h-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: clusterColors[cat.cluster]?.bg || '#1B4F3A' }}
+                />
                 {cat.name}
               </Link>
             ))}

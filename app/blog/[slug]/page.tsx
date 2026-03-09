@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllPostSlugs, getRelatedPosts, getAdjacentPosts, compileMDXContent } from '@/lib/mdx'
-import { categories, ctaConfig } from '@/lib/blog-config'
+import { categories, clusterColors, ctaConfig } from '@/lib/blog-config'
 import { generateMetadata as genMeta, generateArticleJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 import CTABanner from '@/components/blog/CTABanner'
@@ -49,6 +49,7 @@ export default async function ArticlePage({ params }: Props) {
   
   const { frontmatter, content, readingTime } = post
   const category = categories[frontmatter.category]
+  const clusterColor = category ? clusterColors[category.cluster]?.bg : '#1B4F3A'
   const relatedPosts = getRelatedPosts(slug, 3)
   const { prev, next } = getAdjacentPosts(slug)
   const cta = ctaConfig[frontmatter.cta_type]
@@ -102,7 +103,8 @@ export default async function ArticlePage({ params }: Props) {
         <div className="flex items-center gap-2 mb-4">
           <Link
             href={`/blog/category/${frontmatter.category}`}
-            className="text-xs bg-ac text-white px-2 py-1 rounded"
+            className="text-xs text-white px-2 py-1 rounded"
+            style={{ backgroundColor: clusterColor }}
           >
             {category?.name || 'その他'}
           </Link>

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/mdx'
-import { categories } from '@/lib/blog-config'
+import { categories, clusterColors } from '@/lib/blog-config'
 import { generateMetadata as genMeta, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 
@@ -42,8 +42,12 @@ export default function BlogPage() {
             <Link
               key={slug}
               href={`/blog/category/${slug}`}
-              className="text-xs bg-s1 text-muted px-3 py-1.5 rounded-full hover:bg-ac hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs bg-s1 text-muted px-3 py-1.5 rounded-full hover:opacity-80 transition-colors"
             >
+              <span
+                className="inline-block w-2 h-2 rounded-full flex-shrink-0"
+                style={{ backgroundColor: clusterColors[category.cluster]?.bg || '#1B4F3A' }}
+              />
               {category.name}
             </Link>
           ))}
