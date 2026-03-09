@@ -86,7 +86,7 @@ function Header() {
           <a href="/blog" className="text-sm text-muted hover:text-ac transition-colors">
             ブログ
           </a>
-          <a href="/app.html" className="text-sm bg-ac text-white px-4 py-2 rounded-lg hover:bg-ac2 transition-colors">
+          <a href="/app" className="text-sm bg-ac text-white px-4 py-2 rounded-lg hover:bg-ac2 transition-colors">
             アプリを使う
           </a>
         </nav>
