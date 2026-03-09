@@ -5,34 +5,63 @@ export const alt = '内科ナビ'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-// OG画像はslugからタイトルを推測する（Edge Runtime対応）
-// Note: Cloudflare Workers(Edge)ではfs/pathが使えないため、
-// lib/mdx.tsに依存せずにOG画像を生成する
+interface ArticleMeta {
+  title: string
+  subtitle: string
+  category: string
+}
 
-// slugからタイトルを生成するヘルパー
-function slugToTitle(slug: string): string {
-  // 記事slugとタイトルのマッピング（新記事追加時に更新）
-  const titleMap: Record<string, string> = {
-    'a01-josler-toha': '【2026年最新】J-OSLERとは？内科専攻医が知るべき全体像を徹底解説',
-    'b01-josler-byoreki-youyaku-kakikata': '【2026年最新】J-OSLER病歴要約の書き方完全ガイド',
-    'josler-complete-guide': 'J-OSLER完全攻略ガイド',
-    'exam-preparation-guide': '内科専門医試験 合格マニュアル',
-    'money-guide': '専攻医のお金完全ガイド',
-    'lifehack-guide': '専攻医ライフハック大全',
-    'career-guide': 'キャリア設計完全ロードマップ',
+function slugToMeta(slug: string): ArticleMeta {
+  const metaMap: Record<string, ArticleMeta> = {
+    'a01-josler-toha': {
+      title: 'J-OSLERとは？',
+      subtitle: '内科専攻医が知るべき全体像',
+      category: 'J-OSLER基礎',
+    },
+    'b01-josler-byoreki-youyaku-kakikata': {
+      title: '病歴要約の書き方',
+      subtitle: 'Accept率を上げる完全ガイド',
+      category: '病歴要約',
+    },
+    'josler-complete-guide': {
+      title: 'J-OSLER完全攻略',
+      subtitle: '症例登録から修了認定まで',
+      category: 'J-OSLER',
+    },
+    'exam-preparation-guide': {
+      title: '内科専門医試験',
+      subtitle: '合格マニュアル',
+      category: '試験対策',
+    },
+    'money-guide': {
+      title: '専攻医のお金',
+      subtitle: 'バイト・確定申告・節税',
+      category: 'お金・生活',
+    },
+    'lifehack-guide': {
+      title: 'ライフハック大全',
+      subtitle: '研修を乗り切るコツ',
+      category: 'メンタル・生活',
+    },
+    'career-guide': {
+      title: 'キャリア設計',
+      subtitle: '完全ロードマップ',
+      category: 'キャリア',
+    },
   }
 
-  if (titleMap[slug]) return titleMap[slug]
+  if (metaMap[slug]) return metaMap[slug]
 
-  // マッピングにない場合はslugを整形して表示
-  return slug
-    .replace(/^b\d+-/, '')
-    .replace(/-/g, ' ')
+  return {
+    title: slug.replace(/^[a-z]\d+-/, '').replace(/-/g, ' '),
+    subtitle: '',
+    category: '内科ナビ',
+  }
 }
 
 export default async function OGImage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const title = slugToTitle(slug)
+  const meta = slugToMeta(slug)
 
   return new ImageResponse(
     (
@@ -43,102 +72,99 @@ export default async function OGImage({ params }: { params: Promise<{ slug: stri
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '60px',
-          background: 'linear-gradient(135deg, #F5F4F0 0%, #E8F0EC 100%)',
+          padding: '70px 80px',
+          backgroundColor: '#1B4F3A',
           fontFamily: 'sans-serif',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        {/* ブランドラベル */}
+        {/* 装飾円（右側） */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '80px',
+            right: '-60px',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(255,255,255,0.06)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '140px',
+            right: '0px',
+            width: '300px',
+            height: '300px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(255,255,255,0.04)',
+          }}
+        />
+
+        {/* カテゴリバッジ + タイトル */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, zIndex: 1, maxWidth: '75%' }}>
+          {/* カテゴリバッジ */}
+          <div style={{ display: 'flex' }}>
+            <div
+              style={{
+                backgroundColor: 'rgba(255,255,255,0.15)',
+                color: 'rgba(255,255,255,0.9)',
+                fontSize: 22,
+                fontWeight: 600,
+                padding: '10px 24px',
+                borderRadius: 8,
+              }}
+            >
+              {meta.category}
+            </div>
+          </div>
+
+          {/* メインタイトル */}
+          <div
+            style={{
+              fontSize: meta.title.length > 12 ? 64 : 80,
+              fontWeight: 900,
+              color: '#FFFFFF',
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            {meta.title}
+          </div>
+
+          {/* サブタイトル */}
+          {meta.subtitle && (
+            <div
+              style={{
+                fontSize: 32,
+                fontWeight: 700,
+                color: 'rgba(134,239,172,0.9)',
+                lineHeight: 1.3,
+              }}
+            >
+              {meta.subtitle}
+            </div>
+          )}
+        </div>
+
+        {/* フッター：ブランド名 */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
+            zIndex: 1,
           }}
         >
           <div
             style={{
-              backgroundColor: '#1B4F3A',
-              color: '#FFFFFF',
-              fontSize: 20,
+              fontSize: 24,
               fontWeight: 700,
-              padding: '8px 20px',
-              borderRadius: 8,
+              color: 'rgba(255,255,255,0.6)',
             }}
           >
             内科ナビ
-          </div>
-        </div>
-
-        {/* タイトル */}
-        <div
-          style={{
-            display: 'flex',
-            flex: 1,
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              fontSize: title.length > 30 ? 44 : 52,
-              fontWeight: 700,
-              color: '#1A1917',
-              lineHeight: 1.3,
-              maxWidth: '100%',
-              overflow: 'hidden',
-            }}
-          >
-            {title}
-          </div>
-        </div>
-
-        {/* フッター */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-            }}
-          >
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 10,
-                backgroundColor: '#1B4F3A',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#FFFFFF',
-                fontSize: 22,
-                fontWeight: 700,
-              }}
-            >
-              内
-            </div>
-            <div
-              style={{
-                fontSize: 26,
-                fontWeight: 700,
-                color: '#1B4F3A',
-              }}
-            >
-              内科ナビ
-            </div>
-          </div>
-          <div
-            style={{
-              fontSize: 18,
-              color: '#6B6760',
-            }}
-          >
-            naikanavi.com
           </div>
         </div>
       </div>

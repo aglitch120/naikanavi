@@ -157,8 +157,10 @@ export default async function ArticlePage({ params }: Props) {
         {/* 冒頭CTA */}
         <CTABanner cta={cta} variant="inline" />
 
-        {/* 冒頭目次（PC・モバイル共通） */}
-        <InlineTableOfContents />
+        {/* 冒頭目次（モバイルのみ） */}
+        <div className="lg:hidden">
+          <InlineTableOfContents />
+        </div>
 
         {/* 本文 + サイドバー目次 */}
         <div className="lg:flex lg:gap-8">
