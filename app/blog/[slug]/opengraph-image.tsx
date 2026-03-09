@@ -5,34 +5,63 @@ export const alt = '内科ナビ'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-// クラスターカラー（blog-config.tsと同一。Edge Runtimeでの安定性のためインライン定義）
+// クラスターカラー（ASCIIスラッグをキーに使用 - Edge Runtime esbuild互換性のため）
 const clusterColorMap: Record<string, string> = {
-  'J-OSLER基礎': '#1E3A5F',
-  '症例登録': '#3D5A80',
-  '病歴要約': '#1B4F3A',
-  '疾患別病歴要約': '#2D6A4F',
-  '進捗管理': '#0D7377',
-  'JMECC・講習': '#4A5568',
-  '内科専門医試験': '#7F1D1D',
-  '試験領域別': '#9B2C2C',
-  '総合内科専門医': '#B7410E',
-  'AI・ツール': '#4338CA',
-  'メンタル・生活': '#134E4A',
-  'バイト・収入': '#4C1D95',
-  '税金・節税': '#92400E',
-  'キャリア': '#2B6CB0',
-  '学会・論文': '#6D28D9',
-  '結婚・出産': '#9D174D',
-  'サブスペJ-OSLER': '#5B6ABF',
-  'その他': '#6B6760',
-  // ピラー用（複数クラスターにまたがるもの）
-  'J-OSLER': '#1E3A5F',
-  '試験対策': '#7F1D1D',
-  'お金・生活': '#92400E',
-  'メンタル': '#134E4A',
+  'josler-basics': '#1E3A5F',
+  'case-registration': '#3D5A80',
+  'medical-history': '#1B4F3A',
+  'disease-specific': '#2D6A4F',
+  'progress-management': '#0D7377',
+  'jmecc-training': '#4A5568',
+  'specialist-exam': '#7F1D1D',
+  'exam-by-field': '#9B2C2C',
+  'comprehensive-exam': '#B7410E',
+  'ai-tools': '#4338CA',
+  'mental-life': '#134E4A',
+  'part-time': '#4C1D95',
+  'tax-saving': '#92400E',
+  'career': '#2B6CB0',
+  'academic': '#6D28D9',
+  'life-events': '#9D174D',
+  'subspecialty': '#5B6ABF',
+  'others': '#6B6760',
+  // ピラー用
+  'josler': '#1E3A5F',
+  'exam': '#7F1D1D',
+  'money': '#92400E',
+  'mental': '#134E4A',
 }
 
 const DEFAULT_BG = '#1B4F3A'
+
+// スラッグから日本語表示名へのマッピング
+function categoryDisplayName(slug: string): string {
+  const map: Record<string, string> = {
+    'josler-basics': 'J-OSLER基礎',
+    'case-registration': '症例登録',
+    'medical-history': '病歴要約',
+    'disease-specific': '疾患別病歴要約',
+    'progress-management': '進捗管理',
+    'jmecc-training': 'JMECC・講習',
+    'specialist-exam': '内科専門医試験',
+    'exam-by-field': '試験領域別',
+    'comprehensive-exam': '総合内科専門医',
+    'ai-tools': 'AI・ツール',
+    'mental-life': 'メンタル・生活',
+    'part-time': 'バイト・収入',
+    'tax-saving': '税金・節税',
+    'career': 'キャリア',
+    'academic': '学会・論文',
+    'life-events': '結婚・出産',
+    'subspecialty': 'サブスペJ-OSLER',
+    'others': 'その他',
+    'josler': 'J-OSLER',
+    'exam': '試験対策',
+    'money': 'お金・生活',
+    'mental': 'メンタル',
+  }
+  return map[slug] || slug
+}
 
 // サブタイトルのカラーをベース色に合わせて調整
 function getSubtitleColor(bgColor: string): string {
@@ -63,52 +92,52 @@ function slugToMeta(slug: string): ArticleMeta {
     'a01-josler-toha': {
       title: 'J-OSLERとは？',
       subtitle: '内科専攻医が知るべき全体像',
-      category: 'J-OSLER基礎',
+      category: 'josler-basics',
     },
     'b01-josler-byoreki-youyaku-kakikata': {
       title: '病歴要約の書き方',
       subtitle: 'Accept率を上げる完全ガイド',
-      category: '病歴要約',
+      category: 'medical-history',
     },
     'c04-josler-sougou-kousatsu-kakikata': {
       title: '総合考察の書き方',
       subtitle: '全人的視点の入れ方を徹底解説',
-      category: '病歴要約',
+      category: 'medical-history',
     },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',
-      category: 'J-OSLER',
+      category: 'josler',
     },
     'exam-preparation-guide': {
       title: '内科専門医試験',
       subtitle: '合格マニュアル',
-      category: '試験対策',
+      category: 'exam',
     },
     'money-guide': {
       title: '専攻医のお金',
       subtitle: 'バイト・確定申告・節税',
-      category: '税金・節税',
+      category: 'tax-saving',
     },
     'money-career-guide': {
       title: 'お金とキャリア',
       subtitle: 'バイト・節税・キャリア設計',
-      category: 'キャリア',
+      category: 'career',
     },
     'lifehack-guide': {
       title: 'ライフハック大全',
       subtitle: '研修を乗り切るコツ',
-      category: 'メンタル・生活',
+      category: 'mental-life',
     },
     'efficiency-guide': {
       title: '効率化ガイド',
       subtitle: 'AI・ツールで作業時間を短縮',
-      category: 'AI・ツール',
+      category: 'ai-tools',
     },
     'career-guide': {
       title: 'キャリア設計',
       subtitle: '完全ロードマップ',
-      category: 'キャリア',
+      category: 'career',
     },
   }
 
@@ -117,7 +146,7 @@ function slugToMeta(slug: string): ArticleMeta {
   return {
     title: slug.replace(/^[a-z]\d+-/, '').replace(/-/g, ' '),
     subtitle: '',
-    category: '内科ナビ',
+    category: 'others',
   }
 }
 
@@ -201,7 +230,7 @@ export default async function OGImage({ params }: { params: Promise<{ slug: stri
                 borderRadius: 8,
               }}
             >
-              {meta.category}
+              {categoryDisplayName(meta.category)}
             </div>
           </div>
 
