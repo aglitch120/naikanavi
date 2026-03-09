@@ -99,6 +99,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'Accept率を上げる完全ガイド',
       category: 'medical-history',
     },
+    'b02-josler-160cases': {
+      title: '160症例の効率的な集め方',
+      subtitle: '先輩医師の実体験から学ぶ',
+      category: 'case-registration',
+    },
     'c04-josler-sougou-kousatsu-kakikata': {
       title: '総合考察の書き方',
       subtitle: '全人的視点の入れ方を徹底解説',

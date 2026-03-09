@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3D5A80"/>
+      <stop offset="100%" stop-color="#1E3A5F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+
+  <!-- Header -->
+  <rect x="24" y="20" width="752" height="52" rx="12" fill="url(#headerGrad)"/>
+  <text x="400" y="53" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">不足しやすい疾患群 TOP5 と対策</text>
+
+  <!-- Row 1 -->
+  <rect x="24" y="92" width="752" height="56" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="24" y="92" width="44" height="56" rx="10" fill="#9B2C2C"/>
+  <rect x="44" y="92" width="24" height="56" fill="#9B2C2C"/>
+  <text x="46" y="126" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">1</text>
+  <text x="84" y="116" fill="#1A1917" font-size="13" font-weight="700">血液（白血病・リンパ腫）</text>
+  <text x="84" y="136" fill="#6B6760" font-size="11">対策：血液内科ローテで集中的に登録 / 他科紹介症例も「関わった」で登録可</text>
+  <rect x="664" y="104" width="96" height="28" rx="8" fill="#FEE2E2"/>
+  <text x="712" y="123" text-anchor="middle" fill="#9B2C2C" font-size="11" font-weight="700">不足率 高</text>
+
+  <!-- Row 2 -->
+  <rect x="24" y="160" width="752" height="56" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="24" y="160" width="44" height="56" rx="10" fill="#B7410E"/>
+  <rect x="44" y="160" width="24" height="56" fill="#B7410E"/>
+  <text x="46" y="194" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">2</text>
+  <text x="84" y="184" fill="#1A1917" font-size="13" font-weight="700">膠原病・アレルギー（SLE・RA等）</text>
+  <text x="84" y="204" fill="#6B6760" font-size="11">対策：膠原病内科への短期ローテ / 不明熱の鑑別で膠原病が挙がった症例を活用</text>
+  <rect x="664" y="172" width="96" height="28" rx="8" fill="#FEF3C7"/>
+  <text x="712" y="191" text-anchor="middle" fill="#B8860B" font-size="11" font-weight="700">不足率 中</text>
+
+  <!-- Row 3 -->
+  <rect x="24" y="228" width="752" height="56" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="24" y="228" width="44" height="56" rx="10" fill="#4338CA"/>
+  <rect x="44" y="228" width="24" height="56" fill="#4338CA"/>
+  <text x="46" y="262" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">3</text>
+  <text x="84" y="252" fill="#1A1917" font-size="13" font-weight="700">神経（脳血管障害以外）</text>
+  <text x="84" y="272" fill="#6B6760" font-size="11">対策：てんかん・パーキンソン病など一般病棟でも遭遇する神経疾患を意識的に登録</text>
+  <rect x="664" y="240" width="96" height="28" rx="8" fill="#FEF3C7"/>
+  <text x="712" y="259" text-anchor="middle" fill="#B8860B" font-size="11" font-weight="700">不足率 中</text>
+
+  <!-- Row 4 -->
+  <rect x="24" y="296" width="752" height="56" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="24" y="296" width="44" height="56" rx="10" fill="#0D7377"/>
+  <rect x="44" y="296" width="24" height="56" fill="#0D7377"/>
+  <text x="46" y="330" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">4</text>
+  <text x="84" y="320" fill="#1A1917" font-size="13" font-weight="700">救急（CPA・ショック等）</text>
+  <text x="84" y="340" fill="#6B6760" font-size="11">対策：当直中の救急症例を翌日中に登録 / 3次救急以外でも蘇生対応は該当する</text>
+  <rect x="664" y="308" width="96" height="28" rx="8" fill="#FEF3C7"/>
+  <text x="712" y="327" text-anchor="middle" fill="#B8860B" font-size="11" font-weight="700">不足率 中</text>
+
+  <!-- Row 5 -->
+  <rect x="24" y="364" width="752" height="56" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="24" y="364" width="44" height="56" rx="10" fill="#1B4F3A"/>
+  <rect x="44" y="364" width="24" height="56" fill="#1B4F3A"/>
+  <text x="46" y="398" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">5</text>
+  <text x="84" y="388" fill="#1A1917" font-size="13" font-weight="700">内分泌（副腎・下垂体疾患）</text>
+  <text x="84" y="408" fill="#6B6760" font-size="11">対策：電解質異常の精査で内分泌疾患が判明する症例に注目 / 糖尿病以外も登録</text>
+  <rect x="664" y="376" width="96" height="28" rx="8" fill="#E8F0EC"/>
+  <text x="712" y="395" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="700">不足率 低</text>
+
+  <!-- Footer -->
+  <text x="776" y="434" text-anchor="end" fill="#A9A49E" font-size="10">© 内科ナビ naikanavi.com</text>
+</svg>
