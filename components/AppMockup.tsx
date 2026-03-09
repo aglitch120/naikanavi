@@ -109,30 +109,45 @@ export function AppMockup({ className = '' }: { className?: string }) {
         </div>
       </div>
 
-      {/* Mobile mockup (小さく右下に重ねる) */}
-      <div className="absolute -right-4 -bottom-4 md:right-[-30px] md:bottom-[-20px] w-[140px] md:w-[160px]">
-        <div className="bg-gray-900 rounded-[20px] p-1.5 shadow-2xl">
-          <div className="bg-white rounded-[16px] overflow-hidden">
+      {/* Mobile mockup (スマホらしい縦横比で右下に重ねる) */}
+      <div className="absolute -right-2 -bottom-2 md:right-[-24px] md:bottom-[-16px] w-[120px] md:w-[140px]">
+        <div className="bg-gray-900 rounded-[18px] p-[3px] shadow-2xl" style={{ aspectRatio: '9 / 19' }}>
+          {/* ノッチ */}
+          <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-10 h-[4px] bg-gray-900 rounded-b-md z-20" />
+          <div className="bg-white rounded-[15px] overflow-hidden h-full flex flex-col">
             {/* ステータスバー */}
-            <div className="bg-gray-50 px-3 py-1.5 flex items-center justify-between border-b border-gray-100">
-              <span className="text-[7px] font-bold text-tx">≡ 内科専門医 取得ナビ</span>
-              <span className="text-[6px] text-green-600 font-medium">✓ 保存済み</span>
+            <div className="bg-gray-50 px-2.5 py-1.5 flex items-center justify-between border-b border-gray-100 shrink-0">
+              <span className="text-[6px] font-bold text-tx truncate">≡ 内科ナビ</span>
+              <span className="text-[5px] text-green-600 font-medium shrink-0">✓ 保存済み</span>
+            </div>
+            {/* タブバー */}
+            <div className="flex border-b border-gray-100 px-1.5 shrink-0">
+              {['ダッシュボード', '症例', '疾患群', '要約'].map((t, i) => (
+                <span
+                  key={t}
+                  className={`text-[4.5px] px-1 py-1 ${
+                    i === 0 ? 'text-ac font-bold border-b border-ac' : 'text-gray-300'
+                  }`}
+                >
+                  {t}
+                </span>
+              ))}
             </div>
             {/* ミニダッシュボード */}
-            <div className="p-2">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="relative w-8 h-8 shrink-0">
-                  <svg viewBox="0 0 36 36" className="w-8 h-8 -rotate-90">
+            <div className="p-2 flex-1 overflow-hidden">
+              <div className="flex items-center gap-1.5 mb-2">
+                <div className="relative w-7 h-7 shrink-0">
+                  <svg viewBox="0 0 36 36" className="w-7 h-7 -rotate-90">
                     <circle cx="18" cy="18" r="15" fill="none" stroke="#E8E5DF" strokeWidth="3.5" />
                     <circle cx="18" cy="18" r="15" fill="none" stroke="#1B4F3A" strokeWidth="3.5" strokeDasharray="56.5 94.2" strokeLinecap="round" />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-[7px] font-bold text-ac">60%</span>
+                    <span className="text-[6px] font-bold text-ac">60%</span>
                   </div>
                 </div>
-                <div>
-                  <div className="text-[7px] font-bold text-tx">内科専門医 取得ナビ</div>
-                  <div className="text-[5px] text-gray-400">120症例 / 56疾患群 / 29要約</div>
+                <div className="min-w-0">
+                  <div className="text-[6px] font-bold text-tx truncate">内科専門医 取得ナビ</div>
+                  <div className="text-[4.5px] text-gray-400">120症例 / 56疾患群 / 29要約</div>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-1 mb-2">
@@ -141,27 +156,35 @@ export function AppMockup({ className = '' }: { className?: string }) {
                   { l: '疾患群', v: '6', t: '/56' },
                   { l: '要約', v: '2', t: '/29' },
                 ].map((s) => (
-                  <div key={s.l} className="bg-gray-50 rounded px-1.5 py-1 text-center">
-                    <div className="text-[6px] text-gray-400">{s.l}</div>
-                    <div className="text-[9px] font-bold text-tx leading-none">
-                      {s.v}<span className="text-[6px] text-gray-300 font-normal">{s.t}</span>
+                  <div key={s.l} className="bg-gray-50 rounded px-1 py-0.5 text-center">
+                    <div className="text-[4.5px] text-gray-400">{s.l}</div>
+                    <div className="text-[8px] font-bold text-tx leading-none">
+                      {s.v}<span className="text-[5px] text-gray-300 font-normal">{s.t}</span>
                     </div>
                   </div>
                 ))}
               </div>
               {/* ミニ領域リスト */}
-              <div className="text-[6px] font-bold text-tx mb-1">領域別 達成状況</div>
+              <div className="text-[5px] font-bold text-tx mb-0.5">領域別 達成状況</div>
               {[
-                { name: '総合 I', color: '#22C55E' },
-                { name: '消化器', color: '#F59E0B' },
-                { name: '循環器', color: '#EF4444' },
-                { name: '呼吸器', color: '#EF4444' },
+                { name: '総合 I', color: '#22C55E', v: '0/1' },
+                { name: '消化器', color: '#F59E0B', v: '2/5' },
+                { name: '循環器', color: '#EF4444', v: '0/5' },
+                { name: '呼吸器', color: '#EF4444', v: '1/4' },
+                { name: '腎臓', color: '#EF4444', v: '1/5' },
               ].map((r) => (
-                <div key={r.name} className="flex items-center gap-1 py-0.5">
-                  <div className="w-1 h-1 rounded-full" style={{ backgroundColor: r.color }} />
-                  <span className="text-[5.5px] text-gray-500">{r.name}</span>
+                <div key={r.name} className="flex items-center justify-between py-[1px]">
+                  <div className="flex items-center gap-0.5">
+                    <div className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: r.color }} />
+                    <span className="text-[4.5px] text-gray-500">{r.name}</span>
+                  </div>
+                  <span className="text-[4.5px] text-gray-400 font-mono">{r.v}</span>
                 </div>
               ))}
+            </div>
+            {/* ホームバー */}
+            <div className="shrink-0 flex justify-center pb-1 pt-0.5">
+              <div className="w-8 h-[2px] bg-gray-300 rounded-full" />
             </div>
           </div>
         </div>

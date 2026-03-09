@@ -14,15 +14,15 @@ export default function HomePage() {
         <GeometricDecoration />
 
         <div className="relative z-10 text-center mb-10">
-          <p className="text-sm text-muted mb-3 tracking-wide">
-            「あと何件？」の不安をゼロに。
-          </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight tracking-tight">
-            J-OSLER 修了要件を<br />
-            ひとつの画面で管理
+            内科専攻医の悩みを<br />
+            すべて解決する
           </h1>
-          <p className="text-sm text-muted mb-1 tracking-widest uppercase font-mono">
-            naikanavi.com — 内科専門医 取得ナビ
+          <p className="text-muted mb-1 max-w-lg mx-auto leading-relaxed">
+            J-OSLER進捗管理、病歴要約、専門医試験対策から、キャリア・お金の情報まで。
+          </p>
+          <p className="text-sm text-muted mt-2 tracking-widest uppercase font-mono">
+            naikanavi.com — 内科ナビ
           </p>
         </div>
 
@@ -44,14 +44,6 @@ export default function HomePage() {
         {/* アプリモックアップ */}
         <div className="relative z-10 max-w-xl mx-auto mb-10 px-4">
           <AppMockup />
-        </div>
-
-        {/* 価格バッジ */}
-        <div className="relative z-10 flex justify-center mb-6">
-          <div className="bg-s0 border-2 border-ac/20 rounded-xl px-5 py-3 text-center shadow-sm">
-            <span className="text-xs text-muted block mb-0.5">買い切り</span>
-            <span className="text-2xl font-bold text-ac font-mono">¥9,800</span>
-          </div>
         </div>
 
         {/* CTA ボタン */}
