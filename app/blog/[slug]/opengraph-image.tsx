@@ -109,6 +109,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '全人的視点の入れ方を徹底解説',
       category: 'medical-history',
     },
+    'c09-josler-byoreki-youyaku-29cases': {
+      title: '29症例の選び方',
+      subtitle: '疾患群バランスと書きやすい症例',
+      category: 'medical-history',
+    },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',

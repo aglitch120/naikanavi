@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#1B4F3A">29症例の疾患群バランス戦略</text>
+
+  <!-- Main area: 3 columns -->
+  <!-- Column 1: 主要領域 -->
+  <rect x="30" y="60" width="240" height="310" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="30" y="60" width="240" height="40" rx="12" fill="#1B4F3A"/>
+  <rect x="30" y="88" width="240" height="12" fill="#1B4F3A"/>
+  <text x="150" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">主要領域（各2〜3編）</text>
+  <text x="150" y="122" text-anchor="middle" font-size="12" fill="#6B6760">ここで 12〜18編 を確保</text>
+
+  <g transform="translate(50, 142)">
+    <rect width="200" height="30" rx="6" fill="#E8F0EC"/>
+    <text x="100" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">消化器 ●●●</text>
+  </g>
+  <g transform="translate(50, 178)">
+    <rect width="200" height="30" rx="6" fill="#E8F0EC"/>
+    <text x="100" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">循環器 ●●●</text>
+  </g>
+  <g transform="translate(50, 214)">
+    <rect width="200" height="30" rx="6" fill="#E8F0EC"/>
+    <text x="100" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">呼吸器 ●●</text>
+  </g>
+  <g transform="translate(50, 250)">
+    <rect width="200" height="30" rx="6" fill="#E8F0EC"/>
+    <text x="100" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">腎臓 ●●</text>
+  </g>
+  <g transform="translate(50, 286)">
+    <rect width="200" height="30" rx="6" fill="#E8F0EC"/>
+    <text x="100" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">内分泌・代謝 ●●●</text>
+  </g>
+  <g transform="translate(50, 322)">
+    <rect width="200" height="30" rx="6" fill="#E8F0EC"/>
+    <text x="100" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">血液 ●●</text>
+  </g>
+
+  <!-- Column 2: 準主要領域 -->
+  <rect x="290" y="60" width="220" height="230" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="290" y="60" width="220" height="40" rx="12" fill="#155230"/>
+  <rect x="290" y="88" width="220" height="12" fill="#155230"/>
+  <text x="400" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">準主要領域（各1〜2編）</text>
+  <text x="400" y="122" text-anchor="middle" font-size="12" fill="#6B6760">ここで 3〜6編</text>
+
+  <g transform="translate(305, 142)">
+    <rect width="190" height="30" rx="6" fill="#FEF3C7"/>
+    <text x="95" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#92400E">神経 ●●</text>
+  </g>
+  <g transform="translate(305, 178)">
+    <rect width="190" height="30" rx="6" fill="#FEF3C7"/>
+    <text x="95" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#92400E">膠原病 ●</text>
+  </g>
+  <g transform="translate(305, 214)">
+    <rect width="190" height="30" rx="6" fill="#FEF3C7"/>
+    <text x="95" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#92400E">感染症 ●●</text>
+  </g>
+
+  <!-- Column 3: その他+特殊 -->
+  <rect x="530" y="60" width="240" height="310" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="530" y="60" width="240" height="40" rx="12" fill="#6B6760"/>
+  <rect x="530" y="88" width="240" height="12" fill="#6B6760"/>
+  <text x="650" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">その他＋特殊症例</text>
+  <text x="650" y="122" text-anchor="middle" font-size="12" fill="#6B6760">残り 5〜8編</text>
+
+  <g transform="translate(548, 142)">
+    <rect width="204" height="30" rx="6" fill="#F0EDE7"/>
+    <text x="102" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">救急 ●●</text>
+  </g>
+  <g transform="translate(548, 178)">
+    <rect width="204" height="30" rx="6" fill="#F0EDE7"/>
+    <text x="102" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">総合内科 ●</text>
+  </g>
+  <g transform="translate(548, 214)">
+    <rect width="204" height="30" rx="6" fill="#F0EDE7"/>
+    <text x="102" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">外来症例 ●●〜●●●●</text>
+  </g>
+
+  <!-- Special cases box -->
+  <rect x="548" y="264" width="204" height="96" rx="8" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="650" y="286" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">必須の特殊症例</text>
+  <text x="650" y="306" text-anchor="middle" font-size="11" fill="#166534">✓ 剖検症例 1編以上</text>
+  <text x="650" y="326" text-anchor="middle" font-size="11" fill="#166534">✓ 外科紹介症例 1編以上</text>
+  <text x="650" y="346" text-anchor="middle" font-size="11" fill="#166534">✓ 救急症例（推奨）</text>
+
+  <!-- Footer -->
+  <text x="400" y="400" text-anchor="middle" font-size="13" font-weight="700" fill="#1B4F3A">合計 29編 ＝ 入院22編以上 ＋ 外来7編以内</text>
+  <text x="790" y="415" text-anchor="end" font-size="9" fill="#C8C4BC">© 内科ナビ naikanavi.com</text>
+</svg>
