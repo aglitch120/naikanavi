@@ -18,7 +18,7 @@ export default function Header() {
           />
           <span className="font-bold text-tx">内科ナビ</span>
         </Link>
-        <nav className="flex items-center gap-2 md:gap-3">
+        <nav className="flex items-center gap-1.5 md:gap-3">
           <Link
             href="/blog"
             className="text-sm text-muted hover:text-ac transition-colors hidden md:block"
@@ -29,13 +29,13 @@ export default function Header() {
             href="https://naikanavi.booth.pm/items/8058590"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm border border-ac text-ac px-3 py-1.5 rounded-lg hover:bg-acl transition-colors font-medium hidden md:block"
+            className="text-xs md:text-sm border border-ac text-ac px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-acl transition-colors font-medium"
           >
-            購入する
+            購入
           </a>
           <Link
             href="/app"
-            className="text-sm bg-ac text-white px-3 py-1.5 rounded-lg hover:bg-ac2 transition-colors font-medium hidden md:block"
+            className="text-xs md:text-sm bg-ac text-white px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-ac2 transition-colors font-medium"
           >
             ログイン
           </Link>

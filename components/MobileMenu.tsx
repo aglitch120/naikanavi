@@ -112,22 +112,6 @@ export default function MobileMenu() {
             >
               ブログ一覧
             </Link>
-            <a
-              href="https://naikanavi.booth.pm/items/8058590"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleLinkClick}
-              className="block py-2.5 px-3 text-sm font-medium text-ac rounded-lg hover:bg-acl transition-colors"
-            >
-              購入する
-            </a>
-            <Link
-              href="/app"
-              onClick={handleLinkClick}
-              className="block py-2.5 px-3 text-sm font-medium text-white bg-ac rounded-lg hover:bg-ac2 transition-colors text-center"
-            >
-              ログイン
-            </Link>
           </div>
 
           {/* カテゴリナビ */}
