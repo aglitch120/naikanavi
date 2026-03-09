@@ -185,7 +185,7 @@ export default async function ArticlePage({ params }: Props) {
               {frontmatter.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs bg-s1 text-muted px-3 py-1.5 rounded-full"
+                  className="text-xs bg-s1 text-muted px-3 py-1.5 rounded-full cursor-default select-none"
                 >
                   {tag}
                 </span>

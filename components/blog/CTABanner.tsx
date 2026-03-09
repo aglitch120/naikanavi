@@ -86,7 +86,7 @@ function SparkIcon() {
 export default function CTABanner({ cta, variant = 'inline' }: Props) {
   if (variant === 'large') {
     return (
-      <div className="relative bg-ac rounded-2xl p-6 md:p-10 my-10 overflow-hidden">
+      <div className="relative bg-ac rounded-2xl p-6 md:p-8 lg:p-10 my-10 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <svg className="absolute top-0 right-0 w-64 h-64 text-white/[0.03]" viewBox="0 0 200 200">
             {[30, 55, 80, 105].map((r) => (
@@ -165,15 +165,15 @@ export default function CTABanner({ cta, variant = 'inline' }: Props) {
       href={cta.url}
       target={cta.url.startsWith('http') ? '_blank' : undefined}
       rel={cta.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-      className="group block bg-gradient-to-r from-ac/[0.06] to-acl/80 border border-ac/20 rounded-xl p-4 my-6 hover:border-ac/40 hover:shadow-sm transition-all no-underline"
+      className="group block bg-gradient-to-r from-ac/[0.06] to-acl/80 border border-ac/20 rounded-xl p-3 sm:p-4 my-6 hover:border-ac/40 hover:shadow-sm transition-all no-underline"
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <SparkIcon />
         <div className="min-w-0 flex-1">
-          <span className="font-bold text-sm text-ac block mb-0.5">{cta.title}</span>
-          <span className="text-xs text-muted block">{cta.description}</span>
+          <span className="font-bold text-sm text-ac block">{cta.title}</span>
+          <span className="text-xs text-muted hidden sm:block mt-0.5">{cta.description}</span>
         </div>
-        <span className="shrink-0 bg-ac text-white text-sm px-4 py-2 rounded-lg group-hover:bg-ac2 transition-colors font-medium">
+        <span className="shrink-0 bg-ac text-white text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-lg group-hover:bg-ac2 transition-colors font-medium whitespace-nowrap">
           {cta.buttonText}
         </span>
       </div>
