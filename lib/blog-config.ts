@@ -66,16 +66,16 @@ export const pillarPages = {
 // CTA設定
 export const ctaConfig = {
   template: {
-    title: '📝 病歴要約テンプレートを無料ダウンロード',
-    description: 'Accept率を上げる病歴要約の書き方をテンプレート付きで解説',
-    buttonText: '無料ダウンロード',
-    url: '/template',
+    title: '🚀 AIが病歴要約の下書きを30秒で生成',
+    description: '症例情報を入力するだけ。総合考察・全人的視点も自動で構成。手書き3時間→30分に短縮した専攻医が続出中。',
+    buttonText: '無料で試してみる',
+    url: 'https://naikanavi.booth.pm/items/8058590',
   },
   progress: {
-    title: '📊 J-OSLER進捗管理ツール',
-    description: 'NotionとAIを使って症例登録を効率化',
-    buttonText: 'ツールを見る',
-    url: '/tool',
+    title: '🚀 AIが病歴要約の下書きを30秒で生成',
+    description: 'J-OSLER作業を10分の1に。症例登録テンプレ・検査値フォーマット変換・病歴要約AI下書きが全部入り。',
+    buttonText: '無料で試してみる',
+    url: 'https://naikanavi.booth.pm/items/8058590',
   },
   quiz: {
     title: '📚 内科専門医試験 対策クイズ',
@@ -90,10 +90,10 @@ export const ctaConfig = {
     url: '/checklist',
   },
   general: {
-    title: '🏠 内科ナビを使ってみる',
-    description: '内科専攻医の悩みをすべて解決するWebアプリ',
-    buttonText: 'アプリを開く',
-    url: '/',
+    title: '🚀 AIが病歴要約の下書きを30秒で生成',
+    description: 'J-OSLER作業を10分の1に。症例登録テンプレ・検査値フォーマット変換・病歴要約AI下書きが全部入り。',
+    buttonText: '無料で試してみる',
+    url: 'https://naikanavi.booth.pm/items/8058590',
   },
 } as const
 

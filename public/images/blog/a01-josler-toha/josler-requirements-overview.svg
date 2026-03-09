@@ -23,6 +23,12 @@
   <circle cx="52" cy="114" r="14" fill="#FEFEFC" opacity="0.2"/>
   <text x="52" y="119" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">1</text>
   <text x="76" y="119" fill="#FEFEFC" font-size="15" font-weight="700">症例登録</text>
+  <!-- ミニアイコン：クリップボード -->
+  <rect x="350" y="140" width="22" height="28" rx="3" fill="#E8F0EC" stroke="#1E3A5F" stroke-width="1.2"/>
+  <rect x="356" y="136" width="10" height="6" rx="2" fill="#1E3A5F"/>
+  <rect x="354" y="150" width="14" height="2" rx="1" fill="#1E3A5F" opacity="0.3"/>
+  <rect x="354" y="155" width="10" height="2" rx="1" fill="#1E3A5F" opacity="0.3"/>
+  <rect x="354" y="160" width="12" height="2" rx="1" fill="#1E3A5F" opacity="0.3"/>
   <text x="44" y="155" fill="#1A1917" font-size="13">主担当医として経験した症例を登録</text>
   <text x="44" y="178" fill="#1B4F3A" font-size="18" font-weight="700">120症例以上</text>
   <text x="190" y="178" fill="#6B6760" font-size="12">（56疾患群以上をカバー）</text>
@@ -35,6 +41,12 @@
   <circle cx="439" cy="114" r="14" fill="#FEFEFC" opacity="0.2"/>
   <text x="439" y="119" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">2</text>
   <text x="463" y="119" fill="#FEFEFC" font-size="15" font-weight="700">病歴要約 ← 最大の関門</text>
+  <!-- ミニアイコン：ペンと紙 -->
+  <rect x="738" y="140" width="20" height="26" rx="2" fill="#FEE2E2" stroke="#991B1B" stroke-width="1"/>
+  <line x1="742" y1="148" x2="754" y2="148" stroke="#991B1B" stroke-width="1" opacity="0.3"/>
+  <line x1="742" y1="153" x2="752" y2="153" stroke="#991B1B" stroke-width="1" opacity="0.3"/>
+  <line x1="742" y1="158" x2="750" y2="158" stroke="#991B1B" stroke-width="1" opacity="0.3"/>
+  <path d="M760 138 L764 134 L768 138 L764 162 Z" fill="#991B1B" opacity="0.6"/>
   <text x="431" y="155" fill="#1A1917" font-size="13">詳細な病歴要約を作成し3段階評価</text>
   <text x="431" y="178" fill="#991B1B" font-size="18" font-weight="700">29症例</text>
   <text x="520" y="178" fill="#6B6760" font-size="12">（個別→一次→二次評価）</text>

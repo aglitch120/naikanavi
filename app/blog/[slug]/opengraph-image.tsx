@@ -13,6 +13,7 @@ export const contentType = 'image/png'
 function slugToTitle(slug: string): string {
   // 記事slugとタイトルのマッピング（新記事追加時に更新）
   const titleMap: Record<string, string> = {
+    'a01-josler-toha': '【2026年最新】J-OSLERとは？内科専攻医が知るべき全体像を徹底解説',
     'b01-josler-byoreki-youyaku-kakikata': '【2026年最新】J-OSLER病歴要約の書き方完全ガイド',
     'josler-complete-guide': 'J-OSLER完全攻略ガイド',
     'exam-preparation-guide': '内科専門医試験 合格マニュアル',
