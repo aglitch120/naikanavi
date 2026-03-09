@@ -61,8 +61,8 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
   ]
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-xs text-muted font-medium">共有:</span>
+    <div className="flex flex-wrap items-center gap-2">
+      <span className="text-xs text-muted font-medium w-full sm:w-auto mb-1 sm:mb-0">共有:</span>
       {shareLinks.map((link) => (
         <a
           key={link.name}
@@ -70,7 +70,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
           onClick={link.onClick as any}
           target={link.href !== '#' ? '_blank' : undefined}
           rel={link.href !== '#' ? 'noopener noreferrer' : undefined}
-          className={`inline-flex items-center gap-1.5 text-sm text-muted ${link.color} px-2.5 py-1.5 rounded-lg border border-br transition-colors`}
+          className={`inline-flex items-center gap-1.5 text-sm text-muted ${link.color} px-3 py-2 rounded-lg border border-br transition-colors min-h-[44px]`}
           title={`${link.name}でシェア`}
         >
           {link.icon}

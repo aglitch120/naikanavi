@@ -7,6 +7,7 @@ import { generateMetadata as genMeta, generateArticleJsonLd, generateBreadcrumbJ
 import ArticleCard from '@/components/blog/ArticleCard'
 import CTABanner from '@/components/blog/CTABanner'
 import TableOfContents from '@/components/blog/TableOfContents'
+import InlineTableOfContents from '@/components/blog/InlineTableOfContents'
 import ShareButtons from '@/components/blog/ShareButtons'
 import ReadingProgress from '@/components/blog/ReadingProgress'
 
@@ -140,8 +141,24 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         </header>
 
+        {/* アイキャッチ画像（OGP画像を流用） */}
+        <div className="mb-6 rounded-xl overflow-hidden bg-s1">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/blog/${slug}/opengraph-image`}
+            alt={frontmatter.title}
+            width={1200}
+            height={630}
+            className="w-full h-auto"
+            loading="eager"
+          />
+        </div>
+
         {/* 冒頭CTA */}
         <CTABanner cta={cta} variant="inline" />
+
+        {/* 冒頭目次（PC・モバイル共通） */}
+        <InlineTableOfContents />
 
         {/* 本文 + サイドバー目次 */}
         <div className="lg:flex lg:gap-8">
