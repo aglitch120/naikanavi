@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1B4F3A">
+<title>内科専門医 取得ナビ</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: 'Noto Sans JP','Hiragino Sans','Meiryo',sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; background:#F5F4F0; color:#1A1917; }
+button, input, select { font-family: inherit; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+input, select { -webkit-appearance: none; appearance: none; }
+
+:root {
+  /* ── Light palette（全画面共通） ── */
+  --bg:  #F5F4F0;   /* ページ地 */
+  --s0:  #FEFEFC;   /* カード最表面 */
+  --s1:  #F0EDE7;   /* カード内ネスト */
+  --s2:  #E8E5DF;   /* さらに深いネスト */
+  --br:  #DDD9D2;   /* ボーダー */
+  --br2: #C8C4BC;   /* 強めボーダー */
+  --tx:  #1A1917;   /* メインテキスト */
+  --m:   #6B6760;   /* ミュートテキスト */
+  --ac:  #1B4F3A;   /* グリーンアクセント */
+  --acl: #E8F0EC;   /* アクセント薄 */
+  --ac2: #155230;   /* アクセントhover */
+  --ok:  #166534;   /* 成功 */
+  --okl: #DCFCE7;   /* 成功薄 */
+  --okb: #86EFAC;   /* 成功ボーダー */
+  --wn:  #92400E;   /* 警告 */
+  --wnl: #FEF3C7;   /* 警告薄 */
+  --wnb: #FCD34D;   /* 警告ボーダー */
+  --dn:  #991B1B;   /* エラー */
+  --dnl: #FEE2E2;   /* エラー薄 */
+  --dnb: #FCA5A5;   /* エラーボーダー */
+  --mono:'DM Mono','Courier New',monospace;
+  --ease:.18s cubic-bezier(.4,0,.2,1);
+  --sat:env(safe-area-inset-top,0px);   --sab:env(safe-area-inset-bottom,0px);
+  --sal:env(safe-area-inset-left,0px);  --sar:env(safe-area-inset-right,0px);
+  --bar:0px;
+}
+
+/* ═══ SCREENS ═══ */
+.screen{display:none;min-height:100dvh;padding-top:var(--bar)}
+.screen.active{display:block}
+
+/* ═══ ONBOARDING ═══ */
+.ob-overlay{position:fixed;inset:0;z-index:9000;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}
+.ob-overlay.active{display:block}
+.ob-inner{max-width:520px;margin:0 auto;padding:clamp(24px,5vw,48px) 20px calc(24px + var(--sab));min-height:100dvh;display:flex;flex-direction:column}
+.ob-logo{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.ob-logo-mark{width:38px;height:38px;border-radius:9px;background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ob-logo-mark svg{width:21px;height:21px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+.ob-title{font-size:clamp(18px,4vw,22px);font-weight:700;margin-bottom:6px;color:var(--tx)}
+.ob-sub{font-size:13px;color:var(--m);margin-bottom:24px;line-height:1.6}
+.ob-card{background:var(--s0);border:1px solid var(--br);border-radius:14px;padding:24px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.07)}
+.ob-field{margin-bottom:18px}
+.ob-field:last-child{margin-bottom:0}
+.ob-label{display:block;font-size:11px;font-weight:600;color:var(--m);letter-spacing:.08em;margin-bottom:7px;text-transform:uppercase}
+.ob-label .req{color:var(--dn);margin-left:3px}
+.ob-select{width:100%;padding:12px 14px;border:1.5px solid var(--br);border-radius:9px;background:var(--bg);font-size:15px;color:var(--tx);
+  transition:var(--ease);outline:none;-webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6760' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.ob-select:focus{border-color:var(--ac);background-color:var(--s0);box-shadow:0 0 0 3px rgba(27,79,58,.10)}
+.ob-input{width:100%;padding:12px 14px;border:1.5px solid var(--br);border-radius:9px;background:var(--bg);font-size:15px;color:var(--tx);
+  transition:var(--ease);outline:none}
+.ob-input:focus{border-color:var(--ac);background:var(--s0);box-shadow:0 0 0 3px rgba(27,79,58,.10)}
+.ob-radio-grp{display:flex;gap:12px;flex-wrap:wrap}
+.ob-radio{display:flex;align-items:center;gap:7px;padding:10px 18px;border:1.5px solid var(--br);border-radius:9px;background:var(--bg);cursor:pointer;transition:var(--ease);font-size:14px}
+.ob-radio:hover{border-color:var(--ac);background:var(--acl)}
+.ob-radio input{display:none}
+.ob-radio.selected{border-color:var(--ac);background:var(--acl);color:var(--ac);font-weight:500}
+.ob-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--br2);display:flex;align-items:center;justify-content:center;transition:var(--ease)}
+.ob-radio.selected .ob-dot{border-color:var(--ac)}
+.ob-radio.selected .ob-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--ac)}
+.ob-section-lbl{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--m);margin-bottom:16px}
+.ob-btn{width:100%;padding:14px;background:var(--ac);color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:500;
+  transition:var(--ease);min-height:48px;cursor:pointer;margin-top:8px}
+.ob-btn:hover{background:var(--ac2)}.ob-btn:active{opacity:.9;transform:scale(.99)}.ob-btn:disabled{opacity:.45;cursor:not-allowed}
+.ob-skip{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--m);cursor:pointer;text-decoration:none}
+.ob-skip:hover{color:var(--ac);text-decoration:underline}
+.ob-err{padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;
+  background:var(--dnl);color:var(--dn);border:1px solid var(--dnb)}
+.ob-progress{display:flex;gap:8px;margin-bottom:24px}
+.ob-progress-dot{flex:1;height:4px;border-radius:2px;background:var(--br)}
+.ob-progress-dot.done{background:var(--ac)}
+
+/* ═══ フォーム共通 ═══ */
+
+/* 入力フィールド */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11px;font-weight:600;color:var(--m);letter-spacing:.08em;margin-bottom:7px;text-transform:uppercase}
+.field input{width:100%;padding:12px 14px;border:1.5px solid var(--br);border-radius:9px;background:var(--bg);font-size:16px;color:var(--tx);transition:var(--ease);outline:none}
+.field input:focus{border-color:var(--ac);background:var(--s0);box-shadow:0 0 0 3px rgba(27,79,58,.10)}
+.field input::placeholder{color:var(--br2)}
+.field-hint{font-size:12px;color:var(--m);margin-top:5px;line-height:1.5}
+
+/* ボタン */
+.btn-p{width:100%;padding:14px;background:var(--ac);color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:500;transition:var(--ease);min-height:48px}
+.btn-p:hover{background:var(--ac2)}
+.btn-p:active{opacity:.9;transform:scale(.99)}
+.btn-p:disabled{opacity:.45;cursor:not-allowed}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--ac);border:1.5px solid var(--br);border-radius:9px;padding:11px 20px;font-size:14px;font-weight:500;transition:var(--ease);min-height:44px;width:100%}
+.btn-ghost:hover{background:var(--acl);border-color:var(--ac)}
+.btn-dng{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--dn);border:1.5px solid var(--dnb);border-radius:9px;padding:11px 20px;font-size:14px;font-weight:500;transition:var(--ease);min-height:44px;width:100%}
+.btn-dng:hover{background:var(--dnl)}
+
+/* アラート */
+.alert{padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;line-height:1.5}
+.alert svg{flex-shrink:0;margin-top:1px}
+.alert-err {background:var(--dnl);color:var(--dn);border:1px solid var(--dnb)}
+.alert-ok  {background:var(--okl);color:var(--ok);border:1px solid var(--okb)}
+.alert-info{background:#EEF4FF;color:#1E40AF;border:1px solid #BFDBFE}
+
+.divider{border:none;border-top:1px solid var(--br);margin:22px 0}
+.tlink{color:var(--ac);text-decoration:none;cursor:pointer}
+.tlink:hover{text-decoration:underline}
+
+/* ═══ APP ヘッダー・タブ ═══ */
+.app-wrap{background:var(--bg);color:var(--tx);min-height:calc(100dvh - var(--bar));font-size:14px}
+
+.app-hdr{background:var(--s0);border-bottom:1px solid var(--br);
+  padding:10px 14px 8px;padding-left:calc(14px + var(--sal));padding-right:calc(14px + var(--sar));
+  position:sticky;top:var(--bar);z-index:100;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.app-title{font-size:clamp(14px,3.5vw,17px);font-weight:700;color:var(--ac)}
+.app-sub{font-size:clamp(9px,2vw,11px);color:var(--m);margin-top:2px;line-height:1.4}
+
+.uchip{display:flex;align-items:center;gap:7px;background:var(--acl);border:1px solid #C4D9CE;border-radius:20px;padding:5px 12px 5px 5px;cursor:pointer;transition:var(--ease);flex-shrink:0;min-height:36px}
+.uchip:hover{background:#D8EAE1;border-color:#A8C7B8}
+.avatar{width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.uname{font-size:12px;color:var(--ac);font-family:var(--mono);font-weight:500}
+@media(max-width:480px){.uname{display:none}}
+
+.app-tabs{display:flex;gap:3px;background:var(--s0);padding:7px 10px;border-bottom:1px solid var(--br);
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  position:sticky;top:calc(var(--bar) + 52px);z-index:99}
+.app-tabs::-webkit-scrollbar{display:none}
+.app-tab{padding:7px 12px;border-radius:6px;border:none;font-size:clamp(11px,2.5vw,13px);white-space:nowrap;
+  color:var(--m);background:transparent;transition:var(--ease);min-height:34px;flex-shrink:0}
+.app-tab:hover{background:var(--s1);color:var(--tx)}
+.app-tab.active{background:var(--ac);color:#fff;font-weight:600}
+
+.app-body{padding:12px;padding-left:calc(12px + var(--sal));padding-right:calc(12px + var(--sar));
+  padding-bottom:calc(24px + var(--sab));max-width:1100px;margin:0 auto}
+
+/* ═══ カード ═══ */
+.card{background:var(--s0);border:1px solid var(--br);border-radius:10px;padding:14px;margin-bottom:10px}
+.card-t{font-size:11px;font-weight:600;color:var(--m);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+
+/* ═══ Overview ═══ */
+.ov-hero{background:linear-gradient(135deg,var(--acl),var(--s0));display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.ring-inner{position:absolute;text-align:center}
+.ring-pct{font-size:clamp(16px,4vw,20px);font-weight:700;color:var(--ac)}
+.ring-txt{font-size:9px;color:var(--m)}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}
+.stat-n{font-size:clamp(20px,5vw,26px);font-weight:700}
+.pbar{height:5px;background:var(--s2);border-radius:3px;overflow:hidden;margin-top:6px}
+.pfill{height:100%;border-radius:3px;transition:width .4s}
+.sbar{display:flex;height:7px;border-radius:4px;overflow:hidden;background:var(--s2);margin-bottom:8px}
+.sleg{display:flex;gap:10px;flex-wrap:wrap;font-size:11px}
+.sdot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ═══ テーブル ═══ */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dtbl{width:100%;border-collapse:collapse;font-size:clamp(11px,2.5vw,13px);min-width:340px}
+.dtbl th{text-align:left;padding:7px 6px;color:var(--m);font-weight:500;border-bottom:1px solid var(--br);white-space:nowrap}
+.dtbl th:not(:first-child){text-align:center}
+.dtbl td{padding:6px;border-bottom:1px solid var(--s1)}
+.dtbl td:not(:first-child){text-align:center}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;flex-shrink:0}
+
+/* ═══ 症例タブ ═══ */
+.sp-acc{border-radius:10px;border:1px solid var(--br);overflow:hidden;margin-bottom:8px;transition:border-color .2s}
+.sp-head{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;user-select:none;background:var(--s0);-webkit-tap-highlight-color:transparent}
+.sp-head:hover{background:var(--s1)}
+.sp-body{background:var(--bg);border-top:1px solid;padding:10px 10px 14px}
+.dg-row{border-radius:7px;border:1px solid var(--br);background:var(--bg);margin-bottom:5px;overflow:hidden;transition:border-color .2s,background .2s}
+.dg-head{display:flex;align-items:center;gap:8px;padding:10px;cursor:pointer;min-height:44px;-webkit-tap-highlight-color:transparent}
+.dg-chk{width:20px;height:20px;border-radius:5px;border:2px solid var(--br2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--ease)}
+.disease-tags{display:flex;flex-wrap:wrap;gap:6px;padding:9px 10px 11px 38px;background:var(--s1);border-top:1px solid var(--br)}
+.dtag{font-size:clamp(11px,2.5vw,12px);padding:6px 12px;border-radius:20px;background:var(--s0);border:1px solid var(--br);color:var(--m);cursor:pointer;transition:var(--ease);min-height:34px;display:flex;align-items:center;-webkit-tap-highlight-color:transparent}
+
+/* ═══ 病歴要約タブ ═══ */
+.sum-item{border-radius:10px;border:1px solid var(--br);overflow:hidden;margin-bottom:8px;background:var(--s0)}
+.sum-hdr{display:flex;align-items:center;gap:8px;padding:10px 14px;flex-wrap:wrap}
+.sum-inp{background:var(--bg);border:1px solid var(--br);border-radius:6px;color:var(--tx);padding:6px 10px;font-size:13px;outline:none;width:100%;transition:var(--ease)}
+.sum-inp:focus{border-color:var(--ac)}
+.sum-inp::placeholder{color:var(--br2)}
+.app-sel{background:var(--bg);border:1px solid var(--br);border-radius:6px;color:var(--tx);padding:5px 8px;font-size:12px;cursor:pointer;outline:none;-webkit-appearance:none}
+
+/* ═══ 作成ガイドタブ ═══ */
+.guide-sec{margin-bottom:8px}
+.guide-btn{width:100%;background:none;border:none;color:var(--tx);cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;padding:0;font-size:14px;font-weight:600;-webkit-tap-highlight-color:transparent}
+.guide-row{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--br)}
+.guide-key{min-width:130px;font-size:12px;font-weight:600;color:var(--ac);flex-shrink:0}
+.guide-val{font-size:13px;color:var(--tx);flex:1;line-height:1.5}
+@media(max-width:480px){.guide-row{flex-direction:column;gap:3px}.guide-key{min-width:unset;font-size:11px}}
+
+/* ═══ テンプレート生成 ═══ */
+.tmpl-gen{margin-top:16px;position:relative}
+.tmpl-card{position:relative;overflow:hidden}
+.tmpl-locked{position:relative}
+.tmpl-locked::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--s0));pointer-events:none}
+.tmpl-sel{width:100%;padding:11px 14px;border:1.5px solid var(--br);border-radius:9px;background:var(--bg);font-size:14px;color:var(--tx);outline:none;font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6760' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.tmpl-sel:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(27,79,58,.10)}
+.tmpl-generate{display:flex;align-items:center;gap:8px;padding:13px 20px;background:linear-gradient(135deg,#1B4F3A,#2D7A5A);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;width:100%}
+.tmpl-generate:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(27,79,58,.3)}
+.tmpl-generate:active{transform:scale(.99)}
+.tmpl-generate:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.tmpl-output{margin-top:16px;animation:fadeUp .3s ease both}
+.tmpl-section{background:var(--bg);border:1px solid var(--br);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.tmpl-section-title{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--ac);letter-spacing:.06em;margin-bottom:8px}
+.tmpl-section-body{font-size:13px;color:var(--tx);line-height:1.75;white-space:pre-wrap;word-break:break-word}
+.credit-badge{display:inline-flex;align-items:center;gap:5px;background:#FEF3C7;color:#92400E;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid #FCD34D}
+.credit-badge-full{display:inline-flex;align-items:center;gap:5px;background:var(--acl);color:var(--ac);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid #A7C4B5}
+.tmpl-cta{background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:2px solid #FCD34D;border-radius:14px;padding:20px;text-align:center;margin-top:12px}
+.tmpl-cta-title{font-size:15px;font-weight:700;color:#92400E;margin-bottom:6px}
+.tmpl-cta-sub{font-size:12px;color:#78716C;margin-bottom:14px;line-height:1.6}
+.tmpl-cta-btn{display:inline-block;padding:10px 22px;background:#1B4F3A;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;font-family:inherit;transition:all .2s}
+.tmpl-cta-btn:hover{background:#155230;transform:translateY(-1px)}
+.tmpl-hist{margin-top:16px}
+.tmpl-hist-title{font-size:13px;font-weight:700;color:var(--ac);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.tmpl-hist-item{background:var(--s0);border:1px solid var(--br);border-radius:10px;margin-bottom:8px;overflow:hidden;transition:all .2s}
+.tmpl-hist-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;gap:8px}
+.tmpl-hist-header:hover{background:var(--s1)}
+.tmpl-hist-name{font-size:13px;font-weight:600;color:var(--tx);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tmpl-hist-date{font-size:10px;color:var(--m);white-space:nowrap}
+.tmpl-hist-toggle{font-size:11px;color:var(--ac);white-space:nowrap;font-weight:600}
+.tmpl-hist-body{padding:0 14px 14px;animation:fadeUp .2s ease both}
+.tmpl-redeem{margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tmpl-redeem input{flex:1;min-width:140px;padding:10px 14px;border:1.5px solid var(--br);border-radius:8px;font-size:14px;background:var(--bg);outline:none;font-family:inherit}
+.tmpl-redeem input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(27,79,58,.1)}
+.tmpl-redeem button{padding:10px 18px;background:var(--ac);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit}
+.tmpl-pack{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tmpl-pack-card{flex:1;min-width:100px;background:var(--s0);border:1.5px solid var(--br);border-radius:10px;padding:12px;text-align:center;transition:all .2s}
+.tmpl-pack-card:hover{border-color:var(--ac);box-shadow:0 2px 8px rgba(27,79,58,.1)}
+.tmpl-pack-price{font-size:18px;font-weight:700;color:var(--ac);font-family:var(--mono)}
+.tmpl-pack-label{font-size:11px;color:var(--m);margin-top:2px}
+.tmpl-pack-sub{font-size:9px;color:var(--m);margin-top:1px;opacity:.8}
+.tmpl-pack-unit{font-size:10px;color:var(--m)}
+
+/* ═══ その他要件タブ ═══ */
+.other-chk{width:22px;height:22px;border-radius:5px;border:2px solid var(--br2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:var(--ease);-webkit-tap-highlight-color:transparent}
+.num-inp{background:var(--bg);border:1px solid var(--br);border-radius:6px;color:var(--tx);padding:5px 8px;font-size:14px;width:60px;text-align:center;font-family:inherit;outline:none}
+.num-sel{background:var(--bg);border:1px solid var(--br);border-radius:6px;color:var(--tx);padding:6px 10px;font-size:15px;width:64px;text-align:center;font-family:inherit;outline:none;-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;padding-right:22px}
+.yr-card{flex:1;min-width:80px;background:var(--s0);border-radius:8px;padding:10px;border:1px solid var(--br);text-align:center;transition:border-color .2s}
+
+/* ═══ マイページ ═══ */
+.sec-lbl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--m);margin-bottom:14px}
+.info-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;background:var(--bg);border:1px solid var(--br);border-radius:9px;margin-bottom:9px;min-height:50px;gap:12px}
+.info-lbl{font-size:12px;color:var(--m);font-weight:500;flex-shrink:0}
+.info-val{font-size:14px;font-weight:500;font-family:var(--mono);text-align:right;word-break:break-all}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:var(--acl);color:var(--ac)}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.prof-sec{background:var(--s0);border:1px solid var(--br);border-radius:12px;padding:20px;margin-bottom:16px}
+.prof-sec.danger{border-color:var(--dnb)}
+
+/* ═══ ヘッダー クレジットチップ ═══ */
+.credit-chip{display:inline-flex;align-items:center;gap:5px;background:#FEF3C7;border:1px solid #FCD34D;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;color:#92400E;cursor:pointer;transition:var(--ease);text-decoration:none;white-space:nowrap;min-height:28px;flex-shrink:0}
+.credit-chip:hover{background:#FDE68A;border-color:#F59E0B}
+.credit-chip.has{background:var(--acl);border-color:#A7C4B5;color:var(--ac)}
+.credit-chip.has:hover{background:#D8EAE1;border-color:#7FB09A}
+@media(max-width:480px){.credit-chip-label{display:none}}
+
+/* ═══ 問題演習タブ ═══ */
+.quiz-mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+@media(max-width:480px){.quiz-mode-grid{grid-template-columns:1fr}}
+.quiz-mode-card{background:var(--s0);border:1.5px solid var(--br);border-radius:10px;padding:14px;cursor:pointer;transition:all .2s;text-align:center}
+.quiz-mode-card:hover{border-color:var(--ac);box-shadow:0 2px 8px rgba(27,79,58,.1)}
+.quiz-mode-card.active{border-color:var(--ac);background:var(--acl)}
+.quiz-mode-icon{font-size:24px;margin-bottom:6px}
+.quiz-mode-name{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:2px}
+.quiz-mode-desc{font-size:11px;color:var(--m);line-height:1.4}
+.quiz-q-card{background:var(--s0);border:1px solid var(--br);border-radius:12px;padding:20px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.quiz-stem{font-size:14px;line-height:1.8;color:var(--tx);white-space:pre-wrap;margin-bottom:16px}
+.quiz-choice{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid var(--br);border-radius:9px;margin-bottom:8px;cursor:pointer;transition:all .15s;background:var(--bg);min-height:48px}
+.quiz-choice:hover{border-color:var(--ac);background:var(--acl)}
+.quiz-choice.selected{border-color:var(--ac);background:var(--acl)}
+.quiz-choice.correct{border-color:#16a34a;background:#DCFCE7}
+.quiz-choice.wrong{border-color:#dc2626;background:#FEE2E2}
+.quiz-choice.reveal-correct{border-color:#16a34a;background:#DCFCE7}
+.quiz-choice.disabled{cursor:default;opacity:.85}
+.quiz-choice.disabled:hover{border-color:var(--br);background:var(--bg)}
+.quiz-choice.correct:hover,.quiz-choice.wrong:hover,.quiz-choice.reveal-correct:hover{cursor:default}
+.quiz-choice-label{width:24px;height:24px;border-radius:50%;background:var(--br);color:var(--m);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.quiz-choice.correct .quiz-choice-label{background:#16a34a;color:#fff}
+.quiz-choice.wrong .quiz-choice-label{background:#dc2626;color:#fff}
+.quiz-choice.reveal-correct .quiz-choice-label{background:#16a34a;color:#fff}
+.quiz-choice-text{font-size:13px;color:var(--tx);line-height:1.5;padding-top:2px}
+.quiz-explain{background:var(--s1);border:1px solid var(--br);border-radius:10px;padding:14px 16px;margin-top:12px;animation:fadeUp .3s ease both}
+.quiz-explain-title{font-size:12px;font-weight:700;color:var(--ac);margin-bottom:6px}
+.quiz-explain-body{font-size:13px;color:var(--tx);line-height:1.7;white-space:pre-wrap}
+.quiz-refs{font-size:11px;color:var(--m);margin-top:8px;line-height:1.5}
+.quiz-progress{display:flex;gap:4px;margin-bottom:14px}
+.quiz-progress-dot{flex:1;height:4px;border-radius:2px;background:var(--br);transition:background .2s}
+.quiz-progress-dot.done{background:var(--ac)}
+.quiz-progress-dot.current{background:var(--ac);opacity:.5}
+.quiz-progress-dot.correct-dot{background:#16a34a}
+.quiz-progress-dot.wrong-dot{background:#dc2626}
+.quiz-result-card{background:var(--s0);border:1px solid var(--br);border-radius:12px;padding:20px;text-align:center;margin-bottom:14px}
+.quiz-result-score{font-size:clamp(36px,8vw,48px);font-weight:700;margin-bottom:4px}
+.quiz-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+@media(max-width:420px){.quiz-stat-grid{grid-template-columns:1fr 1fr}.quiz-stat-grid .card:last-child{grid-column:1/-1}}
+.quiz-weak-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg);border:1px solid var(--br);border-radius:8px;margin-bottom:6px}
+.quiz-group-sel{width:100%;padding:11px 14px;border:1.5px solid var(--br);border-radius:9px;background:var(--bg);font-size:14px;color:var(--tx);outline:none;font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6760' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ═══ ユーティリティ ═══ */
+.flex{display:flex}.aic{align-items:center}.jcb{justify-content:space-between}.fw{flex-wrap:wrap}.gap6{gap:6px}.gap8{gap:8px}.gap10{gap:10px}.gap12{gap:12px}
+
+
+
+/* ── 保存バッジ スピナー ── */
+@keyframes spin{to{transform:rotate(360deg)}}
+.save-spinner{
+  display:inline-block;width:11px;height:11px;
+  border:2px solid #FCD34D;border-top-color:#92400E;
+  border-radius:50%;animation:spin .7s linear infinite;
+  vertical-align:middle;margin-right:4px;flex-shrink:0
+}
+@media(min-width:900px){.app-body{padding:16px 20px}.card{padding:16px}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+  ONBOARDING OVERLAY
+═══════════════════════════════════ -->
+<div class="ob-overlay" id="onboarding">
+<div class="ob-inner">
+  <div class="ob-logo">
+    <div class="ob-logo-mark"><svg viewBox="0 0 24 24"><path d="M12 3v9m0 0 3.5-3.5M12 12l-3.5-3.5M4 17h16M7 17v2m10-2v2"/></svg></div>
+    <div><div style="font-size:12px;font-weight:700;letter-spacing:.07em;color:var(--ac)">NAIKA NAVI</div><div style="font-size:10px;color:var(--m);margin-top:2px">内科専門医 取得ナビ</div></div>
+  </div>
+
+  <div class="ob-title">本人情報を入力</div>
+  <div class="ob-sub">サービスの改善とご案内の最適化のため、基本情報の入力をお願いしています。<br>入力内容は<a href="/privacy" target="_blank" style="color:var(--ac)">プライバシーポリシー</a>に基づき管理します。</div>
+
+  <div id="ob-err" class="ob-err" style="display:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="ob-err-msg"></span></div>
+
+  <!-- 必須項目 -->
+  <div class="ob-card">
+    <div class="ob-section-lbl">必須項目</div>
+
+    <div class="ob-field">
+      <label class="ob-label">氏名<span class="req">*</span></label>
+      <input class="ob-input" type="text" id="ob-displayName" placeholder="例: 田中 太郎" autocomplete="name">
+    </div>
+
+    <div class="ob-field">
+      <label class="ob-label">医師免許取得年<span class="req">*</span></label>
+      <select class="ob-select" id="ob-licenseYear">
+        <option value="">選択してください</option>
+        <option value="2025">2025年</option><option value="2024">2024年</option><option value="2023">2023年</option><option value="2022">2022年</option><option value="2021">2021年</option><option value="2020">2020年</option><option value="2019">2019年</option><option value="2018">2018年</option><option value="2017">2017年</option><option value="2016">2016年</option><option value="2015">2015年</option><option value="2014">2014年</option><option value="2013">2013年</option><option value="2012">2012年</option><option value="2011">2011年</option><option value="2010">2010年</option><option value="2009">2009年</option><option value="2008">2008年</option><option value="2007">2007年</option><option value="2006">2006年</option><option value="2005">2005年</option><option value="2004">2004年</option><option value="2003">2003年</option><option value="2002">2002年</option><option value="2001">2001年</option><option value="2000">2000年</option><option value="1999">1999年</option><option value="1998">1998年</option><option value="1997">1997年</option><option value="1996">1996年</option><option value="1995">1995年</option><option value="1994">1994年</option><option value="1993">1993年</option><option value="1992">1992年</option><option value="1991">1991年</option><option value="1990">1990年</option>
+      </select>
+    </div>
+
+    <div class="ob-field">
+      <label class="ob-label">診療科（主たる標榜科）<span class="req">*</span></label>
+      <select class="ob-select" id="ob-department">
+        <option value="">選択してください</option>
+        <option value="総合内科">総合内科</option><option value="循環器内科">循環器内科</option><option value="消化器内科">消化器内科</option><option value="呼吸器内科">呼吸器内科</option><option value="腎臓内科">腎臓内科</option><option value="血液内科">血液内科</option><option value="内分泌代謝内科">内分泌代謝内科</option><option value="神経内科">神経内科</option><option value="リウマチ・膠原病内科">リウマチ・膠原病内科</option><option value="感染症内科">感染症内科</option><option value="腫瘍内科">腫瘍内科</option><option value="老年内科">老年内科</option><option value="心療内科・精神科">心療内科・精神科</option><option value="救急科">救急科</option><option value="外科系">外科系</option><option value="小児科">小児科</option><option value="その他">その他</option>
+      </select>
+    </div>
+
+    <div class="ob-field">
+      <label class="ob-label">勤務先種別<span class="req">*</span></label>
+      <select class="ob-select" id="ob-workplaceType">
+        <option value="">選択してください</option>
+        <option value="大学病院">大学病院</option><option value="市中病院（500床以上）">市中病院（500床以上）</option><option value="市中病院（200〜499床）">市中病院（200〜499床）</option><option value="市中病院（200床未満）">市中病院（200床未満）</option><option value="クリニック・診療所">クリニック・診療所</option><option value="その他">その他</option>
+      </select>
+    </div>
+
+    <div class="ob-field">
+      <label class="ob-label">都道府県<span class="req">*</span></label>
+      <select class="ob-select" id="ob-prefecture">
+        <option value="">選択してください</option>
+        <option value="北海道">北海道</option><option value="青森県">青森県</option><option value="岩手県">岩手県</option><option value="宮城県">宮城県</option><option value="秋田県">秋田県</option><option value="山形県">山形県</option><option value="福島県">福島県</option><option value="茨城県">茨城県</option><option value="栃木県">栃木県</option><option value="群馬県">群馬県</option><option value="埼玉県">埼玉県</option><option value="千葉県">千葉県</option><option value="東京都">東京都</option><option value="神奈川県">神奈川県</option><option value="新潟県">新潟県</option><option value="富山県">富山県</option><option value="石川県">石川県</option><option value="福井県">福井県</option><option value="山梨県">山梨県</option><option value="長野県">長野県</option><option value="岐阜県">岐阜県</option><option value="静岡県">静岡県</option><option value="愛知県">愛知県</option><option value="三重県">三重県</option><option value="滋賀県">滋賀県</option><option value="京都府">京都府</option><option value="大阪府">大阪府</option><option value="兵庫県">兵庫県</option><option value="奈良県">奈良県</option><option value="和歌山県">和歌山県</option><option value="鳥取県">鳥取県</option><option value="島根県">島根県</option><option value="岡山県">岡山県</option><option value="広島県">広島県</option><option value="山口県">山口県</option><option value="徳島県">徳島県</option><option value="香川県">香川県</option><option value="愛媛県">愛媛県</option><option value="高知県">高知県</option><option value="福岡県">福岡県</option><option value="佐賀県">佐賀県</option><option value="長崎県">長崎県</option><option value="熊本県">熊本県</option><option value="大分県">大分県</option><option value="宮崎県">宮崎県</option><option value="鹿児島県">鹿児島県</option><option value="沖縄県">沖縄県</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 任意項目 -->
+  <div class="ob-card">
+    <div class="ob-section-lbl">任意項目</div>
+
+    <div class="ob-field">
+      <label class="ob-label">性別</label>
+      <div class="ob-radio-grp" id="ob-gender-grp">
+        <label class="ob-radio" onclick="selectRadio(this,'ob-gender','male')"><div class="ob-dot"></div><input type="radio" name="ob-gender" value="male">男性</label>
+        <label class="ob-radio" onclick="selectRadio(this,'ob-gender','female')"><div class="ob-dot"></div><input type="radio" name="ob-gender" value="female">女性</label>
+        <label class="ob-radio" onclick="selectRadio(this,'ob-gender','other')"><div class="ob-dot"></div><input type="radio" name="ob-gender" value="other">その他</label>
+      </div>
+    </div>
+
+    <div class="ob-field">
+      <label class="ob-label">生年（西暦）</label>
+      <select class="ob-select" id="ob-birthYear">
+        <option value="">選択してください</option>
+        <option value="2002">2002年</option><option value="2001">2001年</option><option value="2000">2000年</option><option value="1999">1999年</option><option value="1998">1998年</option><option value="1997">1997年</option><option value="1996">1996年</option><option value="1995">1995年</option><option value="1994">1994年</option><option value="1993">1993年</option><option value="1992">1992年</option><option value="1991">1991年</option><option value="1990">1990年</option><option value="1989">1989年</option><option value="1988">1988年</option><option value="1987">1987年</option><option value="1986">1986年</option><option value="1985">1985年</option><option value="1984">1984年</option><option value="1983">1983年</option><option value="1982">1982年</option><option value="1981">1981年</option><option value="1980">1980年</option><option value="1979">1979年</option><option value="1978">1978年</option><option value="1977">1977年</option><option value="1976">1976年</option><option value="1975">1975年</option><option value="1974">1974年</option><option value="1973">1973年</option><option value="1972">1972年</option><option value="1971">1971年</option><option value="1970">1970年</option><option value="1969">1969年</option><option value="1968">1968年</option><option value="1967">1967年</option><option value="1966">1966年</option><option value="1965">1965年</option><option value="1964">1964年</option><option value="1963">1963年</option><option value="1962">1962年</option><option value="1961">1961年</option><option value="1960">1960年</option>
+      </select>
+    </div>
+
+    <div class="ob-field">
+      <label class="ob-label">卒業大学</label>
+      <input class="ob-input" type="text" id="ob-medSchool" placeholder="例: 東京大学" autocomplete="off">
+    </div>
+  </div>
+
+  <button class="ob-btn" id="ob-submit" onclick="submitOnboarding()">保存してはじめる</button>
+  <div id="ob-skip-area"></div>
+
+  <div style="margin-top:auto;padding-top:24px;text-align:center;font-size:11px;color:var(--m)">
+    <a href="/terms" target="_blank" style="color:var(--m);margin-right:16px">利用規約</a>
+    <a href="/privacy" target="_blank" style="color:var(--m)">プライバシーポリシー</a>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+  SCREEN: アプリ本体（全タブ）
+═══════════════════════════════════ -->
+<div class="screen active" id="screen-app">
+<div class="app-wrap">
+  <div class="app-hdr">
+    <div><div class="app-title">内科専門医 取得ナビ</div><div class="app-sub">改定第2版（2024年）対応 ｜ 7期生〜: 120症例・56疾患群・29病歴要約・問題演習</div></div>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <span id="save-indicator" style="font-size:11px;padding:4px 10px;border-radius:20px;font-family:var(--mono);background:#DCFCE7;color:#166534;transition:background .3s,color .3s;white-space:nowrap">✓ 保存済み</span>
+      <a id="hdr-credit-chip" href="https://naikanavi.booth.pm/items/8059285" target="_blank" rel="noopener" class="credit-chip" style="display:none">🎫 <span id="hdr-credit-num">—</span><span class="credit-chip-label"> クレジット</span></a>
+      <div class="uchip" onclick="switchTab('profile')"><div class="avatar" id="user-avatar">—</div><span class="uname" id="user-name-chip">—</span></div>
+    </div>
+  </div>
+  <div class="app-tabs" id="app-tabs">
+    <button class="app-tab active" onclick="switchTab('overview')">🏠 ダッシュボード</button>
+    <button class="app-tab" onclick="switchTab('cases')">📊 症例・疾患群</button>
+    <button class="app-tab" onclick="switchTab('summaries')">📝 病歴要約</button>
+    <button class="app-tab" onclick="switchTab('guide')">📖 作成ガイド</button>
+    <button class="app-tab" onclick="switchTab('quiz')">🧠 問題演習</button>
+    <button class="app-tab" onclick="switchTab('other')">✅ その他要件</button>
+    <button class="app-tab" onclick="switchTab('profile')">👤 マイページ</button>
+  </div>
+  <div class="app-body" id="app-content"></div>
+  <div style="text-align:center;padding:24px 0 12px;font-size:11px;color:#999;border-top:1px solid #eee;margin-top:32px">
+    <a href="/terms" target="_blank" rel="noopener" style="color:#999;text-decoration:none;margin:0 8px">利用規約</a>｜<a href="/privacy" target="_blank" rel="noopener" style="color:#999;text-decoration:none;margin:0 8px">プライバシーポリシー</a>｜<a href="/cdn-cgi/l/email-protection#5638373f3d373837203f783f38303916313b373f3a7835393b" style="color:#999;text-decoration:none;margin:0 8px">お問い合わせ</a>
+  </div>
+</div>
+</div>
+
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+'use strict';
+
+/* ══════════════════════════════════════════
+   MASTER DATA (全疾患群)
+══════════════════════════════════════════ */
+const DG = {
+  generalI:[
+    {id:"g1",name:"全身性疾患・不明熱",        gc:null,diseases:["不明熱","全身性炎症反応症候群","多臓器不全","悪液質","体重減少"]},
+    {id:"g2",name:"医療コミュニケーション・倫理",gc:null,diseases:["インフォームドコンセント困難例","終末期・緩和ケア","ACP","意思決定支援","代理意思決定"]},
+    {id:"g3",name:"在宅・地域医療",             gc:null,diseases:["在宅医療","訪問診療","退院支援","地域連携パス","施設入所支援"]}],
+  generalII:[
+    {id:"g4",name:"老年症候群",      gc:null,diseases:["フレイル","サルコペニア","転倒・骨折リスク","老年期うつ","せん妄","廃用症候群"]},
+    {id:"g5",name:"認知症",          gc:null,diseases:["アルツハイマー型認知症","レビー小体型認知症","血管性認知症","前頭側頭型認知症","BPSD"]},
+    {id:"g6",name:"高齢者の薬物療法",gc:null,diseases:["ポリファーマシー","薬物有害反応（高齢者）","薬物相互作用","減薬支援"]}],
+  generalIII:[
+    {id:"g7",name:"悪性腫瘍（総論）",gc:null,diseases:["固形腫瘍（原発不明）","がん性疼痛管理","腫瘍崩壊症候群","がん関連静脈血栓症"]},
+    {id:"g8",name:"腫瘍内科学",      gc:null,diseases:["化学療法の副作用管理","免疫チェックポイント阻害薬有害事象","支持療法","栄養管理"]}],
+  gastro:[
+    {id:"g9", gc:"消化管",name:"食道・胃疾患（消化管）",   diseases:["逆流性食道炎","食道癌","胃潰瘍・十二指腸潰瘍","胃癌","H.pylori感染症","急性胃炎","機能性ディスペプシア"]},
+    {id:"g10",gc:"消化管",name:"小腸・大腸疾患（消化管）", diseases:["潰瘍性大腸炎","クローン病","大腸癌","過敏性腸症候群","腸閉塞","虚血性腸炎","感染性腸炎","憩室症"]},
+    {id:"g11",gc:"消化管",name:"消化管出血（消化管）",     diseases:["上部消化管出血","下部消化管出血","Mallory-Weiss症候群","食道静脈瘤出血"]},
+    {id:"g12",gc:"肝臓",  name:"肝疾患（肝臓）",          diseases:["急性肝炎（A/B/C型・薬剤性）","慢性肝炎","肝硬変","肝細胞癌","自己免疫性肝炎","NAFLD/NASH","アルコール性肝障害"]},
+    {id:"g13",gc:"胆・膵",name:"胆道疾患（胆・膵）",      diseases:["胆石症・胆嚢炎","急性胆管炎","胆管癌","胆嚢癌","原発性硬化性胆管炎"]},
+    {id:"g14",gc:"胆・膵",name:"膵疾患（胆・膵）",        diseases:["急性膵炎","慢性膵炎","膵癌","自己免疫性膵炎","膵神経内分泌腫瘍","膵嚢胞性疾患"]},
+    {id:"g15",gc:null,    name:"腹膜・その他消化器",       diseases:["腹膜炎","腸間膜虚血","消化管ポリポーシス","腹水（非癌性）"]}],
+  cardio:[
+    {id:"g16",gc:null,name:"虚血性心疾患",        diseases:["急性心筋梗塞（STEMI）","急性心筋梗塞（NSTEMI）","不安定狭心症","安定狭心症","Prinzmetal狭心症","心筋梗塞後症候群"]},
+    {id:"g17",gc:null,name:"心不全",              diseases:["急性心不全","慢性心不全","HFrEF","HFpEF","心原性ショック","右心不全"]},
+    {id:"g18",gc:null,name:"不整脈",              diseases:["心房細動","心房粗動","発作性上室頻拍","心室頻拍","心室細動","完全房室ブロック","洞不全症候群","WPW症候群","QT延長症候群"]},
+    {id:"g19",gc:null,name:"弁膜症",              diseases:["大動脈弁狭窄症","大動脈弁閉鎖不全症","僧帽弁狭窄症","僧帽弁閉鎖不全症","感染性心内膜炎"]},
+    {id:"g20",gc:null,name:"心筋症・心膜疾患",    diseases:["拡張型心筋症","肥大型心筋症","心筋炎","心膜炎","心タンポナーデ","たこつぼ症候群"]},
+    {id:"g21",gc:null,name:"大血管・末梢血管疾患",diseases:["大動脈解離","大動脈瘤","閉塞性動脈硬化症","深部静脈血栓症","肺塞栓症","高血圧緊急症"]},
+    {id:"g22",gc:null,name:"先天性心疾患・その他",diseases:["成人先天性心疾患","心臓腫瘍（粘液腫）","心臓サルコイドーシス"]}],
+  endo:[
+    {id:"g23",gc:null,name:"甲状腺疾患",          diseases:["バセドウ病","橋本病","甲状腺癌","亜急性甲状腺炎","甲状腺クリーゼ","粘液水腫昏睡"]},
+    {id:"g24",gc:null,name:"副腎疾患",            diseases:["原発性アルドステロン症","クッシング症候群","褐色細胞腫","副腎不全（アジソン病）","副腎偶発腫"]},
+    {id:"g25",gc:null,name:"下垂体・視床下部疾患",diseases:["先端巨大症","プロラクチノーマ","下垂体機能低下症","尿崩症","SIADH","クッシング病"]},
+    {id:"g26",gc:null,name:"副甲状腺・Ca代謝",   diseases:["原発性副甲状腺機能亢進症","副甲状腺機能低下症","高カルシウム血症","低カルシウム血症"]},
+    {id:"g27",gc:null,name:"性腺・その他内分泌",  diseases:["多嚢胞性卵巣症候群","MEN（多発性内分泌腺腫症）","カルチノイド症候群"]}],
+  metabolic:[
+    {id:"g28",gc:null,name:"糖尿病",          diseases:["1型糖尿病","2型糖尿病","糖尿病ケトアシドーシス","高浸透圧高血糖症候群","低血糖症","糖尿病合併症"]},
+    {id:"g29",gc:null,name:"脂質異常症",      diseases:["家族性高コレステロール血症","高トリグリセリド血症","続発性脂質異常症","メタボリックシンドローム"]},
+    {id:"g30",gc:null,name:"肥満症",          diseases:["肥満症","肥満に伴う合併症","二次性肥満"]},
+    {id:"g31",gc:null,name:"高尿酸血症・痛風",diseases:["痛風発作","痛風腎","無症候性高尿酸血症","偽痛風"]},
+    {id:"g32",gc:null,name:"その他の代謝疾患",diseases:["ウィルソン病","ヘモクロマトーシス","アミロイドーシス","骨粗鬆症"]}],
+  renal:[
+    {id:"g33",gc:null,name:"急性腎障害（AKI）",   diseases:["腎前性AKI","急性尿細管壊死","急性間質性腎炎","急速進行性糸球体腎炎"]},
+    {id:"g34",gc:null,name:"慢性腎臓病（CKD）",   diseases:["糖尿病性腎症","高血圧性腎硬化症","慢性糸球体腎炎","多発性嚢胞腎","CKD保存期管理"]},
+    {id:"g35",gc:null,name:"糸球体腎炎",          diseases:["IgA腎症","微小変化型ネフローゼ症候群","膜性腎症","巣状分節性糸球体硬化症","ループス腎炎"]},
+    {id:"g36",gc:null,name:"腎代替療法",          diseases:["血液透析","腹膜透析","腎移植","透析導入の判断"]},
+    {id:"g37",gc:null,name:"尿路疾患・電解質異常",diseases:["尿路感染症","尿路結石","低ナトリウム血症","高カリウム血症","代謝性アシドーシス","代謝性アルカローシス"]}],
+  pulm:[
+    {id:"g38",gc:null,name:"気道疾患",       diseases:["気管支喘息","COPD","気管支拡張症","慢性気管支炎","細気管支炎"]},
+    {id:"g39",gc:null,name:"肺感染症",       diseases:["市中肺炎","院内肺炎","非定型肺炎","肺結核","非結核性抗酸菌症","肺真菌症","ニューモシスチス肺炎"]},
+    {id:"g40",gc:null,name:"間質性肺疾患",   diseases:["特発性肺線維症（IPF）","過敏性肺炎","膠原病関連ILD","サルコイドーシス","薬剤性肺障害"]},
+    {id:"g41",gc:null,name:"胸膜・縦隔疾患", diseases:["胸水（漏出性・滲出性）","自然気胸","膿胸","中皮腫","縦隔腫瘍"]},
+    {id:"g42",gc:null,name:"肺循環・呼吸不全",diseases:["肺高血圧症","肺塞栓症","ARDS","急性呼吸不全","慢性呼吸不全","睡眠時無呼吸症候群"]},
+    {id:"g43",gc:null,name:"肺腫瘍",         diseases:["肺癌（腺癌）","肺癌（扁平上皮癌）","肺癌（小細胞癌）","肺転移","肺カルチノイド"]}],
+  hematology:[
+    {id:"g44",gc:null,name:"貧血",                    diseases:["鉄欠乏性貧血","巨赤芽球性貧血","溶血性貧血","再生不良性貧血","骨髄異形成症候群","慢性疾患性貧血"]},
+    {id:"g45",gc:null,name:"白血病・リンパ腫",        diseases:["急性骨髄性白血病（AML）","急性リンパ性白血病（ALL）","慢性骨髄性白血病（CML）","DLBCL","濾胞性リンパ腫","ホジキンリンパ腫"]},
+    {id:"g46",gc:null,name:"骨髄腫・形質細胞疾患",    diseases:["多発性骨髄腫","MGUS","ワルデンシュトレームマクログロブリン血症"]},
+    {id:"g47",gc:null,name:"出血・血栓性疾患",        diseases:["ITP","DIC","血友病","TTP/TMA","抗リン脂質抗体症候群"]},
+    {id:"g48",gc:null,name:"血液腫瘍合併症・支持療法",diseases:["発熱性好中球減少症（FN）","腫瘍崩壊症候群","骨髄抑制管理","輸血療法","造血幹細胞移植"]}],
+  neuro:[
+    {id:"g49",gc:null,name:"脳血管障害",           diseases:["脳梗塞（アテローム性）","脳梗塞（心原性）","脳梗塞（ラクナ）","脳出血","くも膜下出血","TIA"]},
+    {id:"g50",gc:null,name:"変性疾患",             diseases:["パーキンソン病","多系統萎縮症","進行性核上性麻痺","脊髄小脳変性症"]},
+    {id:"g51",gc:null,name:"脱髄疾患",             diseases:["多発性硬化症","NMOSD","急性散在性脳脊髄炎（ADEM）"]},
+    {id:"g52",gc:null,name:"末梢神経・神経筋疾患", diseases:["ギラン・バレー症候群","CIDP","重症筋無力症","ALS","多発性筋炎・皮膚筋炎"]},
+    {id:"g53",gc:null,name:"てんかん・意識障害",   diseases:["てんかん（各種）","てんかん重積状態","意識障害の鑑別","代謝性脳症"]},
+    {id:"g54",gc:null,name:"感染性・免疫性神経疾患",diseases:["細菌性髄膜炎","ウイルス性脳炎","結核性髄膜炎","クリプトコッカス髄膜炎","自己免疫性脳炎"]},
+    {id:"g55",gc:null,name:"頭痛・めまい・その他", diseases:["片頭痛","群発頭痛","緊張型頭痛","BPPV","メニエール病"]}],
+  allergy:[
+    {id:"g56",gc:null,name:"アレルギー疾患",          diseases:["アナフィラキシー","アレルギー性鼻炎","食物アレルギー","薬物アレルギー","蕁麻疹・血管性浮腫"]},
+    {id:"g57",gc:null,name:"職業性・環境性アレルギー",diseases:["職業性喘息","過敏性肺炎","化学物質過敏症"]}],
+  rheum:[
+    {id:"g58",gc:null,name:"関節リウマチ・脊椎関節炎",diseases:["関節リウマチ","強直性脊椎炎","乾癬性関節炎","反応性関節炎"]},
+    {id:"g59",gc:null,name:"全身性自己免疫疾患",     diseases:["SLE","シェーグレン症候群","全身性強皮症","多発性筋炎・皮膚筋炎","MCTD","成人Still病"]},
+    {id:"g60",gc:null,name:"血管炎症候群",           diseases:["ANCA関連血管炎（GPA/MPA/EGPA）","結節性多発動脈炎","巨細胞性動脈炎","高安動脈炎","IgA血管炎"]},
+    {id:"g61",gc:null,name:"結晶性関節炎・その他",   diseases:["リウマチ性多発筋痛症","痛風関節炎","偽痛風","骨関節炎","線維筋痛症"]}],
+  infection:[
+    {id:"g62",gc:null,name:"細菌感染症",        diseases:["市中肺炎","院内肺炎","尿路感染症・腎盂腎炎","感染性心内膜炎","骨髄炎","腹腔内感染症","皮膚軟部組織感染症","結核","梅毒"]},
+    {id:"g63",gc:null,name:"ウイルス感染症",    diseases:["インフルエンザ","COVID-19","EBV感染症","CMV感染症","HIV/AIDS","水痘・帯状疱疹","ウイルス性肝炎（A/B/C/E型）"]},
+    {id:"g64",gc:null,name:"真菌・寄生虫感染症",diseases:["カンジダ症","アスペルギルス症","クリプトコッカス症","ニューモシスチス肺炎","マラリア","C.difficile感染症"]},
+    {id:"g65",gc:null,name:"敗血症・感染症各論",diseases:["敗血症","敗血症性ショック","菌血症","CRBSI","薬剤耐性菌（MRSA/ESBL/CRE）","旅行者感染症"]}],
+  emergency:[
+    {id:"g66",gc:null,name:"ショック・循環不全", diseases:["循環血液量減少性ショック","心原性ショック","閉塞性ショック","敗血症性ショック","アナフィラキシーショック","熱中症"]},
+    {id:"g67",gc:null,name:"意識障害・神経救急", diseases:["意識障害の初期対応","急性期脳卒中管理","てんかん重積状態","高血糖・低血糖緊急症","肝性脳症"]},
+    {id:"g68",gc:null,name:"呼吸救急",           diseases:["急性呼吸不全","ARDS","喘息重積発作","COPD急性増悪","張力性気胸","大量胸水"]},
+    {id:"g69",gc:null,name:"代謝・中毒救急",     diseases:["急性薬物中毒","重篤な酸塩基平衡障害","重篤な電解質異常","横紋筋融解症","急性副腎不全","甲状腺クリーゼ"]},
+    {id:"g70",gc:null,name:"外傷・その他救急",   diseases:["多発外傷（内科的管理）","熱傷（内科的管理）","溺水","異物誤嚥","心肺蘇生（BLS/ACLS）"]}],
+  surgical:[{id:"gs1",gc:null,name:"外科紹介症例",diseases:["消化管手術","心臓外科手術","血管外科手術","腫瘍外科手術","腹腔鏡手術","その他外科紹介"]}],
+  autopsy:[ {id:"ga1",gc:null,name:"剖検症例",   diseases:["死後診断確定症例","臨床診断乖離症例","稀少疾患確定診断症例","CPC症例"]}],
+};
+
+const SP = [
+  {id:"generalI",  label:"総合内科Ⅰ（一般）",  short:"総合Ⅰ",    minC:null,minG:1,minS:1,color:"#4ECDC4"},
+  {id:"generalII", label:"総合内科Ⅱ（高齢者）",short:"総合Ⅱ",    minC:null,minG:1,minS:1,color:"#4ECDC4"},
+  {id:"generalIII",label:"総合内科Ⅲ（腫瘍）",  short:"総合Ⅲ",    minC:null,minG:1,minS:1,color:"#4ECDC4"},
+  {id:"gastro",    label:"消化器",              short:"消化器",    minC:10,  minG:5,minS:3,color:"#FF6B6B"},
+  {id:"cardio",    label:"循環器",              short:"循環器",    minC:10,  minG:5,minS:3,color:"#E84393"},
+  {id:"endo",      label:"内分泌",              short:"内分泌",    minC:3,   minG:2,minS:1,color:"#A8E6CF"},
+  {id:"metabolic", label:"代謝",                short:"代謝",      minC:10,  minG:3,minS:2,color:"#A8E6CF"},
+  {id:"renal",     label:"腎臓",                short:"腎臓",      minC:10,  minG:4,minS:2,color:"#6C63FF"},
+  {id:"pulm",      label:"呼吸器",              short:"呼吸器",    minC:10,  minG:4,minS:3,color:"#45B7D1"},
+  {id:"hematology",label:"血液",                short:"血液",      minC:3,   minG:2,minS:2,color:"#FF8B94"},
+  {id:"neuro",     label:"神経",                short:"神経",      minC:10,  minG:5,minS:2,color:"#FFD93D"},
+  {id:"allergy",   label:"アレルギー",          short:"アレルギー",minC:3,   minG:1,minS:1,color:"#C4B5FD"},
+  {id:"rheum",     label:"膠原病及び類縁疾患",  short:"膠原病",    minC:3,   minG:1,minS:1,color:"#FDA4AF"},
+  {id:"infection", label:"感染症",              short:"感染症",    minC:8,   minG:2,minS:2,color:"#6EE7B7"},
+  {id:"emergency", label:"救急",                short:"救急",      minC:10,  minG:4,minS:2,color:"#FCA5A5"},
+  {id:"surgical",  label:"外科紹介症例",        short:"外科紹介",  minC:2,   minG:0,minS:2,color:"#94A3B8"},
+  {id:"autopsy",   label:"剖検症例",            short:"剖検",      minC:1,   minG:0,minS:1,color:"#64748B"},
+];
+
+const ST = [
+  {v:"none",     l:"未着手",    c:"#7A7872"},
+  {v:"writing",  l:"作成中",    c:"#92400E"},
+  {v:"submitted",l:"一次評価中",c:"#1D4ED8"},
+  {v:"revision", l:"修正中",    c:"#5B21B6"},
+  {v:"accepted", l:"受理済✓",  c:"#166534"},
+];
+
+/* ══════════════════════════════════════════
+   STATE
+══════════════════════════════════════════ */
+function buildEG() {
+  const eg = {};
+  SP.forEach(sp => {
+    eg[sp.id] = {};
+    (DG[sp.id]||[]).forEach(dg => {
+      eg[sp.id][dg.id] = {on:false, d:{}};
+      dg.diseases.forEach(d => { eg[sp.id][dg.id].d[d] = false; });
+    });
+  });
+  return eg;
+}
+function makeSums() {
+  return Array.from({length:29},(_,i) => ({id:i+1,specialty:"",dgId:"",diseases:[],title:"",status:"none",notes:""}));
+}
+function initCases() { const o={}; SP.forEach(s=>o[s.id]=0); return o; }
+
+const S = {
+  eg: buildEG(),
+  cases: initCases(),
+  groups: initCases(),
+  summaries: makeSums(),
+  other: {jmecc:false,publications:0,ethics:{y1:0,y2:0,y3:0},academicMeetings:{y1:0,y2:0,y3:0}},
+  // UI state
+  openSp: null,
+  openDgBySp: {},   // {spId: dgId|null}
+  openSumId: null,
+  openSumDg: {},    // {sumId: dgId|null}
+  openGuide: null,
+  showRuleCheck: false,
+  showShortageCheck: false,
+  currentTab: 'overview',
+};
+
+/* ══════════════════════════════════════════
+   永続化 / 自動保存
+══════════════════════════════════════════ */
+const NAIKA_API_URL = ''; // Worker と同一オリジン → 相対パス
+let authToken  = null;
+let authUser   = null;
+let userProfile = null;  // プロフィールデータ
+let creditBalance = null; // クレジット残高（null=未取得）
+let templateFreeRemaining = null; // テンプレート無料残り
+let tmplState = { selectedSp: '', selectedDg: '', selectedDisease: '', output: null, loading: false, error: '', redeemErr: '', redeemOk: '', showRedeem: false };
+let tmplHistory = []; // テンプレート生成履歴
+let tmplHistoryOpen = null; // 開いている履歴のID
+
+// ── 問題演習ステート ──
+let quizState = {
+  phase: 'menu',       // 'menu' | 'playing' | 'result'
+  mode: 'random',      // 'random' | 'group' | 'weak'
+  groupId: '',         // group モード用
+  questions: [],       // サーバーから返された問題配列
+  currentIdx: 0,       // 現在の問題インデックス
+  answers: [],         // ユーザーの回答 [{choiceIdx, correct}]
+  selectedChoice: null, // 現在選択中の選択肢インデックス
+  answered: false,      // 現在の問題に回答済みか
+  loading: false,
+  error: '',
+  meta: null,          // サーバーのmeta情報
+  showRedeem: false,
+  redeemErr: '',
+  redeemOk: '',
+};
+let quizStats = null;  // キャッシュされたスタッツ
+let _saveTimer = null;
+let _saveStatus = 'saved'; // 'saved' | 'saving' | 'dirty' | 'error'
+let _lastSaved  = null;    // 最後に保存したペイロードのJSON文字列
+
+/** 保存対象のデータだけ抽出 */
+function _payload() {
+  return { eg: S.eg, cases: S.cases, groups: S.groups, summaries: S.summaries, other: S.other };
+}
+
+/** 外部データをステートに反映 */
+function _applyPayload(data) {
+  if (!data) return;
+  if (data.eg)        S.eg        = data.eg;
+  if (data.cases)     S.cases     = data.cases;
+  if (data.groups)    S.groups    = data.groups;
+  if (data.summaries) S.summaries = data.summaries;
+  if (data.other)     S.other     = data.other;
+}
+
+/** 保存ステータスをバッジに反映 */
+function _setSaveStatus(st) {
+  _saveStatus = st;
+  const el = document.getElementById('save-indicator');
+  if (!el) return;
+  if (st === 'saving' || st === 'dirty') {
+    el.innerHTML = '<span class="save-spinner"></span>保存中…';
+    el.style.background = '#FEF3C7';
+    el.style.color = '#92400E';
+  } else if (st === 'error') {
+    el.innerHTML = '✕ 保存失敗';
+    el.style.background = '#FEE2E2';
+    el.style.color = '#991B1B';
+  } else {
+    el.innerHTML = '✓ 保存済み';
+    el.style.background = '#DCFCE7';
+    el.style.color = '#166534';
+  }
+}
+
+/** データを保存（LocalStorage + API） */
+async function saveData(force = false) {
+  const payloadStr = JSON.stringify(_payload());
+  if (!force && payloadStr === _lastSaved) return; // 変化なし → スキップ
+  _lastSaved = payloadStr;
+  _setSaveStatus('saving');
+
+  // ── LocalStorage（同期・確実） ──
+  try {
+    localStorage.setItem(`naika_data_${authUser || 'demo'}`, payloadStr);
+  } catch(e) { console.warn('[NAIKA] localStorage write error', e); }
+
+  // ── Cloudflare API（デプロイ済みの場合のみ） ──
+  if (authToken) {
+    try {
+      const res = await fetch(`${NAIKA_API_URL}/data`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ data: _payload() }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    } catch(e) {
+      console.warn('[NAIKA] API save error', e);
+      _setSaveStatus('error');
+      return;
+    }
+  }
+
+  _setSaveStatus('saved');
+}
+
+/** ログイン後にデータを復元（API優先 → LocalStorage フォールバック） */
+async function loadData() {
+  const lsKey = `naika_data_${authUser || 'demo'}`;
+
+  if (authToken) {
+    try {
+      const res = await fetch(`${NAIKA_API_URL}/data`, {
+        headers: { 'Authorization': `Bearer ${authToken}` },
+      });
+      if (res.ok) {
+        const j = await res.json();
+        if (j.data) {
+          _applyPayload(j.data);
+          _lastSaved = JSON.stringify(_payload());
+          try { localStorage.setItem(lsKey, _lastSaved); } catch(e) {}
+          return;
+        }
+      }
+    } catch(e) { console.warn('[NAIKA] API load error', e); }
+  }
+
+  // LocalStorage フォールバック
+  try {
+    const raw = localStorage.getItem(lsKey);
+    if (raw) {
+      _applyPayload(JSON.parse(raw));
+      _lastSaved = JSON.stringify(_payload());
+    }
+  } catch(e) { console.warn('[NAIKA] localStorage read error', e); }
+}
+
+/** ページ離脱時ハンドラ（beforeunload） */
+function _onBeforeUnload() {
+  // LocalStorage は同期なので beforeunload でも確実に書き込める
+  try {
+    const payloadStr = JSON.stringify(_payload());
+    if (payloadStr !== _lastSaved) {
+      localStorage.setItem(`naika_data_${authUser || 'demo'}`, payloadStr);
+      _lastSaved = payloadStr;
+    }
+  } catch(e) {}
+}
+
+/** 自動保存リスナー開始（ログイン後） */
+function startAutoSave() {
+  stopAutoSave();
+  window.addEventListener('beforeunload', _onBeforeUnload);
+  _saveTimer = setInterval(() => {
+    const payloadStr = JSON.stringify(_payload());
+    if (payloadStr !== _lastSaved) saveData(true);
+  }, 30000);
+}
+
+/** 自動保存リスナー停止（ログアウト時） */
+function stopAutoSave() {
+  if (_saveTimer) { clearInterval(_saveTimer); _saveTimer = null; }
+  window.removeEventListener('beforeunload', _onBeforeUnload);
+}
+
+let _pendingDirty = false;
+
+/** 状態変化 → 即時保存（render() から自動呼び出し） */
+function markDirty() {
+  if (_saveStatus === 'saving') {
+    _pendingDirty = true;
+    return;
+  }
+  const payloadStr = JSON.stringify(_payload());
+  if (payloadStr === _lastSaved) return;
+  _setSaveStatus('saving');
+  saveData(true).then(() => {
+    if (_pendingDirty) {
+      _pendingDirty = false;
+      markDirty();
+    }
+  });
+}
+
+/* ══════════════════════════════════════════
+   COMPUTED
+══════════════════════════════════════════ */
+function recalcCases(spId) {
+  const eg = S.eg[spId]||{};
+  S.groups[spId] = Object.values(eg).filter(v=>v.on).length;
+  S.cases[spId]  = Object.values(eg).reduce((a,v)=>a+Object.values(v.d).filter(Boolean).length,0);
+}
+function totalCases() { return Object.values(S.cases).reduce((a,b)=>a+b,0); }
+function totalGroups(){ return Object.values(S.groups).reduce((a,b)=>a+b,0); }
+function totalAccepted(){ return S.summaries.filter(s=>s.status==='accepted').length; }
+function totalWip(){ return S.summaries.filter(s=>s.status!=='none'&&s.status!=='accepted').length; }
+function ovPct() {
+  const cp=totalCases()/120*100, gp=totalGroups()/56*100, sp2=totalAccepted()/29*100;
+  return Math.round((cp+gp+sp2)/3);
+}
+
+/* ══════════════════════════════════════════
+   SCREEN / TAB NAVIGATION
+══════════════════════════════════════════ */
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const el = document.getElementById('screen-'+name);
+  if(el) el.classList.add('active');
+  window.scrollTo(0,0);
+  if(name==='app') render();
+}
+function switchTab(tab) {
+  S.currentTab = tab;
+  document.querySelectorAll('#app-tabs .app-tab').forEach((b,i)=>{
+    const tabs=['overview','cases','summaries','guide','quiz','other','profile'];
+    b.classList.toggle('active', tabs[i]===tab);
+  });
+  render();
+  window.scrollTo(0,0);
+}
+
+/* ══════════════════════════════════════════
+   RENDER DISPATCH
+══════════════════════════════════════════ */
+function render() {
+  const el = document.getElementById('app-content');
+  if (!el) return;
+  // ユーザーチップ更新
+  const av = document.getElementById('user-avatar');
+  const un = document.getElementById('user-name-chip');
+  const dn = (userProfile && userProfile.displayName) || authUser || '';
+  if (av) av.textContent = dn.slice(0,2);
+  if (un) un.textContent = (userProfile && userProfile.displayName) || (authUser ? authUser.split('@')[0] : '—');
+  // ヘッダー クレジットチップ更新
+  const hdrCr = document.getElementById('hdr-credit-chip');
+  const hdrCrNum = document.getElementById('hdr-credit-num');
+  if (hdrCr && hdrCrNum && creditBalance !== null) {
+    hdrCr.style.display = 'inline-flex';
+    hdrCrNum.textContent = creditBalance;
+    if (creditBalance > 0) { hdrCr.classList.add('has'); hdrCr.classList.remove('no'); }
+    else { hdrCr.classList.remove('has'); }
+  }
+  // データタブが表示中 = 状態変化の可能性あり → 未保存マーク
+  if (authUser && ['overview','cases','summaries','other'].includes(S.currentTab)) markDirty();
+  const tab = S.currentTab;
+  if(tab==='overview')       el.innerHTML = renderOverview();
+  else if(tab==='cases')     el.innerHTML = renderCases();
+  else if(tab==='summaries') el.innerHTML = renderSummaries();
+  else if(tab==='guide')     el.innerHTML = renderGuide();
+  else if(tab==='quiz')      el.innerHTML = renderQuiz();
+  else if(tab==='other')     el.innerHTML = renderOther();
+  else if(tab==='profile')   el.innerHTML = renderProfile();
+}
+
+/* ══════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════ */
+// ライトテーマ カラー定数
+const AC ='#1B4F3A'; // グリーンアクセント
+const ACL='#E8F0EC'; // アクセント薄
+const OK ='#166534'; // 成功
+const WN ='#92400E'; // 警告
+const DN ='#991B1B'; // エラー
+const TX ='#1A1917'; // メインテキスト
+const M  ='#6B6760'; // ミュートテキスト
+const BG ='#F5F4F0'; // ページ地
+const S0 ='#FEFEFC'; // カード最表面
+const S1 ='#F0EDE7'; // カード内ネスト
+const S2 ='#E8E5DF'; // さらに深いネスト
+const BR ='#DDD9D2'; // ボーダー
+const BR2='#C8C4BC'; // 強めボーダー
+// 後方互換エイリアス（レンダラー内の旧変数名）
+const G=OK, O=WN, BG0=BG, BG1=S0, BG2=BR, BG3=S1;
+
+function ring(pct,size=88,stroke=10){
+  const r=(size-stroke)/2,circ=2*Math.PI*r,off=circ-(Math.min(pct,100)/100)*circ;
+  const col=pct>=100?AC:'#5B7FA6';
+  return `<svg width="${size}" height="${size}" style="transform:rotate(-90deg)">
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${BR}" stroke-width="${stroke}"/>
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${col}" stroke-width="${stroke}"
+      stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" stroke-linecap="round"/>
+  </svg>`;
+}
+function pbar(pct,color){
+  const w=Math.min(pct,100);
+  return `<div class="pbar"><div class="pfill" style="width:${w}%;background:${color}"></div></div>`;
+}
+function stackBar(sums){
+  const n=29,cnt={accepted:0,revision:0,submitted:0,writing:0};
+  sums.forEach(s=>{if(s.status in cnt)cnt[s.status]++;});
+  const segs=[['accepted','#166534'],['revision','#5B21B6'],['submitted','#1D4ED8'],['writing','#92400E']];
+  return `<div class="sbar">${segs.map(([k,c])=>cnt[k]>0?`<div style="width:${cnt[k]/n*100}%;background:${c}"></div>`:'').join('')}</div>
+  <div class="sleg">${[['accepted','#166534','受理済'],['revision','#5B21B6','修正中'],['submitted','#1D4ED8','評価中'],['writing','#92400E','作成中']].map(([k,c,l])=>
+    `<div class="flex aic gap6"><div class="sdot" style="background:${c}"></div><span style="color:${M}">${l}</span><b style="color:${TX}">${cnt[k]}</b></div>`).join('')}
+  <div style="margin-left:auto;color:${M}"><span style="color:${AC};font-weight:700">${cnt.accepted}</span>/29</div></div>`;
+}
+function numbox(v){
+  return `<div style="background:${BG};border:1px solid ${BR};border-radius:6px;color:${TX};padding:5px 8px;font-size:14px;width:54px;text-align:center;font-weight:700">${v}</div>`;
+}
+
+/* ══════════════════════════════════════════
+   OVERVIEW
+══════════════════════════════════════════ */
+function renderOverview(){
+  const tc=totalCases(),tg=totalGroups(),acc=totalAccepted(),wip=totalWip();
+  const cp=tc/120*100,gp=tg/56*100,sp2=acc/29*100;
+  // その他の修了要件の進捗（4項目: JMECC, 論文2件, 倫理講習3年, 学術集会3年）
+  const o=S.other;
+  let otherDone=0;
+  if(o.jmecc)otherDone++;
+  if((o.publications||0)>=2)otherDone++;
+  const ethOk=['y1','y2','y3'].every(y=>((o.ethics||{})[y]||0)>=2);
+  if(ethOk)otherDone++;
+  const mtgOk=['y1','y2','y3'].every(y=>((o.academicMeetings||{})[y]||0)>=2);
+  if(mtgOk)otherDone++;
+  const op=otherDone/4*100;
+  const ov=Math.round((cp+gp+sp2+op)/4);
+  const sumBySpAcc=id=>S.summaries.filter(s=>s.specialty===id&&s.status==='accepted').length;
+  const sumBySpWip=id=>S.summaries.filter(s=>s.specialty===id&&s.status!=='none'&&s.status!=='accepted').length;
+
+  return `
+  <div class="card ov-hero">
+    <div class="ring-wrap">${ring(ov,88,10)}<div class="ring-inner"><div class="ring-pct">${ov}%</div><div class="ring-txt">総合進捗</div></div></div>
+    <div style="flex:1;min-width:140px">
+      <div style="font-size:clamp(14px,3.5vw,17px);font-weight:700;margin-bottom:4px;color:${TX}">内科専門医 取得ナビ</div>
+      <div style="color:${M};font-size:clamp(10px,2.5vw,12px)">120症例 / 56疾患群 / 29病歴要約 / その他要件</div>
+    </div>
+  </div>
+  <div class="stat-grid">
+    <div class="card">
+      <div class="card-t">症例数</div>
+      <div class="flex aic gap6"><span class="stat-n" style="color:${AC}">${tc}</span><span style="color:${M};font-size:12px">/ 120</span></div>
+      ${pbar(cp,AC)}
+    </div>
+    <div class="card">
+      <div class="card-t">疾患群</div>
+      <div class="flex aic gap6"><span class="stat-n" style="color:#5B7FA6">${tg}</span><span style="color:${M};font-size:12px">/ 56</span></div>
+      ${pbar(gp,'#5B7FA6')}
+    </div>
+    <div class="card">
+      <div class="card-t">病歴要約</div>
+      <div class="flex aic gap6 fw"><span class="stat-n" style="color:#9A3B3B">${acc}</span><span style="color:${M};font-size:12px">/ 29受理</span>${wip>0?`<span style="font-size:11px;color:${WN}">+${wip}作業中</span>`:''}</div>
+      ${stackBar(S.summaries)}
+    </div>
+    <div class="card">
+      <div class="card-t">その他要件</div>
+      <div class="flex aic gap6"><span class="stat-n" style="color:#7C6F4A">${otherDone}</span><span style="color:${M};font-size:12px">/ 4</span></div>
+      ${pbar(op,'#7C6F4A')}
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-t">領域別 達成状況</div>
+    <div class="tbl-wrap"><table class="dtbl">
+      <thead><tr>${['領域','症例','疾患群','要約','作業中'].map((h,i)=>`<th${i>0?' style="text-align:center"':''}>${h}</th>`).join('')}</tr></thead>
+      <tbody>${SP.map(sp=>{
+        const c=S.cases[sp.id]||0,g=S.groups[sp.id]||0,a=sumBySpAcc(sp.id),w=sumBySpWip(sp.id);
+        const cOk=!sp.minC||c>=sp.minC,gOk=!sp.minG||g>=sp.minG,sOk=!sp.minS||a>=sp.minS;
+        return `<tr style="border-bottom:1px solid ${S1}">
+          <td style="padding:6px;white-space:nowrap"><span class="dot" style="background:${sp.color}"></span>${sp.short}</td>
+          <td style="text-align:center;padding:6px"><span style="color:${cOk?OK:WN}">${c}</span><span style="color:${M}">/${sp.minC||'-'}</span></td>
+          <td style="text-align:center;padding:6px"><span style="color:${gOk?OK:WN}">${g}</span><span style="color:${M}">/${sp.minG||'-'}</span></td>
+          <td style="text-align:center;padding:6px"><span style="color:${sOk?OK:WN}">${a}</span><span style="color:${M}">/${sp.minS||'-'}</span></td>
+          <td style="text-align:center;padding:6px">${w?`<span style="color:${WN}">${w}</span>`:`<span style="color:${BR2}">-</span>`}</td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table></div>
+  </div>
+
+  <!-- 問題演習CTA -->
+  <div class="card" style="background:linear-gradient(135deg,#EAF4EE,var(--s0));border-color:#A7C4B5;cursor:pointer" onclick="switchTab('quiz')">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font-size:28px">🧠</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:700;color:${AC};margin-bottom:2px">問題演習で筆記試験対策</div>
+        <div style="font-size:12px;color:${M};line-height:1.5">筆記試験対策の多肢選択問題${quizStats && quizStats.totalAttempts > 0
+          ? ` ｜ <span style="font-weight:600;color:${AC}">正答率 ${quizStats.totalRate}%</span>（${quizStats.totalAttempts}問演習済み）`
+          : ` ｜ <span style="font-weight:600;color:${WN}">初回5問無料</span>`}</div>
+      </div>
+      <span style="color:${AC};font-size:18px">→</span>
+    </div>
+  </div>`;
+}
+
+/* ══════════════════════════════════════════
+   CASES TAB
+══════════════════════════════════════════ */
+function renderCases(){
+  const tc=totalCases(),tg=totalGroups();
+  const genTot=(S.cases.generalI||0)+(S.cases.generalII||0)+(S.cases.generalIII||0);
+  return `
+  <div class="card">
+    <div class="flex aic gap12 fw">
+      <div><span style="font-size:clamp(18px,4vw,22px);font-weight:700;color:${tc>=120?OK:WN}">${tc}</span><span style="color:${M};font-size:13px"> / 120</span><div style="font-size:11px;color:${M}">総症例数</div></div>
+      <div><span style="font-size:clamp(18px,4vw,22px);font-weight:700;color:${tg>=56?OK:WN}">${tg}</span><span style="color:${M};font-size:13px"> / 56</span><div style="font-size:11px;color:${M}">総疾患群</div></div>
+      <div style="font-size:12px;color:${M};background:${S1};padding:7px 12px;border-radius:7px;border:1px solid ${BR}">
+        総合内科 合計: <span style="color:${genTot>=10?OK:WN};font-weight:700">${genTot}</span><span style="color:${M}"> / 10 症例（Ⅰ・Ⅱ・Ⅲ合計）</span>
+      </div>
+    </div>
+  </div>
+  ${SP.map(sp => {
+    const dgs=DG[sp.id]||[];
+    const eg=S.eg[sp.id]||{};
+    const c=S.cases[sp.id]||0,g=S.groups[sp.id]||0;
+    const cOk=!sp.minC||c>=sp.minC,gOk=!sp.minG||g>=sp.minG;
+    const isOpen=S.openSp===sp.id;
+    const expG=Object.values(eg).filter(v=>v.on).length;
+    const expD=Object.values(eg).reduce((a,v)=>a+Object.values(v.d).filter(Boolean).length,0);
+    return `
+    <div class="sp-acc" style="border-color:${isOpen?sp.color+'99':BR};background:${isOpen?sp.color+'12':S0}">
+      <div class="sp-head" onclick="toggleSp('${sp.id}')">
+        <div style="width:4px;height:34px;border-radius:2px;background:${sp.color};flex-shrink:0"></div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:${isOpen?sp.color:TX}">${sp.label}</div>
+          ${dgs.length>0?`<div style="font-size:11px;color:${M};margin-top:1px">
+            <span style="color:${expG>=(sp.minG||0)?OK:M}">疾患群 ${expG}/${dgs.length}</span>
+            ${expD>0?`<span style="margin-left:8px;color:${M}">計${expD}症例</span>`:''}
+          </div>`:''}
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:10px;color:${M};margin-bottom:2px">症例数</div>
+          ${numbox(c)}
+          ${sp.minC?`<div style="font-size:10px;color:${cOk?OK:WN};margin-top:1px">/${sp.minC}</div>`:''}
+        </div>
+        <div style="text-align:center;min-width:50px">
+          <div style="font-size:10px;color:${M};margin-bottom:2px">疾患群</div>
+          ${numbox(g)}
+          ${sp.minG?`<div style="font-size:10px;color:${gOk?OK:WN};margin-top:1px">/${sp.minG}</div>`:`<div style="font-size:10px;color:${BR2};margin-top:1px">-</div>`}
+        </div>
+        <span style="color:${M};font-size:16px">${isOpen?'▲':'▼'}</span>
+      </div>
+      ${isOpen&&dgs.length>0?`<div class="sp-body" style="border-top-color:${sp.color}44">${renderDGPanel(sp.id,sp.color,false)}</div>`:''}
+    </div>`;
+  }).join('')}`;
+}
+
+function renderDGPanel(spId,spColor,isSumPanel,sumId,sumDgId,sumDiseases){
+  const dgs=DG[spId]||[];
+  const eg=S.eg[spId]||{};
+  const openDgId = isSumPanel ? (S.openSumDg[sumId]||null) : (S.openDgBySp[spId]||null);
+
+  const hint = isSumPanel
+    ? `① 疾患群の ☐ を押して選択 → ② ▶ で病名を展開 → タップで複数選択`
+    : `病名タップ → 症例1件追加 ＋ 疾患群ON`;
+
+  return `<div style="padding:10px 12px 14px">
+    <div style="font-size:11px;color:${M};margin-bottom:8px;display:flex;justify-content:space-between">
+      <span>${hint}</span>
+      ${!isSumPanel?`<span style="font-weight:600;color:${Object.values(eg).filter(v=>v.on).length>=(SP.find(s=>s.id===spId)?.minG||0)?OK:WN}">${Object.values(eg).filter(v=>v.on).length}/${dgs.length}群</span>`:''}
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+    ${dgs.map(dg=>{
+      let on,dc,exp;
+      if(isSumPanel){
+        on=sumDgId===dg.id; dc=on?(sumDiseases||[]).length:0; exp=openDgId===dg.id;
+      } else {
+        const dgEg=eg[dg.id]||{on:false,d:{}};
+        on=dgEg.on; dc=Object.values(dgEg.d).filter(Boolean).length; exp=openDgId===dg.id;
+      }
+      return `<div style="border-radius:7px;border:1px solid ${on?spColor+'88':BR};background:${on?spColor+'14':BG};overflow:hidden">
+        <div class="dg-head">
+          <div class="dg-chk" style="${on?`background:${spColor};border-color:${spColor}`:''}" onclick="${isSumPanel?`toggleSumDg(${sumId},'${dg.id}',${on})`:`toggleGroup('${spId}','${dg.id}')`}">
+            ${on?`<span style="color:#fff;font-size:11px;font-weight:900">✓</span>`:''}
+          </div>
+          <span onclick="${isSumPanel?`toggleSumDgOpen(${sumId},'${dg.id}')`:` toggleDgOpen('${spId}','${dg.id}')`}" style="flex:1;font-size:12px;font-weight:600;color:${on?spColor:TX};cursor:pointer;user-select:none">
+            ${dg.name}${dg.gc?`<span style="font-size:10px;color:${M};margin-left:5px;font-weight:400">[${dg.gc}]</span>`:''}
+          </span>
+          ${dc>0?`<span style="font-size:11px;color:${spColor};font-weight:600">${isSumPanel?dc+'疾患選択中':dc+'症例'}</span>`:''}
+          <span onclick="${isSumPanel?`toggleSumDgOpen(${sumId},'${dg.id}')`:` toggleDgOpen('${spId}','${dg.id}')`}" style="font-size:12px;color:${M};transform:${exp?'rotate(90deg)':'none'};transition:transform 0.2s;cursor:pointer;padding:2px 6px;user-select:none">▶</span>
+        </div>
+        ${exp?`<div class="disease-tags" style="border-top-color:${on?spColor+'44':BR}">
+          ${!on&&isSumPanel?`<div style="font-size:11px;color:${WN};margin-bottom:6px;width:100%">← まず左の ☐ でこの疾患群を選択</div>`:''}
+          <div style="font-size:11px;color:${M};margin-bottom:6px;width:100%">${isSumPanel?'病名をタップ（複数選択可）:':'タップで経験済み（1タップ=1症例）:'}</div>
+          ${dg.diseases.map(d=>{
+            let chk;
+            if(isSumPanel){ chk=on&&(sumDiseases||[]).includes(d); }
+            else{ chk=!!(eg[dg.id]&&eg[dg.id].d[d]); }
+            return `<button class="dtag ${chk?'on':''}" style="${chk?`border-color:${spColor};color:${spColor};background:${spColor}18`:''}"
+              onclick="${isSumPanel?`toggleSumDis(${sumId},'${dg.id}','${d.replace(/'/g,"\\'")}',${on})`:`toggleDisease('${spId}','${dg.id}','${d.replace(/'/g,"\\'")}')` }">${chk?'✓ ':''}${d}</button>`;
+          }).join('')}
+          ${isSumPanel&&on&&(sumDiseases||[]).length>0?`<div style="font-size:11px;color:${spColor};margin-top:6px;font-weight:600;width:100%">選択中: ${(sumDiseases||[]).join('、')}</div>`:''}
+        </div>`:''}
+      </div>`;
+    }).join('')}
+    </div>
+  </div>`;
+}
+
+/* cases interactions */
+window.toggleSp = id => { S.openSp = S.openSp===id?null:id; render(); };
+window.toggleGroup = (spId,dgId) => {
+  const e=S.eg[spId]; if(!e[dgId])return;
+  e[dgId].on=!e[dgId].on;
+  recalcCases(spId); render();
+};
+window.toggleDisease = (spId,dgId,dis) => {
+  const e=S.eg[spId]; if(!e[dgId])return;
+  e[dgId].d[dis]=!e[dgId].d[dis];
+  if(Object.values(e[dgId].d).some(Boolean)) e[dgId].on=true;
+  recalcCases(spId); render();
+};
+window.toggleDgOpen = (spId,dgId) => {
+  S.openDgBySp[spId] = S.openDgBySp[spId]===dgId?null:dgId; render();
+};
+
+/* ══════════════════════════════════════════
+   SUMMARIES TAB
+══════════════════════════════════════════ */
+function renderSummaries(){
+  // special rules
+  const genCov=new Set(S.summaries.filter(s=>['generalI','generalII','generalIII'].includes(s.specialty)&&s.status!=='none').map(s=>s.specialty));
+  const genOk=genCov.size>=2;
+  const gastroDGs=DG.gastro||[];
+  const gSumCats=new Set(S.summaries.filter(s=>s.specialty==='gastro'&&s.status!=='none'&&s.dgId).map(s=>(gastroDGs.find(x=>x.id===s.dgId)||{}).gc).filter(Boolean));
+  const gCasCats=new Set(Object.entries(S.eg.gastro||{}).filter(([,v])=>v.on).map(([id])=>(gastroDGs.find(x=>x.id===id)||{}).gc).filter(Boolean));
+  const endoN=S.summaries.filter(s=>s.specialty==='endo'&&s.status!=='none').length;
+  const metaN=S.summaries.filter(s=>s.specialty==='metabolic'&&s.status!=='none').length;
+  const emOk=endoN>=1&&metaN>=1;
+  // missing
+  const missing={};
+  SP.forEach(sp=>{
+    if(!sp.minS)return;
+    const dgs=DG[sp.id]||[];
+    const cov=new Set(S.summaries.filter(s=>s.specialty===sp.id&&s.status!=='none').map(s=>s.dgId).filter(Boolean));
+    missing[sp.id]=dgs.filter(dg=>!cov.has(dg.id));
+  });
+  const ruleAllOk=genOk&&emOk;
+  const shortageN=SP.filter(sp=>sp.minS>0&&!['generalI','generalII','generalIII'].includes(sp.id)).filter(sp=>Math.max(0,sp.minS-S.summaries.filter(s=>s.specialty===sp.id&&s.status==='accepted').length)>0).length;
+
+  return `
+  <div class="card"><div class="card-t">病歴要約 進捗</div>${stackBar(S.summaries)}</div>
+
+  <div class="card" style="background:${S1}">
+    <div class="card-t" onclick="toggleRuleCheck()" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none">
+      <span>📋 特殊ルール チェック</span>
+      <span style="display:flex;align-items:center;gap:8px">
+        ${!S.showRuleCheck?`<span style="font-size:11px;font-weight:600;color:${ruleAllOk?OK:WN};background:${ruleAllOk?'#D1EAD9':'#FDF0F0'};padding:2px 10px;border-radius:20px">${ruleAllOk?'✓ すべてOK':'⚠ 要確認'}</span>`:''}
+        <span style="font-size:12px;color:${M};transform:${S.showRuleCheck?'rotate(90deg)':'none'};transition:transform 0.2s">▶</span>
+      </span>
+    </div>
+    ${S.showRuleCheck?`
+    <!-- 総合内科 -->
+    <div style="margin-bottom:12px;padding:10px 12px;border-radius:8px;border:1px solid ${genOk?'#A7C4B5':'#E0B8B8'};background:${genOk?'#EAF4EE':'#FDF0F0'}">
+      <div style="font-size:12px;font-weight:600;color:${AC};margin-bottom:6px">総合内科 — 3区分のうち2区分以上から各1編以上</div>
+      <div class="flex gap8 fw" style="margin-bottom:6px">
+        ${['generalI','generalII','generalIII'].map(id=>{
+          const sp2=SP.find(x=>x.id===id),n=S.summaries.filter(s=>s.specialty===id&&s.status!=='none').length;
+          return `<div style="flex:1;min-width:80px;background:${n>0?'#D1EAD9':S0};border:1px solid ${n>0?'#A7C4B5':BR};border-radius:6px;padding:8px;text-align:center">
+            <div style="font-size:11px;color:${n>0?OK:M};font-weight:600">${sp2.short}</div>
+            <div style="font-size:20px;font-weight:700;color:${n>0?OK:M}">${n}</div>
+            <div style="font-size:10px;color:${n>0?OK:M}">${n>0?'✓':'未着手'}</div>
+          </div>`;
+        }).join('')}
+      </div>
+      <div style="font-size:12px;font-weight:600;color:${genOk?OK:WN}">${genOk?`✓ ${genCov.size}区分カバー済`:`⚠ 少なくとも2区分からの病歴要約が必要（現在${genCov.size}区分）`}</div>
+    </div>
+    <!-- 消化器 -->
+    <div style="margin-bottom:12px;padding:10px 12px;border-radius:8px;border:1px solid ${BR}">
+      <div style="font-size:12px;font-weight:600;color:#9A3B3B;margin-bottom:8px">消化器 — 消化管・肝臓・胆膵それぞれ1例以上（症例＆病歴要約の両方）</div>
+      ${['消化管','肝臓','胆・膵'].map(cat=>{
+        const cOk=gCasCats.has(cat),sOk=gSumCats.has(cat);
+        return `<div class="flex aic gap10" style="margin-bottom:6px">
+          <span style="font-size:12px;font-weight:600;min-width:48px;color:${TX}">${cat}</span>
+          ${[['症例',cOk],['病歴要約',sOk]].map(([l,ok])=>`<span style="font-size:11px;padding:2px 8px;border-radius:20px;background:${ok?'#D1EAD9':S0};color:${ok?OK:M};border:1px solid ${ok?'#A7C4B5':BR}">${ok?'✓ '+l+'あり':l+'なし'}</span>`).join('')}
+        </div>`;
+      }).join('')}
+    </div>
+    <!-- 内分泌・代謝 -->
+    <div style="padding:10px 12px;border-radius:8px;border:1px solid ${emOk?'#A7C4B5':BR};background:${emOk?'#EAF4EE':S0}">
+      <div style="font-size:12px;font-weight:600;color:${AC};margin-bottom:8px">内分泌・代謝 — それぞれ1編以上（合計3編以上）</div>
+      <div class="flex gap8 fw" style="margin-bottom:8px">
+        ${[{l:'内分泌',n:endoN,r:1},{l:'代謝',n:metaN,r:2},{l:'合計',n:endoN+metaN,r:3}].map(x=>`
+        <div style="flex:1;min-width:80px;background:${x.n>=x.r?'#D1EAD9':S0};border:1px solid ${x.n>=x.r?'#A7C4B5':BR};border-radius:6px;padding:8px;text-align:center">
+          <div style="font-size:11px;color:${x.n>=x.r?OK:M};font-weight:600">${x.l}</div>
+          <div style="font-size:20px;font-weight:700;color:${x.n>=x.r?OK:WN}">${x.n}</div>
+          <div style="font-size:10px;color:${M}">/${x.r}編</div>
+        </div>`).join('')}
+      </div>
+      <div style="font-size:12px;font-weight:600;color:${emOk?OK:WN}">${emOk?'✓ 要件を満たしています':'⚠ 内分泌・代謝それぞれ1編以上が必要'}</div>
+    </div>
+    `:''}
+  </div>
+
+  <div class="card" style="background:${S1}">
+    <div class="card-t" onclick="toggleShortageCheck()" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none">
+      <span>⚠️ 病歴要約 不足チェック</span>
+      <span style="display:flex;align-items:center;gap:8px">
+        ${!S.showShortageCheck?`<span style="font-size:11px;font-weight:600;color:${shortageN===0?OK:WN};background:${shortageN===0?'#D1EAD9':'#FDF0F0'};padding:2px 10px;border-radius:20px">${shortageN===0?'✓ すべてOK':shortageN+'科 不足あり'}</span>`:''}
+        <span style="font-size:12px;color:${M};transform:${S.showShortageCheck?'rotate(90deg)':'none'};transition:transform 0.2s">▶</span>
+      </span>
+    </div>
+    ${S.showShortageCheck?`
+    ${SP.filter(sp=>sp.minS>0&&!['generalI','generalII','generalIII'].includes(sp.id)).map(sp=>{
+      const miss=missing[sp.id]||[];
+      const acc2=S.summaries.filter(s=>s.specialty===sp.id&&s.status==='accepted').length;
+      const wip=S.summaries.filter(s=>s.specialty===sp.id&&s.status!=='none'&&s.status!=='accepted').length;
+      const need=Math.max(0,sp.minS-acc2),ok=need===0;
+      return `<div class="flex aic gap8 fw" style="padding:5px 8px;border-radius:6px;background:${ok?'#EAF4EE':'transparent'};border:1px solid ${ok?'#A7C4B5':BR};margin-bottom:4px">
+        <span class="dot" style="background:${sp.color};margin-top:3px"></span>
+        <span style="font-size:12px;font-weight:600;min-width:60px;color:${ok?OK:TX}">${sp.short}</span>
+        <span style="font-size:11px;font-weight:600;color:${ok?OK:WN}">${ok?'✓':`あと${need}編`}</span>
+        <span style="font-size:11px;color:${M}">受理${acc2} / 作業中${wip} / 必要${sp.minS}</span>
+        ${!ok&&miss.length>0?`<span style="font-size:10px;color:${M}">未割当: ${miss.map(d=>d.name).join(' · ')}</span>`:''}
+      </div>`;
+    }).join('')}
+    `:''}
+  </div>
+
+  <div class="card">
+    <div class="card-t">病歴要約 一覧</div>
+    ${S.summaries.map(s=>{
+      const st=ST.find(x=>x.v===s.status);
+      const spObj=SP.find(x=>x.id===s.specialty);
+      const dgs=s.specialty?(DG[s.specialty]||[]):[];
+      const dgObj=dgs.find(x=>x.id===s.dgId);
+      const isOpen=S.openSumId===s.id;
+      const col=spObj?spObj.color:AC;
+      return `<div class="sum-item" style="border-color:${s.status==='accepted'?'#A7C4B5':isOpen?col+'99':BR};background:${isOpen?col+'10':S0};margin-bottom:8px">
+        <div class="sum-hdr">
+          <span style="font-size:12px;font-weight:700;color:${M};min-width:24px">#${s.id}</span>
+          <select class="app-sel" style="color:${st.c}" onchange="updSumStatus(${s.id},this.value)">
+            ${ST.map(x=>`<option value="${x.v}" ${s.status===x.v?'selected':''}>${x.l}</option>`).join('')}
+          </select>
+          <select class="app-sel" style="color:${spObj?spObj.color:M};font-weight:${spObj?600:400}" onchange="updSumSp(${s.id},this.value)">
+            <option value="">領域を選択…</option>
+            ${SP.map(sp=>`<option value="${sp.id}" ${s.specialty===sp.id?'selected':''}>${sp.short}</option>`).join('')}
+          </select>
+          ${dgObj?`<div style="flex:1;font-size:11px;min-width:80px"><span style="color:${M}">${dgObj.name}</span>${(s.diseases||[]).length>0?`<span style="color:${col};font-weight:600"> › ${(s.diseases||[]).join('、')}</span>`:''}</div>`:''}
+          ${s.specialty?`<button onclick="toggleSumOpen(${s.id})" style="background:none;border:1px solid ${isOpen?col:BR};border-radius:6px;color:${isOpen?col:M};padding:4px 10px;font-size:11px;font-family:inherit;font-weight:600;white-space:nowrap;cursor:pointer;min-height:30px">${isOpen?'▲ 閉じる':'▼ 疾患群・病名を選択'}</button>`:''}
+        </div>
+        ${isOpen&&spObj?`<div style="border-top:1px solid ${col}44">${renderDGPanel(spObj.id,col,true,s.id,s.dgId,s.diseases)}</div>`:''}
+        <div style="padding:0 14px 10px">
+          <input class="sum-inp" style="margin-bottom:5px" placeholder="タイトル / 診断名メモ" value="${s.title.replace(/"/g,'&quot;')}" oninput="updSumField(${s.id},'title',this.value)">
+          <input class="sum-inp" style="font-size:12px;color:${M}" placeholder="メモ（査読コメントなど）" value="${s.notes.replace(/"/g,'&quot;')}" oninput="updSumField(${s.id},'notes',this.value)">
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+/* summaries interactions */
+window.updSumStatus=(id,v)=>{ const s=S.summaries.find(x=>x.id===id); if(s)s.status=v; render(); };
+window.updSumSp=(id,v)=>{ const s=S.summaries.find(x=>x.id===id); if(s){s.specialty=v;s.dgId='';s.diseases=[];} S.openSumId=id; render(); };
+window.updSumField=(id,k,v)=>{ const s=S.summaries.find(x=>x.id===id); if(s)s[k]=v; markDirty(); };
+window.toggleRuleCheck=()=>{ S.showRuleCheck=!S.showRuleCheck; render(); };
+window.toggleShortageCheck=()=>{ S.showShortageCheck=!S.showShortageCheck; render(); };
+window.toggleSumOpen=id=>{ S.openSumId=S.openSumId===id?null:id; render(); };
+window.toggleSumDgOpen=(sumId,dgId)=>{ S.openSumDg[sumId]=S.openSumDg[sumId]===dgId?null:dgId; render(); };
+window.toggleSumDg=(sumId,dgId,wasOn)=>{
+  const s=S.summaries.find(x=>x.id===sumId); if(!s)return;
+  if(wasOn){s.dgId='';s.diseases=[];S.openSumDg[sumId]=null;}
+  else{s.dgId=dgId;s.diseases=[];S.openSumDg[sumId]=dgId;}
+  render();
+};
+window.toggleSumDis=(sumId,dgId,dis,wasOn)=>{
+  const s=S.summaries.find(x=>x.id===sumId); if(!s)return;
+  if(!wasOn){s.dgId=dgId;s.diseases=[];S.openSumDg[sumId]=dgId;}
+  const cur=s.diseases||[];
+  s.diseases=cur.includes(dis)?cur.filter(d=>d!==dis):[...cur,dis];
+  render();
+};
+
+/* ══════════════════════════════════════════
+   GUIDE TAB
+══════════════════════════════════════════ */
+const GUIDE_SECS = [
+  {id:'s',title:'📄 構成と文字数',rows:[
+    ['タイトル','80文字以内'],['確定診断名','略語不可、#1に主病名'],['主訴','25文字以内'],
+    ['既往歴・社会歴・家族歴','合計100文字以内'],['病歴','1000文字以内（OPQRST）'],
+    ['主な入院時現症','350文字以内'],['主要な検査所見','1000文字以内'],
+    ['プロブレムリスト','300文字以内'],['入院後経過と考察','1500文字以内'],
+    ['退院時処方','300文字以内（一般名）'],['総合考察','1000文字以内（PubMed引用2〜3件）']]},
+  {id:'r',title:'✏️ 記載ルール',rows:[
+    ['文体','常体（〜した・〜だった）'],['禁止語句','「認める」「にて」禁止'],
+    ['句読点','「, .」を使用（半角スペース付き）'],['英数字','全て半角、数字と単位の間にスペース'],
+    ['微生物名','斜体（例: E. coli）'],['病院・患者名','実名禁止→「近医」「前医」'],
+    ['薬剤名','一般名で記載']]},
+  {id:'o',title:'🩺 病歴のOPQRST',rows:[
+    ['O - Onset','いつから？発症機転'],['P - Palliative/Provoke','何で良く/悪くなる？'],
+    ['Q - Quality/Quantity','どんな症状？強さは？'],['R - Region','どこ？放散は？'],
+    ['S - Symptoms','随伴症状・陰性所見'],['T - Time course','最初→経過→現在']]},
+  {id:'c',title:'📚 引用の書き方',rows:[
+    ['医学雑誌','（Abe S. JAMA 1997；278：485）'],
+    ['日本語雑誌','（工藤翔二. 日内会誌 2006；95：564）'],
+    ['件数','総合考察で2〜3件']]},
+];
+function renderGuide(){
+  const guideSections = GUIDE_SECS.map(sec=>{
+    const isOpen=S.openGuide===sec.id;
+    return `<div class="card guide-sec">
+      <button class="guide-btn" onclick="toggleGuide('${sec.id}')">
+        ${sec.title}<span style="color:${M}">${isOpen?'▲':'▼'}</span>
+      </button>
+      ${isOpen?`<div style="margin-top:12px">${sec.rows.map(([k,v])=>`
+        <div class="guide-row">
+          <div class="guide-key">${k}</div>
+          <div class="guide-val">${v}</div>
+        </div>`).join('')}</div>`:''}
+    </div>`;
+  }).join('');
+
+  // テンプレート生成セクション
+  const ts = tmplState;
+  const hasCr = creditBalance !== null && creditBalance > 0;
+  const crLoaded = creditBalance !== null;
+
+  // 選択中の領域の疾患群リスト
+  const selSpGroups = ts.selectedSp ? (DG[ts.selectedSp]||[]) : [];
+  // 選択中の疾患群の疾患リスト
+  const selDgObj = selSpGroups.find(g=>g.id===ts.selectedDg);
+  const selDiseases = selDgObj ? selDgObj.diseases : [];
+
+  const creditBadge = crLoaded
+    ? (templateFreeRemaining > 0
+      ? `<span class="credit-badge-full">🎁 無料お試し 残り${templateFreeRemaining}回</span>`
+      : (creditBalance > 0
+        ? `<span class="credit-badge-full">🎫 ${creditBalance} クレジット</span>`
+        : `<span class="credit-badge">🎫 クレジットなし</span>`))
+    : `<span class="credit-badge" style="opacity:.5">🎫 読込中…</span>`;
+
+  const templateSection = `
+  <div class="card tmpl-gen">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+      <div class="card-t" style="margin:0">🤖 AI病歴要約テンプレート</div>
+      ${creditBadge}
+    </div>
+    <div style="font-size:12px;color:${M};margin-bottom:16px;line-height:1.7">
+      疾患群と疾患名を選択すると、病歴要約の構成テンプレート（OPQRST・検査・考察の方向性など）を生成します。<br>
+      <span style="color:${AC};font-weight:500">1クレジット = 1回生成</span>（問題演習と共通クレジット）<br>
+      <span style="color:${AC};font-weight:500">患者の実データは一切送信されません。</span>テンプレートを参考に、ローカルでご自身のデータを当てはめてください。
+    </div>
+
+    <!-- 領域選択 -->
+    <div style="margin-bottom:10px">
+      <label style="display:block;font-size:11px;font-weight:600;color:${M};letter-spacing:.06em;margin-bottom:5px">① 領域を選択</label>
+      <select class="tmpl-sel" onchange="tmplSelectSp(this.value)">
+        <option value="">選択してください</option>
+        ${SP.filter(sp=>sp.id!=='surgical'&&sp.id!=='autopsy').map(sp=>`<option value="${sp.id}" ${ts.selectedSp===sp.id?'selected':''}>${sp.label}</option>`).join('')}
+      </select>
+    </div>
+
+    <!-- 疾患群選択 -->
+    ${ts.selectedSp ? `<div style="margin-bottom:10px">
+      <label style="display:block;font-size:11px;font-weight:600;color:${M};letter-spacing:.06em;margin-bottom:5px">② 疾患群を選択</label>
+      <select class="tmpl-sel" onchange="tmplSelectDg(this.value)">
+        <option value="">選択してください</option>
+        ${selSpGroups.map(g=>`<option value="${g.id}" ${ts.selectedDg===g.id?'selected':''}>${g.name}</option>`).join('')}
+      </select>
+    </div>` : ''}
+
+    <!-- 疾患名選択 -->
+    ${ts.selectedDg ? `<div style="margin-bottom:14px">
+      <label style="display:block;font-size:11px;font-weight:600;color:${M};letter-spacing:.06em;margin-bottom:5px">③ 疾患名を選択</label>
+      <select class="tmpl-sel" onchange="tmplSelectDisease(this.value)">
+        <option value="">選択してください</option>
+        ${selDiseases.map(d=>`<option value="${encodeURIComponent(d)}" ${ts.selectedDisease===d?'selected':''}>${d}</option>`).join('')}
+      </select>
+    </div>` : ''}
+
+    <!-- 生成ボタン -->
+    ${ts.selectedDisease ? `
+      <button class="tmpl-generate" onclick="tmplGenerate()" ${ts.loading?'disabled':''}>
+        ${ts.loading
+          ? '<span class="save-spinner"></span> テンプレート生成中…'
+          : (templateFreeRemaining > 0
+            ? `<span>🎁</span> 無料お試し — テンプレートを生成する`
+            : (hasCr
+              ? `<span>✨</span> テンプレートを生成する（1クレジット消費）`
+              : `<span>🔒</span> クレジットを購入して生成する`))}
+      </button>
+    ` : ''}
+
+    <!-- エラー表示 -->
+    ${ts.error ? `<div style="margin-top:10px;padding:11px 14px;border-radius:9px;font-size:13px;background:var(--dnl);color:var(--dn);border:1px solid var(--dnb)">${ts.error}</div>` : ''}
+
+    <!-- テンプレート出力 -->
+    ${ts.output ? renderTemplateOutput(ts.output) : ''}
+
+    <!-- クレジット購入CTA（クレジット0のときのみ表示） -->
+    ${(!hasCr) ? `<div class="tmpl-cta">
+      <div class="tmpl-cta-title">🎫 生成クレジット</div>
+      <div class="tmpl-cta-sub">
+        ${templateFreeRemaining > 0 ? `初回1回分は無料でお試しいただけます。` : '無料お試しは使用済みです。'}
+        2回目以降はクレジットが必要です。BOOTHでパックを購入し、注文番号でチャージしてください。<br>
+        <span style="font-weight:500">テンプレート生成・問題演習の両方で使えます。</span>
+      </div>
+      <div class="tmpl-pack">
+        <div class="tmpl-pack-card">
+          <div class="tmpl-pack-price">&yen;980</div>
+          <div class="tmpl-pack-label">5クレジット</div>
+          <div class="tmpl-pack-sub">生成5回 / 演習25問</div>
+          <div class="tmpl-pack-unit">&yen;196/cr</div>
+        </div>
+        <div class="tmpl-pack-card" style="border-color:var(--ac);box-shadow:0 2px 8px rgba(27,79,58,.12)">
+          <div style="font-size:9px;font-weight:700;color:var(--ac);margin-bottom:2px">おすすめ</div>
+          <div class="tmpl-pack-price">&yen;2,980</div>
+          <div class="tmpl-pack-label">20クレジット</div>
+          <div class="tmpl-pack-sub">生成20回 / 演習100問</div>
+          <div class="tmpl-pack-unit">&yen;149/cr</div>
+        </div>
+        <div class="tmpl-pack-card">
+          <div class="tmpl-pack-price">&yen;4,980</div>
+          <div class="tmpl-pack-label">50クレジット</div>
+          <div class="tmpl-pack-sub">生成50回 / 演習250問</div>
+          <div class="tmpl-pack-unit">&yen;99/cr</div>
+        </div>
+      </div>
+      <a class="tmpl-cta-btn" href="https://naikanavi.booth.pm/items/8059285" target="_blank" rel="noopener" style="margin-top:14px;display:inline-block">BOOTHで購入する →</a>
+      <div style="margin-top:14px">
+        <a onclick="tmplToggleRedeem()" style="font-size:12px;color:var(--ac);cursor:pointer;text-decoration:underline">購入済みの方: 注文番号を入力してチャージ →</a>
+      </div>
+    </div>` : `<div style="margin-top:14px;text-align:center">
+        <a onclick="tmplToggleRedeem()" style="font-size:12px;color:var(--ac);cursor:pointer;text-decoration:underline">注文番号を入力してチャージ →</a>
+      </div>`}
+
+    <!-- チャージフォーム -->
+    ${ts.showRedeem ? `
+    <div style="margin-top:10px;background:var(--bg);border:1px solid var(--br);border-radius:10px;padding:14px 16px">
+      <div style="font-size:12px;font-weight:600;color:${M};margin-bottom:8px">クレジットパック 注文番号を入力</div>
+      ${ts.redeemErr ? `<div style="padding:8px 12px;border-radius:7px;font-size:12px;margin-bottom:8px;background:var(--dnl);color:var(--dn);border:1px solid var(--dnb)">${ts.redeemErr}</div>` : ''}
+      ${ts.redeemOk ? `<div style="padding:8px 12px;border-radius:7px;font-size:12px;margin-bottom:8px;background:var(--okl);color:var(--ok);border:1px solid var(--okb)">${ts.redeemOk}</div>` : ''}
+      <div class="tmpl-redeem">
+        <input type="text" id="tmpl-redeem-order" placeholder="注文番号（数字8桁）" inputmode="numeric">
+        <button onclick="tmplRedeem()">チャージ</button>
+      </div>
+      <div style="font-size:11px;color:${M};margin-top:6px;line-height:1.5">
+        BOOTHでクレジットパック購入後、メールに届いた注文番号を入力してください。<br>
+        <a href="https://naikanavi.booth.pm/items/8059285" target="_blank" rel="noopener" style="color:var(--ac);text-decoration:underline">まだ購入していない方はこちら →</a>
+      </div>
+    </div>` : ''}
+  </div>
+
+  <!-- テンプレート生成履歴 -->
+  ${tmplHistory.length > 0 ? `
+  <div class="card tmpl-hist">
+    <div class="tmpl-hist-title">📋 生成履歴（${tmplHistory.length}件）</div>
+    <div style="font-size:11px;color:${M};margin-bottom:12px;line-height:1.5">
+      過去に生成したテンプレートを確認できます。クリックで展開します。
+    </div>
+    ${tmplHistory.map(h => {
+      const isOpen = tmplHistoryOpen === h.id;
+      const dt = new Date(h.createdAt);
+      const dateStr = dt.getFullYear() + '/' + (dt.getMonth()+1) + '/' + dt.getDate() + ' ' + dt.getHours().toString().padStart(2,'0') + ':' + dt.getMinutes().toString().padStart(2,'0');
+      return `<div class="tmpl-hist-item">
+        <div class="tmpl-hist-header" onclick="tmplToggleHistory('${h.id}')">
+          <span class="tmpl-hist-name">${h.diseaseName}${h.template && h.template.isGeneric ? ' <span style=\\"font-size:10px;color:#92400E\\">(汎用)</span>' : ''}</span>
+          <span class="tmpl-hist-date">${dateStr}</span>
+          <span class="tmpl-hist-toggle">${isOpen ? '▲' : '▼'}</span>
+        </div>
+        ${isOpen && h.template ? `<div class="tmpl-hist-body">${renderTemplateOutput(h.template)}</div>` : ''}
+      </div>`;
+    }).join('')}
+  </div>` : ''}`;
+
+  return guideSections + templateSection;
+}
+
+function renderTemplateOutput(tmpl) {
+  return `<div class="tmpl-output">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="font-size:15px;font-weight:700;color:${AC}">${tmpl.diseaseName}</div>
+      <div style="font-size:11px;color:${M};background:var(--bg);padding:3px 8px;border-radius:12px;border:1px solid var(--br)">${tmpl.groupName}</div>
+    </div>
+    ${tmpl.isGeneric ? `<div style="padding:8px 12px;border-radius:7px;font-size:12px;margin-bottom:10px;background:#FEF3C7;color:#92400E;border:1px solid #FCD34D;line-height:1.6">
+      この疾患の専用テンプレートは現在準備中です。汎用フレームワークを表示しています。今後のアップデートで追加予定です。
+    </div>` : ''}
+    ${tmpl.sections.map(sec=>`
+      <div class="tmpl-section">
+        <div class="tmpl-section-title">${sec.icon} ${sec.title}</div>
+        <div class="tmpl-section-body">${sec.content}</div>
+      </div>
+    `).join('')}
+    <div style="text-align:center;margin-top:8px;font-size:11px;color:${M}">
+      ※ テンプレートを参考に、ご自身の症例データを当てはめてください。<br>
+      患者の個人情報は入力しないでください（利用規約 第2条・第5条）。
+    </div>
+  </div>`;
+}
+
+// テンプレート生成関連のグローバル関数
+window.tmplSelectSp = function(sp) {
+  tmplState.selectedSp = sp;
+  tmplState.selectedDg = '';
+  tmplState.selectedDisease = '';
+  tmplState.output = null;
+  tmplState.error = '';
+  render();
+};
+window.tmplSelectDg = function(dgId) {
+  tmplState.selectedDg = dgId;
+  tmplState.selectedDisease = '';
+  tmplState.output = null;
+  tmplState.error = '';
+  render();
+};
+window.tmplSelectDisease = function(encoded) {
+  tmplState.selectedDisease = decodeURIComponent(encoded);
+  tmplState.output = null;
+  tmplState.error = '';
+  render();
+};
+window.tmplToggleRedeem = function() {
+  tmplState.showRedeem = !tmplState.showRedeem;
+  tmplState.redeemErr = '';
+  tmplState.redeemOk = '';
+  render();
+};
+
+window.tmplGenerate = async function() {
+  if (tmplState.loading) return;
+  if (!tmplState.selectedSp || !tmplState.selectedDg || !tmplState.selectedDisease) return;
+
+  // 無料枠もクレジットもない場合はチャージ表示
+  if (creditBalance !== null && creditBalance <= 0 && !(templateFreeRemaining > 0)) {
+    tmplState.showRedeem = true;
+    tmplState.error = '';
+    render();
+    return;
+  }
+
+  tmplState.loading = true;
+  tmplState.error = '';
+  tmplState.output = null;
+  render();
+
+  try {
+    const spObj = SP.find(sp=>sp.id===tmplState.selectedSp);
+    const res = await fetch('/credits/generate-template', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
+      body: JSON.stringify({
+        groupId: tmplState.selectedDg,
+        diseaseName: tmplState.selectedDisease,
+        groupName: spObj ? spObj.label : tmplState.selectedSp,
+      })
+    });
+    const j = await res.json();
+    if (!res.ok) {
+      if (j.needCredits) {
+        creditBalance = 0;
+        tmplState.showRedeem = true;
+        tmplState.error = 'クレジットが不足しています。下のフォームからチャージしてください。';
+      } else {
+        tmplState.error = j.error || 'テンプレート生成に失敗しました';
+      }
+    } else {
+      tmplState.output = j.template;
+      creditBalance = j.balance;
+      if (j.freeRemaining !== undefined) templateFreeRemaining = j.freeRemaining;
+      // ローカル履歴にも追加（サーバーと同期済み）
+      const spObj2 = SP.find(sp=>sp.id===tmplState.selectedSp);
+      tmplHistory.unshift({
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+        groupId: tmplState.selectedDg,
+        groupName: spObj2 ? spObj2.label : tmplState.selectedSp,
+        diseaseName: tmplState.selectedDisease,
+        template: j.template,
+        createdAt: new Date().toISOString(),
+      });
+    }
+  } catch(e) {
+    tmplState.error = '通信エラーが発生しました。再度お試しください。';
+  } finally {
+    tmplState.loading = false;
+    render();
+  }
+};
+
+window.tmplRedeem = async function() {
+  const inp = document.getElementById('tmpl-redeem-order');
+  if (!inp) return;
+  const orderNo = inp.value.trim();
+  if (!orderNo) { tmplState.redeemErr = '注文番号を入力してください'; render(); return; }
+
+  tmplState.redeemErr = '';
+  tmplState.redeemOk = '';
+  render();
+
+  try {
+    const res = await fetch('/credits/redeem', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
+      body: JSON.stringify({ orderNumber: orderNo })
+    });
+    const j = await res.json();
+    if (!res.ok) {
+      tmplState.redeemErr = j.error || 'チャージに失敗しました';
+    } else {
+      creditBalance = j.balance;
+      tmplState.redeemOk = `✓ ${j.added}クレジットをチャージしました！（残高: ${j.balance}回）`;
+      tmplState.error = '';
+      inp.value = '';
+    }
+  } catch(e) {
+    tmplState.redeemErr = '通信エラーが発生しました';
+  }
+  render();
+};
+
+// クレジット残高の取得（初期化時に呼ぶ）
+async function fetchCredits() {
+  if (!authToken) return;
+  try {
+    const res = await fetch('/credits', {
+      headers: { 'Authorization': 'Bearer ' + authToken }
+    });
+    if (res.ok) {
+      const j = await res.json();
+      creditBalance = j.balance;
+      if (j.templateFreeRemaining !== undefined) templateFreeRemaining = j.templateFreeRemaining;
+    }
+  } catch(e) { /* ignore */ }
+}
+
+// テンプレート生成履歴の取得
+async function fetchTemplateHistory() {
+  if (!authToken) return;
+  try {
+    const res = await fetch('/credits/template-history', {
+      headers: { 'Authorization': 'Bearer ' + authToken }
+    });
+    if (res.ok) {
+      const j = await res.json();
+      tmplHistory = j.history || [];
+    }
+  } catch(e) { /* ignore */ }
+}
+
+// 履歴の展開/折りたたみ
+window.tmplToggleHistory = function(id) {
+  tmplHistoryOpen = tmplHistoryOpen === id ? null : id;
+  render();
+};
+window.toggleGuide=id=>{ S.openGuide=S.openGuide===id?null:id; render(); };
+
+/* ══════════════════════════════════════════
+   QUIZ TAB（問題演習）
+══════════════════════════════════════════ */
+function renderQuiz() {
+  if (quizState.phase === 'playing') return renderQuizPlaying();
+  if (quizState.phase === 'result')  return renderQuizResult();
+  return renderQuizMenu();
+}
+
+function renderQuizMenu() {
+  const qs = quizState;
+  const hasCr = creditBalance !== null && creditBalance > 0;
+  const crLoaded = creditBalance !== null;
+  const fr = quizStats ? quizStats.freeRemaining : null;
+  const hasFree = fr !== null && fr > 0;
+
+  // クレジットバッジ
+  const creditInfo = crLoaded
+    ? (hasFree
+      ? `<span class="credit-badge-full">🎁 無料お試し 残り${fr}問</span>`
+      : (creditBalance > 0
+        ? `<span class="credit-badge-full">🎫 ${creditBalance} クレジット（${creditBalance * 5}問分）</span>`
+        : `<span class="credit-badge">🎫 クレジットなし</span>`))
+    : `<span class="credit-badge" style="opacity:.5">🎫 読込中…</span>`;
+
+  // グループリスト
+  const groupList = quizStats && quizStats.groupList ? quizStats.groupList : [];
+  const weakGroups = quizStats && quizStats.weakGroups ? quizStats.weakGroups : [];
+
+  // スタッツサマリー
+  const statsSection = quizStats && quizStats.totalAttempts > 0 ? `
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-t">📊 演習スタッツ</div>
+    <div class="quiz-stat-grid">
+      <div class="card" style="text-align:center">
+        <div style="font-size:10px;color:${M};margin-bottom:4px">総合正答率</div>
+        <div style="font-size:clamp(22px,5vw,28px);font-weight:700;color:${quizStats.totalRate >= 70 ? OK : quizStats.totalRate >= 50 ? WN : DN}">${quizStats.totalRate}%</div>
+        <div style="font-size:11px;color:${M}">${quizStats.totalCorrect}/${quizStats.totalAttempts}問</div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:10px;color:${M};margin-bottom:4px">直近${quizStats.recentTotal}問</div>
+        <div style="font-size:clamp(22px,5vw,28px);font-weight:700;color:${quizStats.recentRate >= 70 ? OK : quizStats.recentRate >= 50 ? WN : DN}">${quizStats.recentRate}%</div>
+        <div style="font-size:11px;color:${M}">正答率</div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:10px;color:${M};margin-bottom:4px">演習済み</div>
+        <div style="font-size:clamp(22px,5vw,28px);font-weight:700;color:${AC}">${quizStats.totalAttempts}</div>
+        <div style="font-size:11px;color:${M}">問</div>
+      </div>
+    </div>
+    ${weakGroups.length > 0 ? `
+    <div style="margin-top:8px">
+      <div style="font-size:12px;font-weight:600;color:${WN};margin-bottom:8px">⚠ 苦手分野（正答率60%未満）</div>
+      ${weakGroups.slice(0, 5).map(w => `
+        <div class="quiz-weak-item">
+          <span style="font-size:12px;font-weight:600;color:${TX};flex:1">${w.label}</span>
+          <span style="font-size:12px;font-weight:700;color:${w.rate < 40 ? DN : WN}">${w.rate}%</span>
+          <span style="font-size:11px;color:${M}">(${w.correct}/${w.attempts})</span>
+          <button onclick="quizStartGroup('${w.gId}')" style="padding:4px 10px;background:${AC};color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit">演習</button>
+        </div>
+      `).join('')}
+    </div>` : ''}
+    ${Object.keys(quizStats.groupStats || {}).length > 0 ? `
+    <div style="margin-top:14px">
+      <div style="font-size:12px;font-weight:600;color:${AC};margin-bottom:8px">分野別正答率</div>
+      <div class="tbl-wrap"><table class="dtbl">
+        <thead><tr><th>分野</th><th>正答率</th><th>問題数</th></tr></thead>
+        <tbody>${Object.entries(quizStats.groupStats).sort((a,b) => a[1].rate - b[1].rate).map(([gId, g]) => `
+          <tr>
+            <td style="padding:6px;font-size:12px">${g.label}</td>
+            <td style="text-align:center;padding:6px"><span style="font-weight:700;color:${g.rate >= 70 ? OK : g.rate >= 50 ? WN : DN}">${g.rate}%</span></td>
+            <td style="text-align:center;padding:6px;color:${M}">${g.correct}/${g.attempts}</td>
+          </tr>
+        `).join('')}</tbody>
+      </table></div>
+    </div>` : ''}
+  </div>` : '';
+
+  return `
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+      <div class="card-t" style="margin:0">🧠 問題演習</div>
+      ${creditInfo}
+    </div>
+    <div style="font-size:12px;color:${M};margin-bottom:16px;line-height:1.7">
+      内科専門医筆記試験対策の多肢選択問題を自動生成します。<br>
+      <span style="color:${AC};font-weight:500">1クレジット = 5問演習</span>（テンプレート生成と共通クレジット）
+    </div>
+
+    <!-- モード選択 -->
+    <div style="font-size:11px;font-weight:600;color:${M};letter-spacing:.06em;margin-bottom:8px">演習モードを選択</div>
+    <div class="quiz-mode-grid">
+      <div class="quiz-mode-card ${qs.mode==='random'?'active':''}" onclick="quizSetMode('random')">
+        <div class="quiz-mode-icon">🎲</div>
+        <div class="quiz-mode-name">ランダム</div>
+        <div class="quiz-mode-desc">全分野からランダム出題</div>
+      </div>
+      <div class="quiz-mode-card ${qs.mode==='group'?'active':''}" onclick="quizSetMode('group')">
+        <div class="quiz-mode-icon">📂</div>
+        <div class="quiz-mode-name">疾患群指定</div>
+        <div class="quiz-mode-desc">特定の分野を集中演習</div>
+      </div>
+      <div class="quiz-mode-card ${qs.mode==='weak'?'active':''}" onclick="quizSetMode('weak')">
+        <div class="quiz-mode-icon">🎯</div>
+        <div class="quiz-mode-name">苦手克服</div>
+        <div class="quiz-mode-desc">正答率が低い分野から出題</div>
+      </div>
+    </div>
+
+    <!-- 疾患群選択（groupモード時） -->
+    ${qs.mode === 'group' ? `
+    <div style="margin-bottom:14px">
+      <label style="display:block;font-size:11px;font-weight:600;color:${M};letter-spacing:.06em;margin-bottom:5px">疾患群を選択</label>
+      <select class="quiz-group-sel" onchange="quizSetGroupId(this.value)" id="quiz-group-select">
+        <option value="">選択してください</option>
+        ${groupList.map(g => `<option value="${g.id}" ${qs.groupId===g.id?'selected':''}>${g.label}</option>`).join('')}
+      </select>
+    </div>` : ''}
+
+    <!-- 苦手克服の説明 -->
+    ${qs.mode === 'weak' ? `
+    <div style="padding:10px 14px;border-radius:9px;font-size:12px;margin-bottom:14px;background:#FEF3C7;color:#92400E;border:1px solid #FCD34D;line-height:1.6">
+      ${weakGroups.length > 0
+        ? `正答率の低い分野（${weakGroups.slice(0,3).map(w=>w.label).join('、')}など）から優先的に出題します。`
+        : '演習データがまだ十分にありません。まずはランダムモードで問題を解いてみましょう。'}
+    </div>` : ''}
+
+    <!-- エラー表示 -->
+    ${qs.error ? `<div style="padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:12px;background:var(--dnl);color:var(--dn);border:1px solid var(--dnb)">${qs.error}</div>` : ''}
+
+    <!-- 開始ボタン -->
+    <button onclick="quizStart()" style="width:100%;padding:14px;background:linear-gradient(135deg,#1B4F3A,#2D7A5A);color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px"
+      ${qs.loading?'disabled':''}
+      ${qs.mode==='group'&&!qs.groupId?'disabled':''}>
+      ${qs.loading
+        ? '<span class="save-spinner"></span> 問題を生成中…'
+        : (hasFree
+          ? `<span>🎁</span> 無料お試し — ${Math.min(fr, 5)}問スタート`
+          : (hasCr
+            ? '<span>🧠</span> 5問スタート（1クレジット消費）'
+            : '<span>🔒</span> クレジットを購入して演習する'))}
+    </button>
+
+    <!-- クレジット購入CTA（クレジット0のときのみ表示） -->
+    ${(!hasCr) ? `<div class="tmpl-cta" style="margin-top:14px">
+      <div class="tmpl-cta-title">🎫 学習クレジット</div>
+      <div class="tmpl-cta-sub">
+        ${fr > 0 ? `初回${fr}問は無料でお試しいただけます。` : (fr === 0 ? '無料お試し5問は使用済みです。' : '')}
+        ${!hasCr && fr <= 0 ? 'クレジットを購入して演習を続けましょう。' : ''}<br>
+        1クレジット＝5問。テンプレート生成・問題演習の両方で使えます。
+      </div>
+      <div class="tmpl-pack">
+        <div class="tmpl-pack-card">
+          <div class="tmpl-pack-price">&yen;980</div>
+          <div class="tmpl-pack-label">5クレジット</div>
+          <div class="tmpl-pack-sub">生成5回 / 演習25問</div>
+          <div class="tmpl-pack-unit">&yen;196/cr</div>
+        </div>
+        <div class="tmpl-pack-card" style="border-color:var(--ac);box-shadow:0 2px 8px rgba(27,79,58,.12)">
+          <div style="font-size:9px;font-weight:700;color:var(--ac);margin-bottom:2px">おすすめ</div>
+          <div class="tmpl-pack-price">&yen;2,980</div>
+          <div class="tmpl-pack-label">20クレジット</div>
+          <div class="tmpl-pack-sub">生成20回 / 演習100問</div>
+          <div class="tmpl-pack-unit">&yen;149/cr</div>
+        </div>
+        <div class="tmpl-pack-card">
+          <div class="tmpl-pack-price">&yen;4,980</div>
+          <div class="tmpl-pack-label">50クレジット</div>
+          <div class="tmpl-pack-sub">生成50回 / 演習250問</div>
+          <div class="tmpl-pack-unit">&yen;99/cr</div>
+        </div>
+      </div>
+      <a class="tmpl-cta-btn" href="https://naikanavi.booth.pm/items/8059285" target="_blank" rel="noopener" style="margin-top:14px;display:inline-block">BOOTHで購入する →</a>
+      <div style="margin-top:14px">
+        <a onclick="quizToggleRedeem()" style="font-size:12px;color:var(--ac);cursor:pointer;text-decoration:underline">購入済みの方: 注文番号を入力してチャージ →</a>
+      </div>
+    </div>` : `<div style="margin-top:14px;text-align:center">
+        <a onclick="quizToggleRedeem()" style="font-size:12px;color:var(--ac);cursor:pointer;text-decoration:underline">注文番号を入力してチャージ →</a>
+      </div>`}
+
+    <!-- チャージリンク不要（CTAに統合済み） -->
+
+    <!-- チャージフォーム -->
+    ${qs.showRedeem ? `
+    <div style="margin-top:10px;background:var(--bg);border:1px solid var(--br);border-radius:10px;padding:14px 16px">
+      <div style="font-size:12px;font-weight:600;color:${M};margin-bottom:8px">クレジットパック 注文番号を入力</div>
+      ${qs.redeemErr ? `<div style="padding:8px 12px;border-radius:7px;font-size:12px;margin-bottom:8px;background:var(--dnl);color:var(--dn);border:1px solid var(--dnb)">${qs.redeemErr}</div>` : ''}
+      ${qs.redeemOk ? `<div style="padding:8px 12px;border-radius:7px;font-size:12px;margin-bottom:8px;background:var(--okl);color:var(--ok);border:1px solid var(--okb)">${qs.redeemOk}</div>` : ''}
+      <div class="tmpl-redeem">
+        <input type="text" id="quiz-redeem-order" placeholder="注文番号（数字8桁）" inputmode="numeric">
+        <button onclick="quizRedeem()">チャージ</button>
+      </div>
+      <div style="font-size:11px;color:${M};margin-top:6px;line-height:1.5">
+        BOOTHでクレジットパック購入後、メールに届いた注文番号を入力してください。<br>
+        <a href="https://naikanavi.booth.pm/items/8059285" target="_blank" rel="noopener" style="color:var(--ac);text-decoration:underline">まだ購入していない方はこちら →</a>
+      </div>
+    </div>` : ''}
+  </div>
+
+  ${statsSection}`;
+}
+
+function renderQuizPlaying() {
+  const qs = quizState;
+  const q = qs.questions[qs.currentIdx];
+  if (!q) return '<div class="card">問題データがありません</div>';
+  const total = qs.questions.length;
+  const num = qs.currentIdx + 1;
+
+  // プログレスバー
+  const progressDots = qs.questions.map((_, i) => {
+    let cls = 'quiz-progress-dot';
+    if (i < qs.currentIdx) {
+      cls += qs.answers[i] && qs.answers[i].correct ? ' correct-dot' : ' wrong-dot';
+    } else if (i === qs.currentIdx) {
+      cls += qs.answered ? (qs.answers[i] && qs.answers[i].correct ? ' correct-dot' : ' wrong-dot') : ' current';
+    }
+    return `<div class="${cls}"></div>`;
+  }).join('');
+
+  // 正答数（途中経過）
+  const correctSoFar = qs.answers.filter(a => a && a.correct).length;
+
+  return `
+  <div class="card" style="margin-bottom:10px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div style="font-size:12px;color:${M}">
+        <span style="font-weight:700;color:${AC}">${num}</span> / ${total}問
+        <span style="margin-left:8px;color:${M}">正解 ${correctSoFar}問</span>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <span style="font-size:11px;padding:3px 8px;background:var(--acl);color:var(--ac);border-radius:12px;font-weight:600">${q.groupName}</span>
+        <button onclick="quizAbort()" style="padding:4px 10px;background:transparent;color:${M};border:1px solid ${BR};border-radius:6px;font-size:11px;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap;transition:var(--ease)" onmouseover="this.style.background='${S1}';this.style.color='${DN}';this.style.borderColor='${DN}'" onmouseout="this.style.background='transparent';this.style.color='${M}';this.style.borderColor='${BR}'">✕ 中断</button>
+      </div>
+    </div>
+    <div class="quiz-progress">${progressDots}</div>
+  </div>
+
+  <div class="quiz-q-card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span style="font-size:10px;padding:3px 8px;background:${S1};color:${M};border-radius:12px;border:1px solid ${BR}">${quizTypeLabel(q.type)}</span>
+      <span style="font-size:11px;color:${M}">${q.diseaseName}</span>
+    </div>
+    <div class="quiz-stem">${escHtml(q.stem)}</div>
+
+    <!-- 選択肢 -->
+    ${q.choices.map((c, i) => {
+      let cls = 'quiz-choice';
+      if (qs.answered) {
+        cls += ' disabled';
+        if (c.correct) cls += ' correct';
+        else if (qs.selectedChoice === i) cls += ' wrong';
+      } else if (qs.selectedChoice === i) {
+        cls += ' selected';
+      }
+      return `<div class="${cls}" onclick="quizSelectChoice(${i})">
+        <div class="quiz-choice-label">${c.label}</div>
+        <div class="quiz-choice-text">${escHtml(c.text)}</div>
+      </div>`;
+    }).join('')}
+
+    <!-- 回答前: 決定ボタン -->
+    ${!qs.answered && qs.selectedChoice !== null ? `
+    <button onclick="quizConfirmAnswer()" style="width:100%;padding:13px;background:${AC};color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;font-family:inherit;min-height:48px">
+      回答する
+    </button>` : ''}
+
+    <!-- 回答後: 解説 -->
+    ${qs.answered ? `
+    <div class="quiz-explain">
+      <div class="quiz-explain-title">
+        ${qs.answers[qs.currentIdx].correct ? '✅ 正解！' : '❌ 不正解'}
+      </div>
+      <div class="quiz-explain-body">${escHtml(q.explanation)}</div>
+      ${q.refs && q.refs.length > 0 ? `<div class="quiz-refs">📚 ${q.refs.join(' / ')}</div>` : ''}
+    </div>
+    <button onclick="quizNext()" style="width:100%;padding:13px;background:${AC};color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;font-family:inherit;min-height:48px;display:flex;align-items:center;justify-content:center;gap:6px">
+      ${num < total ? '次の問題 →' : '結果を見る →'}
+    </button>` : ''}
+  </div>`;
+}
+
+function renderQuizResult() {
+  const qs = quizState;
+  const total = qs.questions.length;
+  const correct = qs.answers.filter(a => a && a.correct).length;
+  const rate = total > 0 ? Math.round(correct / total * 100) : 0;
+  const col = rate >= 80 ? OK : rate >= 50 ? WN : DN;
+
+  // 問題ごとの結果
+  const details = qs.questions.map((q, i) => {
+    const ans = qs.answers[i];
+    const isCorrect = ans && ans.correct;
+    return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:${isCorrect ? '#DCFCE7' : '#FEE2E2'};border-radius:7px;margin-bottom:4px">
+      <span style="font-size:14px">${isCorrect ? '✅' : '❌'}</span>
+      <span style="font-size:12px;color:${TX};flex:1">${escHtml(q.diseaseName)}</span>
+      <span style="font-size:11px;color:${M};white-space:nowrap">${q.groupName}</span>
+    </div>`;
+  }).join('');
+
+  return `
+  <div class="quiz-result-card" style="background:linear-gradient(135deg,var(--acl),var(--s0))">
+    <div style="font-size:14px;color:${M};margin-bottom:4px">演習結果</div>
+    <div class="quiz-result-score" style="color:${col}">${rate}%</div>
+    <div style="font-size:16px;color:${TX};font-weight:600;margin-bottom:4px">${correct} / ${total} 問正解</div>
+    <div style="font-size:12px;color:${M}">
+      ${rate >= 80 ? '素晴らしい成績です！' : rate >= 60 ? 'いい調子です。' : rate >= 40 ? 'もう少し頑張りましょう。' : '基礎からの復習をおすすめします。'}
+    </div>
+    ${qs.meta ? `<div style="font-size:11px;color:${M};margin-top:8px;padding-top:8px;border-top:1px solid ${BR}">
+      クレジット残高: <span style="font-weight:700;color:${AC}">${qs.meta.balance}</span>
+      ${qs.meta.freeRemaining > 0 ? ` ｜ 無料お試し残り: <span style="font-weight:700">${qs.meta.freeRemaining}問</span>` : ''}
+    </div>` : ''}
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-t">問題ごとの結果</div>
+    ${details}
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button onclick="quizRetry()" style="flex:1;min-width:140px;padding:13px;background:${AC};color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;min-height:48px">
+      🔄 もう一度演習する
+    </button>
+    <button onclick="quizBackToMenu()" style="flex:1;min-width:140px;padding:13px;background:transparent;color:${AC};border:1.5px solid ${BR};border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;min-height:48px">
+      📊 メニューに戻る
+    </button>
+  </div>`;
+}
+
+function quizTypeLabel(type) {
+  const map = { diagnosis:'診断', test:'検査', treatment:'治療', exam:'身体所見', differential:'総合知識' };
+  return map[type] || type;
+}
+
+function escHtml(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g,'<br>');
+}
+
+// ── Quiz interactions ──
+window.quizSetMode = function(mode) {
+  quizState.mode = mode;
+  quizState.groupId = '';
+  quizState.error = '';
+  render();
+};
+
+window.quizSetGroupId = function(gId) {
+  quizState.groupId = gId;
+  render();
+};
+
+window.quizStartGroup = function(gId) {
+  quizState.mode = 'group';
+  quizState.groupId = gId;
+  quizStart();
+};
+
+window.quizStart = async function() {
+  if (quizState.loading) return;
+  const qs = quizState;
+
+  if (qs.mode === 'group' && !qs.groupId) {
+    qs.error = '疾患群を選択してください';
+    render();
+    return;
+  }
+
+  qs.loading = true;
+  qs.error = '';
+  render();
+
+  try {
+    const body = { mode: qs.mode, count: 5 };
+    if (qs.mode === 'group') body.groupId = qs.groupId;
+
+    const res = await fetch('/credits/quiz/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
+      body: JSON.stringify(body)
+    });
+    const j = await res.json();
+
+    if (!res.ok) {
+      if (j.needCredits) {
+        creditBalance = j.balance || 0;
+        qs.error = j.error || 'クレジットが不足しています。';
+      } else {
+        qs.error = j.error || '問題生成に失敗しました';
+      }
+      qs.loading = false;
+      render();
+      return;
+    }
+
+    // 成功 → 演習開始
+    qs.questions = j.questions;
+    qs.meta = j.meta;
+    qs.currentIdx = 0;
+    qs.answers = new Array(j.questions.length).fill(null);
+    qs.selectedChoice = null;
+    qs.answered = false;
+    qs.phase = 'playing';
+    creditBalance = j.meta.balance;
+
+    // スタッツも更新
+    if (quizStats) {
+      quizStats.freeRemaining = j.meta.freeRemaining;
+    }
+  } catch(e) {
+    qs.error = '通信エラーが発生しました。再度お試しください。';
+  } finally {
+    qs.loading = false;
+    render();
+  }
+};
+
+window.quizSelectChoice = function(idx) {
+  if (quizState.answered) return;
+  quizState.selectedChoice = idx;
+  render();
+};
+
+window.quizConfirmAnswer = function() {
+  const qs = quizState;
+  if (qs.answered || qs.selectedChoice === null) return;
+  const q = qs.questions[qs.currentIdx];
+  const chosen = q.choices[qs.selectedChoice];
+  const isCorrect = !!chosen.correct;
+  qs.answers[qs.currentIdx] = { choiceIdx: qs.selectedChoice, correct: isCorrect };
+  qs.answered = true;
+  render();
+
+  // 回答エリアまでスクロール
+  setTimeout(() => {
+    const explain = document.querySelector('.quiz-explain');
+    if (explain) explain.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 100);
+};
+
+window.quizNext = function() {
+  const qs = quizState;
+  if (qs.currentIdx < qs.questions.length - 1) {
+    qs.currentIdx++;
+    qs.selectedChoice = null;
+    qs.answered = false;
+    render();
+    window.scrollTo(0, 0);
+  } else {
+    // 全問終了 → 結果記録 → 結果画面
+    quizRecordResults();
+    qs.phase = 'result';
+    render();
+    window.scrollTo(0, 0);
+  }
+};
+
+window.quizRetry = function() {
+  quizState.phase = 'menu';
+  quizState.error = '';
+  // スタッツをリフレッシュ
+  fetchQuizStats().then(() => render());
+  quizStart();
+};
+
+window.quizBackToMenu = function() {
+  quizState.phase = 'menu';
+  quizState.error = '';
+  quizState.questions = [];
+  quizState.answers = [];
+  quizState.selectedChoice = null;
+  quizState.answered = false;
+  // スタッツをリフレッシュ
+  fetchQuizStats().then(() => render());
+  render();
+  window.scrollTo(0, 0);
+};
+
+window.quizAbort = function() {
+  const qs = quizState;
+  // 回答済みの問題だけ記録する
+  const answered = qs.questions.slice(0, qs.currentIdx + (qs.answered ? 1 : 0));
+  const answeredResults = answered.map((q, i) => ({
+    groupId: q.groupId,
+    diseaseName: q.diseaseName,
+    correct: !!(qs.answers[i] && qs.answers[i].correct)
+  })).filter((_, i) => qs.answers[i] !== null);
+
+  if (answeredResults.length > 0) {
+    // 途中経過を記録
+    fetch('/credits/quiz/record', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
+      body: JSON.stringify({ results: answeredResults })
+    }).catch(() => {});
+  }
+
+  qs.phase = 'menu';
+  qs.error = '';
+  qs.questions = [];
+  qs.answers = [];
+  qs.selectedChoice = null;
+  qs.answered = false;
+  fetchQuizStats().then(() => render());
+  render();
+  window.scrollTo(0, 0);
+};
+
+window.quizToggleRedeem = function() {
+  quizState.showRedeem = !quizState.showRedeem;
+  quizState.redeemErr = '';
+  quizState.redeemOk = '';
+  render();
+};
+
+window.quizRedeem = async function() {
+  const inp = document.getElementById('quiz-redeem-order');
+  if (!inp) return;
+  const orderNo = inp.value.trim();
+  if (!orderNo) { quizState.redeemErr = '注文番号を入力してください'; render(); return; }
+
+  quizState.redeemErr = '';
+  quizState.redeemOk = '';
+  render();
+
+  try {
+    const res = await fetch('/credits/redeem', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
+      body: JSON.stringify({ orderNumber: orderNo })
+    });
+    const j = await res.json();
+    if (!res.ok) {
+      quizState.redeemErr = j.error || 'チャージに失敗しました';
+    } else {
+      creditBalance = j.balance;
+      quizState.redeemOk = `✓ ${j.added}クレジットをチャージしました！（残高: ${j.balance}回）`;
+      quizState.error = '';
+      inp.value = '';
+    }
+  } catch(e) {
+    quizState.redeemErr = '通信エラーが発生しました';
+  }
+  render();
+};
+
+async function quizRecordResults() {
+  const qs = quizState;
+  const results = qs.questions.map((q, i) => ({
+    groupId: q.groupId,
+    diseaseName: q.diseaseName,
+    correct: !!(qs.answers[i] && qs.answers[i].correct)
+  }));
+
+  try {
+    await fetch('/credits/quiz/record', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
+      body: JSON.stringify({ results })
+    });
+  } catch(e) { /* ignore */ }
+}
+
+async function fetchQuizStats() {
+  if (!authToken) return;
+  try {
+    const res = await fetch('/credits/quiz/stats', {
+      headers: { 'Authorization': 'Bearer ' + authToken }
+    });
+    if (res.ok) {
+      const j = await res.json();
+      quizStats = j.stats;
+      // クレジット残高も同期
+      if (j.stats.balance !== undefined) creditBalance = j.stats.balance;
+    }
+  } catch(e) { /* ignore */ }
+}
+
+/* ══════════════════════════════════════════
+   OTHER TAB
+══════════════════════════════════════════ */
+function renderOther(){
+  const o=S.other;
+  const yrs=['y1','y2','y3'],yLbl={y1:'1年目',y2:'2年目',y3:'3年目'};
+  const items=[{id:'ethics',label:'倫理・安全・感染対策講習',min:2},{id:'academicMeetings',label:'内科系学術集会 参加',min:2}];
+  return `<div class="card">
+    <div class="card-t">その他の修了要件</div>
+    <!-- JMECC -->
+    <div class="flex aic jcb" style="padding:11px 14px;background:${S1};border-radius:8px;border:1px solid ${BR};margin-bottom:8px">
+      <div style="font-size:13px;font-weight:500;color:${TX}">JMECC 受講</div>
+      <div class="other-chk" style="${o.jmecc?`background:${AC};border-color:${AC}`:''}" onclick="toggleJmecc()">
+        ${o.jmecc?`<span style="color:#fff;font-size:13px;font-weight:800">✓</span>`:''}
+      </div>
+    </div>
+    <!-- Publications -->
+    <div class="flex aic jcb" style="padding:11px 14px;background:${S1};border-radius:8px;border:1px solid ${BR};margin-bottom:8px">
+      <div style="font-size:13px;font-weight:500;color:${TX}">筆頭演者/著者 発表・論文（2件以上）</div>
+      <div class="flex aic gap8">
+        <select class="num-sel" onchange="updPub(this.value)">${Array.from({length:11},(_,i)=>`<option value="${i}"${i===o.publications?' selected':''}>${i}</option>`).join('')}</select>
+        <span style="font-size:12px;color:${(o.publications||0)>=2?OK:WN}">${(o.publications||0)>=2?'✓':'/ 2 必要'}</span>
+      </div>
+    </div>
+    <!-- Per-year items -->
+    ${items.map(it=>{
+      const vals=o[it.id]||{y1:0,y2:0,y3:0};
+      const tot=yrs.reduce((a,y)=>a+(vals[y]||0),0);
+      const allOk=yrs.every(y=>(vals[y]||0)>=it.min);
+      return `<div style="background:${S1};border-radius:8px;border:1px solid ${allOk?'#A7C4B5':BR};padding:12px 14px;margin-bottom:8px">
+        <div style="font-size:13px;font-weight:500;color:${TX};margin-bottom:4px">${it.label}</div>
+        <div style="font-size:11px;color:${M};margin-bottom:10px">年${it.min}回以上 × 3年間</div>
+        <div class="flex gap10 fw">
+          ${yrs.map(y=>{
+            const v=vals[y]||0,ok=v>=it.min;
+            return `<div class="yr-card" style="border-color:${ok?'#A7C4B5':BR}">
+              <div style="font-size:11px;color:${M};margin-bottom:6px">${yLbl[y]}</div>
+              <select class="num-sel" onchange="updYr('${it.id}','${y}',this.value)">${Array.from({length:11},(_,i)=>`<option value="${i}"${i===v?' selected':''}>${i}</option>`).join('')}</select>
+              <div style="font-size:11px;color:${ok?OK:WN};margin-top:4px">${ok?`✓ ${it.min}回以上`:`あと ${it.min-v} 回`}</div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div style="font-size:11px;color:${M};margin-top:8px;text-align:right">
+          合計: <span style="color:${allOk?OK:TX};font-weight:600">${tot}</span> 回 / ${it.min*3} 回
+          ${allOk?`<span style="color:${OK};margin-left:6px">✓ 全年度OK</span>`:''}
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+window.toggleJmecc=()=>{ S.other.jmecc=!S.other.jmecc; render(); };
+window.updPub=v=>{ S.other.publications=Math.max(0,parseInt(v)||0); markDirty(); };
+window.updYr=(id,y,v)=>{ S.other[id]=S.other[id]||{y1:0,y2:0,y3:0}; S.other[id][y]=Math.max(0,parseInt(v)||0); render(); };
+
+/* ══════════════════════════════════════════
+   PROFILE TAB（アプリ内マイページ）
+══════════════════════════════════════════ */
+// パスワード変更フォームの表示状態
+const pwState = { open: false, err: '', ok: false };
+
+function renderProfile(){
+  const P = userProfile || {};
+  const genderLabel = P.gender === 'male' ? '男性' : P.gender === 'female' ? '女性' : P.gender === 'other' ? 'その他' : '未設定';
+  const email = authUser || '—';
+  const infoRow=(lbl,val)=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;background:${BG};border:1px solid ${BR};border-radius:9px;margin-bottom:9px;min-height:50px;gap:12px">
+      <span style="font-size:12px;color:${M};font-weight:500;flex-shrink:0">${lbl}</span>
+      <span style="font-size:14px;font-weight:500;font-family:var(--mono);text-align:right;word-break:break-all;color:${TX}">${val}</span>
+    </div>`;
+
+  const secLbl=(t,col='')=>`<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:${col||M};margin-bottom:14px">${t}</div>`;
+
+  const pwSection = pwState.open ? `
+    <div style="background:${S0};border:1px solid ${BR};border-radius:12px;padding:20px;margin-bottom:16px">
+      ${secLbl('パスワード変更')}
+      ${pwState.err?`<div style="padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;background:var(--dnl);color:var(--dn);border:1px solid var(--dnb)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        ${pwState.err}</div>`:''}
+      ${pwState.ok?`<div style="padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;background:var(--okl);color:var(--ok);border:1px solid var(--okb)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><polyline points="20 6 9 17 4 12"/></svg>
+        パスワードを変更しました</div>`:''}
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:11px;font-weight:600;color:${M};letter-spacing:.08em;margin-bottom:7px;text-transform:uppercase">現在のパスワード</label>
+        <input type="password" id="cur-pw" placeholder="••••••••" autocomplete="current-password"
+          style="width:100%;padding:12px 14px;border:1.5px solid ${BR};border-radius:9px;background:${BG};font-size:16px;color:${TX};outline:none;transition:var(--ease)"
+          onfocus="this.style.borderColor='${AC}'" onblur="this.style.borderColor='${BR}'">
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:11px;font-weight:600;color:${M};letter-spacing:.08em;margin-bottom:7px;text-transform:uppercase">新しいパスワード</label>
+        <input type="password" id="new-pw" placeholder="8文字以上" autocomplete="new-password"
+          style="width:100%;padding:12px 14px;border:1.5px solid ${BR};border-radius:9px;background:${BG};font-size:16px;color:${TX};outline:none;transition:var(--ease)"
+          onfocus="this.style.borderColor='${AC}'" onblur="this.style.borderColor='${BR}'">
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:11px;font-weight:600;color:${M};letter-spacing:.08em;margin-bottom:7px;text-transform:uppercase">新しいパスワード（確認）</label>
+        <input type="password" id="new-pw2" placeholder="もう一度入力" autocomplete="new-password"
+          style="width:100%;padding:12px 14px;border:1.5px solid ${BR};border-radius:9px;background:${BG};font-size:16px;color:${TX};outline:none;transition:var(--ease)"
+          onfocus="this.style.borderColor='${AC}'" onblur="this.style.borderColor='${BR}'">
+      </div>
+      <div style="display:flex;gap:10px">
+        <button onclick="doChangePw()" id="pw-submit-btn"
+          style="flex:1;padding:13px;background:${AC};color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:500;cursor:pointer;min-height:48px">
+          パスワードを更新する
+        </button>
+        <button onclick="closePwForm()"
+          style="padding:13px 18px;background:transparent;color:${M};border:1.5px solid ${BR};border-radius:9px;font-size:14px;cursor:pointer;min-height:48px">
+          キャンセル
+        </button>
+      </div>
+    </div>` : `
+    <div style="background:${S0};border:1px solid ${BR};border-radius:12px;padding:20px;margin-bottom:16px">
+      ${secLbl('セキュリティ')}
+      <button onclick="openPwForm()"
+        style="display:inline-flex;align-items:center;justify-content:center;width:100%;background:transparent;color:${AC};border:1.5px solid ${BR};border-radius:9px;padding:11px 20px;font-size:14px;font-weight:500;cursor:pointer;min-height:44px;transition:var(--ease)"
+        onmouseover="this.style.background='${ACL}';this.style.borderColor='${AC}'"
+        onmouseout="this.style.background='transparent';this.style.borderColor='${BR}'">
+        🔑 パスワードを変更する →
+      </button>
+    </div>`;
+
+  return `
+  <div style="max-width:600px;margin:0 auto;padding-bottom:calc(24px + var(--sab))">
+    <div style="background:${S0};border:1px solid ${BR};border-radius:12px;padding:20px;margin-bottom:16px">
+      ${secLbl('アカウント情報')}
+      ${infoRow('メールアドレス', email)}
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;background:${BG};border:1px solid ${BR};border-radius:9px;margin-bottom:9px;min-height:50px;gap:12px">
+        <span style="font-size:12px;color:${M};font-weight:500">ステータス</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:${ACL};color:${AC}">
+          <span style="width:6px;height:6px;border-radius:50%;background:${AC};display:inline-block"></span>アクティブ
+        </span>
+      </div>
+    </div>
+
+    <div style="background:${S0};border:1px solid ${BR};border-radius:12px;padding:20px;margin-bottom:16px">
+      ${secLbl('プロフィール')}
+      ${infoRow('氏名', P.displayName || '未設定')}
+      ${infoRow('医師免許取得年', P.licenseYear ? P.licenseYear + '年' : '未設定')}
+      ${infoRow('診療科', P.department || '未設定')}
+      ${infoRow('勤務先種別', P.workplaceType || '未設定')}
+      ${infoRow('都道府県', P.prefecture || '未設定')}
+      ${infoRow('性別', genderLabel)}
+      ${infoRow('生年', P.birthYear ? P.birthYear + '年' : '未設定')}
+      ${infoRow('卒業大学', P.medSchool || '未設定')}
+      <button onclick="document.getElementById('onboarding').classList.add('active')"
+        style="display:inline-flex;align-items:center;justify-content:center;width:100%;background:transparent;color:${AC};border:1.5px solid ${BR};border-radius:9px;padding:11px 20px;font-size:14px;font-weight:500;cursor:pointer;min-height:44px;transition:var(--ease);margin-top:8px"
+        onmouseover="this.style.background='${ACL}';this.style.borderColor='${AC}'"
+        onmouseout="this.style.background='transparent';this.style.borderColor='${BR}'">
+        ✏️ プロフィールを編集する
+      </button>
+    </div>
+
+    ${pwSection}
+
+    <div style="background:${S0};border:1px solid var(--dnb);border-radius:12px;padding:20px;margin-bottom:16px">
+      ${secLbl('アカウント操作','var(--dn)')}
+      <p style="font-size:13px;color:${M};margin-bottom:14px;line-height:1.6">ログアウトしてもデータはサーバーに保存されており失われません。</p>
+      <button onclick="saveData(true).then(()=>{stopAutoSave();fetch('/logout',{method:'POST',headers:{'Authorization':'Bearer '+authToken}}).finally(()=>{authToken=null;authUser=null;localStorage.removeItem('naika_session');location.href='/';});})"
+        style="display:inline-flex;align-items:center;justify-content:center;width:100%;background:transparent;color:var(--dn);border:1.5px solid var(--dnb);border-radius:9px;padding:11px 20px;font-size:14px;font-weight:500;cursor:pointer;min-height:44px"
+        onmouseover="this.style.background='var(--dnl)'" onmouseout="this.style.background='transparent'">
+        ログアウト
+      </button>
+    </div>
+
+    <div style="text-align:center;padding:16px 0 8px">
+      <a href="/terms" target="_blank" style="font-size:12px;color:${M};margin-right:20px;text-decoration:none">利用規約</a>
+      <a href="/privacy" target="_blank" style="font-size:12px;color:${M};text-decoration:none">プライバシーポリシー</a>
+    </div>
+  </div>`;
+}
+
+window.openPwForm = () => { pwState.open=true; pwState.err=''; pwState.ok=false; render(); };
+window.closePwForm= () => { pwState.open=false; pwState.err=''; pwState.ok=false; render(); };
+
+function doChangePw(){
+  const cur=document.getElementById('cur-pw')?.value||'';
+  const nw =document.getElementById('new-pw')?.value||'';
+  const nw2=document.getElementById('new-pw2')?.value||'';
+  const btn=document.getElementById('pw-submit-btn');
+  if(!cur||!nw||!nw2){pwState.err='すべての項目を入力してください';pwState.ok=false;render();return;}
+  if(nw.length<8){pwState.err='新しいパスワードは8文字以上にしてください';pwState.ok=false;render();return;}
+  if(nw!==nw2){pwState.err='新しいパスワードが一致しません';pwState.ok=false;render();return;}
+  if(btn){btn.textContent='更新中…';btn.disabled=true;}
+  (async()=>{
+    try{
+      const res=await fetch('/change-password',{
+        method:'PUT',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
+        body:JSON.stringify({currentPassword:cur,newPassword:nw})
+      });
+      const j=await res.json();
+      if(!res.ok){pwState.err=j.error||'パスワード変更に失敗しました';pwState.ok=false;render();return;}
+      pwState.err='';pwState.ok=true;render();
+      setTimeout(()=>{pwState.open=false;pwState.ok=false;render();},2000);
+    }catch(e){
+      pwState.err='通信エラーが発生しました';pwState.ok=false;render();
+    }
+  })();
+}
+
+/* ══════════════════════════════════════════
+   AUTH ACTIONS
+══════════════════════════════════════════ */
+/* ═══ ONBOARDING ═══ */
+let _obGender = '';
+let _obState = null;
+let _obMode = '';
+
+window.selectRadio = function(el, name, val) {
+  _obGender = val;
+  el.closest('.ob-radio-grp').querySelectorAll('.ob-radio').forEach(r => r.classList.remove('selected'));
+  el.classList.add('selected');
+};
+
+function _requiredFilled() {
+  return userProfile && userProfile.displayName && userProfile.licenseYear && userProfile.department && userProfile.workplaceType && userProfile.prefecture;
+}
+function _optionalFilled() {
+  return userProfile && (userProfile.gender || userProfile.birthYear || userProfile.medSchool);
+}
+
+async function submitOnboarding() {
+  const err = document.getElementById('ob-err');
+  const errMsg = document.getElementById('ob-err-msg');
+  const btn = document.getElementById('ob-submit');
+  err.style.display = 'none';
+
+  const profile = {
+    ...(userProfile || {}),
+    displayName: (document.getElementById('ob-displayName').value || '').trim(),
+    licenseYear: document.getElementById('ob-licenseYear').value,
+    department: document.getElementById('ob-department').value,
+    workplaceType: document.getElementById('ob-workplaceType').value,
+    prefecture: document.getElementById('ob-prefecture').value,
+    gender: _obGender || (userProfile?.gender || ''),
+    birthYear: document.getElementById('ob-birthYear').value,
+    medSchool: (document.getElementById('ob-medSchool').value || '').trim(),
+  };
+
+  if (!profile.displayName || !profile.licenseYear || !profile.department || !profile.workplaceType || !profile.prefecture) {
+    errMsg.textContent = '必須項目（*）をすべて入力してください';
+    err.style.display = 'flex';
+    err.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+
+  btn.textContent = '保存中…'; btn.disabled = true;
+  try {
+    const res = await fetch('/profile', {
+      method: 'PUT',
+      headers: { 'Content-Type':'application/json', 'Authorization':'Bearer '+authToken },
+      body: JSON.stringify({ profile })
+    });
+    const j = await res.json();
+    if (!res.ok) {
+      errMsg.textContent = j.error || '保存に失敗しました';
+      err.style.display = 'flex';
+      return;
+    }
+    userProfile = j.profile;
+    document.getElementById('onboarding').classList.remove('active');
+    render();
+  } catch(e) {
+    errMsg.textContent = '通信エラーが発生しました';
+    err.style.display = 'flex';
+  } finally {
+    btn.textContent = '保存'; btn.disabled = false;
+  }
+};
+
+window.skipOptional = async function() {
+  try {
+    await fetch('/profile/onboarding-state', {
+      method:'PUT',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
+      body: JSON.stringify({ action:'skip' })
+    });
+    if (_obState) _obState.optionalSkipCount = (_obState.optionalSkipCount||0)+1;
+  } catch(e) {}
+  document.getElementById('onboarding').classList.remove('active');
+};
+
+window.dismissOptional = async function() {
+  try {
+    await fetch('/profile/onboarding-state', {
+      method:'PUT',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
+      body: JSON.stringify({ action:'dismiss' })
+    });
+    if (_obState) _obState.optionalDismissed = true;
+  } catch(e) {}
+  document.getElementById('onboarding').classList.remove('active');
+};
+
+function showOnboardingIfNeeded() {
+  const ob = document.getElementById('onboarding');
+  const skipArea = document.getElementById('ob-skip-area');
+  const titleEl = ob.querySelector('.ob-title');
+  const subEl = ob.querySelector('.ob-sub');
+
+  // ① 必須が未入力 → スキップ不可
+  if (!_requiredFilled()) {
+    _obMode = 'required';
+    titleEl.textContent = '本人情報を入力';
+    subEl.innerHTML = 'サービスの改善とご案内の最適化のため、基本情報の入力をお願いしています。<br>入力内容は<a href="/privacy" target="_blank" style="color:var(--ac)">プライバシーポリシー</a>に基づき管理します。';
+    skipArea.innerHTML = '';
+    ob.classList.add('active');
+    return;
+  }
+
+  // ② 任意が未入力 & dismiss されてない
+  if (!_optionalFilled() && _obState && !_obState.optionalDismissed) {
+    const count = _obState.optionalSkipCount || 0;
+    _obMode = 'optional';
+    titleEl.textContent = '未入力の項目があります';
+    subEl.innerHTML = '任意項目を入力すると、よりパーソナライズされた情報をお届けできます。';
+    if (count < 2) {
+      skipArea.innerHTML = '<a class="ob-skip" onclick="skipOptional()">あとで入力する</a>';
+    } else {
+      skipArea.innerHTML = '<a class="ob-skip" onclick="skipOptional()">あとで入力する</a><a class="ob-skip" onclick="dismissOptional()" style="margin-top:6px;color:var(--dn)">もう表示しない</a>';
+    }
+    ob.classList.add('active');
+    return;
+  }
+}
+
+// プロフィール編集時にフィールドを事前入力
+function prefillOnboarding() {
+  if (!userProfile) return;
+  const P = userProfile;
+  if (P.displayName) document.getElementById('ob-displayName').value = P.displayName;
+  if (P.licenseYear) document.getElementById('ob-licenseYear').value = P.licenseYear;
+  if (P.department)  document.getElementById('ob-department').value = P.department;
+  if (P.workplaceType) document.getElementById('ob-workplaceType').value = P.workplaceType;
+  if (P.prefecture)  document.getElementById('ob-prefecture').value = P.prefecture;
+  if (P.birthYear)   document.getElementById('ob-birthYear').value = P.birthYear;
+  if (P.medSchool)   document.getElementById('ob-medSchool').value = P.medSchool;
+  if (P.gender) {
+    _obGender = P.gender;
+    document.querySelectorAll('#ob-gender-grp .ob-radio').forEach(r => {
+      const inp = r.querySelector('input');
+      if (inp && inp.value === P.gender) r.classList.add('selected');
+      else r.classList.remove('selected');
+    });
+  }
+}
+
+// オンボーディングオーバーレイが表示されたら事前入力
+const obEl = document.getElementById('onboarding');
+if (obEl) {
+  new MutationObserver(() => {
+    if (obEl.classList.contains('active')) prefillOnboarding();
+  }).observe(obEl, { attributes:true, attributeFilter:['class'] });
+}
+
+async function fetchProfile() {
+  try {
+    const res = await fetch('/profile', {
+      headers: { 'Authorization': 'Bearer ' + authToken }
+    });
+    if (res.ok) {
+      const j = await res.json();
+      userProfile = j.profile;
+      _obState = j.onboardingState || { optionalSkipCount:0, optionalDismissed:false };
+    }
+  } catch(e) {}
+}
+
+/* ═══ KEYBOARD ═══ */
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Enter')return;
+  const active=document.querySelector('.screen.active');
+  if(!active)return;
+  // マイページタブ内のパスワードフォーム
+  if(active.id==='screen-app'&&S.currentTab==='profile'&&pwState.open)doChangePw();
+});
+
+/* ═══ INIT ═══ */
+// リロード後のセッション復元
+// 戦略: localStorage から即復元 → 裏で API 同期（高速＆オフライン対応）
+// ※ ログイン/登録は Worker の LOGIN_HTML が担当。このHTMLは認証済みユーザーのみに配信される。
+(async () => {
+  try {
+    const sess = localStorage.getItem('naika_session');
+    if (!sess) {
+      // セッションなし → Worker のログインページへリダイレクト
+      location.href = '/';
+      return;
+    }
+
+    const { token, username } = JSON.parse(sess);
+    authToken = token;
+    authUser  = username;
+
+    // ① localStorage からデータを即復元（画面を即表示）
+    const lsKey = `naika_data_${username}`;
+    try {
+      const raw = localStorage.getItem(lsKey);
+      if (raw) _applyPayload(JSON.parse(raw));
+    } catch(e) {}
+    _lastSaved = JSON.stringify(_payload());
+    startAutoSave();
+    render();
+
+    // ② プロフィール取得 + オンボーディング判定
+    await fetchProfile();
+    showOnboardingIfNeeded();
+
+    // ②-b クレジット残高取得（バックグラウンド）
+    fetchCredits().then(() => render());
+
+    // ②-c テンプレート生成履歴取得（バックグラウンド）
+    fetchTemplateHistory().then(() => render());
+
+    // ②-d 問題演習スタッツ取得（バックグラウンド）
+    fetchQuizStats().then(() => render());
+
+    // ③ バックグラウンドで API から最新データを同期
+    try {
+      const res = await fetch(`${NAIKA_API_URL}/data`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const j = await res.json();
+        if (j.data) {
+          _applyPayload(j.data);
+          _lastSaved = JSON.stringify(_payload());
+          try { localStorage.setItem(lsKey, _lastSaved); } catch(e) {}
+          render(); // API データで画面を更新
+        }
+      } else if (res.status === 401) {
+        // トークン期限切れ → ログインページへ
+        stopAutoSave();
+        authToken = null; authUser = null;
+        localStorage.removeItem('naika_session');
+        location.href = '/';
+      }
+      // その他のエラー(500等)は無視してローカルデータで継続
+    } catch(e) {
+      // ネットワークエラー → ローカルデータで継続（オフライン対応）
+      console.warn('[NAIKA] API unreachable, using local data');
+    }
+  } catch(e) {
+    location.href = '/';
+  }
+})();
+</script>
+</body>
+</html>
