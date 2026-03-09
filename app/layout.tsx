@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_JP } from 'next/font/google'
 import Image from 'next/image'
+import Link from 'next/link'
 import './globals.css'
-import { siteConfig } from '@/lib/blog-config'
+import { siteConfig, categories } from '@/lib/blog-config'
 import { websiteJsonLd, siteNavigationJsonLd } from '@/lib/seo'
 
 const notoSansJP = Noto_Sans_JP({
@@ -102,7 +103,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-s0 border-b border-br">
       <div className="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image 
             src="/icon.png" 
             alt="内科ナビ" 
@@ -111,11 +112,11 @@ function Header() {
             className="rounded-lg"
           />
           <span className="font-bold text-tx">内科ナビ</span>
-        </a>
+        </Link>
         <nav className="flex items-center gap-2 md:gap-3">
-          <a href="/blog" className="text-sm text-muted hover:text-ac transition-colors hidden md:block">
+          <Link href="/blog" className="text-sm text-muted hover:text-ac transition-colors hidden md:block">
             ブログ
-          </a>
+          </Link>
           <a 
             href="https://naikanavi.booth.pm/items/8058590" 
             target="_blank"
@@ -124,43 +125,94 @@ function Header() {
           >
             購入する
           </a>
-          <a href="/app" className="text-sm bg-ac text-white px-3 py-1.5 rounded-lg hover:bg-ac2 transition-colors font-medium">
+          <Link href="/app" className="text-sm bg-ac text-white px-3 py-1.5 rounded-lg hover:bg-ac2 transition-colors font-medium">
             ログイン
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
   )
 }
 
+// フッターカテゴリグループ（SEO内部リンク強化）
+const footerCategories = [
+  {
+    title: 'J-OSLER',
+    links: [
+      { name: 'J-OSLER基礎', href: '/blog/category/josler-basics' },
+      { name: '症例登録', href: '/blog/category/case-registration' },
+      { name: '病歴要約', href: '/blog/category/medical-history' },
+      { name: '進捗管理', href: '/blog/category/progress-management' },
+    ],
+  },
+  {
+    title: '試験・キャリア',
+    links: [
+      { name: '内科専門医試験', href: '/blog/category/specialist-exam' },
+      { name: 'キャリア', href: '/blog/category/career' },
+      { name: 'AI・ツール', href: '/blog/category/ai-tools' },
+      { name: '学会・論文', href: '/blog/category/academic' },
+    ],
+  },
+  {
+    title: 'お金・生活',
+    links: [
+      { name: 'バイト・収入', href: '/blog/category/part-time' },
+      { name: '税金・節税', href: '/blog/category/tax-saving' },
+      { name: 'メンタル・生活', href: '/blog/category/mental-life' },
+      { name: '結婚・出産', href: '/blog/category/life-events' },
+    ],
+  },
+]
+
 // フッターコンポーネント
 function Footer() {
   return (
     <footer className="bg-s0 border-t border-br mt-16">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Image 
-              src="/icon.png" 
-              alt="内科ナビ" 
-              width={32} 
-              height={32} 
-              className="rounded-lg"
-            />
-            <span className="font-semibold text-tx">内科ナビ</span>
-          </div>
-          <nav className="flex flex-wrap justify-center gap-4 text-sm text-muted">
-            <a href="/blog" className="hover:text-ac">ブログ</a>
-            <a href="https://naikanavi.booth.pm/items/8058590" target="_blank" rel="noopener noreferrer" className="hover:text-ac">購入</a>
-            <a href="/privacy" className="hover:text-ac">プライバシーポリシー</a>
-            <a href="/terms" className="hover:text-ac">利用規約</a>
-            <a href="/tokushoho" className="hover:text-ac">特商法表示</a>
-            <a href="/contact" className="hover:text-ac">お問い合わせ</a>
-          </nav>
+      <div className="max-w-4xl mx-auto px-4 py-10">
+        {/* カテゴリリンク */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+          {footerCategories.map((group) => (
+            <div key={group.title}>
+              <h3 className="text-sm font-semibold text-tx mb-3">{group.title}</h3>
+              <ul className="space-y-2">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-muted hover:text-ac transition-colors">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <p className="text-center text-sm text-muted mt-6">
-          © 2026 内科ナビ. All rights reserved.
-        </p>
+
+        <div className="border-t border-br pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <Link href="/" className="flex items-center gap-2">
+              <Image 
+                src="/icon.png" 
+                alt="内科ナビ" 
+                width={32} 
+                height={32} 
+                className="rounded-lg"
+              />
+              <span className="font-semibold text-tx">内科ナビ</span>
+            </Link>
+            <nav className="flex flex-wrap justify-center gap-4 text-sm text-muted">
+              <Link href="/blog" className="hover:text-ac">ブログ</Link>
+              <a href="https://naikanavi.booth.pm/items/8058590" target="_blank" rel="noopener noreferrer" className="hover:text-ac">購入</a>
+              <Link href="/privacy" className="hover:text-ac">プライバシーポリシー</Link>
+              <Link href="/terms" className="hover:text-ac">利用規約</Link>
+              <Link href="/tokushoho" className="hover:text-ac">特商法表示</Link>
+              <Link href="/contact" className="hover:text-ac">お問い合わせ</Link>
+            </nav>
+          </div>
+          <p className="text-center text-sm text-muted mt-6">
+            © 2026 内科ナビ. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   )
