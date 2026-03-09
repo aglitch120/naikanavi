@@ -49,6 +49,29 @@ input, select { -webkit-appearance: none; appearance: none; }
 .screen{display:none;min-height:100dvh;padding-top:var(--bar)}
 .screen.active{display:block}
 
+/* ═══ LOGIN SCREEN ═══ */
+#login-overlay{z-index:8500}
+#login-overlay .ob-inner{justify-content:center;align-items:center;padding:20px 16px;padding-bottom:calc(20px + var(--sab))}
+.login-card{background:var(--s0);border:1px solid var(--br);border-radius:14px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.07);
+  width:100%;max-width:460px;padding:clamp(28px,5vw,44px);
+  animation:loginFadeUp .32s ease both}
+@keyframes loginFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.login-card .ob-logo{margin-bottom:32px}
+.login-card .ob-title{font-size:clamp(20px,4.5vw,24px);margin-bottom:8px}
+.login-card .ob-sub{margin-bottom:28px}
+.login-card .ob-field{margin-bottom:20px}
+.login-card .ob-input{padding:13px 16px;font-size:16px;border-radius:10px}
+.login-card .ob-btn{padding:15px;font-size:16px;border-radius:10px;margin-top:10px;min-height:50px}
+.login-card .login-divider{border:none;border-top:1px solid var(--br);margin:24px 0}
+.login-card .login-footer{text-align:center;font-size:13px;color:var(--m);line-height:2}
+.login-card .login-footer a{color:var(--ac);cursor:pointer;text-decoration:none;font-weight:500}
+.login-card .login-footer a:hover{text-decoration:underline}
+.login-card .login-legal{text-align:center;font-size:11px;color:#aaa;margin-top:20px;line-height:1.7}
+.login-card .login-legal a{color:#999;text-decoration:underline}
+.login-card .login-legal a:hover{color:var(--ac)}
+@media(min-width:640px){.login-card{padding:44px 48px}}
+
 /* ═══ ONBOARDING ═══ */
 .ob-overlay{position:fixed;inset:0;z-index:9000;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}
 .ob-overlay.active{display:block}
@@ -336,8 +359,8 @@ input, select { -webkit-appearance: none; appearance: none; }
   LOGIN OVERLAY（未ログイン時に表示）
 ═══════════════════════════════════ -->
 <div class="ob-overlay" id="login-overlay">
-<div class="ob-inner" style="justify-content:center;min-height:100dvh">
-<div class="ob-card" style="max-width:440px;margin:0 auto">
+<div class="ob-inner">
+<div class="login-card">
   <div class="ob-logo">
     <div class="ob-logo-mark"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="5" rx="1.5" fill="#fff" opacity="0.4"/><rect x="3" y="9.5" width="18" height="5" rx="1.5" fill="#fff" opacity="0.7"/><rect x="3" y="16" width="18" height="5" rx="1.5" fill="#fff"/></svg></div>
     <div><div style="font-size:12px;font-weight:700;letter-spacing:.07em;color:var(--ac)">NAIKA NAVI</div><div style="font-size:10px;color:var(--m);letter-spacing:.04em;margin-top:2px">内科専門医 取得ナビ</div></div>
@@ -354,11 +377,13 @@ input, select { -webkit-appearance: none; appearance: none; }
     <div class="ob-field"><div class="ob-label">メールアドレス</div><input class="ob-input" type="email" id="auth-un" placeholder="例: taro@example.com" autocomplete="email" autocorrect="off" autocapitalize="none" inputmode="email"></div>
     <div class="ob-field"><div class="ob-label">パスワード</div><input class="ob-input" type="password" id="auth-pw" placeholder="••••••••" autocomplete="current-password"></div>
     <button class="ob-btn" id="auth-login-btn" onclick="authDoLogin()">サインイン</button>
-    <p style="text-align:center;margin-top:12px"><a class="ob-skip" onclick="authShow('reset')">パスワードを忘れた方 →</a></p>
-    <hr style="border:none;border-top:1px solid var(--br);margin:22px 0">
-    <p style="font-size:13px;color:var(--m);text-align:center;line-height:1.9">BOOTHで購入済みの方は<a style="color:var(--ac);cursor:pointer;text-decoration:none" onclick="authShow('register')">アカウント発行 →</a></p>
-    <p style="font-size:13px;color:var(--m);text-align:center;margin-top:6px">まだ購入していない方は<a style="color:var(--ac);text-decoration:none" href="https://naikanavi.booth.pm/items/8058590" target="_blank" rel="noopener">BOOTHで購入 →</a></p>
-    <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px;line-height:1.6"><a href="https://naika-navi.mightyaddnine.workers.dev/terms" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">利用規約</a> ・ <a href="https://naika-navi.mightyaddnine.workers.dev/privacy" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">プライバシーポリシー</a></p>
+    <p style="text-align:center;margin-top:14px"><a class="ob-skip" onclick="authShow('reset')">パスワードを忘れた方 →</a></p>
+    <hr class="login-divider">
+    <div class="login-footer">
+      <p>BOOTHで購入済みの方は<a onclick="authShow('register')">アカウント発行 →</a></p>
+      <p>まだ購入していない方は<a href="https://naikanavi.booth.pm/items/8058590" target="_blank" rel="noopener">BOOTHで購入 →</a></p>
+    </div>
+    <div class="login-legal"><a href="https://naika-navi.mightyaddnine.workers.dev/terms" target="_blank" rel="noopener">利用規約</a> ・ <a href="https://naika-navi.mightyaddnine.workers.dev/privacy" target="_blank" rel="noopener">プライバシーポリシー</a></div>
   </div>
 
   <!-- REGISTER -->
@@ -384,9 +409,9 @@ input, select { -webkit-appearance: none; appearance: none; }
       </div>
       <div class="ob-field"><div class="ob-label">注文番号</div><input class="ob-input" type="text" id="auth-order-no" placeholder="例: 7843210" inputmode="numeric"><div style="font-size:12px;color:var(--m);margin-top:5px">BOOTHからのメールに記載されています</div></div>
       <div class="ob-field"><div class="ob-label">メールアドレス</div><input class="ob-input" type="email" id="auth-reg-un" placeholder="例: taro@example.com" autocorrect="off" autocapitalize="none" inputmode="email"><div style="font-size:12px;color:var(--m);margin-top:5px">ログインに使用します</div></div>
-      <p style="font-size:11px;color:#aaa;text-align:center;margin:8px 0 4px;line-height:1.6">アカウント発行をもって<a href="https://naika-navi.mightyaddnine.workers.dev/terms" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">利用規約</a>および<a href="https://naika-navi.mightyaddnine.workers.dev/privacy" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">プライバシーポリシー</a>に同意したものとみなされます</p>
+      <div class="login-legal" style="margin:8px 0 4px">アカウント発行をもって<a href="https://naika-navi.mightyaddnine.workers.dev/terms" target="_blank" rel="noopener">利用規約</a>および<a href="https://naika-navi.mightyaddnine.workers.dev/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>に同意したものとみなされます</div>
       <button class="ob-btn" id="auth-reg-btn" onclick="authDoRegister()">アカウントを発行する</button>
-      <hr style="border:none;border-top:1px solid var(--br);margin:22px 0">
+      <hr class="login-divider">
       <p style="text-align:center"><a style="color:var(--ac);cursor:pointer;text-decoration:none;font-size:13px" onclick="authShow('login')">← ログインに戻る</a></p>
     </div>
     <div id="auth-reg-done" style="display:none;text-align:center">
@@ -412,7 +437,7 @@ input, select { -webkit-appearance: none; appearance: none; }
       <div class="ob-field"><div class="ob-label">メールアドレス</div><input class="ob-input" type="email" id="auth-reset-email" placeholder="登録時のメールアドレス" autocomplete="email" inputmode="email"></div>
       <div class="ob-field"><div class="ob-label">注文番号</div><input class="ob-input" type="text" id="auth-reset-order" placeholder="BOOTHの注文番号" inputmode="numeric"></div>
       <button class="ob-btn" id="auth-reset-btn" onclick="authDoReset()">パスワードを再発行する</button>
-      <hr style="border:none;border-top:1px solid var(--br);margin:22px 0">
+      <hr class="login-divider">
       <p style="text-align:center"><a style="color:var(--ac);cursor:pointer;text-decoration:none;font-size:13px" onclick="authShow('login')">← ログインに戻る</a></p>
     </div>
     <div id="auth-reset-done" style="display:none;text-align:center">
