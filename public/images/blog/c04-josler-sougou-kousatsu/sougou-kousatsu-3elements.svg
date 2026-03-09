@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B4F3A"/>
+      <stop offset="100%" stop-color="#1E3A5F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+
+  <!-- Header -->
+  <rect x="24" y="20" width="752" height="52" rx="12" fill="url(#headerGrad)"/>
+  <text x="400" y="53" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">総合考察の「黄金の3要素」</text>
+
+  <!-- Element 1: 医学的考察 -->
+  <rect x="24" y="92" width="240" height="280" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="24" y="92" width="240" height="44" rx="12" fill="#1E3A5F"/>
+  <rect x="24" y="120" width="240" height="16" fill="#1E3A5F"/>
+  <!-- アイコン：聴診器 -->
+  <circle cx="52" cy="114" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <circle cx="52" cy="110" r="5" fill="none" stroke="#FEFEFC" stroke-width="1.5"/>
+  <line x1="52" y1="115" x2="52" y2="122" stroke="#FEFEFC" stroke-width="1.5"/>
+  <text x="76" y="119" fill="#FEFEFC" font-size="15" font-weight="700">1. 医学的考察</text>
+  <!-- 内容 -->
+  <text x="44" y="158" fill="#1A1917" font-size="12" font-weight="700">診断・治療の妥当性</text>
+  <text x="44" y="180" fill="#6B6760" font-size="11">• 鑑別診断のプロセス</text>
+  <text x="44" y="200" fill="#6B6760" font-size="11">• 治療選択の根拠</text>
+  <text x="44" y="220" fill="#6B6760" font-size="11">• EBMに基づく引用</text>
+  <text x="44" y="240" fill="#6B6760" font-size="11">• ガイドラインとの整合性</text>
+  <!-- バッジ -->
+  <rect x="44" y="264" width="200" height="32" rx="8" fill="#E8F0EC"/>
+  <text x="144" y="284" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="700">文献引用が必須</text>
+  <!-- 割合 -->
+  <rect x="44" y="308" width="200" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="44" y="308" width="100" height="8" rx="4" fill="#1E3A5F"/>
+  <text x="44" y="332" fill="#6B6760" font-size="10">全体の約50%</text>
+
+  <!-- Arrow 1→2 -->
+  <text x="278" y="230" fill="#1B4F3A" font-size="24" font-weight="700">+</text>
+
+  <!-- Element 2: 全人的考察 -->
+  <rect x="300" y="92" width="240" height="280" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="300" y="92" width="240" height="44" rx="12" fill="#1B4F3A"/>
+  <rect x="300" y="120" width="240" height="16" fill="#1B4F3A"/>
+  <!-- アイコン：ハート+人 -->
+  <circle cx="328" cy="114" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <circle cx="328" cy="108" r="4" fill="none" stroke="#FEFEFC" stroke-width="1.5"/>
+  <line x1="328" y1="112" x2="328" y2="120" stroke="#FEFEFC" stroke-width="1.5"/>
+  <text x="352" y="119" fill="#FEFEFC" font-size="15" font-weight="700">2. 全人的考察</text>
+  <!-- 内容 -->
+  <text x="320" y="158" fill="#1A1917" font-size="12" font-weight="700">患者の背景への配慮</text>
+  <text x="320" y="180" fill="#6B6760" font-size="11">• 社会的背景（職業・家族）</text>
+  <text x="320" y="200" fill="#6B6760" font-size="11">• 心理的側面（不安・希望）</text>
+  <text x="320" y="220" fill="#6B6760" font-size="11">• 患者の意向・価値観</text>
+  <text x="320" y="240" fill="#6B6760" font-size="11">• 多職種連携・退院後の生活</text>
+  <!-- バッジ -->
+  <rect x="320" y="264" width="200" height="32" rx="8" fill="#E8F0EC"/>
+  <text x="420" y="284" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="700">Accept・Reject を分ける鍵</text>
+  <!-- 割合 -->
+  <rect x="320" y="308" width="200" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="320" y="308" width="70" height="8" rx="4" fill="#1B4F3A"/>
+  <text x="320" y="332" fill="#6B6760" font-size="10">全体の約35%</text>
+
+  <!-- Arrow 2→3 -->
+  <text x="554" y="230" fill="#1B4F3A" font-size="24" font-weight="700">+</text>
+
+  <!-- Element 3: 自己省察 -->
+  <rect x="576" y="92" width="200" height="280" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="576" y="92" width="200" height="44" rx="12" fill="#3D5A80"/>
+  <rect x="576" y="120" width="200" height="16" fill="#3D5A80"/>
+  <!-- アイコン：電球 -->
+  <circle cx="604" cy="114" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <circle cx="604" cy="110" r="5" fill="none" stroke="#FEFEFC" stroke-width="1.5"/>
+  <line x1="601" y1="118" x2="607" y2="118" stroke="#FEFEFC" stroke-width="1.5"/>
+  <text x="628" y="119" fill="#FEFEFC" font-size="15" font-weight="700">3. 自己省察</text>
+  <!-- 内容 -->
+  <text x="596" y="158" fill="#1A1917" font-size="12" font-weight="700">学びと今後の展望</text>
+  <text x="596" y="180" fill="#6B6760" font-size="11">• 症例から得た学び</text>
+  <text x="596" y="200" fill="#6B6760" font-size="11">• 今後の臨床への活かし方</text>
+  <text x="596" y="220" fill="#6B6760" font-size="11">• 改善すべき点の認識</text>
+  <text x="596" y="240" fill="#6B6760" font-size="11">• 成長の証としての記述</text>
+  <!-- バッジ -->
+  <rect x="596" y="264" width="160" height="32" rx="8" fill="#E8F0EC"/>
+  <text x="676" y="284" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="700">締めくくりに1〜2文</text>
+  <!-- 割合 -->
+  <rect x="596" y="308" width="160" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="596" y="308" width="24" height="8" rx="4" fill="#3D5A80"/>
+  <text x="596" y="332" fill="#6B6760" font-size="10">全体の約15%</text>
+
+  <!-- Footer -->
+  <rect x="24" y="392" width="752" height="32" rx="8" fill="#E8F0EC"/>
+  <text x="400" y="413" text-anchor="middle" fill="#1B4F3A" font-size="12" font-weight="700">この3要素を組み合わせることで、査読委員に「しっかり書けている」と思わせる総合考察が完成する</text>
+
+  <!-- Copyright -->
+  <text x="776" y="436" text-anchor="end" fill="#C8C4BC" font-size="9">© 内科ナビ naikanavi.com</text>
+</svg>

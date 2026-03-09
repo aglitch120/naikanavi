@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" rx="16" fill="#F5F4F0"/>
+
+  <!-- Header -->
+  <rect x="24" y="20" width="752" height="52" rx="12" fill="#1B4F3A"/>
+  <text x="400" y="53" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">全人的視点で書くべき4つの軸</text>
+
+  <!-- Center circle -->
+  <circle cx="400" cy="228" r="52" fill="#1B4F3A" opacity="0.1"/>
+  <text x="400" y="222" text-anchor="middle" fill="#1B4F3A" font-size="13" font-weight="700">全人的</text>
+  <text x="400" y="240" text-anchor="middle" fill="#1B4F3A" font-size="13" font-weight="700">視点</text>
+
+  <!-- Card 1: 社会的背景 (top-left) -->
+  <rect x="40" y="92" width="280" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="56" y="104" width="28" height="28" rx="6" fill="#1E3A5F"/>
+  <!-- ビルアイコン -->
+  <rect x="64" y="112" width="12" height="14" rx="1" fill="#FEFEFC"/>
+  <rect x="66" y="114" width="3" height="3" fill="#1E3A5F"/>
+  <rect x="71" y="114" width="3" height="3" fill="#1E3A5F"/>
+  <rect x="66" y="119" width="3" height="3" fill="#1E3A5F"/>
+  <text x="96" y="122" fill="#1A1917" font-size="15" font-weight="700">社会的背景</text>
+  <text x="56" y="152" fill="#6B6760" font-size="11">職業・就労状況、家族構成、</text>
+  <text x="56" y="168" fill="#6B6760" font-size="11">経済状況、住環境、介護負担</text>
+  <rect x="56" y="180" width="248" height="20" rx="4" fill="#E8F0EC"/>
+  <text x="180" y="194" text-anchor="middle" fill="#1B4F3A" font-size="10" font-weight="700">例：「二人の子を持つ専業主婦で...」</text>
+  <!-- 矢印 -->
+  <line x1="320" y1="152" x2="352" y2="195" stroke="#1B4F3A" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Card 2: 心理的側面 (top-right) -->
+  <rect x="480" y="92" width="280" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="496" y="104" width="28" height="28" rx="6" fill="#1B4F3A"/>
+  <!-- ハートアイコン -->
+  <path d="M506,115 C506,112 509,110 511,112 C513,110 516,112 516,115 C516,118 511,121 511,121 C511,121 506,118 506,115Z" fill="#FEFEFC"/>
+  <text x="536" y="122" fill="#1A1917" font-size="15" font-weight="700">心理的側面</text>
+  <text x="496" y="152" fill="#6B6760" font-size="11">患者の不安・恐怖、治療への意欲、</text>
+  <text x="496" y="168" fill="#6B6760" font-size="11">疾患受容の程度、精神的サポート</text>
+  <rect x="496" y="180" width="248" height="20" rx="4" fill="#E8F0EC"/>
+  <text x="620" y="194" text-anchor="middle" fill="#1B4F3A" font-size="10" font-weight="700">例：「本人は治療に消極的で...」</text>
+  <!-- 矢印 -->
+  <line x1="480" y1="152" x2="448" y2="195" stroke="#1B4F3A" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Card 3: 退院後の生活 (bottom-left) -->
+  <rect x="40" y="252" width="280" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="56" y="264" width="28" height="28" rx="6" fill="#3D5A80"/>
+  <!-- 家アイコン -->
+  <polygon points="70,270 78,276 62,276" fill="#FEFEFC"/>
+  <rect x="65" y="276" width="10" height="8" fill="#FEFEFC"/>
+  <text x="96" y="282" fill="#1A1917" font-size="15" font-weight="700">退院後の生活</text>
+  <text x="56" y="312" fill="#6B6760" font-size="11">療養環境の調整、多職種連携、</text>
+  <text x="56" y="328" fill="#6B6760" font-size="11">服薬管理、外来フォロー計画</text>
+  <rect x="56" y="340" width="248" height="20" rx="4" fill="#E8F0EC"/>
+  <text x="180" y="354" text-anchor="middle" fill="#1B4F3A" font-size="10" font-weight="700">例：「退院後は訪問看護を導入し...」</text>
+  <!-- 矢印 -->
+  <line x1="320" y1="305" x2="352" y2="260" stroke="#1B4F3A" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Card 4: 患者の意向 (bottom-right) -->
+  <rect x="480" y="252" width="280" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="496" y="264" width="28" height="28" rx="6" fill="#2D6A4F"/>
+  <!-- 吹き出しアイコン -->
+  <rect x="502" y="270" width="16" height="10" rx="3" fill="#FEFEFC"/>
+  <polygon points="508,280 510,284 512,280" fill="#FEFEFC"/>
+  <text x="536" y="282" fill="#1A1917" font-size="15" font-weight="700">患者の意向</text>
+  <text x="496" y="312" fill="#6B6760" font-size="11">治療方針への希望、QOL優先度、</text>
+  <text x="496" y="328" fill="#6B6760" font-size="11">SDM（共同意思決定）の実践</text>
+  <rect x="496" y="340" width="248" height="20" rx="4" fill="#E8F0EC"/>
+  <text x="620" y="354" text-anchor="middle" fill="#1B4F3A" font-size="10" font-weight="700">例：「化学療法の継続を希望され...」</text>
+  <!-- 矢印 -->
+  <line x1="480" y1="305" x2="448" y2="260" stroke="#1B4F3A" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Copyright -->
+  <text x="776" y="396" text-anchor="end" fill="#C8C4BC" font-size="9">© 内科ナビ naikanavi.com</text>
+</svg>
