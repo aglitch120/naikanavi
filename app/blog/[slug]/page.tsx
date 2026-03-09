@@ -186,12 +186,13 @@ export default async function ArticlePage({ params }: Props) {
             <h3 className="text-sm font-semibold text-muted mb-3">タグ</h3>
             <div className="flex flex-wrap gap-2">
               {frontmatter.tags.map((tag) => (
-                <span
+                <Link
                   key={tag}
-                  className="text-xs bg-s1 text-muted px-3 py-1.5 rounded-full cursor-default select-none"
+                  href={`/blog/tag/${encodeURIComponent(tag)}`}
+                  className="text-xs bg-s1 text-muted px-3 py-1.5 rounded-full hover:bg-acl hover:text-ac transition-colors"
                 >
                   {tag}
-                </span>
+                </Link>
               ))}
             </div>
           </div>

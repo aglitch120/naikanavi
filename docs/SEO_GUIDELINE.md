@@ -448,9 +448,10 @@ seo_checked: true
 - 公開前にプレビューで太字が正しくレンダリングされているか確認
 
 ### 11.15 タグ
-- 現状タグページは未実装のため、タグはリンクにしない（`<span>`）
-- `cursor-default select-none` で非リンク明示
-- 将来 `/blog/tag/[tag]` 実装時にLinkに変更
+- `/blog/tag/[tag]` でタグページ実装済み（2026-03-10）
+- 記事ページのタグは `<Link>` でタグページへ遷移
+- ホバー時に `bg-acl text-ac` でインタラクション表示
+- `generateStaticParams` で全タグをSSG対応
 
 ### 11.16 Edge Runtimeファイルの日本語制限
 - `opengraph-image.tsx` 等 `export const runtime = 'edge'` を含むファイルでは、**オブジェクトキーにASCII文字のみ使用**（esbuildが中黒 `・` 等のUnicodeキーをパースできないため）
