@@ -92,8 +92,14 @@ export default function CTABanner({ cta, variant = 'inline' }: Props) {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
           }
+          @keyframes ctaBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+          }
           .cta-float { animation: ctaFloat 0.6s ease-out both; }
+          .cta-float:hover { animation: ctaBob 2.4s ease-in-out infinite; }
           .cta-float-inline { animation: ctaFloat 0.4s ease-out both; }
+          .cta-float-inline:hover { animation: ctaBob 2s ease-in-out infinite; }
         `}</style>
         <div className="cta-float relative bg-ac rounded-2xl p-6 md:p-8 lg:p-10 my-10 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
