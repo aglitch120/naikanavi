@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="'Noto Sans JP', sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="480" rx="16" fill="#F5F4F0"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#1A1917" font-size="18" font-weight="bold">J-OSLER 修了要件 6つの柱</text>
+  <text x="400" y="60" text-anchor="middle" fill="#6B6760" font-size="11">7期生（2024年度研修開始）以降の要件</text>
+
+  <!-- Card 1: 症例経験 -->
+  <rect x="30" y="80" width="230" height="140" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="30" y="80" width="230" height="4" rx="2" fill="#1B4F3A"/>
+  <text x="56" y="108" fill="#1B4F3A" font-size="20">&#x1F4CB;</text>
+  <text x="80" y="110" fill="#1A1917" font-size="14" font-weight="bold">1. 症例経験</text>
+  <text x="46" y="134" fill="#6B6760" font-size="11">120症例以上の登録・承認</text>
+  <text x="46" y="152" fill="#6B6760" font-size="11">56疾患群以上の経験</text>
+  <text x="46" y="170" fill="#6B6760" font-size="11">各領域で最低症例数あり</text>
+  <rect x="46" y="185" width="80" height="22" rx="11" fill="#E8F0EC"/>
+  <text x="86" y="200" text-anchor="middle" fill="#1B4F3A" font-size="10" font-weight="bold">最重要</text>
+
+  <!-- Card 2: 病歴要約 -->
+  <rect x="285" y="80" width="230" height="140" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="285" y="80" width="230" height="4" rx="2" fill="#1B4F3A"/>
+  <text x="311" y="108" fill="#1B4F3A" font-size="20">&#x1F4DD;</text>
+  <text x="335" y="110" fill="#1A1917" font-size="14" font-weight="bold">2. 病歴要約</text>
+  <text x="301" y="134" fill="#6B6760" font-size="11">29編の作成・提出</text>
+  <text x="301" y="152" fill="#6B6760" font-size="11">全て異なる疾患群から</text>
+  <text x="301" y="170" fill="#6B6760" font-size="11">一次・二次評価でAccept</text>
+  <rect x="301" y="185" width="80" height="22" rx="11" fill="#FEF3C7"/>
+  <text x="341" y="200" text-anchor="middle" fill="#92400E" font-size="10" font-weight="bold">最難関</text>
+
+  <!-- Card 3: 学術活動 -->
+  <rect x="540" y="80" width="230" height="140" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="540" y="80" width="230" height="4" rx="2" fill="#3D5A80"/>
+  <text x="566" y="108" fill="#3D5A80" font-size="20">&#x1F393;</text>
+  <text x="590" y="110" fill="#1A1917" font-size="14" font-weight="bold">3. 学術活動</text>
+  <text x="556" y="134" fill="#6B6760" font-size="11">学会参加 年2回以上</text>
+  <text x="556" y="152" fill="#6B6760" font-size="11">筆頭で学会発表/論文 2件以上</text>
+  <text x="556" y="170" fill="#6B6760" font-size="11">症例報告・臨床/基礎研究</text>
+
+  <!-- Card 4: JMECC -->
+  <rect x="30" y="250" width="230" height="130" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="30" y="250" width="230" height="4" rx="2" fill="#7F1D1D"/>
+  <text x="56" y="278" fill="#7F1D1D" font-size="20">&#x1F6D1;</text>
+  <text x="80" y="280" fill="#1A1917" font-size="14" font-weight="bold">4. JMECC受講</text>
+  <text x="46" y="304" fill="#6B6760" font-size="11">内科救急講習会の受講</text>
+  <text x="46" y="322" fill="#6B6760" font-size="11">シミュレーション研修</text>
+  <text x="46" y="340" fill="#6B6760" font-size="11">チーム医療トレーニング</text>
+
+  <!-- Card 5: 講習会 -->
+  <rect x="285" y="250" width="230" height="130" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="285" y="250" width="230" height="4" rx="2" fill="#4338CA"/>
+  <text x="311" y="278" fill="#4338CA" font-size="20">&#x1F4DA;</text>
+  <text x="335" y="280" fill="#1A1917" font-size="14" font-weight="bold">5. 講習会受講</text>
+  <text x="301" y="304" fill="#6B6760" font-size="11">医療倫理・医療安全・感染対策</text>
+  <text x="301" y="322" fill="#6B6760" font-size="11">年2回以上の受講</text>
+  <text x="301" y="340" fill="#6B6760" font-size="11">e-Learningでも受講可</text>
+
+  <!-- Card 6: 適性評価 -->
+  <rect x="540" y="250" width="230" height="130" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <rect x="540" y="250" width="230" height="4" rx="2" fill="#134E4A"/>
+  <text x="566" y="278" fill="#134E4A" font-size="20">&#x1F465;</text>
+  <text x="590" y="280" fill="#1A1917" font-size="14" font-weight="bold">6. 医師としての適性</text>
+  <text x="556" y="304" fill="#6B6760" font-size="11">360度評価（多職種評価）</text>
+  <text x="556" y="322" fill="#6B6760" font-size="11">無記名方式・複数職種</text>
+  <text x="556" y="340" fill="#6B6760" font-size="11">指導医がJ-OSLERに登録</text>
+
+  <!-- Bottom note -->
+  <rect x="30" y="410" width="740" height="44" rx="10" fill="#E8F0EC"/>
+  <text x="400" y="430" text-anchor="middle" fill="#1B4F3A" font-size="12" font-weight="bold">6つの要件をすべて満たし、プログラム統括責任者の承認を得ることで修了認定</text>
+  <text x="400" y="446" text-anchor="middle" fill="#6B6760" font-size="10">修了認定後に内科専門医試験の受験資格を得る</text>
+
+  <!-- Footer -->
+  <text x="770" y="472" text-anchor="end" fill="#C8C4BC" font-size="9">&copy; 内科ナビ naikanavi.com</text>
+</svg>
