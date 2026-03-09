@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getPostBySlug, getAllPostSlugs, getRelatedPosts } from '@/lib/mdx'
+import { getPostBySlug, getAllPostSlugs, getRelatedPosts, compileMDXContent } from '@/lib/mdx'
 import { categories, ctaConfig } from '@/lib/blog-config'
 import { generateMetadata as genMeta, generateArticleJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
@@ -47,6 +47,9 @@ export default async function ArticlePage({ params }: Props) {
   const category = categories[frontmatter.category]
   const relatedPosts = getRelatedPosts(slug, 3)
   const cta = ctaConfig[frontmatter.cta_type]
+  
+  // MDXをコンパイル
+  const MDXContent = await compileMDXContent(content)
   
   // 構造化データ
   const articleJsonLd = generateArticleJsonLd({
@@ -136,8 +139,7 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* 本文 */}
         <div className="prose max-w-none">
-          {/* MDXコンテンツはここに挿入される */}
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+          {MDXContent}
         </div>
 
         {/* 末尾CTA */}
