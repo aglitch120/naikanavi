@@ -87,6 +87,19 @@ export default async function ArticlePage({ params }: Props) {
       <ReadingProgress />
       
       <article>
+        {/* アイキャッチ画像（OGP画像を流用） */}
+        <div className="mb-6 rounded-xl overflow-hidden bg-s1">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/blog/${slug}/opengraph-image`}
+            alt={frontmatter.title}
+            width={1200}
+            height={630}
+            className="w-full h-auto"
+            loading="eager"
+          />
+        </div>
+
         {/* パンくず */}
         <nav className="text-sm text-muted mb-6">
           <Link href="/" className="hover:text-ac">ホーム</Link>
@@ -140,19 +153,6 @@ export default async function ArticlePage({ params }: Props) {
             )}
           </div>
         </header>
-
-        {/* アイキャッチ画像（OGP画像を流用） */}
-        <div className="mb-6 rounded-xl overflow-hidden bg-s1">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`/blog/${slug}/opengraph-image`}
-            alt={frontmatter.title}
-            width={1200}
-            height={630}
-            className="w-full h-auto"
-            loading="eager"
-          />
-        </div>
 
         {/* 冒頭CTA */}
         <CTABanner cta={cta} variant="inline" />
