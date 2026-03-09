@@ -259,3 +259,21 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
 - [ ] Claude API連携（記事生成）
 - [ ] 自動リライト提案
 - [ ] 定期SEO監査
+
+---
+
+## ⚠️ 既知の問題・再発防止メモ
+
+### Cloudflare Pages + esbuild 日本語キーエラー（2026-03-09 発生・解決済）
+
+**症状**: `@cloudflare/next-on-pages` のビルドで `Unexpected character '・' (23:50999)` エラー。Next.jsビルド自体は成功するが、esbuildバンドリング段階で失敗。
+
+**原因**: Edge Runtime (`export const runtime = 'edge'`) を使用するファイル（`opengraph-image.tsx`）内で、TypeScriptオブジェクトのキーに日本語（特に中黒 `・`）を使用していた。esbuildがUnicodeリテラルをオブジェクトキーとしてパースできなかった。
+
+**対策**: Edge Runtimeファイル内では、オブジェクトキーに必ずASCII文字のみを使用する。日本語の表示が必要な場合は、ASCIIキー → 日本語値のマッピング関数を別途用意する。
+
+**ルール**:
+- `app/blog/[slug]/opengraph-image.tsx` 等の `runtime = 'edge'` ファイルでは、オブジェクトキーにASCIIのみ使用
+- 値（value）に日本語を使うのはOK（title, subtitle等）
+- 新たにEdge Runtimeファイルを作成する場合も同様のルールを適用
+
