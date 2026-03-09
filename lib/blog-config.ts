@@ -1,65 +1,68 @@
-// カテゴリ定義
+// カテゴリ定義（クラスターA-R: SEO_GUIDELINE.md・キーワードリスト準拠）
 export const categories = {
   'josler-basics': { name: 'J-OSLER基礎', cluster: 'A' },
-  'case-registration': { name: '症例登録', cluster: 'C' },
-  'medical-history': { name: '病歴要約', cluster: 'B' },
-  'disease-specific': { name: '疾患別病歴要約', cluster: 'B' },
-  'progress-management': { name: '進捗管理', cluster: 'D' },
-  'jmecc-training': { name: 'JMECC・講習', cluster: 'A' },
-  'specialist-exam': { name: '内科専門医試験', cluster: 'E' },
-  'exam-by-field': { name: '試験領域別', cluster: 'E' },
-  'comprehensive-exam': { name: '総合内科専門医', cluster: 'E' },
+  'case-registration': { name: '症例登録', cluster: 'B' },
+  'medical-history': { name: '病歴要約', cluster: 'C' },
+  'disease-specific': { name: '疾患別病歴要約', cluster: 'D' },
+  'progress-management': { name: '進捗管理', cluster: 'E' },
+  'jmecc-training': { name: 'JMECC・講習', cluster: 'F' },
+  'specialist-exam': { name: '内科専門医試験', cluster: 'G' },
+  'exam-by-field': { name: '試験領域別', cluster: 'H' },
+  'comprehensive-exam': { name: '総合内科専門医', cluster: 'I' },
   'ai-tools': { name: 'AI・ツール', cluster: 'J' },
-  'mental-life': { name: 'メンタル・生活', cluster: 'I' },
-  'part-time': { name: 'バイト・収入', cluster: 'F' },
-  'tax-saving': { name: '税金・節税', cluster: 'G' },
-  'career': { name: 'キャリア', cluster: 'J' },
-  'academic': { name: '学会・論文', cluster: 'K' },
-  'life-events': { name: '結婚・出産', cluster: 'H' },
-  'subspecialty': { name: 'サブスペJ-OSLER', cluster: 'A' },
-  'others': { name: 'その他', cluster: 'A' },
+  'mental-life': { name: 'メンタル・生活', cluster: 'K' },
+  'part-time': { name: 'バイト・収入', cluster: 'L' },
+  'tax-saving': { name: '税金・節税', cluster: 'M' },
+  'career': { name: 'キャリア', cluster: 'N' },
+  'academic': { name: '学会・論文', cluster: 'O' },
+  'life-events': { name: '結婚・出産', cluster: 'P' },
+  'subspecialty': { name: 'サブスペJ-OSLER', cluster: 'Q' },
+  'others': { name: 'その他', cluster: 'R' },
 } as const
 
 export type CategorySlug = keyof typeof categories
 
-// クラスターカラー
+// クラスターカラー（A-R: SEO_GUIDELINE.md・キーワードリスト準拠）
 export const clusterColors = {
   A: { bg: '#1E3A5F', name: 'J-OSLER基礎' },
-  B: { bg: '#1B4F3A', name: '病歴要約' },
-  C: { bg: '#3D5A80', name: '症例登録' },
-  D: { bg: '#2D6A4F', name: '進捗管理' },
-  E: { bg: '#7F1D1D', name: '試験対策' },
-  F: { bg: '#4C1D95', name: 'バイト' },
-  G: { bg: '#92400E', name: '確定申告' },
-  H: { bg: '#9D174D', name: '結婚' },
-  I: { bg: '#134E4A', name: 'メンタル' },
-  J: { bg: '#4338CA', name: 'キャリア' },
-  K: { bg: '#6D28D9', name: '学会' },
+  B: { bg: '#3D5A80', name: '症例登録' },
+  C: { bg: '#1B4F3A', name: '病歴要約' },
+  D: { bg: '#2D6A4F', name: '疾患別病歴要約' },
+  E: { bg: '#0D7377', name: '進捗管理' },
+  F: { bg: '#4A5568', name: 'JMECC・講習' },
+  G: { bg: '#7F1D1D', name: '内科専門医試験' },
+  H: { bg: '#9B2C2C', name: '試験領域別' },
+  I: { bg: '#B7410E', name: '総合内科専門医' },
+  J: { bg: '#4338CA', name: 'AI・ツール' },
+  K: { bg: '#134E4A', name: 'メンタル・生活' },
+  L: { bg: '#4C1D95', name: 'バイト・収入' },
+  M: { bg: '#92400E', name: '税金・節税' },
+  N: { bg: '#2B6CB0', name: 'キャリア' },
+  O: { bg: '#6D28D9', name: '学会・論文' },
+  P: { bg: '#9D174D', name: '結婚・出産' },
+  Q: { bg: '#5B6ABF', name: 'サブスペJ-OSLER' },
+  R: { bg: '#6B6760', name: 'その他' },
 } as const
 
 export type ClusterId = keyof typeof clusterColors
 
-// ピラーページ定義
+// ピラーページ定義（SEO_GUIDELINE.md クラスター構成図準拠）
 export const pillarPages = {
   'josler-complete-guide': {
     title: 'J-OSLER完全攻略ガイド',
-    clusters: ['A', 'B', 'C', 'D'],
+    clusters: ['A', 'B', 'C', 'D', 'E', 'F'],
   },
   'exam-preparation-guide': {
-    title: '内科専門医試験 合格マニュアル',
-    clusters: ['E', 'K'],
+    title: '内科専門医試験対策ガイド',
+    clusters: ['G', 'H', 'I'],
   },
-  'money-guide': {
-    title: '専攻医のお金完全ガイド',
-    clusters: ['F', 'G'],
-  },
-  'lifehack-guide': {
-    title: '専攻医ライフハック大全',
-    clusters: ['H', 'I'],
-  },
-  'career-guide': {
-    title: 'キャリア設計完全ロードマップ',
+  'efficiency-guide': {
+    title: '内科専攻医の効率化ガイド',
     clusters: ['J'],
+  },
+  'money-career-guide': {
+    title: '内科専攻医のお金とキャリア',
+    clusters: ['K', 'L', 'M', 'N', 'O', 'P'],
   },
 } as const
 
