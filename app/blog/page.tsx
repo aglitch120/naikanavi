@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/mdx'
 import { categories } from '@/lib/blog-config'
-import { generateMetadata as genMeta } from '@/lib/seo'
+import { generateMetadata as genMeta, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 
 export const metadata: Metadata = genMeta({
@@ -11,11 +11,20 @@ export const metadata: Metadata = genMeta({
   path: '/blog',
 })
 
+const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+  { name: 'ホーム', url: 'https://naikanavi.com' },
+  { name: 'ブログ', url: 'https://naikanavi.com/blog' },
+])
+
 export default function BlogPage() {
   const posts = getAllPosts()
   
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* パンくず */}
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-ac">ホーム</Link>

@@ -58,6 +58,13 @@ export const metadata: Metadata = {
     icon: '/icon.png',
     apple: '/icon.png',
   },
+  alternates: {
+    canonical: siteConfig.url,
+    languages: {
+      'ja': siteConfig.url,
+      'x-default': siteConfig.url,
+    },
+  },
 }
 
 export default function RootLayout({

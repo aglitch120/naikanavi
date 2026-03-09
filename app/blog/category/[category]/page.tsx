@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostsByCategory } from '@/lib/mdx'
 import { categories, type CategorySlug } from '@/lib/blog-config'
-import { generateMetadata as genMeta } from '@/lib/seo'
+import { generateMetadata as genMeta, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 
 interface Props {
@@ -39,8 +39,18 @@ export default async function CategoryPage({ params }: Props) {
   
   const posts = getPostsByCategory(category as CategorySlug)
   
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: 'ホーム', url: 'https://naikanavi.com' },
+    { name: 'ブログ', url: 'https://naikanavi.com/blog' },
+    { name: categoryData.name, url: `https://naikanavi.com/blog/category/${category}` },
+  ])
+  
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* パンくず */}
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-ac">ホーム</Link>
