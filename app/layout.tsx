@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from 'next/font/google'
 import Image from 'next/image'
 import './globals.css'
 import { siteConfig } from '@/lib/blog-config'
+import { websiteJsonLd, siteNavigationJsonLd } from '@/lib/seo'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -70,6 +71,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(siteNavigationJsonLd),
           }}
         />
       </head>

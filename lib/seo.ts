@@ -134,3 +134,108 @@ export const organizationJsonLd = {
     // SNSリンクがあれば追加
   ],
 }
+
+// WebSite + SearchAction構造化データ（サイト全体）
+export const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.name,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  inLanguage: 'ja',
+  publisher: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+  },
+}
+
+// SiteNavigationElement構造化データ
+export const siteNavigationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SiteNavigationElement',
+  name: [
+    'ブログ',
+    '購入する',
+    'プライバシーポリシー',
+    '利用規約',
+    '特商法表示',
+    'お問い合わせ',
+  ],
+  url: [
+    `${siteConfig.url}/blog`,
+    'https://naikanavi.booth.pm/items/8058590',
+    `${siteConfig.url}/privacy`,
+    `${siteConfig.url}/terms`,
+    `${siteConfig.url}/tokushoho`,
+    `${siteConfig.url}/contact`,
+  ],
+}
+
+// MedicalWebPage構造化データ（医療系記事用）
+export function generateMedicalArticleJsonLd({
+  title,
+  description,
+  slug,
+  date,
+  updated,
+  author,
+  ogImage,
+}: {
+  title: string
+  description: string
+  slug: string
+  date: string
+  updated?: string
+  author: string
+  ogImage?: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    headline: title,
+    description,
+    image: ogImage || siteConfig.ogImage,
+    author: {
+      '@type': 'Person',
+      name: author,
+      jobTitle: '医師',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/logo.png`,
+      },
+    },
+    datePublished: date,
+    dateModified: updated || date,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/blog/${slug}`,
+    },
+    inLanguage: 'ja',
+    audience: {
+      '@type': 'MedicalAudience',
+      audienceType: '内科専攻医',
+    },
+  }
+}
+
+// FAQPage構造化データ生成
+export function generateFAQJsonLd(
+  faqs: { question: string; answer: string }[]
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+}
