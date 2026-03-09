@@ -124,6 +124,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'テンプレートと自己省察の例文付き',
       category: 'case-registration',
     },
+    'c02-josler-byoreki-youyaku-template': {
+      title: '病歴要約テンプレート',
+      subtitle: '項目別の書き方と入力のコツ',
+      category: 'medical-history',
+    },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',
