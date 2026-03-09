@@ -25,7 +25,7 @@ export default function HomePage() {
             ブログを読む
           </Link>
           <a
-            href="/demo_v14_app.html"
+            href="/app.html"
             className="bg-s0 text-ac border border-br px-6 py-3 rounded-lg font-medium hover:bg-acl hover:border-ac transition-colors"
           >
             アプリを使う
@@ -82,7 +82,7 @@ export default function HomePage() {
             内科専攻医に必要なツールをすべて無料で提供しています。
           </p>
           <a
-            href="/demo_v14_app.html"
+            href="/app.html"
             className="inline-block bg-ac text-white px-8 py-3 rounded-lg font-medium hover:bg-ac2 transition-colors"
           >
             無料で始める
