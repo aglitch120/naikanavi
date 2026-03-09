@@ -452,3 +452,8 @@ seo_checked: true
 - `cursor-default select-none` で非リンク明示
 - 将来 `/blog/tag/[tag]` 実装時にLinkに変更
 
+### 11.16 Edge Runtimeファイルの日本語制限
+- `opengraph-image.tsx` 等 `export const runtime = 'edge'` を含むファイルでは、**オブジェクトキーにASCII文字のみ使用**（esbuildが中黒 `・` 等のUnicodeキーをパースできないため）
+- 値（value）に日本語を使うのはOK
+- カテゴリ等の日本語表示が必要な場合は、ASCIIスラッグ → 日本語のマッピング関数を使う
+
