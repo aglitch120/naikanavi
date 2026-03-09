@@ -119,6 +119,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '具体例とテンプレートで解説',
       category: 'medical-history',
     },
+    'b01-josler-shourei-touroku-kakikata': {
+      title: 'J-OSLER症例登録の書き方',
+      subtitle: 'テンプレートと自己省察の例文付き',
+      category: 'case-registration',
+    },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',
