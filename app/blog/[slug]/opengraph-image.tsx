@@ -164,6 +164,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'コピペ手順と注意点を徹底解説',
       category: 'medical-history',
     },
+    'c07-josler-bunken-inyo': {
+      title: '文献引用ルール',
+      subtitle: 'UpToDate・ガイドラインの書き方',
+      category: 'medical-history',
+    },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',
