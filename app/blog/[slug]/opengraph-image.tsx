@@ -134,6 +134,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '7期生以降の疾患群戦略',
       category: 'case-registration',
     },
+    'c01-josler-byoreki-youyaku-kakikata': {
+      title: '病歴要約の書き方完全ガイド',
+      subtitle: 'Accept率を上げるコツを徹底解説',
+      category: 'medical-history',
+    },
     'c02-josler-byoreki-youyaku-template': {
       title: '病歴要約テンプレート',
       subtitle: '項目別の書き方と入力のコツ',
