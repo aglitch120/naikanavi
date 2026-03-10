@@ -214,6 +214,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '公式問題集の使い方と復元問題',
       category: 'specialist-exam',
     },
+    'g08-naika-senmoni-nittei': {
+      title: '内科専門医試験の日程まとめ',
+      subtitle: '2026年度 出願・会場・時間割',
+      category: 'specialist-exam',
+    },
     'j01-josler-ai-katsuyo': {
       title: 'J-OSLERをAIで効率化',
       subtitle: 'ChatGPT・Perplexity活用ガイド',
