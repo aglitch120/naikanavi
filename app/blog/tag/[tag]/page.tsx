@@ -5,13 +5,11 @@ import { getPostsByTag, getAllTags } from '@/lib/mdx'
 import { generateMetadata as genMeta, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 
+// Cloudflare Pagesで日本語パスのSSGが正しくルーティングされない問題の回避
+export const dynamic = 'force-dynamic'
+
 interface Props {
   params: Promise<{ tag: string }>
-}
-
-export async function generateStaticParams() {
-  const tags = getAllTags()
-  return tags.map(({ tag }) => ({ tag }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
