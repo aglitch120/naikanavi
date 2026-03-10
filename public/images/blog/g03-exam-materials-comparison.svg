@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Noto Sans JP', sans-serif">
-  <rect width="800" height="500" fill="#F5F4F0" rx="12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="'Noto Sans JP', sans-serif">
+  <rect width="800" height="560" fill="#F5F4F0" rx="12"/>
   <text x="400" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">教材比較表 - 費用 / 問題数 / 特徴</text>
   <rect x="30" y="55" width="740" height="36" rx="4" fill="#1B4F3A"/>
   <text x="145" y="78" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">教材名</text>
@@ -35,21 +35,30 @@
   <text x="400" y="286" text-anchor="middle" font-size="12" fill="#1A1917">一問一答</text>
   <text x="500" y="286" text-anchor="middle" font-size="12" fill="#1A1917">Web/アプリ</text>
   <text x="640" y="286" text-anchor="middle" font-size="16" fill="#1B4F3A">★★★☆☆</text>
-  <rect x="30" y="315" width="740" height="36" rx="4" fill="#92400E"/>
-  <text x="400" y="338" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">講義動画</text>
-  <rect x="30" y="355" width="740" height="50" rx="0" fill="#FEFEFC"/>
-  <text x="145" y="377" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">CareNeTV</text>
-  <text x="145" y="394" text-anchor="middle" font-size="10" fill="#6B6760">バーチャル模試 / 出るズバ</text>
-  <text x="300" y="384" text-anchor="middle" font-size="12" fill="#1A1917">月額5,500円</text>
-  <text x="400" y="384" text-anchor="middle" font-size="12" fill="#1A1917">180問(模試)</text>
-  <text x="500" y="384" text-anchor="middle" font-size="12" fill="#1A1917">動画</text>
-  <text x="640" y="384" text-anchor="middle" font-size="16" fill="#92400E">★★★★★</text>
-  <rect x="30" y="409" width="740" height="50" rx="0" fill="#F0EDE7"/>
-  <text x="145" y="431" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">Q-Assist</text>
-  <text x="145" y="448" text-anchor="middle" font-size="10" fill="#6B6760">メディックメディア</text>
-  <text x="300" y="438" text-anchor="middle" font-size="12" fill="#1A1917">33,000円</text>
-  <text x="400" y="438" text-anchor="middle" font-size="12" fill="#1A1917">-</text>
-  <text x="500" y="438" text-anchor="middle" font-size="12" fill="#1A1917">動画+PDF</text>
-  <text x="640" y="438" text-anchor="middle" font-size="16" fill="#92400E">★★★★☆</text>
-  <text x="400" y="490" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+  <!-- 内科ナビ行 -->
+  <rect x="30" y="311" width="740" height="50" rx="0" fill="#E8F0EC"/>
+  <text x="145" y="333" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">内科ナビ 問題演習</text>
+  <text x="145" y="350" text-anchor="middle" font-size="10" fill="#1B4F3A">苦手分野自動判定</text>
+  <text x="300" y="340" text-anchor="middle" font-size="12" fill="#1A1917">従量課金</text>
+  <text x="400" y="340" text-anchor="middle" font-size="12" fill="#1A1917">5問/1クレジット</text>
+  <text x="500" y="340" text-anchor="middle" font-size="12" fill="#1A1917">Web(ブラウザ)</text>
+  <text x="640" y="340" text-anchor="middle" font-size="16" fill="#1B4F3A">★★★★☆</text>
+  <!-- 講義動画セクション -->
+  <rect x="30" y="369" width="740" height="36" rx="4" fill="#92400E"/>
+  <text x="400" y="392" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">講義動画</text>
+  <rect x="30" y="409" width="740" height="50" rx="0" fill="#FEFEFC"/>
+  <text x="145" y="431" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">CareNeTV</text>
+  <text x="145" y="448" text-anchor="middle" font-size="10" fill="#6B6760">バーチャル模試 / 出るズバ</text>
+  <text x="300" y="438" text-anchor="middle" font-size="12" fill="#1A1917">月額5,500円</text>
+  <text x="400" y="438" text-anchor="middle" font-size="12" fill="#1A1917">180問(模試)</text>
+  <text x="500" y="438" text-anchor="middle" font-size="12" fill="#1A1917">動画</text>
+  <text x="640" y="438" text-anchor="middle" font-size="16" fill="#92400E">★★★★★</text>
+  <rect x="30" y="463" width="740" height="50" rx="0" fill="#F0EDE7"/>
+  <text x="145" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">Q-Assist</text>
+  <text x="145" y="502" text-anchor="middle" font-size="10" fill="#6B6760">メディックメディア</text>
+  <text x="300" y="492" text-anchor="middle" font-size="12" fill="#1A1917">33,000円</text>
+  <text x="400" y="492" text-anchor="middle" font-size="12" fill="#1A1917">-</text>
+  <text x="500" y="492" text-anchor="middle" font-size="12" fill="#1A1917">動画+PDF</text>
+  <text x="640" y="492" text-anchor="middle" font-size="16" fill="#92400E">★★★★☆</text>
+  <text x="400" y="546" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
 </svg>
