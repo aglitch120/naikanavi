@@ -94,6 +94,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '内科専攻医が知るべき全体像',
       category: 'josler-basics',
     },
+    'a03-josler-tsukaikata': {
+      title: 'J-OSLERの使い方',
+      subtitle: '画面の見方から操作方法まで',
+      category: 'josler-basics',
+    },
     'b01-josler-byoreki-youyaku-kakikata': {
       title: '病歴要約の書き方',
       subtitle: 'Accept率を上げる完全ガイド',
