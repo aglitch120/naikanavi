@@ -174,6 +174,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '残り期間別の巻き返し戦略',
       category: 'progress-management',
     },
+    'a05-josler-kigen-shimekiri': {
+      title: 'J-OSLERの期限・締め切り一覧',
+      subtitle: '一次評価・二次評価のスケジュール',
+      category: 'josler-basics',
+    },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',
