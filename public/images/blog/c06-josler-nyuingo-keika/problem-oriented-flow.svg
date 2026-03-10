@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Noto Sans JP', sans-serif">
+  <defs>
+    <filter id="shadow2" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="520" fill="#F5F4F0" rx="12"/>
+
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">プロブレムごとの記載フロー</text>
+  <line x1="280" y1="48" x2="520" y2="48" stroke="#1B4F3A" stroke-width="2"/>
+
+  <rect x="280" y="68" width="240" height="50" rx="10" fill="#1B4F3A" filter="url(#shadow2)"/>
+  <text x="400" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">プロブレムリストから出発</text>
+
+  <line x1="400" y1="118" x2="400" y2="148" stroke="#1B4F3A" stroke-width="2"/>
+  <polygon points="394,144 400,154 406,144" fill="#1B4F3A"/>
+
+  <rect x="60" y="158" width="200" height="75" rx="8" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="160" y="183" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">#1 主病名</text>
+  <text x="160" y="202" text-anchor="middle" font-size="10" fill="#6B6760">診断根拠 → 治療 → 転帰</text>
+  <text x="160" y="218" text-anchor="middle" font-size="10" fill="#6B6760">を簡潔に記載</text>
+
+  <rect x="300" y="158" width="200" height="75" rx="8" fill="#FEFEFC" stroke="#3D5A80" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="400" y="183" text-anchor="middle" font-size="13" font-weight="bold" fill="#3D5A80">#2 副病名</text>
+  <text x="400" y="202" text-anchor="middle" font-size="10" fill="#6B6760">主病名との関連性</text>
+  <text x="400" y="218" text-anchor="middle" font-size="10" fill="#6B6760">を意識して記載</text>
+
+  <rect x="540" y="158" width="200" height="75" rx="8" fill="#FEFEFC" stroke="#6B6760" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="640" y="183" text-anchor="middle" font-size="13" font-weight="bold" fill="#6B6760">#3 その他</text>
+  <text x="640" y="202" text-anchor="middle" font-size="10" fill="#6B6760">重要度に応じて</text>
+  <text x="640" y="218" text-anchor="middle" font-size="10" fill="#6B6760">記載の濃淡をつける</text>
+
+  <text x="400" y="270" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A1917">各プロブレムで書くべき内容</text>
+
+  <rect x="40" y="290" width="170" height="90" rx="8" fill="#E8F0EC" filter="url(#shadow2)"/>
+  <circle cx="60" cy="310" r="10" fill="#1B4F3A"/>
+  <text x="60" y="314" text-anchor="middle" font-size="10" fill="#fff">1</text>
+  <text x="80" y="314" font-size="12" font-weight="bold" fill="#1B4F3A">診断の根拠</text>
+  <text x="55" y="336" font-size="10" fill="#6B6760">検査結果の解釈</text>
+  <text x="55" y="354" font-size="10" fill="#6B6760">鑑別の除外理由</text>
+  <text x="55" y="372" font-size="10" fill="#6B6760">重症度評価</text>
+
+  <rect x="230" y="290" width="170" height="90" rx="8" fill="#E8F0EC" filter="url(#shadow2)"/>
+  <circle cx="250" cy="310" r="10" fill="#1B4F3A"/>
+  <text x="250" y="314" text-anchor="middle" font-size="10" fill="#fff">2</text>
+  <text x="270" y="314" font-size="12" font-weight="bold" fill="#1B4F3A">治療の選択</text>
+  <text x="245" y="336" font-size="10" fill="#6B6760">ガイドライン準拠</text>
+  <text x="245" y="354" font-size="10" fill="#6B6760">原著論文の引用</text>
+  <text x="245" y="372" font-size="10" fill="#6B6760">副作用への対応</text>
+
+  <rect x="420" y="290" width="170" height="90" rx="8" fill="#E8F0EC" filter="url(#shadow2)"/>
+  <circle cx="440" cy="310" r="10" fill="#1B4F3A"/>
+  <text x="440" y="314" text-anchor="middle" font-size="10" fill="#fff">3</text>
+  <text x="460" y="314" font-size="12" font-weight="bold" fill="#1B4F3A">効果と転帰</text>
+  <text x="435" y="336" font-size="10" fill="#6B6760">治療への反応</text>
+  <text x="435" y="354" font-size="10" fill="#6B6760">有害事象の有無</text>
+  <text x="435" y="372" font-size="10" fill="#6B6760">退院の判断根拠</text>
+
+  <rect x="610" y="290" width="170" height="90" rx="8" fill="#E8F0EC" filter="url(#shadow2)"/>
+  <circle cx="630" cy="310" r="10" fill="#1B4F3A"/>
+  <text x="630" y="314" text-anchor="middle" font-size="10" fill="#fff">4</text>
+  <text x="650" y="314" font-size="12" font-weight="bold" fill="#1B4F3A">文献引用</text>
+  <text x="625" y="336" font-size="10" fill="#6B6760">原著論文を優先</text>
+  <text x="625" y="354" font-size="10" fill="#6B6760">文中に引用を配置</text>
+  <text x="625" y="372" font-size="10" fill="#6B6760">ガイドラインのみはNG</text>
+
+  <rect x="40" y="410" width="720" height="80" rx="10" fill="#FEF3C7" stroke="#FCD34D"/>
+  <text x="400" y="438" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">注意：時系列の日記にしない</text>
+  <text x="400" y="460" text-anchor="middle" font-size="11" fill="#92400E">「第1病日に○○、第3病日に△△...」と並べるのではなく</text>
+  <text x="400" y="478" text-anchor="middle" font-size="11" fill="#92400E">プロブレムごとに「診断→治療→転帰」を論理的に整理する</text>
+
+  <text x="400" y="512" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

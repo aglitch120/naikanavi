@@ -154,6 +154,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '領域別の書き方を項目ごとに解説',
       category: 'medical-history',
     },
+    'c06-josler-nyuingo-keika-kakikata': {
+      title: '入院後経過と考察の書き方',
+      subtitle: '差し戻されないコツを徹底解説',
+      category: 'medical-history',
+    },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',

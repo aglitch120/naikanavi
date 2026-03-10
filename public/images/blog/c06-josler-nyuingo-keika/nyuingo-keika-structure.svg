@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="'Noto Sans JP', sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="#F5F4F0" rx="12"/>
+
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">入院後経過と考察の構成</text>
+  <line x1="300" y1="48" x2="500" y2="48" stroke="#1B4F3A" stroke-width="2"/>
+
+  <rect x="30" y="70" width="230" height="130" rx="10" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow)"/>
+  <rect x="30" y="70" width="230" height="36" rx="10" fill="#1B4F3A"/>
+  <rect x="30" y="96" width="230" height="10" fill="#1B4F3A"/>
+  <text x="145" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">1. 診断とその根拠</text>
+  <text x="45" y="126" font-size="11" fill="#6B6760">特殊検査を含む診断過程</text>
+  <text x="45" y="146" font-size="11" fill="#6B6760">鑑別診断の除外理由</text>
+  <text x="45" y="166" font-size="11" fill="#6B6760">画像・病理所見の解釈</text>
+  <text x="45" y="186" font-size="11" fill="#1B4F3A" font-weight="bold">プロブレムごとに記載</text>
+
+  <rect x="285" y="70" width="230" height="130" rx="10" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow)"/>
+  <rect x="285" y="70" width="230" height="36" rx="10" fill="#3D5A80"/>
+  <rect x="285" y="96" width="230" height="10" fill="#3D5A80"/>
+  <text x="400" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">2. 治療とエビデンス</text>
+  <text x="300" y="126" font-size="11" fill="#6B6760">治療法選択の根拠</text>
+  <text x="300" y="146" font-size="11" fill="#6B6760">ガイドライン・原著論文の引用</text>
+  <text x="300" y="166" font-size="11" fill="#6B6760">治療経過と効果判定</text>
+  <text x="300" y="186" font-size="11" fill="#3D5A80" font-weight="bold">エビデンスに基づく記載</text>
+
+  <rect x="540" y="70" width="230" height="130" rx="10" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow)"/>
+  <rect x="540" y="70" width="230" height="36" rx="10" fill="#2D6A4F"/>
+  <rect x="540" y="96" width="230" height="10" fill="#2D6A4F"/>
+  <text x="655" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">3. 転帰</text>
+  <text x="555" y="126" font-size="11" fill="#6B6760">退院時の状態</text>
+  <text x="555" y="146" font-size="11" fill="#6B6760">未解決課題の明示</text>
+  <text x="555" y="166" font-size="11" fill="#6B6760">退院後フォロー方針</text>
+  <text x="555" y="186" font-size="11" fill="#2D6A4F" font-weight="bold">退院時処方との整合性</text>
+
+  <path d="M260 135 L285 135" stroke="#DDD9D2" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M515 135 L540 135" stroke="#DDD9D2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#DDD9D2"/>
+    </marker>
+  </defs>
+
+  <rect x="30" y="225" width="740" height="100" rx="10" fill="#E8F0EC" stroke="#1B4F3A" stroke-dasharray="4"/>
+  <text x="400" y="255" text-anchor="middle" font-size="14" font-weight="bold" fill="#1B4F3A">手引きの要求ポイント</text>
+  <text x="55" y="280" font-size="12" fill="#1A1917">- 考察はプロブレムごとに、診断および治療法選択における過程を簡潔に記載する</text>
+  <text x="55" y="300" font-size="12" fill="#1A1917">- 外科紹介症例は手術所見を、剖検症例は剖検所見を含めて考察する</text>
+
+  <rect x="30" y="345" width="355" height="110" rx="10" fill="#FEE2E2" stroke="#FCA5A5"/>
+  <text x="207" y="373" text-anchor="middle" font-size="13" font-weight="bold" fill="#991B1B">NG例</text>
+  <text x="45" y="396" font-size="11" fill="#991B1B">- 退院時サマリーのコピペ</text>
+  <text x="45" y="416" font-size="11" fill="#991B1B">- 全エピソードを時系列で羅列</text>
+  <text x="45" y="436" font-size="11" fill="#991B1B">- 教科書の一般論を長々と記載</text>
+
+  <rect x="415" y="345" width="355" height="110" rx="10" fill="#DCFCE7" stroke="#86EFAC"/>
+  <text x="592" y="373" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">OK例</text>
+  <text x="430" y="396" font-size="11" fill="#166534">- プロブレムごとに診断→治療→転帰を簡潔に</text>
+  <text x="430" y="416" font-size="11" fill="#166534">- 自験例に即した考察（なぜその治療を選んだか）</text>
+  <text x="430" y="436" font-size="11" fill="#166534">- 文献引用で根拠を明示</text>
+
+  <text x="400" y="475" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
