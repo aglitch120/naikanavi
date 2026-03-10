@@ -224,6 +224,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'ChatGPT・Perplexity活用ガイド',
       category: 'ai-tools',
     },
+    'j02-byoreki-youyaku-ai-jidou-seisei': {
+      title: '病歴要約の総合考察をAIで下書き',
+      subtitle: 'プロンプト例付き実践ガイド',
+      category: 'ai-tools',
+    },
     'a05-josler-kigen-shimekiri': {
       title: 'J-OSLERの期限・締め切り一覧',
       subtitle: '一次評価・二次評価のスケジュール',
