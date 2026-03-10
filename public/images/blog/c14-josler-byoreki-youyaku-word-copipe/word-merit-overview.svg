@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="shadow1" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="340" rx="16" fill="#F5F4F0"/>
+  <text x="400" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">Wordで下書きする3つのメリット</text>
+  <g transform="translate(30,65)">
+    <rect width="230" height="200" rx="12" fill="#FEFEFC" filter="url(#shadow1)"/>
+    <rect width="230" height="6" rx="3" fill="#1B4F3A" y="0"/>
+    <text x="115" y="45" text-anchor="middle" font-size="28" fill="#1B4F3A">&#128274;</text>
+    <text x="115" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A1917">データ消失リスク回避</text>
+    <text x="115" y="110" text-anchor="middle" font-size="12" fill="#6B6760">自動ログアウトで</text>
+    <text x="115" y="128" text-anchor="middle" font-size="12" fill="#6B6760">未保存データが消えるリスクを</text>
+    <text x="115" y="146" text-anchor="middle" font-size="12" fill="#6B6760">ローカル保存で完全回避</text>
+    <rect x="40" y="165" width="150" height="26" rx="13" fill="#E8F0EC"/>
+    <text x="115" y="183" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B4F3A">安全性 ★★★</text>
+  </g>
+  <g transform="translate(285,65)">
+    <rect width="230" height="200" rx="12" fill="#FEFEFC" filter="url(#shadow1)"/>
+    <rect width="230" height="6" rx="3" fill="#1E3A5F" y="0"/>
+    <text x="115" y="45" text-anchor="middle" font-size="28" fill="#1E3A5F">&#128196;</text>
+    <text x="115" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A1917">分量の事前確認</text>
+    <text x="115" y="110" text-anchor="middle" font-size="12" fill="#6B6760">A4 2枚に収まるかを</text>
+    <text x="115" y="128" text-anchor="middle" font-size="12" fill="#6B6760">Word上で事前チェック</text>
+    <text x="115" y="146" text-anchor="middle" font-size="12" fill="#6B6760">総合考察のボリューム調整が容易</text>
+    <rect x="40" y="165" width="150" height="26" rx="13" fill="#E8F0EC"/>
+    <text x="115" y="183" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E3A5F">効率性 ★★★</text>
+  </g>
+  <g transform="translate(540,65)">
+    <rect width="230" height="200" rx="12" fill="#FEFEFC" filter="url(#shadow1)"/>
+    <rect width="230" height="6" rx="3" fill="#4338CA" y="0"/>
+    <text x="115" y="45" text-anchor="middle" font-size="28" fill="#4338CA">&#128269;</text>
+    <text x="115" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A1917">校正・管理が簡単</text>
+    <text x="115" y="110" text-anchor="middle" font-size="12" fill="#6B6760">スペルチェック・検索置換で</text>
+    <text x="115" y="128" text-anchor="middle" font-size="12" fill="#6B6760">ケアレスミスを防止</text>
+    <text x="115" y="146" text-anchor="middle" font-size="12" fill="#6B6760">29症例の並行管理も容易</text>
+    <rect x="40" y="165" width="150" height="26" rx="13" fill="#E8F0EC"/>
+    <text x="115" y="183" text-anchor="middle" font-size="11" font-weight="bold" fill="#4338CA">品質向上 ★★★</text>
+  </g>
+  <text x="400" y="325" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

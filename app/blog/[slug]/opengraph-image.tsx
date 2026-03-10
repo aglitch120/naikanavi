@@ -159,6 +159,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '差し戻されないコツを徹底解説',
       category: 'medical-history',
     },
+    'c14-josler-byoreki-youyaku-word-copipe': {
+      title: '病歴要約はWordで下書きが正解',
+      subtitle: 'コピペ手順と注意点を徹底解説',
+      category: 'medical-history',
+    },
     'josler-complete-guide': {
       title: 'J-OSLER完全攻略',
       subtitle: '症例登録から修了認定まで',
