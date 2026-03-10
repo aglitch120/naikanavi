@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="s" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="460" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <rect x="24" y="16" width="752" height="48" rx="12" fill="#991B1B"/>
+  <text x="400" y="47" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">差し戻しを防ぐ 5つのチェックポイント</text>
+
+  <!-- Card 1 -->
+  <rect x="30" y="80" width="360" height="100" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s)"/>
+  <circle cx="62" cy="112" r="20" fill="#991B1B"/>
+  <text x="62" y="118" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">1</text>
+  <text x="92" y="108" fill="#1A1917" font-size="15" font-weight="700">疾患群と考察の不一致</text>
+  <text x="92" y="128" fill="#6B6760" font-size="12">指定された疾患群の内容に合った考察か？</text>
+  <rect x="92" y="140" width="280" height="24" rx="6" fill="#FEE2E2"/>
+  <text x="100" y="157" fill="#991B1B" font-size="11">✕ 血液→貧血が主病名なのに消化管出血の考察</text>
+
+  <!-- Card 2 -->
+  <rect x="410" y="80" width="360" height="100" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s)"/>
+  <circle cx="442" cy="112" r="20" fill="#991B1B"/>
+  <text x="442" y="118" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">2</text>
+  <text x="472" y="108" fill="#1A1917" font-size="15" font-weight="700">総合考察が不十分</text>
+  <text x="472" y="128" fill="#6B6760" font-size="12">教科書の丸写しではなく自分の考察か？</text>
+  <rect x="472" y="140" width="280" height="24" rx="6" fill="#DCFCE7"/>
+  <text x="480" y="157" fill="#166534" font-size="11">○ 臨床推論+鑑別根拠+治療選択理由+教訓</text>
+
+  <!-- Card 3 -->
+  <rect x="30" y="196" width="360" height="100" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s)"/>
+  <circle cx="62" cy="228" r="20" fill="#991B1B"/>
+  <text x="62" y="234" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">3</text>
+  <text x="92" y="224" fill="#1A1917" font-size="15" font-weight="700">全人的視点の欠如</text>
+  <text x="92" y="244" fill="#6B6760" font-size="12">社会背景・心理面・退院後の生活に触れたか？</text>
+  <rect x="92" y="256" width="280" height="24" rx="6" fill="#DCFCE7"/>
+  <text x="100" y="273" fill="#166534" font-size="11">○ 家族構成・職業・患者の意向・退院支援</text>
+
+  <!-- Card 4 -->
+  <rect x="410" y="196" width="360" height="100" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s)"/>
+  <circle cx="442" cy="228" r="20" fill="#991B1B"/>
+  <text x="442" y="234" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">4</text>
+  <text x="472" y="224" fill="#1A1917" font-size="15" font-weight="700">身体所見・検査所見の不足</text>
+  <text x="472" y="244" fill="#6B6760" font-size="12">主病名に関連する陽性・陰性所見を書いたか？</text>
+  <rect x="472" y="256" width="280" height="24" rx="6" fill="#FEE2E2"/>
+  <text x="480" y="273" fill="#991B1B" font-size="11">✕ 陽性所見だけで重要な陰性所見を省略</text>
+
+  <!-- Card 5 -->
+  <rect x="220" y="312" width="360" height="100" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s)"/>
+  <circle cx="252" cy="344" r="20" fill="#991B1B"/>
+  <text x="252" y="350" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">5</text>
+  <text x="282" y="340" fill="#1A1917" font-size="15" font-weight="700">A4用紙2枚のオーバー</text>
+  <text x="282" y="360" fill="#6B6760" font-size="12">PDF出力して紙面に収まるか確認したか？</text>
+  <rect x="282" y="372" width="280" height="24" rx="6" fill="#FEF3C7"/>
+  <text x="290" y="389" fill="#92400E" font-size="11">△ 文字数OKでもPDF出力するとはみ出すことあり</text>
+
+  <!-- Bottom tip -->
+  <rect x="30" y="424" width="743" height="24" rx="6" fill="#E8F0EC"/>
+  <text x="400" y="441" text-anchor="middle" fill="#1B4F3A" font-size="12" font-weight="600">提出前に全5項目をセルフチェック → 差し戻し率を大幅に低減できる</text>
+
+  <!-- Footer -->
+  <text x="780" y="456" text-anchor="end" fill="#C8C4BC" font-size="10">© 内科ナビ naikanavi.com</text>
+</svg>
