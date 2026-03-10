@@ -209,6 +209,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '2026年版ランキング',
       category: 'specialist-exam',
     },
+    'j01-josler-ai-katsuyo': {
+      title: 'J-OSLERをAIで効率化',
+      subtitle: 'ChatGPT・Perplexity活用ガイド',
+      category: 'ai-tools',
+    },
     'a05-josler-kigen-shimekiri': {
       title: 'J-OSLERの期限・締め切り一覧',
       subtitle: '一次評価・二次評価のスケジュール',
