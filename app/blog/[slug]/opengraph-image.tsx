@@ -174,6 +174,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'UpToDate・ガイドラインの書き方',
       category: 'medical-history',
     },
+    'e01-josler-shinchoku-kanri': {
+      title: 'J-OSLER進捗管理の方法',
+      subtitle: '最短で修了要件を満たすスケジュール',
+      category: 'progress-management',
+    },
     'e02-josler-manianai': {
       title: 'J-OSLERが間に合わない！',
       subtitle: '残り期間別の巻き返し戦略',

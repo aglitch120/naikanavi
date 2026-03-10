@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Noto Sans JP', sans-serif">
+  <rect width="800" height="500" fill="#F5F4F0"/>
+
+  <text x="400" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">J-OSLER 年次別スケジュールと目標</text>
+
+  <!-- Timeline -->
+  <line x1="80" y1="70" x2="720" y2="70" stroke="#C8C4BC" stroke-width="2"/>
+  <circle cx="80" cy="70" r="6" fill="#1B4F3A"/>
+  <circle cx="293" cy="70" r="6" fill="#1B4F3A"/>
+  <circle cx="507" cy="70" r="6" fill="#1B4F3A"/>
+  <circle cx="720" cy="70" r="6" fill="#1B4F3A"/>
+  <text x="80" y="58" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">4月</text>
+  <text x="293" y="58" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">1年目末</text>
+  <text x="507" y="58" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">2年目末</text>
+  <text x="720" y="58" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">3年目末</text>
+
+  <!-- 1年目 カード -->
+  <rect x="30" y="90" width="240" height="185" rx="10" fill="#FEFEFC" stroke="#2D6A4F" stroke-width="2"/>
+  <rect x="30" y="90" width="240" height="32" rx="10" fill="#2D6A4F"/>
+  <text x="150" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#FEFEFC">1年目（土台作り）</text>
+
+  <text x="50" y="142" font-size="12" fill="#1A1917" font-weight="bold">症例登録</text>
+  <rect x="50" y="148" width="140" height="10" rx="4" fill="#E8E5DF"/>
+  <rect x="50" y="148" width="70" height="10" rx="4" fill="#2D6A4F"/>
+  <text x="200" y="158" font-size="11" fill="#6B6760">60件目標</text>
+
+  <text x="50" y="180" font-size="12" fill="#1A1917" font-weight="bold">疾患群</text>
+  <rect x="50" y="186" width="140" height="10" rx="4" fill="#E8E5DF"/>
+  <rect x="50" y="186" width="93" height="10" rx="4" fill="#2D6A4F"/>
+  <text x="200" y="196" font-size="11" fill="#6B6760">37群目標</text>
+
+  <text x="50" y="218" font-size="12" fill="#1A1917" font-weight="bold">病歴要約</text>
+  <rect x="50" y="224" width="140" height="10" rx="4" fill="#E8E5DF"/>
+  <rect x="50" y="224" width="48" height="10" rx="4" fill="#2D6A4F"/>
+  <text x="200" y="234" font-size="11" fill="#6B6760">10件目標</text>
+
+  <text x="50" y="264" font-size="11" fill="#6B6760">JMECC受講 / 学会参加2回</text>
+
+  <!-- 2年目 カード -->
+  <rect x="280" y="90" width="240" height="185" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="280" y="90" width="240" height="32" rx="10" fill="#1B4F3A"/>
+  <text x="400" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#FEFEFC">2年目（加速期）</text>
+
+  <text x="300" y="142" font-size="12" fill="#1A1917" font-weight="bold">症例登録</text>
+  <rect x="300" y="148" width="140" height="10" rx="4" fill="#E8E5DF"/>
+  <rect x="300" y="148" width="140" height="10" rx="4" fill="#1B4F3A"/>
+  <text x="450" y="158" font-size="11" fill="#6B6760">120件完了</text>
+
+  <text x="300" y="180" font-size="12" fill="#1A1917" font-weight="bold">疾患群</text>
+  <rect x="300" y="186" width="140" height="10" rx="4" fill="#E8E5DF"/>
+  <rect x="300" y="186" width="140" height="10" rx="4" fill="#1B4F3A"/>
+  <text x="450" y="196" font-size="11" fill="#6B6760">56群完了</text>
+
+  <text x="300" y="218" font-size="12" fill="#1A1917" font-weight="bold">病歴要約</text>
+  <rect x="300" y="224" width="140" height="10" rx="4" fill="#E8E5DF"/>
+  <rect x="300" y="224" width="140" height="10" rx="4" fill="#1B4F3A"/>
+  <text x="450" y="234" font-size="11" fill="#6B6760">29件完了</text>
+
+  <text x="300" y="264" font-size="11" fill="#6B6760">個別評価29件完了が理想</text>
+
+  <!-- 3年目 カード -->
+  <rect x="530" y="90" width="240" height="185" rx="10" fill="#FEFEFC" stroke="#991B1B" stroke-width="2"/>
+  <rect x="530" y="90" width="240" height="32" rx="10" fill="#991B1B"/>
+  <text x="650" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#FEFEFC">3年目（仕上げ）</text>
+
+  <text x="550" y="142" font-size="12" fill="#1A1917" font-weight="bold">一次評価</text>
+  <text x="550" y="160" font-size="11" fill="#6B6760">病歴指導医+統括責任者</text>
+
+  <text x="550" y="184" font-size="12" fill="#1A1917" font-weight="bold">二次評価</text>
+  <text x="550" y="202" font-size="11" fill="#6B6760">学会査読委員による外部評価</text>
+
+  <text x="550" y="226" font-size="12" fill="#1A1917" font-weight="bold">修了認定</text>
+  <text x="550" y="244" font-size="11" fill="#6B6760">全要件を満たしPG統括が承認</text>
+
+  <rect x="550" y="255" width="200" height="20" rx="4" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+  <text x="650" y="270" text-anchor="middle" font-size="11" font-weight="bold" fill="#991B1B">10月末: 一次評価締切</text>
+
+  <!-- チェックポイント -->
+  <rect x="40" y="300" width="720" height="145" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="60" y="326" font-size="14" font-weight="bold" fill="#1B4F3A">進捗チェックの5項目</text>
+
+  <circle cx="70" cy="350" r="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="70" y="354" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B4F3A">1</text>
+  <text x="90" y="354" font-size="12" fill="#1A1917">症例登録数</text>
+
+  <circle cx="230" cy="350" r="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="230" y="354" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B4F3A">2</text>
+  <text x="250" y="354" font-size="12" fill="#1A1917">疾患群数</text>
+
+  <circle cx="380" cy="350" r="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="380" y="354" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B4F3A">3</text>
+  <text x="400" y="354" font-size="12" fill="#1A1917">病歴要約件数</text>
+
+  <circle cx="550" cy="350" r="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="550" y="354" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B4F3A">4</text>
+  <text x="570" y="354" font-size="12" fill="#1A1917">学術活動</text>
+
+  <circle cx="680" cy="350" r="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="680" y="354" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B4F3A">5</text>
+  <text x="700" y="354" font-size="12" fill="#1A1917">講習会</text>
+
+  <text x="400" y="400" text-anchor="middle" font-size="12" fill="#6B6760">J-OSLERの「研修実績」→「モニタリング」で随時確認可能</text>
+  <text x="400" y="420" text-anchor="middle" font-size="12" fill="#1B4F3A" font-weight="bold">月1回は必ず進捗を確認し、遅れに早期対応する</text>
+
+  <!-- footer -->
+  <text x="400" y="488" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
