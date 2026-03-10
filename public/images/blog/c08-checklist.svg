@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="500" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">提出前チェックリスト</text>
+  <text x="400" y="62" text-anchor="middle" font-size="13" fill="#6B6760">差し戻しを防ぐための最終確認7項目</text>
+
+  <!-- Check items -->
+  <g transform="translate(60, 85)">
+    <rect width="680" height="48" rx="8" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" fill="#1B4F3A" font-weight="bold">&#x2713;</text>
+    <text x="52" y="30" font-size="14" fill="#1A1917">PDF出力でA4×2枚に収まり、紙面の80%以上が埋まっているか</text>
+  </g>
+
+  <g transform="translate(60, 143)">
+    <rect width="680" height="48" rx="8" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" fill="#1B4F3A" font-weight="bold">&#x2713;</text>
+    <text x="52" y="30" font-size="14" fill="#1A1917">主病名の疾患群に即した考察になっているか（副病名に脱線していないか）</text>
+  </g>
+
+  <g transform="translate(60, 201)">
+    <rect width="680" height="48" rx="8" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" fill="#1B4F3A" font-weight="bold">&#x2713;</text>
+    <text x="52" y="30" font-size="14" fill="#1A1917">総合考察に全人的視点（社会的背景・患者の価値観）が含まれているか</text>
+  </g>
+
+  <g transform="translate(60, 259)">
+    <rect width="680" height="48" rx="8" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" fill="#1B4F3A" font-weight="bold">&#x2713;</text>
+    <text x="52" y="30" font-size="14" fill="#1A1917">文献引用の形式が統一され、本文中の番号と文献リストが一致しているか</text>
+  </g>
+
+  <g transform="translate(60, 317)">
+    <rect width="680" height="48" rx="8" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" fill="#1B4F3A" font-weight="bold">&#x2713;</text>
+    <text x="52" y="30" font-size="14" fill="#1A1917">誤字脱字・薬剤名・検査値の単位にミスがないか</text>
+  </g>
+
+  <g transform="translate(60, 375)">
+    <rect width="680" height="48" rx="8" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" fill="#1B4F3A" font-weight="bold">&#x2713;</text>
+    <text x="52" y="30" font-size="14" fill="#1A1917">プロブレムリストと入院後経過の内容が対応しているか</text>
+  </g>
+
+  <g transform="translate(60, 433)">
+    <rect width="680" height="48" rx="8" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" fill="#1B4F3A" font-weight="bold">&#x2713;</text>
+    <text x="52" y="30" font-size="14" fill="#1A1917">施設が特定される情報が本文に含まれていないか（二次評価の匿名性）</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="400" y="495" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
