@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" fill="none">
+  <rect width="800" height="480" rx="16" fill="#F5F4F0"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="20" fill="#1A1917">症例登録テンプレート 4パターンの使い分け</text>
+  
+  <!-- Pattern 1: Acute -->
+  <rect x="30" y="70" width="170" height="340" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="30" y="70" width="170" height="44" rx="12" fill="#1B4F3A"/>
+  <text x="115" y="97" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="white">パターン1</text>
+  <text x="115" y="135" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1A1917">急性疾患</text>
+  <text x="115" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">入院→治療→退院</text>
+  <!-- icons: clipboard -->
+  <rect x="85" y="175" width="60" height="60" rx="8" fill="#E8F0EC"/>
+  <text x="115" y="213" text-anchor="middle" font-family="sans-serif" font-size="28">📋</text>
+  <text x="115" y="260" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">肺炎</text>
+  <text x="115" y="275" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">尿路感染症</text>
+  <text x="115" y="290" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">急性胆管炎</text>
+  <text x="115" y="305" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">急性膵炎</text>
+  <text x="115" y="325" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">薬剤性肝障害 など</text>
+  <rect x="55" y="350" width="120" height="30" rx="6" fill="#E8F0EC"/>
+  <text x="115" y="370" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">最頻出パターン</text>
+
+  <!-- Pattern 2: Chronic -->
+  <rect x="220" y="70" width="170" height="340" rx="12" fill="#FEFEFC" stroke="#3D5A80" stroke-width="2"/>
+  <rect x="220" y="70" width="170" height="44" rx="12" fill="#3D5A80"/>
+  <text x="305" y="97" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="white">パターン2</text>
+  <text x="305" y="135" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1A1917">慢性疾患</text>
+  <text x="305" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">増悪→治療→安定化</text>
+  <rect x="275" y="175" width="60" height="60" rx="8" fill="#E0E8F0"/>
+  <text x="305" y="213" text-anchor="middle" font-family="sans-serif" font-size="28">🔄</text>
+  <text x="305" y="260" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">COPD増悪</text>
+  <text x="305" y="275" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">心不全増悪</text>
+  <text x="305" y="290" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">糖尿病管理</text>
+  <text x="305" y="305" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">ネフローゼ再燃</text>
+  <text x="305" y="325" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">SLE活動性 など</text>
+  <rect x="245" y="350" width="120" height="30" rx="6" fill="#E0E8F0"/>
+  <text x="305" y="370" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#3D5A80">生活指導が鍵</text>
+
+  <!-- Pattern 3: Emergency -->
+  <rect x="410" y="70" width="170" height="340" rx="12" fill="#FEFEFC" stroke="#7F1D1D" stroke-width="2"/>
+  <rect x="410" y="70" width="170" height="44" rx="12" fill="#7F1D1D"/>
+  <text x="495" y="97" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="white">パターン3</text>
+  <text x="495" y="135" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1A1917">救急対応</text>
+  <text x="495" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">搬送→初期対応→治療</text>
+  <rect x="465" y="175" width="60" height="60" rx="8" fill="#FEE2E2"/>
+  <text x="495" y="213" text-anchor="middle" font-family="sans-serif" font-size="28">🚑</text>
+  <text x="495" y="260" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">急性心筋梗塞</text>
+  <text x="495" y="275" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">脳卒中</text>
+  <text x="495" y="290" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">肺塞栓症</text>
+  <text x="495" y="305" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">消化管出血</text>
+  <text x="495" y="325" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">敗血症 など</text>
+  <rect x="435" y="350" width="120" height="30" rx="6" fill="#FEE2E2"/>
+  <text x="495" y="370" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#7F1D1D">初期対応を記載</text>
+
+  <!-- Pattern 4: Outpatient -->
+  <rect x="600" y="70" width="170" height="340" rx="12" fill="#FEFEFC" stroke="#4338CA" stroke-width="2"/>
+  <rect x="600" y="70" width="170" height="44" rx="12" fill="#4338CA"/>
+  <text x="685" y="97" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="white">パターン4</text>
+  <text x="685" y="135" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1A1917">外来症例</text>
+  <text x="685" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">診断→治療→フォロー</text>
+  <rect x="655" y="175" width="60" height="60" rx="8" fill="#EDE9FE"/>
+  <text x="685" y="213" text-anchor="middle" font-family="sans-serif" font-size="28">🏥</text>
+  <text x="685" y="260" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">バセドウ病</text>
+  <text x="685" y="275" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">鉄欠乏性貧血</text>
+  <text x="685" y="290" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">慢性C型肝炎</text>
+  <text x="685" y="305" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">関節リウマチ</text>
+  <text x="685" y="325" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">IgA腎症 など</text>
+  <rect x="625" y="350" width="120" height="30" rx="6" fill="#EDE9FE"/>
+  <text x="685" y="370" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#4338CA">外来視点で記載</text>
+
+  <!-- Footer -->
+  <text x="400" y="440" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#6B6760">ほとんどの症例はパターン1か2に該当。同じパターンの症例をバッチ処理すると効率的</text>
+  <text x="400" y="468" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#C8C4BC">© 内科ナビ naikanavi.com</text>
+</svg>
