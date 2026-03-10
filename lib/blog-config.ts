@@ -102,6 +102,46 @@ export const ctaConfig = {
 
 export type CtaType = keyof typeof ctaConfig
 
+// タグ → URLスラッグ変換（Cloudflare Pagesで日本語パスが404になるため英語スラッグを使用）
+export const tagSlugMap: Record<string, string> = {
+  'J-OSLER': 'j-osler',
+  '修了要件': 'completion-requirements',
+  '内科専門医': 'naika-senmonni',
+  '症例登録': 'case-registration',
+  '病歴要約': 'medical-history',
+  '書き方': 'how-to-write',
+  'テンプレート': 'template',
+  '内科専攻医': 'naika-senkoui',
+  '効率化': 'efficiency',
+  '疾患群': 'disease-group',
+  '自己省察': 'self-reflection',
+  'コピペ': 'copy-paste',
+  '総合考察': 'comprehensive-discussion',
+  '全人的視点': 'holistic-perspective',
+  '差し戻し': 'revision',
+  'Accept': 'accept',
+  '160症例': '160-cases',
+  '120症例': '120-cases',
+  '29症例': '29-cases',
+  '7期生': '7th-cohort',
+  '選び方': 'how-to-choose',
+}
+
+// スラッグ → タグ名の逆引き
+export const slugToTagMap: Record<string, string> = Object.fromEntries(
+  Object.entries(tagSlugMap).map(([tag, slug]) => [slug, tag])
+)
+
+// タグ名からスラッグを取得（未登録タグはそのまま返す）
+export function getTagSlug(tag: string): string {
+  return tagSlugMap[tag] || tag.toLowerCase().replace(/\s+/g, '-')
+}
+
+// スラッグからタグ名を取得
+export function getTagName(slug: string): string | undefined {
+  return slugToTagMap[slug]
+}
+
 // サイト情報
 export const siteConfig = {
   name: '内科ナビ',

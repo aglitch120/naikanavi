@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllPostSlugs, getRelatedPosts, getAdjacentPosts, compileMDXContent } from '@/lib/mdx'
-import { categories, clusterColors, ctaConfig } from '@/lib/blog-config'
+import { categories, clusterColors, ctaConfig, getTagSlug } from '@/lib/blog-config'
 import { generateMetadata as genMeta, generateArticleJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 import CTABanner from '@/components/blog/CTABanner'
@@ -188,7 +188,7 @@ export default async function ArticlePage({ params }: Props) {
               {frontmatter.tags.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/blog/tag/${encodeURIComponent(tag)}`}
+                  href={`/blog/tag/${getTagSlug(tag)}`}
                   className="text-xs bg-s1 text-muted px-3 py-1.5 rounded-full hover:bg-acl hover:text-ac transition-colors"
                 >
                   {tag}
