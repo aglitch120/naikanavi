@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 580" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow2" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1B4F3A"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="580" rx="12" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">J-OSLER 利用開始から修了認定までの流れ</text>
+
+  <!-- Phase labels on left -->
+  <rect x="20" y="55" width="90" height="80" rx="6" fill="#1E3A5F"/>
+  <text x="65" y="83" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">STEP 1</text>
+  <text x="65" y="99" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">初期設定</text>
+  <text x="65" y="115" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">（1日）</text>
+
+  <rect x="20" y="150" width="90" height="80" rx="6" fill="#1B4F3A"/>
+  <text x="65" y="178" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">STEP 2</text>
+  <text x="65" y="194" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">日常の登録</text>
+  <text x="65" y="210" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">（3年間）</text>
+
+  <rect x="20" y="245" width="90" height="80" rx="6" fill="#2D6A4F"/>
+  <text x="65" y="273" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">STEP 3</text>
+  <text x="65" y="289" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">病歴要約</text>
+  <text x="65" y="305" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">評価</text>
+
+  <rect x="20" y="340" width="90" height="80" rx="6" fill="#92400E"/>
+  <text x="65" y="368" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">STEP 4</text>
+  <text x="65" y="384" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">定期評価</text>
+  <text x="65" y="400" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">（半年毎）</text>
+
+  <rect x="20" y="435" width="90" height="80" rx="6" fill="#7F1D1D"/>
+  <text x="65" y="463" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">STEP 5</text>
+  <text x="65" y="479" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">修了認定</text>
+  <text x="65" y="495" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">（3年目〜）</text>
+
+  <!-- Step 1 cards -->
+  <rect x="130" y="55" width="200" height="80" rx="6" fill="#FEFEFC" stroke="#1E3A5F" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="145" y="78" font-size="11" font-weight="bold" fill="#1E3A5F">ログイン・パスワード変更</text>
+  <text x="145" y="96" font-size="10" fill="#6B6760">研修開始日まではPW変更のみ</text>
+  <text x="145" y="112" font-size="10" fill="#6B6760">4月1日から操作可能に</text>
+
+  <line x1="330" y1="95" x2="365" y2="95" stroke="#1B4F3A" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="55" width="200" height="80" rx="6" fill="#FEFEFC" stroke="#1E3A5F" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="385" y="78" font-size="11" font-weight="bold" fill="#1E3A5F">担当指導医の登録</text>
+  <text x="385" y="96" font-size="10" fill="#6B6760">サイドメニューから申請</text>
+  <text x="385" y="112" font-size="10" fill="#6B6760">研修委員会委員長が承認</text>
+
+  <line x1="570" y1="95" x2="605" y2="95" stroke="#1B4F3A" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="610" y="55" width="170" height="80" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2" filter="url(#shadow2)"/>
+  <text x="625" y="78" font-size="11" font-weight="bold" fill="#1B4F3A">✅ 利用開始!</text>
+  <text x="625" y="96" font-size="10" fill="#6B6760">症例登録が可能に</text>
+  <text x="625" y="112" font-size="10" fill="#6B6760">最短で4月1日〜</text>
+
+  <!-- Step 2 -->
+  <rect x="130" y="150" width="290" height="80" rx="6" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="145" y="173" font-size="11" font-weight="bold" fill="#1B4F3A">症例登録（120症例+56疾患群）</text>
+  <text x="145" y="191" font-size="10" fill="#6B6760">主担当医として経験した症例を登録</text>
+  <text x="145" y="207" font-size="10" fill="#6B6760">指導医が承認 → 月5〜10件ペースが目安</text>
+
+  <rect x="440" y="150" width="340" height="80" rx="6" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="455" y="173" font-size="11" font-weight="bold" fill="#1B4F3A">講習会・JMECC・学会参加</text>
+  <text x="455" y="191" font-size="10" fill="#6B6760">共通講習 年2回 x 3年 = 6回</text>
+  <text x="455" y="207" font-size="10" fill="#6B6760">JMECC受講 + 学会参加6回 + 発表2回</text>
+
+  <!-- Step 3 -->
+  <rect x="130" y="245" width="210" height="80" rx="6" fill="#FEFEFC" stroke="#2D6A4F" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="145" y="268" font-size="11" font-weight="bold" fill="#2D6A4F">個別評価（担当指導医）</text>
+  <text x="145" y="286" font-size="10" fill="#6B6760">29篇を1篇ずつ作成・提出</text>
+  <text x="145" y="302" font-size="10" fill="#6B6760">指導医からフィードバック</text>
+
+  <line x1="340" y1="285" x2="365" y2="285" stroke="#1B4F3A" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="245" width="200" height="80" rx="6" fill="#FEFEFC" stroke="#2D6A4F" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="385" y="268" font-size="11" font-weight="bold" fill="#2D6A4F">一次評価（施設内）</text>
+  <text x="385" y="286" font-size="10" fill="#6B6760">病歴指導医+統括責任者</text>
+  <text x="385" y="302" font-size="10" fill="#6B6760">3年目以降に依頼可能</text>
+
+  <line x1="570" y1="285" x2="605" y2="285" stroke="#1B4F3A" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="610" y="245" width="170" height="80" rx="6" fill="#FEF3C7" stroke="#92400E" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="625" y="268" font-size="11" font-weight="bold" fill="#92400E">二次評価（外部）</text>
+  <text x="625" y="286" font-size="10" fill="#6B6760">査読委員がランダム</text>
+  <text x="625" y="302" font-size="10" fill="#6B6760">Accept/Revision/Reject</text>
+
+  <!-- Step 4 -->
+  <rect x="130" y="340" width="650" height="80" rx="6" fill="#FEFEFC" stroke="#92400E" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="145" y="363" font-size="11" font-weight="bold" fill="#92400E">半年ごとの研修評価（上期: 7〜9月 / 下期: 1〜3月）</text>
+  <text x="145" y="381" font-size="10" fill="#6B6760">専攻医: 技術技能評価 + 自己評価 + 指導医評価を登録 → 担当指導医: 専攻医評価 + 多職種評価を登録</text>
+  <text x="145" y="399" font-size="10" fill="#991B1B">⚠️ 未登録だと修了認定を依頼できない。スマホリマインダー必須!</text>
+
+  <!-- Step 5 -->
+  <rect x="130" y="435" width="220" height="80" rx="6" fill="#FEFEFC" stroke="#7F1D1D" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="145" y="458" font-size="11" font-weight="bold" fill="#7F1D1D">修了見込の依頼</text>
+  <text x="145" y="476" font-size="10" fill="#6B6760">全要件達成見込みで申請</text>
+  <text x="145" y="492" font-size="10" fill="#6B6760">統括責任者の承認が必要</text>
+
+  <line x1="350" y1="475" x2="385" y2="475" stroke="#1B4F3A" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="390" y="435" width="200" height="80" rx="6" fill="#FEFEFC" stroke="#7F1D1D" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="405" y="458" font-size="11" font-weight="bold" fill="#7F1D1D">修了認定の承認</text>
+  <text x="405" y="476" font-size="10" fill="#6B6760">統括責任者が最終確認</text>
+  <text x="405" y="492" font-size="10" fill="#6B6760">研修実績を更新不可に</text>
+
+  <line x1="590" y1="475" x2="625" y2="475" stroke="#1B4F3A" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="630" y="435" width="150" height="80" rx="6" fill="#DCFCE7" stroke="#166534" stroke-width="2" filter="url(#shadow2)"/>
+  <text x="705" y="463" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">🎉 修了!</text>
+  <text x="705" y="483" text-anchor="middle" font-size="10" fill="#6B6760">内科専門医試験</text>
+  <text x="705" y="498" text-anchor="middle" font-size="10" fill="#6B6760">受験資格を取得</text>
+
+  <!-- Footer -->
+  <text x="400" y="560" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
