@@ -75,11 +75,41 @@
   }
 
   .prose pre {
-    @apply bg-tx text-s0 p-4 rounded-lg overflow-x-auto mb-4;
+    @apply bg-tx text-s0 p-4 rounded-lg mb-4;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-wrap: break-word;
   }
 
   .prose pre code {
     @apply bg-transparent p-0 rounded-none text-inherit;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  /* コードブロックラッパー（コピーボタン付き） */
+  .code-block-wrapper {
+    @apply relative mb-4;
+  }
+
+  .code-block-wrapper pre {
+    @apply bg-tx text-s0 p-4 pt-10 rounded-lg;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    margin-bottom: 0;
+  }
+
+  .code-copy-btn {
+    @apply absolute top-2 right-2 flex items-center gap-1.5 text-xs text-s0/70 bg-white/10 hover:bg-white/20 px-2.5 py-1.5 rounded-md transition-colors z-10;
+  }
+
+  .code-copy-btn:hover {
+    @apply text-s0;
+  }
+
+  .code-copy-label {
+    @apply hidden sm:inline;
   }
 
   .prose blockquote {

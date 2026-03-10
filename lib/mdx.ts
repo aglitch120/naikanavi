@@ -6,6 +6,7 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import CopyableCodeBlock from '@/components/blog/CopyableCodeBlock'
 import { categories, type CategorySlug, type ClusterId, type CtaType } from './blog-config'
 
 // 記事のフロントマター型
@@ -182,6 +183,9 @@ export function getAdjacentPosts(currentSlug: string): { prev: PostListItem | nu
 export async function compileMDXContent(source: string) {
   const { content } = await compileMDX({
     source,
+    components: {
+      pre: CopyableCodeBlock,
+    },
     options: {
       parseFrontmatter: false,
       mdxOptions: {
