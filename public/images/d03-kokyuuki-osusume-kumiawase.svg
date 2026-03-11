@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Noto Sans JP', sans-serif">
+  <defs>
+    <filter id="shadow2" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">呼吸器2篇のおすすめ組み合わせパターン</text>
+  <rect x="30" y="55" width="740" height="110" rx="12" fill="#DCFCE7" filter="url(#shadow2)" stroke="#86EFAC" stroke-width="1"/>
+  <text x="50" y="80" font-size="14" font-weight="bold" fill="#166534">Pattern A: 王道（全専攻医向け）</text>
+  <text x="50" y="100" font-size="12" fill="#1A1917">1篇目: 疾患群10 呼吸器感染症 → 市中肺炎（CAP）</text>
+  <text x="50" y="118" font-size="12" fill="#1A1917">2篇目: 疾患群11 閉塞性肺疾患 → COPD急性増悪 or 気管支喘息発作</text>
+  <text x="50" y="140" font-size="11" fill="#166534">メリット: 経験頻度が高く、ガイドラインが充実。考察が書きやすい</text>
+  <rect x="680" y="70" width="70" height="30" rx="6" fill="#166534"/>
+  <text x="715" y="90" text-anchor="middle" font-size="12" font-weight="bold" fill="white">推奨</text>
+  <rect x="30" y="180" width="740" height="110" rx="12" fill="#E8F0EC" filter="url(#shadow2)" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="50" y="205" font-size="14" font-weight="bold" fill="#1B4F3A">Pattern B: 呼吸器志望向け</text>
+  <text x="50" y="225" font-size="12" fill="#1A1917">1篇目: 疾患群12 免疫・アレルギー性肺疾患 → 特発性間質性肺炎（IPF）</text>
+  <text x="50" y="243" font-size="12" fill="#1A1917">2篇目: 疾患群14 肺腫瘍 → 肺癌（分子標的薬や免疫療法の考察が光る）</text>
+  <text x="50" y="265" font-size="11" fill="#1B4F3A">メリット: サブスペ研修への布石になる。考察の深さを出しやすい</text>
+  <rect x="30" y="305" width="740" height="110" rx="12" fill="#FEFEFC" filter="url(#shadow2)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="50" y="330" font-size="14" font-weight="bold" fill="#1A1917">Pattern C: 症例が少ない場合のバックアップ</text>
+  <text x="50" y="350" font-size="12" fill="#1A1917">1篇目: 疾患群10 呼吸器感染症 → 肺結核 or 肺非結核性抗酸菌症</text>
+  <text x="50" y="368" font-size="12" fill="#1A1917">2篇目: 疾患群13 肺循環障害 → 肺血栓塞栓症</text>
+  <text x="50" y="390" font-size="11" fill="#6B6760">メリット: 鑑別診断の考察が豊富に書ける。救急搬送症例として入手しやすい</text>
+  <text x="400" y="430" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
