@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow2" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="380" rx="16" fill="#F5F4F0"/>
+
+  <text x="400" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">腎臓2篇 おすすめ組み合わせ比較</text>
+
+  <rect x="25" y="58" width="240" height="285" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2.5" filter="url(#shadow2)"/>
+  <rect x="25" y="58" width="240" height="40" rx="12" fill="#1B4F3A"/>
+  <rect x="25" y="86" width="240" height="12" fill="#1B4F3A"/>
+  <text x="145" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#FEFEFC">パターン1（最もおすすめ）</text>
+
+  <text x="45" y="120" font-size="13" font-weight="bold" fill="#1B4F3A">CKD + ネフローゼ症候群</text>
+  <line x1="45" y1="128" x2="230" y2="128" stroke="#E8F0EC" stroke-width="2"/>
+
+  <text x="55" y="152" font-size="11" fill="#1A1917">症例確保</text>
+  <rect x="120" y="140" width="120" height="14" rx="4" fill="#E8F0EC"/>
+  <rect x="120" y="140" width="96" height="14" rx="4" fill="#1B4F3A"/>
+  <text x="248" y="152" font-size="10" fill="#6B6760">★★★★</text>
+
+  <text x="55" y="176" font-size="11" fill="#1A1917">考察の深さ</text>
+  <rect x="120" y="164" width="120" height="14" rx="4" fill="#E8F0EC"/>
+  <rect x="120" y="164" width="108" height="14" rx="4" fill="#1B4F3A"/>
+  <text x="248" y="176" font-size="10" fill="#6B6760">★★★★★</text>
+
+  <text x="55" y="200" font-size="11" fill="#1A1917">汎用性</text>
+  <rect x="120" y="188" width="120" height="14" rx="4" fill="#E8F0EC"/>
+  <rect x="120" y="188" width="84" height="14" rx="4" fill="#1B4F3A"/>
+  <text x="248" y="200" font-size="10" fill="#6B6760">★★★☆</text>
+
+  <text x="45" y="230" font-size="10" fill="#6B6760">CKDはどの科でも遭遇しやすく、</text>
+  <text x="45" y="245" font-size="10" fill="#6B6760">ネフローゼは腎生検+ステロイド</text>
+  <text x="45" y="260" font-size="10" fill="#6B6760">治療で考察の幅が広い。</text>
+
+  <rect x="45" y="275" width="200" height="24" rx="6" fill="#E8F0EC"/>
+  <text x="145" y="292" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B4F3A">腎臓内科ローテ経験者に最適</text>
+
+  <text x="45" y="328" font-size="10" fill="#1B4F3A">対象: 腎臓内科ローテあり</text>
+
+  <rect x="280" y="58" width="240" height="285" rx="12" fill="#FEFEFC" stroke="#4338CA" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="280" y="58" width="240" height="40" rx="12" fill="#4338CA"/>
+  <rect x="280" y="86" width="240" height="12" fill="#4338CA"/>
+  <text x="400" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#FEFEFC">パターン2（汎用型）</text>
+
+  <text x="300" y="120" font-size="13" font-weight="bold" fill="#4338CA">CKD + 電解質異常</text>
+  <line x1="300" y1="128" x2="485" y2="128" stroke="#EDE9FE" stroke-width="2"/>
+
+  <text x="310" y="152" font-size="11" fill="#1A1917">症例確保</text>
+  <rect x="375" y="140" width="120" height="14" rx="4" fill="#EDE9FE"/>
+  <rect x="375" y="140" width="120" height="14" rx="4" fill="#4338CA"/>
+  <text x="503" y="152" font-size="10" fill="#6B6760">★★★★★</text>
+
+  <text x="310" y="176" font-size="11" fill="#1A1917">考察の深さ</text>
+  <rect x="375" y="164" width="120" height="14" rx="4" fill="#EDE9FE"/>
+  <rect x="375" y="164" width="84" height="14" rx="4" fill="#4338CA"/>
+  <text x="503" y="176" font-size="10" fill="#6B6760">★★★☆</text>
+
+  <text x="310" y="200" font-size="11" fill="#1A1917">汎用性</text>
+  <rect x="375" y="188" width="120" height="14" rx="4" fill="#EDE9FE"/>
+  <rect x="375" y="188" width="120" height="14" rx="4" fill="#4338CA"/>
+  <text x="503" y="200" font-size="10" fill="#6B6760">★★★★★</text>
+
+  <text x="300" y="230" font-size="10" fill="#6B6760">両方ともどの科でも症例が豊富。</text>
+  <text x="300" y="245" font-size="10" fill="#6B6760">電解質異常は鑑別の論理展開で</text>
+  <text x="300" y="260" font-size="10" fill="#6B6760">考察力をアピールできる。</text>
+
+  <rect x="300" y="275" width="200" height="24" rx="6" fill="#EDE9FE"/>
+  <text x="400" y="292" text-anchor="middle" font-size="11" font-weight="bold" fill="#4338CA">非腎臓内科専攻でもOK</text>
+
+  <text x="300" y="328" font-size="10" fill="#4338CA">対象: 全ての内科専攻医</text>
+
+  <rect x="535" y="58" width="240" height="285" rx="12" fill="#FEFEFC" stroke="#6B6760" stroke-width="1.5" filter="url(#shadow2)"/>
+  <rect x="535" y="58" width="240" height="40" rx="12" fill="#6B6760"/>
+  <rect x="535" y="86" width="240" height="12" fill="#6B6760"/>
+  <text x="655" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#FEFEFC">パターン3（上級者向け）</text>
+
+  <text x="555" y="120" font-size="13" font-weight="bold" fill="#6B6760">ネフローゼ + 糸球体疾患</text>
+  <line x1="555" y1="128" x2="740" y2="128" stroke="#E8E5DF" stroke-width="2"/>
+
+  <text x="565" y="152" font-size="11" fill="#1A1917">症例確保</text>
+  <rect x="630" y="140" width="120" height="14" rx="4" fill="#E8E5DF"/>
+  <rect x="630" y="140" width="48" height="14" rx="4" fill="#6B6760"/>
+  <text x="758" y="152" font-size="10" fill="#6B6760">★★☆</text>
+
+  <text x="565" y="176" font-size="11" fill="#1A1917">考察の深さ</text>
+  <rect x="630" y="164" width="120" height="14" rx="4" fill="#E8E5DF"/>
+  <rect x="630" y="164" width="120" height="14" rx="4" fill="#6B6760"/>
+  <text x="758" y="176" font-size="10" fill="#6B6760">★★★★★</text>
+
+  <text x="565" y="200" font-size="11" fill="#1A1917">汎用性</text>
+  <rect x="630" y="188" width="120" height="14" rx="4" fill="#E8E5DF"/>
+  <rect x="630" y="188" width="36" height="14" rx="4" fill="#6B6760"/>
+  <text x="758" y="200" font-size="10" fill="#6B6760">★☆☆</text>
+
+  <text x="555" y="230" font-size="10" fill="#6B6760">糸球体疾患に特化した深い考察が</text>
+  <text x="555" y="245" font-size="10" fill="#6B6760">可能。ただし症例確保のハードルが</text>
+  <text x="555" y="260" font-size="10" fill="#6B6760">高く、腎臓内科ローテ必須。</text>
+
+  <rect x="555" y="275" width="200" height="24" rx="6" fill="#E8E5DF"/>
+  <text x="655" y="292" text-anchor="middle" font-size="11" font-weight="bold" fill="#6B6760">腎臓内科志望者向け</text>
+
+  <text x="555" y="328" font-size="10" fill="#6B6760">対象: 腎臓内科を長期ローテ</text>
+
+  <text x="400" y="370" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
