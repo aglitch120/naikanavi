@@ -315,6 +315,16 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'CKD・ネフローゼ・AKIの書き方',
       category: 'disease-specific',
     },
+    'd06-josler-byoreki-youyaku-naibunpitsu': {
+      title: '病歴要約【内分泌】',
+      subtitle: '糖尿病・甲状腺・副腎疾患の書き方',
+      category: 'disease-specific',
+    },
+    'd07-josler-byoreki-youyaku-taisha': {
+      title: '病歴要約【代謝】',
+      subtitle: '脂質異常症・痛風・電解質異常の書き方',
+      category: 'disease-specific',
+    },
   }
 
   if (metaMap[slug]) return metaMap[slug]
