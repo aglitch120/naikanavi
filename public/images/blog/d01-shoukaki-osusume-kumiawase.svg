@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow2" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">消化器3篇 おすすめ組み合わせ</text>
+
+  <!-- Pattern A: 非消化器専攻向け -->
+  <rect x="30" y="60" width="360" height="330" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1" filter="url(#shadow2)"/>
+  <rect x="30" y="60" width="360" height="44" rx="12" fill="#1B4F3A"/>
+  <rect x="30" y="88" width="360" height="16" fill="#1B4F3A"/>
+  <text x="50" y="85" font-size="11" fill="#E8F0EC">PATTERN A</text>
+  <text x="210" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">非消化器専攻向け</text>
+
+  <!-- A: 消化管 -->
+  <rect x="48" y="118" width="324" height="80" rx="8" fill="#F5F4F0"/>
+  <rect x="48" y="118" width="6" height="80" rx="3" fill="#1B4F3A"/>
+  <text x="68" y="138" font-size="12" font-weight="bold" fill="#1B4F3A">消化管</text>
+  <text x="68" y="158" font-size="13" font-weight="bold" fill="#1A1917">消化性潰瘍出血（疾患群2）</text>
+  <text x="68" y="178" font-size="11" fill="#6B6760">出血リスク評価 - 内視鏡治療 - PPI - H.pylori除菌</text>
+  <text x="330" y="138" font-size="10" fill="#166534" text-anchor="end">書きやすさ &#x2605;&#x2605;&#x2605;</text>
+
+  <!-- A: 肝臓 -->
+  <rect x="48" y="206" width="324" height="80" rx="8" fill="#F5F4F0"/>
+  <rect x="48" y="206" width="6" height="80" rx="3" fill="#1B4F3A"/>
+  <text x="68" y="226" font-size="12" font-weight="bold" fill="#1B4F3A">肝臓</text>
+  <text x="68" y="246" font-size="13" font-weight="bold" fill="#1A1917">薬物性肝障害（疾患群6）</text>
+  <text x="68" y="266" font-size="11" fill="#6B6760">DDW-J 2004基準 - 原因薬剤同定 - 経過観察</text>
+  <text x="330" y="226" font-size="10" fill="#166534" text-anchor="end">書きやすさ &#x2605;&#x2605;&#x2605;</text>
+
+  <!-- A: 胆膵 -->
+  <rect x="48" y="294" width="324" height="80" rx="8" fill="#F5F4F0"/>
+  <rect x="48" y="294" width="6" height="80" rx="3" fill="#1B4F3A"/>
+  <text x="68" y="314" font-size="12" font-weight="bold" fill="#1B4F3A">胆膵</text>
+  <text x="68" y="334" font-size="13" font-weight="bold" fill="#1A1917">急性膵炎（疾患群8）</text>
+  <text x="68" y="354" font-size="11" fill="#6B6760">重症度判定 - 輸液管理 - 栄養管理 - 原因精査</text>
+  <text x="330" y="314" font-size="10" fill="#166534" text-anchor="end">書きやすさ &#x2605;&#x2605;&#x2605;</text>
+
+  <!-- Pattern B: 消化器専攻向け -->
+  <rect x="410" y="60" width="360" height="330" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1" filter="url(#shadow2)"/>
+  <rect x="410" y="60" width="360" height="44" rx="12" fill="#155230"/>
+  <rect x="410" y="88" width="360" height="16" fill="#155230"/>
+  <text x="430" y="85" font-size="11" fill="#E8F0EC">PATTERN B</text>
+  <text x="590" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">消化器専攻向け</text>
+
+  <!-- B: 消化管 -->
+  <rect x="428" y="118" width="324" height="80" rx="8" fill="#F5F4F0"/>
+  <rect x="428" y="118" width="6" height="80" rx="3" fill="#155230"/>
+  <text x="448" y="138" font-size="12" font-weight="bold" fill="#155230">消化管</text>
+  <text x="448" y="158" font-size="13" font-weight="bold" fill="#1A1917">潰瘍性大腸炎（疾患群4）</text>
+  <text x="448" y="178" font-size="11" fill="#6B6760">鑑別診断 - 寛解導入/維持 - 生物学的製剤</text>
+  <text x="710" y="138" font-size="10" fill="#155230" text-anchor="end">考察の深さ &#x2605;&#x2605;&#x2605;</text>
+
+  <!-- B: 肝臓 -->
+  <rect x="428" y="206" width="324" height="80" rx="8" fill="#F5F4F0"/>
+  <rect x="428" y="206" width="6" height="80" rx="3" fill="#155230"/>
+  <text x="448" y="226" font-size="12" font-weight="bold" fill="#155230">肝臓</text>
+  <text x="448" y="246" font-size="13" font-weight="bold" fill="#1A1917">肝細胞癌（疾患群5）</text>
+  <text x="448" y="266" font-size="11" fill="#6B6760">Barcelona分類 - 治療選択 - 背景肝評価</text>
+  <text x="710" y="226" font-size="10" fill="#155230" text-anchor="end">考察の深さ &#x2605;&#x2605;&#x2605;</text>
+
+  <!-- B: 胆膵 -->
+  <rect x="428" y="294" width="324" height="80" rx="8" fill="#F5F4F0"/>
+  <rect x="428" y="294" width="6" height="80" rx="3" fill="#155230"/>
+  <text x="448" y="314" font-size="12" font-weight="bold" fill="#155230">胆膵</text>
+  <text x="448" y="334" font-size="13" font-weight="bold" fill="#1A1917">自己免疫性膵炎（疾患群8）</text>
+  <text x="448" y="354" font-size="11" fill="#6B6760">IgG4関連疾患鑑別 - 診断基準 - ステロイド治療</text>
+  <text x="710" y="314" font-size="10" fill="#155230" text-anchor="end">考察の深さ &#x2605;&#x2605;&#x2605;</text>
+
+  <!-- Footer -->
+  <text x="400" y="425" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

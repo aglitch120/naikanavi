@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow1" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">消化器領域 9疾患群と病歴要約の対応</text>
+
+  <!-- 消化管 Section -->
+  <rect x="30" y="65" width="230" height="340" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="145" y="92" text-anchor="middle" font-size="15" font-weight="bold" fill="#1B4F3A">消化管（1篇）</text>
+
+  <rect x="45" y="108" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="55" y="126" font-size="11" font-weight="bold" fill="#1B4F3A">1</text>
+  <text x="72" y="126" font-size="11" fill="#1A1917">食道・胃・十二指腸 腫瘍</text>
+  <text x="72" y="142" font-size="10" fill="#6B6760">食道癌, 胃癌</text>
+
+  <rect x="45" y="158" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="55" y="176" font-size="11" font-weight="bold" fill="#1B4F3A">2</text>
+  <text x="72" y="176" font-size="11" fill="#1A1917">食道・胃・十二指腸 非腫瘍</text>
+  <text x="72" y="192" font-size="10" fill="#6B6760">GERD, 消化性潰瘍</text>
+
+  <rect x="45" y="208" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="55" y="226" font-size="11" font-weight="bold" fill="#1B4F3A">3</text>
+  <text x="72" y="226" font-size="11" fill="#1A1917">小腸・大腸 腫瘍</text>
+  <text x="72" y="242" font-size="10" fill="#6B6760">大腸癌</text>
+
+  <rect x="45" y="258" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="55" y="276" font-size="11" font-weight="bold" fill="#1B4F3A">4</text>
+  <text x="72" y="276" font-size="11" fill="#1A1917">小腸・大腸 非腫瘍</text>
+  <text x="72" y="292" font-size="10" fill="#6B6760">IBD, 虚血性腸炎</text>
+
+  <!-- Checkmark for 消化管 -->
+  <circle cx="145" cy="330" r="16" fill="#1B4F3A"/>
+  <text x="145" y="336" text-anchor="middle" font-size="14" fill="white">1篇</text>
+  <text x="145" y="356" text-anchor="middle" font-size="10" fill="#1B4F3A">疾患群1-4から選択</text>
+  <text x="145" y="370" text-anchor="middle" font-size="10" fill="#1B4F3A">異なる疾患群で</text>
+
+  <!-- 肝臓 Section -->
+  <rect x="285" y="65" width="230" height="250" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="400" y="92" text-anchor="middle" font-size="15" font-weight="bold" fill="#1B4F3A">肝臓（1篇）</text>
+
+  <rect x="300" y="108" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="310" y="126" font-size="11" font-weight="bold" fill="#1B4F3A">5</text>
+  <text x="327" y="126" font-size="11" fill="#1A1917">肝の腫瘍性疾患</text>
+  <text x="327" y="142" font-size="10" fill="#6B6760">肝細胞癌, 転移性肝腫瘍</text>
+
+  <rect x="300" y="158" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="310" y="176" font-size="11" font-weight="bold" fill="#1B4F3A">6</text>
+  <text x="327" y="176" font-size="11" fill="#1A1917">肝の非腫瘍性疾患</text>
+  <text x="327" y="192" font-size="10" fill="#6B6760">肝炎, 薬物性肝障害, 肝硬変</text>
+
+  <!-- Checkmark for 肝臓 -->
+  <circle cx="400" cy="240" r="16" fill="#1B4F3A"/>
+  <text x="400" y="246" text-anchor="middle" font-size="14" fill="white">1篇</text>
+  <text x="400" y="266" text-anchor="middle" font-size="10" fill="#1B4F3A">疾患群5-6から選択</text>
+  <text x="400" y="280" text-anchor="middle" font-size="10" fill="#1B4F3A">異なる疾患群で</text>
+
+  <!-- 胆膵 Section -->
+  <rect x="540" y="65" width="230" height="250" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="655" y="92" text-anchor="middle" font-size="15" font-weight="bold" fill="#1B4F3A">胆道・膵臓（1篇）</text>
+
+  <rect x="555" y="108" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="565" y="126" font-size="11" font-weight="bold" fill="#1B4F3A">7</text>
+  <text x="582" y="126" font-size="11" fill="#1A1917">胆道疾患</text>
+  <text x="582" y="142" font-size="10" fill="#6B6760">胆石症, 胆管炎</text>
+
+  <rect x="555" y="158" width="200" height="42" rx="6" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="565" y="176" font-size="11" font-weight="bold" fill="#1B4F3A">8</text>
+  <text x="582" y="176" font-size="11" fill="#1A1917">膵疾患</text>
+  <text x="582" y="192" font-size="10" fill="#6B6760">急性膵炎, 膵癌</text>
+
+  <!-- Checkmark for 胆膵 -->
+  <circle cx="655" cy="240" r="16" fill="#1B4F3A"/>
+  <text x="655" y="246" text-anchor="middle" font-size="14" fill="white">1篇</text>
+  <text x="655" y="266" text-anchor="middle" font-size="10" fill="#1B4F3A">疾患群7-8から選択</text>
+  <text x="655" y="280" text-anchor="middle" font-size="10" fill="#1B4F3A">異なる疾患群で</text>
+
+  <!-- 疾患群9 Warning -->
+  <rect x="285" y="340" width="485" height="65" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="310" y="365" font-size="13" font-weight="bold" fill="#DC2626">疾患群9: 腹腔・腹壁疾患 / 急性腹症</text>
+  <text x="310" y="385" font-size="11" fill="#6B6760">消化器分野の病歴要約としては提出不可（救急・外科紹介・剖検は可）</text>
+  <text x="740" y="375" text-anchor="middle" font-size="22" fill="#DC2626">&#x2717;</text>
+
+  <!-- 合計 -->
+  <rect x="30" y="425" width="740" height="50" rx="10" fill="#1B4F3A"/>
+  <text x="400" y="456" text-anchor="middle" font-size="15" font-weight="bold" fill="white">消化器 合計 3篇 = 消化管1篇 + 肝臓1篇 + 胆道膵臓1篇（各サブ領域必須）</text>
+
+  <!-- Footer -->
+  <text x="400" y="505" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
