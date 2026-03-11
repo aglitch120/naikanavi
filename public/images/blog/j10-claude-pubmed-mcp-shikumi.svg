@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B4F3A"/>
+    </marker>
+  </defs>
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+  <text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#1B4F3A">Claude + PubMed MCP の仕組み</text>
+  <text x="400" y="55" text-anchor="middle" font-size="11" fill="#6B6760">MCPがClaudeとPubMedの橋渡しをする</text>
+
+  <!-- You -->
+  <rect x="30" y="90" width="160" height="90" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2" filter="url(#shadow)"/>
+  <text x="110" y="125" text-anchor="middle" font-size="14" font-weight="bold" fill="#1A1917">あなた</text>
+  <text x="110" y="145" text-anchor="middle" font-size="11" fill="#6B6760">「心不全の文献を</text>
+  <text x="110" y="160" text-anchor="middle" font-size="11" fill="#6B6760">探して」と入力</text>
+
+  <!-- Arrow 1 -->
+  <line x1="190" y1="135" x2="240" y2="135" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Claude -->
+  <rect x="250" y="80" width="170" height="110" rx="12" fill="#1B4F3A" filter="url(#shadow)"/>
+  <text x="335" y="115" text-anchor="middle" font-size="15" font-weight="bold" fill="#FEFEFC">Claude</text>
+  <text x="335" y="135" text-anchor="middle" font-size="11" fill="#E8F0EC">検索クエリを自動生成</text>
+  <text x="335" y="152" text-anchor="middle" font-size="11" fill="#E8F0EC">結果を要約・整理</text>
+  <text x="335" y="169" text-anchor="middle" font-size="11" fill="#E8F0EC">引用形式に変換</text>
+
+  <!-- Arrow 2 -->
+  <line x1="420" y1="120" x2="470" y2="120" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="445" y="112" text-anchor="middle" font-size="9" fill="#6B6760">MCP</text>
+
+  <!-- Arrow 3 (return) -->
+  <line x1="470" y1="155" x2="420" y2="155" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="445" y="172" text-anchor="middle" font-size="9" fill="#6B6760">実データ</text>
+
+  <!-- PubMed -->
+  <rect x="480" y="80" width="170" height="110" rx="12" fill="#3D5A80" filter="url(#shadow)"/>
+  <text x="565" y="115" text-anchor="middle" font-size="15" font-weight="bold" fill="#FEFEFC">PubMed</text>
+  <text x="565" y="135" text-anchor="middle" font-size="11" fill="#E8F0EC">3,700万件以上の</text>
+  <text x="565" y="152" text-anchor="middle" font-size="11" fill="#E8F0EC">医学論文データベース</text>
+  <text x="565" y="169" text-anchor="middle" font-size="11" fill="#E8F0EC">PMID・著者・掲載誌</text>
+
+  <!-- Result -->
+  <rect x="660" y="90" width="120" height="90" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="720" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">出力</text>
+  <text x="720" y="140" text-anchor="middle" font-size="10" fill="#6B6760">実在する論文</text>
+  <text x="720" y="155" text-anchor="middle" font-size="10" fill="#6B6760">正確な引用情報</text>
+  <text x="720" y="170" text-anchor="middle" font-size="10" fill="#6B6760">PubMedリンク</text>
+
+  <line x1="650" y1="135" x2="655" y2="135" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Comparison: Without MCP -->
+  <rect x="30" y="220" width="355" height="130" rx="12" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="50" y="248" font-size="13" font-weight="bold" fill="#991B1B">MCP なし（従来のAI文献検索）</text>
+  <text x="50" y="272" font-size="12" fill="#1A1917">- AIの学習データから「それっぽい」論文を生成</text>
+  <text x="50" y="292" font-size="12" fill="#1A1917">- 存在しない論文が出てくる（ハルシネーション）</text>
+  <text x="50" y="312" font-size="12" fill="#1A1917">- PMID・著者名・掲載誌が間違っていることも</text>
+  <text x="50" y="332" font-size="12" fill="#991B1B">- 査読で「この論文は存在しません」と指摘される</text>
+
+  <!-- Comparison: With MCP -->
+  <rect x="415" y="220" width="355" height="130" rx="12" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="435" y="248" font-size="13" font-weight="bold" fill="#166534">MCP あり（PubMed直接検索）</text>
+  <text x="435" y="272" font-size="12" fill="#1A1917">- PubMedの実データベースから論文を取得</text>
+  <text x="435" y="292" font-size="12" fill="#1A1917">- PMID・著者・掲載誌はすべて実データ</text>
+  <text x="435" y="312" font-size="12" fill="#1A1917">- 全文取得（PMC対応論文）も可能</text>
+  <text x="435" y="332" font-size="12" fill="#166534">- 引用の信頼性が大幅に向上</text>
+
+  <!-- Footer -->
+  <text x="400" y="390" text-anchor="middle" font-size="10" fill="#6B6760">MCP = Model Context Protocol: AIと外部データベースをつなぐ標準規格（Anthropic社が開発）</text>
+  <text x="400" y="420" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
