@@ -290,6 +290,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '消化管・肝・胆膵の選び方',
       category: 'disease-specific',
     },
+    'd02-josler-byoreki-youyaku-junkanki': {
+      title: '病歴要約【循環器】',
+      subtitle: '心不全・心筋梗塞の書き方',
+      category: 'disease-specific',
+    },
   }
 
   if (metaMap[slug]) return metaMap[slug]
