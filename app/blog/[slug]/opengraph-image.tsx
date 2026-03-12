@@ -330,6 +330,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '脳梗塞・てんかん・パーキンソン病の書き方',
       category: 'disease-specific',
     },
+    'd09-josler-byoreki-youyaku-kougenbyou': {
+      title: '病歴要約【膠原病・アレルギー】',
+      subtitle: 'SLE・RAの書き方と疾患群配分',
+      category: 'disease-specific',
+    },
     'f01-jmecc-toha': {
       title: 'JMECCとは？',
       subtitle: '受講すべき理由と申込方法',
