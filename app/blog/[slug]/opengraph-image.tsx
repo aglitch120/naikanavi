@@ -375,6 +375,31 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '受講すべき理由と申込方法',
       category: 'jmecc-training',
     },
+    'g06-naika-senmoni-goukakuritsu': {
+      title: '内科専門医試験の合格率推移',
+      subtitle: '第1回〜第5回のデータ分析',
+      category: 'specialist-exam',
+    },
+    'g07-naika-senmoni-nanido': {
+      title: '内科専門医試験の難易度',
+      subtitle: '国試との違いと対策ポイント',
+      category: 'specialist-exam',
+    },
+    'b07-josler-shourei-touroku-shounin-sarenai': {
+      title: '症例登録が承認されない原因',
+      subtitle: '差し戻し5大原因と対処法',
+      category: 'case-registration',
+    },
+    'c10-josler-accept-reject': {
+      title: 'Accept・Revision・Reject',
+      subtitle: '病歴要約の評価判定と対処法',
+      category: 'medical-history',
+    },
+    'c11-josler-ichijihyouka': {
+      title: 'J-OSLER一次評価の流れ',
+      subtitle: '施設内評価を通すコツ',
+      category: 'medical-history',
+    },
   }
 
   if (metaMap[slug]) return metaMap[slug]
