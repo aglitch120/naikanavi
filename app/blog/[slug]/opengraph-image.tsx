@@ -110,6 +110,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'Accept率を上げる完全ガイド',
       category: 'medical-history',
     },
+    'a07-josler-7ki-8ki': {
+      title: 'J-OSLER 7期生・8期生向け',
+      subtitle: '120症例への変更点と対策',
+      category: 'josler-basics',
+    },
     'b02-josler-160cases': {
       title: '160症例の効率的な集め方',
       subtitle: '先輩医師の実体験から学ぶ',
