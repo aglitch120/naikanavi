@@ -3,31 +3,69 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 
+interface IndexEntry {
+  s: string  // slug
+  t: string  // title
+  d: string  // description
+  c: string  // categoryName
+  g: string  // tags
+}
+
 interface SearchResult {
   slug: string
   title: string
   description: string
   categoryName: string
-  tags: string[]
-  readingTime: number
+}
+
+let cachedIndex: IndexEntry[] | null = null
+
+async function loadIndex(): Promise<IndexEntry[]> {
+  if (cachedIndex) return cachedIndex
+  const res = await fetch('/search-index.json')
+  cachedIndex = await res.json()
+  return cachedIndex!
+}
+
+function search(index: IndexEntry[], query: string): SearchResult[] {
+  const keywords = query.toLowerCase().split(/\s+/).filter(Boolean)
+  if (keywords.length === 0) return []
+
+  return index
+    .map((entry) => {
+      const haystack = `${entry.t} ${entry.d} ${entry.c} ${entry.g}`.toLowerCase()
+      const matchCount = keywords.filter((kw) => haystack.includes(kw)).length
+      if (matchCount === 0) return null
+      return {
+        slug: entry.s,
+        title: entry.t,
+        description: entry.d,
+        categoryName: entry.c,
+        relevance: matchCount / keywords.length,
+      }
+    })
+    .filter((r): r is SearchResult & { relevance: number } => r !== null)
+    .sort((a, b) => b.relevance - a.relevance)
+    .slice(0, 10)
 }
 
 export default function SearchDialog() {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchResult[]>([])
-  const [isLoading, setIsLoading] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const [index, setIndex] = useState<IndexEntry[] | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // 開閉
   const open = useCallback(() => {
     setIsOpen(true)
     setQuery('')
     setResults([])
     setSelectedIndex(0)
-  }, [])
+    if (!index) {
+      loadIndex().then(setIndex)
+    }
+  }, [index])
 
   const close = useCallback(() => {
     setIsOpen(false)
@@ -35,74 +73,38 @@ export default function SearchDialog() {
     setResults([])
   }, [])
 
-  // Cmd+K / Ctrl+K ショートカット
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault()
-        if (isOpen) {
-          close()
-        } else {
-          open()
-        }
+        isOpen ? close() : open()
       }
-      if (e.key === 'Escape' && isOpen) {
-        close()
-      }
+      if (e.key === 'Escape' && isOpen) close()
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isOpen, open, close])
 
-  // モーダル開いたらinputにフォーカス
   useEffect(() => {
     if (isOpen && inputRef.current) {
       setTimeout(() => inputRef.current?.focus(), 50)
     }
   }, [isOpen])
 
-  // bodyスクロール制御
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
-  // 検索実行（デバウンス付き）
   useEffect(() => {
-    if (debounceRef.current) clearTimeout(debounceRef.current)
-
-    if (!query.trim()) {
+    if (!index || !query.trim()) {
       setResults([])
-      setIsLoading(false)
       return
     }
+    setResults(search(index, query.trim()))
+    setSelectedIndex(0)
+  }, [query, index])
 
-    setIsLoading(true)
-    debounceRef.current = setTimeout(async () => {
-      try {
-        const res = await fetch(`/api/search?q=${encodeURIComponent(query.trim())}`)
-        const data = await res.json()
-        setResults(data.results || [])
-        setSelectedIndex(0)
-      } catch {
-        setResults([])
-      } finally {
-        setIsLoading(false)
-      }
-    }, 200)
-
-    return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current)
-    }
-  }, [query])
-
-  // キーボードナビゲーション
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
@@ -142,19 +144,15 @@ export default function SearchDialog() {
 
   return (
     <>
-      {/* オーバーレイ */}
       <div
         className="fixed inset-0 bg-tx/40 z-[60] backdrop-blur-sm"
         onClick={close}
       />
-
-      {/* モーダル */}
       <div className="fixed inset-0 z-[70] flex items-start justify-center pt-[15vh] px-4">
         <div
           className="w-full max-w-lg bg-s0 rounded-xl shadow-2xl border border-br overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* 検索入力 */}
           <div className="flex items-center gap-3 px-4 border-b border-br">
             <svg
               width="18"
@@ -187,39 +185,26 @@ export default function SearchDialog() {
             </button>
           </div>
 
-          {/* 結果 */}
           <div className="max-h-[50vh] overflow-y-auto">
-            {isLoading && query.trim() && (
-              <div className="px-4 py-8 text-center text-sm text-muted">
-                検索中...
-              </div>
-            )}
-
-            {!isLoading && query.trim() && results.length === 0 && (
+            {query.trim() && results.length === 0 && (
               <div className="px-4 py-8 text-center text-sm text-muted">
                 「{query}」に一致する記事が見つかりませんでした
               </div>
             )}
-
-            {!isLoading && results.length > 0 && (
+            {results.length > 0 && (
               <ul className="py-2">
-                {results.map((result, index) => (
+                {results.map((result, i) => (
                   <li key={result.slug}>
                     <Link
                       href={`/blog/${result.slug}`}
                       onClick={close}
                       className={`block px-4 py-3 transition-colors ${
-                        index === selectedIndex
-                          ? 'bg-acl'
-                          : 'hover:bg-s1'
+                        i === selectedIndex ? 'bg-acl' : 'hover:bg-s1'
                       }`}
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xs text-muted bg-s1 px-2 py-0.5 rounded">
                           {result.categoryName}
-                        </span>
-                        <span className="text-xs text-muted">
-                          {result.readingTime}分
                         </span>
                       </div>
                       <p className="text-sm font-medium text-tx leading-snug">
@@ -233,7 +218,6 @@ export default function SearchDialog() {
                 ))}
               </ul>
             )}
-
             {!query.trim() && (
               <div className="px-4 py-8 text-center text-sm text-muted">
                 キーワードを入力して記事を検索
@@ -241,7 +225,6 @@ export default function SearchDialog() {
             )}
           </div>
 
-          {/* フッターヒント */}
           <div className="px-4 py-2.5 border-t border-br bg-s1/50 flex items-center gap-4 text-xs text-muted">
             <span className="flex items-center gap-1">
               <kbd className="bg-s0 border border-br px-1 py-0.5 rounded font-mono text-[10px]">↑</kbd>
