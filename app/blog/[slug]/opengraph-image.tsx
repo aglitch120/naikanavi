@@ -310,6 +310,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '比較すべき7つのポイント',
       category: 'career',
     },
+    'b04-josler-shikkanngun-ichiran': {
+      title: 'J-OSLER疾患群一覧表',
+      subtitle: '70疾患群の分類と56疾患群の選び方',
+      category: 'case-registration',
+    },
     'd04-josler-byoreki-youyaku-ketsueki': {
       title: '病歴要約【血液】',
       subtitle: '貧血・白血病・リンパ腫の書き方',
