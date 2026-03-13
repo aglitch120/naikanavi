@@ -425,6 +425,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: 'A4 2枚に収めるコツ',
       category: 'medical-history',
     },
+    'c15-josler-kensa-kekka-tani': {
+      title: '検査結果の記載ルール',
+      subtitle: '単位統一・フォーマットのコツ',
+      category: 'medical-history',
+    },
   }
 
   if (metaMap[slug]) return metaMap[slug]

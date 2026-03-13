@@ -1,0 +1,335 @@
+---
+title: "J-OSLER検査結果の記載ルール｜単位統一・フォーマットのコツ"
+description: "J-OSLER病歴要約の検査所見の記載ルールを公式手引きに基づいて解説。検査項目の選び方、単位の統一ルール、略語の使い方、よくあるミスと差し戻しを防ぐチェックポイントまで。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "内科ナビ編集部"
+category: "medical-history"
+cluster: "C"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "検査結果", "検査所見", "単位", "フォーマット"]
+cta_type: "template"
+reading_time: 8
+status: "published"
+seo_checked: true
+---
+
+「検査結果って全部書くの？どこまで省略していいの？」「単位の書き方でミスしたら差し戻される？」
+
+J-OSLERの病歴要約で「主要な検査所見」は必須セクションですが、何をどう書くかで意外と迷います。全項目を羅列すると分量オーバーになり、省略しすぎると情報不足で差し戻されます。この記事では、[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）と[病歴要約 作成と評価の手引き](https://www.naika.or.jp/wp-content/uploads/J-OSLER/Tebiki_ByorekiHyoka.pdf)に基づいて、検査所見の記載ルールを解説します。
+
+> [内科ナビ](https://naikanavi.booth.pm/items/8058590)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけで検査所見の記載項目候補まで自動生成。どの検査を書くべきか迷いません。全70疾患群・373疾患対応。
+
+## 公式手引きが求める検査所見の記載
+
+[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）では、検査所見について4つのルールが示されています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="検査所見の記載ルール4つのポイント">
+  <defs>
+    <filter id="sh_c15a" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="420" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">検査所見の記載ルール（公式手引き準拠）</text>
+
+  <rect x="40" y="92" width="345" height="130" rx="10" fill="#FEFEFC" filter="url(#sh_c15a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="68" cy="118" r="16" fill="#1B4F3A"/>
+  <text x="68" y="124" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#fff">1</text>
+  <text x="94" y="122" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">全項目の羅列は不要</text>
+  <text x="56" y="150" font-family="sans-serif" font-size="11" fill="#6B6760">「全ての検査結果を羅列する必要はない」</text>
+  <text x="56" y="168" font-family="sans-serif" font-size="11" fill="#6B6760">正常値のカテゴリは「肝機能正常」等の</text>
+  <text x="56" y="186" font-family="sans-serif" font-size="11" fill="#6B6760">まとめ記載でもOK</text>
+
+  <rect x="415" y="92" width="345" height="130" rx="10" fill="#E8F0EC" filter="url(#sh_c15a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="443" cy="118" r="16" fill="#1B4F3A"/>
+  <text x="443" y="124" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#fff">2</text>
+  <text x="469" y="122" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">重要な項目は必ず記載</text>
+  <text x="431" y="150" font-family="sans-serif" font-size="11" fill="#6B6760">その疾患で異常になり得るデータ</text>
+  <text x="431" y="168" font-family="sans-serif" font-size="11" fill="#6B6760">注目すべき正常値</text>
+  <text x="431" y="186" font-family="sans-serif" font-size="11" fill="#6B6760">特殊検査の結果</text>
+
+  <rect x="40" y="238" width="345" height="130" rx="10" fill="#E8F0EC" filter="url(#sh_c15a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="68" cy="264" r="16" fill="#1B4F3A"/>
+  <text x="68" y="270" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#fff">3</text>
+  <text x="94" y="268" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">略語は国試レベルに準拠</text>
+  <text x="56" y="296" font-family="sans-serif" font-size="11" fill="#6B6760">WBC, Hb, Cr, BUN, Na, K等は</text>
+  <text x="56" y="314" font-family="sans-serif" font-size="11" fill="#6B6760">そのまま使用可能。</text>
+  <text x="56" y="332" font-family="sans-serif" font-size="11" fill="#6B6760">サブスペ特有の略語は初出時に記載。</text>
+
+  <rect x="415" y="238" width="345" height="130" rx="10" fill="#FEFEFC" filter="url(#sh_c15a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="443" cy="264" r="16" fill="#1B4F3A"/>
+  <text x="443" y="270" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#fff">4</text>
+  <text x="469" y="268" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">前医症例は受持開始時の値</text>
+  <text x="431" y="296" font-family="sans-serif" font-size="11" fill="#6B6760">前医から引き継いだ場合は</text>
+  <text x="431" y="314" font-family="sans-serif" font-size="11" fill="#6B6760">自身の受け持ち開始前後の</text>
+  <text x="431" y="332" font-family="sans-serif" font-size="11" fill="#6B6760">検査所見を記載する。</text>
+
+  <text x="400" y="410" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
+
+ポイントは「全部書く必要はないが、書くべきものは必ず書く」というバランスです。[評価の手引き](https://www.naika.or.jp/wp-content/uploads/J-OSLER/Tebiki_ByorekiHyoka.pdf)でも「診断に必要な検査の記載は十分であるか」が評価項目に含まれています。
+
+## 書くべき検査と省略してよい検査の判断基準
+
+### 必ず書くべき検査
+
+- **主病名の診断根拠となる検査**：確定診断に至った検査値は省略できません（例：SLEならANA・抗dsDNA抗体・補体、DKAなら血糖・HbA1c・血液ガス）
+- **注目すべき正常値**：鑑別診断の除外に使った検査値です。たとえば血小板減少の鑑別でTTP/HUSを考慮したが「ADAMTS13活性は正常」といった陰性所見
+- **特殊検査**：一般的なルーチン検査以外で施行した検査（遺伝子検査、特殊染色、負荷試験など）
+- **治療効果判定に使う検査**：入院後経過と考察セクションで言及する検査値は、入院時の値も検査所見に記載しておく必要があります
+
+### 省略・まとめ記載でよい検査
+
+- **主病名と無関係で正常な検査カテゴリ**：「肝機能正常」「腎機能正常」「甲状腺機能正常」などのまとめ記載が可能
+- **ルーチンの一般検査で異常がないもの**：肺炎の症例で正常な肝機能を個別項目で列挙する必要はない
+- **同じカテゴリの個別値**：正常範囲の電解質をNa・K・Cl全部書くよりも「電解質異常なし」で済む場合もある
+
+ただし、迷ったら記載しておくほうが安全です。[分量ルール](/blog/c13-josler-byoreki-youyaku-mojisuu)でA4 2枚に収まる範囲なら、検査所見は多めに書いても問題ありません。
+
+## 単位とフォーマットの統一ルール
+
+検査所見のフォーマットで差し戻しにつながるのは、単位の不統一や転記ミスです。以下のルールを統一しましょう。
+
+### 単位の標準表記
+
+| 検査項目 | 推奨単位 | よくあるミス |
+|---------|---------|------------|
+| WBC | /μL | /uL（μが半角u） |
+| RBC・Plt | ×10⁴/μL | x10^4/uL |
+| Hb | g/dL | g/dl（大文字小文字の混在） |
+| 生化学全般 | mg/dL, U/L | mg/dl, u/L |
+| 電解質 | mEq/L | meq/L, mEq/l |
+| CRP | mg/dL | mg/L（施設により異なる） |
+| eGFR | mL/min/1.73m² | ml/min |
+| BNP | pg/mL | pg/ml |
+
+J-OSLERの入力画面では特殊文字（μ, ×, ²）が入力しにくいことがあります。[Wordで下書き](/blog/c14-josler-byoreki-youyaku-word-copipe)してからコピペすると、特殊文字を含むフォーマットが正しく反映されます。
+
+### カテゴリ別にまとめる
+
+検査所見は以下のカテゴリで区切って記載するのが標準的です。
+
+```
+末梢血：WBC 8,500/μL, RBC 450×10⁴/μL, Hb 13.5g/dL, Plt 22.5×10⁴/μL
+凝固：PT-INR 1.05, APTT 28.5秒, D-dimer 0.8μg/mL
+生化学：TP 7.0g/dL, Alb 3.8g/dL, AST 25U/L, ALT 18U/L, BUN 15.2mg/dL, Cr 0.85mg/dL, Na 140mEq/L, K 4.2mEq/L, CRP 8.5mg/dL
+血液ガス（室内気）：pH 7.42, PaCO2 38mmHg, PaO2 85mmHg, HCO3- 24mEq/L
+尿検査：蛋白（-）, 糖（-）, 潜血（-）
+```
+
+カテゴリ名（末梢血、生化学など）を項目の先頭に置き、コロンで区切ります。項目間はカンマ区切りが標準です。
+
+> 検査結果のフォーマット変換を効率化する方法は「[J-OSLER検査結果のフォーマット変換術](/blog/j03-josler-kensa-kekka-format)」で詳しく解説しています。AIを使えば29症例分の整形時間を大幅に短縮できます。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-label="検査所見でよくある記載ミスと正しい書き方の比較">
+  <defs>
+    <filter id="sh_c15b" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">よくある記載ミス vs 正しい書き方</text>
+
+  <rect x="40" y="90" width="345" height="320" rx="10" fill="#FEE2E2" filter="url(#sh_c15b)" stroke="#FCA5A5" stroke-width="1.5"/>
+  <rect x="40" y="90" width="345" height="36" rx="10" fill="#991B1B"/>
+  <text x="212" y="114" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#fff">NG：差し戻しリスクあり</text>
+
+  <text x="60" y="150" font-family="sans-serif" font-weight="bold" font-size="12" fill="#991B1B">単位の不統一</text>
+  <text x="60" y="168" font-family="sans-serif" font-size="11" fill="#1A1917">WBC 8500/uL, Hb 13.5 g/dl</text>
+  <line x1="60" y1="180" x2="365" y2="180" stroke="#FCA5A5" stroke-width="0.5"/>
+
+  <text x="60" y="200" font-family="sans-serif" font-weight="bold" font-size="12" fill="#991B1B">全項目を無差別に羅列</text>
+  <text x="60" y="218" font-family="sans-serif" font-size="11" fill="#1A1917">AST 25, ALT 18, LDH 180, ALP 220,</text>
+  <text x="60" y="234" font-family="sans-serif" font-size="11" fill="#1A1917">γ-GTP 30, T-Bil 0.8...（肺炎なのに）</text>
+  <line x1="60" y1="246" x2="365" y2="246" stroke="#FCA5A5" stroke-width="0.5"/>
+
+  <text x="60" y="266" font-family="sans-serif" font-weight="bold" font-size="12" fill="#991B1B">単位の記載漏れ</text>
+  <text x="60" y="284" font-family="sans-serif" font-size="11" fill="#1A1917">CRP 8.5, BUN 15.2, Cr 0.85</text>
+  <line x1="60" y1="296" x2="365" y2="296" stroke="#FCA5A5" stroke-width="0.5"/>
+
+  <text x="60" y="316" font-family="sans-serif" font-weight="bold" font-size="12" fill="#991B1B">略語の未定義使用</text>
+  <text x="60" y="334" font-family="sans-serif" font-size="11" fill="#1A1917">TBLC施行（初出で正式名なし）</text>
+  <line x1="60" y1="346" x2="365" y2="346" stroke="#FCA5A5" stroke-width="0.5"/>
+
+  <text x="60" y="366" font-family="sans-serif" font-weight="bold" font-size="12" fill="#991B1B">転記ミス</text>
+  <text x="60" y="384" font-family="sans-serif" font-size="11" fill="#1A1917">K 42mEq/L（4.2の転記ミス）</text>
+
+  <rect x="415" y="90" width="345" height="320" rx="10" fill="#DCFCE7" filter="url(#sh_c15b)" stroke="#86EFAC" stroke-width="1.5"/>
+  <rect x="415" y="90" width="345" height="36" rx="10" fill="#166534"/>
+  <text x="587" y="114" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#fff">OK：正しい記載</text>
+
+  <text x="435" y="150" font-family="sans-serif" font-weight="bold" font-size="12" fill="#166534">単位を統一</text>
+  <text x="435" y="168" font-family="sans-serif" font-size="11" fill="#1A1917">WBC 8,500/μL, Hb 13.5g/dL</text>
+  <line x1="435" y1="180" x2="740" y2="180" stroke="#86EFAC" stroke-width="0.5"/>
+
+  <text x="435" y="200" font-family="sans-serif" font-weight="bold" font-size="12" fill="#166534">疾患に関連する項目を選択</text>
+  <text x="435" y="218" font-family="sans-serif" font-size="11" fill="#1A1917">CRP 8.5mg/dL, PCT 0.8ng/mL,</text>
+  <text x="435" y="234" font-family="sans-serif" font-size="11" fill="#1A1917">肝・腎機能正常</text>
+  <line x1="435" y1="246" x2="740" y2="246" stroke="#86EFAC" stroke-width="0.5"/>
+
+  <text x="435" y="266" font-family="sans-serif" font-weight="bold" font-size="12" fill="#166534">単位を必ず付記</text>
+  <text x="435" y="284" font-family="sans-serif" font-size="11" fill="#1A1917">CRP 8.5mg/dL, BUN 15.2mg/dL</text>
+  <line x1="435" y1="296" x2="740" y2="296" stroke="#86EFAC" stroke-width="0.5"/>
+
+  <text x="435" y="316" font-family="sans-serif" font-weight="bold" font-size="12" fill="#166534">初出時にフルスペル記載</text>
+  <text x="435" y="334" font-family="sans-serif" font-size="11" fill="#1A1917">経気管支クライオ肺生検（TBLC）施行</text>
+  <line x1="435" y1="346" x2="740" y2="346" stroke="#86EFAC" stroke-width="0.5"/>
+
+  <text x="435" y="366" font-family="sans-serif" font-weight="bold" font-size="12" fill="#166534">数値を再確認</text>
+  <text x="435" y="384" font-family="sans-serif" font-size="11" fill="#1A1917">K 4.2mEq/L（カルテと照合済み）</text>
+
+  <text x="400" y="432" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
+
+## 略語の使い方ルール
+
+手引きでは略語について以下のルールが定められています。
+
+### そのまま使える略語
+
+「検査所見の記載などでは、医師国家試験問題や内科専門医試験問題などに準じて、一般的な略語は使用してよい」とされています。
+
+- **血液検査**：WBC, RBC, Hb, Ht, Plt, MCV, MCH, MCHC
+- **生化学**：TP, Alb, AST, ALT, LDH, ALP, BUN, Cr, UA, Na, K, Cl, Ca, CRP
+- **凝固**：PT, APTT, FDP, D-dimer
+- **血液ガス**：pH, PaO2, PaCO2, HCO3-
+- **画像・生理検査**：CT, MRI, Xp, ECG, SpO2, JCS, GCS
+
+### 初出時に正式名の記載が必要な略語
+
+サブスペシャルティ領域で一般的と思われる略語であっても、初出時に正式名称を記載する必要があります。手引きに挙げられている例は以下のとおりです。
+
+- 経気管支クライオ肺生検（TBLC）
+- 経カテーテル大動脈弁置換術（TAVI）
+- 内視鏡的粘膜下層剥離術（ESD）
+
+これらに限らず、「国試で出てこないレベルの略語」は初出時にフルスペルを付けましょう。迷ったら記載しておくのが安全です。
+
+### 確定診断名には略語禁止
+
+注意点として、**確定診断名には略語を用いないこと** が手引きに明記されています。検査所見内では「DM」と書けますが、確定診断名には「糖尿病」と正式名で記載します。また、複数の意味を持つ略語（DM＝糖尿病/皮膚筋炎）は初出時に明記が必要です。
+
+## 疾患別：検査所見に入れるべき項目リスト
+
+どの検査を記載するか迷う方のために、領域別の主要項目を整理します。主病名に応じて取捨選択してください。
+
+### 感染症（肺炎・尿路感染など）
+
+- 末梢血：WBC（白血球分画）, CRP, PCT（プロカルシトニン）
+- 培養結果：喀痰培養, 血液培養, 尿培養（起因菌と感受性）
+- 画像：胸部CT/Xp所見
+- 該当しない臓器系は「肝機能正常」「腎機能正常」でまとめる
+
+### 循環器（心不全・急性冠症候群など）
+
+- 心筋マーカー：トロポニンT/I, CK, CK-MB
+- BNP or NT-proBNP
+- 心電図所見（文章形式で記載）
+- 心エコー所見（EF, 壁運動異常, 弁逆流など）
+- 冠動脈造影所見（施行した場合）
+
+### 腎臓（CKD・AKI・ネフローゼなど）
+
+- BUN, Cr, eGFR, 電解質（Na, K, Cl, Ca, P）
+- 尿検査：蛋白定量, 沈渣（赤血球, 円柱）
+- 血清Alb, 総コレステロール（ネフローゼ症候群）
+- 腎生検所見（施行した場合、光顕・蛍光・電顕）
+
+> 各領域の詳しい書き方は[病歴要約の例文集](/blog/c03-josler-byoreki-youyaku-reibun)や疾患別記事（[消化器](/blog/d01-josler-byoreki-youyaku-shoukaki)、[循環器](/blog/d02-josler-byoreki-youyaku-junkanki)、[腎臓](/blog/d05-josler-byoreki-youyaku-jinzou)など）で詳しく解説しています。
+
+## 画像検査・生理検査の記載形式
+
+画像検査と生理検査は、血液検査とは異なる記載形式が求められます。
+
+### 画像検査は文章形式で
+
+画像所見は数値の羅列ではなく、文章形式で記載します。
+
+```
+胸部CT：右下葉にair bronchogramを伴う浸潤影を指摘した. 胸水貯留は指摘しなかった.
+頭部MRI：左中大脳動脈領域にDWI高信号域を指摘した. 出血性変化は指摘しなかった.
+```
+
+「〜を認めた」よりも「〜を指摘した」「〜であった」のほうが客観的な表現として適切です。陰性所見（〜は認めなかった）も鑑別上重要であれば記載します。
+
+### 生理検査も文章形式で
+
+```
+心電図：洞調律, 心拍数78/分, ST変化なし, 異常Q波なし.
+呼吸機能検査：%VC 85%, FEV1.0% 62%. 閉塞性換気障害を呈した.
+```
+
+内科ナビの[AI病歴要約テンプレート](https://naikanavi.booth.pm/items/8058590)では、疾患群ごとに記載すべき検査項目の候補と記載フォーマットが自動生成されます。引用文献候補もClaude PubMed MCPでPubMedの実データと照合済みです。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-label="検査所見セクションの提出前チェックリスト">
+  <defs>
+    <filter id="sh_c15c" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="360" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">提出前チェックリスト：検査所見</text>
+
+  <rect x="40" y="90" width="720" height="40" rx="8" fill="#FEFEFC" filter="url(#sh_c15c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="72" y="115" font-family="sans-serif" font-size="15" fill="#1B4F3A">□</text>
+  <text x="100" y="115" font-family="sans-serif" font-size="13" fill="#1A1917">主病名の診断根拠となる検査値が含まれているか</text>
+
+  <rect x="40" y="138" width="720" height="40" rx="8" fill="#E8F0EC" filter="url(#sh_c15c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="72" y="163" font-family="sans-serif" font-size="15" fill="#1B4F3A">□</text>
+  <text x="100" y="163" font-family="sans-serif" font-size="13" fill="#1A1917">鑑別診断の除外に使った検査値（注目すべき正常値）が含まれているか</text>
+
+  <rect x="40" y="186" width="720" height="40" rx="8" fill="#FEFEFC" filter="url(#sh_c15c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="72" y="211" font-family="sans-serif" font-size="15" fill="#1B4F3A">□</text>
+  <text x="100" y="211" font-family="sans-serif" font-size="13" fill="#1A1917">単位が統一されているか（μL, mg/dL, U/L等の大文字小文字）</text>
+
+  <rect x="40" y="234" width="720" height="40" rx="8" fill="#E8F0EC" filter="url(#sh_c15c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="72" y="259" font-family="sans-serif" font-size="15" fill="#1B4F3A">□</text>
+  <text x="100" y="259" font-family="sans-serif" font-size="13" fill="#1A1917">数値の転記ミスがないか（カルテ原本と照合）</text>
+
+  <rect x="40" y="282" width="720" height="40" rx="8" fill="#FEFEFC" filter="url(#sh_c15c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="72" y="307" font-family="sans-serif" font-size="15" fill="#1B4F3A">□</text>
+  <text x="100" y="307" font-family="sans-serif" font-size="13" fill="#1A1917">サブスペ特有の略語は初出時にフルスペルを記載しているか</text>
+
+  <rect x="40" y="330" width="720" height="7" rx="3" fill="#1B4F3A"/>
+
+  <text x="400" y="355" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
+
+## よくある質問（FAQ）
+
+### Q. 検査結果に単位は必ず必要ですか？
+
+A. はい、必要です。数値のみの記載（例：CRP 8.5）は転記ミスとの区別がつかず、評価者にとって判読しにくくなります。[評価の手引き](https://www.naika.or.jp/wp-content/uploads/J-OSLER/Tebiki_ByorekiHyoka.pdf)でも「検査データ等の転記ミス、単位の間違い」が減点対象として明記されています。
+
+### Q. 施設によって単位が違う場合はどうすればいいですか？
+
+A. CRPなど施設によってmg/dLとmg/Lが混在する項目があります。どちらの単位で記載しても構いませんが、**1つの病歴要約の中で統一する** ことが重要です。また、基準値が異なる場合は基準値を併記するのも有効です。
+
+### Q. 検査結果に「H」「L」などの異常マークは入れるべきですか？
+
+A. 不要です。電子カルテでは異常値に「H（高値）」「L（低値）」のマークが付きますが、J-OSLERの病歴要約では数値と単位のみを記載します。異常値であることは数値自体から判断できるため、マークは省略してください。
+
+### Q. 画像検査の所見はどの程度詳しく書くべきですか？
+
+A. 主病名の診断に関連する所見を中心に、第三者が読んで病態を理解できる程度に記載します。放射線科の読影レポートをそのまま貼り付けるのではなく、臨床的に重要な所見を選んで文章形式で記載しましょう。
+
+### Q. 入院後に施行した検査も「主要な検査所見」に書いてよいですか？
+
+A. 入院時の検査所見セクションには、原則として入院時（受持開始時）の検査値を記載します。入院後に施行した特殊検査（生検、造影検査など）の結果は「入院後経過と考察」セクションに記載するのが適切です。ただし、入院翌日に施行した検査で診断確定に至ったような場合は、検査所見セクションに含めても問題ありません。
+
+## まとめ
+
+J-OSLER検査所見の記載ルールのポイントを整理します。
+
+- 全項目の羅列は不要。**主病名に関連する検査、注目すべき正常値、特殊検査** に絞る
+- 疾患と無関係で正常なカテゴリは「肝機能正常」等のまとめ記載でOK
+- 単位は統一する。**μL, mg/dL, U/L** 等の大文字小文字まで揃える
+- 略語は国試レベルなら定義不要。サブスペ特有の略語は初出時にフルスペル
+- 画像・生理検査は文章形式で記載（箇条書きの言い止めは避ける）
+- 転記ミスは減点対象。**提出前にカルテ原本と照合** する
+
+検査所見の記載は、[病歴要約の書き方](/blog/c01-josler-byoreki-youyaku-kakikata)全体の中では地味なセクションですが、ミスがあると評価者の印象を大きく下げます。フォーマットを統一して29症例に適用すれば、作業効率も上がり差し戻しリスクも下がります。
