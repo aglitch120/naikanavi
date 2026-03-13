@@ -1,197 +1,342 @@
 {
-    "a01-josler-toha": {
-        "title": "J-OSLERとは？内科専攻医が知るべき全体像を徹底解説",
-        "subtitle": "",
-        "category": "josler-basics"
-    },
-    "a03-josler-tsukaikata": {
-        "title": "J-OSLERの使い方完全ガイド",
-        "subtitle": "画面の見方から操作方法まで",
-        "category": "josler-basics"
-    },
-    "a05-josler-kigen-shimekiri": {
-        "title": "J-OSLERの期限・締め切り一覧",
-        "subtitle": "一次評価・二次評価のスケジュール",
-        "category": "josler-basics"
-    },
-    "a06-josler-shuryo-youken": {
-        "title": "J-OSLER修了要件を完全解説",
-        "subtitle": "症例数・病歴要約・講習会すべて網羅",
-        "category": "josler-basics"
-    },
-    "b01-josler-byoreki-youyaku-kakikata": {
-        "title": "J-OSLER病歴要約の書き方完全ガイド",
-        "subtitle": "",
-        "category": "medical-history"
-    },
-    "b01-josler-shourei-touroku-kakikata": {
-        "title": "J-OSLER症例登録の書き方完全ガイド",
-        "subtitle": "テンプレートと自己省察の例文付き",
-        "category": "case-registration"
-    },
-    "b02-josler-160cases": {
-        "title": "J-OSLER 160症例を効率的に終わらせる方法",
-        "subtitle": "先輩医師の実体験",
-        "category": "case-registration"
-    },
-    "b03-josler-120cases": {
-        "title": "J-OSLER 120症例の進め方と疾患群の選び方",
-        "subtitle": "",
-        "category": "case-registration"
-    },
-    "b05-josler-shourei-touroku-template": {
-        "title": "J-OSLER症例登録テンプレート",
-        "subtitle": "現病歴・自己省察をパターン別にコピペ",
-        "category": "case-registration"
-    },
-    "c01-josler-byoreki-youyaku-kakikata": {
-        "title": "J-OSLER病歴要約の書き方完全ガイド",
-        "subtitle": "Accept率を上げるコツ",
-        "category": "medical-history"
-    },
-    "c02-josler-byoreki-youyaku-template": {
-        "title": "J-OSLER病歴要約テンプレート",
-        "subtitle": "項目別の書き方と入力のコツ",
-        "category": "medical-history"
-    },
-    "c03-josler-byoreki-youyaku-reibun": {
-        "title": "J-OSLER病歴要約の例文集",
-        "subtitle": "領域別の書き方を項目ごとに解説",
-        "category": "medical-history"
-    },
-    "c04-josler-sougou-kousatsu-kakikata": {
-        "title": "J-OSLER総合考察の書き方",
-        "subtitle": "全人的視点の入れ方",
-        "category": "medical-history"
-    },
-    "c05-josler-zenjinteki-shiten": {
-        "title": "J-OSLER「全人的視点」の書き方",
-        "subtitle": "具体例とテンプレートで解説",
-        "category": "medical-history"
-    },
-    "c06-josler-nyuingo-keika-kakikata": {
-        "title": "J-OSLER「入院後経過と考察」の書き方",
-        "subtitle": "差し戻されないコツ",
-        "category": "medical-history"
-    },
-    "c07-josler-bunken-inyo": {
-        "title": "J-OSLER病歴要約の文献引用ルール",
-        "subtitle": "UpToDate・ガイドラインの書き方",
-        "category": "medical-history"
-    },
-    "c08-josler-byoreki-youyaku-sashimodoshi": {
-        "title": "J-OSLER病歴要約が差し戻しされる理由と対策",
-        "subtitle": "Revision対応ガイド",
-        "category": "medical-history"
-    },
-    "c09-josler-byoreki-youyaku-29cases": {
-        "title": "J-OSLER病歴要約 29症例の選び方",
-        "subtitle": "疾患群バランスと書きやすい症例の見つけ方",
-        "category": "medical-history"
-    },
-    "c12-josler-nijihyouka": {
-        "title": "J-OSLER二次評価完全ガイド",
-        "subtitle": "査読委員の視点とAcceptされるポイント",
-        "category": "medical-history"
-    },
-    "c14-josler-byoreki-youyaku-word-copipe": {
-        "title": "J-OSLER病歴要約はWordで下書きが正解",
-        "subtitle": "コピペ手順と注意点",
-        "category": "medical-history"
-    },
-    "e01-josler-shinchoku-kanri": {
-        "title": "J-OSLER進捗管理の方法",
-        "subtitle": "修了要件を最短で満たすスケジュールとチェックリスト",
-        "category": "progress-management"
-    },
-    "e02-josler-manianai": {
-        "title": "J-OSLERが間に合わない！残り期間別の巻き返し戦略と優先順位",
-        "subtitle": "",
-        "category": "progress-management"
-    },
-    "e04-josler-checklist": {
-        "title": "J-OSLERチェックリスト",
-        "subtitle": "症例登録・病歴要約・修了要件を一覧で管理",
-        "category": "progress-management"
-    },
-    "g01-naika-senmoni-benkyouhou": {
-        "title": "内科専門医試験の勉強法",
-        "subtitle": "いつから・何を・どのくらい",
-        "category": "specialist-exam"
-    },
-    "g02-naika-senmoni-itsu-kara": {
-        "title": "内科専門医試験の勉強はいつから？1ヶ月・3ヶ月・半年プラン",
-        "subtitle": "",
-        "category": "specialist-exam"
-    },
-    "g03-naika-senmoni-sankousho": {
-        "title": "内科専門医試験おすすめ参考書・問題集ランキング",
-        "subtitle": "",
-        "category": "specialist-exam"
-    },
-    "g05-naika-senmoni-kakomon": {
-        "title": "内科専門医試験の過去問対策",
-        "subtitle": "公式問題集の使い方と復元問題の活用法",
-        "category": "specialist-exam"
-    },
-    "g08-naika-senmoni-nittei": {
-        "title": "内科専門医試験の日程・会場・出願期間まとめ",
-        "subtitle": "第6回試験の全情報",
-        "category": "specialist-exam"
-    },
-    "j01-josler-ai-katsuyo": {
-        "title": "J-OSLERをAIで効率化する方法",
-        "subtitle": "ChatGPT・Perplexity活用ガイド",
-        "category": "ai-tools"
-    },
-    "j02-byoreki-youyaku-ai-jidou-seisei": {
-        "title": "病歴要約の総合考察をAIで下書きする方法",
-        "subtitle": "プロンプト例付き",
-        "category": "ai-tools"
-    },
-    "j03-josler-kensa-kekka-format": {
-        "title": "J-OSLER検査結果のフォーマット変換術",
-        "subtitle": "カルテからコピペで整形する方法",
-        "category": "ai-tools"
-    },
-    "josler-complete-guide": {
-        "title": "J-OSLER完全攻略",
-        "subtitle": "症例登録から修了認定まで",
-        "category": "josler-basics"
-    },
-    "exam-preparation-guide": {
-        "title": "内科専門医試験",
-        "subtitle": "合格マニュアル",
-        "category": "specialist-exam"
-    },
-    "money-guide": {
-        "title": "専攻医のお金",
-        "subtitle": "バイト・確定申告・節税",
-        "category": "tax-saving"
-    },
-    "money-career-guide": {
-        "title": "お金とキャリア",
-        "subtitle": "バイト・節税・キャリア設計",
-        "category": "career"
-    },
-    "lifehack-guide": {
-        "title": "ライフハック大全",
-        "subtitle": "研修を乗り切るコツ",
-        "category": "mental-life"
-    },
-    "efficiency-guide": {
-        "title": "効率化ガイド",
-        "subtitle": "AI・ツールで作業時間を短縮",
-        "category": "ai-tools"
-    },
-    "career-guide": {
-        "title": "キャリア設計",
-        "subtitle": "完全ロードマップ",
-        "category": "career"
-    },
-    "b06-josler-jiko-shousatsu-kakikata": {
-        "title": "J-OSLER自己省察の書き方",
-        "subtitle": "評価されるポイントと例文集",
-        "category": "case-registration"
-    }
+  "a01-josler-toha": {
+    "title": "J-OSLERとは？内科専攻医が知るべき全体像を徹底解説",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a02-josler-login": {
+    "title": "J-OSLERにログインできない？原因と対処法まとめ",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a03-josler-tsukaikata": {
+    "title": "J-OSLERの使い方完全ガイド",
+    "subtitle": "画面の見方から操作方法まで",
+    "category": "josler-basics"
+  },
+  "a04-josler-itsukara": {
+    "title": "J-OSLERはいつから始める？最適なスタート時期と準備すべきこと",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a05-josler-kigen-shimekiri": {
+    "title": "J-OSLERの期限・締め切り一覧",
+    "subtitle": "一次評価・二次評価のスケジュール",
+    "category": "josler-basics"
+  },
+  "a06-josler-shuryo-youken": {
+    "title": "J-OSLER修了要件を完全解説",
+    "subtitle": "症例数・病歴要約・講習会すべて網羅",
+    "category": "josler-basics"
+  },
+  "a07-josler-7ki-8ki": {
+    "title": "120症例への変更点と対策",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "b01-josler-byoreki-youyaku-kakikata": {
+    "title": "J-OSLER病歴要約の書き方完全ガイド",
+    "subtitle": "",
+    "category": "medical-history"
+  },
+  "b01-josler-shourei-touroku-kakikata": {
+    "title": "J-OSLER症例登録の書き方完全ガイド",
+    "subtitle": "テンプレートと自己省察の例文付き",
+    "category": "case-registration"
+  },
+  "b02-josler-160cases": {
+    "title": "J-OSLER 160症例を効率的に終わらせる方法",
+    "subtitle": "先輩医師の実体験",
+    "category": "case-registration"
+  },
+  "b03-josler-120cases": {
+    "title": "J-OSLER 120症例の進め方と疾患群の選び方",
+    "subtitle": "",
+    "category": "case-registration"
+  },
+  "b04-josler-shikkanngun-ichiran": {
+    "title": "J-OSLER疾患群一覧表",
+    "subtitle": "70疾患群の分類と56疾患群の選び方",
+    "category": "case-registration"
+  },
+  "b05-josler-shourei-touroku-template": {
+    "title": "J-OSLER症例登録テンプレート",
+    "subtitle": "現病歴・自己省察をパターン別にコピペ",
+    "category": "case-registration"
+  },
+  "b06-josler-jiko-shousatsu-kakikata": {
+    "title": "J-OSLER自己省察の書き方",
+    "subtitle": "評価されるポイントと例文集",
+    "category": "case-registration"
+  },
+  "b07-josler-shourei-touroku-shounin-sarenai": {
+    "title": "J-OSLER症例登録が承認されない原因と対処法",
+    "subtitle": "",
+    "category": "case-registration"
+  },
+  "c01-josler-byoreki-youyaku-kakikata": {
+    "title": "J-OSLER病歴要約の書き方完全ガイド",
+    "subtitle": "Accept率を上げるコツ",
+    "category": "medical-history"
+  },
+  "c02-josler-byoreki-youyaku-template": {
+    "title": "J-OSLER病歴要約テンプレート",
+    "subtitle": "項目別の書き方と入力のコツ",
+    "category": "medical-history"
+  },
+  "c03-josler-byoreki-youyaku-reibun": {
+    "title": "J-OSLER病歴要約の例文集",
+    "subtitle": "領域別の書き方を項目ごとに解説",
+    "category": "medical-history"
+  },
+  "c04-josler-sougou-kousatsu-kakikata": {
+    "title": "J-OSLER総合考察の書き方",
+    "subtitle": "全人的視点の入れ方",
+    "category": "medical-history"
+  },
+  "c05-josler-zenjinteki-shiten": {
+    "title": "J-OSLER「全人的視点」の書き方",
+    "subtitle": "具体例とテンプレートで解説",
+    "category": "medical-history"
+  },
+  "c06-josler-nyuingo-keika-kakikata": {
+    "title": "J-OSLER「入院後経過と考察」の書き方",
+    "subtitle": "差し戻されないコツ",
+    "category": "medical-history"
+  },
+  "c07-josler-bunken-inyo": {
+    "title": "J-OSLER病歴要約の文献引用ルール",
+    "subtitle": "UpToDate・ガイドラインの書き方",
+    "category": "medical-history"
+  },
+  "c08-josler-byoreki-youyaku-sashimodoshi": {
+    "title": "J-OSLER病歴要約が差し戻しされる理由と対策",
+    "subtitle": "Revision対応ガイド",
+    "category": "medical-history"
+  },
+  "c09-josler-byoreki-youyaku-29cases": {
+    "title": "J-OSLER病歴要約 29症例の選び方",
+    "subtitle": "疾患群バランスと書きやすい症例の見つけ方",
+    "category": "medical-history"
+  },
+  "c10-josler-accept-reject": {
+    "title": "J-OSLER病歴要約のAccept・Revision・Rejectの違いと対処法",
+    "subtitle": "",
+    "category": "medical-history"
+  },
+  "c11-josler-ichijihyouka": {
+    "title": "J-OSLER一次評価の流れと準備",
+    "subtitle": "施設内評価を通すコツ",
+    "category": "medical-history"
+  },
+  "c12-josler-nijihyouka": {
+    "title": "J-OSLER二次評価完全ガイド",
+    "subtitle": "査読委員の視点とAcceptされるポイント",
+    "category": "medical-history"
+  },
+  "c13-josler-byoreki-youyaku-mojisuu": {
+    "title": "J-OSLER病歴要約の文字数・分量ルール",
+    "subtitle": "A4 2枚に収めるコツ",
+    "category": "medical-history"
+  },
+  "c14-josler-byoreki-youyaku-word-copipe": {
+    "title": "J-OSLER病歴要約はWordで下書きが正解",
+    "subtitle": "コピペ手順と注意点",
+    "category": "medical-history"
+  },
+  "d01-josler-byoreki-youyaku-shoukaki": {
+    "title": "J-OSLER病歴要約書き方のコツ",
+    "subtitle": "消化管・肝・胆膵の選び方",
+    "category": "disease-specific"
+  },
+  "d02-josler-byoreki-youyaku-junkanki": {
+    "title": "J-OSLER病歴要約心不全・心筋梗塞の書き方と考察例",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d03-josler-byoreki-youyaku-kokyuuki": {
+    "title": "J-OSLER病歴要約肺炎・COPD・間質性肺炎の書き方ガイド",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d04-josler-byoreki-youyaku-ketsueki": {
+    "title": "J-OSLER病歴要約貧血・白血病・リンパ腫の書き方ガイド",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d05-josler-byoreki-youyaku-jinzou": {
+    "title": "J-OSLER病歴要約CKD・ネフローゼ・AKIの書き方ガイド",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d06-josler-byoreki-youyaku-naibunpitsu": {
+    "title": "J-OSLER病歴要約糖尿病・甲状腺・副腎疾患の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d07-josler-byoreki-youyaku-taisha": {
+    "title": "J-OSLER病歴要約脂質異常症・痛風・電解質異常の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d08-josler-byoreki-youyaku-shinkei": {
+    "title": "J-OSLER病歴要約脳梗塞・てんかん・パーキンソン病の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d09-josler-byoreki-youyaku-kougenbyou": {
+    "title": "J-OSLER病歴要約SLE・RAの書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d10-josler-byoreki-youyaku-kansenshou": {
+    "title": "J-OSLER病歴要約敗血症・肺炎・尿路感染の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d11-josler-byoreki-youyaku-kyuukyuu": {
+    "title": "J-OSLER病歴要約の書き方",
+    "subtitle": "他領域との違いと考察のコツ",
+    "category": "disease-specific"
+  },
+  "d12-josler-geka-shoukai-shourei": {
+    "title": "J-OSLER外科紹介症例の書き方",
+    "subtitle": "全身麻酔・転科の条件と例文",
+    "category": "disease-specific"
+  },
+  "d14-josler-gairai-shourei": {
+    "title": "J-OSLER外来症例の書き方",
+    "subtitle": "7篇の上限と選び方のコツ",
+    "category": "disease-specific"
+  },
+  "e01-josler-shinchoku-kanri": {
+    "title": "J-OSLER進捗管理の方法",
+    "subtitle": "修了要件を最短で満たすスケジュールとチェックリスト",
+    "category": "progress-management"
+  },
+  "e02-josler-manianai": {
+    "title": "J-OSLERが間に合わない！残り期間別の巻き返し戦略と優先順位",
+    "subtitle": "",
+    "category": "progress-management"
+  },
+  "e03-josler-schedule": {
+    "title": "J-OSLER理想のスケジュール",
+    "subtitle": "1年目・2年目・3年目の目標",
+    "category": "progress-management"
+  },
+  "e04-josler-checklist": {
+    "title": "J-OSLERチェックリスト",
+    "subtitle": "症例登録・病歴要約・修了要件を一覧で管理",
+    "category": "progress-management"
+  },
+  "e06-josler-ryuunen": {
+    "title": "J-OSLER留年するとどうなる？対処法と翌年への影響を徹底解説",
+    "subtitle": "",
+    "category": "progress-management"
+  },
+  "f01-jmecc-toha": {
+    "title": "JMECCとは？内科専攻医が受講すべき理由と申込方法",
+    "subtitle": "",
+    "category": "jmecc-training"
+  },
+  "g01-naika-senmoni-benkyouhou": {
+    "title": "内科専門医試験の勉強法",
+    "subtitle": "いつから・何を・どのくらい",
+    "category": "specialist-exam"
+  },
+  "g02-naika-senmoni-itsu-kara": {
+    "title": "内科専門医試験の勉強はいつから？1ヶ月・3ヶ月・半年プラン",
+    "subtitle": "",
+    "category": "specialist-exam"
+  },
+  "g03-naika-senmoni-sankousho": {
+    "title": "内科専門医試験おすすめ参考書・問題集ランキング",
+    "subtitle": "",
+    "category": "specialist-exam"
+  },
+  "g05-naika-senmoni-kakomon": {
+    "title": "内科専門医試験の過去問対策",
+    "subtitle": "公式問題集の使い方と復元問題の活用法",
+    "category": "specialist-exam"
+  },
+  "g06-naika-senmoni-goukakuritsu": {
+    "title": "内科専門医試験の合格率推移",
+    "subtitle": "第1回〜第5回のデータ分析",
+    "category": "specialist-exam"
+  },
+  "g07-naika-senmoni-nanido": {
+    "title": "内科専門医試験の難易度は？国試との違いと対策ポイント",
+    "subtitle": "",
+    "category": "specialist-exam"
+  },
+  "g08-naika-senmoni-nittei": {
+    "title": "内科専門医試験の日程・会場・出願期間まとめ",
+    "subtitle": "第6回試験の全情報",
+    "category": "specialist-exam"
+  },
+  "j01-josler-ai-katsuyo": {
+    "title": "J-OSLERをAIで効率化する方法",
+    "subtitle": "Claude・ChatGPT・Perplexity活用ガイド",
+    "category": "ai-tools"
+  },
+  "j02-byoreki-youyaku-ai-jidou-seisei": {
+    "title": "病歴要約の総合考察をAIで下書きする方法",
+    "subtitle": "プロンプト例付き",
+    "category": "ai-tools"
+  },
+  "j03-josler-kensa-kekka-format": {
+    "title": "J-OSLER検査結果のフォーマット変換術",
+    "subtitle": "カルテからコピペで整形する方法",
+    "category": "ai-tools"
+  },
+  "j04-josler-jitan": {
+    "title": "J-OSLER作業を時短する5つのテクニック",
+    "subtitle": "テンプレ・ツール活用術",
+    "category": "ai-tools"
+  },
+  "j10-claude-pubmed-mcp": {
+    "title": "ClaudeでPubMed論文検索",
+    "subtitle": "MCP連携の設定方法と医学文献の探し方",
+    "category": "ai-tools"
+  },
+  "n08-senkoui-program-erabikata": {
+    "title": "内科専攻医プログラムの選び方",
+    "subtitle": "比較すべき7つのポイント",
+    "category": "career"
+  },
+  "josler-complete-guide": {
+    "title": "J-OSLER完全攻略",
+    "subtitle": "症例登録から修了認定まで",
+    "category": "josler-basics"
+  },
+  "exam-preparation-guide": {
+    "title": "内科専門医試験",
+    "subtitle": "合格マニュアル",
+    "category": "specialist-exam"
+  },
+  "money-guide": {
+    "title": "専攻医のお金",
+    "subtitle": "バイト・確定申告・節税",
+    "category": "tax-saving"
+  },
+  "money-career-guide": {
+    "title": "お金とキャリア",
+    "subtitle": "バイト・節税・キャリア設計",
+    "category": "career"
+  },
+  "lifehack-guide": {
+    "title": "ライフハック大全",
+    "subtitle": "研修を乗り切るコツ",
+    "category": "mental-life"
+  },
+  "efficiency-guide": {
+    "title": "効率化ガイド",
+    "subtitle": "AI・ツールで作業時間を短縮",
+    "category": "ai-tools"
+  },
+  "career-guide": {
+    "title": "キャリア設計",
+    "subtitle": "完全ロードマップ",
+    "category": "career"
+  }
 }

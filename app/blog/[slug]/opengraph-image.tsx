@@ -415,6 +415,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '施設内評価を通すコツ',
       category: 'medical-history',
     },
+    'c13-josler-byoreki-youyaku-mojisuu': {
+      title: '病歴要約の文字数・分量ルール',
+      subtitle: 'A4 2枚に収めるコツ',
+      category: 'medical-history',
+    },
   }
 
   if (metaMap[slug]) return metaMap[slug]
