@@ -420,6 +420,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '申請方法・修了見込との違い',
       category: 'josler-basics',
     },
+    'a15-josler-360do-hyouka': {
+      title: '自己評価・360度評価の書き方',
+      subtitle: '半期ごとの手続きまとめ',
+      category: 'josler-basics',
+    },
     'g06-naika-senmoni-goukakuritsu': {
       title: '内科専門医試験の合格率推移',
       subtitle: '第1回〜第5回のデータ分析',
