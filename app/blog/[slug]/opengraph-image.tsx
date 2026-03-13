@@ -405,6 +405,11 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '4条件・考察の対比・疾患群ルール',
       category: 'disease-specific',
     },
+    'f04-josler-e-learning': {
+      title: 'J-OSLER e-Learningの受講方法',
+      subtitle: '共通講習を効率的にクリア',
+      category: 'jmecc-training',
+    },
     'g06-naika-senmoni-goukakuritsu': {
       title: '内科専門医試験の合格率推移',
       subtitle: '第1回〜第5回のデータ分析',
