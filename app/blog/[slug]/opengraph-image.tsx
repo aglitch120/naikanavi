@@ -245,6 +245,21 @@ function slugToMeta(slug: string): ArticleMeta {
       subtitle: '公式問題集の使い方と復元問題',
       category: 'specialist-exam',
     },
+    'g09-naika-senmoni-moshikomi': {
+      title: '内科専門医試験の受験申し込み方法',
+      subtitle: '出願手順と受験資格を徹底解説',
+      category: 'specialist-exam',
+    },
+    'g10-naika-senmoni-tojitsu': {
+      title: '内科専門医試験 当日の持ち物・流れ',
+      subtitle: '前日〜試験後まで完全ガイド',
+      category: 'specialist-exam',
+    },
+    'g11-naika-senmoni-fugoukaku': {
+      title: '内科専門医試験 不合格・再受験の対処法',
+      subtitle: '気持ちの切り替えと次への準備',
+      category: 'specialist-exam',
+    },
     'g08-naika-senmoni-nittei': {
       title: '内科専門医試験の日程まとめ',
       subtitle: '2026年度 出願・会場・時間割',
