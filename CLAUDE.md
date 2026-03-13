@@ -1,6 +1,7 @@
-# CLAUDE.md
+# CLAUDE.md — 内科ナビ 作業ガイド
 
-このファイルはClaude（claude.ai/Claude Code）がこのリポジトリで作業する際のガイドラインです。
+このファイルはClaude（claude.ai/Claude Code）がこのリポジトリで作業する際の**唯一のエントリーポイント**。
+作業開始時は必ずこのファイルを読み、指定されたガイドを参照すること。
 
 ---
 
@@ -13,61 +14,82 @@ git config user.email "claude@anthropic.com"
 git config user.name "Claude"
 ```
 
-**注意**: トークンはセキュリティのためここには記載しない。会話開始時にユーザーから受け取ること。
+トークンはセキュリティのためここには記載しない。会話開始時にユーザーから受け取ること。
 
 ---
 
-## 作業ルール
+## docs/ フォルダのファイル一覧と役割
 
-### 1. 作業開始時に必ず行うこと
-- リポジトリをcloneして最新状態を確認する
-- `docs/` フォルダ内の以下のガイドラインを読み、内容に従うこと：
-  - `docs/DESIGN_SYSTEM.md` — カラー・タイポグラフィ・コンポーネント規約
-  - `docs/SEO_GUIDELINE.md` — 記事作成ルール・KW設計・メタデータ
-  - `docs/IMPLEMENTATION_GUIDE.md` — 技術実装・フォルダ構成・デプロイ手順
-  - `docs/IMPROVEMENT_ROADMAP.md` — 改善計画・タスク進捗管理
-  - `docs/BUSINESS_OVERVIEW.md` — ビジネスモデル・ターゲット
+| ファイル | 役割 | 参照タイミング |
+|---------|------|--------------|
+| **ARTICLE_QUALITY_GUIDE.md** | 記事品質の唯一の基準（統合版v2.0）散文・SVG・CTA・リンク・チェック方法 | **記事を書くとき必ず読む** |
+| SEO_GUIDELINE.md | キーワード設計・メタデータ・記事作成ルール | 記事を書くとき |
+| DESIGN_SYSTEM.md | カラーパレット・SVG仕様・コンポーネント規約 | SVG・UI作成時 |
+| IMPLEMENTATION_GUIDE.md | 技術実装・フォルダ構成・デプロイ手順 | 技術的変更時 |
+| IMPROVEMENT_ROADMAP.md | 改善計画・タスク進捗管理 | 作業開始・完了時 |
+| BUSINESS_OVERVIEW.md | ビジネスモデル・ターゲット・競合 | 戦略判断時 |
+| JOSLER_BYOREKI_GUIDELINE.md | 病歴要約・症例登録の例文ルール | 病歴要約記事作成時 |
+| keywords/naikanavi_keyword_list.xlsx | キーワードリスト・優先度 | 次の記事を決めるとき |
+| check_quality.sh | **廃止** → scripts/check_article_quality_v2.sh を使うこと | 使わない |
+| BLOG_CONTENT_GUIDELINE.md | **廃止** → ARTICLE_QUALITY_GUIDE.md に統合済み | 使わない |
+| CLAUDE_CODE_QUALITY_GUIDE.md | **廃止** → ARTICLE_QUALITY_GUIDE.md に統合済み | 使わない |
 
-### 2. 作業中のルール
-- 小さなタスク（1機能、1修正）ごとにコミットする
-- 長時間作業は30分ごとに中間コミットする
-- 長い作業（10分以上）は途中で進捗を報告する
+---
 
-### 3. タスク完了時に必ず行うこと
-- `docs/IMPROVEMENT_ROADMAP.md` のチェックマークを更新する（`[ ]` → `[x]`）
-- 「次のアクション」セクションを最新状態に保つ
-- **必ず `git push` する**（pushしないと作業が反映されない）
+## 記事品質チェックスクリプト（唯一の正規スクリプト）
+
+```bash
+# リポジトリルートから実行（コミット前に必ず実行）
+bash scripts/check_article_quality_v2.sh content/blog/ARTICLE_SLUG.mdx
+```
+
+- **不合格（🔴）のままコミット禁止**
+- スクリプトを実行せずにコミットすることも禁止
+- `./check_article_quality.sh`（ルート）と`docs/check_quality.sh`は旧スクリプトのため使わない
+
+---
+
+## 記事作業フロー（全ステップ必須）
+
+```
+1. docs/ARTICLE_QUALITY_GUIDE.md を全文読む
+2. docs/SEO_GUIDELINE.md §2, §11 を確認
+3. 同クラスターの既存記事を1本通読（内部リンク先把握）
+4. Web検索リサーチ（執筆前に必ず実施）
+5. 記事執筆（ARTICLE_QUALITY_GUIDE.md の全ルール適用）
+6. bash scripts/check_article_quality_v2.sh content/blog/ARTICLE.mdx
+7. 全項目✅になるまで修正→再チェックを繰り返す
+8. git add <ファイル名>（git add -A 禁止）
+9. git commit && git push
+10. docs/IMPROVEMENT_ROADMAP.md の [x] を更新してpush
+```
+
+---
+
+## リンク切れ予防ルール（最重要）
+
+### 内部リンク（/blog/slug）
+リンクを書く前に必ず存在確認：
+```bash
+ls content/blog/ | grep "スラッグ名"
+```
+**存在しない記事へのリンクは書かない。テキストのみにする。**
+
+### cta_type（フロントマター）
+有効値のみ使用：`template` / `progress` / `quiz` / `checklist` / `general`
+
+### タグ
+`lib/blog-config.ts` の `tagSlugMap` に登録済みのタグのみ使用。
+未登録タグを使う場合は先に `tagSlugMap` に追加してコミットする。
 
 ---
 
 ## Git ルール（厳守）
 
-### 禁止事項
-- **`git add -A` 禁止** — 意図しないファイル（.env、credentials、巨大バイナリ等）がコミットされるリスクがあるため、必ずファイルを個別に指定して `git add` すること
-- **`node_modules/` のコミット禁止** — `.gitignore` に含まれているが、万が一追跡対象になっていないか注意すること
-- **秘密情報（トークン、APIキー、パスワード等）をコミットしない**
-
-### コミットメッセージ
-- 変更内容が分かる簡潔な日本語または英語で記述
-- 例: `Add D15: ○○の記事`, `Fix: MDXレンダリングの修正`, `Update keyword list`
-
----
-
-## クイックコマンド
-
-```bash
-# 開発サーバー起動
-npm run dev
-
-# 本番ビルド
-npm run build
-
-# Cloudflare Workers起動
-npx wrangler dev
-
-# デプロイ（git pushで Cloudflare Pages に自動デプロイ）
-git push
-```
+- `git add -A` **禁止** — 必ずファイルを個別指定
+- `node_modules/` のコミット **禁止**
+- 秘密情報（トークン・APIキー）のコミット **禁止**
+- コミット後は必ず **git push**（ローカルだけで終わらせない）
 
 ---
 
@@ -75,158 +97,42 @@ git push
 
 ```
 naikanavi/
-├── app/                        # Next.js App Router
-│   ├── blog/[slug]/            # 記事ページ
-│   ├── layout.tsx              # 共通レイアウト
-│   ├── sitemap.ts              # 動的サイトマップ
-│   └── robots.ts               # robots.txt
-├── content/articles/            # MDX記事
-├── components/                  # UIコンポーネント
-│   ├── blog/                   # ブログ関連（ArticleCard, TOC, CTA等）
-│   └── seo/                    # 構造化データ（JSON-LD）
-├── lib/                        # ユーティリティ（mdx.ts, seo.ts等）
-├── docs/                       # ドキュメント（ガイドライン・ロードマップ）
-│   ├── DESIGN_SYSTEM.md
-│   ├── SEO_GUIDELINE.md
-│   ├── IMPLEMENTATION_GUIDE.md
-│   ├── IMPROVEMENT_ROADMAP.md
-│   ├── BUSINESS_OVERVIEW.md
-│   └── keywords/               # キーワードリスト
-├── public/                     # 静的アセット
-├── demo_v14_app.html           # メインアプリ（単一HTML）
-└── worker.js                   # Cloudflare Workers API
+├── CLAUDE.md                    ← このファイル（エントリーポイント）
+├── app/                         # Next.js App Router
+│   ├── blog/[slug]/page.tsx     # 記事ページ（CTAバナー自動挿入あり）
+│   ├── layout.tsx
+│   ├── sitemap.ts
+│   └── robots.ts
+├── content/blog/                # MDX記事（A〜Nクラスター）
+├── components/blog/             # UIコンポーネント（CTA・TOC・ShareButtons等）
+├── lib/
+│   ├── blog-config.ts           # カテゴリ・CTA・タグスラッグ定義（リンク切れの根源）
+│   ├── mdx.ts                   # MDXパース
+│   └── seo.ts                   # SEOメタデータ生成
+├── docs/                        # ガイドライン（ARTICLE_QUALITY_GUIDE.md が中心）
+├── scripts/
+│   └── check_article_quality_v2.sh  ← 唯一の正規チェックスクリプト
+└── public/images/blog/          # 記事内SVG画像
 ```
 
 ---
 
-## モデル選択ガイドライン
+## クイックコマンド
 
-通常の作業は **Sonnet（現在のデフォルト）** で十分。以下の状況では作業開始前にユーザーへ通知し、**Opusへの切り替えを提案**すること。
-
-### Opusを推奨すべきタイミング
-
-- **アーキテクチャ設計**: 新機能の設計、フォルダ構成の大幅変更、複数コンポーネントにまたがるリファクタリング
-- **難解なバグ調査**: 再現困難なバグ、複数ファイルにまたがる原因調査
-- **SEO戦略の立案**: キーワード構造の再設計、競合分析、コンテンツ戦略の策定
-- **パフォーマンス最適化**: Core Web Vitals改善、ビルド最適化など複雑な最適化作業
-- **新技術の導入**: 未使用ライブラリの統合、Cloudflare Workers拡張など
-
-### 通知フォーマット
-
+```bash
+npm run dev        # 開発サーバー起動
+npm run build      # 本番ビルド
+git push           # Cloudflare Pagesに自動デプロイ
 ```
-⚠️ この作業はOpusが適しています。
-理由: [具体的な理由]
-切り替えてから作業を続けますか？
-```
+
+本番URL: https://naikanavi.com
 
 ---
 
-## 重要な注意事項
+## モデル選択ガイド
 
-1. **MDX記事**: `content/blog/` に配置。SEOガイドラインに従って作成すること
-2. **構造化データ**: 各記事に JSON-LD を設定（Article, FAQ, Breadcrumb等）
-3. **デザイン**: `docs/DESIGN_SYSTEM.md` のカラーパレット・コンポーネント規約に従う
-4. **デプロイ**: `git push` で Cloudflare Pages に自動デプロイ
-5. **本番URL**: https://naikanavi.com
-
----
-
-## 📝 記事品質基準（最重要 — 必ず守ること）
-
-**⚠️ 記事を書く前に必ず以下を読むこと（省略禁止）:**
-1. `docs/ARTICLE_QUALITY_GUIDE.md`（完全手順書: 散文の書き方、SVG、CTA、Before/After）
-2. `docs/CLAUDE_CODE_QUALITY_GUIDE.md`（Sonnet向け品質保証: Opus比較分析、プロンプトテンプレ）
-3. `docs/SEO_GUIDELINE.md`（特に §2, §11.17〜§11.29）
-
-### 🔴 記事コミット前の必須フロー（省略厳禁）
-
-```
-記事執筆
-  ↓
-bash scripts/check_article_quality_v2.sh content/blog/記事名.mdx
-  ↓
-🔴 不合格 → 修正 → 再実行（🟢になるまで繰り返す）
-  ↓
-🟢 合格 or 🟡 合格（警告のみ）
-  ↓
-Phase 6 のファクトチェック項目を公式ソースと照合（手動）
-  ↓
-git add → git commit → git push
-```
-
-**不合格（🔴）のままコミットすることは絶対に禁止。**
-**スクリプトを実行せずにコミットすることも禁止。**
-
-### 品質チェックv2が検出する項目（7フェーズ）
-
-1. **フロントマター検証** — 必須フィールド、title/description長、日付形式
-2. **構造・コンテンツ品質** — SVG数、CTA配置（中盤必須）、内部リンク数・切れ、散文ファースト、箇条書き壁、よくある失敗、FAQ
-3. **マークダウン構文** — 太字破損（全角括弧問題）、リンク構文、見出しプレフィックス禁止、見出しレベル飛び、テーブル幅、アンカーテキスト
-4. **SVG品質** — 著作権フッター、多様性、viewBox、背景色、アクセシビリティ、ドロップシャドウ
-5. **表記ゆれ・誤字** — J-OSLER表記統一、全角スペース、文体統一（です・ます体）
-6. **ファクトチェック要注意項目** — 数値・断定的記述の自動抽出（→手動で公式ソースと照合）
-7. **太字・装飾** — 太字数、テンプレ太字比率
-
-### 記事作成で絶対に守るルール
-
-新規記事の作成・既存記事の修正では、以下の品質基準を**すべて満たしてからコミットすること**。
-
-#### 1. 散文ファースト（箇条書きの壁を作らない）
-- 各H2セクションの冒頭は**必ず2〜3段落の散文**で始める
-- 箇条書きは補助的に使い、連続5行以上の箇条書きは禁止
-- 「なぜそうなのか」「どういう背景があるのか」を散文で説明してから、要点を箇条書きでまとめる
-- ❌ NG: H2見出しの直後にいきなり箇条書きリスト
-- ✅ OK: H2見出し → 散文2〜3段落 → 必要に応じて箇条書き
-
-#### 2. 太字の自然な使用
-- 各段落に**1〜2箇所の太字**を入れる（重要キーワード・数値・結論）
-- 箇条書きの先頭だけ太字にする「テンプレ太字」は避ける
-- 文中の重要ワードを自然に太字にする
-
-#### 3. SVGイラストの多様化
-- 1記事に**最低2種類**の異なるタイプのSVGを入れる
-- 同じ「3カラム表」テンプレートの使い回しは禁止
-- 使うべきSVGタイプ: フローチャート、タイムライン、比較図、ステップ図、プロセス図
-- すべてのSVGに `© 内科ナビ naikanavi.com` の著作権フッターを入れる
-
-#### 4. 自然なCTA配置（最低2箇所）
-- 記事冒頭: blockquoteで内科ナビの関連機能を紹介（必須）
-- 記事中盤: 文脈に溶け込む自然なCTAリンク（必須）
-  - ❌ NG: blockquoteのCTAだけ
-  - ✅ OK: 「〜を繰り返し演習できます。[問題演習で苦手をつぶしましょう](https://naikanavi.booth.pm/items/8058590)。」
-- 記事末尾のまとめ付近にも自然にCTAを入れる（推奨）
-
-#### 5. 「よくある失敗3パターン」セクション（必須）
-- まとめセクションの前に `## よくある失敗3パターン` を配置
-- 各パターンは `### ❶ 〜` `### ❷ 〜` `### ❸ 〜` の形式
-- 各パターンは3〜5行の散文で「なぜ失敗するか」「正しくはどうか」を解説
-
-#### 6. 内部リンク（最低3本、目標5本）
-- 関連記事への自然な導線を本文中に配置
-- まとめセクションにも他の領域記事へのリンクを入れる
-- アンカーテキストにキーワードを含める
-  - ❌ NG: [こちら](/blog/xxx)
-  - ✅ OK: [内科専門医試験の出題傾向と対策](/blog/g04-naika-senmoni-shutsudai-keiko)
-
-#### 7. 文字数の目安
-- 通常記事: 3,000〜5,000字（SVG除く）
-- ピラー記事: 5,000〜8,000字（SVG除く）
-- 箇条書きだけの「スカスカ記事」は絶対に作らない
-
-### 品質チェックリスト（コミット前に確認）
-
-```
-□ 各H2セクション冒頭に2〜3段落の散文があるか？
-□ 連続5行以上の箇条書きの壁がないか？
-□ 太字が文中に自然に配置されているか？
-□ SVGが2種類以上あり、同じテンプレの使い回しでないか？
-□ CTAが冒頭blockquote + 中盤の最低2箇所あるか？
-□ 「よくある失敗3パターン」セクションがあるか？
-□ 内部リンクが3本以上あるか？
-□ 文字数が3,000字以上あるか（SVG除く）？
-```
-
-### 参考: 良質記事の例
-- `content/blog/c01-josler-byoreki-youyaku-kakikata.mdx` — 散文の深み、自然なCTA、多様なSVG
-- `content/blog/k01-burnout-taisaku.mdx` — MBIモデルの散文解説、段階的なチェックリスト
-- `content/blog/h07-naika-senmoni-shinkei.mdx` — リライト後の品質基準モデル
+通常の記事作成・バグ修正は **Sonnet** で十分。以下の場合は **Opus を推奨**：
+- アーキテクチャ設計・大規模リファクタリング
+- SEO戦略の立案・競合分析
+- 難解なバグ調査（複数ファイルにまたがる）
+- ピラー記事（5000字以上の新規作成）
