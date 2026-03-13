@@ -279,6 +279,33 @@ walls=$(awk '/^- |^[0-9]+\. |^\*\*[A-Z]/{c++; next} c>=5{n++} {c=0} END{print n+
 # 6. 文字数が十分か（SVG含む）
 chars=$(wc -c < content/blog/NEW_ARTICLE.mdx)
 [ "$chars" -ge 12000 ] && echo "✅ 文字数: ${chars}" || echo "❌ 文字数不足: ${chars}"
+
+# 7. ⚠️ 内部リンクが404でないか（必須）
+# /blog/slug 形式のリンクが実際のファイルとして存在するか確認
+python3 - <<'PYEOF'
+import os, re, sys
+blog_dir = "content/blog"
+existing = set(f.replace(".mdx", "") for f in os.listdir(blog_dir) if f.endswith(".mdx"))
+target = "content/blog/NEW_ARTICLE.mdx"
+with open(target) as f:
+    content = f.read()
+pattern = re.compile(r'\]\(/blog/([^)\s#"]+)')
+broken = [l for l in pattern.findall(content) if l not in existing]
+if broken:
+    print(f"❌ 存在しない内部リンク: {broken}")
+    sys.exit(1)
+else:
+    print(f"✅ 内部リンク404なし")
+PYEOF
+
+# 8. ⚠️ CTAのURLが有効な宛先を指しているか確認
+# cta_type が quiz / checklist の場合は存在しないルートのため general に変更すること
+cta_type=$(grep '^cta_type:' content/blog/NEW_ARTICLE.mdx | awk '{print $2}' | tr -d '"')
+if [[ "$cta_type" == "quiz" || "$cta_type" == "checklist" ]]; then
+  echo "⚠️ cta_type: ${cta_type} はルートが存在しない可能性があります。blog-config.ts の URL を確認してください。"
+else
+  echo "✅ cta_type: ${cta_type}"
+fi
 ```
 
 ### チェックリスト（目視確認）
@@ -292,6 +319,10 @@ chars=$(wc -c < content/blog/NEW_ARTICLE.mdx)
 □ 「よくある失敗3パターン」セクションがあるか？
 □ 内部リンクが本文中2本 + まとめ2本 = 最低3本以上あるか？
 □ ファクトチェック（SEO_GUIDELINE §11.19）を実施したか？
+□ ⚠️ 内部リンク・CTAが404でないか？（チェック7・8を必ず実行）
+   - /blog/slug リンクは content/blog/ に該当ファイルが存在するか確認
+   - /quiz, /checklist 等の独自ルートは app/ ディレクトリに存在するか確認
+   - 「準備中」「公開予定」の記事へのリンクは削除し、テキストのみにする
 ```
 
 ---
