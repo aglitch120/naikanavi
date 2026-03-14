@@ -124,7 +124,7 @@ export default function MobileMenu() {
               <div key={group.title} className="mb-1">
                 <button
                   onClick={() => setExpandedGroup(expandedGroup === group.title ? null : group.title)}
-                  className="w-full flex items-center justify-between py-2 px-3 text-sm font-semibold text-tx rounded-lg hover:bg-s1 transition-colors"
+                  className="w-full flex items-center justify-between py-2.5 px-3 text-sm font-semibold text-tx rounded-lg hover:bg-s1 transition-colors"
                 >
                   {group.title}
                   <svg
@@ -146,7 +146,7 @@ export default function MobileMenu() {
                           key={link.href}
                           href={link.href}
                           onClick={handleLinkClick}
-                          className="flex items-center gap-2 py-2 px-3 pl-5 text-sm text-muted rounded-lg hover:bg-s1 hover:text-tx transition-colors"
+                          className="flex items-center gap-2 py-2.5 px-3 pl-5 text-sm text-muted rounded-lg hover:bg-s1 hover:text-tx transition-colors"
                         >
                           <span
                             className="w-1.5 h-1.5 rounded-full flex-shrink-0"
@@ -165,13 +165,13 @@ export default function MobileMenu() {
           {/* フッターリンク */}
           <div className="border-t border-br pt-4 mt-2">
             <div className="space-y-0.5">
-              <Link href="/contact" onClick={handleLinkClick} className="block py-2 px-3 text-sm text-muted rounded-lg hover:bg-s1 transition-colors">
+              <Link href="/contact" onClick={handleLinkClick} className="block py-3 px-3 text-sm text-muted rounded-lg hover:bg-s1 transition-colors">
                 お問い合わせ
               </Link>
-              <Link href="/privacy" onClick={handleLinkClick} className="block py-2 px-3 text-sm text-muted rounded-lg hover:bg-s1 transition-colors">
+              <Link href="/privacy" onClick={handleLinkClick} className="block py-3 px-3 text-sm text-muted rounded-lg hover:bg-s1 transition-colors">
                 プライバシーポリシー
               </Link>
-              <Link href="/terms" onClick={handleLinkClick} className="block py-2 px-3 text-sm text-muted rounded-lg hover:bg-s1 transition-colors">
+              <Link href="/terms" onClick={handleLinkClick} className="block py-3 px-3 text-sm text-muted rounded-lg hover:bg-s1 transition-colors">
                 利用規約
               </Link>
             </div>

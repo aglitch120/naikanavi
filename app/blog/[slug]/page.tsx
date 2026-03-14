@@ -140,6 +140,8 @@ export default async function ArticlePage({ params }: Props) {
             height={630}
             className="w-full h-auto"
             loading="eager"
+            // @ts-expect-error fetchpriority is valid HTML but not yet in React types
+            fetchpriority="high"
           />
         </div>
 

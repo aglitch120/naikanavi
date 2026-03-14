@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import CopyableCodeBlock from '@/components/blog/CopyableCodeBlock'
+import MdxImage from '@/components/blog/MdxImage'
 import { categories, type CategorySlug, type ClusterId, type CtaType } from './blog-config'
 
 // 記事のフロントマター型
@@ -207,6 +208,7 @@ export async function compileMDXContent(source: string) {
     source,
     components: {
       pre: CopyableCodeBlock,
+      img: MdxImage,
     },
     options: {
       parseFrontmatter: false,
