@@ -74,7 +74,7 @@ export default function TableOfContents() {
   if (headings.length < 2) return null
 
   return (
-    <nav className="hidden lg:block sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
+    <nav className="hidden lg:block">
       <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
         目次
       </p>

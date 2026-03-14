@@ -191,7 +191,7 @@ export default async function ArticlePage({ params }: Props) {
               {MDXContent}
             </div>
           </div>
-          <aside className="hidden lg:block lg:w-56 flex-shrink-0">
+          <aside className="hidden lg:block lg:w-56 flex-shrink-0 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
             <TableOfContents />
             <RelatedArticlesSidebar posts={relatedPosts.slice(0, 5)} />
             <CategoryNavSidebar categories={categoryCounts} currentCategory={frontmatter.category} />
