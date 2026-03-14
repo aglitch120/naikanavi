@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -34,3 +34,6 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           budgetPath: ./.github/lighthouse-budget.json
+          runs: 1
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
