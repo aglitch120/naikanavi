@@ -390,8 +390,8 @@
     "category": "specialist-exam"
   },
   "g12-naika-senmoni-tojitsu-nagare": {
-    "title": "内科専門医試験 当日の流れと持ち物",
-    "subtitle": "会場でやること・やってはいけないこと",
+    "title": "内科専門医試験 当日の流れと持ち物・注意点まとめ",
+    "subtitle": "",
     "category": "specialist-exam"
   },
   "h01-naika-senmoni-junkanki": {
@@ -536,7 +536,7 @@
   },
   "j11-ai-senmoni-shiken-taisaku": {
     "title": "AIを使った内科専門医試験対策",
-    "subtitle": "ChatGPT・Claudeの活用法",
+    "subtitle": "ChatGPT・Claude活用法",
     "category": "ai-tools"
   },
   "josler-complete-guide": {
@@ -581,7 +581,7 @@
   },
   "k08-communication-jutsu": {
     "title": "内科専攻医のコミュニケーション術",
-    "subtitle": "患者・指導医・多職種とうまくやるコツ",
+    "subtitle": "患者・指導医・多職種との関わり方",
     "category": "mental-life"
   },
   "l01-senkoui-baito-hajimekata": {
@@ -630,8 +630,8 @@
     "category": "part-time"
   },
   "l07-baito-kyujin-site-hikaku": {
-    "title": "専攻医バイトのおすすめ求人サイト比較",
-    "subtitle": "当直・外来・健診の探し方",
+    "title": "専攻医バイトのおすすめ求人サイト比較と高単価の探し方",
+    "subtitle": "",
     "category": "part-time"
   },
   "lifehack-guide": {
@@ -671,7 +671,7 @@
   },
   "m07-senkoui-shisan-unyo": {
     "title": "内科専攻医の資産運用入門",
-    "subtitle": "NISAとiDeCoで始める長期投資の基本",
+    "subtitle": "NISAとiDeCoで始める長期投資",
     "category": "tax-saving"
   },
   "money-guide": {
@@ -781,7 +781,7 @@
   },
   "p06-isha-kekkon-aite": {
     "title": "内科専攻医の結婚相手",
-    "subtitle": "医師×医師・医師×非医師のリアルな比較",
+    "subtitle": "医師×医師と医師×非医師を徹底比較",
     "category": "life-events"
   },
   "q01-subspecialty-josler-toha": {
@@ -811,12 +811,27 @@
   },
   "q06-shinkei-subspecialty": {
     "title": "神経内科サブスペシャルティとJ-OSLER",
-    "subtitle": "専攻医が知るべき取得の道",
+    "subtitle": "専攻医の取得ロード",
     "category": "subspecialty"
   },
   "q07-ketsueki-subspecialty": {
     "title": "血液内科サブスペシャルティとJ-OSLER",
-    "subtitle": "血液専門医への道と症例登録のコツ",
+    "subtitle": "血液専門医への道",
+    "category": "subspecialty"
+  },
+  "q08-tounyoubyou-naibunpitsu-subspecialty": {
+    "title": "糖尿病・内分泌内科サブスペシャルティとJ-OSLER",
+    "subtitle": "",
+    "category": "subspecialty"
+  },
+  "q09-kougenbyou-subspecialty": {
+    "title": "膠原病・リウマチ科サブスペシャルティとJ-OSLER",
+    "subtitle": "",
+    "category": "subspecialty"
+  },
+  "q10-kansenshou-subspecialty": {
+    "title": "感染症内科サブスペシャルティとJ-OSLER",
+    "subtitle": "感染症専門医への道",
     "category": "subspecialty"
   },
   "r01-isha-hikkoshi-guide": {
@@ -846,7 +861,7 @@
   },
   "r06-senkoui-benkyou-jikan": {
     "title": "忙しい内科専攻医が勉強時間を作る方法",
-    "subtitle": "隙間時間活用と優先順位のつけ方",
+    "subtitle": "隙間時間活用術",
     "category": "others"
   },
   "money-career-guide": {
@@ -858,20 +873,5 @@
     "title": "効率化ガイド",
     "subtitle": "AI・ツールで作業時間を短縮",
     "category": "ai-tools"
-  },
-  "q08-tounyoubyou-naibunpitsu-subspecialty": {
-    "title": "糖尿病・内分泌内科サブスペシャルティとJ-OSLER",
-    "subtitle": "専攻医の取得ロードマップ",
-    "category": "subspecialty"
-  },
-  "q09-kougenbyou-subspecialty": {
-    "title": "膠原病・リウマチ内科サブスペシャルティとJ-OSLER",
-    "subtitle": "専攻医の取得ロードマップ",
-    "category": "subspecialty"
-  },
-  "q10-kansenshou-subspecialty": {
-    "title": "感染症内科サブスペシャルティとJ-OSLER",
-    "subtitle": "専攻医の取得ロードマップ",
-    "category": "subspecialty"
   }
 }
