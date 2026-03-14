@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="420" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">専攻医の節税ロードマップ</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">iDeCo・NISA・ふるさと納税・経費計上の優先順位</text>
+
+  <!-- Priority label -->
+  <text x="50" y="95" font-size="12" font-weight="bold" fill="#1B4F3A">優先度</text>
+  <text x="50" y="115" font-size="24" fill="#1B4F3A">高</text>
+  <line x1="60" y1="130" x2="60" y2="370" stroke="#1B4F3A" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="50" y="385" font-size="24" fill="#6B6760">低</text>
+
+  <!-- Step 1: ふるさと納税 -->
+  <rect x="90" y="85" width="670" height="65" rx="10" fill="#1B4F3A"/>
+  <circle cx="120" cy="117" r="18" fill="#fff"/>
+  <text x="120" y="123" text-anchor="middle" font-size="16" font-weight="bold" fill="#1B4F3A">1</text>
+  <text x="155" y="108" font-size="15" font-weight="bold" fill="#fff">ふるさと納税</text>
+  <text x="155" y="128" font-size="12" fill="#E8F0EC">実質負担2,000円で返礼品GET。やらない理由がない。</text>
+  <rect x="560" y="97" width="180" height="32" rx="6" fill="#86EFAC"/>
+  <text x="650" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">節税効果: 5〜15万円</text>
+
+  <!-- Step 2: iDeCo -->
+  <rect x="90" y="160" width="670" height="65" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="120" cy="192" r="18" fill="#1B4F3A"/>
+  <text x="120" y="198" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">2</text>
+  <text x="155" y="183" font-size="15" font-weight="bold" fill="#1A1917">iDeCo（個人型確定拠出年金）</text>
+  <text x="155" y="203" font-size="12" fill="#6B6760">掛金が全額所得控除。月12,000〜23,000円。60歳まで引出し不可に注意。</text>
+  <rect x="560" y="172" width="180" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="650" y="193" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">節税効果: 3〜8万円/年</text>
+
+  <!-- Step 3: NISA -->
+  <rect x="90" y="235" width="670" height="65" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <circle cx="120" cy="267" r="18" fill="#3D7A5F"/>
+  <text x="120" y="273" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">3</text>
+  <text x="155" y="258" font-size="15" font-weight="bold" fill="#1A1917">新NISA（つみたて投資枠）</text>
+  <text x="155" y="278" font-size="12" fill="#6B6760">運用益が非課税。月10万円まで。長期投資でインデックスファンド推奨。</text>
+  <rect x="560" y="247" width="180" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="650" y="268" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">非課税: 運用益の20%</text>
+
+  <!-- Step 4: 経費計上（バイト確定申告時） -->
+  <rect x="90" y="310" width="670" height="65" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <circle cx="120" cy="342" r="18" fill="#78A892"/>
+  <text x="120" y="348" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">4</text>
+  <text x="155" y="333" font-size="15" font-weight="bold" fill="#1A1917">経費計上（確定申告）</text>
+  <text x="155" y="353" font-size="12" fill="#6B6760">学会費・参考書・交通費・医師賠償保険。バイト収入がある人は確定申告で経費控除。</text>
+  <rect x="560" y="322" width="180" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="650" y="343" text-anchor="middle" font-size="12" font-weight="600" fill="#1B4F3A">節税効果: 2〜5万円/年</text>
+
+  <text x="400" y="410" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com ※ 金額は概算です。個別の状況により異なります。</text>
+</svg>

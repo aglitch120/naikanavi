@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="480" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">内科専門医試験 13領域と出題比率</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">循環器・消化器が最多、全領域バランス良く対策が必要</text>
+
+  <!-- Bar chart -->
+  <g transform="translate(60, 80)">
+    <!-- Labels and bars -->
+    <text x="95" y="15" text-anchor="end" font-size="11" fill="#1A1917">消化器</text>
+    <rect x="105" y="2" width="440" height="22" rx="4" fill="#1B4F3A"/><text x="555" y="18" font-size="11" fill="#1A1917" font-weight="600">11%</text>
+
+    <text x="95" y="43" text-anchor="end" font-size="11" fill="#1A1917">循環器</text>
+    <rect x="105" y="30" width="440" height="22" rx="4" fill="#1B4F3A"/><text x="555" y="46" font-size="11" fill="#1A1917" font-weight="600">11%</text>
+
+    <text x="95" y="71" text-anchor="end" font-size="11" fill="#1A1917">内分泌</text>
+    <rect x="105" y="58" width="340" height="22" rx="4" fill="#3D7A5F"/><text x="455" y="74" font-size="11" fill="#1A1917" font-weight="600">8.5%</text>
+
+    <text x="95" y="99" text-anchor="end" font-size="11" fill="#1A1917">腎臓</text>
+    <rect x="105" y="86" width="340" height="22" rx="4" fill="#3D7A5F"/><text x="455" y="102" font-size="11" fill="#1A1917" font-weight="600">8.5%</text>
+
+    <text x="95" y="127" text-anchor="end" font-size="11" fill="#1A1917">呼吸器</text>
+    <rect x="105" y="114" width="320" height="22" rx="4" fill="#5A9178"/><text x="435" y="130" font-size="11" fill="#1A1917" font-weight="600">8%</text>
+
+    <text x="95" y="155" text-anchor="end" font-size="11" fill="#1A1917">血液</text>
+    <rect x="105" y="142" width="320" height="22" rx="4" fill="#5A9178"/><text x="435" y="158" font-size="11" fill="#1A1917" font-weight="600">8%</text>
+
+    <text x="95" y="183" text-anchor="end" font-size="11" fill="#1A1917">神経</text>
+    <rect x="105" y="170" width="300" height="22" rx="4" fill="#78A892"/><text x="415" y="186" font-size="11" fill="#1A1917" font-weight="600">7.5%</text>
+
+    <text x="95" y="211" text-anchor="end" font-size="11" fill="#1A1917">膠原病</text>
+    <rect x="105" y="198" width="300" height="22" rx="4" fill="#78A892"/><text x="415" y="214" font-size="11" fill="#1A1917" font-weight="600">7.5%</text>
+
+    <text x="95" y="239" text-anchor="end" font-size="11" fill="#1A1917">感染症</text>
+    <rect x="105" y="226" width="280" height="22" rx="4" fill="#96BEAC"/><text x="395" y="242" font-size="11" fill="#1A1917" font-weight="600">7%</text>
+
+    <text x="95" y="267" text-anchor="end" font-size="11" fill="#1A1917">アレルギー</text>
+    <rect x="105" y="254" width="240" height="22" rx="4" fill="#B0D4C3"/><text x="355" y="270" font-size="11" fill="#1A1917" font-weight="600">6%</text>
+
+    <text x="95" y="295" text-anchor="end" font-size="11" fill="#1A1917">総合内科</text>
+    <rect x="105" y="282" width="240" height="22" rx="4" fill="#B0D4C3"/><text x="355" y="298" font-size="11" fill="#1A1917" font-weight="600">6%</text>
+
+    <text x="95" y="323" text-anchor="end" font-size="11" fill="#1A1917">救急</text>
+    <rect x="105" y="310" width="200" height="22" rx="4" fill="#C8E0D4"/><text x="315" y="326" font-size="11" fill="#1A1917" font-weight="600">5.5%</text>
+
+    <text x="95" y="351" text-anchor="end" font-size="11" fill="#1A1917">腫瘍</text>
+    <rect x="105" y="338" width="200" height="22" rx="4" fill="#C8E0D4"/><text x="315" y="354" font-size="11" fill="#1A1917" font-weight="600">5.5%</text>
+  </g>
+
+  <!-- Note -->
+  <rect x="500" y="420" width="260" height="30" rx="6" fill="#E8F0EC"/>
+  <text x="630" y="440" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">全250問・マークシート方式</text>
+
+  <text x="400" y="470" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

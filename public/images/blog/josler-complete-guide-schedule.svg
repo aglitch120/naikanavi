@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="420" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">J-OSLER 3年間の戦略スケジュール</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">年次ごとの重点タスクと進捗目安</text>
+
+  <!-- Timeline bar -->
+  <rect x="60" y="85" width="680" height="6" rx="3" fill="#DDD9D2"/>
+  <circle cx="170" cy="88" r="10" fill="#1B4F3A"/><text x="170" y="92" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">1</text>
+  <circle cx="400" cy="88" r="10" fill="#1B4F3A"/><text x="400" y="92" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">2</text>
+  <circle cx="630" cy="88" r="10" fill="#1B4F3A"/><text x="630" y="92" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">3</text>
+
+  <!-- Year 1 -->
+  <rect x="50" y="110" width="220" height="260" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="50" y="110" width="220" height="36" rx="10" fill="#1B4F3A"/>
+  <text x="160" y="133" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">専攻1年目</text>
+  <text x="70" y="170" font-size="12" font-weight="600" fill="#1A1917">【症例登録を軸に】</text>
+  <text x="78" y="192" font-size="11" fill="#6B6760">• 症例登録 60〜80件目標</text>
+  <text x="78" y="212" font-size="11" fill="#6B6760">• 病歴要約 5〜10篇着手</text>
+  <text x="78" y="232" font-size="11" fill="#6B6760">• JMECC受講</text>
+  <text x="78" y="252" font-size="11" fill="#6B6760">• 講習会 年2回受講</text>
+  <rect x="70" y="275" width="180" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="160" y="294" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">進捗目安: 全体の40%</text>
+  <rect x="70" y="310" width="72" height="8" rx="4" fill="#1B4F3A"/>
+  <rect x="142" y="310" width="108" height="8" rx="4" fill="#DDD9D2"/>
+
+  <!-- Year 2 -->
+  <rect x="290" y="110" width="220" height="260" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="290" y="110" width="220" height="36" rx="10" fill="#1B4F3A"/>
+  <text x="400" y="133" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">専攻2年目</text>
+  <text x="310" y="170" font-size="12" font-weight="600" fill="#1A1917">【病歴要約を集中的に】</text>
+  <text x="318" y="192" font-size="11" fill="#6B6760">• 症例登録 120件完了</text>
+  <text x="318" y="212" font-size="11" fill="#6B6760">• 病歴要約 29篇完了目標</text>
+  <text x="318" y="232" font-size="11" fill="#6B6760">• 個別評価→二次評価通過</text>
+  <text x="318" y="252" font-size="11" fill="#6B6760">• 技術・手技評価を進める</text>
+  <rect x="310" y="275" width="180" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="400" y="294" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">進捗目安: 全体の80%</text>
+  <rect x="310" y="310" width="144" height="8" rx="4" fill="#1B4F3A"/>
+  <rect x="454" y="310" width="36" height="8" rx="4" fill="#DDD9D2"/>
+
+  <!-- Year 3 -->
+  <rect x="530" y="110" width="220" height="260" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="530" y="110" width="220" height="36" rx="10" fill="#1B4F3A"/>
+  <text x="640" y="133" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">専攻3年目</text>
+  <text x="550" y="170" font-size="12" font-weight="600" fill="#1A1917">【修了＋試験対策】</text>
+  <text x="558" y="192" font-size="11" fill="#6B6760">• J-OSLER修了申請</text>
+  <text x="558" y="212" font-size="11" fill="#6B6760">• 修了判定→試験出願</text>
+  <text x="558" y="232" font-size="11" fill="#6B6760">• 内科専門医試験（秋）</text>
+  <text x="558" y="252" font-size="11" fill="#6B6760">• 過去問演習 3周</text>
+  <rect x="550" y="275" width="180" height="28" rx="6" fill="#86EFAC"/>
+  <text x="640" y="294" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">目標: 修了＋試験合格！</text>
+  <rect x="550" y="310" width="180" height="8" rx="4" fill="#1B4F3A"/>
+
+  <text x="400" y="400" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

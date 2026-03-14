@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="400" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">J-OSLER効率化 5ステップ</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">AI活用からNotion管理まで時短フロー</text>
+
+  <!-- Flow: 5 connected steps -->
+  <!-- Step 1 -->
+  <rect x="30" y="90" width="130" height="140" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="95" cy="118" r="18" fill="#1B4F3A"/>
+  <text x="95" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">1</text>
+  <text x="95" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">テンプレ</text>
+  <text x="95" y="168" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">活用</text>
+  <text x="95" y="192" text-anchor="middle" font-size="10" fill="#6B6760">症例登録・病歴</text>
+  <text x="95" y="206" text-anchor="middle" font-size="10" fill="#6B6760">要約のテンプレを</text>
+  <text x="95" y="220" text-anchor="middle" font-size="10" fill="#6B6760">事前に用意</text>
+
+  <!-- Arrow -->
+  <polygon points="165,160 180,153 180,157 195,157 195,163 180,163 180,167" fill="#1B4F3A" opacity="0.4"/>
+
+  <!-- Step 2 -->
+  <rect x="185" y="90" width="130" height="140" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="250" cy="118" r="18" fill="#1B4F3A"/>
+  <text x="250" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">2</text>
+  <text x="250" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">AI下書き</text>
+  <text x="250" y="192" text-anchor="middle" font-size="10" fill="#6B6760">ChatGPT/Claude</text>
+  <text x="250" y="206" text-anchor="middle" font-size="10" fill="#6B6760">で病歴要約の</text>
+  <text x="250" y="220" text-anchor="middle" font-size="10" fill="#6B6760">骨組みを生成</text>
+
+  <polygon points="320,160 335,153 335,157 350,157 350,163 335,163 335,167" fill="#1B4F3A" opacity="0.4"/>
+
+  <!-- Step 3 -->
+  <rect x="340" y="90" width="130" height="140" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="405" cy="118" r="18" fill="#1B4F3A"/>
+  <text x="405" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">3</text>
+  <text x="405" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">バッチ処理</text>
+  <text x="405" y="192" text-anchor="middle" font-size="10" fill="#6B6760">同じ疾患群を</text>
+  <text x="405" y="206" text-anchor="middle" font-size="10" fill="#6B6760">まとめて登録</text>
+  <text x="405" y="220" text-anchor="middle" font-size="10" fill="#6B6760">（効率3倍）</text>
+
+  <polygon points="475,160 490,153 490,157 505,157 505,163 490,163 490,167" fill="#1B4F3A" opacity="0.4"/>
+
+  <!-- Step 4 -->
+  <rect x="495" y="90" width="130" height="140" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="560" cy="118" r="18" fill="#1B4F3A"/>
+  <text x="560" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">4</text>
+  <text x="560" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">進捗管理</text>
+  <text x="560" y="192" text-anchor="middle" font-size="10" fill="#6B6760">Notion/スプシで</text>
+  <text x="560" y="206" text-anchor="middle" font-size="10" fill="#6B6760">疾患群別の達成</text>
+  <text x="560" y="220" text-anchor="middle" font-size="10" fill="#6B6760">状況を可視化</text>
+
+  <polygon points="630,160 645,153 645,157 660,157 660,163 645,163 645,167" fill="#1B4F3A" opacity="0.4"/>
+
+  <!-- Step 5 -->
+  <rect x="650" y="90" width="120" height="140" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="710" cy="118" r="18" fill="#86EFAC" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="710" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#1B4F3A">5</text>
+  <text x="710" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">レビュー</text>
+  <text x="710" y="168" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">サイクル</text>
+  <text x="710" y="192" text-anchor="middle" font-size="10" fill="#6B6760">指導医FBを</text>
+  <text x="710" y="206" text-anchor="middle" font-size="10" fill="#6B6760">即反映して</text>
+  <text x="710" y="220" text-anchor="middle" font-size="10" fill="#6B6760">再提出を迅速化</text>
+
+  <!-- Result box -->
+  <rect x="140" y="270" width="520" height="80" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="400" y="300" text-anchor="middle" font-size="16" font-weight="bold" fill="#1B4F3A">結果: 病歴要約 1本あたり 3時間 → 30分に短縮</text>
+  <text x="400" y="325" text-anchor="middle" font-size="12" fill="#6B6760">内科ナビのAIテンプレート + ダッシュボードで更に効率UP</text>
+
+  <text x="400" y="385" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

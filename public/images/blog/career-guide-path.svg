@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="440" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">内科専攻医のキャリアパス全体図</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">サブスペシャルティ・大学病院・市中病院・総合内科の選択肢</text>
+
+  <!-- Start node -->
+  <rect x="300" y="80" width="200" height="44" rx="22" fill="#1B4F3A"/>
+  <text x="400" y="107" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">内科専門医 取得</text>
+
+  <!-- Lines -->
+  <line x1="340" y1="124" x2="140" y2="170" stroke="#1B4F3A" stroke-width="2" opacity="0.4"/>
+  <line x1="380" y1="124" x2="320" y2="170" stroke="#1B4F3A" stroke-width="2" opacity="0.4"/>
+  <line x1="420" y1="124" x2="500" y2="170" stroke="#1B4F3A" stroke-width="2" opacity="0.4"/>
+  <line x1="460" y1="124" x2="660" y2="170" stroke="#1B4F3A" stroke-width="2" opacity="0.4"/>
+
+  <!-- Path 1: サブスペシャルティ -->
+  <rect x="40" y="170" width="200" height="230" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <rect x="40" y="170" width="200" height="36" rx="10" fill="#1B4F3A"/>
+  <text x="140" y="193" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">サブスペシャルティ</text>
+  <text x="60" y="228" font-size="11" fill="#1A1917" font-weight="600">循環器・消化器・呼吸器</text>
+  <text x="60" y="246" font-size="11" fill="#1A1917" font-weight="600">血液・腎臓・内分泌 等</text>
+  <line x1="60" y1="258" x2="220" y2="258" stroke="#DDD9D2"/>
+  <text x="60" y="278" font-size="10" fill="#6B6760">• 専門性を深める王道</text>
+  <text x="60" y="296" font-size="10" fill="#6B6760">• 学会専門医を追加取得</text>
+  <text x="60" y="314" font-size="10" fill="#6B6760">• 大学院進学も選択肢</text>
+  <rect x="55" y="330" width="170" height="24" rx="6" fill="#E8F0EC"/>
+  <text x="140" y="347" text-anchor="middle" font-size="10" fill="#1B4F3A" font-weight="600">最も選択者が多い</text>
+
+  <!-- Path 2: 大学病院 -->
+  <rect x="260" y="170" width="160" height="230" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="260" y="170" width="160" height="36" rx="10" fill="#3D7A5F"/>
+  <text x="340" y="193" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">大学病院</text>
+  <text x="280" y="228" font-size="11" fill="#1A1917" font-weight="600">研究 + 臨床</text>
+  <line x1="280" y1="240" x2="400" y2="240" stroke="#DDD9D2"/>
+  <text x="280" y="260" font-size="10" fill="#6B6760">• 学位（博士号）取得</text>
+  <text x="280" y="278" font-size="10" fill="#6B6760">• 論文・学会発表</text>
+  <text x="280" y="296" font-size="10" fill="#6B6760">• 教育ポジション</text>
+  <text x="280" y="314" font-size="10" fill="#6B6760">• 給与は低め</text>
+  <rect x="275" y="330" width="130" height="24" rx="6" fill="#E8F0EC"/>
+  <text x="340" y="347" text-anchor="middle" font-size="10" fill="#1B4F3A" font-weight="600">アカデミア志向</text>
+
+  <!-- Path 3: 市中病院 -->
+  <rect x="440" y="170" width="160" height="230" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="440" y="170" width="160" height="36" rx="10" fill="#5A9178"/>
+  <text x="520" y="193" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">市中病院</text>
+  <text x="460" y="228" font-size="11" fill="#1A1917" font-weight="600">臨床特化</text>
+  <line x1="460" y1="240" x2="580" y2="240" stroke="#DDD9D2"/>
+  <text x="460" y="260" font-size="10" fill="#6B6760">• 幅広い症例経験</text>
+  <text x="460" y="278" font-size="10" fill="#6B6760">• 給与は高め</text>
+  <text x="460" y="296" font-size="10" fill="#6B6760">• WLB重視も可能</text>
+  <text x="460" y="314" font-size="10" fill="#6B6760">• 地域医療に貢献</text>
+  <rect x="455" y="330" width="130" height="24" rx="6" fill="#E8F0EC"/>
+  <text x="520" y="347" text-anchor="middle" font-size="10" fill="#1B4F3A" font-weight="600">臨床・収入重視</text>
+
+  <!-- Path 4: 総合内科 -->
+  <rect x="620" y="170" width="140" height="230" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="620" y="170" width="140" height="36" rx="10" fill="#78A892"/>
+  <text x="690" y="193" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">総合内科</text>
+  <text x="640" y="228" font-size="11" fill="#1A1917" font-weight="600">ジェネラリスト</text>
+  <line x1="640" y1="240" x2="740" y2="240" stroke="#DDD9D2"/>
+  <text x="640" y="260" font-size="10" fill="#6B6760">• 総合内科専門医</text>
+  <text x="640" y="278" font-size="10" fill="#6B6760">• ホスピタリスト</text>
+  <text x="640" y="296" font-size="10" fill="#6B6760">• 開業も視野に</text>
+  <text x="640" y="314" font-size="10" fill="#6B6760">• 需要増加中</text>
+  <rect x="635" y="330" width="110" height="24" rx="6" fill="#E8F0EC"/>
+  <text x="690" y="347" text-anchor="middle" font-size="10" fill="#1B4F3A" font-weight="600">柔軟なキャリア</text>
+
+  <text x="400" y="428" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

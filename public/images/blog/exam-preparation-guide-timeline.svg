@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="380" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">内科専門医試験 合格ロードマップ</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">J-OSLER修了から試験当日まで6ヶ月の計画表</text>
+
+  <!-- Timeline -->
+  <line x1="80" y1="100" x2="720" y2="100" stroke="#DDD9D2" stroke-width="3"/>
+
+  <!-- Month markers -->
+  <g font-size="11" fill="#6B6760" text-anchor="middle">
+    <circle cx="120" cy="100" r="6" fill="#1B4F3A"/><text x="120" y="85">6ヶ月前</text>
+    <circle cx="240" cy="100" r="6" fill="#1B4F3A"/><text x="240" y="85">5ヶ月前</text>
+    <circle cx="360" cy="100" r="6" fill="#1B4F3A"/><text x="360" y="85">3ヶ月前</text>
+    <circle cx="480" cy="100" r="6" fill="#1B4F3A"/><text x="480" y="85">1ヶ月前</text>
+    <circle cx="600" cy="100" r="6" fill="#1B4F3A"/><text x="600" y="85">1週間前</text>
+    <circle cx="700" cy="100" r="8" fill="#86EFAC" stroke="#1B4F3A" stroke-width="2"/><text x="700" y="85" font-weight="bold" fill="#1B4F3A">試験日</text>
+  </g>
+
+  <!-- Phase 1 -->
+  <rect x="80" y="120" width="200" height="100" rx="8" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <rect x="80" y="120" width="200" height="28" rx="8" fill="#1B4F3A"/>
+  <text x="180" y="139" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Phase 1: 基礎固め</text>
+  <text x="95" y="165" font-size="11" fill="#6B6760">• 参考書（イヤーノート等）通読</text>
+  <text x="95" y="183" font-size="11" fill="#6B6760">• 苦手領域の洗い出し</text>
+  <text x="95" y="201" font-size="11" fill="#6B6760">• 過去問1周目に着手</text>
+
+  <!-- Phase 2 -->
+  <rect x="300" y="120" width="200" height="100" rx="8" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <rect x="300" y="120" width="200" height="28" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="139" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Phase 2: 演習集中</text>
+  <text x="315" y="165" font-size="11" fill="#6B6760">• 過去問2周目（弱点中心）</text>
+  <text x="315" y="183" font-size="11" fill="#6B6760">• 模試を受験</text>
+  <text x="315" y="201" font-size="11" fill="#6B6760">• 間違いノート作成</text>
+
+  <!-- Phase 3 -->
+  <rect x="520" y="120" width="220" height="100" rx="8" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <rect x="520" y="120" width="220" height="28" rx="8" fill="#1B4F3A"/>
+  <text x="630" y="139" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Phase 3: 仕上げ</text>
+  <text x="535" y="165" font-size="11" fill="#6B6760">• 過去問3周目（全範囲）</text>
+  <text x="535" y="183" font-size="11" fill="#6B6760">• 間違いノート総復習</text>
+  <text x="535" y="201" font-size="11" fill="#6B6760">• ガイドライン変更点チェック</text>
+
+  <!-- Key metrics -->
+  <rect x="80" y="245" width="200" height="55" rx="8" fill="#E8F0EC"/>
+  <text x="180" y="268" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">過去問正答率70%+</text>
+  <text x="180" y="287" text-anchor="middle" font-size="11" fill="#6B6760">が合格ラインの目安</text>
+
+  <rect x="300" y="245" width="200" height="55" rx="8" fill="#E8F0EC"/>
+  <text x="400" y="268" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">1日2〜3時間</text>
+  <text x="400" y="287" text-anchor="middle" font-size="11" fill="#6B6760">勤務後の学習時間目安</text>
+
+  <rect x="520" y="245" width="220" height="55" rx="8" fill="#86EFAC"/>
+  <text x="630" y="268" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">合格率 約60〜70%</text>
+  <text x="630" y="287" text-anchor="middle" font-size="11" fill="#1B4F3A">計画的な対策で十分合格可能</text>
+
+  <text x="400" y="365" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>
