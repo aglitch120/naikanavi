@@ -129,6 +129,14 @@ export default function Header() {
             )}
           </div>
 
+          {/* デスクトップ: 計算ツール */}
+          <Link
+            href="/tools"
+            className="hidden md:block text-sm px-2 py-1.5 rounded-md text-muted hover:text-ac transition-colors"
+          >
+            計算ツール
+          </Link>
+
           <SearchDialog />
           <a
             href="https://naikanavi.booth.pm/items/8058590"
