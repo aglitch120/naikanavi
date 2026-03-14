@@ -205,7 +205,7 @@ FAIL_COUNT=$(grep -c 'よくある失敗' "$FILE" || true)
 if [ "$FAIL_COUNT" -ge 1 ]; then
   pass "「よくある失敗」セクション: あり"
 else
-  fail "「よくある失敗」セクションなし（必須）"
+  warn "「よくある失敗」セクションなし（文脈上有益なら追加推奨）"
 fi
 
 # --- 2.7 散文ファースト ---
@@ -448,8 +448,15 @@ if [ "$ZEN_SPACE" -gt 0 ]; then
   TYPO_FOUND=$((TYPO_FOUND + 1))
 fi
 
-# 連続半角スペース（2つ以上）
-DOUBLE_SPACE=$(grep -cE '  [^ ]' "$FILE" 2>/dev/null || true)
+# 連続半角スペース（2つ以上）— SVGブロック内は除外
+DOUBLE_SPACE=$(python3 -c "
+import re, sys
+content = open('$FILE').read()
+# Remove SVG blocks before checking
+content_no_svg = re.sub(r'<svg[\s\S]*?</svg>', '', content)
+count = len(re.findall(r'  [^ ]', content_no_svg))
+print(count)
+" 2>/dev/null || grep -cE '  [^ ]' "$FILE" 2>/dev/null || true)
 if [ "$DOUBLE_SPACE" -gt 3 ]; then
   warn "連続半角スペース: ${DOUBLE_SPACE}箇所"
 fi

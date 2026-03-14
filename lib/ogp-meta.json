@@ -349,6 +349,96 @@
     "subtitle": "気持ちの切り替えと次への準備",
     "category": "specialist-exam"
   },
+  "h01-naika-senmoni-junkanki": {
+    "title": "内科専門医試験 循環器領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h02-naika-senmoni-shoukaki": {
+    "title": "内科専門医試験 消化器領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h03-naika-senmoni-kokyuuki": {
+    "title": "内科専門医試験 呼吸器領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h04-naika-senmoni-naibunpitsu": {
+    "title": "内科専門医試験 内分泌・代謝領域の対策",
+    "subtitle": "頻出テーマと勉強法",
+    "category": "specialist-exam"
+  },
+  "h05-naika-senmoni-jinzou": {
+    "title": "内科専門医試験 腎臓領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h06-naika-senmoni-ketsueki": {
+    "title": "内科専門医試験 血液領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h07-naika-senmoni-shinkei": {
+    "title": "内科専門医試験 神経領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h08-naika-senmoni-kougenbyou": {
+    "title": "内科専門医試験 アレルギー・膠原病領域の対策",
+    "subtitle": "頻出テーマと勉強法",
+    "category": "specialist-exam"
+  },
+  "h09-naika-senmoni-kansenshou": {
+    "title": "内科専門医試験 感染症領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h10-naika-senmoni-kyuukyuu": {
+    "title": "内科専門医試験 救急・総合内科領域の対策",
+    "subtitle": "頻出テーマと勉強法",
+    "category": "specialist-exam"
+  },
+  "i01-sougou-naika-senmoni-toha": {
+    "title": "総合内科専門医とは？内科専門医との違い・取得メリットを解説",
+    "subtitle": "",
+    "category": "comprehensive-exam"
+  },
+  "i02-sougou-naika-senmoni-juken-shikaku": {
+    "title": "総合内科専門医の受験資格と出願方法",
+    "subtitle": "条件・必要書類を解説",
+    "category": "comprehensive-exam"
+  },
+  "i03-sougou-naika-senmoni-nanido": {
+    "title": "総合内科専門医試験の難易度・合格率",
+    "subtitle": "内科専門医試験との比較",
+    "category": "comprehensive-exam"
+  },
+  "i04-sougou-naika-senmoni-benkyouhou": {
+    "title": "総合内科専門医試験の勉強法",
+    "subtitle": "合格者が実践した対策スケジュール",
+    "category": "comprehensive-exam"
+  },
+  "i05-sougou-naika-senmoni-sankousho": {
+    "title": "総合内科専門医試験のおすすめ参考書・テキスト",
+    "subtitle": "",
+    "category": "comprehensive-exam"
+  },
+  "i06-sougou-naika-senmoni-shutsudai-keiko": {
+    "title": "総合内科専門医試験の出題傾向と重要テーマ",
+    "subtitle": "領域別の対策ポイント",
+    "category": "comprehensive-exam"
+  },
+  "i07-sougou-naika-senmoni-career": {
+    "title": "総合内科専門医取得後のキャリア",
+    "subtitle": "年収・転職・キャリアアップへの影響",
+    "category": "comprehensive-exam"
+  },
+  "i08-sougou-naika-senmoni-guide": {
+    "title": "総合内科専門医 完全ガイド",
+    "subtitle": "取得から活用まで",
+    "category": "comprehensive-exam"
+  },
   "j01-josler-ai-katsuyo": {
     "title": "J-OSLERをAIで効率化する方法",
     "subtitle": "Claude・ChatGPT・Perplexity活用ガイド",
@@ -434,50 +524,30 @@
     "subtitle": "",
     "category": "mental-life"
   },
+  "l01-senkoui-baito-hajimekata": {
+    "title": "専攻医のバイト（非常勤）始め方完全ガイド",
+    "subtitle": "いつから・何ができる",
+    "category": "part-time"
+  },
+  "l02-senkoui-baito-souristae": {
+    "title": "内科専攻医のバイト相場・時給",
+    "subtitle": "種類別の報酬目安と高単価案件の探し方",
+    "category": "part-time"
+  },
+  "l03-senkoui-baito-website": {
+    "title": "専攻医のバイト探しサイトおすすめ",
+    "subtitle": "医師求人サービスの選び方と注意点",
+    "category": "part-time"
+  },
+  "l04-senkoui-kyuuryo-tedori": {
+    "title": "内科専攻医の給与・手取りの実態",
+    "subtitle": "バイト込みの年収シミュレーション",
+    "category": "part-time"
+  },
   "n08-senkoui-program-erabikata": {
     "title": "内科専攻医プログラムの選び方",
     "subtitle": "比較すべき7つのポイント",
     "category": "career"
-  },
-  "i01-sougou-naika-senmoni-toha": {
-    "title": "総合内科専門医とは？内科専門医との違い・取得メリット",
-    "subtitle": "",
-    "category": "comprehensive-exam"
-  },
-  "i02-sougou-naika-senmoni-juken-shikaku": {
-    "title": "総合内科専門医の受験資格と出願方法",
-    "subtitle": "条件・必要書類を解説",
-    "category": "comprehensive-exam"
-  },
-  "i03-sougou-naika-senmoni-nanido": {
-    "title": "総合内科専門医試験の難易度・合格率",
-    "subtitle": "内科専門医試験との比較",
-    "category": "comprehensive-exam"
-  },
-  "i04-sougou-naika-senmoni-benkyouhou": {
-    "title": "総合内科専門医試験の勉強法",
-    "subtitle": "合格者が実践した対策スケジュール",
-    "category": "comprehensive-exam"
-  },
-  "i05-sougou-naika-senmoni-sankousho": {
-    "title": "総合内科専門医試験のおすすめ参考書・テキスト",
-    "subtitle": "",
-    "category": "comprehensive-exam"
-  },
-  "i06-sougou-naika-senmoni-shutsudai-keiko": {
-    "title": "総合内科専門医試験の出題傾向と重要テーマ",
-    "subtitle": "領域別の対策ポイント",
-    "category": "comprehensive-exam"
-  },
-  "i07-sougou-naika-senmoni-career": {
-    "title": "総合内科専門医取得後のキャリア",
-    "subtitle": "年収・転職・キャリアアップへの影響",
-    "category": "comprehensive-exam"
-  },
-  "i08-sougou-naika-senmoni-guide": {
-    "title": "総合内科専門医 完全ガイド",
-    "subtitle": "取得から活用まで",
-    "category": "comprehensive-exam"
   },
   "josler-complete-guide": {
     "title": "J-OSLER完全攻略",
