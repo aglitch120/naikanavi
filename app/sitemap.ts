@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts, getPostBySlug } from '@/lib/mdx'
 import { categories } from '@/lib/blog-config'
+import { tools, implementedTools } from '@/lib/tools-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://naikanavi.com'
@@ -18,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/blog`,
       lastModified: new Date('2026-03-09'),
       changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools`,
+      lastModified: new Date('2026-03-15'),
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
@@ -45,6 +52,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
   ]
+
+  // ツールページ（実装済みのみ）
+  const toolPages: MetadataRoute.Sitemap = tools
+    .filter(t => implementedTools.has(t.slug))
+    .map(t => ({
+      url: `${baseUrl}/tools/${t.slug}`,
+      lastModified: new Date('2026-03-15'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    }))
   
   // カテゴリページ
   const categoryPages: MetadataRoute.Sitemap = Object.keys(categories).map((slug) => ({
@@ -66,5 +83,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
   
-  return [...staticPages, ...categoryPages, ...postPages]
+  return [...staticPages, ...toolPages, ...categoryPages, ...postPages]
 }
