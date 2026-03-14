@@ -5,6 +5,7 @@ import './globals.css'
 import { siteConfig, categories } from '@/lib/blog-config'
 import { websiteJsonLd, siteNavigationJsonLd } from '@/lib/seo'
 import Header from '@/components/Header'
+import BottomNav from '@/components/BottomNav'
 
 // Organization構造化データ
 const organizationJsonLd = {
@@ -88,10 +89,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-bg text-tx antialiased">
         <Header />
-        <main className="max-w-5xl mx-auto px-6 sm:px-8 py-8">
+        <main className="max-w-5xl mx-auto px-6 sm:px-8 py-8 pb-24 md:pb-8">
           {children}
         </main>
         <Footer />
+        <BottomNav />
       </body>
     </html>
   )
@@ -137,7 +139,7 @@ const footerCategories = [
 // フッターコンポーネント
 function Footer() {
   return (
-    <footer className="bg-s0 border-t border-br mt-16">
+    <footer className="bg-s0 border-t border-br mt-16 pb-14 md:pb-0">
       <div className="max-w-5xl mx-auto px-6 sm:px-8 py-10">
         {/* カテゴリリンク */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
