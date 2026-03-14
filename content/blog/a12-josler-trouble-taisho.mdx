@@ -1,6 +1,6 @@
 ---
-title: "J-OSLERのよくあるトラブルと解決策｜ログインできない・エラーが出る"
-description: "J-OSLERで起きやすいトラブルを一覧で解説。ログインできない、症例が保存されない、エラーコードが出る、指導医が承認できないなど、対処法をまとめました。"
+title: "【2026年版】J-OSLERのよくあるトラブルと解決策まとめ"
+description: "J-OSLERで起きやすいトラブルを完全網羅。ログインできない・症例が消えた・指導医が承認できない・病歴要約が送信できないなど、対処法を症状別に解説。"
 date: "2026-03-14"
 updated: "2026-03-14"
 author: "内科ナビ編集部"
@@ -8,105 +8,199 @@ category: "josler-basics"
 cluster: "A"
 pillar: "josler-complete-guide"
 tags: ["J-OSLER", "トラブル", "エラー", "ログインできない", "不具合"]
-cta_type: "app"
-reading_time: 7
+cta_type: "general"
+reading_time: 10
 status: "published"
 seo_checked: true
 ---
 
-「J-OSLERにログインできない」「入力したはずの症例が消えた」「エラーメッセージが出て先に進めない」
+「J-OSLERにログインできない」「入力したはずの症例が消えた」「指導医側でエラーが出ると言われた」
 
-J-OSLERはシステム上のトラブルが起きやすいといわれています。この記事では、よくあるトラブルとその解決策をまとめました。
+J-OSLERは多くの専攻医が年間を通じてトラブルを経験しています。**トラブルで修了が遅れる**のは避けたいもの。この記事では、頻出トラブルを症状別に整理し、即日対処できる解決策をまとめました。
 
-## トラブル一覧と解決策
+> 💡 **[内科ナビ](https://naikanavi.booth.pm/items/8058590)** はオフラインでも病歴要約の下書きを保存できます。J-OSLERシステムのトラブル時も入力内容を失わずに済みます。
 
-### トラブル1: ログインできない
+## J-OSLERでよくあるトラブル全8パターン
 
-**原因と対処法**
+まず、どのトラブルに当てはまるかを確認してください。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="J-OSLERトラブル8パターンと緊急度">
+  <defs><filter id="sh_a12a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="400" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="18" width="752" height="46" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="46" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="17" fill="#fff">頻出トラブル8パターンと緊急度</text>
+  <rect x="24" y="76" width="356" height="58" rx="8" fill="#FEF2F2" filter="url(#sh_a12a)"/>
+  <rect x="24" y="76" width="8" height="58" rx="4" fill="#DC2626"/>
+  <text x="44" y="100" font-family="sans-serif" font-weight="bold" font-size="13" fill="#DC2626">🔴 高 </text>
+  <text x="86" y="100" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">ログインできない</text>
+  <text x="44" y="122" font-family="sans-serif" font-size="11" fill="#6B6760">→ パスワードリセット or 事務局連絡</text>
+  <rect x="420" y="76" width="356" height="58" rx="8" fill="#FEF2F2" filter="url(#sh_a12a)"/>
+  <rect x="420" y="76" width="8" height="58" rx="4" fill="#DC2626"/>
+  <text x="440" y="100" font-family="sans-serif" font-weight="bold" font-size="13" fill="#DC2626">🔴 高 </text>
+  <text x="482" y="100" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">症例・病歴要約が消えた</text>
+  <text x="440" y="122" font-family="sans-serif" font-size="11" fill="#6B6760">→ タブ切替・フィルタ確認 → 事務局</text>
+  <rect x="24" y="146" width="356" height="58" rx="8" fill="#FFF7ED" filter="url(#sh_a12a)"/>
+  <rect x="24" y="146" width="8" height="58" rx="4" fill="#D97706"/>
+  <text x="44" y="170" font-family="sans-serif" font-weight="bold" font-size="13" fill="#D97706">🟡 中 </text>
+  <text x="86" y="170" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">指導医が承認できない</text>
+  <text x="44" y="192" font-family="sans-serif" font-size="11" fill="#6B6760">→ 別ブラウザ/端末で再試行を依頼</text>
+  <rect x="420" y="146" width="356" height="58" rx="8" fill="#FFF7ED" filter="url(#sh_a12a)"/>
+  <rect x="420" y="146" width="8" height="58" rx="4" fill="#D97706"/>
+  <text x="440" y="170" font-family="sans-serif" font-weight="bold" font-size="13" fill="#D97706">🟡 中 </text>
+  <text x="482" y="170" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">病歴要約が送信できない</text>
+  <text x="440" y="192" font-family="sans-serif" font-size="11" fill="#6B6760">→ 文字数超過・必須項目を確認</text>
+  <rect x="24" y="216" width="356" height="58" rx="8" fill="#FFF7ED" filter="url(#sh_a12a)"/>
+  <rect x="24" y="216" width="8" height="58" rx="4" fill="#D97706"/>
+  <text x="44" y="240" font-family="sans-serif" font-weight="bold" font-size="13" fill="#D97706">🟡 中 </text>
+  <text x="86" y="240" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">入力内容が保存されない</text>
+  <text x="44" y="262" font-family="sans-serif" font-size="11" fill="#6B6760">→ 事前にメモ帳で下書き・定期保存</text>
+  <rect x="420" y="216" width="356" height="58" rx="8" fill="#FFF7ED" filter="url(#sh_a12a)"/>
+  <rect x="420" y="216" width="8" height="58" rx="4" fill="#D97706"/>
+  <text x="440" y="240" font-family="sans-serif" font-weight="bold" font-size="13" fill="#D97706">🟡 中 </text>
+  <text x="482" y="240" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">画面が固まる・動作が遅い</text>
+  <text x="440" y="262" font-family="sans-serif" font-size="11" fill="#6B6760">→ タブ整理→リロード→別端末</text>
+  <rect x="24" y="286" width="356" height="58" rx="8" fill="#F0FDF4" filter="url(#sh_a12a)"/>
+  <rect x="24" y="286" width="8" height="58" rx="4" fill="#059669"/>
+  <text x="44" y="310" font-family="sans-serif" font-weight="bold" font-size="13" fill="#059669">🟢 低 </text>
+  <text x="86" y="310" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">案内メールが届かない</text>
+  <text x="44" y="332" font-family="sans-serif" font-size="11" fill="#6B6760">→ メアド更新 → システムで直接確認</text>
+  <rect x="420" y="286" width="356" height="58" rx="8" fill="#F0FDF4" filter="url(#sh_a12a)"/>
+  <rect x="420" y="286" width="8" height="58" rx="4" fill="#059669"/>
+  <text x="440" y="310" font-family="sans-serif" font-weight="bold" font-size="13" fill="#059669">🟢 低 </text>
+  <text x="482" y="310" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">施設コードがわからない</text>
+  <text x="440" y="332" font-family="sans-serif" font-size="11" fill="#6B6760">→ 病院事務局または医局に確認</text>
+  <text x="400" y="384" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#9B9791">© 内科ナビ</text>
+</svg>
+
+## トラブル別 詳細対処法
+
+### トラブル1：ログインできない
+
+**まず試すこと**：ブラウザをChromeに変え、シークレットモードでアクセスします。キャッシュ・Cookieが原因のケースが最も多く、これだけで解決することがよくあります。
 
 | 原因 | 対処法 |
 |------|--------|
 | パスワード間違い | パスワードリセットを実施 |
-| IDを忘れた | 登録メールアドレスに問い合わせ |
+| IDを忘れた | 登録メールアドレスを確認 |
 | アカウントロック | 日本内科学会事務局へ連絡 |
 | ブラウザ非対応 | Chrome最新版を使用 |
 | キャッシュ問題 | キャッシュ・Cookie削除後に再試行 |
 
-まずはブラウザをChromeに変え、シークレットモードでアクセスしてみましょう。
+それでも解決しない場合は、**日本内科学会事務局**に連絡します。その際に「使用ブラウザとバージョン」「エラーメッセージのスクリーンショット」を準備しておくとスムーズです。
 
-### トラブル2: 入力した症例が保存されない
+### トラブル2：入力した症例・病歴要約が消えた
 
-**原因**: セッションタイムアウト、ブラウザの戻るボタン操作が多い。
+焦らず以下の順番で確認しましょう。
 
-**対処法**:
-- 長文入力は事前にメモ帳・Wordで作成してから貼り付ける
-- 定期的に「一時保存」ボタンを押す習慣をつける
-- ブラウザのオートフィル機能をオフにする
+**確認手順**
+1. フィルタ・検索条件を外して全件表示にする
+2. 「下書き」「承認待ち」「承認済み」のタブを全て確認する
+3. 年度フィルタが正しいか確認する（前年度になっていないか）
+4. 別のブラウザ・端末からアクセスしてみる
 
-### トラブル3: 指導医が承認ボタンを押せない
+上記で見つからない場合は事務局に「入力した症例が見当たらない」と連絡します。**バックアップはシステム側にあることが多い**ため、焦らず連絡しましょう。
 
-指導医側のシステムでもトラブルが発生することがあります。
+### トラブル3：指導医が承認できない
 
-**対処法**:
-1. 指導医に別のブラウザ・端末での試行を依頼
-2. 指導医のアカウントがアクティブか確認
-3. 指導医が同一施設の指導医として登録されているか確認
-4. 解決しない場合は事務局へ報告
+指導医側のシステムでもトラブルが発生することがあります。以下を指導医にお願いしてください。
 
-### トラブル4: 病歴要約が送信できない
+- 別のブラウザ（Chrome推奨）で試してもらう
+- 別の端末（PCとスマホを入れ替える等）で試してもらう
+- 一度ログアウトして再ログインしてもらう
 
-**よくある原因**:
-- 文字数制限オーバー（各項目に上限あり）
-- 必須項目の未入力
-- システムメンテナンス中
+**指導医のアカウントがアクティブか**（年次更新が完了しているか）も確認ポイントです。解決しない場合は事務局に「指導医側でのシステムトラブル」として報告してください。
+
+### トラブル4：病歴要約が送信できない
+
+送信ボタンが機能しない場合、最も多い原因は**文字数超過と必須項目の未入力**です。
+
+**チェックポイント**
+- 各入力欄の文字数上限を超えていないか
+- 必須項目（★マーク）が全て入力されているか
+- 文字のコピーペーストで特殊文字が混入していないか
+- システムメンテナンス中でないか
 
 文字数制限については[病歴要約の文字数・制限まとめ](/blog/c13-josler-byoreki-youyaku-mojisuu)を参照してください。
 
-### トラブル5: 症例が急に消えた・見つからない
+### トラブル5：入力内容が保存されない
 
-**確認手順**:
-1. フィルタ・検索条件を外して全件表示にする
-2. 「下書き」「承認待ち」「承認済み」のタブを切り替えて確認
-3. 年度の切り替え（年度フィルタが前年になっていないか確認）
+**最大の予防策は「直接入力しない」こと**です。J-OSLERのシステムはセッションタイムアウトが発生すると入力内容が失われます。
 
-### トラブル6: 画面が固まる・動作が遅い
+おすすめの対処法：
+- 病歴要約の本文はメモ帳・Word・Notionで下書きを作成してから貼り付ける
+- 入力中は「一時保存」ボタンを5分ごとに押す習慣をつける
+- ブラウザの「戻る」ボタンを使わない（入力内容が消えるリスク）
 
-**対処法**:
-- ブラウザのタブを複数開いている場合は閉じる
-- ページをリロードする（ただし入力内容が消えるリスクあり）
-- 別の端末・ネットワーク環境で試す
+> 💡 **[内科ナビ](https://naikanavi.booth.pm/items/8058590)** はオフライン対応の下書き機能を搭載。J-OSLERシステムが不安定なときも、安全に下書きを保存できます。
+
+## よくある失敗：問題が起きてから対策する
+
+J-OSLERトラブルでよくある失敗は、「問題が起きてから初めて対処法を調べる」ことです。年度末・修了申請直前にトラブルが起きると、修了時期がずれ込む深刻なリスクになります。
+
+**予防のための3つの習慣**
+- 入力は常にメモ帳で下書きしてから貼り付ける
+- 定期的に「現在の登録状況」をスクリーンショットで保存する
+- 事務局の連絡先を手帳やスマホに登録しておく
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" role="img" aria-label="J-OSLER事務局への連絡時に準備するもの">
+  <defs><filter id="sh_a12b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.07"/></filter></defs>
+  <rect width="800" height="240" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="18" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="45" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">事務局連絡時に準備するもの</text>
+  <rect x="24" y="74" width="228" height="130" rx="8" fill="#E8F0EC" filter="url(#sh_a12b)"/>
+  <text x="138" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">基本情報</text>
+  <text x="44" y="124" font-family="sans-serif" font-size="12" fill="#6B6760">• 会員ID・氏名</text>
+  <text x="44" y="148" font-family="sans-serif" font-size="12" fill="#6B6760">• 所属プログラム名</text>
+  <text x="44" y="172" font-family="sans-serif" font-size="12" fill="#6B6760">• 問題が発生した日時</text>
+  <rect x="286" y="74" width="228" height="130" rx="8" fill="#FEFEFC" filter="url(#sh_a12b)"/>
+  <text x="400" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">技術情報</text>
+  <text x="306" y="124" font-family="sans-serif" font-size="12" fill="#6B6760">• 使用ブラウザと版</text>
+  <text x="306" y="148" font-family="sans-serif" font-size="12" fill="#6B6760">• エラーのSS</text>
+  <text x="306" y="172" font-family="sans-serif" font-size="12" fill="#6B6760">• 再現手順</text>
+  <rect x="548" y="74" width="228" height="130" rx="8" fill="#E8F0EC" filter="url(#sh_a12b)"/>
+  <text x="662" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">対処の希望</text>
+  <text x="568" y="124" font-family="sans-serif" font-size="12" fill="#6B6760">• 急ぎの度合い</text>
+  <text x="568" y="148" font-family="sans-serif" font-size="12" fill="#6B6760">• 修了申請との関係</text>
+  <text x="568" y="172" font-family="sans-serif" font-size="12" fill="#6B6760">• 希望する解決方法</text>
+  <text x="400" y="226" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#9B9791">© 内科ナビ</text>
+</svg>
 
 ## J-OSLER事務局への連絡方法
 
-上記で解決しない場合は日本内科学会のJ-OSLER事務局へ連絡します。
-
-**連絡先**: 日本内科学会ホームページのJ-OSLER問い合わせフォーム
-**受付時間**: 平日9時〜17時が目安
+**連絡先**：日本内科学会ホームページのJ-OSLER問い合わせフォームまたは電話（平日9時〜17時が目安）
 
 問い合わせの際は以下を準備しておくとスムーズです。
-- 会員ID
-- 発生したエラーメッセージ（スクリーンショット）
+
+- 会員ID・氏名・所属プログラム
+- 発生したエラーメッセージのスクリーンショット
 - 使用ブラウザとバージョン
-- 発生した日時
+- 問題が発生した日時
+
+**修了申請直前のトラブルは優先対応される**ことが多いです。「修了申請が〇月〇日に迫っています」と伝えると対応が早くなります。
 
 ## まとめ
 
-- まずはブラウザ（Chrome推奨）とキャッシュ削除を試す
-- 入力内容は事前にメモ帳で準備する習慣をつける
-- 解決しない場合は事務局へ早めに連絡する
+J-OSLERのトラブルは早期対処が鍵です。まずブラウザ（Chrome推奨）とキャッシュ削除を試し、入力内容は事前にメモ帳で準備してから貼り付ける習慣をつけましょう。解決しない場合は会員ID・スクリーンショット・ブラウザ情報を準備して事務局へ早めに連絡してください。
+
+**トラブル予防の3原則**：下書きは外部ツールで作成する、定期的に保存する、事務局の連絡先を手帳に控えておく。
 
 ---
 
-## よくある質問（FAQ）
+## よくある質問
 
 **Q. スマホからJ-OSLERにアクセスできますか？**
-A. アクセス自体は可能ですが、PC推奨です。入力作業はPCの方がトラブルが少ないです。
+アクセス自体は可能ですが、入力作業はPC推奨です。スマホでの操作はトラブルが発生しやすいです。
 
 **Q. メンテナンス中はいつ確認できますか？**
-A. 日本内科学会のウェブサイトにメンテナンス情報が掲載されます。月末・年度末に多いので注意が必要です。
+日本内科学会のウェブサイトにメンテナンス情報が掲載されます。月末・年度末に多いので注意が必要です。
+
+**Q. 入力途中でセッションが切れた場合、復元できますか？**
+基本的には復元できません。事前にメモ帳や内科ナビで下書きを保存する習慣が最大の予防策です。
 
 ---
 
 関連記事
 - [J-OSLERへのログイン方法](/blog/a02-josler-login)
 - [J-OSLERの使い方ガイド](/blog/a03-josler-tsukaikata)
+- [J-OSLER年次更新・再登録の手順](/blog/a11-josler-koshin-saitoroku)
+- [病歴要約の文字数・制限まとめ](/blog/c13-josler-byoreki-youyaku-mojisuu)
