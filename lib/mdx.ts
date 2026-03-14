@@ -128,19 +128,21 @@ export function getRelatedPosts(currentSlug: string, limit = 3): PostListItem[] 
   if (!currentPost) return []
   
   const allPosts = getAllPosts()
+  const currentTags = new Set(currentPost.frontmatter.tags)
   
-  // 同カテゴリ優先、次に同クラスター
+  // スコアリング: カテゴリ一致(4) > クラスター一致(2) > タグ一致(各1)
   const related = allPosts
     .filter((post) => post.slug !== currentSlug)
-    .sort((a, b) => {
-      const aScore = 
-        (a.category === currentPost.frontmatter.category ? 2 : 0) +
-        (a.cluster === currentPost.frontmatter.cluster ? 1 : 0)
-      const bScore = 
-        (b.category === currentPost.frontmatter.category ? 2 : 0) +
-        (b.cluster === currentPost.frontmatter.cluster ? 1 : 0)
-      return bScore - aScore
+    .map((post) => {
+      const tagOverlap = post.tags.filter((t) => currentTags.has(t)).length
+      const score =
+        (post.category === currentPost.frontmatter.category ? 4 : 0) +
+        (post.cluster === currentPost.frontmatter.cluster ? 2 : 0) +
+        tagOverlap
+      return { post, score }
     })
+    .sort((a, b) => b.score - a.score || b.post.date.localeCompare(a.post.date))
+    .map(({ post }) => post)
   
   return related.slice(0, limit)
 }

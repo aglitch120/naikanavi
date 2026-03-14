@@ -10,6 +10,7 @@ import TableOfContents from '@/components/blog/TableOfContents'
 import InlineTableOfContents from '@/components/blog/InlineTableOfContents'
 import ShareButtons from '@/components/blog/ShareButtons'
 import ReadingProgress from '@/components/blog/ReadingProgress'
+import RelatedArticlesSidebar from '@/components/blog/RelatedArticlesSidebar'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -50,7 +51,7 @@ export default async function ArticlePage({ params }: Props) {
   const { frontmatter, content, readingTime } = post
   const category = categories[frontmatter.category]
   const clusterColor = category ? clusterColors[category.cluster]?.bg : '#1B4F3A'
-  const relatedPosts = getRelatedPosts(slug, 3)
+  const relatedPosts = getRelatedPosts(slug, 5)
   const { prev, next } = getAdjacentPosts(slug)
   const cta = ctaConfig[frontmatter.cta_type]
   
@@ -174,6 +175,7 @@ export default async function ArticlePage({ params }: Props) {
           </div>
           <aside className="hidden lg:block lg:w-56 flex-shrink-0">
             <TableOfContents />
+            <RelatedArticlesSidebar posts={relatedPosts.slice(0, 5)} />
           </aside>
         </div>
 
@@ -241,7 +243,7 @@ export default async function ArticlePage({ params }: Props) {
         <section className="mt-12 pt-8 border-t border-br">
           <h2 className="text-xl font-bold mb-6">関連記事</h2>
           <div className="grid md:grid-cols-3 gap-4">
-            {relatedPosts.map((post) => (
+            {relatedPosts.slice(0, 3).map((post) => (
               <ArticleCard key={post.slug} post={post} compact />
             ))}
           </div>
