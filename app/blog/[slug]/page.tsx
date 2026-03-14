@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllPostSlugs, getRelatedPosts, getAdjacentPosts, getCategoryCounts, compileMDXContent } from '@/lib/mdx'
 import { categories, clusterColors, ctaConfig, getTagSlug } from '@/lib/blog-config'
-import { generateMetadata as genMeta, generateArticleJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo'
+import { generateMetadata as genMeta, generateArticleJsonLd, generateBreadcrumbJsonLd, generateHowToJsonLd, extractHowToSteps, isHowToArticle } from '@/lib/seo'
 import ArticleCard from '@/components/blog/ArticleCard'
 import CTABanner from '@/components/blog/CTABanner'
 import TableOfContents from '@/components/blog/TableOfContents'
@@ -76,6 +76,16 @@ export default async function ArticlePage({ params }: Props) {
     { name: category?.name || 'その他', url: `https://naikanavi.com/blog/category/${frontmatter.category}` },
     { name: frontmatter.title, url: `https://naikanavi.com/blog/${slug}` },
   ])
+
+  // HowToスキーマ（手順系記事のみ）
+  const howToJsonLd = isHowToArticle(frontmatter.title)
+    ? generateHowToJsonLd({
+        title: frontmatter.title,
+        description: frontmatter.description,
+        slug,
+        steps: extractHowToSteps(content),
+      })
+    : null
   
   return (
     <>
@@ -87,6 +97,12 @@ export default async function ArticlePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {howToJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        />
+      )}
       
       <ReadingProgress />
       

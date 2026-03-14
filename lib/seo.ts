@@ -239,3 +239,72 @@ export function generateFAQJsonLd(
     })),
   }
 }
+
+// HowTo構造化データ生成（手順系記事用）
+export function generateHowToJsonLd({
+  title,
+  description,
+  slug,
+  steps,
+}: {
+  title: string
+  description: string
+  slug: string
+  steps: { name: string; text: string }[]
+}) {
+  if (steps.length < 2) return null
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: title,
+    description,
+    step: steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      url: `${siteConfig.url}/blog/${slug}#heading-${index}`,
+    })),
+  }
+}
+
+// MDXコンテンツからHowToステップを抽出
+// H2見出しを手順として取得し、直後の段落をテキストとして使用
+export function extractHowToSteps(content: string): { name: string; text: string }[] {
+  const lines = content.split('\n')
+  const steps: { name: string; text: string }[] = []
+
+  for (let i = 0; i < lines.length; i++) {
+    const h2Match = lines[i].match(/^## (.+)$/)
+    if (!h2Match) continue
+
+    const name = h2Match[1].replace(/\*\*/g, '').trim()
+    // H2の後の最初の段落テキストを取得
+    let text = ''
+    for (let j = i + 1; j < lines.length; j++) {
+      const line = lines[j].trim()
+      if (!line || line.startsWith('<')) continue // 空行やSVG/HTMLタグをスキップ
+      if (line.startsWith('#')) break // 次の見出しで終了
+      // markdown記法を除去して最初の段落を取得
+      text = line
+        .replace(/\*\*(.+?)\*\*/g, '$1')
+        .replace(/\[(.+?)\]\(.+?\)/g, '$1')
+        .replace(/`(.+?)`/g, '$1')
+        .trim()
+      break
+    }
+
+    if (name && text) {
+      steps.push({ name, text: text.slice(0, 200) })
+    }
+  }
+
+  return steps
+}
+
+// 記事タイトルがHowTo系かどうか判定
+export function isHowToArticle(title: string): boolean {
+  const howToPatterns = /書き方|始め方|方法|手順|ステップ|やり方|使い方|進め方|作り方|集め方|対策|対処法|コツ|ガイド/
+  return howToPatterns.test(title)
+}
