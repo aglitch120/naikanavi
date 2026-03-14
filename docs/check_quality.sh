@@ -154,7 +154,7 @@ fi
 # 13. H2直後の箇条書きチェック（散文ファースト違反）
 echo ""
 echo "--- 散文ファーストチェック ---"
-bad_h2=$(awk '/^## /{found=1; next} found && /^[- *]/{print NR": "$0; found=0; count++} found && /^[^[:space:]]/{found=0} END{print count+0 " 件"}' "$FILE" | tail -1)
+bad_h2=$(awk '/^## /{found=1; next} found && /^[[:blank:]]*$/{next} found && /^(- |\* |[0-9]+\. )/{print NR": "$0; found=0; count++} found{found=0} END{print count+0 " 件"}' "$FILE" | tail -1)
 if [ "$bad_h2" = "0 件" ]; then
   echo "✅ H2直後の箇条書きなし"
   PASS=$((PASS + 1))
