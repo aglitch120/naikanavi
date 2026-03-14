@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { trackBoothClick } from '@/lib/gtag'
 
 const navItems = [
   {
@@ -114,6 +115,7 @@ export default function BottomNav() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackBoothClick('bottom_nav')}
                   className="relative flex flex-col items-center justify-center h-full gap-0.5 active:opacity-70 transition-opacity"
                 >
                   {content}
