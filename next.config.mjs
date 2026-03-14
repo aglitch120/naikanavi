@@ -1,7 +1,6 @@
 import createMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -56,7 +55,6 @@ const withMDX = createMDX({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
     ],
   },
 })
