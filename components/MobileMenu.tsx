@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { categories } from '@/lib/blog-config'
+import { categories, clusterColors } from '@/lib/blog-config'
 
 // blog-config.ts の全カテゴリをグループ化して表示
 const menuCategories = [
@@ -11,16 +11,16 @@ const menuCategories = [
     slugs: ['josler-basics', 'case-registration', 'medical-history', 'disease-specific', 'progress-management', 'jmecc-training'],
   },
   {
-    title: '試験・キャリア',
-    slugs: ['specialist-exam', 'exam-by-field', 'comprehensive-exam', 'career', 'ai-tools', 'academic'],
+    title: '試験・資格',
+    slugs: ['specialist-exam', 'exam-by-field', 'comprehensive-exam', 'subspecialty'],
+  },
+  {
+    title: 'キャリア・学術',
+    slugs: ['career', 'ai-tools', 'academic'],
   },
   {
     title: 'お金・生活',
-    slugs: ['part-time', 'tax-saving', 'mental-life', 'life-events'],
-  },
-  {
-    title: 'その他',
-    slugs: ['subspecialty', 'others'],
+    slugs: ['part-time', 'tax-saving', 'mental-life', 'life-events', 'others'],
   },
 ].map(group => ({
   title: group.title,
@@ -28,12 +28,14 @@ const menuCategories = [
     .filter(slug => slug in categories)
     .map(slug => ({
       name: categories[slug as keyof typeof categories].name,
+      cluster: categories[slug as keyof typeof categories].cluster,
       href: `/blog/category/${slug}`,
     })),
 }))
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
+  const [expandedGroup, setExpandedGroup] = useState<string | null>(null)
 
   // メニュー開閉時にbodyのスクロールを制御
   useEffect(() => {
@@ -113,28 +115,49 @@ export default function MobileMenu() {
             </Link>
           </div>
 
-          {/* カテゴリナビ */}
+          {/* カテゴリナビ（アコーディオン） */}
           <div className="border-t border-br pt-4">
             <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3 px-3">
               カテゴリ
             </p>
             {menuCategories.map((group) => (
-              <div key={group.title} className="mb-4">
-                <p className="text-xs font-semibold text-tx px-3 mb-1.5">
+              <div key={group.title} className="mb-1">
+                <button
+                  onClick={() => setExpandedGroup(expandedGroup === group.title ? null : group.title)}
+                  className="w-full flex items-center justify-between py-2 px-3 text-sm font-semibold text-tx rounded-lg hover:bg-s1 transition-colors"
+                >
                   {group.title}
-                </p>
-                <div className="space-y-0.5">
-                  {group.links.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={handleLinkClick}
-                      className="block py-2 px-3 text-sm text-muted rounded-lg hover:bg-s1 hover:text-tx transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
+                  <svg
+                    className={`w-4 h-4 text-muted transition-transform duration-200 ${
+                      expandedGroup === group.title ? 'rotate-180' : ''
+                    }`}
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                {expandedGroup === group.title && (
+                  <div className="space-y-0.5 pb-2">
+                    {group.links.map((link) => {
+                      const color = clusterColors[link.cluster as keyof typeof clusterColors]
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={handleLinkClick}
+                          className="flex items-center gap-2 py-2 px-3 pl-5 text-sm text-muted rounded-lg hover:bg-s1 hover:text-tx transition-colors"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                            style={{ backgroundColor: color?.bg || '#6B6760' }}
+                          />
+                          {link.name}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
               </div>
             ))}
           </div>
