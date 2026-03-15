@@ -22,6 +22,7 @@ export type ToolCategory =
   | 'neurology'
   | 'general'
   | 'electrolyte'
+  | 'antimicrobial'
 
 export const categoryLabels: Record<ToolCategory, string> = {
   cardiology: '循環器',
@@ -31,8 +32,9 @@ export const categoryLabels: Record<ToolCategory, string> = {
   hematology: '血液',
   infectious: '感染症',
   neurology: '神経',
-  general: '総合',
+  general: '総合・身体計測',
   electrolyte: '電解質・輸液',
+  antimicrobial: '抗菌薬・薬剤',
 }
 
 export const categoryIcons: Record<ToolCategory, string> = {
@@ -45,6 +47,7 @@ export const categoryIcons: Record<ToolCategory, string> = {
   neurology: '🧠',
   general: '📊',
   electrolyte: '💉',
+  antimicrobial: '💊',
 }
 
 export const tools: ToolDefinition[] = [
@@ -209,10 +212,216 @@ export const tools: ToolDefinition[] = [
     keywords: ['A-aDO2', '酸素分圧較差', '低酸素血症'],
     relatedSlugs: [],
   },
+
+  // ── Tier 2（16種） ──
+  {
+    slug: 'cockcroft-gault',
+    name: 'Cockcroft-Gault式（CCr）',
+    nameEn: 'Cockcroft-Gault (CrCl)',
+    description: 'クレアチニンクリアランス推算。薬剤の腎排泄量調整に必須。',
+    category: 'nephrology',
+    tier: 2,
+    keywords: ['Cockcroft-Gault', 'CCr', 'クレアチニンクリアランス', '腎機能'],
+    relatedSlugs: ['egfr'],
+  },
+  {
+    slug: 'bmi',
+    name: 'BMI計算',
+    nameEn: 'Body Mass Index',
+    description: '体格指数（BMI）の計算。肥満度判定付き。',
+    category: 'general',
+    tier: 2,
+    keywords: ['BMI', '体格指数', '肥満'],
+    relatedSlugs: ['bsa'],
+  },
+  {
+    slug: 'bsa',
+    name: 'BSA（体表面積）',
+    nameEn: 'Body Surface Area',
+    description: '体表面積の計算（Du Bois式）。薬剤投与量の算出に。',
+    category: 'general',
+    tier: 2,
+    keywords: ['BSA', '体表面積', 'Du Bois'],
+    relatedSlugs: ['bmi'],
+  },
+  {
+    slug: 'rcri',
+    name: 'RCRI（Revised Cardiac Risk Index）',
+    nameEn: 'Revised Cardiac Risk Index',
+    description: '非心臓手術の周術期心血管リスク評価。術前評価に必須。',
+    category: 'cardiology',
+    tier: 2,
+    keywords: ['RCRI', '術前評価', '心血管リスク', '周術期'],
+    relatedSlugs: [],
+  },
+  {
+    slug: 'apache2',
+    name: 'APACHE II',
+    nameEn: 'APACHE II Score',
+    description: 'ICU入室患者の重症度・予後評価。院内死亡率予測。',
+    category: 'infectious',
+    tier: 2,
+    keywords: ['APACHE', 'ICU', '重症度', '予後'],
+    relatedSlugs: ['sofa', 'qsofa'],
+  },
+  {
+    slug: 'gcs',
+    name: 'GCS（Glasgow Coma Scale）',
+    nameEn: 'Glasgow Coma Scale',
+    description: '意識レベルの定量的評価。E+V+Mの3要素。',
+    category: 'neurology',
+    tier: 2,
+    keywords: ['GCS', '意識レベル', 'Glasgow', '昏睡'],
+    relatedSlugs: ['nihss'],
+  },
+  {
+    slug: 'nihss',
+    name: 'NIHSS',
+    nameEn: 'NIH Stroke Scale',
+    description: '脳卒中の神経学的重症度評価。t-PA適応判断に。',
+    category: 'neurology',
+    tier: 2,
+    keywords: ['NIHSS', '脳卒中', '重症度', 't-PA'],
+    relatedSlugs: ['gcs', 'mrs', 'abcd2'],
+  },
+  {
+    slug: 'mrs',
+    name: 'mRS（modified Rankin Scale）',
+    nameEn: 'Modified Rankin Scale',
+    description: '脳卒中後の機能障害度評価。転帰評価の国際標準。',
+    category: 'neurology',
+    tier: 2,
+    keywords: ['mRS', 'Rankin', '機能障害', '脳卒中'],
+    relatedSlugs: ['nihss'],
+  },
+  {
+    slug: 'karnofsky',
+    name: 'Karnofsky PS',
+    nameEn: 'Karnofsky Performance Status',
+    description: '全身状態の評価（100〜0%）。がん患者の治療適応判断に。',
+    category: 'general',
+    tier: 2,
+    keywords: ['Karnofsky', 'PS', '全身状態', 'がん'],
+    relatedSlugs: ['ecog'],
+  },
+  {
+    slug: 'ecog',
+    name: 'ECOG PS',
+    nameEn: 'ECOG Performance Status',
+    description: '全身状態の簡易評価（0〜5）。がん臨床試験の標準。',
+    category: 'general',
+    tier: 2,
+    keywords: ['ECOG', 'PS', '全身状態'],
+    relatedSlugs: ['karnofsky'],
+  },
+  {
+    slug: 'anion-gap',
+    name: 'アニオンギャップ（AG）',
+    nameEn: 'Anion Gap',
+    description: 'AG計算（補正AG含む）。代謝性アシドーシスの鑑別に。',
+    category: 'electrolyte',
+    tier: 2,
+    keywords: ['アニオンギャップ', 'AG', 'アシドーシス', '代謝性'],
+    relatedSlugs: ['corrected-ca'],
+  },
+  {
+    slug: 'abcd2',
+    name: 'ABCD²スコア',
+    nameEn: 'ABCD² Score',
+    description: 'TIA後の脳梗塞リスク評価（2日・7日・90日）。',
+    category: 'neurology',
+    tier: 2,
+    keywords: ['ABCD2', 'TIA', '脳梗塞', 'リスク'],
+    relatedSlugs: ['nihss'],
+  },
+
+  // ── 電解質・輸液計算群 ──
+  {
+    slug: 'maintenance-fluid',
+    name: '維持輸液計算（4-2-1ルール）',
+    nameEn: 'Maintenance Fluid Calculator',
+    description: '体重から維持輸液量を計算。4-2-1ルール（Holliday-Segar法）。',
+    category: 'electrolyte',
+    tier: 2,
+    keywords: ['維持輸液', '4-2-1', 'Holliday-Segar', '輸液速度'],
+    relatedSlugs: ['na-deficit', 'free-water-deficit'],
+  },
+  {
+    slug: 'na-deficit',
+    name: 'Na欠乏量計算',
+    nameEn: 'Sodium Deficit Calculator',
+    description: '低ナトリウム血症のNa補充量を計算。',
+    category: 'electrolyte',
+    tier: 2,
+    keywords: ['Na欠乏量', 'ナトリウム', '低Na血症', '補正'],
+    relatedSlugs: ['na-correction-rate', 'free-water-deficit'],
+  },
+  {
+    slug: 'free-water-deficit',
+    name: '自由水欠乏量',
+    nameEn: 'Free Water Deficit',
+    description: '高ナトリウム血症の自由水補充量を計算。',
+    category: 'electrolyte',
+    tier: 2,
+    keywords: ['自由水', '高Na血症', 'ナトリウム', '脱水'],
+    relatedSlugs: ['na-deficit', 'na-correction-rate'],
+  },
+  {
+    slug: 'na-correction-rate',
+    name: 'Na補正速度計算',
+    nameEn: 'Sodium Correction Rate',
+    description: 'Na補正速度の安全範囲チェック。ODS予防に。',
+    category: 'electrolyte',
+    tier: 2,
+    keywords: ['Na補正速度', 'ODS', '浸透圧性脱髄', '補正'],
+    relatedSlugs: ['na-deficit', 'free-water-deficit'],
+  },
+  {
+    slug: 'kcl-correction',
+    name: 'KCl補正計算',
+    nameEn: 'Potassium Correction',
+    description: '低カリウム血症のKCl補充量・投与速度を計算。',
+    category: 'electrolyte',
+    tier: 2,
+    keywords: ['KCl', 'カリウム', '低K血症', '補正'],
+    relatedSlugs: ['na-deficit'],
+  },
+
+  // ── 抗菌薬・薬剤 ──
+  {
+    slug: 'steroid-converter',
+    name: 'ステロイド換算',
+    nameEn: 'Steroid Conversion Calculator',
+    description: 'ステロイド等価用量の換算（PSL, mPSL, DEX, BET, HC）。',
+    category: 'antimicrobial',
+    tier: 2,
+    keywords: ['ステロイド', '換算', 'プレドニゾロン', 'デキサメタゾン', 'PSL'],
+    relatedSlugs: [],
+  },
+  {
+    slug: 'renal-dose-abx',
+    name: '抗菌薬 腎機能別用量調整',
+    nameEn: 'Renal Dose Adjustment for Antibiotics',
+    description: '主要20抗菌薬のeGFR/CCr別推奨用量を表示。',
+    category: 'antimicrobial',
+    tier: 2,
+    keywords: ['抗菌薬', '腎機能', '用量調整', 'eGFR', '減量'],
+    relatedSlugs: ['egfr', 'cockcroft-gault'],
+  },
+  {
+    slug: 'insulin-sliding',
+    name: 'インスリンスライディングスケール',
+    nameEn: 'Insulin Sliding Scale',
+    description: '血糖値に応じたインスリン投与量の目安。当直での血糖管理に。',
+    category: 'antimicrobial',
+    tier: 2,
+    keywords: ['インスリン', 'スライディングスケール', '血糖', '当直'],
+    relatedSlugs: [],
+  },
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
-export const implementedTools = new Set(['egfr'])
+export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2'])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
   return tools.find(t => t.slug === slug)
