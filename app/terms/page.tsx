@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: '利用規約',
-  description: '内科ナビの利用規約。サービスの利用条件について説明します。',
+  description: 'iworの利用規約。サービスの利用条件について説明します。',
   alternates: {
     canonical: 'https://iwor.jp/terms',
   },

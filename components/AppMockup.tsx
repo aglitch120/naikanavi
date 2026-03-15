@@ -117,7 +117,7 @@ export function AppMockup({ className = '' }: { className?: string }) {
           <div className="bg-white rounded-[15px] overflow-hidden h-full flex flex-col">
             {/* ステータスバー */}
             <div className="bg-gray-50 px-2.5 py-1.5 flex items-center justify-between border-b border-gray-100 shrink-0">
-              <span className="text-[6px] font-bold text-tx truncate">≡ 内科ナビ</span>
+              <span className="text-[6px] font-bold text-tx truncate">≡ iwor</span>
               <span className="text-[5px] text-green-600 font-medium shrink-0">✓ 保存済み</span>
             </div>
             {/* タブバー */}

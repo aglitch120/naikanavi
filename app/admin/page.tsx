@@ -5,7 +5,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '管理画面 | 内科ナビ',
+  title: '管理画面 | iwor',
   robots: { index: false, follow: false },
 }
 
@@ -59,7 +59,7 @@ export default function AdminPage() {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-tx mb-1">管理ダッシュボード</h1>
-          <p className="text-sm text-muted">内科ナビ コンテンツ管理</p>
+          <p className="text-sm text-muted">iwor コンテンツ管理</p>
         </div>
         <Link href="/" className="text-sm text-ac hover:text-ac2 transition-colors">
           ← サイトへ戻る

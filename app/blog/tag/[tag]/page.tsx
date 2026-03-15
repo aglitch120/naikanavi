@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return genMeta({
     title: `「${tagName}」の記事一覧`,
-    description: `内科ナビの「${tagName}」に関する記事一覧。内科専攻医向けの情報を発信しています。`,
+    description: `iworの「${tagName}」に関する記事一覧。内科専攻医向けの情報を発信しています。`,
     path: `/blog/tag/${slug}`,
   })
 }

@@ -125,7 +125,7 @@ export default function CTABanner({ cta, variant = 'inline' }: Props) {
           
           <div className="flex-1 text-center md:text-left">
             <span className="inline-block bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
-              内科ナビ — J-OSLER × 内科専門医試験 対策アプリ
+              iwor — J-OSLER × 内科専門医試験 対策アプリ
             </span>
             
             <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-snug">

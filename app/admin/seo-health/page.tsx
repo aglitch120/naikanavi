@@ -6,7 +6,7 @@ import { getAllPosts } from '@/lib/mdx'
 import { categories, clusterColors } from '@/lib/blog-config'
 
 export const metadata: Metadata = {
-  title: 'SEOヘルスチェック | 内科ナビ管理',
+  title: 'SEOヘルスチェック | iwor管理',
   robots: { index: false, follow: false },
 }
 

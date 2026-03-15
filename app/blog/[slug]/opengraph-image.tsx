@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import ogpMeta from '@/lib/ogp-meta.json'
 
 export const runtime = 'edge'
-export const alt = '内科ナビ'
+export const alt = 'iwor'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -697,7 +697,7 @@ export default async function OGImage({ params }: { params: Promise<{ slug: stri
               color: 'rgba(255,255,255,0.5)',
             }}
           >
-            内科ナビ
+            iwor
           </div>
         </div>
       </div>

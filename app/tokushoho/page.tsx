@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: '特定商取引法に基づく表示',
-  description: '内科ナビの特定商取引法に基づく表示。',
+  description: 'iworの特定商取引法に基づく表示。',
   alternates: {
     canonical: 'https://iwor.jp/tokushoho',
   },
@@ -16,7 +16,7 @@ export default function TokushohoPage() {
 
       <div className="bg-s0 border border-br rounded-xl p-6 md:p-8">
         <p className="text-sm text-tx/80 leading-relaxed mb-6">
-          内科ナビはBOOTH（株式会社ピクシブ）を通じて販売しており、
+          iworはBOOTH（株式会社ピクシブ）を通じて販売しており、
           特定商取引法に基づく表示はBOOTHの販売ページに記載しています。
         </p>
 

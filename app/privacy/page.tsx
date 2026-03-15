@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'プライバシーポリシー',
-  description: '内科ナビのプライバシーポリシー。個人情報の取り扱いについて説明します。',
+  description: 'iworのプライバシーポリシー。個人情報の取り扱いについて説明します。',
   alternates: {
     canonical: 'https://iwor.jp/privacy',
   },

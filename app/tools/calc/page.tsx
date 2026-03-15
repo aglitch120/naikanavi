@@ -20,7 +20,7 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: '内科ナビの臨床計算ツールは無料ですか？',
+      name: 'iworの臨床計算ツールは無料ですか？',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'はい、すべての臨床計算ツールは登録不要・完全無料でご利用いただけます。',
@@ -65,9 +65,9 @@ export default function ToolsPage() {
       <ToolsList />
 
       <section className="mt-12 mb-8">
-        <h2 className="text-lg font-bold mb-3">内科ナビの臨床計算ツールについて</h2>
+        <h2 className="text-lg font-bold mb-3">iworの臨床計算ツールについて</h2>
         <p className="text-sm text-muted leading-relaxed mb-3">
-          内科ナビでは、内科専攻医・内科医が日常診療で頻繁に使用する臨床スコア・計算ツールを無料で提供しています。
+          iworでは、内科専攻医・内科医が日常診療で頻繁に使用する臨床スコア・計算ツールを無料で提供しています。
           eGFR（CKD-EPI 2021）、CHA₂DS₂-VASc、Child-Pugh、CURB-65、Wells スコア、SOFA スコアなど、
           ガイドラインで推奨される主要な臨床スコアをカバー。
           さらに抗菌薬の腎機能別用量調整、輸液・電解質補正計算、ステロイド換算ツールなど、
