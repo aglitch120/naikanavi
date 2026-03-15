@@ -8,11 +8,11 @@
 ## WS1: プロダクト価値向上
 
 ### A. 臨床計算ツール群（/tools/）
-- [ ] 共通Calculatorコンポーネント設計・実装
-- [ ] /tools/ 一覧ページ作成
-- [ ] Tier1: CHA2DS2-VASc
-- [ ] Tier1: CHADS2
-- [ ] Tier1: HAS-BLED
+- [x] 共通Calculatorコンポーネント設計・実装
+- [x] /tools/ 一覧ページ作成（検索窓付き）
+- [x] Tier1: CHA2DS2-VASc
+- [x] Tier1: CHADS2
+- [x] Tier1: HAS-BLED
 - [ ] Tier1: Child-Pugh
 - [ ] Tier1: MELD
 - [ ] Tier1: CURB-65
@@ -23,14 +23,14 @@
 - [ ] Tier1: qSOFA
 - [ ] Tier1: SOFA
 - [ ] Tier1: FIB-4
-- [ ] Tier1: eGFR（CKD-EPI）
+- [x] Tier1: eGFR（CKD-EPI）
 - [ ] Tier1: 補正Ca
 - [ ] Tier1: A-aDO2
 - [ ] Tier2: 16種（RCRI, BMI, BSA, Cockcroft-Gault, APACHE II, GCS, NIHSS, mRS, Karnofsky, ECOG, AG, DAS28, ABCD2等）
 - [ ] Tier3: 20種（専門スコア）
-- [ ] 各ツールにSEO解説セクション追加
+- [x] 各ツールにSEO解説セクション追加
 - [ ] 既存173記事との相互内部リンク
-- [ ] 構造化データ（MedicalWebPage + FAQPage）
+- [x] 構造化データ（MedicalWebPage + FAQPage）
 
 ### B. 抗菌薬 腎機能別用量調整ツール
 - [ ] eGFR/CrCl自動計算
@@ -117,11 +117,11 @@
 
 | WS | 完了 | 残り | 進捗率 |
 |----|------|------|--------|
-| WS1: プロダクト | 0 | 55 | 0% |
+| WS1: プロダクト | 8 | 47 | 15% |
 | WS2: 収益化 | 0 | 6 | 0% |
 | WS3: 売却資料 | 0 | 10 | 0% |
 | WS4: 法務・インフラ | 0 | 8 | 0% |
-| **合計** | **0** | **79** | **0%** |
+| **合計** | **8** | **71** | **10%** |
 
 ---
 

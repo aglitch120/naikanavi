@@ -59,9 +59,6 @@ export default function BottomNav() {
 
   const isActive = (item: typeof navItems[0]) => {
     if (item.external) return false
-    if ('matchPrefix' in item && item.matchPrefix) {
-      return pathname.startsWith(item.matchPrefix)
-    }
     if (item.exact) return pathname === item.href
     // /blog はブログ記事ページ・カテゴリページでもアクティブ
     if (item.href === '/blog') {
