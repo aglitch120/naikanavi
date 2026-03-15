@@ -262,6 +262,72 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
 
 ---
 
+## 🏥 臨床計算ツール 実装ルール
+
+### ⚠️ 最重要：エビデンス必須（人命に関わるツール）
+
+**全ての臨床ツールはエビデンスに基づいて実装すること。根拠のない数値は絶対に表示しない。**
+
+1. **参考文献（References）**
+   - 各ツールに最低3本の査読付き文献（PubMed indexed）を掲載
+   - 必ず PMID を明記し、PubMedへのリンクを付与
+   - 原著論文（スコア開発論文）を必ず含める
+   - ガイドライン（ESC, AHA, AASLD等）があれば追加
+
+2. **インライン出典**
+   - 死亡率・生存率・感度・特異度などの数値データは、表示箇所の直下に出典を明記
+   - 形式: `出典: 著者名, et al. ジャーナル名 年; PMID: XXXXXXXX`
+   - 数値の出所が不明な場合は表示しない
+
+3. **計算式の検証**
+   - 原著論文の計算式と実装が一致していることを確認
+   - カットオフ値・クランプ値・特殊条件（透析患者等）を原著に準拠
+   - 既知のバリアント（MELD 3.0等）がある場合は明記
+
+4. **免責表示**
+   - CalculatorLayout に共通免責が組み込み済み（変更不要）
+   - 「医療従事者の臨床判断を補助する目的」と明示
+
+### 🔍 ツールページ SEO最適化（被リンク獲得が目的）
+
+**ツールの存在意義: Google検索から直接流入 → 使いやすさで被リンク＆リピート → ドメイン全体の評価向上**
+
+1. **検索流入の最大化**
+   - 各ツールに `layout.tsx` で metadata（title / description / OGP / canonical）を設定
+   - `lib/tools-metadata.ts` の `generateToolMetadata()` を使用
+   - title形式: `{ツール名}（{英名}）— 無料オンライン計算ツール | 内科ナビ`
+   - 構造化データ: MedicalWebPage + BreadcrumbList + FAQPage（3問以上）
+
+2. **ユーザビリティ最優先（＝SEO最重要因子）**
+   - モバイルファースト：片手操作で完結
+   - 入力 → 結果がリアルタイム表示（ページ遷移なし）
+   - 結果に臨床的解釈を添える（スコアだけでなく「次に何をすべきか」）
+   - 関連ツールへの導線（Child-Pugh → MELD等）
+
+3. **SEOコンテンツ（解説セクション）**
+   - explanation prop に 1000文字以上の解説を記載
+   - H2/H3の見出し構造で整理
+   - 「よくある質問」セクション（FAQPage schema と連動）
+   - 内部リンク: 関連ブログ記事への自然な誘導
+
+4. **CTA配置**
+   - CalculatorLayout 末尾に自動で large CTA バナーが表示される（共通実装済み）
+   - 各ツールページで個別のCTA設定は不要
+
+5. **新規ツール追加時のチェックリスト**
+   - [ ] `app/tools/{slug}/page.tsx` 作成
+   - [ ] `app/tools/{slug}/layout.tsx` 作成（`generateToolMetadata(slug)` 使用）
+   - [ ] `lib/tools-config.ts` の `implementedTools` に slug 追加
+   - [ ] 構造化データ: MedicalWebPage + BreadcrumbList + FAQPage（3問以上）
+   - [ ] 参考文献: PMID付き3本以上
+   - [ ] 数値データのインライン出典
+   - [ ] explanation: 1000文字以上、FAQ含む
+   - [ ] 型チェック通過（`npx tsc --noEmit`）
+   - [ ] コミット → プッシュ
+   - [ ] EXIT_TODO.md 更新
+
+---
+
 ## ⚠️ 既知の問題・再発防止メモ
 
 ### Cloudflare Pages + esbuild 日本語キーエラー（2026-03-09 発生・解決済）
