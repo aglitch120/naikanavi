@@ -731,10 +731,41 @@ export const tools: ToolDefinition[] = [
     keywords: ['AUDIT', 'アルコール', '飲酒', 'スクリーニング', '依存'],
     relatedSlugs: ['phq9', 'gad7'],
   },
+  // ── ER/ICU系追加 ──
+  {
+    slug: 'ldl-friedewald',
+    name: 'LDL-C計算（Friedewald式）',
+    nameEn: 'LDL Cholesterol (Friedewald)',
+    description: 'TC・HDL-C・TGからLDL-Cを算出。TG 400以上では使用不可。non-HDL-C併記。',
+    category: 'cardiology',
+    tier: 1,
+    keywords: ['LDL', 'Friedewald', 'コレステロール', '脂質', 'non-HDL'],
+    relatedSlugs: ['bmi', 'egfr'],
+  },
+  {
+    slug: 'dopamine-dose',
+    name: 'γ計算（昇圧剤投与速度）',
+    nameEn: 'Vasopressor Dose Calculator (gamma)',
+    description: '体重とγ値から昇圧剤の投与速度（mL/h）を計算。DOA・DOB・NAd・Ad対応。',
+    category: 'electrolyte',
+    tier: 1,
+    keywords: ['γ計算', 'ガンマ', '昇圧剤', 'ドパミン', 'ノルアドレナリン', 'ICU'],
+    relatedSlugs: ['map', 'qsofa', 'sofa'],
+  },
+  {
+    slug: 'parkland',
+    name: 'Parkland式（熱傷輸液）',
+    nameEn: 'Parkland (Baxter) Formula',
+    description: '体重と熱傷面積から初期輸液量を計算。最初8時間・次16時間の投与速度表示。',
+    category: 'electrolyte',
+    tier: 2,
+    keywords: ['Parkland', 'Baxter', '熱傷', '輸液', 'TBSA', '熱傷面積'],
+    relatedSlugs: ['maintenance-fluid', 'ibw'],
+  },
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
-export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled', 'child-pugh', 'meld', 'curb-65', 'a-drop', 'wells-pe', 'wells-dvt', 'qsofa', 'sofa', 'fib-4', 'corrected-ca', 'aa-gradient', 'grace', 'bmi', 'bsa', 'cockcroft-gault', 'gcs', 'rcri', 'anion-gap', 'abcd2', 'mrs', 'ecog', 'karnofsky', 'maintenance-fluid', 'na-deficit', 'free-water-deficit', 'nihss', 'apache2', 'na-correction-rate', 'kcl-correction', 'steroid-converter', 'insulin-sliding', 'renal-dose-abx', 'glasgow-blatchford', 'aims65', 'heart-score', 'timi', 'news2', 'charlson', 'centor', 'caprini', 'padua', 'mascc', 'alvarado', 'perc', 'ottawa-ankle', 'rockall', 'spesi', 'phq9', 'gad7', 'isth-dic', 'light-criteria', 'qtc', 'map', 'fena', 'osmolality-gap', 'winters-formula', 'corrected-phenytoin', 'ibw', 'anc', 'meld-na', 'ranson', 'bisap', 'audit'])
+export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled', 'child-pugh', 'meld', 'curb-65', 'a-drop', 'wells-pe', 'wells-dvt', 'qsofa', 'sofa', 'fib-4', 'corrected-ca', 'aa-gradient', 'grace', 'bmi', 'bsa', 'cockcroft-gault', 'gcs', 'rcri', 'anion-gap', 'abcd2', 'mrs', 'ecog', 'karnofsky', 'maintenance-fluid', 'na-deficit', 'free-water-deficit', 'nihss', 'apache2', 'na-correction-rate', 'kcl-correction', 'steroid-converter', 'insulin-sliding', 'renal-dose-abx', 'glasgow-blatchford', 'aims65', 'heart-score', 'timi', 'news2', 'charlson', 'centor', 'caprini', 'padua', 'mascc', 'alvarado', 'perc', 'ottawa-ankle', 'rockall', 'spesi', 'phq9', 'gad7', 'isth-dic', 'light-criteria', 'qtc', 'map', 'fena', 'osmolality-gap', 'winters-formula', 'corrected-phenytoin', 'ibw', 'anc', 'meld-na', 'ranson', 'bisap', 'audit', 'ldl-friedewald', 'dopamine-dose', 'parkland'])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
   return tools.find(t => t.slug === slug)
