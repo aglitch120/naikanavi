@@ -3,16 +3,16 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'ER主訴別対応ツリー | iwor',
-  description: '救急外来の主訴別に系統的アプローチ。胸痛・意識障害・腹痛のクリック式対応フローで、killer diseaseの見落としを防ぐ。',
+  description: '救急外来の主訴別に系統的アプローチ。胸痛・意識障害・腹痛・失神・発熱・呼吸困難のクリック式対応フローで、killer diseaseの見落としを防ぐ。',
 }
 
 const flows = [
   { href: '/tools/er/chest-pain', emoji: '💓', name: '胸痛', desc: 'Killer chest pain 5疾患（ACS・PE・大動脈解離・緊張性気胸・心タンポナーデ）の系統的除外フロー', badge: 'NEW', live: true },
   { href: '/tools/er/altered-consciousness', emoji: '🧠', name: '意識障害', desc: 'AIUEOTIPS + バイタル安定化 → 緊急CT/採血 → 原因検索のステップフロー', badge: 'NEW', live: true },
   { href: '/tools/er/abdominal-pain', emoji: '🩺', name: '腹痛', desc: '部位別鑑別 + 緊急手術適応判断 + 女性特有疾患の見落とし防止フロー', badge: 'NEW', live: true },
-  { href: '#', emoji: '😵', name: '失神', desc: '心原性 vs 非心原性の鑑別、SFSR・入院適応判断', badge: '準備中', live: false },
-  { href: '#', emoji: '🌡️', name: '発熱', desc: '不明熱の分類、敗血症スクリーニング、empiric therapy', badge: '準備中', live: false },
-  { href: '#', emoji: '😤', name: '呼吸困難', desc: '上気道 vs 下気道、心不全 vs COPD増悪、ARDS', badge: '準備中', live: false },
+  { href: '/tools/er/syncope', emoji: '😵', name: '失神', desc: '心原性 vs 非心原性の鑑別。一過性意識消失確認 → バイタル → 心電図 → 病歴 → SFSR層別化', badge: 'NEW', live: true },
+  { href: '/tools/er/fever', emoji: '🌡️', name: '発熱', desc: '敗血症スクリーニング（qSOFA）→ 免疫状態評価 → 感染巣推定。FN・Hour-1 Bundle対応', badge: 'NEW', live: true },
+  { href: '/tools/er/dyspnea', emoji: '😤', name: '呼吸困難', desc: '気道緊急 → 呼吸不全原因検索 → 発症様式別鑑別。PE・心不全・喘息/COPD・ARDS・アナフィラキシー', badge: 'NEW', live: true },
 ]
 
 export default function ERPage() {
