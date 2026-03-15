@@ -51,6 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date('2026-03-15'),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
   ]
 
   // ツールページ（実装済みのみ）
