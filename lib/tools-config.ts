@@ -421,7 +421,7 @@ export const tools: ToolDefinition[] = [
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
-export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled', 'child-pugh', 'meld', 'curb-65', 'a-drop', 'wells-pe', 'wells-dvt', 'qsofa', 'sofa', 'fib-4', 'corrected-ca', 'aa-gradient', 'grace'])
+export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled', 'child-pugh', 'meld', 'curb-65', 'a-drop', 'wells-pe', 'wells-dvt', 'qsofa', 'sofa', 'fib-4', 'corrected-ca', 'aa-gradient', 'grace', 'bmi', 'bsa', 'cockcroft-gault', 'gcs', 'rcri', 'anion-gap', 'abcd2', 'mrs', 'ecog', 'karnofsky', 'maintenance-fluid', 'na-deficit', 'free-water-deficit'])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
   return tools.find(t => t.slug === slug)
