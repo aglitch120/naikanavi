@@ -131,6 +131,53 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══ 臨床計算ツールセクション ═══ */}
+      <section className="py-12 md:py-16">
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-xl font-bold">臨床計算ツール</h2>
+          <Link href="/tools" className="text-ac text-sm hover:underline">
+            すべて見る →
+          </Link>
+        </div>
+        <p className="text-sm text-muted mb-6">
+          ベッドサイドですぐ使える。登録不要・無料の臨床スコア計算。
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { name: 'eGFR計算', slug: 'egfr', icon: '💧', desc: 'CKD-EPI 2021' },
+            { name: 'CHA₂DS₂-VASc', slug: 'cha2ds2-vasc', icon: '❤️', desc: '心房細動の脳卒中リスク' },
+            { name: 'CHADS₂', slug: 'chads2', icon: '❤️', desc: '脳卒中リスク簡易評価' },
+            { name: 'Child-Pugh', slug: 'child-pugh', icon: '🫁', desc: '肝硬変の重症度', comingSoon: true },
+            { name: 'CURB-65', slug: 'curb-65', icon: '🌬️', desc: '市中肺炎の重症度', comingSoon: true },
+            { name: 'qSOFA', slug: 'qsofa', icon: '🦠', desc: '敗血症スクリーニング', comingSoon: true },
+            { name: 'Wells PE', slug: 'wells-pe', icon: '🌬️', desc: '肺塞栓の確率評価', comingSoon: true },
+            { name: 'SOFA', slug: 'sofa', icon: '🦠', desc: '臓器障害の定量評価', comingSoon: true },
+          ].map(tool => (
+            tool.comingSoon ? (
+              <div
+                key={tool.slug}
+                className="bg-s1/50 border border-br/50 rounded-xl p-4 opacity-60"
+              >
+                <span className="text-lg">{tool.icon}</span>
+                <p className="text-sm font-medium text-muted mt-1.5">{tool.name}</p>
+                <p className="text-xs text-muted/70 mt-0.5">{tool.desc}</p>
+                <span className="inline-block text-[10px] text-muted bg-s2 px-1.5 py-0.5 rounded mt-2">準備中</span>
+              </div>
+            ) : (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="bg-s0 border border-br rounded-xl p-4 hover:border-ac/30 hover:bg-acl/30 transition-colors group"
+              >
+                <span className="text-lg">{tool.icon}</span>
+                <p className="text-sm font-medium text-tx group-hover:text-ac mt-1.5 transition-colors">{tool.name}</p>
+                <p className="text-xs text-muted mt-0.5">{tool.desc}</p>
+              </Link>
+            )
+          ))}
+        </div>
+      </section>
+
       {/* ═══ カテゴリセクション ═══ */}
       <section className="py-8">
         <div className="flex justify-between items-center mb-6">
