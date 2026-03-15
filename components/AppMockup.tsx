@@ -15,7 +15,7 @@ export function AppMockup({ className = '' }: { className?: string }) {
           </div>
           <div className="flex-1 flex justify-center">
             <div className="bg-white rounded-md px-3 py-1 text-[10px] text-gray-400 font-mono border border-gray-200">
-              naikanavi.com
+              iwor.jp
             </div>
           </div>
         </div>

@@ -84,7 +84,7 @@ export default function CHA2DS2VAScPage() {
             '@type': 'MedicalWebPage',
             name: 'CHA₂DS₂-VASc スコア計算',
             description: toolDef.description,
-            url: 'https://naikanavi.com/tools/cha2ds2-vasc',
+            url: 'https://iwor.jp/tools/cha2ds2-vasc',
             audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             lastReviewed: '2026-03-15',
           }),
@@ -97,9 +97,9 @@ export default function CHA2DS2VAScPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://naikanavi.com' },
-              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://naikanavi.com/tools' },
-              { '@type': 'ListItem', position: 3, name: 'CHA₂DS₂-VASc', item: 'https://naikanavi.com/tools/cha2ds2-vasc' },
+              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://iwor.jp' },
+              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://iwor.jp/tools' },
+              { '@type': 'ListItem', position: 3, name: 'CHA₂DS₂-VASc', item: 'https://iwor.jp/tools/cha2ds2-vasc' },
             ],
           }),
         }}

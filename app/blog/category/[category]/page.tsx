@@ -40,9 +40,9 @@ export default async function CategoryPage({ params }: Props) {
   const posts = getPostsByCategory(category as CategorySlug)
   
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
-    { name: 'ホーム', url: 'https://naikanavi.com' },
-    { name: 'ブログ', url: 'https://naikanavi.com/blog' },
-    { name: categoryData.name, url: `https://naikanavi.com/blog/category/${category}` },
+    { name: 'ホーム', url: 'https://iwor.jp' },
+    { name: 'ブログ', url: 'https://iwor.jp/blog' },
+    { name: categoryData.name, url: `https://iwor.jp/blog/category/${category}` },
   ])
   
   return (

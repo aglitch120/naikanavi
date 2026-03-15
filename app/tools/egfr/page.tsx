@@ -79,7 +79,7 @@ export default function EgfrPage() {
             '@type': 'MedicalWebPage',
             name: 'eGFR計算ツール（CKD-EPI 2021）',
             description: toolDef.description,
-            url: 'https://naikanavi.com/tools/egfr',
+            url: 'https://iwor.jp/tools/egfr',
             audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             lastReviewed: '2026-03-15',
@@ -93,9 +93,9 @@ export default function EgfrPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://naikanavi.com' },
-              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://naikanavi.com/tools' },
-              { '@type': 'ListItem', position: 3, name: 'eGFR計算', item: 'https://naikanavi.com/tools/egfr' },
+              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://iwor.jp' },
+              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://iwor.jp/tools' },
+              { '@type': 'ListItem', position: 3, name: 'eGFR計算', item: 'https://iwor.jp/tools/egfr' },
             ],
           }),
         }}

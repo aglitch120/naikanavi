@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: '利用規約',
   description: '内科ナビの利用規約。サービスの利用条件について説明します。',
   alternates: {
-    canonical: 'https://naikanavi.com/terms',
+    canonical: 'https://iwor.jp/terms',
   },
 }
 

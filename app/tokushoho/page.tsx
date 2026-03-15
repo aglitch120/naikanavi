@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: '特定商取引法に基づく表示',
   description: '内科ナビの特定商取引法に基づく表示。',
   alternates: {
-    canonical: 'https://naikanavi.com/tokushoho',
+    canonical: 'https://iwor.jp/tokushoho',
   },
 }
 

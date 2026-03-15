@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const BASE_URL = 'https://naikanavi.com'
+const BASE_URL = 'https://iwor.jp'
 const CONTENT_DIR = path.join(process.cwd(), 'content/blog')
 
 // MDXから画像情報を抽出する

@@ -4,7 +4,7 @@ import { categories } from '@/lib/blog-config'
 import { tools, implementedTools } from '@/lib/tools-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://naikanavi.com'
+  const baseUrl = 'https://iwor.jp'
   const posts = getAllPosts()
   
   // 静的ページ

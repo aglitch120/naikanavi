@@ -6,7 +6,7 @@ interface ShareButtonsProps {
 }
 
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
-  const url = `https://naikanavi.com/blog/${slug}`
+  const url = `https://iwor.jp/blog/${slug}`
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
 

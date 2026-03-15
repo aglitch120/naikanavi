@@ -10,8 +10,8 @@ export const metadata: Metadata = genMeta({
 })
 
 const breadcrumbJsonLd = generateBreadcrumbJsonLd([
-  { name: 'ホーム', url: 'https://naikanavi.com' },
-  { name: '臨床計算ツール', url: 'https://naikanavi.com/tools' },
+  { name: 'ホーム', url: 'https://iwor.jp' },
+  { name: '臨床計算ツール', url: 'https://iwor.jp/tools' },
 ])
 
 const faqJsonLd = {

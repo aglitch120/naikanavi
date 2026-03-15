@@ -26,7 +26,7 @@ const nextConfig = {
           "script-src 'self' 'unsafe-inline' 'unsafe-eval' static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com",
           "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
           "font-src 'self' fonts.gstatic.com",
-          "img-src 'self' data: blob: *.naikanavi.com https://www.google-analytics.com https://www.googletagmanager.com",
+          "img-src 'self' data: blob: *.iwor.jp https://www.google-analytics.com https://www.googletagmanager.com",
           "connect-src 'self' cloudflareinsights.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net",
           "frame-src 'self' docs.google.com naikanavi.booth.pm",
           "frame-ancestors 'self'",

@@ -12,8 +12,8 @@ export const metadata: Metadata = genMeta({
 })
 
 const breadcrumbJsonLd = generateBreadcrumbJsonLd([
-  { name: 'ホーム', url: 'https://naikanavi.com' },
-  { name: 'ブログ', url: 'https://naikanavi.com/blog' },
+  { name: 'ホーム', url: 'https://iwor.jp' },
+  { name: 'ブログ', url: 'https://iwor.jp/blog' },
 ])
 
 export default function BlogPage() {

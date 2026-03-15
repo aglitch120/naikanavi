@@ -10,8 +10,8 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: [
-      'https://naikanavi.com/sitemap.xml',
-      'https://naikanavi.com/image-sitemap.xml',
+      'https://iwor.jp/sitemap.xml',
+      'https://iwor.jp/image-sitemap.xml',
     ],
   }
 }

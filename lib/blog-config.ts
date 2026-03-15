@@ -468,7 +468,7 @@ export function getTagName(slug: string): string | undefined {
 export const siteConfig = {
   name: '内科ナビ',
   description: '内科専攻医の悩みをすべて解決する',
-  url: 'https://naikanavi.com',
-  ogImage: 'https://naikanavi.com/opengraph-image',
+  url: 'https://iwor.jp',
+  ogImage: 'https://iwor.jp/opengraph-image',
   author: '内科ナビ編集部',
 }

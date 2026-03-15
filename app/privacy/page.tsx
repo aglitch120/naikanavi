@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'プライバシーポリシー',
   description: '内科ナビのプライバシーポリシー。個人情報の取り扱いについて説明します。',
   alternates: {
-    canonical: 'https://naikanavi.com/privacy',
+    canonical: 'https://iwor.jp/privacy',
   },
 }
 

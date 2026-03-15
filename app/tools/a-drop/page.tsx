@@ -70,7 +70,7 @@ export default function ADROPPage() {
             '@type': 'MedicalWebPage',
             name: 'A-DROP スコア計算',
             description: toolDef.description,
-            url: 'https://naikanavi.com/tools/a-drop',
+            url: 'https://iwor.jp/tools/a-drop',
             audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             lastReviewed: '2026-03-15',
           }),
@@ -83,9 +83,9 @@ export default function ADROPPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://naikanavi.com' },
-              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://naikanavi.com/tools' },
-              { '@type': 'ListItem', position: 3, name: 'A-DROP', item: 'https://naikanavi.com/tools/a-drop' },
+              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://iwor.jp' },
+              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://iwor.jp/tools' },
+              { '@type': 'ListItem', position: 3, name: 'A-DROP', item: 'https://iwor.jp/tools/a-drop' },
             ],
           }),
         }}

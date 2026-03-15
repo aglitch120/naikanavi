@@ -71,10 +71,10 @@ export default async function ArticlePage({ params }: Props) {
   })
   
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
-    { name: 'ホーム', url: 'https://naikanavi.com' },
-    { name: 'ブログ', url: 'https://naikanavi.com/blog' },
-    { name: category?.name || 'その他', url: `https://naikanavi.com/blog/category/${frontmatter.category}` },
-    { name: frontmatter.title, url: `https://naikanavi.com/blog/${slug}` },
+    { name: 'ホーム', url: 'https://iwor.jp' },
+    { name: 'ブログ', url: 'https://iwor.jp/blog' },
+    { name: category?.name || 'その他', url: `https://iwor.jp/blog/category/${frontmatter.category}` },
+    { name: frontmatter.title, url: `https://iwor.jp/blog/${slug}` },
   ])
 
   // HowToスキーマ（手順系記事のみ）

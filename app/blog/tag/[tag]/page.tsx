@@ -36,9 +36,9 @@ export default async function TagPage({ params }: Props) {
   }
 
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
-    { name: 'ホーム', url: 'https://naikanavi.com' },
-    { name: 'ブログ', url: 'https://naikanavi.com/blog' },
-    { name: `タグ: ${tagName}`, url: `https://naikanavi.com/blog/tag/${slug}` },
+    { name: 'ホーム', url: 'https://iwor.jp' },
+    { name: 'ブログ', url: 'https://iwor.jp/blog' },
+    { name: `タグ: ${tagName}`, url: `https://iwor.jp/blog/tag/${slug}` },
   ])
 
   const allTags = getAllTags()

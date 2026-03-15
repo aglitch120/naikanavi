@@ -72,7 +72,7 @@ export default function CURB65Page() {
             '@type': 'MedicalWebPage',
             name: 'CURB-65 スコア計算',
             description: toolDef.description,
-            url: 'https://naikanavi.com/tools/curb-65',
+            url: 'https://iwor.jp/tools/curb-65',
             audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             lastReviewed: '2026-03-15',
           }),
@@ -85,9 +85,9 @@ export default function CURB65Page() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://naikanavi.com' },
-              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://naikanavi.com/tools' },
-              { '@type': 'ListItem', position: 3, name: 'CURB-65', item: 'https://naikanavi.com/tools/curb-65' },
+              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://iwor.jp' },
+              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://iwor.jp/tools' },
+              { '@type': 'ListItem', position: 3, name: 'CURB-65', item: 'https://iwor.jp/tools/curb-65' },
             ],
           }),
         }}

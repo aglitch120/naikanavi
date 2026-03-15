@@ -67,7 +67,7 @@ export default function OgImage() {
         {/* フッター */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 1 }}>
           <div style={{ fontSize: '28px', fontWeight: 700, color: 'rgba(255,255,255,0.5)' }}>
-            naikanavi.com
+            iwor.jp
           </div>
           <div style={{
             backgroundColor: 'rgba(255,255,255,0.2)',

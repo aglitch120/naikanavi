@@ -7,7 +7,7 @@ import { AppMockup, GeometricDecoration, FeatureBadges } from '@/components/AppM
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://naikanavi.com',
+    canonical: 'https://iwor.jp',
   },
 }
 
@@ -29,7 +29,7 @@ export default function HomePage() {
             J-OSLER進捗管理、病歴要約、専門医試験対策から、キャリア・お金の情報まで。
           </p>
           <p className="text-sm text-muted mt-2 tracking-widest uppercase font-mono">
-            naikanavi.com — 内科ナビ
+            iwor.jp — 内科ナビ
           </p>
         </div>
 

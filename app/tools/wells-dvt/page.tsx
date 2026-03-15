@@ -72,7 +72,7 @@ export default function WellsDVTPage() {
             '@type': 'MedicalWebPage',
             name: 'Wells DVT スコア計算',
             description: toolDef.description,
-            url: 'https://naikanavi.com/tools/wells-dvt',
+            url: 'https://iwor.jp/tools/wells-dvt',
             audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             lastReviewed: '2026-03-15',
           }),
@@ -85,9 +85,9 @@ export default function WellsDVTPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://naikanavi.com' },
-              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://naikanavi.com/tools' },
-              { '@type': 'ListItem', position: 3, name: 'Wells DVT スコア', item: 'https://naikanavi.com/tools/wells-dvt' },
+              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://iwor.jp' },
+              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://iwor.jp/tools' },
+              { '@type': 'ListItem', position: 3, name: 'Wells DVT スコア', item: 'https://iwor.jp/tools/wells-dvt' },
             ],
           }),
         }}

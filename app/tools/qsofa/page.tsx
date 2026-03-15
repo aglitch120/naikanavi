@@ -50,7 +50,7 @@ export default function QSOFAPage() {
             '@type': 'MedicalWebPage',
             name: 'qSOFA スコア計算',
             description: toolDef.description,
-            url: 'https://naikanavi.com/tools/qsofa',
+            url: 'https://iwor.jp/tools/qsofa',
             audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             lastReviewed: '2026-03-15',
           }),
@@ -63,9 +63,9 @@ export default function QSOFAPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://naikanavi.com' },
-              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://naikanavi.com/tools' },
-              { '@type': 'ListItem', position: 3, name: 'qSOFA', item: 'https://naikanavi.com/tools/qsofa' },
+              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://iwor.jp' },
+              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://iwor.jp/tools' },
+              { '@type': 'ListItem', position: 3, name: 'qSOFA', item: 'https://iwor.jp/tools/qsofa' },
             ],
           }),
         }}

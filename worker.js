@@ -31,11 +31,11 @@
 //  Secrets: ADMIN_KEY, N8N_KEY
 // ═══════════════════════════════════════════════════════════════
 
-const ALLOWED_ORIGINS = ["https://naikanavi.com", "http://localhost:3000"];
+const ALLOWED_ORIGINS = ["https://iwor.jp", "http://localhost:3000"];
 
 function getCors(request) {
   const origin = request?.headers?.get("Origin") || "";
-  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : "https://naikanavi.com";
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : "https://iwor.jp";
   return {
     "Access-Control-Allow-Origin":  allowedOrigin,
     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",

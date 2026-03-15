@@ -125,7 +125,7 @@ export default function ChildPughPage() {
             '@type': 'MedicalWebPage',
             name: 'Child-Pugh 分類 計算',
             description: toolDef.description,
-            url: 'https://naikanavi.com/tools/child-pugh',
+            url: 'https://iwor.jp/tools/child-pugh',
             audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
             lastReviewed: '2026-03-15',
           }),
@@ -138,9 +138,9 @@ export default function ChildPughPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://naikanavi.com' },
-              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://naikanavi.com/tools' },
-              { '@type': 'ListItem', position: 3, name: 'Child-Pugh 分類', item: 'https://naikanavi.com/tools/child-pugh' },
+              { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://iwor.jp' },
+              { '@type': 'ListItem', position: 2, name: '臨床計算ツール', item: 'https://iwor.jp/tools' },
+              { '@type': 'ListItem', position: 3, name: 'Child-Pugh 分類', item: 'https://iwor.jp/tools/child-pugh' },
             ],
           }),
         }}

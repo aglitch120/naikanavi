@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'お問い合わせ',
   description: '内科ナビへのお問い合わせ。ご質問・ご要望はこちらからお寄せください。',
   alternates: {
-    canonical: 'https://naikanavi.com/contact',
+    canonical: 'https://iwor.jp/contact',
   },
 }
 
