@@ -29,7 +29,7 @@ export default function HomePage() {
             J-OSLER進捗管理、病歴要約、専門医試験対策から、キャリア・お金の情報まで。
           </p>
           <p className="text-sm text-muted mt-2 tracking-widest uppercase font-mono">
-            iwor — 医師の臨床とキャリアを支える恵みの地
+            iwor — 臨床とキャリアに、いつも手の届く場所に
           </p>
         </div>
 

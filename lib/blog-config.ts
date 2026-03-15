@@ -467,7 +467,7 @@ export function getTagName(slug: string): string | undefined {
 // サイト情報
 export const siteConfig = {
   name: 'iwor',
-  description: '医師の臨床とキャリアを支える、恵みの地',
+  description: '臨床とキャリアに、いつも手の届く場所に',
   url: 'https://iwor.jp',
   ogImage: 'https://iwor.jp/opengraph-image',
   author: 'iwor編集部',

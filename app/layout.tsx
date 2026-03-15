@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} - ${siteConfig.description}`,
     template: `%s | ${siteConfig.name}`,
   },
-  description: '医師の臨床とキャリアを支える恵みの地。臨床計算ツール、ACLS/BLS、ER対応、J-OSLER管理、専門医試験対策まで。',
+  description: '医師の臨床とキャリアを、ずっと身近に支える。臨床計算ツール、ACLS/BLS、ER対応、J-OSLER管理、専門医試験対策まで。',
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
