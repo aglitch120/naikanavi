@@ -421,7 +421,7 @@ export const tools: ToolDefinition[] = [
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
-export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2'])
+export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled'])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
   return tools.find(t => t.slug === slug)
