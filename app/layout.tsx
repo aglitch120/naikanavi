@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} - ${siteConfig.description}`,
     template: `%s | ${siteConfig.name}`,
   },
-  description: '内科専攻医の悩みをすべて解決する。J-OSLER、病歴要約、内科専門医試験対策から、キャリア・お金の情報まで。',
+  description: '医師の臨床とキャリアを支える恵みの地。臨床計算ツール、ACLS/BLS、ER対応、J-OSLER管理、専門医試験対策まで。',
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
@@ -43,9 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
   },
-  verification: {
-    google: 'uehcWYHUwP5AZjA_o0H-VuZsz64RPKz_Ivn1maLm9fE',
-  },
+  // GSC認証はDNS（Cloudflare）で完了済み
   robots: {
     index: true,
     follow: true,
