@@ -9,13 +9,13 @@
 
 ### A. iwor.jp セットアップ
 - [x] iwor.jp ドメイン取得（Xserverドメイン、2026-03-15）
-- [ ] Xserverドメインのネームサーバーを Cloudflare に変更
-- [ ] Cloudflare で iwor.jp をサイト追加・DNS設定
-- [ ] iwor.jp で Next.js プロジェクト初期デプロイ確認
+- [x] Xserverドメインのネームサーバーを Cloudflare に変更（2026-03-15）
+- [x] Cloudflare で iwor.jp をサイト追加・DNS設定（2026-03-15）
+- [x] iwor.jp で Next.js プロジェクト初期デプロイ確認（2026-03-15、Cloudflare Pages "iwor"）
 
 ### B. naikanavi.com → iwor.jp 移植
-- [ ] 173記事の移植（MDXそのまま、URLパス設計）
-- [ ] naikanavi.com から iwor.jp への 301リダイレクト設定
+- [x] 173記事の移植（MDXそのまま、ソースコード内naikanavi→iwor.jp置換済み 2026-03-15）
+- [x] naikanavi.com から iwor.jp への 301リダイレクト設定 → 不要（naikanavi.com開設数日、SEO資産なし）
 - [ ] GSC で iwor.jp を登録・サイトマップ送信
 - [ ] GA4 を iwor.jp に設定
 
@@ -158,12 +158,12 @@
 
 | WS | 完了 | 残り | 進捗率 |
 |----|------|------|--------|
-| WS0: ドメイン移行 | 1 | 10 | 9% |
+| WS0: ドメイン移行 | 6 | 5 | 55% |
 | WS1: プロダクト | 16 | 39 | 29% |
 | WS2: 数字を残す | 0 | 11 | 0% |
 | WS3: コード清潔さ | 2 | 12 | 13% |
 | WS4: 法務・インフラ | 1 | 16 | 6% |
-| **合計** | **20** | **88** | **19%** |
+| **合計** | **25** | **83** | **23%** |
 
 ---
 
