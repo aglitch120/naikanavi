@@ -454,6 +454,15 @@ export default function LifestylePage() {
             <InputField id="hdl" label="HDL-C" unit="mg/dL" value={data.hdl} onChange={set('hdl')} />
             <InputField id="tg" label="TG" unit="mg/dL" value={data.tg} onChange={set('tg')} />
           </div>
+          {!data.ldl && data.tc && data.hdl && data.tg && parseFloat(data.tg) < 400 && (
+            <p className="text-xs text-muted mt-1">
+              Friedewald式 LDL-C ≈ <span className="font-mono font-bold text-tx">{Math.round(parseFloat(data.tc) - parseFloat(data.hdl) - parseFloat(data.tg) / 5)}</span> mg/dL
+              {parseFloat(data.tc) && parseFloat(data.hdl) ? <span className="ml-2">（non-HDL-C: <span className="font-mono font-bold text-tx">{Math.round(parseFloat(data.tc) - parseFloat(data.hdl))}</span>）</span> : null}
+            </p>
+          )}
+          {!data.ldl && data.tg && parseFloat(data.tg) >= 400 && (
+            <p className="text-xs text-[#B71C1C] mt-1">⚠️ TG ≧ 400: Friedewald式は不正確です。直接法LDL-Cを入力してください</p>
+          )}
         </div>
 
         {/* 腎・肝・尿酸 */}
