@@ -16,8 +16,9 @@
 ### B. naikanavi.com → iwor.jp 移植
 - [x] 173記事の移植（MDXそのまま、ソースコード内naikanavi→iwor.jp置換済み 2026-03-15）
 - [x] naikanavi.com から iwor.jp への 301リダイレクト設定 → 不要（naikanavi.com開設数日、SEO資産なし）
-- [ ] GSC で iwor.jp を登録・サイトマップ送信
-- [ ] GA4 を iwor.jp に設定
+- [x] GSC で iwor.jp を登録・サイトマップ送信（2026-03-15、ドメインプロパティ）
+- [x] GA4 を iwor.jp に設定（2026-03-15、G-VTCJT6XFHG）
+- [x] naikanavi.com DNS削除（重複コンテンツ防止、2026-03-15）
 
 ### C. tellmedu.com 整理
 - [ ] tellmedu.com の note販売停止判断
@@ -40,14 +41,15 @@
 - [x] Tier1: A-DROP
 - [x] Tier1: Wells PE
 - [x] Tier1: Wells DVT
-- [ ] Tier1: GRACE
+- [x] Tier1: GRACE
 - [x] Tier1: qSOFA
 - [x] Tier1: SOFA
-- [ ] Tier1: FIB-4
+- [x] Tier1: FIB-4
 - [x] Tier1: eGFR（CKD-EPI）
-- [ ] Tier1: 補正Ca
-- [ ] Tier1: A-aDO2
-- [ ] Tier2: 16種（RCRI, BMI, BSA, Cockcroft-Gault, APACHE II, GCS, NIHSS, mRS, Karnofsky, ECOG, AG, DAS28, ABCD2等）
+- [x] Tier1: 補正Ca
+- [x] Tier1: A-aDO2
+- [x] Tier2: BMI, BSA, Cockcroft-Gault, GCS, RCRI, AG, ABCD2, mRS, ECOG, Karnofsky（2026-03-15）
+- [ ] Tier2残: NIHSS, APACHE II（未実装）
 - [ ] Tier3: 20種（専門スコア）
 - [x] 各ツールにSEO解説セクション追加
 - [ ] 既存173記事との相互内部リンク
@@ -59,8 +61,8 @@
 - [ ] 免責表示
 
 ### C. 輸液・電解質補正計算群
-- [ ] 維持輸液計算（4-2-1ルール）
-- [ ] Na欠乏量・自由水欠乏量計算
+- [x] 維持輸液計算（4-2-1ルール）（2026-03-15）
+- [x] Na欠乏量・自由水欠乏量計算（2026-03-15）
 - [ ] Na補正速度計算
 - [ ] KCL補正計算
 - [ ] ステロイド換算ツール
@@ -76,8 +78,8 @@
 ## WS2: 数字を残す（売却額に直結）
 
 ### A. アクセス解析（★最優先 — データは過去に遡れない）
-- [ ] GA4 を iwor.jp に設置
-- [ ] GSC で iwor.jp を登録・サイトマップ送信
+- [x] GA4 を iwor.jp に設置（2026-03-15、G-VTCJT6XFHG）
+- [x] GSC で iwor.jp を登録・サイトマップ送信（2026-03-15）
 - [ ] 月次PVレポート体制構築（毎月1日にスクショ保存）
 - [ ] GA4 コンバージョン設定（PRO登録、BOOTH遷移）
 
@@ -158,12 +160,12 @@
 
 | WS | 完了 | 残り | 進捗率 |
 |----|------|------|--------|
-| WS0: ドメイン移行 | 6 | 5 | 55% |
-| WS1: プロダクト | 16 | 39 | 29% |
-| WS2: 数字を残す | 0 | 11 | 0% |
-| WS3: コード清潔さ | 2 | 12 | 13% |
+| WS0: ドメイン移行 | 9 | 3 | 75% |
+| WS1: プロダクト | 23 | 13 | 64% |
+| WS2: 数字を残す | 2 | 10 | 17% |
+| WS3: コード清潔さ | 2 | 12 | 14% |
 | WS4: 法務・インフラ | 1 | 16 | 6% |
-| **合計** | **25** | **83** | **23%** |
+| **合計** | **37** | **54** | **41%** |
 
 ---
 
