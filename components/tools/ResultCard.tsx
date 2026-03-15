@@ -25,21 +25,21 @@ export default function ResultCard({
   details,
 }: ResultCardProps) {
   return (
-    <div className={`border rounded-xl p-5 ${severityStyles[severity]}`}>
+    <div className={`border rounded-xl p-4 sm:p-5 overflow-hidden ${severityStyles[severity]}`}>
       <p className="text-sm font-medium mb-1">{label}</p>
-      <p className="text-3xl font-bold tabular-nums">
-        {value}
-        {unit && <span className="text-base font-normal ml-1">{unit}</span>}
-      </p>
+      <div className="flex flex-wrap items-baseline gap-x-1.5">
+        <span className="text-3xl font-bold tabular-nums">{value}</span>
+        {unit && <span className="text-sm font-normal">{unit}</span>}
+      </div>
       {interpretation && (
-        <p className="text-sm font-medium mt-2">{interpretation}</p>
+        <p className="text-sm font-medium mt-2 break-words">{interpretation}</p>
       )}
       {details && details.length > 0 && (
-        <div className="mt-3 pt-3 border-t border-current/10 space-y-1">
+        <div className="mt-3 pt-3 border-t border-current/10 space-y-1.5">
           {details.map((d, i) => (
-            <div key={i} className="flex justify-between text-sm">
+            <div key={i} className="flex flex-col sm:flex-row sm:justify-between text-sm gap-0.5">
               <span>{d.label}</span>
-              <span className="font-medium">{d.value}</span>
+              <span className="font-medium tabular-nums">{d.value}</span>
             </div>
           ))}
         </div>
