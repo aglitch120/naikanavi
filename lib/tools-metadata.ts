@@ -7,7 +7,7 @@ export function generateToolMetadata(slug: string): Metadata {
 
   const title = `${tool.name}（${tool.nameEn}）— 無料オンライン計算ツール | 内科ナビ`
   const description = `${tool.description} エビデンスに基づく解説・参考文献付き。内科専攻医・研修医向け臨床計算ツール。`
-  const url = `https://iwor.jp/tools/${slug}`
+  const url = `https://iwor.jp/tools/calc/${slug}`
 
   return {
     title,

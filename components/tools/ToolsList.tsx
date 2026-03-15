@@ -86,7 +86,7 @@ export default function ToolsList() {
                 return isLive ? (
                   <Link
                     key={tool.slug}
-                    href={`/tools/${tool.slug}`}
+                    href={`/tools/calc/${tool.slug}`}
                     className="flex items-center justify-between gap-3 p-3 bg-s0 border border-br rounded-lg hover:border-ac/30 hover:bg-acl/30 transition-colors group"
                   >
                     <div className="min-w-0">

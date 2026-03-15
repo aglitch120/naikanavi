@@ -54,14 +54,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // ツールページ（実装済みのみ）
-  const toolPages: MetadataRoute.Sitemap = tools
-    .filter(t => implementedTools.has(t.slug))
-    .map(t => ({
-      url: `${baseUrl}/tools/${t.slug}`,
+  const toolPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/tools`,
       lastModified: new Date('2026-03-15'),
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools/calc`,
+      lastModified: new Date('2026-03-15'),
+      changeFrequency: 'weekly' as const,
       priority: 0.85,
-    }))
+    },
+    ...tools
+      .filter(t => implementedTools.has(t.slug))
+      .map(t => ({
+        url: `${baseUrl}/tools/calc/${t.slug}`,
+        lastModified: new Date('2026-03-15'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.85,
+      })),
+  ]
   
   // カテゴリページ
   const categoryPages: MetadataRoute.Sitemap = Object.keys(categories).map((slug) => ({
