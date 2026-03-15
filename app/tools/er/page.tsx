@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 }
 
 const flows = [
-  { href: '/er/chest-pain', emoji: '💓', name: '胸痛', desc: 'Killer chest pain 5疾患（ACS・PE・大動脈解離・緊張性気胸・心タンポナーデ）の系統的除外フロー', badge: 'NEW', live: true },
-  { href: '/er/altered-consciousness', emoji: '🧠', name: '意識障害', desc: 'AIUEOTIPS + バイタル安定化 → 緊急CT/採血 → 原因検索のステップフロー', badge: 'NEW', live: true },
-  { href: '/er/abdominal-pain', emoji: '🩺', name: '腹痛', desc: '部位別鑑別 + 緊急手術適応判断 + 女性特有疾患の見落とし防止フロー', badge: 'NEW', live: true },
+  { href: '/tools/er/chest-pain', emoji: '💓', name: '胸痛', desc: 'Killer chest pain 5疾患（ACS・PE・大動脈解離・緊張性気胸・心タンポナーデ）の系統的除外フロー', badge: 'NEW', live: true },
+  { href: '/tools/er/altered-consciousness', emoji: '🧠', name: '意識障害', desc: 'AIUEOTIPS + バイタル安定化 → 緊急CT/採血 → 原因検索のステップフロー', badge: 'NEW', live: true },
+  { href: '/tools/er/abdominal-pain', emoji: '🩺', name: '腹痛', desc: '部位別鑑別 + 緊急手術適応判断 + 女性特有疾患の見落とし防止フロー', badge: 'NEW', live: true },
   { href: '#', emoji: '😵', name: '失神', desc: '心原性 vs 非心原性の鑑別、SFSR・入院適応判断', badge: '準備中', live: false },
   { href: '#', emoji: '🌡️', name: '発熱', desc: '不明熱の分類、敗血症スクリーニング、empiric therapy', badge: '準備中', live: false },
   { href: '#', emoji: '😤', name: '呼吸困難', desc: '上気道 vs 下気道、心不全 vs COPD増悪、ARDS', badge: '準備中', live: false },
