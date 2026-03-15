@@ -15,13 +15,13 @@
 - [x] Tier1: HAS-BLED
 - [x] Tier1: Child-Pugh
 - [x] Tier1: MELD
-- [ ] Tier1: CURB-65
-- [ ] Tier1: A-DROP
-- [ ] Tier1: Wells PE
-- [ ] Tier1: Wells DVT
+- [x] Tier1: CURB-65
+- [x] Tier1: A-DROP
+- [x] Tier1: Wells PE
+- [x] Tier1: Wells DVT
 - [ ] Tier1: GRACE
-- [ ] Tier1: qSOFA
-- [ ] Tier1: SOFA
+- [x] Tier1: qSOFA
+- [x] Tier1: SOFA
 - [ ] Tier1: FIB-4
 - [x] Tier1: eGFR（CKD-EPI）
 - [ ] Tier1: 補正Ca
@@ -117,11 +117,11 @@
 
 | WS | 完了 | 残り | 進捗率 |
 |----|------|------|--------|
-| WS1: プロダクト | 10 | 45 | 18% |
+| WS1: プロダクト | 16 | 39 | 29% |
 | WS2: 収益化 | 0 | 6 | 0% |
 | WS3: 売却資料 | 0 | 10 | 0% |
 | WS4: 法務・インフラ | 0 | 8 | 0% |
-| **合計** | **10** | **69** | **13%** |
+| **合計** | **16** | **63** | **20%** |
 
 ---
 
