@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'プライバシーポリシー',
-  description: 'iworのプライバシーポリシー。個人情報の取り扱いについて説明します。',
+  description: 'iwor（イウォル）のプライバシーポリシー。個人情報の取り扱いについて説明します。',
   alternates: {
     canonical: 'https://iwor.jp/privacy',
   },
@@ -12,11 +12,11 @@ export default function PrivacyPage() {
   return (
     <article className="max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold text-tx mb-2">プライバシーポリシー</h1>
-      <p className="text-sm text-muted mb-10">最終更新日: 2026年3月6日</p>
+      <p className="text-sm text-muted mb-10">最終更新日: 2026年3月15日</p>
 
       <Section title="1. はじめに">
         <p>
-          本プライバシーポリシーは、内科専門医 取得ナビ（以下「本サービス」）におけるユーザーの個人情報の取扱いについて定めるものです。
+          本プライバシーポリシーは、iwor（イウォル、以下「本サービス」）におけるユーザーの個人情報の取扱いについて定めるものです。
           運営者は個人情報の保護に関する法律（個人情報保護法）を遵守し、適切な管理を行います。
         </p>
       </Section>
@@ -33,24 +33,29 @@ export default function PrivacyPage() {
             </thead>
             <tbody>
               <tr>
-                <td className="border border-br px-4 py-2">アカウント情報</td>
-                <td className="border border-br px-4 py-2">メールアドレス、パスワード（ハッシュ化）、注文番号</td>
-                <td className="border border-br px-4 py-2">アカウント発行時</td>
+                <td className="border border-br px-4 py-2">アカウント情報（PRO会員のみ）</td>
+                <td className="border border-br px-4 py-2">メールアドレス、パスワード（ハッシュ化）</td>
+                <td className="border border-br px-4 py-2">アカウント登録時</td>
               </tr>
               <tr>
-                <td className="border border-br px-4 py-2">プロフィール情報</td>
-                <td className="border border-br px-4 py-2">氏名、医師免許取得年、診療科、勤務先種別、都道府県、性別、生年、卒業大学</td>
-                <td className="border border-br px-4 py-2">初回利用時の入力</td>
+                <td className="border border-br px-4 py-2">プロフィール情報（PRO会員のみ）</td>
+                <td className="border border-br px-4 py-2">医師免許取得年、診療科、勤務先種別、都道府県</td>
+                <td className="border border-br px-4 py-2">任意入力</td>
               </tr>
               <tr>
                 <td className="border border-br px-4 py-2">利用データ</td>
-                <td className="border border-br px-4 py-2">症例登録データ、進捗情報</td>
+                <td className="border border-br px-4 py-2">ツール使用履歴、ページ閲覧履歴、検索クエリ、症例登録データ（PRO）</td>
                 <td className="border border-br px-4 py-2">サービス利用中</td>
               </tr>
               <tr>
                 <td className="border border-br px-4 py-2">技術情報</td>
-                <td className="border border-br px-4 py-2">アクセスログ、IPアドレス</td>
+                <td className="border border-br px-4 py-2">アクセスログ、IPアドレス、ブラウザ情報、Cookie</td>
                 <td className="border border-br px-4 py-2">自動取得</td>
+              </tr>
+              <tr>
+                <td className="border border-br px-4 py-2">アクセス解析</td>
+                <td className="border border-br px-4 py-2">Google Analytics 4 によるアクセスデータ</td>
+                <td className="border border-br px-4 py-2">自動取得（Cookie）</td>
               </tr>
             </tbody>
           </table>
@@ -61,7 +66,7 @@ export default function PrivacyPage() {
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 my-4">
           <p className="text-amber-900 font-semibold text-sm mb-2">⚠ 患者情報に関する重要なお知らせ</p>
           <p className="text-amber-800 text-sm leading-relaxed">
-            本サービスは進捗管理ツールであり、以下の情報を収集・保存する目的では設計されていません。
+            本サービスは臨床支援ツール・学習支援ツールであり、以下の情報を収集・保存する目的では設計されていません。
             ユーザーはこれらの情報を本サービスに入力しないでください。
           </p>
         </div>
@@ -72,17 +77,17 @@ export default function PrivacyPage() {
         </ul>
         <p className="mt-3">
           万一これらの情報が入力された場合でも、運営者はその管理・保護について一切の責任を負いません。
-          ユーザーは自身の責任において、患者の個人情報が含まれないよう管理してください。
         </p>
       </Section>
 
       <Section title="4. 利用目的">
         <p className="mb-3">収集した情報は以下の目的で利用します。</p>
         <ol className="list-decimal pl-6 space-y-2 text-sm leading-relaxed">
-          <li><strong>サービスの提供・改善</strong>：アカウント管理、データ保存、機能改善</li>
-          <li><strong>統計・分析</strong>：利用状況の分析、ユーザー属性の統計処理（個人を特定しない形式）</li>
-          <li><strong>広告・マーケティング</strong>：ユーザー属性に基づく医療関連の情報提供、広告の最適化、提携先への統計データの提供</li>
+          <li><strong>サービスの提供・改善</strong>：アカウント管理、データ保存、機能改善、新機能の開発</li>
+          <li><strong>統計・分析</strong>：利用状況の分析、人気ツール・コンテンツの把握、ユーザー属性の統計処理（個人を特定しない形式）</li>
+          <li><strong>広告・マーケティング</strong>：医療関連の情報提供、広告の最適化</li>
           <li><strong>お知らせ</strong>：サービスの更新、新機能、関連サービスのご案内</li>
+          <li><strong>事業価値の評価</strong>：利用統計データの集計・保有（事業譲渡・資金調達時の評価資料として）</li>
         </ol>
       </Section>
 
@@ -95,51 +100,60 @@ export default function PrivacyPage() {
               <li>法令に基づく場合</li>
               <li>人の生命・身体・財産の保護に必要な場合</li>
               <li>個人を特定できない統計データとして提供する場合</li>
+              <li>事業譲渡に伴う場合（第6条参照）</li>
             </ul>
           </li>
           <li>ユーザー属性の統計情報（診療科別・年次別・地域別のユーザー数等）は、個人を特定できない形で提携先・広告主に提供することがあります。</li>
         </ol>
       </Section>
 
-      <Section title="6. データの保管">
+      <Section title="6. 事業譲渡時のデータ移転">
         <ol className="list-decimal pl-6 space-y-2 text-sm leading-relaxed">
-          <li>データはCloudflareのインフラストラクチャ上に保管されます。</li>
+          <li>運営者が本サービスの事業を第三者に譲渡（事業譲渡、合併、会社分割、株式譲渡等を含む）する場合、本サービスに蓄積された個人情報および利用データを、事業譲渡先に移転することがあります。</li>
+          <li>移転の対象には、アカウント情報、プロフィール情報、利用データ、統計データが含まれます。</li>
+          <li>事業譲渡先は、移転されたデータについて本ポリシーと同等以上の保護義務を負います。</li>
+          <li>事業譲渡が行われる場合、運営者はユーザーに事前に通知し、データ移転を希望しないユーザーにはアカウント削除の機会を提供します。</li>
+        </ol>
+      </Section>
+
+      <Section title="7. データの保管">
+        <ol className="list-decimal pl-6 space-y-2 text-sm leading-relaxed">
+          <li>データはCloudflare（CDN・Pages）およびSupabase（データベース）のインフラストラクチャ上に保管されます。</li>
           <li>パスワードはハッシュ化して保存し、平文では保持しません。</li>
           <li>適切な技術的・組織的措置を講じてデータを保護します。</li>
         </ol>
       </Section>
 
-      <Section title="7. ユーザーの権利">
+      <Section title="8. Cookie・アクセス解析">
+        <ol className="list-decimal pl-6 space-y-2 text-sm leading-relaxed">
+          <li>本サービスではセッション管理のためにCookieを使用します。</li>
+          <li>Google Analytics 4（GA4）を利用してアクセス状況を分析しています。GA4はCookieを使用してデータを収集しますが、個人を特定する情報は収集しません。</li>
+          <li>GA4のデータ収集を無効にしたい場合は、<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-ac underline">Googleアナリティクス オプトアウト アドオン</a>をご利用ください。</li>
+        </ol>
+      </Section>
+
+      <Section title="9. ユーザーの権利">
         <p className="mb-3">ユーザーは以下の権利を有します。</p>
         <ol className="list-decimal pl-6 space-y-2 text-sm leading-relaxed">
           <li><strong>開示請求</strong>：自己の個人情報の開示を求めることができます。</li>
           <li><strong>訂正・削除</strong>：個人情報の訂正・削除を求めることができます。</li>
           <li><strong>利用停止</strong>：個人情報の利用停止を求めることができます。</li>
+          <li><strong>データエクスポート</strong>：PRO会員はアカウントに紐づくデータのエクスポートを求めることができます。</li>
         </ol>
         <p className="mt-3">
-          上記の請求は、<a href="mailto:naikanavi.info@gmail.com" className="text-ac underline">naikanavi.info@gmail.com</a> までご連絡ください。
+          上記の請求は、<a href="/contact" className="text-ac underline">お問い合わせページ</a>よりご連絡ください。
         </p>
       </Section>
 
-      <Section title="8. Cookieの使用">
-        <p>
-          本サービスではセッション管理のためにCookieを使用します。
-          Cookieはログイン状態の維持にのみ使用し、トラッキング目的では使用しません。
-        </p>
-      </Section>
-
-      <Section title="9. ポリシーの変更">
+      <Section title="10. ポリシーの変更">
         <p>
           本ポリシーは必要に応じて改定します。重要な変更がある場合はサービス上で通知します。
         </p>
       </Section>
 
-      <Section title="10. お問い合わせ">
+      <Section title="11. お問い合わせ">
         <p>
-          個人情報の取扱いに関するお問い合わせは、下記メールアドレスまでご連絡ください。
-        </p>
-        <p className="mt-2">
-          メール：<a href="mailto:naikanavi.info@gmail.com" className="text-ac underline">naikanavi.info@gmail.com</a>
+          個人情報の取扱いに関するお問い合わせは、<a href="/contact" className="text-ac underline">お問い合わせページ</a>よりご連絡ください。
         </p>
       </Section>
     </article>
