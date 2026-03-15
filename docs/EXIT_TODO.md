@@ -51,7 +51,7 @@
 - [x] Tier2: BMI, BSA, Cockcroft-Gault, GCS, RCRI, AG, ABCD2, mRS, ECOG, Karnofsky（2026-03-15）
 - [x] Tier2残: NIHSS, APACHE II（2026-03-15）
 - [x] Tier3: 10種（GBS, AIMS65, HEART, TIMI, NEWS2, Charlson, Centor, Caprini, Padua, MASCC）（2026-03-15）
-- [ ] Tier3残: 10種（専門スコア追加予定）
+- [x] Tier3残: 10種（Alvarado, PERC, Ottawa Ankle, Rockall, sPESI, PHQ-9, GAD-7, ISTH DIC, Light基準）（2026-03-15）
 - [x] 各ツールにSEO解説セクション追加
 - [x] 既存173記事との相互内部リンク（2026-03-15、63記事にツールリンクボックス挿入）
 - [x] 構造化データ（MedicalWebPage + FAQPage）
@@ -165,11 +165,11 @@
 | WS | 完了 | 残り | 進捗率 |
 |----|------|------|--------|
 | WS0: ドメイン移行 | 9 | 3 | 75% |
-| WS1: プロダクト | 35 | 4 | 90% |
+| WS1: プロダクト | 36 | 3 | 92% |
 | WS2: 数字を残す | 5 | 7 | 42% |
 | WS3: コード清潔さ | 18 | 1 | 95% |
 | WS4: 法務・インフラ | 8 | 9 | 47% |
-| **合計** | **75** | **24** | **76%** |
+| **合計** | **76** | **23** | **77%** |
 
 ---
 
