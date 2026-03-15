@@ -114,7 +114,7 @@ export default function RenalDoseAbxPage() {
     return antibiotics.filter(a => a.category === selectedAbx)
   }, [selectedAbx])
 
-  const categories = [...new Set(antibiotics.map(a => a.category))]
+  const categories = Array.from(new Set(antibiotics.map(a => a.category)))
 
   return (
     <CalculatorLayout
