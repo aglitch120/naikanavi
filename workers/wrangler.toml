@@ -18,7 +18,7 @@ compatibility_date = "2024-01-01"
 # npx wrangler kv namespace create IWOR_KV の結果で id を埋める
 [[kv_namespaces]]
 binding = "IWOR_KV"
-id = ""  # ← ここに KV namespace ID を貼り付け
+id = "4af092a9ddd243f09a0f6d2f1979dc6e"  # IWOR_KV
 
 # ── カスタムドメイン（任意） ──
 # Cloudflare Dashboard → Workers → iwor-api → Settings → Triggers で
