@@ -144,7 +144,7 @@ export default function Header() {
             PRO
           </Link>
           <Link
-            href="/app"
+            href="/pro/activate"
             className="text-xs md:text-sm bg-ac text-white px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-ac2 transition-colors font-medium"
           >
             ログイン

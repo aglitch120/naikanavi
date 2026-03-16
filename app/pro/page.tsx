@@ -313,7 +313,7 @@ export default function ProPage() {
             href="/pro/activate"
             className="text-xs text-ac hover:underline"
           >
-            購入済みの方はこちら（注文番号で有効化）→
+            購入済みの方はこちら（ログイン / 会員登録）→
           </a>
         </p>
       </section>

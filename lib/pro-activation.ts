@@ -1,92 +1,135 @@
 /**
- * PRO アクティベーション（注文番号方式）
- *
- * Phase 1: Worker API で注文番号を検証 → localStorage に保存
- * Phase 2: Supabase Auth に移行（useProStatus.ts のみ差し替え）
+ * PRO 認証（注文番号で会員登録 + メール/パスワードでログイン）
  */
 
-// Worker API URL（デプロイ後に設定）
-// 開発時は localhost:8787、本番は iwor-api.xxx.workers.dev or api.iwor.jp
 const API_URL = 'https://iwor-api.mightyaddnine.workers.dev'
 
-interface ActivationResult {
+// ── 会員登録 ──
+
+interface RegisterResult {
   success: boolean
+  email?: string
+  password?: string
   plan?: string
-  durationDays?: number
-  activatedAt?: string
   expiresAt?: string
   error?: string
 }
 
-/**
- * 注文番号でPROをアクティベーション
- */
-export async function activateWithOrderNumber(orderNumber: string): Promise<ActivationResult> {
-  const cleaned = orderNumber.trim().replace(/\D/g, '')
+export async function registerWithOrderNumber(orderNumber: string, email: string): Promise<RegisterResult> {
+  const cleanedOrder = orderNumber.trim().replace(/\D/g, '')
+  const cleanedEmail = email.trim().toLowerCase()
 
-  if (!cleaned || cleaned.length < 5 || cleaned.length > 12) {
+  if (!cleanedOrder || cleanedOrder.length < 5 || cleanedOrder.length > 12) {
     return { success: false, error: '注文番号を正しく入力してください（数字5〜12桁）' }
   }
-
-  // API未設定時のフォールバック（開発用）
-  if (!API_URL) {
-    return { success: false, error: 'サーバーに接続できません。しばらく経ってからお試しください。' }
+  if (!cleanedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanedEmail)) {
+    return { success: false, error: 'メールアドレスを正しく入力してください' }
   }
 
   try {
-    const res = await fetch(`${API_URL}/api/activate`, {
+    const res = await fetch(`${API_URL}/api/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ orderNumber: cleaned }),
+      body: JSON.stringify({ orderNumber: cleanedOrder, email: cleanedEmail }),
     })
-
     const data = await res.json()
 
     if (!res.ok || !data.ok) {
-      return { success: false, error: data.error || '不明なエラーが発生しました。' }
+      return { success: false, error: data.error || '登録に失敗しました。' }
     }
 
     // localStorage に保存
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('iwor_pro_user', 'true')
-      localStorage.setItem('iwor_pro_plan', data.plan || 'pro_1y')
-      localStorage.setItem('iwor_pro_activated_at', data.activatedAt || new Date().toISOString())
-      localStorage.setItem('iwor_pro_expires_at', data.expiresAt || '')
-      localStorage.setItem('iwor_pro_order', cleaned)
-    }
+    saveProSession(data.email, data.plan, data.expiresAt)
 
     return {
       success: true,
+      email: data.email,
+      password: data.password,
       plan: data.plan,
-      durationDays: data.durationDays,
-      activatedAt: data.activatedAt,
       expiresAt: data.expiresAt,
     }
   } catch {
-    return { success: false, error: 'サーバーに接続できませんでした。インターネット接続を確認してください。' }
+    return { success: false, error: 'サーバーに接続できませんでした。' }
   }
 }
 
-/** PRO状態の詳細情報を取得 */
+// ── ログイン ──
+
+interface LoginResult {
+  success: boolean
+  email?: string
+  plan?: string
+  expiresAt?: string
+  expired?: boolean
+  error?: string
+}
+
+export async function loginWithEmail(email: string, password: string): Promise<LoginResult> {
+  const cleanedEmail = email.trim().toLowerCase()
+
+  if (!cleanedEmail || !password) {
+    return { success: false, error: 'メールアドレスとパスワードを入力してください' }
+  }
+
+  try {
+    const res = await fetch(`${API_URL}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: cleanedEmail, password }),
+    })
+    const data = await res.json()
+
+    if (!res.ok || !data.ok) {
+      return { success: false, error: data.error || 'ログインに失敗しました。' }
+    }
+
+    if (data.expired) {
+      clearProSession()
+      return { success: false, error: 'PRO会員の期限が切れています。' }
+    }
+
+    saveProSession(data.email, data.plan, data.expiresAt)
+
+    return {
+      success: true,
+      email: data.email,
+      plan: data.plan,
+      expiresAt: data.expiresAt,
+    }
+  } catch {
+    return { success: false, error: 'サーバーに接続できませんでした。' }
+  }
+}
+
+// ── セッション管理 ──
+
+function saveProSession(email: string, plan: string, expiresAt: string) {
+  if (typeof window === 'undefined') return
+  localStorage.setItem('iwor_pro_user', 'true')
+  localStorage.setItem('iwor_pro_email', email)
+  localStorage.setItem('iwor_pro_plan', plan || 'pro_1y')
+  localStorage.setItem('iwor_pro_expires_at', expiresAt || '')
+}
+
 export function getProDetails() {
   if (typeof window === 'undefined') return null
   const isPro = localStorage.getItem('iwor_pro_user') === 'true'
   if (!isPro) return null
 
   return {
+    email: localStorage.getItem('iwor_pro_email') || '',
     plan: localStorage.getItem('iwor_pro_plan') || 'unknown',
-    activatedAt: localStorage.getItem('iwor_pro_activated_at') || '',
     expiresAt: localStorage.getItem('iwor_pro_expires_at') || '',
-    orderNumber: localStorage.getItem('iwor_pro_order') || '',
   }
 }
 
-/** PRO状態をリセット（デバッグ・退会用） */
-export function resetProStatus(): void {
+export function clearProSession() {
   if (typeof window === 'undefined') return
   localStorage.removeItem('iwor_pro_user')
+  localStorage.removeItem('iwor_pro_email')
   localStorage.removeItem('iwor_pro_plan')
-  localStorage.removeItem('iwor_pro_activated_at')
   localStorage.removeItem('iwor_pro_expires_at')
+  // 旧キーも掃除
+  localStorage.removeItem('iwor_pro_activated_at')
   localStorage.removeItem('iwor_pro_order')
 }
