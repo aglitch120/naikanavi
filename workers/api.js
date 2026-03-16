@@ -173,12 +173,22 @@ export default {
         })
       );
 
+      // セッショントークン生成
+      const regTokenBytes = new Uint8Array(32);
+      crypto.getRandomValues(regTokenBytes);
+      const regSessionToken = Array.from(regTokenBytes).map(b => b.toString(16).padStart(2, "0")).join("");
+      await env.IWOR_KV.put(`session:${regSessionToken}`, JSON.stringify({
+        email,
+        createdAt: new Date().toISOString(),
+      }), { expirationTtl: 86400 * 90 });
+
       return json({
         ok: true,
         email,
         password,
         plan: order.plan,
         expiresAt: expiresAt.toISOString(),
+        sessionToken: regSessionToken,
       }, 200, request);
     }
 
@@ -211,12 +221,25 @@ export default {
       // 期限チェック
       const expired = user.expiresAt && new Date() > new Date(user.expiresAt);
 
+      // セッショントークン生成（データ同期用）
+      let sessionToken = null;
+      if (!expired) {
+        const tokenBytes = new Uint8Array(32);
+        crypto.getRandomValues(tokenBytes);
+        sessionToken = Array.from(tokenBytes).map(b => b.toString(16).padStart(2, "0")).join("");
+        await env.IWOR_KV.put(`session:${sessionToken}`, JSON.stringify({
+          email: user.email,
+          createdAt: new Date().toISOString(),
+        }), { expirationTtl: 86400 * 90 }); // 90日有効
+      }
+
       return json({
         ok: true,
         email: user.email,
         plan: user.plan,
         expiresAt: user.expiresAt,
         expired,
+        sessionToken,
       }, 200, request);
     }
 
@@ -305,6 +328,52 @@ export default {
 
       await env.IWOR_KV.delete(orderKey(orderNumber));
       return json({ ok: true, deleted: orderNumber }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  ダッシュボードデータ保存
+    //  PUT /api/dashboard
+    //  Authorization: Bearer {sessionToken}
+    // ══════════════════════════════════════════════════
+    if (path === "/api/dashboard" && request.method === "PUT") {
+      const auth = request.headers.get("Authorization") || "";
+      const token = auth.replace("Bearer ", "").trim();
+      if (!token) return json({ error: "Unauthorized" }, 401, request);
+
+      const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
+      if (!sessionRaw) return json({ error: "Invalid session" }, 401, request);
+
+      const session = JSON.parse(sessionRaw);
+      const body = await request.json();
+
+      await env.IWOR_KV.put(`dashboard:${session.email}`, JSON.stringify({
+        data: body.data,
+        updatedAt: new Date().toISOString(),
+      }));
+
+      return json({ ok: true, updatedAt: new Date().toISOString() }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  ダッシュボードデータ読み込み
+    //  GET /api/dashboard
+    //  Authorization: Bearer {sessionToken}
+    // ══════════════════════════════════════════════════
+    if (path === "/api/dashboard" && request.method === "GET") {
+      const auth = request.headers.get("Authorization") || "";
+      const token = auth.replace("Bearer ", "").trim();
+      if (!token) return json({ error: "Unauthorized" }, 401, request);
+
+      const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
+      if (!sessionRaw) return json({ error: "Invalid session" }, 401, request);
+
+      const session = JSON.parse(sessionRaw);
+      const raw = await env.IWOR_KV.get(`dashboard:${session.email}`);
+
+      if (!raw) return json({ ok: true, data: null }, 200, request);
+
+      const parsed = JSON.parse(raw);
+      return json({ ok: true, data: parsed.data, updatedAt: parsed.updatedAt }, 200, request);
     }
 
     // ── 404 ──

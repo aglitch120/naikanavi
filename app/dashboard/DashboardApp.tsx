@@ -1,8 +1,15 @@
 // @ts-nocheck
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { SPECIALTIES as SP, DISEASE_GROUPS as DG } from '@/lib/josler-data'
+import { useProStatus } from '@/components/pro/useProStatus'
+import ProModal from '@/components/pro/ProModal'
+import {
+  loadDashboardData, saveDashboardData, saveToLocal,
+  startAutoSave, stopAutoSave, setStatusCallback,
+  type DashboardData, type SaveStatus,
+} from '@/lib/dashboard-storage'
 
 
 // ── Default 5 tasks ──
@@ -51,6 +58,7 @@ function exportCSV(arc:any[],cFields:any[]){
 
 // ═══════ MAIN ═══════
 export default function DashboardApp(){
+  const { isPro } = useProStatus()
   const[tab,setTab]=useState<string>("todo");
   const[pts,setPts]=useState<any[]>([]);
   const[arc,setArc]=useState<any[]>([]);
@@ -66,10 +74,73 @@ export default function DashboardApp(){
   const[editLogId,setEditLogId]=useState<string|null>(null);
   const[cusIn,setCusIn]=useState<string>("");
   const[cfIn,setCfIn]=useState<string>("");
+  const[saveStatus,setSaveStatus]=useState<SaveStatus>("saved");
+  const[showProModal,setShowProModal]=useState<boolean>(false);
+  const[proFeature,setProFeature]=useState<string>("full_access");
+  const[loaded,setLoaded]=useState<boolean>(false);
+  const saveTimer=useRef<any>(null);
 
+  // ── Data load on mount ──
+  useEffect(()=>{
+    (async()=>{
+      const data=await loadDashboardData();
+      if(data){
+        if(data.patients?.length) setPts(data.patients);
+        if(data.archived?.length) setArc(data.archived);
+        if(data.taskTemplates?.length) setTasks(data.taskTemplates);
+        if(data.customFields?.length) setCFields(data.customFields);
+      }
+      setLoaded(true);
+    })();
+    setStatusCallback(setSaveStatus);
+    return()=>{stopAutoSave();};
+  },[]);
+
+  // ── Auto-save: debounced on every state change ──
+  const getPayload=useCallback(():DashboardData=>({
+    patients:pts, archived:arc, taskTemplates:tasks, customFields:cFields,
+  }),[pts,arc,tasks,cFields]);
+
+  useEffect(()=>{
+    if(!loaded) return;
+    if(!isPro){
+      // FREE: save to localStorage only (session-level convenience)
+      saveToLocal(getPayload());
+      return;
+    }
+    // PRO: debounced save (localStorage immediate + cloud debounced)
+    if(saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current=setTimeout(()=>{
+      saveDashboardData(getPayload(),true);
+    },2000);
+    // localStorage immediate
+    saveToLocal(getPayload());
+  },[pts,arc,tasks,cFields,loaded,isPro,getPayload]);
+
+  // ── Start auto-save for PRO users ──
+  useEffect(()=>{
+    if(loaded && isPro){
+      startAutoSave(getPayload);
+    }
+    return()=>{stopAutoSave();};
+  },[loaded,isPro,getPayload]);
+
+  // ── Daily task reset ──
   useEffect(()=>{const t=new Date().toDateString();if(lastReset!==t){setPts((p:any)=>p.map((x:any)=>({...x,tasks:Object.fromEntries(Object.keys(x.tasks).map((k:any)=>[k,false]))})));setLastReset(t);}},[lastReset]);
 
-  const addPt=(d:any)=>{setPts((p:any)=>[...p,{id:uid(),...d,tasks:Object.fromEntries(tasks.map((t:any)=>[t.id,false])),memo:"",admitDate:td(),customData:{}}]);setShowAdd(false);};
+  // ── PRO gate helper ──
+  const requirePro=(feature:string)=>{
+    if(isPro) return false;
+    setProFeature(feature);
+    setShowProModal(true);
+    return true;
+  };
+
+  const addPt=(d:any)=>{
+    // 3人目以上 → PRO
+    if(pts.length>=2 && requirePro("full_access")) return;
+    setPts((p:any)=>[...p,{id:uid(),...d,tasks:Object.fromEntries(tasks.map((t:any)=>[t.id,false])),memo:"",admitDate:td(),customData:{}}]);setShowAdd(false);
+  };
   const updPt=(id:string,u:any)=>setPts((p:any)=>p.map((x:any)=>x.id===id?{...x,...u}:x));
   const togTask=(pid:string,tid:string)=>setPts((p:any)=>p.map((x:any)=>x.id===pid?{...x,tasks:{...x.tasks,[tid]:!x.tasks[tid]}}:x));
   const discharge=(id:string)=>{const p=pts.find((x:any)=>x.id===id);if(!p)return;setArc((a:any)=>[{...p,dischargeDate:td()},...a]);setPts(ps=>ps.filter((x:any)=>x.id!==id));setSelId(null);setDcId(null);};
@@ -91,6 +162,12 @@ export default function DashboardApp(){
         <div style={{width:32,height:32,background:C.ac,borderRadius:8,display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",fontSize:14,fontWeight:700}}>iw</div>
         <span style={{fontWeight:700,fontSize:17}}>病棟TODO</span>
         <span style={{fontSize:11,color:C.ac,background:C.acl,padding:"2px 7px",borderRadius:4,fontWeight:600}}>PRO</span>
+        <span style={{flex:1}} />
+        {isPro && (
+          <span style={{fontSize:11,padding:"3px 8px",borderRadius:12,fontFamily:"monospace",background:saveStatus==="saved"?"#DCFCE7":saveStatus==="saving"||saveStatus==="dirty"?"#FEF3C7":saveStatus==="error"?"#FEE2E2":"#EEF4FF",color:saveStatus==="saved"?"#166534":saveStatus==="saving"||saveStatus==="dirty"?"#92400E":saveStatus==="error"?"#991B1B":"#1E40AF",transition:"all .3s"}}>
+            {saveStatus==="saved"?"✓ 保存済み":saveStatus==="saving"||saveStatus==="dirty"?"⟳ 保存中…":saveStatus==="error"?"✕ 保存失敗":"☁ オフライン"}
+          </span>
+        )}
       </div>
 
       {/* Tabs */}
@@ -103,7 +180,11 @@ export default function DashboardApp(){
       </div>
 
       <div style={{padding:"12px 14px"}}>
-        {tab==="todo"?(
+        {!loaded?(
+          <div style={{textAlign:"center",padding:"60px 20px",color:C.m}}>
+            <div style={{fontSize:13}}>読み込み中...</div>
+          </div>
+        ):tab==="todo"?(
           <>
             <div style={{textAlign:"center",marginBottom:12,fontSize:13,color:C.m,fontWeight:500}}>📅 {fdJP(td())}</div>
 
@@ -178,7 +259,7 @@ export default function DashboardApp(){
                 <div style={{fontSize:48,marginBottom:16,opacity:.4}}>🏥</div>
                 <p style={{fontSize:15,marginBottom:8,fontWeight:500,color:C.tx}}>入院患者がいません</p>
                 <p style={{fontSize:13,marginBottom:24}}>右下の＋ボタンで患者を追加</p>
-                <button onClick={()=>setShowAdd(true)} style={{background:C.ac,color:"#fff",border:"none",borderRadius:9,padding:"12px 28px",fontSize:14,fontWeight:500,cursor:"pointer"}}>+ 新しい患者を追加</button>
+                <button onClick={()=>{if(pts.length>=2&&requirePro("full_access"))return;setShowAdd(true);}} style={{background:C.ac,color:"#fff",border:"none",borderRadius:9,padding:"12px 28px",fontSize:14,fontWeight:500,cursor:"pointer"}}>+ 新しい患者を追加</button>
               </div>
             ):(
               <div style={{display:"flex",flexDirection:"column",gap:8}}>
@@ -194,7 +275,7 @@ export default function DashboardApp(){
                 <span style={{position:"absolute",left:10,top:"50%",transform:"translateY(-50%)",color:C.m,fontSize:13,pointerEvents:"none"}}>🔍</span>
                 <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="領域、病名、メモで検索..." style={{width:"100%",padding:"9px 10px 9px 32px",border:`1.5px solid ${C.br}`,borderRadius:9,background:C.s0,fontSize:13,color:C.tx,outline:"none",boxSizing:"border-box"}} />
               </div>
-              <button onClick={()=>exportCSV(arc,cFields)} style={{padding:"9px 12px",borderRadius:9,border:`1.5px solid ${C.ac}`,background:C.acl,color:C.ac,fontSize:12,fontWeight:600,cursor:"pointer",whiteSpace:"nowrap",display:"flex",alignItems:"center",gap:4}}>📥 CSV</button>
+              <button onClick={()=>{if(requirePro("save"))return;exportCSV(arc,cFields);}} style={{padding:"9px 12px",borderRadius:9,border:`1.5px solid ${C.ac}`,background:C.acl,color:C.ac,fontSize:12,fontWeight:600,cursor:"pointer",whiteSpace:"nowrap",display:"flex",alignItems:"center",gap:4}}>📥 CSV</button>
             </div>
 
             {/* Custom fields editor (also in log tab for convenience) */}
@@ -236,12 +317,13 @@ export default function DashboardApp(){
         )}
       </div>
 
-      {tab==="todo"&&<button onClick={()=>setShowAdd(true)} style={{position:"fixed",bottom:24,right:"max(14px,calc(50% - 246px))",width:56,height:56,borderRadius:"50%",border:"none",background:C.ac,color:"#fff",fontSize:28,fontWeight:300,cursor:"pointer",boxShadow:`0 4px 20px ${C.ac}44`,display:"flex",alignItems:"center",justifyContent:"center",zIndex:40}}>+</button>}
+      {tab==="todo"&&<button onClick={()=>{if(pts.length>=2&&requirePro("full_access"))return;setShowAdd(true);}} style={{position:"fixed",bottom:24,right:"max(14px,calc(50% - 246px))",width:56,height:56,borderRadius:"50%",border:"none",background:C.ac,color:"#fff",fontSize:28,fontWeight:300,cursor:"pointer",boxShadow:`0 4px 20px ${C.ac}44`,display:"flex",alignItems:"center",justifyContent:"center",zIndex:40}}>+</button>}
 
       {showAdd&&<AddModal onAdd={addPt} onClose={()=>setShowAdd(false)} />}
       {selP&&<DetailModal p={selP} tasks={tasks} cFields={cFields} onUpd={u=>updPt(selId,u)} onDC={()=>{setSelId(null);setDcId(selP.id);}} onClose={()=>setSelId(null)} onTog={tid=>togTask(selId,tid)} />}
       {dcId&&<DCConfirm p={pts.find((x:any)=>x.id===dcId)} onOk={()=>discharge(dcId)} onNo={()=>setDcId(null)} />}
       {editLP&&<LogEditModal p={editLP} cFields={cFields} onUpd={u=>updArc(editLogId,u)} onClose={()=>setEditLogId(null)} />}
+      {showProModal&&<ProModal feature={proFeature as any} onClose={()=>setShowProModal(false)} />}
     </div>
   );
 }

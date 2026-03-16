@@ -39,7 +39,7 @@ export async function registerWithOrderNumber(orderNumber: string, email: string
     }
 
     // localStorage に保存
-    saveProSession(data.email, data.plan, data.expiresAt)
+    saveProSession(data.email, data.plan, data.expiresAt, data.sessionToken)
 
     return {
       success: true,
@@ -88,7 +88,7 @@ export async function loginWithEmail(email: string, password: string): Promise<L
       return { success: false, error: 'PRO会員の期限が切れています。' }
     }
 
-    saveProSession(data.email, data.plan, data.expiresAt)
+    saveProSession(data.email, data.plan, data.expiresAt, data.sessionToken)
 
     return {
       success: true,
@@ -103,12 +103,15 @@ export async function loginWithEmail(email: string, password: string): Promise<L
 
 // ── セッション管理 ──
 
-function saveProSession(email: string, plan: string, expiresAt: string) {
+function saveProSession(email: string, plan: string, expiresAt: string, sessionToken?: string) {
   if (typeof window === 'undefined') return
   localStorage.setItem('iwor_pro_user', 'true')
   localStorage.setItem('iwor_pro_email', email)
   localStorage.setItem('iwor_pro_plan', plan || 'pro_1y')
   localStorage.setItem('iwor_pro_expires_at', expiresAt || '')
+  if (sessionToken) {
+    localStorage.setItem('iwor_session_token', sessionToken)
+  }
 }
 
 export function getProDetails() {
@@ -120,6 +123,7 @@ export function getProDetails() {
     email: localStorage.getItem('iwor_pro_email') || '',
     plan: localStorage.getItem('iwor_pro_plan') || 'unknown',
     expiresAt: localStorage.getItem('iwor_pro_expires_at') || '',
+    sessionToken: localStorage.getItem('iwor_session_token') || '',
   }
 }
 
@@ -129,6 +133,7 @@ export function clearProSession() {
   localStorage.removeItem('iwor_pro_email')
   localStorage.removeItem('iwor_pro_plan')
   localStorage.removeItem('iwor_pro_expires_at')
+  localStorage.removeItem('iwor_session_token')
   // 旧キーも掃除
   localStorage.removeItem('iwor_pro_activated_at')
   localStorage.removeItem('iwor_pro_order')
