@@ -2,52 +2,23 @@
 
 ## 📁 プロジェクト構成
 
-```
-iwor.jp/
-├── app/
-│   ├── layout.tsx                 # ルートレイアウト（グローバルメタデータ）
-│   ├── page.tsx                   # 既存のアプリ（/）
-│   ├── blog/
-│   │   ├── page.tsx               # ブログ一覧（/blog）
-│   │   ├── [slug]/
-│   │   │   └── page.tsx           # 記事詳細（/blog/xxx）
-│   │   └── category/
-│   │       └── [category]/
-│   │           └── page.tsx       # カテゴリ別（/blog/category/xxx）
-│   ├── admin/                     # 管理画面（Phase 2）
-│   │   ├── page.tsx               # ダッシュボード
-│   │   ├── articles/page.tsx      # 記事管理
-│   │   ├── seo-health/page.tsx    # SEOヘルスチェック
-│   │   └── generate/page.tsx      # Claude API連携記事生成
-│   ├── sitemap.ts                 # 動的サイトマップ
-│   └── robots.ts                  # robots.txt
-├── content/
-│   └── blog/
-│       ├── b01-josler-byoreki-youyaku-kakikata.mdx
-│       └── ...                    # 240記事
-├── components/
-│   ├── blog/
-│   │   ├── ArticleCard.tsx        # 記事カード
-│   │   ├── ArticleHeader.tsx      # 記事ヘッダー
-│   │   ├── TableOfContents.tsx    # 目次（スクロール追従）
-│   │   ├── RelatedPosts.tsx       # 関連記事
-│   │   ├── CTABanner.tsx          # CTA共通コンポーネント
-│   │   ├── Breadcrumb.tsx         # パンくずリスト
-│   │   └── ShareButtons.tsx       # SNSシェアボタン
-│   └── seo/
-│       ├── ArticleJsonLd.tsx      # Article構造化データ
-│       ├── BreadcrumbJsonLd.tsx   # パンくず構造化データ
-│       └── OrganizationJsonLd.tsx # 組織構造化データ
-├── lib/
-│   ├── mdx.ts                     # MDXパーサー・取得関数
-│   ├── seo.ts                     # メタデータビルダー
-│   └── blog-config.ts             # ブログ設定（カテゴリ・CTA等）
-├── public/
-│   ├── og/                        # OGP画像
-│   └── blog/                      # ブログ用アセット
-└── styles/
-    └── blog.css                   # ブログ専用スタイル
-```
+→ root README.md に正確なディレクトリツリーあり。以下は実装上の補足のみ。
+
+### 主要ディレクトリ
+
+- `app/` — Next.js App Router。ページコンポーネント
+- `app/tools/calc/` — 79個の臨床計算ツール（CalculatorLayout共通レイアウト）
+- `app/tools/er/` — ER主訴別対応ツリー6本
+- `app/tools/acls/` — ACLS/BLS フロー4本
+- `app/tools/icu/` — ICU管理ツール4本
+- `app/tools/interpret/` — 検査読影5本（SVG模式図付き）
+- `app/compare/` — 薬剤比較25カテゴリ
+- `components/pro/` — ProGate, ProModal, useProStatus, ProPulseHint
+- `components/tools/` — CalculatorLayout, ERDisclaimer等の共通コンポーネント
+- `components/tools/interpret/` — ChestXraySVG, ECGSVG, AbdominalEchoSVG
+- `content/blog/` — MDX記事173本
+- `lib/tools-config.ts` — ツール一覧・メタデータ定義
+- `lib/tools-metadata.ts` — SEO用メタデータ生成
 
 ## 🎨 デザインシステム
 
@@ -98,11 +69,11 @@ iwor.jp/
    - クラスター: G + H + I（内科専門医試験・試験領域別・総合内科専門医）
    - ターゲットKW: 「内科専門医試験」「筆記試験対策」
 
-3. **内科専攻医の効率化ガイド** (`/blog/efficiency-guide`)
+3. **医師の効率化ガイド** (`/blog/efficiency-guide`)
    - クラスター: J（AI・ツール）
    - ターゲットKW: 「J-OSLER AI」「医師 効率化ツール」
 
-4. **内科専攻医のお金とキャリア** (`/blog/money-career-guide`)
+4. **医師のお金とキャリア** (`/blog/money-career-guide`)
    - クラスター: K + L + M + N + O + P（メンタル・バイト・税金・キャリア・学会・結婚）
    - ターゲットKW: 「医師バイト」「確定申告 医師」「内科専門医 キャリア」
 
@@ -149,7 +120,7 @@ title: "【J-OSLER】病歴要約の書き方完全ガイド"
 description: "J-OSLERの病歴要約を効率的に書く方法を徹底解説"
 date: "2026-03-10"
 updated: "2026-03-10"
-author: "内科ナビ編集部"
+author: "iwor編集部"
 category: "josler-basics"       # カテゴリSlug
 cluster: "B"                     # クラスターID
 pillar: "josler-complete-guide"  # 所属ピラーSlug
@@ -295,7 +266,7 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
 1. **検索流入の最大化**
    - 各ツールに `layout.tsx` で metadata（title / description / OGP / canonical）を設定
    - `lib/tools-metadata.ts` の `generateToolMetadata()` を使用
-   - title形式: `{ツール名}（{英名}）— 無料オンライン計算ツール | 内科ナビ`
+   - title形式: `{ツール名}（{英名}）— 無料オンライン計算ツール | iwor`
    - 構造化データ: MedicalWebPage + BreadcrumbList + FAQPage（3問以上）
 
 2. **ユーザビリティ最優先（＝SEO最重要因子）**
