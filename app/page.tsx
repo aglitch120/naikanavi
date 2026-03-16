@@ -18,9 +18,9 @@ export default function HomePage() {
 
       {/* ═══ Hero ═══ */}
       <section className="pt-12 pb-16 md:pt-20 md:pb-24">
-        {/* モバイル: 中央寄せ */}
-        <div className="text-center md:text-left md:flex md:items-center md:gap-12">
-          <div className="flex-1">
+        {/* モバイル: 中央揃え / デスクトップ: 左テキスト＋右モックアップ */}
+        <div className="flex flex-col md:flex-row md:items-center md:gap-12">
+          <div className="flex-1 text-center md:text-left mb-10 md:mb-0">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-acl border border-ac/20 rounded-full text-xs font-medium text-ac mb-6">
               <span className="w-1.5 h-1.5 bg-ac rounded-full animate-pulse" />
               123個の臨床ツール + 173記事、すべて無料
@@ -34,15 +34,15 @@ export default function HomePage() {
               臨床ツール、病棟管理、学習、キャリア支援。
               必要なものが、すべてひとつの場所に。
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
               <Link
-                href="/tools"
+                href="/app"
                 className="inline-flex items-center justify-center gap-2 bg-ac text-white px-7 py-3.5 rounded-xl font-bold text-sm hover:bg-ac2 transition-colors shadow-lg shadow-ac/20"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                ツールを使ってみる
+                アプリを使ってみる
               </Link>
               <Link
                 href="/pro"
@@ -53,7 +53,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* デスクトップのみモックアップ */}
+          {/* デスクトップのみモックアップ表示 */}
           <div className="hidden md:block flex-1">
             <AppMockup className="w-full" />
           </div>
@@ -64,7 +64,9 @@ export default function HomePage() {
       <section className="mb-16">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-8 h-0.5 bg-ac rounded-full" />
-          <h2 className="text-xl md:text-2xl font-bold text-tx">7つのサービス</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-tx">
+            ひとつのプラットフォームで、すべてを。
+          </h2>
         </div>
 
         {/* ── メインカード: 臨床ツール ── */}
@@ -81,10 +83,9 @@ export default function HomePage() {
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-tx group-hover:text-ac transition-colors">臨床ツール</h3>
-                <p className="text-xs text-muted">計算・ER・ACLS/BLS・ICU・読影・薬剤比較 — すべて無料</p>
+                <p className="text-xs text-muted">計算・ER対応・ACLS/BLS・ICU管理・検査読影・薬剤比較</p>
               </div>
             </div>
-
             <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
               {['臨床計算', 'ER対応', 'ACLS/BLS', 'ICU管理', '検査読影', '薬剤比較'].map(name => (
                 <div key={name} className="bg-ac/10 text-ac border border-ac/20 rounded-lg px-3 py-2.5 text-center">
@@ -94,16 +95,16 @@ export default function HomePage() {
             </div>
           </div>
           <div className="px-6 md:px-8 py-3 bg-ac/5 border-t border-ac/10 flex items-center justify-between">
-            <p className="text-xs text-muted">CHA₂DS₂-VASc, eGFR, SOFA, Wells PE, A-DROP, qSOFA, FIB-4 ...</p>
+            <p className="text-xs text-muted">CHA₂DS₂-VASc, eGFR, SOFA, Wells PE, A-DROP, qSOFA ...</p>
             <span className="text-xs text-ac font-medium group-hover:translate-x-1 transition-transform">使ってみる →</span>
           </div>
         </Link>
 
-        {/* ── 6サービス: ガラスカード ── */}
+        {/* ── 6サービス: ガラス質感カード ── */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {[
             {
-              href: '/dashboard', title: '病棟TODO', sub: '症例ログ & Stat tracker', tag: 'PRO',
+              href: '/dashboard', title: '病棟TODO', sub: 'タスク管理 & 症例ログ', tag: 'PRO',
               icon: <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 12l2.5 2.5L16 9" /></>,
             },
             {
@@ -115,41 +116,38 @@ export default function HomePage() {
               icon: <><path d="M12 20V10" /><path d="M18 20V4" /><path d="M6 20v-4" /></>,
             },
             {
-              href: '/matching', title: 'マッチング対策', sub: '履歴書 & AI面接', tag: 'PRO',
+              href: '/matching', title: 'マッチング対策', sub: '履歴書 & AI面接練習', tag: 'PRO',
               icon: <><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" /></>,
             },
             {
-              href: '/journal', title: '論文フィード', sub: '日本語要約 & ブックマーク', tag: 'FREEMIUM',
+              href: '/journal', title: '論文フィード', sub: '日本語要約 & ブックマーク', tag: 'FREE',
               icon: <><path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z" /></>,
             },
             {
               href: '/blog', title: 'ブログ', sub: 'J-OSLER & キャリア', tag: 'FREE',
-              icon: <><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2" /></>,
+              icon: <><path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" /></>,
             },
           ].map(s => (
             <Link
               key={s.href}
               href={s.href}
-              className="group relative flex flex-col items-center text-center rounded-2xl border border-ac/15 bg-gradient-to-br from-acl/40 via-s0 to-bg p-6 md:p-7 hover:border-ac/35 hover:shadow-lg hover:shadow-ac/5 transition-all"
+              className="group relative flex flex-col items-center text-center rounded-2xl border border-ac/15 bg-gradient-to-br from-acl/40 via-s0 to-s0 p-6 md:p-7 hover:border-ac/35 hover:shadow-lg hover:shadow-ac/5 transition-all backdrop-blur-sm"
             >
-              {/* 右上バッジ */}
-              <span className={`absolute top-3 right-3 text-[10px] font-semibold px-2 py-0.5 rounded-md ${
+              {/* PRO / FREE バッジ — 右上 */}
+              <span className={`absolute top-3 right-3 text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-md ${
                 s.tag === 'FREE'
-                  ? 'text-ac bg-ac/10'
-                  : s.tag === 'FREEMIUM'
-                    ? 'text-ac/60 bg-ac/5'
-                    : 'text-ac bg-ac/10'
+                  ? 'text-ac/60 bg-ac/8'
+                  : 'text-ac bg-ac/12'
               }`}>
                 {s.tag}
               </span>
 
-              {/* アイコン */}
-              <div className="w-11 h-11 rounded-xl bg-ac/10 border border-ac/15 flex items-center justify-center mb-4 group-hover:bg-ac/15 group-hover:shadow-md group-hover:shadow-ac/10 transition-all">
+              {/* アイコン — ガラス風 */}
+              <div className="w-12 h-12 rounded-xl bg-ac/10 border border-ac/15 flex items-center justify-center mb-4 group-hover:bg-ac/15 group-hover:border-ac/25 group-hover:shadow-md group-hover:shadow-ac/10 transition-all">
                 <svg className="w-5 h-5 text-ac" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                   {s.icon}
                 </svg>
               </div>
-
               <h3 className="text-sm font-bold text-tx mb-1 group-hover:text-ac transition-colors">{s.title}</h3>
               <p className="text-[11px] text-muted leading-relaxed">{s.sub}</p>
             </Link>
@@ -166,7 +164,6 @@ export default function HomePage() {
           </div>
           <Link href="/blog" className="text-xs text-ac font-medium hover:underline">すべて見る →</Link>
         </div>
-
         {latestPosts.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {latestPosts.map(post => (
@@ -178,8 +175,11 @@ export default function HomePage() {
 
       {/* ═══ PRO CTA ═══ */}
       <section className="mb-8">
-        <div className="bg-ac rounded-2xl p-8 md:p-10 text-center relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="relative bg-ac rounded-2xl p-8 md:p-10 text-center overflow-hidden">
+          {/* ガラス装飾 */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute -top-20 -right-20 w-60 h-60 bg-white/5 rounded-full blur-2xl" />
+            <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-white/5 rounded-full blur-2xl" />
             <svg className="absolute top-0 right-0 w-64 h-64 text-white/[0.03]" viewBox="0 0 200 200">
               {[30, 55, 80, 105].map(r => (
                 <circle key={r} cx="170" cy="30" r={r} fill="none" stroke="currentColor" strokeWidth="0.8" />
@@ -187,13 +187,14 @@ export default function HomePage() {
             </svg>
           </div>
           <div className="relative z-10">
-            <p className="text-white/50 text-xs mb-2 tracking-widest uppercase font-mono">iwor PRO</p>
+            <p className="text-white/40 text-xs mb-2 tracking-widest uppercase font-mono">iwor PRO</p>
             <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
               すべての機能を、ひとつのプランで。
             </h2>
             <p className="text-white/60 text-sm mb-6 max-w-lg mx-auto leading-relaxed">
               解釈・アクションプラン・病棟管理・学習・J-OSLER・マッチング・論文フィード。
-              1日たった27円で、臨床とキャリアのすべてにアクセス。
+              <br className="hidden sm:inline" />
+              年額¥9,800 — 1日あたり約27円ですべてにアクセス。
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
@@ -204,12 +205,12 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/pro/activate"
-                className="inline-flex items-center justify-center bg-white/10 text-white border border-white/20 px-7 py-3.5 rounded-xl font-medium text-sm hover:bg-white/20 transition-colors"
+                className="inline-flex items-center justify-center bg-white/10 text-white border border-white/20 px-7 py-3.5 rounded-xl font-medium text-sm hover:bg-white/20 transition-colors backdrop-blur-sm"
               >
                 ログイン / 会員登録
               </Link>
             </div>
-            <p className="text-white/30 text-xs mt-4">¥9,800/年〜 · クレジットカード・PayPay・コンビニ払い</p>
+            <p className="text-white/25 text-xs mt-4">クレジットカード・PayPay・コンビニ払い対応</p>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // ── セグメント別訴求 ──
 const segments = [
@@ -141,6 +141,20 @@ const faqs = [
 export default function ProPage() {
   const [activeSegment, setActiveSegment] = useState('resident')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [autoCycle, setAutoCycle] = useState(true)
+
+  // ── タブ自動切り替え ──
+  useEffect(() => {
+    if (!autoCycle) return
+    const ids = segments.map(s => s.id)
+    const interval = setInterval(() => {
+      setActiveSegment(prev => {
+        const idx = ids.indexOf(prev)
+        return ids[(idx + 1) % ids.length]
+      })
+    }, 3500)
+    return () => clearInterval(interval)
+  }, [autoCycle])
 
   const currentSegment = segments.find(s => s.id === activeSegment)!
 
@@ -189,7 +203,7 @@ export default function ProPage() {
       <section className="grid grid-cols-3 gap-4 mb-16">
         {[
           { num: '120+', label: '臨床ツール', sub: '計算・ER・ACLS・ICU・読影・薬剤比較' },
-          { num: '¥817', label: '月額換算', sub: '1年パス ¥9,800' },
+          { num: '¥27', label: '1日あたり', sub: '年額¥9,800' },
           { num: '0', label: '患者データ保存', sub: 'キャリアデータのみ' },
         ].map((s) => (
           <div key={s.label} className="text-center p-4 bg-s0 border border-br rounded-xl">
@@ -206,11 +220,11 @@ export default function ProPage() {
         <p className="text-sm text-muted text-center mb-6">ステージごとに、PROが活きるポイントが違います</p>
 
         {/* タブ */}
-        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+        <div className="flex gap-2 mb-6 justify-center overflow-x-auto pb-2">
           {segments.map(seg => (
             <button
               key={seg.id}
-              onClick={() => setActiveSegment(seg.id)}
+              onClick={() => { setActiveSegment(seg.id); setAutoCycle(false) }}
               className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap border transition-all ${
                 activeSegment === seg.id
                   ? 'bg-ac text-white border-ac shadow-md shadow-ac/20'
@@ -225,14 +239,14 @@ export default function ProPage() {
 
         {/* コンテンツ */}
         <div className={`rounded-2xl border p-6 ${currentSegment.color.split(' ').slice(0, 2).join(' ')}`}>
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-2xl">{currentSegment.icon}</span>
-            <div>
+            <div className="text-center">
               <h3 className="font-bold text-tx">{currentSegment.label}</h3>
               {currentSegment.sublabel && <p className="text-xs text-muted">{currentSegment.sublabel}</p>}
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
             {currentSegment.features.map((f, i) => (
               <div key={i} className="bg-s0/80 backdrop-blur-sm rounded-xl p-4 border border-br/50">
                 <div className="flex items-start gap-2">
