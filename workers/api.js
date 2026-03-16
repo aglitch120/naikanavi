@@ -8,6 +8,9 @@
 //    POST /api/store-order      — GASから注文を保存
 //    POST /api/register         — 注文番号+メールで会員登録（1回限り）
 //    POST /api/login            — メール+パスワードでログイン
+//    PUT  /api/dashboard        — ダッシュボードデータ保存
+//    GET  /api/dashboard        — ダッシュボードデータ読み込み
+//    POST /api/interview-feedback — AI面接フィードバック（Workers AI）
 //    GET  /api/admin/orders     — 管理者: 注文一覧
 //    GET  /api/admin/users      — 管理者: ユーザー一覧
 //    POST /api/admin/add-order  — 管理者: 手動で注文追加
@@ -374,6 +377,73 @@ export default {
 
       const parsed = JSON.parse(raw);
       return json({ ok: true, data: parsed.data, updatedAt: parsed.updatedAt }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  AI面接フィードバック
+    //  POST /api/interview-feedback
+    //  Authorization: Bearer {sessionToken}
+    //  Body: { question, answer, profile }
+    // ══════════════════════════════════════════════════
+    if (path === "/api/interview-feedback" && request.method === "POST") {
+      const auth = request.headers.get("Authorization") || "";
+      const token = auth.replace("Bearer ", "").trim();
+      if (!token) return json({ error: "Unauthorized" }, 401, request);
+
+      const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
+      if (!sessionRaw) return json({ error: "Invalid session" }, 401, request);
+
+      const body = await request.json();
+      const { question, answer, profile } = body;
+      if (!question || !answer) {
+        return json({ error: "question and answer required" }, 400, request);
+      }
+
+      // プロフィール情報をコンテキストに変換
+      const profileCtx = profile
+        ? [
+            profile.preferredSpecialty && `志望科: ${profile.preferredSpecialty}`,
+            profile.university && `大学: ${profile.university}`,
+            profile.strengths && `強み: ${profile.strengths}`,
+            profile.motivation && `志望動機: ${profile.motivation}`,
+          ].filter(Boolean).join("\n")
+        : "";
+
+      const systemPrompt = `あなたは医学部マッチング面接の指導経験豊富な面接コーチです。
+医学生の面接回答に対して、実践的で具体的なフィードバックを日本語で提供してください。
+
+以下の構成で回答してください（各セクション2-3文、合計300字程度）:
+
+【全体評価】回答の印象と完成度を一言で
+【良い点】具体的に良かった部分
+【改善ポイント】具体的な改善案（例文があれば短く示す）
+【次のステップ】次に意識すべきこと
+
+${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
+
+注意:
+- 医学部マッチング面接の文脈で評価する
+- 具体的で実行可能なアドバイスを心がける
+- 厳しすぎず、建設的なトーンで`;
+
+      try {
+        const aiResponse = await env.AI.run(
+          "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+          {
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: `面接質問: ${question}\n\n受験者の回答:\n${answer}` },
+            ],
+            max_tokens: 800,
+          }
+        );
+
+        const feedback = aiResponse?.response || "フィードバックを生成できませんでした。もう一度お試しください。";
+        return json({ ok: true, feedback }, 200, request);
+      } catch (err) {
+        console.error("Workers AI error:", err);
+        return json({ error: "AI processing failed", detail: err.message }, 500, request);
+      }
     }
 
     // ── 404 ──

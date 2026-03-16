@@ -20,6 +20,10 @@ compatibility_date = "2024-01-01"
 binding = "IWOR_KV"
 id = "4af092a9ddd243f09a0f6d2f1979dc6e"  # IWOR_KV
 
+# ── Workers AI バインディング ──
+[ai]
+binding = "AI"
+
 # ── カスタムドメイン（任意） ──
 # Cloudflare Dashboard → Workers → iwor-api → Settings → Triggers で
 # api.iwor.jp を追加するか、以下を設定:

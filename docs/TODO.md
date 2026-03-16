@@ -74,7 +74,8 @@
 - [x] 履歴書プレビュー＆PRO blurゲート
 - [x] 病院DB 20病院（FREE: 3件、PRO: 全件）
 - [x] AI面接練習（ローカルフィードバック版）
-- [ ] AI面接をClaude API化
+- [x] AI面接をWorkers AI化（Llama 3.1-8b、ローカルフォールバック付き）
+- [ ] **要デプロイ: `cd workers && npx wrangler deploy`**（dashboard API + AI面接）
 - [ ] 病院DBデータ拡充（50病院→100病院）
 - [ ] 履歴書PDF出力機能（PRO）
 - [ ] マッチングプロフィールのクラウド保存（Supabase）

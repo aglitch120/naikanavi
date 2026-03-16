@@ -844,9 +844,49 @@ function InterviewTab({
   const submitAnswer = async () => {
     if (!answer.trim()) return
     setIsThinking(true)
-    // MVP: ローカルフィードバック（将来Claude API化）
-    await new Promise(r => setTimeout(r, 1500))
-    setFeedback(generateLocalFeedback(currentQuestion!, answer, profile))
+    setFeedback(null)
+
+    const sessionToken = typeof window !== 'undefined'
+      ? localStorage.getItem('iwor_session_token') || ''
+      : ''
+
+    if (!sessionToken) {
+      // セッショントークンが無い場合はローカルフォールバック
+      await new Promise(r => setTimeout(r, 800))
+      setFeedback(generateLocalFeedback(currentQuestion!, answer, profile))
+      setIsThinking(false)
+      return
+    }
+
+    try {
+      const res = await fetch('https://iwor-api.mightyaddnine.workers.dev/api/interview-feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${sessionToken}`,
+        },
+        body: JSON.stringify({
+          question: currentQuestion,
+          answer,
+          profile: {
+            preferredSpecialty: profile.preferredSpecialty,
+            university: profile.university,
+            strengths: profile.strengths,
+            motivation: profile.motivation,
+          },
+        }),
+      })
+      const data = await res.json()
+      if (data.ok && data.feedback) {
+        setFeedback(data.feedback)
+      } else {
+        // APIエラー時はローカルフォールバック
+        setFeedback(generateLocalFeedback(currentQuestion!, answer, profile))
+      }
+    } catch {
+      // ネットワークエラー時はローカルフォールバック
+      setFeedback(generateLocalFeedback(currentQuestion!, answer, profile))
+    }
     setIsThinking(false)
   }
 
