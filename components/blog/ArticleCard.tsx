@@ -15,27 +15,17 @@ export default function ArticleCard({ post, compact = false }: Props) {
     return (
       <Link
         href={`/blog/${post.slug}`}
-        className="block bg-s0 border border-br rounded-lg overflow-hidden hover:border-ac transition-colors"
+        className="group block bg-s0 border border-br rounded-xl p-5 hover:border-ac/30 hover:shadow-md transition-all"
       >
-        {/* サムネイル（OGP画像） */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/blog/${post.slug}/opengraph-image`}
-          alt={post.title}
-          width={600}
-          height={315}
-          className="w-full h-auto bg-s1"
-          loading="lazy"
-        />
-        <div className="p-4">
-          <span
-            className="inline-block text-xs text-white px-2 py-0.5 rounded mb-2"
-            style={{ backgroundColor: cluster?.bg || '#1B4F3A' }}
-          >
-            {category?.name || 'その他'}
-          </span>
-          <h3 className="font-semibold text-sm line-clamp-2">{post.title}</h3>
-        </div>
+        <span
+          className="inline-block text-[10px] font-bold text-white px-2 py-0.5 rounded mb-3"
+          style={{ backgroundColor: cluster?.bg || '#1B4F3A' }}
+        >
+          {category?.name || 'その他'}
+        </span>
+        <h3 className="font-bold text-sm text-tx leading-snug line-clamp-2 group-hover:text-ac transition-colors">
+          {post.title}
+        </h3>
       </Link>
     )
   }
@@ -43,19 +33,19 @@ export default function ArticleCard({ post, compact = false }: Props) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="block bg-s0 border border-br rounded-lg p-5 hover:border-ac hover:shadow-sm transition-all"
+      className="group block bg-s0 border border-br rounded-xl p-5 hover:border-ac/30 hover:shadow-md transition-all"
     >
       <div className="flex items-center gap-2 mb-3">
         <span
-          className="text-xs text-white px-2 py-0.5 rounded"
+          className="text-[10px] font-bold text-white px-2 py-0.5 rounded"
           style={{ backgroundColor: cluster?.bg || '#1B4F3A' }}
         >
           {category?.name || 'その他'}
         </span>
-        <span className="text-xs text-muted">{post.readingTime}分</span>
+        <span className="text-[11px] text-muted">{post.readingTime}分</span>
       </div>
       
-      <h3 className="font-bold mb-2 line-clamp-2">{post.title}</h3>
+      <h3 className="font-bold mb-2 line-clamp-2 group-hover:text-ac transition-colors">{post.title}</h3>
       
       <p className="text-sm text-muted line-clamp-2 mb-3">
         {post.description}
