@@ -1,6 +1,6 @@
 # iwor.jp TODO
 
-> 更新: 2026-03-17（病棟TODO MVP完了）
+> 更新: 2026-03-17（病棟TODO永続化+ProGate完了、Worker再デプロイ待ち）
 > 方針: 自走メイン、売却は保険。7つのサービスを段階的に構築。
 
 ---
@@ -87,13 +87,16 @@
 - [x] カスタマイズ可能タスクボタン（デフォルト5 + 候補19 + カスタム自由追加）
 - [x] 退院→症例ログ自動アーカイブ（確認ポップアップ付き）
 - [x] 症例ログ（検索/領域別統計/ログ編集/入退院日変更）
-- [x] CSVエクスポート（BOM付きUTF-8）
+- [x] CSVエクスポート（BOM付きUTF-8）→ PRO限定
 - [x] カスタム記録項目（自由追加→CSV出力時カラム追加）
 - [x] J-OSLER準拠 領域→疾患群→病名 3段階ドロップダウン
-- [ ] ProGate適用（データ永続化=PRO、操作=FREE）
+- [x] ProGate適用（3人目以上=PRO、CSV=PRO）
+- [x] localStorage永続化（全ユーザー、ブラウザ閉じても維持）
+- [x] クラウド同期（PRO: Worker API + KV、30秒自動保存 + beforeunload）
+- [x] 保存インジケーター（✓保存済み/⟳保存中…/✕エラー）
+- [x] Worker API: PUT/GET /api/dashboard + sessionToken認証
+- [ ] **要デプロイ: `cd workers && npx wrangler deploy`**
 - [ ] EPOC連携エクスポート
-- [ ] localStorageデータ永続化
-- [ ] Supabaseクラウド同期（Phase 2基盤後）
 
 ## Phase 4: J-OSLER管理
 
@@ -144,7 +147,7 @@
 | Phase 1.5: PRO基盤 + 収益化 | ✅ 完了（BOOTH価格変更・商品追加残） |
 | デザイン統一 | ✅ 完了（ガラス→フラット、/app hub、ブログカード、About背景） |
 | Phase 2: マッチング | 🔧 MVP完成（AI API化・PDF出力残） |
-| Phase 3: 病棟TODO | ✅ MVP完了（ProGate/永続化/EPOC残） |
+| Phase 3: 病棟TODO | ✅ 完了（Worker再デプロイ待ち） |
 | Phase 4: J-OSLER | 未着手 |
 | Phase 5: 学習 | 未着手 |
 | Phase 6: 論文フィード | 未着手 |
