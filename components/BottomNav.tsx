@@ -3,8 +3,9 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { trackBoothClick } from '@/lib/gtag'
+import { useProStatus } from '@/components/pro/useProStatus'
 
-const navItems = [
+const baseNavItems = [
   {
     label: 'ホーム',
     href: '/',
@@ -39,30 +40,44 @@ const navItems = [
     ),
     exact: false,
   },
-  {
-    label: 'PRO',
-    href: '/pro',
-    icon: (active: boolean) => (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.12 : 0} />
-      </svg>
-    ),
-    external: false,
-    exact: true,
-  },
 ]
+
+// PRO タブ
+const proTab = {
+  label: 'PRO',
+  href: '/pro',
+  icon: (active: boolean) => (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.12 : 0} />
+    </svg>
+  ),
+  exact: true,
+}
+
+// お気に入りタブ（PRO会員用）
+const favTab = {
+  label: 'お気に入り',
+  href: '/favorites',
+  icon: (active: boolean) => (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fillOpacity={active ? 0.15 : 0} />
+    </svg>
+  ),
+  exact: true,
+}
 
 export default function BottomNav() {
   const pathname = usePathname()
+  const { isPro } = useProStatus()
+
+  // PRO会員ならお気に入りタブ、そうでなければPROタブ
+  const lastTab = isPro ? favTab : proTab
+  const navItems = [...baseNavItems, lastTab]
 
   const isActive = (item: typeof navItems[0]) => {
-    if (item.external) return false
+    if ('external' in item && item.external) return false
     if (item.exact) return pathname === item.href
-    // /blog はブログ記事ページ・カテゴリページでもアクティブ
-    if (item.href === '/blog') {
-      return pathname.startsWith('/blog')
-    }
-    // /app タブは /tools 配下でもアクティブ
+    if (item.href === '/blog') return pathname.startsWith('/blog')
     if (item.href === '/app') {
       return pathname.startsWith('/app') || pathname.startsWith('/tools') || pathname.startsWith('/compare')
     }
@@ -81,50 +96,31 @@ export default function BottomNav() {
       <ul className="flex items-stretch h-14">
         {navItems.map((item) => {
           const active = isActive(item)
-          const content = (
-            <>
-              <span
-                style={{ color: active ? 'var(--ac)' : 'var(--m)' }}
-                className="transition-colors duration-150"
-              >
-                {item.icon(active)}
-              </span>
-              <span
-                className="text-[10px] mt-0.5 font-medium transition-colors duration-150"
-                style={{ color: active ? 'var(--ac)' : 'var(--m)' }}
-              >
-                {item.label}
-              </span>
-              {/* アクティブインジケーター */}
-              {active && (
-                <span
-                  className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full"
-                  style={{ background: 'var(--ac)' }}
-                />
-              )}
-            </>
-          )
-
           return (
             <li key={item.href} className="flex-1">
-              {item.external ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackBoothClick('bottom_nav')}
-                  className="relative flex flex-col items-center justify-center h-full gap-0.5 active:opacity-70 transition-opacity"
+              <Link
+                href={item.href}
+                className="relative flex flex-col items-center justify-center h-full gap-0.5 active:opacity-70 transition-opacity"
+              >
+                <span
+                  style={{ color: active ? 'var(--ac)' : 'var(--m)' }}
+                  className="transition-colors duration-150"
                 >
-                  {content}
-                </a>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="relative flex flex-col items-center justify-center h-full gap-0.5 active:opacity-70 transition-opacity"
+                  {item.icon(active)}
+                </span>
+                <span
+                  className="text-[10px] mt-0.5 font-medium transition-colors duration-150"
+                  style={{ color: active ? 'var(--ac)' : 'var(--m)' }}
                 >
-                  {content}
-                </Link>
-              )}
+                  {item.label}
+                </span>
+                {active && (
+                  <span
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full"
+                    style={{ background: 'var(--ac)' }}
+                  />
+                )}
+              </Link>
             </li>
           )
         })}

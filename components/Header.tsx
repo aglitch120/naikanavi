@@ -6,6 +6,7 @@ import Link from 'next/link'
 import MobileMenu from './MobileMenu'
 import SearchDialog from './SearchDialog'
 import { categories, clusterColors } from '@/lib/blog-config'
+import { useProStatus } from '@/components/pro/useProStatus'
 
 const menuGroups = [
   {
@@ -39,6 +40,7 @@ export default function Header() {
   const [megaOpen, setMegaOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
+  const { isPro } = useProStatus()
 
   const handleEnter = () => {
     clearTimeout(timerRef.current)
@@ -137,12 +139,24 @@ export default function Header() {
           </Link>
 
           <SearchDialog />
-          <Link
-            href="/pro"
-            className="text-xs md:text-sm border border-ac text-ac px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-acl transition-colors font-medium"
-          >
-            PRO
-          </Link>
+          {isPro ? (
+            <Link
+              href="/favorites"
+              className="hidden md:inline-flex items-center gap-1.5 text-xs md:text-sm border border-ac text-ac px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-acl transition-colors font-medium"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth={1.5}>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              お気に入り
+            </Link>
+          ) : (
+            <Link
+              href="/pro"
+              className="text-xs md:text-sm border border-ac text-ac px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-acl transition-colors font-medium"
+            >
+              PRO
+            </Link>
+          )}
           <Link
             href="/pro/activate"
             className="text-xs md:text-sm bg-ac text-white px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-ac2 transition-colors font-medium"
