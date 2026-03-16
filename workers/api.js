@@ -33,15 +33,13 @@ const json = (data, status = 200, request = null) =>
 
 // ── プラン判定 ──
 function detectPlan(productName) {
-  if (!productName) return null;
+  if (!productName) return { plan: "pro_1y", durationDays: 365, label: "1年パス" };
   if (productName.includes("3年") || productName.includes("3year"))
     return { plan: "pro_3y", durationDays: 1095, label: "3年パス" };
   if (productName.includes("2年") || productName.includes("2year"))
     return { plan: "pro_2y", durationDays: 730, label: "2年パス" };
-  // デフォルト: 1年
-  if (productName.includes("1年") || productName.includes("1year") || productName.includes("PRO"))
-    return { plan: "pro_1y", durationDays: 365, label: "1年パス" };
-  return null;
+  // デフォルト: 1年（商品名が不明でも1年パスとして扱う）
+  return { plan: "pro_1y", durationDays: 365, label: "1年パス" };
 }
 
 // ── KVキー ──
@@ -82,8 +80,8 @@ export default {
           orderNumber,
           productName: productName || "",
           buyerEmail: buyerEmail || "",
-          plan: plan?.plan || "unknown",
-          durationDays: plan?.durationDays || 365,
+          plan: plan.plan,
+          durationDays: plan.durationDays,
           storedAt: new Date().toISOString(),
           activated: false,
           activatedAt: null,
@@ -91,7 +89,7 @@ export default {
         })
       );
 
-      return json({ ok: true, orderNumber, plan: plan?.plan || "unknown" }, 200, request);
+      return json({ ok: true, orderNumber, plan: plan.plan }, 200, request);
     }
 
     // ══════════════════════════════════════════════════
