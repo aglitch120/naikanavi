@@ -115,10 +115,18 @@ export default {
 
       const order = JSON.parse(raw);
 
+      // 既に有効化済み → 再ログイン（同じ注文番号でPRO状態を復元）
       if (order.activated) {
         return json(
-          { error: "この注文番号は既に使用済みです。" },
-          409,
+          {
+            ok: true,
+            plan: order.plan,
+            durationDays: order.durationDays,
+            activatedAt: order.activatedAt,
+            expiresAt: order.expiresAt,
+            relogin: true,
+          },
+          200,
           request
         );
       }
