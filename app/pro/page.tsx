@@ -412,23 +412,32 @@ export default function ProPage() {
 
       {/* ═══ 最終CTA ═══ */}
       <section className="mb-8">
-        <div className="bg-ac rounded-2xl p-8 md:p-10 text-center shadow-xl shadow-ac/15 -mx-2 md:-mx-4">
-          <p className="text-white/60 text-sm mb-2">iwor PRO</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            今日から、臨床をもっと深く。
-          </h2>
-          <p className="text-white/70 text-sm mb-6 max-w-md mx-auto">
-            120+の臨床ツール、解釈、アクションプラン。月あたり約¥820で全機能アクセス。
-          </p>
-          <a
-            href="https://iwor.booth.pm/items/8087647"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-white text-ac px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-white/90 transition-colors shadow-lg"
-          >
-            BOOTHで購入する
-          </a>
-          <p className="text-white/40 text-xs mt-3">¥9,800/年〜 ・ クレジットカード・PayPay・コンビニ払い</p>
+        <div className="relative -mx-2 md:-mx-4">
+          <div className="absolute inset-0 bg-ac/30 rounded-2xl translate-y-2 blur-xl" />
+          <div className="relative bg-ac rounded-2xl p-8 md:p-10 text-center shadow-2xl overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+              <div className="absolute -top-24 -right-24 w-72 h-72 bg-white/[0.04] rounded-full" />
+              <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-white/[0.03] rounded-full" />
+            </div>
+            <div className="relative z-10">
+              <p className="text-white/60 text-sm mb-2">iwor PRO</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                今日から、臨床をもっと深く。
+              </h2>
+              <p className="text-white/70 text-sm mb-6 max-w-md mx-auto">
+                120+の臨床ツール、解釈、アクションプラン。月あたり約¥820で全機能アクセス。
+              </p>
+              <a
+                href="https://iwor.booth.pm/items/8087647"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-white text-ac px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-white/90 transition-colors shadow-lg"
+              >
+                BOOTHで購入する
+              </a>
+              <p className="text-white/40 text-xs mt-3">¥9,800/年〜 ・ クレジットカード・PayPay・コンビニ払い</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

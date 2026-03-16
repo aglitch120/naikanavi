@@ -84,7 +84,7 @@ export default function AppPage() {
       >
         <div className="p-6 md:p-8">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-10 h-10 bg-ac rounded-xl flex items-center justify-center shadow-lg shadow-ac/20">
+            <div className="w-10 h-10 bg-ac rounded-xl flex items-center justify-center">
               {featured.icon}
             </div>
             <div>
@@ -112,19 +112,16 @@ export default function AppPage() {
           <Link
             key={s.href}
             href={s.href}
-            className="group relative flex flex-col items-center text-center rounded-2xl border border-br bg-s0 p-6 md:p-7 hover:border-ac/30 hover:shadow-md transition-all"
+            className="group relative rounded-2xl border border-br bg-s0 p-5 md:p-6 hover:border-ac/30 hover:shadow-md transition-all"
           >
-            <span className={`absolute top-3 right-3 text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-md ${
-              s.tag === 'FREE'
-                ? 'text-ac/60 bg-acl'
-                : s.tag === 'FREEMIUM'
-                ? 'text-muted bg-s1'
-                : 'text-ac bg-acl'
+            <span className={`absolute top-3 right-3 text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-md ${
+              s.tag === 'FREE' ? 'text-muted bg-s1 border border-br'
+              : s.tag === 'FREEMIUM' ? 'text-muted bg-s1 border border-br'
+              : 'text-ac bg-acl border border-ac/15'
             }`}>
               {s.tag}
             </span>
-
-            <div className="w-12 h-12 rounded-xl bg-acl border border-ac/10 flex items-center justify-center mb-4 group-hover:bg-ac/15 group-hover:border-ac/20 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-s1 border border-br flex items-center justify-center mb-3">
               <svg className="w-5 h-5 text-ac" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                 {s.icon}
               </svg>
