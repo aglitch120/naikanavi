@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import AbdominalEchoSVG from '@/components/tools/interpret/AbdominalEchoSVG'
 
 type Severity = 'ok' | 'wn' | 'dn' | 'neutral'
 
@@ -89,6 +90,13 @@ const organs: OrganCategory[] = [
 
 export default function AbdominalEchoPage() {
   const [selected, setSelected] = useState<Set<string>>(new Set())
+  const [activeOrgan, setActiveOrgan] = useState<string | null>(null)
+  const svgKey: Record<string,string> = {liver:'liver',gb:'gb',pancreas:'pancreas',kidney:'kidney_r',spleen:'spleen',aorta:'aorta',others:'bladder'}
+  const abnormalOrgans = useMemo(() => {
+    const set = new Set<string>()
+    organs.forEach(o => { if(o.findings.some(f => selected.has(f.id) && f.severity!=='ok')) { const k=svgKey[o.key]; if(k) set.add(k) } })
+    return set
+  }, [selected])
 
   const toggle = (id: string) => {
     setSelected(prev => {
@@ -119,32 +127,32 @@ export default function AbdominalEchoPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <nav className="text-sm text-muted mb-6">
-        <Link href="/" className="hover:text-ac">ホーム</Link>
-        <span className="mx-2">›</span>
-        <Link href="/tools" className="hover:text-ac">臨床ツール</Link>
-        <span className="mx-2">›</span>
-        <Link href="/tools/interpret" className="hover:text-ac">検査読影</Link>
-        <span className="mx-2">›</span>
-        <span>腹部エコー</span>
+        <Link href="/" className="hover:text-ac">ホーム</Link><span className="mx-2">›</span>
+        <Link href="/tools" className="hover:text-ac">臨床ツール</Link><span className="mx-2">›</span>
+        <Link href="/tools/interpret" className="hover:text-ac">検査読影</Link><span className="mx-2">›</span><span>腹部エコー</span>
       </nav>
-
       <header className="mb-6">
         <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium mb-2">🔊 検査読影</span>
         <h1 className="text-2xl font-bold text-tx mb-1">腹部エコー 系統的評価チェックリスト</h1>
-        <p className="text-sm text-muted">肝・胆・膵・腎・脾・大動脈を臓器別に評価。所見をチェック → 鑑別疾患と次の精査を自動表示。</p>
+        <p className="text-sm text-muted">臓器別に評価。各セクションにホバーすると模式図の対応臓器がハイライト。</p>
       </header>
-
-      {/* Organ-by-organ checklist */}
-      <section className="space-y-4 mb-6">
+      <div className="flex flex-col lg:flex-row gap-6 mb-6">
+        <div className="lg:w-[320px] shrink-0"><div className="lg:sticky lg:top-4 bg-s1 border border-br rounded-xl p-3">
+          <p className="text-xs font-bold text-tx mb-2 text-center">模式的腹部臓器配置</p>
+          <AbdominalEchoSVG activeOrgan={activeOrgan?svgKey[activeOrgan]||activeOrgan:null} abnormalOrgans={abnormalOrgans} />
+          <p className="text-[10px] text-muted text-center mt-2">{activeOrgan?'臓器評価中':'セクションにホバーで臓器ハイライト'}</p>
+        </div></div>
+      <section className="flex-1 space-y-4">
         {organs.map(organ => (
-          <div key={organ.key} className="bg-s0 border border-br rounded-xl p-4">
+          <div key={organ.key} className={`bg-s0 border rounded-xl p-4 transition-colors ${activeOrgan===organ.key?'border-ac/50 bg-acl/30':'border-br'}`}
+            onMouseEnter={()=>setActiveOrgan(organ.key)} onMouseLeave={()=>setActiveOrgan(null)}>
             <h2 className="text-sm font-bold text-tx mb-1">{organ.icon} {organ.title}</h2>
             <p className="text-[11px] text-muted mb-3">{organ.desc}</p>
             <div className="flex flex-wrap gap-2">
               {organ.findings.map(f => (
-                <button key={f.id} onClick={() => toggle(f.id)}
+                <button key={f.id} onClick={()=>{toggle(f.id);setActiveOrgan(organ.key)}}
                   className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
                     selected.has(f.id)
                       ? f.severity === 'ok'
@@ -161,6 +169,7 @@ export default function AbdominalEchoPage() {
           </div>
         ))}
       </section>
+      </div>
 
       {/* Results */}
       {results.length > 0 && (

@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import ECGSVG from '@/components/tools/interpret/ECGSVG'
 
 // ── Types ──
 type Severity = 'ok' | 'wn' | 'dn' | 'neutral'
@@ -298,6 +299,7 @@ const otherFindingOptions = [
 
 export default function ECGInterpretPage() {
   const [input, setInput] = useState<ECGInput>(defaults)
+  const [activeStep, setActiveStep] = useState<string | null>(null)
   const set = <K extends keyof ECGInput>(key: K) => (val: ECGInput[K]) => setInput(prev => ({ ...prev, [key]: val }))
 
   const toggleFinding = (value: string) => {
@@ -334,67 +336,78 @@ export default function ECGInterpretPage() {
         </p>
       </header>
 
+      {/* 模式的心電図波形 */}
+      <div className="bg-s1 border border-br rounded-xl p-3 mb-6">
+        <p className="text-xs font-bold text-tx mb-2 text-center">模式的心電図波形</p>
+        <ECGSVG activeStep={activeStep} stState={input.stChange} tState={input.tWave} qrsState={input.qrsWidth} prState={input.prInterval} />
+        <p className="text-[10px] text-muted text-center mt-2">{activeStep?'入力中の項目が波形上でハイライト':'各項目をクリックすると対応部位がハイライト'}</p>
+      </div>
+
       {/* 入力 */}
       <section className="bg-s0 border border-br rounded-xl p-5 mb-6">
         <h2 className="text-sm font-bold text-tx mb-3">心電図所見の入力</h2>
 
         {/* Row 1: Rate + Rhythm */}
         <div className="grid grid-cols-2 gap-3 mb-4">
+          <div onClick={()=>setActiveStep('rate')}>
           <NumField id="rate" label="心拍数" unit="bpm" value={input.rate} onChange={v => set('rate')(v)} />
+          </div>
+          <div onClick={()=>setActiveStep('rhythm')}>
           <SelectField id="rhythm" label="リズム" value={input.rhythm} onChange={v => set('rhythm')(v as ECGInput['rhythm'])}
             options={[
               { value: 'regular', label: '整（regular）' },
               { value: 'irregular', label: '不整（規則的に不整）' },
               { value: 'irregularly_irregular', label: '絶対不整（irregularly irregular）' },
             ]} />
+          </div>
         </div>
 
         {/* Row 2: P wave + PR */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <SelectField id="pWave" label="P波" value={input.pWave} onChange={v => set('pWave')(v as ECGInput['pWave'])}
+          <div onClick={()=>setActiveStep('pWave')}><SelectField id="pWave" label="P波" value={input.pWave} onChange={v => set('pWave')(v as ECGInput['pWave'])}
             options={[
               { value: 'normal', label: '正常（II誘導陽性、QRSに先行）' },
               { value: 'absent', label: '消失' },
               { value: 'retrograde', label: '逆行性（II/III/aVFで陰性）' },
               { value: 'flutter', label: '鋸歯状波（flutter wave）' },
               { value: 'fibrillation', label: '細動波（f波）' },
-            ]} />
-          <SelectField id="prInterval" label="PR間隔" value={input.prInterval} onChange={v => set('prInterval')(v as ECGInput['prInterval'])}
+            ]} /></div>
+          <div onClick={()=>setActiveStep('prInterval')}><SelectField id="prInterval" label="PR間隔" value={input.prInterval} onChange={v => set('prInterval')(v as ECGInput['prInterval'])}
             options={[
               { value: 'normal', label: '正常（120-200 ms）' },
               { value: 'short', label: '短縮（< 120 ms）' },
               { value: 'prolonged_constant', label: '延長・一定（> 200 ms）' },
               { value: 'prolonged_progressive', label: '漸次延長→QRS脱落' },
-            ]} />
+            ]} /></div>
         </div>
 
         {/* Row 3: QRS + Axis */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <SelectField id="qrsWidth" label="QRS幅" value={input.qrsWidth} onChange={v => set('qrsWidth')(v as ECGInput['qrsWidth'])}
+          <div onClick={()=>setActiveStep('qrsWidth')}><SelectField id="qrsWidth" label="QRS幅" value={input.qrsWidth} onChange={v => set('qrsWidth')(v as ECGInput['qrsWidth'])}
             options={[
               { value: 'narrow', label: 'Narrow（< 120 ms）' },
               { value: 'wide', label: 'Wide（≧ 120 ms）' },
-            ]} />
-          <SelectField id="axis" label="電気軸" value={input.axis} onChange={v => set('axis')(v as ECGInput['axis'])}
+            ]} /></div>
+          <div onClick={()=>setActiveStep('axis')}><SelectField id="axis" label="電気軸" value={input.axis} onChange={v => set('axis')(v as ECGInput['axis'])}
             hint="I誘導・aVF誘導のQRS極性で判定"
             options={[
               { value: 'normal', label: '正常軸（I+, aVF+）' },
               { value: 'lad', label: '左軸偏位（I+, aVF-）' },
               { value: 'rad', label: '右軸偏位（I-, aVF+）' },
               { value: 'extreme', label: '高度軸偏位（I-, aVF-）' },
-            ]} />
+            ]} /></div>
         </div>
 
         {/* Row 4: ST + leads */}
         <h2 className="text-sm font-bold text-tx mb-3 mt-4">ST-T変化</h2>
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <SelectField id="stChange" label="ST変化" value={input.stChange} onChange={v => set('stChange')(v as ECGInput['stChange'])}
+          <div onClick={()=>setActiveStep('stChange')}><SelectField id="stChange" label="ST変化" value={input.stChange} onChange={v => set('stChange')(v as ECGInput['stChange'])}
             options={[
               { value: 'none', label: 'なし' },
               { value: 'elevation', label: 'ST上昇' },
               { value: 'depression', label: 'ST低下' },
               { value: 'both', label: 'ST上昇＋低下の共存' },
-            ]} />
+            ]} /></div>
           {(input.stChange === 'elevation' || input.stChange === 'depression' || input.stChange === 'both') && (
             <div>
               <label htmlFor="stLeads" className="block text-xs font-medium text-tx mb-0.5">ST変化の誘導</label>
@@ -408,15 +421,15 @@ export default function ECGInterpretPage() {
 
         {/* Row 5: T wave + QTc */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <SelectField id="tWave" label="T波" value={input.tWave} onChange={v => set('tWave')(v as ECGInput['tWave'])}
+          <div onClick={()=>setActiveStep('tWave')}><SelectField id="tWave" label="T波" value={input.tWave} onChange={v => set('tWave')(v as ECGInput['tWave'])}
             options={[
               { value: 'normal', label: '正常' },
               { value: 'inverted', label: '陰性T波' },
               { value: 'peaked', label: '尖鋭化（テント状）' },
               { value: 'flattened', label: '平坦化' },
-            ]} />
-          <NumField id="qtc" label="QTc" unit="ms" value={input.qtc} onChange={v => set('qtc')(v)}
-            hint="Bazett補正値（QTc = QT/√RR）" />
+            ]} /></div>
+          <div onClick={()=>setActiveStep('qtc')}><NumField id="qtc" label="QTc" unit="ms" value={input.qtc} onChange={v => set('qtc')(v)}
+            hint="Bazett補正値（QTc = QT/√RR）" /></div>
         </div>
 
         {/* Other findings */}

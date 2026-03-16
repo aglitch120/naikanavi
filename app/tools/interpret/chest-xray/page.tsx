@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import ChestXraySVG from '@/components/tools/interpret/ChestXraySVG'
 
 type Severity = 'ok' | 'wn' | 'dn' | 'neutral'
 
@@ -81,6 +82,7 @@ const categories = [
 
 export default function ChestXrayPage() {
   const [selected, setSelected] = useState<Set<string>>(new Set())
+  const [activeCat, setActiveCat] = useState<string | null>(null)
 
   const toggle = (id: string) => {
     setSelected(prev => {
@@ -106,32 +108,32 @@ export default function ChestXrayPage() {
   const hasAnyAbnormal = results.some(r => r.severity !== 'ok')
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <nav className="text-sm text-muted mb-6">
-        <Link href="/" className="hover:text-ac">ホーム</Link>
-        <span className="mx-2">›</span>
-        <Link href="/tools" className="hover:text-ac">臨床ツール</Link>
-        <span className="mx-2">›</span>
-        <Link href="/tools/interpret" className="hover:text-ac">検査読影</Link>
-        <span className="mx-2">›</span>
-        <span>胸部X線</span>
+        <Link href="/" className="hover:text-ac">ホーム</Link><span className="mx-2">›</span>
+        <Link href="/tools" className="hover:text-ac">臨床ツール</Link><span className="mx-2">›</span>
+        <Link href="/tools/interpret" className="hover:text-ac">検査読影</Link><span className="mx-2">›</span><span>胸部X線</span>
       </nav>
-
       <header className="mb-6">
         <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium mb-2">🫁 検査読影</span>
         <h1 className="text-2xl font-bold text-tx mb-1">胸部X線 系統的読影チェックリスト</h1>
-        <p className="text-sm text-muted">ABCDE法で見落としゼロ。該当する所見をチェック → 鑑別疾患と次の評価ステップを自動表示。</p>
+        <p className="text-sm text-muted">ABCDE法で見落としゼロ。各セクションにホバーすると模式図の対応部位がハイライト。</p>
       </header>
-
-      {/* ABCDE Checklist */}
-      <section className="space-y-4 mb-6">
+      <div className="flex flex-col lg:flex-row gap-6 mb-6">
+        <div className="lg:w-[320px] shrink-0"><div className="lg:sticky lg:top-4 bg-s1 border border-br rounded-xl p-3">
+          <p className="text-xs font-bold text-tx mb-2 text-center">模式的胸部X線</p>
+          <ChestXraySVG activeRegion={activeCat} selectedFindings={selected} />
+          <p className="text-[10px] text-muted text-center mt-2">{activeCat?`${activeCat} セクション評価中`:'セクションにホバーで部位ハイライト'}</p>
+        </div></div>
+      <section className="flex-1 space-y-4">
         {categories.map(cat => (
-          <div key={cat.key} className="bg-s0 border border-br rounded-xl p-4">
+          <div key={cat.key} className={`bg-s0 border rounded-xl p-4 transition-colors ${activeCat===cat.key?'border-ac/50 bg-acl/30':'border-br'}`}
+            onMouseEnter={()=>setActiveCat(cat.key)} onMouseLeave={()=>setActiveCat(null)}>
             <h2 className="text-sm font-bold text-tx mb-1">{cat.title}</h2>
             <p className="text-[11px] text-muted mb-3">{cat.desc}</p>
             <div className="flex flex-wrap gap-2">
               {cat.findings.map(f => (
-                <button key={f.id} onClick={() => toggle(f.id)}
+                <button key={f.id} onClick={()=>{toggle(f.id);setActiveCat(cat.key)}}
                   className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
                     selected.has(f.id)
                       ? f.severity === 'ok'
@@ -150,6 +152,7 @@ export default function ChestXrayPage() {
           </div>
         ))}
       </section>
+      </div>
 
       {/* Results */}
       {results.length > 0 && (
