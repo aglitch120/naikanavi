@@ -12,7 +12,72 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="max-w-2xl mx-auto px-4 py-12">
-      <h1 className="text-2xl font-bold text-tx mb-8">iworとは</h1>
+      {/* ── Hero: iwor イラスト背景 ── */}
+      <div className="relative -mx-4 px-4 pt-12 pb-16 mb-10 overflow-hidden">
+        {/* 幾何学的な森・川・山のSVG背景 */}
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 800 300"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          {/* 背景グラデーション */}
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1B4F3A" stopOpacity="0.06" />
+              <stop offset="100%" stopColor="#1B4F3A" stopOpacity="0.02" />
+            </linearGradient>
+          </defs>
+          <rect width="800" height="300" fill="url(#sky)" />
+
+          {/* 遠景の山 */}
+          <polygon points="0,220 120,120 240,220" fill="#1B4F3A" opacity="0.05" />
+          <polygon points="160,220 320,90 480,220" fill="#1B4F3A" opacity="0.07" />
+          <polygon points="400,220 560,100 720,220" fill="#1B4F3A" opacity="0.04" />
+          <polygon points="600,220 740,130 800,180 800,220" fill="#1B4F3A" opacity="0.06" />
+
+          {/* 幾何学的な木 — 三角形 */}
+          {/* 左の森 */}
+          <polygon points="60,220 80,160 100,220" fill="#1B4F3A" opacity="0.10" />
+          <polygon points="90,220 115,150 140,220" fill="#1B4F3A" opacity="0.08" />
+          <polygon points="30,220 50,170 70,220" fill="#1B4F3A" opacity="0.06" />
+          <polygon points="120,220 140,175 160,220" fill="#1B4F3A" opacity="0.07" />
+
+          {/* 中央の木 */}
+          <polygon points="340,220 365,140 390,220" fill="#1B4F3A" opacity="0.09" />
+          <polygon points="370,220 400,130 430,220" fill="#1B4F3A" opacity="0.07" />
+          <polygon points="420,220 445,155 470,220" fill="#1B4F3A" opacity="0.10" />
+
+          {/* 右の森 */}
+          <polygon points="620,220 645,155 670,220" fill="#1B4F3A" opacity="0.08" />
+          <polygon points="660,220 690,140 720,220" fill="#1B4F3A" opacity="0.10" />
+          <polygon points="710,220 735,165 760,220" fill="#1B4F3A" opacity="0.06" />
+          <polygon points="750,220 770,170 790,220" fill="#1B4F3A" opacity="0.08" />
+
+          {/* 川 — 曲線 */}
+          <path
+            d="M0,240 Q100,230 200,245 Q350,260 500,238 Q650,215 800,240 L800,260 Q650,235 500,258 Q350,280 200,265 Q100,250 0,260Z"
+            fill="#1B4F3A"
+            opacity="0.05"
+          />
+          <path
+            d="M0,255 Q150,248 300,258 Q500,270 700,250 L800,252 L800,258 Q700,256 500,276 Q300,264 150,254 L0,261Z"
+            fill="#1B4F3A"
+            opacity="0.03"
+          />
+
+          {/* 地面ライン */}
+          <line x1="0" y1="220" x2="800" y2="220" stroke="#1B4F3A" strokeWidth="0.5" opacity="0.08" />
+        </svg>
+
+        {/* テキスト */}
+        <div className="relative z-10">
+          <h1 className="text-2xl md:text-3xl font-bold text-tx text-center">iworとは</h1>
+          <p className="text-sm text-muted text-center mt-3 max-w-md mx-auto">
+            アイヌ語で「恵みの地」— 医師の臨床とキャリアを支える場所
+          </p>
+        </div>
+      </div>
 
       <section className="space-y-8 text-sm leading-relaxed text-tx">
         {/* なぜiworなのか */}
