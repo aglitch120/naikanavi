@@ -3,15 +3,15 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '検査読影ツール',
-  description: '血液ガス分析のインタラクティブ解釈フロー。pH→AG→代償→A-aDO₂をステップバイステップで自動評価。',
+  description: '血液ガス・心電図・胸部X線・腹部エコー・体液検査のインタラクティブ解釈フロー。ステップバイステップで系統的に評価。',
 }
 
 const tools = [
   { href: '/tools/interpret/blood-gas', name: '血液ガス分析 インタラクティブ解釈', desc: 'pH・PCO₂・HCO₃⁻を入力 → 酸塩基障害を5ステップで自動解釈。AG・代償・A-aDO₂・P/F比まで一括評価。', badge: 'NEW', live: true },
-  { href: '#', name: '心電図読影フロー', desc: '調律→心拍数→軸→ST変化→QT のステップ解析', badge: '準備中', live: false },
-  { href: '#', name: '胸部X線 系統的読影', desc: 'ABCDE法によるチェックリスト', badge: '準備中', live: false },
-  { href: '#', name: '腹部エコー系統的評価', desc: '肝・胆・膵・腎・脾・大動脈', badge: '準備中', live: false },
-  { href: '#', name: '体液検査（胸水・腹水・髄液）', desc: 'Light基準・SAAG・髄液細胞数鑑別', badge: '準備中', live: false },
+  { href: '/tools/interpret/ecg', name: '心電図（ECG）系統的読影フロー', desc: '心拍数→リズム→P波→PR→QRS→軸→ST→T波→QTc の9ステップ解析。所見を入力→鑑別疾患を自動表示。', badge: 'NEW', live: true },
+  { href: '/tools/interpret/chest-xray', name: '胸部X線 系統的読影チェックリスト', desc: 'ABCDE法（Airway・Bones・Cardiac・Diaphragm・Everything else）で見落としゼロの読影。', badge: 'NEW', live: true },
+  { href: '/tools/interpret/abdominal-echo', name: '腹部エコー 系統的評価チェックリスト', desc: '肝・胆・膵・腎・脾・大動脈を臓器別に評価。所見チェック→鑑別疾患と次の精査を表示。', badge: 'NEW', live: true },
+  { href: '/tools/interpret/body-fluid', name: '体液検査（胸水・腹水・髄液）', desc: 'Light基準・SAAG・髄液細胞数/蛋白/糖でステップバイステップ鑑別。SBP・髄膜炎の迅速評価。', badge: 'NEW', live: true },
 ]
 
 export default function InterpretPage() {
