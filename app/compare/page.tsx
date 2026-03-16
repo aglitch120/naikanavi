@@ -16,7 +16,7 @@ const categories = [
       { href: '/compare/ccb', name: 'Ca拮抗薬', count: 7, live: true },
       { href: '/compare/beta-blocker', name: 'β遮断薬', count: 7, live: true },
       { href: '/compare/diuretic', name: '利尿薬', count: 7, live: true },
-      { href: '/compare/antiplatelet', name: '抗血小板薬', count: 0, live: false },
+      { href: '/compare/antiplatelet', name: '抗血小板薬', count: 6, live: true },
     ]
   },
   {
@@ -24,8 +24,8 @@ const categories = [
     items: [
       { href: '/compare/sglt2i', name: 'SGLT2阻害薬', count: 6, live: true },
       { href: '/compare/dpp4i', name: 'DPP-4阻害薬', count: 7, live: true },
-      { href: '/compare/glp1ra', name: 'GLP-1受容体作動薬', count: 0, live: false },
-      { href: '/compare/urate', name: '尿酸降下薬', count: 0, live: false },
+      { href: '/compare/glp1ra', name: 'GLP-1受容体作動薬', count: 6, live: true },
+      { href: '/compare/urate', name: '尿酸降下薬', count: 5, live: true },
     ]
   },
   {
@@ -38,17 +38,17 @@ const categories = [
   {
     group: '感染症',
     items: [
-      { href: '/compare/cephalosporin', name: 'セフェム系抗菌薬', count: 0, live: false },
-      { href: '/compare/quinolone', name: 'キノロン系抗菌薬', count: 0, live: false },
+      { href: '/compare/cephalosporin', name: 'セフェム系抗菌薬', count: 6, live: true },
+      { href: '/compare/quinolone', name: 'キノロン系抗菌薬', count: 6, live: true },
     ]
   },
   {
     group: '精神・神経',
     items: [
       { href: '/compare/ssri-snri', name: 'SSRI / SNRI', count: 7, live: true },
-      { href: '/compare/bzd', name: 'ベンゾジアゼピン系', count: 0, live: false },
+      { href: '/compare/bzd', name: 'ベンゾジアゼピン系', count: 6, live: true },
       { href: '/compare/hypnotic', name: '睡眠薬', count: 7, live: true },
-      { href: '/compare/aed', name: '抗てんかん薬', count: 0, live: false },
+      { href: '/compare/aed', name: '抗てんかん薬', count: 6, live: true },
     ]
   },
   {
@@ -61,14 +61,14 @@ const categories = [
   {
     group: '呼吸器・アレルギー',
     items: [
-      { href: '/compare/inhaler', name: '吸入薬（ICS/LABA/LAMA）', count: 0, live: false },
+      { href: '/compare/inhaler', name: '吸入薬（ICS/LABA/LAMA）', count: 7, live: true },
       { href: '/compare/antihistamine', name: '抗ヒスタミン薬', count: 8, live: true },
     ]
   },
   {
     group: 'その他',
     items: [
-      { href: '/compare/iron', name: '鉄剤', count: 0, live: false },
+      { href: '/compare/iron', name: '鉄剤', count: 5, live: true },
     ]
   },
 ]
