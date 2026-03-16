@@ -97,6 +97,15 @@ body {
 
 ## 📦 コンポーネント
 
+### デザイン原則（2026-03-16 確定）
+
+- **フラットデザイン統一**: ガラスモーフィズム（backdrop-blur, gradient-to-br, bg-opacity）は使用禁止
+- **カードスタイル**: `bg-s0 border border-br rounded-xl` で統一。hover時は `hover:border-ac/30 hover:shadow-md`
+- **アイコン背景**: `bg-s1 border border-br`（フラット）。`bg-acl border-ac/10`（ガラス風）は廃止
+- **CTAバナー**: `bg-ac rounded-2xl shadow-2xl` + blur-xl シャドウレイヤーで立体感。ガラス装飾SVGは不使用
+- **比較表PRO列**: `-translate-y-2 shadow-lg` で浮き上がり表現
+- **価格表示**: 月あたり表記（10の桁で丸め: ¥820, ¥660, ¥550）。1日あたり表記は不使用
+
 ### カード
 
 ```css
