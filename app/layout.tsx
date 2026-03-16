@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} - ${siteConfig.description}`,
     template: `%s | ${siteConfig.name}`,
   },
-  description: '医師の臨床とキャリアを、ずっと身近に支える。臨床計算ツール、ACLS/BLS、ER対応、J-OSLER管理、専門医試験対策まで。',
+  description: '医学生から医師まで、ずっと臨床のそばに。臨床計算ツール、ACLS/BLS、ER対応、J-OSLER管理、専門医試験対策まで。',
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
@@ -202,6 +202,7 @@ function Footer() {
                 className="rounded-lg"
               />
               <span className="font-semibold text-tx">iwor</span>
+              <span className="text-xs text-muted ml-1">（イウォル）</span>
             </Link>
             <nav className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
               <Link href="/blog" className="hover:text-ac">ブログ</Link>

@@ -4,8 +4,8 @@ import { getAllPosts } from '@/lib/mdx'
 import ArticleCard from '@/components/blog/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'iwor — 医師の臨床とキャリアを支える恵みの地',
-  description: '臨床計算ツール79種、ER対応、ACLS/BLS、ICU管理、検査読影、薬剤比較155種。病棟TODO、J-OSLER管理、マッチング対策、論文フィード。医師・研修医・医学生のすべてがここに。',
+  title: 'iwor（イウォル）— 医学生から医師まで、ずっと臨床のそばに',
+  description: '臨床計算ツール79種、ER対応、ACLS/BLS、ICU管理、検査読影、薬剤比較155種。病棟TODO、J-OSLER管理、マッチング対策、論文フィード。医学生から医師まで、すべてがここに。',
   alternates: { canonical: 'https://iwor.jp' },
 }
 
@@ -30,9 +30,10 @@ export default function HomePage() {
             <span className="w-1.5 h-1.5 bg-ac rounded-full animate-pulse" />
             123個の臨床ツール + 173記事、すべて無料
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-tx leading-tight mb-4 tracking-tight">
-            医師の臨床とキャリアを支える、<br className="hidden sm:inline" />恵みの地
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-tx leading-tight mb-2 tracking-tight">
+            医学生から医師まで、<br className="hidden sm:inline" />ずっと臨床のそばに。
           </h1>
+          <p className="text-sm text-muted font-mono tracking-widest mb-4">iwor（イウォル）</p>
           <p className="text-muted max-w-xl mx-auto leading-relaxed mb-8">
             臨床ツール、病棟管理、学習、キャリア支援 — すべてひとつの場所で。
           </p>
