@@ -111,8 +111,8 @@
 | 計測 | GA4 + GSC | G-VTCJT6XFHG |
 
 ### Worker Secrets
-- ADMIN_KEY: wV3&7Np9Mv5bAXT%oP&o
-- GAS_KEY: yC1&W1vuH2r&TPH87TmP
+- ADMIN_KEY: → Cloudflare Dashboard / wrangler secret で管理
+- GAS_KEY: → Cloudflare Dashboard / wrangler secret で管理
 
 ### Worker API エンドポイント
 - POST /api/store-order — GASから注文保存
