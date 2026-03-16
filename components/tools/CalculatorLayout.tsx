@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import Link from 'next/link'
 import CTABanner from '@/components/blog/CTABanner'
 import FavoriteButton from '@/components/tools/FavoriteButton'
+import ProPulseHint from '@/components/pro/ProPulseHint'
 
 const toolsCta = {
   title: '🚀 AIが病歴要約の下書きを30秒で生成',
@@ -62,7 +63,11 @@ export default function CalculatorLayout({
             <h1 className="text-2xl font-bold text-tx mb-1">{title}</h1>
             <p className="text-sm text-muted">{titleEn}</p>
           </div>
-          {slug && <FavoriteButton slug={slug} />}
+          {slug && (
+            <ProPulseHint>
+              <FavoriteButton slug={slug} />
+            </ProPulseHint>
+          )}
         </div>
         <p className="text-sm text-muted mt-2">{description}</p>
       </header>
