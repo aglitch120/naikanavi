@@ -15,7 +15,7 @@ const categories = [
       { href: '/compare/statin', name: 'スタチン（HMG-CoA還元酵素阻害薬）', count: 6, live: true },
       { href: '/compare/ccb', name: 'Ca拮抗薬', count: 7, live: true },
       { href: '/compare/beta-blocker', name: 'β遮断薬', count: 7, live: true },
-      { href: '/compare/diuretic', name: '利尿薬', count: 0, live: false },
+      { href: '/compare/diuretic', name: '利尿薬', count: 7, live: true },
       { href: '/compare/antiplatelet', name: '抗血小板薬', count: 0, live: false },
     ]
   },
@@ -32,7 +32,7 @@ const categories = [
     group: '消化器',
     items: [
       { href: '/compare/ppi', name: 'PPI（プロトンポンプ阻害薬）', count: 5, live: true },
-      { href: '/compare/laxative', name: '便秘薬', count: 0, live: false },
+      { href: '/compare/laxative', name: '便秘薬', count: 7, live: true },
     ]
   },
   {
@@ -45,9 +45,9 @@ const categories = [
   {
     group: '精神・神経',
     items: [
-      { href: '/compare/ssri-snri', name: 'SSRI / SNRI', count: 0, live: false },
+      { href: '/compare/ssri-snri', name: 'SSRI / SNRI', count: 7, live: true },
       { href: '/compare/bzd', name: 'ベンゾジアゼピン系', count: 0, live: false },
-      { href: '/compare/hypnotic', name: '睡眠薬', count: 0, live: false },
+      { href: '/compare/hypnotic', name: '睡眠薬', count: 7, live: true },
       { href: '/compare/aed', name: '抗てんかん薬', count: 0, live: false },
     ]
   },
@@ -55,7 +55,7 @@ const categories = [
     group: '鎮痛・抗炎症',
     items: [
       { href: '/compare/nsaids', name: 'NSAIDs', count: 7, live: true },
-      { href: '/compare/steroid', name: '経口ステロイド', count: 0, live: false },
+      { href: '/compare/steroid', name: '経口ステロイド', count: 6, live: true },
     ]
   },
   {
