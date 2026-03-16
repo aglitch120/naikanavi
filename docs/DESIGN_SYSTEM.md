@@ -1,6 +1,6 @@
-# 内科ナビ デザインシステム
+# iwor デザインシステム
 
-> 最終更新: 2026年3月9日
+> 最終更新: 2026年3月16日
 
 ---
 
@@ -248,6 +248,90 @@ body {
 ### OGP画像
 - サイズ: 1200px × 630px
 - フォーマット: PNG
+
+---
+
+## 🔒 PROゲート コンポーネント
+
+### ProGate モザイク
+
+```css
+.pro-gate-blur {
+  position: relative;
+  overflow: hidden;
+}
+
+.pro-gate-blur::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: linear-gradient(to bottom, transparent, var(--s0));
+}
+```
+
+### ProGate オーバーレイ
+
+```css
+.pro-gate-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.pro-gate-overlay button {
+  background: var(--ac);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  transition: var(--ease);
+}
+```
+
+### お気に入りパルスアニメーション
+
+```css
+@keyframes pro-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(249, 168, 37, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(249, 168, 37, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(249, 168, 37, 0); }
+}
+
+.fav-pulse {
+  animation: pro-pulse 1.5s ease-out 2;  /* 2回で終了 */
+}
+```
+
+### PRO バッジ
+
+```css
+.pro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: linear-gradient(135deg, var(--ac), #2D6A4F);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+```
 
 ---
 

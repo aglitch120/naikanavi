@@ -1,9 +1,9 @@
-# 内科ナビ SEOブログ 実装ガイド
+# iwor.jp 実装ガイド
 
 ## 📁 プロジェクト構成
 
 ```
-naikanavi.com/
+iwor.jp/
 ├── app/
 │   ├── layout.tsx                 # ルートレイアウト（グローバルメタデータ）
 │   ├── page.tsx                   # 既存のアプリ（/）
@@ -325,6 +325,66 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
    - [ ] 型チェック通過（`npx tsc --noEmit`）
    - [ ] コミット → プッシュ
    - [ ] EXIT_TODO.md 更新
+
+---
+
+## 🔒 ProGate（PROゲート）実装ガイド
+
+### 基本方針
+
+全ツールのUI/操作は完全公開。ゲート対象は「解釈」「アクションプラン」「データ永続化」のみ。
+**ER/ICU/ACLS/計算結果は絶対にゲートしない（患者安全）。**
+
+詳細な戦略は `docs/PRO_STRATEGY.md` を参照。
+
+### コンポーネント構成
+
+```
+components/
+├── pro/
+│   ├── ProGate.tsx          # モザイク/ロックラッパー（全ツール共通）
+│   ├── ProModal.tsx         # PRO誘導モーダル（共通）
+│   ├── useProStatus.ts      # PRO判定フック（localStorage → Supabase切替対応）
+│   └── ProPulseHint.tsx     # お気に入りパルスアニメーション
+```
+
+### ProGate 使い方
+
+```tsx
+import { ProGate } from '@/components/pro/ProGate'
+
+// 計算ツール: 解釈セクションをモザイク
+<ProGate feature="interpretation">
+  <InterpretationSection score={score} />
+</ProGate>
+
+// 生活習慣病: アクションプランをモザイク
+<ProGate feature="action_plan">
+  <ActionPlanList actions={actions} />
+</ProGate>
+```
+
+### PRO判定（Phase対応）
+
+```typescript
+// hooks/useProStatus.ts
+// Phase 1: localStorage判定
+// Phase 2: Supabase Auth + subscriptions テーブル判定
+// 判定関数を1箇所で管理し、Phase切替時に差し替えるだけ
+```
+
+### DB設計（Supabase PostgreSQL）
+
+認証と課金状態を分離。決済手段（BOOTH→Stripe）が変わってもユーザーデータに影響なし。
+テーブル設計の詳細は `docs/PRO_STRATEGY.md` を参照。
+
+### 新規ツール作成時のPROゲートチェックリスト
+
+- [ ] 計算結果は全公開になっているか（ゲート禁止）
+- [ ] ER/ICU/緊急ツールにゲートがないか（安全性チェック）
+- [ ] 解釈/アクションプランに `<ProGate>` を適用したか
+- [ ] PROモーダルのfeature名が正しいか
+- [ ] お気に入りボタンにProGate連携があるか
 
 ---
 

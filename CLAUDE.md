@@ -23,6 +23,7 @@ git config user.name "aglitch120"
 - リポジトリをcloneして最新状態を確認する
 - `docs/` フォルダ内の以下のガイドラインを読み、内容に従うこと：
   - `docs/BUSINESS_OVERVIEW.md` — ビジネス概要・収益モデル・3セグメント商品設計
+  - `docs/PRO_STRATEGY.md` — PLGフリーミアム戦略・ProGate設計・DB設計・ゲート基準
   - `docs/EXIT_STRATEGY.md` — EXIT戦略・ロードマップ
   - `docs/EXIT_TODO.md` — TODOトラッカー（WS0〜WS4）
   - `docs/DESIGN_SYSTEM.md` — カラー・タイポグラフィ・コンポーネント規約
@@ -74,11 +75,13 @@ iwor.jp/
 └── /hospitals/    ← 病院DB（将来）
 ```
 
-### ビジネスモデル
-- 無料: 臨床ツール、薬剤比較、ブログ → SEO集客＋信頼構築
-- 有料: iwor PRO 年額9,800円 → データ保存・パーソナライズ・API利用
+### ビジネスモデル（PLGフリーミアム）
+- 無料: 全ツールのUI/操作（入力＋計算＋結果）＋ER/ICU/ACLS全公開 → SEO集客＋信頼構築
+- PROゲート: 解釈セクション（モザイク）＋データ永続化＋お気に入り → PROモーダル誘導
+- 有料: iwor PRO 年額9,800円 → 解釈閲覧・データ保存・パーソナライズ
+- 安全性ファースト: 緊急ツール（ER/ICU/ACLS/計算結果）は絶対にゲートしない
 
-詳細は `docs/BUSINESS_OVERVIEW.md` を参照。
+詳細は `docs/BUSINESS_OVERVIEW.md` および `docs/PRO_STRATEGY.md` を参照。
 
 ---
 
