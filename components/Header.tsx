@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { trackBoothClick } from '@/lib/gtag'
 import Image from 'next/image'
 import Link from 'next/link'
 import MobileMenu from './MobileMenu'
@@ -138,15 +137,12 @@ export default function Header() {
           </Link>
 
           <SearchDialog />
-          <a
-            href="https://naikanavi.booth.pm/items/8058590"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackBoothClick('header')}
+          <Link
+            href="/pro"
             className="text-xs md:text-sm border border-ac text-ac px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-acl transition-colors font-medium"
           >
-            購入
-          </a>
+            PRO
+          </Link>
           <Link
             href="/app"
             className="text-xs md:text-sm bg-ac text-white px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-ac2 transition-colors font-medium"

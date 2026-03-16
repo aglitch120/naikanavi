@@ -40,17 +40,15 @@ const navItems = [
     exact: false,
   },
   {
-    label: '購入',
-    href: 'https://naikanavi.booth.pm/items/8058590',
+    label: 'PRO',
+    href: '/pro',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.12 : 0} />
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <path d="M16 10a4 4 0 01-8 0" />
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.12 : 0} />
       </svg>
     ),
-    external: true,
-    exact: false,
+    external: false,
+    exact: true,
   },
 ]
 
