@@ -324,7 +324,7 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
    - [ ] explanation: 1000文字以上、FAQ含む
    - [ ] 型チェック通過（`npx tsc --noEmit`）
    - [ ] コミット → プッシュ
-   - [ ] EXIT_TODO.md 更新
+   - [ ] TODO.md 更新
 
 ---
 
@@ -335,7 +335,7 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
 全ツールのUI/操作は完全公開。ゲート対象は「解釈」「アクションプラン」「データ永続化」のみ。
 **ER/ICU/ACLS/計算結果は絶対にゲートしない（患者安全）。**
 
-詳細な戦略は `docs/PRO_STRATEGY.md` を参照。
+詳細な戦略は `docs/PRODUCT.md` を参照。
 
 ### コンポーネント構成
 
@@ -376,7 +376,7 @@ import { ProGate } from '@/components/pro/ProGate'
 ### DB設計（Supabase PostgreSQL）
 
 認証と課金状態を分離。決済手段（BOOTH→Stripe）が変わってもユーザーデータに影響なし。
-テーブル設計の詳細は `docs/PRO_STRATEGY.md` を参照。
+テーブル設計の詳細は `docs/PRODUCT.md` を参照。
 
 ### 新規ツール作成時のPROゲートチェックリスト
 
@@ -403,3 +403,213 @@ import { ProGate } from '@/components/pro/ProGate'
 - 値（value）に日本語を使うのはOK（title, subtitle等）
 - 新たにEdge Runtimeファイルを作成する場合も同様のルールを適用
 
+
+---
+
+# アーキテクチャ図
+
+> 最終更新日: 2026-03-15
+
+## システム構成
+
+```
+┌─────────────────────────────────────────────────┐
+│                   ユーザー                        │
+│            (ブラウザ / モバイル)                    │
+└──────────────────────┬──────────────────────────┘
+                       │ HTTPS
+                       ▼
+┌─────────────────────────────────────────────────┐
+│              Cloudflare CDN / DNS                │
+│                  iwor.jp                         │
+│  ┌─────────────┐  ┌──────────────────────────┐  │
+│  │ DNS管理     │  │ CDN (キャッシュ/配信)     │  │
+│  └─────────────┘  └──────────────────────────┘  │
+└──────────────────────┬──────────────────────────┘
+                       │
+          ┌────────────┴────────────┐
+          ▼                         ▼
+┌──────────────────┐   ┌────────────────────────┐
+│ Cloudflare Pages │   │ Cloudflare Workers     │
+│  (Next.js SSG)   │   │  (API / KV) [Phase2]   │
+│                  │   │                        │
+│ ・ブログ記事     │   │ ・認証API              │
+│ ・臨床ツール     │   │ ・PRO機能API           │
+│ ・固定ページ     │   │ ・キャッシュ管理       │
+└──────────────────┘   └───────────┬────────────┘
+                                   │ [Phase 2]
+                                   ▼
+                       ┌────────────────────────┐
+                       │      Supabase          │
+                       │                        │
+                       │ ・Auth (認証)          │
+                       │ ・PostgreSQL (DB)      │
+                       │ ・症例データ           │
+                       │ ・ユーザープロファイル │
+                       └────────────────────────┘
+```
+
+## データフロー
+
+```
+[無料ユーザー]
+  → Cloudflare CDN → Pages (静的HTML/JS)
+  → ブラウザ内で完結（計算はクライアントサイド）
+
+[PROユーザー] (Phase 2)
+  → Cloudflare CDN → Pages (UI)
+  → Workers (API) → Supabase (データ永続化)
+  → 認証: Supabase Auth (JWT)
+
+[論文フィード] (Phase 2)
+  → n8n (cron) → PubMed API → Claude API (要約生成)
+  → Supabase (保存) → Workers → Pages (配信)
+```
+
+## 技術スタック詳細
+
+| レイヤー | 技術 | 備考 |
+|---------|------|------|
+| フロントエンド | Next.js 14 + React 18 | SSG (Static Site Generation) |
+| スタイリング | Tailwind CSS 3.4 | カスタムカラーシステム |
+| コンテンツ | MDX (next-mdx-remote) | 173記事 + ツール解説 |
+| ホスティング | Cloudflare Pages | 自動デプロイ (Git連携) |
+| DNS | Cloudflare DNS | Xserverドメインから移管 |
+| 計測 | GA4 + GSC | G-VTCJT6XFHG |
+| API [Phase 2] | Cloudflare Workers | Edge Runtime |
+| DB [Phase 2] | Supabase PostgreSQL | Auth一体型 |
+| 自動化 [Phase 2] | n8n + Claude API | 論文フィード |
+| 決済 [Phase 1] | BOOTH | 匿名販売 |
+| 決済 [Phase 2] | Stripe | 法人化後 |
+
+## ディレクトリ構造
+
+```
+iwor/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx          # ルートレイアウト (Header/Footer/GA4)
+│   ├── page.tsx            # トップページ
+│   ├── blog/               # ブログ一覧・カテゴリ・個別記事
+│   ├── tools/              # 臨床ツール
+│   │   ├── page.tsx        # ツールハブ
+│   │   └── calc/           # 計算ツール (36個)
+│   ├── about/              # サイト概要
+│   ├── privacy/            # プライバシーポリシー
+│   ├── terms/              # 利用規約
+│   ├── tokushoho/          # 特商法表示
+│   └── contact/            # お問い合わせ
+├── components/             # 共通コンポーネント
+│   ├── Header.tsx
+│   ├── BottomNav.tsx
+│   ├── blog/               # ブログ用コンポーネント
+│   └── tools/              # ツール用コンポーネント
+│       ├── CalculatorLayout.tsx
+│       ├── ResultCard.tsx
+│       └── InputFields.tsx
+├── content/blog/           # MDX記事 (173本)
+├── lib/                    # ユーティリティ
+│   ├── blog-config.ts      # ブログ設定・カテゴリ定義
+│   ├── tools-config.ts     # ツール定義・メタデータ
+│   ├── seo.ts              # 構造化データ
+│   └── mdx.ts              # MDXパーサー
+├── docs/                   # ドキュメント
+├── tests/                  # テスト
+├── scripts/                # ビルドスクリプト
+└── public/                 # 静的アセット
+```
+
+---
+
+# 依存サービス一覧
+
+> 最終更新日: 2026-03-15
+
+## 本番インフラ
+
+| サービス | 用途 | アカウント | 料金 | 備考 |
+|---------|------|-----------|------|------|
+| **Cloudflare Pages** | ホスティング・CDN | Cloudflareアカウント | 無料（Freeプラン） | iwor.jpのデプロイ先 |
+| **Cloudflare DNS** | DNS管理 | 同上 | 無料 | Xserverからネームサーバー変更済み |
+| **Xserverドメイン** | ドメイン registrar | Xserverアカウント | 年額約1,300円 | iwor.jp, 自動更新要確認 |
+| **GitHub** | ソースコード管理 | aglitch120 | 無料 | aglitch120/iwor |
+
+## 分析・計測
+
+| サービス | 用途 | ID | 料金 |
+|---------|------|-----|------|
+| **Google Analytics 4** | アクセス解析 | G-VTCJT6XFHG | 無料 |
+| **Google Search Console** | SEO・インデックス管理 | ドメインプロパティ | 無料 |
+
+## 将来導入予定（Phase 2以降）
+
+| サービス | 用途 | 導入条件 | 想定料金 |
+|---------|------|---------|---------|
+| **Supabase** | Auth + PostgreSQL (PRO機能) | PRO機能リリース時 | 無料〜$25/月 |
+| **Cloudflare Workers + KV** | API・キャッシュ | API機能追加時 | 無料枠内 |
+| **n8n** | ワークフロー自動化（論文フィード） | 論文フィード実装時 | セルフホスト無料 or $20/月 |
+| **Claude API** | 論文要約生成 | 論文フィード実装時 | 従量課金 |
+| **BOOTH** | 決済（Phase 1） | PRO販売開始時 | 手数料5.6%+22円 |
+| **Stripe** | 決済（Phase 2） | 合同会社設立後 | 手数料3.6% |
+
+## 月額コスト（現時点）
+
+| 項目 | 金額 |
+|------|------|
+| Cloudflare Pages | ¥0 |
+| GitHub | ¥0 |
+| GA4 / GSC | ¥0 |
+| ドメイン（年割） | 約 ¥108/月 |
+| **合計** | **約 ¥108/月** |
+
+## 事業譲渡時の移転対象
+
+1. **GitHub リポジトリ**: aglitch120/iwor → 譲渡先orgに転送
+2. **Cloudflare アカウント**: iwor.jpゾーンを譲渡先に移管
+3. **Xserver ドメイン**: ドメイン移管（auth code発行）
+4. **GA4 / GSC**: プロパティのオーナー権限を譲渡
+5. **Supabase**: プロジェクト移管（Phase 2以降）
+6. **BOOTH / Stripe**: アカウント情報引継ぎ
+
+---
+
+# 依存パッケージ ライセンス確認
+
+> 最終確認日: 2026-03-15
+
+## 結論
+
+**GPL混入なし。** 全パッケージがMITまたはMPL-2.0で、商用利用・事業譲渡に問題なし。
+
+## 直接依存パッケージ
+
+| パッケージ | ライセンス | 備考 |
+|-----------|-----------|------|
+| next | MIT | |
+| react | MIT | |
+| react-dom | MIT | |
+| next-mdx-remote | MPL-2.0 | 弱いコピーレフト。同ファイルの変更のみ開示義務。プロジェクト全体には波及しない |
+| @mdx-js/loader | MIT | |
+| @mdx-js/react | MIT | |
+| @next/mdx | MIT | |
+| autoprefixer | MIT | |
+| gray-matter | MIT | |
+| postcss | MIT | |
+| reading-time | MIT | |
+| rehype-autolink-headings | MIT | |
+| rehype-slug | MIT | |
+| remark-gfm | MIT | |
+| tailwindcss | MIT | |
+
+## devDependencies
+
+| パッケージ | ライセンス |
+|-----------|-----------|
+| @types/node | MIT |
+| @types/react | MIT |
+| typescript | Apache-2.0 |
+
+## MPL-2.0について
+
+next-mdx-remoteのMPL-2.0は「ファイルレベルのコピーレフト」。
+next-mdx-remote自体のソースを改変して再配布する場合のみ、改変部分の開示義務がある。
+プロジェクトのコードやビジネスロジックには波及しない。事業譲渡に影響なし。

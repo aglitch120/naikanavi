@@ -133,7 +133,7 @@
 - [ ] 生活習慣病ツールのアクションプランにProGate適用
 - [ ] /pro/ ランディングページ作成
 - [ ] PLGタッチポイント: 3回目利用バナー（1回のみ表示）
-- [x] docs/PRO_STRATEGY.md 作成（2026-03-16）
+- [x] docs/PRODUCT.md 作成（2026-03-16）
 
 ---
 
@@ -182,7 +182,7 @@
 - [x] バックアップ手順（2026-03-15、docs/OPERATIONS_MANUAL.md）
 
 ### D. 事業概要書（IM）
-- [x] エグゼクティブサマリー（2026-03-15、docs/INFORMATION_MEMORANDUM.md）
+- [x] エグゼクティブサマリー（2026-03-15、docs/STRATEGY.md）
 - [x] 事業内容・プロダクト説明（同上）
 - [x] 市場分析（TAM/SAM/SOM）（同上）
 - [x] 競合優位性（同上）
