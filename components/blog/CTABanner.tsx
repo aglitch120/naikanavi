@@ -153,9 +153,7 @@ export default function CTABanner({ cta, variant = 'inline' }: Props) {
             
             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
               <a
-                href="https://naikanavi.booth.pm/items/8058590"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/pro"
                 onClick={() => trackBoothClick('cta_banner')}
                 className="inline-flex items-center justify-center gap-2 bg-white text-ac px-6 py-3 rounded-xl font-bold text-base hover:bg-white/90 transition-colors shadow-lg shadow-black/10"
               >

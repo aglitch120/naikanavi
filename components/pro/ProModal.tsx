@@ -102,6 +102,13 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
             PRO会員について詳しく見る
           </a>
 
+          <a
+            href="/pro/activate"
+            className="block text-sm text-ac hover:underline mb-3"
+          >
+            コードをお持ちの方はこちら
+          </a>
+
           <button
             onClick={onClose}
             className="text-sm text-muted hover:text-tx transition-colors"

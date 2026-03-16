@@ -308,6 +308,14 @@ export default function ProPage() {
         <p className="text-xs text-muted text-center mt-4">
           ※ BOOTH経由でお支払い。クレジットカード・PayPay・コンビニ払い対応。
         </p>
+        <p className="text-center mt-2">
+          <a
+            href="/pro/activate"
+            className="text-xs text-ac hover:underline"
+          >
+            アクティベーションコードをお持ちの方はこちら →
+          </a>
+        </p>
       </section>
 
       {/* ═══ FREE vs PRO 比較表 ═══ */}

@@ -57,9 +57,7 @@ export default function ContactPage() {
         <p>
           購入に関するお問い合わせは
           <a
-            href="https://naikanavi.booth.pm/items/8058590"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/pro"
             className="text-ac underline ml-1"
           >
             BOOTHの販売ページ

@@ -3,11 +3,30 @@
 import { useState, useEffect, useCallback } from 'react'
 
 // ── PRO判定（Phase対応） ──
-// Phase 1: localStorage判定
+// Phase 1: localStorage判定 + 有効期限チェック
 // Phase 2: Supabase Auth + subscriptions テーブル判定
 // この1ファイルを差し替えるだけで移行完了
 
 const PRO_KEY = 'iwor_pro_user'
+const EXPIRES_KEY = 'iwor_pro_expires_at'
+
+/** 有効期限をチェックし、期限切れなら自動無効化 */
+function checkProValidity(): boolean {
+  if (typeof window === 'undefined') return false
+  const isPro = localStorage.getItem(PRO_KEY) === 'true'
+  if (!isPro) return false
+  
+  const expiresAt = localStorage.getItem(EXPIRES_KEY)
+  if (!expiresAt) return true // 旧バージョン互換（期限なし＝有効）
+  
+  if (new Date() > new Date(expiresAt)) {
+    // 期限切れ → 自動無効化
+    localStorage.removeItem(PRO_KEY)
+    localStorage.setItem('iwor_pro_expired', 'true')
+    return false
+  }
+  return true
+}
 
 /** PRO会員かどうかを判定するフック */
 export function useProStatus() {
@@ -15,8 +34,8 @@ export function useProStatus() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Phase 1: localStorage判定
-    const status = typeof window !== 'undefined' && localStorage.getItem(PRO_KEY) === 'true'
+    // Phase 1: localStorage判定 + 有効期限チェック
+    const status = checkProValidity()
     setIsPro(status)
     setIsLoading(false)
 
@@ -32,13 +51,18 @@ export function useProStatus() {
     // }
   }, [])
 
-  return { isPro, isLoading }
+  /** PRO状態の再チェック（アクティベーション後に呼ぶ） */
+  const refresh = useCallback(() => {
+    const status = checkProValidity()
+    setIsPro(status)
+  }, [])
+
+  return { isPro, isLoading, refresh }
 }
 
 /** PRO状態を同期的に取得（イベントハンドラ内で使用） */
 export function getProStatus(): boolean {
-  if (typeof window === 'undefined') return false
-  return localStorage.getItem(PRO_KEY) === 'true'
+  return checkProValidity()
 }
 
 // ── PLGタッチポイント管理 ──

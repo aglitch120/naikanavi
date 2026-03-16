@@ -56,15 +56,13 @@ export default function HomePage() {
         {/* CTA ボタン */}
         <div className="relative z-10 flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto">
           <a
-            href="https://naikanavi.booth.pm/items/8058590"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/pro"
             className="bg-ac text-white px-6 py-3 rounded-lg font-medium hover:bg-ac2 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-ac/20"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            アプリを購入する
+            iwor PROを見る
           </a>
           <a
             href="/app"
@@ -255,28 +253,26 @@ export default function HomePage() {
               {/* 新規ユーザー向け */}
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-5">
                 <div className="text-xs font-medium text-white/60 mb-2">はじめての方</div>
-                <h3 className="font-bold text-white mb-2">BOOTHで購入する</h3>
-                <p className="text-sm text-white/50 mb-4">買い切り ¥9,800。一度の購入でずっと使えます。</p>
+                <h3 className="font-bold text-white mb-2">iwor PROに登録</h3>
+                <p className="text-sm text-white/50 mb-4">¥9,800/年〜。臨床ツールの解釈・キャリア管理が使い放題。</p>
                 <a
-                  href="https://naikanavi.booth.pm/items/8058590"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/pro"
                   className="inline-flex items-center justify-center gap-2 w-full bg-white text-ac px-4 py-3 rounded-lg font-medium hover:bg-white/90 transition-colors"
                 >
-                  BOOTHで購入 →
+                  プランを見る →
                 </a>
               </div>
               
-              {/* 既存ユーザー向け */}
+              {/* コード入力 */}
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-5">
-                <div className="text-xs font-medium text-white/60 mb-2">すでにお持ちの方</div>
-                <h3 className="font-bold text-white mb-2">アプリにログイン</h3>
-                <p className="text-sm text-white/50 mb-4">進捗を確認、病歴要約を作成できます。</p>
+                <div className="text-xs font-medium text-white/60 mb-2">コードをお持ちの方</div>
+                <h3 className="font-bold text-white mb-2">アクティベーション</h3>
+                <p className="text-sm text-white/50 mb-4">BOOTHで購入したコードを入力して有効化。</p>
                 <a
-                  href="/app"
+                  href="/pro/activate"
                   className="inline-flex items-center justify-center gap-2 w-full bg-transparent text-white border border-white/40 px-4 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors"
                 >
-                  ログイン →
+                  コードを入力 →
                 </a>
               </div>
             </div>

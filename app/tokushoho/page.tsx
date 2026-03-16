@@ -21,9 +21,7 @@ export default function TokushohoPage() {
         </p>
 
         <a
-          href="https://naikanavi.booth.pm/items/8058590"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/pro"
           className="inline-flex items-center gap-2 bg-ac text-white px-5 py-3 rounded-lg hover:bg-ac2 transition-colors font-medium text-sm"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
