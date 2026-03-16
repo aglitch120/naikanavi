@@ -290,7 +290,7 @@ export default function ProPage() {
                 月額換算 {plan.monthly}
               </p>
               <a
-                href="https://iwor.booth.pm/"
+                href="https://naikanavi.booth.pm/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`block w-full py-3 rounded-xl font-bold text-sm transition-colors ${
@@ -408,7 +408,7 @@ export default function ProPage() {
               120+の臨床ツール、解釈、アクションプラン。月額約817円で全機能アクセス。
             </p>
             <a
-              href="https://iwor.booth.pm/"
+              href="https://naikanavi.booth.pm/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white text-ac px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-white/90 transition-colors shadow-lg"
