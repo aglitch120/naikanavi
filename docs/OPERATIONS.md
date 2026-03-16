@@ -240,4 +240,25 @@ supabase db dump -f backup_$(date +%Y%m%d).sql
 | PRO会員数 | 0 | | | | | |
 | PRO転換率 | — | | | | | |
 | 記事数 | 173 | | | | | |
-| ツール数 | 36 | | | | | |
+| ツール数 | 123 | | | | | |
+
+---
+
+## インフラ構成
+
+### Cloudflare Worker API (iwor-api)
+- URL: https://iwor-api.mightyaddnine.workers.dev
+- KV: IWOR_KV (ID: 4af092a9ddd243f09a0f6d2f1979dc6e)
+- デプロイ: `cd workers && npx wrangler deploy`
+
+### Google Apps Script（BOOTH注文取込）
+- tellmedu.info@gmail.com — iwor.booth.pm の注文メール直接受信
+- naikanavi.info@gmail.com — 旧BOOTHメール（転送ではなく直接GAS設置）
+- 両方とも1分ごとにcheckBoothOrders()実行
+- 処理済みメールに "booth-processed" ラベル付与
+
+### BOOTH
+- ショップ: https://iwor.booth.pm
+- アカウント: tellmedu.info@gmail.com
+- 商品: /items/8087647（iwor PRO 1年パス）
+- 2年パス・3年パス: 未登録（要追加）

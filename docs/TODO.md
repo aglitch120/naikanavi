@@ -1,252 +1,127 @@
-# iwor.jp 売却準備 TODO
+# iwor.jp TODO
 
-> 作成日: 2026-03-15 / 更新: 2026-03-16（検査読影SVG模式図追加）
-> 方針: 自走メイン、売却は保険。プロダクト価値を上げつつ売却可能な状態を整える。
-
----
-
-## WS0: ドメイン移行・基盤構築
-
-### A. iwor.jp セットアップ
-- [x] iwor.jp ドメイン取得（Xserverドメイン、2026-03-15）
-- [x] Xserverドメインのネームサーバーを Cloudflare に変更（2026-03-15）
-- [x] Cloudflare で iwor.jp をサイト追加・DNS設定（2026-03-15）
-- [x] iwor.jp で Next.js プロジェクト初期デプロイ確認（2026-03-15、Cloudflare Pages "iwor"）
-
-### B. naikanavi.com → iwor.jp 移植
-- [x] 173記事の移植（MDXそのまま、ソースコード内naikanavi→iwor.jp置換済み 2026-03-15）
-- [x] naikanavi.com から iwor.jp への 301リダイレクト設定 → 不要（naikanavi.com開設数日、SEO資産なし）
-- [x] GSC で iwor.jp を登録・サイトマップ送信（2026-03-15、ドメインプロパティ）
-- [x] GA4 を iwor.jp に設定（2026-03-15、G-VTCJT6XFHG）
-- [x] naikanavi.com DNS削除（重複コンテンツ防止、2026-03-15）
-
-### C. tellmedu.com 整理
-- [ ] tellmedu.com の note販売停止判断
-- [ ] 必要なコンテンツの抽出・保存
-- [ ] 将来の /matching/ 統合に向けた設計メモ作成
+> 更新: 2026-03-16
+> 方針: 自走メイン、売却は保険。7つのサービスを段階的に構築。
 
 ---
 
-## WS1: プロダクト価値向上
+## Phase 0: 基盤（✅完了）
 
-### A. 臨床計算ツール群（/tools/）
-- [x] 共通Calculatorコンポーネント設計・実装
-- [x] /tools/ 一覧ページ作成（検索窓付き）
-- [x] Tier1: CHA2DS2-VASc
-- [x] Tier1: CHADS2
-- [x] Tier1: HAS-BLED
-- [x] Tier1: Child-Pugh
-- [x] Tier1: MELD
-- [x] Tier1: CURB-65
-- [x] Tier1: A-DROP
-- [x] Tier1: Wells PE
-- [x] Tier1: Wells DVT
-- [x] Tier1: GRACE
-- [x] Tier1: qSOFA
-- [x] Tier1: SOFA
-- [x] Tier1: FIB-4
-- [x] Tier1: eGFR（CKD-EPI）
-- [x] Tier1: 補正Ca
-- [x] Tier1: A-aDO2
-- [x] Tier2: BMI, BSA, Cockcroft-Gault, GCS, RCRI, AG, ABCD2, mRS, ECOG, Karnofsky（2026-03-15）
-- [x] Tier2残: NIHSS, APACHE II（2026-03-15）
-- [x] Tier3: 10種（GBS, AIMS65, HEART, TIMI, NEWS2, Charlson, Centor, Caprini, Padua, MASCC）（2026-03-15）
-- [x] Tier3残: 10種（Alvarado, PERC, Ottawa Ankle, Rockall, sPESI, PHQ-9, GAD-7, ISTH DIC, Light基準）（2026-03-15）
-- [x] 追加12種: QTc, MAP, FENa, 浸透圧Gap, Winters式, 補正PHT, IBW/ABW, ANC, MELD-Na, Ranson, BISAP, AUDIT（2026-03-16）→ **67ツール完成**
-- [x] 追加3種: LDL-C Friedewald, γ計算, Parkland式（2026-03-16）→ **70 calcツール**
-- [x] 生活習慣病 総合管理ツール /tools/lifestyle/（2026-03-16）高血圧/DM/脂質/CKD/肝障害/尿酸/肥満 7疾患一括評価
-- [x] お気に入り機能（FavoriteButton + PROモーダル + FavoritesBar）全70ツール対応（2026-03-16）
-- [x] /tools/ ページを内科外来/ER・救急/病棟業務の3軸に再構成（2026-03-16）
-- [x] /tools/ ページ再整理: 生活習慣病ヒーロー + 全13カテゴリカード復活（2026-03-16）
-- [x] ヘッダー「計算ツール」→「ツール」に変更、パンくず修正（2026-03-16）
-- [x] 主要12ツールにデフォルト値設定（2026-03-16）
-- [x] 血ガス解釈インタラクティブフロー /tools/interpret/blood-gas/（2026-03-16）
-- [x] 検査読影ハブ /tools/interpret/ 作成（2026-03-16）
-- [x] /tools/interpret/ 全5本完成: 血ガス・心電図・胸部X線・腹部エコー・体液検査（2026-03-16）
-- [x] 検査読影ツールにインタラクティブ模式図SVG追加（胸部X線・心電図・腹部エコー）（2026-03-16）
-- [x] 生活習慣病ツールにデフォルト値設定（2026-03-16）
-- [x] 各ツールにSEO解説セクション追加
-- [x] 既存173記事との相互内部リンク（2026-03-15、63記事にツールリンクボックス挿入）
-- [x] 構造化データ（MedicalWebPage + FAQPage）
+- [x] iwor.jp ドメイン取得・Cloudflare DNS・Pages稼働
+- [x] naikanavi.com 173記事移植
+- [x] GSC登録・GA4設置（G-VTCJT6XFHG）
+- [x] 利用規約・プライバシーポリシー・特商法表記
+- [x] 医療情報免責表示フッター設置
+- [x] リポジトリ整備（README, .env.example, テスト, ライセンス監査）
+- [x] docs/ 9ファイルMECE体制
 
-### B. 抗菌薬 腎機能別用量調整ツール
-- [x] eGFR/CrCl自動計算（2026-03-15、renal-dose-abxに統合）
-- [x] 主要20薬剤の腎機能別投与量テーブル（2026-03-15）
-- [x] 免責表示（2026-03-15）
+## Phase 1: 臨床ツール群 — SEO集客装置（✅完了）
 
-### B2. インスリンスライディングスケール
-- [x] 3段階スケール（低・標準・高用量）実装（2026-03-15）
+- [x] 臨床計算ツール 79種
+- [x] 生活習慣病 総合管理ツール
+- [x] ER主訴別対応ツリー 6本
+- [x] ACLS/BLS フロー 4本
+- [x] ICU管理ツール 4本
+- [x] 検査読影インタラクティブ 5本（SVG模式図付き）
+- [x] 抗菌薬 腎機能別用量調整
+- [x] 薬剤比較 25カテゴリ 155薬剤
+- [x] 共通コンポーネント（Calculator, DrugCompare, ERDisclaimer等）
+- [x] 全ツール構造化データ（MedicalWebPage + FAQPage）
+- [x] 既存173記事との相互内部リンク
 
-### C. 輸液・電解質補正計算群
-- [x] 維持輸液計算（4-2-1ルール）（2026-03-15）
-- [x] Na欠乏量・自由水欠乏量計算（2026-03-15）
-- [x] Na補正速度計算（2026-03-15）
-- [x] KCL補正計算（2026-03-15）
-- [x] ステロイド換算ツール（2026-03-15）
+## Phase 1.5: PRO基盤 + 収益化（✅完了）
 
-### E. ER主訴別対応ツリー（/tools/er/）
+- [x] ProGate コンポーネント（モザイク/ロック/プレビュー）
+- [x] ProModal + useProStatus（有効期限チェック＋refresh）
+- [x] 全ツールにProGate適用（解釈セクション）
+- [x] PLGタッチポイント（3回目利用バナー、お気に入りパルス）
+- [x] /pro/ ランディングページ（セグメント別タブ+3プラン+比較表+FAQ）
+- [x] Worker API デプロイ（iwor-api.mightyaddnine.workers.dev）
+  - [x] POST /api/store-order（GASから注文保存）
+  - [x] POST /api/register（注文番号+メールで会員登録）
+  - [x] POST /api/login（メール+パスワードでログイン）
+  - [x] 管理者API（orders, users, add-order, delete）
+- [x] GAS設置（tellmedu + naikanavi 両Gmail、1分ごとBOOTHメールチェック）
+- [x] BOOTH商品登録（iwor.booth.pm/items/8087647）
+- [x] テスト購入→GAS→Worker→アクティベーション 全フロー動作確認
+- [x] /pro/activate 会員登録+ログインUI
+- [x] ヘッダーログインボタン→/pro/activate
+- [x] CSP connect-src にWorker URL追加
+- [x] ホームページ 7アプリ構造にリデザイン
 
-### E2. 薬剤比較表（/compare/）
-- [x] DrugCompareLayout共通コンポーネント（ソート・ハイライト・免責）（2026-03-16）
-- [x] /compare/ ハブページ作成（7領域25カテゴリ構成）（2026-03-16）
-- [x] 全25カテゴリ完成（計155薬剤）: DOAC, スタチン, PPI, ARB, SGLT2i, DPP-4i, NSAIDs, CCB, β遮断薬, 抗ヒスタミン薬, 睡眠薬, SSRI/SNRI, 利尿薬, ステロイド, 便秘薬, 抗血小板薬, BZD, GLP-1RA, 尿酸降下薬, キノロン系, セフェム系, 抗てんかん薬, 吸入薬, 鉄剤, 抗血小板薬（2026-03-16）
-- [x] ERDisclaimerコンポーネント（冒頭バナー+末尾免責+結果ノード注意書き）（2026-03-16）
-- [x] /tools/er/ ハブページ（2026-03-16）
-- [x] /tools/er/chest-pain/ 胸痛対応ツリー（16ノード。Killer 5疾患系統的除外）（2026-03-16）
-- [x] /tools/er/altered-consciousness/ 意識障害対応ツリー（15ノード。AIUEOTIPS）（2026-03-16）
-- [x] /tools/er/abdominal-pain/ 腹痛対応ツリー（17ノード。部位別鑑別+緊急手術適応）（2026-03-16）
-- [x] 全ERツールから具体的薬剤用量を削除 → 「施設プロトコル参照」に統一（2026-03-16）
-- [x] 失神ER対応ツリー（2026-03-16）
-- [x] 発熱ER対応ツリー（2026-03-16）
-- [x] 呼吸困難ER対応ツリー（2026-03-16）
-
-### D. テンプレ出力品質強化
-
-### D2. ACLS / BLS フロー（/tools/acls/）
-- [x] /tools/acls/ ハブページ（2026-03-16）
-- [x] /tools/acls/bls/ 成人BLS（14ノード。反応確認→119番→CPR→AED→ROSC）（2026-03-16）
-- [x] /tools/acls/cardiac-arrest/ 心停止（15ノード。VF/pVT + Asystole/PEA + 5H/5T + ROSC後管理）（2026-03-16）
-- [x] /tools/acls/tachycardia/ 頻脈（18ノード。SVT・AF・VT・WPW+AF・Torsades）（2026-03-16）
-- [x] /tools/acls/bradycardia/ 徐脈（12ノード。アトロピン→TCP→PM適応）（2026-03-16）
-
-### D3. ICU管理ツール（/tools/icu/）
-- [x] /tools/icu/ ハブページ（2026-03-16）
-- [x] /tools/icu/ventilator/ 人工呼吸器初期設定（IBW→病態別推奨、ARDSNet FiO₂/PEEP表）（2026-03-16）
-- [x] /tools/icu/vasopressor/ 昇圧剤選択ガイド（7薬剤比較、ショック5分類別フロー）（2026-03-16）
-- [x] /tools/icu/nutrition/ ICU栄養計算（ESPEN/ASPEN準拠、製剤9種比較、refeeding risk）（2026-03-16）
-- [x] /tools/icu/sedation/ 鎮静・鎮痛・せん妄（RASS/CAM-ICU/BPS/CPOT）（2026-03-16）
-
-### D4. テンプレ出力品質強化
-- [ ] 文字数カウンター
-- [ ] 検査値自動挿入テンプレ
-- [ ] 考察テンプレート強化
-- [ ] 推奨参考文献の自動出力
-
-### F. PROゲート＋PLG基盤（★最優先 — 収益化の前提）
-- [x] ProGate コンポーネント作成（モザイク/ロック/プレビュー3パターン）（2026-03-16）
-- [x] ProModal 共通化（FavoriteButton.tsxから抽出→components/pro/に移動）（2026-03-16）
-- [x] useProStatus フック作成（PRO判定の一元管理、Phase1: localStorage、Phase2: Supabase）（2026-03-16）
-- [x] お気に入りパルスアニメーション（初回のみ、1回限り）（2026-03-16）
-- [x] 計算ツール1つにProGate組み込み（プロトタイプ検証）（2026-03-16、CHA₂DS₂-VASc）
-- [x] 全計算ツールの解釈セクションにProGate適用（2026-03-16、CalculatorLayout自動ラップ79ツール一括）
-- [x] 検査読影（血ガス等）にProGate適用（2026-03-16、5ツール+FavoriteButton+ProPulseHint）
-- [x] 生活習慣病ツールのアクションプランにProGate適用（2026-03-16、FavoriteButton追加）
-- [x] PLGタッチポイント: 3回目利用バナー（1回のみ表示）（2026-03-16、CalculatorLayout内ThirdUseBanner）
-- [x] CTA→PRO誘導に差し替え（旧BOOTH CTA削除）（2026-03-16）
-- [x] trackToolUsage全ツール自動トラッキング（2026-03-16）
-- [x] /pro/ ランディングページ作成（2026-03-16、セグメント別タブ+3プラン+比較表+FAQ+構造化データ）
-- [x] docs/PRODUCT.md 作成（2026-03-16）
-- [x] /pro/activate アクティベーションページ（注文番号入力→Worker API検証→PRO有効化）（2026-03-16）
-- [x] useProStatus 有効期限チェック＋refresh追加（2026-03-16）
-- [x] ProModal にアクティベーション導線追加（2026-03-16）
-- [x] /admin/pro-codes 注文管理画面（API接続、手動注文追加）（2026-03-16）
-- [x] 旧naikanavi BOOTHリンク→/pro 内部リンクに全更新（2026-03-16）
-- [x] ホームページCTA テキスト・導線をiwor PRO体制に更新（2026-03-16）
-- [x] BOOTH商品テンプレート作成（docs/BOOTH_PRODUCT_TEMPLATE.md）（2026-03-16）
-- [x] workers/api.js — iwor PRO専用Worker新規作成（注文保存/有効化/管理者API）（2026-03-16）
-- [x] workers/wrangler.toml — デプロイ設定（2026-03-16）
-- [x] scripts/booth-gas.js — GAS（1分ごとGmailチェック→Worker POST）（2026-03-16）
-- [x] lib/pro-activation.ts — Worker API呼び出し方式に書き換え（2026-03-16）
-- [ ] **Worker デプロイ（KV作成 + Secrets設定 + NEXT_PUBLIC_API_URL設定）**
-- [ ] **GAS設置（scripts/booth-gas.js → Google Apps Script + 1分トリガー）**
-- [ ] **BOOTH商品登録（3商品 + サムネイル画像）**
-- [ ] **テスト購入 → GAS → Worker → /pro/activate 動作確認**
+### 残タスク
+- [ ] **Worker再デプロイ**（register/login対応版。ローカルで `cd workers && npx wrangler deploy`）
+- [ ] BOOTH商品価格を本番価格（¥9,800）に変更
+- [ ] BOOTH 2年パス・3年パス商品追加
+- [ ] BOOTHサムネイル画像作成
 
 ---
 
-## WS2: 数字を残す（売却額に直結）
+## Phase 2: マッチング対策 MVP（🔜 次フェーズ）
 
-### A. アクセス解析（★最優先 — データは過去に遡れない）
-- [x] GA4 を iwor.jp に設置（2026-03-15、G-VTCJT6XFHG）
-- [x] GSC で iwor.jp を登録・サイトマップ送信（2026-03-15）
-- [x] 月次PVレポート体制構築（2026-03-15、docs/OPERATIONS_MANUAL.md + docs/analytics/）
+- [ ] /matching/ ティーザーLP（PRO未購入者向けデモ）
+- [ ] プロフィール入力フォーム
+- [ ] 履歴書テンプレート生成
+- [ ] 病院DB（公開データ集約）
+- [ ] AI面接練習（Claude API）
+
+## Phase 3: 病棟TODO & 症例ログ
+
+- [ ] /dashboard/ ティーザーLP
+- [ ] 患者TODO（Things 3風、チェック→ログ、退院→アーカイブ）
+- [ ] 症例ポチポチメモ（タップ入力）
+- [ ] Stat tracker（統計・検索・編集・削除）
+- [ ] EPOC連携エクスポート
+
+## Phase 4: J-OSLER管理
+
+- [ ] /josler/ ティーザーLP
+- [ ] 旧app.html からOverview/Cases/Summaries機能を移植
+- [ ] 進捗ダッシュボード（70疾患群）
+- [ ] 病歴要約AI生成（旧テンプレート機能移植）
+- [ ] 病棟TODO症例ログからの自動連携
+
+## Phase 5: 学習プラットフォーム
+
+- [ ] /learning/ ティーザーLP
+- [ ] /learning/naika-exam/ 内科専門医試験（旧Quiz機能移植、370疾患）
+- [ ] 講座追加基盤（エコー、輸液など）
+
+## Phase 6: 論文フィード自動化
+
+- [ ] /journal/ 基本UI
+- [ ] PubMed API + Claude API 自動要約パイプライン
+- [ ] 最新3件FREE / 全アーカイブPRO
+
+---
+
+## 継続タスク（優先度低）
+
+### コード品質
+- [ ] 論文フィード更新の自動化
 - [ ] GA4 コンバージョン設定（PRO登録、BOOTH遷移）
 
-### B. 売上記録
-- [ ] BOOTH売上画面を毎月スクショ → docs/revenue/ に保存
-- [x] コスト記録スプレッドシート作成（2026-03-15、docs/COST_RECORD.md）
-- [x] 月次P/L（売上−コスト＝利益）の記録開始（2026-03-15、docs/COST_RECORD.md）
+### 法務
+- [ ] Xserverドメイン自動更新ON
+- [ ] 合同会社設立（PRO会員100人超えたら）
+- [ ] Stripe導入（法人化後）
 
-### C. BOOTH売上
-- [x] iwor PRO 年間パス商品設計（1年/2年/3年パス）（2026-03-16、docs/BOOTH_PRODUCT_TEMPLATE.md）
-- [x] 購入→アクティベーションコード発行フロー構築（2026-03-16、SHA-256ハッシュ検証）
-- [ ] BOOTH商品ページ登録（3商品＋サムネイル画像）
-- [ ] 初回テスト購入→アクティベーション動作確認
-
-### D. アフィリエイト
-- [ ] 医師転職サイトとのアフィリエイト提携
-- [ ] キャリア記事にCTA設置
+### 旧資産整理
+- [ ] 旧worker.js 整理（iwor-apiが後継）
+- [ ] 旧public/app.html 削除（Phase 4-5で機能移植完了後）
+- [ ] 旧demo_v14_app.html 削除
 
 ---
 
-## WS3: コードの清潔さ（買い手のエンジニアが30分で動かせる状態）
+## 完了サマリー
 
-### A. リポジトリ整備
-- [x] README.md にプロジェクト概要・セットアップ手順
-- [x] .env.example 作成（必要な環境変数一覧）（2026-03-15）
-- [x] 依存パッケージのライセンス確認（2026-03-15、GPL混入なし。docs/LICENSE_AUDIT.md）
-- [x] テストを最低1つ書く（2026-03-15、eGFR/FIB-4/補正Ca/A-aDO2 13テスト。tests/calc-logic.test.mjs）
-- [x] ソースコード内 naikanavi 参照の一括置換（2026-03-15、37ファイル99箇所。BOOTH/email除く）
-
-### B. 技術資産ドキュメント
-- [x] アーキテクチャ図（2026-03-15、docs/ARCHITECTURE.md）
-- [x] インフラ構成図（2026-03-15、ARCHITECTURE.mdに統合）
-- [x] 依存サービス一覧（2026-03-15、docs/SERVICE_DEPENDENCIES.md）
-
-### C. 運営マニュアル（属人性を下げる）
-- [x] コンテンツ更新手順書（2026-03-15、docs/CONTENT_UPDATE_GUIDE.md）
-- [x] 定常作業一覧と自動化状況（2026-03-15、docs/OPERATIONS_MANUAL.md）
-- [ ] 論文フィード更新の自動化（n8n + PubMed API + Claude API）
-- [x] バックアップ手順（2026-03-15、docs/OPERATIONS_MANUAL.md）
-
-### D. 事業概要書（IM）
-- [x] エグゼクティブサマリー（2026-03-15、docs/STRATEGY.md）
-- [x] 事業内容・プロダクト説明（同上）
-- [x] 市場分析（TAM/SAM/SOM）（同上）
-- [x] 競合優位性（同上）
-- [x] 成長戦略（同上）
-- [x] 財務サマリー（月次P/L推移）（同上 + docs/COST_RECORD.md）
-
----
-
-## WS4: 法務・インフラ整備
-
-### A. 法的リスクゼロ化（★今すぐやるべき）
-- [x] 医療情報免責表示を全ページフッターに設置（2026-03-15）
-- [x] 全ツールに出典明記の確認（2026-03-15、36ツール全て確認済み）
-- [x] 利用規約にデータ利用条項追加（第7条データの利用・第8条事業譲渡）（2026-03-15）
-- [x] プライバシーポリシーにデータ第三者提供条項追加（第6条事業譲渡時のデータ移転）（2026-03-15）
-- [x] 利用規約の最新版確認（2026-03-15、iwor全体対応に全面改訂）
-- [x] プライバシーポリシーの最新版確認（2026-03-15、GA4・Cookie・事業譲渡追加）
-
-### B. アカウント・ドメイン整理
-- [x] 新ドメイン iwor.jp 取得（Xserverドメイン）
-- [ ] Xserverドメイン自動更新ON（失効防止）
-- [x] 全アカウント一覧表作成（2026-03-15、docs/ACCOUNT_LIST.md）
-- [ ] iwor関連アカウントを専用メールに統一（将来 info@iwor.jp）
-- [ ] naikanavi.com の管理・リダイレクト維持
-- [ ] Cloudflareアカウント整理（iwor.jp追加）
-
-### C. 法人化（PRO会員100人超えたら）
-- [ ] 合同会社設立（freee会社設立）
-- [ ] バーチャルオフィス契約
-- [ ] 法人口座開設
-- [ ] 特商法表記の法人名義化
-- [ ] Stripe導入
-
----
-
-## 進捗サマリー
-
-| WS | 完了 | 残り | 進捗率 |
-|----|------|------|--------|
-| WS0: ドメイン移行 | 9 | 3 | 75% |
-| WS1: プロダクト | 87 | 4 | 96% |
-| WS2: 数字を残す | 7 | 6 | 54% |
-| WS3: コード清潔さ | 18 | 1 | 95% |
-| WS4: 法務・インフラ | 8 | 9 | 47% |
-| **合計** | **129** | **23** | **85%** |
-
----
-
-*タスク完了ごとに更新。次回レビュー: 2026年4月*
+| Phase | 状態 |
+|-------|------|
+| Phase 0: 基盤 | ✅ 完了 |
+| Phase 1: 臨床ツール（123個） | ✅ 完了 |
+| Phase 1.5: PRO基盤 + 収益化 | ✅ 完了（Worker再デプロイ残） |
+| Phase 2: マッチング | 🔜 次 |
+| Phase 3: 病棟TODO | 未着手 |
+| Phase 4: J-OSLER | 未着手 |
+| Phase 5: 学習 | 未着手 |
+| Phase 6: 論文フィード | 未着手 |
