@@ -28,8 +28,8 @@ const navItems = [
     exact: false,
   },
   {
-    label: 'ツール',
-    href: '/tools',
+    label: 'アプリ',
+    href: '/app',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.15 : 0} />
@@ -61,6 +61,10 @@ export default function BottomNav() {
     // /blog はブログ記事ページ・カテゴリページでもアクティブ
     if (item.href === '/blog') {
       return pathname.startsWith('/blog')
+    }
+    // /app タブは /tools 配下でもアクティブ
+    if (item.href === '/app') {
+      return pathname.startsWith('/app') || pathname.startsWith('/tools') || pathname.startsWith('/compare')
     }
     return pathname.startsWith(item.href)
   }

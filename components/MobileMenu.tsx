@@ -114,11 +114,11 @@ export default function MobileMenu() {
               ブログ一覧
             </Link>
             <Link
-              href="/tools"
+              href="/app"
               onClick={handleLinkClick}
               className="block py-2.5 px-3 text-sm font-medium text-tx rounded-lg hover:bg-s1 transition-colors"
             >
-              臨床ツール
+              アプリ
             </Link>
           </div>
 

@@ -128,12 +128,12 @@ export default function Header() {
             )}
           </div>
 
-          {/* デスクトップ: ツール */}
+          {/* デスクトップ: アプリ */}
           <Link
-            href="/tools"
+            href="/app"
             className="hidden md:block text-sm px-2 py-1.5 rounded-md text-muted hover:text-ac transition-colors"
           >
-            ツール
+            アプリ
           </Link>
 
           <SearchDialog />
