@@ -457,23 +457,9 @@ export default function ECGInterpretPage() {
 
       {/* ステップバイステップ結果 */}
       {hasPrimary && (
-        <section className="mb-8">
-          <h2 className="text-lg font-bold text-tx mb-4">読影結果（{steps.length}項目）</h2>
-          <div className="space-y-3">
-            {steps.map((s, i) => (
-              <div key={i} className={`rounded-xl p-4 ${severityStyles[s.severity]}`}>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${severityTextColor[s.severity]} bg-white/60`}>
-                    Step {Math.floor(s.step)}
-                  </span>
-                  <span className={`text-sm font-bold ${severityTextColor[s.severity]}`}>{s.title}</span>
-                </div>
-                <p className={`text-sm font-medium mb-1 ${severityTextColor[s.severity]}`}>{s.finding}</p>
-                {s.detail && <p className="text-xs text-tx/80">{s.detail}</p>}
-              </div>
-            ))}
-          </div>
-        </section>
+        <ProGate feature="interpretation" previewHeight={100}>
+          <EcgResultTabs steps={steps} />
+        </ProGate>
       )}
 
       {/* 免責 */}
@@ -481,23 +467,6 @@ export default function ECGInterpretPage() {
         <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>
         <p>本ツールは医療従事者の心電図読影を補助する目的で提供しています。自動判定アルゴリズムではなく、入力された所見に基づく教育的ガイドです。診断・治療の最終判断は必ず担当医が行ってください。</p>
       </div>
-
-      {/* SEO解説 */}
-      <ProGate feature="interpretation" previewHeight={80}>
-      <section className="space-y-4 text-sm text-muted mb-8">
-        <h2 className="text-base font-bold text-tx">心電図の系統的読影アプローチ</h2>
-        <p>心電図（ECG/EKG）の読影は系統的に行うことで見落としを防ぎます。本ツールは「Rate → Rhythm → P wave → PR → QRS → Axis → ST → T → QTc」の9ステップで、入力された所見から鑑別疾患と次の評価ステップを提示します。</p>
-
-        <h3 className="font-bold text-tx">頻脈の鑑別（Narrow QRS vs Wide QRS）</h3>
-        <p>Narrow QRS（&lt; 120ms）: 洞性頻脈・AVNRT・AVRT・心房粗動・心房細動。Wide QRS（≧ 120ms）: VT・SVT with aberrancy・antidromic AVRT。Brugada criteriaで鑑別し、血行動態不安定なら迷わず電気的除細動。</p>
-
-        <h3 className="font-bold text-tx">ST上昇の鑑別</h3>
-        <p>STEMI（緊急カテーテル適応）・急性心膜炎（広範囲ST上昇＋PR低下、aVRでST低下）・早期再分極（若年男性、J点上昇）・Brugada症候群（V1-V3のcoved型ST上昇）・たこつぼ心筋症。</p>
-
-        <h3 className="font-bold text-tx">QT延長の評価</h3>
-        <p>QTcはBazett補正（QT/√RR）で算出。男性 &gt; 450ms・女性 &gt; 470msで延長。500ms超はTorsades de Pointesの高リスクで、原因薬剤の中止と電解質補正（K &gt; 4.0, Mg &gt; 2.0）が必要。</p>
-      </section>
-      </ProGate>
 
       {/* 関連ツール */}
       <section className="mb-8">
@@ -530,5 +499,49 @@ export default function ECGInterpretPage() {
         </ol>
       </section>
     </div>
+  )
+}
+
+function EcgResultTabs({ steps }: { steps: StepResult[] }) {
+  const [activeTab, setActiveTab] = useState<'result' | 'action'>('result')
+  return (
+    <section className="mb-8">
+      <div className="flex border border-br rounded-xl overflow-hidden mb-4">
+        <button onClick={() => setActiveTab('result')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'result' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          検査結果
+        </button>
+        <button onClick={() => setActiveTab('action')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'action' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          アクション
+        </button>
+      </div>
+      {activeTab === 'result' && (
+        <div className="space-y-3">
+          {steps.map((s, i) => (
+            <div key={i} className={`rounded-xl p-4 ${severityStyles[s.severity]}`}>
+              <div className="flex items-center gap-2 mb-1">
+                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${severityTextColor[s.severity]} bg-white/60`}>Step {Math.floor(s.step)}</span>
+                <span className={`text-sm font-bold ${severityTextColor[s.severity]}`}>{s.title}</span>
+              </div>
+              <p className={`text-sm font-medium mb-1 ${severityTextColor[s.severity]}`}>{s.finding}</p>
+              {s.detail && <p className="text-xs text-tx/80">{s.detail}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+      {activeTab === 'action' && (
+        <div className="space-y-4 text-sm text-muted">
+          <h3 className="font-bold text-tx">心電図の系統的読影アプローチ</h3>
+          <p>Rate → Rhythm → P wave → PR → QRS → Axis → ST → T → QTc の9ステップで系統的に読影。入力された所見から鑑別疾患と次の評価ステップを提示します。</p>
+          <h3 className="font-bold text-tx">頻脈の鑑別（Narrow vs Wide QRS）</h3>
+          <p>Narrow QRS: 洞性頻脈・AVNRT・AVRT・心房粗動・AF。Wide QRS: VT・SVT with aberrancy。血行動態不安定なら電気的除細動。</p>
+          <h3 className="font-bold text-tx">ST上昇の鑑別</h3>
+          <p>STEMI・急性心膜炎・早期再分極・Brugada症候群・たこつぼ心筋症。</p>
+          <h3 className="font-bold text-tx">QT延長の評価</h3>
+          <p>Bazett補正（QT/√RR）。男性 &gt; 450ms・女性 &gt; 470msで延長。500ms超はTorsades de Pointesの高リスク。</p>
+        </div>
+      )}
+    </section>
   )
 }

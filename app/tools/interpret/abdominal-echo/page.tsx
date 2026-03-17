@@ -180,20 +180,9 @@ export default function AbdominalEchoPage() {
 
       {/* Results */}
       {results.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-lg font-bold text-tx mb-4">
-            評価サマリー（{results.length}所見）
-            {!hasAbnormal && <span className="text-sm font-normal text-[#166534] ml-2">✓ 異常所見なし</span>}
-          </h2>
-          <div className="space-y-3">
-            {results.map((r, i) => (
-              <div key={i} className={`rounded-xl p-4 ${styles[r.severity]}`}>
-                <p className={`text-sm font-bold mb-1 ${textColors[r.severity]}`}>{r.icon} {r.organ}: {r.label}</p>
-                <p className="text-xs text-tx/80">{r.detail}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ProGate feature="interpretation" previewHeight={100}>
+          <EchoResultTabs results={results} hasAbnormal={hasAbnormal} styles={styles} textColors={textColors} />
+        </ProGate>
       )}
 
       {selected.size === 0 && (
@@ -207,20 +196,6 @@ export default function AbdominalEchoPage() {
         <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>
         <p>本ツールは腹部超音波検査の系統的評価を補助するチェックリストです。超音波画像の自動判定は行いません。診断・治療の最終判断は必ず担当医が行ってください。</p>
       </div>
-
-      {/* SEO */}
-      <ProGate feature="interpretation" previewHeight={80}>
-      <section className="space-y-4 text-sm text-muted mb-8">
-        <h2 className="text-base font-bold text-tx">腹部エコーの系統的アプローチ</h2>
-        <p>腹部超音波検査はベッドサイドで非侵襲的に腹腔内臓器を評価できる重要な検査です。系統的に肝臓→胆嚢・胆管→膵臓→腎臓→脾臓→大動脈→その他の順に評価することで見落としを防ぎます。</p>
-
-        <h3 className="font-bold text-tx">肝臓の評価ポイント</h3>
-        <p>サイズ（MCL上 &gt; 15cmで肝腫大）、実質エコー（bright liverは脂肪肝）、表面の凹凸（肝硬変）、肝内胆管拡張（閉塞性黄疸）、腫瘤性病変の有無を系統的に確認します。</p>
-
-        <h3 className="font-bold text-tx">急性腹症での腹部エコー</h3>
-        <p>急性胆嚢炎（Murphy sign + 胆嚢壁肥厚 + 結石）・AAA破裂（大動脈径拡大 + 後腹膜血腫）・水腎症（尿管結石）・腹水（消化管穿孔・出血）の迅速診断に不可欠です。</p>
-      </section>
-      </ProGate>
 
       {/* 関連ツール */}
       <section className="mb-8">
@@ -251,5 +226,54 @@ export default function AbdominalEchoPage() {
         </ol>
       </section>
     </div>
+  )
+}
+
+function EchoResultTabs({ results, hasAbnormal, styles, textColors }: {
+  results: { organ: string; icon: string; label: string; severity: Severity; detail: string }[]
+  hasAbnormal: boolean
+  styles: Record<Severity, string>
+  textColors: Record<Severity, string>
+}) {
+  const [activeTab, setActiveTab] = useState<'result' | 'action'>('result')
+  return (
+    <section className="mb-8">
+      <div className="flex border border-br rounded-xl overflow-hidden mb-4">
+        <button onClick={() => setActiveTab('result')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'result' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          検査結果
+        </button>
+        <button onClick={() => setActiveTab('action')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'action' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          アクション
+        </button>
+      </div>
+      {activeTab === 'result' && (
+        <div>
+          <h2 className="text-lg font-bold text-tx mb-3">
+            評価サマリー（{results.length}所見）
+            {!hasAbnormal && <span className="text-sm font-normal text-[#166534] ml-2">✓ 異常所見なし</span>}
+          </h2>
+          <div className="space-y-3">
+            {results.map((r, i) => (
+              <div key={i} className={`rounded-xl p-4 ${styles[r.severity]}`}>
+                <p className={`text-sm font-bold mb-1 ${textColors[r.severity]}`}>{r.icon} {r.organ}: {r.label}</p>
+                <p className="text-xs text-tx/80">{r.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {activeTab === 'action' && (
+        <div className="space-y-4 text-sm text-muted">
+          <h3 className="font-bold text-tx">腹部エコーの系統的アプローチ</h3>
+          <p>肝臓→胆嚢・胆管→膵臓→腎臓→脾臓→大動脈の順に評価。系統的に確認することで見落としを防ぎます。</p>
+          <h3 className="font-bold text-tx">肝臓の評価ポイント</h3>
+          <p>サイズ（MCL上 &gt; 15cmで肝腫大）、実質エコー（bright liver=脂肪肝）、表面凹凸（肝硬変）、肝内胆管拡張、腫瘤性病変。</p>
+          <h3 className="font-bold text-tx">急性腹症での腹部エコー</h3>
+          <p>急性胆嚢炎（Murphy sign + 胆嚢壁肥厚 + 結石）、AAA破裂、水腎症、腹水の迅速診断に不可欠。</p>
+        </div>
+      )}
+    </section>
   )
 }

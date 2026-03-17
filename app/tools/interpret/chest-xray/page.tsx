@@ -163,31 +163,9 @@ export default function ChestXrayPage() {
 
       {/* Results */}
       {results.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-lg font-bold text-tx mb-4">
-            読影サマリー（{results.length}所見）
-            {!hasAnyAbnormal && <span className="text-sm font-normal text-[#166534] ml-2">✓ 異常所見なし</span>}
-          </h2>
-          <div className="space-y-3">
-            {results.map((s, i) => {
-              const styles: Record<Severity, string> = {
-                ok: 'bg-[#E6F4EA] border-l-4 border-[#34A853]',
-                wn: 'bg-[#FFF8E1] border-l-4 border-[#F9A825]',
-                dn: 'bg-[#FDECEA] border-l-4 border-[#D93025]',
-                neutral: 'bg-[#E8F0FE] border-l-4 border-[#4285F4]',
-              }
-              const textColors: Record<Severity, string> = {
-                ok: 'text-[#1B5E20]', wn: 'text-[#E65100]', dn: 'text-[#B71C1C]', neutral: 'text-[#1565C0]',
-              }
-              return (
-                <div key={i} className={`rounded-xl p-4 ${styles[s.severity]}`}>
-                  <p className={`text-sm font-bold mb-1 ${textColors[s.severity]}`}>{s.title}</p>
-                  <p className="text-xs text-tx/80">{s.detail}</p>
-                </div>
-              )
-            })}
-          </div>
-        </section>
+        <ProGate feature="interpretation" previewHeight={100}>
+          <CxrResultTabs results={results} hasAnyAbnormal={hasAnyAbnormal} />
+        </ProGate>
       )}
 
       {selected.size === 0 && (
@@ -201,20 +179,6 @@ export default function ChestXrayPage() {
         <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>
         <p>本ツールは胸部X線の系統的読影を補助するチェックリストです。画像の自動判定は行いません。読影・診断の最終判断は必ず担当医が行ってください。</p>
       </div>
-
-      {/* SEO */}
-      <ProGate feature="interpretation" previewHeight={80}>
-      <section className="space-y-4 text-sm text-muted mb-8">
-        <h2 className="text-base font-bold text-tx">胸部X線 ABCDE法による系統的読影</h2>
-        <p>胸部X線読影は系統的アプローチで見落としを防ぎます。ABCDE法はAirway（気道）→ Bones（骨）→ Cardiac（心臓）→ Diaphragm（横隔膜）→ Everything else（肺野・胸膜）の順に評価する方法です。</p>
-
-        <h3 className="font-bold text-tx">読影の基本チェック</h3>
-        <p>正しい読影のためには、まず技術的評価（Rotation・Inspiration・Penetration = RIP）を確認します。正面像で棘突起が鎖骨の中間に位置し、横隔膜が第10後肋骨レベルで、椎体が心陰影を通して透見できれば技術的に良好。</p>
-
-        <h3 className="font-bold text-tx">見落としやすい所見</h3>
-        <p>肺尖部の結節影、横隔膜下のfree air、肋骨骨折、心陰影に重なる左下葉の浸潤影、気管の偏位は見落としやすい所見です。ABCDE法を使って毎回同じ順序で評価することで、これらの見落としを防ぐことができます。</p>
-      </section>
-      </ProGate>
 
       {/* 関連ツール */}
       <section className="mb-8">
@@ -245,5 +209,59 @@ export default function ChestXrayPage() {
         </ol>
       </section>
     </div>
+  )
+}
+
+const cxrStyles: Record<Severity, string> = {
+  ok: 'bg-[#E6F4EA] border-l-4 border-[#34A853]',
+  wn: 'bg-[#FFF8E1] border-l-4 border-[#F9A825]',
+  dn: 'bg-[#FDECEA] border-l-4 border-[#D93025]',
+  neutral: 'bg-[#E8F0FE] border-l-4 border-[#4285F4]',
+}
+const cxrTextColors: Record<Severity, string> = {
+  ok: 'text-[#1B5E20]', wn: 'text-[#E65100]', dn: 'text-[#B71C1C]', neutral: 'text-[#1565C0]',
+}
+
+function CxrResultTabs({ results, hasAnyAbnormal }: { results: StepResult[]; hasAnyAbnormal: boolean }) {
+  const [activeTab, setActiveTab] = useState<'result' | 'action'>('result')
+  return (
+    <section className="mb-8">
+      <div className="flex border border-br rounded-xl overflow-hidden mb-4">
+        <button onClick={() => setActiveTab('result')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'result' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          検査結果
+        </button>
+        <button onClick={() => setActiveTab('action')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'action' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          アクション
+        </button>
+      </div>
+      {activeTab === 'result' && (
+        <div>
+          <h2 className="text-lg font-bold text-tx mb-3">
+            読影サマリー（{results.length}所見）
+            {!hasAnyAbnormal && <span className="text-sm font-normal text-[#166534] ml-2">✓ 異常所見なし</span>}
+          </h2>
+          <div className="space-y-3">
+            {results.map((s, i) => (
+              <div key={i} className={`rounded-xl p-4 ${cxrStyles[s.severity]}`}>
+                <p className={`text-sm font-bold mb-1 ${cxrTextColors[s.severity]}`}>{s.title}</p>
+                <p className="text-xs text-tx/80">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {activeTab === 'action' && (
+        <div className="space-y-4 text-sm text-muted">
+          <h3 className="font-bold text-tx">胸部X線 ABCDE法による系統的読影</h3>
+          <p>ABCDE法: Airway → Bones → Cardiac → Diaphragm → Everything else の順に評価。系統的アプローチで見落としを防ぎます。</p>
+          <h3 className="font-bold text-tx">読影の基本チェック</h3>
+          <p>技術的評価（RIP: Rotation・Inspiration・Penetration）を最初に確認。棘突起が鎖骨中間、横隔膜が第10後肋骨レベル。</p>
+          <h3 className="font-bold text-tx">見落としやすい所見</h3>
+          <p>肺尖部の結節影、横隔膜下のfree air、肋骨骨折、心陰影に重なる左下葉の浸潤影、気管の偏位。</p>
+        </div>
+      )}
+    </section>
   )
 }

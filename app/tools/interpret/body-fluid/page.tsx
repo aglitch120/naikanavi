@@ -528,24 +528,9 @@ export default function BodyFluidPage() {
 
       {/* Results */}
       {steps.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-lg font-bold text-tx mb-4">解釈結果（{steps.length}項目）</h2>
-          <div className="space-y-3">
-            {steps.map((s, i) => (
-              <div key={i} className={`rounded-xl p-4 ${severityStyles[s.severity]}`}>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${severityTextColor[s.severity]} bg-white/60`}>
-                    Step {Math.floor(s.step)}
-                  </span>
-                  <span className={`text-sm font-bold ${severityTextColor[s.severity]}`}>{s.title}</span>
-                </div>
-                <p className={`text-sm font-medium mb-1 ${severityTextColor[s.severity]}`}>{s.finding}</p>
-                {s.formula && <p className="text-xs font-mono bg-white/70 text-tx px-2 py-1 rounded mt-1 mb-1">{s.formula}</p>}
-                {s.detail && <p className="text-xs text-tx/80">{s.detail}</p>}
-              </div>
-            ))}
-          </div>
-        </section>
+        <ProGate feature="interpretation" previewHeight={100}>
+          <FluidResultTabs steps={steps} />
+        </ProGate>
       )}
 
       {/* 免責 */}
@@ -553,22 +538,6 @@ export default function BodyFluidPage() {
         <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>
         <p>本ツールは医療従事者の体液検査解釈を補助する目的で提供しています。診断・治療の最終判断は必ず担当医が行ってください。</p>
       </div>
-
-      {/* SEO解説 */}
-      <ProGate feature="interpretation" previewHeight={80}>
-      <section className="space-y-4 text-sm text-muted mb-8">
-        <h2 className="text-base font-bold text-tx">体液検査の系統的アプローチ</h2>
-
-        <h3 className="font-bold text-tx">胸水: Light基準による分類</h3>
-        <p>Light基準は胸水を滲出液と漏出液に分類する最も確立された方法です。蛋白比 &gt; 0.5、LDH比 &gt; 0.6、胸水LDH &gt; 正常上限の2/3のいずれかを満たせば滲出液。感度98%だが特異度やや低く、利尿薬使用中の心不全で偽陽性あり。</p>
-
-        <h3 className="font-bold text-tx">腹水: SAAG（血清-腹水アルブミン差）</h3>
-        <p>SAAG ≧ 1.1 g/dL は門脈圧亢進を97%の精度で示す。肝硬変・心不全が代表。SAAG &lt; 1.1は非門脈圧亢進性で、癌性腹膜炎・結核性が代表。腹水好中球 ≧ 250/μLでSBP（特発性細菌性腹膜炎）を診断。</p>
-
-        <h3 className="font-bold text-tx">髄液: 髄膜炎の鑑別</h3>
-        <p>細菌性髄膜炎: WBC &gt; 1000（好中球優位）・蛋白上昇・糖低下（髄液糖/血糖 &lt; 0.4）。ウイルス性: WBC 10-500（リンパ球優位）・蛋白軽度上昇・糖正常。結核性: リンパ球優位・蛋白著明上昇・糖低下・ADA上昇。</p>
-      </section>
-      </ProGate>
 
       {/* 関連ツール */}
       <section className="mb-8">
@@ -601,5 +570,51 @@ export default function BodyFluidPage() {
         </ol>
       </section>
     </div>
+  )
+}
+
+function FluidResultTabs({ steps }: { steps: StepResult[] }) {
+  const [activeTab, setActiveTab] = useState<'result' | 'action'>('result')
+  return (
+    <section className="mb-8">
+      <div className="flex border border-br rounded-xl overflow-hidden mb-4">
+        <button onClick={() => setActiveTab('result')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'result' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          検査結果
+        </button>
+        <button onClick={() => setActiveTab('action')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${activeTab === 'action' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'}`}>
+          アクション
+        </button>
+      </div>
+      {activeTab === 'result' && (
+        <div>
+          <h2 className="text-lg font-bold text-tx mb-3">解釈結果（{steps.length}項目）</h2>
+          <div className="space-y-3">
+            {steps.map((s, i) => (
+              <div key={i} className={`rounded-xl p-4 ${severityStyles[s.severity]}`}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${severityTextColor[s.severity]} bg-white/60`}>Step {Math.floor(s.step)}</span>
+                  <span className={`text-sm font-bold ${severityTextColor[s.severity]}`}>{s.title}</span>
+                </div>
+                <p className={`text-sm font-medium mb-1 ${severityTextColor[s.severity]}`}>{s.finding}</p>
+                {s.formula && <p className="text-xs font-mono bg-white/70 text-tx px-2 py-1 rounded mt-1 mb-1">{s.formula}</p>}
+                {s.detail && <p className="text-xs text-tx/80">{s.detail}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {activeTab === 'action' && (
+        <div className="space-y-4 text-sm text-muted">
+          <h3 className="font-bold text-tx">胸水: Light基準による分類</h3>
+          <p>蛋白比 &gt; 0.5、LDH比 &gt; 0.6、胸水LDH &gt; 正常上限2/3 のいずれかで滲出液。感度98%。利尿薬使用中の心不全で偽陽性あり。</p>
+          <h3 className="font-bold text-tx">腹水: SAAG</h3>
+          <p>SAAG ≧ 1.1 g/dL → 門脈圧亢進（肝硬変・心不全）。&lt; 1.1 → 非門脈圧亢進性（癌性腹膜炎・結核）。好中球 ≧ 250/μL → SBP。</p>
+          <h3 className="font-bold text-tx">髄液: 髄膜炎の鑑別</h3>
+          <p>細菌性: WBC &gt; 1000（好中球優位）・蛋白↑・糖↓。ウイルス性: リンパ球優位・蛋白軽度↑・糖正常。結核性: リンパ球・蛋白著明↑・糖↓・ADA↑。</p>
+        </div>
+      )}
+    </section>
   )
 }

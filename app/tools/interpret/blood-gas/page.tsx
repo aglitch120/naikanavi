@@ -301,28 +301,11 @@ export default function BloodGasPage() {
         </div>
       </section>
 
-      {/* ステップバイステップ結果 */}
+      {/* 結果（2タブ: 検査結果 / アクション） */}
       {hasPrimary && (
-        <section className="mb-8">
-          <h2 className="text-lg font-bold text-tx mb-4">解釈結果</h2>
-          <div className="space-y-3">
-            {steps.map((s, i) => (
-              <div key={i} className={`rounded-xl p-4 ${severityStyles[s.severity]}`}>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${severityTextColor[s.severity]} bg-white/60`}>
-                    Step {Math.floor(s.step)}
-                  </span>
-                  <span className={`text-sm font-bold ${severityTextColor[s.severity]}`}>{s.title}</span>
-                </div>
-                <p className={`text-sm font-medium mb-1 ${severityTextColor[s.severity]}`}>{s.finding}</p>
-                {s.formula && (
-                  <p className="text-xs font-mono bg-white/70 text-tx px-2 py-1 rounded mt-1 mb-1">{s.formula}</p>
-                )}
-                {s.detail && <p className="text-xs text-tx/80">{s.detail}</p>}
-              </div>
-            ))}
-          </div>
-        </section>
+        <ProGate feature="interpretation" previewHeight={100}>
+          <ResultTabs steps={steps} />
+        </ProGate>
       )}
 
       {/* 免責 */}
@@ -330,20 +313,6 @@ export default function BloodGasPage() {
         <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>
         <p>本ツールは医療従事者の臨床判断を補助する目的で提供しています。診断・治療の最終判断は必ず担当医が行ってください。</p>
       </div>
-
-      {/* SEO解説 */}
-      <ProGate feature="interpretation" previewHeight={80}>
-      <section className="space-y-4 text-sm text-muted mb-8">
-        <h2 className="text-base font-bold text-tx">血液ガス分析の系統的アプローチ</h2>
-        <p>血液ガス（ABG）の解釈は、以下の5ステップで系統的に行います。本ツールはこの手順を自動化し、混合性障害の見落としを防ぎます。</p>
-        <h3 className="font-bold text-tx">5ステップ</h3>
-        <p>Step 1: pHでアシデミア/アルカレミアを判定 → Step 2: HCO₃⁻とPCO₂で一次性障害を同定 → Step 3: AGを計算（代謝性アシドーシスの場合）→ Step 4: 代償の適切性を確認（Winters式等）→ Step 5: A-aDO₂で酸素化を評価</p>
-        <h3 className="font-bold text-tx">AG開大の鑑別（MUDPILES）</h3>
-        <p>Methanol, Uremia, DKA, Propylene glycol, Isoniazid/Iron, Lactic acidosis, Ethylene glycol, Salicylates</p>
-        <h3 className="font-bold text-tx">非AG開大型の鑑別</h3>
-        <p>下痢、RTA（I型・II型・IV型）、生食大量投与、尿管S状結腸吻合、アセタゾラミド</p>
-      </section>
-      </ProGate>
 
       {/* 関連ツール */}
       <section className="mb-8">
@@ -373,5 +342,64 @@ export default function BloodGasPage() {
         </ol>
       </section>
     </div>
+  )
+}
+
+function ResultTabs({ steps }: { steps: StepResult[] }) {
+  const [activeTab, setActiveTab] = useState<'result' | 'action'>('result')
+  return (
+    <section className="mb-8">
+      <div className="flex border border-br rounded-xl overflow-hidden mb-4">
+        <button
+          onClick={() => setActiveTab('result')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${
+            activeTab === 'result' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'
+          }`}
+        >
+          検査結果
+        </button>
+        <button
+          onClick={() => setActiveTab('action')}
+          className={`flex-1 py-2.5 text-sm font-medium transition-colors ${
+            activeTab === 'action' ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-tx'
+          }`}
+        >
+          アクション
+        </button>
+      </div>
+
+      {activeTab === 'result' && (
+        <div className="space-y-3">
+          {steps.map((s, i) => (
+            <div key={i} className={`rounded-xl p-4 ${severityStyles[s.severity]}`}>
+              <div className="flex items-center gap-2 mb-1">
+                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${severityTextColor[s.severity]} bg-white/60`}>
+                  Step {Math.floor(s.step)}
+                </span>
+                <span className={`text-sm font-bold ${severityTextColor[s.severity]}`}>{s.title}</span>
+              </div>
+              <p className={`text-sm font-medium mb-1 ${severityTextColor[s.severity]}`}>{s.finding}</p>
+              {s.formula && (
+                <p className="text-xs font-mono bg-white/70 text-tx px-2 py-1 rounded mt-1 mb-1">{s.formula}</p>
+              )}
+              {s.detail && <p className="text-xs text-tx/80">{s.detail}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {activeTab === 'action' && (
+        <div className="space-y-4 text-sm text-muted">
+          <h3 className="font-bold text-tx">血液ガス分析の系統的アプローチ</h3>
+          <p>血液ガス（ABG）の解釈は5ステップで系統的に行います。本ツールはこの手順を自動化し、混合性障害の見落としを防ぎます。</p>
+          <h3 className="font-bold text-tx">5ステップ</h3>
+          <p>Step 1: pHでアシデミア/アルカレミアを判定 → Step 2: HCO₃⁻とPCO₂で一次性障害を同定 → Step 3: AGを計算 → Step 4: 代償の適切性を確認 → Step 5: A-aDO₂で酸素化を評価</p>
+          <h3 className="font-bold text-tx">AG開大の鑑別（MUDPILES）</h3>
+          <p>Methanol, Uremia, DKA, Propylene glycol, Isoniazid/Iron, Lactic acidosis, Ethylene glycol, Salicylates</p>
+          <h3 className="font-bold text-tx">非AG開大型の鑑別</h3>
+          <p>下痢、RTA（I型・II型・IV型）、生食大量投与、尿管S状結腸吻合、アセタゾラミド</p>
+        </div>
+      )}
+    </section>
   )
 }
