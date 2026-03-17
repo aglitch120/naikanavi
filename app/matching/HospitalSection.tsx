@@ -697,6 +697,55 @@ function MatchProbabilityCard({
     warning: { bg: '#FEF3C7', text: '#92400E', border: '#FCD34D' },
     danger: { bg: '#FEE2E2', text: '#991B1B', border: '#FCA5A5' },
   }
+
+  // FREE用ダミー表示
+  if (!isPro) {
+    const dummyHospitals = [
+      { name: '東京大学医学部附属病院', prob: 87 },
+      { name: '慶應義塾大学病院', prob: 72 },
+      { name: '聖路加国際病院', prob: 64 },
+      { name: '虎の門病院', prob: 58 },
+    ]
+    return (
+      <div className="bg-s0 border border-br rounded-xl p-4 relative overflow-hidden cursor-pointer" onClick={onShowProModal}>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-sm">📊</span>
+          <p className="text-sm font-bold text-tx">マッチング成功確率</p>
+        </div>
+        <div className="relative">
+          <div className="space-y-3 filter blur-[6px] pointer-events-none select-none" aria-hidden="true">
+            <div className="rounded-xl p-4 text-center" style={{ background: '#DCFCE7', border: '1px solid #86EFAC' }}>
+              <p className="text-3xl font-bold mb-1" style={{ color: '#166534' }}>93%</p>
+              <p className="text-[11px] font-medium" style={{ color: '#166534' }}>少なくとも1つマッチする確率</p>
+            </div>
+            <div className="space-y-1.5">
+              {dummyHospitals.map((h, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="text-[10px] text-muted w-4 text-right flex-shrink-0">{i + 1}</span>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-0.5">
+                      <p className="text-[11px] font-medium text-tx">{h.name}</p>
+                      <span className="text-[11px] font-bold" style={{ color: MC }}>{h.prob}%</span>
+                    </div>
+                    <div className="h-1.5 bg-s1 rounded-full overflow-hidden">
+                      <div className="h-full rounded-full" style={{ width: `${h.prob}%`, background: MC }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <button className="px-5 py-2.5 rounded-xl text-sm font-bold text-white shadow-lg" style={{ background: MC }}>
+              🔒 PRO会員でマッチ確率を計算
+            </button>
+            <p className="text-xs text-muted mt-2">志望病院の倍率・プロフィールから算出</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const c = colorMap[result.safetyLevel]
 
   return (
@@ -720,33 +769,24 @@ function MatchProbabilityCard({
             </p>
           </div>
 
-          {/* 各病院の確率 — PROモザイク */}
-          <div className="relative">
-            <div className="space-y-1.5">
-              {result.perHospital.map((h, i) => (
-                <div key={h.id} className="flex items-center gap-2">
-                  <span className="text-[10px] text-muted w-4 text-right flex-shrink-0">{i + 1}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-0.5">
-                      <p className="text-[11px] font-medium text-tx truncate">{h.name}</p>
-                      <span className="text-[11px] font-bold flex-shrink-0 ml-2" style={{ color: MC }}>{h.probability}%</span>
-                    </div>
-                    <div className="h-1.5 bg-s1 rounded-full overflow-hidden">
-                      <div className="h-full rounded-full transition-all" style={{
-                        width: `${h.probability}%`, background: MC,
-                      }} />
-                    </div>
+          {/* 各病院の確率 */}
+          <div className="space-y-1.5">
+            {result.perHospital.map((h, i) => (
+              <div key={h.id} className="flex items-center gap-2">
+                <span className="text-[10px] text-muted w-4 text-right flex-shrink-0">{i + 1}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-0.5">
+                    <p className="text-[11px] font-medium text-tx truncate">{h.name}</p>
+                    <span className="text-[11px] font-bold flex-shrink-0 ml-2" style={{ color: MC }}>{h.probability}%</span>
+                  </div>
+                  <div className="h-1.5 bg-s1 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full transition-all" style={{
+                      width: `${h.probability}%`, background: MC,
+                    }} />
                   </div>
                 </div>
-              ))}
-            </div>
-            {!isPro && result.perHospital.length > 1 && (
-              <div className="absolute inset-0 top-8 backdrop-blur-sm bg-s0/70 rounded-lg flex items-center justify-center">
-                <button onClick={onShowProModal} className="text-[11px] font-bold px-4 py-2 rounded-lg text-white" style={{ background: MC }}>
-                  PRO会員で詳細を見る
-                </button>
               </div>
-            )}
+            ))}
           </div>
 
           {/* アドバイス */}

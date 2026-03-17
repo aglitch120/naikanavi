@@ -230,6 +230,11 @@ export default function InterviewTab({
         setMessages(prev => [...prev, stopMsg])
         setIsThinking(false)
         setQuestionCount(maxQuestions + 1) // 入力を無効化
+        // FREE: ダミーフィードバック表示
+        setTimeout(() => {
+          setFeedbackText('【総合評価】B+（良好）\n\n■ 良かった点\n・志望動機が具体的で、病院の特色をよく理解している印象を受けました。\n・質問に対して簡潔かつ論理的に回答できていました。\n・自身の経験を交えた回答が説得力を持っていました。\n\n■ 改善ポイント\n・結論を先に述べる「PREP法」を意識するとさらに良くなります。\n・具体的なエピソードをもう1つ追加すると説得力が増します。\n・逆質問の準備をしておくと面接の印象がさらに良くなります。\n\n■ 模範回答例\n（PRO会員限定: 各質問への模範回答と改善アドバイスの全文を表示）\n\n■ 面接官からのコメント\n全体的に好印象です。本番でも自信を持って臨んでください。')
+          setPhase('feedback')
+        }, 2000)
         return
       }
       // ネットワークエラー等 → ローカルで継続
