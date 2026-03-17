@@ -179,8 +179,12 @@ export default function InterviewTab({
     let firstQ = await callAI(systemPrompt,
       `面接を開始してください。${pressureDesc}最初の質問をお願いします。`)
     if (!firstQ) {
-      console.log('[iwor] First question: using local fallback')
-      firstQ = getLocalQuestion(0, profile, hospital)
+      if (rateLimited) {
+        firstQ = '申し訳ありません。本日の無料AI面接体験の上限に達しました。PRO会員になると、AIによるリアルタイム面接が無制限でご利用いただけます。'
+      } else {
+        console.log('[iwor] First question: using local fallback')
+        firstQ = getLocalQuestion(0, profile, hospital)
+      }
     } else {
       console.log('[iwor] First question: from Workers AI')
     }
@@ -213,9 +217,22 @@ export default function InterviewTab({
       `${m.role === 'interviewer' ? '面接官' : '受験者'}: ${m.content}`
     ).join('\n') + `\n受験者: ${currentInput}`
 
-    // API → ローカルフォールバック
+    // API → レート制限ならPRO誘導で停止
     let response = await callAI(systemPrompt, conversationContext)
     if (!response) {
+      if (rateLimited) {
+        // レート制限 → 面接を中断してPRO誘導
+        const stopMsg: ChatMessage = {
+          role: 'interviewer',
+          content: '面接官：本日の無料体験はここまでとなります。\n\nここまでの会話を拝見すると、とても良い受け答えができていますね。PRO会員になると、AIによるリアルタイム面接が無制限で利用でき、面接終了後には詳細なフィードバックも受けられます。ぜひご検討ください。',
+          timestamp: new Date(),
+        }
+        setMessages(prev => [...prev, stopMsg])
+        setIsThinking(false)
+        setQuestionCount(maxQuestions + 1) // 入力を無効化
+        return
+      }
+      // ネットワークエラー等 → ローカルで継続
       const reaction = getLocalReaction(currentInput)
       const nextQuestion = isLast
         ? '本日の面接は以上です。ありがとうございました。何か最後にお伝えしたいことはありますか？'
@@ -340,15 +357,23 @@ ${conversationLog}
               <div ref={chatEndRef} />
             </div>
 
-            {/* 入力エリア */}
-            {questionCount <= maxQuestions && (
+            {/* 入力エリア or PRO誘導 */}
+            {rateLimited && !isPro ? (
+              <div className="border-t border-br p-5 text-center">
+                <p className="text-sm font-bold text-tx mb-1">無料体験おつかれさまでした！</p>
+                <p className="text-xs text-muted mb-3">PRO会員でAI面接が無制限に。詳細フィードバックも受けられます。</p>
+                <button onClick={onShowProModal}
+                  className="px-6 py-2.5 rounded-xl text-sm font-bold text-white mb-2" style={{ background: MC }}>
+                  PRO会員になる
+                </button>
+                <br />
+                <button onClick={resetInterview}
+                  className="text-[11px] text-muted hover:text-tx mt-1">
+                  設定に戻る
+                </button>
+              </div>
+            ) : questionCount <= maxQuestions ? (
               <div className="border-t border-br p-3">
-                {rateLimited && !isPro && (
-                  <div className="mb-2 px-3 py-2 rounded-lg text-[11px] flex items-center justify-between" style={{ background: MCL, color: MC }}>
-                    <span>無料体験の上限に達しました。ローカルモードで続行中</span>
-                    <button onClick={onShowProModal} className="font-bold underline ml-2">PRO</button>
-                  </div>
-                )}
                 <div className="flex gap-2">
                   <div className="flex-1 relative">
                     <textarea
@@ -383,7 +408,7 @@ ${conversationLog}
                   </div>
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       )}
