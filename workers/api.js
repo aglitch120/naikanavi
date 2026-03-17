@@ -383,7 +383,9 @@ export default {
     //  AI面接フィードバック
     //  POST /api/interview-feedback
     //  Authorization: Bearer {sessionToken}
-    //  Body: { question, answer, profile }
+    //  Body: { mode, systemPrompt, userMessage, profile }
+    //    mode: "interview" — 面接官として次の質問を返す
+    //    mode: "feedback"  — 回答へのフィードバックを返す（旧互換）
     // ══════════════════════════════════════════════════
     if (path === "/api/interview-feedback" && request.method === "POST") {
       const auth = request.headers.get("Authorization") || "";
@@ -394,12 +396,39 @@ export default {
       if (!sessionRaw) return json({ error: "Invalid session" }, 401, request);
 
       const body = await request.json();
-      const { question, answer, profile } = body;
-      if (!question || !answer) {
+      const { mode, systemPrompt, userMessage, question, answer, profile } = body;
+
+      // 面接会話モード
+      if (mode === "interview") {
+        if (!systemPrompt || !userMessage) {
+          return json({ error: "systemPrompt and userMessage required" }, 400, request);
+        }
+        try {
+          const aiResponse = await env.AI.run(
+            "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+            {
+              messages: [
+                { role: "system", content: systemPrompt },
+                { role: "user", content: userMessage },
+              ],
+              max_tokens: 300,
+            }
+          );
+          const feedback = aiResponse?.response || "";
+          return json({ ok: true, feedback }, 200, request);
+        } catch (err) {
+          console.error("Workers AI error:", err);
+          return json({ error: "AI processing failed", detail: err.message }, 500, request);
+        }
+      }
+
+      // フィードバックモード（旧互換 + mode="feedback"）
+      const q = question || systemPrompt || "";
+      const a = answer || userMessage || "";
+      if (!q || !a) {
         return json({ error: "question and answer required" }, 400, request);
       }
 
-      // プロフィール情報をコンテキストに変換
       const profileCtx = profile
         ? [
             profile.preferredSpecialty && `志望科: ${profile.preferredSpecialty}`,
@@ -409,7 +438,7 @@ export default {
           ].filter(Boolean).join("\n")
         : "";
 
-      const systemPrompt = `あなたは医学部マッチング面接の指導経験豊富な面接コーチです。
+      const feedbackPrompt = `あなたは医学部マッチング面接の指導経験豊富な面接コーチです。
 医学生の面接回答に対して、実践的で具体的なフィードバックを日本語で提供してください。
 
 以下の構成で回答してください（各セクション2-3文、合計300字程度）:
@@ -431,8 +460,8 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
           "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
           {
             messages: [
-              { role: "system", content: systemPrompt },
-              { role: "user", content: `面接質問: ${question}\n\n受験者の回答:\n${answer}` },
+              { role: "system", content: feedbackPrompt },
+              { role: "user", content: `面接質問: ${q}\n\n受験者の回答:\n${a}` },
             ],
             max_tokens: 800,
           }

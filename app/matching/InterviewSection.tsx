@@ -42,9 +42,9 @@ const PRESSURE_LABELS = {
 }
 
 const DURATION_OPTIONS = [
-  { value: 5 as const, label: '5分', questions: '3-4問' },
-  { value: 10 as const, label: '10分', questions: '5-7問' },
-  { value: 15 as const, label: '15分', questions: '8-10問' },
+  { value: 5 as const, label: '5分', questions: '6-7問' },
+  { value: 10 as const, label: '10分', questions: '9-10問' },
+  { value: 15 as const, label: '15分', questions: '13-14問' },
 ]
 
 export default function InterviewTab({
@@ -69,6 +69,7 @@ export default function InterviewTab({
   const [isVoicePlaying, setIsVoicePlaying] = useState(false)
   const [isListening, setIsListening] = useState(false)
   const chatEndRef = useRef<HTMLDivElement>(null)
+  const chatContainerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
   const selectedHospital = settings.hospitalId
@@ -76,14 +77,18 @@ export default function InterviewTab({
     : null
 
   // 想定質問数
-  const maxQuestions = settings.duration === 5 ? 4 : settings.duration === 10 ? 6 : 9
+  const maxQuestions = settings.duration === 5 ? 7 : settings.duration === 10 ? 10 : 14
 
   // ── スクロール ──
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    setTimeout(() => {
+      if (chatContainerRef.current) {
+        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+      }
+    }, 100)
   }, [messages, isThinking])
 
-  // ── API呼び出し ──
+  // ── API呼び出し（面接会話モード） ──
   const callAI = useCallback(async (systemPrompt: string, userMessage: string): Promise<string> => {
     const sessionToken = typeof window !== 'undefined'
       ? localStorage.getItem('iwor_session_token') || ''
@@ -98,18 +103,14 @@ export default function InterviewTab({
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${sessionToken}` },
         body: JSON.stringify({
-          question: systemPrompt,
-          answer: userMessage,
-          profile: {
-            preferredSpecialty: profile.preferredSpecialty,
-            university: profile.university,
-            strengths: profile.strengths,
-            motivation: profile.motivation,
-          },
+          mode: 'interview',
+          systemPrompt,
+          userMessage,
         }),
       })
       const data = await res.json()
-      return data.ok && data.feedback ? data.feedback : generateLocalResponse(userMessage, profile)
+      if (data.ok && data.feedback) return data.feedback
+      return generateLocalResponse(userMessage, profile)
     } catch {
       return generateLocalResponse(userMessage, profile)
     }
@@ -279,7 +280,7 @@ ${conversationLog}
 
           {/* チャット領域 */}
           <div className="bg-s0 border border-br rounded-xl overflow-hidden">
-            <div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">
+            <div ref={chatContainerRef} className="max-h-[50vh] overflow-y-auto p-4 space-y-3">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${
@@ -418,6 +419,18 @@ function SetupScreen({
     ? HOSPITALS.filter(h => h.name.includes(hospitalSearch) || h.prefecture.includes(hospitalSearch)).slice(0, 5)
     : []
 
+  // 志望リストから読み込み
+  const [wishlistHospitals, setWishlistHospitals] = useState<Hospital[]>([])
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('iwor_matching_wishlist')
+      if (raw) {
+        const ids: number[] = JSON.parse(raw)
+        setWishlistHospitals(ids.map(id => HOSPITALS.find(h => h.id === id)).filter(Boolean) as Hospital[])
+      }
+    } catch { /* ignore */ }
+  }, [])
+
   const profileCompletion = [profile.name, profile.university, profile.preferredSpecialty, profile.strengths, profile.motivation]
     .filter(f => f.length > 0).length
 
@@ -463,6 +476,22 @@ function SetupScreen({
           </div>
         ) : (
           <div className="space-y-2">
+            {/* 志望リストからクイック選択 */}
+            {wishlistHospitals.length > 0 && (
+              <div>
+                <p className="text-[10px] text-muted mb-1.5">志望リストから選択</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {wishlistHospitals.map(h => (
+                    <button key={h.id}
+                      onClick={() => setSettings({ ...settings, hospitalId: h.id })}
+                      className="px-3 py-1.5 rounded-lg text-[11px] font-medium border border-br hover:border-[#993556]/40 transition-all bg-s1 text-tx">
+                      {h.name}
+                    </button>
+                  ))}
+                </div>
+                <div className="border-t border-br mt-2 pt-2" />
+              </div>
+            )}
             <input
               type="text"
               value={hospitalSearch}
