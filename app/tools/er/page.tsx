@@ -14,6 +14,9 @@ const erFlows = [
   { href: '/tools/er/fever', emoji: '🌡️', name: '発熱', desc: '敗血症スクリーニング（qSOFA）→ 免疫状態評価 → 感染巣推定。FN・Hour-1 Bundle対応' },
   { href: '/tools/er/dyspnea', emoji: '😤', name: '呼吸困難', desc: '気道緊急 → 呼吸不全原因検索 → 発症様式別鑑別。PE・心不全・喘息/COPD・ARDS・アナフィラキシー' },
   { href: '/tools/er/seizure', emoji: '⚡', name: 'けいれん', desc: 'てんかん重積SE → 段階的薬物治療。初発/既知/誘発性の鑑別。子癇・低Na・アルコール離脱対応' },
+  { href: '/tools/er/dizziness', emoji: '🌀', name: 'めまい', desc: '回転性/浮動性/失調の分類 → HINTSで中枢性除外 → BPPV/前庭神経炎/脳卒中の鑑別' },
+  { href: '/tools/er/headache', emoji: '🤕', name: '頭痛', desc: 'Red Flag評価 → SAH/髄膜炎/GCA除外 → 片頭痛/緊張型/群発の急性期治療' },
+  { href: '/tools/er/back-pain', emoji: '🦴', name: '腰背部痛', desc: 'AAA破裂・馬尾症候群・脊椎感染症・尿管結石の除外 → 非特異的腰痛の管理' },
 ]
 
 const aclsFlows = [
