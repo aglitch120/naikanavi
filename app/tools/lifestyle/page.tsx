@@ -248,10 +248,6 @@ export default function LifestylePage() {
     </div>
 
     {hasIn&&<>{cvdRisk&&<div className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${rBadge[cvdRisk.level]}`}><span className="text-lg">📊</span><div><p className="text-sm font-bold">動脈硬化リスク: {cvdRisk.label}</p><p className="text-xs">LDL目標 &lt;{cvdRisk.ldlTarget} / non-HDL &lt;{cvdRisk.nonHdlTarget} mg/dL</p></div></div>}
-      {hi.length>0&&<div className="mb-6 p-4 bg-[#FDECEA] border-l-4 border-[#D93025] rounded-xl"><h2 className="text-sm font-bold text-[#B71C1C] mb-2">🚨 優先アクション（{hi.length}件）</h2><div className="space-y-2">{hi.map((a,i)=><AR key={i} a={a}/>)}</div></div>}
-
-      <h2 className="text-lg font-bold text-tx mb-3">疾患別評価</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">{assessments.map(a=><div key={a.name} className={`rounded-xl p-4 ${sCard[a.status]}`}><div className="flex items-center justify-between mb-2"><h3 className={`font-bold text-sm ${sText[a.status]}`}>{a.name}</h3><span className={`text-xs px-2 py-0.5 rounded-full font-medium ${sText[a.status]} bg-white/60`}>{sLabel[a.status]}</span></div><p className="text-sm text-tx mb-2">{a.summary}</p>{a.targets.length>0&&<div className="text-xs text-tx space-y-0.5 mb-2">{a.targets.map((t,i)=><p key={i}>🎯 {t}</p>)}</div>}</div>)}</div>
 
       {all.length>0&&<><div className="flex items-center justify-between mb-3"><h2 className="text-lg font-bold text-tx">全アクション（{all.length}件）</h2><div className="flex gap-1"><button onClick={()=>setActionView('disease')} className={`text-xs px-3 py-1 rounded-lg border ${actionView==='disease'?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>疾患別</button><button onClick={()=>setActionView('subcategory')} className={`text-xs px-3 py-1 rounded-lg border ${actionView==='subcategory'?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>カテゴリ別</button></div></div>
         <ProGate feature="action_plan" previewHeight={100}>
