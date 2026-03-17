@@ -942,6 +942,7 @@ export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-
   'cpot', 'bps-pain', 'gold-copd', 'bode', 'nrs2002', 'stone-score', 'abpc-score', 'mcmahon', 'naranjo', 'i-road', 'tetanus',
   // Tier 3
   'brinkman', 'borg-scale', 'ann-arbor', 'stop-bang', 'tds', 'gustilo', 'murray',
+  'drip-score', 'ipss-prostate', 'kawasaki', 'westley-croup', 'anaphylaxis', 'siadh', 'la-classification', 'ibs-rome', 'bishop', 'burn-area', 'child-vital', 'design-r', 'sle-criteria', 'hyponatremia-flow',
 ])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
