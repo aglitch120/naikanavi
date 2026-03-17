@@ -13,7 +13,7 @@ const categories = [
     icon: '🧮',
     name: '臨床計算ツール',
     description: '循環器・腎臓・呼吸器・神経・血液など診療科別に79種',
-    count: 79,
+    count: 92,
     badge: null,
     available: true,
   },
