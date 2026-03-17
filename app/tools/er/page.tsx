@@ -13,6 +13,7 @@ const erFlows = [
   { href: '/tools/er/syncope', emoji: '😵', name: '失神', desc: '心原性 vs 非心原性の鑑別。一過性意識消失確認 → バイタル → 心電図 → 病歴 → SFSR層別化' },
   { href: '/tools/er/fever', emoji: '🌡️', name: '発熱', desc: '敗血症スクリーニング（qSOFA）→ 免疫状態評価 → 感染巣推定。FN・Hour-1 Bundle対応' },
   { href: '/tools/er/dyspnea', emoji: '😤', name: '呼吸困難', desc: '気道緊急 → 呼吸不全原因検索 → 発症様式別鑑別。PE・心不全・喘息/COPD・ARDS・アナフィラキシー' },
+  { href: '/tools/er/seizure', emoji: '⚡', name: 'けいれん', desc: 'てんかん重積SE → 段階的薬物治療。初発/既知/誘発性の鑑別。子癇・低Na・アルコール離脱対応' },
 ]
 
 const aclsFlows = [
