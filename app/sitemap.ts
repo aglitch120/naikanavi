@@ -57,6 +57,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.4,
     },
+    {
+      url: `${baseUrl}/app`,
+      lastModified: new Date('2026-03-17'),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/dashboard`,
+      lastModified: new Date('2026-03-17'),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/matching`,
+      lastModified: new Date('2026-03-17'),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/josler`,
+      lastModified: new Date('2026-03-17'),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/pro`,
+      lastModified: new Date('2026-03-17'),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ]
 
   // ツールページ（実装済みのみ）

@@ -134,7 +134,7 @@
 
 ## Phase 4: J-OSLER管理
 
-- [ ] /josler/ ティーザーLP
+- [x] /josler/ ティーザーLP
 - [ ] 旧app.html からOverview/Cases/Summaries機能を移植
 - [ ] 進捗ダッシュボード（70疾患群）
 - [ ] 病歴要約AI生成（旧テンプレート機能移植）
