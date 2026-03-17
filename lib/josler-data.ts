@@ -9,32 +9,37 @@ export interface Specialty {
   id: string
   label: string
   short: string
+  minC: number | null  // 最低症例数
+  minG: number         // 最低疾患群数
+  minS: number         // 最低病歴要約数
+  color: string        // テーマカラー
 }
 
 export interface DiseaseGroup {
   id: string
   name: string
+  gc?: string | null   // カテゴリ (消化器の消化管/肝臓/胆膵)
   diseases: string[]
 }
 
 export const SPECIALTIES: Specialty[] = [
-  { id: "generalI",   label: "総合内科Ⅰ（一般）",   short: "総合Ⅰ" },
-  { id: "generalII",  label: "総合内科Ⅱ（高齢者）", short: "総合Ⅱ" },
-  { id: "generalIII", label: "総合内科Ⅲ（腫瘍）",   short: "総合Ⅲ" },
-  { id: "gastro",     label: "消化器",               short: "消化器" },
-  { id: "cardio",     label: "循環器",               short: "循環器" },
-  { id: "endo",       label: "内分泌",               short: "内分泌" },
-  { id: "metabolic",  label: "代謝",                 short: "代謝" },
-  { id: "renal",      label: "腎臓",                 short: "腎臓" },
-  { id: "pulm",       label: "呼吸器",               short: "呼吸器" },
-  { id: "hematology", label: "血液",                 short: "血液" },
-  { id: "neuro",      label: "神経",                 short: "神経" },
-  { id: "allergy",    label: "アレルギー",           short: "アレルギー" },
-  { id: "rheum",      label: "膠原病及び類縁疾患",   short: "膠原病" },
-  { id: "infection",  label: "感染症",               short: "感染症" },
-  { id: "emergency",  label: "救急",                 short: "救急" },
-  { id: "surgical",   label: "外科紹介症例",         short: "外科紹介" },
-  { id: "autopsy",    label: "剖検症例",             short: "剖検" },
+  { id: "generalI",   label: "総合内科Ⅰ（一般）",   short: "総合Ⅰ",    minC: null, minG: 1, minS: 1, color: "#4ECDC4" },
+  { id: "generalII",  label: "総合内科Ⅱ（高齢者）", short: "総合Ⅱ",    minC: null, minG: 1, minS: 1, color: "#4ECDC4" },
+  { id: "generalIII", label: "総合内科Ⅲ（腫瘍）",   short: "総合Ⅲ",    minC: null, minG: 1, minS: 1, color: "#4ECDC4" },
+  { id: "gastro",     label: "消化器",               short: "消化器",    minC: 10,   minG: 5, minS: 3, color: "#FF6B6B" },
+  { id: "cardio",     label: "循環器",               short: "循環器",    minC: 10,   minG: 5, minS: 3, color: "#E84393" },
+  { id: "endo",       label: "内分泌",               short: "内分泌",    minC: 3,    minG: 2, minS: 1, color: "#A8E6CF" },
+  { id: "metabolic",  label: "代謝",                 short: "代謝",      minC: 10,   minG: 3, minS: 2, color: "#A8E6CF" },
+  { id: "renal",      label: "腎臓",                 short: "腎臓",      minC: 10,   minG: 4, minS: 2, color: "#6C63FF" },
+  { id: "pulm",       label: "呼吸器",               short: "呼吸器",    minC: 10,   minG: 4, minS: 3, color: "#45B7D1" },
+  { id: "hematology", label: "血液",                 short: "血液",      minC: 3,    minG: 2, minS: 2, color: "#FF8B94" },
+  { id: "neuro",      label: "神経",                 short: "神経",      minC: 10,   minG: 5, minS: 2, color: "#FFD93D" },
+  { id: "allergy",    label: "アレルギー",           short: "アレルギー", minC: 3,    minG: 1, minS: 1, color: "#C4B5FD" },
+  { id: "rheum",      label: "膠原病及び類縁疾患",   short: "膠原病",    minC: 3,    minG: 1, minS: 1, color: "#FDA4AF" },
+  { id: "infection",  label: "感染症",               short: "感染症",    minC: 8,    minG: 2, minS: 2, color: "#6EE7B7" },
+  { id: "emergency",  label: "救急",                 short: "救急",      minC: 10,   minG: 4, minS: 2, color: "#FCA5A5" },
+  { id: "surgical",   label: "外科紹介症例",         short: "外科紹介",  minC: 2,    minG: 0, minS: 2, color: "#94A3B8" },
+  { id: "autopsy",    label: "剖検症例",             short: "剖検",      minC: 1,    minG: 0, minS: 1, color: "#64748B" },
 ]
 
 export const DISEASE_GROUPS: Record<string, DiseaseGroup[]> = {
@@ -53,12 +58,12 @@ export const DISEASE_GROUPS: Record<string, DiseaseGroup[]> = {
     { id: "g8", name: "腫瘍内科学", diseases: ["化学療法の副作用管理", "免疫チェックポイント阻害薬有害事象", "支持療法", "栄養管理"] },
   ],
   gastro: [
-    { id: "g9", name: "食道・胃疾患", diseases: ["逆流性食道炎", "食道癌", "胃潰瘍・十二指腸潰瘍", "胃癌", "H.pylori感染症", "機能性ディスペプシア"] },
-    { id: "g10", name: "小腸・大腸疾患", diseases: ["潰瘍性大腸炎", "クローン病", "大腸癌", "過敏性腸症候群", "腸閉塞", "虚血性腸炎", "感染性腸炎"] },
-    { id: "g11", name: "消化管出血", diseases: ["上部消化管出血", "下部消化管出血", "Mallory-Weiss症候群", "食道静脈瘤出血"] },
-    { id: "g12", name: "肝疾患", diseases: ["急性肝炎", "慢性肝炎", "肝硬変", "肝細胞癌", "自己免疫性肝炎", "NAFLD/NASH", "アルコール性肝障害"] },
-    { id: "g13", name: "胆道疾患", diseases: ["胆石症・胆嚢炎", "急性胆管炎", "胆管癌", "胆嚢癌", "原発性硬化性胆管炎"] },
-    { id: "g14", name: "膵疾患", diseases: ["急性膵炎", "慢性膵炎", "膵癌", "自己免疫性膵炎", "膵神経内分泌腫瘍"] },
+    { id: "g9", gc: "消化管", name: "食道・胃疾患", diseases: ["逆流性食道炎", "食道癌", "胃潰瘍・十二指腸潰瘍", "胃癌", "H.pylori感染症", "機能性ディスペプシア"] },
+    { id: "g10", gc: "消化管", name: "小腸・大腸疾患", diseases: ["潰瘍性大腸炎", "クローン病", "大腸癌", "過敏性腸症候群", "腸閉塞", "虚血性腸炎", "感染性腸炎"] },
+    { id: "g11", gc: "消化管", name: "消化管出血", diseases: ["上部消化管出血", "下部消化管出血", "Mallory-Weiss症候群", "食道静脈瘤出血"] },
+    { id: "g12", gc: "肝臓", name: "肝疾患", diseases: ["急性肝炎", "慢性肝炎", "肝硬変", "肝細胞癌", "自己免疫性肝炎", "NAFLD/NASH", "アルコール性肝障害"] },
+    { id: "g13", gc: "胆・膵", name: "胆道疾患", diseases: ["胆石症・胆嚢炎", "急性胆管炎", "胆管癌", "胆嚢癌", "原発性硬化性胆管炎"] },
+    { id: "g14", gc: "胆・膵", name: "膵疾患", diseases: ["急性膵炎", "慢性膵炎", "膵癌", "自己免疫性膵炎", "膵神経内分泌腫瘍"] },
     { id: "g15", name: "腹膜・その他消化器", diseases: ["腹膜炎", "腸間膜虚血", "腹水"] },
   ],
   cardio: [
