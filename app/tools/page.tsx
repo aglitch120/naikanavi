@@ -30,7 +30,7 @@ const categories = [
     slug: 'er',
     icon: '🚨',
     name: 'ER・救急対応',
-    description: 'ER主訴別対応20本（胸痛・意識障害・腹痛・失神・発熱・呼吸困難・けいれん・めまい・頭痛・腰背部痛・吐血・動悸・嘔吐・咽頭痛・喀血・脱力 +4準備中）+ ACLS/BLS 4本',
+    description: 'ER主訴別対応20本 + ACLS/BLS 4本。胸痛・意識障害・腹痛・失神・発熱・呼吸困難・けいれん・めまい・頭痛・腰背部痛・吐血下血・動悸・嘔吐・咽頭痛・喀血・脱力・咳・下痢・しびれ・院内発熱',
     count: 24,
     badge: 'NEW',
     available: true,
