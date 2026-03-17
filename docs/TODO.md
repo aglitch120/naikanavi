@@ -63,7 +63,7 @@
 - [x] **/tools 整理** — 臨床ツールのみ（病棟管理等の非臨床カテゴリ削除、生活習慣病バナー削除）（2026-03-16）
 - [ ] BOOTH商品価格を本番価格（¥9,800）に変更
 - [ ] BOOTH 2年パス・3年パス商品追加
-- [ ] BOOTHサムネイル画像作成
+- [x] BOOTHサムネイル画像作成（booth-thumbnail.html / .svg / .png）
 - [x] **認証UX改善**（2026-03-17）
   - [x] Chromeパスワード保存対応（form + type=password + autocomplete）
   - [x] パスワードリセット機能（Worker POST /api/reset-password + UI）
