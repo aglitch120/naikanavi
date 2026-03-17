@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useProStatus } from '@/components/pro/useProStatus'
 import ProModal from '@/components/pro/ProModal'
+import { trackFavoriteAdd } from '@/lib/gtag'
 
 // ── お気に入り管理（localStorage → Phase2: Supabase） ──
 const STORAGE_KEY = 'iwor_favorites'
@@ -91,6 +92,7 @@ export default function FavoriteButton({ slug, title, href, type, size = 'md' }:
         addedAt: Date.now(),
       }])
       setIsFav(true)
+      trackFavoriteAdd(slug)
     }
 
     window.dispatchEvent(new CustomEvent('favorites-changed'))

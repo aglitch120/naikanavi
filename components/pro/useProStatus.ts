@@ -82,6 +82,12 @@ export function trackToolUsage(slug: string) {
     usage._total = (usage._total || 0) + 1
     localStorage.setItem(key, JSON.stringify(usage))
   } catch { /* ignore */ }
+  // GA4
+  try {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'tool_view', { slug, event_category: 'engagement' })
+    }
+  } catch { /* ignore */ }
 }
 
 /** 合計ツール利用回数を取得 */

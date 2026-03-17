@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect, FormEvent } from 'react'
 import { registerWithOrderNumber, loginWithEmail, resetPassword, getProDetails, clearProSession } from '@/lib/pro-activation'
 import { useProStatus } from '@/components/pro/useProStatus'
+import { trackProRegister, trackProLogin } from '@/lib/gtag'
 
 const planLabels: Record<string, string> = {
   pro_1y: '1年パス',
@@ -58,6 +59,7 @@ export default function ActivatePage() {
     })
     if (res.success) {
       refresh()
+      trackProRegister(res.plan || 'pro_1y')
       setRegResult({ email: res.email!, password: res.password!, plan: res.plan! })
     } else {
       setError(res.error || '登録に失敗しました。')
@@ -72,6 +74,7 @@ export default function ActivatePage() {
     setError('')
     const res = await loginWithEmail(loginEmail, loginPass)
     if (res.success) {
+      trackProLogin()
       refresh()
     } else {
       setError(res.error || 'ログインに失敗しました。')

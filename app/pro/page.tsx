@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { trackBoothClick } from '@/lib/gtag'
 
 // ── セグメント別訴求 ──
 const segments = [
@@ -307,6 +308,7 @@ export default function ProPage() {
                 href="https://iwor.booth.pm/items/8087647"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackBoothClick(`pro_pricing_${plan.id}`)}
                 className={`block w-full py-3 rounded-xl font-bold text-sm transition-colors ${
                   plan.popular
                     ? 'bg-white text-ac hover:bg-white/90'
@@ -431,6 +433,7 @@ export default function ProPage() {
                 href="https://iwor.booth.pm/items/8087647"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackBoothClick('pro_final_cta')}
                 className="inline-flex items-center justify-center gap-2 bg-white text-ac px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-white/90 transition-colors shadow-lg"
               >
                 BOOTHで購入する

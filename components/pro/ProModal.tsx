@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { trackProModalView, trackCtaClick } from '@/lib/gtag'
 
 type ProFeature = 'interpretation' | 'action_plan' | 'favorites' | 'save' | 'result' | 'full_access'
 
@@ -51,6 +52,11 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
     return () => window.removeEventListener('keydown', handler)
   }, [onClose])
 
+  // GA4トラッキング
+  useEffect(() => {
+    trackProModalView(feature)
+  }, [feature])
+
   // body スクロール抑止
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -97,6 +103,7 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
 
           <a
             href="/pro"
+            onClick={() => trackCtaClick('pro_modal_detail')}
             className="block w-full py-3 bg-ac text-white rounded-xl font-bold text-sm hover:bg-ac/90 transition-colors mb-3"
           >
             PRO会員について詳しく見る
