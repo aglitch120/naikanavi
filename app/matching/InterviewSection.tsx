@@ -89,32 +89,28 @@ export default function InterviewTab({
   }, [messages, isThinking])
 
   // ── API呼び出し（面接会話モード） ──
-  const callAI = useCallback(async (systemPrompt: string, userMessage: string): Promise<string> => {
+  const callAI = useCallback(async (systemPrompt: string, userMessage: string): Promise<string | null> => {
     const sessionToken = typeof window !== 'undefined'
       ? localStorage.getItem('iwor_session_token') || ''
       : ''
 
-    if (!sessionToken) {
-      return generateLocalResponse(userMessage, profile)
-    }
+    if (!sessionToken) return null // ローカル処理に委ねる
 
     try {
       const res = await fetch(`${API_URL}/api/interview-feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${sessionToken}` },
-        body: JSON.stringify({
-          mode: 'interview',
-          systemPrompt,
-          userMessage,
-        }),
+        body: JSON.stringify({ mode: 'interview', systemPrompt, userMessage }),
       })
       const data = await res.json()
       if (data.ok && data.feedback) return data.feedback
-      return generateLocalResponse(userMessage, profile)
-    } catch {
-      return generateLocalResponse(userMessage, profile)
+      console.warn('[iwor] AI API returned no feedback:', data)
+      return null
+    } catch (err) {
+      console.warn('[iwor] AI API error:', err)
+      return null
     }
-  }, [profile])
+  }, [])
 
   // ── TTS（音声モード用） ──
   const speak = useCallback((text: string) => {
@@ -160,8 +156,12 @@ export default function InterviewTab({
 
     const systemPrompt = buildInterviewerPrompt(profile, hospital, settings, 'first_question')
 
-    const firstQ = await callAI(systemPrompt,
+    // API → ローカルフォールバック
+    let firstQ = await callAI(systemPrompt,
       `面接を開始してください。${pressureDesc}最初の質問をお願いします。`)
+    if (!firstQ) {
+      firstQ = getLocalQuestion(0, profile, hospital)
+    }
 
     const msg: ChatMessage = { role: 'interviewer', content: firstQ, timestamp: new Date() }
     setMessages([msg])
@@ -175,6 +175,7 @@ export default function InterviewTab({
 
     const userMsg: ChatMessage = { role: 'user', content: userInput.trim(), timestamp: new Date() }
     setMessages(prev => [...prev, userMsg])
+    const currentInput = userInput.trim()
     setUserInput('')
     setIsThinking(true)
 
@@ -188,9 +189,17 @@ export default function InterviewTab({
 
     const conversationContext = messages.map(m =>
       `${m.role === 'interviewer' ? '面接官' : '受験者'}: ${m.content}`
-    ).join('\n') + `\n受験者: ${userInput.trim()}`
+    ).join('\n') + `\n受験者: ${currentInput}`
 
-    const response = await callAI(systemPrompt, conversationContext)
+    // API → ローカルフォールバック
+    let response = await callAI(systemPrompt, conversationContext)
+    if (!response) {
+      const reaction = getLocalReaction(currentInput)
+      const nextQuestion = isLast
+        ? '本日の面接は以上です。ありがとうございました。何か最後にお伝えしたいことはありますか？'
+        : getLocalQuestion(questionCount, profile, selectedHospital)
+      response = `${reaction}\n\n${nextQuestion}`
+    }
 
     const aiMsg: ChatMessage = { role: 'interviewer', content: response, timestamp: new Date() }
     setMessages(prev => [...prev, aiMsg])
@@ -226,7 +235,7 @@ ${conversationLog}
 具体的かつ建設的に、300-500字で日本語でフィードバックしてください。`
 
     const fb = await callAI(feedbackPrompt, '面接全体のフィードバックをお願いします。')
-    setFeedbackText(fb)
+    setFeedbackText(fb || generateLocalFeedback(messages))
     setPhase('feedback')
     setIsThinking(false)
   }, [messages, callAI])
@@ -662,15 +671,112 @@ ${phaseInstruction}
 }
 
 
-// ── ローカルフォールバック ──
-function generateLocalResponse(input: string, profile: Profile): string {
-  const questions = [
-    '当院を志望された理由を教えていただけますか？',
-    'あなたの強みは何だと思いますか？具体的なエピソードを交えて教えてください。',
-    '将来、どのような医師になりたいと考えていますか？',
-    'チーム医療で大切なことは何だと思いますか？',
-    '研修中に困難な場面に直面したとき、どのように対処しますか？',
-    '最後に、何か質問はありますか？',
+// ═══════════════════════════════════════
+//  ローカル面接エンジン（API不要フォールバック）
+// ═══════════════════════════════════════
+
+const LOCAL_QUESTIONS_BASE = [
+  '本日はお忙しい中ありがとうございます。まず、簡単に自己紹介をお願いできますか？',
+  '当院を志望された理由を教えてください。',
+  '医師を目指したきっかけは何でしたか？',
+  '将来、どのような医師になりたいと考えていますか？',
+  '学生時代に最も力を入れたことを教えてください。',
+  'あなたの長所と短所を教えてください。',
+  'チーム医療で大切だと思うことは何ですか？',
+  '患者さんが治療を拒否された場合、どう対応しますか？',
+  '当直中に急変があった場合、まず何をしますか？',
+  '研修中に自分の限界を感じたとき、どう対処しますか？',
+  '上級医の指示に疑問を感じた場合、どうしますか？',
+  '最近読んだ医学論文や気になった医療ニュースはありますか？',
+  'ストレスへの対処法を教えてください。',
+  '10年後のキャリアプランを教えてください。',
+]
+
+function getLocalQuestion(
+  questionIndex: number,
+  profile: Profile,
+  hospital: Hospital | null | undefined,
+): string {
+  // 病院固有の質問を挟む
+  const hospitalQuestions: string[] = []
+  if (hospital) {
+    hospitalQuestions.push(
+      `${hospital.name}のどのような点に魅力を感じましたか？`,
+      `${hospital.type}での研修を希望する理由を教えてください。`,
+    )
+    if (hospital.erType === 'ER型') {
+      hospitalQuestions.push('救急医療に対する考えを聞かせてください。')
+    }
+  }
+  if (profile.preferredSpecialty) {
+    hospitalQuestions.push(`${profile.preferredSpecialty}を志望する理由を教えてください。`)
+  }
+  if (profile.clubs) {
+    hospitalQuestions.push(`${profile.clubs}での活動で学んだことを教えてください。`)
+  }
+  if (profile.research) {
+    hospitalQuestions.push('研究活動について詳しく教えてください。臨床にどう活かしたいですか？')
+  }
+
+  // 基本質問と病院質問をインターリーブ
+  const allQuestions: string[] = []
+  let baseIdx = 0
+  let hospIdx = 0
+  for (let i = 0; i < 16; i++) {
+    if (i % 3 === 1 && hospIdx < hospitalQuestions.length) {
+      allQuestions.push(hospitalQuestions[hospIdx++])
+    } else if (baseIdx < LOCAL_QUESTIONS_BASE.length) {
+      allQuestions.push(LOCAL_QUESTIONS_BASE[baseIdx++])
+    }
+  }
+
+  return allQuestions[questionIndex % allQuestions.length]
+}
+
+function getLocalReaction(answer: string): string {
+  const len = answer.length
+  if (len < 20) {
+    return 'なるほど。もう少し詳しくお聞かせいただけますか。'
+  }
+  const reactions = [
+    'ありがとうございます。',
+    'なるほど、よく分かりました。',
+    '興味深いお話ですね。',
+    'ありがとうございます。それでは次の質問です。',
+    'なるほど、そういった考えをお持ちなのですね。',
   ]
-  return questions[Math.floor(Math.random() * questions.length)]
+  return reactions[Math.floor(Math.random() * reactions.length)]
+}
+
+function generateLocalFeedback(messages: ChatMessage[]): string {
+  const userMessages = messages.filter(m => m.role === 'user')
+  const avgLength = userMessages.reduce((s, m) => s + m.content.length, 0) / (userMessages.length || 1)
+
+  const lines: string[] = []
+  lines.push('【全体評価】')
+  if (avgLength > 100) {
+    lines.push('各回答に十分な分量があり、具体性も感じられます。')
+  } else if (avgLength > 40) {
+    lines.push('回答の分量は適度ですが、もう少し具体的なエピソードを交えるとさらに良くなります。')
+  } else {
+    lines.push('全体的に回答が短めです。面接では1-2分程度で話せる分量を目指しましょう。')
+  }
+  lines.push('')
+  lines.push('【良い点】')
+  lines.push('・面接に真剣に取り組む姿勢が伝わります。')
+  if (userMessages.some(m => m.content.includes('なぜ') || m.content.includes('理由') || m.content.includes('きっかけ'))) {
+    lines.push('・動機や理由付けがしっかりしている部分があります。')
+  }
+  lines.push('')
+  lines.push('【改善ポイント】')
+  lines.push('・「なぜそう思ったか」を常に具体的なエピソードで裏付けましょう。')
+  lines.push('・志望病院の理念や特徴と自分の考えを結びつけると説得力が増します。')
+  lines.push('・PREP法（結論→理由→具体例→結論）を意識すると構成が改善します。')
+  lines.push('')
+  lines.push('【次のステップ】')
+  lines.push('改善点を踏まえてもう一度練習してみましょう。繰り返すことで本番での回答力が向上します。')
+  lines.push('')
+  lines.push('※ PRO会員ではAIによるより詳細な個別フィードバックが受けられます。')
+
+  return lines.join('\n')
 }
