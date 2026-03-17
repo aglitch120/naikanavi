@@ -322,14 +322,14 @@ export default function ProPage() {
         <p className="text-xs text-muted text-center mt-4">
           ※ BOOTH経由でお支払い。クレジットカード・PayPay・コンビニ払い対応。
         </p>
-        <p className="text-center mt-2">
+        <div className="text-center mt-3">
           <a
             href="/pro/activate"
-            className="text-xs text-ac hover:underline"
+            className="inline-flex items-center gap-2 text-sm text-ac font-bold bg-acl border border-ac/20 px-5 py-2.5 rounded-xl hover:bg-ac/10 transition-colors"
           >
-            購入済みの方はこちら（ログイン / 会員登録）→
+            🔑 購入済みの方はこちら（ログイン / 会員登録）
           </a>
-        </p>
+        </div>
       </section>
 
       {/* ═══ FREE vs PRO 比較表 ═══ */}
@@ -434,6 +434,12 @@ export default function ProPage() {
                 className="inline-flex items-center justify-center gap-2 bg-white text-ac px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-white/90 transition-colors shadow-lg"
               >
                 BOOTHで購入する
+              </a>
+              <a
+                href="/pro/activate"
+                className="inline-flex items-center justify-center gap-2 bg-white/20 text-white border border-white/30 px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-white/30 transition-colors ml-3"
+              >
+                購入済みの方はこちら
               </a>
               <p className="text-white/40 text-xs mt-3">¥9,800/年〜 ・ クレジットカード・PayPay・コンビニ払い</p>
             </div>
