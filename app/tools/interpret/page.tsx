@@ -33,7 +33,7 @@ export default function InterpretPage() {
       <div className="grid gap-3">
         {tools.map(t => t.live ? (
           <Link key={t.href} href={t.href}
-            className="group block p-4 bg-s0 border border-br rounded-xl hover:border-ac/30 hover:bg-acl/30 transition-colors">
+            className="group block p-4 bg-s0 border border-ac/15 rounded-xl hover:border-ac/30 hover:bg-acl transition-all">
             <div className="flex items-center gap-2 mb-1">
               <h2 className="text-base font-bold text-tx group-hover:text-ac transition-colors">{t.name}</h2>
               {t.badge && <span className="text-[10px] px-1.5 py-0.5 rounded bg-ac/10 text-ac font-bold">{t.badge}</span>}

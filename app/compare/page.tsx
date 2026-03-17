@@ -103,7 +103,7 @@ export default function ComparePage() {
             <div className="grid gap-2">
               {cat.items.map(item => item.live ? (
                 <Link key={item.href} href={item.href}
-                  className="group flex items-center justify-between p-3 bg-s0 border border-br rounded-xl hover:border-ac/30 hover:bg-acl/30 transition-colors">
+                  className="group flex items-center justify-between p-3 bg-s0 border border-ac/10 rounded-xl hover:border-ac/30 hover:bg-acl transition-colors">
                   <div>
                     <span className="text-sm font-medium text-tx group-hover:text-ac transition-colors">{item.name}</span>
                     {item.count > 0 && <span className="text-xs text-muted ml-2">{item.count}剤</span>}

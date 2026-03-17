@@ -76,8 +76,10 @@ const categories = [
 function CategoryCard({ cat }: { cat: typeof categories[0] }) {
   const inner = (
     <>
-      <div className="flex items-start justify-between mb-2">
-        <span className="text-2xl">{cat.icon}</span>
+      <div className="flex items-start justify-between mb-3">
+        <div className="w-10 h-10 bg-ac/10 border border-ac/20 rounded-xl flex items-center justify-center">
+          <span className="text-xl">{cat.icon}</span>
+        </div>
         <div className="flex gap-1.5">
           {cat.count && (
             <span className="text-xs px-2 py-0.5 rounded-full bg-ac/10 text-ac font-medium">
@@ -87,7 +89,7 @@ function CategoryCard({ cat }: { cat: typeof categories[0] }) {
           {cat.badge && (
             <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
               cat.badge === 'PRO' ? 'bg-[#FFF8E1] text-[#E65100]' :
-              cat.badge === 'NEW' ? 'bg-[#E6F4EA] text-[#1B5E20]' :
+              cat.badge === 'NEW' ? 'bg-ac/10 text-ac' :
               'bg-s2 text-muted'
             }`}>
               {cat.badge}
@@ -105,7 +107,7 @@ function CategoryCard({ cat }: { cat: typeof categories[0] }) {
   if (cat.available) {
     const href = cat.slug === 'lifestyle' ? '/tools/lifestyle' : `/tools/${cat.slug}`
     return (
-      <Link href={href} className="group block p-5 rounded-xl border border-br bg-s1 hover:border-ac/40 hover:bg-acl transition-colors">
+      <Link href={href} className="group block p-5 rounded-xl border border-ac/15 bg-s0 hover:border-ac/40 hover:bg-acl transition-all">
         {inner}
       </Link>
     )

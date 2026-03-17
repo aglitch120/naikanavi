@@ -63,10 +63,12 @@ export default function ICUHubPage() {
           <Link
             key={t.slug}
             href={`/tools/icu/${t.slug}`}
-            className="group block p-5 rounded-xl border border-br bg-s1 hover:border-ac/40 hover:bg-acl transition-colors"
+            className="group block p-5 rounded-xl border border-ac/15 bg-s0 hover:border-ac/40 hover:bg-acl transition-all"
           >
             <div className="flex items-start gap-4">
-              <span className="text-3xl">{t.icon}</span>
+              <div className="w-10 h-10 bg-ac/10 border border-ac/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span className="text-xl">{t.icon}</span>
+              </div>
               <div className="flex-1 min-w-0">
                 <h2 className="text-base font-bold text-tx group-hover:text-ac transition-colors mb-1">
                   {t.name}

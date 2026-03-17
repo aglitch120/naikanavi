@@ -37,8 +37,10 @@ export default function ERPage() {
       <div className="grid gap-3">
         {flows.map(f => f.live ? (
           <Link key={f.href} href={f.href}
-            className="group flex items-start gap-4 p-5 bg-s0 border border-br rounded-xl hover:border-ac/30 hover:bg-acl/30 transition-colors">
-            <span className="text-2xl mt-0.5">{f.emoji}</span>
+            className="group flex items-start gap-4 p-5 bg-s0 border border-ac/15 rounded-xl hover:border-ac/30 hover:bg-acl transition-all">
+            <div className="w-10 h-10 bg-ac/10 border border-ac/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-xl">{f.emoji}</span>
+            </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
                 <h2 className="text-base font-bold text-tx group-hover:text-ac transition-colors">{f.name}</h2>
@@ -50,7 +52,9 @@ export default function ERPage() {
           </Link>
         ) : (
           <div key={f.name} className="flex items-start gap-4 p-5 bg-s1/50 border border-br/50 rounded-xl opacity-50">
-            <span className="text-2xl mt-0.5">{f.emoji}</span>
+            <div className="w-10 h-10 bg-s2/50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-xl">{f.emoji}</span>
+            </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
                 <h2 className="text-base font-bold text-muted">{f.name}</h2>
