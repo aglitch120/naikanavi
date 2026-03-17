@@ -15,6 +15,6 @@ export default function Page(){
       result={<ResultCard label="アナフィラキシー診断基準" value={count+'/'+items.length+'項目'} interpretation={count>=Math.ceil(items.length/2)?'基準を満たす可能性あり':'基準を満たさない'} severity={count>=Math.ceil(items.length/2)?'wn' as const:'ok' as const} />}
       explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">アナフィラキシー診断基準とは</h2><p>アドレナリン0.3-0.5mg筋注（大腿外側）が第一選択。15分毎に反復可。仰臥位+下肢挙上。輸液。βブロッカー内服中はグルカゴン検討。</p></section>}
       relatedTools={[]} references={[{text:'WAO 2020/アナフィラキシーGL 2022'}]}
-    ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}//>)}</div></CalculatorLayout>
+    ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}/>)}</div></CalculatorLayout>
   )
 }

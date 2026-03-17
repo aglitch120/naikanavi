@@ -15,6 +15,6 @@ export default function Page(){
       result={<ResultCard label="IBS診断基準(Rome IV)" value={count+'/'+items.length+'項目'} interpretation={count>=Math.ceil(items.length/2)?'基準を満たす可能性あり':'基準を満たさない'} severity={count>=Math.ceil(items.length/2)?'wn' as const:'ok' as const} />}
       explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">IBS診断基準(Rome IV)とは</h2><p>IBS-C(便秘型)/IBS-D(下痢型)/IBS-M(混合型)/IBS-U(分類不能型)にサブタイプ分類。3ヶ月以上持続、発症6ヶ月以上前から。器質的疾患の除外が前提。</p></section>}
       relatedTools={[]} references={[{text:'過敏性腸症候群の診断基準'}]}
-    ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}//>)}</div></CalculatorLayout>
+    ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}/>)}</div></CalculatorLayout>
   )
 }

@@ -15,6 +15,6 @@ export default function Page(){
       result={<ResultCard label="Bishopスコア" value={count+'/'+items.length+'項目'} interpretation={count>=Math.ceil(items.length/2)?'基準を満たす可能性あり':'基準を満たさない'} severity={count>=Math.ceil(items.length/2)?'wn' as const:'ok' as const} />}
       explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Bishopスコアとは</h2><p>≧9で誘発分娩成功率高い。≦5で頚管未熟→プロスタグランジン等で頚管熟化が必要なことが多い。</p></section>}
       relatedTools={[]} references={[{text:'子宮頚管成熟度の内診評価'}]}
-    ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}//>)}</div></CalculatorLayout>
+    ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}/>)}</div></CalculatorLayout>
   )
 }
