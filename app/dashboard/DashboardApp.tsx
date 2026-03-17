@@ -79,6 +79,7 @@ export default function DashboardApp(){
   const[proFeature,setProFeature]=useState<string>("full_access");
   const[loaded,setLoaded]=useState<boolean>(false);
   const[showTutorial,setShowTutorial]=useState<boolean>(false);
+  const[helpDismissed,setHelpDismissed]=useState<boolean>(false);
   const saveTimer=useRef<any>(null);
 
   // ── Data load on mount ──
@@ -94,6 +95,8 @@ export default function DashboardApp(){
       setLoaded(true);
       // Show tutorial on first visit
       if(!localStorage.getItem('iwor_dashboard_tutorial_done')) setShowTutorial(true);
+      // Check if help button was permanently dismissed
+      if(localStorage.getItem('iwor_dashboard_help_dismissed')) setHelpDismissed(true);
     })();
     setStatusCallback(setSaveStatus);
     return()=>{stopAutoSave();};
@@ -320,7 +323,15 @@ export default function DashboardApp(){
         )}
       </div>
 
-      {tab==="todo"&&<button onClick={()=>{if(pts.length>=2&&requirePro("full_access"))return;setShowAdd(true);}} style={{position:"fixed",bottom:24,right:"max(14px,calc(50% - 346px))",width:56,height:56,borderRadius:"50%",border:"none",background:C.ac,color:"#fff",fontSize:28,fontWeight:300,cursor:"pointer",boxShadow:`0 4px 20px ${C.ac}44`,display:"flex",alignItems:"center",justifyContent:"center",zIndex:40}}>+</button>}
+      {tab==="todo"&&<button onClick={()=>{if(pts.length>=2&&requirePro("full_access"))return;setShowAdd(true);}} style={{position:"fixed",bottom:"calc(72px + env(safe-area-inset-bottom, 0px))",right:"max(14px,calc(50% - 346px))",width:56,height:56,borderRadius:"50%",border:"none",background:C.ac,color:"#fff",fontSize:28,fontWeight:300,cursor:"pointer",boxShadow:`0 4px 20px ${C.ac}44`,display:"flex",alignItems:"center",justifyContent:"center",zIndex:40}}>+</button>}
+
+      {/* Help button – re-show tutorial (bottom-left, above bottom nav) */}
+      {loaded&&!helpDismissed&&localStorage.getItem('iwor_dashboard_tutorial_done')&&!showTutorial&&(
+        <div style={{position:"fixed",bottom:"calc(72px + env(safe-area-inset-bottom, 0px))",left:"max(14px,calc(50% - 346px))",zIndex:40,display:"flex",alignItems:"center",gap:0}}>
+          <button onClick={()=>setShowTutorial(true)} style={{width:40,height:40,borderRadius:"50%",border:`1.5px solid ${C.br}`,background:C.s0,color:C.ac,fontSize:16,fontWeight:700,cursor:"pointer",boxShadow:`0 2px 10px rgba(0,0,0,.08)`,display:"flex",alignItems:"center",justifyContent:"center"}} aria-label="使い方ヘルプ">?</button>
+          <button onClick={()=>{setHelpDismissed(true);localStorage.setItem('iwor_dashboard_help_dismissed','1');}} style={{width:18,height:18,borderRadius:"50%",border:"none",background:C.br2,color:"#fff",fontSize:10,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",position:"relative",top:-14,left:-6,lineHeight:1}} aria-label="ヘルプを非表示">×</button>
+        </div>
+      )}
 
       {showTutorial&&<Tutorial onClose={()=>{setShowTutorial(false);localStorage.setItem('iwor_dashboard_tutorial_done','1');}} />}
       {showAdd&&<AddModal onAdd={addPt} onClose={()=>setShowAdd(false)} />}
