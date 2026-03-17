@@ -482,6 +482,7 @@ function SetupScreen({
   selectedHospital: Hospital | null | undefined
 }) {
   const [hospitalSearch, setHospitalSearch] = useState('')
+  const [showAdvanced, setShowAdvanced] = useState(false)
   const filteredHospitals = hospitalSearch
     ? HOSPITALS.filter(h => h.name.includes(hospitalSearch) || h.prefecture.includes(hospitalSearch)).slice(0, 5)
     : []
@@ -543,7 +544,6 @@ function SetupScreen({
           </div>
         ) : (
           <div className="space-y-2">
-            {/* 志望リストからクイック選択 */}
             {wishlistHospitals.length > 0 && (
               <div>
                 <p className="text-[10px] text-muted mb-1.5">志望リストから選択</p>
@@ -583,68 +583,86 @@ function SetupScreen({
         )}
       </div>
 
-      {/* ② モード選択 */}
-      <div className="bg-s0 border border-br rounded-xl p-4">
-        <p className="text-xs font-bold text-tx mb-2">② 面接スタイル</p>
-        <div className="grid grid-cols-2 gap-2">
-          {([
-            { mode: 'chat' as const, label: 'チャット形式', desc: 'テキストで回答', icon: '💬' },
-            { mode: 'voice' as const, label: '音声形式', desc: 'マイク＆音声で対話', icon: '🎤' },
-          ]).map(opt => (
-            <button key={opt.mode}
-              onClick={() => setSettings({ ...settings, mode: opt.mode })}
-              className={`p-3 rounded-xl border-2 text-left transition-all ${
-                settings.mode === opt.mode ? 'shadow-sm' : 'border-br'
-              }`}
-              style={settings.mode === opt.mode ? { borderColor: MC, background: MCL } : undefined}>
-              <p className="text-lg mb-1">{opt.icon}</p>
-              <p className="text-xs font-bold text-tx">{opt.label}</p>
-              <p className="text-[10px] text-muted">{opt.desc}</p>
-            </button>
-          ))}
-        </div>
-        {settings.mode === 'voice' && (
-          <p className="text-[10px] text-muted mt-2 px-1">
-            ※ ブラウザの音声認識APIを使用します。Chrome推奨。
-          </p>
-        )}
-      </div>
+      {/* 詳細設定トグル */}
+      <button
+        onClick={() => setShowAdvanced(!showAdvanced)}
+        className="w-full flex items-center justify-between px-4 py-3 bg-s0 border border-br rounded-xl text-sm hover:bg-s1/50 transition-colors"
+      >
+        <span className="text-xs font-bold text-tx flex items-center gap-2">
+          ⚙️ 詳細設定
+          <span className="text-[10px] font-normal text-muted">
+            {settings.mode === 'voice' ? '音声' : 'チャット'} · {PRESSURE_LABELS[settings.pressure].label} · {DURATION_OPTIONS.find(o => o.value === settings.duration)?.label}
+          </span>
+        </span>
+        <span className={`text-muted transition-transform ${showAdvanced ? 'rotate-180' : ''}`}>▾</span>
+      </button>
 
-      {/* ③ 圧迫度 */}
-      <div className="bg-s0 border border-br rounded-xl p-4">
-        <p className="text-xs font-bold text-tx mb-2">③ 圧迫度</p>
-        <div className="flex gap-2">
-          {(Object.entries(PRESSURE_LABELS) as [keyof typeof PRESSURE_LABELS, typeof PRESSURE_LABELS[keyof typeof PRESSURE_LABELS]][]).map(([key, val]) => (
-            <button key={key}
-              onClick={() => setSettings({ ...settings, pressure: key })}
-              className={`flex-1 p-2.5 rounded-xl border-2 text-center transition-all ${
-                settings.pressure === key ? 'shadow-sm' : 'border-br'
-              }`}
-              style={settings.pressure === key ? { borderColor: MC, background: MCL } : undefined}>
-              <p className="text-lg">{val.emoji}</p>
-              <p className="text-[10px] font-bold text-tx">{val.label}</p>
-            </button>
-          ))}
-        </div>
-      </div>
+      {showAdvanced && (
+        <div className="space-y-4">
+          {/* ② モード選択 */}
+          <div className="bg-s0 border border-br rounded-xl p-4">
+            <p className="text-xs font-bold text-tx mb-2">② 面接スタイル</p>
+            <div className="grid grid-cols-2 gap-2">
+              {([
+                { mode: 'chat' as const, label: 'チャット形式', desc: 'テキストで回答', icon: '💬' },
+                { mode: 'voice' as const, label: '音声形式', desc: 'マイク＆音声で対話', icon: '🎤' },
+              ]).map(opt => (
+                <button key={opt.mode}
+                  onClick={() => setSettings({ ...settings, mode: opt.mode })}
+                  className={`p-3 rounded-xl border-2 text-left transition-all ${
+                    settings.mode === opt.mode ? 'shadow-sm' : 'border-br'
+                  }`}
+                  style={settings.mode === opt.mode ? { borderColor: MC, background: MCL } : undefined}>
+                  <p className="text-lg mb-1">{opt.icon}</p>
+                  <p className="text-xs font-bold text-tx">{opt.label}</p>
+                  <p className="text-[10px] text-muted">{opt.desc}</p>
+                </button>
+              ))}
+            </div>
+            {settings.mode === 'voice' && (
+              <p className="text-[10px] text-muted mt-2 px-1">
+                ※ ブラウザの音声認識APIを使用します。Chrome推奨。
+              </p>
+            )}
+          </div>
 
-      {/* ④ 面接時間 */}
-      <div className="bg-s0 border border-br rounded-xl p-4">
-        <p className="text-xs font-bold text-tx mb-2">④ 面接時間</p>
-        <div className="flex gap-2">
-          {DURATION_OPTIONS.map(opt => (
-            <button key={opt.value}
-              onClick={() => setSettings({ ...settings, duration: opt.value })}
-              className={`flex-1 p-2.5 rounded-xl border-2 text-center transition-all ${
-                settings.duration === opt.value ? 'shadow-sm' : 'border-br'
-              }`}
-              style={settings.duration === opt.value ? { borderColor: MC, background: MCL } : undefined}>
-              <p className="text-sm font-bold text-tx">{opt.label}</p>
-              <p className="text-[10px] text-muted">{opt.questions}</p>
-            </button>
-          ))}
+          {/* ③ 圧迫度 */}
+          <div className="bg-s0 border border-br rounded-xl p-4">
+            <p className="text-xs font-bold text-tx mb-2">③ 圧迫度</p>
+            <div className="flex gap-2">
+              {(Object.entries(PRESSURE_LABELS) as [keyof typeof PRESSURE_LABELS, typeof PRESSURE_LABELS[keyof typeof PRESSURE_LABELS]][]).map(([key, val]) => (
+                <button key={key}
+                  onClick={() => setSettings({ ...settings, pressure: key })}
+                  className={`flex-1 p-2.5 rounded-xl border-2 text-center transition-all ${
+                    settings.pressure === key ? 'shadow-sm' : 'border-br'
+                  }`}
+                  style={settings.pressure === key ? { borderColor: MC, background: MCL } : undefined}>
+                  <p className="text-lg">{val.emoji}</p>
+                  <p className="text-[10px] font-bold text-tx">{val.label}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ④ 面接時間 */}
+          <div className="bg-s0 border border-br rounded-xl p-4">
+            <p className="text-xs font-bold text-tx mb-2">④ 面接時間</p>
+            <div className="flex gap-2">
+              {DURATION_OPTIONS.map(opt => (
+                <button key={opt.value}
+                  onClick={() => setSettings({ ...settings, duration: opt.value })}
+                  className={`flex-1 p-2.5 rounded-xl border-2 text-center transition-all ${
+                    settings.duration === opt.value ? 'shadow-sm' : 'border-br'
+                  }`}
+                  style={settings.duration === opt.value ? { borderColor: MC, background: MCL } : undefined}>
+                  <p className="text-sm font-bold text-tx">{opt.label}</p>
+                  <p className="text-[10px] text-muted">{opt.questions}</p>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* 開始ボタン */}
       <button onClick={onStart}
