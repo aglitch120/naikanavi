@@ -935,6 +935,8 @@ export const tools: ToolDefinition[] = [
 export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled', 'child-pugh', 'meld', 'curb-65', 'a-drop', 'wells-pe', 'wells-dvt', 'qsofa', 'sofa', 'fib-4', 'corrected-ca', 'aa-gradient', 'grace', 'bmi', 'bsa', 'cockcroft-gault', 'gcs', 'rcri', 'anion-gap', 'abcd2', 'mrs', 'ecog', 'karnofsky', 'maintenance-fluid', 'na-deficit', 'free-water-deficit', 'nihss', 'apache2', 'na-correction-rate', 'kcl-correction', 'steroid-converter', 'insulin-sliding', 'renal-dose-abx', 'glasgow-blatchford', 'aims65', 'heart-score', 'timi', 'news2', 'charlson', 'centor', 'caprini', 'padua', 'mascc', 'alvarado', 'perc', 'ottawa-ankle', 'rockall', 'spesi', 'phq9', 'gad7', 'isth-dic', 'light-criteria', 'qtc', 'map', 'fena', 'osmolality-gap', 'winters-formula', 'corrected-phenytoin', 'ibw', 'anc', 'meld-na', 'ranson', 'bisap', 'audit', 'ldl-friedewald', 'dopamine-dose', 'parkland', 'jcs', 'sirs', 'fio2-table', 'harris-benedict', 'nyha', 'homa', 'cam-icu', 'rass', 'barthel-index',
   // Tier 1 NEW
   'cchr', 'pecarn', 'canadian-cspine', 'nexus', 'rtpa-checklist', 'aspects', 'add-risk', 'lrinec', 'fisher', 'hunt-hess', 'wfns', 'ciwa-ar', 'four-score', 'cage', 'psi-port', 'smart-cop', 'geneva', 'toast', 'duke-criteria', 'ottawa-sah', 'san-francisco-syncope', 'sapsii',
+  // Tier 2
+  'apgar', 'asa-ps', 'gir', 'cfs', 'opioid-conversion', 'gnri', 'conut', 'ttkg', 'holiday-segar',
 ])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
