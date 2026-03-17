@@ -19,7 +19,7 @@ const cats = [
 export default function ADDRiskPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries(cats.flatMap(c=>c.items).map(i=>[i.id,false])))
   const result=useMemo(()=>{
-    const catScores = cats.map(c=>c.items.some(i=>checks[i.id])?1:0)
+    const catScores = cats.map(c=>c.items.some(i=>checks[i.id])?1:0) as number[]
     const score = catScores.reduce((a,b)=>a+b,0)
     if(score>=2) return {score,severity:'dn' as const,label:'高リスク（2-3点）: 大動脈解離の可能性高い → 即座にCT造影'}
     if(score===1) return {score,severity:'wn' as const,label:'中リスク（1点）: D-dimer<0.5μg/mLなら除外可能 → CT造影も検討'}

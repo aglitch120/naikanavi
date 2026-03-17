@@ -75,10 +75,12 @@ interface RadioGroupProps {
   value: string
   onChange: (value: string) => void
   options: { value: string; label: string }[]
-  name: string
+  name?: string
+  id?: string
 }
 
-export function RadioGroup({ label, value, onChange, options, name }: RadioGroupProps) {
+export function RadioGroup({ label, value, onChange, options, name, id }: RadioGroupProps) {
+  const groupName = name || id || 'radio'
   return (
     <fieldset>
       <legend className="block text-sm font-medium text-tx mb-2">{label}</legend>
@@ -94,7 +96,7 @@ export function RadioGroup({ label, value, onChange, options, name }: RadioGroup
           >
             <input
               type="radio"
-              name={name}
+              name={groupName}
               value={opt.value}
               checked={value === opt.value}
               onChange={() => onChange(opt.value)}
@@ -136,7 +138,7 @@ export function CheckItem({ label, sublabel, points, checked, onChange, id }: Ch
         <span className="text-sm font-medium text-tx">{label}</span>
         {sublabel && <span className="block text-xs text-muted mt-0.5">{sublabel}</span>}
       </div>
-      <span className="text-xs font-mono text-muted whitespace-nowrap">+{points}pt</span>
+      {points != null && <span className="text-xs font-mono text-muted whitespace-nowrap">+{points}pt</span>}
     </label>
   )
 }

@@ -14,7 +14,7 @@ export default function PSIPortPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries([...demos.slice(1),...comorbid,...pe,...lab].map(i=>[i.id,false])))
   const result=useMemo(()=>{
     let score=Number(age)||0
-    ;[...demos.slice(1),...comorbid,...pe,...lab].forEach(i=>{if(checks[i.id])score+=i.points})
+    ;[...demos.slice(1),...comorbid,...pe,...lab].forEach(i=>{if(checks[i.id])score+=(i.points??0)})
     let cls:'I'|'II'|'III'|'IV'|'V',label:string,sev:'ok'|'wn'|'dn'
     if(score<=50){cls='I';label='Class I (≦50): 死亡率0.1% → 外来治療';sev='ok'}
     else if(score<=70){cls='II';label='Class II (51-70): 死亡率0.6% → 外来治療';sev='ok'}
