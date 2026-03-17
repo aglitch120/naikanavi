@@ -84,7 +84,7 @@
 - [x] **倍率推移グラフ**: 過去3年推移をPROモザイク
 - [x] **AI面接リニューアル**: チャット形式/音声形式選択、病院別パーソナライズ、圧迫度/時間設定、面接全体フィードバック
 - [x] コンポーネント分割（hospitals-data.ts, match-calc.ts, HospitalSection.tsx, InterviewSection.tsx）
-- [ ] **要デプロイ: `cd workers && npx wrangler deploy`**（AI面接プロンプト更新）
+- [x] **Worker再デプロイ完了**（AI面接プロンプト更新 — 2026-03-17）
 - [ ] 病院DBデータ拡充（→100病院）
 - [ ] 履歴書PDF出力機能（PRO）
 - [ ] マッチングプロフィールのクラウド保存（Supabase）
