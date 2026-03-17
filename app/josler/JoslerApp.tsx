@@ -220,7 +220,20 @@ export default function JoslerApp() {
 
       <div style={{ padding: '12px 14px' }}>
         {tab === 'overview' && <OverviewTab cases={cases} groups={groups} totalC={totalC} totalG={totalG} totalAcc={totalAcc} totalWip={totalWip} summaries={summaries} overallPct={overallPct} cPct={cPct} gPct={gPct} sPct={sPct} ooPct={ooPct} oProg={oProg} />}
-        {tab === 'cases' && <CasesTab eg={eg} cases={cases} groups={groups} totalC={totalC} totalG={totalG} openSp={openSp} setOpenSp={setOpenSp} openDgBySp={openDgBySp} setOpenDgBySp={setOpenDgBySp} toggleGroup={toggleGroup} toggleDisease={toggleDisease} />}
+        {tab === 'cases' && <CasesTab eg={eg} cases={cases} groups={groups} totalC={totalC} totalG={totalG} openSp={openSp} setOpenSp={setOpenSp} openDgBySp={openDgBySp} setOpenDgBySp={setOpenDgBySp} toggleGroup={toggleGroup} toggleDisease={toggleDisease} onImport={(imported: any) => {
+          setEg((prev: any) => {
+            const n = JSON.parse(JSON.stringify(prev))
+            imported.forEach((r: any) => {
+              if (r.spId && r.dgId && n[r.spId]?.[r.dgId]) {
+                n[r.spId][r.dgId].on = true
+                if (r.disease && n[r.spId][r.dgId].d.hasOwnProperty(r.disease)) {
+                  n[r.spId][r.dgId].d[r.disease] = true
+                }
+              }
+            })
+            return n
+          })
+        }} />}
         {tab === 'summaries' && <SummariesTab summaries={summaries} eg={eg} updSum={updSum} openSumId={openSumId} setOpenSumId={setOpenSumId} openSumDg={openSumDg} setOpenSumDg={setOpenSumDg} showRules={showRules} setShowRules={setShowRules} showShortage={showShortage} setShowShortage={setShowShortage} />}
         {tab === 'other' && <OtherTab other={other} updOther={updOther} />}
         {tab === 'guide' && <GuideTab openGuide={openGuide} setOpenGuide={setOpenGuide} />}
@@ -349,8 +362,55 @@ function OverviewTab({ totalC, totalG, totalAcc, totalWip, summaries, overallPct
 /* ═══════════════════════════════════
    CASES TAB
 ═══════════════════════════════════ */
-function CasesTab({ eg, cases, groups, totalC, totalG, openSp, setOpenSp, openDgBySp, setOpenDgBySp, toggleGroup, toggleDisease }: any) {
+function CasesTab({ eg, cases, groups, totalC, totalG, openSp, setOpenSp, openDgBySp, setOpenDgBySp, toggleGroup, toggleDisease, onImport }: any) {
   const genTot = (cases.generalI || 0) + (cases.generalII || 0) + (cases.generalIII || 0)
+  const [showImport, setShowImport] = useState(false)
+  const [importData, setImportData] = useState<any[]>([])
+  const [importDone, setImportDone] = useState(false)
+
+  const loadDashboardArchive = () => {
+    try {
+      const raw = localStorage.getItem('iwor_dashboard_data')
+      if (!raw) { setImportData([]); setShowImport(true); return }
+      const data = JSON.parse(raw)
+      const archived = data.archived || []
+      // Filter: only those with specialty + diseaseGroup + diagnosis
+      const valid = archived
+        .filter((p: any) => p.specialty && p.diseaseGroup && p.diagnosis)
+        .map((p: any) => {
+          const sp = SP.find(s => s.id === p.specialty)
+          const dgs = DG[p.specialty] || []
+          const dg = dgs.find((d: any) => d.id === p.diseaseGroup)
+          // Check if disease exists in disease group
+          const diseaseMatch = dg?.diseases?.includes(p.diagnosis) ? p.diagnosis : null
+          // Check if already in J-OSLER
+          const alreadyIn = eg[p.specialty]?.[p.diseaseGroup]?.d?.[p.diagnosis] === true
+          return {
+            id: p.id,
+            room: p.room,
+            name: p.name,
+            diagnosis: p.diagnosis,
+            spId: p.specialty,
+            spLabel: sp?.short || p.specialty,
+            dgId: p.diseaseGroup,
+            dgLabel: dg?.name || p.diseaseGroup,
+            disease: diseaseMatch,
+            dischargeDate: p.dischargeDate,
+            alreadyIn,
+          }
+        })
+      setImportData(valid)
+      setShowImport(true)
+      setImportDone(false)
+    } catch { setImportData([]); setShowImport(true) }
+  }
+
+  const executeImport = () => {
+    const toImport = importData.filter((r: any) => !r.alreadyIn)
+    if (toImport.length === 0) return
+    onImport(toImport)
+    setImportDone(true)
+  }
 
   return (
     <>
@@ -373,6 +433,69 @@ function CasesTab({ eg, cases, groups, totalC, totalG, openSp, setOpenSp, openDg
           )}
         </div>
         <div style={{ fontSize: 10, color: C.m }}>① 疾患群の ☐ を押して選択 → ② ▶ で病名を展開 → タップで複数選択</div>
+      </Card>
+
+      {/* Import from Dashboard */}
+      <Card style={{ background: `linear-gradient(135deg, ${C.acl}, #d4e8dc)`, border: `1px solid ${C.ac}30` }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span style={{ fontSize: 20 }}>🔗</span>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: C.ac }}>病棟TODOから取り込み</div>
+            <div style={{ fontSize: 11, color: C.m }}>症例ログの退院患者データを自動反映</div>
+          </div>
+          <button onClick={loadDashboardArchive} style={{
+            padding: '6px 14px', borderRadius: 8, border: `1.5px solid ${C.ac}`,
+            background: C.s0, color: C.ac, fontSize: 12, fontWeight: 600, cursor: 'pointer',
+          }}>
+            取り込む
+          </button>
+        </div>
+
+        {showImport && (
+          <div style={{ marginTop: 12, paddingTop: 12, borderTop: `1px solid ${C.ac}30` }}>
+            {importData.length === 0 ? (
+              <p style={{ fontSize: 12, color: C.m, textAlign: 'center' }}>病棟TODOに領域・疾患群が設定された退院症例がありません。</p>
+            ) : importDone ? (
+              <div style={{ textAlign: 'center', padding: '8px 0' }}>
+                <span style={{ fontSize: 20 }}>✅</span>
+                <p style={{ fontSize: 13, fontWeight: 600, color: C.ok, marginTop: 4 }}>
+                  {importData.filter((r: any) => !r.alreadyIn).length}件を取り込みました
+                </p>
+              </div>
+            ) : (
+              <>
+                <div style={{ fontSize: 11, color: C.m, marginBottom: 8 }}>
+                  {importData.length}件の退院症例（新規: {importData.filter((r: any) => !r.alreadyIn).length}件、登録済み: {importData.filter((r: any) => r.alreadyIn).length}件）
+                </div>
+                <div style={{ maxHeight: 200, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  {importData.map((r: any) => (
+                    <div key={r.id} style={{
+                      display: 'flex', alignItems: 'center', gap: 6, padding: '6px 10px',
+                      borderRadius: 6, background: r.alreadyIn ? C.s1 : C.s0, border: `1px solid ${r.alreadyIn ? C.br : C.ac + '40'}`,
+                      opacity: r.alreadyIn ? 0.6 : 1,
+                    }}>
+                      <span style={{ fontSize: 11, fontWeight: 600, color: r.alreadyIn ? C.br2 : C.ac }}>{r.alreadyIn ? '✓' : '○'}</span>
+                      <span style={{ fontSize: 11, color: C.m, minWidth: 50 }}>{r.spLabel}</span>
+                      <span style={{ fontSize: 11, fontWeight: 600, flex: 1 }}>{r.diagnosis}</span>
+                      <span style={{ fontSize: 10, color: C.br2 }}>{r.dgLabel}</span>
+                    </div>
+                  ))}
+                </div>
+                {importData.some((r: any) => !r.alreadyIn) && (
+                  <button onClick={executeImport} style={{
+                    width: '100%', marginTop: 10, padding: '10px 0', borderRadius: 8,
+                    border: 'none', background: C.ac, color: '#fff', fontSize: 13, fontWeight: 600, cursor: 'pointer',
+                  }}>
+                    {importData.filter((r: any) => !r.alreadyIn).length}件を取り込む
+                  </button>
+                )}
+                {!importData.some((r: any) => !r.alreadyIn) && (
+                  <p style={{ fontSize: 12, color: C.ok, textAlign: 'center', marginTop: 8, fontWeight: 600 }}>✓ すべての症例が登録済みです</p>
+                )}
+              </>
+            )}
+          </div>
+        )}
       </Card>
 
       {/* Specialty accordion */}

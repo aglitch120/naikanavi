@@ -138,7 +138,7 @@
 - [x] 旧app.html からOverview/Cases/Summaries機能を移植
 - [x] 進捗ダッシュボード（70疾患群）
 - [ ] 病歴要約AI生成（旧テンプレート機能移植）
-- [ ] 病棟TODO症例ログからの自動連携
+- [x] 病棟TODO症例ログからの自動連携
 - [x] クラウド同期（Worker API /api/josler）
 
 ## Phase 5: 学習プラットフォーム
