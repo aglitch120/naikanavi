@@ -382,18 +382,39 @@ export default {
     // ══════════════════════════════════════════════════
     //  AI面接フィードバック
     //  POST /api/interview-feedback
-    //  Authorization: Bearer {sessionToken}
+    //  認証: Bearer {sessionToken} — PRO無制限
+    //  認証なし: IPベースで5ラリー/日（FREE体験用）
     //  Body: { mode, systemPrompt, userMessage, profile }
-    //    mode: "interview" — 面接官として次の質問を返す
-    //    mode: "feedback"  — 回答へのフィードバックを返す（旧互換）
     // ══════════════════════════════════════════════════
     if (path === "/api/interview-feedback" && request.method === "POST") {
       const auth = request.headers.get("Authorization") || "";
       const token = auth.replace("Bearer ", "").trim();
-      if (!token) return json({ error: "Unauthorized" }, 401, request);
+      let isPro = false;
 
-      const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
-      if (!sessionRaw) return json({ error: "Invalid session" }, 401, request);
+      // PRO認証チェック（任意）
+      if (token) {
+        const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
+        if (sessionRaw) isPro = true;
+      }
+
+      // FREE: IPベースレート制限（5ラリー/日）
+      if (!isPro) {
+        const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
+        const rateKey = `rate:interview:${clientIP}:${new Date().toISOString().slice(0, 10)}`;
+        const countRaw = await env.IWOR_KV.get(rateKey);
+        const count = countRaw ? parseInt(countRaw, 10) : 0;
+
+        if (count >= 5) {
+          return json({
+            error: "rate_limited",
+            message: "無料体験は1日5ラリーまでです。PRO会員で無制限に使えます。",
+            remaining: 0,
+          }, 429, request);
+        }
+
+        // カウント増加（24時間TTL）
+        await env.IWOR_KV.put(rateKey, String(count + 1), { expirationTtl: 86400 });
+      }
 
       const body = await request.json();
       const { mode, systemPrompt, userMessage, question, answer, profile } = body;
@@ -415,7 +436,7 @@ export default {
             }
           );
           const feedback = aiResponse?.response || "";
-          return json({ ok: true, feedback }, 200, request);
+          return json({ ok: true, feedback, isPro }, 200, request);
         } catch (err) {
           console.error("Workers AI error:", err);
           return json({ error: "AI processing failed", detail: err.message }, 500, request);

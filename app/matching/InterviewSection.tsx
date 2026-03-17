@@ -68,6 +68,7 @@ export default function InterviewTab({
   const [feedbackText, setFeedbackText] = useState('')
   const [isVoicePlaying, setIsVoicePlaying] = useState(false)
   const [isListening, setIsListening] = useState(false)
+  const [rateLimited, setRateLimited] = useState(false)
   const chatEndRef = useRef<HTMLDivElement>(null)
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
@@ -88,20 +89,28 @@ export default function InterviewTab({
     }, 100)
   }, [messages, isThinking])
 
-  // ── API呼び出し（面接会話モード） ──
+  // ── API呼び出し（FREE: 5ラリー/日、PRO: 無制限） ──
   const callAI = useCallback(async (systemPrompt: string, userMessage: string): Promise<string | null> => {
     const sessionToken = typeof window !== 'undefined'
       ? localStorage.getItem('iwor_session_token') || ''
       : ''
 
-    if (!sessionToken) return null // ローカル処理に委ねる
-
     try {
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+      if (sessionToken) headers['Authorization'] = `Bearer ${sessionToken}`
+
       const res = await fetch(`${API_URL}/api/interview-feedback`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${sessionToken}` },
+        headers,
         body: JSON.stringify({ mode: 'interview', systemPrompt, userMessage }),
       })
+
+      if (res.status === 429) {
+        // レート制限 → ローカルフォールバック
+        setRateLimited(true)
+        return null
+      }
+
       const data = await res.json()
       if (data.ok && data.feedback) return data.feedback
       console.warn('[iwor] AI API returned no feedback:', data)
@@ -321,6 +330,12 @@ ${conversationLog}
             {/* 入力エリア */}
             {questionCount <= maxQuestions && (
               <div className="border-t border-br p-3">
+                {rateLimited && !isPro && (
+                  <div className="mb-2 px-3 py-2 rounded-lg text-[11px] flex items-center justify-between" style={{ background: MCL, color: MC }}>
+                    <span>無料体験の上限に達しました。ローカルモードで続行中</span>
+                    <button onClick={onShowProModal} className="font-bold underline ml-2">PRO</button>
+                  </div>
+                )}
                 <div className="flex gap-2">
                   <div className="flex-1 relative">
                     <textarea
