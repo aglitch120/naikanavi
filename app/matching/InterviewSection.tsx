@@ -80,14 +80,21 @@ export default function InterviewTab({
   // 想定質問数
   const maxQuestions = settings.duration === 5 ? 7 : settings.duration === 10 ? 10 : 14
 
-  // ── スクロール ──
+  // ── スクロール（メッセージ追加時のみ） ──
+  const prevMsgCount = useRef(0)
   useEffect(() => {
-    setTimeout(() => {
-      if (chatContainerRef.current) {
-        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
-      }
-    }, 100)
-  }, [messages, isThinking])
+    if (messages.length > prevMsgCount.current) {
+      prevMsgCount.current = messages.length
+      setTimeout(() => {
+        if (chatContainerRef.current) {
+          chatContainerRef.current.scrollTo({
+            top: chatContainerRef.current.scrollHeight,
+            behavior: 'smooth',
+          })
+        }
+      }, 150)
+    }
+  }, [messages.length])
 
   // ── API呼び出し（FREE: 5ラリー/日、PRO: 無制限） ──
   const callAI = useCallback(async (systemPrompt: string, userMessage: string): Promise<string | null> => {
@@ -112,8 +119,11 @@ export default function InterviewTab({
       }
 
       const data = await res.json()
-      if (data.ok && data.feedback) return data.feedback
-      console.warn('[iwor] AI API returned no feedback:', data)
+      if (data.ok && data.feedback) {
+        console.log('[iwor] AI response source:', data.source, 'isPro:', data.isPro)
+        return data.feedback
+      }
+      console.warn('[iwor] AI API returned no feedback:', JSON.stringify(data).slice(0, 200))
       return null
     } catch (err) {
       console.warn('[iwor] AI API error:', err)
@@ -169,7 +179,10 @@ export default function InterviewTab({
     let firstQ = await callAI(systemPrompt,
       `面接を開始してください。${pressureDesc}最初の質問をお願いします。`)
     if (!firstQ) {
+      console.log('[iwor] First question: using local fallback')
       firstQ = getLocalQuestion(0, profile, hospital)
+    } else {
+      console.log('[iwor] First question: from Workers AI')
     }
 
     const msg: ChatMessage = { role: 'interviewer', content: firstQ, timestamp: new Date() }
@@ -342,7 +355,7 @@ ${conversationLog}
                       ref={inputRef}
                       value={userInput}
                       onChange={e => setUserInput(e.target.value)}
-                      onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAnswer() } }}
+                      onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); sendAnswer() } }}
                       placeholder="回答を入力…"
                       rows={2}
                       className="w-full px-3 py-2 border border-br rounded-xl bg-bg text-sm text-tx focus:border-[#993556] focus:ring-1 focus:ring-[#993556]/20 outline-none resize-none transition-all"

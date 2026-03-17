@@ -24,8 +24,8 @@ function getCors(request) {
   const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
     "Access-Control-Allow-Origin": allowed,
-    "Access-Control-Allow-Methods": "GET,POST,DELETE,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type,X-Api-Key,X-Admin-Key",
+    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type,Authorization,X-Api-Key,X-Admin-Key",
     "Vary": "Origin",
   };
 }
@@ -436,7 +436,7 @@ export default {
             }
           );
           const feedback = aiResponse?.response || "";
-          return json({ ok: true, feedback, isPro }, 200, request);
+          return json({ ok: true, feedback, isPro, source: "workers-ai" }, 200, request);
         } catch (err) {
           console.error("Workers AI error:", err);
           return json({ error: "AI processing failed", detail: err.message }, 500, request);
