@@ -211,7 +211,7 @@ export default function HospitalTab({
           <div className="bg-s0 border border-br rounded-xl p-4 relative overflow-hidden">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-sm">💎</span>
-              <p className="text-sm font-bold text-tx">穴場病院ピックアップ</p>
+              <p className="text-sm font-bold text-tx">あなたに最適な病院</p>
               {!isPro && (
                 <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: MCL, color: MC }}>PRO</span>
               )}
@@ -230,8 +230,8 @@ export default function HospitalTab({
                   </div>
                   {/* FREE: 2件目以降モザイク */}
                   {!isPro && i > 0 && (
-                    <div className="absolute inset-0 backdrop-blur-sm bg-s0/60 rounded-lg flex items-center justify-center">
-                      <span className="text-[10px] text-muted">PRO会員で穴場理由を確認</span>
+                    <div className="absolute inset-0 backdrop-blur-md bg-s0/95 rounded-lg flex items-center justify-center">
+                      <span className="text-[10px] text-muted">🔒 PRO会員でおすすめ理由を確認</span>
                     </div>
                   )}
                 </div>
@@ -239,7 +239,7 @@ export default function HospitalTab({
             </div>
             {!isPro && (
               <button onClick={onShowProModal} className="w-full mt-3 py-2 rounded-lg text-[11px] font-bold text-white" style={{ background: MC }}>
-                PRO会員で穴場を全て見る
+                PRO会員でおすすめを全て見る
               </button>
             )}
           </div>
@@ -365,7 +365,7 @@ export default function HospitalTab({
           {hiddenCount > 0 && (
             <div className="bg-s0 border border-dashed rounded-xl p-6 text-center" style={{ borderColor: `${MC}40` }}>
               <p className="text-sm font-bold text-tx mb-1">あと{hiddenCount}件の病院があります</p>
-              <p className="text-xs text-muted mb-4">PRO会員で全{filtered.length}件＋倍率推移＋穴場情報にアクセス</p>
+              <p className="text-xs text-muted mb-4">PRO会員で全{filtered.length}件＋倍率推移＋おすすめ情報にアクセス</p>
               <button onClick={onShowProModal}
                 className="px-6 py-2.5 rounded-xl text-sm font-bold text-white" style={{ background: MC }}>
                 PRO会員になる
@@ -444,7 +444,7 @@ function HospitalCard({
               }`}>{h.type}</span>
               {h.isAnaba && (
                 <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 flex-shrink-0">
-                  💎 穴場
+                  💎 おすすめ
                 </span>
               )}
             </div>
@@ -518,8 +518,8 @@ function HospitalCard({
               </div>
             </div>
             {!isPro && (
-              <div className="absolute inset-0 backdrop-blur-sm bg-s0/70 rounded-lg flex items-center justify-center">
-                <span className="text-[10px] font-medium" style={{ color: MC }}>PRO会員で倍率推移を表示</span>
+              <div className="absolute inset-0 backdrop-blur-md bg-s0/95 rounded-lg flex items-center justify-center">
+                <span className="text-[10px] font-medium" style={{ color: MC }}>🔒 PRO会員で倍率推移を表示</span>
               </div>
             )}
           </div>

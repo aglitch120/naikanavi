@@ -20,8 +20,8 @@ export interface Hospital {
   busyness: 'high' | 'medium' | 'low'
   erType: 'ER型' | '各科当直型' | '混合型'
   deptScale: Record<string, 'S' | 'M' | 'L'>  // 診療科規模（スタッフ数ベース）
-  isAnaba: boolean            // 穴場フラグ
-  anabaReason?: string        // 穴場理由
+  isAnaba: boolean            // おすすめフラグ
+  anabaReason?: string        // おすすめ理由
   philosophy?: string         // 病院理念（面接用）
 }
 
@@ -132,7 +132,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 480, salaryLabel: '約480万/年',
     busyness: 'medium', erType: 'ER型',
     deptScale: { '救急科': 'M', '内科': 'M', '外科': 'M' },
-    isAnaba: true, anabaReason: '倍率が年々低下中（3.3→2.9）、穴場傾向',
+    isAnaba: true, anabaReason: '倍率が年々低下中（3.3→2.9）、おすすめ傾向',
     philosophy: '済生の精神に基づき、地域医療に貢献する',
   },
   {
@@ -145,7 +145,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 350, salaryLabel: '約350万/年',
     busyness: 'low', erType: '各科当直型',
     deptScale: { '内科': 'L', '外科': 'M', '皮膚科': 'L' },
-    isAnaba: true, anabaReason: '関東大学病院で倍率2倍台、入りやすい穴場',
+    isAnaba: true, anabaReason: '関東大学病院で倍率2倍台、比較的入りやすい',
     philosophy: 'つねに、より高きものをめざして',
   },
   {
@@ -266,7 +266,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 480, salaryLabel: '約480万/年',
     busyness: 'high', erType: '各科当直型',
     deptScale: { '循環器': 'L', '消化器': 'M', '内科': 'M' },
-    isAnaba: true, anabaReason: '循環器志望なら穴場、少人数で手技機会多い',
+    isAnaba: true, anabaReason: '循環器志望ならおすすめ、少人数で手技機会多い',
     philosophy: '心臓・消化器の専門病院として高度医療を提供する',
   },
 
@@ -294,7 +294,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 490, salaryLabel: '約490万/年',
     busyness: 'high', erType: 'ER型',
     deptScale: { '救急科': 'L', '内科': 'M', '外科': 'M' },
-    isAnaba: true, anabaReason: '中部のER型で倍率低下傾向、救急志望に穴場',
+    isAnaba: true, anabaReason: '中部のER型で倍率低下傾向、救急志望におすすめ',
     philosophy: '赤十字精神に基づく高度救急医療の実現',
   },
   {
@@ -456,7 +456,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 470, salaryLabel: '約470万/年',
     busyness: 'medium', erType: 'ER型',
     deptScale: { '救急科': 'M', '内科': 'M', '外科': 'M' },
-    isAnaba: true, anabaReason: 'ER型で倍率1.8倍、四国の救急研修穴場',
+    isAnaba: true, anabaReason: 'ER型で倍率1.8倍、四国の救急研修におすすめ',
     philosophy: '赤十字精神に基づき、愛媛の地域医療を守る',
   },
 
@@ -523,7 +523,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 340, salaryLabel: '約340万/年',
     busyness: 'low', erType: '各科当直型',
     deptScale: { '感染症': 'L', '内科': 'M', '外科': 'M' },
-    isAnaba: true, anabaReason: '熱帯医学研究所併設、感染症志望の穴場',
+    isAnaba: true, anabaReason: '熱帯医学研究所併設、感染症志望におすすめ',
     philosophy: '出島の精神で世界と繋がる医学教育と研究',
   },
   {
@@ -536,7 +536,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 340, salaryLabel: '約340万/年',
     busyness: 'medium', erType: '各科当直型',
     deptScale: { '循環器': 'L', '内科': 'L', '外科': 'M' },
-    isAnaba: true, anabaReason: 'ECFMG認定、倍率1.8倍で九州穴場',
+    isAnaba: true, anabaReason: 'ECFMG認定、倍率1.8倍で九州でおすすめ',
     philosophy: '創造と進取の精神で社会貢献する医療人を育成する',
   },
   {
@@ -549,7 +549,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 480, salaryLabel: '約480万/年',
     busyness: 'high', erType: 'ER型',
     deptScale: { '救急科': 'M', '産婦人科': 'M', '外科': 'M' },
-    isAnaba: true, anabaReason: '中部病院の陰に隠れた穴場、同等の救急経験',
+    isAnaba: true, anabaReason: '中部病院の陰に隠れたおすすめ、同等の救急経験',
     philosophy: '沖縄の県民医療を守る南部の砦',
   },
 
@@ -590,7 +590,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 490, salaryLabel: '約490万/年',
     busyness: 'medium', erType: '混合型',
     deptScale: { '内科': 'M', '外科': 'M', '小児科': 'M' },
-    isAnaba: true, anabaReason: '札幌市内で倍率1.9倍、生活環境◎の穴場',
+    isAnaba: true, anabaReason: '札幌市内で倍率1.9倍、生活環境◎でおすすめ',
     philosophy: '市民に信頼される高度急性期医療を提供する',
   },
   {
@@ -603,7 +603,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 340, salaryLabel: '約340万/年',
     busyness: 'medium', erType: '各科当直型',
     deptScale: { '内科': 'L', '外科': 'M', '小児科': 'M' },
-    isAnaba: true, anabaReason: '中四国最大拠点で倍率2.0倍、研究志向穴場',
+    isAnaba: true, anabaReason: '中四国最大拠点で倍率2.0倍、研究志向におすすめ',
     philosophy: '高度な知の創成と地域への貢献',
   },
   {
@@ -629,7 +629,7 @@ export const HOSPITALS: Hospital[] = [
     salaryNum: 480, salaryLabel: '約480万/年',
     busyness: 'high', erType: 'ER型',
     deptScale: { '救急科': 'L', '内科': 'M', '外科': 'M' },
-    isAnaba: true, anabaReason: '2015年新設で知名度低いが施設最新、穴場',
+    isAnaba: true, anabaReason: '2015年新設で知名度低いが施設最新でおすすめ',
     philosophy: '県民の安全・安心を支える高度急性期医療',
   },
 ]
