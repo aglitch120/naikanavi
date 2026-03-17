@@ -75,7 +75,7 @@
 - [x] 病院DB 20病院（FREE: 3件、PRO: 全件）
 - [x] AI面接練習（ローカルフィードバック版）
 - [x] AI面接をWorkers AI化（Llama 3.1-8b、ローカルフォールバック付き）
-- [ ] **要デプロイ: `cd workers && npx wrangler deploy`**（dashboard API + AI面接）
+- [x] **Worker再デプロイ完了**（dashboard API + AI面接 — 2026-03-17）
 - [ ] 病院DBデータ拡充（50病院→100病院）
 - [ ] 履歴書PDF出力機能（PRO）
 - [ ] マッチングプロフィールのクラウド保存（Supabase）
@@ -96,7 +96,7 @@
 - [x] クラウド同期（PRO: Worker API + KV、30秒自動保存 + beforeunload）
 - [x] 保存インジケーター（✓保存済み/⟳保存中…/✕エラー）
 - [x] Worker API: PUT/GET /api/dashboard + sessionToken認証
-- [ ] **要デプロイ: `cd workers && npx wrangler deploy`**
+- [x] **Worker再デプロイ完了**（2026-03-17）
 - [ ] EPOC連携エクスポート
 
 ## Phase 4: J-OSLER管理
