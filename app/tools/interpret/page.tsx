@@ -18,6 +18,7 @@ const tools = [
   { href: '/tools/interpret/blood-test', name: '血液検査 系統的解釈チェックリスト', desc: 'CBC→生化学→凝固系の順に異常値パターンを評価。鑑別疾患と次の検査・治療を提示。', badge: 'NEW', live: true },
   { href: '/tools/interpret/urinalysis', name: '尿検査 系統的解釈チェックリスト', desc: '試験紙→尿沈渣の順に評価。蛋白尿・血尿・膿尿のパターンから腎疾患・UTIを鑑別。', badge: 'NEW', live: true },
   { href: '/tools/interpret/carotid-echo', name: '頸動脈エコー 系統的評価チェックリスト', desc: 'IMT→プラーク性状→狭窄評価→椎骨動脈の順に評価。脳卒中リスクとCEA/CAS適応を判定。', badge: 'NEW', live: true },
+  { href: '/tools/interpret/lab-values', name: '基準値早見表', desc: '年齢・性別を入力→CBC・凝固・肝腎・電解質・脂質・糖・甲状腺・心臓・腫瘍マーカーの基準値一覧。', badge: 'NEW', live: true },
 ]
 
 export default function InterpretPage() {
