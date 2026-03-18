@@ -50,6 +50,13 @@ const categories = [
     description: '抗菌薬・ステロイド・オピオイド・腎機能別用量',
     available: true,
   },
+  {
+    slug: 'inpatient',
+    icon: '🏥',
+    name: '入院中トラブル対応',
+    description: 'ショック・SpO2低下・せん妄・転倒・血糖異常など10項目',
+    available: true,
+  },
 ]
 
 function CategoryCard({ cat }: { cat: typeof categories[0] }) {
