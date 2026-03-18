@@ -54,11 +54,19 @@ const segments = [
     features: [
       { title: '病棟stat tracker', desc: '担当症例をサクッと記録。疾患別・月別の統計データを自動生成', coming: true },
       { title: '論文フィード', desc: '分野横断の最新論文要約＋ブックマーク', coming: true },
-      { title: '臨床ツール全機能', desc: '120+ツールの深い解釈とアクションプラン', coming: false },
+      { title: '臨床ツール全機能', desc: '210+ツールの深い解釈とアクションプラン', coming: false },
       { title: 'お気に入り + 計算履歴', desc: 'よく使うツールを即座にアクセス', coming: false },
     ],
   },
 ]
+
+// ── BOOTH商品URL ──
+// 2年パス・3年パスは商品作成後にURLを差し替えること
+const BOOTH_URLS: Record<string, string> = {
+  '1y': 'https://iwor.booth.pm/items/8087647',
+  '2y': 'https://iwor.booth.pm/items/8092008',
+  '3y': 'https://iwor.booth.pm/items/8092010',
+}
 
 // ── 料金プラン ──
 const plans = [
@@ -96,26 +104,26 @@ const plans = [
 
 // ── FREE vs PRO 比較 ──
 const comparison = [
-  { feature: '臨床計算ツール（79種）', free: '✓ 計算・結果表示', pro: '✓ + 解釈・アクションプラン' },
-  { feature: 'ER対応ツリー（6本）', free: '✓ 全公開', pro: '✓ 全公開' },
+  { feature: '臨床計算ツール（152種）', free: '✓ 計算・結果表示', pro: '✓ + 解釈・アクションプラン' },
+  { feature: 'ER対応ツリー（20本）', free: '✓ 全公開', pro: '✓ 全公開' },
   { feature: 'ACLS/BLS フロー（4本）', free: '✓ 全公開', pro: '✓ 全公開' },
   { feature: 'ICU管理ツール（4本）', free: '✓ 全公開', pro: '✓ 全公開' },
-  { feature: '検査読影（5本）', free: '✓ フロー操作', pro: '✓ + 総合解釈・鑑別' },
+  { feature: '検査読影（11本）', free: '✓ フロー操作', pro: '✓ + 総合解釈・鑑別' },
   { feature: '薬剤比較（25カテゴリ）', free: '✓ 全公開', pro: '✓ 全公開' },
+  { feature: '薬剤ガイド', free: '✓ 全公開', pro: '✓ 全公開' },
   { feature: '生活習慣病 総合管理', free: '✓ 判定結果', pro: '✓ + アクションプラン' },
   { feature: 'お気に入りツール保存', free: '—', pro: '✓ 無制限' },
-  { feature: '病棟stat tracker', free: '直近7日間', pro: '✓ 全期間 + グラフ + エクスポート' },
+  { feature: '病棟TODO & 症例ログ', free: '2人まで', pro: '✓ 無制限 + クラウド同期' },
   { feature: '論文フィード', free: '最新3件', pro: '✓ 全アーカイブ + ブックマーク' },
   { feature: 'J-OSLER進捗管理', free: '—', pro: '✓ 全機能' },
-  { feature: 'マッチング対策ツール', free: '一部体験', pro: '✓ 履歴書生成・AI面接' },
-  { feature: '専門科診断 結果', free: '途中まで', pro: '✓ 詳細レポート' },
+  { feature: 'マッチング対策', free: 'AI面接5回/日', pro: '✓ 無制限 + 志望リスト + マッチ確率' },
 ]
 
 // ── FAQ ──
 const faqs = [
   {
     q: '無料で使える機能はありますか？',
-    a: '臨床計算ツール79種の入力・計算・結果表示、ER対応ツリー、ACLS/BLSフロー、ICU管理ツール、薬剤比較表は完全無料です。緊急時に使うツールは一切制限しません。',
+    a: '臨床計算ツール152種の入力・計算・結果表示、ER対応ツリー20本、ACLS/BLSフロー、ICU管理ツール、検査読影、薬剤比較表、薬剤ガイドは完全無料です。緊急時に使うツールは一切制限しません。',
   },
   {
     q: 'PROにするメリットは何ですか？',
@@ -203,7 +211,7 @@ export default function ProPage() {
       {/* ═══ 数字 ═══ */}
       <section className="grid grid-cols-3 gap-4 mb-16">
         {[
-          { num: '120+', label: '臨床ツール', sub: '計算・ER・ACLS・ICU・読影・薬剤比較' },
+          { num: '210+', label: '臨床ツール', sub: '計算・ER・ACLS・ICU・読影・薬剤' },
           { num: '¥820', label: '月あたり', sub: '年額¥9,800' },
           { num: '0', label: '患者データ保存', sub: 'キャリアデータのみ' },
         ].map((s) => (
@@ -305,7 +313,7 @@ export default function ProPage() {
                 月あたり {plan.monthly}
               </p>
               <a
-                href="https://iwor.booth.pm/items/8087647"
+                href={BOOTH_URLS[plan.id]}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackBoothClick(`pro_pricing_${plan.id}`)}
@@ -427,10 +435,10 @@ export default function ProPage() {
                 今日から、臨床をもっと深く。
               </h2>
               <p className="text-white/70 text-sm mb-6 max-w-md mx-auto">
-                120+の臨床ツール、解釈、アクションプラン。月あたり約¥820で全機能アクセス。
+                210+の臨床ツール、解釈、アクションプラン。月あたり約¥660で全機能アクセス。
               </p>
               <a
-                href="https://iwor.booth.pm/items/8087647"
+                href="https://iwor.booth.pm/items/8092008"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackBoothClick('pro_final_cta')}

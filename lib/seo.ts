@@ -163,7 +163,7 @@ export const siteNavigationJsonLd = {
   ],
   url: [
     `${siteConfig.url}/blog`,
-    'https://naikanavi.booth.pm/items/8058590',
+    'https://iwor.booth.pm/items/8087647',
     `${siteConfig.url}/privacy`,
     `${siteConfig.url}/terms`,
     `${siteConfig.url}/tokushoho`,
