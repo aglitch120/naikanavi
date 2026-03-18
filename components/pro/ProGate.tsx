@@ -53,7 +53,7 @@ export default function ProGate({
   }
 
   const defaultLabel = feature === 'interpretation'
-    ? 'PRO会員で解釈を読む'
+    ? 'PRO会員で推奨アクションを見る'
     : feature === 'action_plan'
     ? 'PRO会員でアクションプランを見る'
     : feature === 'result'

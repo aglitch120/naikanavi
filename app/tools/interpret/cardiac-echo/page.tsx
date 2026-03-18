@@ -112,7 +112,7 @@ export default function CardiacEchoPage() {
         <ProGate feature="interpretation" previewHeight={100}>
           <section className="mb-8">
             <div className="flex border border-br rounded-xl overflow-hidden mb-4">
-              <div className="flex-1 py-2.5 text-sm font-medium bg-ac text-white text-center">評価サマリー</div>
+              <div className="flex-1 py-2.5 text-sm font-medium bg-ac text-white text-center">推奨アクション</div>
             </div>
             <div className="space-y-3">
               {results.map((r, i) => (

@@ -251,7 +251,7 @@ function EchoResultTabs({ results, hasAbnormal, styles, textColors }: {
       {activeTab === 'result' && (
         <div>
           <h2 className="text-lg font-bold text-tx mb-3">
-            評価サマリー（{results.length}所見）
+            推奨アクション（{results.length}所見）
             {!hasAbnormal && <span className="text-sm font-normal text-[#166534] ml-2">✓ 異常所見なし</span>}
           </h2>
           <div className="space-y-3">
