@@ -456,10 +456,20 @@ function HospitalCard({
               <span>{h.salaryLabel}</span>
             </div>
           </div>
-          <svg className={`w-4 h-4 text-muted flex-shrink-0 transition-transform ${expanded ? 'rotate-180' : ''}`}
-            fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
-          </svg>
+          {/* マッチ度バッジ */}
+          <div className="flex flex-col items-center gap-1 flex-shrink-0 ml-1">
+            <div className="relative">
+              <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ background: MCL }}>
+                <span className="text-xs font-bold" style={{ color: MC }}>{getMatchDegree(h)}%</span>
+              </div>
+              {!isPro && (
+                <div className="absolute inset-0 backdrop-blur-sm bg-s0/80 rounded-full flex items-center justify-center">
+                  <span className="text-[9px]">🔒</span>
+                </div>
+              )}
+            </div>
+            <span className="text-[8px] text-muted">マッチ度</span>
+          </div>
         </div>
         <div className="flex flex-wrap gap-1 mt-2">
           {h.features.map(f => (
@@ -551,10 +561,26 @@ function HospitalCard({
               ))}
             </div>
           </div>
+
+          {/* 病院理念（面接対策用） */}
+          {h.philosophy && (
+            <div className="bg-s1 rounded-lg p-3">
+              <p className="text-[10px] font-medium text-muted mb-1 flex items-center gap-1">
+                <span>💡</span>病院理念（面接対策に活用）
+              </p>
+              <p className="text-xs text-tx leading-relaxed">「{h.philosophy}」</p>
+            </div>
+          )}
         </div>
       )}
     </div>
   )
+}
+
+// ダミーマッチ度（病院IDベースで一貫性のある値を生成）
+function getMatchDegree(h: Hospital): number {
+  const seed = h.id * 17 + h.beds + h.residents
+  return 60 + (seed % 35) // 60-94%
 }
 
 function StatBox({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {

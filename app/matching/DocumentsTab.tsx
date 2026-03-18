@@ -17,7 +17,7 @@ interface Profile {
   motivation: string
 }
 
-type DocSubTab = 'emails' | 'checklist' | 'questions'
+type DocSubTab = 'emails' | 'checklist' | 'questions' | 'resume-guide'
 
 // ── メールテンプレート ──
 type TemplateId = 'visit-request' | 'visit-thanks' | 'adoption-thanks' | 'cover-letter'
@@ -387,6 +387,7 @@ export default function DocumentsTab({
 
   const SUB_TABS: { id: DocSubTab; label: string; icon: string }[] = [
     { id: 'emails', label: '書類・メール', icon: '✉️' },
+    { id: 'resume-guide', label: '履歴書ガイド', icon: '📝' },
     ...(mode === 'matching' ? [
       { id: 'checklist' as DocSubTab, label: '見学準備', icon: '✅' },
       { id: 'questions' as DocSubTab, label: '聞くべきこと', icon: '❓' },
@@ -415,6 +416,7 @@ export default function DocumentsTab({
       )}
 
       {subTab === 'emails' && <EmailTemplates profile={profile} mode={mode} />}
+      {subTab === 'resume-guide' && <ResumeGuide />}
       {subTab === 'checklist' && <VisitChecklist />}
       {subTab === 'questions' && <VisitQuestions />}
     </div>
@@ -724,6 +726,168 @@ function VisitQuestions() {
           )}
         </div>
       ))}
+    </div>
+  )
+}
+
+// ═══════════════════════════════════════
+//  履歴書の書き方ガイド・チェックリスト
+// ═══════════════════════════════════════
+const RESUME_SECTIONS: { title: string; icon: string; items: { label: string; important?: boolean }[] }[] = [
+  {
+    title: '基本マナー', icon: '📋',
+    items: [
+      { label: '提出期限を確認し、余裕をもって提出する計画を立てた', important: true },
+      { label: '黒色の万年筆またはボールペンを用意した' },
+      { label: '下書きを別紙で準備した' },
+      { label: '清書用の履歴書を複数枚用意した（書き間違い対策）' },
+      { label: '形式が指定されている場合は、指定された形式を入手した', important: true },
+    ],
+  },
+  {
+    title: '記入前の準備', icon: '🖊️',
+    items: [
+      { label: '印鑑を用意した（シャチハタは不可）' },
+      { label: '写真を用意した（6ヶ月以内・スタジオ撮影推奨）', important: true },
+      { label: '必要に応じて定規を用意した' },
+    ],
+  },
+  {
+    title: '記入時の注意点', icon: '✍️',
+    items: [
+      { label: '印鑑は最初に押した（後から押すと失敗リスク高い）', important: true },
+      { label: '記入欄は8割程度埋めている', important: true },
+      { label: '丁寧な字で書いている' },
+      { label: '修正液は使用していない', important: true },
+      { label: '日付は郵送なら投函日、持参なら持参日を記入した' },
+      { label: 'ふりがな欄は指示通り（ひらがな/カタカナ）' },
+      { label: '住所は都道府県名から省略せずに記入した' },
+      { label: '学歴は正式名称で記入した（例: ○○高等学校）' },
+      { label: '学歴・職歴欄の最後に「以上」と記入した' },
+      { label: '資格は正式名称で記入した' },
+      { label: '健康状態欄は「良好」と記入した' },
+      { label: '本人記入欄や「その他」欄も空白にせず記入した' },
+    ],
+  },
+  {
+    title: '完成後の確認', icon: '🔍',
+    items: [
+      { label: '誤字脱字がないか確認した', important: true },
+      { label: '印鑑がかすれていないか確認した' },
+      { label: '清書した履歴書をコピーして保存した（面接対策用）', important: true },
+    ],
+  },
+  {
+    title: '写真チェックリスト', icon: '📷',
+    items: [
+      { label: '6ヶ月以内に撮影したもの', important: true },
+      { label: 'プロが撮影（写真館やスタジオ推奨）', important: true },
+      { label: 'サイズが指定に合っている（一般的に縦4cm×横3cm）' },
+      { label: 'スーツ姿・ネクタイ/ジャケット着用' },
+      { label: '清潔感のある髪型' },
+      { label: '自然な表情' },
+      { label: '裏に大学名と氏名を記入', important: true },
+      { label: 'しっかり貼り付け' },
+    ],
+  },
+  {
+    title: '封筒の書き方・送付マナー', icon: '📮',
+    items: [
+      { label: '白のA4サイズの封筒を使用（茶色不可）', important: true },
+      { label: '宛先を略さず正確に記入' },
+      { label: '部署宛ては「御中」' },
+      { label: '左下に「初期研修応募書類在中」と赤字', important: true },
+      { label: '裏面に差出人の住所と氏名' },
+      { label: '封じ目に「〆」' },
+      { label: 'クリップまたはクリアファイルでまとめ' },
+      { label: '速達検討 / 郵便追跡番号を控える' },
+    ],
+  },
+]
+
+function ResumeGuide() {
+  const STORAGE_KEY = 'iwor_resume_checklist'
+  const [checked, setChecked] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set()
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY)
+      return raw ? new Set(JSON.parse(raw)) : new Set()
+    } catch { return new Set() }
+  })
+
+  const toggle = useCallback((key: string) => {
+    setChecked(prev => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key); else next.add(key)
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(next)))
+      return next
+    })
+  }, [])
+
+  const reset = useCallback(() => {
+    setChecked(new Set())
+    localStorage.removeItem(STORAGE_KEY)
+  }, [])
+
+  const totalItems = RESUME_SECTIONS.reduce((acc, s) => acc + s.items.length, 0)
+  const checkedCount = checked.size
+
+  return (
+    <div className="space-y-4">
+      <div className="bg-s0 border border-br rounded-xl p-4">
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-xs font-medium text-tx">履歴書チェック進捗</p>
+          <div className="flex items-center gap-2">
+            <p className="text-sm font-bold" style={{ color: MC }}>{checkedCount}/{totalItems}</p>
+            {checkedCount > 0 && <button onClick={reset} className="text-[10px] text-muted hover:text-tx underline">リセット</button>}
+          </div>
+        </div>
+        <div className="w-full h-2 bg-s1 rounded-full overflow-hidden">
+          <div className="h-full rounded-full transition-all duration-500"
+            style={{ width: `${totalItems > 0 ? (checkedCount / totalItems) * 100 : 0}%`, background: MC }} />
+        </div>
+        <p className="text-[11px] text-muted mt-2">履歴書を書く前・書いた後にチェック。重要項目には赤ラベル付き。</p>
+      </div>
+
+      {RESUME_SECTIONS.map((sec, si) => {
+        const secChecked = sec.items.filter(item => checked.has(`r-${si}-${item.label}`)).length
+        return (
+          <div key={si} className="bg-s0 border border-br rounded-xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-br">
+              <p className="text-sm font-bold text-tx flex items-center gap-2">
+                <span>{sec.icon}</span>{sec.title}
+                <span className="text-[10px] font-normal text-muted ml-auto">{secChecked}/{sec.items.length}</span>
+              </p>
+            </div>
+            <div className="divide-y divide-br/50">
+              {sec.items.map((item, ii) => {
+                const key = `r-${si}-${item.label}`
+                const isChecked = checked.has(key)
+                return (
+                  <button key={ii} onClick={() => toggle(key)}
+                    className="w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-s1/30 transition-colors">
+                    <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all ${
+                      isChecked ? 'border-transparent' : 'border-br'
+                    }`} style={isChecked ? { background: MC } : undefined}>
+                      {isChecked && (
+                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className={`text-xs leading-relaxed ${isChecked ? 'text-muted line-through' : 'text-tx'}`}>
+                      {item.label}
+                      {item.important && !isChecked && (
+                        <span className="text-[9px] font-bold ml-1.5 px-1 py-0.5 rounded" style={{ background: '#FEE2E2', color: '#DC2626' }}>重要</span>
+                      )}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }
