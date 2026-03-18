@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { useState, useEffect, FormEvent } from 'react'
-import { registerWithOrderNumber, loginWithEmail, resetPassword, getProDetails, clearProSession } from '@/lib/pro-activation'
+import { registerWithOrderNumber, loginWithEmail, resetPassword, updateProfile, getProDetails, clearProSession } from '@/lib/pro-activation'
+import type { UserProfile } from '@/lib/pro-activation'
 import { useProStatus } from '@/components/pro/useProStatus'
 import { trackProRegister, trackProLogin } from '@/lib/gtag'
 
@@ -13,6 +14,7 @@ const planLabels: Record<string, string> = {
 }
 
 type Tab = 'register' | 'login' | 'reset'
+type PostRegStep = 'password' | 'profile'
 
 export default function ActivatePage() {
   const { isPro, refresh } = useProStatus()
@@ -23,9 +25,6 @@ export default function ActivatePage() {
   // 登録フォーム
   const [orderNumber, setOrderNumber] = useState('')
   const [regEmail, setRegEmail] = useState('')
-  const [regUniversity, setRegUniversity] = useState('')
-  const [regLicenseYear, setRegLicenseYear] = useState('')
-  const [regHospital, setRegHospital] = useState('')
   const [agreeTerms, setAgreeTerms] = useState(false)
 
   // ログインフォーム
@@ -38,6 +37,14 @@ export default function ActivatePage() {
 
   // 登録成功結果（パスワード表示用）
   const [regResult, setRegResult] = useState<{ email: string; password: string; plan: string } | null>(null)
+  const [postRegStep, setPostRegStep] = useState<PostRegStep>('password')
+
+  // 登録後プロフィール収集
+  const [profileRole, setProfileRole] = useState('')
+  const [profileUniversity, setProfileUniversity] = useState('')
+  const [profileGradYear, setProfileGradYear] = useState('')
+  const [profileHospitalSize, setProfileHospitalSize] = useState('')
+  const [profileSpecialty, setProfileSpecialty] = useState('')
 
   // リセット成功結果
   const [resetResult, setResetResult] = useState<{ email: string; password: string } | null>(null)
@@ -53,19 +60,32 @@ export default function ActivatePage() {
     e.preventDefault()
     setIsSubmitting(true)
     setError('')
-    const res = await registerWithOrderNumber(orderNumber, regEmail, {
-      university: regUniversity,
-      licenseYear: regLicenseYear,
-      hospital: regHospital,
-    })
+    const res = await registerWithOrderNumber(orderNumber, regEmail)
     if (res.success) {
       refresh()
       trackProRegister(res.plan || 'pro_1y')
       setRegResult({ email: res.email!, password: res.password!, plan: res.plan! })
+      setPostRegStep('password')
     } else {
       setError(res.error || '登録に失敗しました。')
     }
     setIsSubmitting(false)
+  }
+
+  // ── プロフィール保存 ──
+  const handleProfileSave = async () => {
+    setIsSubmitting(true)
+    const profile: UserProfile = {
+      role: profileRole,
+      ...(profileUniversity && { university: profileUniversity }),
+      ...(profileGradYear && { graduationYear: profileGradYear }),
+      ...(profileHospitalSize && { hospitalSize: profileHospitalSize }),
+      ...(profileSpecialty && { specialty: profileSpecialty }),
+    }
+    await updateProfile(profile)
+    setIsSubmitting(false)
+    // 完了後ツールページへ
+    window.location.href = '/tools'
   }
 
   // ── ログイン ──
@@ -97,51 +117,225 @@ export default function ActivatePage() {
     setIsSubmitting(false)
   }
 
-  // ── 登録成功 → パスワード表示 ──
+  // ── 登録成功 → Step 1: パスワード表示 / Step 2: プロフィール収集 ──
   if (regResult) {
     return (
       <div className="max-w-lg mx-auto -mt-2">
         <Breadcrumb />
-        <div className="bg-s0 border border-br rounded-2xl p-6 md:p-8">
-          <div className="text-center mb-6">
-            <div
-              className="w-20 h-20 bg-okl border-2 border-okb rounded-full flex items-center justify-center mx-auto mb-4"
-              style={{ animation: 'successPop .4s cubic-bezier(.34,1.56,.64,1)' }}
-            >
-              <span className="text-3xl">🎉</span>
-            </div>
-            <h1 className="text-xl font-bold text-tx mb-2">登録完了！</h1>
-            <p className="text-sm text-muted">iwor PROのすべての機能が使えるようになりました。</p>
-          </div>
 
-          <div className="bg-wnl border border-wnb rounded-xl p-4 mb-6">
-            <p className="text-sm font-bold text-wn mb-2">⚠️ パスワードを必ず保存してください</p>
-            <p className="text-xs text-wn/80 mb-3">このパスワードは再表示できません。スクリーンショットまたはメモで保管してください。</p>
-            <div className="bg-white rounded-lg p-3 space-y-2">
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-muted">メール</span>
-                <span className="font-mono font-bold text-tx">{regResult.email}</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-muted">パスワード</span>
-                <span className="font-mono font-bold text-tx text-lg tracking-widest">{regResult.password}</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-muted">プラン</span>
-                <span className="font-medium text-tx">{planLabels[regResult.plan] || regResult.plan}</span>
-              </div>
-            </div>
+        {/* ステップインジケーター */}
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${postRegStep === 'password' ? 'bg-ac text-white' : 'bg-okl text-ok border border-okb'}`}>
+            {postRegStep === 'password' ? '1' : '✓'}
           </div>
-
-          <div className="space-y-3">
-            <Link
-              href="/tools"
-              className="block w-full py-3 bg-ac text-white rounded-xl font-bold text-sm hover:bg-ac2 transition-colors text-center"
-            >
-              臨床ツールを使ってみる
-            </Link>
+          <div className="w-8 h-px bg-br" />
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${postRegStep === 'profile' ? 'bg-ac text-white' : 'bg-s1 text-muted border border-br'}`}>
+            2
           </div>
         </div>
+
+        {postRegStep === 'password' && (
+          <div className="bg-s0 border border-br rounded-2xl p-6 md:p-8">
+            <div className="text-center mb-6">
+              <div
+                className="w-20 h-20 bg-okl border-2 border-okb rounded-full flex items-center justify-center mx-auto mb-4"
+                style={{ animation: 'successPop .4s cubic-bezier(.34,1.56,.64,1)' }}
+              >
+                <span className="text-3xl">🎉</span>
+              </div>
+              <h1 className="text-xl font-bold text-tx mb-2">登録完了！</h1>
+              <p className="text-sm text-muted">iwor PROのすべての機能が使えるようになりました。</p>
+            </div>
+
+            <div className="bg-wnl border border-wnb rounded-xl p-4 mb-6">
+              <p className="text-sm font-bold text-wn mb-2">⚠️ パスワードを必ず保存してください</p>
+              <p className="text-xs text-wn/80 mb-3">このパスワードは再表示できません。スクリーンショットまたはメモで保管してください。</p>
+              <div className="bg-white rounded-lg p-3 space-y-2">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-muted">メール</span>
+                  <span className="font-mono font-bold text-tx">{regResult.email}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-muted">パスワード</span>
+                  <span className="font-mono font-bold text-tx text-lg tracking-widest">{regResult.password}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-muted">プラン</span>
+                  <span className="font-medium text-tx">{planLabels[regResult.plan] || regResult.plan}</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setPostRegStep('profile')}
+              className="w-full py-3 bg-ac text-white rounded-xl font-bold text-sm hover:bg-ac2 transition-colors"
+            >
+              次へ — プロフィール入力
+            </button>
+            <button
+              onClick={() => { window.location.href = '/tools' }}
+              className="block mx-auto mt-3 text-xs text-muted hover:text-ac transition-colors"
+            >
+              スキップして始める
+            </button>
+          </div>
+        )}
+
+        {postRegStep === 'profile' && (
+          <div className="bg-s0 border border-br rounded-2xl p-6 md:p-8">
+            <div className="text-center mb-6">
+              <h1 className="text-xl font-bold text-tx mb-2">プロフィール</h1>
+              <p className="text-sm text-muted">サービス改善のためご協力ください（1分で完了します）</p>
+            </div>
+
+            <div className="space-y-4">
+              {/* 必須: 医学生 or 医師 */}
+              <div>
+                <label className="block text-sm font-medium text-tx mb-2">
+                  あなたの立場 <span className="text-[var(--dn)] text-xs">*必須</span>
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { value: 'student', label: '医学生', icon: '📚' },
+                    { value: 'doctor', label: '医師', icon: '🩺' },
+                  ].map(opt => (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      onClick={() => setProfileRole(opt.value)}
+                      className={`flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium border-2 transition-all ${
+                        profileRole === opt.value
+                          ? 'border-ac bg-acl text-ac'
+                          : 'border-br bg-bg text-muted hover:border-ac/40'
+                      }`}
+                    >
+                      <span>{opt.icon}</span>
+                      <span>{opt.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 任意: 大学名 */}
+              <div>
+                <label htmlFor="profile-univ" className="block text-xs font-medium text-tx mb-1">
+                  大学名 <span className="text-muted">（任意）</span>
+                </label>
+                <input
+                  id="profile-univ"
+                  type="text"
+                  autoComplete="off"
+                  placeholder="例: 東京大学"
+                  value={profileUniversity}
+                  onChange={e => setProfileUniversity(e.target.value)}
+                  className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all"
+                />
+              </div>
+
+              {/* 任意: 卒業年 */}
+              <div>
+                <label htmlFor="profile-year" className="block text-xs font-medium text-tx mb-1">
+                  卒業年 <span className="text-muted">（任意）</span>
+                </label>
+                <select
+                  id="profile-year"
+                  value={profileGradYear}
+                  onChange={e => setProfileGradYear(e.target.value)}
+                  className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all appearance-none"
+                >
+                  <option value="">選択してください</option>
+                  <option value="student">在学中</option>
+                  {Array.from({ length: 20 }, (_, i) => {
+                    const y = new Date().getFullYear() - i
+                    return <option key={y} value={String(y)}>{y}年</option>
+                  })}
+                  <option value="other">それ以前</option>
+                </select>
+              </div>
+
+              {/* 任意: 病院規模 */}
+              <div>
+                <label htmlFor="profile-hospital" className="block text-xs font-medium text-tx mb-1">
+                  勤務先の病院規模 <span className="text-muted">（任意）</span>
+                </label>
+                <select
+                  id="profile-hospital"
+                  value={profileHospitalSize}
+                  onChange={e => setProfileHospitalSize(e.target.value)}
+                  className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all appearance-none"
+                >
+                  <option value="">選択してください</option>
+                  <option value="university">大学病院</option>
+                  <option value="large">大規模（500床以上）</option>
+                  <option value="medium">中規模（200〜499床）</option>
+                  <option value="small">小規模（200床未満）</option>
+                  <option value="clinic">クリニック・診療所</option>
+                  <option value="student">学生（未所属）</option>
+                </select>
+              </div>
+
+              {/* 任意: 診療科 */}
+              <div>
+                <label htmlFor="profile-specialty" className="block text-xs font-medium text-tx mb-1">
+                  診療科 <span className="text-muted">（任意）</span>
+                </label>
+                <select
+                  id="profile-specialty"
+                  value={profileSpecialty}
+                  onChange={e => setProfileSpecialty(e.target.value)}
+                  className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all appearance-none"
+                >
+                  <option value="">選択してください</option>
+                  <option value="general">総合内科・総合診療</option>
+                  <option value="cardiology">循環器内科</option>
+                  <option value="gastro">消化器内科</option>
+                  <option value="respiratory">呼吸器内科</option>
+                  <option value="nephrology">腎臓内科</option>
+                  <option value="endocrine">内分泌・糖尿病内科</option>
+                  <option value="neurology">神経内科</option>
+                  <option value="hematology">血液内科</option>
+                  <option value="rheumatology">膠原病・リウマチ内科</option>
+                  <option value="infectious">感染症内科</option>
+                  <option value="emergency">救急科</option>
+                  <option value="intensive">集中治療科</option>
+                  <option value="surgery">外科系</option>
+                  <option value="pediatrics">小児科</option>
+                  <option value="obgyn">産婦人科</option>
+                  <option value="psychiatry">精神科</option>
+                  <option value="dermatology">皮膚科</option>
+                  <option value="orthopedics">整形外科</option>
+                  <option value="urology">泌尿器科</option>
+                  <option value="ophthalmology">眼科</option>
+                  <option value="ent">耳鼻咽喉科</option>
+                  <option value="radiology">放射線科</option>
+                  <option value="anesthesia">麻酔科</option>
+                  <option value="pathology">病理</option>
+                  <option value="resident">初期研修医</option>
+                  <option value="other">その他</option>
+                </select>
+              </div>
+            </div>
+
+            <button
+              onClick={handleProfileSave}
+              disabled={isSubmitting || !profileRole}
+              className={`w-full py-3.5 rounded-xl font-bold text-sm transition-all mt-6 ${
+                isSubmitting
+                  ? 'bg-s1 text-muted border border-br cursor-wait'
+                  : 'bg-ac text-white hover:bg-ac2 shadow-lg shadow-ac/20 disabled:bg-s1 disabled:text-muted disabled:border disabled:border-br disabled:shadow-none disabled:cursor-not-allowed'
+              }`}
+            >
+              {isSubmitting ? '保存中...' : '保存して始める'}
+            </button>
+            <button
+              onClick={() => { window.location.href = '/tools' }}
+              className="block mx-auto mt-3 text-xs text-muted hover:text-ac transition-colors"
+            >
+              スキップして始める
+            </button>
+          </div>
+        )}
+
         <style jsx>{`
           @keyframes successPop {
             from { transform: scale(0); opacity: 0; }
@@ -383,54 +577,6 @@ export default function ActivatePage() {
                   className="w-full h-12 px-4 text-sm bg-bg border-2 border-br rounded-xl focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all"
                 />
                 <p className="text-xs text-muted mt-1">ログインに使用します</p>
-              </div>
-            </div>
-
-            {/* プロフィール情報（任意） */}
-            <div className="mt-6 pt-5 border-t border-br">
-              <p className="text-xs font-medium text-muted mb-3">プロフィール情報（任意・後から変更不可）</p>
-              <div className="space-y-3">
-                <div>
-                  <label htmlFor="reg-university" className="block text-xs font-medium text-tx mb-1">卒業大学</label>
-                  <input
-                    id="reg-university"
-                    type="text"
-                    autoComplete="off"
-                    placeholder="例: 東京大学"
-                    value={regUniversity}
-                    onChange={e => setRegUniversity(e.target.value)}
-                    className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="reg-license-year" className="block text-xs font-medium text-tx mb-1">医師免許取得年</label>
-                  <select
-                    id="reg-license-year"
-                    value={regLicenseYear}
-                    onChange={e => setRegLicenseYear(e.target.value)}
-                    className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all appearance-none"
-                  >
-                    <option value="">選択してください</option>
-                    <option value="student">医学生（未取得）</option>
-                    {Array.from({ length: 15 }, (_, i) => {
-                      const y = new Date().getFullYear() - i
-                      return <option key={y} value={String(y)}>{y}年</option>
-                    })}
-                    <option value="other">それ以前</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="reg-hospital" className="block text-xs font-medium text-tx mb-1">勤務先病院</label>
-                  <input
-                    id="reg-hospital"
-                    type="text"
-                    autoComplete="off"
-                    placeholder="例: ○○大学附属病院"
-                    value={regHospital}
-                    onChange={e => setRegHospital(e.target.value)}
-                    className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all"
-                  />
-                </div>
               </div>
             </div>
 

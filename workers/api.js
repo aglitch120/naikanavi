@@ -8,6 +8,7 @@
 //    POST /api/store-order      — GASから注文を保存
 //    POST /api/register         — 注文番号+メールで会員登録（1回限り）
 //    POST /api/login            — メール+パスワードでログイン
+//    PUT  /api/profile          — プロフィール更新（sessionToken認証）
 //    PUT  /api/dashboard        — ダッシュボードデータ保存
 //    GET  /api/dashboard        — ダッシュボードデータ読み込み
 //    PUT  /api/josler           — J-OSLERデータ保存
@@ -307,6 +308,43 @@ export default {
         email,
         password: newPassword,
       }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  プロフィール更新
+    //  PUT /api/profile
+    //  Authorization: Bearer {sessionToken}
+    //  Body: { role, university?, graduationYear?, hospitalSize?, specialty? }
+    // ══════════════════════════════════════════════════
+    if (path === "/api/profile" && request.method === "PUT") {
+      const auth = request.headers.get("Authorization") || "";
+      const token = auth.replace("Bearer ", "").trim();
+      if (!token) return json({ error: "Unauthorized" }, 401, request);
+
+      const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
+      if (!sessionRaw) return json({ error: "Invalid session" }, 401, request);
+
+      const session = JSON.parse(sessionRaw);
+      const userRaw = await env.IWOR_KV.get(userKey(session.email));
+      if (!userRaw) return json({ error: "User not found" }, 404, request);
+
+      const user = JSON.parse(userRaw);
+      const body = await request.json();
+
+      // プロフィールフィールドを更新（既存フィールドは保持）
+      const updatedUser = {
+        ...user,
+        role: String(body.role || "").trim() || user.role,
+        university: String(body.university || "").trim() || user.university,
+        graduationYear: String(body.graduationYear || "").trim() || user.graduationYear,
+        hospitalSize: String(body.hospitalSize || "").trim() || user.hospitalSize,
+        specialty: String(body.specialty || "").trim() || user.specialty,
+        profileUpdatedAt: new Date().toISOString(),
+      };
+
+      await env.IWOR_KV.put(userKey(session.email), JSON.stringify(updatedUser));
+
+      return json({ ok: true }, 200, request);
     }
 
     // ══════════════════════════════════════════════════

@@ -15,13 +15,7 @@ interface RegisterResult {
   error?: string
 }
 
-export interface UserProfile {
-  university?: string
-  licenseYear?: string
-  hospital?: string
-}
-
-export async function registerWithOrderNumber(orderNumber: string, email: string, profile?: UserProfile): Promise<RegisterResult> {
+export async function registerWithOrderNumber(orderNumber: string, email: string): Promise<RegisterResult> {
   const cleanedOrder = orderNumber.trim().replace(/\D/g, '')
   const cleanedEmail = email.trim().toLowerCase()
 
@@ -39,9 +33,6 @@ export async function registerWithOrderNumber(orderNumber: string, email: string
       body: JSON.stringify({
         orderNumber: cleanedOrder,
         email: cleanedEmail,
-        ...(profile?.university && { university: profile.university }),
-        ...(profile?.licenseYear && { licenseYear: profile.licenseYear }),
-        ...(profile?.hospital && { hospital: profile.hospital }),
       }),
     })
     const data = await res.json()
@@ -60,6 +51,41 @@ export async function registerWithOrderNumber(orderNumber: string, email: string
       plan: data.plan,
       expiresAt: data.expiresAt,
     }
+  } catch {
+    return { success: false, error: 'サーバーに接続できませんでした。' }
+  }
+}
+
+// ── プロフィール更新 ──
+
+export interface UserProfile {
+  role: string       // 必須: 'student' | 'doctor'
+  university?: string
+  graduationYear?: string
+  hospitalSize?: string
+  specialty?: string
+}
+
+export async function updateProfile(profile: UserProfile): Promise<{ success: boolean; error?: string }> {
+  const sessionToken = typeof window !== 'undefined'
+    ? localStorage.getItem('iwor_session_token') || ''
+    : ''
+  if (!sessionToken) return { success: false, error: '認証情報がありません。' }
+
+  try {
+    const res = await fetch(`${API_URL}/api/profile`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionToken}`,
+      },
+      body: JSON.stringify(profile),
+    })
+    const data = await res.json()
+    if (!res.ok || !data.ok) {
+      return { success: false, error: data.error || 'プロフィールの保存に失敗しました。' }
+    }
+    return { success: true }
   } catch {
     return { success: false, error: 'サーバーに接続できませんでした。' }
   }
