@@ -1,6 +1,8 @@
 'use client'
 import { useState, useCallback, useEffect } from 'react'
 
+import { loadProfile, saveProfile } from '@/lib/matching-profile-storage'
+
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
 
@@ -86,8 +88,6 @@ const STEPS = [
   { num: 6, title: '自己分析', icon: '💡', desc: '強み・動機・ビジョン' },
 ]
 
-const STORAGE_KEY = "iwor_matching_profile"
-
 // ═══════════════════════════════════════
 //  メインウィザードコンポーネント
 // ═══════════════════════════════════════
@@ -103,27 +103,25 @@ export default function ProfileWizard({
   const [saved, setSaved] = useState(false)
   const [showResume, setShowResume] = useState(false)
 
-  // ── 読み込み ──
+  // ── 読み込み（クラウド優先 → localStorage fallback） ──
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY)
-      if (raw) {
-        const old = JSON.parse(raw)
-        setProfile(prev => ({ ...prev, ...old }))
-      }
-    } catch {}
+    (async () => {
+      try {
+        const data = await loadProfile()
+        if (data) setProfile(prev => ({ ...prev, ...data }))
+      } catch {}
+    })()
   }, [])
 
-  // ── 自動保存（ステップ移動時） ──
+  // ── 自動保存（localStorage即時 + クラウド3秒debounce） ──
   const autoSave = useCallback((p: WizardProfile) => {
-    // strengths互換フィールドを自動生成
     const compat = {
       ...p,
       strengths: p.strengthsList.length > 0
         ? p.strengthsList.join('、') + (p.strengthsEpisode ? `。${p.strengthsEpisode}` : '')
         : p.strengths,
     }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(compat))
+    saveProfile(compat)
   }, [])
 
   const updateField = useCallback(<K extends keyof WizardProfile>(key: K, value: WizardProfile[K]) => {
