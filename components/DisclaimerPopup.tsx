@@ -99,7 +99,7 @@ export default function DisclaimerPopup() {
             <p className="font-bold text-tx mb-1">間違いを見つけたら</p>
             <p className="text-muted text-[13px]">
               情報の誤りやお気づきの点がありましたら、ぜひ
-              <a href="/about#contact" className="text-ac hover:underline font-medium">お問い合わせ</a>
+              <a href="/contact" className="text-ac hover:underline font-medium">お問い合わせ</a>
               からご連絡ください。迅速に対応いたします。
             </p>
           </div>

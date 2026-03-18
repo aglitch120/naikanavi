@@ -26,6 +26,7 @@ export default function ActivatePage() {
   const [regUniversity, setRegUniversity] = useState('')
   const [regLicenseYear, setRegLicenseYear] = useState('')
   const [regHospital, setRegHospital] = useState('')
+  const [agreeTerms, setAgreeTerms] = useState(false)
 
   // ログインフォーム
   const [loginEmail, setLoginEmail] = useState('')
@@ -433,6 +434,24 @@ export default function ActivatePage() {
               </div>
             </div>
 
+            {/* 利用規約・プライバシーポリシー同意 */}
+            <div className="mt-6 pt-5 border-t border-br">
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  checked={agreeTerms}
+                  onChange={e => setAgreeTerms(e.target.checked)}
+                  className="mt-0.5 w-5 h-5 shrink-0 rounded border-2 border-br text-ac focus:ring-ac/30 accent-[var(--ac)] cursor-pointer"
+                />
+                <span className="text-xs text-muted leading-relaxed group-hover:text-tx transition-colors">
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-ac underline hover:text-ac2">利用規約</a>
+                  および
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-ac underline hover:text-ac2">プライバシーポリシー</a>
+                  に同意します
+                </span>
+              </label>
+            </div>
+
             {error && (
               <div className="bg-dnl border border-dnb rounded-xl p-3 mt-4">
                 <p className="text-sm text-dn text-center">{error}</p>
@@ -441,7 +460,7 @@ export default function ActivatePage() {
 
             <button
               type="submit"
-              disabled={isSubmitting || !orderNumber || !regEmail}
+              disabled={isSubmitting || !orderNumber || !regEmail || !agreeTerms}
               className={`w-full py-3.5 rounded-xl font-bold text-sm transition-all mt-6 ${
                 isSubmitting
                   ? 'bg-s1 text-muted border border-br cursor-wait'

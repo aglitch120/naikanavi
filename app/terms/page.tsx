@@ -12,7 +12,7 @@ export default function TermsPage() {
   return (
     <article className="max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold text-tx mb-2">利用規約</h1>
-      <p className="text-sm text-muted mb-10">最終更新日: 2026年3月15日</p>
+      <p className="text-sm text-muted mb-10">最終更新日: 2026年3月18日</p>
 
       <Section title="第1条（適用）">
         <p>
