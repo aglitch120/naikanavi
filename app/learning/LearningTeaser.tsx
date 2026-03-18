@@ -73,6 +73,7 @@ const FEATURES = [
 
 /* ── Future courses ── */
 const COURSES = [
+  { emoji: '🇺🇸', title: '医学英語講座', desc: 'フラッシュカード＋4択クイズ・6カテゴリ', status: '公開中', href: '/learning/medical-english' },
   { emoji: '🫀', title: '心エコー講座', desc: '基本断面・計測・病態評価', status: '企画中' },
   { emoji: '💧', title: '輸液講座', desc: '電解質・酸塩基・輸液設計', status: '企画中' },
   { emoji: '💊', title: '抗菌薬講座', desc: 'スペクトラム・エンピリック・TDM', status: '企画中' },
@@ -183,16 +184,27 @@ export default function LearningTeaser() {
 
         {/* Future courses */}
         <section style={{ marginTop: 32 }}>
-          <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16, textAlign: 'center' }}>今後の講座予定</h2>
+          <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16, textAlign: 'center' }}>講座一覧</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-            {COURSES.map((c, i) => (
-              <div key={i} style={{ background: C.s0, border: `1px solid ${C.br}`, borderRadius: 12, padding: '16px 14px', textAlign: 'center' }}>
-                <div style={{ fontSize: 28, marginBottom: 8 }}>{c.emoji}</div>
-                <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{c.title}</div>
-                <div style={{ fontSize: 11, color: C.m, marginBottom: 8, lineHeight: 1.5 }}>{c.desc}</div>
-                <span style={{ fontSize: 10, padding: '2px 8px', borderRadius: 10, background: C.s1, color: C.br2, fontWeight: 500 }}>{c.status}</span>
-              </div>
-            ))}
+            {COURSES.map((c, i) => {
+              const inner = (
+                <>
+                  <div style={{ fontSize: 28, marginBottom: 8 }}>{c.emoji}</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{c.title}</div>
+                  <div style={{ fontSize: 11, color: C.m, marginBottom: 8, lineHeight: 1.5 }}>{c.desc}</div>
+                  <span style={{ fontSize: 10, padding: '2px 8px', borderRadius: 10, background: (c as any).href ? C.acl : C.s1, color: (c as any).href ? C.ac : C.br2, fontWeight: 500 }}>{c.status}</span>
+                </>
+              )
+              return (c as any).href ? (
+                <a key={i} href={(c as any).href} style={{ background: C.s0, border: `1.5px solid ${C.ac}30`, borderRadius: 12, padding: '16px 14px', textAlign: 'center', textDecoration: 'none', display: 'block' }}>
+                  {inner}
+                </a>
+              ) : (
+                <div key={i} style={{ background: C.s0, border: `1px solid ${C.br}`, borderRadius: 12, padding: '16px 14px', textAlign: 'center' }}>
+                  {inner}
+                </div>
+              )
+            })}
           </div>
         </section>
 
