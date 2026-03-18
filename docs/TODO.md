@@ -112,7 +112,7 @@
 - [x] **IME対応**: isComposingチェックで日本語変換中Enter送信防止
 - [x] **スクロール修正**: メッセージ追加時のみスクロール（入力中ジャンプ防止）
 - [ ] 病院DBデータ拡充（→100病院）
-- [ ] 履歴書PDF出力機能（PRO）
+- [x] 履歴書PDF出力機能（PRO）— Print to PDF方式
 - [ ] マッチングプロフィールのクラウド保存（Supabase）
 
 ## Phase 3: 病棟TODO & 症例ログ（✅ MVP完了 2026-03-17）
@@ -132,7 +132,7 @@
 - [x] 保存インジケーター（✓保存済み/⟳保存中…/✕エラー）
 - [x] Worker API: PUT/GET /api/dashboard + sessionToken認証
 - [x] **Worker再デプロイ完了**（2026-03-17）
-- [ ] EPOC連携エクスポート
+- [x] EPOC連携エクスポート — EPOC形式CSV出力ボタン
 
 ## Phase 4: J-OSLER管理
 
