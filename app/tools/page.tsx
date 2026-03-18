@@ -57,6 +57,13 @@ const categories = [
     description: 'ショック・SpO2低下・せん妄・転倒・血糖異常など10項目',
     available: true,
   },
+  {
+    slug: 'procedures',
+    icon: '🩺',
+    name: '手技ガイド',
+    description: '採血・挿管・CVC・腰椎穿刺・胸腔ドレーンなど15手技',
+    available: true,
+  },
 ]
 
 function CategoryCard({ cat }: { cat: typeof categories[0] }) {
