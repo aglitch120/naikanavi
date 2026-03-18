@@ -7,6 +7,7 @@ import { siteConfig, categories } from '@/lib/blog-config'
 import { websiteJsonLd, siteNavigationJsonLd } from '@/lib/seo'
 import Header from '@/components/Header'
 import BottomNav from '@/components/BottomNav'
+import DisclaimerPopup from '@/components/DisclaimerPopup'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
@@ -115,6 +116,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <BottomNav />
+        <DisclaimerPopup />
       </body>
     </html>
   )
