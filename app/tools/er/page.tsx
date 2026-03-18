@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'ER・救急対応ツリー（主訴別 + ACLS/BLS）| iwor',
-  description: '救急外来の主訴別に系統的アプローチ。胸痛・意識障害・腹痛・失神・発熱・呼吸困難 + ACLS/BLS蘇生フロー。killer diseaseの見落としを防ぐ。',
+  description: '救急外来の主訴別に系統的アプローチ。胸痛・意識障害・腹痛・失神・発熱・呼吸困難・ショック・便秘など22主訴 + ACLS/BLS蘇生フロー。killer diseaseの見落としを防ぐ。',
 }
 
 const erFlows = [
@@ -27,6 +27,8 @@ const erFlows = [
   { href: '/tools/er/diarrhea', emoji: '🚽', name: '下痢', desc: '脱水評価 → 血便(EHEC/IBD/虚血性腸炎) → 感染性 → CDI評価 → 対症療法' },
   { href: '/tools/er/numbness', emoji: '🖐️', name: 'しびれ', desc: '脳卒中・脊髄・GBS除外 → 末梢神経障害(DM/B12) → 絞扼性神経障害 → 過換気' },
   { href: '/tools/er/hospital-fever', emoji: '🏥', name: '発熱（院内）', desc: '5D評価 + 術後W³I²F → FN/CRBSI/CAUTI/CDI/薬剤熱の系統的鑑別' },
+  { href: '/tools/er/shock', emoji: '🔴', name: 'ショック（血圧低下）', desc: '4分類（出血性/心原性/閉塞性/分布異常性）の系統的鑑別。RUSH examベースの初期評価' },
+  { href: '/tools/er/constipation', emoji: '💩', name: '便秘', desc: 'Red Flag評価 → 腸閉塞/穿孔/中毒性巨大結腸の除外 → 機能性/薬剤性便秘の段階的治療' },
 ]
 
 const aclsFlows = [
