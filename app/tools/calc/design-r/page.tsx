@@ -99,19 +99,74 @@ export default function DesignRPage() {
           </div>
         </div>}
       </>}
-      explanation={<section className="space-y-4 text-sm text-muted">
-        <h2 className="text-base font-bold text-tx">DESIGN-R 2020 とは</h2>
-        <p>日本褥瘡学会が開発した褥瘡状態評価スケール。7項目の頭文字をとってDESIGN。2020年に改訂（DTI・バイオフィルムの概念を導入）。</p>
-        <h2 className="text-base font-bold text-tx">表記ルール</h2>
-        <p>大文字は重症項目（D3以上、E6、S15、I3以上、G4以上、N3以上、P24）、小文字は軽症項目。経時的に記録し治療効果を客観評価します。</p>
-        <h2 className="text-base font-bold text-tx">臨床での活用</h2>
-        <p>D3以上ではデブリードメント・陰圧閉鎖療法（NPWT）・外科的治療を検討。I3以上では局所感染の制御が優先。合計点の推移で改善/悪化を判断します。</p>
-      </section>}
+      explanation={<div className="space-y-6 text-sm text-tx leading-relaxed">
+        <div>
+          <h2 className="text-lg font-bold mb-2">DESIGN-R 2020 とは</h2>
+          <p className="text-muted">
+            日本褥瘡学会が開発した褥瘡（じょくそう）の状態評価スケールです。Depth（深さ）、Exudate（滲出液）、Size（大きさ）、Inflammation/Infection（炎症/感染）、Granulation（肉芽組織）、Necrotic tissue（壊死組織）、Pocket（ポケット）の7項目の頭文字でDESIGN。
+            2020年改訂ではDTI（Deep Tissue Injury）とバイオフィルムの概念が導入されました。
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-base font-bold mb-2">大文字・小文字の表記ルール</h3>
+          <p className="text-muted">
+            各項目で重症度が高い場合は大文字（D3以上, E6, S15, I3以上, G4以上, N3以上, P24）、低い場合は小文字で表記します。
+            経時的に記録することで治療効果を客観的に評価でき、多職種カンファレンスでの共通言語として機能します。
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-base font-bold mb-2">項目別の治療指針</h3>
+          <div className="bg-s1 rounded-lg p-4 space-y-2 text-muted text-xs">
+            <p><span className="font-medium text-tx">D3以上（深い創）:</span> デブリードメント、NPWT（陰圧閉鎖療法）、外科的再建を検討</p>
+            <p><span className="font-medium text-tx">E6（多量滲出液）:</span> 吸収性ドレッシング、NPWT。蛋白喪失にも注意</p>
+            <p><span className="font-medium text-tx">I3以上（感染）:</span> 局所感染制御が最優先。カデキソマーヨウ素、銀含有ドレッシング</p>
+            <p><span className="font-medium text-tx">N3以上（壊死）:</span> 外科的/自己融解的デブリードメント</p>
+            <p><span className="font-medium text-tx">P（ポケット）:</span> ポケット切開、NPWT、充填法</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-base font-bold mb-2">TIME理論に基づく創傷管理</h3>
+          <p className="text-muted">
+            T（Tissue：壊死組織管理）→ I（Infection/Inflammation：感染・炎症制御）→ M（Moisture：湿潤バランス）→ E（Edge：創縁の上皮化促進）の順に治療を進めます。
+            DESIGN-Rの各項目はTIME理論の各フェーズに対応しており、優先すべき治療介入を判断する指標になります。
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-base font-bold mb-2">よくある質問</h3>
+          <div className="space-y-3">
+            <div>
+              <p className="font-medium">Q. DU（判定不能）の場合、合計点はどう計算しますか？</p>
+              <p className="text-muted mt-1">
+                DU はD項目のスコアを0として計算しますが、壊死組織除去後に真の深さを再評価する必要があります。
+                DUの存在自体が壊死組織管理の必要性を示唆しています。
+              </p>
+            </div>
+            <div>
+              <p className="font-medium">Q. 合計点が下がっていれば改善と判断してよいですか？</p>
+              <p className="text-muted mt-1">
+                合計点の推移は改善/悪化の目安になりますが、D（深さ）は原則改善しないため、D以外の6項目（d-ESIGN）の合計で治癒過程を評価することも有用です。
+              </p>
+            </div>
+            <div>
+              <p className="font-medium">Q. 褥瘡予防の体位変換間隔は？</p>
+              <p className="text-muted mt-1">
+                従来は2時間ごとの体位変換が推奨されていましたが、体圧分散寝具の使用状況や栄養状態により個別化します。
+                エアマットレス使用時は4時間間隔でも許容される場合があります。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>}
       relatedTools={[]}
       references={[
         { text: '日本褥瘡学会. 褥瘡予防・管理ガイドライン（第5版）, 2022' },
         { text: '日本褥瘡学会. DESIGN-R 2020 コンセンサス・ドキュメント, 2020' },
-        { text: 'Sanada H, et al. Wound Repair Regen 2004;12:602-610' },
+        { text: 'Sanada H, et al. Reliability and validity of DESIGN, a tool to measure severity of pressure ulcers. Wound Repair Regen 2004;12:602-610' },
+        { text: 'Schultz GS, et al. Wound bed preparation: a systematic approach to wound management. Wound Repair Regen 2003;11:S1-S28 (TIME framework)' },
       ]}
     >
       <div className="space-y-4">

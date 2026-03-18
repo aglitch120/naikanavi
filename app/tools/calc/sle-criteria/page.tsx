@@ -89,18 +89,75 @@ export default function SLECriteriaPage() {
         />
       }
       explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">EULAR/ACR SLE分類基準 2019とは</h2>
-          <p>ANA陽性が入口基準（Entry Criterion）です。ANA陰性ではSLEと分類しません。10領域の重み付けスコアの合計が10点以上でSLEと分類します。</p>
-          <h2 className="text-base font-bold text-tx">各ドメインの加算ルール</h2>
-          <p>各ドメイン内で最高点の項目のみを加算します（同ドメイン内の重複加算なし）。SLE以外の原因で説明できる所見は除外します。少なくとも1つの臨床基準が必要です。</p>
-          <h2 className="text-base font-bold text-tx">感度・特異度</h2>
-          <p>感度 96.1%、特異度 93.4%。旧ACR 1997基準（4/11項目）より高い精度で早期SLEを捕捉可能です。</p>
-        </section>
+        <div className="space-y-6 text-sm text-tx leading-relaxed">
+          <div>
+            <h2 className="text-lg font-bold mb-2">EULAR/ACR SLE分類基準 2019とは</h2>
+            <p className="text-muted">
+              2019年に改訂されたSLE（全身性エリテマトーデス）の分類基準です。ANA（抗核抗体）陽性が入口基準（Entry Criterion）であり、
+              ANA陰性ではSLEとは分類しません。10領域（7つの臨床ドメイン + 3つの免疫学的ドメイン）の重み付けスコア合計が10点以上でSLEと分類します。
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-base font-bold mb-2">各ドメインの加算ルール</h3>
+            <div className="bg-s1 rounded-lg p-4 space-y-2 text-muted text-xs">
+              <p>・各ドメイン内で<span className="font-medium text-tx">最高スコアの項目のみ</span>を加算（同ドメイン内の重複加算なし）</p>
+              <p>・SLE以外の原因で十分に説明できる所見は<span className="font-medium text-tx">除外</span>する</p>
+              <p>・少なくとも<span className="font-medium text-tx">1つの臨床基準</span>が必要（免疫学的基準のみでは分類不可）</p>
+              <p>・同一の所見を<span className="font-medium text-tx">複数回カウントしない</span></p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-base font-bold mb-2">旧ACR 1997基準との違い</h3>
+            <p className="text-muted">
+              旧基準は11項目中4項目を満たせばSLEと分類する単純なルールでした（感度85%、特異度95%）。
+              新基準は重み付けスコアを導入し、腎病変（最大10点）や神経精神病変（最大5点）など臓器障害の重症度を反映します。
+              感度96.1%・特異度93.4%と、特に早期SLEの捕捉率が大幅に改善しました。
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-base font-bold mb-2">ループス腎炎の重み付け</h3>
+            <p className="text-muted">
+              腎ドメインは最大10点と全項目中最高配点です。Class III/IV（びまん性増殖性）は10点、Class II/V（メサンギウム増殖性/膜性）は8点。
+              ループス腎炎の確定診断には腎生検が必要です。蛋白尿のみ（4点）でも加算されるため、早期の尿検査が重要です。
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-base font-bold mb-2">よくある質問</h3>
+            <div className="space-y-3">
+              <div>
+                <p className="font-medium">Q. ANA陰性のSLEは存在しますか？</p>
+                <p className="text-muted mt-1">
+                  極めて稀ですが存在します（約2%）。本分類基準はANA陽性を入口基準としているため、ANA陰性SLEは分類基準上は除外されます。
+                  臨床的にSLEを強く疑う場合は、抗dsDNA抗体・抗Sm抗体を直接測定してください。
+                </p>
+              </div>
+              <div>
+                <p className="font-medium">Q. 分類基準と診断基準は同じですか？</p>
+                <p className="text-muted mt-1">
+                  異なります。分類基準は臨床研究で患者集団を均一化するためのもので、臨床診断はより包括的な判断が必要です。
+                  分類基準を満たさなくても臨床的にSLEと診断される場合があります。
+                </p>
+              </div>
+              <div>
+                <p className="font-medium">Q. スコアが10点未満でも治療を開始すべきですか？</p>
+                <p className="text-muted mt-1">
+                  臨床的にSLEが疑われ臓器障害が進行している場合は、分類基準のスコアに関わらず治療を開始すべきです。
+                  特に急速進行性腎炎や重症CNSループスでは治療開始を遅らせてはいけません。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       }
       relatedTools={[]}
       references={[
-        { text: 'Aringer M et al. 2019 EULAR/ACR Classification Criteria for SLE. Arthritis Rheumatol 2019;71:1400-1412' },
+        { text: 'Aringer M et al. 2019 European League Against Rheumatism/American College of Rheumatology Classification Criteria for Systemic Lupus Erythematosus. Arthritis Rheumatol 2019;71:1400-1412' },
+        { text: 'Petri M et al. Derivation and validation of the Systemic Lupus International Collaborating Clinics classification criteria for SLE. Arthritis Rheum 2012;64:2677-2686' },
+        { text: 'Fanouriakis A et al. 2019 update of the EULAR recommendations for the management of SLE. Ann Rheum Dis 2019;78:736-745' },
       ]}
     >
       <div className="space-y-4">
