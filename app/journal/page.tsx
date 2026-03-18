@@ -1,16 +1,21 @@
 import type { Metadata } from 'next'
-import JournalTeaser from './JournalTeaser'
+import JournalApp from './JournalApp'
 
 export const metadata: Metadata = {
   title: '論文フィード — iwor',
-  description: '最新の医学論文を日本語で要約。PubMedから主要ジャーナルの論文を自動取得し、AIが日本語で要約。臨床に直結する知見を効率的にキャッチアップ。',
+  description: 'PubMedから最新医学論文をリアルタイム取得。NEJM・Lancet・JAMA・BMJのTop4モード、診療科別フィルタ、Impact Factorスライダー。ブックマーク＋プレゼン連携。',
+  alternates: { canonical: 'https://iwor.jp/journal' },
   openGraph: {
     title: '論文フィード — iwor',
-    description: '最新の医学論文を日本語で要約。PubMedから主要ジャーナルの論文を自動取得し、AIが日本語で要約。',
+    description: 'PubMedから最新医学論文をリアルタイム取得。Top4ジャーナル＋30誌対応。',
     url: 'https://iwor.jp/journal',
   },
 }
 
 export default function JournalPage() {
-  return <JournalTeaser />
+  return (
+    <div className="max-w-4xl mx-auto">
+      <JournalApp />
+    </div>
+  )
 }
