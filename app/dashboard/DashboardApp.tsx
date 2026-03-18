@@ -57,6 +57,23 @@ function exportCSV(arc:any[],cFields:any[]){
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
 }
 
+function exportEPOC(arc:any[]){
+  const hd=["経験日","診療科","疾患群","主病名","年代","性別","入院/外来","経験区分","メモ"];
+  const esc=(v:any)=>`"${String(v||"").replace(/"/g,'""')}"`;
+  const rows=[hd.map(esc).join(",")];
+  arc.forEach((p:any)=>{
+    const sp=p.specialty?(SP.find((s:any)=>s.id===p.specialty)?.label||""):"";
+    const dg=p.diseaseGroup&&p.specialty?(DG[p.specialty]||[]).find((d:any)=>d.id===p.diseaseGroup)?.name||"":"";
+    const expDate=p.dischargeDate||p.admitDate||"";
+    const r=[expDate,sp,dg,p.diagnosis||"",p.age||"",p.sex==="M"?"男性":p.sex==="F"?"女性":"","入院","受け持ち",p.memo||""];
+    rows.push(r.map(esc).join(","));
+  });
+  const blob=new Blob(["\uFEFF"+rows.join("\n")],{type:"text/csv;charset=utf-8;"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");a.href=url;a.download=`iwor_EPOC形式_${td()}.csv`;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+
 // ═══════ MAIN ═══════
 export default function DashboardApp(){
   const { isPro } = useProStatus()
@@ -284,6 +301,7 @@ export default function DashboardApp(){
                 <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="領域、病名、メモで検索..." style={{width:"100%",padding:"9px 10px 9px 32px",border:`1.5px solid ${C.br}`,borderRadius:9,background:C.s0,fontSize:13,color:C.tx,outline:"none",boxSizing:"border-box"}} />
               </div>
               <button onClick={()=>{if(requirePro("save"))return;exportCSV(arc,cFields);}} style={{padding:"9px 12px",borderRadius:9,border:`1.5px solid ${C.ac}`,background:C.acl,color:C.ac,fontSize:12,fontWeight:600,cursor:"pointer",whiteSpace:"nowrap",display:"flex",alignItems:"center",gap:4}}>📥 CSV</button>
+              <button onClick={()=>{if(requirePro("save"))return;exportEPOC(arc);}} style={{padding:"9px 12px",borderRadius:9,border:`1.5px solid ${C.ac}`,background:C.acl,color:C.ac,fontSize:12,fontWeight:600,cursor:"pointer",whiteSpace:"nowrap",display:"flex",alignItems:"center",gap:4}}>📋 EPOC</button>
             </div>
 
             {/* Custom fields editor (also in log tab for convenience) */}
@@ -557,7 +575,7 @@ const TUTORIAL_STEPS = [
   {
     emoji: "📊",
     title: "症例ログを活用",
-    desc: "症例ログタブでは、今までの全症例を検索・領域別統計で確認できます。CSV出力でEPOC・J-OSLER・臨床研究・症例発表に活用できます。",
+    desc: "症例ログタブでは、今までの全症例を検索・領域別統計で確認できます。CSV出力・EPOC形式エクスポートでJ-OSLER・臨床研究・症例発表に活用できます。",
   },
 ];
 

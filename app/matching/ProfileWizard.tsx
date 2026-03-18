@@ -464,6 +464,68 @@ function ResumePreview({ profile, isPro, show, onToggle }: {
   profile: WizardProfile; isPro: boolean; show: boolean; onToggle: () => void
 }) {
   const hasData = profile.name && profile.university
+
+  const handlePrintPDF = () => {
+    const w = window.open('', '_blank', 'width=800,height=1100')
+    if (!w) return
+    const sections: string[] = []
+    const addSec = (t: string, c: string) => { if (c) sections.push(`<div class="sec"><h3>${t}</h3><p>${c.replace(/\n/g, '<br>')}</p></div>`) }
+
+    addSec('志望動機', profile.motivation)
+    addSec('自己PR・強み', profile.strengthsList.length > 0
+      ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? `<br>${profile.strengthsEpisode}` : '')
+      : profile.strengths)
+    addSec('部活動・課外活動', [profile.clubs, profile.clubRole ? `（${profile.clubRole}）` : '', profile.clubLearning].filter(Boolean).join(' '))
+    addSec('アルバイト', [profile.partTimeJob, profile.partTimeLearning].filter(Boolean).join('：'))
+    addSec('ボランティア', profile.volunteer)
+    addSec('研究経験', [profile.research, profile.researchResults].filter(Boolean).join('／'))
+    addSec('留学経験', profile.studyAbroad)
+    addSec('資格', profile.qualifications)
+    if (profile.languageSkills.length > 0) addSec('語学力', profile.languageSkills.join('、'))
+    addSec('短所と克服策', profile.weakness ? `${profile.weakness}${profile.weaknessStrategy ? `→ ${profile.weaknessStrategy}` : ''}` : '')
+    addSec('医師を目指したきっかけ', profile.doctorTrigger)
+    const regions = profile.preferredRegions.length > 0 ? `<div class="sec"><h3>希望研修地域</h3><p>${profile.preferredRegions.join('、')}</p></div>` : ''
+
+    w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>履歴書 — ${profile.name}</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;color:#1a1917;padding:40px;max-width:700px;margin:0 auto;font-size:13px;line-height:1.8}
+.header{display:flex;gap:20px;margin-bottom:24px;border-bottom:2px solid #1B4F3A;padding-bottom:20px}
+.photo{width:80px;height:100px;border:1px solid #ddd;display:flex;align-items:center;justify-content:center;background:#f5f5f5;font-size:10px;color:#999;flex-shrink:0}
+.name{font-size:22px;font-weight:700;margin-bottom:4px}
+.meta{font-size:12px;color:#666}
+.sec{margin-bottom:16px}
+.sec h3{font-size:13px;font-weight:700;color:#1B4F3A;margin-bottom:4px;border-left:3px solid #1B4F3A;padding-left:8px}
+.sec p{font-size:12px;line-height:1.8;color:#333}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;background:#E8F0EC;color:#1B4F3A;padding:2px 8px;border-radius:4px}
+.footer{margin-top:24px;border-top:1px solid #eee;padding-top:12px;font-size:10px;color:#999;text-align:center}
+@media print{body{padding:20px}@page{margin:15mm}}
+</style></head><body>
+<div class="header">
+<div class="photo">写真貼付</div>
+<div>
+<div class="name">${profile.name || ''}</div>
+<div class="meta">
+${profile.university || ''}<br>
+${profile.graduationYear ? profile.graduationYear + '年3月 卒業見込み' : ''}
+${profile.preferredSpecialty ? '<br>志望科: ' + profile.preferredSpecialty : ''}
+${profile.gpaRange ? '<br>成績: ' + profile.gpaRange : ''}
+${profile.cbtScore ? ' / CBT: ' + profile.cbtScore : ''}
+</div>
+</div>
+</div>
+${sections.join('\n')}
+${regions}
+${profile.personalityTraits.length > 0 ? `<div class="sec"><h3>性格特性</h3><div class="tags">${profile.personalityTraits.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>` : ''}
+${profile.careerTypes.length > 0 ? `<div class="sec"><h3>キャリア志向</h3><div class="tags">${profile.careerTypes.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>` : ''}
+${profile.medicalInterests.length > 0 ? `<div class="sec"><h3>興味のある分野</h3><div class="tags">${profile.medicalInterests.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>` : ''}
+<div class="footer">iwor.jp — この履歴書はiwor プロフィールウィザードから生成されました</div>
+<script>window.onload=function(){window.print()}</script>
+</body></html>`)
+    w.document.close()
+  }
+
   return (
     <div className="bg-s0 border border-br rounded-xl overflow-hidden">
       <button onClick={onToggle} className="w-full flex items-center justify-between p-4 hover:bg-s1/50 transition-colors">
@@ -482,6 +544,19 @@ function ResumePreview({ profile, isPro, show, onToggle }: {
             <div className="p-6 text-center"><p className="text-xs text-muted">STEP 1で氏名と大学を入力すると表示されます</p></div>
           ) : (
             <div className="p-5 relative">
+              {/* PDF出力ボタン (PRO only) */}
+              {isPro && (
+                <div className="flex justify-end mb-3">
+                  <button onClick={handlePrintPDF}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium text-white transition-all hover:opacity-90"
+                    style={{ background: MC }}>
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                    </svg>
+                    PDF出力
+                  </button>
+                </div>
+              )}
               <div className="space-y-4">
                 <div className="flex gap-4">
                   <div className="w-20 h-24 bg-s1 border border-br rounded-lg flex items-center justify-center flex-shrink-0"><span className="text-[10px] text-muted">写真</span></div>
