@@ -91,6 +91,16 @@ const CATEGORIES = [
   { id:'sedative', label:'鎮静剤', icon:'😴' },
   { id:'opioid', label:'麻薬', icon:'💊' },
   { id:'antihypertensive', label:'降圧剤', icon:'🩸' },
+  { id:'custom', label:'その他薬剤', icon:'✏️' },
+] as const
+
+const UNIT_OPTIONS = [
+  { value:'μg/kg/min', label:'μg/kg/min', weightBased:true },
+  { value:'μg/kg/h', label:'μg/kg/h', weightBased:true },
+  { value:'mg/kg/h', label:'mg/kg/h', weightBased:true },
+  { value:'μg/min', label:'μg/min', weightBased:false },
+  { value:'U/min', label:'U/min', weightBased:false },
+  { value:'mg/h', label:'mg/h（体重非依存）', weightBased:false },
 ] as const
 
 function calcRate(d:Drug,gamma:number,w:number,conc:number):number{
@@ -100,15 +110,18 @@ function calcRate(d:Drug,gamma:number,w:number,conc:number):number{
   if(d.unit==='mg/kg/h')return(gamma*w)/conc
   if(d.unit==='μg/min')return(gamma*60)/(conc*1000)
   if(d.unit==='U/min')return(gamma*60)/conc
+  if(d.unit==='mg/h')return gamma/conc
   return 0
 }
 function calcGamma(d:Drug,rate:number,w:number,conc:number):number{
-  if(!w||!conc)return 0
+  if(!w&&d.weightBased)return 0
+  if(!conc)return 0
   if(d.unit==='μg/kg/min')return(rate*conc*1000)/(w*60)
   if(d.unit==='μg/kg/h')return(rate*conc*1000)/w
   if(d.unit==='mg/kg/h')return(rate*conc)/w
   if(d.unit==='μg/min')return(rate*conc*1000)/60
   if(d.unit==='U/min')return(rate*conc)/60
+  if(d.unit==='mg/h')return rate*conc
   return 0
 }
 
@@ -124,15 +137,29 @@ export default function GammaCalcPage(){
   const[gammaInput,setGammaInput]=useState('')
   const[rateInput,setRateInput]=useState('')
   const[calcMode,setCalcMode]=useState<'g2r'|'r2g'>('g2r')
+  // カスタム薬剤
+  const[customName,setCustomName]=useState('')
+  const[customUnit,setCustomUnit]=useState('μg/kg/min')
+  const isCustom=selectedCat==='custom'
 
-  const drug=useMemo(()=>DRUGS.find(d=>d.id===selectedDrugId)!,[selectedDrugId])
+  const customDrug=useMemo<Drug>(()=>{
+    const unitOpt=UNIT_OPTIONS.find(u=>u.value===customUnit)
+    return {
+      id:'__custom__', name:customName||'カスタム薬剤', nameEn:'Custom',
+      category:'vasopressor', unit:customUnit, weightBased:unitOpt?.weightBased??true,
+      gammaMin:0, gammaMax:0, gammaUnit:customUnit, unitLabel:'mg',
+      dilutions:[], notes:'ユーザー定義の薬剤です。'
+    }
+  },[customName,customUnit])
+
+  const drug=useMemo(()=>isCustom?customDrug:DRUGS.find(d=>d.id===selectedDrugId)!,[isCustom,customDrug,selectedDrugId])
   const catDrugs=useMemo(()=>DRUGS.filter(d=>d.category===selectedCat),[selectedCat])
 
   const conc=useMemo(()=>{
-    if(usePreset&&drug.dilutions[presetIdx]){const d=drug.dilutions[presetIdx];return d.drugMg/d.totalMl}
+    if(!isCustom&&usePreset&&drug.dilutions[presetIdx]){const d=drug.dilutions[presetIdx];return d.drugMg/d.totalMl}
     const dm=parseFloat(customDrugMg),tm=parseFloat(customTotalMl)
     return(dm>0&&tm>0)?dm/tm:0
-  },[usePreset,presetIdx,customDrugMg,customTotalMl,drug])
+  },[isCustom,usePreset,presetIdx,customDrugMg,customTotalMl,drug])
 
   const w=parseFloat(weight)||0
 
@@ -153,7 +180,7 @@ export default function GammaCalcPage(){
     return{min:calcRate(drug,drug.gammaMin,w,conc),max:calcRate(drug,drug.gammaMax,w,conc)}
   },[drug,w,conc])
 
-  const handleCat=(catId:string)=>{setSelectedCat(catId);const f=DRUGS.find(d=>d.category===catId);if(f){setSelectedDrugId(f.id);setPresetIdx(0);setGammaInput('');setRateInput('')}}
+  const handleCat=(catId:string)=>{setSelectedCat(catId);if(catId==='custom'){setUsePreset(false);setGammaInput('');setRateInput('')}else{const f=DRUGS.find(d=>d.category===catId);if(f){setSelectedDrugId(f.id);setPresetIdx(0);setGammaInput('');setRateInput('')}}}
   const handleDrug=(id:string)=>{setSelectedDrugId(id);setPresetIdx(0);setUsePreset(true);setGammaInput('');setRateInput('')}
 
   return(
@@ -168,7 +195,7 @@ export default function GammaCalcPage(){
       <header className="mb-6"><div className="flex items-start justify-between gap-3"><div>
         <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium mb-2">💉 ICU</span>
         <h1 className="text-2xl font-bold text-tx mb-1">ICU薬剤 γ計算</h1>
-        <p className="text-sm text-muted">昇圧剤・強心薬・鎮静剤・麻薬・降圧剤のγ⇔mL/h変換。添付文書準拠のγ範囲表示。</p>
+        <p className="text-sm text-muted">昇圧剤・強心薬・鎮静剤・麻薬・降圧剤 + その他薬剤のγ⇔mL/h変換。</p>
       </div><ProPulseHint><FavoriteButton slug="icu-gamma-calc" title="γ計算（昇圧薬・鎮静薬）" href="/tools/icu/vasopressor" type="icu" /></ProPulseHint></div></header>
 
       {/* カテゴリ */}
@@ -182,14 +209,34 @@ export default function GammaCalcPage(){
       </div>
 
       {/* 薬剤 */}
-      <div className="flex gap-1.5 overflow-x-auto pb-1 mb-6">
-        {catDrugs.map(d=>(
-          <button key={d.id} onClick={()=>handleDrug(d.id)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap border transition-all ${selectedDrugId===d.id?'border-ac bg-acl text-ac':'border-br bg-s0 text-muted hover:text-tx'}`}>
-            {d.name}
-          </button>
-        ))}
-      </div>
+      {isCustom?(
+        <div className="bg-s0 border border-br rounded-xl p-4 mb-6">
+          <p className="text-xs font-bold text-tx mb-3">✏️ 自由入力 — 任意の薬剤でγ⇔mL/h変換</p>
+          <div className="space-y-3">
+            <div>
+              <label className="text-[10px] text-muted mb-1 block">薬剤名（任意）</label>
+              <input type="text" value={customName} onChange={e=>setCustomName(e.target.value)} placeholder="例: オクトレオチド"
+                className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac outline-none"/>
+            </div>
+            <div>
+              <label className="text-[10px] text-muted mb-1 block">投与単位</label>
+              <select value={customUnit} onChange={e=>setCustomUnit(e.target.value)}
+                className="w-full h-10 px-3 text-sm bg-bg border border-br rounded-lg focus:border-ac outline-none">
+                {UNIT_OPTIONS.map(u=><option key={u.value} value={u.value}>{u.label}</option>)}
+              </select>
+            </div>
+          </div>
+        </div>
+      ):(
+        <div className="flex gap-1.5 overflow-x-auto pb-1 mb-6">
+          {catDrugs.map(d=>(
+            <button key={d.id} onClick={()=>handleDrug(d.id)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap border transition-all ${selectedDrugId===d.id?'border-ac bg-acl text-ac':'border-br bg-s0 text-muted hover:text-tx'}`}>
+              {d.name}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* 体重 */}
       {drug.weightBased&&(
@@ -204,12 +251,14 @@ export default function GammaCalcPage(){
       <div className="bg-s0 border border-br rounded-xl p-4 mb-4">
         <div className="flex items-center justify-between mb-3">
           <label className="text-xs font-bold text-tx">希釈濃度</label>
-          <div className="flex gap-1">
-            <button onClick={()=>setUsePreset(true)} className={`text-[10px] px-2.5 py-1 rounded-lg border ${usePreset?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>プリセット</button>
-            <button onClick={()=>setUsePreset(false)} className={`text-[10px] px-2.5 py-1 rounded-lg border ${!usePreset?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>手動入力</button>
-          </div>
+          {!isCustom&&(
+            <div className="flex gap-1">
+              <button onClick={()=>setUsePreset(true)} className={`text-[10px] px-2.5 py-1 rounded-lg border ${usePreset?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>プリセット</button>
+              <button onClick={()=>setUsePreset(false)} className={`text-[10px] px-2.5 py-1 rounded-lg border ${!usePreset?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>手動入力</button>
+            </div>
+          )}
         </div>
-        {usePreset?(
+        {!isCustom&&usePreset?(
           <div className="grid gap-2">
             {drug.dilutions.map((d,i)=>(
               <button key={i} onClick={()=>setPresetIdx(i)}
@@ -236,12 +285,14 @@ export default function GammaCalcPage(){
         {conc>0&&<p className="text-xs text-ac font-medium mt-2">濃度: {conc>=0.01?conc.toFixed(3):conc.toFixed(4)} {drug.unitLabel}/mL</p>}
       </div>
 
-      {/* γ範囲 */}
+      {/* γ範囲（プリセット薬剤のみ） */}
+      {!isCustom&&(
       <div className="bg-acl border border-ac/20 rounded-xl p-4 mb-4">
         <p className="text-xs font-bold text-ac mb-1">{drug.name} — 推奨γ範囲</p>
         <p className="text-lg font-bold text-tx">{drug.gammaMin} ～ {drug.gammaMax} <span className="text-sm font-normal text-muted">{drug.gammaUnit}</span></p>
         {rangeRates&&<p className="text-xs text-muted mt-1">→ {rangeRates.min.toFixed(1)} ～ {rangeRates.max.toFixed(1)} mL/h{drug.weightBased?`（体重${weight}kg時）`:''}</p>}
       </div>
+      )}
 
       {/* 計算 */}
       <div className="bg-s0 border border-br rounded-xl p-4 mb-4">
@@ -253,7 +304,7 @@ export default function GammaCalcPage(){
           <div>
             <label className="text-xs font-medium text-tx mb-1 block">γ値 ({drug.gammaUnit})</label>
             <input type="number" inputMode="decimal" value={gammaInput} onChange={e=>setGammaInput(e.target.value)}
-              placeholder={`例: ${((drug.gammaMin+drug.gammaMax)/2).toFixed(2)}`}
+              placeholder={isCustom?'γ値を入力':`例: ${((drug.gammaMin+drug.gammaMax)/2).toFixed(2)}`}
               className="w-full h-12 px-4 text-lg font-mono bg-bg border-2 border-br rounded-xl text-center focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none"/>
           </div>
         ):(
@@ -272,18 +323,20 @@ export default function GammaCalcPage(){
             ):(
               <><p className="text-xs text-muted mb-1">{result.rate} mL/h</p>
               <p className="text-3xl font-bold text-ac">{result.gamma.toFixed(3)} <span className="text-base font-normal">{drug.gammaUnit}</span></p>
-              {result.gamma<drug.gammaMin&&<p className="text-xs text-wn font-medium mt-1">⚠️ 推奨範囲未満</p>}
-              {result.gamma>drug.gammaMax&&<p className="text-xs text-dn font-medium mt-1">⚠️ 推奨範囲超過</p>}</>
+              {!isCustom&&result.gamma<drug.gammaMin&&<p className="text-xs text-wn font-medium mt-1">⚠️ 推奨範囲未満</p>}
+              {!isCustom&&result.gamma>drug.gammaMax&&<p className="text-xs text-dn font-medium mt-1">⚠️ 推奨範囲超過</p>}</>
             )}
           </div>
         )}
       </div>
 
       {/* メモ */}
+      {!isCustom&&(
       <div className="bg-s0 border border-br rounded-xl p-4 mb-6">
         <p className="text-xs font-bold text-tx mb-1">📝 {drug.name}（{drug.nameEn}）</p>
         <p className="text-xs text-muted leading-relaxed">{drug.notes}</p>
       </div>
+      )}
 
       {/* 免責 */}
       <div className="bg-wnl border border-wnb rounded-lg p-4 mb-8 text-sm text-wn">

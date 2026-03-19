@@ -744,9 +744,9 @@ export const tools: ToolDefinition[] = [
   },
   {
     slug: 'dopamine-dose',
-    name: 'γ計算（昇圧剤投与速度）',
-    nameEn: 'Vasopressor Dose Calculator (gamma)',
-    description: '体重とγ値から昇圧剤の投与速度（mL/h）を計算。DOA・DOB・NAd・Ad対応。',
+    name: 'γ計算 → ICU管理ツールへ',
+    nameEn: 'Vasopressor Dose Calculator → ICU Tools',
+    description: 'γ計算はICU管理ツール（/tools/icu/vasopressor）に統合されました。15薬剤・5カテゴリ対応。',
     category: 'electrolyte',
     tier: 1,
     keywords: ['γ計算', 'ガンマ', '昇圧剤', 'ドパミン', 'ノルアドレナリン', 'ICU'],
@@ -948,7 +948,7 @@ export const tools: ToolDefinition[] = [
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
-export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled', 'child-pugh', 'meld', 'curb-65', 'a-drop', 'wells-pe', 'wells-dvt', 'qsofa', 'sofa', 'fib-4', 'corrected-ca', 'aa-gradient', 'grace', 'bmi', 'bsa', 'cockcroft-gault', 'gcs', 'rcri', 'anion-gap', 'abcd2', 'mrs', 'ecog', 'karnofsky', 'maintenance-fluid', 'na-deficit', 'free-water-deficit', 'nihss', 'apache2', 'na-correction-rate', 'kcl-correction', 'steroid-converter', 'insulin-sliding', 'renal-dose-abx', 'glasgow-blatchford', 'aims65', 'heart-score', 'timi', 'news2', 'charlson', 'centor', 'caprini', 'padua', 'mascc', 'alvarado', 'perc', 'ottawa-ankle', 'rockall', 'spesi', 'phq9', 'gad7', 'isth-dic', 'light-criteria', 'qtc', 'map', 'fena', 'osmolality-gap', 'winters-formula', 'corrected-phenytoin', 'ibw', 'anc', 'meld-na', 'ranson', 'bisap', 'audit', 'ldl-friedewald', 'dopamine-dose', 'parkland', 'jcs', 'sirs', 'fio2-table', 'harris-benedict', 'nyha', 'homa', 'cam-icu', 'rass', 'barthel-index',
+export const implementedTools = new Set(['egfr', 'cha2ds2-vasc', 'chads2', 'has-bled', 'child-pugh', 'meld', 'curb-65', 'a-drop', 'wells-pe', 'wells-dvt', 'qsofa', 'sofa', 'fib-4', 'corrected-ca', 'aa-gradient', 'grace', 'bmi', 'bsa', 'cockcroft-gault', 'gcs', 'rcri', 'anion-gap', 'abcd2', 'mrs', 'ecog', 'karnofsky', 'maintenance-fluid', 'na-deficit', 'free-water-deficit', 'nihss', 'apache2', 'na-correction-rate', 'kcl-correction', 'steroid-converter', 'insulin-sliding', 'renal-dose-abx', 'glasgow-blatchford', 'aims65', 'heart-score', 'timi', 'news2', 'charlson', 'centor', 'caprini', 'padua', 'mascc', 'alvarado', 'perc', 'ottawa-ankle', 'rockall', 'spesi', 'phq9', 'gad7', 'isth-dic', 'light-criteria', 'qtc', 'map', 'fena', 'osmolality-gap', 'winters-formula', 'corrected-phenytoin', 'ibw', 'anc', 'meld-na', 'ranson', 'bisap', 'audit', 'ldl-friedewald', 'parkland', 'jcs', 'sirs', 'fio2-table', 'harris-benedict', 'nyha', 'homa', 'cam-icu', 'rass', 'barthel-index',
   // Tier 1 NEW
   'cchr', 'pecarn', 'canadian-cspine', 'nexus', 'rtpa-checklist', 'aspects', 'add-risk', 'lrinec', 'fisher', 'hunt-hess', 'wfns', 'ciwa-ar', 'four-score', 'cage', 'psi-port', 'smart-cop', 'geneva', 'toast', 'duke-criteria', 'ottawa-sah', 'san-francisco-syncope', 'sapsii',
   // Tier 2
