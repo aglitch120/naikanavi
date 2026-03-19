@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import FavoriteButton from '@/components/tools/FavoriteButton'
 import ProPulseHint from '@/components/pro/ProPulseHint'
-import ProGate from '@/components/pro/ProGate'
 
 /* ── 周術期ストレスカバー ── */
 const STRESS_LEVELS = [
@@ -228,7 +227,7 @@ export default function SteroidCoverPage() {
       </section>
 
       {/* ── ステロイド副作用チェックリスト ── */}
-      <ProGate feature="interpretation" previewHeight={200}>
+
         <section className="mb-10">
           <h2 className="text-lg font-bold text-tx mb-4">ステロイド副作用 & 対策チェックリスト</h2>
           <p className="text-sm text-muted mb-4">
@@ -271,7 +270,7 @@ export default function SteroidCoverPage() {
             })}
           </div>
         </section>
-      </ProGate>
+
 
       {/* 免責 */}
       <div className="bg-wnl border border-wnb rounded-lg p-3 mb-8 text-sm text-wn">

@@ -29,7 +29,6 @@ const data: CompareData = {
   ],
   relatedTools: [
     { href: '/tools/calc/qtc-calculator', name: 'QTc計算' },
-    { href: '/tools/interpret/ecg', name: '心電図読影' },
     { href: '/compare/ccb', name: 'Ca拮抗薬比較' },
     { href: '/compare/arb', name: 'ARB比較' },
   ],

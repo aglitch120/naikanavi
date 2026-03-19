@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import FavoriteButton from '@/components/tools/FavoriteButton'
 import ProPulseHint from '@/components/pro/ProPulseHint'
-import ProGate from '@/components/pro/ProGate'
 
 /* ── 休薬カテゴリ ── */
 const CATEGORIES = [
@@ -141,9 +140,7 @@ export default function PreopDrugsPage() {
         })}
       </div>
 
-      <ProGate feature="interpretation" previewHeight={0}>
         <div />
-      </ProGate>
 
       {/* 免責 */}
       <div className="bg-wnl border border-wnb rounded-lg p-3 mt-8 mb-8 text-sm text-wn">

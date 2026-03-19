@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
-import ProGate from '@/components/pro/ProGate'
 import FavoriteButton from '@/components/tools/FavoriteButton'
 import ProPulseHint from '@/components/pro/ProPulseHint'
 import { trackToolUsage } from '@/components/pro/useProStatus'
@@ -250,9 +249,8 @@ export default function LifestylePage() {
     {hasIn&&<>{cvdRisk&&<div className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${rBadge[cvdRisk.level]}`}><span className="text-lg">📊</span><div><p className="text-sm font-bold">動脈硬化リスク: {cvdRisk.label}</p><p className="text-xs">LDL目標 &lt;{cvdRisk.ldlTarget} / non-HDL &lt;{cvdRisk.nonHdlTarget} mg/dL</p></div></div>}
 
       {all.length>0&&<><div className="flex items-center justify-between mb-3"><h2 className="text-lg font-bold text-tx">全アクション（{all.length}件）</h2><div className="flex gap-1"><button onClick={()=>setActionView('disease')} className={`text-xs px-3 py-1 rounded-lg border ${actionView==='disease'?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>疾患別</button><button onClick={()=>setActionView('subcategory')} className={`text-xs px-3 py-1 rounded-lg border ${actionView==='subcategory'?'bg-ac text-white border-ac':'bg-bg text-muted border-br'}`}>カテゴリ別</button></div></div>
-        <ProGate feature="action_plan" previewHeight={100}>
         <div className="bg-s0 border border-br rounded-xl p-4 mb-8">{actionView==='disease'?<div className="space-y-4">{Object.entries(byDis).map(([d,as])=><div key={d}><p className="text-xs font-bold text-ac mb-2 border-b border-br pb-1">{d}</p><div className="space-y-2">{as.map((a,i)=><AR key={i} a={a}/>)}</div></div>)}</div>:<div className="space-y-4">{Object.entries(bySub).map(([sub,as])=><div key={sub}><p className="text-xs font-bold text-ac mb-2 border-b border-br pb-1">{subL[sub]||sub}</p><div className="space-y-2">{as.map((a,i)=><AR key={i} a={a}/>)}</div></div>)}</div>}</div>
-        </ProGate></>}
+        </>}
     </>}
 
     <div className="text-xs text-muted mt-8 pt-4 border-t border-br"><p className="font-semibold">出典:</p><p>JSH2019 / 糖尿病GL2024 / 動脈硬化GL2022 / CKD GL2023 / 高尿酸GL第3版 / MASLD GL2023</p></div>

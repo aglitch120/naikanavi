@@ -5,8 +5,8 @@ import ArticleCard from '@/components/blog/ArticleCard'
 import { AppMockup } from '@/components/AppMockup'
 
 export const metadata: Metadata = {
-  title: 'iwor（イウォール）— 医学生から医師まで、ずっと臨床のそばに',
-  description: '臨床計算ツール、ER対応、ACLS/BLS、ICU管理、検査読影、薬剤比較、薬剤ガイド。病棟TODO、J-OSLER管理、マッチング・転職対策、論文フィード。医学生から医師まで、すべてがここに。',
+  title: 'iwor（イウォール）— 医師のためのワークスペース',
+  description: '臨床計算ツール152種、薬剤ガイド・比較、手技ガイド、基準値早見表、γ計算。J-OSLER管理、マッチング・転職対策、論文フィード。医学生から医師まで。',
   alternates: { canonical: 'https://iwor.jp' },
 }
 
@@ -29,7 +29,7 @@ export default function HomePage() {
           ずっと臨床のそばに。
         </h1>
         <p className="text-base text-muted leading-relaxed max-w-lg mx-auto mb-8">
-          臨床ツール、病棟管理、学習、キャリア支援。
+          臨床ツール、キャリア支援、学習。
           必要なものが、すべてひとつの場所に。
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
@@ -78,11 +78,11 @@ export default function HomePage() {
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-tx group-hover:text-ac transition-colors">臨床ツール</h3>
-                <p className="text-xs text-muted">計算・ER・ACLS/BLS・ICU・読影・薬剤比較 — すべて無料</p>
+                <p className="text-xs text-muted">計算152種・薬剤ガイド・比較・手技・基準値・γ計算 — すべて無料</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
-              {['臨床計算', 'ER対応', 'ACLS/BLS', 'ICU管理', '検査読影', '薬剤比較', '薬剤ガイド'].map(name => (
+              {['臨床計算', '薬剤ガイド', '薬剤比較', '手技ガイド', '基準値', 'γ計算'].map(name => (
                 <div key={name} className="bg-acl text-ac border border-ac/15 rounded-lg px-3 py-2.5 text-center">
                   <p className="text-xs font-bold">{name}</p>
                 </div>
@@ -98,13 +98,9 @@ export default function HomePage() {
         {/* 6サービス — ソリッドフラットカード */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {[
-            { href: '/dashboard', title: '病棟TODO', sub: '症例ログ & Stat tracker', tag: 'PRO',
-              icon: <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 12l2.5 2.5L16 9" /></> },
-            { href: '/learning', title: '学習', sub: '専門医試験対策 & 講座', tag: 'PRO',
-              icon: <><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" /><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" /></> },
             { href: '/josler', title: 'J-OSLER管理', sub: '症例登録 & 進捗管理', tag: 'PRO',
               icon: <><path d="M12 20V10" /><path d="M18 20V4" /><path d="M6 20v-4" /></> },
-            { href: '/matching', title: 'マッチング・転職対策', sub: '書類・メール & AI面接', tag: 'PRO',
+            { href: '/matching', title: 'マッチング・転職対策', sub: '履歴書 & 病院検索', tag: 'PRO',
               icon: <><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" /></> },
             { href: '/journal', title: '論文フィード', sub: '日本語要約 & ブックマーク', tag: 'FREEMIUM',
               icon: <><path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z" /></> },
@@ -171,9 +167,9 @@ export default function HomePage() {
                 すべての機能を、ひとつのプランで。
               </h2>
               <p className="text-white/60 text-sm mb-6 max-w-lg mx-auto leading-relaxed">
-                解釈・アクションプラン・病棟管理・学習・J-OSLER・マッチング・論文フィード。
+                J-OSLER管理・マッチング対策・論文フィード・お気に入り保存。
                 <br className="hidden sm:inline" />
-                月あたり約¥820ですべてにアクセス。
+                月あたり約¥550〜ですべてにアクセス。
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link

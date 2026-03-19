@@ -656,11 +656,9 @@ function Breadcrumb() {
 }
 
 const appLinks = [
-  { href: '/tools', icon: '🩺', title: '臨床ツール', sub: '計算・ER・ACLS・ICU・読影・薬剤', tag: 'FREE' },
-  { href: '/dashboard', icon: '📋', title: '病棟TODO', sub: '症例ログ & Stat tracker', tag: 'PRO' },
-  { href: '/learning', icon: '📚', title: '学習', sub: '専門医試験対策 & 講座', tag: 'PRO' },
+  { href: '/tools', icon: '🩺', title: '臨床ツール', sub: '計算152種・薬剤・手技・基準値・γ計算', tag: 'FREE' },
   { href: '/josler', icon: '📊', title: 'J-OSLER管理', sub: '症例登録 & 進捗管理', tag: 'PRO' },
-  { href: '/matching', icon: '🏥', title: 'マッチング・転職対策', sub: '書類・メール & AI面接', tag: 'PRO' },
+  { href: '/matching', icon: '🏥', title: 'マッチング・転職対策', sub: '履歴書 & 病院検索', tag: 'PRO' },
   { href: '/journal', icon: '📄', title: '論文フィード', sub: '日本語要約 & ブックマーク', tag: 'FREEMIUM' },
   { href: '/favorites', icon: '⭐', title: 'お気に入り', sub: '保存したツール一覧', tag: 'PRO' },
 ]

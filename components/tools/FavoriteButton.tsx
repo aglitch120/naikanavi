@@ -12,7 +12,7 @@ export interface FavoriteItem {
   id: string
   title: string
   href: string
-  type: string   // 'calc' | 'interpret' | 'er' | 'acls' | 'icu' | 'compare' | 'drugs' | 'blog' | 'app'
+  type: string   // 'calc' | 'icu' | 'compare' | 'drugs' | 'blog' | 'app' | 'procedures'
   icon?: string
   addedAt: number
 }
@@ -27,7 +27,7 @@ export function loadFavorites(): FavoriteItem[] {
         id: slug,
         title: slug,
         href: `/tools/calc/${slug}`,
-        type: slug.startsWith('interpret-') ? 'interpret' : slug.startsWith('icu-') ? 'icu' : 'calc',
+        type: slug.startsWith('icu-') ? 'icu' : 'calc',
         addedAt: Date.now(),
       }))
       localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated))
@@ -36,7 +36,7 @@ export function loadFavorites(): FavoriteItem[] {
     // Migration v2: fix broken hrefs and slug-as-title
     const HREF_FIXES: Record<string, string> = {
       'lifestyle': '/tools/lifestyle',
-      'icu-gamma-calc': '/tools/icu/vasopressor',
+      'icu-gamma-calc': '/tools/icu/gamma',
     }
     let needsSave = false
     const fixed = (raw as FavoriteItem[]).map((f: FavoriteItem) => {
@@ -47,11 +47,9 @@ export function loadFavorites(): FavoriteItem[] {
         item.href = HREF_FIXES[f.id]
         changed = true
       }
-      // Fix interpret hrefs that point to /tools/calc/
-      if (f.id.startsWith('interpret-') && f.href.startsWith('/tools/calc/')) {
-        item.href = `/tools/interpret/${f.id.replace('interpret-', '')}`
-        item.type = 'interpret'
-        changed = true
+      // Remove favorites for deleted tools (er, acls, interpret, dashboard)
+      if (['er', 'acls', 'interpret'].includes(f.type) || f.href.startsWith('/dashboard') || f.href.startsWith('/tools/er/') || f.href.startsWith('/tools/acls/') || f.href.startsWith('/tools/interpret/')) {
+        return null // will be filtered out
       }
       // Fix app hrefs
       if (f.id.startsWith('app-') && f.href.startsWith('/tools/calc/')) {
@@ -61,8 +59,8 @@ export function loadFavorites(): FavoriteItem[] {
       }
       if (changed) needsSave = true
       return item
-    })
-    if (needsSave) {
+    }).filter(Boolean) as FavoriteItem[]
+    if (needsSave || fixed.length < raw.length) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(fixed))
     }
     return fixed
@@ -104,17 +102,11 @@ export default function FavoriteButton({ slug, title, href, type, size = 'md' }:
       setIsFav(false)
     } else {
       const derivedType = type
-        || (slug.startsWith('interpret-') ? 'interpret'
-          : slug.startsWith('icu-') ? 'icu'
-          : slug.startsWith('er-') ? 'er'
-          : slug.startsWith('acls-') ? 'acls'
+        || (slug.startsWith('icu-') ? 'icu'
           : slug.startsWith('app-') ? 'app'
           : 'calc')
       const derivedHref = href
-        || (derivedType === 'interpret' ? `/tools/interpret/${slug.replace('interpret-', '')}`
-          : derivedType === 'icu' ? `/tools/icu/${slug.replace('icu-', '')}`
-          : derivedType === 'er' ? `/tools/er/${slug.replace('er-', '')}`
-          : derivedType === 'acls' ? `/tools/acls/${slug.replace('acls-', '')}`
+        || (derivedType === 'icu' ? `/tools/icu/${slug.replace('icu-', '')}`
           : derivedType === 'app' ? `/${slug.replace('app-', '')}`
           : `/tools/calc/${slug}`)
 

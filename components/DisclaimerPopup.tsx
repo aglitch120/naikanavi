@@ -10,9 +10,7 @@ function isToolPath(path: string): boolean {
   return (
     path.startsWith('/tools/') ||
     path.startsWith('/compare/') ||
-    path.startsWith('/dashboard') ||
     path.startsWith('/josler') ||
-    path.startsWith('/learning') ||
     path.startsWith('/matching') ||
     path.startsWith('/journal')
   )

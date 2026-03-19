@@ -29,7 +29,6 @@ const data: CompareData = {
   ],
   relatedTools: [
     { href: '/tools/calc/aa-gradient', name: 'A-aDO₂' },
-    { href: '/tools/interpret/blood-gas', name: '血ガス解釈' },
     { href: '/compare/steroid', name: 'ステロイド比較' },
   ],
 }

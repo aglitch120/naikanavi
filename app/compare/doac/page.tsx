@@ -74,7 +74,6 @@ const data: CompareData = {
     { href: '/tools/calc/has-bled', name: 'HAS-BLED' },
     { href: '/tools/calc/egfr', name: 'eGFR' },
     { href: '/tools/calc/cockcroft-gault', name: 'Cockcroft-Gault' },
-    { href: '/tools/interpret/ecg', name: '心電図読影' },
   ],
 }
 

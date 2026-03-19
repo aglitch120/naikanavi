@@ -3,14 +3,14 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'アプリ — iwor',
-  description: '臨床ツール、病棟TODO、学習、J-OSLER管理、マッチング・転職対策、論文フィード、プレゼン資料生成。7つのサービスでキャリアを支援。',
+  description: '臨床ツール、研修記録、マッチング・転職対策、論文フィード、プレゼン資料生成。医師のためのワークスペース。',
 }
 
 const services = [
   {
     href: '/tools',
     title: '臨床ツール',
-    sub: '計算・ER・ACLS/BLS・ICU・読影・薬剤比較 — すべて無料',
+    sub: '計算152種・薬剤ガイド・比較・手技・基準値・γ計算 — すべて無料',
     tag: 'FREE',
     featured: true,
     icon: (
@@ -18,21 +18,7 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
       </svg>
     ),
-    subcategories: ['臨床計算', 'ER対応', 'ACLS/BLS', 'ICU管理', '検査読影', '薬剤比較', '薬剤ガイド'],
-  },
-  {
-    href: '/dashboard',
-    title: '病棟TODO',
-    sub: '症例ログ & Stat tracker',
-    tag: 'PRO',
-    icon: <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 12l2.5 2.5L16 9" /></>,
-  },
-  {
-    href: '/learning',
-    title: '学習',
-    sub: '専門医試験対策 & 講座',
-    tag: 'PRO',
-    icon: <><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" /><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" /></>,
+    subcategories: ['臨床計算', '薬剤ガイド', '薬剤比較', '手技ガイド', '基準値', 'γ計算'],
   },
   {
     href: '/josler',
@@ -44,7 +30,7 @@ const services = [
   {
     href: '/matching',
     title: 'マッチング・転職対策',
-    sub: '履歴書 & AI面接',
+    sub: '履歴書 & 病院検索',
     tag: 'PRO',
     icon: <><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" /></>,
   },
@@ -71,7 +57,7 @@ export default function AppPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-tx">7つのサービス</h1>
+        <h1 className="text-2xl font-bold text-tx">サービス</h1>
         <p className="text-muted mt-2">
           医学生から医師まで、キャリアのすべてをカバー。
         </p>
@@ -106,7 +92,7 @@ export default function AppPage() {
         </div>
       </Link>
 
-      {/* 6サービス */}
+      {/* その他サービス */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {rest.map(s => (
           <Link

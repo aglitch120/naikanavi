@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import FavoriteButton from '@/components/tools/FavoriteButton'
 import ProPulseHint from '@/components/pro/ProPulseHint'
-import ProGate from '@/components/pro/ProGate'
 
 /* ── WHO除痛ラダー ── */
 const WHO_LADDER = [
@@ -162,7 +161,7 @@ export default function CancerPainPage() {
         </div>
       </section>
 
-      <ProGate feature="interpretation" previewHeight={200}>
+
         {/* ── レスキュードーズ ── */}
         <section className="mb-10">
           <h2 className="text-lg font-bold text-tx mb-4">{RESCUE.title}</h2>
@@ -243,7 +242,7 @@ export default function CancerPainPage() {
             </table>
           </div>
         </section>
-      </ProGate>
+
 
       {/* 免責 */}
       <div className="bg-wnl border border-wnb rounded-lg p-3 mb-8 text-sm text-wn">

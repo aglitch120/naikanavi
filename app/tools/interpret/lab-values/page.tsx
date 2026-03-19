@@ -180,7 +180,7 @@ export default function LabValuesPage() {
             <p className="text-sm text-muted">年齢・性別を入力 → カテゴリ別に基準値を一覧表示</p>
           </div>
           <ProPulseHint>
-            <FavoriteButton slug="interpret-lab-values" title="基準値早見表" href="/tools/interpret/lab-values" type="interpret" />
+            <FavoriteButton slug="interpret-lab-values" title="基準値早見表" href="/tools/interpret/lab-values" type="calc" />
           </ProPulseHint>
         </div>
       </header>

@@ -5,7 +5,6 @@ import { useProStatus } from '@/components/pro/useProStatus'
 import ProModal from '@/components/pro/ProModal'
 import FavoriteButton from '@/components/tools/FavoriteButton'
 import HospitalTab from './HospitalSection'
-import InterviewTab from './InterviewSection'
 import DocumentsTab from './DocumentsTab'
 import ProfileWizard from './ProfileWizard'
 
@@ -26,7 +25,7 @@ const STORAGE_KEY = "iwor_matching_profile"
 const MODE_STORAGE_KEY = "iwor_matching_mode"
 
 type Mode = 'matching' | 'career'
-type TabId = 'profile' | 'documents' | 'hospitals' | 'interview'
+type TabId = 'profile' | 'documents' | 'hospitals'
 
 function getTabs(mode: Mode) {
   const tabs: { id: TabId; label: string; icon: React.ReactNode; pro?: boolean }[] = [
@@ -39,9 +38,6 @@ function getTabs(mode: Mode) {
     tabs.push({ id: 'hospitals', label: '病院検索',
       icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> })
   }
-  tabs.push({ id: 'interview', label: 'AI面接',
-    icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>,
-    pro: true })
   return tabs
 }
 
@@ -93,7 +89,7 @@ export default function MatchingApp() {
           <div className="flex-1 min-w-0">
             <h1 className="text-xl font-bold text-tx">マッチング・転職対策</h1>
             <p className="text-[11px] text-muted">
-              {mode === 'matching' ? 'プロフィール → 書類・メール → 病院検索 → AI面接' : 'プロフィール → 書類・メール → AI面接'}
+              {mode === 'matching' ? 'プロフィール → 書類・メール → 病院検索' : 'プロフィール → 書類・メール'}
             </p>
           </div>
           <FavoriteButton slug="app-matching" title="マッチング・転職対策" href="/matching" type="app" size="sm" />
@@ -143,9 +139,6 @@ export default function MatchingApp() {
       {tab === 'hospitals' && mode === 'matching' && (
         <HospitalTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} />
       )}
-      {tab === 'interview' && (
-        <InterviewTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} />
-      )}
 
       {showProModal && <ProModal onClose={() => setShowProModal(false)} feature="save" />}
 
@@ -169,12 +162,10 @@ const TUT_MATCH = [
   { emoji: '📝', title: 'プロフィールを入力', desc: '6ステップのウィザードで約10分。クリックや選択で簡単に入力できます。' },
   { emoji: '✉️', title: '書類・メールを作成', desc: '見学申込メール、お礼メール、送付状をテンプレートから作成。見学準備チェックリストも。' },
   { emoji: '🏥', title: '病院を検索・比較', desc: '45病院のデータベースから地域・タイプ・診療科・倍率で検索。志望リストでマッチ確率を確認。' },
-  { emoji: '🤖', title: 'AI面接で練習', desc: '志望病院に合わせたAI面接練習。圧迫度や時間を調整して本番に備えましょう。' },
 ]
 const TUT_CAREER = [
   { emoji: '📝', title: 'プロフィールを入力', desc: '6ステップのウィザードで約10分。経歴・自己PRを簡単に整理できます。' },
   { emoji: '✉️', title: '書類・メールを作成', desc: '見学申込メール、お礼メールなどをテンプレートから簡単に作成できます。' },
-  { emoji: '🤖', title: 'AI面接で練習', desc: 'AI面接練習で面接スキルを磨きましょう。フィードバックで改善点を把握できます。' },
 ]
 
 function MatchingTutorial({ mode, onClose }: { mode: 'matching' | 'career'; onClose: () => void }) {

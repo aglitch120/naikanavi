@@ -13,7 +13,7 @@ const segments = [
     sublabel: '5-6年生',
     color: 'bg-[#4338CA]/10 border-[#4338CA]/20 text-[#4338CA]',
     features: [
-      { title: 'マッチング・転職対策', desc: 'プロフィール→書類・メール→病院DB→AI面接練習', coming: true },
+      { title: 'マッチング・転職対策', desc: 'プロフィール→書類・メール→病院DB→志望リスト', coming: true },
       { title: '専門科診断 詳細結果', desc: '20問の質問から、重み付けアルゴリズムで最適な診療科を分析', coming: true },
       { title: '臨床ツール解釈', desc: '計算結果の臨床的意味と次のアクションを学べる', coming: false },
       { title: '論文フィード', desc: '最新論文の日本語要約を毎週配信', coming: true },
@@ -27,7 +27,7 @@ const segments = [
     color: 'bg-[#1B4F3A]/10 border-[#1B4F3A]/20 text-[#1B4F3A]',
     features: [
       { title: '病棟stat tracker', desc: '疾患をポチポチ記録→経験症例グラフ→EPOC連携用エクスポート', coming: true },
-      { title: '臨床ツール解釈 + アクションプラン', desc: 'スコアの臨床的意味と具体的な対応を確認', coming: false },
+      { title: 'お気に入りツール保存', desc: 'よく使うツールをブックマーク', coming: false },
       { title: '論文フィード全アーカイブ', desc: '過去の全論文要約にアクセス＋ブックマーク', coming: true },
       { title: 'お気に入りツール保存', desc: 'よく使うツールをワンタップでアクセス', coming: false },
     ],
@@ -42,7 +42,7 @@ const segments = [
       { title: 'J-OSLER進捗管理', desc: '症例カウント・提出状況・残りタスクを一元管理', coming: true },
       { title: '病棟stat tracker', desc: '経験疾患の分布→J-OSLER提出時にそのまま使える実績データ', coming: true },
       { title: '論文フィード + ブックマーク', desc: '専門分野の論文を効率的にキャッチアップ', coming: true },
-      { title: '臨床ツール全機能', desc: '解釈・アクションプラン・お気に入り保存', coming: false },
+      { title: '臨床ツール全機能', desc: 'お気に入り保存', coming: false },
     ],
   },
   {
@@ -54,7 +54,7 @@ const segments = [
     features: [
       { title: '病棟stat tracker', desc: '担当症例をサクッと記録。疾患別・月別の統計データを自動生成', coming: true },
       { title: '論文フィード', desc: '分野横断の最新論文要約＋ブックマーク', coming: true },
-      { title: '臨床ツール全機能', desc: '210+ツールの深い解釈とアクションプラン', coming: false },
+      { title: '臨床ツール全機能', desc: '152+ツール + お気に入り保存', coming: false },
       { title: 'お気に入り + 計算履歴', desc: 'よく使うツールを即座にアクセス', coming: false },
     ],
   },
@@ -113,10 +113,10 @@ const comparison = [
   { feature: '薬剤ガイド', free: '✓ 全公開', pro: '✓ 全公開' },
   { feature: '生活習慣病 総合管理', free: '✓ 判定結果', pro: '✓ + アクションプラン' },
   { feature: 'お気に入りツール保存', free: '—', pro: '✓ 無制限' },
-  { feature: '病棟TODO & 症例ログ', free: '2人まで', pro: '✓ 無制限 + クラウド同期' },
+  { feature: '症例ログ（ドロップダウン）', free: 'UIプレビュー', pro: '✓ 無制限 + クラウド同期' },
   { feature: '論文フィード', free: '最新3件', pro: '✓ 全アーカイブ + ブックマーク' },
   { feature: 'J-OSLER進捗管理', free: '—', pro: '✓ 全機能' },
-  { feature: 'マッチング・転職対策', free: 'AI面接5回/日', pro: '✓ 無制限 + 志望リスト + マッチ確率' },
+  { feature: 'マッチング・転職対策', free: 'UIプレビュー', pro: '✓ 無制限 + 志望リスト + マッチ確率' },
 ]
 
 // ── FAQ ──
@@ -435,7 +435,7 @@ export default function ProPage() {
                 今日から、臨床をもっと深く。
               </h2>
               <p className="text-white/70 text-sm mb-6 max-w-md mx-auto">
-                210+の臨床ツール、解釈、アクションプラン。月あたり約¥660で全機能アクセス。
+                152+の臨床ツール、J-OSLER、マッチング対策。月あたり約¥550〜で全機能アクセス。
               </p>
               <a
                 href="https://iwor.booth.pm/items/8092008"

@@ -244,8 +244,6 @@ export default function AntibioticsPage() {
         <div className="flex flex-wrap gap-2">
           {[
             { href: '/tools/calc/renal-dose-abx', name: '腎機能別用量調整' },
-            { href: '/tools/er/fever', name: 'ER 発熱' },
-            { href: '/tools/er/hospital-fever', name: '院内発熱' },
             { href: '/tools/calc/egfr', name: 'eGFR' },
             { href: '/tools/calc/cockcroft-gault', name: 'CCr (Cockcroft-Gault)' },
             { href: '/tools/calc/curb-65', name: 'CURB-65' },
