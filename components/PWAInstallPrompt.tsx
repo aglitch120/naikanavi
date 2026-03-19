@@ -23,6 +23,11 @@ export default function PWAInstallPrompt() {
 
   // Determine environment on mount
   useEffect(() => {
+    // PC（タッチ非対応 or 大画面デスクトップ）には表示しない
+    const isMobileOrTablet =
+      navigator.maxTouchPoints > 0 && window.innerWidth < 1024
+    if (!isMobileOrTablet) return
+
     const standalone =
       window.matchMedia('(display-mode: standalone)').matches ||
       (navigator as any).standalone === true
