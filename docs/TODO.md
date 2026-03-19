@@ -62,13 +62,13 @@
 ## Step 1: 法務対応 + 削除作業（🔴 即着手）
 
 ### 削除作業
-- [ ] 主訴別アクション33本（/tools/er/）を削除
-- [ ] 検査読影（/tools/interpret/ — lab-valuesは残す）を削除
-- [ ] PRO「解釈・推奨アクション」レイヤーを全ツールから除去（ProGateのinterpretation/action_plan feature）
-- [ ] 病棟TODO機能を削除（/dashboard/ TODO部分）
-- [ ] ICU管理フロー削除（γ計算の計算機能のみ残す）
-- [ ] AI面接機能削除（Workers AI呼び出し含む）
-- [ ] ACLS/BLS削除
+- [x] 主訴別アクション33本（/tools/er/）を削除
+- [x] 検査読影（/tools/interpret/ — lab-valuesは残す）を削除
+- [x] PRO「解釈・推奨アクション」レイヤーを全ツールから除去
+- [x] 病棟TODO機能を削除（/dashboard/）
+- [x] ICU管理フロー削除（γ計算のみ gamma/ に移動して保持）
+- [x] AI面接機能削除（InterviewSection + Workers AI）
+- [x] ACLS/BLS削除
 - [ ] 臨床系ブログ記事の特定と削除
 - [ ] 症例ログ: 自由テキスト入力廃止 → ドロップダウン選択のみに
 
