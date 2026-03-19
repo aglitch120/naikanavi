@@ -7,18 +7,20 @@
 ### 主要ディレクトリ
 
 - `app/` — Next.js App Router。ページコンポーネント
-- `app/tools/calc/` — 79個の臨床計算ツール（CalculatorLayout共通レイアウト）
-- `app/tools/er/` — ER主訴別対応ツリー6本
-- `app/tools/acls/` — ACLS/BLS フロー4本
-- `app/tools/icu/` — ICU管理ツール4本
-- `app/tools/interpret/` — 検査読影5本（SVG模式図付き）
-- `app/compare/` — 薬剤比較25カテゴリ
+- `app/tools/calc/` — 152個の臨床計算ツール（CalculatorLayout共通レイアウト）
+- `app/tools/icu/gamma` — γ計算（純粋な計算機能のみ）
+- `app/tools/procedures/` — 手技ガイド15本
+- `app/tools/drugs/` — 薬剤ガイド
+- `app/tools/interpret/lab-values` — 基準値早見表
+- `app/compare/` — 薬剤比較24カテゴリ
+- `app/study/` — iwor Study（フラッシュカード）← 新規
 - `components/pro/` — ProGate, ProModal, useProStatus, ProPulseHint
-- `components/tools/` — CalculatorLayout, ERDisclaimer等の共通コンポーネント
-- `components/tools/interpret/` — ChestXraySVG, ECGSVG, AbdominalEchoSVG
-- `content/blog/` — MDX記事173本
+- `components/tools/` — CalculatorLayout等の共通コンポーネント
+- `content/blog/` — MDX記事（臨床系記事は削除予定）
 - `lib/tools-config.ts` — ツール一覧・メタデータ定義
 - `lib/tools-metadata.ts` — SEO用メタデータ生成
+
+> **削除予定ディレクトリ** (ピボット対応): `app/tools/er/`, `app/tools/acls/`, `app/tools/interpret/` (lab-values以外), `components/tools/interpret/`
 
 ## 🎨 デザインシステム
 
@@ -303,8 +305,9 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
 
 ### 基本方針
 
-全ツールのUI/操作は完全公開。ゲート対象は「解釈」「アクションプラン」「データ永続化」のみ。
-**ER/ICU/ACLS/計算結果は絶対にゲートしない（患者安全）。**
+全ツールのUI/操作は完全公開。ゲート対象は「データ永続化」「お気に入り保存」のみ。
+**計算結果は絶対にゲートしない。**
+**注意**: `interpretation` / `action_plan` featureは削除済み（SaMDリスク — STRATEGY.md参照）
 
 詳細な戦略は `docs/PRODUCT.md` を参照。
 
@@ -313,7 +316,7 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
 ```
 components/
 ├── pro/
-│   ├── ProGate.tsx          # モザイク/ロックラッパー（全ツール共通）
+│   ├── ProGate.tsx          # ロックラッパー（全ツール共通）
 │   ├── ProModal.tsx         # PRO誘導モーダル（共通）
 │   ├── useProStatus.ts      # PRO判定フック（localStorage → Supabase切替対応）
 │   └── ProPulseHint.tsx     # お気に入りパルスアニメーション
@@ -324,14 +327,14 @@ components/
 ```tsx
 import { ProGate } from '@/components/pro/ProGate'
 
-// 計算ツール: 解釈セクションをモザイク
-<ProGate feature="interpretation">
-  <InterpretationSection score={score} />
+// お気に入り保存: ロック型
+<ProGate feature="favorites">
+  <FavoriteButton />
 </ProGate>
 
-// 生活習慣病: アクションプランをモザイク
-<ProGate feature="action_plan">
-  <ActionPlanList actions={actions} />
+// データ保存: プレビュー型（UI操作可、保存時にモーダル）
+<ProGate feature="save">
+  <SaveDataButton />
 </ProGate>
 ```
 
@@ -346,15 +349,13 @@ import { ProGate } from '@/components/pro/ProGate'
 
 ### DB設計（Supabase PostgreSQL）
 
-認証と課金状態を分離。決済手段（BOOTH→Stripe）が変わってもユーザーデータに影響なし。
+認証と課金状態を分離。決済手段（BOOTH→Paddle）が変わってもユーザーデータに影響なし。
 テーブル設計の詳細は `docs/PRODUCT.md` を参照。
 
 ### 新規ツール作成時のPROゲートチェックリスト
 
 - [ ] 計算結果は全公開になっているか（ゲート禁止）
-- [ ] ER/ICU/緊急ツールにゲートがないか（安全性チェック）
-- [ ] 解釈/アクションプランに `<ProGate>` を適用したか
-- [ ] PROモーダルのfeature名が正しいか
+- [ ] 解釈・推奨アクションのProGateがないか（SaMDリスク — 禁止）
 - [ ] お気に入りボタンにProGate連携があるか
 
 ---
@@ -427,14 +428,17 @@ import { ProGate } from '@/components/pro/ProGate'
   → Cloudflare CDN → Pages (静的HTML/JS)
   → ブラウザ内で完結（計算はクライアントサイド）
 
-[PROユーザー] (Phase 2)
-  → Cloudflare CDN → Pages (UI)
-  → Workers (API) → Supabase (データ永続化)
+[PROユーザー] (Phase 1: 現在)
+  → Pages (UI) → Workers (API) → KV (データ保存)
+  → 認証: localStorage + sessionToken
+
+[PROユーザー] (Phase 2: 100人超)
+  → Pages (UI) → Workers (API) → Supabase (データ永続化)
   → 認証: Supabase Auth (JWT)
 
-[論文フィード] (Phase 2)
-  → n8n (cron) → PubMed API → Claude API (要約生成)
-  → Supabase (保存) → Workers → Pages (配信)
+[学会情報自動収集] (将来)
+  → Worker cron (月2回) → 43学会URL fetch → Claude Haiku (構造化抽出)
+  → KV保存 → 管理者承認 → フロント反映
 ```
 
 ## 技術スタック詳細
@@ -443,15 +447,15 @@ import { ProGate } from '@/components/pro/ProGate'
 |---------|------|------|
 | フロントエンド | Next.js 14 + React 18 | SSG (Static Site Generation) |
 | スタイリング | Tailwind CSS 3.4 | カスタムカラーシステム |
-| コンテンツ | MDX (next-mdx-remote) | 173記事 + ツール解説 |
+| コンテンツ | MDX (next-mdx-remote) | ブログ記事 + ツール解説 |
 | ホスティング | Cloudflare Pages | 自動デプロイ (Git連携) |
 | DNS | Cloudflare DNS | Xserverドメインから移管 |
 | 計測 | GA4 + GSC | G-VTCJT6XFHG |
-| API [Phase 2] | Cloudflare Workers | Edge Runtime |
+| API | Cloudflare Workers + KV | Edge Runtime |
 | DB [Phase 2] | Supabase PostgreSQL | Auth一体型 |
-| 自動化 [Phase 2] | n8n + Claude API | 論文フィード |
-| 決済 [Phase 1] | BOOTH | 匿名販売 |
-| 決済 [Phase 2] | Stripe | 法人化後 |
+| 決済 [移行中] | Paddle (MoR) | 実名非公開可 |
+| 決済 [Phase 2] | Paddle or Stripe | 法人化後 |
+| AI [将来] | Claude API (Haiku) | 学会情報自動収集 |
 
 ## ディレクトリ構造
 
@@ -511,16 +515,13 @@ iwor/
 | **Google Analytics 4** | アクセス解析 | G-VTCJT6XFHG | 無料 |
 | **Google Search Console** | SEO・インデックス管理 | ドメインプロパティ | 無料 |
 
-## 将来導入予定（Phase 2以降）
+## 将来導入予定
 
 | サービス | 用途 | 導入条件 | 想定料金 |
 |---------|------|---------|---------|
-| **Supabase** | Auth + PostgreSQL (PRO機能) | PRO機能リリース時 | 無料〜$25/月 |
-| **Cloudflare Workers + KV** | API・キャッシュ | API機能追加時 | 無料枠内 |
-| **n8n** | ワークフロー自動化（論文フィード） | 論文フィード実装時 | セルフホスト無料 or $20/月 |
-| **Claude API** | 論文要約生成 | 論文フィード実装時 | 従量課金 |
-| **BOOTH** | 決済（Phase 1） | PRO販売開始時 | 手数料5.6%+22円 |
-| **Stripe** | 決済（Phase 2） | 合同会社設立後 | 手数料3.6% |
+| **Supabase** | Auth + PostgreSQL (PRO機能) | Phase 2（100人超） | 無料〜$25/月 |
+| **Claude API (Haiku)** | 学会情報自動収集 | 学会カレンダー実装時 | 月額約¥25 |
+| **Paddle** | 決済（MoRモデル） | 審査通過後 | 手数料5%+$0.50 |
 
 ## 月額コスト（現時点）
 
@@ -539,7 +540,7 @@ iwor/
 3. **Xserver ドメイン**: ドメイン移管（auth code発行）
 4. **GA4 / GSC**: プロパティのオーナー権限を譲渡
 5. **Supabase**: プロジェクト移管（Phase 2以降）
-6. **BOOTH / Stripe**: アカウント情報引継ぎ
+6. **Paddle**: アカウント情報引継ぎ
 
 ---
 

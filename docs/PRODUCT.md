@@ -1,6 +1,6 @@
 # iwor PRO プロダクト仕様
 
-> 最終更新: 2026年3月16日
+> 最終更新: 2026年3月19日
 > 役割: プロダクトの「何を作るか」を定義。価格・ロードマップ・競合分析は STRATEGY.md を参照。
 
 ---
@@ -11,351 +11,265 @@
 
 ---
 
+## サービス構造（8サービス + Study）
+
+→ サービス一覧・ホーム画面レイアウト・URL構造は **STRATEGY.md** を参照
+
+---
+
 ## PRO機能 — セグメント別の「見え方」
 
 ### 全部入り1プラン。見せ方だけセグメント別に変える。
 
 **医学5-6年生に訴求:**
-- マッチング対策ツール（プロフィール→履歴書自動生成→おすすめ病院→アンマッチ確率→AI面接シミュレーション）
-- 専門科診断結果の詳細レポート
-- 臨床ツールのPRO解釈セクション
+- マッチング対策（志望リスト、マッチ確率、履歴書生成）
+- iwor Study（コミュニティデッキ、AI生成）
 
 **初期研修医に訴求:**
-- 病棟stat tracker（疾患dropdownで記録→経験症例の棒グラフ・円グラフ→EPOC連携用）
-- 病棟TODO（データ永続化）
+- 研修記録（EPOC管理）
+- 症例ログ（ドロップダウン選択）
 - 論文フィード全アーカイブ + ブックマーク
-- 臨床ツールのPRO解釈セクション
+- iwor Study
 
 **専攻医に訴求:**
 - J-OSLER症例管理 + 進捗トラッキング
-- 病棟stat tracker（→J-OSLER提出用にそのまま使える）
+- 専門医単位カウンター
 - 論文フィード全アーカイブ + ブックマーク
+- 学会カレンダー（無制限 + 通知）
 
 ---
 
-## PRO機能 — 新規プロダクト詳細
+## 各サービスの詳細仕様
 
-### マッチング対策ツール（/matching/）
+### 1. 臨床ツール（/tools/, /compare/）— FREE
 
-| 機能 | FREE / PRO |
-|------|-----------|
-| プロフィール入力（基本情報・志望科・希望地域） | FREE |
-| 履歴書の基本テンプレート表示 | FREE |
-| 履歴書自動生成（入力情報から整形済みPDF出力） | **PRO** |
-| おすすめ病院リスト（条件マッチング） | FREE（上位3件） / **PRO（全件＋詳細）** |
-| マッチング順位並び替えシミュレーション | **PRO** |
-| アンマッチ確率計算（過去データベース） | **PRO** |
-| 病院別AI面接シミュレーション（マイク入力対応） | **PRO** |
-| 病院ごとの特徴・口コミ・研修プログラム情報 | FREE（概要） / **PRO（詳細）** |
+以下を「臨床ツール」1アイコンに統合:
+- 計算ツール 152種+追加予定（/tools/calc/[slug]）
+- 生活習慣病 総合管理（/tools/lifestyle/）
+- 薬剤ガイド（/tools/drugs/）
+- 薬剤比較 24カテゴリ 155薬剤（/compare/[slug]）
+- 手技ガイド 15本（/tools/procedures/）
+- 基準値早見表（/tools/interpret/lab-values）
+- γ計算（/tools/icu/gamma）— 純粋な計算機能のみ
 
-**データ設計:**
-- 保存するのはユーザーのプロフィール・志望・ランキング順位のみ（患者データゼロ）
-- 集合知: ユーザーが増えるほど「この成績帯でこの病院にマッチした」データが蓄積
-- AI面接: 病院の公開情報を事前読み込み → ユーザーの履歴書と組み合わせて質問生成
+**法務対策**: 全数式の出典照合、「推奨」→「参照」表現改修、出典明記、更新日表示、誤り報告ボタン
 
-### 病棟stat tracker（/dashboard/stats/）
+### 2. 研修記録（/record/）— PRO
 
-| 機能 | FREE / PRO |
-|------|-----------|
-| 疾患入力UI（dropdownで選択） | FREE |
-| 直近7日間の記録閲覧 | FREE |
-| 全期間の記録 + 棒グラフ・円グラフ | **PRO** |
-| 診療科別・疾患別の経験症例分布 | **PRO** |
-| J-OSLER / EPOC 用エクスポート | **PRO** |
-| 音声入力ショートカット（「肺炎2、心不全1」） | **PRO** |
-| 月次レポート自動生成 | **PRO** |
+**EPOC管理（初期研修医向け）← 新規:**
+- EPOC連携・進捗管理ダッシュボード
 
-**データ設計:**
-- 保存: 日付 + 疾患カテゴリ + 件数のみ（患者名・詳細なし = 個人情報に該当しない）
-- クラウド同期OK（Supabase）
-- 2年分の蓄積 = J-OSLER提出時にそのまま使える実績データ
+**J-OSLER管理（内科専攻医向け）← 既存:**
+- 症例登録・進捗ダッシュボード（70疾患群）
+- 病歴生成（疾患選択→テキストコピー）
+- 提出状況管理（draft/submitted/approved）
+- **自由テキスト排除**（法務リスク対策）
 
-### 1. 全ツールのUI/操作は完全公開
+**症例ログ（統合）:**
+- ドロップダウン選択のみ（自由テキスト廃止）
+- 日付 + 疾患カテゴリ + 件数
+- EPOC連携エクスポート
 
-インタラクティブコンテンツにフルでアクセスできる。入力も操作もすべてFREE。
-これにより:
-- SEOクロール範囲が最大化（滞在時間＋操作性でランキング向上）
-- HOKUTOがアプリ内に閉じている空白地帯をWebで丸ごと獲れる
-- ユーザーが「使ってみたら便利だった」体験を経てからPRO訴求できる
+### 3. 専門医単位（/credits/）— PRO（新規）
 
-### 2. 安全性ファースト — 緊急ツールは全公開
+- 自己入力型カウンター（ユーザーが取得単位を記録）
+- 学会要件はLLM自動収集で「参考情報」として表示
+- 免責: 「公式サイトでご確認ください」
 
-**計算結果、ER/ICUの判断フロー、緊急対応は絶対にゲートしない。**
+### 4. 学会カレンダー（/conferences/）— FREEMIUM（新規）
 
-患者安全に関わる情報を有料化することは:
-- 医療情報サイトとしての信頼を破壊する
-- 法的リスクを生む
-- 医師コミュニティからの信頼を失う
+- **学会DB**: 専門医機構認定の基本領域19学会 + サブスペシャルティ24学会 = 必須掲載
+- カレンダービュー（月/週）+ リスト表示切替
+- 「参加予定」マイリスト登録
+- LLM自動収集（月2回cron + Claude Haiku）→ 管理者承認フロー
+- 地方会・支部会は対象外
+- FREE: DB閲覧 + 3学会マイリスト / PRO: 無制限 + 全通知 + iCalエクスポート
 
-ゲート対象は「解釈」「推奨アクション」「学習補助」など、臨床判断の補助にとどまる部分のみ。
+### 5. マッチング・転職対策（/matching/）— FREEMIUM
 
----
+- **モード切替**: 医学生モード / それ以外モード
+- **タブ構成**:
+  1. プロフィール → 履歴書自動生成
+  2. 書類・メール生成
+  3. 病院検索 45病院
+  4. 志望リスト（PRO）→ マッチ確率計算（最大99%）
+- **見学準備コンテンツ**: 持ち物チェックリスト / 聞くべきことリスト / 総合評価テンプレート
+- **AI面接は削除済み**（法務リスク）
+- コンテンツ素材: → MATCHING_CONTENT.md 参照
 
-## 基本原則
+### 6. 論文フィード（/journal/）— FREEMIUM
 
-### 1. 全ツールのUI/操作は完全公開
+- 最新3件=FREE、全アーカイブ+ブックマーク=PRO
+- PubMed API → 日本語/英語切替対応予定
+- 診療科別IF top 5〜10雑誌表示予定
+- **サーバーサイドデータキャッシュ（Worker/KV）** — 最優先
+- 「ここからプレゼン資料を作成」→ /presenter/ 連携
 
-インタラクティブコンテンツにフルでアクセスできる。入力も操作もすべてFREE。
-これにより:
-- SEOクロール範囲が最大化（滞在時間＋操作性でランキング向上）
-- HOKUTOがアプリ内に閉じている空白地帯をWebで丸ごと獲れる
-- ユーザーが「使ってみたら便利だった」体験を経てからPRO訴求できる
+### 7. プレゼン資料生成（/presenter/）— PRO
 
-### 2. 安全性ファースト — 緊急ツールは全公開
+- 学会・カンファ・コンサル用のプレゼン資料生成
+- 出力形式: スライド / ポスター / 抄録 / A4資料
+- 論文ブックマークからのインポート対応
+- Phase 1は汎用テンプレート生成に留める（患者情報の法的リスク回避）
 
-**計算結果、ER/ICUの判断フロー、緊急対応は絶対にゲートしない。**
+### 8. 当直シフト作成（/shift/）— FREE（バイラルマーケティング装置・新規）
 
-患者安全に関わる情報を有料化することは:
-- 医療情報サイトとしての信頼を破壊する
-- 法的リスクを生む
-- 医師コミュニティからの信頼を失う
+- ステップウィザード: グループ作成→月選択→医師登録→シフト枠設定→ルール設定→希望日入力→AI自動割当→結果・手動調整→印刷・共有
+- 共有: メール/LINEリンク送信、パスワード設定、回答期限
+- 参加者の回答画面にiworのさりげないCTA
+- FREE理由: ユーザーがリンクを広める→無料マーケティング
 
-ゲート対象は「解釈」「推奨アクション」「学習補助」など、臨床判断の補助にとどまる部分のみ。
+### Study. iwor Study（/study/）— FREEMIUM（ボトムナビ独立）
 
-### 3. キャリアデータのロックイン
-
-PROの真の価値は「使うほど溜まるキャリアデータ」。
-退会 = キャリアデータ消失。年額¥9,800を払い続ける理由を作る。
-
-**ロックイン要素（患者データゼロ）:**
-- マッチングプロフィール＋順位データ＋AI面接履歴
-- 病棟stat tracker（経験疾患の分布グラフ — 2年分の蓄積）
-- J-OSLER症例カウント＋進捗
-- 論文ブックマーク＋メモ
-- お気に入りツールリスト
-- 専門科診断結果
-
-**ユーザーライフサイクル:**
-```
-医学5-6年生（マッチング対策）
-  ↓ そのまま継続
-初期研修医（病棟stat tracker + TODO）
-  ↓ そのまま継続
-専攻医（J-OSLER + stat tracker）
-```
-1人のユーザーが3-5年使い続ける設計。LTV = ¥9,800 × 3-5年。
+→ 詳細仕様は **STRATEGY.md**「新コアプロダクト: iwor Study」を参照
 
 ---
 
-## ツール種別ごとのゲート設計
+## フリーミアム設計
 
-### 計算ツール（/tools/calc/ — 70個）
+### 常に無料
+- 臨床ツール全種の計算結果
+- 薬剤ガイド・薬剤比較・手技ガイド・基準値早見表: 全公開
+- γ計算（純粋な計算機能）
+- 当直シフト作成（全機能）
+- ブログ全記事
+- 論文フィード最新3件
+- 学会DB閲覧 + 3学会マイリスト
+- Study: 自作デッキ+FSRS+デフォルト3デッキ
+- PRO系サービスの美しいデモ（操作可、保存不可）
 
-| 要素 | FREE / PRO |
-|------|-----------|
-| 入力フォーム | FREE |
-| 計算実行＋結果表示 | FREE |
-| リスク分類表示 | FREE |
-| 解釈セクション（「この結果の意味」） | **PRO（モザイク）** |
-| 推奨アクション（「次にすべきこと」） | **PRO（モザイク）** |
-| お気に入り保存 | **PRO** |
-| 計算履歴保存 | **PRO（将来）** |
+### PRO限定
+- 研修記録（EPOC + J-OSLER）— データ保存
+- 専門医単位カウンター
+- マッチング（志望リスト、マッチ確率）
+- 論文フィード全アーカイブ + ブックマーク
+- プレゼン資料生成
+- 学会スケジュール無制限 + 全通知 + iCalエクスポート
+- Study: コミュニティデッキ + AI生成 + 詳細統計 + ゲーミフィケーション
+- お気に入りツール保存
+- 症例ログ（ドロップダウン選択のみ）
 
-**注意**: 計算値そのものは他サイトでも出せるので隠す意味が薄い。「だから何をすべきか」に価値がある。
-
-### ER対応ツリー（/tools/er/ — 6本）
-
-| 要素 | FREE / PRO |
-|------|-----------|
-| 全ステップ・全分岐 | FREE |
-| 結果ノードの対応指示 | FREE（緊急性あり、全公開） |
-| お気に入り保存 | **PRO** |
-
-**ER/ICU系は緊急ツールにつき全公開。ゲートなし。**
-
-### 検査読影（/tools/interpret/ — 血ガス等）
-
-| 要素 | FREE / PRO |
-|------|-----------|
-| フロー操作（全ステップ） | FREE |
-| 途中の判定表示 | FREE |
-| 最終結果「総合解釈＋鑑別疾患リスト」 | **PRO（モザイク）** |
-| お気に入り保存 | **PRO** |
-
-### 生活習慣病ツール（/tools/lifestyle/）
-
-| 要素 | FREE / PRO |
-|------|-----------|
-| 全入力＋判定結果 | FREE |
-| リスク分類（CVDリスク等） | FREE |
-| アクションプラン一覧 | **PRO（モザイク）** |
-| お気に入り保存 | **PRO** |
-
-### J-OSLER（/josler/ — 将来）
-
-| 要素 | FREE / PRO |
-|------|-----------|
-| ダッシュボードUI（見るだけ） | FREE |
-| 症例テンプレート（見本表示） | FREE |
-| 症例データの保存・編集 | **PRO** |
-| 進捗トラッキング | **PRO** |
-| エクスポート | **PRO** |
-
-### 病棟TODO（/dashboard/ — 将来）
-
-| 要素 | FREE / PRO |
-|------|-----------|
-| UI操作（入力・チェック） | FREE |
-| データ永続化（次回ログイン時に残る） | **PRO** |
-
-### 論文フィード（/journal/ — 将来）
-
-| 要素 | FREE / PRO |
-|------|-----------|
-| 最新3件の要約 | FREE |
-| 全アーカイブ閲覧 | **PRO** |
-| ブックマーク＋メモ | **PRO** |
-
-### 専門科診断（/diagnosis/specialty/ — 将来）
-
-| 要素 | FREE / PRO |
-|------|-----------|
-| 20問クリック式診断 | FREE |
-| 結果＋詳細レポート | **PRO** |
+### 原則
+- **計算・緊急 = 無料**（信頼構築・SEO集客）
+- **保存・蓄積・深掘り・AI・コミュニティ = PRO**（課金ポイント）
+- **PRO系サービスは非ログイン者にも美しいデモを見せる**（操作可、保存不可）
 
 ---
 
-## インタラクティブPRO発見（PLGタッチポイント）
+## PLGタッチポイント（インタラクティブPRO発見）
 
-### 方針
-LPを読ませるのではなく、ユーザーが操作する中で自然にPROの価値に気づく仕組み。
-
-### タッチポイント一覧
-
-| トリガー | 表示内容 | 表示方法 | 回数制限 |
-|---------|---------|---------|---------|
-| 初回ツール利用時 | お気に入りボタンがパルスアニメーション＋ツールチップ「よく使うツールを保存 →」 | ボタンハイライト | 1回のみ |
-| お気に入りボタンクリック（未PRO） | PROモーダル（お気に入り機能の説明） | モーダル | 毎回 |
-| 解釈セクションのモザイク部分タップ | PROモーダル（「解釈を読むにはPRO」） | モーダル | 毎回 |
-| 3回目のツール利用 | 「よく使うツールをお気に入りに保存できます」バナー | インラインバナー | 1回のみ |
-| 結果コピー時（将来） | 「PROなら電カルに貼れるフォーマットで出力」 | トースト | 1回のみ |
-| J-OSLER症例2件目入力時（将来） | 「PROなら無制限に保存＋進捗トラッキング」 | インラインバナー | 1回のみ |
-
-### お気に入りパルスアニメーション仕様
-
-- 対象: FavoriteButton コンポーネント
-- 発火条件: ユーザーが初めてツールページを開いた時（localStorage `iwor_fav_hint_shown` で制御）
-- アニメーション: ボタン周囲にリングが広がるパルス（2回繰り返し）
-- ツールチップ: ボタン横に「お気に入りに保存 →」テキスト（3秒後にフェードアウト）
-- 1度表示したら二度と表示しない
+| トリガー | 表示内容 | 回数制限 |
+|---------|---------|---------|
+| 初回ツール利用時 | お気に入りボタン パルスアニメーション | 1回のみ |
+| お気に入りクリック（未PRO） | PROモーダル | 毎回 |
+| 3回目のツール利用 | 「お気に入りに保存できます」バナー | 1回のみ |
+| Study 5回目のレビュー後 | 「コミュニティデッキでもっと効率的に」バナー | 1回のみ |
 
 ---
 
-## データベース設計（BOOTH→Stripe移行対応）
+## 認証・決済フロー
 
-### 基本方針
-認証と課金状態を分離する。決済手段が変わっても、ユーザーデータは一切影響を受けない。
+### Phase 1（現在 → Paddle移行中）
 
-### テーブル設計（Supabase PostgreSQL）
+**現行（BOOTH — 強制非公開予定）:**
+- BOOTH購入 → GAS → Worker → KV保存
+- /pro/activate → 注文番号 + メール → Worker → PW自動生成
+- ログイン: メール + PW → Worker → localStorage にPRO状態 + sessionToken
+
+**移行先（Paddle）:**
+- Paddle Checkout → Webhook → Worker → KV保存
+- 特商法の省略表示方式で実名非公開可
+- 代替: LemonSqueezy（Paddle審査落ちた場合）
+
+### Phase 2（100人超）
+
+合同会社設立 + Supabase Auth + PostgreSQL
+
+---
+
+## データベース設計（Supabase — Phase 2）
 
 ```sql
--- ユーザープロフィール（auth.usersの拡張）
 CREATE TABLE profiles (
-  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  id UUID PRIMARY KEY REFERENCES auth.users(id),
   display_name TEXT,
   segment TEXT CHECK (segment IN ('student', 'resident', 'fellow', 'attending')),
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+  created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- サブスクリプション管理
 CREATE TABLE subscriptions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES profiles(id),
   status TEXT NOT NULL CHECK (status IN ('active', 'expired', 'cancelled', 'grace_period')),
   plan TEXT NOT NULL CHECK (plan IN ('pro_1y', 'pro_2y', 'pro_3y')),
-  payment_method TEXT NOT NULL CHECK (payment_method IN ('booth', 'stripe')),
-  booth_code TEXT,                    -- BOOTH時代のアクティベーションコード
-  stripe_subscription_id TEXT,        -- Stripe移行後のサブスクID
-  stripe_customer_id TEXT,            -- Stripe顧客ID
-  amount_paid INTEGER NOT NULL,       -- 支払額（円）: 9800 / 15800 / 19800
+  payment_method TEXT NOT NULL CHECK (payment_method IN ('paddle', 'stripe')),
+  paddle_subscription_id TEXT,
+  amount_paid INTEGER NOT NULL,
   activated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  expires_at TIMESTAMPTZ NOT NULL,    -- 1y: +1年 / 2y: +2年 / 3y: +3年
-  cancelled_at TIMESTAMPTZ,
-  grace_period_ends_at TIMESTAMPTZ,   -- 退会後30日の猶予期間
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  UNIQUE(user_id)                     -- 1ユーザー1サブスクリプション
+  expires_at TIMESTAMPTZ NOT NULL,
+  UNIQUE(user_id)
 );
 
--- お気に入り
 CREATE TABLE favorites (
-  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES profiles(id),
   tool_slug TEXT NOT NULL,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
   PRIMARY KEY (user_id, tool_slug)
 );
 
--- J-OSLER症例データ（将来）
 CREATE TABLE josler_cases (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES profiles(id),
   disease_name TEXT NOT NULL,
-  summary TEXT,
   status TEXT CHECK (status IN ('draft', 'submitted', 'approved')),
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+  created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 論文ブックマーク（将来）
 CREATE TABLE journal_bookmarks (
-  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES profiles(id),
   article_id TEXT NOT NULL,
   memo TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
   PRIMARY KEY (user_id, article_id)
 );
 
--- マッチング対策プロフィール
 CREATE TABLE matching_profiles (
-  user_id UUID PRIMARY KEY REFERENCES profiles(id) ON DELETE CASCADE,
+  user_id UUID PRIMARY KEY REFERENCES profiles(id),
   graduation_year INTEGER,
   university TEXT,
   preferred_specialty TEXT,
-  preferred_regions TEXT[],           -- 希望地域（配列）
-  strengths TEXT,
-  experiences TEXT,
-  rank_order JSONB,                   -- マッチング順位: [{hospital_id, rank}]
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+  preferred_regions TEXT[],
+  rank_order JSONB
 );
 
--- 病棟stat tracker（経験疾患記録）
-CREATE TABLE ward_stats (
+CREATE TABLE case_log (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES profiles(id),
   recorded_date DATE NOT NULL DEFAULT CURRENT_DATE,
-  department TEXT NOT NULL,           -- 診療科カテゴリ
-  disease_category TEXT NOT NULL,     -- 疾患カテゴリ（dropdown選択）
+  department TEXT NOT NULL,
+  disease_category TEXT NOT NULL,
   count INTEGER NOT NULL DEFAULT 1,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(user_id, recorded_date, department, disease_category)
 );
--- ※患者名・ID・検査値等は一切保存しない。疾患カテゴリと件数のみ。
-```
+-- ※ 自由テキストなし。ドロップダウン選択のみ。
 
-### BOOTH→Stripe移行フロー
+CREATE TABLE study_cards (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES profiles(id),
+  deck_id UUID NOT NULL,
+  front TEXT NOT NULL,
+  back TEXT NOT NULL,
+  fsrs_state JSONB,
+  next_review TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-```
-Phase 1（BOOTH）:
-  ユーザー → BOOTH購入 → アクティベーションコード取得
-  → iwor.jpでコード入力 → Supabase Auth登録 + subscription作成
-  → payment_method: 'booth', booth_code: 'XXXX'
-
-Phase 2（Stripe移行）:
-  既存BOOTHユーザー → 「Stripeに移行」ボタン
-  → Stripe Checkout → 同じuser_idのsubscriptionを更新
-  → payment_method: 'stripe', stripe_subscription_id: 'sub_XXX'
-  → BOOTHの残り期間はStripe側の開始日に反映
-```
-
-### 退会時のデータ処理
-
-```
-退会リクエスト
-  → status: 'cancelled', cancelled_at: NOW()
-  → grace_period_ends_at: NOW() + 30日
-  → 猶予期間中: 「今すぐ再開すればデータ復元」バナー表示
-  → 猶予期間後: 全ユーザーデータを物理削除（GDPR準拠）
+CREATE TABLE study_decks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES profiles(id),
+  title TEXT NOT NULL,
+  is_community BOOLEAN DEFAULT FALSE,
+  card_count INTEGER DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 ```
 
 ---
@@ -365,190 +279,50 @@ Phase 2（Stripe移行）:
 ### 概要
 全ツール共通の「PROゲート」ラッパーコンポーネント。childrenをモザイク化してPRO誘導する。
 
-### 使用方法
-
-```tsx
-// 計算ツールでの使用例
-<ProGate feature="interpretation" toolSlug="cha2ds2-vasc">
-  <div className="interpretation-section">
-    <h3>解釈</h3>
-    <p>CHA₂DS₂-VAScスコア 3点は年間脳卒中リスク3.2%に相当し...</p>
-    <h3>推奨アクション</h3>
-    <p>抗凝固療法の開始を検討してください...</p>
-  </div>
-</ProGate>
-```
-
 ### Props
 
 ```typescript
 interface ProGateProps {
   children: React.ReactNode
-  feature: 'interpretation' | 'action_plan' | 'favorites' | 'save' | 'result' | 'full_access'
-  toolSlug?: string         // トリガー分析用
-  blurIntensity?: number    // モザイク強度（デフォルト: 8）
-  previewLines?: number     // モザイク前に見せる行数（デフォルト: 2）
+  feature: 'favorites' | 'save' | 'full_access'
+  toolSlug?: string
+  blurIntensity?: number    // デフォルト: 8
+  previewLines?: number     // デフォルト: 2
 }
 ```
 
+**注意**: `interpretation` / `action_plan` featureは削除済み（SaMDリスク）
+
 ### 表示パターン
 
-1. **モザイク型**（interpretation, action_plan, result）
-   - childrenの最初のpreviewLines行はクリアに表示
-   - 残りはCSSブラー（filter: blur）でモザイク
-   - モザイク上に「PRO会員で全文を読む」オーバーレイ
-   - タップでPROモーダル表示
-
-2. **ロック型**（favorites, save）
-   - アクション試行時にPROモーダルをポップ
-   - ボタン自体は表示されているが、クリックでモーダル
-
-3. **プレビュー型**（full_access）
-   - UIは全部見える＋操作できる
-   - データ保存時のみPROモーダル
+1. **ロック型**（favorites, save）— アクション試行時にPROモーダルをポップ
+2. **プレビュー型**（full_access）— UIは全部見える+操作できる、データ保存時のみPROモーダル
 
 ### PRO判定フロー
 
 ```
-Phase 1（認証なし）:
+Phase 1（現在）:
   localStorage 'iwor_pro_user' === 'true' → PRO
-  それ以外 → FREE（常にゲート表示）
+  それ以外 → FREE
 
 Phase 2（Supabase Auth導入後）:
-  Supabase session存在 → subscriptions.status === 'active' → PRO
-  未ログイン or status !== 'active' → FREE
+  Supabase session → subscriptions.status === 'active' → PRO
 ```
-
-Phase 1ではlocalStorage判定のまま。Phase 2でSupabase Auth導入時に判定関数を差し替えるだけ。
 
 ---
 
-## 実装ロードマップ
+## 免責・法的対応
 
-→ **STRATEGY.md** を参照（ロードマップの単一ソース）
+- ツール初回利用時ポップアップ（1回のみ）: 医師/医学生確認 + 患者個人情報入力禁止 + 免責事項 + 間違い発見時の連絡促し
+- 会員登録時: 利用規約・プライバシーポリシー同意チェック
+- ホーム画面免責文言にも「患者個人情報を入力しないでください」
 
 ---
 
 ## やらないことリスト
 
-→ **STRATEGY.md**「却下した仮説」を参照
+→ **STRATEGY.md**「確定事項・却下仮説」を参照
 
 ---
 
 *四半期ごとに見直し。次回: 2026年6月*
-
----
-
-# iwor.jp ページ構造定義
-
-> 最終更新: 2026-03-16
-
----
-
-## /app/ — 7サービス ハブページ
-
-ヘッダー「アプリ」のリンク先。7つのサービスをカード形式で一覧表示。
-各サービス（/tools、/dashboard、/learning、/josler、/matching、/journal、/blog）へのhub。
-
-## /tools/ — 臨床ツール専用
-
-臨床ツールのカテゴリ一覧のみ表示（7カテゴリ + 準備中の抗菌薬ガイド）。
-病棟管理・J-OSLER・マッチング等の非臨床サービスは含まない（/app/ で表示）。
-
-## URL構造（7アプリ）
-
-→ **STRATEGY.md** を参照（URL構造の単一ソース）
-
-## フリーミアム設計
-
-### 常に無料（緊急・計算・SEO集客）
-- /tools/calc/ — 臨床計算ツール全機能（計算結果まで）
-- /tools/lifestyle/ — 生活習慣病ツール（判定結果まで）
-- /tools/renal-dose-abx/ — 抗菌薬調整全機能
-- /tools/acls/ — ACLS/BLS（一刻も争う系）
-- /tools/er/ — 主訴別ER対応（一刻も争う系）
-- /tools/icu/ — ICU管理（一刻も争う系）
-- /compare/ — 薬剤比較表全公開
-- /blog/ — 全記事
-
-### フリーミアム（体験可 → 保存・深掘りPRO）
-- /tools/interpret/ — フロー操作FREE、総合解釈・鑑別PRO
-- /dashboard/ — 美しいデモ操作可、データ保存PRO
-- /learning/ — ティーザーLP、講座PRO
-- /josler/ — ティーザーLP、症例保存・管理PRO
-- /matching/ — ティーザーLP、履歴書・面接PRO
-- /journal/ — 最新3件FREE、全アーカイブ・ブックマークPRO
-
-### 原則
-- **計算・判断・緊急 = 無料**（信頼構築・SEO集客）
-- **保存・蓄積・深掘り・AI = PRO**（課金ポイント）
-- **PRO系サービスは非ログイン者にも美しいデモを見せる**（操作可、保存不可）
-
----
-
-# 次期ツール候補（書籍着想メモ）
-
-> 更新: 2026-03-16
-> 出典: 羊土社「当直医マニュアル」「ER診療マニュアル」等の目次・覚え書きより
-
-## 優先度A: 次バッチで実装
-
-### calcツール追加候補
-- [ ] FiO2換算表（酸素投与量 → 鼻カニューラ/マスク/リザーバー別FiO2）
-- [ ] ヘパリン投与量・ノモグラム（APTT目標別）
-- [ ] ワルファリン過剰投与対応（INR別対応表）
-- [ ] AKI KDIGO分類（Cr上昇/尿量からStage判定）
-- [ ] JCS（Japan Coma Scale）
-- [ ] Subarachnoid Hemorrhage Hunt & Hess / WFNS
-- [ ] 久山町スコア（動脈硬化リスク）
-- [ ] Heckerling score（肺炎疑い）
-- [ ] San Francisco Syncope Rule（SFSR）
-- [ ] 非定型肺炎スコアリング（マイコプラズマ鑑別）
-
-### インタラクティブフロー（/er/, /interpret/）
-- [ ] 血液ガス分析インタラクティブ解釈フロー
-  - pH → 代謝性/呼吸性 → AG → 代償 → 混合性障害 のステップ判定
-- [ ] 胸痛ER対応ツリー
-  - ACS/PE/大動脈解離/気胸/心タンポナーデ のrule-out手順
-- [ ] 意識障害ER対応ツリー（AIUEOTIPS）
-- [ ] 腹痛ER対応ツリー（部位別鑑別）
-- [ ] 失神ER対応（SFSR + 心原性除外）
-- [ ] 発熱ER対応（不明熱の分類含む）
-- [ ] 低K/高K緊急対応フロー
-- [ ] 低Na/高Na緊急対応フロー
-- [ ] 高Ca緊急対応フロー
-
-## 優先度B: Phase 2
-
-### 病棟系
-- [ ] 急性胆嚢炎 診断基準・重症度分類（Tokyo Guidelines）
-- [ ] 急性胆管炎 診断基準・重症度分類
-- [ ] 急性膵炎 厚生労働省重症度判定基準（CT Grade含む）
-- [ ] 劇症肝炎 診断基準
-- [ ] 腫瘍熱 診断基準
-
-### 当直マニュアル系（/guide/）
-- [ ] 不眠時指示（せん妄鑑別フロー付き）
-- [ ] 便秘・下痢対応
-- [ ] 発熱時対応（入院患者）
-- [ ] 酸関連疾患（PPI選択）
-- [ ] 頭痛当直対応（POUNDing + red flag）
-- [ ] めまい当直対応（中枢性vs末梢性 HINTS）
-
-### 外来系（/tools/lifestyle/ 拡張）
-- [ ] 糖尿病合併症スクリーニングチェッカー
-- [ ] CKD進行予測・腎臓内科紹介基準
-- [ ] 骨粗鬆症 FRAX連携
-- [ ] 甲状腺機能異常フロー
-
-### 小児（将来）
-- [ ] 小児体重予測（年齢×2+8）
-- [ ] 小児輸液量計算
-- [ ] 熱性けいれん 単純型/複雑型判定
-- [ ] 学校感染症 出席停止期間一覧
-
-## メモ
-
-- 書籍の「ERの覚え書き」セクション（p.450〜）は特にツール化価値が高い
-- revised Geneva score（PE）は Wells PEと並行で追加検討
-- 血ガス解釈フローは最もインパクト大 → /interpret/blood-gas/ として独立ページに
