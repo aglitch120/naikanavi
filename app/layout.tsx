@@ -8,6 +8,9 @@ import { websiteJsonLd, siteNavigationJsonLd } from '@/lib/seo'
 import Header from '@/components/Header'
 import BottomNav from '@/components/BottomNav'
 import DisclaimerPopup from '@/components/DisclaimerPopup'
+import ServiceWorkerRegister from '@/components/ServiceWorkerRegister'
+import PWAInstallPrompt from '@/components/PWAInstallPrompt'
+import OfflineIndicator from '@/components/OfflineIndicator'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
@@ -62,6 +65,12 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
+  other: {
+    'theme-color': '#1B4F3A',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-title': 'iwor',
+  },
   alternates: {
     canonical: siteConfig.url,
     languages: {
@@ -117,6 +126,9 @@ export default function RootLayout({
         <Footer />
         <BottomNav />
         <DisclaimerPopup />
+        <ServiceWorkerRegister />
+        <PWAInstallPrompt />
+        <OfflineIndicator />
       </body>
     </html>
   )

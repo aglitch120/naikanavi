@@ -28,6 +28,7 @@ const nextConfig = {
           "font-src 'self' fonts.gstatic.com",
           "img-src 'self' data: blob: *.iwor.jp https://www.google-analytics.com https://www.googletagmanager.com",
           "connect-src 'self' cloudflareinsights.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://iwor-api.mightyaddnine.workers.dev",
+          "worker-src 'self'",
           "frame-src 'self' docs.google.com iwor.booth.pm",
           "frame-ancestors 'self'",
         ].join('; '),
@@ -35,6 +36,13 @@ const nextConfig = {
     ]
 
     return [
+      {
+        source: '/sw.js',
+        headers: [
+          { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+          { key: 'Content-Type', value: 'application/javascript; charset=utf-8' },
+        ],
+      },
       {
         source: '/images/:path*.svg',
         headers: [
