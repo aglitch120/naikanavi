@@ -26,7 +26,7 @@ function analyzeSEO() {
       .filter(s => existing.has(s) && s !== post.slug)
     const hasFaq = /^## (よくある質問|FAQ)/m.test(content)
     const svgCount = (content.match(/<svg/g) || []).length
-    const ctaCount = (content.match(/booth\.pm/g) || []).length
+    const ctaCount = (content.match(//pro/g) || []).length
     const size = content.length
 
     return {

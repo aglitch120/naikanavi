@@ -72,31 +72,31 @@ export const ctaConfig = {
     title: '🚀 AIが病歴要約の下書きを30秒で生成',
     description: '症例情報を入力するだけ。総合考察・全人的視点も自動で構成。手書き3時間→30分に短縮した専攻医が続出中。',
     buttonText: '無料で試してみる',
-    url: 'https://iwor.booth.pm/items/8087647',
+    url: '/pro',
   },
   progress: {
     title: '🚀 AIが病歴要約の下書きを30秒で生成',
     description: 'J-OSLER作業を10分の1に。症例登録テンプレ・検査値フォーマット変換・病歴要約AI下書きが全部入り。',
     buttonText: '無料で試してみる',
-    url: 'https://iwor.booth.pm/items/8087647',
+    url: '/pro',
   },
   quiz: {
     title: '🚀 AIが病歴要約の下書きを30秒で生成',
     description: 'J-OSLER作業を10分の1に。症例登録テンプレ・検査値フォーマット変換・病歴要約AI下書きが全部入り。',
     buttonText: '無料で試してみる',
-    url: 'https://iwor.booth.pm/items/8087647',
+    url: '/pro',
   },
   checklist: {
     title: '🚀 AIが病歴要約の下書きを30秒で生成',
     description: 'J-OSLER作業を10分の1に。症例登録テンプレ・検査値フォーマット変換・病歴要約AI下書きが全部入り。',
     buttonText: '無料で試してみる',
-    url: 'https://iwor.booth.pm/items/8087647',
+    url: '/pro',
   },
   general: {
     title: '🚀 AIが病歴要約の下書きを30秒で生成',
     description: 'J-OSLER作業を10分の1に。症例登録テンプレ・検査値フォーマット変換・病歴要約AI下書きが全部入り。',
     buttonText: '無料で試してみる',
-    url: 'https://iwor.booth.pm/items/8087647',
+    url: '/pro',
   },
 } as const
 

@@ -1,5 +1,5 @@
 // コードで描画するアプリダッシュボードのモックアップ
-// BOOTH画像のようなスクリーンショット風だが、SVG/CSSで軽量に
+// スクリーンショット風だが、SVG/CSSで軽量に
 
 export function AppMockup({ className = '' }: { className?: string }) {
   return (

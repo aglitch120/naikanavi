@@ -126,7 +126,7 @@ export default function ProCodesPage() {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-tx mb-1">PROコード管理</h1>
-          <p className="text-sm text-muted">BOOTH注文 → アクティベーション状況</p>
+          <p className="text-sm text-muted">注文番号 → アクティベーション状況</p>
         </div>
         <div className="flex gap-3">
           <button onClick={() => fetchOrders(adminKey)} className="text-sm text-ac hover:text-ac2">

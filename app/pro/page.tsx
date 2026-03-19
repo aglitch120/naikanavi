@@ -60,13 +60,9 @@ const segments = [
   },
 ]
 
-// ── BOOTH商品URL ──
-// 2年パス・3年パスは商品作成後にURLを差し替えること
-const BOOTH_URLS: Record<string, string> = {
-  '1y': 'https://iwor.booth.pm/items/8087647',
-  '2y': 'https://iwor.booth.pm/items/8092008',
-  '3y': 'https://iwor.booth.pm/items/8092010',
-}
+// ── 決済（Paddle移行中） ──
+// Paddle審査通過後にCheckoutリンクを設定
+const PURCHASE_URL = '/contact' // 移行完了までお問い合わせへ誘導
 
 // ── 料金プラン ──
 const plans = [
@@ -75,7 +71,7 @@ const plans = [
     label: '1年パス',
     price: 9800,
     priceDisplay: '¥9,800',
-    monthly: '約¥820',
+    monthly: '約¥550〜',
     period: '/ 年',
     discount: null,
     popular: false,
@@ -85,7 +81,7 @@ const plans = [
     label: '2年パス',
     price: 15800,
     priceDisplay: '¥15,800',
-    monthly: '約¥660',
+    monthly: '約¥550〜',
     period: '/ 2年',
     discount: '19%OFF',
     popular: true,
@@ -139,7 +135,7 @@ const faqs = [
   },
   {
     q: '支払い方法は？',
-    a: '現在はBOOTH経由でのお支払いです。クレジットカード・PayPay・コンビニ払いに対応。将来的にStripe直接決済を導入予定です。',
+    a: '決済システムを移行中です。購入をご希望の方はお問い合わせください。移行完了後、クレジットカード等でお支払いいただけるようになります。',
   },
   {
     q: '医学生でも使えますか？',
@@ -211,8 +207,8 @@ export default function ProPage() {
       {/* ═══ 数字 ═══ */}
       <section className="grid grid-cols-3 gap-4 mb-16">
         {[
-          { num: '210+', label: '臨床ツール', sub: '計算・ER・ACLS・ICU・読影・薬剤' },
-          { num: '¥820', label: '月あたり', sub: '年額¥9,800' },
+          { num: '152+', label: '臨床ツール', sub: '計算・薬剤・手技・基準値・γ計算' },
+          { num: '¥550〜', label: '月あたり', sub: '3年パス ¥19,800' },
           { num: '0', label: '患者データ保存', sub: 'キャリアデータのみ' },
         ].map((s) => (
           <div key={s.label} className="text-center p-4 bg-s0 border border-br rounded-xl">
@@ -313,7 +309,7 @@ export default function ProPage() {
                 月あたり {plan.monthly}
               </p>
               <a
-                href={BOOTH_URLS[plan.id]}
+                href={PURCHASE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackBoothClick(`pro_pricing_${plan.id}`)}
@@ -330,7 +326,7 @@ export default function ProPage() {
         </div>
 
         <p className="text-xs text-muted text-center mt-4">
-          ※ BOOTH経由でお支払い。クレジットカード・PayPay・コンビニ払い対応。
+          ※ 決済システム移行中。ご購入はお問い合わせください。
         </p>
         <div className="text-center mt-3">
           <a
@@ -438,13 +434,13 @@ export default function ProPage() {
                 152+の臨床ツール、J-OSLER、マッチング対策。月あたり約¥550〜で全機能アクセス。
               </p>
               <a
-                href="https://iwor.booth.pm/items/8092008"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackBoothClick('pro_final_cta')}
                 className="inline-flex items-center justify-center gap-2 bg-white text-ac px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-white/90 transition-colors shadow-lg"
               >
-                BOOTHで購入する
+                お問い合わせ
               </a>
               <a
                 href="/pro/activate"

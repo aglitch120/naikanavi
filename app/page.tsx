@@ -190,6 +190,14 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ 免責 ═══ */}
+      <section className="mb-4 px-2">
+        <div className="bg-s1 rounded-xl p-4 text-[11px] text-muted leading-relaxed space-y-1">
+          <p>⚠️ 本サービスは医療従事者向けです。<strong className="text-tx">患者の氏名・ID等の個人情報を入力しないでください。</strong></p>
+          <p>臨床判断の補助を目的としており、診断・治療の最終判断は担当医が行ってください。情報の正確性は保証いたしません。</p>
+        </div>
+      </section>
     </div>
   )
 }

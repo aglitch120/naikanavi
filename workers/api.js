@@ -134,7 +134,7 @@ export default {
       // 注文番号チェック
       const orderRaw = await env.IWOR_KV.get(orderKey(orderNumber));
       if (!orderRaw) {
-        return json({ error: "注文番号が見つかりません。BOOTHの注文確認メールに記載の番号をご確認ください。" }, 404, request);
+        return json({ error: "注文番号が見つかりません。購入時の注文確認メールに記載の番号をご確認ください。" }, 404, request);
       }
       const order = JSON.parse(orderRaw);
 

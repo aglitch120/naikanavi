@@ -163,7 +163,7 @@ export const siteNavigationJsonLd = {
   ],
   url: [
     `${siteConfig.url}/blog`,
-    'https://iwor.booth.pm/items/8087647',
+    '/pro',
     `${siteConfig.url}/privacy`,
     `${siteConfig.url}/terms`,
     `${siteConfig.url}/tokushoho`,

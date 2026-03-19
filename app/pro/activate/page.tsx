@@ -502,7 +502,7 @@ export default function ActivatePage() {
                   onChange={e => setOrderNumber(e.target.value.replace(/\D/g, '').slice(0, 12))}
                   className="w-full h-12 px-4 text-base font-mono tracking-wider bg-bg border-2 border-br rounded-xl focus:border-ac focus:ring-1 focus:ring-ac/30 outline-none transition-all text-center placeholder:tracking-normal placeholder:font-sans"
                 />
-                <p className="text-xs text-muted mt-1">BOOTHの注文確認メールに記載の数字</p>
+                <p className="text-xs text-muted mt-1">購入時に発行された注文番号</p>
               </div>
               <div>
                 <label htmlFor="reg-email" className="block text-sm font-medium text-tx mb-1.5">メールアドレス</label>
@@ -559,8 +559,8 @@ export default function ActivatePage() {
             <div className="mt-6 pt-6 border-t border-br">
               <h2 className="text-sm font-bold text-tx mb-3">注文番号の確認方法</h2>
               <div className="space-y-2 text-xs text-muted leading-relaxed">
-                <p><span className="font-medium text-tx">1.</span> BOOTHで購入後、<span className="font-medium text-tx">noreply@booth.pm</span> から届くメールを開きます。</p>
-                <p><span className="font-medium text-tx">2.</span> 件名「商品が購入されました（注文番号 <span className="font-mono text-tx">XXXXXXXX</span>）」の数字が注文番号です。</p>
+                <p><span className="font-medium text-tx">1.</span> 購入後に届く注文確認メールを開きます。</p>
+                <p><span className="font-medium text-tx">2.</span> メールに記載された<span className="font-mono text-tx">注文番号（数字）</span>を入力してください。</p>
                 <p><span className="font-medium text-tx">3.</span> それでも解決しない場合は <Link href="/contact" className="text-ac hover:underline">お問い合わせ</Link> ください。</p>
               </div>
             </div>

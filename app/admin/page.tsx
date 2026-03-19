@@ -39,7 +39,7 @@ export default function AdminPage() {
     const issues: string[] = []
     if (content.length < 12000) issues.push(`サイズ不足(${(content.length / 1000).toFixed(1)}KB)`)
     if ((content.match(/<svg/g) || []).length < 2) issues.push('SVG不足')
-    if ((content.match(/booth\.pm/g) || []).length < 2) issues.push('CTA不足')
+    if ((content.match(//pro/g) || []).length < 2) issues.push('CTA不足')
     const links = (content.match(/\(\/blog\/[^)#\s"]+\)/g) || []).length
     if (links < 3) issues.push(`内部リンク${links}本`)
     if (!/^## (よくある質問|FAQ)/m.test(content)) issues.push('FAQ欠如')

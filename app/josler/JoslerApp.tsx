@@ -780,10 +780,18 @@ function SummariesTab({ summaries, eg, updSum, openSumId, setOpenSumId, openSumD
                   />
                 </div>
               )}
-              {/* Title & notes inputs */}
+              {/* 査読メモ（ドロップダウンのみ） */}
               <div style={{ padding: '0 12px 10px' }}>
-                <input value={s.title} onChange={e => updSum(s.id, { title: e.target.value })} placeholder="タイトル / 診断名メモ" style={inpSt} />
-                <input value={s.notes} onChange={e => updSum(s.id, { notes: e.target.value })} placeholder="メモ（査読コメントなど）" style={{ ...inpSt, fontSize: 12, color: C.m, marginTop: 4 }} />
+                <select value={s.notes || ''} onChange={e => updSum(s.id, { notes: e.target.value })} style={{ ...inpSt, fontSize: 12, color: C.m }}>
+                  <option value="">メモなし</option>
+                  <option value="査読待ち">査読待ち</option>
+                  <option value="差し戻し: 考察不足">差し戻し: 考察不足</option>
+                  <option value="差し戻し: 検査不足">差し戻し: 検査不足</option>
+                  <option value="差し戻し: 文献不足">差し戻し: 文献不足</option>
+                  <option value="差し戻し: その他">差し戻し: その他</option>
+                  <option value="修正済み・再提出">修正済み・再提出</option>
+                  <option value="承認済み">承認済み</option>
+                </select>
               </div>
             </div>
           )

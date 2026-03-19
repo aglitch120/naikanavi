@@ -18,9 +18,9 @@ export const trackEvent = (
 
 // ── コンバージョンイベント ──
 
-// BOOTHクリック計測
+// 購入クリック計測
 export const trackBoothClick = (location: string) => {
-  trackEvent('booth_click', { location, event_category: 'conversion' })
+  trackEvent('purchase_click', { location, event_category: 'conversion' })
 }
 
 // PRO登録完了

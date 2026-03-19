@@ -73,6 +73,15 @@ export default function DisclaimerPopup() {
             </p>
           </div>
 
+          {/* 個人情報禁止 */}
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <p className="font-bold text-red-700 mb-1">⚠️ 患者個人情報の入力禁止</p>
+            <p className="text-muted text-[13px]">
+              本サービスに<strong className="text-red-700">患者の氏名・ID・個人を特定できる情報</strong>を入力しないでください。
+              入力されたデータの安全性は保証できません。
+            </p>
+          </div>
+
           {/* 免責事項 */}
           <div className="bg-wnl border border-wnb/40 rounded-xl p-4">
             <p className="font-bold text-wn mb-1">免責事項</p>

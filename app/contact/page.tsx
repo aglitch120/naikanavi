@@ -36,7 +36,7 @@ export default function ContactPage() {
         <div className="space-y-5">
           <FaqItem
             q="パスワードを忘れました"
-            a="ログイン画面の「パスワードを忘れた方」からBOOTHの注文番号を使って再発行できます。"
+            a="ログイン画面の「パスワードを忘れた方」から注文番号を使って再発行できます。"
           />
           <FaqItem
             q="アカウントが発行できません"
@@ -60,7 +60,7 @@ export default function ContactPage() {
             href="/pro"
             className="text-ac underline ml-1"
           >
-            BOOTHの販売ページ
+            PRO購入ページ
           </a>
           からもご連絡いただけます。
         </p>
