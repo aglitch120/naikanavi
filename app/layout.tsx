@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} - ${siteConfig.description}`,
     template: `%s | ${siteConfig.name}`,
   },
-  description: '医学生から医師まで、ずっと臨床のそばに。臨床計算ツール、ACLS/BLS、ER対応、J-OSLER管理、専門医試験対策まで。',
+  description: '医師のためのワークスペース。臨床計算ツール166種、薬剤ガイド・比較、J-OSLER管理、マッチング対策、論文フィード、医学フラッシュカード、マネーツール。',
   openGraph: {
     type: 'website',
     locale: 'ja_JP',

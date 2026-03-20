@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'アプリ — iwor',
-  description: '臨床ツール、研修記録、マッチング・転職対策、論文フィード、プレゼン資料生成、医学フラッシュカード。医師のためのワークスペース。',
+  description: '臨床ツール、研修記録、マッチング・転職対策、論文フィード、プレゼン資料生成、医学フラッシュカード、マネーツール。医師のためのワークスペース。',
 }
 
 const services = [
@@ -26,6 +26,13 @@ const services = [
     sub: '医学フラッシュカード — CBT・国試・専門医対策',
     tag: 'NEW',
     icon: <><path d="M12 6.253v13M12 6.253C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></>,
+  },
+  {
+    href: '/money',
+    title: 'マネー',
+    sub: 'ふるさと納税・手取り概算・NISA・確定申告',
+    tag: 'NEW',
+    icon: <><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></>,
   },
   {
     href: '/josler',
@@ -54,6 +61,27 @@ const services = [
     sub: '学会・カンファ・コンサル',
     tag: 'PRO',
     icon: <><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><path d="M8 21h8M12 17v4" /></>,
+  },
+  {
+    href: '/shift',
+    title: '当直シフト作成',
+    sub: 'ブラウザ完結・共有リンク',
+    tag: '準備中',
+    icon: <><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></>,
+  },
+  {
+    href: '/credits',
+    title: '専門医単位',
+    sub: '単位カウンター',
+    tag: '準備中',
+    icon: <><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></>,
+  },
+  {
+    href: '/conferences',
+    title: '学会カレンダー',
+    sub: '学会日程一覧',
+    tag: '準備中',
+    icon: <><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><path d="M16 2v4M8 2v4M3 10h18" /></>,
   },
 ]
 
@@ -104,13 +132,19 @@ export default function AppPage() {
         {rest.map(s => (
           <Link
             key={s.href}
-            href={s.href}
-            className="group relative rounded-2xl border border-br bg-s0 p-5 md:p-6 hover:border-ac/30 hover:shadow-md transition-all"
+            href={s.tag === '準備中' ? '#' : s.href}
+            onClick={s.tag === '準備中' ? (e) => e.preventDefault() : undefined}
+            className={`group relative rounded-2xl border bg-s0 p-5 md:p-6 transition-all ${
+              s.tag === '準備中'
+                ? 'border-br/60 opacity-60 cursor-default'
+                : 'border-br hover:border-ac/30 hover:shadow-md'
+            }`}
           >
             <span className={`absolute top-3 right-3 text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-md ${
               s.tag === 'FREE' ? 'text-muted bg-s1 border border-br'
               : s.tag === 'FREEMIUM' ? 'text-muted bg-s1 border border-br'
               : s.tag === 'NEW' ? 'text-white bg-ac'
+              : s.tag === '準備中' ? 'text-muted bg-s1 border border-br'
               : 'text-ac bg-acl border border-ac/15'
             }`}>
               {s.tag}
