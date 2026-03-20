@@ -286,19 +286,22 @@ export default function CreditsApp() {
               <div className="space-y-2.5">
                 {specialty.categories.map(cat => {
                   const earned = creditsByCategory[cat.id] || 0
-                  const max = cat.maxCredits || specialty.requiredCredits
-                  const pct = Math.min((earned / max) * 100, 100)
+                  const barMax = cat.maxCredits || (cat.minCredits ? Math.max(cat.minCredits * 2, earned) : specialty.requiredCredits)
+                  const pct = barMax > 0 ? Math.min((earned / barMax) * 100, 100) : 0
+                  const metMin = cat.minCredits ? earned >= cat.minCredits : true
                   return (
                     <div key={cat.id}>
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-xs" style={{ color: C.tx }}>{cat.name}</span>
                         <span className="text-xs font-medium" style={{ color: C.m }}>
-                          {earned}{cat.maxCredits ? ` / ${cat.maxCredits}` : ''}
+                          {earned}
+                          {cat.minCredits ? ` (必須${cat.minCredits}+)` : ''}
+                          {cat.maxCredits ? ` / 上限${cat.maxCredits}` : ''}
                         </span>
                       </div>
                       <div className="h-1.5 rounded-full overflow-hidden" style={{ background: C.s2 }}>
                         <div className="h-full rounded-full transition-all duration-300"
-                          style={{ width: `${pct}%`, background: C.ac }} />
+                          style={{ width: `${pct}%`, background: metMin ? C.ac : C.wn }} />
                       </div>
                     </div>
                   )
@@ -363,6 +366,9 @@ export default function CreditsApp() {
               <div className="text-xs space-y-1" style={{ color: C.tx }}>
                 <p>学会: {specialty.society}</p>
                 <p>必要単位: {specialty.requiredCredits}単位 / {specialty.renewalYears}年</p>
+                {specialty.notes && (
+                  <p style={{ color: C.m }}>{specialty.notes}</p>
+                )}
                 <a href={specialty.officialUrl} target="_blank" rel="noopener noreferrer"
                   className="inline-block mt-1 underline" style={{ color: C.ac }}>
                   公式サイトで確認 →

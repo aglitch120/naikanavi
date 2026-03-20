@@ -3,6 +3,9 @@
  *
  * ※ 本情報は参考値です。正確な要件は各学会公式サイトでご確認ください。
  * 各学会の更新要件は年度により変更される場合があります。
+ *
+ * Source: 日本専門医機構 (JMSB) 更新基準 + 各学会公式サイト
+ * 新制度では4カテゴリ合計50単位/5年が標準（一部例外あり）
  */
 
 // ── 型定義 ──
@@ -11,6 +14,7 @@ export interface CreditCategory {
   id: string
   name: string
   maxCredits?: number
+  minCredits?: number
 }
 
 export interface SpecialtyRequirement {
@@ -22,6 +26,7 @@ export interface SpecialtyRequirement {
   officialUrl: string
   categories: CreditCategory[]
   type: 'basic' | 'subspecialty'
+  notes?: string
 }
 
 export interface CreditEntry {
@@ -38,16 +43,14 @@ export interface UserCreditsData {
   targetDate?: string
 }
 
-// ── 共通カテゴリテンプレート ──
+// ── JMSB標準4カテゴリ ──
+// 新専門医機構制度の標準的なカテゴリ分類
 
-const COMMON_CATEGORIES: CreditCategory[] = [
-  { id: 'conference', name: '学会参加' },
-  { id: 'presentation', name: '学会発表' },
-  { id: 'paper', name: '論文発表' },
-  { id: 'lecture', name: '講演・教育活動' },
-  { id: 'seminar', name: '研修セミナー' },
-  { id: 'self_study', name: '自己学習（e-learning等）' },
-  { id: 'other', name: 'その他' },
+const JMSB_STANDARD_CATEGORIES: CreditCategory[] = [
+  { id: 'practice', name: '診療実績', maxCredits: 10, minCredits: 5 },
+  { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
+  { id: 'specialty_lecture', name: '領域講習' },
+  { id: 'academic', name: '学術業績・診療以外の活動' },
 ]
 
 // ── 基本領域19科 ──
@@ -61,12 +64,10 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     renewalYears: 5,
     officialUrl: 'https://www.naika.or.jp/',
     categories: [
-      { id: 'conference', name: '学会参加', maxCredits: 20 },
-      { id: 'presentation', name: '学会発表' },
-      { id: 'paper', name: '論文発表' },
-      { id: 'lecture', name: '教育講演' },
-      { id: 'seminar', name: 'セルフトレーニング' },
-      { id: 'other', name: 'その他' },
+      { id: 'practice', name: '診療実績', maxCredits: 10 },
+      { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習', minCredits: 20 },
+      { id: 'academic', name: '学術業績（セルフトレーニング含む）' },
     ],
     type: 'basic',
   },
@@ -78,12 +79,10 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     renewalYears: 5,
     officialUrl: 'https://jp.jssoc.or.jp/',
     categories: [
-      { id: 'conference', name: '学会参加' },
-      { id: 'presentation', name: '学会発表' },
-      { id: 'paper', name: '論文発表' },
-      { id: 'lecture', name: '教育セミナー' },
-      { id: 'surgery_count', name: '手術症例' },
-      { id: 'other', name: 'その他' },
+      { id: 'practice', name: '診療実績（NCD 100例）', maxCredits: 10 },
+      { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習（総論5必須）', minCredits: 10 },
+      { id: 'academic', name: '学術業績（学会参加・発表・論文）' },
     ],
     type: 'basic',
   },
@@ -91,10 +90,15 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     id: 'pediatrics',
     name: '小児科専門医',
     society: '日本小児科学会',
-    requiredCredits: 30,
+    requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jpeds.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績（100例）', maxCredits: 10 },
+      { id: 'common_lecture', name: '専門医共通講習', maxCredits: 20, minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習', minCredits: 20 },
+      { id: 'academic', name: '学術業績' },
+    ],
     type: 'basic',
   },
   {
@@ -104,7 +108,7 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jsog.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
   },
   {
@@ -114,8 +118,9 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jspn.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    notes: 'A群（特別講演）・B群（地方学会）・C群（地域学会）分類あり',
   },
   {
     id: 'dermatology',
@@ -124,8 +129,9 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.dermatol.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    notes: '2028年度以降: 診療実績10単位（100症例）必須',
   },
   {
     id: 'ophthalmology',
@@ -134,7 +140,7 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.nichigan.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
   },
   {
@@ -144,8 +150,14 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jibika.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績（200症例）', maxCredits: 10 },
+      { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習（総会+秋季大会必須）' },
+      { id: 'academic', name: '学術業績' },
+    ],
     type: 'basic',
+    notes: '3回以上更新者は40単位に軽減',
   },
   {
     id: 'urology',
@@ -154,23 +166,27 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.urol.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績', maxCredits: 10 },
+      { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習' },
+      { id: 'academic', name: '学術業績', maxCredits: 15, minCredits: 3 },
+    ],
     type: 'basic',
+    notes: '4回目以降は診療実績免除可（40単位）',
   },
   {
     id: 'orthopedics',
     name: '整形外科専門医',
     society: '日本整形外科学会',
-    requiredCredits: 60,
+    requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.joa.or.jp/',
     categories: [
-      { id: 'conference', name: '学会参加' },
-      { id: 'presentation', name: '学会発表' },
-      { id: 'paper', name: '論文発表' },
-      { id: 'lecture', name: '教育研修講演' },
-      { id: 'self_study', name: '自己学習' },
-      { id: 'other', name: 'その他' },
+      { id: 'practice', name: '診療実績（JOANR 100例）', maxCredits: 10, minCredits: 5 },
+      { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習' },
+      { id: 'academic', name: '学術業績' },
     ],
     type: 'basic',
   },
@@ -180,19 +196,20 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     society: '日本脳神経外科学会',
     requiredCredits: 50,
     renewalYears: 5,
-    officialUrl: 'https://jns.or.jp/',
-    categories: COMMON_CATEGORIES,
+    officialUrl: 'https://jns-official.jp/',
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
   },
   {
     id: 'plastic_surgery',
     name: '形成外科専門医',
     society: '日本形成外科学会',
-    requiredCredits: 30,
+    requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://jsprs.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    notes: '旧制度150点から新制度50単位に変更',
   },
   {
     id: 'radiology',
@@ -201,25 +218,29 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.radiology.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績' },
+      { id: 'common_lecture', name: '専門医共通講習（必修A3+必修B5）', minCredits: 8 },
+      { id: 'specialty_lecture', name: '領域講習' },
+      { id: 'academic', name: '学術業績' },
+    ],
     type: 'basic',
   },
   {
     id: 'anesthesiology',
     name: '麻酔科専門医',
     society: '日本麻酔科学会',
-    requiredCredits: 60,
+    requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://anesth.or.jp/',
     categories: [
-      { id: 'conference', name: '学会参加' },
-      { id: 'presentation', name: '学会発表' },
-      { id: 'paper', name: '論文発表' },
-      { id: 'lecture', name: '教育活動' },
-      { id: 'anesthesia_count', name: '麻酔症例' },
-      { id: 'other', name: 'その他' },
+      { id: 'practice', name: '診療実績（麻酔症例）', maxCredits: 10, minCredits: 5 },
+      { id: 'common_lecture', name: '専門医共通講習', minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習（学会主催10必須）', minCredits: 15 },
+      { id: 'academic', name: '学術業績', minCredits: 6 },
     ],
     type: 'basic',
+    notes: '2026年度より共通講習8単位必須',
   },
   {
     id: 'pathology',
@@ -228,7 +249,7 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://pathology.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
   },
   {
@@ -238,7 +259,7 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jslm.org/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
   },
   {
@@ -248,8 +269,9 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jaam.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    notes: 'e-learning（80%以上正解で単位付与）あり',
   },
   {
     id: 'rehabilitation',
@@ -258,17 +280,22 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jarm.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
   },
   {
     id: 'general_practice',
     name: '総合診療専門医',
-    society: '日本専門医機構',
+    society: '日本専門医機構（直轄）',
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://jmsb.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績', maxCredits: 10, minCredits: 5 },
+      { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習', minCredits: 20 },
+      { id: 'academic', name: '学術業績', maxCredits: 10 },
+    ],
     type: 'basic',
   },
 ]
@@ -283,8 +310,9 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.j-circ.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    notes: '必修研修30単位含む',
   },
   {
     id: 'gastroenterology',
@@ -293,7 +321,7 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jsge.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
   },
   {
@@ -303,18 +331,29 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jrs.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績' },
+      { id: 'common_lecture', name: '専門医共通講習', minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習（学術講演会・e-learning）', minCredits: 20 },
+      { id: 'academic', name: '学術業績' },
+    ],
     type: 'subspecialty',
   },
   {
     id: 'endocrinology',
     name: '内分泌代謝科専門医',
     society: '日本内分泌学会',
-    requiredCredits: 50,
+    requiredCredits: 60,
     renewalYears: 5,
     officialUrl: 'https://www.j-endo.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績' },
+      { id: 'designated_lecture', name: '指定講演', minCredits: 20 },
+      { id: 'conference', name: '講演会参加', minCredits: 30 },
+      { id: 'academic', name: '学術業績' },
+    ],
     type: 'subspecialty',
+    notes: '4回以上更新者は25単位に軽減',
   },
   {
     id: 'nephrology',
@@ -322,8 +361,8 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     society: '日本腎臓学会',
     requiredCredits: 50,
     renewalYears: 5,
-    officialUrl: 'https://www.jsn.or.jp/',
-    categories: COMMON_CATEGORIES,
+    officialUrl: 'https://jsn.or.jp/',
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
   },
   {
@@ -333,7 +372,7 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jshem.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
   },
   {
@@ -343,8 +382,9 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.ryumachi-jp.com/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    notes: '必須研修項目+症例報告書提出あり',
   },
   {
     id: 'gastro_surgery',
@@ -354,11 +394,10 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     renewalYears: 5,
     officialUrl: 'https://www.jsgs.or.jp/',
     categories: [
-      { id: 'conference', name: '学会参加' },
-      { id: 'presentation', name: '学会発表' },
-      { id: 'paper', name: '論文発表' },
-      { id: 'surgery_count', name: '手術症例' },
-      { id: 'other', name: 'その他' },
+      { id: 'practice', name: '手術症例（100例）' },
+      { id: 'common_lecture', name: '専門医共通講習', minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習（学会参加+e-learning 4分野必須）' },
+      { id: 'academic', name: '学術業績' },
     ],
     type: 'subspecialty',
   },
@@ -368,9 +407,14 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     society: '日本呼吸器外科学会',
     requiredCredits: 50,
     renewalYears: 5,
-    officialUrl: 'https://www.chest.or.jp/',
-    categories: COMMON_CATEGORIES,
+    officialUrl: 'https://chest.umin.jp/',
+    categories: [
+      { id: 'practice', name: '手術症例（100例）' },
+      { id: 'specialty_lecture', name: '研修実績', minCredits: 20 },
+      { id: 'academic', name: '学術業績' },
+    ],
     type: 'subspecialty',
+    notes: '独自基準: 研修実績20単位+手術100例',
   },
   {
     id: 'cardiovascular_surgery',
@@ -378,9 +422,15 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     society: '日本心臓血管外科学会',
     requiredCredits: 50,
     renewalYears: 5,
-    officialUrl: 'https://www.jscvs.org/',
-    categories: COMMON_CATEGORIES,
+    officialUrl: 'https://jscvs.or.jp/',
+    categories: [
+      { id: 'practice', name: '手術症例（100例）' },
+      { id: 'conference', name: '学会参加', minCredits: 5 },
+      { id: 'seminar', name: 'セミナー', minCredits: 3 },
+      { id: 'academic', name: '論文・学術業績', minCredits: 3 },
+    ],
     type: 'subspecialty',
+    notes: '独自基準あり',
   },
   {
     id: 'breast_surgery',
@@ -389,8 +439,9 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jbcs.gr.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    notes: '2024年度よりセミナー受講必須+研究業績+症例提出',
   },
   {
     id: 'infectious_disease',
@@ -399,8 +450,9 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.kansensho.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    notes: '15単位は本学会主催学術集会参加必須',
   },
   {
     id: 'allergy',
@@ -409,8 +461,9 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jsaweb.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    notes: '学術大会2回+総合アレルギー講習会1回（計30単位）必須',
   },
   {
     id: 'geriatrics',
@@ -419,7 +472,7 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jpn-geriat-soc.or.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
   },
   {
@@ -429,7 +482,12 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jsicm.org/',
-    categories: COMMON_CATEGORIES,
+    categories: [
+      { id: 'practice', name: '診療実績' },
+      { id: 'common_lecture', name: '専門医共通講習', minCredits: 3 },
+      { id: 'specialty_lecture', name: '領域講習（学術集会2回+地方1回必須）', maxCredits: 40 },
+      { id: 'academic', name: '学術業績' },
+    ],
     type: 'subspecialty',
   },
   {
@@ -439,8 +497,9 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jspc.gr.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    notes: '50症例+うち5例の詳細経過報告',
   },
   {
     id: 'palliative_care',
@@ -449,8 +508,9 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     requiredCredits: 50,
     renewalYears: 5,
     officialUrl: 'https://www.jspm.ne.jp/',
-    categories: COMMON_CATEGORIES,
+    categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    notes: '更新認定試験合格が必要',
   },
 ]
 
