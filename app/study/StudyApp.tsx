@@ -15,6 +15,8 @@ import {
   importDeckWithCards,
 } from './decks'
 import { parseApkgFile, ApkgImportResult } from './apkg-import'
+import ProModal from '@/components/pro/ProModal'
+import { useProStatus } from '@/components/pro/useProStatus'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -189,6 +191,11 @@ export default function StudyApp() {
   const [rankingData, setRankingData] = useState<RankingData | null>(null)
   const [rankingLoading, setRankingLoading] = useState(false)
 
+  // PRO states
+  const { isPro } = useProStatus()
+  const [showProModal, setShowProModal] = useState(false)
+  const [streakPromoShown, setStreakPromoShown] = useState(false)
+
   // ── Init ──
   useEffect(() => {
     setDayStats(getTodayStats())
@@ -196,6 +203,7 @@ export default function StudyApp() {
     setDecks(loadAllDecks())
     setStreak(getStreak())
     setExamData(loadExam())
+    setStreakPromoShown(localStorage.getItem('streak_promo_shown') === 'true')
   }, [])
 
   // ── Active deck ──
@@ -284,6 +292,12 @@ export default function StudyApp() {
       const updatedStreak = updateStreak()
       setStreak(updatedStreak)
       syncStreakToServer(updatedStreak)
+      // 7日達成PROモーダル
+      if (updatedStreak.count >= 7 && !isPro && !streakPromoShown) {
+        setStreakPromoShown(true)
+        localStorage.setItem('streak_promo_shown', 'true')
+        setTimeout(() => setShowProModal(true), 1500)
+      }
       setScreen('result')
     } else {
       setCurrentIdx(currentIdx + 1)
@@ -721,7 +735,31 @@ export default function StudyApp() {
           </div>
         )}
 
-        {/* FREE: ブラー部分は次コミットで追加 */}
+        {/* FREE: ブラー + ProGate */}
+        {!rankingData?.isPro && rankingData && rankingData.totalUsers > 3 && (
+          <div className="relative mt-4">
+            {/* ブラーされた追加行 */}
+            <div className="space-y-2 select-none" style={{ filter: 'blur(6px)' }}>
+              {[4, 5, 6].map(i => (
+                <div key={i} className="flex items-center gap-3 p-3 rounded-xl border border-br bg-s0">
+                  <span className="w-8 text-center text-sm font-bold text-muted">{i}</span>
+                  <div className="flex-1"><p className="text-sm font-bold text-muted">{'●●●●●●'}</p></div>
+                  <span className="text-sm font-bold text-muted">🔥 ??日</span>
+                </div>
+              ))}
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button
+                onClick={() => setShowProModal(true)}
+                className="px-5 py-2.5 bg-ac text-white rounded-xl text-sm font-bold shadow-lg hover:bg-ac/90 transition-colors"
+              >
+                🔒 PROで全ランキングを見る
+              </button>
+            </div>
+          </div>
+        )}
+
+        {showProModal && <ProModal feature="full_access" onClose={() => setShowProModal(false)} />}
       </div>
     )
   }
@@ -1536,6 +1574,9 @@ export default function StudyApp() {
           </div>
         </div>
       </div>
+
+      {/* 7日達成PROモーダル */}
+      {showProModal && <ProModal feature="full_access" onClose={() => setShowProModal(false)} />}
 
       {/* confetti animation */}
       <style jsx>{`
