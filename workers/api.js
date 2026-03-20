@@ -16,6 +16,7 @@
 //    PUT  /api/josler           — J-OSLERデータ保存
 //    GET  /api/josler           — J-OSLERデータ読み込み
 //    POST /api/interview-feedback — AI面接フィードバック（Workers AI）
+//    GET  /api/journal            — 論文フィード（PubMedキャッシュ）
 //    GET  /api/admin/orders     — 管理者: 注文一覧
 //    GET  /api/admin/users      — 管理者: ユーザー一覧
 //    POST /api/admin/add-order  — 管理者: 手動で注文追加
@@ -688,6 +689,115 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       } catch (err) {
         console.error("Workers AI error:", err);
         return json({ error: "AI processing failed", detail: err.message }, 500, request);
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    //  GET /api/journal — 論文フィード（サーバーサイドキャッシュ）
+    // ═══════════════════════════════════════════════════════════════
+    if (path === "/api/journal" && request.method === "GET") {
+      const CACHE_KEY = "journal:articles";
+      const CACHE_TTL = 3600; // 1時間（秒）
+
+      // KVキャッシュ確認
+      try {
+        const cached = await env.IWOR_KV.get(CACHE_KEY, "json");
+        if (cached && cached.fetchedAt) {
+          const age = (Date.now() - cached.fetchedAt) / 1000;
+          if (age < CACHE_TTL) {
+            return json({ ok: true, articles: cached.articles, cached: true, age: Math.round(age) }, 200, request);
+          }
+        }
+      } catch (e) {
+        // キャッシュ読み取り失敗は無視してフェッチへ
+      }
+
+      // PubMedから取得
+      const JOURNALS = [
+        { id:"lancet", shortName:"Lancet", issn:"0140-6736", impactFactor:98.4 },
+        { id:"nejm", shortName:"NEJM", issn:"0028-4793", impactFactor:78.5 },
+        { id:"jama", shortName:"JAMA", issn:"0098-7484", impactFactor:55.0 },
+        { id:"bmj", shortName:"BMJ", issn:"0959-8138", impactFactor:42.7 },
+        { id:"nat-med", shortName:"Nat Med", issn:"1078-8956", impactFactor:82.9 },
+        { id:"ann-intern", shortName:"Ann Intern Med", issn:"0003-4819", impactFactor:39.2 },
+        { id:"lancet-dig", shortName:"Lancet Dig Health", issn:"2589-7500", impactFactor:23.8 },
+        { id:"jama-intern", shortName:"JAMA Intern Med", issn:"2168-6106", impactFactor:39.2 },
+        { id:"plos-med", shortName:"PLOS Med", issn:"1549-1676", impactFactor:15.8 },
+        { id:"jacc", shortName:"JACC", issn:"0735-1097", impactFactor:21.7 },
+        { id:"eur-heart", shortName:"Eur Heart J", issn:"0195-668X", impactFactor:37.6 },
+        { id:"circulation", shortName:"Circulation", issn:"0009-7322", impactFactor:35.5 },
+        { id:"jco", shortName:"JCO", issn:"0732-183X", impactFactor:42.1 },
+        { id:"lancet-onc", shortName:"Lancet Oncol", issn:"1470-2045", impactFactor:41.3 },
+        { id:"lancet-resp", shortName:"Lancet Respir Med", issn:"2213-2600", impactFactor:38.9 },
+        { id:"ajrccm", shortName:"AJRCCM", issn:"1073-449X", impactFactor:19.3 },
+        { id:"lancet-id", shortName:"Lancet Infect Dis", issn:"1473-3099", impactFactor:36.4 },
+        { id:"cid", shortName:"CID", issn:"1058-4838", impactFactor:11.8 },
+        { id:"gastro", shortName:"Gastroenterology", issn:"0016-5085", impactFactor:25.7 },
+        { id:"hepatology", shortName:"Hepatology", issn:"0270-9139", impactFactor:12.9 },
+        { id:"jasn", shortName:"JASN", issn:"1046-6673", impactFactor:10.3 },
+        { id:"kid-int", shortName:"Kidney Int", issn:"0085-2538", impactFactor:14.8 },
+        { id:"lancet-neuro", shortName:"Lancet Neurol", issn:"1474-4422", impactFactor:46.3 },
+        { id:"neurology", shortName:"Neurology", issn:"0028-3878", impactFactor:8.8 },
+        { id:"ccm", shortName:"Crit Care Med", issn:"0090-3493", impactFactor:7.7 },
+        { id:"intensive-care", shortName:"Intensive Care Med", issn:"0342-4642", impactFactor:27.1 },
+        { id:"diabetes-care", shortName:"Diabetes Care", issn:"0149-5992", impactFactor:14.8 },
+        { id:"blood", shortName:"Blood", issn:"0006-4971", impactFactor:20.3 },
+        { id:"ard", shortName:"Ann Rheum Dis", issn:"0003-4967", impactFactor:20.3 },
+      ];
+
+      try {
+        const issns = JOURNALS.map(j => j.issn);
+        const q = encodeURIComponent(`(${issns.map(i => `${i}[ISSN]`).join(" OR ")}) AND ("last 60 days"[dp])`);
+        const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=100&sort=date&retmode=json`;
+        const sRes = await fetch(sUrl);
+        const sData = await sRes.json();
+        const ids = sData?.esearchresult?.idlist || [];
+
+        if (ids.length === 0) {
+          return json({ ok: true, articles: [], cached: false }, 200, request);
+        }
+
+        const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(",")}&retmode=json`;
+        const fRes = await fetch(fUrl);
+        const fData = await fRes.json();
+
+        const articles = [];
+        for (const id of ids) {
+          const d = fData?.result?.[id];
+          if (!d || !d.title) continue;
+          const jTitle = (d.fulljournalname || d.source || "").toLowerCase();
+          const mj = JOURNALS.find(j =>
+            jTitle.includes(j.shortName.toLowerCase()) || d.issn === j.issn
+          );
+          articles.push({
+            pmid: id,
+            title: d.title || "",
+            authors: (d.authors || []).slice(0, 3).map(a => a.name).join(", ") + ((d.authors || []).length > 3 ? " et al." : ""),
+            journal: mj?.shortName || d.source || "",
+            journalId: mj?.id || "",
+            date: (d.pubdate || d.sortpubdate || "").split(" ").slice(0, 2).join(" "),
+            doi: (d.elocationid || "").replace("doi: ", ""),
+            impactFactor: mj?.impactFactor || 0,
+          });
+        }
+
+        articles.sort((a, b) => b.impactFactor - a.impactFactor || b.date.localeCompare(a.date));
+
+        // KVに保存
+        const cacheData = { articles, fetchedAt: Date.now() };
+        await env.IWOR_KV.put(CACHE_KEY, JSON.stringify(cacheData));
+
+        return json({ ok: true, articles, cached: false }, 200, request);
+      } catch (err) {
+        console.error("Journal fetch error:", err);
+        // フェッチ失敗時は古いキャッシュを返す
+        try {
+          const stale = await env.IWOR_KV.get(CACHE_KEY, "json");
+          if (stale?.articles) {
+            return json({ ok: true, articles: stale.articles, cached: true, stale: true }, 200, request);
+          }
+        } catch (e) {}
+        return json({ error: "PubMed fetch failed" }, 502, request);
       }
     }
 

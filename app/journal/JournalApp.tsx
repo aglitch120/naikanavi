@@ -23,45 +23,17 @@ interface Article {
   impactFactor: number
 }
 
-// ── PubMed E-utilities (free, no API key) ──
-async function fetchPubMed(issns: string[], max = 50): Promise<Article[]> {
-  if (issns.length === 0) return []
+// ── Worker API（サーバーサイドキャッシュ経由） ──
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
+
+async function fetchArticlesFromCache(): Promise<Article[]> {
   try {
-    const jq = issns.map(i => `${i}[ISSN]`).join('+OR+')
-    const q = encodeURIComponent(`(${issns.map(i => `${i}[ISSN]`).join(' OR ')}) AND ("last 60 days"[dp])`)
-    const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=${max}&sort=date&retmode=json`
-    const sRes = await fetch(sUrl)
-    const sData = await sRes.json()
-    const ids: string[] = sData?.esearchresult?.idlist || []
-    if (ids.length === 0) return []
-
-    const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(',')}&retmode=json`
-    const fRes = await fetch(fUrl)
-    const fData = await fRes.json()
-
-    const articles: Article[] = []
-    for (const id of ids) {
-      const d = fData?.result?.[id]
-      if (!d || !d.title) continue
-      const jTitle = d.fulljournalname || d.source || ''
-      const mj = JOURNALS.find(j =>
-        jTitle.toLowerCase().includes(j.name.toLowerCase()) ||
-        jTitle.toLowerCase().includes(j.shortName.toLowerCase())
-      )
-      articles.push({
-        pmid: id,
-        title: d.title || '',
-        authors: (d.authors || []).slice(0, 3).map((a: any) => a.name).join(', ') + ((d.authors || []).length > 3 ? ' et al.' : ''),
-        journal: mj?.shortName || jTitle,
-        journalId: mj?.id || '',
-        date: (d.pubdate || d.sortpubdate || '').split(' ').slice(0, 2).join(' '),
-        doi: (d.elocationid || '').replace('doi: ', ''),
-        impactFactor: mj?.impactFactor || 0,
-      })
-    }
-    return articles.sort((a, b) => b.impactFactor - a.impactFactor || b.date.localeCompare(a.date))
+    const res = await fetch(`${API_BASE}/api/journal`)
+    const data = await res.json()
+    if (data.ok && Array.isArray(data.articles)) return data.articles
+    return []
   } catch (e) {
-    console.error('PubMed error:', e)
+    console.error('Journal API error:', e)
     return []
   }
 }
@@ -90,8 +62,8 @@ export default function JournalApp() {
   })
   const [showBookmarks, setShowBookmarks] = useState(false)
 
-  // ── Compute active ISSNs from filters ──
-  const activeIssns = useMemo(() => {
+  // ── Compute active journal IDs from filters ──
+  const activeJournalIds = useMemo(() => {
     let jList: Journal[] = []
     if (filterMode === 'top4') {
       jList = JOURNALS.filter(j => TOP4_IDS.includes(j.id))
@@ -103,19 +75,19 @@ export default function JournalApp() {
       jList = JOURNALS.filter(j => selectedJournals.has(j.id))
     }
     if (ifMin > 0) jList = jList.filter(j => j.impactFactor >= ifMin)
-    return jList.map(j => j.issn)
+    return new Set(jList.map(j => j.id))
   }, [filterMode, selectedJournals, selectedSpecialties, ifMin])
 
-  // ── Fetch ──
+  // ── Fetch（1回だけ、全記事をWorker APIキャッシュから取得）──
   const doFetch = useCallback(async () => {
     setLoading(true); setError('')
     try {
-      const res = await fetchPubMed(activeIssns)
+      const res = await fetchArticlesFromCache()
       setArticles(res)
-      if (res.length === 0) setError('該当する論文が見つかりませんでした。フィルタを変更してお試しください。')
+      if (res.length === 0) setError('論文の取得に失敗しました。しばらく待ってから再取得してください。')
     } catch { setError('取得に失敗しました。') }
     setLoading(false)
-  }, [activeIssns])
+  }, [])
 
   useEffect(() => { doFetch() }, [doFetch])
 
@@ -148,12 +120,12 @@ export default function JournalApp() {
     })
   }, [])
 
-  // ── Filtered articles (IF slider applied client-side too) ──
+  // ── Filtered articles (journal + IF applied client-side) ──
   const filteredArticles = useMemo(() => {
-    let list = articles
+    let list = articles.filter(a => activeJournalIds.has(a.journalId))
     if (ifMin > 0) list = list.filter(a => a.impactFactor >= ifMin)
     return list
-  }, [articles, ifMin])
+  }, [articles, activeJournalIds, ifMin])
 
   // ── Visible articles (FREE/PRO gate) ──
   const visibleArticles = showBookmarks
@@ -183,7 +155,7 @@ export default function JournalApp() {
           </div>
           <div className="flex-1 min-w-0">
             <h1 className="text-xl font-bold text-tx">論文フィード</h1>
-            <p className="text-[11px] text-muted">PubMedから最新論文をリアルタイム取得。{JOURNALS.length}誌対応。</p>
+            <p className="text-[11px] text-muted">PubMedから最新論文を定期取得。{JOURNALS.length}誌対応。</p>
           </div>
           <FavoriteButton slug="app-journal" title="論文フィード" href="/journal" type="app" size="sm" />
         </div>
@@ -305,7 +277,7 @@ export default function JournalApp() {
       {loading && (
         <div className="bg-s0 border border-br rounded-xl p-8 text-center mb-4">
           <div className="w-8 h-8 border-2 border-br border-t-ac rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-xs text-muted">PubMedから論文を取得中...</p>
+          <p className="text-xs text-muted">論文を取得中...</p>
         </div>
       )}
       {error && !loading && (
