@@ -129,35 +129,39 @@ export default function AppPage() {
 
       {/* その他サービス */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {rest.map(s => (
-          <Link
-            key={s.href}
-            href={s.tag === '準備中' ? '#' : s.href}
-            onClick={s.tag === '準備中' ? (e) => e.preventDefault() : undefined}
-            className={`group relative rounded-2xl border bg-s0 p-5 md:p-6 transition-all ${
-              s.tag === '準備中'
-                ? 'border-br/60 opacity-60 cursor-default'
-                : 'border-br hover:border-ac/30 hover:shadow-md'
-            }`}
-          >
-            <span className={`absolute top-3 right-3 text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-md ${
-              s.tag === 'FREE' ? 'text-muted bg-s1 border border-br'
-              : s.tag === 'FREEMIUM' ? 'text-muted bg-s1 border border-br'
-              : s.tag === 'NEW' ? 'text-white bg-ac'
-              : s.tag === '準備中' ? 'text-muted bg-s1 border border-br'
-              : 'text-ac bg-acl border border-ac/15'
-            }`}>
-              {s.tag}
-            </span>
-            <div className="w-10 h-10 rounded-xl bg-s1 border border-br flex items-center justify-center mb-3">
-              <svg className="w-5 h-5 text-ac" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                {s.icon}
-              </svg>
-            </div>
-            <h3 className="text-sm font-bold text-tx mb-1 group-hover:text-ac transition-colors">{s.title}</h3>
-            <p className="text-[11px] text-muted leading-relaxed">{s.sub}</p>
-          </Link>
-        ))}
+        {rest.map(s => {
+          const isDisabled = s.tag === '準備中'
+          const cls = `group relative rounded-2xl border bg-s0 p-5 md:p-6 transition-all ${
+            isDisabled
+              ? 'border-br/60 opacity-60 cursor-default'
+              : 'border-br hover:border-ac/30 hover:shadow-md'
+          }`
+          const inner = (
+            <>
+              <span className={`absolute top-3 right-3 text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-md ${
+                s.tag === 'FREE' ? 'text-muted bg-s1 border border-br'
+                : s.tag === 'FREEMIUM' ? 'text-muted bg-s1 border border-br'
+                : s.tag === 'NEW' ? 'text-white bg-ac'
+                : s.tag === '準備中' ? 'text-muted bg-s1 border border-br'
+                : 'text-ac bg-acl border border-ac/15'
+              }`}>
+                {s.tag}
+              </span>
+              <div className="w-10 h-10 rounded-xl bg-s1 border border-br flex items-center justify-center mb-3">
+                <svg className="w-5 h-5 text-ac" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                  {s.icon}
+                </svg>
+              </div>
+              <h3 className="text-sm font-bold text-tx mb-1 group-hover:text-ac transition-colors">{s.title}</h3>
+              <p className="text-[11px] text-muted leading-relaxed">{s.sub}</p>
+            </>
+          )
+          return isDisabled ? (
+            <div key={s.href} className={cls}>{inner}</div>
+          ) : (
+            <Link key={s.href} href={s.href} className={cls}>{inner}</Link>
+          )
+        })}
       </div>
     </main>
   )

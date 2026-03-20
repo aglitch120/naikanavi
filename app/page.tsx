@@ -159,39 +159,36 @@ export default function HomePage() {
       {/* ═══ App Grid (10 icons: 3cols mobile / 5cols desktop) ═══ */}
       <section className="px-4 mb-12">
         <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
-          {apps.map(app => (
-            <Link
-              key={app.href}
-              href={app.badge === '準備中' ? '#' : app.href}
-              className={`group relative flex flex-col items-center gap-2 rounded-2xl border bg-s0 p-4 md:p-5 transition-all ${
-                app.badge === '準備中'
-                  ? 'border-br/60 opacity-60 cursor-default'
-                  : 'border-br hover:border-ac/30 hover:shadow-md'
-              }`}
-              onClick={app.badge === '準備中' ? (e: React.MouseEvent) => e.preventDefault() : undefined}
-            >
-              {/* Badge */}
-              <span className={`absolute top-2 right-2 text-[9px] font-bold tracking-wide px-1.5 py-0.5 rounded-md ${badgeStyle(app.badge)}`}>
-                {app.badge}
-              </span>
-
-              {/* Icon */}
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                app.badge === '準備中'
-                  ? 'bg-s1 text-muted'
-                  : 'bg-s1 text-ac group-hover:bg-acl'
-              }`}>
-                {app.icon}
-              </div>
-
-              {/* Label */}
-              <span className={`text-xs font-bold text-center leading-tight transition-colors ${
-                app.badge === '準備中' ? 'text-muted' : 'text-tx group-hover:text-ac'
-              }`}>
-                {app.label}
-              </span>
-            </Link>
-          ))}
+          {apps.map(app => {
+            const isDisabled = app.badge === '準備中'
+            const cls = `group relative flex flex-col items-center gap-2 rounded-2xl border bg-s0 p-4 md:p-5 transition-all ${
+              isDisabled
+                ? 'border-br/60 opacity-60 cursor-default'
+                : 'border-br hover:border-ac/30 hover:shadow-md'
+            }`
+            const inner = (
+              <>
+                <span className={`absolute top-2 right-2 text-[9px] font-bold tracking-wide px-1.5 py-0.5 rounded-md ${badgeStyle(app.badge)}`}>
+                  {app.badge}
+                </span>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
+                  isDisabled ? 'bg-s1 text-muted' : 'bg-s1 text-ac group-hover:bg-acl'
+                }`}>
+                  {app.icon}
+                </div>
+                <span className={`text-xs font-bold text-center leading-tight transition-colors ${
+                  isDisabled ? 'text-muted' : 'text-tx group-hover:text-ac'
+                }`}>
+                  {app.label}
+                </span>
+              </>
+            )
+            return isDisabled ? (
+              <div key={app.href} className={cls}>{inner}</div>
+            ) : (
+              <Link key={app.href} href={app.href} className={cls}>{inner}</Link>
+            )
+          })}
         </div>
       </section>
 
