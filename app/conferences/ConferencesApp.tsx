@@ -1,13 +1,29 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useCallback } from 'react'
 import AppHeader from '@/components/AppHeader'
 import { CONFERENCES_2026, Conference, getSpecialtyCategory, SPECIALTY_COLORS } from '@/lib/conferences-data'
 
 type ViewMode = 'list' | 'calendar'
+type ListFilter = 'all' | 'mylist'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
+
+// localStorage keys
+const ATTEND_KEY = 'iwor_conf_attending'
+
+function getLocalAttending(): string[] {
+  try {
+    const raw = localStorage.getItem(ATTEND_KEY)
+    return raw ? JSON.parse(raw) : []
+  } catch { return [] }
+}
+
+function setLocalAttending(ids: string[]) {
+  localStorage.setItem(ATTEND_KEY, JSON.stringify(ids))
+}
 
 function formatDateRange(start: string, end: string): string {
   const s = new Date(start + 'T00:00:00')
@@ -30,6 +46,63 @@ function getDaysUntil(dateStr: string): number {
 export default function ConferencesApp() {
   const [viewMode, setViewMode] = useState<ViewMode>('list')
   const [filterArea, setFilterArea] = useState<string>('all')
+  const [listFilter, setListFilter] = useState<ListFilter>('all')
+  const [attending, setAttending] = useState<string[]>([])
+  const [proLimitHit, setProLimitHit] = useState(false)
+
+  // Init: load attending from localStorage, then sync from server
+  useEffect(() => {
+    setAttending(getLocalAttending())
+    const token = localStorage.getItem('iwor_session_token')
+    if (token) {
+      fetch(`${API_BASE}/api/conferences/my`, {
+        headers: { 'Authorization': `Bearer ${token}` },
+      }).then(r => r.ok ? r.json() : null).then(data => {
+        if (data?.attending) {
+          setAttending(data.attending)
+          setLocalAttending(data.attending)
+        }
+      }).catch(() => {})
+    }
+  }, [])
+
+  const toggleAttend = useCallback((confId: string) => {
+    const isAttending = attending.includes(confId)
+    const action = isAttending ? 'remove' : 'add'
+    const newList = isAttending
+      ? attending.filter(id => id !== confId)
+      : [...attending, confId]
+
+    // Optimistic update
+    setAttending(newList)
+    setLocalAttending(newList)
+    setProLimitHit(false)
+
+    // Server sync
+    const token = localStorage.getItem('iwor_session_token')
+    if (token) {
+      fetch(`${API_BASE}/api/conferences/attend`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify({ conferenceId: confId, action }),
+      }).then(async r => {
+        if (r.status === 403) {
+          // PRO制限 — ロールバック
+          setAttending(attending)
+          setLocalAttending(attending)
+          setProLimitHit(true)
+          return
+        }
+        if (r.ok) {
+          const data = await r.json()
+          if (data.attending) {
+            setAttending(data.attending)
+            setLocalAttending(data.attending)
+          }
+        }
+      }).catch(() => {})
+    }
+  }, [attending])
 
   // ソート: 日付順
   const sorted = useMemo(() => {
@@ -37,8 +110,11 @@ export default function ConferencesApp() {
     if (filterArea !== 'all') {
       list = list.filter(c => c.specialtyArea === filterArea)
     }
+    if (listFilter === 'mylist') {
+      list = list.filter(c => attending.includes(c.id))
+    }
     return list.sort((a, b) => a.startDate.localeCompare(b.startDate))
-  }, [filterArea])
+  }, [filterArea, listFilter, attending])
 
   // 月ごとにグループ
   const grouped = useMemo(() => {
@@ -114,6 +190,41 @@ export default function ConferencesApp() {
         ))}
       </div>
 
+      {/* マイリストフィルタ */}
+      <div className="flex gap-2 mb-4">
+        <button
+          onClick={() => setListFilter('all')}
+          className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+          style={{
+            background: listFilter === 'all' ? MC : 'var(--s0)',
+            color: listFilter === 'all' ? '#fff' : 'var(--m)',
+            border: `1px solid ${listFilter === 'all' ? MC : 'var(--br)'}`,
+          }}
+        >
+          全て（{CONFERENCES_2026.length}）
+        </button>
+        <button
+          onClick={() => setListFilter('mylist')}
+          className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+          style={{
+            background: listFilter === 'mylist' ? MC : 'var(--s0)',
+            color: listFilter === 'mylist' ? '#fff' : 'var(--m)',
+            border: `1px solid ${listFilter === 'mylist' ? MC : 'var(--br)'}`,
+          }}
+        >
+          📋 マイリスト（{attending.length}）
+        </button>
+      </div>
+
+      {/* PRO制限ヒット */}
+      {proLimitHit && (
+        <div className="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-200">
+          <p className="text-xs text-amber-800 font-bold">FREE会員は3学会まで</p>
+          <p className="text-[11px] text-amber-600 mt-0.5">PRO会員なら無制限に追加できます</p>
+          <a href="/pro" className="text-[11px] font-bold text-ac mt-1 inline-block">PRO会員について →</a>
+        </div>
+      )}
+
       {/* リスト表示 */}
       {viewMode === 'list' && (
         <div className="space-y-6">
@@ -124,7 +235,7 @@ export default function ConferencesApp() {
                 <h3 className="text-sm font-bold text-tx mb-3">{y}年{parseInt(m)}月</h3>
                 <div className="space-y-3">
                   {confs.map(conf => (
-                    <ConferenceCard key={conf.id} conf={conf} />
+                    <ConferenceCard key={conf.id} conf={conf} isAttending={attending.includes(conf.id)} onToggleAttend={toggleAttend} />
                   ))}
                 </div>
               </div>
@@ -135,13 +246,13 @@ export default function ConferencesApp() {
 
       {/* カレンダー表示 */}
       {viewMode === 'calendar' && (
-        <CalendarGrid conferences={sorted} />
+        <CalendarGrid conferences={sorted} attending={attending} onToggleAttend={toggleAttend} />
       )}
     </div>
   )
 }
 
-function ConferenceCard({ conf }: { conf: Conference }) {
+function ConferenceCard({ conf, isAttending, onToggleAttend }: { conf: Conference; isAttending?: boolean; onToggleAttend?: (id: string) => void }) {
   const days = getDaysUntil(conf.startDate)
   const cat = getSpecialtyCategory(conf.specialtyArea)
   const catColor = SPECIALTY_COLORS[cat]
@@ -185,6 +296,19 @@ function ConferenceCard({ conf }: { conf: Conference }) {
               会長: {conf.president}{conf.presidentAffiliation && `（${conf.presidentAffiliation}）`}
             </p>
           )}
+          {onToggleAttend && !isPast && (
+            <button
+              onClick={(e) => { e.stopPropagation(); onToggleAttend(conf.id) }}
+              className="mt-2 text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
+              style={{
+                background: isAttending ? MCL : 'transparent',
+                color: isAttending ? MC : 'var(--m)',
+                borderColor: isAttending ? `${MC}40` : 'var(--br)',
+              }}
+            >
+              {isAttending ? '⭐ 参加予定' : '☆ 参加予定に追加'}
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -192,7 +316,7 @@ function ConferenceCard({ conf }: { conf: Conference }) {
 }
 
 // ── カレンダーグリッド ──
-function CalendarGrid({ conferences }: { conferences: Conference[] }) {
+function CalendarGrid({ conferences, attending, onToggleAttend }: { conferences: Conference[]; attending: string[]; onToggleAttend: (id: string) => void }) {
   const [currentMonth, setCurrentMonth] = useState(() => {
     // 最も近い未来の学会の月、なければ4月
     const now = new Date()
@@ -322,7 +446,7 @@ function CalendarGrid({ conferences }: { conferences: Conference[] }) {
         <div className="mt-4 space-y-2">
           <p className="text-xs font-bold text-muted">{month + 1}月の学会（{monthConfs.length}件）</p>
           {monthConfs.map(c => (
-            <ConferenceCard key={c.id} conf={c} />
+            <ConferenceCard key={c.id} conf={c} isAttending={attending.includes(c.id)} onToggleAttend={onToggleAttend} />
           ))}
         </div>
       )}
