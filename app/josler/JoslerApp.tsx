@@ -239,17 +239,19 @@ export default function JoslerApp() {
   const ModeSwitch = () => (
     <div style={{ display: 'flex', background: C.s1, borderRadius: 10, padding: 3, margin: '12px 18px 0' }}>
       {([
-        { id: 'epoc' as RecordMode, label: '初期研修', sub: 'EPOC' },
-        { id: 'josler' as RecordMode, label: '内科専攻', sub: 'J-OSLER' },
-      ]).map(m => (
-        <button key={m.id} onClick={() => switchMode(m.id)} style={{
-          flex: 1, padding: '8px 4px', border: 'none', borderRadius: 8, cursor: 'pointer',
-          background: mode === m.id ? C.s0 : 'transparent',
-          boxShadow: mode === m.id ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+        { id: 'epoc' as RecordMode, label: '初期研修', sub: 'EPOC', disabled: false },
+        { id: 'josler' as RecordMode, label: '内科専攻', sub: 'J-OSLER', disabled: false },
+        { id: null, label: '外科専攻', sub: '準備中', disabled: true },
+      ]).map((m, i) => (
+        <button key={i} onClick={() => !m.disabled && m.id && switchMode(m.id)} style={{
+          flex: 1, padding: '8px 4px', border: 'none', borderRadius: 8, cursor: m.disabled ? 'default' : 'pointer',
+          background: !m.disabled && mode === m.id ? C.s0 : 'transparent',
+          boxShadow: !m.disabled && mode === m.id ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+          opacity: m.disabled ? 0.4 : 1,
           transition: 'all .2s',
         }}>
-          <div style={{ fontSize: 12, fontWeight: mode === m.id ? 700 : 400, color: mode === m.id ? C.ac : C.m }}>{m.label}</div>
-          <div style={{ fontSize: 10, color: mode === m.id ? C.ac : C.br2 }}>{m.sub}</div>
+          <div style={{ fontSize: 12, fontWeight: !m.disabled && mode === m.id ? 700 : 400, color: !m.disabled && mode === m.id ? C.ac : C.m }}>{m.label}</div>
+          <div style={{ fontSize: 10, color: !m.disabled && mode === m.id ? C.ac : C.br2 }}>{m.sub}</div>
         </button>
       ))}
     </div>
@@ -279,9 +281,11 @@ export default function JoslerApp() {
           <span style={{ color: C.tx, fontWeight: 500 }}>研修記録</span>
         </nav>
         <ModeSwitch />
-        <div style={{ background: C.s0, borderBottom: `1px solid ${C.br}`, padding: '12px 18px', display: 'flex', alignItems: 'center', gap: 10, position: 'sticky', top: 56, zIndex: 40 }}>
-          <span style={{ fontWeight: 700, fontSize: 17 }}>EPOC 研修記録</span>
-          <FavoriteButton slug="app-josler" title="研修記録" href="/josler" type="app" size="sm" />
+        <div style={{ padding: '12px 18px 0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+            <span style={{ fontSize: 18, fontWeight: 700, color: C.tx }}>EPOC 研修記録</span>
+            <FavoriteButton slug="app-josler" title="研修記録" href="/josler" type="app" size="sm" />
+          </div>
         </div>
         <div style={{ display: 'flex', background: C.s0, borderBottom: `1px solid ${C.br}`, overflowX: 'auto' }}>
           {EPOC_TABS.map(t => (
@@ -316,16 +320,18 @@ export default function JoslerApp() {
       </nav>
       <ModeSwitch />
       {/* Header */}
-      <div style={{ background: C.s0, borderBottom: `1px solid ${C.br}`, padding: '12px 18px', display: 'flex', alignItems: 'center', gap: 10, position: 'sticky', top: 56, zIndex: 40 }}>
-        <span style={{ fontWeight: 700, fontSize: 17 }}>J-OSLER管理</span>
-        <span style={{ fontSize: 11, color: C.ac, background: C.acl, padding: '2px 7px', borderRadius: 4, fontWeight: 600 }}>PRO</span>
-        <FavoriteButton slug="app-josler" title="J-OSLER管理" href="/josler" type="app" size="sm" />
-        <span style={{ flex: 1 }} />
-        {isPro && (
-          <span style={{ fontSize: 11, padding: '3px 8px', borderRadius: 12, fontFamily: 'monospace', background: saveStatus === 'saved' ? '#DCFCE7' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#FEF3C7' : saveStatus === 'error' ? '#FEE2E2' : '#EEF4FF', color: saveStatus === 'saved' ? '#166534' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#92400E' : saveStatus === 'error' ? '#991B1B' : '#1E40AF', transition: 'all .3s' }}>
-            {saveStatus === 'saved' ? '✓ 保存済み' : saveStatus === 'saving' || saveStatus === 'dirty' ? '⟳ 保存中…' : saveStatus === 'error' ? '✕ 保存失敗' : '☁ オフライン'}
-          </span>
-        )}
+      <div style={{ padding: '12px 18px 0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+          <span style={{ fontSize: 18, fontWeight: 700, color: C.tx }}>J-OSLER管理</span>
+          <span style={{ fontSize: 10, color: C.ac, background: C.acl, padding: '2px 7px', borderRadius: 4, fontWeight: 700 }}>PRO</span>
+          <FavoriteButton slug="app-josler" title="J-OSLER管理" href="/josler" type="app" size="sm" />
+          <span style={{ flex: 1 }} />
+          {isPro && (
+            <span style={{ fontSize: 11, padding: '3px 8px', borderRadius: 12, fontFamily: 'monospace', background: saveStatus === 'saved' ? '#DCFCE7' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#FEF3C7' : saveStatus === 'error' ? '#FEE2E2' : '#EEF4FF', color: saveStatus === 'saved' ? '#166534' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#92400E' : saveStatus === 'error' ? '#991B1B' : '#1E40AF', transition: 'all .3s' }}>
+              {saveStatus === 'saved' ? '✓ 保存済み' : saveStatus === 'saving' || saveStatus === 'dirty' ? '⟳ 保存中…' : saveStatus === 'error' ? '✕ 保存失敗' : '☁ オフライン'}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Tabs */}
