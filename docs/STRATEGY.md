@@ -113,10 +113,10 @@
 /compare/[slug]      個別比較 24カテゴリ 155薬剤
 
 /record/             研修記録（EPOC + J-OSLER統合）
-/record/epoc/        EPOC管理（初期研修医）← 新規
-/josler/             J-OSLER管理（内科専攻医）← 既存
+/record/epoc/        EPOC管理（初期研修医）
+/josler/             J-OSLER管理（内科専攻医）
 
-/credits/            専門医単位（自己入力型カウンター）← 新規
+/credits/            専門医単位（自己入力型カウンター）
 /conferences/        学会カレンダー
 /matching/           マッチング・転職対策（AI面接削除済み）
 /journal/            論文フィード

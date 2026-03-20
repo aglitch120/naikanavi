@@ -23,9 +23,25 @@
 
 ## ルール
 
+### 基本原則
 1. **情報を追加するとき**: このREADMEで持ち主を確認 → そのファイルにのみ書く
-2. **コアバリューに関わる判断をするとき**: CORE_VALUE.md を最上位基準として参照
-3. **他ファイルから参照するとき**: 内容をコピーせず「→ STRATEGY.md 参照」と書く
-4. **価格を変更するとき**: STRATEGY.md のみ変更
-5. **ロードマップを変更するとき**: STRATEGY.md のみ変更
-6. **ツール仕様を変更するとき**: PRODUCT.md のみ変更
+2. **他ファイルから参照するとき**: 内容をコピーせず「→ STRATEGY.md 参照」と書く
+3. **コアバリューに関わる判断をするとき**: CORE_VALUE.md を最上位基準として参照
+
+### 変更時の連動ルール（これを守れば矛盾が起きない）
+
+| やったこと | 更新必須ファイル |
+|-----------|----------------|
+| サービスを追加/削除した | STRATEGY.md(サイト構造・URL), PRODUCT.md(仕様), TODO.md(タスク), FEATURE_REQUESTS_v6.md |
+| 価格を変更した | STRATEGY.md のみ |
+| ツール仕様を変更した | PRODUCT.md のみ |
+| 新ファイルをdocs/に追加した | **このREADME** のファイル一覧に追加 |
+| docs/ファイルを削除した | **このREADME** のファイル一覧から削除 |
+| タスクを完了した | TODO.md + FEATURE_REQUESTS_v6.md 両方 |
+| ホーム画面UIを変更した | STRATEGY.md(サイト構造) |
+| 技術スタックを変更した | IMPLEMENTATION.md(概要), OPERATIONS.md(詳細) |
+| デザインを変更した | DESIGN_SYSTEM.md のみ |
+| コストが変わった | OPERATIONS.md のみ |
+
+### push前チェック
+`scripts/docs-check.sh` を実行して矛盾がないか確認する。

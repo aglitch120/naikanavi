@@ -13,7 +13,7 @@
 - `app/tools/drugs/` — 薬剤ガイド
 - `app/tools/interpret/lab-values` — 基準値早見表
 - `app/compare/` — 薬剤比較24カテゴリ
-- `app/study/` — iwor Study（フラッシュカード）← 新規
+- `app/study/` — iwor Study（フラッシュカード）
 - `components/pro/` — ProGate, ProModal, useProStatus, ProPulseHint
 - `components/tools/` — CalculatorLayout等の共通コンポーネント
 - `content/blog/` — MDX記事
