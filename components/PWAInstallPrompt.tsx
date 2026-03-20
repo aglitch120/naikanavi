@@ -11,7 +11,8 @@ const DISMISS_KEY = 'iwor-pwa-dismissed'
 const INSTALL_KEY = 'iwor-pwa-installed'
 const TOOL_COUNT_KEY = 'iwor-tool-use-count'
 const DISMISS_DAYS = 7
-const RE_PROMPT_TOOL_COUNT = 3
+const RE_PROMPT_TOOL_COUNT = 5
+const INITIAL_SHOW_TOOL_COUNT = 5
 
 export default function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
@@ -77,11 +78,15 @@ export default function PWAInstallPrompt() {
         }
       }
 
+      // ツール5回以上使ってからの表示（初回訪問では出さない）
+      const toolCount = parseInt(localStorage.getItem(TOOL_COUNT_KEY) || '0', 10)
+      if (toolCount < INITIAL_SHOW_TOOL_COUNT) return
+
       checkedRef.current = true
       setTimeout(() => {
         if (forIOS) setShowIOSGuide(true)
         setShowBanner(true)
-      }, 2000)
+      }, 1000)
     },
     []
   )
