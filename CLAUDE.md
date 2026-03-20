@@ -104,3 +104,30 @@ See TODO.md for current priorities.
 - Do NOT use free-text input for clinical data (dropdown only)
 - Do NOT reference deleted services: ER actions, imaging interpretation, ward TODO, AI interview, ACLS/BLS
 - Do NOT change prices without explicit CEO approval
+
+## Virtual Executive Team（サブエージェント）
+
+`.claude/agents/` に50名の専門家エージェントを配置済み。タスクに応じて自動委譲される。
+
+### 主要エージェント
+
+| 分野 | エージェント | 自動起動条件 |
+|------|-------------|-------------|
+| セキュリティ | ciso | 認証/API/データ処理のコード変更時 |
+| SEO | seo | 公開ページの作成・変更時 |
+| 医療コンプラ | medical-compliance | 医療関連コンテンツ・機能追加時 |
+| コードレビュー | code-reviewer | PRレビュー・大きなコード変更時 |
+| QA | qa | テスト作成・品質チェック時 |
+| フロントエンド | frontend | React/Next.js実装時 |
+| バックエンド | backend | Workers/KV/D1実装時 |
+| デバッグ | debugger | バグ修正時 |
+
+### コミュニティエージェント追加
+
+```bash
+# VoltAgent（127+のコミュニティエージェント）からブラウズ・インストール
+# Claude Code内で agent-installer を呼び出す
+"agent-installerを使ってTypeScript専門エージェントを探して"
+```
+
+全エージェント一覧: `.claude/agents/README.md`
