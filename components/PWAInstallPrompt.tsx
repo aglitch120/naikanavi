@@ -10,6 +10,9 @@ interface BeforeInstallPromptEvent extends Event {
 const DISMISS_KEY = 'iwor-pwa-dismissed'
 const INSTALL_KEY = 'iwor-pwa-installed'
 const TOOL_COUNT_KEY = 'iwor-tool-use-count'
+const SHOW_COUNT_KEY = 'iwor-pwa-show-count'
+const NEVER_KEY = 'iwor-pwa-never'
+const ONBOARDING_KEY = 'iwor_role'
 const DISMISS_DAYS = 7
 const RE_PROMPT_TOOL_COUNT = 5
 const INITIAL_SHOW_TOOL_COUNT = 5
@@ -21,6 +24,7 @@ export default function PWAInstallPrompt() {
   const [isIOS, setIsIOS] = useState(false)
   const [isIOSNonSafari, setIsIOSNonSafari] = useState(false)
   const [isStandalone, setIsStandalone] = useState(false)
+  const [shownBefore, setShownBefore] = useState(false)
   const checkedRef = useRef(false)
 
   // Determine environment on mount
@@ -65,6 +69,12 @@ export default function PWAInstallPrompt() {
       if (checkedRef.current) return
       if (localStorage.getItem(INSTALL_KEY) === 'true') return
 
+      // 永久非表示
+      if (localStorage.getItem(NEVER_KEY) === 'true') return
+
+      // オンボーディング未完了なら表示しない（ポップアップ競合防止）
+      if (!localStorage.getItem(ONBOARDING_KEY)) return
+
       const dismissed = localStorage.getItem(DISMISS_KEY)
       if (dismissed) {
         const daysSince =
@@ -81,6 +91,11 @@ export default function PWAInstallPrompt() {
       // ツール5回以上使ってからの表示（初回訪問では出さない）
       const toolCount = parseInt(localStorage.getItem(TOOL_COUNT_KEY) || '0', 10)
       if (toolCount < INITIAL_SHOW_TOOL_COUNT) return
+
+      // 表示回数を記録（2回目以降は「二度と表示しない」ボタンを出す）
+      const prevCount = parseInt(localStorage.getItem(SHOW_COUNT_KEY) || '0', 10)
+      localStorage.setItem(SHOW_COUNT_KEY, String(prevCount + 1))
+      if (prevCount >= 1) setShownBefore(true)
 
       checkedRef.current = true
       setTimeout(() => {
@@ -130,6 +145,12 @@ export default function PWAInstallPrompt() {
     setShowIOSGuide(false)
     localStorage.setItem(DISMISS_KEY, new Date().toISOString())
     localStorage.setItem(TOOL_COUNT_KEY, '0')
+  }
+
+  const handleNeverShow = () => {
+    setShowBanner(false)
+    setShowIOSGuide(false)
+    localStorage.setItem(NEVER_KEY, 'true')
   }
 
   if (!showBanner || isStandalone) return null
@@ -394,6 +415,28 @@ export default function PWAInstallPrompt() {
             }
           >
             ホーム画面に追加する
+          </button>
+        )}
+
+        {/* 2回目以降: 永久非表示ボタン */}
+        {shownBefore && (
+          <button
+            onClick={handleNeverShow}
+            style={{
+              display: 'block',
+              width: '100%',
+              marginTop: '8px',
+              padding: '6px',
+              background: 'none',
+              border: 'none',
+              fontSize: '0.72rem',
+              color: 'var(--m)',
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              textUnderlineOffset: '2px',
+            }}
+          >
+            二度と表示しない
           </button>
         )}
       </div>
