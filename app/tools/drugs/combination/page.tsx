@@ -178,7 +178,7 @@ export default function CombinationDrugsPage() {
       <header className="mb-6">
         <div className="flex items-center gap-2 mb-2">
           <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium">💊 薬剤ガイド</span>
-          <FavoriteButton toolId="combination-tablets" />
+          <FavoriteButton slug="tool-combination-tablets" title="配合錠リスト" href="/tools/drugs/combination" type="tool" size="sm" />
           <ProPulseHint />
         </div>
         <h1 className="text-2xl font-bold text-tx mb-2">配合錠リスト</h1>
