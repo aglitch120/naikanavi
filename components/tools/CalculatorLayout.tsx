@@ -45,7 +45,7 @@ function ThirdUseBanner() {
       <span className="text-lg flex-shrink-0">⭐</span>
       <div className="flex-1 min-w-0">
         <p className="text-sm font-bold text-tx mb-0.5">よく使うツールをお気に入りに保存できます</p>
-        <p className="text-xs text-muted">PRO会員ならお気に入り保存・解釈・アクションプランが使い放題</p>
+        <p className="text-xs text-muted">PRO会員ならお気に入り保存が使い放題</p>
       </div>
       <Link
         href="/pro"
@@ -73,10 +73,10 @@ function ProCTA() {
           iwor PRO
         </span>
         <h3 className="text-lg md:text-xl font-bold text-white mb-2 leading-snug">
-          解釈・アクションプラン・お気に入りが使い放題
+          お気に入り保存・クラウド同期が使い放題
         </h3>
         <p className="text-white/70 text-sm mb-4 max-w-md mx-auto">
-          臨床ツールの深い解釈、推奨アクション、データ保存。月額換算 約817円で全機能アクセス。
+          よく使うツールをお気に入りに保存。月額換算 約817円で全機能アクセス。
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
@@ -166,11 +166,10 @@ export default function CalculatorLayout({
 
       {/* 免責表示 */}
       <div className="bg-wnl border border-wnb rounded-lg p-4 mb-8 text-sm text-wn">
-        <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>
+        <p className="font-semibold mb-1">⚠️ 免責事項</p>
         <p>
-          本ツールは医療従事者の臨床判断を補助する目的で提供しています。
-          診断・治療の最終判断は必ず担当医が行ってください。
-          計算結果の正確性について保証するものではありません。
+          本ツールは公式文献の計算式・情報を転記したものです。
+          正確性は保証しません。必ず原典をご確認ください。
         </p>
         <div className="mt-2 pt-2 border-t border-wnb/30">
           <ErrorReportButton toolName={title} />

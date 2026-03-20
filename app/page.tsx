@@ -151,23 +151,6 @@ export default function HomePage() {
         <HomeAppGrid apps={apps} />
       </section>
 
-      {/* ═══ Quick Stats ═══ */}
-      <section className="px-4 mb-12">
-        <div className="flex items-center justify-center gap-6 md:gap-10 text-center">
-          {[
-            { num: '166+', label: '計算ツール' },
-            { num: '155', label: '薬剤比較' },
-            { num: '173', label: 'ブログ記事' },
-            { num: '15', label: '手技ガイド' },
-          ].map(s => (
-            <div key={s.label}>
-              <p className="text-lg md:text-xl font-bold text-ac">{s.num}</p>
-              <p className="text-[10px] text-muted">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ═══ Blog ═══ */}
       <section className="px-4 mb-12">
         <div className="flex items-center justify-between mb-5">
@@ -229,7 +212,7 @@ export default function HomePage() {
       <section className="mb-4 px-4">
         <div className="bg-s1 rounded-xl p-4 text-[11px] text-muted leading-relaxed space-y-1">
           <p>⚠️ 本サービスは医療従事者向けです。<strong className="text-tx">患者の氏名・ID等の個人情報を入力しないでください。</strong></p>
-          <p>臨床判断の補助を目的としており、診断・治療の最終判断は担当医が行ってください。情報の正確性は保証いたしません。</p>
+          <p>掲載情報は公式文献の転記であり、正確性は保証しません。必ず原典をご確認ください。</p>
           <p>マネーツールの計算結果は概算・目安であり、正確な金額は税理士・所轄税務署にご確認ください。</p>
         </div>
       </section>

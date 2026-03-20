@@ -6,14 +6,11 @@ import Link from 'next/link'
 
 // ── サブツールカード ──
 const subTools = [
-  { href: '/tools/drugs/antibiotics', icon: '🦠', name: '抗菌薬スペクトラム', desc: '18薬剤のスペクトラム一覧 + 感染症別エンピリック選択' },
+  { href: '/tools/drugs/antibiotics', icon: '🦠', name: '抗菌薬スペクトラム', desc: '18薬剤のスペクトラム一覧' },
   { href: '/tools/calc/steroid-converter', icon: '💉', name: 'ステロイド力価換算', desc: 'プレドニゾロン基準の等力価換算。6薬剤対応' },
-  { href: '/tools/drugs/steroid-cover', icon: '🛡️', name: 'ステロイドカバー & 副作用管理', desc: '周術期ストレスカバー + 長期使用時の副作用対策チェックリスト' },
+  { href: '/tools/drugs/steroid-cover', icon: '🛡️', name: '周術期ステロイドカバー', desc: 'ストレスレベル別のHC補充量（文献転記）' },
   { href: '/tools/calc/opioid-conversion', icon: '💊', name: 'オピオイド換算表', desc: 'モルヒネ経口30mg基準のオピオイド相互換算' },
-  { href: '/tools/drugs/cancer-pain', icon: '🎗️', name: '癌性疼痛コントロール', desc: 'WHO除痛ラダー + レスキュー + ローテーション + 鎮痛補助薬' },
   { href: '/tools/calc/renal-dose-abx', icon: '🧪', name: '抗菌薬 腎機能別用量', desc: 'eGFR/CCr別の参考用量。30薬剤対応' },
-  { href: '/tools/drugs/preop-drugs', icon: '🔪', name: '術前休薬リスト', desc: '抗凝固薬・抗血小板薬・糖尿病薬等の周術期休薬ガイド' },
-  { href: '/tools/drugs/tube-admin', icon: '🧪', name: '簡易懸濁可否リスト', desc: '経管投与時の簡易懸濁法 可否一覧。55℃温湯法対応' },
   { href: '/tools/drugs/combination', icon: '📋', name: '配合錠リスト', desc: '高血圧・脂質異常症・糖尿病の配合錠一覧。成分と含量を確認' },
   { href: '#', icon: '📋', name: 'DIデータベース', desc: '各薬剤の添付文書要約・相互作用・TDM情報', badge: '準備中' },
 ]
@@ -57,7 +54,7 @@ export default function DrugsHubPage() {
 
       {/* 免責 */}
       <div className="bg-wnl border border-wnb rounded-lg p-3 mt-8 mb-8 text-sm text-wn">
-        ⚠️ 薬剤の選択・用量は施設のプロトコル・患者の状態に基づき担当医が決定してください。
+        ⚠️ 掲載情報は公式文献の転記であり、正確性は保証しません。必ず原典・添付文書をご確認ください。
       </div>
     </div>
   )
