@@ -23,6 +23,24 @@ interface CalculatorLayoutProps {
   references?: { text: string; url?: string }[]
 }
 
+/** 最終検証日時（verify-sources.mjs の結果を表示） */
+function VerifyStatus() {
+  const [label, setLabel] = useState<string>('')
+  useEffect(() => {
+    fetch('/verify-status.json')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data?.lastVerified) {
+          const d = new Date(data.lastVerified)
+          setLabel(`検証: ${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`)
+        }
+      })
+      .catch(() => {})
+  }, [])
+  if (!label) return null
+  return <span className="text-[10px] text-muted/60">{label}</span>
+}
+
 /** PLG: 3回目利用バナー（1回限り） */
 function ThirdUseBanner() {
   const { isPro } = useProStatus()
@@ -171,8 +189,9 @@ export default function CalculatorLayout({
           本ツールは公式文献の計算式・情報を転記したものです。
           正確性は保証しません。必ず原典をご確認ください。
         </p>
-        <div className="mt-2 pt-2 border-t border-wnb/30">
+        <div className="mt-2 pt-2 border-t border-wnb/30 flex items-center justify-between">
           <ErrorReportButton toolName={title} />
+          <VerifyStatus />
         </div>
       </div>
 
