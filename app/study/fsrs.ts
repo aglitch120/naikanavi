@@ -10,7 +10,7 @@ export type Rating = 1 | 2 | 3 | 4
 export type CardState = 'new' | 'learning' | 'review' | 'relearning'
 
 export interface CardData {
-  cardId: number
+  cardId: string         // e.g. "cbt-1", "kokushi-5", "custom-abc-3"
   state: CardState
   stability: number      // S: days until ~90% recall probability
   difficulty: number     // D: 0-10 scale
@@ -93,7 +93,7 @@ function clamp(value: number, min: number, max: number): number {
 
 // ── Public API ──
 
-export function createNewCard(cardId: number): CardData {
+export function createNewCard(cardId: string): CardData {
   return {
     cardId,
     state: 'new',
@@ -176,9 +176,9 @@ function formatInterval(days: number, state: CardState, rating: Rating): string 
 /**
  * Sort cards for review: due cards first, then new cards
  */
-export function getDueCards(allCardData: Map<number, CardData>, allCardIds: number[], now: Date = new Date()): number[] {
-  const due: { id: number; priority: number }[] = []
-  const newCards: number[] = []
+export function getDueCards(allCardData: Map<string, CardData>, allCardIds: string[], now: Date = new Date()): string[] {
+  const due: { id: string; priority: number }[] = []
+  const newCards: string[] = []
 
   for (const id of allCardIds) {
     const data = allCardData.get(id)
@@ -214,13 +214,43 @@ export function getDueCards(allCardData: Map<number, CardData>, allCardIds: numb
 // ── LocalStorage helpers ──
 
 const CARD_DATA_KEY = 'iwor_study_fsrs'
+const MIGRATION_KEY = 'iwor_study_fsrs_v2'
 
-export function loadAllCardData(): Map<number, CardData> {
+/** Migrate old numeric card IDs to string format ("cbt-N") */
+function migrateV1Data(): Map<string, CardData> | null {
+  try {
+    const raw = localStorage.getItem(CARD_DATA_KEY)
+    if (!raw) return null
+    if (localStorage.getItem(MIGRATION_KEY)) return null // already migrated
+    const arr = JSON.parse(raw) as Array<{ cardId: number | string } & Omit<CardData, 'cardId'>>
+    if (arr.length === 0) return null
+    // Check if any have numeric IDs
+    const hasNumeric = arr.some(c => typeof c.cardId === 'number')
+    if (!hasNumeric) return null
+    const map = new Map<string, CardData>()
+    arr.forEach(c => {
+      const newId = typeof c.cardId === 'number' ? `cbt-${c.cardId}` : String(c.cardId)
+      map.set(newId, { ...c, cardId: newId })
+    })
+    localStorage.setItem(MIGRATION_KEY, '1')
+    return map
+  } catch {
+    return null
+  }
+}
+
+export function loadAllCardData(): Map<string, CardData> {
+  // Try migration first
+  const migrated = migrateV1Data()
+  if (migrated) {
+    saveAllCardData(migrated)
+    return migrated
+  }
   try {
     const raw = localStorage.getItem(CARD_DATA_KEY)
     if (!raw) return new Map()
     const arr: CardData[] = JSON.parse(raw)
-    const map = new Map<number, CardData>()
+    const map = new Map<string, CardData>()
     arr.forEach(c => map.set(c.cardId, c))
     return map
   } catch {
@@ -228,7 +258,7 @@ export function loadAllCardData(): Map<number, CardData> {
   }
 }
 
-export function saveAllCardData(data: Map<number, CardData>) {
+export function saveAllCardData(data: Map<string, CardData>) {
   const arr: CardData[] = []
   data.forEach(v => arr.push(v))
   localStorage.setItem(CARD_DATA_KEY, JSON.stringify(arr))
