@@ -505,62 +505,65 @@ function EmailTemplates({ profile, mode }: { profile: Profile; mode: 'matching' 
         </div>
       )}
 
-      {/* 入力フォーム */}
-      <div className="bg-s0 border border-br rounded-xl p-4 space-y-3">
-        <p className="text-xs font-bold text-tx mb-1">情報を入力</p>
-        {selected.fields.map(f => (
-          <div key={f.key}>
-            <label className="text-[11px] font-medium text-tx mb-1 block">{f.label}</label>
-            {f.type === 'textarea' ? (
-              <textarea
-                value={fieldValues[f.key] || ''}
-                onChange={e => updateField(f.key, e.target.value)}
-                placeholder={f.placeholder}
-                rows={f.rows || 2}
-                className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all resize-none"
-              />
-            ) : (
-              <input
-                type="text"
-                value={fieldValues[f.key] || ''}
-                onChange={e => updateField(f.key, e.target.value)}
-                placeholder={f.placeholder}
-                className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all"
-              />
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* プレビュー */}
-      <div className="bg-s0 border border-br rounded-xl overflow-hidden">
-        <div className="px-4 py-2.5 border-b border-br flex items-center justify-between">
-          <p className="text-xs font-bold text-tx">プレビュー</p>
-          <button
-            onClick={handleCopy}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-all"
-            style={{ background: MC }}
-          >
-            {copied ? (
-              <>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                コピー済み
-              </>
-            ) : (
-              <>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                </svg>
-                コピー
-              </>
-            )}
-          </button>
+      {/* PC: 左入力→右プレビュー / モバイル: 縦並び */}
+      <div className="flex flex-col lg:flex-row gap-4">
+        {/* 入力フォーム */}
+        <div className="bg-s0 border border-br rounded-xl p-4 space-y-3 lg:w-1/2 lg:flex-shrink-0">
+          <p className="text-xs font-bold text-tx mb-1">情報を入力</p>
+          {selected.fields.map(f => (
+            <div key={f.key}>
+              <label className="text-[11px] font-medium text-tx mb-1 block">{f.label}</label>
+              {f.type === 'textarea' ? (
+                <textarea
+                  value={fieldValues[f.key] || ''}
+                  onChange={e => updateField(f.key, e.target.value)}
+                  placeholder={f.placeholder}
+                  rows={f.rows || 2}
+                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all resize-none"
+                />
+              ) : (
+                <input
+                  type="text"
+                  value={fieldValues[f.key] || ''}
+                  onChange={e => updateField(f.key, e.target.value)}
+                  placeholder={f.placeholder}
+                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all"
+                />
+              )}
+            </div>
+          ))}
         </div>
-        <pre className="p-4 text-xs text-tx leading-relaxed whitespace-pre-wrap font-sans overflow-x-auto">
-          {generatedText}
-        </pre>
+
+        {/* プレビュー */}
+        <div className="bg-s0 border border-br rounded-xl overflow-hidden lg:w-1/2 lg:self-start lg:sticky lg:top-4">
+          <div className="px-4 py-2.5 border-b border-br flex items-center justify-between">
+            <p className="text-xs font-bold text-tx">プレビュー</p>
+            <button
+              onClick={handleCopy}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-all"
+              style={{ background: MC }}
+            >
+              {copied ? (
+                <>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  コピー済み
+                </>
+              ) : (
+                <>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  </svg>
+                  コピー
+                </>
+              )}
+            </button>
+          </div>
+          <pre className="p-4 text-xs text-tx leading-relaxed whitespace-pre-wrap font-sans overflow-x-auto">
+            {generatedText}
+          </pre>
+        </div>
       </div>
     </div>
   )

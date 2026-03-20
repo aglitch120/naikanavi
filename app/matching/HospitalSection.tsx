@@ -433,12 +433,20 @@ function HospitalCard({
   onToggleInterested: () => void
   onToggleWishlist: () => void
 }) {
+  // 倍率の色分け
+  const rateColor = h.matchRate <= 2 ? { bg: '#DCFCE7', text: '#166534' }
+    : h.matchRate <= 4 ? { bg: '#FEF3C7', text: '#92400E' }
+    : { bg: '#FEE2E2', text: '#991B1B' }
+
+  // 忙しさドット
+  const busynessLevel = h.busyness === 'high' ? 3 : h.busyness === 'medium' ? 2 : 1
+
   return (
     <div className="bg-s0 border border-br rounded-xl overflow-hidden transition-all hover:border-br2">
       <button onClick={onToggle} className="w-full p-4 text-left">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
               <p className="text-sm font-bold text-tx truncate">{h.name}</p>
               <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded flex-shrink-0 ${
                 h.type === '市中病院' ? 'bg-blue-50 text-blue-700' : 'bg-purple-50 text-purple-700'
@@ -449,14 +457,30 @@ function HospitalCard({
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-3 text-[11px] text-muted flex-wrap">
-              <span>{h.prefecture}</span>
+
+            {/* 主要指標行 */}
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <span className="text-[11px] text-muted">{h.prefecture}</span>
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: rateColor.bg, color: rateColor.text }}>
+                {h.matchRateLabel}
+              </span>
+              <span className="text-[11px] text-muted">{h.salaryLabel}</span>
+              <span className="text-[10px] text-muted flex items-center gap-0.5" title={BUSYNESS_LABELS[h.busyness]}>
+                {[1, 2, 3].map(i => (
+                  <span key={i} className={`inline-block w-1.5 h-1.5 rounded-full ${i <= busynessLevel ? 'bg-amber-500' : 'bg-s2'}`} />
+                ))}
+                <span className="ml-0.5">{BUSYNESS_LABELS[h.busyness]}</span>
+              </span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-s1 text-muted">{h.erType}</span>
+            </div>
+
+            {/* サブ情報 */}
+            <div className="flex items-center gap-3 text-[10px] text-muted">
               <span>{h.beds}床</span>
-              <span>研修医{h.residents}名</span>
-              <span className="font-medium" style={{ color: MC }}>{h.matchRateLabel}</span>
-              <span>{h.salaryLabel}</span>
+              <span>研修医{h.residents}名/年</span>
             </div>
           </div>
+
           {/* マッチ度バッジ */}
           <div className="flex flex-col items-center gap-1 flex-shrink-0 ml-1">
             <div className="relative">
@@ -473,9 +497,12 @@ function HospitalCard({
           </div>
         </div>
         <div className="flex flex-wrap gap-1 mt-2">
-          {h.features.map(f => (
+          {h.features.slice(0, 4).map(f => (
             <span key={f} className="text-[10px] px-1.5 py-0.5 rounded bg-s1 text-muted">{f}</span>
           ))}
+          {h.features.length > 4 && (
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-s1 text-muted">+{h.features.length - 4}</span>
+          )}
         </div>
       </button>
 

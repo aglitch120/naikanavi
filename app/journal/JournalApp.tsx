@@ -38,9 +38,6 @@ async function fetchArticlesFromCache(): Promise<Article[]> {
   }
 }
 
-// ── Filter mode ──
-type FilterMode = 'top4' | 'specialty' | 'custom'
-
 export default function JournalApp() {
   const { isPro } = useProStatus()
   const [showProModal, setShowProModal] = useState(false)
@@ -48,12 +45,11 @@ export default function JournalApp() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  // Filters
-  const [filterMode, setFilterMode] = useState<FilterMode>('top4')
-  const [selectedJournals, setSelectedJournals] = useState<Set<string>>(new Set(TOP4_IDS))
+  // Filters — unified (Top4 always included + specialty + IF)
   const [selectedSpecialties, setSelectedSpecialties] = useState<Set<string>>(new Set())
   const [ifMin, setIfMin] = useState(0)
-  const [showJournalPicker, setShowJournalPicker] = useState(false)
+  const [showAdvanced, setShowAdvanced] = useState(false)
+  const [excludedJournals, setExcludedJournals] = useState<Set<string>>(new Set())
 
   // Bookmarks
   const [bookmarks, setBookmarks] = useState<Set<string>>(() => {
@@ -62,21 +58,17 @@ export default function JournalApp() {
   })
   const [showBookmarks, setShowBookmarks] = useState(false)
 
-  // ── Compute active journal IDs from filters ──
+  // ── Compute active journal IDs — Top4 always + selected specialties ──
   const activeJournalIds = useMemo(() => {
-    let jList: Journal[] = []
-    if (filterMode === 'top4') {
-      jList = JOURNALS.filter(j => TOP4_IDS.includes(j.id))
-    } else if (filterMode === 'specialty') {
-      jList = JOURNALS.filter(j =>
-        j.category === 'top4' || (j.specialty && selectedSpecialties.has(j.specialty))
-      )
-    } else {
-      jList = JOURNALS.filter(j => selectedJournals.has(j.id))
-    }
+    let jList: Journal[] = JOURNALS.filter(j =>
+      j.category === 'top4' ||
+      (selectedSpecialties.size > 0 && j.specialty && selectedSpecialties.has(j.specialty))
+    )
+    // If no specialty selected, show only Top4
     if (ifMin > 0) jList = jList.filter(j => j.impactFactor >= ifMin)
-    return new Set(jList.map(j => j.id))
-  }, [filterMode, selectedJournals, selectedSpecialties, ifMin])
+    // Exclude manually hidden journals
+    return new Set(jList.map(j => j.id).filter(id => !excludedJournals.has(id)))
+  }, [selectedSpecialties, ifMin, excludedJournals])
 
   // ── Fetch（1回だけ、全記事をWorker APIキャッシュから取得）──
   const doFetch = useCallback(async () => {
@@ -111,9 +103,9 @@ export default function JournalApp() {
     })
   }, [])
 
-  // ── Journal toggle (custom mode) ──
-  const toggleJournal = useCallback((id: string) => {
-    setSelectedJournals(prev => {
+  // ── Journal exclude toggle (advanced) ──
+  const toggleExcludeJournal = useCallback((id: string) => {
+    setExcludedJournals(prev => {
       const n = new Set(prev)
       n.has(id) ? n.delete(id) : n.add(id)
       return n
@@ -154,71 +146,88 @@ export default function JournalApp() {
         favoriteHref="/journal"
       />
 
-      {/* ── Filter Mode Toggle ── */}
-      <div className="flex gap-1 mb-4 bg-s1 rounded-xl p-1">
-        {([
-          { id: 'top4' as FilterMode, label: 'Top 4', icon: '🏆' },
-          { id: 'specialty' as FilterMode, label: '診療科別', icon: '🏥' },
-          { id: 'custom' as FilterMode, label: 'カスタム', icon: '⚙️' },
-        ]).map(m => (
-          <button key={m.id} onClick={() => setFilterMode(m.id)}
-            className={`flex-1 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1 ${
-              filterMode === m.id ? 'bg-s0 shadow-sm' : 'text-muted hover:text-tx'
-            }`}
-            style={filterMode === m.id ? { color: MC } : undefined}>
-            <span>{m.icon}</span>{m.label}
-          </button>
-        ))}
+      {/* ── Specialty Filter (always visible) ── */}
+      <div className="bg-s0 border border-br rounded-xl p-3 mb-4">
+        <p className="text-[11px] font-medium text-tx mb-2">診療科フィルタ（Top 4 は常に表示）</p>
+        <div className="flex flex-wrap gap-1.5">
+          {SPECIALTIES.map(sp => (
+            <button key={sp} onClick={() => toggleSpecialty(sp)}
+              className={`px-3 py-1.5 rounded-lg text-[11px] font-medium border transition-all ${
+                selectedSpecialties.has(sp) ? 'text-white border-transparent' : 'border-br text-muted hover:border-ac/30'
+              }`}
+              style={selectedSpecialties.has(sp) ? { background: MC } : undefined}>
+              {sp}
+            </button>
+          ))}
+        </div>
+        {selectedSpecialties.size === 0 && (
+          <p className="text-[10px] text-muted mt-2">診療科を選ぶと専門誌も表示されます</p>
+        )}
       </div>
 
-      {/* ── Specialty selector (specialty mode) ── */}
-      {filterMode === 'specialty' && (
-        <div className="bg-s0 border border-br rounded-xl p-3 mb-4">
-          <p className="text-[11px] font-medium text-tx mb-2">診療科を選択（複数可）— Top4は常に含む</p>
-          <div className="flex flex-wrap gap-1.5">
-            {SPECIALTIES.map(sp => (
-              <button key={sp} onClick={() => toggleSpecialty(sp)}
-                className={`px-3 py-1.5 rounded-lg text-[11px] font-medium border transition-all ${
-                  selectedSpecialties.has(sp) ? 'text-white border-transparent' : 'border-br text-muted hover:border-ac/30'
-                }`}
-                style={selectedSpecialties.has(sp) ? { background: MC } : undefined}>
-                {sp}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Custom journal selector ── */}
-      {filterMode === 'custom' && (
-        <div className="bg-s0 border border-br rounded-xl p-3 mb-4">
-          <button onClick={() => setShowJournalPicker(!showJournalPicker)}
-            className="w-full flex items-center justify-between text-xs font-medium text-tx">
-            <span>ジャーナル選択（{selectedJournals.size}誌）</span>
-            <span className={`text-muted transition-transform ${showJournalPicker ? 'rotate-180' : ''}`}>▾</span>
-          </button>
-          {showJournalPicker && (
-            <div className="mt-3 space-y-2 max-h-60 overflow-y-auto">
-              {['top4', 'general', 'specialty'].map(cat => (
+      {/* ── Advanced: exclude specific journals ── */}
+      <div className="bg-s0 border border-br rounded-xl p-3 mb-4">
+        <button onClick={() => setShowAdvanced(!showAdvanced)}
+          className="w-full flex items-center justify-between text-xs font-medium text-tx">
+          <span>表示中のジャーナル（{activeJournalIds.size}誌）</span>
+          <span className={`text-muted transition-transform ${showAdvanced ? 'rotate-180' : ''}`}>▾</span>
+        </button>
+        {showAdvanced && (
+          <div className="mt-3 space-y-2 max-h-60 overflow-y-auto">
+            {['top4', 'general', 'specialty'].map(cat => {
+              const jInCat = JOURNALS.filter(j => j.category === cat && (
+                j.category === 'top4' ||
+                (selectedSpecialties.size > 0 && j.specialty && selectedSpecialties.has(j.specialty))
+              ))
+              if (jInCat.length === 0) return null
+              return (
                 <div key={cat}>
                   <p className="text-[10px] font-bold text-muted uppercase mb-1">
                     {cat === 'top4' ? 'Top 4' : cat === 'general' ? 'General' : 'Specialty'}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
-                    {JOURNALS.filter(j => j.category === cat).map(j => (
-                      <button key={j.id} onClick={() => toggleJournal(j.id)}
+                    {jInCat.map(j => (
+                      <button key={j.id} onClick={() => toggleExcludeJournal(j.id)}
                         className={`px-2.5 py-1 rounded text-[10px] font-medium border transition-all ${
-                          selectedJournals.has(j.id) ? 'text-white border-transparent' : 'border-br text-muted hover:border-ac/30'
+                          excludedJournals.has(j.id) ? 'border-br text-muted line-through opacity-50' : 'text-white border-transparent'
                         }`}
-                        style={selectedJournals.has(j.id) ? { background: MC } : undefined}>
+                        style={!excludedJournals.has(j.id) ? { background: MC } : undefined}>
                         {j.shortName} <span className="opacity-60">({j.impactFactor})</span>
                       </button>
                     ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              )
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* ── Specialty Top Journals (H-3) ── */}
+      {selectedSpecialties.size > 0 && (
+        <div className="bg-s0 border border-br rounded-xl p-3 mb-4">
+          <p className="text-[11px] font-medium text-tx mb-2">選択中の診療科トップジャーナル</p>
+          <div className="space-y-2">
+            {Array.from(selectedSpecialties).map(sp => {
+              const spJournals = JOURNALS
+                .filter(j => j.specialty === sp)
+                .sort((a, b) => b.impactFactor - a.impactFactor)
+              return (
+                <div key={sp}>
+                  <p className="text-[10px] font-bold text-muted mb-1">{sp}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {spJournals.map(j => (
+                      <span key={j.id} className={`text-[10px] font-medium px-2 py-1 rounded-lg border transition-all ${
+                        excludedJournals.has(j.id) ? 'border-br text-muted line-through opacity-50' : 'border-transparent text-white'
+                      }`} style={!excludedJournals.has(j.id) ? { background: MC } : undefined}>
+                        {j.shortName} <span className="opacity-70">IF {j.impactFactor}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       )}
 
