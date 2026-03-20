@@ -242,7 +242,7 @@ CREATE TABLE subscriptions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES profiles(id),
   status TEXT NOT NULL CHECK (status IN ('active', 'expired', 'cancelled', 'grace_period')),
-  plan TEXT NOT NULL CHECK (plan IN ('pro_1y', 'pro_2y', 'pro_3y')),
+  plan TEXT NOT NULL CHECK (plan IN ('pro_monthly', 'pro_annual')),
   payment_method TEXT NOT NULL CHECK (payment_method IN ('paddle', 'stripe')),
   paddle_subscription_id TEXT,
   amount_paid INTEGER NOT NULL,
@@ -325,7 +325,7 @@ CREATE TABLE study_decks (
 ```typescript
 interface ProGateProps {
   children: React.ReactNode
-  feature: 'favorites' | 'save' | 'full_access'
+  feature: 'favorites' | 'save' | 'full_access' | 'social_proof' | 'first_taste'
   toolSlug?: string
   blurIntensity?: number    // デフォルト: 8
   previewLines?: number     // デフォルト: 2
@@ -338,6 +338,14 @@ interface ProGateProps {
 
 1. **ロック型**（favorites, save）— アクション試行時にPROモーダルをポップ
 2. **プレビュー型**（full_access）— UIは全部見える+操作できる、データ保存時のみPROモーダル
+3. **ソーシャルプルーフ型**（social_proof）— 集計データをブラー表示、PRO解除で数字が見える
+4. **ファーストテイスト型**（first_taste）— 初回1回だけ無料閲覧可、2回目以降はPROモーダル
+
+### PROモーダル内の損失回避カウンター
+
+解約画面・PROモーダルにユーザーの蓄積データ量を表示:
+- 「あなたのデータ: Study ○枚 / J-OSLER ○症例 / ブックマーク ○件」
+- 解約時: 「30日後にすべて消失します」+ データ一覧
 
 ### PRO判定フロー
 
