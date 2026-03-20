@@ -5,6 +5,7 @@ import ArticleCard from '@/components/blog/ArticleCard'
 import HomeSearch from '@/components/HomeSearch'
 import HomeAppGrid from '@/components/HomeAppGrid'
 import HeroBackground from '@/components/HeroBackground'
+import HomeWidgets from '@/components/HomeWidgets'
 
 export const metadata: Metadata = {
   title: 'iwor（イウォール）— 医師のためのワークスペース',
@@ -144,6 +145,11 @@ export default function HomePage() {
       {/* ═══ Search ═══ */}
       <section className="px-4 mb-8">
         <HomeSearch />
+      </section>
+
+      {/* ═══ Activity Widgets (Zeigarnik + Goal Gradient) ═══ */}
+      <section className="px-4 mb-6">
+        <HomeWidgets />
       </section>
 
       {/* ═══ App Grid (10 icons: 3cols mobile / 5cols desktop) ═══ */}
