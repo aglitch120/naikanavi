@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { IworIllustration } from '@/components/IworIllustration'
+import HeroBackground from '@/components/HeroBackground'
 
 export const metadata: Metadata = {
   title: 'iworとは',
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="max-w-2xl mx-auto px-4 py-12">
-      {/* ── Hero: iwor イラスト背景（ボックスなし） ── */}
-      <div className="relative pt-8 pb-14 mb-10">
-        <IworIllustration className="absolute inset-0 w-full h-full" />
+      {/* ── Hero: 山と川のアニメーション背景 ── */}
+      <div className="relative pt-8 pb-14 mb-10 overflow-hidden">
+        <HeroBackground />
         <div className="relative z-10">
           <h1 className="text-2xl md:text-3xl font-bold text-tx text-center">iworとは</h1>
           <p className="text-sm text-muted text-center mt-3 max-w-md mx-auto">

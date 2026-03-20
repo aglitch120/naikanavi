@@ -1,9 +1,8 @@
 'use client'
 
-// ホーム画面hero背景 — /aboutベースの山と川 + ループアニメーション
-// 三角ポリゴン山 + 波カーブ（aboutと同じスタイル）
-// アニメーション: 鳥の飛行 + 川の流れ + 微かな霧の揺らぎ
-// レスポンシブ: viewBox + preserveAspectRatio で全幅対応
+// 山と川のnature背景 — /aboutベースのポリゴン山 + アニメーション
+// 鳥: 横向きシルエット（ミニマル）、川: 流れが分かるアニメーション
+// ホーム画面 + /about で共有
 
 export default function HeroBackground() {
   return (
@@ -16,7 +15,6 @@ export default function HeroBackground() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* 端をフェードアウトするラジアルマスク */}
           <radialGradient id="hero-fade" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="white" stopOpacity="1" />
             <stop offset="65%" stopColor="white" stopOpacity="1" />
@@ -25,11 +23,16 @@ export default function HeroBackground() {
           <mask id="hero-mask">
             <rect width="800" height="300" fill="url(#hero-fade)" />
           </mask>
-          {/* 川のストロークグラデーション */}
           <linearGradient id="hero-river" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#1B4F3A" stopOpacity="0" />
-            <stop offset="25%" stopColor="#1B4F3A" stopOpacity="0.06" />
-            <stop offset="75%" stopColor="#1B4F3A" stopOpacity="0.06" />
+            <stop offset="20%" stopColor="#1B4F3A" stopOpacity="0.08" />
+            <stop offset="80%" stopColor="#1B4F3A" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#1B4F3A" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="hero-river2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#1B4F3A" stopOpacity="0" />
+            <stop offset="30%" stopColor="#1B4F3A" stopOpacity="0.05" />
+            <stop offset="70%" stopColor="#1B4F3A" stopOpacity="0.05" />
             <stop offset="100%" stopColor="#1B4F3A" stopOpacity="0" />
           </linearGradient>
         </defs>
@@ -58,51 +61,81 @@ export default function HeroBackground() {
           {/* ═══ 地平線 ═══ */}
           <line x1="0" y1="220" x2="800" y2="220" stroke="#1B4F3A" strokeWidth="0.5" opacity="0.08" />
 
-          {/* ═══ 川の波（アニメーション付き） ═══ */}
+          {/* ═══ 川（アニメーション強化） ═══ */}
+          {/* メインの川面 */}
           <path
-            d="M0,240 Q100,230 200,245 Q350,260 500,238 Q650,215 800,240 L800,260 Q650,235 500,258 Q350,280 200,265 Q100,250 0,260Z"
+            d="M0,238 Q100,228 200,242 Q350,258 500,235 Q650,212 800,238 L800,258 Q650,232 500,255 Q350,278 200,262 Q100,248 0,258Z"
             fill="#1B4F3A"
-            opacity="0.05"
+            opacity="0.06"
           >
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="0,0; -15,2; 0,0"
-              dur="6s"
+              values="0,0; -30,3; 0,0"
+              dur="5s"
               repeatCount="indefinite"
             />
           </path>
+          {/* 第2の波 */}
           <path
-            d="M0,255 Q150,248 300,258 Q500,270 700,250 L800,252 L800,258 Q700,256 500,276 Q300,264 150,254 L0,261Z"
+            d="M0,250 Q150,242 300,255 Q500,268 700,248 L800,250 L800,262 Q700,254 500,274 Q300,262 150,252 L0,262Z"
             fill="#1B4F3A"
-            opacity="0.03"
+            opacity="0.04"
           >
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="0,0; 12,-1; 0,0"
-              dur="8s"
-              repeatCount="indefinite"
-            />
-          </path>
-
-          {/* 川のストローク（流れの質感） */}
-          <path
-            d="M0,242 Q200,232 400,248 Q600,264 800,244"
-            fill="none"
-            stroke="url(#hero-river)"
-            strokeWidth="1"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; -20,1; 0,0"
+              values="0,0; 25,-2; 0,0"
               dur="7s"
               repeatCount="indefinite"
             />
           </path>
 
-          {/* ═══ 霧 / 空気感（ゆるやかな揺らぎ） ═══ */}
+          {/* 川のストローク線（流れの質感）×3本 */}
+          <path
+            d="M-100,240 Q100,230 300,245 Q500,260 700,238 Q900,216 1100,240"
+            fill="none"
+            stroke="url(#hero-river)"
+            strokeWidth="1.5"
+          >
+            <animateTransform
+              attributeName="transform"
+              type="translate"
+              values="0,0; -40,2; 0,0"
+              dur="4s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <path
+            d="M-50,248 Q150,238 350,252 Q550,266 750,244 Q950,222 1150,248"
+            fill="none"
+            stroke="url(#hero-river2)"
+            strokeWidth="1"
+          >
+            <animateTransform
+              attributeName="transform"
+              type="translate"
+              values="0,0; 30,-1.5; 0,0"
+              dur="6s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <path
+            d="M-80,255 Q120,245 320,258 Q520,272 720,250 Q920,228 1120,255"
+            fill="none"
+            stroke="url(#hero-river2)"
+            strokeWidth="0.8"
+          >
+            <animateTransform
+              attributeName="transform"
+              type="translate"
+              values="0,0; -20,1; 0,0"
+              dur="5.5s"
+              repeatCount="indefinite"
+            />
+          </path>
+
+          {/* ═══ 霧 ═══ */}
           <ellipse cx="200" cy="200" rx="120" ry="20" fill="#1B4F3A" opacity="0.02">
             <animateTransform
               attributeName="transform"
@@ -122,83 +155,106 @@ export default function HeroBackground() {
             />
           </ellipse>
 
-          {/* ═══ 鳥たち（ゆっくり横断） ═══ */}
-          {/* 鳥1 — 手前、やや大きめ */}
-          <g opacity="0.12">
+          {/* ═══ 鳥 — 横向きシルエット（ミニマル） ═══ */}
+          {/* 鳥1 — 手前 */}
+          <g opacity="0.10">
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="850,0; -100,0"
-              dur="22s"
+              values="850,0; -80,0"
+              dur="24s"
               repeatCount="indefinite"
             />
-            <path
-              d="M0,130 Q8,121 16,130 M16,130 Q24,121 32,130"
-              fill="none"
-              stroke="#1B4F3A"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-            >
-              <animateTransform
-                attributeName="transform"
-                type="translate"
-                values="0,0; 0,-2.5; 0,0"
-                dur="1.2s"
-                repeatCount="indefinite"
-              />
-            </path>
+            {/* 横向き鳥シルエット: 胴体+翼+くちばし+尾 */}
+            <g transform="translate(0,125) scale(0.6)">
+              <ellipse cx="10" cy="0" rx="6" ry="2.5" fill="#1B4F3A" />
+              <path d="M4,-1 Q-2,-8 -6,-6" fill="none" stroke="#1B4F3A" strokeWidth="1.2" strokeLinecap="round">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  values="0,4,-1; -8,4,-1; 0,4,-1"
+                  dur="1.2s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path d="M4,1 Q-2,8 -6,6" fill="none" stroke="#1B4F3A" strokeWidth="1.2" strokeLinecap="round">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  values="0,4,1; 8,4,1; 0,4,1"
+                  dur="1.2s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path d="M16,0 L20,-1" fill="none" stroke="#1B4F3A" strokeWidth="0.8" strokeLinecap="round" />
+              <path d="M-4,0 Q-8,-2 -10,0 Q-8,2 -4,0" fill="#1B4F3A" opacity="0.6" />
+            </g>
           </g>
 
-          {/* 鳥2 — 中距離 */}
-          <g opacity="0.08">
+          {/* 鳥2 — 中距離、小さめ */}
+          <g opacity="0.07">
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="900,30; -60,30"
-              dur="28s"
+              values="900,20; -40,20"
+              dur="30s"
               repeatCount="indefinite"
             />
-            <path
-              d="M0,145 Q5,138 10,145 M10,145 Q15,138 20,145"
-              fill="none"
-              stroke="#1B4F3A"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-            >
-              <animateTransform
-                attributeName="transform"
-                type="translate"
-                values="0,0; 0,-2; 0,0"
-                dur="1.5s"
-                repeatCount="indefinite"
-              />
-            </path>
+            <g transform="translate(0,140) scale(0.4)">
+              <ellipse cx="10" cy="0" rx="6" ry="2.5" fill="#1B4F3A" />
+              <path d="M4,-1 Q-2,-8 -6,-6" fill="none" stroke="#1B4F3A" strokeWidth="1.2" strokeLinecap="round">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  values="0,4,-1; -8,4,-1; 0,4,-1"
+                  dur="1.5s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path d="M4,1 Q-2,8 -6,6" fill="none" stroke="#1B4F3A" strokeWidth="1.2" strokeLinecap="round">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  values="0,4,1; 8,4,1; 0,4,1"
+                  dur="1.5s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path d="M16,0 L20,-1" fill="none" stroke="#1B4F3A" strokeWidth="0.8" strokeLinecap="round" />
+            </g>
           </g>
 
-          {/* 鳥3 — 遠景、小さい */}
+          {/* 鳥3 — 遠景、最小 */}
           <g opacity="0.05">
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="950,-10; -50,-10"
-              dur="35s"
+              values="950,-15; -30,-15"
+              dur="38s"
               repeatCount="indefinite"
             />
-            <path
-              d="M0,110 Q3,105 6,110 M6,110 Q9,105 12,110"
-              fill="none"
-              stroke="#1B4F3A"
-              strokeWidth="1"
-              strokeLinecap="round"
-            >
-              <animateTransform
-                attributeName="transform"
-                type="translate"
-                values="0,0; 0,-1.5; 0,0"
-                dur="1.8s"
-                repeatCount="indefinite"
-              />
-            </path>
+            <g transform="translate(0,108) scale(0.3)">
+              <ellipse cx="10" cy="0" rx="6" ry="2.5" fill="#1B4F3A" />
+              <path d="M4,-1 Q-2,-8 -6,-6" fill="none" stroke="#1B4F3A" strokeWidth="1.2" strokeLinecap="round">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  values="0,4,-1; -8,4,-1; 0,4,-1"
+                  dur="1.8s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path d="M4,1 Q-2,8 -6,6" fill="none" stroke="#1B4F3A" strokeWidth="1.2" strokeLinecap="round">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  values="0,4,1; 8,4,1; 0,4,1"
+                  dur="1.8s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path d="M16,0 L20,-1" fill="none" stroke="#1B4F3A" strokeWidth="0.8" strokeLinecap="round" />
+            </g>
           </g>
 
         </g>

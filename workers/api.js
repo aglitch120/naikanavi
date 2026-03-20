@@ -47,9 +47,45 @@ const json = (data, status = 200, request = null) =>
   });
 
 // ── 暗号化ユーティリティ ──
+
+// Legacy SHA-256 ハッシュ（移行期間中の旧フォーマット検証用）
+// 全ユーザーがログイン済みになったら削除可能
 async function sha256(str) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+// PBKDF2: ランダムソルト生成（16バイト = 32文字hex）
+function generateSalt() {
+  const salt = new Uint8Array(16);
+  crypto.getRandomValues(salt);
+  return Array.from(salt).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+// PBKDF2: パスワードハッシュ（100,000 iterations, SHA-256, 256-bit output）
+async function hashPassword(password, salt) {
+  const encoder = new TextEncoder();
+  const keyMaterial = await crypto.subtle.importKey(
+    "raw", encoder.encode(password), "PBKDF2", false, ["deriveBits"]
+  );
+  const bits = await crypto.subtle.deriveBits(
+    { name: "PBKDF2", salt: encoder.encode(salt), iterations: 100000, hash: "SHA-256" },
+    keyMaterial, 256
+  );
+  return Array.from(new Uint8Array(bits)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+// パスワード検証（PBKDF2 + レガシーSHA-256自動移行対応）
+// storedSalt が存在すれば PBKDF2、なければレガシー SHA-256 で検証
+async function verifyPassword(password, email, storedHash, storedSalt) {
+  if (storedSalt) {
+    const hash = await hashPassword(password, storedSalt);
+    return hash === storedHash;
+  } else {
+    // レガシー SHA-256 フォーマット
+    const legacyHash = await sha256(password + email + SALT);
+    return legacyHash === storedHash;
+  }
 }
 
 function generatePassword() {
@@ -106,6 +142,14 @@ async function authenticate(request, env, { checkExpiry = true } = {}) {
   if (!userRaw) return { error: "User not found", status: 404 };
 
   const user = JSON.parse(userRaw);
+
+  // パスワードリセット後のセッション無効化チェック
+  // セッション作成時刻がパスワード変更時刻より前なら無効
+  if (user.passwordChangedAt && session.createdAt) {
+    if (new Date(session.createdAt) < new Date(user.passwordChangedAt)) {
+      return { error: "パスワードが変更されました。再度ログインしてください。", status: 401 };
+    }
+  }
 
   if (checkExpiry && user.expiresAt && new Date() > new Date(user.expiresAt)) {
     return { error: "PRO期限が切れています。更新してください。", status: 403 };
@@ -171,6 +215,16 @@ export default {
     //  → パスワード自動生成、返却
     // ══════════════════════════════════════════════════
     if (path === "/api/register" && request.method === "POST") {
+      // レート制限: IP単位で5回/15分
+      const registerIP = request.headers.get("CF-Connecting-IP") || "unknown";
+      const registerRateKey = `rate:register:${registerIP}`;
+      const registerCountRaw = await env.IWOR_KV.get(registerRateKey);
+      const registerCount = registerCountRaw ? parseInt(registerCountRaw, 10) : 0;
+      if (registerCount >= 5) {
+        return json({ error: "登録試行回数が上限に達しました。15分後に再度お試しください。" }, 429, request);
+      }
+      await env.IWOR_KV.put(registerRateKey, String(registerCount + 1), { expirationTtl: 900 });
+
       const body = await parseBody(request);
       if (!body) return json({ error: "Invalid JSON" }, 400, request);
       const orderNumber = String(body.orderNumber || "").trim();
@@ -201,9 +255,10 @@ export default {
         return json({ error: "登録情報を確認できませんでした。入力内容をご確認ください。" }, 400, request);
       }
 
-      // パスワード生成＆ハッシュ化
+      // パスワード生成＆PBKDF2ハッシュ化
       const password = generatePassword();
-      const passwordHash = await sha256(password + email + SALT);
+      const salt = generateSalt();
+      const passwordHash = await hashPassword(password, salt);
 
       // 有効期限計算
       const now = new Date();
@@ -215,6 +270,7 @@ export default {
         JSON.stringify({
           email,
           passwordHash,
+          salt,
           plan: order.plan,
           durationDays: order.durationDays,
           orderNumber,
@@ -287,11 +343,22 @@ export default {
       }
 
       const user = JSON.parse(userRaw);
-      const inputHash = await sha256(password + email + SALT);
+      const passwordValid = await verifyPassword(password, email, user.passwordHash, user.salt);
 
-      if (inputHash !== user.passwordHash) {
+      if (!passwordValid) {
         await env.IWOR_KV.put(loginRateKey, String(loginCount + 1), { expirationTtl: 900 });
         return json({ error: "メールアドレスまたはパスワードが正しくありません。" }, 401, request);
+      }
+
+      // レガシー SHA-256 → PBKDF2 自動移行
+      // salt フィールドが無い = 旧フォーマット → ログイン成功時に PBKDF2 で再ハッシュ
+      if (!user.salt) {
+        const newSalt = generateSalt();
+        const newHash = await hashPassword(password, newSalt);
+        user.passwordHash = newHash;
+        user.salt = newSalt;
+        user.hashMigratedAt = new Date().toISOString();
+        await env.IWOR_KV.put(userKey(email), JSON.stringify(user));
       }
 
       // 期限チェック
@@ -326,6 +393,16 @@ export default {
     //  → 注文番号+メールが一致すれば新パスワード発行
     // ══════════════════════════════════════════════════
     if (path === "/api/reset-password" && request.method === "POST") {
+      // レート制限: IP単位で5回/15分
+      const resetIP = request.headers.get("CF-Connecting-IP") || "unknown";
+      const resetRateKey = `rate:reset:${resetIP}`;
+      const resetCountRaw = await env.IWOR_KV.get(resetRateKey);
+      const resetCount = resetCountRaw ? parseInt(resetCountRaw, 10) : 0;
+      if (resetCount >= 5) {
+        return json({ error: "リセット試行回数が上限に達しました。15分後に再度お試しください。" }, 429, request);
+      }
+      await env.IWOR_KV.put(resetRateKey, String(resetCount + 1), { expirationTtl: 900 });
+
       const body = await parseBody(request);
       if (!body) return json({ error: "Invalid JSON" }, 400, request);
       const orderNumber = String(body.orderNumber || "").trim();
@@ -357,17 +434,20 @@ export default {
       }
       const user = JSON.parse(userRaw);
 
-      // 新パスワード生成
+      // 新パスワード生成 + PBKDF2ハッシュ
       const newPassword = generatePassword();
-      const newPasswordHash = await sha256(newPassword + email + SALT);
+      const newSalt = generateSalt();
+      const newPasswordHash = await hashPassword(newPassword, newSalt);
 
-      // ユーザー情報更新
+      // ユーザー情報更新（passwordChangedAt でセッション無効化）
       await env.IWOR_KV.put(
         userKey(email),
         JSON.stringify({
           ...user,
           passwordHash: newPasswordHash,
+          salt: newSalt,
           passwordResetAt: new Date().toISOString(),
+          passwordChangedAt: new Date().toISOString(),
         })
       );
 
@@ -441,6 +521,7 @@ export default {
         if (raw) {
           const user = JSON.parse(raw);
           delete user.passwordHash; // パスワードハッシュは返さない
+          delete user.salt; // ソルトも返さない
           users.push(user);
         }
       }
