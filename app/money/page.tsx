@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import FurusatoRanking from '@/components/FurusatoRanking'
 
 // ─── ふるさと納税上限概算 ───
 function FurusatoCalc() {
@@ -351,22 +352,8 @@ export default function MoneyPage() {
         本ツールは税務相談・助言を行うものではありません。
       </div>
 
-      {/* おすすめ返礼品ランキング（Coming Soon） */}
-      <section className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-0.5 bg-ac rounded-full" />
-          <h2 className="text-lg font-bold text-tx">おすすめ返礼品ランキング</h2>
-          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-s1 border border-br text-muted">準備中</span>
-        </div>
-        <div className="bg-s0 border border-br rounded-2xl p-6 text-center">
-          <div className="text-3xl mb-3">🎁</div>
-          <p className="text-sm font-bold text-tx mb-1">医師に人気の返礼品ランキング</p>
-          <p className="text-xs text-muted leading-relaxed max-w-sm mx-auto">
-            コミュニティの投票で決まる、医師に人気のふるさと納税返礼品ランキング。
-            まもなく公開予定です。
-          </p>
-        </div>
-      </section>
+      {/* おすすめ返礼品ランキング */}
+      <FurusatoRanking />
 
       {/* 関連記事 */}
       <section className="mb-8">
