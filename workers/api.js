@@ -997,6 +997,70 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       return json({ ok: true, rank, totalUsers: leaderboard.length }, 200, request);
     }
 
+    // ══════════════════════════════════════════════════
+    //  ストリークランキング取得
+    //  GET /api/streak/ranking
+    //  認証: 任意（認証ありでPRO/FREE分岐）
+    // ══════════════════════════════════════════════════
+    if (path === "/api/streak/ranking" && request.method === "GET") {
+      let leaderboard = [];
+      try {
+        const lbRaw = await env.IWOR_KV.get("streak:leaderboard");
+        if (lbRaw) leaderboard = JSON.parse(lbRaw);
+      } catch {}
+
+      // 認証試行（任意）
+      let email = null;
+      let isPro = false;
+      const auth = request.headers.get("Authorization") || "";
+      const token = auth.replace("Bearer ", "").trim();
+      if (token) {
+        const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
+        if (sessionRaw) {
+          const session = JSON.parse(sessionRaw);
+          email = session.email;
+          const userRaw = await env.IWOR_KV.get(userKey(session.email));
+          if (userRaw) {
+            const user = JSON.parse(userRaw);
+            isPro = !!(user.expiresAt && new Date() <= new Date(user.expiresAt));
+          }
+        }
+      }
+
+      // 自分の順位
+      let myRank = null;
+      let myStreak = 0;
+      if (email) {
+        const idx = leaderboard.findIndex(e => e.email === email);
+        if (idx >= 0) {
+          myRank = idx + 1;
+          myStreak = leaderboard[idx].count;
+        } else {
+          // leaderboardに居ない場合、個別KVから取得
+          try {
+            const raw = await env.IWOR_KV.get(`streak:${email}`);
+            if (raw) myStreak = JSON.parse(raw).count || 0;
+          } catch {}
+        }
+      }
+
+      // PRO: top50、FREE: top3（emailは除去）
+      const limit = isPro ? 50 : 3;
+      const board = leaderboard.slice(0, limit).map((e, i) => ({
+        displayName: e.displayName,
+        count: e.count,
+        rank: i + 1,
+      }));
+
+      return json({
+        leaderboard: board,
+        myRank,
+        myStreak,
+        totalUsers: leaderboard.length,
+        isPro,
+      }, 200, request);
+    }
+
     // ── 404 ──
     return json({ error: "Not Found" }, 404, request);
   },
