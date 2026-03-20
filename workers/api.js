@@ -924,6 +924,79 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       }
     }
 
+    // ══════════════════════════════════════════════════
+    //  ストリーク同期
+    //  PUT /api/streak
+    //  Authorization: Bearer {sessionToken}
+    //  Body: { count, best, lastDate, displayName }
+    // ══════════════════════════════════════════════════
+    if (path === "/api/streak" && request.method === "PUT") {
+      const authResult = await authenticate(request, env, { checkExpiry: false });
+      if (authResult.error) return json({ error: authResult.error }, authResult.status, request);
+
+      const body = await parseBody(request);
+      if (!body) return json({ error: "Invalid JSON" }, 400, request);
+
+      const { email } = authResult;
+      const count = parseInt(body.count, 10);
+      const best = parseInt(body.best, 10);
+      const lastDate = String(body.lastDate || "").trim();
+      let displayName = String(body.displayName || "匿名医師").trim();
+
+      // バリデーション
+      if (isNaN(count) || count < 0 || isNaN(best) || best < 0) {
+        return json({ error: "Invalid streak data" }, 400, request);
+      }
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(lastDate)) {
+        return json({ error: "Invalid date format" }, 400, request);
+      }
+
+      // lastDate === 今日（UTC+9）
+      const now = new Date();
+      const jst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+      const todayJST = jst.toISOString().split("T")[0];
+      if (lastDate !== todayJST) {
+        return json({ error: "lastDate must be today (JST)" }, 400, request);
+      }
+
+      // displayName sanitize（HTMLタグ除去、8文字）
+      displayName = displayName.replace(/<[^>]*>/g, "").slice(0, 8) || "匿名医師";
+
+      // 既存値チェック（+1制限）
+      const existingRaw = await env.IWOR_KV.get(`streak:${email}`);
+      let finalCount = count;
+      if (existingRaw) {
+        const existing = JSON.parse(existingRaw);
+        if (count > existing.count + 1) {
+          finalCount = existing.count + 1;
+        }
+      }
+      const finalBest = Math.max(finalCount, best);
+
+      // KV書き込み
+      await env.IWOR_KV.put(`streak:${email}`, JSON.stringify({
+        count: finalCount, best: finalBest, lastDate, displayName,
+        updatedAt: new Date().toISOString(),
+      }));
+
+      // leaderboard更新
+      let leaderboard = [];
+      try {
+        const lbRaw = await env.IWOR_KV.get("streak:leaderboard");
+        if (lbRaw) leaderboard = JSON.parse(lbRaw);
+      } catch {}
+      const idx = leaderboard.findIndex(e => e.email === email);
+      const entry = { email, displayName, count: finalCount };
+      if (idx >= 0) leaderboard[idx] = entry;
+      else leaderboard.push(entry);
+      leaderboard.sort((a, b) => b.count - a.count);
+      leaderboard = leaderboard.slice(0, 200);
+      await env.IWOR_KV.put("streak:leaderboard", JSON.stringify(leaderboard));
+
+      const rank = leaderboard.findIndex(e => e.email === email) + 1;
+      return json({ ok: true, rank, totalUsers: leaderboard.length }, 200, request);
+    }
+
     // ── 404 ──
     return json({ error: "Not Found" }, 404, request);
   },
