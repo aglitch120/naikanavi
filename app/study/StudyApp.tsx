@@ -70,8 +70,44 @@ function updateStreak(): StreakData {
   return updated
 }
 
+// ── 試験カウントダウン ──
+const EXAM_KEY = 'iwor_study_exam'
+interface ExamData { name: string; date: string; emoji: string }
+
+const EXAM_PRESETS: { name: string; emoji: string }[] = [
+  { name: 'CBT', emoji: '📖' },
+  { name: '医師国家試験', emoji: '🏥' },
+  { name: '専門医試験', emoji: '🎓' },
+]
+
+function loadExam(): ExamData | null {
+  try {
+    const raw = localStorage.getItem(EXAM_KEY)
+    if (raw) {
+      const data: ExamData = JSON.parse(raw)
+      if (data.name && data.date) return data
+    }
+  } catch {}
+  return null
+}
+
+function saveExam(data: ExamData) {
+  localStorage.setItem(EXAM_KEY, JSON.stringify(data))
+}
+
+function deleteExam() {
+  localStorage.removeItem(EXAM_KEY)
+}
+
+function getDaysUntil(dateStr: string): number {
+  const target = new Date(dateStr + 'T00:00:00')
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  return Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+}
+
 // ── 画面定義 ──
-type Screen = 'home' | 'deck' | 'study' | 'result' | 'create-deck' | 'edit-deck' | 'add-card' | 'edit-card' | 'card-list'
+type Screen = 'home' | 'deck' | 'study' | 'result' | 'create-deck' | 'edit-deck' | 'add-card' | 'edit-card' | 'card-list' | 'exam-settings'
 
 const RATING_BUTTONS: { rating: Rating; label: string; color: string; bgColor: string; borderColor: string }[] = [
   { rating: 1, label: 'もう一度', color: '#DC2626', bgColor: '#FEF2F2', borderColor: '#FECACA' },
@@ -106,6 +142,10 @@ export default function StudyApp() {
   const [editingCardId, setEditingCardId] = useState<string | null>(null)
   const [deleteConfirm, setDeleteConfirm] = useState(false)
   const [streak, setStreak] = useState<StreakData>({ lastDate: '', count: 0, best: 0 })
+  const [examData, setExamData] = useState<ExamData | null>(null)
+  const [examFormName, setExamFormName] = useState('')
+  const [examFormDate, setExamFormDate] = useState('')
+  const [examFormEmoji, setExamFormEmoji] = useState('📖')
 
   // ── Init ──
   useEffect(() => {
@@ -113,6 +153,7 @@ export default function StudyApp() {
     setCardDataMap(loadAllCardData())
     setDecks(loadAllDecks())
     setStreak(getStreak())
+    setExamData(loadExam())
   }, [])
 
   // ── Active deck ──
@@ -315,6 +356,62 @@ export default function StudyApp() {
           favoriteSlug="app-study"
           favoriteHref="/study"
         />
+
+        {/* 試験カウントダウン */}
+        {examData ? (() => {
+          const days = getDaysUntil(examData.date)
+          const urgentColor = days <= 7 ? '#991B1B' : days <= 30 ? '#92400E' : MC
+          const urgentBg = days <= 7 ? '#FEE2E2' : days <= 30 ? '#FEF3C7' : MCL
+          const urgentBorder = days <= 7 ? '#FCA5A5' : days <= 30 ? '#FCD34D' : 'rgba(27,79,58,0.2)'
+          return (
+            <button
+              onClick={() => {
+                setExamFormName(examData.name)
+                setExamFormDate(examData.date)
+                setExamFormEmoji(examData.emoji)
+                setScreen('exam-settings')
+              }}
+              className="w-full rounded-xl p-4 mb-6 text-left transition-all hover:opacity-90 border"
+              style={{ background: urgentBg, borderColor: urgentBorder }}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{examData.emoji}</span>
+                  <div>
+                    <p className="text-xs font-bold" style={{ color: urgentColor }}>{examData.name}</p>
+                    <p className="text-[10px] text-muted">
+                      {new Date(examData.date + 'T00:00:00').toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  {days > 0 ? (
+                    <>
+                      <p className="text-2xl font-bold" style={{ color: urgentColor }}>{days}</p>
+                      <p className="text-[10px] font-medium" style={{ color: urgentColor }}>日後</p>
+                    </>
+                  ) : days === 0 ? (
+                    <p className="text-lg font-bold" style={{ color: urgentColor }}>今日！</p>
+                  ) : (
+                    <p className="text-sm font-bold text-muted">終了</p>
+                  )}
+                </div>
+              </div>
+            </button>
+          )
+        })() : (
+          <button
+            onClick={() => {
+              setExamFormName('')
+              setExamFormDate('')
+              setExamFormEmoji('📖')
+              setScreen('exam-settings')
+            }}
+            className="w-full bg-s0 border border-dashed border-br rounded-xl p-3 mb-6 text-center hover:border-ac/40 transition-colors"
+          >
+            <p className="text-xs text-muted">🎯 試験日を設定してカウントダウン</p>
+          </button>
+        )}
 
         {/* 今日の統計 */}
         {dayStats.reviewed > 0 && (
@@ -904,6 +1001,120 @@ export default function StudyApp() {
   }
 
   // ══════════════════════════════════════════
+  //  試験カウントダウン設定画面
+  // ══════════════════════════════════════════
+  if (screen === 'exam-settings') {
+    const canSave = examFormName.trim() && examFormDate
+    return (
+      <div className="px-4 py-6 max-w-lg mx-auto">
+        <BackButton onClick={goHome} />
+
+        <h2 className="text-lg font-bold text-tx mb-1">試験カウントダウン</h2>
+        <p className="text-xs text-muted mb-6">試験日を設定すると、Study画面に残り日数が表示されます</p>
+
+        {/* プリセット選択 */}
+        <div className="mb-6">
+          <p className="text-xs font-bold text-muted mb-2">試験を選択</p>
+          <div className="flex flex-wrap gap-2">
+            {EXAM_PRESETS.map(preset => {
+              const selected = examFormName === preset.name
+              return (
+                <button
+                  key={preset.name}
+                  onClick={() => { setExamFormName(preset.name); setExamFormEmoji(preset.emoji) }}
+                  className="px-3 py-2 rounded-lg text-xs font-medium border transition-all"
+                  style={{
+                    background: selected ? MCL : 'var(--s0)',
+                    borderColor: selected ? MC : 'var(--br)',
+                    color: selected ? MC : 'var(--tx)',
+                  }}
+                >
+                  {preset.emoji} {preset.name}
+                </button>
+              )
+            })}
+            <button
+              onClick={() => { setExamFormName(''); setExamFormEmoji('🎯') }}
+              className="px-3 py-2 rounded-lg text-xs font-medium border transition-all"
+              style={{
+                background: !EXAM_PRESETS.some(p => p.name === examFormName) && examFormName !== '' ? MCL : 'var(--s0)',
+                borderColor: !EXAM_PRESETS.some(p => p.name === examFormName) && examFormName !== '' ? MC : 'var(--br)',
+                color: !EXAM_PRESETS.some(p => p.name === examFormName) && examFormName !== '' ? MC : 'var(--m)',
+              }}
+            >
+              ✏️ カスタム
+            </button>
+          </div>
+        </div>
+
+        {/* カスタム試験名 */}
+        {!EXAM_PRESETS.some(p => p.name === examFormName) && (
+          <div className="mb-6">
+            <label className="text-xs font-bold text-muted block mb-2">試験名</label>
+            <input
+              type="text"
+              value={examFormName}
+              onChange={e => setExamFormName(e.target.value)}
+              placeholder="例: TOEFL, USMLE Step1..."
+              className="w-full bg-s0 border border-br rounded-xl px-4 py-3 text-sm text-tx placeholder:text-muted/50 focus:outline-none focus:border-ac/50 transition-colors"
+              style={{ fontSize: '16px' }}
+            />
+          </div>
+        )}
+
+        {/* 試験日 */}
+        <div className="mb-8">
+          <label className="text-xs font-bold text-muted block mb-2">試験日</label>
+          <input
+            type="date"
+            value={examFormDate}
+            onChange={e => setExamFormDate(e.target.value)}
+            min={new Date().toISOString().split('T')[0]}
+            className="w-full bg-s0 border border-br rounded-xl px-4 py-3 text-sm text-tx focus:outline-none focus:border-ac/50 transition-colors"
+            style={{ fontSize: '16px' }}
+          />
+          {examFormDate && (() => {
+            const days = getDaysUntil(examFormDate)
+            return days > 0 ? (
+              <p className="text-xs text-muted mt-2 text-center">あと <span className="font-bold" style={{ color: MC }}>{days}</span> 日</p>
+            ) : null
+          })()}
+        </div>
+
+        {/* 保存ボタン */}
+        <button
+          onClick={() => {
+            if (!canSave) return
+            const data: ExamData = { name: examFormName.trim(), date: examFormDate, emoji: examFormEmoji }
+            saveExam(data)
+            setExamData(data)
+            goHome()
+          }}
+          disabled={!canSave}
+          className="w-full py-3.5 rounded-xl text-sm font-bold text-white mb-3 transition-colors disabled:opacity-40"
+          style={{ background: MC }}
+        >
+          保存する
+        </button>
+
+        {/* 削除ボタン（既存データがある場合のみ） */}
+        {examData && (
+          <button
+            onClick={() => {
+              deleteExam()
+              setExamData(null)
+              goHome()
+            }}
+            className="w-full py-3 rounded-xl text-sm font-medium border border-br text-muted hover:text-dn hover:border-dn/30 transition-colors"
+          >
+            カウントダウンを削除
+          </button>
+        )}
+      </div>
+    )
+  }
+
+  // ══════════════════════════════════════════
   //  結果画面（Peak-End）
   // ══════════════════════════════════════════
   const accuracy = sessionTotal > 0 ? Math.round((sessionCorrect / sessionTotal) * 100) : 0
@@ -977,6 +1188,26 @@ export default function StudyApp() {
             </p>
           )}
         </div>
+
+        {/* 試験カウントダウン（結果画面） */}
+        {examData && (() => {
+          const days = getDaysUntil(examData.date)
+          if (days < 0) return null
+          const urgentColor = days <= 7 ? '#991B1B' : days <= 30 ? '#92400E' : MC
+          const urgentBg = days <= 7 ? '#FEE2E2' : days <= 30 ? '#FEF3C7' : MCL
+          const urgentBorder = days <= 7 ? '#FCA5A5' : days <= 30 ? '#FCD34D' : 'rgba(27,79,58,0.2)'
+          return (
+            <div className="mb-6 rounded-xl p-3 border text-center" style={{ background: urgentBg, borderColor: urgentBorder }}>
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-base">{examData.emoji}</span>
+                <span className="text-xs font-bold" style={{ color: urgentColor }}>{examData.name}まで</span>
+                <span className="text-lg font-bold" style={{ color: urgentColor }}>
+                  {days === 0 ? '今日！' : `あと${days}日`}
+                </span>
+              </div>
+            </div>
+          )
+        })()}
 
         {/* セッション統計 */}
         <div className="grid grid-cols-3 gap-3 mb-8">
