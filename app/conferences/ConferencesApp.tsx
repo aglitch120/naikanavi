@@ -2,6 +2,8 @@
 
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import AppHeader from '@/components/AppHeader'
+import ProModal from '@/components/pro/ProModal'
+import { useProStatus } from '@/components/pro/useProStatus'
 import { CONFERENCES_2026, Conference, getSpecialtyCategory, SPECIALTY_COLORS } from '@/lib/conferences-data'
 
 type ViewMode = 'list' | 'calendar'
@@ -49,6 +51,9 @@ export default function ConferencesApp() {
   const [listFilter, setListFilter] = useState<ListFilter>('all')
   const [attending, setAttending] = useState<string[]>([])
   const [proLimitHit, setProLimitHit] = useState(false)
+  const [counts, setCounts] = useState<Record<string, string | number>>({})
+  const [showProModal, setShowProModal] = useState(false)
+  const { isPro } = useProStatus()
 
   // Init: load attending from localStorage, then sync from server
   useEffect(() => {
@@ -64,6 +69,14 @@ export default function ConferencesApp() {
         }
       }).catch(() => {})
     }
+    // Fetch counts
+    const ids = CONFERENCES_2026.map(c => c.id).join(',')
+    const headers: Record<string, string> = {}
+    if (token) headers['Authorization'] = `Bearer ${token}`
+    fetch(`${API_BASE}/api/conferences/counts?ids=${ids}`, { headers })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data?.counts) setCounts(data.counts) })
+      .catch(() => {})
   }, [])
 
   const toggleAttend = useCallback((confId: string) => {
@@ -235,7 +248,7 @@ export default function ConferencesApp() {
                 <h3 className="text-sm font-bold text-tx mb-3">{y}年{parseInt(m)}月</h3>
                 <div className="space-y-3">
                   {confs.map(conf => (
-                    <ConferenceCard key={conf.id} conf={conf} isAttending={attending.includes(conf.id)} onToggleAttend={toggleAttend} />
+                    <ConferenceCard key={conf.id} conf={conf} isAttending={attending.includes(conf.id)} onToggleAttend={toggleAttend} count={counts[conf.id]} isPro={isPro} onShowPro={() => setShowProModal(true)} />
                   ))}
                 </div>
               </div>
@@ -248,11 +261,17 @@ export default function ConferencesApp() {
       {viewMode === 'calendar' && (
         <CalendarGrid conferences={sorted} attending={attending} onToggleAttend={toggleAttend} />
       )}
+
+      {/* ProGateモーダル */}
+      {showProModal && <ProModal feature="full_access" onClose={() => setShowProModal(false)} />}
     </div>
   )
 }
 
-function ConferenceCard({ conf, isAttending, onToggleAttend }: { conf: Conference; isAttending?: boolean; onToggleAttend?: (id: string) => void }) {
+function ConferenceCard({ conf, isAttending, onToggleAttend, count, isPro, onShowPro }: {
+  conf: Conference; isAttending?: boolean; onToggleAttend?: (id: string) => void
+  count?: string | number; isPro?: boolean; onShowPro?: () => void
+}) {
   const days = getDaysUntil(conf.startDate)
   const cat = getSpecialtyCategory(conf.specialtyArea)
   const catColor = SPECIALTY_COLORS[cat]
@@ -296,19 +315,35 @@ function ConferenceCard({ conf, isAttending, onToggleAttend }: { conf: Conferenc
               会長: {conf.president}{conf.presidentAffiliation && `（${conf.presidentAffiliation}）`}
             </p>
           )}
-          {onToggleAttend && !isPast && (
-            <button
-              onClick={(e) => { e.stopPropagation(); onToggleAttend(conf.id) }}
-              className="mt-2 text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
-              style={{
-                background: isAttending ? MCL : 'transparent',
-                color: isAttending ? MC : 'var(--m)',
-                borderColor: isAttending ? `${MC}40` : 'var(--br)',
-              }}
-            >
-              {isAttending ? '⭐ 参加予定' : '☆ 参加予定に追加'}
-            </button>
-          )}
+          <div className="flex items-center gap-2 mt-2 flex-wrap">
+            {onToggleAttend && !isPast && (
+              <button
+                onClick={(e) => { e.stopPropagation(); onToggleAttend(conf.id) }}
+                className="text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
+                style={{
+                  background: isAttending ? MCL : 'transparent',
+                  color: isAttending ? MC : 'var(--m)',
+                  borderColor: isAttending ? `${MC}40` : 'var(--br)',
+                }}
+              >
+                {isAttending ? '⭐ 参加予定' : '☆ 参加予定に追加'}
+              </button>
+            )}
+            {count !== undefined && (
+              isPro ? (
+                <span className="text-[10px] text-muted">
+                  👥 {count}人が参加予定
+                </span>
+              ) : (
+                <button
+                  onClick={(e) => { e.stopPropagation(); onShowPro?.() }}
+                  className="text-[10px] text-muted hover:text-ac transition-colors"
+                >
+                  👥 {count}人が参加予定 <span className="text-[9px]">🔒</span>
+                </button>
+              )
+            )}
+          </div>
         </div>
       </div>
     </div>
