@@ -130,7 +130,17 @@ function getDaysUntil(dateStr: string): number {
 }
 
 // ── 画面定義 ──
-type Screen = 'home' | 'deck' | 'study' | 'result' | 'create-deck' | 'edit-deck' | 'add-card' | 'edit-card' | 'card-list' | 'exam-settings'
+type Screen = 'home' | 'deck' | 'study' | 'result' | 'create-deck' | 'edit-deck' | 'add-card' | 'edit-card' | 'card-list' | 'exam-settings' | 'ranking'
+
+// ── ランキングデータ型 ──
+interface RankingEntry { displayName: string; count: number; rank: number }
+interface RankingData {
+  leaderboard: RankingEntry[]
+  myRank: number | null
+  myStreak: number
+  totalUsers: number
+  isPro: boolean
+}
 
 const RATING_BUTTONS: { rating: Rating; label: string; color: string; bgColor: string; borderColor: string }[] = [
   { rating: 1, label: 'もう一度', color: '#DC2626', bgColor: '#FEF2F2', borderColor: '#FECACA' },
@@ -174,6 +184,10 @@ export default function StudyApp() {
   const [importLoading, setImportLoading] = useState(false)
   const [importError, setImportError] = useState('')
   const [importResult, setImportResult] = useState<ApkgImportResult | null>(null)
+
+  // Ranking states
+  const [rankingData, setRankingData] = useState<RankingData | null>(null)
+  const [rankingLoading, setRankingLoading] = useState(false)
 
   // ── Init ──
   useEffect(() => {
@@ -361,6 +375,22 @@ export default function StudyApp() {
     }
   }, [])
 
+  // ── ランキング取得 ──
+  const fetchRanking = useCallback(async () => {
+    setRankingLoading(true)
+    try {
+      const headers: Record<string, string> = {}
+      const token = localStorage.getItem('iwor_session_token')
+      if (token) headers['Authorization'] = `Bearer ${token}`
+      const res = await fetch(`${API_BASE}/api/streak/ranking`, { headers })
+      if (res.ok) {
+        const data = await res.json()
+        setRankingData(data)
+      }
+    } catch {}
+    setRankingLoading(false)
+  }, [])
+
   // ── Navigation helpers ──
   const openDeck = useCallback((deckId: string) => {
     setActiveDeckId(deckId)
@@ -495,6 +525,27 @@ export default function StudyApp() {
           </div>
         )}
 
+        {/* ランキングバナー */}
+        <button
+          onClick={() => { fetchRanking(); setScreen('ranking') }}
+          className="w-full bg-s0 border border-br rounded-xl p-4 mb-6 text-left hover:border-ac/40 transition-all"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🏆</span>
+              <div>
+                <p className="text-sm font-bold text-tx">ストリークランキング</p>
+                <p className="text-[11px] text-muted">全国の学習者と競おう</p>
+              </div>
+            </div>
+            {streak.count > 0 && (
+              <span className="text-xs font-bold px-2 py-1 rounded-lg" style={{ background: MCL, color: MC }}>
+                🔥 {streak.count}日
+              </span>
+            )}
+          </div>
+        </button>
+
         {/* デッキ一覧 */}
         <div className="mb-6">
           <h2 className="text-sm font-bold text-tx mb-3">デッキ</h2>
@@ -592,6 +643,85 @@ export default function StudyApp() {
             ← ホームに戻る
           </Link>
         </div>
+      </div>
+    )
+  }
+
+  // ══════════════════════════════════════════
+  //  ランキング画面
+  // ══════════════════════════════════════════
+  if (screen === 'ranking') {
+    return (
+      <div className="px-4 py-6 max-w-lg mx-auto">
+        <BackButton onClick={goHome} />
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-3xl">🏆</span>
+          <div>
+            <h2 className="text-lg font-bold text-tx">ストリークランキング</h2>
+            <p className="text-[11px] text-muted">連続学習日数の全国ランキング</p>
+          </div>
+        </div>
+
+        {/* 自分のストリーク */}
+        <div className="bg-s0 border border-br rounded-xl p-4 mb-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🔥</span>
+              <div>
+                <p className="text-2xl font-bold" style={{ color: MC }}>{streak.count}</p>
+                <p className="text-[10px] text-muted">日連続</p>
+              </div>
+            </div>
+            {rankingData?.myRank && (
+              <div className="text-right">
+                <p className="text-2xl font-bold" style={{ color: MC }}>{rankingData.myRank}位</p>
+                <p className="text-[10px] text-muted">全国{rankingData.totalUsers}人中</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ランキングリスト */}
+        {rankingLoading ? (
+          <div className="text-center py-8">
+            <p className="text-sm text-muted">読み込み中...</p>
+          </div>
+        ) : rankingData ? (
+          <div className="space-y-2">
+            {rankingData.leaderboard.map((entry) => {
+              const isMe = rankingData.myRank === entry.rank
+              const medal = entry.rank === 1 ? '🥇' : entry.rank === 2 ? '🥈' : entry.rank === 3 ? '🥉' : ''
+              return (
+                <div
+                  key={entry.rank}
+                  className="flex items-center gap-3 p-3 rounded-xl border transition-all"
+                  style={{
+                    background: isMe ? MCL : 'var(--s0)',
+                    borderColor: isMe ? `${MC}40` : 'var(--br)',
+                  }}
+                >
+                  <span className="w-8 text-center text-sm font-bold" style={{ color: isMe ? MC : undefined }}>
+                    {medal || `${entry.rank}`}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold text-tx truncate">
+                      {entry.displayName}{isMe && ' (あなた)'}
+                    </p>
+                  </div>
+                  <span className="text-sm font-bold" style={{ color: MC }}>
+                    🔥 {entry.count}日
+                  </span>
+                </div>
+              )
+            })}
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <p className="text-sm text-muted">ランキングデータを取得できませんでした</p>
+          </div>
+        )}
+
+        {/* FREE: ブラー部分は次コミットで追加 */}
       </div>
     )
   }
