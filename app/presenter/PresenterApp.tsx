@@ -7,7 +7,7 @@ const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
 
 // ── 型定義 ──
-type PresentationType = 'case-report' | 'conference' | 'consultation' | 'abstract' | 'journal-club'
+type PresentationType = 'case-report' | 'conference' | 'consultation' | 'journal-club'
 type Audience = 'specialist' | 'resident' | 'student' | 'mixed'
 type Format = 'slide' | 'poster' | 'abstract-doc' | 'a4-handout'
 
@@ -24,7 +24,6 @@ const TYPES: { id: PresentationType; label: string; icon: string; desc: string }
   { id: 'case-report', label: '症例報告', icon: '📋', desc: 'カンファ・症例検討会向け' },
   { id: 'conference', label: '学会発表', icon: '🎤', desc: '学会口演・ポスター向け' },
   { id: 'consultation', label: 'コンサルテーション', icon: '🏥', desc: '他科コンサル・紹介状向け' },
-  { id: 'abstract', label: '抄録', icon: '📝', desc: '学会・論文の抄録作成' },
   { id: 'journal-club', label: 'ジャーナルクラブ', icon: '📚', desc: '論文抄読会向け' },
 ]
 
@@ -97,17 +96,6 @@ function generateTemplate(s: Settings): { title: string; sections: TemplateSecti
         { title: '患者情報', bullets: ['年齢・性別・入院日・病棟', '主病名・入院理由', '関連する既往歴・内服薬'], timeGuide: '〜1分' },
         { title: '現在の問題点', bullets: ['コンサルの具体的な質問（明確に）', '関連する検査結果（バイタル/血液/画像）', '経過・これまでの対応'], timeGuide: '〜2分' },
         { title: '依頼事項', bullets: ['診断の確認/治療方針の相談', '手技/処置の依頼', '具体的に何をしてほしいか'], timeGuide: '〜30秒' },
-      ]
-      break
-
-    case 'abstract':
-      sections = [
-        { title: '演題名', bullets: ['疾患/テーマ + 研究手法 + 主要結果のキーワードを含める', '50文字以内が理想'], timeGuide: '' },
-        { title: '背景 (Background)', bullets: ['臨床的背景（2-3文）', '研究の必要性・先行研究の限界', '研究目的（最後の1文で明確に）'], slideNote: '全体の20%' },
-        { title: '方法 (Methods)', bullets: ['研究デザイン', '対象・期間', '主要評価項目', '統計手法'], slideNote: '全体の25%' },
-        { title: '結果 (Results)', bullets: ['主要結果（数値データ付き）', '副次的結果', 'p値/信頼区間'], slideNote: '全体の30%' },
-        { title: '結論 (Conclusion)', bullets: ['主要な結論（1-2文）', '臨床的意義'], slideNote: '全体の15%' },
-        { title: 'キーワード', bullets: ['3-5個のキーワード（MeSH用語推奨）'], slideNote: '' },
       ]
       break
 
