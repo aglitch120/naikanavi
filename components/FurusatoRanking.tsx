@@ -99,7 +99,7 @@ function saveVote(id: string) {
 
   const myVotes = getMyVotes()
   myVotes.add(id)
-  localStorage.setItem(STORAGE_KEY + '-my', JSON.stringify([...myVotes]))
+  localStorage.setItem(STORAGE_KEY + '-my', JSON.stringify(Array.from(myVotes)))
 
   return votes
 }
@@ -119,7 +119,7 @@ export default function FurusatoRanking() {
     if (myVotes.has(id)) return
     const updated = saveVote(id)
     setVotes({ ...updated })
-    setMyVotes(new Set([...myVotes, id]))
+    setMyVotes(new Set(Array.from(myVotes).concat(id)))
   }
 
   const items = rewards
