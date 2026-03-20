@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import AppHeader from '@/components/AppHeader'
-import ProGate from '@/components/pro/ProGate'
+import ProModal from '@/components/pro/ProModal'
 import { useProStatus } from '@/components/pro/useProStatus'
 import { ALL_SPECIALTIES, getSpecialtyById, type CreditEntry, type UserCreditsData } from '@/lib/credits-data'
 import {
@@ -123,6 +123,8 @@ export default function CreditsApp() {
   const [loaded, setLoaded] = useState(false)
   const [showAddModal, setShowAddModal] = useState(false)
   const [showTargetInput, setShowTargetInput] = useState(false)
+  const [showProModal, setShowProModal] = useState(false)
+  const [actionCount, setActionCount] = useState(0)
 
   // Load data
   useEffect(() => {
@@ -132,12 +134,21 @@ export default function CreditsApp() {
     })
   }, [])
 
-  // Save helper
+  // Save helper — FREE users can use but not persist
   const save = useCallback((newData: UserCreditsData) => {
     setData(newData)
-    saveCreditsToLocal(newData)
-    saveCreditsToCloud(newData)
-  }, [])
+    if (isPro) {
+      saveCreditsToLocal(newData)
+      saveCreditsToCloud(newData)
+    } else {
+      setActionCount(prev => {
+        const next = prev + 1
+        // 3回操作後にPRO保存を促す
+        if (next === 3) setShowProModal(true)
+        return next
+      })
+    }
+  }, [isPro])
 
   const specialty = data.selectedSpecialty ? getSpecialtyById(data.selectedSpecialty) : null
 
@@ -200,8 +211,7 @@ export default function CreditsApp() {
     <div className="max-w-2xl mx-auto px-4 pt-6 pb-24">
       <AppHeader title="専門医単位" subtitle="専門医更新に必要な単位を管理" badge="PRO" />
 
-      <ProGate feature="full_access" previewHeight={120} blurIntensity={10}
-        label="PRO会員で専門医単位管理を使う">
+      <div>
         {/* ── 診療科選択 ── */}
         <div className="rounded-xl p-4 mb-4" style={{ background: C.s0, border: `1px solid ${C.br}` }}>
           <label className="text-xs font-medium mb-2 block" style={{ color: C.m }}>診療科を選択</label>
@@ -396,7 +406,19 @@ export default function CreditsApp() {
           各学会の正式な単位管理システムの代替ではありません。
           正確な要件・取得状況は各学会公式サイトでご確認ください。
         </div>
-      </ProGate>
+        {/* FREE user save hint */}
+        {!isPro && actionCount >= 3 && (
+          <div className="rounded-xl p-4 mb-4 text-center" style={{ background: C.acl, border: `1px solid ${C.ac}20` }}>
+            <p className="text-sm font-bold" style={{ color: C.ac }}>データを保存するにはPRO会員登録が必要です</p>
+            <p className="text-xs mt-1" style={{ color: C.m }}>現在の入力はブラウザを閉じると失われます</p>
+            <button onClick={() => setShowProModal(true)}
+              className="mt-2 px-4 py-2 rounded-xl text-xs font-bold text-white"
+              style={{ background: C.ac }}>
+              PRO会員について詳しく見る
+            </button>
+          </div>
+        )}
+      </div>
 
       {/* ── Add Modal ── */}
       {showAddModal && specialty && (
@@ -405,6 +427,11 @@ export default function CreditsApp() {
           onAdd={handleAddEntry}
           onClose={() => setShowAddModal(false)}
         />
+      )}
+
+      {/* ── PRO Modal ── */}
+      {showProModal && (
+        <ProModal feature="save" onClose={() => setShowProModal(false)} />
       )}
     </div>
   )
