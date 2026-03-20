@@ -27,3 +27,6 @@ jobs:
 
       - name: Smoke tests
         run: node tests/smoke.test.mjs
+
+      - name: Vitest tests
+        run: npx vitest run
