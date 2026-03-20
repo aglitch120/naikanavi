@@ -25,18 +25,23 @@ const STORAGE_KEY = "iwor_matching_profile"
 const MODE_STORAGE_KEY = "iwor_matching_mode"
 
 type Mode = 'matching' | 'career'
-type TabId = 'profile' | 'documents' | 'hospitals'
+type TabId = 'profile' | 'documents' | 'hospitals' | 'wishlist'
 
 function getTabs(mode: Mode) {
   const tabs: { id: TabId; label: string; icon: React.ReactNode; pro?: boolean }[] = [
     { id: 'profile', label: 'プロフィール',
       icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg> },
-    { id: 'documents', label: '書類・メール',
+    { id: 'documents', label: '書類・チェックリスト',
       icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> },
   ]
   if (mode === 'matching') {
-    tabs.push({ id: 'hospitals', label: '病院検索',
-      icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> })
+    tabs.push(
+      { id: 'hospitals', label: '病院DB',
+        icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> },
+      { id: 'wishlist', label: '志望リスト',
+        icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>,
+        pro: true },
+    )
   }
   return tabs
 }
@@ -81,8 +86,8 @@ export default function MatchingApp() {
       {/* ── ヘッダー ── */}
       <div className="mb-4 pt-2">
         <AppHeader
-          title="マッチング・転職対策"
-          subtitle={mode === 'matching' ? 'プロフィール → 書類・メール → 病院検索' : 'プロフィール → 書類・メール'}
+          title="マッチング対策・転職"
+          subtitle={mode === 'matching' ? 'プロフィール → 書類 → 病院DB → 志望リスト' : 'プロフィール → 書類・メール'}
           badge="FREE"
           favoriteSlug="app-matching"
           favoriteHref="/matching"
@@ -130,7 +135,10 @@ export default function MatchingApp() {
       )}
       {tab === 'documents' && <DocumentsTab profile={basicProfile} mode={mode} />}
       {tab === 'hospitals' && mode === 'matching' && (
-        <HospitalTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} />
+        <HospitalTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} initialSubTab="search" />
+      )}
+      {tab === 'wishlist' && mode === 'matching' && (
+        <HospitalTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} initialSubTab="wishlist" />
       )}
 
       {showProModal && <ProModal onClose={() => setShowProModal(false)} feature="save" />}

@@ -39,13 +39,14 @@ interface Profile {
 }
 
 export default function HospitalTab({
-  profile, isPro, onShowProModal,
+  profile, isPro, onShowProModal, initialSubTab,
 }: {
   profile: Profile
   isPro: boolean
   onShowProModal: () => void
+  initialSubTab?: SubTab
 }) {
-  const [subTab, setSubTab] = useState<SubTab>('search')
+  const [subTab, setSubTab] = useState<SubTab>(initialSubTab || 'search')
 
   // ── フィルタ状態 ──
   const [searchQuery, setSearchQuery] = useState('')
