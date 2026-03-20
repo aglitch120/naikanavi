@@ -1061,6 +1061,121 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       }, 200, request);
     }
 
+    // ══════════════════════════════════════════════════
+    //  学会カレンダー: 参加予定登録/解除
+    //  PUT /api/conferences/attend
+    //  Authorization: Bearer {sessionToken}
+    //  Body: { conferenceId, action: "add"|"remove" }
+    // ══════════════════════════════════════════════════
+    if (path === "/api/conferences/attend" && request.method === "PUT") {
+      const authResult = await authenticate(request, env, { checkExpiry: false });
+      if (authResult.error) return json({ error: authResult.error }, authResult.status, request);
+
+      const body = await parseBody(request);
+      if (!body) return json({ error: "Invalid JSON" }, 400, request);
+
+      const { email, user } = authResult;
+      const conferenceId = String(body.conferenceId || "").trim();
+      const action = String(body.action || "").trim();
+
+      if (!conferenceId || !["add", "remove"].includes(action)) {
+        return json({ error: "conferenceId and action (add/remove) required" }, 400, request);
+      }
+
+      // ユーザーの参加リスト取得
+      let userData = { attending: [] };
+      try {
+        const raw = await env.IWOR_KV.get(`conf-user:${email}`);
+        if (raw) userData = JSON.parse(raw);
+      } catch {}
+
+      const isPro = !!(user.expiresAt && new Date() <= new Date(user.expiresAt));
+
+      if (action === "add") {
+        if (userData.attending.includes(conferenceId)) {
+          return json({ ok: true, attending: userData.attending }, 200, request);
+        }
+        // FREE: 最大3件
+        if (!isPro && userData.attending.length >= 3) {
+          return json({ error: "pro_required", message: "PRO会員なら無制限に追加できます" }, 403, request);
+        }
+        userData.attending.push(conferenceId);
+      } else {
+        userData.attending = userData.attending.filter(id => id !== conferenceId);
+      }
+
+      await env.IWOR_KV.put(`conf-user:${email}`, JSON.stringify(userData));
+
+      // カウント更新
+      const countKey = `conf-count:${conferenceId}`;
+      let count = 0;
+      try {
+        const raw = await env.IWOR_KV.get(countKey);
+        if (raw) count = parseInt(raw, 10) || 0;
+      } catch {}
+      count = Math.max(0, count + (action === "add" ? 1 : -1));
+      await env.IWOR_KV.put(countKey, String(count));
+
+      return json({ ok: true, attending: userData.attending, count }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  学会カレンダー: 参加予定者数一括取得
+    //  GET /api/conferences/counts?ids=naika-2026,geka-2026,...
+    //  認証: 任意（PRO/FREE分岐）
+    // ══════════════════════════════════════════════════
+    if (path === "/api/conferences/counts" && request.method === "GET") {
+      const idsParam = url.searchParams.get("ids") || "";
+      const ids = idsParam.split(",").filter(Boolean).slice(0, 50);
+
+      // 認証試行（任意）
+      let isPro = false;
+      const authHeader = request.headers.get("Authorization") || "";
+      const authToken = authHeader.replace("Bearer ", "").trim();
+      if (authToken) {
+        const sessionRaw = await env.IWOR_KV.get(`session:${authToken}`);
+        if (sessionRaw) {
+          const session = JSON.parse(sessionRaw);
+          const uRaw = await env.IWOR_KV.get(userKey(session.email));
+          if (uRaw) {
+            const u = JSON.parse(uRaw);
+            isPro = !!(u.expiresAt && new Date() <= new Date(u.expiresAt));
+          }
+        }
+      }
+
+      const counts = {};
+      for (const id of ids) {
+        try {
+          const raw = await env.IWOR_KV.get(`conf-count:${id}`);
+          const n = raw ? parseInt(raw, 10) || 0 : 0;
+          counts[id] = isPro ? n : (n >= 10 ? "10+" : `${n}+`);
+        } catch {
+          counts[id] = isPro ? 0 : "0+";
+        }
+      }
+
+      return json({ counts, blurred: !isPro }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  学会カレンダー: 自分の参加予定リスト
+    //  GET /api/conferences/my
+    //  Authorization: Bearer {sessionToken}
+    // ══════════════════════════════════════════════════
+    if (path === "/api/conferences/my" && request.method === "GET") {
+      const authResult = await authenticate(request, env, { checkExpiry: false });
+      if (authResult.error) return json({ error: authResult.error }, authResult.status, request);
+
+      let userData = { attending: [] };
+      try {
+        const raw = await env.IWOR_KV.get(`conf-user:${authResult.email}`);
+        if (raw) userData = JSON.parse(raw);
+      } catch {}
+
+      return json({ attending: userData.attending }, 200, request);
+    }
+
     // ── 404 ──
     return json({ error: "Not Found" }, 404, request);
   },
