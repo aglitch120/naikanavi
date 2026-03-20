@@ -61,7 +61,7 @@ function searchAll(index: IndexEntry[], query: string): SearchResult[] {
       if (matchCount === 0) return null
       return { ...entry, relevance: matchCount / keywords.length + 0.5 } // Boost apps
     })
-    .filter((r): r is SearchResult & { relevance: number } => r !== null)
+    .filter(r => r !== null) as (SearchResult & { relevance: number })[]
 
   // Search articles
   const articleResults = index
@@ -79,7 +79,7 @@ function searchAll(index: IndexEntry[], query: string): SearchResult[] {
         relevance: matchCount / keywords.length,
       }
     })
-    .filter((r): r is SearchResult & { relevance: number } => r !== null)
+    .filter(r => r !== null) as (SearchResult & { relevance: number })[]
 
   return [...appResults, ...articleResults]
     .sort((a, b) => b.relevance - a.relevance)
