@@ -18,6 +18,7 @@ import { parseApkgFile, ApkgImportResult } from './apkg-import'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
 
 // ── セッション統計 ──
 const STATS_KEY = 'iwor_study_stats'
@@ -70,6 +71,26 @@ function updateStreak(): StreakData {
   const updated = { lastDate: today, count: newCount, best: newBest }
   localStorage.setItem(STREAK_KEY, JSON.stringify(updated))
   return updated
+}
+
+// ── ストリークサーバー同期（fire-and-forget）──
+function syncStreakToServer(streakData: StreakData) {
+  try {
+    const token = localStorage.getItem('iwor_session_token')
+    if (!token) return
+    const userRaw = localStorage.getItem('iwor_user')
+    const displayName = userRaw ? (JSON.parse(userRaw).name || '匿名医師') : '匿名医師'
+    fetch(`${API_BASE}/api/streak`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({
+        count: streakData.count,
+        best: streakData.best,
+        lastDate: streakData.lastDate,
+        displayName: displayName.slice(0, 8),
+      }),
+    }).catch(() => {})
+  } catch {}
 }
 
 // ── 試験カウントダウン ──
@@ -246,7 +267,9 @@ export default function StudyApp() {
     setDayStats({ ...stats })
 
     if (currentIdx + 1 >= studyQueue.length) {
-      setStreak(updateStreak())
+      const updatedStreak = updateStreak()
+      setStreak(updatedStreak)
+      syncStreakToServer(updatedStreak)
       setScreen('result')
     } else {
       setCurrentIdx(currentIdx + 1)
