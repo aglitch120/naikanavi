@@ -797,8 +797,9 @@ export default function StudyApp() {
                   setScreen('edit-deck')
                 }}
                 className="text-xs text-muted hover:text-tx p-1"
+                aria-label="デッキ設定を開く"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
                 </svg>
               </button>
@@ -1122,16 +1123,18 @@ export default function StudyApp() {
                         setScreen('edit-card')
                       }}
                       className="p-1.5 rounded-lg text-muted hover:text-tx hover:bg-s1 transition-colors"
+                      aria-label="カードを編集"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
                       </svg>
                     </button>
                     <button
                       onClick={() => handleDeleteCard(card.id)}
                       className="p-1.5 rounded-lg text-muted hover:text-red-600 hover:bg-red-50 transition-colors"
+                      aria-label="カードを削除"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </button>
@@ -1188,6 +1191,11 @@ export default function StudyApp() {
           className="perspective-1000 mb-6 cursor-pointer select-none"
           onClick={() => setFlipped(!flipped)}
           style={{ perspective: '1000px' }}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFlipped(!flipped) } }}
+          aria-label={flipped ? '回答を表示中（タップで問題面に戻る）' : '問題カード（タップで回答を表示）'}
+          aria-pressed={flipped}
         >
           <div
             className="relative w-full transition-transform duration-500"

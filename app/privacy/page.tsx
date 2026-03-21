@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <article className="max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold text-tx mb-2">プライバシーポリシー</h1>
-      <p className="text-sm text-muted mb-10">最終更新日: 2026年3月18日</p>
+      <p className="text-sm text-muted mb-10">最終更新日: 2026年3月21日</p>
 
       <Section title="1. はじめに">
         <p>
@@ -118,10 +118,25 @@ export default function PrivacyPage() {
 
       <Section title="7. データの保管">
         <ol className="list-decimal pl-6 space-y-2 text-sm leading-relaxed">
-          <li>データはCloudflare（CDN・Pages）およびSupabase（データベース）のインフラストラクチャ上に保管されます。</li>
-          <li>パスワードはハッシュ化して保存し、平文では保持しません。</li>
+          <li>データはCloudflare（CDN・Pages・Workers・KV）のインフラストラクチャ上に保管されます。</li>
+          <li>パスワードはPBKDF2でハッシュ化・ソルト付きで保存し、平文では保持しません。</li>
           <li>適切な技術的・組織的措置を講じてデータを保護します。</li>
         </ol>
+        <p className="mt-3 font-semibold">Cloudflare KVに保存されるデータ一覧（PRO会員）:</p>
+        <ul className="list-disc pl-6 space-y-1 text-sm leading-relaxed mt-1">
+          <li>アカウント情報（メールアドレス、パスワードハッシュ、プラン、有効期限）</li>
+          <li>セッショントークン（有効期限90日、自動失効）</li>
+          <li>プロフィール情報（診療科、勤務先種別、都道府県等）</li>
+          <li>J-OSLER管理データ（症例・疾患群・病歴要約の進捗）</li>
+          <li>EPOC管理データ（研修記録の進捗）</li>
+          <li>専門医単位データ（自己入力型カウンター）</li>
+          <li>マッチングプロフィール（志望情報）</li>
+          <li>ダッシュボードデータ（症例ログ等）</li>
+        </ul>
+        <p className="mt-2 text-sm leading-relaxed">
+          上記に加え、ブラウザのlocalStorageにStudy学習データ（FSRSスケジュール・デッキ・ストリーク）、お気に入り、オンボーディング状態等を保存します。
+          localStorageのデータはサーバーには送信されません。
+        </p>
       </Section>
 
       <Section title="8. Cookie・アクセス解析">

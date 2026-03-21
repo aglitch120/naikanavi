@@ -139,7 +139,18 @@ export default function HomeWidgets() {
     setData(loadWidgetData())
   }, [])
 
-  if (!data) return null
+  // CLS対策: SSR/初回レンダリング時はスケルトン表示（高さを確保）
+  if (!data) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" aria-hidden="true">
+        <div className="rounded-xl p-4 animate-pulse" style={{ background: 'var(--s0)', border: '1px solid var(--br)', minHeight: '100px' }}>
+          <div className="h-3 w-12 rounded bg-s2 mb-3" />
+          <div className="h-4 w-32 rounded bg-s2 mb-2" />
+          <div className="h-1.5 w-full rounded-full bg-s2" />
+        </div>
+      </div>
+    )
+  }
 
   // Don't show if user has no activity at all
   const hasActivity = data.studyReviewed > 0 || data.studyStreak > 0 || data.hasJosler
@@ -151,11 +162,11 @@ export default function HomeWidgets() {
   if (!showStudy && !showJosler) return null
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" aria-label="アクティビティウィジェット">
 
       {/* ── Study Widget (Zeigarnik + Streak) ── */}
       {showStudy && (
-        <Link href="/study" className="block">
+        <Link href="/study" className="block" aria-label={`Study — ${data.studyDue > 0 ? `${data.studyDue}枚の復習待ち` : data.studyNew > 0 ? `${data.studyNew}枚の新規カード` : '今日の復習完了'}`}>
           <div
             className="rounded-xl p-4 transition-all hover:shadow-md"
             style={{ background: 'var(--s0)', border: '1px solid var(--br)' }}
@@ -200,7 +211,7 @@ export default function HomeWidgets() {
 
       {/* ── J-OSLER Widget (Goal Gradient) ── */}
       {showJosler && (
-        <Link href="/josler" className="block">
+        <Link href="/josler" className="block" aria-label={`J-OSLER — ${120 - data.joslerCases > 0 ? `あと${120 - data.joslerCases}症例` : '症例数クリア'}`}>
           <div
             className="rounded-xl p-4 transition-all hover:shadow-md"
             style={{ background: 'var(--s0)', border: '1px solid var(--br)' }}
