@@ -75,14 +75,17 @@ cd workers && npx wrangler deploy
 cd workers && npx wrangler dev
 ```
 
-## Current State (2026-03-20)
+## Current State (2026-03-21)
 
 - 10 services on home screen (tools, record, credits, conferences, matching, journal, presenter, shift, study, money)
+- BottomNav: Study / ツール / キャリア / マイページ (4-tab layout)
 - 166 clinical calculators + drug guides + procedure guides
-- Study: FSRS MVP with 3 default decks (150 cards) + custom deck CRUD
-- PRO: Worker API + BOOTH (migrating to Paddle)
+- Study: FSRS MVP with 3 default decks (150 cards) + custom deck CRUD + streak ranking
+- Journal: EN 28 journals + JA 10 journals with lang toggle
+- PRO: Worker API + BOOTH(非公開済み) → Creem移行準備中 (Paddle並行申請)
 - Price: Monthly ¥980 / 6mo ¥5,400 (decoy) / Annual ¥9,800
 - Blog: 173 articles
+- Hero Product: Study (全ユーザーをStudyに誘導する3層戦略)
 
 See TODO.md for current priorities.
 

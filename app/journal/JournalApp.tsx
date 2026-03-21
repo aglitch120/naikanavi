@@ -59,17 +59,26 @@ export default function JournalApp() {
   })
   const [showBookmarks, setShowBookmarks] = useState(false)
 
-  // ── Compute active journal IDs — Top4 always + selected specialties ──
+  // ── Compute active journal IDs — lang別にデフォルト表示を切替 ──
   const activeJournalIds = useMemo(() => {
-    let jList: Journal[] = JOURNALS.filter(j =>
-      j.category === 'top4' ||
-      (selectedSpecialties.size > 0 && j.specialty && selectedSpecialties.has(j.specialty))
-    )
-    // If no specialty selected, show only Top4
-    if (ifMin > 0) jList = jList.filter(j => j.impactFactor >= ifMin)
+    let jList: Journal[]
+    if (lang === 'ja') {
+      // 日本語モード: 全日本語ジャーナル + 選択した診療科
+      jList = JOURNALS.filter(j =>
+        j.category === 'japanese' ||
+        (selectedSpecialties.size > 0 && j.specialty && selectedSpecialties.has(j.specialty) && j.lang === 'ja')
+      )
+    } else {
+      // 英語モード: Top4 always + 選択した診療科
+      jList = JOURNALS.filter(j =>
+        j.category === 'top4' ||
+        (selectedSpecialties.size > 0 && j.specialty && selectedSpecialties.has(j.specialty) && j.lang !== 'ja')
+      )
+      if (ifMin > 0) jList = jList.filter(j => j.impactFactor >= ifMin)
+    }
     // Exclude manually hidden journals
     return new Set(jList.map(j => j.id).filter(id => !excludedJournals.has(id)))
-  }, [selectedSpecialties, ifMin, excludedJournals])
+  }, [lang, selectedSpecialties, ifMin, excludedJournals])
 
   // ── Fetch（lang変更時にも再取得）──
   const doFetch = useCallback(async () => {

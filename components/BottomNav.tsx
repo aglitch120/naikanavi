@@ -2,87 +2,56 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { trackBoothClick } from '@/lib/gtag'
-import { useProStatus } from '@/components/pro/useProStatus'
 
-const baseNavItems = [
+const navItems = [
   {
-    label: 'ホーム',
-    href: '/',
+    label: 'Study',
+    href: '/study',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.15 : 0} />
-        <path d="M9 21V12h6v9" />
+        <path d="M12 6.253v13M12 6.253C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.1 : 0} />
       </svg>
     ),
-    exact: true,
+    match: (p: string) => p.startsWith('/study'),
   },
   {
-    label: 'ブログ',
-    href: '/blog',
+    label: 'ツール',
+    href: '/tools',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.12 : 0} />
-        <path d="M7 8h10M7 12h10M7 16h6" />
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
       </svg>
     ),
-    exact: false,
+    match: (p: string) => p.startsWith('/tools') || p.startsWith('/compare'),
   },
   {
-    label: 'アプリ',
-    href: '/app',
+    label: 'キャリア',
+    href: '/matching',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.15 : 0} />
-        <line x1="4" y1="22" x2="4" y2="15" />
-        <path d="M14 8h4M14 12h4" />
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.1 : 0} />
+        <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
       </svg>
     ),
-    exact: false,
+    match: (p: string) => p.startsWith('/matching') || p.startsWith('/josler') || p.startsWith('/credits') || p.startsWith('/conferences'),
+  },
+  {
+    label: 'マイページ',
+    href: '/pro',
+    icon: (active: boolean) => (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+        <circle cx="12" cy="7" r="4" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.1 : 0} />
+      </svg>
+    ),
+    match: (p: string) => p === '/pro' || p.startsWith('/pro/') || p.startsWith('/favorites') || p.startsWith('/settings'),
   },
 ]
 
-// PRO タブ
-const proTab = {
-  label: 'PRO',
-  href: '/pro',
-  icon: (active: boolean) => (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={active ? 'currentColor' : 'none'} fillOpacity={active ? 0.12 : 0} />
-    </svg>
-  ),
-  exact: true,
-}
-
-// お気に入りタブ（PRO会員用）
-const favTab = {
-  label: 'お気に入り',
-  href: '/favorites',
-  icon: (active: boolean) => (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fillOpacity={active ? 0.15 : 0} />
-    </svg>
-  ),
-  exact: true,
-}
-
 export default function BottomNav() {
   const pathname = usePathname()
-  const { isPro } = useProStatus()
 
-  // PRO会員ならお気に入りタブ、そうでなければPROタブ
-  const lastTab = isPro ? favTab : proTab
-  const navItems = [...baseNavItems, lastTab]
-
-  const isActive = (item: typeof navItems[0]) => {
-    if ('external' in item && item.external) return false
-    if (item.exact) return pathname === item.href
-    if (item.href === '/blog') return pathname.startsWith('/blog')
-    if (item.href === '/app') {
-      return pathname.startsWith('/app') || pathname.startsWith('/tools') || pathname.startsWith('/compare')
-    }
-    return pathname.startsWith(item.href)
-  }
+  const isActive = (item: typeof navItems[0]) => item.match(pathname)
 
   return (
     <nav

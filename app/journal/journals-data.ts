@@ -6,8 +6,9 @@ export interface Journal {
   shortName: string
   issn: string         // for PubMed search
   impactFactor: number // 2024 JCR
-  category: 'top4' | 'general' | 'specialty'
+  category: 'top4' | 'general' | 'specialty' | 'japanese'
   specialty?: string
+  lang?: 'en' | 'ja'
 }
 
 // Top 4 + major medical journals
@@ -66,6 +67,18 @@ export const JOURNALS: Journal[] = [
 
   // ── Rheumatology ──
   { id: 'ard', name: 'Annals of the Rheumatic Diseases', shortName: 'Ann Rheum Dis', issn: '0003-4967', impactFactor: 20.3, category: 'specialty', specialty: '膠原病' },
+
+  // ── Japanese Journals（Worker API H-5 対応済み） ──
+  { id: 'naika', name: '日本内科学会雑誌', shortName: '日本内科学会雑誌', issn: '0021-5384', impactFactor: 0.3, category: 'japanese', lang: 'ja' },
+  { id: 'igaku-zasshi', name: '日本医事新報', shortName: '日本医事新報', issn: '0385-9215', impactFactor: 0.2, category: 'japanese', lang: 'ja' },
+  { id: 'rinsho', name: '臨床雑誌内科', shortName: '臨床雑誌内科', issn: '0022-1961', impactFactor: 0.2, category: 'japanese', lang: 'ja' },
+  { id: 'jjsem', name: '日本救急医学会雑誌', shortName: '日本救急医学会雑誌', issn: '0915-924X', impactFactor: 0.3, category: 'japanese', specialty: '救急', lang: 'ja' },
+  { id: 'jsim', name: '日本集中治療医学会雑誌', shortName: '日本集中治療医学会雑誌', issn: '1340-7988', impactFactor: 0.3, category: 'japanese', specialty: '集中治療', lang: 'ja' },
+  { id: 'circ-j', name: 'Circulation Journal', shortName: 'Circ J', issn: '1346-9843', impactFactor: 3.2, category: 'japanese', specialty: '循環器', lang: 'ja' },
+  { id: 'jjc', name: '日本循環器学会誌', shortName: '日本循環器学会誌', issn: '0047-1828', impactFactor: 0.5, category: 'japanese', specialty: '循環器', lang: 'ja' },
+  { id: 'jga', name: '日本消化器病学会雑誌', shortName: '日本消化器病学会雑誌', issn: '0446-6586', impactFactor: 0.3, category: 'japanese', specialty: '消化器', lang: 'ja' },
+  { id: 'jjca', name: '日本癌学会誌', shortName: '日本癌学会誌', issn: '0021-4922', impactFactor: 0.5, category: 'japanese', specialty: '腫瘍', lang: 'ja' },
+  { id: 'jpn-j-surg', name: '日本外科学会雑誌', shortName: '日本外科学会雑誌', issn: '0301-4894', impactFactor: 0.3, category: 'japanese', specialty: '外科', lang: 'ja' },
 ]
 
 export const TOP4_IDS = ['lancet', 'nejm', 'jama', 'bmj']
