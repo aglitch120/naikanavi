@@ -35,7 +35,7 @@ const appEntries: SearchResult[] = [
   { slug: 'compare', title: '薬剤比較', description: '降圧薬・スタチン・DPP-4・SGLT2・GLP-1・PPI・抗凝固薬・抗血小板薬', categoryName: 'ツール', type: 'tool', href: '/compare' },
   { slug: 'procedures', title: '手技ガイド', description: 'CV・Aライン・腰椎穿刺・胸腔穿刺・腹腔穿刺・気管挿管', categoryName: 'ツール', type: 'tool', href: '/tools/procedures' },
   { slug: 'lab-values', title: '基準値早見表', description: '血算・生化学・凝固・血液ガスの基準値', categoryName: 'ツール', type: 'tool', href: '/tools/interpret/lab-values' },
-  { slug: 'gamma', title: 'γ計算', description: 'DOA・DOB・NAd・ニカルジピン・ニトログリセリン', categoryName: 'ツール', type: 'tool', href: '/tools/icu/gamma' },
+  { slug: 'gamma', title: 'γ計算', description: 'DOA・DOB・NAd・ニカルジピン・ニトログリセリン', categoryName: 'ツール', type: 'tool', href: '/tools/calc/gamma' },
   { slug: 'combination', title: '配合錠リスト', description: '高血圧・脂質異常症・糖尿病の配合錠一覧。エックスフォージ・ロスーゼット・カナリア', categoryName: 'ツール', type: 'tool', href: '/tools/drugs/combination' },
 ]
 

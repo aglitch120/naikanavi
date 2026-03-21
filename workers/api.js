@@ -925,26 +925,40 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
               if (trRaw) translations = trRaw;
             } catch {}
 
-            // 未翻訳の記事があれば翻訳実行（非同期で裏で実行、結果はKVに保存）
-            const untranslated = allArticles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 10);
+            // 未翻訳の記事があれば翻訳実行
+            const untranslated = allArticles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 15);
             if (untranslated.length > 0) {
-              try {
-                const titlesToTranslate = untranslated.map(a => a.title).join("\n---\n");
-                const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-                  messages: [
-                    { role: "system", content: "医学論文タイトルを日本語に翻訳。---で区切り。専門用語は適切な日本語訳、固有名詞はそのまま。" },
-                    { role: "user", content: titlesToTranslate },
-                  ],
-                  max_tokens: 1500,
-                });
-                if (trResult?.response) {
-                  const translated = trResult.response.split("---").map(t => t.trim());
-                  untranslated.forEach((a, i) => {
-                    if (translated[i] && translated[i].length > 3) translations[a.pmid] = translated[i];
+              // DeepL API（無料枠: 500K文字/月）で高品質翻訳
+              const DEEPL_KEY = env.DEEPL_API_KEY || "";
+              for (const article of untranslated) {
+                try {
+                  if (DEEPL_KEY) {
+                    const dlRes = await fetch("https://api-free.deepl.com/v2/translate", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                      body: `auth_key=${DEEPL_KEY}&text=${encodeURIComponent(article.title)}&source_lang=EN&target_lang=JA`,
+                    });
+                    const dlData = await dlRes.json();
+                    if (dlData?.translations?.[0]?.text) {
+                      translations[article.pmid] = dlData.translations[0].text;
+                      continue;
+                    }
+                  }
+                  // DeepL未設定 or 失敗時はWorkers AI フォールバック
+                  const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+                    messages: [
+                      { role: "system", content: "あなたは医学論文の翻訳者です。以下の英語の医学論文タイトルを、自然で正確な日本語に翻訳してください。医学専門用語は日本の医学文献で一般的に使われる訳語を使用してください。固有名詞（薬剤名、試験名、略語）はそのまま残してください。翻訳のみを出力し、余計な説明は不要です。" },
+                      { role: "user", content: article.title },
+                    ],
+                    max_tokens: 200,
                   });
-                  await env.IWOR_KV.put("journal:translations", JSON.stringify(translations), { expirationTtl: 604800 });
-                }
-              } catch (trErr) { console.error("Cache-hit translation error:", trErr); }
+                  if (trResult?.response) {
+                    const cleaned = trResult.response.trim().replace(/^["「]|["」]$/g, '').replace(/^翻訳[：:]\s*/i, '');
+                    if (cleaned.length > 3) translations[article.pmid] = cleaned;
+                  }
+                } catch {}
+              }
+              await env.IWOR_KV.put("journal:translations", JSON.stringify(translations), { expirationTtl: 604800 });
             }
 
             // 翻訳をarticlesに付与
@@ -1085,7 +1099,7 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
 
         articles.sort((a, b) => b.impactFactor - a.impactFactor || b.date.localeCompare(a.date));
 
-        // タイトル日本語翻訳（Workers AI）
+        // タイトル日本語翻訳（DeepL優先 → Workers AIフォールバック）
         const TR_CACHE_KEY = `journal:translations`;
         let translations = {};
         try {
@@ -1093,27 +1107,39 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
           if (trRaw) translations = trRaw;
         } catch {}
 
-        // 未翻訳の記事のタイトルを翻訳（最大20件/回、コスト制限）
-        const untranslated = articles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 20);
-        if (untranslated.length > 0) {
-          try {
-            const titlesToTranslate = untranslated.map(a => a.title).join("\n---\n");
-            const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-              messages: [
-                { role: "system", content: "あなたは医学論文の翻訳者です。以下の英語の論文タイトルを自然な日本語に翻訳してください。各タイトルは---で区切られています。翻訳も---で区切って出力してください。専門用語は適切な日本語訳を使用し、固有名詞はそのまま残してください。" },
-                { role: "user", content: titlesToTranslate },
-              ],
-              max_tokens: 2000,
-            });
-            if (trResult?.response) {
-              const translated = trResult.response.split("---").map(t => t.trim());
-              untranslated.forEach((a, i) => {
-                if (translated[i] && translated[i].length > 5) {
-                  translations[a.pmid] = translated[i];
+        const untranslatedFresh = articles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 15);
+        if (untranslatedFresh.length > 0) {
+          const DEEPL_KEY = env.DEEPL_API_KEY || "";
+          for (const article of untranslatedFresh) {
+            try {
+              if (DEEPL_KEY) {
+                const dlRes = await fetch("https://api-free.deepl.com/v2/translate", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                  body: `auth_key=${DEEPL_KEY}&text=${encodeURIComponent(article.title)}&source_lang=EN&target_lang=JA`,
+                });
+                const dlData = await dlRes.json();
+                if (dlData?.translations?.[0]?.text) {
+                  translations[article.pmid] = dlData.translations[0].text;
+                  continue;
                 }
+              }
+              // フォールバック: Workers AI
+              const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+                messages: [
+                  { role: "system", content: "あなたは医学論文の翻訳者です。以下の英語の医学論文タイトルを、自然で正確な日本語に翻訳してください。医学専門用語は日本の医学文献で一般的に使われる訳語を使用してください。固有名詞（薬剤名、試験名、略語）はそのまま残してください。翻訳のみを出力し、余計な説明は不要です。" },
+                  { role: "user", content: article.title },
+                ],
+                max_tokens: 200,
               });
-              await env.IWOR_KV.put(TR_CACHE_KEY, JSON.stringify(translations), { expirationTtl: 604800 }); // 7日
-            }
+              if (trResult?.response) {
+                const cleaned = trResult.response.trim().replace(/^["「]|["」]$/g, '').replace(/^翻訳[：:]\s*/i, '');
+                if (cleaned.length > 3) translations[article.pmid] = cleaned;
+              }
+            } catch {}
+          }
+          try {
+            await env.IWOR_KV.put(TR_CACHE_KEY, JSON.stringify(translations), { expirationTtl: 604800 });
           } catch (trErr) {
             console.error("Translation error:", trErr);
           }

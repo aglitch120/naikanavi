@@ -155,7 +155,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tools/antibiotics`, lastModified: new Date('2026-03-20'), changeFrequency: 'monthly' as const, priority: 0.75 },
     { url: `${baseUrl}/tools/procedures`, lastModified: new Date('2026-03-20'), changeFrequency: 'monthly' as const, priority: 0.75 },
     { url: `${baseUrl}/tools/interpret/lab-values`, lastModified: new Date('2026-03-20'), changeFrequency: 'monthly' as const, priority: 0.75 },
-    { url: `${baseUrl}/tools/icu/gamma`, lastModified: new Date('2026-03-20'), changeFrequency: 'monthly' as const, priority: 0.75 },
+    { url: `${baseUrl}/tools/calc/gamma`, lastModified: new Date('2026-03-20'), changeFrequency: 'monthly' as const, priority: 0.75 },
   ]
 
   // 計算ツールページ（実装済みのみ）
