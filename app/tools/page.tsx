@@ -44,13 +44,6 @@ const categories = [
     description: '採血・挿管・CVC・腰椎穿刺・胸腔ドレーンなど15手技',
     href: '/tools/procedures',
   },
-  {
-    slug: 'gamma',
-    icon: '💉',
-    name: 'γ計算（流量⇔γ換算）',
-    description: '昇圧薬・鎮静薬15種の流量⇔γ換算',
-    href: '/tools/calc/gamma',
-  },
 ]
 
 function CategoryCard({ cat }: { cat: typeof categories[0] }) {
