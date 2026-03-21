@@ -1008,6 +1008,47 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
 
         articles.sort((a, b) => b.impactFactor - a.impactFactor || b.date.localeCompare(a.date));
 
+        // タイトル日本語翻訳（Workers AI）
+        const TR_CACHE_KEY = `journal:translations`;
+        let translations = {};
+        try {
+          const trRaw = await env.IWOR_KV.get(TR_CACHE_KEY, "json");
+          if (trRaw) translations = trRaw;
+        } catch {}
+
+        // 未翻訳の記事のタイトルを翻訳（最大20件/回、コスト制限）
+        const untranslated = articles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 20);
+        if (untranslated.length > 0) {
+          try {
+            const titlesToTranslate = untranslated.map(a => a.title).join("\n---\n");
+            const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+              messages: [
+                { role: "system", content: "あなたは医学論文の翻訳者です。以下の英語の論文タイトルを自然な日本語に翻訳してください。各タイトルは---で区切られています。翻訳も---で区切って出力してください。専門用語は適切な日本語訳を使用し、固有名詞はそのまま残してください。" },
+                { role: "user", content: titlesToTranslate },
+              ],
+              max_tokens: 2000,
+            });
+            if (trResult?.response) {
+              const translated = trResult.response.split("---").map(t => t.trim());
+              untranslated.forEach((a, i) => {
+                if (translated[i] && translated[i].length > 5) {
+                  translations[a.pmid] = translated[i];
+                }
+              });
+              await env.IWOR_KV.put(TR_CACHE_KEY, JSON.stringify(translations), { expirationTtl: 604800 }); // 7日
+            }
+          } catch (trErr) {
+            console.error("Translation error:", trErr);
+          }
+        }
+
+        // 翻訳をarticlesに付加
+        for (const a of articles) {
+          if (translations[a.pmid]) {
+            a.titleJa = translations[a.pmid];
+          }
+        }
+
         // KVに保存
         const cacheData = { articles, fetchedAt: Date.now() };
         await env.IWOR_KV.put(CACHE_KEY, JSON.stringify(cacheData));

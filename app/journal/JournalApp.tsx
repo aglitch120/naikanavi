@@ -15,6 +15,7 @@ const BM_KEY = 'iwor_journal_bookmarks'
 interface Article {
   pmid: string
   title: string
+  titleJa?: string
   authors: string
   journal: string
   journalId: string
@@ -58,6 +59,7 @@ export default function JournalApp() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [lang, setLang] = useState<'en' | 'ja'>('en')
+  const [displayLang, setDisplayLang] = useState<'ja' | 'en'>('ja') // 表示言語（デフォルト日本語訳）
 
   // Content type toggle
   const [contentType, setContentType] = useState<'articles' | 'guidelines'>('articles')
