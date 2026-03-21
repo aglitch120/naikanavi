@@ -28,21 +28,34 @@ export interface WizardProfile {
   clubs: string
   clubRole: string
   clubLearning: string
+  clubPeriod: string            // 部活期間
+  clubActivity: string          // 部活内容詳細
   partTimeJob: string
   partTimeLearning: string
+  partTimePeriod: string        // バイト期間
+  partTimeDetail: string        // バイト業務内容詳細
   volunteer: string
+  volunteerDetail: string       // ボランティア詳細
   // Step 5: 資格・研究
   qualifications: string
   languageSkills: string[]
   research: string
   researchResults: string
   studyAbroad: string
+  labName: string               // 研究室名
+  researchPeriod: string        // 研究期間
+  researchTheme: string         // 研究テーマ
+  itSkills: string              // ITスキル
+  hobbies: string               // 趣味・特技
+  medicalApplication: string    // スキルの医療応用
   // Step 6: 自己分析
   personalityTraits: string[]   // max 5
   strengthsList: string[]       // max 3
   strengthsEpisode: string
   weakness: string
   weaknessStrategy: string
+  hospitalContribution: string  // 病院への貢献
+  futureVision: string          // 5年後のビジョン
   motivation: string
   doctorTrigger: string
   strengths: string             // 旧互換
@@ -52,9 +65,13 @@ export const EMPTY_WIZARD_PROFILE: WizardProfile = {
   name: '', university: '', graduationYear: '', retentionYear: 'なし',
   gpaRange: '', cbtScore: '', clinicalEval: '', strongSubjects: [], weakSubjects: [],
   preferredSpecialty: '', preferredRegions: [], careerTypes: [], medicalInterests: [],
-  clubs: '', clubRole: '', clubLearning: '', partTimeJob: '', partTimeLearning: '', volunteer: '',
+  clubs: '', clubRole: '', clubLearning: '', clubPeriod: '', clubActivity: '',
+  partTimeJob: '', partTimeLearning: '', partTimePeriod: '', partTimeDetail: '',
+  volunteer: '', volunteerDetail: '',
   qualifications: '', languageSkills: [], research: '', researchResults: '', studyAbroad: '',
+  labName: '', researchPeriod: '', researchTheme: '', itSkills: '', hobbies: '', medicalApplication: '',
   personalityTraits: [], strengthsList: [], strengthsEpisode: '', weakness: '', weaknessStrategy: '',
+  hospitalContribution: '', futureVision: '',
   motivation: '', doctorTrigger: '', strengths: '',
 }
 
@@ -120,6 +137,22 @@ export default function ProfileWizard({
       strengths: p.strengthsList.length > 0
         ? p.strengthsList.join('、') + (p.strengthsEpisode ? `。${p.strengthsEpisode}` : '')
         : p.strengths,
+      // Step 4 detail fields
+      clubPeriod: p.clubPeriod,
+      clubActivity: p.clubActivity,
+      partTimePeriod: p.partTimePeriod,
+      partTimeDetail: p.partTimeDetail,
+      volunteerDetail: p.volunteerDetail,
+      // Step 5 detail fields
+      labName: p.labName,
+      researchPeriod: p.researchPeriod,
+      researchTheme: p.researchTheme,
+      itSkills: p.itSkills,
+      hobbies: p.hobbies,
+      medicalApplication: p.medicalApplication,
+      // Step 6 detail fields
+      hospitalContribution: p.hospitalContribution,
+      futureVision: p.futureVision,
     }
     saveProfile(compat)
   }, [])
@@ -365,6 +398,10 @@ function Step3({ profile, updateField, toggleArrayField, mode }: StepProps & { t
 //  Step 4: 課外活動
 // ═══════════════════════════════════════
 function Step4({ profile, updateField }: StepProps) {
+  const [showClubDetail, setShowClubDetail] = useState(false)
+  const [showPartTimeDetail, setShowPartTimeDetail] = useState(false)
+  const [showVolunteerDetail, setShowVolunteerDetail] = useState(false)
+
   return (
     <div className="space-y-4">
       <StepCard title="部活・サークル">
@@ -375,6 +412,22 @@ function Step4({ profile, updateField }: StepProps) {
         <TextAreaField label="学んだこと・アピールポイント" value={profile.clubLearning}
           onChange={v => updateField('clubLearning', v)}
           placeholder="例: チームをまとめる経験から、多様な意見を尊重しつつ目標に向かう力を養った" rows={2} />
+        <button
+          onClick={() => setShowClubDetail(v => !v)}
+          className="text-[11px] font-medium mt-1 transition-colors"
+          style={{ color: MC }}
+        >
+          詳しく {showClubDetail ? '▴' : '▾'}
+        </button>
+        {showClubDetail && (
+          <div className="space-y-3 pt-1 border-t border-br mt-1">
+            <InputField label="部活期間" value={profile.clubPeriod} onChange={v => updateField('clubPeriod', v)}
+              placeholder="例: 1年次〜4年次" />
+            <TextAreaField label="部活内容詳細" value={profile.clubActivity}
+              onChange={v => updateField('clubActivity', v)}
+              placeholder="例: 週3回の練習、大会運営、合宿の企画・実施など" rows={2} />
+          </div>
+        )}
       </StepCard>
       <StepCard title="アルバイト">
         <InputField label="業種・期間" value={profile.partTimeJob} onChange={v => updateField('partTimeJob', v)}
@@ -382,11 +435,41 @@ function Step4({ profile, updateField }: StepProps) {
         <TextAreaField label="学んだこと" value={profile.partTimeLearning}
           onChange={v => updateField('partTimeLearning', v)}
           placeholder="例: わかりやすく説明する力、相手の理解度に合わせた対応力" rows={2} />
+        <button
+          onClick={() => setShowPartTimeDetail(v => !v)}
+          className="text-[11px] font-medium mt-1 transition-colors"
+          style={{ color: MC }}
+        >
+          詳しく {showPartTimeDetail ? '▴' : '▾'}
+        </button>
+        {showPartTimeDetail && (
+          <div className="space-y-3 pt-1 border-t border-br mt-1">
+            <InputField label="バイト期間" value={profile.partTimePeriod} onChange={v => updateField('partTimePeriod', v)}
+              placeholder="例: 2年次〜4年次" />
+            <TextAreaField label="バイト業務内容詳細" value={profile.partTimeDetail}
+              onChange={v => updateField('partTimeDetail', v)}
+              placeholder="例: 高校生の数学・理科の個別指導、年間30名担当" rows={2} />
+          </div>
+        )}
       </StepCard>
       <StepCard title="ボランティア・その他">
         <TextAreaField label="活動内容" value={profile.volunteer}
           onChange={v => updateField('volunteer', v)}
           placeholder="例: 国際医療ボランティア（カンボジア、2週間）" rows={2} />
+        <button
+          onClick={() => setShowVolunteerDetail(v => !v)}
+          className="text-[11px] font-medium mt-1 transition-colors"
+          style={{ color: MC }}
+        >
+          詳しく {showVolunteerDetail ? '▴' : '▾'}
+        </button>
+        {showVolunteerDetail && (
+          <div className="space-y-3 pt-1 border-t border-br mt-1">
+            <TextAreaField label="ボランティア詳細" value={profile.volunteerDetail}
+              onChange={v => updateField('volunteerDetail', v)}
+              placeholder="例: 現地での医療補助、診療サポート、健康教育の実施など" rows={2} />
+          </div>
+        )}
       </StepCard>
     </div>
   )
@@ -403,12 +486,25 @@ function Step5({ profile, updateField, toggleArrayField }: StepProps & { toggleA
           placeholder="例: TOEIC 800点、漢検2級" />
         <ChipSelect label="語学スキル（複数可）" options={LANGUAGES}
           selected={profile.languageSkills} onToggle={v => toggleArrayField('languageSkills', v)} multi />
+        <InputField label="ITスキル" value={profile.itSkills} onChange={v => updateField('itSkills', v)}
+          placeholder="例: Python, Excel, 統計解析（R）" />
+        <InputField label="趣味・特技" value={profile.hobbies} onChange={v => updateField('hobbies', v)}
+          placeholder="例: 山岳部、囲碁（二段）、写真" />
+        <TextAreaField label="スキルの医療応用" value={profile.medicalApplication}
+          onChange={v => updateField('medicalApplication', v)}
+          placeholder="例: Pythonで臨床データを可視化し、退院調整の効率化に役立てたい" rows={2} />
       </StepCard>
       <StepCard title="研究経験">
         <TextAreaField label="研究室・テーマ" value={profile.research} onChange={v => updateField('research', v)}
           placeholder="例: 循環器内科学教室で心不全に関する基礎研究" rows={2} />
         <InputField label="成果（論文・学会発表）" value={profile.researchResults}
           onChange={v => updateField('researchResults', v)} placeholder="例: 日本循環器学会でポスター発表" />
+        <InputField label="研究室名" value={profile.labName} onChange={v => updateField('labName', v)}
+          placeholder="例: 循環器内科学教室（○○教授）" />
+        <InputField label="研究期間" value={profile.researchPeriod} onChange={v => updateField('researchPeriod', v)}
+          placeholder="例: 2024年4月〜2025年3月" />
+        <InputField label="研究テーマ" value={profile.researchTheme} onChange={v => updateField('researchTheme', v)}
+          placeholder="例: 心不全患者における予後因子の解析" />
       </StepCard>
       <StepCard title="留学経験">
         <TextAreaField label="期間・場所・内容" value={profile.studyAbroad}
@@ -442,6 +538,12 @@ function Step6({ profile, updateField, toggleArrayField }: StepProps & { toggleA
         <InputField label="克服の工夫" value={profile.weaknessStrategy}
           onChange={v => updateField('weaknessStrategy', v)}
           placeholder="例: 優先順位をつけて、80点で次に進む意識を持つようにしている" />
+        <TextAreaField label="研修医として病院に貢献できること" value={profile.hospitalContribution}
+          onChange={v => updateField('hospitalContribution', v)}
+          placeholder="例: チームの潤滑油として連携を支え、患者への丁寧な説明で満足度向上に貢献できる" rows={2} />
+        <TextAreaField label="5年後の医師像" value={profile.futureVision}
+          onChange={v => updateField('futureVision', v)}
+          placeholder="例: 総合診療専門医を取得し、地域医療の最前線で活躍しながら後輩指導にも携わりたい" rows={2} />
       </StepCard>
       <StepCard title="志望動機・ビジョン">
         <TextAreaField label="医師を目指したきっかけ" value={profile.doctorTrigger}
@@ -464,63 +566,225 @@ function ResumePreview({ profile, isPro, show, onToggle }: {
   const hasData = profile.name && profile.university
 
   const handlePrintPDF = () => {
-    const w = window.open('', '_blank', 'width=800,height=1100')
+    const w = window.open('', '_blank', 'width=900,height=1200')
     if (!w) return
-    const sections: string[] = []
-    const addSec = (t: string, c: string) => { if (c) sections.push(`<div class="sec"><h3>${t}</h3><p>${c.replace(/\n/g, '<br>')}</p></div>`) }
 
-    addSec('志望動機', profile.motivation)
-    addSec('自己PR・強み', profile.strengthsList.length > 0
-      ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? `<br>${profile.strengthsEpisode}` : '')
-      : profile.strengths)
-    addSec('部活動・課外活動', [profile.clubs, profile.clubRole ? `（${profile.clubRole}）` : '', profile.clubLearning].filter(Boolean).join(' '))
-    addSec('アルバイト', [profile.partTimeJob, profile.partTimeLearning].filter(Boolean).join('：'))
-    addSec('ボランティア', profile.volunteer)
-    addSec('研究経験', [profile.research, profile.researchResults].filter(Boolean).join('／'))
-    addSec('留学経験', profile.studyAbroad)
-    addSec('資格', profile.qualifications)
-    if (profile.languageSkills.length > 0) addSec('語学力', profile.languageSkills.join('、'))
-    addSec('短所と克服策', profile.weakness ? `${profile.weakness}${profile.weaknessStrategy ? `→ ${profile.weaknessStrategy}` : ''}` : '')
-    addSec('医師を目指したきっかけ', profile.doctorTrigger)
-    const regions = profile.preferredRegions.length > 0 ? `<div class="sec"><h3>希望研修地域</h3><p>${profile.preferredRegions.join('、')}</p></div>` : ''
+    // 今日の日付（令和換算）
+    const today = new Date()
+    const y = today.getFullYear()
+    const m = today.getMonth() + 1
+    const d = today.getDate()
+    const reiwaYear = y - 2018 // 令和元年 = 2019年
+    const dateStr = `令和${reiwaYear}年${m}月${d}日現在`
 
-    w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>履歴書 — ${profile.name}</title>
+    // 学歴・職歴テーブル行
+    const eduRows: string[] = []
+    if (profile.university) {
+      eduRows.push(`<tr><td class="year-col">${profile.graduationYear ? profile.graduationYear + '年　3月' : '　　年　　月'}</td><td>${profile.university}　卒業見込み</td></tr>`)
+    }
+    if (profile.retentionYear) {
+      eduRows.push(`<tr><td class="year-col">${profile.retentionYear}年　　月</td><td>留年（1年）</td></tr>`)
+    }
+    while (eduRows.length < 6) {
+      eduRows.push('<tr><td class="year-col">&nbsp;</td><td>&nbsp;</td></tr>')
+    }
+
+    // 資格・免許テーブル行
+    const licenseRows: string[] = []
+    if (profile.qualifications) {
+      profile.qualifications.split(/[、,，\n]/).filter(Boolean).forEach(q => {
+        licenseRows.push(`<tr><td class="year-col">　　年　　月</td><td>${q.trim()}</td></tr>`)
+      })
+    }
+    if (profile.languageSkills.length > 0) {
+      profile.languageSkills.forEach(l => {
+        licenseRows.push(`<tr><td class="year-col">　　年　　月</td><td>${l}</td></tr>`)
+      })
+    }
+    while (licenseRows.length < 4) {
+      licenseRows.push('<tr><td class="year-col">&nbsp;</td><td>&nbsp;</td></tr>')
+    }
+
+    // 自己PR本文
+    const prText = profile.strengthsList.length > 0
+      ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? '\n' + profile.strengthsEpisode : '')
+      : (profile.strengths || '')
+
+    // 趣味・特技
+    const hobbyText = [profile.hobbies, profile.clubs ? `（部活）${profile.clubs}` : ''].filter(Boolean).join('　')
+
+    // 本人希望欄
+    const hopeLines: string[] = []
+    if (profile.preferredSpecialty) hopeLines.push(`志望科：${profile.preferredSpecialty}`)
+    if (profile.preferredRegions.length > 0) hopeLines.push(`希望研修地域：${profile.preferredRegions.join('・')}`)
+
+    w.document.write(`<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>履歴書 — ${profile.name || ''}</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;color:#1a1917;padding:40px;max-width:700px;margin:0 auto;font-size:13px;line-height:1.8}
-.header{display:flex;gap:20px;margin-bottom:24px;border-bottom:2px solid #1B4F3A;padding-bottom:20px}
-.photo{width:80px;height:100px;border:1px solid #ddd;display:flex;align-items:center;justify-content:center;background:#f5f5f5;font-size:10px;color:#999;flex-shrink:0}
-.name{font-size:22px;font-weight:700;margin-bottom:4px}
-.meta{font-size:12px;color:#666}
-.sec{margin-bottom:16px}
-.sec h3{font-size:13px;font-weight:700;color:#1B4F3A;margin-bottom:4px;border-left:3px solid #1B4F3A;padding-left:8px}
-.sec p{font-size:12px;line-height:1.8;color:#333}
-.tags{display:flex;flex-wrap:wrap;gap:4px}
-.tag{font-size:11px;background:#E8F0EC;color:#1B4F3A;padding:2px 8px;border-radius:4px}
-.footer{margin-top:24px;border-top:1px solid #eee;padding-top:12px;font-size:10px;color:#999;text-align:center}
-@media print{body{padding:20px}@page{margin:15mm}}
-</style></head><body>
-<div class="header">
-<div class="photo">写真貼付</div>
-<div>
-<div class="name">${profile.name || ''}</div>
-<div class="meta">
-${profile.university || ''}<br>
-${profile.graduationYear ? profile.graduationYear + '年3月 卒業見込み' : ''}
-${profile.preferredSpecialty ? '<br>志望科: ' + profile.preferredSpecialty : ''}
-${profile.gpaRange ? '<br>成績: ' + profile.gpaRange : ''}
-${profile.cbtScore ? ' / CBT: ' + profile.cbtScore : ''}
+@page { size: A4; margin: 15mm; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "HiraMinProN-W3", serif;
+  color: #111;
+  font-size: 10pt;
+  line-height: 1.6;
+  background: #fff;
+}
+.page { width: 100%; }
+.page-break { page-break-after: always; }
+
+/* タイトル */
+.doc-title {
+  text-align: center;
+  font-size: 20pt;
+  font-weight: bold;
+  letter-spacing: 1em;
+  margin-bottom: 4pt;
+  padding-top: 4pt;
+}
+.doc-date { text-align: right; font-size: 9pt; margin-bottom: 8pt; }
+
+/* テーブル共通 */
+table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+td, th { border: 1px solid #333; padding: 3pt 5pt; vertical-align: top; }
+
+/* 氏名・写真ブロック */
+.name-photo-row { display: flex; border: 1px solid #333; margin-bottom: -1px; }
+.name-block { flex: 1; border-right: 1px solid #333; }
+.furigana-cell { border-bottom: 1px solid #333; padding: 3pt 5pt; font-size: 8pt; min-height: 18pt; }
+.name-cell { padding: 4pt 5pt; font-size: 16pt; font-weight: bold; min-height: 28pt; }
+.photo-block {
+  width: 90pt; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 8pt; color: #666; text-align: center; padding: 4pt;
+}
+.photo-frame {
+  width: 85pt; height: 113pt; border: 1px solid #aaa;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 7.5pt; color: #888; background: #f8f8f8;
+  text-align: center; line-height: 1.8;
+}
+
+/* ラベルセル */
+.label { background: #f2f2f2; font-weight: bold; width: 60pt; font-size: 8.5pt; }
+
+/* セクション見出し */
+.section-header td {
+  background: #e8e8e8; font-weight: bold; font-size: 9pt;
+  text-align: center; padding: 2pt 5pt;
+}
+
+/* 年月列 */
+.year-col { width: 70pt; text-align: center; white-space: nowrap; font-size: 9pt; }
+
+/* 大テキストボックス */
+.box-xl td { min-height: 110pt; height: 110pt; vertical-align: top; padding: 5pt; font-size: 9.5pt; white-space: pre-wrap; }
+.box-lg td { min-height: 80pt;  height: 80pt;  vertical-align: top; padding: 5pt; font-size: 9.5pt; white-space: pre-wrap; }
+.box-sm td { min-height: 45pt;  height: 45pt;  vertical-align: top; padding: 5pt; font-size: 9.5pt; white-space: pre-wrap; }
+.box-hope td { min-height: 50pt; height: 50pt; vertical-align: top; padding: 5pt; font-size: 9.5pt; white-space: pre-wrap; }
+
+/* フッター */
+.doc-footer { margin-top: 6pt; font-size: 7pt; color: #aaa; text-align: right; }
+
+@media print { .page-break { page-break-after: always; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page page-break">
+  <div class="doc-title">履　歴　書</div>
+  <div class="doc-date">${dateStr}</div>
+
+  <!-- 氏名 + 写真 -->
+  <div class="name-photo-row">
+    <div class="name-block">
+      <div class="furigana-cell">ふりがな　　</div>
+      <div class="name-cell">${profile.name || '　'}</div>
+    </div>
+    <div class="photo-block">
+      <div class="photo-frame">写真貼付<br>30mm×40mm</div>
+    </div>
+  </div>
+
+  <!-- 基本情報 -->
+  <table style="margin-top:-1px">
+    <tr>
+      <td class="label">生年月日</td>
+      <td>　　　年　　月　　日生（満　　歳）</td>
+      <td class="label" style="width:40pt">性別</td>
+      <td style="width:50pt">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="label">現住所<br>〒</td>
+      <td colspan="3" style="min-height:32pt;height:32pt">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="label">連絡先<br>〒</td>
+      <td colspan="3" style="min-height:28pt;height:28pt;font-size:8pt;color:#888">（現住所と異なる場合のみ記入）</td>
+    </tr>
+  </table>
+
+  <!-- 学歴・職歴 -->
+  <table style="margin-top:-1px">
+    <tr class="section-header"><td colspan="2">学　歴　・　職　歴</td></tr>
+    <tr>
+      <td class="year-col" style="background:#f2f2f2;font-weight:bold;font-size:8.5pt;text-align:center">年　　月</td>
+      <td style="background:#f2f2f2;font-weight:bold;font-size:8.5pt">事　　項</td>
+    </tr>
+    <tr><td class="year-col" colspan="2" style="text-align:center;font-size:8.5pt">学　歴</td></tr>
+    ${eduRows.join('\n    ')}
+    <tr><td class="year-col" colspan="2" style="text-align:center;font-size:8.5pt">職　歴</td></tr>
+    <tr><td class="year-col">&nbsp;</td><td>なし</td></tr>
+    <tr><td class="year-col">&nbsp;</td><td style="text-align:right">以　上</td></tr>
+  </table>
+
+  <!-- 資格・免許 -->
+  <table style="margin-top:-1px">
+    <tr class="section-header"><td colspan="2">資　格　・　免　許</td></tr>
+    ${licenseRows.join('\n    ')}
+  </table>
+
+  <div class="doc-footer">iwor.jp — プロフィールウィザードより自動生成</div>
 </div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="doc-title" style="font-size:15pt;letter-spacing:0.3em;margin-bottom:6pt">履　歴　書（続き）</div>
+
+  <!-- 志望動機 -->
+  <table class="box-xl" style="margin-bottom:-1px">
+    <tr class="section-header"><td>志　望　動　機</td></tr>
+    <tr><td>${(profile.motivation || '').replace(/\n/g, '<br>')}</td></tr>
+  </table>
+
+  <!-- 自己PR -->
+  <table class="box-lg" style="margin-bottom:-1px">
+    <tr class="section-header"><td>自　己　Ｐ　Ｒ　・　強　み</td></tr>
+    <tr><td>${prText.replace(/\n/g, '<br>')}</td></tr>
+  </table>
+
+  <!-- 趣味・特技 -->
+  <table class="box-sm" style="margin-bottom:-1px">
+    <tr class="section-header"><td>趣　味　・　特　技</td></tr>
+    <tr><td>${hobbyText ? hobbyText.replace(/\n/g, '<br>') : '&nbsp;'}</td></tr>
+  </table>
+
+  <!-- 本人希望欄 -->
+  <table class="box-hope">
+    <tr class="section-header"><td>本　人　希　望　欄（志望科・希望地域など）</td></tr>
+    <tr><td>${hopeLines.length > 0 ? hopeLines.join('<br>') : '&nbsp;'}</td></tr>
+  </table>
+
+  <div class="doc-footer">iwor.jp — プロフィールウィザードより自動生成</div>
 </div>
-</div>
-${sections.join('\n')}
-${regions}
-${profile.personalityTraits.length > 0 ? `<div class="sec"><h3>性格特性</h3><div class="tags">${profile.personalityTraits.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>` : ''}
-${profile.careerTypes.length > 0 ? `<div class="sec"><h3>キャリア志向</h3><div class="tags">${profile.careerTypes.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>` : ''}
-${profile.medicalInterests.length > 0 ? `<div class="sec"><h3>興味のある分野</h3><div class="tags">${profile.medicalInterests.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>` : ''}
-<div class="footer">iwor.jp — この履歴書はiwor プロフィールウィザードから生成されました</div>
-<script>window.onload=function(){window.print()}</script>
-</body></html>`)
+
+<script>window.onload = function(){ window.print(); }</script>
+</body>
+</html>`)
     w.document.close()
   }
 
