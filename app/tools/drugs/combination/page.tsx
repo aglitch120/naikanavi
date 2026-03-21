@@ -79,6 +79,7 @@ const CATEGORIES: Category[] = [
         title: 'スタチン + エゼチミブ',
         drugs: [
           { brand: 'アトーゼット配合錠 LD/HD', generic: 'エゼチミブ/アトルバスタチン', composition: 'LD: エゼチミブ 10mg + アトルバスタチン 10mg / HD: 10mg + 20mg' },
+          { brand: 'リバゼブ配合錠 LD/HD', generic: 'エゼチミブ/ピタバスタチン', composition: 'LD: エゼチミブ 10mg + ピタバスタチン 2mg / HD: 10mg + 4mg' },
           { brand: 'ロスーゼット配合錠 LD/HD', generic: 'エゼチミブ/ロスバスタチン', composition: 'LD: エゼチミブ 10mg + ロスバスタチン 2.5mg / HD: 10mg + 5mg', note: '最も処方頻度の高い脂質配合錠' },
         ],
       },
@@ -112,9 +113,9 @@ const CATEGORIES: Category[] = [
         ],
       },
       {
-        title: 'SGLT2阻害薬 + メトホルミン',
+        title: 'DPP-4阻害薬 + メトホルミン（追加）',
         drugs: [
-          { brand: 'メトアナ配合錠 LD/HD', generic: 'アナグリプチン/メトホルミン', composition: 'LD: アナグリプチン 100mg + メトホルミン 250mg / HD: 100mg + 500mg', note: '1日2回投与。DPP-4+メトホルミン' },
+          { brand: 'メトアナ配合錠 LD/HD', generic: 'アナグリプチン/メトホルミン', composition: 'LD: アナグリプチン 100mg + メトホルミン 250mg / HD: 100mg + 500mg', note: '1日2回投与' },
         ],
       },
       {
