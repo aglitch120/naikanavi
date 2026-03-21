@@ -1,0 +1,258 @@
+---
+title: "J-OSLER病歴要約【救急領域】の書き方｜他領域との違いと考察のコツ"
+description: "J-OSLER病歴要約の救急領域1篇の書き方を解説。救急特有の考察ポイント、他領域との同一疾患での提出可否、疾患選びのコツまで。差し戻しを防ぐ実践テクニック。"
+date: "2026-03-12"
+updated: "2026-03-12"
+author: "iwor編集部"
+category: "disease-specific"
+cluster: "D"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "救急", "書き方", "考察"]
+cta_type: "template"
+reading_time: 9
+status: "published"
+seo_checked: true
+---
+
+「救急の病歴要約って、普通の入院症例と何が違うの？」「考察で何を書けば"救急らしい"と評価されるの？」
+
+救急領域は29病歴要約のうち1篇ですが、他の領域とは異なる独自の視点が求められます。この記事では、[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）と[29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)に基づいて、救急領域の書き方を解説します。
+
+> [iwor](/pro/)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。
+
+## 救急領域の位置づけ｜29病歴要約の中での役割
+
+救急領域は29病歴要約のNo.26に配置されています。提出数は **1篇** です。
+
+救急領域の特徴は、特定の臓器領域に縛られないことです。[29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)によると、救急領域は消化器系・循環器系・呼吸器系等、さまざまな領域の疾患項目によって構成されています。そのため、疾患自体は他の領域と重なる場合がありますが、 **「救急領域で学修すべき内容を捉えた考察」** が求められるのが最大のポイントです。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="救急領域の位置づけと他領域との関係を示す図">
+  <defs>
+    <filter id="sd_d11a" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="400" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif">救急領域（No.26）の位置づけ</text>
+
+  <rect x="40" y="92" width="340" height="120" rx="10" fill="#FEFEFC" filter="url(#sd_d11a)" stroke="#DDD9D2" stroke-width="1"/>
+  <rect x="40" y="92" width="340" height="36" rx="10" fill="#E8F0EC"/>
+  <text x="210" y="116" text-anchor="middle" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">救急領域の疾患構成</text>
+  <text x="60" y="146" fill="#1A1917" font-size="13" font-family="sans-serif">消化器系（急性腹症・消化管出血など）</text>
+  <text x="60" y="168" fill="#1A1917" font-size="13" font-family="sans-serif">循環器系（急性冠症候群・大動脈解離など）</text>
+  <text x="60" y="190" fill="#1A1917" font-size="13" font-family="sans-serif">呼吸器系（気胸・重症肺炎など）その他</text>
+
+  <rect x="420" y="92" width="340" height="120" rx="10" fill="#FEFEFC" filter="url(#sd_d11a)" stroke="#DDD9D2" stroke-width="1"/>
+  <rect x="420" y="92" width="340" height="36" rx="10" fill="#FEF3C7"/>
+  <text x="590" y="116" text-anchor="middle" fill="#92400E" font-size="15" font-weight="bold" font-family="sans-serif">最大の注意点</text>
+  <text x="440" y="146" fill="#1A1917" font-size="13" font-family="sans-serif">同一疾患で救急と他領域の両方に</text>
+  <text x="440" y="168" fill="#1A1917" font-size="13" font-family="sans-serif">提出できるが、考察の焦点が異なる</text>
+  <text x="440" y="190" fill="#1A1917" font-size="13" font-family="sans-serif">→ 救急は「急性期の判断・対応」が軸</text>
+
+  <rect x="40" y="232" width="720" height="140" rx="10" fill="#FEFEFC" filter="url(#sd_d11a)" stroke="#DDD9D2" stroke-width="1"/>
+  <rect x="40" y="232" width="720" height="36" rx="10" fill="#DCFCE7"/>
+  <text x="400" y="256" text-anchor="middle" fill="#166534" font-size="15" font-weight="bold" font-family="sans-serif">他領域との同一疾患提出が認められるケース</text>
+  <text x="60" y="286" fill="#1A1917" font-size="13" font-family="sans-serif">例: 急性心筋梗塞 → 循環器領域（No.3-5）で1篇 + 救急領域（No.26）で1篇 = 合計2篇OK</text>
+  <text x="60" y="310" fill="#1A1917" font-size="13" font-family="sans-serif">条件: 循環器では「冠動脈疾患の長期管理」、救急では「初期対応・トリアージ・急性期治療」のように焦点を分ける</text>
+  <text x="60" y="334" fill="#6B6760" font-size="12" font-family="sans-serif">※ 疾患群自体は異なるものとして扱われるため、「全て異なる疾患群」のルールに抵触しない</text>
+  <text x="60" y="354" fill="#6B6760" font-size="12" font-family="sans-serif">※ ただし考察内容が似通っていると差し戻しの原因になるため、明確に書き分けること</text>
+
+  <text x="400" y="392" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+### 他領域との同一疾患での提出について
+
+[29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)には、病名が救急領域と他領域とで重複することがあっても、焦点を当てる部分は異なるため、それぞれの領域として充分な記載ができているのであれば、救急領域と他領域とで同一疾患の病歴要約を提出することは認められると明記されています。
+
+これは重要なポイントです。たとえば、急性心筋梗塞で循環器領域の病歴要約を書いていても、別の急性心筋梗塞症例（または同一症例）で救急領域として提出できます。ただし、考察の焦点を明確に分ける必要があります。
+
+## 救急領域の疾患選び｜考察で差がつく症例の条件
+
+救急領域で高評価を得やすい症例には、いくつかの共通点があります。
+
+### 選ぶべき症例の特徴
+
+まず重要なのは、 **初期対応の判断が複雑な症例** です。来院時の鑑別診断が多岐にわたり、緊急度の判断や検査の優先順位づけが問われる症例は、救急らしい考察が書きやすくなります。
+
+次に、 **タイムプレッシャーのある疾患** を選びましょう。発症からの経過時間が治療方針や予後に直結する疾患（急性冠症候群、脳卒中、大動脈解離、敗血症など）は、「時間を意識した判断」を考察に盛り込めます。
+
+さらに、 **multidisciplinaryな対応が必要な症例** も好適です。救急外来でのトリアージ後に複数科と連携した症例は、内科医としての総合的判断力をアピールできます。
+
+### 疾患選びの具体例
+
+救急領域で書きやすい疾患カテゴリとしては、以下のようなものがあります。
+
+急性腹症（消化管穿孔、腸閉塞、虫垂炎疑いなど）、急性冠症候群（STEMI/NSTEMI）、大動脈解離、肺血栓塞栓症、重症肺炎・呼吸不全、敗血症・敗血症性ショック、意識障害の鑑別（代謝性 vs 器質性）、電解質異常による緊急症（高K血症など）、中毒（薬物中毒、CO中毒など）、アナフィラキシーなどが代表的です。
+
+なお、[29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)には、「腹腔・腹壁疾患」「急性腹症」は消化器分野の病歴要約としては提出できないものの、救急領域としての提出は可能と記載されています。こうした疾患を救急枠で活用するのも戦略の一つです。
+
+> iworの[ダッシュボード](https://iwor.jp)なら、56疾患群の達成状況と29病歴要約の進捗を一画面で確認できます。救急領域の症例をどの疾患群で登録したかも一目瞭然。
+
+## 考察の書き方｜救急領域で求められる3つの視点
+
+救急領域の考察で最も差がつくのは、 **「なぜこの判断をしたか」を時間軸に沿って記述できるかどうか** です。他の領域では疾患の病態や治療選択が考察の中心ですが、救急では初期対応のプロセスそのものが考察の核となります。
+
+### 視点1: 初期評価とトリアージの判断根拠
+
+救急外来に患者が搬送された時点で、どのようにバイタルサインを評価し、緊急度を判断したか。ABCDEアプローチやqSOFAスコアなど、標準的な初期評価のフレームワークに基づいた記載が求められます。
+
+テンプレート例を示します。
+
+```
+来院時, バイタルサインはBP 82/48 mmHg, HR 118 bpm, SpO2 94%(room air)であり,
+ショックの鑑別を進めた. qSOFAスコア2点（収縮期血圧100 mmHg以下, 意識変容）
+であり, 敗血症を疑い, 血液培養2セット採取後に乳酸リンゲル液の急速輸液を開始した.
+```
+
+### 視点2: 鑑別診断の絞り込みプロセス
+
+主訴と初期所見から、どのような鑑別疾患を想起し、どの順番で検査を行って絞り込んだか。Killer diseaseを除外する思考過程を明示すると、救急らしい考察になります。
+
+```
+胸痛の鑑別として, 急性冠症候群, 大動脈解離, 肺血栓塞栓症, 緊張性気胸を想起した.
+12誘導心電図でII, III, aVFのST上昇を確認し, 心エコーでは下壁の壁運動低下を認めた.
+大動脈解離を除外するためD-dimer測定と胸部造影CTを施行し, 解離を否定したうえで
+STEMIと診断, 発症から90分以内の緊急PCIの方針とした.
+```
+
+### 視点3: 急性期治療と時間的制約の考察
+
+救急特有の要素として、 **「時間」** を意識した考察が欠かせません。「door-to-balloon time」「発症からの経過時間と治療適応の関係」「golden hour」など、時間的制約が治療方針にどう影響したかを記載します。
+
+```
+本症例は発症からPCI施行までのdoor-to-balloon timeが68分であり,
+ガイドラインが推奨する90分以内を達成できた.
+急性期にdual antiplatelet therapy（DAPT）を導入し,
+心臓リハビリテーションを含む二次予防プログラムへの橋渡しを行った.
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="救急領域の考察で押さえるべき3つの視点のフロー図">
+  <defs>
+    <filter id="sd_d11b" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="420" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif">救急領域の考察 3つの視点</text>
+
+  <rect x="40" y="92" width="230" height="180" rx="10" fill="#FEFEFC" filter="url(#sd_d11b)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="155" cy="122" r="20" fill="#E8F0EC"/>
+  <text x="155" y="128" text-anchor="middle" fill="#1B4F3A" font-size="18" font-weight="bold" font-family="sans-serif">1</text>
+  <text x="155" y="156" text-anchor="middle" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">初期評価・トリアージ</text>
+  <text x="60" y="182" fill="#6B6760" font-size="12" font-family="sans-serif">バイタル評価</text>
+  <text x="60" y="200" fill="#6B6760" font-size="12" font-family="sans-serif">ABCDEアプローチ</text>
+  <text x="60" y="218" fill="#6B6760" font-size="12" font-family="sans-serif">緊急度判断の根拠</text>
+  <text x="60" y="236" fill="#6B6760" font-size="12" font-family="sans-serif">初期安定化の処置</text>
+  <text x="60" y="258" fill="#1B4F3A" font-size="11" font-weight="bold" font-family="sans-serif">「なぜ緊急と判断したか」</text>
+
+  <line x1="275" y1="182" x2="285" y2="182" stroke="#1B4F3A" stroke-width="2"/>
+  <polygon points="285,177 295,182 285,187" fill="#1B4F3A"/>
+
+  <rect x="295" y="92" width="230" height="180" rx="10" fill="#FEFEFC" filter="url(#sd_d11b)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="410" cy="122" r="20" fill="#E8F0EC"/>
+  <text x="410" y="128" text-anchor="middle" fill="#1B4F3A" font-size="18" font-weight="bold" font-family="sans-serif">2</text>
+  <text x="410" y="156" text-anchor="middle" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">鑑別診断の絞り込み</text>
+  <text x="315" y="182" fill="#6B6760" font-size="12" font-family="sans-serif">Killer diseaseの除外</text>
+  <text x="315" y="200" fill="#6B6760" font-size="12" font-family="sans-serif">検査の優先順位</text>
+  <text x="315" y="218" fill="#6B6760" font-size="12" font-family="sans-serif">診断確定の根拠</text>
+  <text x="315" y="236" fill="#6B6760" font-size="12" font-family="sans-serif">除外診断の論理</text>
+  <text x="315" y="258" fill="#1B4F3A" font-size="11" font-weight="bold" font-family="sans-serif">「どの順で鑑別したか」</text>
+
+  <line x1="530" y1="182" x2="540" y2="182" stroke="#1B4F3A" stroke-width="2"/>
+  <polygon points="540,177 550,182 540,187" fill="#1B4F3A"/>
+
+  <rect x="550" y="92" width="210" height="180" rx="10" fill="#FEFEFC" filter="url(#sd_d11b)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="655" cy="122" r="20" fill="#E8F0EC"/>
+  <text x="655" y="128" text-anchor="middle" fill="#1B4F3A" font-size="18" font-weight="bold" font-family="sans-serif">3</text>
+  <text x="655" y="156" text-anchor="middle" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">時間と急性期治療</text>
+  <text x="570" y="182" fill="#6B6760" font-size="12" font-family="sans-serif">Time-critical治療</text>
+  <text x="570" y="200" fill="#6B6760" font-size="12" font-family="sans-serif">ガイドライン推奨時間</text>
+  <text x="570" y="218" fill="#6B6760" font-size="12" font-family="sans-serif">多職種連携の実際</text>
+  <text x="570" y="236" fill="#6B6760" font-size="12" font-family="sans-serif">後方連携・引き継ぎ</text>
+  <text x="570" y="258" fill="#1B4F3A" font-size="11" font-weight="bold" font-family="sans-serif">「時間をどう意識したか」</text>
+
+  <rect x="40" y="296" width="720" height="96" rx="10" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="60" y="322" fill="#92400E" font-size="14" font-weight="bold" font-family="sans-serif">差し戻しされやすいNGパターン</text>
+  <text x="60" y="348" fill="#1A1917" font-size="13" font-family="sans-serif">NG: 循環器や呼吸器の病歴要約と同じ視点で書いてしまう（疾患の病態解説が中心）</text>
+  <text x="60" y="372" fill="#1A1917" font-size="13" font-family="sans-serif">OK: 初期対応の判断過程、鑑別の思考、時間的制約を軸にした考察</text>
+
+  <text x="400" y="412" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+## 自己省察（振り返り）の書き方
+
+救急領域の自己省察では、 **急性期対応を振り返って得た学び** を記載します。他の領域では疾患の理解深化が中心ですが、救急では「次に同じ場面に出会ったときにどう行動を変えるか」というプラクティカルな振り返りが重要です。
+
+自己省察の例を示します。
+
+```
+本症例では来院から心電図施行まで5分, カテーテル室への連絡まで12分で対応できた.
+しかし, 初期評価時に大動脈解離の除外に時間を要し, D-dimer結果待ちの間に
+PCI準備を並行して進めるべきであった. 今後は, STEMIが強く疑われる場合,
+解離除外の検査と並行してカテーテル室の準備を進める「並列対応」を意識したい.
+また, 救急外来から循環器科への情報伝達において, SBAR形式を用いることで
+より効率的な引き継ぎが可能であったと考える.
+```
+
+## 他領域との差別化ポイント
+
+同じ疾患を救急と他領域で書く場合、考察の焦点を明確に分けることが必須です。
+
+たとえば「急性心不全」の場合、循環器領域では心不全の病態分類（HFrEF/HFpEF）、薬物療法の選択根拠、長期的な予後予測を考察の中心とします。一方、救急領域では来院時のNohria-Stevenson分類によるprofileの判断、NPPV導入のタイミング、利尿薬投与量の調整過程、ICU入室基準の判断を考察の軸にします。
+
+同様に「肺炎」の場合、呼吸器領域では起因菌の推定、抗菌薬の選択根拠、耐性菌リスク評価が中心ですが、救急領域ではA-DROPやqSOFAによる重症度判定、酸素投与やNPPVの適応判断、敗血症への進展リスク評価が中心となります。
+
+> iworの[AI病歴要約テンプレート](/pro/)では、救急領域を選択すると救急特有の考察の方向性（初期評価・鑑別・時間的制約）を含んだ骨組みが自動生成されます。1クレジット＝1症例。
+
+
+---
+
+**関連記事**
+
+- [病歴要約【消化器】書き方](/blog/d01-josler-byoreki-youyaku-shoukaki)
+- [病歴要約【循環器】書き方](/blog/d02-josler-byoreki-youyaku-junkanki)
+- [病歴要約【呼吸器】書き方](/blog/d03-josler-byoreki-youyaku-kokyuuki)
+- [J-OSLER完全攻略ガイド](/blog/josler-complete-guide)
+
+## よくある質問（FAQ）
+
+### Q. 救急領域は必ず救急外来の症例でなければダメですか？
+
+救急外来経由の症例が望ましいですが、病棟での急変対応（RRT/MET対応）など、急性期の初期対応を行った症例でも救急領域として記載できます。重要なのは「救急的な判断・対応」が考察の中心になることです。
+
+### Q. 救急領域と他領域で同じ症例を使えますか？
+
+同一の症例（同じ患者・同じ入院）であっても、救急領域と他領域で考察の焦点が明確に異なれば提出は認められます。ただし、実際には別の症例で書く方が安全です。同一症例で2篇書くと考察内容が似通りやすく、差し戻しのリスクが高まります。
+
+### Q. 救急の疾患群は他領域の疾患群と「重複」扱いになりますか？
+
+なりません。救急領域は独立した疾患群として扱われます。循環器の疾患群で急性心筋梗塞の病歴要約を書き、救急の疾患群でも急性心筋梗塞（別症例）の病歴要約を書くことは、「全て異なる疾患群」のルールに抵触しません。
+
+### Q. 「腹腔・腹壁疾患」「急性腹症」は救急で出せますか？
+
+はい。[29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)に、「腹腔・腹壁疾患」「急性腹症」は消化器分野の病歴要約としては提出できないが、救急領域としての提出は可能と明記されています。
+
+## まとめ
+
+救急領域の病歴要約は、「疾患そのもの」ではなく「急性期の対応プロセス」が考察の核です。初期評価・鑑別診断の思考過程・時間的制約の3つの視点を意識することで、救急らしい考察が書けます。他領域と同一疾患で提出する場合は、考察の焦点を明確に分けましょう。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [A-DROP](/tools/calc/a-drop)
+- [Wells PE](/tools/calc/wells-pe)
+- [GRACE](/tools/calc/grace)
+- [qSOFA](/tools/calc/qsofa)
+- [SOFA](/tools/calc/sofa)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

@@ -1,0 +1,367 @@
+---
+title: "J-OSLER病歴要約【感染症】敗血症・肺炎・尿路感染の書き方"
+description: "J-OSLER病歴要約の感染症2篇の書き方を徹底解説。4疾患群の選び方から起炎菌検索・抗菌薬選択の考察で差がつくポイント、差し戻されやすい落とし穴まで。テンプレート・例文付き。"
+date: "2026-03-12"
+updated: "2026-03-12"
+author: "iwor編集部"
+category: "disease-specific"
+cluster: "D"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "感染症", "敗血症", "肺炎", "尿路感染", "書き方"]
+cta_type: "template"
+reading_time: 12
+status: "published"
+seo_checked: true
+---
+
+「感染症の病歴要約、肺炎で書いたけど考察が『抗菌薬を使って治りました』で終わってしまう...」「敗血症で書きたいけど、呼吸器や腎臓と疾患群が被らないか不安...」
+
+感染症領域は病歴要約29篇のうち **2篇** を占めます。研修手帳上は4つの疾患群があり、そこから2つを選んで提出します。感染症は内科専攻医なら経験頻度が高く症例選びは比較的容易ですが、その分 ** 考察の深さ** で差がつきやすい領域です。この記事では、[病歴要約29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)と[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）に基づいて、感染症2篇の攻略法を解説します。
+
+> [iwor](/pro/)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。
+
+## 感染症領域の提出ルール｜4疾患群から2篇を正確に把握する
+
+感染症領域の病歴要約は **4つの疾患群から2篇** を提出します。29篇は外科紹介症例・剖検症例を除きすべて異なる疾患群から作成する必要があるため、どの疾患群を使うかの選択が重要です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="感染症領域の提出ルールと4疾患群の全体図">
+  <defs><filter id="fc_d10a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="420" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">感染症 病歴要約の提出ルール（2篇/4疾患群）</text>
+  <rect x="24" y="92" width="362" height="120" rx="10" fill="#E8F0EC" filter="url(#fc_d10a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="116" r="14" fill="#1B4F3A"/>
+  <text x="52" y="121" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">1</text>
+  <text x="76" y="120" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">細菌感染症（一般）</text>
+  <text x="44" y="148" font-family="sans-serif" font-size="11" fill="#6B6760">敗血症, 感染性心内膜炎, 肺炎,</text>
+  <text x="44" y="164" font-family="sans-serif" font-size="11" fill="#6B6760">尿路感染症, 腸管感染症, 結核 など</text>
+  <text x="44" y="186" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">最も選択肢が多い疾患群</text>
+  <text x="44" y="200" font-family="sans-serif" font-size="11" fill="#6B6760">経験頻度が高く書きやすい</text>
+  <rect x="414" y="92" width="362" height="120" rx="10" fill="#FEFEFC" filter="url(#fc_d10a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="442" cy="116" r="14" fill="#1B4F3A"/>
+  <text x="442" y="121" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="466" y="120" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">細菌感染症（特殊）</text>
+  <text x="434" y="148" font-family="sans-serif" font-size="11" fill="#6B6760">MRSA感染症, 緑膿菌感染症,</text>
+  <text x="434" y="164" font-family="sans-serif" font-size="11" fill="#6B6760">クロストリジオイデス・ディフィシル感染症 など</text>
+  <text x="434" y="186" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">耐性菌・院内感染が中心</text>
+  <text x="434" y="200" font-family="sans-serif" font-size="11" fill="#6B6760">ICT活動や感染制御の観点も考察に</text>
+  <rect x="24" y="228" width="362" height="120" rx="10" fill="#FEFEFC" filter="url(#fc_d10a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="252" r="14" fill="#1B4F3A"/>
+  <text x="52" y="257" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="76" y="256" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">真菌・寄生虫感染症</text>
+  <text x="44" y="284" font-family="sans-serif" font-size="11" fill="#6B6760">深在性真菌症, ニューモシスチス肺炎,</text>
+  <text x="44" y="300" font-family="sans-serif" font-size="11" fill="#6B6760">アメーバ赤痢, マラリア など</text>
+  <text x="44" y="322" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">免疫不全の背景が重要</text>
+  <text x="44" y="336" font-family="sans-serif" font-size="11" fill="#6B6760">施設によっては経験しにくい</text>
+  <rect x="414" y="228" width="362" height="120" rx="10" fill="#FEFEFC" filter="url(#fc_d10a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="442" cy="252" r="14" fill="#1B4F3A"/>
+  <text x="442" y="257" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">4</text>
+  <text x="466" y="256" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">ウイルス感染症</text>
+  <text x="434" y="284" font-family="sans-serif" font-size="11" fill="#6B6760">インフルエンザ, HIV/AIDS,</text>
+  <text x="434" y="300" font-family="sans-serif" font-size="11" fill="#6B6760">COVID-19, ウイルス性肝炎 など</text>
+  <text x="434" y="322" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">入院症例の確保がポイント</text>
+  <text x="434" y="336" font-family="sans-serif" font-size="11" fill="#6B6760">肝炎は消化器との重複に注意</text>
+  <rect x="24" y="364" width="752" height="32" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="400" y="384" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#92400E">注意: 29篇は全て異なる疾患群から作成（外科紹介・剖検のみ重複可）/ 4疾患群から2つを選択</text>
+  <text x="400" y="414" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+### 疾患群1: 細菌感染症（一般）
+
+最も症例数が豊富で選びやすい疾患群です。敗血症、感染性心内膜炎、肺炎（市中肺炎・院内肺炎・医療介護関連肺炎）、尿路感染症（腎盂腎炎含む）、腸管感染症、骨髄炎・化膿性脊椎炎、結核などが含まれます。
+
+2篇のうち1篇はこの疾患群から選ぶケースが多いでしょう。
+
+### 疾患群2: 細菌感染症（特殊・耐性菌）
+
+MRSA感染症、緑膿菌感染症、クロストリジオイデス・ディフィシル感染症（CDI）、レジオネラ肺炎などの耐性菌・特殊菌による感染症が含まれます。ICU管理や感染制御チーム（ICT）との連携を考察に盛り込める疾患群です。
+
+### 疾患群3: 真菌・寄生虫感染症
+
+深在性真菌症（カンジダ血症、侵襲性アスペルギルス症）、ニューモシスチス肺炎（PCP）、クリプトコッカス髄膜炎、マラリアなどが含まれます。免疫不全患者（血液悪性腫瘍、HIV/AIDS、免疫抑制薬使用中）で経験しやすく、宿主の免疫状態と治療戦略の考察が求められます。
+
+### 疾患群4: ウイルス感染症
+
+インフルエンザ、COVID-19、HIV/AIDS、帯状疱疹（播種性）、サイトメガロウイルス（CMV）感染症、ウイルス性肝炎などが含まれます。ウイルス性肝炎を選ぶ場合は消化器領域の肝臓疾患群との重複に注意してください。
+
+### 他領域との疾患群重複に注意
+
+感染症は臓器横断的な領域であるため、他領域との重複に特に気を配る必要があります。
+
+**呼吸器との重複**: 肺炎は感染症でも呼吸器でも提出可能ですが、疾患群は別です。ただし、主病名のバランスの観点から **同じ「肺炎」を2つの領域で書くのは避ける** のが無難です。感染症として肺炎を書くなら、呼吸器は別の疾患（COPD、間質性肺疾患など）を選びましょう。
+
+**消化器との重複**: ウイルス性肝炎は感染症（疾患群4）としても消化器（肝臓の疾患群）としても提出できますが、同じ疾患で2篇書くのは避けてください。
+
+**腎臓との重複**: 尿路感染症は感染症領域で書くのが一般的ですが、腎臓領域の感染性腎疾患としても書ける可能性があります。どちらの領域で出すかを事前に決めておきましょう。[病歴要約サンプル](https://www.naika.or.jp/wp-content/uploads/2024/07/35a75d9e2a04130148491c77a1037343.pdf)（2024年7月版）にも、腎尿路感染症を腎臓領域の病歴要約として記載した例があります。
+
+## 疾患群1: 細菌感染症（一般）の疾患選びと考察の方向性
+
+疾患群1は最も選択肢が多く、研修中に何例も経験するため「どの症例を選ぶか」が重要です。
+
+### 敗血症
+
+敗血症は感染症の病歴要約で最も評価されやすい題材の一つです。重症度評価、起炎菌検索、抗菌薬選択、臓器不全管理という一連の臨床判断を体系的に記述できます。
+
+考察で評価されるポイントは以下の通りです。
+
+- **Sepsis-3基準の適用**: qSOFAスコアによるスクリーニングからSOFAスコアによる臓器障害評価へ、敗血症の定義をどう適用したかを論理的に記述する
+- **起炎菌検索の戦略**: 血液培養2セットの採取タイミング、各種培養検体の採取根拠を明記する。「血培2セット採取」だけでなく **なぜその検体を採取したか** の臨床推論が重要
+- **Empiric therapyからDefinitive therapyへの移行**: 初期の経験的治療の選択根拠と、培養結果に基づくde-escalationの過程を記述する。JAID/JSC感染症治療ガイドや各種ガイドラインに基づく選択根拠を示す
+- **全人的視点**: 高齢者の場合はADLの変化や退院後の生活環境調整、再発予防のための患者教育を考察に含める
+
+> 感染症の考察では「抗菌薬を投与して解熱した」だけでは不十分です。査読委員が見ているのは、起炎菌を論理的に推定し、培養結果に基づいて治療を最適化する過程です。[iwor](/pro/)のAI病歴要約テンプレートは、疾患ごとに考察の論点を整理してくれるので、書くべきポイントの見落としを防げます。
+
+### 市中肺炎
+
+市中肺炎は経験頻度が非常に高い疾患ですが、それゆえに「ありきたりな考察」になりがちです。差をつけるには以下の観点を意識してください。
+
+- **重症度評価と治療場所の決定**: A-DROPスコア（日本呼吸器学会）やCURB-65スコアによる重症度評価と、外来治療・一般病棟入院・ICU入室の判断根拠を明確に示す
+- **起炎菌の推定と検査戦略**: グラム染色所見、尿中抗原検査（肺炎球菌、レジオネラ）、喀痰培養の結果を時系列で記載し、臨床推論の過程を見せる
+- **治療効果判定のパラメータ**: 「解熱した」「CRPが下がった」だけを根拠にしない。臨床症状（咳嗽、喀痰、呼吸困難の推移）、画像所見、酸素化の改善を複合的に評価する
+
+### 腎盂腎炎・尿路感染症
+
+女性に多く、内科病棟で高頻度に経験する疾患です。
+
+- **複雑性UTIと非複雑性UTIの区別**: 解剖学的異常、留置カテーテル、免疫不全などの合併因子の有無を評価し、治療戦略に反映させる
+- **尿培養の解釈**: コンタミネーションとの鑑別（菌数、菌種の一致性）を考察に含める
+- **画像検査の適応判断**: CTやエコーで膿瘍形成や尿路閉塞の有無を確認した根拠を記述する
+
+## 疾患群2〜4: 特殊菌・真菌・ウイルスの疾患選びと考察
+
+### 疾患群2: MRSA感染症・CDI
+
+**MRSA感染症** は院内感染の代表格であり、バンコマイシンのTDM（治療薬物モニタリング）やダプトマイシンへの変更判断など、抗菌薬の薬物動態を考察に盛り込めます。
+
+**CDI** は抗菌薬関連下痢症の鑑別として重要で、再発リスク評価やフィダキソマイシンの適応判断が考察のポイントです。
+
+### 疾患群3: 深在性真菌症・PCP
+
+**カンジダ血症** は血液悪性腫瘍や中心静脈カテーテル留置患者で経験しやすく、エキノキャンジンを中心とした治療戦略と、カテーテル抜去の判断が考察の柱になります。
+
+**ニューモシスチス肺炎**（PCP） はHIV/AIDS患者またはステロイド・免疫抑制薬使用患者で経験し、ST合剤の用量設定と副作用管理、予防投薬の適応を考察に含めます。
+
+### 疾患群4: HIV/AIDS・COVID-19
+
+**HIV/AIDS** は日和見感染の管理からART（抗レトロウイルス療法）の導入まで、長期的なマネジメントを記述できるため考察の幅が広い題材です。
+
+**COVID-19** は専攻医として経験した方が多い疾患ですが、治療指針が経時的に変化しているため ** いつの時点のエビデンスに基づいて治療を行ったか** を明記する必要があります。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="感染症4疾患群のおすすめ疾患と考察のポイント比較表">
+  <defs><filter id="fc_d10b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="400" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="48" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="50" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">感染症4疾患群: おすすめ疾患と考察の焦点</text>
+  <rect x="24" y="84" width="180" height="36" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="114" y="106" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">疾患群</text>
+  <rect x="210" y="84" width="200" height="36" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="310" y="106" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">おすすめ疾患</text>
+  <rect x="416" y="84" width="360" height="36" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="596" y="106" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">考察の焦点</text>
+  <rect x="24" y="126" width="180" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="114" y="150" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">1. 細菌感染症</text>
+  <text x="114" y="168" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">（一般）</text>
+  <rect x="210" y="126" width="200" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="310" y="150" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">敗血症, 感染性心内膜炎,</text>
+  <text x="310" y="168" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">市中肺炎, 腎盂腎炎</text>
+  <rect x="416" y="126" width="360" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="596" y="148" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">起炎菌推定 → 培養結果 → de-escalation</text>
+  <text x="596" y="166" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">重症度評価と治療場所の判断根拠</text>
+  <rect x="24" y="188" width="180" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="114" y="212" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">2. 細菌感染症</text>
+  <text x="114" y="230" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">（特殊・耐性菌）</text>
+  <rect x="210" y="188" width="200" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="310" y="212" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">MRSA感染症, CDI,</text>
+  <text x="310" y="230" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">レジオネラ肺炎</text>
+  <rect x="416" y="188" width="360" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="596" y="210" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">TDM・耐性機序・感染制御（ICT連携）</text>
+  <text x="596" y="228" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">抗菌薬適正使用の観点</text>
+  <rect x="24" y="250" width="180" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="114" y="274" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">3. 真菌・寄生虫</text>
+  <text x="114" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">感染症</text>
+  <rect x="210" y="250" width="200" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="310" y="274" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">カンジダ血症, PCP,</text>
+  <text x="310" y="292" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">侵襲性アスペルギルス症</text>
+  <rect x="416" y="250" width="360" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="596" y="272" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">宿主の免疫不全評価 → 予防投薬の適応</text>
+  <text x="596" y="290" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">診断マーカー（β-D-グルカン等）の解釈</text>
+  <rect x="24" y="312" width="180" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="114" y="336" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">4. ウイルス</text>
+  <text x="114" y="354" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">感染症</text>
+  <rect x="210" y="312" width="200" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="310" y="336" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">HIV/AIDS, COVID-19,</text>
+  <text x="310" y="354" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">CMV感染症</text>
+  <rect x="416" y="312" width="360" height="56" rx="6" fill="#FEFEFC" filter="url(#fc_d10b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="596" y="334" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">抗ウイルス薬の選択根拠と副作用管理</text>
+  <text x="596" y="352" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">長期管理・予防接種・公衆衛生の視点</text>
+  <text x="400" y="388" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 感染症の考察で差し戻されやすい落とし穴
+
+感染症は経験頻度が高い分、「簡単に書ける」と油断して考察が浅くなりがちです。査読委員が指摘しやすいポイントを解説します。
+
+### 落とし穴1: 起炎菌検索の過程が不十分
+
+「血液培養でE. coliが検出された」だけでは不十分です。**なぜその検体を採取したのか** （感染巣の推定に基づく検体採取戦略）、** 培養結果が臨床像と矛盾しないか** の吟味を記述してください。
+
+コンタミネーションとの鑑別（コアグラーゼ陰性ブドウ球菌の1セットのみ陽性など）も、記載があると評価されます。
+
+### 落とし穴2: 「解熱」「CRP低下」だけで治療効果を判定
+
+感染症の治療効果判定には、臨床症状の推移、臓器障害の改善（敗血症なら乳酸値やSOFAスコアの推移）、画像所見の変化、培養の陰性化など **複数のパラメータを総合的に評価** する姿勢を見せる必要があります。
+
+### 落とし穴3: de-escalation・治療期間の根拠がない
+
+初期の経験的治療から培養結果に基づく狭域抗菌薬への変更（de-escalation）は、感染症の考察において必須の論点です。また、治療期間をどのように決定したか（ガイドラインの推奨、バイオマーカーの推移、臨床的改善の程度）を明記してください。
+
+### 落とし穴4: 抗菌薬名を商品名で記載
+
+一般名で記載するのが原則です。「メロペン」ではなく「メロペネム」、「バンコマイシン」は一般名なのでそのままOKですが、「ゾシン」ではなく「タゾバクタム・ピペラシリン」と記載します。抗菌薬は特に商品名で書きがちなので注意してください。
+
+感染症の考察をどう組み立てるか迷ったら、[iwor](/pro/)のAI病歴要約テンプレートで考察の骨組みを確認できます。疾患ごとに「起炎菌推定→治療選択→効果判定→de-escalation」の論点が整理されています。
+
+## 感染症の入院後経過の書き方テンプレート
+
+感染症の病歴要約では、治療経過の記載で **起炎菌検索と抗菌薬変更の時系列** を明確にすることが求められます。以下にテンプレートを示します。
+
+```
+【入院後経過と考察】
+入院時, qSOFAスコア●点（意識変容/呼吸数≧22回/分/収縮期血圧≦100mmHg）であり
+敗血症を疑った. SOFAスコア●点（ベースラインから●点上昇）であり
+Sepsis-3基準を満たすと判断した.
+
+感染巣として●●を疑い, 血液培養2セット, ●●培養, 尿培養を採取の上,
+●●（一般名）●g/日の経験的治療を開始した.
+初期治療の選択根拠は, ●●ガイドラインにおける●●の推奨に基づく.
+
+第●病日, 血液培養から●●が検出され, 感受性試験で●●感受性を確認した.
+培養結果と臨床像の一致を確認の上,
+第●病日に●●（一般名）●g/日へde-escalationした.
+
+治療効果は, 臨床症状（解熱, ●●の改善）,
+炎症マーカー（CRP ●→●mg/dL, プロカルシトニン ●→●ng/mL）,
+臓器障害指標（●●）の改善をもって判断した.
+
+第●病日に●●を確認し, ●●ガイドラインの推奨する治療期間●日間を完遂の上,
+抗菌薬を終了した.
+```
+
+## 感染症の総合考察テンプレート
+
+```
+【総合考察】
+本症例は●●を背景に発症した●●感染症の1例である.
+
+本症例における診断のポイントは, ●●であった.
+臨床所見として●●, ●●を呈しており,
+感染巣として●●を推定した根拠は●●である.
+
+治療については, 初期に●●ガイドラインに基づき
+●●の経験的治療を選択した.
+培養結果で●●が同定された後, ●●へのde-escalationを行った.
+De-escalationの判断は, ●●感受性の確認に加え,
+臨床的改善（●●）を総合的に考慮して行った.
+治療期間は●●の推奨に基づき●日間とした.
+
+本症例から学んだ点として, ●●が挙げられる.
+（文献に基づく考察: ●●ら（引用）は●●と報告しており,
+本症例でも●●が当てはまる.）
+
+全人的視点として, 本患者は●●であり,
+●●への配慮が重要であった.
+退院時には●●について患者教育を行い,
+●●のフォローアップ体制を構築した.
+```
+
+## 2篇の疾患群配分を決める手順
+
+感染症2篇をどの疾患群から選ぶかは、29篇全体の計画に影響します。以下の手順で配分を決めてください。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-label="感染症2篇の疾患群配分を決めるフロー図">
+  <defs>
+    <filter id="fc_d10c" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter>
+    <marker id="arrow_d10" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1B4F3A"/></marker>
+  </defs>
+  <rect width="800" height="380" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">感染症2篇の疾患群配分フロー</text>
+  <rect x="200" y="76" width="400" height="44" rx="8" fill="#FEFEFC" filter="url(#fc_d10c)" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="400" y="102" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">STEP 1: 他領域との重複を確認</text>
+  <line x1="400" y1="120" x2="400" y2="140" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow_d10)"/>
+  <rect x="24" y="140" width="362" height="68" rx="8" fill="#FEFEFC" filter="url(#fc_d10c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="205" y="166" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1A1917">呼吸器で肺炎を使う?</text>
+  <text x="205" y="186" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">使うなら感染症は肺炎以外の症例から</text>
+  <text x="205" y="200" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">（敗血症, 尿路感染, 心内膜炎など）</text>
+  <rect x="414" y="140" width="362" height="68" rx="8" fill="#FEFEFC" filter="url(#fc_d10c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="595" y="166" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1A1917">消化器（肝臓）でウイルス性肝炎を使う?</text>
+  <text x="595" y="186" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">使うなら感染症の疾患群4は</text>
+  <text x="595" y="200" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">HIV, COVID-19, CMVなどから選択</text>
+  <line x1="400" y1="208" x2="400" y2="228" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow_d10)"/>
+  <rect x="200" y="228" width="400" height="44" rx="8" fill="#FEFEFC" filter="url(#fc_d10c)" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="400" y="254" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">STEP 2: 経験可能な症例を棚卸し</text>
+  <line x1="400" y1="272" x2="400" y2="292" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow_d10)"/>
+  <rect x="24" y="292" width="362" height="56" rx="8" fill="#FEFEFC" filter="url(#fc_d10c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="205" y="314" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1A1917">定番パターン</text>
+  <text x="205" y="334" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">疾患群1（敗血症等）+ 疾患群4（HIV等）</text>
+  <rect x="414" y="292" width="362" height="56" rx="8" fill="#FEFEFC" filter="url(#fc_d10c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="595" y="314" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1A1917">血液内科ローテ経験者向け</text>
+  <text x="595" y="334" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">疾患群1（肺炎等）+ 疾患群3（カンジダ血症等）</text>
+  <text x="400" y="374" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+**定番の組み合わせ** は「疾患群1（敗血症・肺炎・尿路感染など）+ 疾患群2〜4のいずれか」です。特に疾患群1と疾患群4の組み合わせ（例: 敗血症 + COVID-19）は多くの専攻医が経験可能です。
+
+血液内科をローテーションした経験がある場合は、疾患群3（カンジダ血症やPCP）が有力な選択肢になります。免疫不全患者の感染管理は考察の深みを出しやすいテーマです。
+
+29篇全体の疾患群配分は[iwor](/pro/)のダッシュボードで56疾患群の達成状況を一覧確認できます。
+
+## まとめ｜感染症2篇を確実にAcceptさせる
+
+感染症領域の病歴要約で押さえるべきポイントを整理します。
+
+- 4つの疾患群から2篇を提出。 **どの疾患群を使うか** は29篇全体の配分から逆算して決める
+- 感染症の考察の核は **「起炎菌推定 → 培養に基づく治療最適化 → 効果判定」** の一連の臨床推論
+- 「解熱した」「CRPが下がった」だけでは不十分。 **複数のパラメータ** で治療効果を評価する姿勢を示す
+- de-escalationの判断根拠と治療期間の設定根拠を必ず記述する
+- 他領域（呼吸器、消化器、腎臓）との主病名の重複を避ける
+- 全人的視点（高齢者のADL変化、退院後の生活環境、患者教育）を必ず含める
+
+病歴要約の基本的な書き方から確認したい方は[病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)を、テンプレートが欲しい方は[病歴要約テンプレート](/blog/c02-josler-byoreki-youyaku-template)をご覧ください。他の疾患別ガイドとして、消化器は[消化器病歴要約ガイド](/blog/d01-josler-byoreki-youyaku-shoukaki)、循環器は[循環器病歴要約ガイド](/blog/d02-josler-byoreki-youyaku-junkanki)、呼吸器は[呼吸器病歴要約ガイド](/blog/d03-josler-byoreki-youyaku-kokyuuki)、血液は[血液病歴要約ガイド](/blog/d04-josler-byoreki-youyaku-ketsueki)、腎臓は[腎臓病歴要約ガイド](/blog/d05-josler-byoreki-youyaku-jinzou)、内分泌は[内分泌病歴要約ガイド](/blog/d06-josler-byoreki-youyaku-naibunpitsu)、代謝は[代謝病歴要約ガイド](/blog/d07-josler-byoreki-youyaku-taisha)、神経は[神経病歴要約ガイド](/blog/d08-josler-byoreki-youyaku-shinkei)、膠原病は[膠原病病歴要約ガイド](/blog/d09-josler-byoreki-youyaku-kougenbyou)で解説しています。差し戻し対策は[差し戻し対策ガイド](/blog/c08-josler-byoreki-youyaku-sashimodoshi)も参考にしてください。
+
+## よくある質問
+
+### 感染症で肺炎を書いた場合、呼吸器領域でも肺炎を書けますか？
+
+制度上は可能です。感染症領域と呼吸器領域は異なる領域であり、疾患群も別カウントになります。ただし、[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)では「主病名がバランスよく選択されていることを重視」とされているため、同一疾患名の重複は避けるのが無難です。感染症で肺炎を書くなら、呼吸器はCOPDや間質性肺疾患など別の疾患を選びましょう。
+
+### 発熱性好中球減少症（FN）は感染症で出せますか？
+
+FNは感染症領域で提出可能です。ただし、背景疾患（血液悪性腫瘍など）が血液領域の病歴要約と重複しないよう注意してください。FNの場合、考察の中心は「empiric therapyの選択と感染巣の検索戦略」に置き、血液疾患の治療そのものよりも感染管理にフォーカスすることで、感染症領域としての妥当性を示せます。[病歴要約サンプル](https://www.naika.or.jp/wp-content/uploads/2024/07/35a75d9e2a04130148491c77a1037343.pdf)にも血液疾患の化学療法中に合併したFNの病歴要約例が掲載されています。
+
+### COVID-19の症例は感染症の病歴要約として適切ですか？
+
+適切です。ただし、COVID-19の治療指針は経時的に大きく変化しているため、**当時のエビデンスに基づいた治療選択の根拠** を明記する必要があります。「レムデシビル5日間投与」だけでなく、投与時点のガイドライン推奨と、その患者の重症度に応じた判断過程を記述してください。
+
+### 感染症の2篇はどの疾患群の組み合わせがおすすめですか？
+
+最も無難なのは **疾患群1（敗血症や肺炎など一般的な細菌感染症）+ 疾患群2〜4のいずれか** です。疾患群1は症例数が豊富で選びやすく、2篇目で特殊菌・真菌・ウイルスのいずれかを選ぶことで考察のバリエーションが広がります。29篇全体の疾患群配分と自分の経験症例を照らし合わせて決めてください。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [CURB-65](/tools/calc/curb-65)
+- [A-DROP](/tools/calc/a-drop)
+- [qSOFA](/tools/calc/qsofa)
+- [SOFA](/tools/calc/sofa)
+- [抗菌薬 腎機能別用量](/tools/calc/renal-dose-abx)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

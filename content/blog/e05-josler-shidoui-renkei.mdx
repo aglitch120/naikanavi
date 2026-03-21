@@ -1,0 +1,270 @@
+---
+title: "J-OSLER 指導医承認が進まないときの対処法｜承認漏れ防止策"
+description: "J-OSLER症例登録・病歴要約の指導医承認が遅れる原因と対処法を解説。リマインドのコツ、ローテーション変更時の引き継ぎ、承認漏れを防ぐ確認習慣まで。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "iwor編集部"
+category: "progress-management"
+cluster: "E"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "指導医", "承認", "進捗管理", "症例登録", "病歴要約", "内科専攻医"]
+cta_type: "progress"
+reading_time: 8
+status: "published"
+seo_checked: true
+---
+
+「症例を登録したのに指導医がなかなか承認してくれない…」「ローテーション先が変わったら前の指導医に連絡が取れなくなった…」
+
+J-OSLERでは、症例登録も病歴要約も **指導医の承認なしには前に進めません**。どれだけ丁寧に書いても、承認されなければカウントゼロです。この記事では、指導医承認が滞る原因と具体的な対処法を解説します。
+
+> [iwor](/pro/)のダッシュボードなら、症例登録・病歴要約の承認状況を一覧で管理できます。未承認件数がひと目でわかるので、リマインドのタイミングを逃しません。
+
+## J-OSLERで「指導医承認」が必要な場面
+
+J-OSLERでは、以下の場面で指導医（または指定された評価者）の承認・評価が必要です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" role="img" aria-label="J-OSLER指導医承認が必要な場面">
+  <defs><filter id="fe05a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="340" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">指導医承認が必要な場面</text>
+  <rect x="40" y="90" width="340" height="100" rx="10" fill="#FEFEFC" filter="url(#fe05a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="68" cy="112" r="16" fill="#1B4F3A"/>
+  <text x="68" y="118" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">1</text>
+  <text x="92" y="116" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">症例登録の承認</text>
+  <text x="92" y="138" font-family="sans-serif" font-size="11" fill="#6B6760">担当指導医が症例内容を確認・承認</text>
+  <text x="92" y="156" font-family="sans-serif" font-size="11" fill="#6B6760">未承認は「登録済み」にカウントされない</text>
+  <text x="92" y="176" font-family="sans-serif" font-size="11" fill="#6B6760">自己省察のフィードバックも含む</text>
+  <rect x="420" y="90" width="340" height="100" rx="10" fill="#E8F0EC" filter="url(#fe05a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="448" cy="112" r="16" fill="#1B4F3A"/>
+  <text x="448" y="118" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="472" y="116" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">病歴要約の個別承認</text>
+  <text x="472" y="138" font-family="sans-serif" font-size="11" fill="#6B6760">担当指導医が病歴要約の内容を評価</text>
+  <text x="472" y="156" font-family="sans-serif" font-size="11" fill="#6B6760">個別承認後に一次評価へ送付可能</text>
+  <text x="472" y="176" font-family="sans-serif" font-size="11" fill="#6B6760">フィードバック・修正依頼を受ける</text>
+  <rect x="40" y="210" width="340" height="90" rx="10" fill="#E8F0EC" filter="url(#fe05a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="68" cy="232" r="16" fill="#1B4F3A"/>
+  <text x="68" y="238" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="92" y="236" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">研修評価</text>
+  <text x="92" y="258" font-family="sans-serif" font-size="11" fill="#6B6760">指導医評価・多職種評価の実施</text>
+  <text x="92" y="276" font-family="sans-serif" font-size="11" fill="#6B6760">半期ごとに必要（年2回）</text>
+  <rect x="420" y="210" width="340" height="90" rx="10" fill="#FEFEFC" filter="url(#fe05a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="448" cy="232" r="16" fill="#1B4F3A"/>
+  <text x="448" y="238" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">4</text>
+  <text x="472" y="236" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">一次評価・二次評価</text>
+  <text x="472" y="258" font-family="sans-serif" font-size="11" fill="#6B6760">病歴指導医・統括責任者・査読委員</text>
+  <text x="472" y="276" font-family="sans-serif" font-size="11" fill="#6B6760">個別承認完了後にのみ進行可能</text>
+  <text x="400" y="328" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+このうち、日常的に問題になりやすいのは **症例登録の承認** と ** 病歴要約の個別承認** です。どちらも担当指導医の操作が必要なため、指導医の忙しさや異動によってボトルネックになりやすい箇所です。
+
+修了要件の詳細は[J-OSLER修了要件を完全解説](/blog/a06-josler-shuryo-youken)を参照してください。
+
+## 承認が遅れる3つのパターン
+
+指導医承認が滞る主な原因は以下の3つです。それぞれ対処法が異なります。
+
+### パターン1：指導医がJ-OSLERへのアクセスを忘れている
+
+最も多いケースです。指導医はJ-OSLERを頻繁に確認しているわけではありません。「そのうち承認しよう」と後回しにされてしまいます。
+
+**対処法** ：リマインドを積極的にかける。
+
+口頭・メッセージアプリ・メールのいずれかで「先生、○月分の症例○件の承認をお願いできますか」と具体的にリクエストします。「承認してください」ではなく「○件あります」と件数を伝えると、指導医も動きやすくなります。
+
+### パターン2：指導医が症例内容に疑問を持っている
+
+症例の記載内容に不備があり、指導医が「このまま承認してよいか」と迷っているケースです。フィードバックを送ってくれていればよいのですが、フィードバックせずに放置されることもあります。
+
+**対処法** ：「承認状況の確認」ではなく「フィードバックをいただけますか」という形でアプローチする。
+
+「症例の書き方で不明な点はありますか？何かご指摘があればご連絡ください」と一言添えることで、指導医が意見を言いやすくなります。
+
+### パターン3：指導医が異動・退職している
+
+ローテーション中に担当指導医が異動・退職してしまったケースです。連絡が取れなくなり、承認が宙ぶらりんになってしまいます。
+
+**対処法** ：プログラム統括責任者に相談し、代替指導医の設定を依頼する。
+
+J-OSLERシステム上では、別の指導医に担当を変更する手続きが可能です。後述します。
+
+## 効果的なリマインドの方法
+
+指導医へのリマインドは、頻度・タイミング・内容が重要です。
+
+### リマインドの頻度
+
+**月1回をベースに、期限が近い場合は2週間おきに** リマインドするのが適切です。毎週リマインドするのは過剰であり、指導医との関係が悪化するリスクがあります。
+
+一方、3ヶ月以上リマインドしない状態が続くと、症例が大量に積み上がってしまいます。月末に「今月登録分の承認を先月までにお願いしています」と確認する習慣をつけましょう。
+
+### リマインドの文面例
+
+口頭やLINE・Slackで一言添える場合：
+
+```
+先生、お疲れ様です。
+先月の症例3件についてJ-OSLER上での承認をお願いできますか？
+（登録日: 2月3日・2月14日・2月20日）
+お時間のある際にご確認いただければ幸いです。
+```
+
+メールで依頼する場合：
+
+```
+件名: J-OSLER症例承認のお願い（○○ ○○）
+
+○○先生
+
+お世話になっております。専攻医の○○です。
+
+下記症例の承認をJ-OSLERにてお願いできますでしょうか。
+
+・○○病（症例登録日: 2026年2月3日）
+・○○症（症例登録日: 2026年2月14日）
+・○○炎（症例登録日: 2026年2月20日）
+
+ご多忙のところ恐れ入りますが、何卒よろしくお願いいたします。
+
+○○ ○○（内科専攻医 ○年目）
+```
+
+件数と登録日を明示することで、指導医がJ-OSLERを開いた際に該当症例を探しやすくなります。
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## 病歴要約の個別承認を早めるコツ
+
+病歴要約の個別承認は、症例登録の承認より指導医の負担が大きいため、より計画的なアプローチが必要です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-label="病歴要約個別承認を早めるタイムライン">
+  <defs><filter id="fe05b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="300" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">病歴要約 個別承認を早めるポイント</text>
+  <rect x="40" y="90" width="220" height="170" rx="10" fill="#FEFEFC" filter="url(#fe05b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="150" y="118" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">提出前の準備</text>
+  <text x="56" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">・指導医に「提出予定です」と</text>
+  <text x="56" y="160" font-family="sans-serif" font-size="11" fill="#6B6760">　一言伝えておく</text>
+  <text x="56" y="182" font-family="sans-serif" font-size="11" fill="#6B6760">・1編ずつ提出（まとめて</text>
+  <text x="56" y="200" font-family="sans-serif" font-size="11" fill="#6B6760">　提出すると埋もれやすい）</text>
+  <text x="56" y="224" font-family="sans-serif" font-size="11" fill="#6B6760">・自己省察を丁寧に書いて</text>
+  <text x="56" y="242" font-family="sans-serif" font-size="11" fill="#6B6760">　フィードバックを得やすくする</text>
+  <rect x="290" y="90" width="220" height="170" rx="10" fill="#E8F0EC" filter="url(#fe05b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="400" y="118" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">提出後の確認</text>
+  <text x="306" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">・2週間後にリマインド</text>
+  <text x="306" y="162" font-family="sans-serif" font-size="11" fill="#6B6760">・「修正すべき点はあるか」</text>
+  <text x="306" y="180" font-family="sans-serif" font-size="11" fill="#6B6760">　と積極的に聞く</text>
+  <text x="306" y="202" font-family="sans-serif" font-size="11" fill="#6B6760">・フィードバックを受けたら</text>
+  <text x="306" y="220" font-family="sans-serif" font-size="11" fill="#6B6760">　即日修正して再提出</text>
+  <rect x="540" y="90" width="220" height="170" rx="10" fill="#FEFEFC" filter="url(#fe05b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="650" y="118" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">一次評価への送付</text>
+  <text x="556" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">・個別承認後すみやかに</text>
+  <text x="556" y="160" font-family="sans-serif" font-size="11" fill="#6B6760">　一次評価へ送付する</text>
+  <text x="556" y="182" font-family="sans-serif" font-size="11" fill="#6B6760">・送付した旨を統括責任者に</text>
+  <text x="556" y="200" font-family="sans-serif" font-size="11" fill="#6B6760">　一言確認する</text>
+  <text x="556" y="222" font-family="sans-serif" font-size="11" fill="#6B6760">・差し戻し時は即対応</text>
+  <text x="400" y="290" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+### 1編ずつ提出する
+
+まとめて5〜10編提出すると、指導医の負担が一気に増え、後回しにされやすくなります。完成した病歴要約は **1〜2編ずつ順次提出** し、指導医のペースで確認してもらうのが現実的です。
+
+### 修正を即日対応する
+
+指導医からフィードバックを受けたら、可能な限り **その日か翌日中に修正して再提出** しましょう。修正が遅れると、指導医も修正内容を忘れてしまい、二度手間になることがあります。
+
+速やかな対応を続けることで「この専攻医はすぐに動く」という信頼関係が生まれ、次の承認も早くなるという好循環が生まれます。
+
+### 進捗を共有する
+
+「今、29編中○編が個別承認済みです」と定期的に進捗を伝えることで、指導医も全体像を把握でき、「まだ○編あるのか」という意識を持ってもらいやすくなります。
+
+> [iwor](/pro/)のAI病歴要約テンプレート機能を使うと、疾患群を選ぶだけで病歴要約の構成テンプレートが自動生成されます。OPQRST・検査所見・プロブレムリスト・考察の方向性まで提示されるため、指導医に提出できる状態まで到達する時間を短縮できます。
+
+## ローテーション先が変わったときの対処法
+
+ローテーション中に担当指導医が変わった場合、未承認の症例・病歴要約がある場合は注意が必要です。
+
+### 事前に引き継ぎを確認する
+
+ローテーション終了前に、以下を確認してください。
+
+- 未承認の症例・病歴要約がないか（J-OSLER上で確認）
+- 未承認がある場合、出発前に承認をお願いできるか
+- 連絡先を残しておくか、または後任の指導医に引き継いでもらえるか
+
+「ローテーション終了後に連絡が取りにくくなる前に、残っている承認をお願いできますか」と率直に伝えることが大切です。
+
+### 指導医が異動・退職した場合
+
+担当指導医が突然異動または退職した場合は、 **プログラム統括責任者に報告** してください。J-OSLERシステム上で、未承認症例の担当指導医を別の指導医に変更できます。
+
+ただし、この手続きはプログラム側（統括責任者）しか操作できないため、自分で変更することはできません。早めに相談することが重要です。
+
+### 新しいローテーション先での指導医への挨拶
+
+新しいローテーション先では、着任時に以下を伝えておくとスムーズです。
+
+- 内科専攻医として研修中であること
+- J-OSLERへの症例登録・病歴要約の承認をお願いしたいこと
+- どのような形でコミュニケーションを取りたいか（週1での確認など）
+
+最初に一言話しておくだけで、指導医の意識が変わり、承認のスピードが上がることがほとんどです。
+
+## 「承認が溜まりすぎた」ときの巻き返し策
+
+気づいたら未承認の症例が10件以上溜まっていた、というケースも少なくありません。
+
+まずは **J-OSLERのモニタリング画面で現状を正確に把握** してください。未承認件数と対象の指導医（複数の場合は誰が何件担当しているか）を確認します。
+
+次に、**最も未承認件数が多い指導医に優先してコンタクト** を取ります。複数の指導医に未承認がある場合、それぞれに個別連絡する方が効果的です。
+
+指導医への連絡が難しい場合（多忙・転勤等）は、**プログラム統括責任者を間に入れて** もらうことも検討してください。統括責任者は専攻医の修了要件達成を管理する立場にあるため、適切にサポートしてもらえます。
+
+進捗が大幅に遅れている場合は[間に合わないときの巻き返し戦略](/blog/e02-josler-manianai)も参考にしてください。
+
+## よくある質問（FAQ）
+
+### Q. 指導医がJ-OSLERの操作方法を知らない場合はどうすればいいですか？
+
+指導医によっては、J-OSLERの承認操作に不慣れな方もいます。「J-OSLERへのログインはこのURLです」「承認はこのメニューから操作できます」と、具体的な操作手順を一緒に確認するのが最も早い解決策です。プログラム事務局に「指導医向けのマニュアルがありますか」と問い合わせるのも効果的です。
+
+### Q. 指導医に断られた（承認できないと言われた）場合はどうすればいいですか？
+
+症例の内容に問題があると判断された場合、指導医から修正を求められることがあります。「承認できない」と言われた場合は、具体的にどの点が問題なのかフィードバックをもらい、修正して再提出してください。内容の問題ではなく「手続きが分からない」という理由の場合は、プログラム統括責任者に相談してください。
+
+### Q. 症例登録後、どれくらいで承認されるのが普通ですか？
+
+施設や指導医によって大きく異なりますが、1〜2週間以内に承認されるのが理想です。1ヶ月経っても承認されない場合は、リマインドのタイミングです。3ヶ月以上放置されている場合は、プログラム統括責任者への相談を検討してください。
+
+## よくある失敗3パターン
+
+指導医連携・承認管理で専攻医がはまりがちな失敗を3つ挙げます。
+
+**❶ 「先生に頼みにくい」と何ヶ月も放置してしまう**
+
+承認依頼を遠慮して3〜6ヶ月放置してしまい、未承認が30件以上積み上がってから慌てるパターンです。指導医側も大量の未処理案件が来ると対応が遅れます。月1回・3件以内という少量・高頻度のリマインドを習慣化することで、指導医への負担を最小限に抑えながら承認を進められます。
+
+**❷ ローテーション終了後に前施設の指導医への依頼が困難になる**
+
+他科や他施設へのローテーション終了後に未承認症例が残っていると、連絡先が変わった指導医への依頼が格段に難しくなります。ローテーション終了前の「2週間前チェック」で未承認件数を確認し、依頼を完了させてから異動することが鉄則です。
+
+**❸ 病歴要約を一度に複数提出して埋もれさせてしまう**
+
+「まとめて出した方が効率的」と思い一度に5〜10篇を提出すると、指導医の手元で処理待ちが山積みになり、差し戻しまでの時間が長くなります。1〜2篇ずつ順次提出し、指導医が「読む」「コメントする」「承認する」という流れを細切れに行えるようにする方が、結果的に早く仕上がります。
+
+## まとめ
+
+J-OSLERの指導医承認は、専攻医自身のアクションで大きくスピードアップできます。重要なポイントをまとめます。
+
+- **月1回の確認習慣**: J-OSLERで未承認件数を定期チェックし、こまめにリマインドする
+- **具体的な依頼**: 「○件あります」「登録日は○月○日です」と明示してリマインドする
+- **1編ずつ提出**: 病歴要約をまとめて提出せず、指導医のペースに合わせて順次提出する
+- **即日修正**: フィードバックを受けたら即日対応し、信頼関係を築く
+- **異動前の確認**: ローテーション終了前に未承認がないかを必ず確認する
+
+進捗管理全体の方法は[J-OSLER進捗管理の方法](/blog/e01-josler-shinchoku-kanri)で、年次別の目標設定は[J-OSLER理想のスケジュール](/blog/e03-josler-schedule)で確認できます。

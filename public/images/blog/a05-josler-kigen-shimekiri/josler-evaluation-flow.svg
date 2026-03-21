@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <rect x="24" y="16" width="752" height="48" rx="12" fill="#1B4F3A"/>
+  <text x="400" y="47" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">病歴要約の評価フローと所要期間</text>
+
+  <!-- 一次評価 section -->
+  <text x="60" y="96" fill="#1E3A5F" font-size="15" font-weight="700">一次評価（4月〜10月31日）</text>
+
+  <!-- Flow: 専攻医 → 統括責任者 → 病歴指導医 → 統括責任者 -->
+  <rect x="40" y="110" width="130" height="50" rx="8" fill="#FEFEFC" filter="url(#sh)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="105" y="131" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">専攻医</text>
+  <text x="105" y="148" text-anchor="middle" fill="#78716C" font-size="10">29篇を提出</text>
+
+  <path d="M170 135 L195 135" stroke="#1B4F3A" stroke-width="1.5" fill="none" marker-end="url(#arrow1)"/>
+  <defs><marker id="arrow1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#1B4F3A"/></marker></defs>
+
+  <rect x="195" y="110" width="130" height="50" rx="8" fill="#FEFEFC" filter="url(#sh)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="260" y="131" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">統括責任者</text>
+  <text x="260" y="148" text-anchor="middle" fill="#78716C" font-size="10">指導医を指名</text>
+  <rect x="195" y="165" width="130" height="16" rx="4" fill="#E8F0EC"/>
+  <text x="260" y="177" text-anchor="middle" fill="#1B4F3A" font-size="9" font-weight="600">目安 7日以内</text>
+
+  <path d="M325 135 L350 135" stroke="#1B4F3A" stroke-width="1.5" fill="none" marker-end="url(#arrow1)"/>
+
+  <rect x="350" y="110" width="130" height="50" rx="8" fill="#FEFEFC" filter="url(#sh)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="415" y="131" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">病歴指導医</text>
+  <text x="415" y="148" text-anchor="middle" fill="#78716C" font-size="10">29篇を評価</text>
+  <rect x="350" y="165" width="130" height="16" rx="4" fill="#E8F0EC"/>
+  <text x="415" y="177" text-anchor="middle" fill="#1B4F3A" font-size="9" font-weight="600">目安 14日以内</text>
+
+  <path d="M480 135 L505 135" stroke="#1B4F3A" stroke-width="1.5" fill="none" marker-end="url(#arrow1)"/>
+
+  <rect x="505" y="110" width="130" height="50" rx="8" fill="#FEFEFC" filter="url(#sh)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="570" y="131" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">統括責任者</text>
+  <text x="570" y="148" text-anchor="middle" fill="#78716C" font-size="10">最終確認</text>
+  <rect x="505" y="165" width="130" height="16" rx="4" fill="#E8F0EC"/>
+  <text x="570" y="177" text-anchor="middle" fill="#1B4F3A" font-size="9" font-weight="600">目安 14日以内</text>
+
+  <path d="M635 135 L660 135" stroke="#166534" stroke-width="1.5" fill="none" marker-end="url(#arrow2)"/>
+  <defs><marker id="arrow2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#166534"/></marker></defs>
+
+  <rect x="660" y="110" width="110" height="50" rx="8" fill="#166534" filter="url(#sh)"/>
+  <text x="715" y="140" text-anchor="middle" fill="#FEFEFC" font-size="12" font-weight="700">一次評価完了</text>
+
+  <!-- 差し戻しルート -->
+  <path d="M415 160 L415 195 L105 195 L105 160" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5" fill="none" marker-end="url(#arrowRed)"/>
+  <defs><marker id="arrowRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#EF4444"/></marker></defs>
+  <rect x="190" y="188" width="180" height="18" rx="4" fill="#FEE2E2"/>
+  <text x="280" y="201" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="600">1件でもRevision → 29篇差し戻し</text>
+
+  <!-- スムーズ時と差し戻し時の所要期間 -->
+  <rect x="40" y="218" width="345" height="36" rx="8" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="56" y="241" fill="#1B4F3A" font-size="12" font-weight="600">スムーズな場合：約5週間</text>
+  <rect x="405" y="218" width="365" height="36" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1"/>
+  <text x="421" y="241" fill="#EF4444" font-size="12" font-weight="600">差し戻し1回：約2〜3ヶ月</text>
+
+  <!-- 二次評価 section -->
+  <text x="60" y="286" fill="#3D5A80" font-size="15" font-weight="700">二次評価（5月〜翌年2月20日）</text>
+
+  <!-- Flow: 専攻医 → 査読委員 → 完了 -->
+  <rect x="40" y="300" width="130" height="50" rx="8" fill="#FEFEFC" filter="url(#sh)" stroke="#3D5A80" stroke-width="1.5"/>
+  <text x="105" y="321" text-anchor="middle" fill="#3D5A80" font-size="11" font-weight="600">専攻医</text>
+  <text x="105" y="338" text-anchor="middle" fill="#78716C" font-size="10">二次評価を依頼</text>
+
+  <path d="M170 325 L215 325" stroke="#3D5A80" stroke-width="1.5" fill="none" marker-end="url(#arrow3)"/>
+  <defs><marker id="arrow3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#3D5A80"/></marker></defs>
+
+  <rect x="215" y="300" width="180" height="50" rx="8" fill="#FEFEFC" filter="url(#sh)" stroke="#3D5A80" stroke-width="1.5"/>
+  <text x="305" y="321" text-anchor="middle" fill="#3D5A80" font-size="11" font-weight="600">査読委員（1名）</text>
+  <text x="305" y="338" text-anchor="middle" fill="#78716C" font-size="10">29篇を外部評価</text>
+  <rect x="215" y="355" width="180" height="16" rx="4" fill="#DBEAFE"/>
+  <text x="305" y="367" text-anchor="middle" fill="#3D5A80" font-size="9" font-weight="600">初回 21日 / 再評価 7日以内</text>
+
+  <path d="M395 325 L440 325" stroke="#3D5A80" stroke-width="1.5" fill="none" marker-end="url(#arrow3)"/>
+
+  <rect x="440" y="300" width="100" height="50" rx="8" fill="#166534" filter="url(#sh)"/>
+  <text x="490" y="330" text-anchor="middle" fill="#FEFEFC" font-size="12" font-weight="700">修了へ</text>
+
+  <!-- 差し戻し（最大3回） -->
+  <path d="M305 350 L305 385 L105 385 L105 350" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5" fill="none" marker-end="url(#arrowRed)"/>
+  <rect x="130" y="378" width="220" height="18" rx="4" fill="#FEE2E2"/>
+  <text x="240" y="391" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="600">最大3回の差し戻し（形成的評価）</text>
+
+  <!-- 最悪ケース所要期間 -->
+  <rect x="570" y="300" width="200" height="95" rx="10" fill="#FEFEFC" filter="url(#sh)" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="670" y="322" text-anchor="middle" fill="#EF4444" font-size="12" font-weight="700">最悪ケース（差戻2回）</text>
+  <text x="670" y="344" text-anchor="middle" fill="#44403C" font-size="11">初回評価 21日</text>
+  <text x="670" y="362" text-anchor="middle" fill="#44403C" font-size="11">修正+再評価 x2回</text>
+  <text x="670" y="384" text-anchor="middle" fill="#EF4444" font-size="13" font-weight="700">= 合計 約2ヶ月以上</text>
+
+  <!-- Footer -->
+  <text x="756" y="432" text-anchor="end" fill="#A8A29E" font-size="9">© 内科ナビ naikanavi.com</text>
+</svg>

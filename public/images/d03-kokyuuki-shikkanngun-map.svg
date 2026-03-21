@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Noto Sans JP', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+  <text x="400" y="42" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">呼吸器領域の疾患群マップ｜病歴要約2篇の選び方</text>
+  <rect x="30" y="60" width="740" height="410" rx="12" fill="#FEFEFC" filter="url(#shadow)"/>
+  <text x="400" y="90" text-anchor="middle" font-size="13" fill="#6B6760">呼吸器領域は29篇中2篇。2つの異なる疾患群から選択する</text>
+  <rect x="60" y="110" width="320" height="70" rx="8" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="70" y="132" font-size="12" font-weight="bold" fill="#1B4F3A">疾患群10: 呼吸器感染症</text>
+  <text x="70" y="150" font-size="11" fill="#1A1917">肺炎, 肺結核, 肺非結核性抗酸菌症,</text>
+  <text x="70" y="166" font-size="11" fill="#1A1917">肺真菌症, 胸膜炎 など</text>
+  <text x="360" y="150" font-size="20" fill="#1B4F3A">★</text>
+  <rect x="420" y="110" width="320" height="70" rx="8" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="430" y="132" font-size="12" font-weight="bold" fill="#1B4F3A">疾患群11: 閉塞性・拘束性肺疾患</text>
+  <text x="430" y="150" font-size="11" fill="#1A1917">COPD, 気管支喘息, びまん性汎細気管支炎,</text>
+  <text x="430" y="166" font-size="11" fill="#1A1917">気管支拡張症 など</text>
+  <text x="720" y="150" font-size="20" fill="#1B4F3A">★</text>
+  <rect x="60" y="200" width="320" height="70" rx="8" fill="#F0EDE7" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="70" y="222" font-size="12" font-weight="bold" fill="#1A1917">疾患群12: 免疫・アレルギー性肺疾患</text>
+  <text x="70" y="240" font-size="11" fill="#1A1917">間質性肺炎, サルコイドーシス,</text>
+  <text x="70" y="256" font-size="11" fill="#1A1917">好酸球性肺炎, 薬剤性肺障害 など</text>
+  <rect x="420" y="200" width="320" height="70" rx="8" fill="#F0EDE7" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="430" y="222" font-size="12" font-weight="bold" fill="#1A1917">疾患群13: 肺循環障害</text>
+  <text x="430" y="240" font-size="11" fill="#1A1917">肺血栓塞栓症, 肺高血圧症,</text>
+  <text x="430" y="256" font-size="11" fill="#1A1917">肺性心 など</text>
+  <rect x="60" y="290" width="320" height="70" rx="8" fill="#F0EDE7" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="70" y="312" font-size="12" font-weight="bold" fill="#1A1917">疾患群14: 肺腫瘍</text>
+  <text x="70" y="330" font-size="11" fill="#1A1917">肺癌, 転移性肺腫瘍,</text>
+  <text x="70" y="346" font-size="11" fill="#1A1917">縦隔腫瘍 など</text>
+  <rect x="420" y="290" width="320" height="70" rx="8" fill="#F0EDE7" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="430" y="312" font-size="12" font-weight="bold" fill="#1A1917">疾患群15: 胸膜・縦隔疾患</text>
+  <text x="430" y="330" font-size="11" fill="#1A1917">気胸, 胸膜中皮腫,</text>
+  <text x="430" y="346" font-size="11" fill="#1A1917">縦隔気腫 など</text>
+  <rect x="60" y="380" width="320" height="70" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="70" y="402" font-size="12" font-weight="bold" fill="#92400E">疾患群16: 呼吸不全・呼吸調節障害</text>
+  <text x="70" y="420" font-size="11" fill="#1A1917">急性呼吸窮迫症候群(ARDS),</text>
+  <text x="70" y="436" font-size="11" fill="#1A1917">睡眠時無呼吸症候群, 過換気症候群 など</text>
+  <rect x="420" y="380" width="320" height="55" rx="8" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1"/>
+  <text x="430" y="402" font-size="12" font-weight="bold" fill="#166534">★おすすめ組み合わせ</text>
+  <text x="430" y="422" font-size="11" fill="#166534">疾患群10(肺炎) + 疾患群11(COPD/喘息)</text>
+  <text x="400" y="500" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

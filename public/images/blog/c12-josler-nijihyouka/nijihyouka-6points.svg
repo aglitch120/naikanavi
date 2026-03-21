@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="s2" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B4F3A"/>
+      <stop offset="100%" stop-color="#155230"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="480" rx="16" fill="#F5F4F0"/>
+
+  <!-- ヘッダー -->
+  <rect x="0" y="0" width="800" height="56" rx="16" fill="url(#hg2)"/>
+  <rect x="0" y="28" width="800" height="28" fill="url(#hg2)"/>
+  <text x="400" y="36" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="bold">査読委員の6つの評価ポイント</text>
+
+  <!-- カード1 -->
+  <rect x="30" y="76" width="235" height="110" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s2)"/>
+  <circle cx="58" cy="104" r="16" fill="#1B4F3A"/>
+  <text x="58" y="109" text-anchor="middle" fill="white" font-size="14" font-weight="bold">1</text>
+  <text x="82" y="104" fill="#1B4F3A" font-size="13" font-weight="bold">論理的で正確な記載</text>
+  <text x="48" y="128" fill="#1A1917" font-size="11">必要十分な情報が論理的な</text>
+  <text x="48" y="144" fill="#1A1917" font-size="11">順序で記載されているか</text>
+  <text x="48" y="168" fill="#92400E" font-size="10">注意: 検査値の単位・基準範囲の漏れ</text>
+
+  <!-- カード2 -->
+  <rect x="283" y="76" width="235" height="110" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s2)"/>
+  <circle cx="311" cy="104" r="16" fill="#1B4F3A"/>
+  <text x="311" y="109" text-anchor="middle" fill="white" font-size="14" font-weight="bold">2</text>
+  <text x="335" y="104" fill="#1B4F3A" font-size="13" font-weight="bold">第三者の理解しやすさ</text>
+  <text x="301" y="128" fill="#1A1917" font-size="11">専門外の査読委員でも</text>
+  <text x="301" y="144" fill="#1A1917" font-size="11">一読で症例を把握できるか</text>
+  <text x="301" y="168" fill="#92400E" font-size="10">注意: 略語の未展開・時系列の曖昧さ</text>
+
+  <!-- カード3 -->
+  <rect x="535" y="76" width="235" height="110" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s2)"/>
+  <circle cx="563" cy="104" r="16" fill="#1B4F3A"/>
+  <text x="563" y="109" text-anchor="middle" fill="white" font-size="14" font-weight="bold">3</text>
+  <text x="587" y="104" fill="#1B4F3A" font-size="13" font-weight="bold">患者の全体像の把握</text>
+  <text x="553" y="128" fill="#1A1917" font-size="11">生活社会歴・全人的視点で</text>
+  <text x="553" y="144" fill="#1A1917" font-size="11">俯瞰できているか</text>
+  <text x="553" y="168" fill="#92400E" font-size="10">注意: 疾患のみで患者像が見えない</text>
+
+  <!-- カード4 -->
+  <rect x="30" y="206" width="235" height="110" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s2)"/>
+  <circle cx="58" cy="234" r="16" fill="#1B4F3A"/>
+  <text x="58" y="239" text-anchor="middle" fill="white" font-size="14" font-weight="bold">4</text>
+  <text x="82" y="234" fill="#1B4F3A" font-size="13" font-weight="bold">優先順位づけ</text>
+  <text x="48" y="258" fill="#1A1917" font-size="11">複数の問題に対して</text>
+  <text x="48" y="274" fill="#1A1917" font-size="11">優先順位をつけて対応したか</text>
+  <text x="48" y="298" fill="#92400E" font-size="10">注意: プロブレムリストと考察の不連動</text>
+
+  <!-- カード5 -->
+  <rect x="283" y="206" width="235" height="110" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s2)"/>
+  <circle cx="311" cy="234" r="16" fill="#1B4F3A"/>
+  <text x="311" y="239" text-anchor="middle" fill="white" font-size="14" font-weight="bold">5</text>
+  <text x="335" y="234" fill="#1B4F3A" font-size="13" font-weight="bold">教訓・学びの明示</text>
+  <text x="301" y="258" fill="#1A1917" font-size="11">その症例ならではの学びが</text>
+  <text x="301" y="274" fill="#1A1917" font-size="11">総合考察に反映されているか</text>
+  <text x="301" y="298" fill="#92400E" font-size="10">注意: 教科書的な一般論にとどまる</text>
+
+  <!-- カード6 -->
+  <rect x="535" y="206" width="235" height="110" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s2)"/>
+  <circle cx="563" cy="234" r="16" fill="#1B4F3A"/>
+  <text x="563" y="239" text-anchor="middle" fill="white" font-size="14" font-weight="bold">6</text>
+  <text x="587" y="234" fill="#1B4F3A" font-size="13" font-weight="bold">医療の継続性</text>
+  <text x="553" y="258" fill="#1A1917" font-size="11">退院後フォローや未解決課題</text>
+  <text x="553" y="274" fill="#1A1917" font-size="11">が記載されているか</text>
+  <text x="553" y="298" fill="#92400E" font-size="10">注意: 退院で記載が終わっている</text>
+
+  <!-- まとめメッセージ -->
+  <rect x="30" y="340" width="740" height="100" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="400" y="370" text-anchor="middle" fill="#1B4F3A" font-size="15" font-weight="bold">二次評価で一発Acceptを目指すコツ</text>
+  <text x="400" y="396" text-anchor="middle" fill="#1A1917" font-size="12">「専門外の査読委員が読んでも理解できるか」を常に意識する</text>
+  <text x="400" y="416" text-anchor="middle" fill="#1A1917" font-size="12">6つのポイントをセルフチェックリストとして全29編に適用してから提出する</text>
+
+  <!-- フッター -->
+  <text x="400" y="466" text-anchor="middle" fill="#6B6760" font-size="9">© 内科ナビ naikanavi.com</text>
+</svg>

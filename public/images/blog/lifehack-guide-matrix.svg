@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="460" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">専攻医の時間管理マトリクス</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">緊急度 × 重要度で4象限に分類した業務整理図</text>
+
+  <!-- Axes -->
+  <line x1="200" y1="80" x2="200" y2="400" stroke="#1A1917" stroke-width="2"/>
+  <line x1="200" y1="400" x2="760" y2="400" stroke="#1A1917" stroke-width="2"/>
+  <text x="480" y="435" text-anchor="middle" font-size="13" fill="#1A1917" font-weight="600">緊急度 →</text>
+  <text x="175" y="240" text-anchor="middle" font-size="13" fill="#1A1917" font-weight="600" transform="rotate(-90, 175, 240)">重要度 →</text>
+
+  <!-- Quadrant labels on axes -->
+  <text x="350" y="418" text-anchor="middle" font-size="11" fill="#6B6760">低い</text>
+  <text x="610" y="418" text-anchor="middle" font-size="11" fill="#6B6760">高い</text>
+  <text x="188" y="320" text-anchor="end" font-size="11" fill="#6B6760">低い</text>
+  <text x="188" y="160" text-anchor="end" font-size="11" fill="#6B6760">高い</text>
+
+  <!-- Center lines -->
+  <line x1="480" y1="80" x2="480" y2="400" stroke="#DDD9D2" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="200" y1="240" x2="760" y2="240" stroke="#DDD9D2" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Q1: 重要 × 緊急 (top-right) -->
+  <rect x="490" y="85" width="260" height="148" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="490" y="85" width="260" height="30" rx="10" fill="#1B4F3A"/>
+  <text x="620" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">第1象限: 即対応</text>
+  <text x="510" y="138" font-size="11" fill="#1A1917">• 急患対応・急変時処置</text>
+  <text x="510" y="158" font-size="11" fill="#1A1917">• 締切当日の病歴要約提出</text>
+  <text x="510" y="178" font-size="11" fill="#1A1917">• 指導医からの差し戻し対応</text>
+  <text x="510" y="198" font-size="11" fill="#1A1917">• JMECC申込（定員制）</text>
+
+  <!-- Q2: 重要 × 非緊急 (top-left) -->
+  <rect x="210" y="85" width="260" height="148" rx="10" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="210" y="85" width="260" height="30" rx="10" fill="#86EFAC"/>
+  <text x="340" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">第2象限: 計画的に ★最重要</text>
+  <text x="230" y="138" font-size="11" fill="#1A1917">• 症例登録の前倒し</text>
+  <text x="230" y="158" font-size="11" fill="#1A1917">• 病歴要約の計画的執筆</text>
+  <text x="230" y="178" font-size="11" fill="#1A1917">• 試験勉強（半年前から）</text>
+  <text x="230" y="198" font-size="11" fill="#1A1917">• キャリア設計・自己研鑽</text>
+
+  <!-- Q3: 非重要 × 緊急 (bottom-right) -->
+  <rect x="490" y="248" width="260" height="145" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="490" y="248" width="260" height="30" rx="10" fill="#C8C4BC"/>
+  <text x="620" y="268" text-anchor="middle" font-size="12" font-weight="bold" fill="#1A1917">第3象限: 委任・効率化</text>
+  <text x="510" y="301" font-size="11" fill="#6B6760">• 雑務メール返信</text>
+  <text x="510" y="321" font-size="11" fill="#6B6760">• 不要な会議への出席</text>
+  <text x="510" y="341" font-size="11" fill="#6B6760">• 形式的な書類作成</text>
+  <text x="510" y="361" font-size="11" fill="#6B6760">→ テンプレ化・AI化で時短</text>
+
+  <!-- Q4: 非重要 × 非緊急 (bottom-left) -->
+  <rect x="210" y="248" width="260" height="145" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="210" y="248" width="260" height="30" rx="10" fill="#DDD9D2"/>
+  <text x="340" y="268" text-anchor="middle" font-size="12" font-weight="bold" fill="#6B6760">第4象限: 削減・回避</text>
+  <text x="230" y="301" font-size="11" fill="#6B6760">• SNSの無目的ブラウジング</text>
+  <text x="230" y="321" font-size="11" fill="#6B6760">• 優先度の低い勉強会</text>
+  <text x="230" y="341" font-size="11" fill="#6B6760">• 完璧主義の推敲</text>
+  <text x="230" y="361" font-size="11" fill="#6B6760">→ 意識的に時間を制限</text>
+
+  <text x="400" y="455" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

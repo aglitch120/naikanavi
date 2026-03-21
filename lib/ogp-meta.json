@@ -1,0 +1,877 @@
+{
+  "a01-josler-toha": {
+    "title": "J-OSLERとは？内科専攻医が知るべき全体像を徹底解説",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a02-josler-login": {
+    "title": "J-OSLERにログインできない？原因と対処法まとめ",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a03-josler-tsukaikata": {
+    "title": "J-OSLERの使い方完全ガイド",
+    "subtitle": "画面の見方から操作方法まで",
+    "category": "josler-basics"
+  },
+  "a04-josler-itsukara": {
+    "title": "J-OSLERはいつから始める？最適なスタート時期と準備すべきこと",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a05-josler-kigen-shimekiri": {
+    "title": "J-OSLERの期限・締め切り一覧",
+    "subtitle": "一次評価・二次評価のスケジュール",
+    "category": "josler-basics"
+  },
+  "a06-josler-shuryo-youken": {
+    "title": "J-OSLER修了要件を完全解説",
+    "subtitle": "症例数・病歴要約・講習会すべて網羅",
+    "category": "josler-basics"
+  },
+  "a07-josler-7ki-8ki": {
+    "title": "120症例への変更点と対策",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a08-josler-shidoui-erabikata": {
+    "title": "J-OSLER指導医の選び方と関係構築術",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a09-josler-tenshutsu-tennyu": {
+    "title": "J-OSLER施設異動の手続き完全ガイド",
+    "subtitle": "転出・転入申請の流れと注意点",
+    "category": "josler-basics"
+  },
+  "a10-josler-program-erabikata": {
+    "title": "内科専攻医プログラムの選び方",
+    "subtitle": "大学病院vs市中病院",
+    "category": "josler-basics"
+  },
+  "a11-josler-koshin-saitoroku": {
+    "title": "J-OSLER年次更新・再登録の手順と期限切れ対処法",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a12-josler-trouble-taisho": {
+    "title": "J-OSLERのよくあるトラブルと解決策まとめ",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a13-josler-smartphone-katsuyou": {
+    "title": "J-OSLERをスマホで使う方法と隙間時間活用術",
+    "subtitle": "",
+    "category": "josler-basics"
+  },
+  "a14-josler-shuryo-nintei": {
+    "title": "J-OSLER修了認定の流れ",
+    "subtitle": "申請方法・修了見込との違い・出願までの手続き",
+    "category": "josler-basics"
+  },
+  "a15-josler-360do-hyouka": {
+    "title": "J-OSLER自己評価・360度評価の書き方",
+    "subtitle": "半期ごとの手続きと登録方法",
+    "category": "josler-basics"
+  },
+  "a16-josler-shuryo-go-career": {
+    "title": "J-OSLER修了後にやること",
+    "subtitle": "専門医取得後の次のステップ",
+    "category": "josler-basics"
+  },
+  "b01-josler-byoreki-youyaku-kakikata": {
+    "title": "J-OSLER病歴要約の書き方完全ガイド",
+    "subtitle": "",
+    "category": "medical-history"
+  },
+  "b01-josler-shourei-touroku-kakikata": {
+    "title": "J-OSLER症例登録の書き方完全ガイド",
+    "subtitle": "テンプレートと自己省察の例文付き",
+    "category": "case-registration"
+  },
+  "b02-josler-160cases": {
+    "title": "J-OSLER 160症例を効率的に終わらせる方法",
+    "subtitle": "先輩医師の実体験",
+    "category": "case-registration"
+  },
+  "b03-josler-120cases": {
+    "title": "J-OSLER 120症例の進め方と疾患群の選び方",
+    "subtitle": "",
+    "category": "case-registration"
+  },
+  "b04-josler-shikkanngun-ichiran": {
+    "title": "J-OSLER疾患群一覧表",
+    "subtitle": "70疾患群の分類と56疾患群の選び方",
+    "category": "case-registration"
+  },
+  "b05-josler-shourei-touroku-template": {
+    "title": "J-OSLER症例登録テンプレート",
+    "subtitle": "現病歴・自己省察をパターン別にコピペ",
+    "category": "case-registration"
+  },
+  "b06-josler-jiko-shousatsu-kakikata": {
+    "title": "J-OSLER自己省察の書き方",
+    "subtitle": "評価されるポイントと例文集",
+    "category": "case-registration"
+  },
+  "b07-josler-shourei-touroku-shounin-sarenai": {
+    "title": "J-OSLER症例登録が承認されない原因と対処法",
+    "subtitle": "",
+    "category": "case-registration"
+  },
+  "c01-josler-byoreki-youyaku-kakikata": {
+    "title": "J-OSLER病歴要約の書き方完全ガイド",
+    "subtitle": "Accept率を上げるコツ",
+    "category": "medical-history"
+  },
+  "c02-josler-byoreki-youyaku-template": {
+    "title": "J-OSLER病歴要約テンプレート",
+    "subtitle": "項目別の書き方と入力のコツ",
+    "category": "medical-history"
+  },
+  "c03-josler-byoreki-youyaku-reibun": {
+    "title": "J-OSLER病歴要約の例文集",
+    "subtitle": "領域別の書き方を項目ごとに解説",
+    "category": "medical-history"
+  },
+  "c04-josler-sougou-kousatsu-kakikata": {
+    "title": "J-OSLER総合考察の書き方",
+    "subtitle": "全人的視点の入れ方",
+    "category": "medical-history"
+  },
+  "c05-josler-zenjinteki-shiten": {
+    "title": "J-OSLER「全人的視点」の書き方",
+    "subtitle": "具体例とテンプレートで解説",
+    "category": "medical-history"
+  },
+  "c06-josler-nyuingo-keika-kakikata": {
+    "title": "J-OSLER「入院後経過と考察」の書き方",
+    "subtitle": "差し戻されないコツ",
+    "category": "medical-history"
+  },
+  "c07-josler-bunken-inyo": {
+    "title": "J-OSLER病歴要約の文献引用ルール",
+    "subtitle": "UpToDate・ガイドラインの書き方",
+    "category": "medical-history"
+  },
+  "c08-josler-byoreki-youyaku-sashimodoshi": {
+    "title": "J-OSLER病歴要約が差し戻しされる理由と対策",
+    "subtitle": "Revision対応ガイド",
+    "category": "medical-history"
+  },
+  "c09-josler-byoreki-youyaku-29cases": {
+    "title": "J-OSLER病歴要約 29症例の選び方",
+    "subtitle": "疾患群バランスと書きやすい症例の見つけ方",
+    "category": "medical-history"
+  },
+  "c10-josler-accept-reject": {
+    "title": "J-OSLER病歴要約のAccept・Revision・Rejectの違いと対処法",
+    "subtitle": "",
+    "category": "medical-history"
+  },
+  "c11-josler-ichijihyouka": {
+    "title": "J-OSLER一次評価の流れと準備",
+    "subtitle": "施設内評価を通すコツ",
+    "category": "medical-history"
+  },
+  "c12-josler-nijihyouka": {
+    "title": "J-OSLER二次評価完全ガイド",
+    "subtitle": "査読委員の視点とAcceptされるポイント",
+    "category": "medical-history"
+  },
+  "c13-josler-byoreki-youyaku-mojisuu": {
+    "title": "J-OSLER病歴要約の文字数・分量ルール",
+    "subtitle": "A4 2枚に収めるコツ",
+    "category": "medical-history"
+  },
+  "c14-josler-byoreki-youyaku-word-copipe": {
+    "title": "J-OSLER病歴要約はWordで下書きが正解",
+    "subtitle": "コピペ手順と注意点",
+    "category": "medical-history"
+  },
+  "c15-josler-kensa-kekka-tani": {
+    "title": "J-OSLER検査結果の記載ルール",
+    "subtitle": "単位統一・フォーマットのコツ",
+    "category": "medical-history"
+  },
+  "career-guide": {
+    "title": "キャリア設計",
+    "subtitle": "完全ロードマップ",
+    "category": "career"
+  },
+  "d01-josler-byoreki-youyaku-shoukaki": {
+    "title": "J-OSLER病歴要約書き方のコツ",
+    "subtitle": "消化管・肝・胆膵の選び方",
+    "category": "disease-specific"
+  },
+  "d02-josler-byoreki-youyaku-junkanki": {
+    "title": "J-OSLER病歴要約心不全・心筋梗塞の書き方と考察例",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d03-josler-byoreki-youyaku-kokyuuki": {
+    "title": "J-OSLER病歴要約肺炎・COPD・間質性肺炎の書き方ガイド",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d04-josler-byoreki-youyaku-ketsueki": {
+    "title": "J-OSLER病歴要約貧血・白血病・リンパ腫の書き方ガイド",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d05-josler-byoreki-youyaku-jinzou": {
+    "title": "J-OSLER病歴要約CKD・ネフローゼ・AKIの書き方ガイド",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d06-josler-byoreki-youyaku-naibunpitsu": {
+    "title": "J-OSLER病歴要約糖尿病・甲状腺・副腎疾患の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d07-josler-byoreki-youyaku-taisha": {
+    "title": "J-OSLER病歴要約脂質異常症・痛風・電解質異常の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d08-josler-byoreki-youyaku-shinkei": {
+    "title": "J-OSLER病歴要約脳梗塞・てんかん・パーキンソン病の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d09-josler-byoreki-youyaku-kougenbyou": {
+    "title": "J-OSLER病歴要約SLE・RAの書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d10-josler-byoreki-youyaku-kansenshou": {
+    "title": "J-OSLER病歴要約敗血症・肺炎・尿路感染の書き方",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "d11-josler-byoreki-youyaku-kyuukyuu": {
+    "title": "J-OSLER病歴要約の書き方",
+    "subtitle": "他領域との違いと考察のコツ",
+    "category": "disease-specific"
+  },
+  "d12-josler-geka-shoukai-shourei": {
+    "title": "J-OSLER外科紹介症例の書き方",
+    "subtitle": "全身麻酔・転科の条件と例文",
+    "category": "disease-specific"
+  },
+  "d13-josler-bouken-shourei": {
+    "title": "J-OSLER剖検症例の書き方",
+    "subtitle": "4条件・考察の対比・疾患群ルール",
+    "category": "disease-specific"
+  },
+  "d14-josler-gairai-shourei": {
+    "title": "J-OSLER外来症例の書き方",
+    "subtitle": "7篇の上限と選び方のコツ",
+    "category": "disease-specific"
+  },
+  "d15-josler-shoki-kenshu-shourei": {
+    "title": "J-OSLER初期研修中の症例は使える？条件と登録方法",
+    "subtitle": "",
+    "category": "disease-specific"
+  },
+  "e01-josler-shinchoku-kanri": {
+    "title": "J-OSLER進捗管理の方法",
+    "subtitle": "修了要件を最短で満たすスケジュールとチェックリスト",
+    "category": "progress-management"
+  },
+  "e02-josler-manianai": {
+    "title": "J-OSLERが間に合わない！残り期間別の巻き返し戦略と優先順位",
+    "subtitle": "",
+    "category": "progress-management"
+  },
+  "e03-josler-schedule": {
+    "title": "J-OSLER理想のスケジュール",
+    "subtitle": "1年目・2年目・3年目の目標",
+    "category": "progress-management"
+  },
+  "e04-josler-checklist": {
+    "title": "J-OSLERチェックリスト",
+    "subtitle": "症例登録・病歴要約・修了要件を一覧で管理",
+    "category": "progress-management"
+  },
+  "e05-josler-shidoui-renkei": {
+    "title": "J-OSLER 指導医承認が進まないときの対処法",
+    "subtitle": "承認漏れ防止策",
+    "category": "progress-management"
+  },
+  "e06-josler-ryuunen": {
+    "title": "J-OSLER留年するとどうなる？対処法と翌年への影響を徹底解説",
+    "subtitle": "",
+    "category": "progress-management"
+  },
+  "exam-preparation-guide": {
+    "title": "内科専門医試験",
+    "subtitle": "合格マニュアル",
+    "category": "specialist-exam"
+  },
+  "f01-jmecc-toha": {
+    "title": "JMECCとは？内科専攻医が受講すべき理由と申込方法",
+    "subtitle": "",
+    "category": "jmecc-training"
+  },
+  "f02-jmecc-moushikomi-schedule": {
+    "title": "JMECC申し込み方法と開催スケジュール",
+    "subtitle": "2026年版完全ガイド",
+    "category": "jmecc-training"
+  },
+  "f03-jmecc-junbi-benkyouhou": {
+    "title": "JMECC 事前準備・勉強法",
+    "subtitle": "テキストと当日を乗り切るコツ",
+    "category": "jmecc-training"
+  },
+  "f04-josler-e-learning": {
+    "title": "J-OSLER e-Learningの受講方法と修了証の取得",
+    "subtitle": "共通講習を効率的にクリア",
+    "category": "jmecc-training"
+  },
+  "f05-josler-hissu-koushuukai": {
+    "title": "内科専攻医の必須講習会",
+    "subtitle": "医療倫理・医療安全・感染制御の受け方",
+    "category": "jmecc-training"
+  },
+  "g01-naika-senmoni-benkyouhou": {
+    "title": "内科専門医試験の勉強法",
+    "subtitle": "いつから・何を・どのくらい",
+    "category": "specialist-exam"
+  },
+  "g02-naika-senmoni-itsu-kara": {
+    "title": "内科専門医試験の勉強はいつから？1ヶ月・3ヶ月・半年プラン",
+    "subtitle": "",
+    "category": "specialist-exam"
+  },
+  "g03-naika-senmoni-sankousho": {
+    "title": "内科専門医試験おすすめ参考書・問題集ランキング",
+    "subtitle": "",
+    "category": "specialist-exam"
+  },
+  "g04-naika-senmoni-shutsudai-keiko": {
+    "title": "内科専門医試験の出題傾向と対策",
+    "subtitle": "領域別配点と重要テーマ",
+    "category": "specialist-exam"
+  },
+  "g05-naika-senmoni-kakomon": {
+    "title": "内科専門医試験の過去問対策",
+    "subtitle": "公式問題集の使い方と復元問題の活用法",
+    "category": "specialist-exam"
+  },
+  "g06-naika-senmoni-goukakuritsu": {
+    "title": "内科専門医試験の合格率推移",
+    "subtitle": "第1回〜第5回のデータ分析",
+    "category": "specialist-exam"
+  },
+  "g07-naika-senmoni-nanido": {
+    "title": "内科専門医試験の難易度は？国試との違いと対策ポイント",
+    "subtitle": "",
+    "category": "specialist-exam"
+  },
+  "g08-naika-senmoni-nittei": {
+    "title": "内科専門医試験の日程・会場・出願期間まとめ",
+    "subtitle": "第6回試験の全情報",
+    "category": "specialist-exam"
+  },
+  "g09-naika-senmoni-moshikomi": {
+    "title": "内科専門医試験の受験申し込み方法",
+    "subtitle": "出願手順と受験資格を徹底解説",
+    "category": "specialist-exam"
+  },
+  "g10-naika-senmoni-tojitsu": {
+    "title": "内科専門医試験 当日の持ち物・流れ・直前対策",
+    "subtitle": "前日〜試験後まで",
+    "category": "specialist-exam"
+  },
+  "g11-naika-senmoni-fugoukaku": {
+    "title": "内科専門医試験 不合格・再受験の対処法",
+    "subtitle": "気持ちの切り替えと次への準備",
+    "category": "specialist-exam"
+  },
+  "g12-naika-senmoni-tojitsu-nagare": {
+    "title": "内科専門医試験 当日の流れと持ち物・注意点まとめ",
+    "subtitle": "",
+    "category": "specialist-exam"
+  },
+  "h01-naika-senmoni-junkanki": {
+    "title": "内科専門医試験 循環器領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h02-naika-senmoni-shoukaki": {
+    "title": "内科専門医試験 消化器領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h03-naika-senmoni-kokyuuki": {
+    "title": "内科専門医試験 呼吸器領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h04-naika-senmoni-naibunpitsu": {
+    "title": "内科専門医試験 内分泌・代謝領域の対策",
+    "subtitle": "頻出テーマと勉強法",
+    "category": "specialist-exam"
+  },
+  "h05-naika-senmoni-jinzou": {
+    "title": "内科専門医試験 腎臓領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h06-naika-senmoni-ketsueki": {
+    "title": "内科専門医試験 血液領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h07-naika-senmoni-shinkei": {
+    "title": "内科専門医試験 神経領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h08-naika-senmoni-kougenbyou": {
+    "title": "内科専門医試験 アレルギー・膠原病領域の対策",
+    "subtitle": "頻出テーマと勉強法",
+    "category": "specialist-exam"
+  },
+  "h09-naika-senmoni-kansenshou": {
+    "title": "内科専門医試験 感染症領域の対策",
+    "subtitle": "頻出テーマと効率的な勉強法",
+    "category": "specialist-exam"
+  },
+  "h10-naika-senmoni-kyuukyuu": {
+    "title": "内科専門医試験 救急・総合内科領域の対策",
+    "subtitle": "頻出テーマと勉強法",
+    "category": "specialist-exam"
+  },
+  "i01-sougou-naika-senmoni-toha": {
+    "title": "総合内科専門医とは？内科専門医との違い・取得メリットを解説",
+    "subtitle": "",
+    "category": "comprehensive-exam"
+  },
+  "i02-sougou-naika-senmoni-juken-shikaku": {
+    "title": "総合内科専門医の受験資格と出願方法",
+    "subtitle": "条件・必要書類を解説",
+    "category": "comprehensive-exam"
+  },
+  "i03-sougou-naika-senmoni-nanido": {
+    "title": "総合内科専門医試験の難易度・合格率",
+    "subtitle": "内科専門医試験との比較",
+    "category": "comprehensive-exam"
+  },
+  "i04-sougou-naika-senmoni-benkyouhou": {
+    "title": "総合内科専門医試験の勉強法",
+    "subtitle": "合格者が実践した対策スケジュール",
+    "category": "comprehensive-exam"
+  },
+  "i05-sougou-naika-senmoni-sankousho": {
+    "title": "総合内科専門医試験のおすすめ参考書・テキスト",
+    "subtitle": "",
+    "category": "comprehensive-exam"
+  },
+  "i06-sougou-naika-senmoni-shutsudai-keiko": {
+    "title": "総合内科専門医試験の出題傾向と重要テーマ",
+    "subtitle": "領域別の対策ポイント",
+    "category": "comprehensive-exam"
+  },
+  "i07-sougou-naika-senmoni-career": {
+    "title": "総合内科専門医取得後のキャリア",
+    "subtitle": "年収・転職・キャリアアップへの影響",
+    "category": "comprehensive-exam"
+  },
+  "i08-sougou-naika-senmoni-guide": {
+    "title": "総合内科専門医 完全ガイド",
+    "subtitle": "取得から活用まで",
+    "category": "comprehensive-exam"
+  },
+  "j01-josler-ai-katsuyo": {
+    "title": "J-OSLERをAIで効率化する方法",
+    "subtitle": "Claude・ChatGPT・Perplexity活用ガイド",
+    "category": "ai-tools"
+  },
+  "j02-byoreki-youyaku-ai-jidou-seisei": {
+    "title": "病歴要約の総合考察をAIで下書きする方法",
+    "subtitle": "プロンプト例付き",
+    "category": "ai-tools"
+  },
+  "j03-josler-kensa-kekka-format": {
+    "title": "J-OSLER検査結果のフォーマット変換術",
+    "subtitle": "カルテからコピペで整形する方法",
+    "category": "ai-tools"
+  },
+  "j04-josler-jitan": {
+    "title": "J-OSLER作業を時短する5つのテクニック",
+    "subtitle": "テンプレ・ツール活用術",
+    "category": "ai-tools"
+  },
+  "j05-chatgpt-byoreki-youyaku": {
+    "title": "ChatGPTで病歴要約を書く方法",
+    "subtitle": "プロンプトテンプレートと注意点",
+    "category": "ai-tools"
+  },
+  "j06-notion-josler-kanri": {
+    "title": "Notionで専攻医のJ-OSLER進捗を管理する方法",
+    "subtitle": "テンプレート活用術",
+    "category": "ai-tools"
+  },
+  "j07-voice-input-josler": {
+    "title": "音声入力でJ-OSLERの記録を効率化する方法",
+    "subtitle": "iPhoneとAndroidの活用術",
+    "category": "ai-tools"
+  },
+  "j08-ai-bunken-kensaku": {
+    "title": "AIを使った医学文献検索術",
+    "subtitle": "PubMedプロンプトとPerplexity活用法",
+    "category": "ai-tools"
+  },
+  "j09-ai-prompt-template": {
+    "title": "J-OSLER専用AIプロンプトテンプレート集",
+    "subtitle": "病歴要約・症例登録を効率化",
+    "category": "ai-tools"
+  },
+  "j10-claude-pubmed-mcp": {
+    "title": "ClaudeでPubMed論文検索",
+    "subtitle": "MCP連携の設定方法と医学文献の探し方",
+    "category": "ai-tools"
+  },
+  "j11-ai-senmoni-shiken-taisaku": {
+    "title": "AIを使った内科専門医試験対策",
+    "subtitle": "ChatGPT・Claude活用法",
+    "category": "ai-tools"
+  },
+  "josler-complete-guide": {
+    "title": "J-OSLER完全攻略",
+    "subtitle": "症例登録から修了認定まで",
+    "category": "josler-basics"
+  },
+  "k01-burnout-taisaku": {
+    "title": "内科専攻医のバーンアウト対策",
+    "subtitle": "症状・原因・回復法",
+    "category": "mental-life"
+  },
+  "k02-nennkyuu-torikaikata": {
+    "title": "専攻医の年休・有給の取り方",
+    "subtitle": "権利・交渉術・働き方改革",
+    "category": "mental-life"
+  },
+  "k03-suimin-kanri": {
+    "title": "専攻医の睡眠管理",
+    "subtitle": "当直明けの回復術と睡眠負債の解消法",
+    "category": "mental-life"
+  },
+  "k04-senior-relations": {
+    "title": "指導医・先輩との関係構築",
+    "subtitle": "タイプ別対応と承認遅れへの対処",
+    "category": "mental-life"
+  },
+  "k05-diet-exercise": {
+    "title": "専攻医の食事・運動管理",
+    "subtitle": "コンビニ飯・週150分の現実的な達成法",
+    "category": "mental-life"
+  },
+  "k06-stress-management": {
+    "title": "当直・夜勤のストレス管理",
+    "subtitle": "マインドフルネスと法的知識",
+    "category": "mental-life"
+  },
+  "k07-mental-life-guide": {
+    "title": "内科専攻医のメンタル・生活完全ガイド",
+    "subtitle": "",
+    "category": "mental-life"
+  },
+  "k08-communication-jutsu": {
+    "title": "内科専攻医のコミュニケーション術",
+    "subtitle": "患者・指導医・多職種との関わり方",
+    "category": "mental-life"
+  },
+  "l01-senkoui-baito-hajimekata": {
+    "title": "内科専攻医のバイト",
+    "subtitle": "始め方・相場・おすすめ求人サイトを解説",
+    "category": "part-time"
+  },
+  "l02-senkoui-baito-souristae": {
+    "title": "内科専攻医のバイト相場・時給",
+    "subtitle": "種類別の報酬目安と高単価案件の探し方",
+    "category": "part-time"
+  },
+  "l02-senkoui-shuunyu-saidaika": {
+    "title": "内科専攻医の収入を増やす方法",
+    "subtitle": "バイト・節税・副収入を徹底解説",
+    "category": "part-time"
+  },
+  "l03-senkoui-baito-website": {
+    "title": "専攻医のバイト探しサイトおすすめ",
+    "subtitle": "医師求人サービスの選び方と注意点",
+    "category": "part-time"
+  },
+  "l03-senkoui-tochoku-baito": {
+    "title": "専攻医の当直バイト",
+    "subtitle": "相場・選び方・注意点を完全解説",
+    "category": "part-time"
+  },
+  "l04-senkoui-kenshin-baito": {
+    "title": "専攻医の健診バイト",
+    "subtitle": "仕事内容・報酬・求人の探し方を解説",
+    "category": "part-time"
+  },
+  "l04-senkoui-kyuuryo-tedori": {
+    "title": "内科専攻医の給与・手取りの実態",
+    "subtitle": "バイト込みの年収シミュレーション",
+    "category": "part-time"
+  },
+  "l05-senkoui-baito-shuunyu-guide": {
+    "title": "内科専攻医のバイト・収入完全ガイド",
+    "subtitle": "",
+    "category": "part-time"
+  },
+  "l06-baito-kakutei-shinkoku": {
+    "title": "専攻医バイトの確定申告ガイド",
+    "subtitle": "20万円ルールと手順",
+    "category": "part-time"
+  },
+  "l07-baito-kyujin-site-hikaku": {
+    "title": "専攻医バイトのおすすめ求人サイト比較と高単価の探し方",
+    "subtitle": "",
+    "category": "part-time"
+  },
+  "lifehack-guide": {
+    "title": "ライフハック大全",
+    "subtitle": "研修を乗り切るコツ",
+    "category": "mental-life"
+  },
+  "m01-isha-kakutei-shinkoku-nyumon": {
+    "title": "専攻医・研修医の確定申告入門",
+    "subtitle": "バイト収入があったら必読",
+    "category": "tax-saving"
+  },
+  "m02-isha-furusato-nozei": {
+    "title": "医師・専攻医のふるさと納税ガイド",
+    "subtitle": "控除上限額の計算と活用法",
+    "category": "tax-saving"
+  },
+  "m03-isha-ideco-nennkin": {
+    "title": "医師・専攻医のiDeCo活用ガイド",
+    "subtitle": "節税しながら老後資産を作る",
+    "category": "tax-saving"
+  },
+  "m04-isha-keihi-setsuzei": {
+    "title": "医師が使える経費・控除まとめ",
+    "subtitle": "専攻医が知っておくべき節税の基本",
+    "category": "tax-saving"
+  },
+  "m05-isha-jyuuminzei-shotokuzei": {
+    "title": "専攻医の住民税・所得税の仕組み",
+    "subtitle": "手取りが減る理由と対処法",
+    "category": "tax-saving"
+  },
+  "m06-isha-setsuzei-road-map": {
+    "title": "専攻医の節税ロードマップ",
+    "subtitle": "今すぐできる節税から長期戦略まで",
+    "category": "tax-saving"
+  },
+  "m07-senkoui-shisan-unyo": {
+    "title": "内科専攻医の資産運用入門",
+    "subtitle": "NISAとiDeCoで始める長期投資",
+    "category": "tax-saving"
+  },
+  "money-guide": {
+    "title": "専攻医のお金",
+    "subtitle": "バイト・確定申告・節税",
+    "category": "tax-saving"
+  },
+  "n01-naika-career-path": {
+    "title": "内科専攻医のキャリアパス全体像",
+    "subtitle": "専門医取得後の進路と選択肢を徹底解説",
+    "category": "career"
+  },
+  "n02-subspecialty-erabikata": {
+    "title": "サブスペシャリティの選び方",
+    "subtitle": "内科専攻医が後悔しない専門領域の決め方",
+    "category": "career"
+  },
+  "n03-daigaku-shicchyu-hikaku": {
+    "title": "大学病院 vs 市中病院キャリア比較",
+    "subtitle": "内科専攻医が知るべき違いと選び方",
+    "category": "career"
+  },
+  "n04-senkoui-tensyoku": {
+    "title": "専攻医のうちに転職・プログラム変更を考えたら",
+    "subtitle": "手続きと注意点を解説",
+    "category": "career"
+  },
+  "n05-naika-fellowship": {
+    "title": "フェローシップ・後期研修の選び方",
+    "subtitle": "内科専攻医が後悔しない施設選択のポイント",
+    "category": "career"
+  },
+  "n06-isha-career-mentoring": {
+    "title": "指導医・メンターとのキャリア相談の進め方",
+    "subtitle": "内科専攻医が実践すべき対話術",
+    "category": "career"
+  },
+  "n07-senkoui-tenin-chui": {
+    "title": "内科専攻医が転院・転職するときの注意点とJ-OSLER手続き",
+    "subtitle": "",
+    "category": "career"
+  },
+  "n08-senkoui-program-erabikata": {
+    "title": "内科専攻医プログラムの選び方",
+    "subtitle": "比較すべき7つのポイント",
+    "category": "career"
+  },
+  "o01-gakkai-touroku-hajimekata": {
+    "title": "専攻医の学会登録・入会の始め方",
+    "subtitle": "内科系学会を徹底解説",
+    "category": "academic"
+  },
+  "o02-gakkai-happyou-junbi": {
+    "title": "専攻医の学会発表準備と進め方",
+    "subtitle": "ポスター・口演の実践ガイド",
+    "category": "academic"
+  },
+  "o03-ronbun-kakikata-nyumon": {
+    "title": "専攻医が論文を書くための入門ガイド",
+    "subtitle": "論文の種類から投稿まで",
+    "category": "academic"
+  },
+  "o04-case-report-kakikata": {
+    "title": "症例報告（ケースレポート）の書き方",
+    "subtitle": "専攻医のための実践ガイド",
+    "category": "academic"
+  },
+  "o05-eigo-ronbun-taisaku": {
+    "title": "英語論文読解・投稿の基礎",
+    "subtitle": "専攻医のための実践ガイド",
+    "category": "academic"
+  },
+  "o06-gakkai-academic-career": {
+    "title": "学会活動とアカデミックキャリアの関係",
+    "subtitle": "専攻医が知るべき戦略",
+    "category": "academic"
+  },
+  "o07-gakkai-happyou-merit": {
+    "title": "内科専攻医が学会発表するメリットと最初の1本の作り方",
+    "subtitle": "",
+    "category": "academic"
+  },
+  "p01-isha-kekkon-timing": {
+    "title": "専攻医・医師の結婚タイミングと注意点",
+    "subtitle": "後悔しない選択のために",
+    "category": "life-events"
+  },
+  "p02-isha-ninshin-shussan-josler": {
+    "title": "専攻医の妊娠・出産とJ-OSLER修了の両立",
+    "subtitle": "制度・実例・計画の立て方",
+    "category": "life-events"
+  },
+  "p03-isha-ikukyuu-guide": {
+    "title": "医師の育休取得ガイド申請手順と職場調整のコツ",
+    "subtitle": "",
+    "category": "life-events"
+  },
+  "p04-isha-hoiku-tomobataraki": {
+    "title": "医師夫婦・共働きの保育園・子育て戦略",
+    "subtitle": "保活から日常の回し方まで",
+    "category": "life-events"
+  },
+  "p05-isha-kekkon-seikatsu-guide": {
+    "title": "医師・専攻医の結婚生活完全ガイドタイミング・妊娠・育休・保育から家計まで",
+    "subtitle": "",
+    "category": "life-events"
+  },
+  "p06-isha-kekkon-aite": {
+    "title": "内科専攻医の結婚相手",
+    "subtitle": "医師×医師と医師×非医師を徹底比較",
+    "category": "life-events"
+  },
+  "q01-subspecialty-josler-toha": {
+    "title": "サブスペシャリティJ-OSLERとは？内科専攻医が知るべき全体像",
+    "subtitle": "",
+    "category": "subspecialty"
+  },
+  "q02-junkanki-subspecialty": {
+    "title": "循環器内科サブスペシャリティの取り方",
+    "subtitle": "研修要件・試験対策を解説",
+    "category": "subspecialty"
+  },
+  "q03-syoukaki-subspecialty": {
+    "title": "消化器内科サブスペシャリティの取り方",
+    "subtitle": "内視鏡・症例要件を解説",
+    "category": "subspecialty"
+  },
+  "q04-kokyuuki-subspecialty": {
+    "title": "呼吸器内科サブスペシャリティの取り方",
+    "subtitle": "研修要件・気管支鏡・試験対策",
+    "category": "subspecialty"
+  },
+  "q05-jinzou-subspecialty": {
+    "title": "腎臓内科サブスペシャリティの取り方",
+    "subtitle": "腎臓専門医・透析専門医の研修要件",
+    "category": "subspecialty"
+  },
+  "q06-shinkei-subspecialty": {
+    "title": "神経内科サブスペシャルティとJ-OSLER",
+    "subtitle": "専攻医の取得ロード",
+    "category": "subspecialty"
+  },
+  "q07-ketsueki-subspecialty": {
+    "title": "血液内科サブスペシャルティとJ-OSLER",
+    "subtitle": "血液専門医への道",
+    "category": "subspecialty"
+  },
+  "q08-tounyoubyou-naibunpitsu-subspecialty": {
+    "title": "糖尿病・内分泌内科サブスペシャルティとJ-OSLER",
+    "subtitle": "",
+    "category": "subspecialty"
+  },
+  "q09-kougenbyou-subspecialty": {
+    "title": "膠原病・リウマチ科サブスペシャルティとJ-OSLER",
+    "subtitle": "",
+    "category": "subspecialty"
+  },
+  "q10-kansenshou-subspecialty": {
+    "title": "感染症内科サブスペシャルティとJ-OSLER",
+    "subtitle": "感染症専門医への道",
+    "category": "subspecialty"
+  },
+  "r01-isha-hikkoshi-guide": {
+    "title": "医師・専攻医の引っ越しガイド",
+    "subtitle": "病院移転・ローテーションで失敗しない方法",
+    "category": "others"
+  },
+  "r02-isha-jikan-kanri": {
+    "title": "専攻医の時間管理術",
+    "subtitle": "J-OSLER・当直・勉強を両立するタイムマネジメント",
+    "category": "others"
+  },
+  "r03-isha-techo-tool": {
+    "title": "専攻医が使うべき手帳・ツール",
+    "subtitle": "J-OSLER管理からスケジュール管理まで",
+    "category": "others"
+  },
+  "r04-isha-dokusho-gakushu": {
+    "title": "専攻医の勉強・読書習慣",
+    "subtitle": "内科専門医試験を突破する学習メソッド",
+    "category": "others"
+  },
+  "r05-isha-network": {
+    "title": "専攻医の人脈・ネットワーク作り",
+    "subtitle": "学会・勉強会でキャリアを広げる方法",
+    "category": "others"
+  },
+  "r06-senkoui-benkyou-jikan": {
+    "title": "忙しい内科専攻医が勉強時間を作る方法",
+    "subtitle": "隙間時間活用術",
+    "category": "others"
+  },
+  "money-career-guide": {
+    "title": "お金とキャリア",
+    "subtitle": "バイト・節税・キャリア設計",
+    "category": "career"
+  },
+  "efficiency-guide": {
+    "title": "効率化ガイド",
+    "subtitle": "AI・ツールで作業時間を短縮",
+    "category": "ai-tools"
+  }
+}

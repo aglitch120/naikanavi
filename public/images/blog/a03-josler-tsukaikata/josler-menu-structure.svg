@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow1" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="12" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">J-OSLER 画面構成と主要メニュー</text>
+
+  <!-- Sidebar simulation -->
+  <rect x="30" y="60" width="180" height="400" rx="8" fill="#1E3A5F" filter="url(#shadow1)"/>
+  <text x="120" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">サイドメニュー</text>
+  <line x1="45" y1="98" x2="195" y2="98" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <!-- Menu items -->
+  <rect x="42" y="110" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="131" font-size="12" fill="#FFFFFF">📋 症例</text>
+  <rect x="42" y="150" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="171" font-size="12" fill="#FFFFFF">📝 病歴要約</text>
+  <rect x="42" y="190" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="211" font-size="12" fill="#FFFFFF">📊 技術・技能評価</text>
+  <rect x="42" y="230" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="251" font-size="12" fill="#FFFFFF">🔄 研修評価</text>
+  <rect x="42" y="270" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="291" font-size="12" fill="#FFFFFF">🎓 修了認定</text>
+  <rect x="42" y="310" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="331" font-size="12" fill="#FFFFFF">👤 ユーザー情報</text>
+  <rect x="42" y="350" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="371" font-size="12" fill="#FFFFFF">📅 転出・転入</text>
+  <rect x="42" y="390" width="156" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="54" y="411" font-size="12" fill="#FFFFFF">📢 お知らせ</text>
+
+  <!-- Main content area -->
+  <rect x="230" y="60" width="540" height="400" rx="8" fill="#FEFEFC" filter="url(#shadow1)"/>
+  <text x="500" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A1917">メインコンテンツエリア</text>
+  <line x1="245" y1="98" x2="755" y2="98" stroke="#DDD9D2" stroke-width="1"/>
+
+  <!-- Cards in main area -->
+  <!-- Card 1: 症例 -->
+  <rect x="248" y="110" width="250" height="105" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="263" y="133" font-size="12" font-weight="bold" fill="#1B4F3A">症例登録</text>
+  <text x="263" y="152" font-size="11" fill="#6B6760">新規登録 / 検索・参照・更新</text>
+  <text x="263" y="170" font-size="11" fill="#6B6760">承認済症例をここで管理</text>
+  <text x="263" y="192" font-size="10" fill="#1B4F3A">使用頻度: ★★★★★（毎日）</text>
+  <text x="263" y="207" font-size="10" fill="#6B6760">120症例+56疾患群を登録</text>
+
+  <!-- Card 2: 病歴要約 -->
+  <rect x="510" y="110" width="250" height="105" rx="6" fill="#FEF3C7" stroke="#92400E" stroke-width="1.5"/>
+  <text x="525" y="133" font-size="12" font-weight="bold" fill="#92400E">病歴要約</text>
+  <text x="525" y="152" font-size="11" fill="#6B6760">新規作成 / 検索・参照・更新</text>
+  <text x="525" y="170" font-size="11" fill="#6B6760">個別→一次→二次評価の流れ</text>
+  <text x="525" y="192" font-size="10" fill="#92400E">使用頻度: ★★★★☆（週数回）</text>
+  <text x="525" y="207" font-size="10" fill="#6B6760">29篇を段階的に作成・提出</text>
+
+  <!-- Card 3: 研修評価 -->
+  <rect x="248" y="228" width="250" height="105" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="263" y="251" font-size="12" font-weight="bold" fill="#1B4F3A">研修評価</text>
+  <text x="263" y="270" font-size="11" fill="#6B6760">自己評価 / 指導医評価 / 360度</text>
+  <text x="263" y="288" font-size="11" fill="#6B6760">半年ごと（上期7-9月 / 下期1-3月）</text>
+  <text x="263" y="310" font-size="10" fill="#1B4F3A">使用頻度: ★★☆☆☆（半年に1回）</text>
+  <text x="263" y="325" font-size="10" fill="#6B6760">忘れると修了認定がストップ!</text>
+
+  <!-- Card 4: 修了認定 -->
+  <rect x="510" y="228" width="250" height="105" rx="6" fill="#FEE2E2" stroke="#991B1B" stroke-width="1.5"/>
+  <text x="525" y="251" font-size="12" font-weight="bold" fill="#991B1B">修了認定</text>
+  <text x="525" y="270" font-size="11" fill="#6B6760">修了見込 → 修了認定の依頼</text>
+  <text x="525" y="288" font-size="11" fill="#6B6760">専攻研修3年目1月以降に実施</text>
+  <text x="525" y="310" font-size="10" fill="#991B1B">使用頻度: ★☆☆☆☆（1回のみ）</text>
+  <text x="525" y="325" font-size="10" fill="#6B6760">全要件達成後の最終ステップ</text>
+
+  <!-- Tips box -->
+  <rect x="248" y="348" width="512" height="100" rx="6" fill="#F0EDE7" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="263" y="371" font-size="12" font-weight="bold" fill="#1A1917">💡 操作のコツ</text>
+  <text x="263" y="391" font-size="11" fill="#6B6760">・ブラウザの「戻る」ボタンは使用不可。必ずJ-OSLER内のボタンで移動する</text>
+  <text x="263" y="409" font-size="11" fill="#6B6760">・1時間操作しないとセッションタイムアウト。こまめに一時保存を</text>
+  <text x="263" y="427" font-size="11" fill="#6B6760">・パスワードは8〜20文字。5回連続ミスで60分ロック</text>
+  <text x="263" y="445" font-size="11" fill="#6B6760">・ToDoリスト（トップ画面）で承認待ち件数を確認できる</text>
+
+  <!-- Footer -->
+  <text x="400" y="502" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

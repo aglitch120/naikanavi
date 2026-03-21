@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="420" rx="12" fill="#F5F4F0"/>
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">2026年度 内科専門医試験スケジュール</text>
+  <line x1="80" y1="80" x2="720" y2="80" stroke="#DDD9D2" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="120" cy="80" r="14" fill="#1B4F3A"/>
+  <text x="120" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#FEFEFC">1月</text>
+  <rect x="62" y="100" width="116" height="60" rx="8" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="120" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B4F3A">出願開始</text>
+  <text x="120" y="134" text-anchor="middle" font-size="10" fill="#6B6760">1/22(木)~</text>
+  <text x="120" y="150" text-anchor="middle" font-size="9" fill="#6B6760">J-OSLERで出願</text>
+  <circle cx="300" cy="80" r="14" fill="#92400E"/>
+  <text x="300" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#FEFEFC">4月</text>
+  <rect x="237" y="100" width="126" height="60" rx="8" fill="#FEF3C7" stroke="#92400E" stroke-width="1.5"/>
+  <text x="300" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">出願締切</text>
+  <text x="300" y="134" text-anchor="middle" font-size="10" fill="#6B6760">4/15(水) 23:59</text>
+  <text x="300" y="150" text-anchor="middle" font-size="9" fill="#991B1B">期限厳守!</text>
+  <circle cx="480" cy="80" r="14" fill="#3D5A80"/>
+  <text x="480" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#FEFEFC">5月</text>
+  <rect x="417" y="100" width="126" height="60" rx="8" fill="#E8F0EC" stroke="#3D5A80" stroke-width="1.5"/>
+  <text x="480" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#3D5A80">受験票届く</text>
+  <text x="480" y="134" text-anchor="middle" font-size="10" fill="#6B6760">5月中旬(予定)</text>
+  <text x="480" y="150" text-anchor="middle" font-size="9" fill="#6B6760">会場の確認を!</text>
+  <circle cx="660" cy="80" r="16" fill="#7F1D1D"/>
+  <text x="660" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#FEFEFC">5/31</text>
+  <rect x="592" y="100" width="136" height="60" rx="8" fill="#FEE2E2" stroke="#7F1D1D" stroke-width="2"/>
+  <text x="660" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="#7F1D1D">試験当日</text>
+  <text x="660" y="134" text-anchor="middle" font-size="10" fill="#6B6760">9:00~16:40</text>
+  <text x="660" y="150" text-anchor="middle" font-size="9" fill="#6B6760">東京/神戸の2会場</text>
+  <rect x="60" y="185" width="680" height="100" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="400" y="210" text-anchor="middle" font-size="14" font-weight="bold" fill="#1A1917">試験時間割 (全3時限)</text>
+  <rect x="95" y="225" width="170" height="44" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="180" y="245" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B4F3A">1限目</text>
+  <text x="180" y="261" text-anchor="middle" font-size="10" fill="#6B6760">9:00 - 11:00</text>
+  <rect x="315" y="225" width="170" height="44" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="400" y="245" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B4F3A">2限目</text>
+  <text x="400" y="261" text-anchor="middle" font-size="10" fill="#6B6760">12:00 - 14:00</text>
+  <rect x="535" y="225" width="170" height="44" rx="6" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="620" y="245" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B4F3A">3限目</text>
+  <text x="620" y="261" text-anchor="middle" font-size="10" fill="#6B6760">14:40 - 16:40</text>
+  <text x="275" y="255" text-anchor="middle" font-size="9" fill="#92400E">昼休み</text>
+  <text x="495" y="255" text-anchor="middle" font-size="9" fill="#92400E">休憩</text>
+  <rect x="60" y="305" width="330" height="90" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="225" y="328" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A1917">試験会場 (2地域)</text>
+  <text x="150" y="352" text-anchor="middle" font-size="12" fill="#1B4F3A" font-weight="bold">東京 (五反田)</text>
+  <text x="300" y="352" text-anchor="middle" font-size="12" fill="#1B4F3A" font-weight="bold">神戸</text>
+  <text x="225" y="380" text-anchor="middle" font-size="9" fill="#6B6760">受験票で指定された会場で受験</text>
+  <rect x="410" y="305" width="330" height="90" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="575" y="328" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A1917">受験料</text>
+  <text x="575" y="358" text-anchor="middle" font-size="22" font-weight="bold" fill="#7F1D1D">30,000円</text>
+  <text x="575" y="380" text-anchor="middle" font-size="9" fill="#6B6760">(税込)</text>
+  <text x="400" y="415" text-anchor="middle" font-size="9" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

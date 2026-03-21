@@ -1,0 +1,283 @@
+---
+title: "J-OSLER専用AIプロンプトテンプレート集｜病歴要約・症例登録を効率化"
+description: "J-OSLERの病歴要約・症例登録・自己省察に使えるAIプロンプトテンプレートを用途別に解説。Claude・ChatGPT両対応。コピペして即使えるテンプレート付き。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "iwor編集部"
+category: "ai-tools"
+cluster: "J"
+pillar: "josler-complete-guide"
+tags: ["AIプロンプト", "テンプレート", "J-OSLER", "病歴要約", "症例登録", "ChatGPT", "Claude", "内科専攻医"]
+cta_type: "template"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「AIに何を聞けばいいか分からない」「雑に質問したら微妙な回答が返ってきた」という経験、ありませんか。AIツールは使い方次第で効果が大きく変わります。プロンプト（AIへの指示文）の書き方を少し工夫するだけで、出てくる回答の質が劇的に変わることがあります。
+
+J-OSLERの作業の中でも、病歴要約の現病歴整理・検査所見の整形・プロブレムリスト作成・自己省察のたたき台作成は、AIとの相性が特に良い場面です。ゼロから書き始めるのではなく「AIが出した骨格を整える」作業に集中できるようになるため、1編あたりの作業時間を大幅に短縮できます。
+
+> [iwor](/pro/)のAI病歴要約テンプレートは、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで自動生成します。このページのプロンプトと組み合わせて使うと、さらに効率的に病歴要約を仕上げられます。
+
+## プロンプト設計の基本原則
+
+良いプロンプトを書くための基本は4つの要素を明示することです。「役割（Role）」「タスク（Task）」「制約（Constraint）」「出力形式（Format）」を盛り込むことで、AIが何をするべきかを明確に理解し、的外れな回答を返しにくくなります。
+
+「役割」はAIに演じてほしいキャラクターや専門性を指定するもので、「内科専攻医の指導医として」「医学ライターとして」のように設定します。役割を指定すると、AIがその視点から回答を組み立てようとします。「タスク」は具体的にやってほしいことを記述します。「まとめてほしい」ではなく「現病歴をOPQRST形式で整理してほしい」のように具体的に指示します。
+
+「制約」は守ってほしいルールです。「患者情報を変更しない」「200文字以内で」「追加情報を勝手に作らない」などが代表的です。制約を明示することで、AIが勝手に情報を追加・変更するリスクを減らせます。「出力形式」は回答の構造を指定するもので、「箇条書きで」「見出しをつけて」「表形式で」などを指定します。この4要素を使いこなすことが、実用的なプロンプト設計の第一歩です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" role="img" aria-label="プロンプト設計の4要素（役割・タスク・制約・形式）">
+  <defs><filter id="fj09a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="280" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#4338CA"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">プロンプト設計の4要素</text>
+  <rect x="40" y="76" width="168" height="176" rx="10" fill="#FEFEFC" filter="url(#fj09a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="80" cy="108" r="18" fill="#4338CA"/>
+  <text x="80" y="114" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">役</text>
+  <text x="104" y="114" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">Role</text>
+  <text x="56" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">AIに演じてほしい</text>
+  <text x="56" y="160" font-family="sans-serif" font-size="11" fill="#6B6760">専門家の役割を指定</text>
+  <text x="56" y="192" font-family="sans-serif" font-size="11" fill="#1A1917">例: 内科専攻医の</text>
+  <text x="56" y="210" font-family="sans-serif" font-size="11" fill="#1A1917">指導医として</text>
+  <rect x="228" y="76" width="168" height="176" rx="10" fill="#FEFEFC" filter="url(#fj09a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="268" cy="108" r="18" fill="#4338CA"/>
+  <text x="268" y="114" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">タ</text>
+  <text x="292" y="114" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">Task</text>
+  <text x="244" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">具体的に何を</text>
+  <text x="244" y="160" font-family="sans-serif" font-size="11" fill="#6B6760">してほしいかを明記</text>
+  <text x="244" y="192" font-family="sans-serif" font-size="11" fill="#1A1917">例: 現病歴を</text>
+  <text x="244" y="210" font-family="sans-serif" font-size="11" fill="#1A1917">OPQRST形式で整理</text>
+  <rect x="416" y="76" width="168" height="176" rx="10" fill="#FEFEFC" filter="url(#fj09a)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="456" cy="108" r="18" fill="#4338CA"/>
+  <text x="456" y="114" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">制</text>
+  <text x="480" y="114" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">Constraint</text>
+  <text x="432" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">守ってほしい</text>
+  <text x="432" y="160" font-family="sans-serif" font-size="11" fill="#6B6760">ルールを明示</text>
+  <text x="432" y="192" font-family="sans-serif" font-size="11" fill="#1A1917">例: 情報を勝手に</text>
+  <text x="432" y="210" font-family="sans-serif" font-size="11" fill="#1A1917">追加しない</text>
+  <rect x="604" y="76" width="168" height="176" rx="10" fill="#E8F0EC" filter="url(#fj09a)" stroke="#4338CA" stroke-width="1.5"/>
+  <circle cx="644" cy="108" r="18" fill="#4338CA"/>
+  <text x="644" y="114" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">形</text>
+  <text x="668" y="114" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1A1917">Format</text>
+  <text x="620" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">どのような形で</text>
+  <text x="620" y="160" font-family="sans-serif" font-size="11" fill="#6B6760">回答してほしいか</text>
+  <text x="620" y="192" font-family="sans-serif" font-size="11" fill="#1A1917">例: 箇条書きで</text>
+  <text x="620" y="210" font-family="sans-serif" font-size="11" fill="#1A1917">200文字以内で</text>
+  <text x="400" y="268" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 現病歴の整理プロンプト
+
+現病歴を書くとき、メモした内容をどの順番でどうまとめればいいか迷うことが多いですよね。以下のプロンプトは、カルテや問診メモを貼り付けてOPQRST形式に整形してもらうためのテンプレートです。
+
+Claude・ChatGPT両対応で、コードブロックのテキストをそのままコピーして使えます。
+
+```
+あなたは内科専攻医の指導医です。以下の患者情報をもとに,
+現病歴をOPQRST形式で整理してください。
+
+【患者情報（匿名化済み）】
+（ここに問診メモ・カルテの要点を貼り付ける）
+
+【条件】
+- 入力された情報のみを使うこと。情報を補足・追加しないこと
+- OPQRST各項目を見出しとして明示すること
+- 各項目は2〜3文の文章で記述すること（箇条書き不可）
+- 医学的に正確な表現を使うこと
+
+【出力形式】
+O (Onset): ...
+P (Palliating/Provoking factors): ...
+Q (Quality): ...
+R (Region/Radiation): ...
+S (Severity): ...
+T (Time course): ...
+```
+
+このプロンプトを使う際の重要な注意点として、「患者情報（匿名化済み）」の部分に入力する内容は必ず匿名化してください。患者氏名・生年月日・住所・病院名などの個人情報は事前に削除または仮名に置き換えた上でAIに貼り付けることが大前提です。AIが出力した現病歴は必ず実際のカルテ情報と照合して、事実と異なる記述がないかを確認してください。
+
+## 検査所見の整形プロンプト
+
+検査所見を病歴要約に記載する際、数値を羅列するだけでなく「所見の意義」をわかりやすく記述することが求められます。以下のプロンプトで、検査データを整理した記述に変換できます。
+
+```
+あなたは内科専攻医です。以下の検査所見データを,
+J-OSLER病歴要約の「検査所見」セクション向けに整形してください。
+
+【検査データ】
+（血液検査・画像検査・生理検査の結果を貼り付ける）
+
+【条件】
+- 正常値から外れた値は「高値」「低値」等を明示すること
+- 入力された数値を変えないこと
+- 「〜を認めた」は使わず「〜であった」「〜を示した」を使うこと
+- 略語は初出時にフルスペルを記載すること
+
+【出力形式】
+血液検査: ...
+画像検査: ...
+（該当する検査のみ記載）
+```
+
+検査所見の整形プロンプトを使う際に、専攻医が感じやすい点として「AIが勝手に所見に解釈を加えてしまう」ことがあります。プロンプトに「臨床的解釈を加えないこと。数値の記述のみ行うこと」を条件として追加すると、純粋な検査結果の整形に限定させることができます。解釈（プロブレムリストや考察）は別のプロンプトで行うほうがミスが減ります。
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## プロブレムリスト作成プロンプト
+
+プロブレムリストは病歴要約の中で特に重要なセクションです。「確定診断名だけを並べればいい」ではなく、「問題となる項目を挙げる」という視点が求められます。検査所見や病歴から問題点を抽出するプロンプトを示します。
+
+```
+あなたは内科専攻医の指導医です。以下の患者情報・検査所見をもとに,
+J-OSLER病歴要約向けのプロブレムリストを作成してください。
+
+【患者情報・検査所見（匿名化済み）】
+（現病歴・検査所見を貼り付ける）
+
+【条件】
+- 主訴に関連する問題を優先すること
+- 確定診断名だけでなく「問題となる所見・状態」も含めること
+- 入力情報に含まれない問題点を追加しないこと
+- 各問題に番号をつけること（#1, #2, ...）
+
+【出力形式】
+#1 （主問題: 疾患名または症候）
+#2 （併存疾患・合併症）
+#3 （その他の問題点）
+```
+
+プロブレムリストは、手引きに「診断名だけでなく問題となる項目を挙げる」と記載されています。AIが生成したプロブレムリストをそのまま採用するのではなく、「この症例でプロブレムとして挙げるべきか」を自分で判断することが重要です。AIはあくまで候補を提示するツールとして使い、最終的な判断は自分が行ってください。
+
+## 全人的視点セクションのたたき台プロンプト
+
+全人的視点のセクションは、患者の生活背景・価値観・社会的状況を踏まえた記述が求められるため、最初に書きにくいと感じる専攻医が多い箇所です。AIに「たたき台」として骨格を作ってもらい、そこに実際の情報を肉付けするアプローチが効果的です。
+
+```
+あなたは内科専攻医です。以下の患者情報をもとに,
+J-OSLER病歴要約の「全人的視点」セクションの記述案を作成してください。
+
+【患者情報（匿名化済み）】
+年代・性別: ...
+職業・生活環境: ...
+家族構成: ...
+患者の価値観・希望（把握している範囲）: ...
+
+【条件】
+- 入力された情報のみを使うこと
+- 患者の価値観・社会背景・生活への影響の視点を含めること
+- 断定的な価値判断をしないこと
+- 200〜300文字程度の文章で
+
+【出力形式】
+（全人的視点の記述文章）
+```
+
+全人的視点セクションに書く内容は、AIに作らせることが難しい部分でもあります。実際の患者さんとのやり取りや、患者さんの言葉・表情・生活背景は、カルテには書かれていない情報です。AIが作るたたき台はあくまで「構成の枠組み」として使い、実際に感じた「その患者さんらしさ」を自分の言葉で加えることで、評価される全人的視点の記述になります。
+
+## 自己省察のヒント出しプロンプト
+
+自己省察は「このケースから自分が何を学んだか」「次回どうすればよかったか」を言語化するセクションです。思考を言葉にするのが得意でない人にとっては、ゼロから書き始めるのが難しい箇所でもあります。AIを「ヒントを出してもらうパートナー」として使うアプローチが実用的です。
+
+```
+あなたは内科専攻医のメンターです。
+以下の症例概要をもとに,自己省察を書く際のヒントをいくつか提示してください。
+
+【症例概要（匿名化済み）】
+疾患名: ...
+症例の特徴・印象的だった点: ...
+診療上で難しかった/迷った点: ...
+
+【条件】
+- 自己省察の内容を決めるのはあくまで専攻医自身であること
+- ヒントは質問形式で提示すること（「〜ではないか?」「〜を振り返るとどうか?」）
+- 学習ポイント・反省点・次回への教訓の3つの視点からヒントを出すこと
+
+【出力形式】
+学習ポイント: ...（質問形式で3つ）
+反省点: ...（質問形式で2つ）
+次回への教訓: ...（質問形式で2つ）
+```
+
+自己省察のプロンプトは、AIに「答えを書かせる」ためではなく「問いを出してもらう」ためのものです。AIから出てきた質問に自分で答えながら考えを整理し、その思考の過程を自分の言葉でまとめることで、本当の意味での自己省察が完成します。「AIが書いた自己省察」ではなく「AIの問いに自分が答えた自己省察」を作るイメージです。
+
+[J-OSLERの自己省察の書き方](/blog/b06-josler-jiko-shousatsu-kakikata)では、自己省察に書くべき内容のポイントを詳しく解説しています。こちらも参照してください。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-label="J-OSLER用途別プロンプト一覧マップ">
+  <defs><filter id="fj09b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="300" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#4338CA"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">J-OSLER用途別プロンプト一覧マップ</text>
+  <rect x="40" y="72" width="340" height="100" rx="10" fill="#FEFEFC" filter="url(#fj09b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="60" y="98" font-family="sans-serif" font-weight="bold" font-size="13" fill="#4338CA">現病歴の整理</text>
+  <text x="60" y="118" font-family="sans-serif" font-size="11" fill="#1A1917">OPQRST形式に変換するプロンプト</text>
+  <text x="60" y="138" font-family="sans-serif" font-size="11" fill="#6B6760">役割: 指導医 / タスク: OPQRST整理</text>
+  <text x="60" y="156" font-family="sans-serif" font-size="11" fill="#6B6760">制約: 情報の追加禁止 / 形式: 見出しつき</text>
+  <rect x="420" y="72" width="340" height="100" rx="10" fill="#FEFEFC" filter="url(#fj09b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="440" y="98" font-family="sans-serif" font-weight="bold" font-size="13" fill="#4338CA">検査所見の整形</text>
+  <text x="440" y="118" font-family="sans-serif" font-size="11" fill="#1A1917">数値を医学的記述に変換するプロンプト</text>
+  <text x="440" y="138" font-family="sans-serif" font-size="11" fill="#6B6760">役割: 専攻医 / タスク: 所見の整形</text>
+  <text x="440" y="156" font-family="sans-serif" font-size="11" fill="#6B6760">制約: 数値変更禁止 / 形式: 検査種別ごと</text>
+  <rect x="40" y="184" width="340" height="100" rx="10" fill="#E8F0EC" filter="url(#fj09b)" stroke="#4338CA" stroke-width="1"/>
+  <text x="60" y="210" font-family="sans-serif" font-weight="bold" font-size="13" fill="#4338CA">プロブレムリスト</text>
+  <text x="60" y="230" font-family="sans-serif" font-size="11" fill="#1A1917">問題点を抽出するプロンプト</text>
+  <text x="60" y="250" font-family="sans-serif" font-size="11" fill="#6B6760">役割: 指導医 / タスク: 問題の抽出</text>
+  <text x="60" y="268" font-family="sans-serif" font-size="11" fill="#6B6760">制約: 追加情報禁止 / 形式: 番号つき</text>
+  <rect x="420" y="184" width="340" height="100" rx="10" fill="#E8F0EC" filter="url(#fj09b)" stroke="#4338CA" stroke-width="1.5"/>
+  <text x="440" y="210" font-family="sans-serif" font-weight="bold" font-size="13" fill="#4338CA">自己省察のヒント出し</text>
+  <text x="440" y="230" font-family="sans-serif" font-size="11" fill="#1A1917">振り返りの問いを出すプロンプト</text>
+  <text x="440" y="250" font-family="sans-serif" font-size="11" fill="#6B6760">役割: メンター / タスク: 質問の提示</text>
+  <text x="440" y="268" font-family="sans-serif" font-size="11" fill="#6B6760">制約: 答えを書かせない / 形式: 質問形式</text>
+  <text x="400" y="294" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 注意事項：プロンプトを使う際の3つのルール
+
+AIプロンプトを医療文書作成に使う際には、どんなに便利でも守るべき原則があります。これを意識しないと、AIを使っているはずが逆にトラブルの原因になりかねません。
+
+**1. 患者情報の匿名化は必須** です。氏名・生年月日・住所・病院名など個人を特定できる情報は、AIに入力する前に必ず削除または仮名化してください。「50代男性」「主訴は呼吸困難」という形に整えてから使うのが原則です。自施設のセキュリティポリシーも事前に確認してください。
+
+**2. AIの出力は必ずカルテ情報と照合してください**。AIは与えられた情報から「それらしい文章」を生成しますが、微妙なニュアンスの差異や細部の数値を間違えることがあります。特に数値（検査値・投与量・病日など）は1つ1つ確認することが不可欠です。
+
+**3. ハルシネーション（事実と異なる情報の生成）を常に意識してください**。ChatGPTは存在しない論文を引用することがありますし、症例の細部を「補完」してしまうことがあります。Claudeを含むどのAIツールも完璧ではないため、出力を鵜呑みにせず、必ず自分の知識と照合するプロセスを挟んでください。[AIを使った医学文献検索術](/blog/j08-ai-bunken-kensaku)では、ハルシネーションのリスクを減らすためのClaude + PubMed MCPの活用方法を解説しています。
+
+iworのAI病歴要約テンプレートも、こうした課題を踏まえてClaude PubMed MCPによるファクトチェックを組み込んでいます。[iwor](/pro/)では疾患を選ぶだけで引用文献候補まで提示されるため、プロンプトを自分で組み立てる手間を省けます。
+
+## よくある質問（FAQ）
+
+### Q. ClaudeとChatGPT、どちらを使えばいいですか？
+
+どちらも実用的ですが、文献検索を伴う場合はClaude + PubMed MCPの組み合わせが特におすすめです。PubMedに直接アクセスして実在する論文情報を返してくれるため、ハルシネーションリスクが低いです。文章整形・要約のみの用途ではどちらも使いやすく、好みで選んで問題ありません。
+
+### Q. プロンプトを毎回手入力するのは面倒です。効率化できますか？
+
+よく使うプロンプトはメモアプリやNotionなどに保存しておくと再利用しやすくなります。プロンプトのテンプレート部分だけを保存し、「患者情報を貼り付ける部分」だけを毎回変えるやり方が効率的です。
+
+### Q. AIが生成した文章をそのまま病歴要約に使っていいですか？
+
+そのまま使うことはおすすめしません。AIの出力は「下書きの骨格」として使い、実際のカルテ情報と照合しながら手直しすることが重要です。病歴要約はあなた自身の観察・思考・学びを反映したものである必要があります。
+
+## よくある失敗3パターン
+
+AIプロンプトの使い方で専攻医がはまりがちな失敗を3つ挙げます。
+
+**❶ プロンプトが曖昧で汎用的すぎる**
+
+「病歴要約を書いて」だけでは、AIは一般的な文章を生成するだけです。**役割・タスク・制約・出力形式** の4要素を明示することで、J-OSLER固有の要件に合った出力が得られます。テンプレートを活用してプロンプトを具体的にしましょう。
+
+**❷ AI出力をそのままコピペしてしまう**
+
+AIが生成した文章をそのまま病歴要約に貼り付けることは、日本内科学会のガイドライン違反になります。AI出力は**下書きの骨格**として使い、実際のカルテ情報と照合しながら必ず手直しすることが必要です。
+
+**❸ 1つのプロンプトで全セクションを書かせようとする**
+
+現病歴・検査整形・プロブレムリスト・考察を一度に書かせると、AIの精度が落ちます。セクションごとに**役割と制約を分けた専用プロンプト**を使うほうが、実用的な出力が得られます。
+
+## まとめ
+
+AIプロンプトは「役割・タスク・制約・出力形式」の4要素を明示することで、実用性が大きく向上します。現病歴の整理・検査所見の整形・プロブレムリスト作成・自己省察のヒント出しという、病歴要約作成の各フェーズに対応したテンプレートをそれぞれ活用してください。
+
+最も大切なことは、AIを「代わりに考えてくれるもの」として使うのではなく、「自分の思考の補助ツール」として使うことです。AIが出したものを精査・修正し、自分の言葉で仕上げるプロセスを踏むことで、指導医にも認められる質の高い病歴要約が完成します。
+
+病歴要約の書き方全体については[J-OSLER病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)を、AI活用の全体戦略は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)を参照してください。

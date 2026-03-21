@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3D5A80"/>
+      <stop offset="100%" stop-color="#1B4F3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="480" rx="16" fill="#F5F4F0"/>
+
+  <!-- Header -->
+  <rect x="24" y="20" width="752" height="52" rx="12" fill="url(#headerGrad)"/>
+  <text x="400" y="53" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">120症例制度の全体像｜押さえるべき3つの数字</text>
+
+  <!-- Card 1: 120 -->
+  <rect x="24" y="92" width="240" height="170" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="24" y="92" width="240" height="44" rx="12" fill="#3D5A80"/>
+  <rect x="24" y="120" width="240" height="16" fill="#3D5A80"/>
+  <text x="144" y="120" text-anchor="middle" fill="#FEFEFC" font-size="15" font-weight="700">総症例数</text>
+  <text x="144" y="185" text-anchor="middle" fill="#3D5A80" font-size="52" font-weight="900">120</text>
+  <text x="144" y="210" text-anchor="middle" fill="#6B6760" font-size="12">症例以上を登録</text>
+  <text x="144" y="230" text-anchor="middle" fill="#6B6760" font-size="11">入院108 + 外来12まで</text>
+  <text x="144" y="248" text-anchor="middle" fill="#3D5A80" font-size="11" font-weight="600">旧制度の160から40減</text>
+
+  <!-- Card 2: 56 -->
+  <rect x="280" y="92" width="240" height="170" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="280" y="92" width="240" height="44" rx="12" fill="#1B4F3A"/>
+  <rect x="280" y="120" width="240" height="16" fill="#1B4F3A"/>
+  <text x="400" y="120" text-anchor="middle" fill="#FEFEFC" font-size="15" font-weight="700">必要疾患群数</text>
+  <text x="400" y="185" text-anchor="middle" fill="#1B4F3A" font-size="52" font-weight="900">56</text>
+  <text x="400" y="210" text-anchor="middle" fill="#6B6760" font-size="12">疾患群以上を網羅</text>
+  <text x="400" y="230" text-anchor="middle" fill="#6B6760" font-size="11">全70疾患群中56以上</text>
+  <text x="400" y="248" text-anchor="middle" fill="#991B1B" font-size="11" font-weight="600">旧制度から変更なし</text>
+
+  <!-- Card 3: 領域別最低数 -->
+  <rect x="536" y="92" width="240" height="170" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="536" y="92" width="240" height="44" rx="12" fill="#92400E"/>
+  <rect x="536" y="120" width="240" height="16" fill="#92400E"/>
+  <text x="656" y="120" text-anchor="middle" fill="#FEFEFC" font-size="15" font-weight="700">領域別最低症例数</text>
+  <text x="656" y="175" text-anchor="middle" fill="#92400E" font-size="30" font-weight="900">NEW</text>
+  <text x="656" y="205" text-anchor="middle" fill="#92400E" font-size="14" font-weight="700">合計100症例分</text>
+  <text x="656" y="228" text-anchor="middle" fill="#6B6760" font-size="11">各領域に最低症例数が義務化</text>
+  <text x="656" y="248" text-anchor="middle" fill="#991B1B" font-size="11" font-weight="600">自由枠は実質20症例のみ</text>
+
+  <!-- Bottom: Key insight -->
+  <rect x="24" y="282" width="752" height="80" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2" filter="url(#shadow)"/>
+  <text x="60" y="315" fill="#1B4F3A" font-size="16" font-weight="700">ポイント</text>
+  <text x="60" y="340" fill="#1A1917" font-size="13">症例数は減ったが「質とバランス」が重視されるようになった。領域別最低数を意識した計画的なローテーションが鍵。</text>
+
+  <!-- Timeline -->
+  <rect x="24" y="382" width="752" height="76" rx="12" fill="#E8F0EC"/>
+  <text x="60" y="408" fill="#1B4F3A" font-size="14" font-weight="700">適用スケジュール</text>
+  <text x="60" y="432" fill="#1A1917" font-size="12">7期生（2024年度開始）：120症例が適用。7期・8期は移行措置として160症例との選択可。</text>
+  <text x="60" y="448" fill="#1A1917" font-size="12">9期生（2026年度開始）以降：120症例一本化。COVID-19特別措置は7期生以降不適用。</text>
+
+  <!-- Footer -->
+  <text x="776" y="472" text-anchor="end" fill="#6B6760" font-size="10">© 内科ナビ naikanavi.com</text>
+</svg>

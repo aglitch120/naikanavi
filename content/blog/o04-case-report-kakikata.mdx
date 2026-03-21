@@ -1,0 +1,168 @@
+---
+title: "症例報告（ケースレポート）の書き方｜専攻医のための実践ガイド"
+description: "専攻医向けに症例報告の書き方を徹底解説。症例選定から構成・各章の書き方・投稿先の選定まで。倫理審査・患者同意の手順と、採択されやすいケースレポートのコツを網羅。"
+date: "2026-03-14"
+updated: "2026-03-14"
+author: "iwor編集部"
+category: "academic"
+cluster: "O"
+pillar: "career-guide"
+tags: ["専攻医", "症例報告", "ケースレポート", "論文", "学会発表"]
+cta_type: "general"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「あの症例、論文にできるかな?」という直感を持ちながら、どこから始めればよいかわからずに時間が過ぎてしまう——そんな経験をしている専攻医は多いはずです。症例報告は医学論文の中で最も手が届きやすいジャンルですが、それでも適切な構成と書き方を知らないと完成まで至りません。この記事では、症例選定から構成・各章の書き方・投稿まで、ケースレポート作成の全プロセスを実践的に解説します。
+
+> [iworのダッシュボード](/pro/)では、研修中に担当したすべての症例をJ-OSLER登録と並行して管理できます。後から「あの症例が論文候補だった」と気づくことがないよう、日常的な症例記録の習慣をつけましょう。
+
+## 症例報告に向いている症例の選び方
+
+良い症例報告の第一歩は、報告する価値のある症例を選ぶことです。「珍しさ」は確かに有利な要素ですが、それだけが基準ではありません。重要なのは「読者が何を学べるか」という**教育的価値**です。
+
+具体的には以下のような症例が報告に適しています。まず、診断に困難を要した症例です。典型的でない症状や検査値の組み合わせから、一般的でない診断にたどり着いたプロセスは、多くの医師にとって学びになります。次に、治療に工夫が必要だった症例です。標準的な治療が効かなかった理由と、代替アプローチを選んだ根拠を論じられる症例は説得力があります。また、既存の文献と異なる経過をたどった症例も価値があります。「文献では〇〇が多いが、本例では△△だった」という対比は、考察に深みをもたらします。
+
+選んだ症例が報告に値するかどうかを確認する最も確実な方法は、**PubMedで類似症例を検索すること**です。全く同じ症例報告が既にある場合は、新規性の主張が難しくなります。一方で完全に新規な症例は稀であり、「類似例が少ない」「特定の人種・地域での初報告」といった切り口でも新規性を示せます。PubMedの効果的な検索方法については[英語論文読解・投稿の基礎](/blog/o05-eigo-ronbun-taisaku)で詳しく解説しています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-label="症例報告に適した症例の評価基準チェックリスト">
+  <defs>
+    <filter id="fo04a" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="380" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="17" fill="#fff">症例報告候補の評価チェックリスト</text>
+  
+  <rect x="40" y="72" width="340" height="288" rx="10" fill="#E8F0EC" filter="url(#fo04a)"/>
+  <rect x="40" y="72" width="340" height="40" rx="10" fill="#2D7A4F"/>
+  <text x="210" y="97" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">報告価値が高い症例</text>
+  <text x="60" y="136" font-family="sans-serif" font-size="12" fill="#1A1917">診断に困難を要した**（鑑別に苦労した）</text>
+  <text x="60" y="162" font-family="sans-serif" font-size="12" fill="#1A1917">治療に工夫・修正が必要だった</text>
+  <text x="60" y="188" font-family="sans-serif" font-size="12" fill="#1A1917">文献上の典型と異なる経過をたどった</text>
+  <text x="60" y="214" font-family="sans-serif" font-size="12" fill="#1A1917">まれな疾患・まれな合併症の症例</text>
+  <text x="60" y="240" font-family="sans-serif" font-size="12" fill="#1A1917">患者背景が特殊（高齢・妊娠・免疫不全等）</text>
+  <text x="60" y="266" font-family="sans-serif" font-size="12" fill="#1A1917">教科書的な記載と実際が異なっていた</text>
+  <text x="60" y="292" font-family="sans-serif" font-size="12" fill="#1A1917">診断のきっかけが他科・他職種だった</text>
+  <text x="60" y="318" font-family="sans-serif" font-size="12" fill="#1A1917">既存文献で類似症例が少ない（5例未満等）</text>
+  
+  <rect x="420" y="72" width="340" height="288" rx="10" fill="#FFF8F0" filter="url(#fo04a)"/>
+  <rect x="420" y="72" width="340" height="40" rx="10" fill="#C0392B"/>
+  <text x="590" y="97" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">報告価値が低い症例</text>
+  <text x="440" y="136" font-family="sans-serif" font-size="12" fill="#333">既に多数の症例報告がある一般的な経過</text>
+  <text x="440" y="162" font-family="sans-serif" font-size="12" fill="#333">「診断はすぐついた・治療も標準通り」</text>
+  <text x="440" y="188" font-family="sans-serif" font-size="12" fill="#333">患者同意が取れない・倫理的問題がある</text>
+  <text x="440" y="214" font-family="sans-serif" font-size="12" fill="#333">データ・画像が不十分で提示できない</text>
+  <text x="440" y="240" font-family="sans-serif" font-size="12" fill="#333">考察で何も言えない（教訓がない）</text>
+  <text x="400" y="370" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 症例報告の構成と各章の書き方
+
+症例報告の基本構成は「Abstract・Introduction・Case Presentation・Discussion・Conclusion」が標準です。日本語の学会誌では「はじめに・症例・考察・おわりに」という形式が多く使われます。
+
+**はじめに**（Introduction）は症例報告全体の文脈を示すセクションです。「なぜこの症例を報告するのか」を2〜3段落で簡潔に示します。疾患の疫学・病態の概要、本症例の特殊性や教育的意義、そして本報告の目的を記載します。書き方のコツは「広い背景から始めて徐々に本症例に絞り込む」逆三角形の構造です。
+
+**症例**（Case Presentation）では、**患者情報**（年齢・性別・主訴・現病歴・既往歴・身体所見・検査所見）から診断・治療・転帰まで、時系列に沿って客観的に記載します。主観的な評価は含めず、事実のみを記述することが原則です。年齢は具体的な数字ではなく「70代男性」のように表記して個人特定を防ぎ、必要に応じて医師に確認してください。
+
+**考察**（Discussion）は症例報告の核心部分です。「本症例の特殊性は何か」「既存文献とどう異なるか」「臨床的示唆は何か」の3点を論じることが基本です。参考文献は考察の各主張に対応させて適切に引用してください。文字数は考察で全体の**約40%**を占めるよう配分することが一般的です。
+
+## 倫理審査と患者同意の手順
+
+症例報告の論文投稿には、所属施設の倫理委員会への届け出と**患者本人**（または家族）の同意が必要です。倫理審査の要否・審査様式は施設によって異なりますが、「倫理審査不要の証明書」の取得が必要な学会誌・雑誌も増えているため、まず施設の倫理委員会担当窓口に確認することが最初のステップです。
+
+患者同意書は、研究目的・発表内容・個人情報の取り扱い・同意撤回の権利を記載した書類で、署名をもらいます。入院中に同意を取得するのが最も確実ですが、退院後の外来フォロー時でも可能です。連絡が取れなくなった患者の場合は、施設の倫理ガイドラインに従った対応が必要になります。
+
+[iworのダッシュボードでJ-OSLER症例を管理](/pro/)しながら、論文候補となる症例には早期に同意取得の検討を始める習慣をつけましょう。論文作成の全体的な流れは[専攻医のための論文入門ガイド](/blog/o03-ronbun-kakikata-nyumon)でも解説しています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" role="img" aria-label="症例報告の倫理審査・投稿プロセスフロー">
+  <defs>
+    <filter id="fo04b" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.07"/>
+    </filter>
+    <marker id="arr04b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B4F3A"/>
+    </marker>
+  </defs>
+  <rect width="800" height="320" rx="16" fill="#F5F7F5"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="17" fill="#fff">症例報告・投稿までのフロー</text>
+
+  <rect x="40" y="78" width="130" height="52" rx="8" fill="#1B4F3A" filter="url(#fo04b)"/>
+  <text x="105" y="101" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#fff">症例選定</text>
+  <text x="105" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#A8D5B8">PubMed検索</text>
+  <line x1="170" y1="104" x2="188" y2="104" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arr04b)"/>
+
+  <rect x="188" y="78" width="130" height="52" rx="8" fill="#2D7A4F" filter="url(#fo04b)"/>
+  <text x="253" y="101" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#fff">患者同意取得</text>
+  <text x="253" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#A8D5B8">同意書への署名</text>
+  <line x1="318" y1="104" x2="336" y2="104" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arr04b)"/>
+
+  <rect x="336" y="78" width="130" height="52" rx="8" fill="#2D7A4F" filter="url(#fo04b)"/>
+  <text x="401" y="101" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#fff">倫理委員会</text>
+  <text x="401" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#A8D5B8">届け出・承認</text>
+  <line x1="466" y1="104" x2="484" y2="104" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arr04b)"/>
+
+  <rect x="484" y="78" width="130" height="52" rx="8" fill="#4CAF82" filter="url(#fo04b)"/>
+  <text x="549" y="101" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#fff">論文執筆</text>
+  <text x="549" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1B4F3A">IMRAD形式</text>
+  <line x1="614" y1="104" x2="632" y2="104" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arr04b)"/>
+
+  <rect x="632" y="78" width="130" height="52" rx="8" fill="#1B4F3A" filter="url(#fo04b)"/>
+  <text x="697" y="101" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#fff">投稿・査読対応</text>
+  <text x="697" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#A8D5B8">修正・再投稿</text>
+
+  
+  <rect x="40" y="150" width="720" height="100" rx="8" fill="#E8F0EC" filter="url(#fo04b)"/>
+  <text x="60" y="174" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">倫理審査のポイント</text>
+  <text x="60" y="196" font-family="sans-serif" font-size="11" fill="#333">・施設ごとに審査方法が異なる（倫理委員会審査 or 倫理委員会不要証明書）</text>
+  <text x="60" y="216" font-family="sans-serif" font-size="11" fill="#333">・委員会は月1回開催のことが多い→早期申請が必須</text>
+  <text x="60" y="236" font-family="sans-serif" font-size="11" fill="#333">・患者同意書は投稿先ジャーナルのフォーム指定がある場合も</text>
+
+  <text x="400" y="308" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 投稿先の選択と査読対応
+
+症例報告の投稿先選定では、まず「症例報告を受け付けているか」を確認することが最初のステップです。近年、高インパクトファクター誌の多くは症例報告の掲載を制限または廃止しています。症例報告専門誌（BMJ Case Reports、Journal of Medical Case Reportsなど）や、各学会の学会誌が現実的な投稿先となります。
+
+査読者のコメントへの対応（Revision）は、論文採択のプロセスで最も重要なフェーズです。コメントに対して1点1点丁寧に回答し、修正した箇所を明示する「Rebuttal letter（反論書）」を準備します。査読者の意見に反論する場合は、文献的根拠を示しながら礼儀正しく論じることが鉄則です。「査読者が言うから従う」だけでなく、根拠を持って対話することが採択率向上につながります。
+
+## よくある失敗3パターン
+
+### ❶ 考察を「症例の感想」で終わらせる
+
+「非常に稀な症例であり、今後の報告が待たれる」という締め方は、考察の放棄です。考察では既存文献との比較を通じて「なぜ本症例はこうなったのか」「読者は何を学べるか」を具体的に論じる必要があります。PubMedで類似症例を10〜15本検索し、その知見を組み込んで考察を構成しましょう。[英語論文の検索方法](/blog/o05-eigo-ronbun-taisaku)を活用してください。
+
+### ❷ 症例提示で個人が特定できる情報を残す
+
+年齢・性別・入院期間・経過の詳細などから患者が特定されるリスクがある場合、論文掲載後に問題が生じることがあります。症例提示の前に、施設の個人情報担当者や倫理委員会のガイドラインを確認し、記述の匿名化を徹底してください。画像データも要注意で、特定情報が含まれていないか確認が必要です。
+
+### ❸ 投稿後に「査読が来ない」まま放置する
+
+査読に数ヶ月かかることは珍しくなく、6ヶ月を超えることもあります。しかし、投稿後に編集事務局から「追加書類の提出」を求めるメールが届いても見逃してしまい、投稿が自動キャンセルされるケースがあります。投稿後は定期的に投稿管理システムにログインしてステータスを確認し、メールの見落としがないよう注意してください。[バーンアウト対策](/blog/k01-burnout-taisaku)の一環として、論文管理を習慣化する仕組みづくりも大切です。
+
+## FAQ
+
+**Q1. 症例報告は共著でなくても書けますか？**
+技術的には可能ですが、指導医を共著に含めることを強く推奨します。倫理審査のサポート、査読対応のアドバイス、投稿先の選定など、指導医のサポートが採択率を大きく左右します。
+
+**Q2. 何年前の症例でも報告できますか？**
+
+原則として患者の同意と倫理的配慮が満たされていれば可能ですが、古い症例では記録が不十分なことがあります。また、時間が経つほど患者への連絡が難しくなるため、「論文化したい」と思ったら早めに動くことが重要です。
+
+**Q3. 症例報告は英語でなければ意味がありませんか？**
+
+日本語の学会誌に掲載された症例報告も十分な業績です。英語論文の方が引用される可能性は高いですが、最初の1本は日本語から始めることで論文作成のプロセスを学ぶことができます。
+
+**Q4. 掲載が決まるまでどのくらいかかりますか？**
+
+投稿から採択まで、早くて3ヶ月、通常は6〜12ヶ月程度かかることが多いです。修正対応が複数回になる場合は1年以上かかることもあります。焦らず、継続的に対応することが重要です。
+
+## まとめ
+
+症例報告は専攻医が最初に取り組むのに最適な論文形式です。適切な症例選定・倫理審査・患者同意・IMRAD形式での構成という基本的な流れを押さえれば、誰でも完成に近づけます。[学会発表の準備](/blog/o02-gakkai-happyou-junbi)と症例報告論文は多くの場合セットで進められるため、学会発表のテーマを決めたら同時に論文化を視野に入れましょう。
+
+[iworのダッシュボード](/pro/)で症例を日常的に管理し、論文候補を逃さない習慣を身につけることが、専攻医としての[アカデミックキャリア](/blog/o06-gakkai-academic-career)の基盤となります。

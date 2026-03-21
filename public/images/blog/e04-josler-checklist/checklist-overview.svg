@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Noto Sans JP', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="44" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">J-OSLER 修了要件チェックリスト 全体像</text>
+
+  <!-- Card 1: 症例登録 -->
+  <rect x="30" y="70" width="230" height="310" rx="12" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow)"/>
+  <rect x="30" y="70" width="230" height="44" rx="12" fill="#1B4F3A"/>
+  <rect x="30" y="100" width="230" height="14" fill="#1B4F3A"/>
+  <text x="60" y="98" font-size="15" font-weight="bold" fill="#fff">1. 症例登録</text>
+  <!-- Clipboard icon -->
+  <rect x="40" y="86" width="12" height="14" rx="2" fill="none" stroke="#fff" stroke-width="1.5"/>
+  <rect x="43" y="83" width="6" height="4" rx="1" fill="#fff"/>
+
+  <text x="50" y="138" font-size="13" fill="#1A1917" font-weight="bold">120症例以上</text>
+  <text x="50" y="157" font-size="11" fill="#6B6760">(7期生以降。6期生以前は160)</text>
+  <line x1="50" y1="168" x2="240" y2="168" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="50" y="188" font-size="13" fill="#1A1917" font-weight="bold">56疾患群以上を網羅</text>
+  <text x="50" y="207" font-size="11" fill="#6B6760">(全70疾患群中)</text>
+  <line x1="50" y1="218" x2="240" y2="218" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="50" y="238" font-size="13" fill="#1A1917" font-weight="bold">領域別最低症例数</text>
+  <text x="50" y="257" font-size="11" fill="#6B6760">(7期生以降に適用)</text>
+  <line x1="50" y1="268" x2="240" y2="268" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="50" y="288" font-size="13" fill="#1A1917" font-weight="bold">指導医の承認</text>
+  <text x="50" y="307" font-size="11" fill="#6B6760">全症例で担当指導医の承認が必要</text>
+  <line x1="50" y1="318" x2="240" y2="318" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="50" y="338" font-size="13" fill="#1A1917" font-weight="bold">外来症例は1割まで</text>
+  <text x="50" y="357" font-size="11" fill="#6B6760">登録症例の10%が上限</text>
+
+  <!-- Card 2: 病歴要約 -->
+  <rect x="285" y="70" width="230" height="310" rx="12" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow)"/>
+  <rect x="285" y="70" width="230" height="44" rx="12" fill="#3D5A80"/>
+  <rect x="285" y="100" width="230" height="14" fill="#3D5A80"/>
+  <text x="315" y="98" font-size="15" font-weight="bold" fill="#fff">2. 病歴要約</text>
+  <!-- Pen icon -->
+  <path d="M297 88 L305 96 L299 98 Z" fill="#fff"/>
+  <line x1="299" y1="86" x2="307" y2="94" stroke="#fff" stroke-width="1.5"/>
+
+  <text x="305" y="138" font-size="13" fill="#1A1917" font-weight="bold">29症例を作成</text>
+  <text x="305" y="157" font-size="11" fill="#6B6760">すべて異なる疾患群から選択</text>
+  <line x1="305" y1="168" x2="495" y2="168" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="305" y="188" font-size="13" fill="#1A1917" font-weight="bold">外科紹介症例: 2編</text>
+  <text x="305" y="207" font-size="11" fill="#6B6760">疾患群の重複可</text>
+  <line x1="305" y1="218" x2="495" y2="218" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="305" y="238" font-size="13" fill="#1A1917" font-weight="bold">剖検症例を含むこと</text>
+  <text x="305" y="257" font-size="11" fill="#6B6760">疾患群の重複可</text>
+  <line x1="305" y1="268" x2="495" y2="268" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="305" y="288" font-size="13" fill="#1A1917" font-weight="bold">3段階の評価</text>
+  <text x="305" y="307" font-size="11" fill="#6B6760">個別評価 → 一次評価 → 二次評価</text>
+  <line x1="305" y1="318" x2="495" y2="318" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="305" y="338" font-size="13" fill="#1A1917" font-weight="bold">外来症例は7編以内</text>
+  <text x="305" y="357" font-size="11" fill="#6B6760">入院症例が中心</text>
+
+  <!-- Card 3: その他 -->
+  <rect x="540" y="70" width="230" height="310" rx="12" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow)"/>
+  <rect x="540" y="70" width="230" height="44" rx="12" fill="#0D7377"/>
+  <rect x="540" y="100" width="230" height="14" fill="#0D7377"/>
+  <text x="570" y="98" font-size="15" font-weight="bold" fill="#fff">3. その他の要件</text>
+  <!-- Check icon -->
+  <path d="M554 90 L558 95 L566 85" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+
+  <text x="560" y="138" font-size="13" fill="#1A1917" font-weight="bold">JMECC受講</text>
+  <text x="560" y="157" font-size="11" fill="#6B6760">内科救急・ICLS講習会</text>
+  <line x1="560" y1="168" x2="750" y2="168" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="560" y="188" font-size="13" fill="#1A1917" font-weight="bold">学会参加 年2回以上</text>
+  <text x="560" y="207" font-size="11" fill="#6B6760">3年間で計6回以上</text>
+  <line x1="560" y1="218" x2="750" y2="218" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="560" y="238" font-size="13" fill="#1A1917" font-weight="bold">学会発表/論文 2件</text>
+  <text x="560" y="257" font-size="11" fill="#6B6760">筆頭演者・筆頭著者として</text>
+  <line x1="560" y1="268" x2="750" y2="268" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="560" y="288" font-size="13" fill="#1A1917" font-weight="bold">講習会受講</text>
+  <text x="560" y="307" font-size="11" fill="#6B6760">医療倫理・安全・感染制御</text>
+  <text x="560" y="323" font-size="11" fill="#6B6760">年2回 x 3年 = 計6回</text>
+  <line x1="560" y1="334" x2="750" y2="334" stroke="#E8E5DF" stroke-width="1"/>
+  <text x="560" y="354" font-size="13" fill="#1A1917" font-weight="bold">研修評価</text>
+  <text x="560" y="370" font-size="11" fill="#6B6760">多職種評価(360度)含む</text>
+
+  <!-- Arrow area -->
+  <rect x="30" y="400" width="740" height="50" rx="10" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="400" y="430" text-anchor="middle" font-size="14" font-weight="bold" fill="#1B4F3A">すべての要件を満たす → 修了認定 → 内科専門医試験の受験資格</text>
+
+  <!-- Footer -->
+  <text x="400" y="490" text-anchor="middle" font-size="10" fill="#6B6760">※ 7期生（2024年度研修開始）以降の要件を基準に記載</text>
+  <text x="400" y="508" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

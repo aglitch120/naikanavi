@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="'Noto Sans JP', sans-serif">
+  <rect width="800" height="420" rx="12" fill="#F5F4F0"/>
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">血液領域の3疾患群マップ</text>
+  <rect x="40" y="60" width="220" height="300" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="40" y="60" width="220" height="42" rx="10" fill="#1B4F3A"/>
+  <rect x="40" y="90" width="220" height="12" fill="#1B4F3A"/>
+  <text x="150" y="87" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">疾患群1</text>
+  <text x="150" y="123" text-anchor="middle" font-size="14" font-weight="bold" fill="#1A1917">赤血球系疾患</text>
+  <text x="60" y="155" font-size="12" fill="#6B6760">- 鉄欠乏性貧血</text>
+  <text x="60" y="178" font-size="12" fill="#6B6760">- 巨赤芽球性貧血</text>
+  <text x="60" y="201" font-size="12" fill="#6B6760">- 溶血性貧血</text>
+  <text x="60" y="224" font-size="12" fill="#6B6760">- 再生不良性貧血</text>
+  <text x="60" y="247" font-size="12" fill="#6B6760">- 出血性貧血</text>
+  <text x="60" y="270" font-size="12" fill="#6B6760">- 赤血球増多症</text>
+  <rect x="60" y="300" width="180" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="150" y="319" text-anchor="middle" font-size="11" fill="#1B4F3A">非血液専攻でも経験しやすい</text>
+  <rect x="290" y="60" width="220" height="300" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="290" y="60" width="220" height="42" rx="10" fill="#1B4F3A"/>
+  <rect x="290" y="90" width="220" height="12" fill="#1B4F3A"/>
+  <text x="400" y="87" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">疾患群2</text>
+  <text x="400" y="123" text-anchor="middle" font-size="14" font-weight="bold" fill="#1A1917">白血球系・リンパ系疾患</text>
+  <text x="310" y="155" font-size="12" fill="#6B6760">- 白血病（急性・慢性）</text>
+  <text x="310" y="178" font-size="12" fill="#6B6760">- 悪性リンパ腫</text>
+  <text x="310" y="201" font-size="12" fill="#6B6760">- 多発性骨髄腫</text>
+  <text x="310" y="224" font-size="12" fill="#6B6760">- 骨髄異形成症候群</text>
+  <text x="310" y="247" font-size="12" fill="#6B6760">- 骨髄増殖性腫瘍</text>
+  <text x="310" y="270" font-size="12" fill="#6B6760">- 無顆粒球症</text>
+  <rect x="310" y="300" width="180" height="28" rx="6" fill="#FEF3C7"/>
+  <text x="400" y="319" text-anchor="middle" font-size="11" fill="#92400E">血液内科ローテが必要</text>
+  <rect x="540" y="60" width="220" height="300" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="540" y="60" width="220" height="42" rx="10" fill="#1B4F3A"/>
+  <rect x="540" y="90" width="220" height="12" fill="#1B4F3A"/>
+  <text x="650" y="87" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">疾患群3</text>
+  <text x="650" y="123" text-anchor="middle" font-size="14" font-weight="bold" fill="#1A1917">出血・凝固系疾患</text>
+  <text x="560" y="155" font-size="12" fill="#6B6760">- ITP（免疫性血小板減少症）</text>
+  <text x="560" y="178" font-size="12" fill="#6B6760">- DIC</text>
+  <text x="560" y="201" font-size="12" fill="#6B6760">- 血友病</text>
+  <text x="560" y="224" font-size="12" fill="#6B6760">- TTP/HUS</text>
+  <text x="560" y="247" font-size="12" fill="#6B6760">- 血栓性素因</text>
+  <text x="560" y="270" font-size="12" fill="#6B6760">- 抗リン脂質抗体症候群</text>
+  <rect x="560" y="300" width="180" height="28" rx="6" fill="#FEF3C7"/>
+  <text x="650" y="319" text-anchor="middle" font-size="11" fill="#92400E">症例確保が難しい場合あり</text>
+  <text x="400" y="395" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">血液領域は2篇提出 → 3疾患群から異なる2つを選択</text>
+  <text x="400" y="414" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

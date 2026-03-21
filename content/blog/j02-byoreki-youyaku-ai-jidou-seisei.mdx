@@ -1,0 +1,418 @@
+---
+title: "【実践】病歴要約の総合考察をAIで下書きする方法｜プロンプト例付き"
+description: "J-OSLER病歴要約の総合考察をAIで効率的に下書きする方法を解説。ガイドライン準拠のプロンプト例、考察の3パターン、よくある失敗と対策まで。"
+date: "2026-03-10"
+updated: "2026-03-10"
+author: "iwor編集部"
+category: "ai-tools"
+cluster: "J"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "AI", "病歴要約", "総合考察", "ChatGPT", "自動生成", "プロンプト"]
+cta_type: "template"
+reading_time: 12
+status: "published"
+seo_checked: true
+---
+
+「総合考察、何を書けばいいか分からない...」「文献検索だけで1時間以上かかる...」
+
+J-OSLERの病歴要約29編のなかでも、最も時間がかかるのが **総合考察** です。臨床経過や検査所見は電子カルテからまとめられますが、考察は自分の頭で論理を組み立てなければなりません。
+
+2024年11月、日本内科学会が[J-OSLERにおける生成AI利用ガイドライン](https://www.naika.or.jp/wp-content/uploads/2024/11/660e0ab9ceb7e389b5eccbc7520a23f4.pdf)を公表し、条件つきでAI活用が正式に認められました。この記事では、ガイドラインを遵守しながら **総合考察の「下書き」をAIに手伝ってもらう具体的な方法** を、プロンプト例つきで解説します。
+
+> [iwor](/pro/)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。
+
+## 前提｜AIガイドラインの4つの遵守事項
+
+AIを使って総合考察の下書きを作る前に、日本内科学会の[生成AI利用ガイドライン](https://www.naika.or.jp/wp-content/uploads/2024/11/660e0ab9ceb7e389b5eccbc7520a23f4.pdf)（2024年11月9日公表）で定められた4つの遵守事項を必ず確認しましょう。このガイドラインは「生成AIの使用を推奨するものではない」と明記したうえで、以下を遵守すれば活用が認められるとしています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="J-OSLER生成AI利用ガイドラインの4つの遵守事項を示した図解">
+  <defs><filter id="fj02a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="420" fill="#F5F4F0" rx="12" filter="url(#fj02a)"/>
+  <text x="400" y="45" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="18" fontWeight="bold" fill="#1B4F3A">生成AI利用ガイドライン 4つの遵守事項</text>
+  <rect x="30" y="70" width="355" height="140" rx="10" fill="#FEFEFC" stroke="#DDD9D2" strokeWidth="1.5"/>
+  <circle cx="60" cy="100" r="18" fill="#E8F0EC"/>
+  <text x="60" y="106" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="16" fontWeight="bold" fill="#1B4F3A">1</text>
+  <text x="88" y="100" fontFamily="'Noto Sans JP', sans-serif" fontSize="14" fontWeight="bold" fill="#1A1917">学習に反映しない設定で利用</text>
+  <text x="88" y="122" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">ChatGPTなら「データ管理」でチャット</text>
+  <text x="88" y="140" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">履歴をモデル改善に使わない設定にする</text>
+  <text x="88" y="162" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">院内ネットワーク経由の利用が望ましい</text>
+  <rect x="415" y="70" width="355" height="140" rx="10" fill="#FEFEFC" stroke="#DDD9D2" strokeWidth="1.5"/>
+  <circle cx="445" cy="100" r="18" fill="#E8F0EC"/>
+  <text x="445" y="106" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="16" fontWeight="bold" fill="#1B4F3A">2</text>
+  <text x="473" y="100" fontFamily="'Noto Sans JP', sans-serif" fontSize="14" fontWeight="bold" fill="#1A1917">患者の個人識別情報を入力しない</text>
+  <text x="473" y="122" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">ID, 氏名, 住所, 生年月日は絶対NG</text>
+  <text x="473" y="140" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">「70代男性」等の匿名化した情報で</text>
+  <text x="473" y="162" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">プロンプトを作成する</text>
+  <rect x="30" y="230" width="355" height="140" rx="10" fill="#FEFEFC" stroke="#DDD9D2" strokeWidth="1.5"/>
+  <circle cx="60" cy="260" r="18" fill="#E8F0EC"/>
+  <text x="60" y="266" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="16" fontWeight="bold" fill="#1B4F3A">3</text>
+  <text x="88" y="260" fontFamily="'Noto Sans JP', sans-serif" fontSize="14" fontWeight="bold" fill="#1A1917">AI使用用途を開示する</text>
+  <text x="88" y="282" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">経験症例の原稿のなかで、生成AIを</text>
+  <text x="88" y="300" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">どの用途に使用したかを記載する</text>
+  <text x="88" y="318" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">（文献検索の補助, 文章校正 等）</text>
+  <rect x="415" y="230" width="355" height="140" rx="10" fill="#FEFEFC" stroke="#DDD9D2" strokeWidth="1.5"/>
+  <circle cx="445" cy="260" r="18" fill="#E8F0EC"/>
+  <text x="445" y="266" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="16" fontWeight="bold" fill="#1B4F3A">4</text>
+  <text x="473" y="260" fontFamily="'Noto Sans JP', sans-serif" fontSize="14" fontWeight="bold" fill="#1A1917">自己省察・考察は自分の言葉で</text>
+  <text x="473" y="282" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">AIの出力をそのまま複写しない</text>
+  <text x="473" y="300" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">必ず自分の言葉で書き直す</text>
+  <text x="473" y="318" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">「下書き」であって「完成品」ではない</text>
+  <text x="400" y="405" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+とくに重要なのは**遵守事項4「自己省察・考察は生成AIの出力をそのまま複写せず、自身の言葉で記述する」** です。AIが出力したものをコピペするのではなく、あくまで「たたき台」として使い、自分の臨床経験を反映させた文章に書き換える必要があります。
+
+この前提を押さえたうえで、具体的な活用方法を見ていきましょう。AIガイドラインの詳細は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)の記事でも解説しています。
+
+## 総合考察が難しい3つの理由
+
+総合考察でつまずく専攻医が多いのには、明確な理由があります。
+
+1つ目は **「何をどこまで書けばいいのか」の正解がないこと** です。[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)には考察の書き方の大枠は示されていますが、具体的にどこまで深掘りすべきかの基準は明示されていません。指導医によって求めるレベルが異なるため、手探りで進めることになりがちです。
+
+2つ目は **文献検索に時間がかかること** です。PubMedで適切な論文を見つけ、内容を確認し、引用に値するかを判断する作業だけで1時間以上かかることも珍しくありません。
+
+3つ目は **考察の構成パターンを知らないこと** です。ゼロから考察を書こうとすると途方に暮れますが、実は考察には典型的な構成パターンがあり、それを知っているだけで書きやすさが大きく変わります。
+
+AIは、この3つの問題のうち「文献検索の効率化」と「構成パターンの提示」に特に力を発揮します。
+
+## 総合考察の3つの構成パターン
+
+AIに指示を出す前に、総合考察の典型的な構成パターンを押さえておきましょう。パターンを知っていれば、プロンプトも的確に書けるようになります。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="総合考察の3つの構成パターンを比較した図解">
+  <defs><filter id="fj02b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="560" fill="#F5F4F0" rx="12" filter="url(#fj02b)"/>
+  <text x="400" y="40" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="18" fontWeight="bold" fill="#1B4F3A">総合考察の3つの構成パターン</text>
+  <rect x="25" y="65" width="240" height="440" rx="10" fill="#FEFEFC" stroke="#1B4F3A" strokeWidth="2"/>
+  <rect x="25" y="65" width="240" height="45" rx="10" fill="#1B4F3A"/>
+  <text x="145" y="93" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="15" fontWeight="bold" fill="#FEFEFC">A: 診断プロセス型</text>
+  <text x="45" y="135" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">向いている症例</text>
+  <text x="45" y="155" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">診断に至るまでの過程が</text>
+  <text x="45" y="173" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">教育的な症例</text>
+  <line x1="45" y1="190" x2="245" y2="190" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="45" y="215" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">構成</text>
+  <text x="45" y="240" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">1. 鑑別診断の列挙</text>
+  <text x="45" y="260" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">2. 各鑑別の検討根拠</text>
+  <text x="45" y="280" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">3. 確定診断に至る論理</text>
+  <text x="45" y="300" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">4. 診断の妥当性の考察</text>
+  <line x1="45" y1="315" x2="245" y2="315" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="45" y="340" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">例</text>
+  <text x="45" y="365" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">不明熱の精査で</text>
+  <text x="45" y="385" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">成人Still病と診断</text>
+  <text x="45" y="405" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">→鑑別過程を文献と</text>
+  <text x="45" y="425" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">照らして考察する</text>
+  <rect x="280" y="65" width="240" height="440" rx="10" fill="#FEFEFC" stroke="#3D5A80" strokeWidth="2"/>
+  <rect x="280" y="65" width="240" height="45" rx="10" fill="#3D5A80"/>
+  <text x="400" y="93" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="15" fontWeight="bold" fill="#FEFEFC">B: 治療選択型</text>
+  <text x="300" y="135" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">向いている症例</text>
+  <text x="300" y="155" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">ガイドラインに沿った治療</text>
+  <text x="300" y="173" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">選択の妥当性を論じる症例</text>
+  <line x1="300" y1="190" x2="500" y2="190" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="300" y="215" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">構成</text>
+  <text x="300" y="240" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">1. 本症例の治療方針</text>
+  <text x="300" y="260" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">2. GL推奨との比較</text>
+  <text x="300" y="280" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">3. 個別化した根拠</text>
+  <text x="300" y="300" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">4. 転帰と治療効果の評価</text>
+  <line x1="300" y1="315" x2="500" y2="315" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="300" y="340" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">例</text>
+  <text x="300" y="365" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">心不全の薬物治療で</text>
+  <text x="300" y="385" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">SGLT2阻害薬を選択</text>
+  <text x="300" y="405" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">→GL推奨と個別事情を</text>
+  <text x="300" y="425" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">照らし合わせて考察</text>
+  <rect x="535" y="65" width="240" height="440" rx="10" fill="#FEFEFC" stroke="#2D6A4F" strokeWidth="2"/>
+  <rect x="535" y="65" width="240" height="45" rx="10" fill="#2D6A4F"/>
+  <text x="655" y="93" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="15" fontWeight="bold" fill="#FEFEFC">C: 全人的考察型</text>
+  <text x="555" y="135" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">向いている症例</text>
+  <text x="555" y="155" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">社会的背景や患者の意思</text>
+  <text x="555" y="173" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">決定が治療に大きく関わる症例</text>
+  <line x1="555" y1="190" x2="755" y2="190" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="555" y="215" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">構成</text>
+  <text x="555" y="240" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">1. 医学的問題の整理</text>
+  <text x="555" y="260" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">2. 社会的背景の影響</text>
+  <text x="555" y="280" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">3. 患者の価値観・希望</text>
+  <text x="555" y="300" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">4. 多職種連携と学び</text>
+  <line x1="555" y1="315" x2="755" y2="315" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="555" y="340" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1A1917">例</text>
+  <text x="555" y="365" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">独居高齢者のCOPD増悪</text>
+  <text x="555" y="385" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">→治療だけでなく在宅</text>
+  <text x="555" y="405" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">環境・介護サービス調整</text>
+  <text x="555" y="425" fontFamily="'Noto Sans JP', sans-serif" fontSize="12" fill="#6B6760">まで含めて考察</text>
+  <text x="400" y="545" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+多くの病歴要約では、この3パターンのうち1つをメインに据え、必要に応じて他のパターンの要素を組み合わせます。たとえば「診断プロセス型」をメインにしながら、最後に「全人的視点」に触れる構成がよく見られます。
+
+自分の症例がどのパターンに合うかを決めてからAIにプロンプトを投げると、的外れな出力を防げます。構成パターンの詳細は[総合考察の書き方](/blog/c04-josler-sougou-kousatsu-kakikata)や[全人的視点の書き方](/blog/c05-josler-zenjinteki-shiten)の記事もあわせてご覧ください。
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## 実践｜AIで総合考察の下書きを作る手順
+
+ここからは具体的な手順を解説します。ツールはChatGPT（GPT-4o以上推奨）、Perplexity、またはClaudeを想定しています。とくに文献検索ではClaudeのPubMed MCP連携が強力です。PubMedのデータベースに直接アクセスして論文を検索できるため、ハルシネーション（存在しない論文の生成）のリスクが大幅に低くなります。
+
+### ステップ1: 匿名化した症例情報をまとめる
+
+まず、AIに渡す症例情報を準備します。ガイドラインの遵守事項2に従い、 **患者のID・氏名・住所・生年月日は絶対に入力しない** でください。
+
+```
+【匿名化した症例情報の例】
+年齢・性別: 70代男性
+主訴: 発熱, 食欲不振
+現病歴: 10日前から38度台の発熱が持続. 近医で抗菌薬を処方されたが改善せず紹介受診.
+既往歴: 2型糖尿病(HbA1c 7.8%), 高血圧
+身体所見: 体温38.6度, 右肋骨脊柱角叩打痛あり
+検査所見: WBC 15,200/uL, CRP 18.5 mg/dL, 尿中白血球(3+), 尿培養 大腸菌
+画像所見: CT: 右腎盂拡張, 右尿管結石(8mm)
+診断: 尿路結石に伴う閉塞性腎盂腎炎
+治療: 緊急尿管ステント留置 + CTRX(セフトリアキソン)静注
+転帰: 解熱し第14病日に退院
+```
+
+このように、診断・治療に必要な情報を箇条書きでまとめておくと、AIが的確な考察を生成しやすくなります。
+
+### ステップ2: 構成パターンを指定してプロンプトを投げる
+
+上で選んだ構成パターンに合わせてプロンプトを作ります。以下に「診断プロセス型」と「治療選択型」のプロンプト例を示します。
+
+**診断プロセス型のプロンプト例:**
+
+```
+あなたは内科指導医です.
+以下の症例について, J-OSLER病歴要約の総合考察の下書きを作成してください.
+
+【構成】
+1. 鑑別診断の列挙と検討(なぜ各鑑別を考えたか, なぜ除外/確定に至ったか)
+2. 本症例で診断が遅れ得た要因の分析
+3. エビデンスに基づく診断基準・ガイドラインとの照合
+4. 本症例から得られた臨床的教訓
+
+【症例情報】
+(ここに匿名化した症例情報を貼り付け)
+
+【注意事項】
+- 引用可能な文献(日本語の総説・症例報告またはPubMed論文)を2-3本提示してください
+- 医学用語は正確に使用してください
+- 句読点は「,」「.」を使用してください
+- 文字数は800-1200字程度を目安にしてください
+```
+
+**治療選択型のプロンプト例:**
+
+```
+あなたは内科指導医です.
+以下の症例について, J-OSLER病歴要約の総合考察の下書きを作成してください.
+
+【構成】
+1. 本症例の治療方針の要約
+2. 関連するガイドラインの推奨との比較
+3. 本症例の個別事情(年齢, 合併症, 社会的背景)を踏まえた治療選択の妥当性
+4. 転帰の評価と今後の治療課題
+
+【症例情報】
+(ここに匿名化した症例情報を貼り付け)
+
+【注意事項】
+- 引用可能な文献を2-3本提示してください
+- 医学用語は正確に使用してください
+- 句読点は「,」「.」を使用してください
+- 文字数は800-1200字程度を目安にしてください
+```
+
+### ステップ3: 出力を検証し、自分の言葉で書き直す
+
+AIの出力を受け取ったら、以下の3つの観点で必ず検証してください。
+
+- **医学的正確性**: 記載されている疾患概念・診断基準・治療法が正しいか。AIは最新のガイドライン改訂を反映していない場合があります
+- **文献の実在性**: AIが提示した論文が実際に存在するか、PubMedやGoogle Scholarで確認してください。AIは存在しない論文を「ハルシネーション」として生成することがあります
+- **自分の臨床体験との整合性**: AIの出力は一般論に偏りがちです。「この患者さんで自分が実際に考えたこと・悩んだこと」を反映させることで、考察に独自性が生まれます
+
+ガイドラインの遵守事項4のとおり、**AIの出力をそのままコピペすることは認められていません**。あくまで「構成のたたき台」として使い、自分の言葉で書き直してください。
+
+## 文献検索をAIで効率化するコツ
+
+総合考察で時間がかかるもう1つのポイントが文献検索です。AIを活用すると、候補論文の絞り込みが大幅に効率化できます。
+
+### Perplexityで引用文献つきの情報を得る
+
+[Perplexity](https://www.perplexity.ai/)は回答にソースリンクをつけて返してくれるため、文献検索の入口として非常に便利です。以下のようなプロンプトで使います。
+
+```
+閉塞性腎盂腎炎の治療について,
+以下の点を日本語の総説または症例報告から回答してください.
+1. 緊急ドレナージの適応基準
+2. 推奨される抗菌薬と投与期間
+3. 尿路結石合併時の治療戦略
+参考文献も提示してください.
+```
+
+Perplexityが提示した文献を **必ずPubMedや医中誌で実在確認** してください。ソースリンクが切れている場合や、内容が微妙にずれている場合があります。
+
+### ChatGPTで構造化された文献レビューを依頼する
+
+ChatGPTには文献のURLを直接検索する機能はありませんが、特定のトピックについて構造化された知識を出力させることは得意です。
+
+```
+閉塞性腎盂腎炎の総合考察を書くにあたり,
+以下のトピックについてエビデンスの概要を教えてください.
+1. 閉塞性腎盂腎炎の死亡率と重症化リスク因子
+2. 尿路ドレナージのタイミング(尿管ステント vs 腎瘻)
+3. 起因菌としてのESBL産生菌の頻度と初期治療への影響
+出典となりそうな論文名・著者・掲載誌も可能な範囲で教えてください.
+```
+
+ただし、ChatGPTが出力した論文情報は **ハルシネーションの可能性が高い** 点に注意してください。論文名・著者名をそのまま信用せず、必ずPubMedで検索して実在を確認しましょう。文献検索の詳しいテクニックは[病歴要約の文献引用ガイド](/blog/c07-josler-bunken-inyo)もご参照ください。
+
+### Claude + PubMed MCPで正確な文献を取得する【おすすめ】
+
+文献検索で最もおすすめなのが **Claude（Anthropic）のPubMed MCP連携** です。ClaudeはPubMed MCPサーバーを接続すると、PubMedのデータベースに直接アクセスして論文を検索できます。実在する論文のみを返すため、ChatGPTで問題になるハルシネーションのリスクが大幅に低くなります。
+
+```
+閉塞性腎盂腎炎について,
+以下の条件でPubMedから論文を検索してください.
+1. 尿路閉塞を伴う腎盂腎炎の緊急ドレナージに関するレビューまたはメタアナリシス
+2. 過去10年以内の論文
+3. 日本語の総説があれば優先
+各論文のタイトル, 著者, 掲載誌, PMID, DOIを教えてください.
+```
+
+Claude + PubMed MCPなら、PMID・DOI・掲載誌などのメタデータが実データから取得されるため、引用文献リストの作成がそのまま捗ります。PubMedで改めて実在確認する手間も大幅に減ります。
+
+## AIを使ったときの開示文の書き方
+
+ガイドラインの遵守事項3では、AI使用用途の開示が求められています。J-OSLERの経験症例の原稿内に、以下のような開示文を記載しましょう。
+
+```
+【生成AI利用の開示】
+本症例の病歴要約作成にあたり, 以下の用途で生成AI(ChatGPT GPT-4o)を使用した.
+- 総合考察の構成案作成の補助
+- 関連文献の候補検索
+なお, 考察の内容は自身の臨床経験と文献精読に基づき記述しており, AIの出力をそのまま使用していない. 引用文献は全て原文を確認した.
+```
+
+開示文を書くことで、査読委員に対して「ガイドラインを理解し遵守している」ことを明示できます。開示文の他のパターンは[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)の記事でも紹介しています。
+
+## よくある失敗と対策
+
+AIで総合考察の下書きを作る際に、よくある失敗を3つ紹介します。
+
+### 失敗1: AIの出力をそのままコピペしてしまう
+
+最も多い失敗であり、最も深刻な問題です。AIの出力は「一般論」であり、あなたの臨床体験は反映されていません。査読委員が読めば、自分の経験に基づいていない考察は見抜かれます。
+
+**対策**: AIの出力は必ず「構成のたたき台」として扱い、以下の3点を自分の言葉で追加してください。
+
+- この症例で自分が実際に迷ったこと・悩んだこと
+- 文献と自分の経験を照らし合わせて気づいたこと
+- この症例を通じて学んだ臨床的教訓
+
+### 失敗2: 存在しない論文を引用してしまう
+
+AIが生成した文献情報をそのまま引用すると、実在しない論文（ハルシネーション）を参考文献に載せてしまうリスクがあります。査読でこれが発覚すると、差し戻し（Revision）の原因になります。
+
+**対策**: AIが提示した論文は **100%PubMedまたは医中誌で実在を確認する** ことを習慣にしてください。論文タイトルだけでなく、著者名・掲載誌・発行年まで一致するかを確認しましょう。
+
+### 失敗3: 考察が長くなりすぎる
+
+AIは指定しないと長文を出力しがちです。病歴要約はA4用紙2枚（A3用紙1枚）に収める必要があるため、考察部分は800〜1,200字程度が目安です。
+
+**対策**: プロンプトに「文字数は800-1200字程度」と明記してください。また、論点を1つのメインテーマに絞り、関連する2〜3の観点で深掘りする構成にすると、コンパクトにまとまります。
+
+差し戻しのよくある原因と対策は[病歴要約の差し戻し対策](/blog/c08-josler-byoreki-youyaku-sashimodoshi)でまとめています。
+
+## 手動 vs AI vs iwor｜総合考察の作成方法を比較
+
+総合考察の作成には、完全手動・汎用AI活用・専用ツール活用の3つのアプローチがあります。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" role="img" aria-label="総合考察の作成方法3種類の比較表">
+  <defs><filter id="fj02c" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="460" fill="#F5F4F0" rx="12" filter="url(#fj02c)"/>
+  <text x="400" y="40" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="18" fontWeight="bold" fill="#1B4F3A">総合考察の作成方法 比較</text>
+  <rect x="30" y="60" width="740" height="45" rx="6" fill="#1B4F3A"/>
+  <text x="145" y="87" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#FEFEFC">比較項目</text>
+  <text x="340" y="87" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#FEFEFC">完全手動</text>
+  <text x="510" y="87" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#FEFEFC">ChatGPT / Perplexity</text>
+  <text x="680" y="87" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#FEFEFC">iwor</text>
+  <rect x="30" y="110" width="740" height="55" rx="0" fill="#FEFEFC" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="145" y="142" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#1A1917">所要時間（目安）</text>
+  <text x="340" y="142" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">2〜4時間</text>
+  <text x="510" y="142" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">30〜60分</text>
+  <text x="680" y="142" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1B4F3A">10〜20分</text>
+  <rect x="30" y="170" width="740" height="55" rx="0" fill="#F0EDE7" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="145" y="192" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#1A1917">文献検索</text>
+  <text x="340" y="192" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">PubMed手動検索</text>
+  <text x="510" y="192" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">AI候補+手動確認</text>
+  <text x="680" y="185" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1B4F3A">疾患別に引用文献</text>
+  <text x="680" y="205" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1B4F3A">候補を自動提示</text>
+  <rect x="30" y="230" width="740" height="55" rx="0" fill="#FEFEFC" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="145" y="262" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#1A1917">考察の構成</text>
+  <text x="340" y="262" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">自分でゼロから</text>
+  <text x="510" y="262" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">プロンプト次第</text>
+  <text x="680" y="255" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1B4F3A">疾患群別に考察の</text>
+  <text x="680" y="275" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1B4F3A">方向性を自動提示</text>
+  <rect x="30" y="290" width="740" height="55" rx="0" fill="#F0EDE7" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="145" y="322" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#1A1917">ハルシネーション</text>
+  <text x="340" y="322" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">なし</text>
+  <text x="510" y="322" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#991B1B">リスクあり</text>
+  <text x="680" y="322" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">リスク低い</text>
+  <rect x="30" y="350" width="740" height="55" rx="0" fill="#FEFEFC" stroke="#DDD9D2" strokeWidth="1"/>
+  <text x="145" y="382" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#1A1917">J-OSLER形式対応</text>
+  <text x="340" y="382" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">自分で調整</text>
+  <text x="510" y="382" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fill="#6B6760">自分で調整</text>
+  <text x="680" y="382" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="13" fontWeight="bold" fill="#1B4F3A">テンプレートが対応済</text>
+  <text x="400" y="445" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontSize="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+完全手動は確実ですが時間がかかりすぎます。ChatGPTやPerplexityは便利ですが、プロンプトの作り方次第で出力の質が大きく変わり、文献のハルシネーションにも注意が必要です。
+
+[iwor](/pro/)のAI病歴要約テンプレートは、疾患群と疾患名を選ぶだけでOPQRST・検査所見の書式・プロブレムリスト・考察の方向性・引用文献候補まで提示されるため、自分でプロンプトを組み立てる必要がありません。引用文献候補はClaude PubMed MCPでPubMedの論文データベースと照合してファクトチェック済みなので、ハルシネーションのリスクが低く安心して参考にできます。全70疾患群・373疾患に対応しているので、疾患別テンプレートを探す手間もなくなります。
+
+## まとめ
+
+J-OSLER病歴要約の総合考察は、AIを「下書きの補助」として活用することで作業時間を大幅に短縮できます。ただし、以下の3点は必ず守ってください。
+
+- 日本内科学会の[生成AI利用ガイドライン](https://www.naika.or.jp/wp-content/uploads/2024/11/660e0ab9ceb7e389b5eccbc7520a23f4.pdf)の4つの遵守事項を守る
+- AIの出力はそのままコピペせず、自分の臨床体験を反映させて書き直す
+- 文献は必ずPubMed・医中誌で実在を確認する
+
+この記事で紹介したプロンプト例と構成パターンを活用すれば、考察を書く際の「何を書けばいいか分からない」という最初のハードルを大幅に下げられるはずです。
+
+総合考察の詳しい書き方は[総合考察の書き方ガイド](/blog/c04-josler-sougou-kousatsu-kakikata)、病歴要約全体のテンプレートは[病歴要約テンプレート集](/blog/c02-josler-byoreki-youyaku-template)もあわせてご活用ください。
+
+## よくある質問（FAQ）
+
+### Q: AIで作った考察をそのまま提出しても大丈夫ですか？
+
+いいえ。日本内科学会の生成AI利用ガイドラインでは「自己省察・考察は生成AIの出力をそのまま複写せず、自身の言葉で記述する」ことが遵守事項として定められています。AIの出力はあくまで構成のたたき台として使い、自分の臨床経験を反映させた文章に書き直してください。
+
+### Q: どのAIツールがJ-OSLERの考察作成に向いていますか？
+
+文献検索には **Claude + PubMed MCP連携が最もおすすめ** です。PubMedのデータベースに直接アクセスするため、存在しない論文を提示するハルシネーションのリスクが大幅に低くなります。Perplexityも回答にソースリンクがつくため、引用候補を探す入口として使いやすいでしょう。考察の構成案作成にはChatGPT（GPT-4o以上）やClaudeが適しています。
+
+### Q: AI使用の開示をしないとどうなりますか？
+
+ガイドラインでは経験症例の原稿内でAI使用用途を開示することが遵守事項とされています。未開示の場合、査読委員や指導医から指摘を受ける可能性があります。適切に開示することで、むしろ「ガイドラインを理解し遵守している」という姿勢を示すことができます。
+
+### Q: iworのAI病歴要約テンプレートとChatGPTの違いは何ですか？
+
+ChatGPTは汎用AIのため、J-OSLERの形式に合わせたプロンプトを自分で作る必要があり、出力の質はプロンプト次第です。[iwor](/pro/)のAI病歴要約テンプレートは、疾患群と疾患名を選ぶだけでJ-OSLER形式のOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補が提示されます。さらに、引用文献候補はClaude PubMed MCPでPubMedの実データと照合済みのため、ハルシネーションのリスクが低い点も大きな違いです。全70疾患群・373疾患に対応しており、プロンプトを組み立てる手間がかかりません。
+
+### Q: 考察の適切な文字数はどのくらいですか？
+
+病歴要約全体をA4用紙2枚（またはA3用紙1枚）に収める必要があるため、考察部分は800〜1,200字程度が目安です。AIに依頼する際も、プロンプトに文字数の指定を入れておくとよいでしょう。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [抗菌薬 腎機能別用量](/tools/calc/renal-dose-abx)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

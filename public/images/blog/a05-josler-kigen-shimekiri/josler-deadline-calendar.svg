@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="tl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3D5A80"/>
+      <stop offset="50%" stop-color="#1B4F3A"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <rect x="24" y="16" width="752" height="48" rx="12" fill="#1E3A5F"/>
+  <text x="400" y="47" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">J-OSLER 3年間の期限カレンダー</text>
+
+  <!-- Timeline bar -->
+  <rect x="60" y="96" width="680" height="8" rx="4" fill="url(#tl)"/>
+  <circle cx="60" cy="100" r="8" fill="#3D5A80" stroke="#FEFEFC" stroke-width="2"/>
+  <circle cx="286" cy="100" r="8" fill="#1B4F3A" stroke="#FEFEFC" stroke-width="2"/>
+  <circle cx="513" cy="100" r="8" fill="#1B4F3A" stroke="#FEFEFC" stroke-width="2"/>
+  <circle cx="740" cy="100" r="8" fill="#166534" stroke="#FEFEFC" stroke-width="2"/>
+  <text x="60" y="86" text-anchor="middle" fill="#3D5A80" font-size="11" font-weight="600">1年目4月</text>
+  <text x="286" y="86" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">2年目4月</text>
+  <text x="513" y="86" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">3年目4月</text>
+  <text x="740" y="86" text-anchor="middle" fill="#166534" font-size="11" font-weight="600">4年目</text>
+
+  <!-- 1年目 Card -->
+  <rect x="40" y="125" width="220" height="145" rx="10" fill="#FEFEFC" filter="url(#sh)"/>
+  <rect x="40" y="125" width="220" height="32" rx="10" fill="#3D5A80"/>
+  <rect x="40" y="147" width="220" height="10" fill="#3D5A80"/>
+  <text x="150" y="148" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">1年目：種まき</text>
+  <text x="54" y="178" fill="#44403C" font-size="12">&#x1F4CB; 症例登録 40〜60件</text>
+  <text x="54" y="200" fill="#44403C" font-size="12">&#x1F4DD; 病歴要約 5〜10篇開始</text>
+  <text x="54" y="222" fill="#44403C" font-size="12">&#x1F4CA; 研修評価（半年ごと）</text>
+  <text x="54" y="244" fill="#44403C" font-size="12">&#x1F3EB; 講習会 年2回受講</text>
+
+  <!-- 2年目 Card -->
+  <rect x="278" y="125" width="220" height="145" rx="10" fill="#FEFEFC" filter="url(#sh)"/>
+  <rect x="278" y="125" width="220" height="32" rx="10" fill="#1B4F3A"/>
+  <rect x="278" y="147" width="220" height="10" fill="#1B4F3A"/>
+  <text x="388" y="148" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">2年目：仕上げ前半</text>
+  <text x="292" y="178" fill="#44403C" font-size="12">&#x1F4CB; 症例登録 120件到達</text>
+  <text x="292" y="200" fill="#44403C" font-size="12">&#x1F4DD; 病歴要約 29篇 個別承認</text>
+  <text x="292" y="222" fill="#44403C" font-size="12">&#x1F3A4; 学会発表 2回以上</text>
+  <text x="292" y="244" fill="#44403C" font-size="12">&#x1F691; JMECC受講</text>
+
+  <!-- 3年目 Card -->
+  <rect x="516" y="125" width="260" height="145" rx="10" fill="#FEFEFC" filter="url(#sh)"/>
+  <rect x="516" y="125" width="260" height="32" rx="10" fill="#7F1D1D"/>
+  <rect x="516" y="147" width="260" height="10" fill="#7F1D1D"/>
+  <text x="646" y="148" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">3年目：勝負の年</text>
+  <text x="530" y="178" fill="#44403C" font-size="12">&#x1F534; 一次評価 4月〜10/31</text>
+  <text x="530" y="200" fill="#44403C" font-size="12">&#x1F534; 二次評価 5月〜翌2/20</text>
+  <text x="530" y="222" fill="#44403C" font-size="12">&#x1F534; 修了認定 1月〜3/31</text>
+  <text x="530" y="244" fill="#44403C" font-size="12">&#x1F4E2; 内科専門医試験 出願</text>
+
+  <!-- 3年目 detailed timeline -->
+  <rect x="40" y="290" width="736" height="200" rx="12" fill="#FEFEFC" filter="url(#sh)"/>
+  <text x="60" y="318" fill="#1E3A5F" font-size="15" font-weight="700">3年目の月別スケジュール（逆算の目安）</text>
+
+  <!-- Month axis -->
+  <rect x="60" y="340" width="696" height="4" rx="2" fill="#E7E5E4"/>
+  <text x="60" y="368" text-anchor="middle" fill="#78716C" font-size="10">4月</text>
+  <text x="118" y="368" text-anchor="middle" fill="#78716C" font-size="10">5月</text>
+  <text x="176" y="368" text-anchor="middle" fill="#78716C" font-size="10">6月</text>
+  <text x="234" y="368" text-anchor="middle" fill="#78716C" font-size="10">7月</text>
+  <text x="292" y="368" text-anchor="middle" fill="#78716C" font-size="10">8月</text>
+  <text x="350" y="368" text-anchor="middle" fill="#78716C" font-size="10">9月</text>
+  <text x="408" y="368" text-anchor="middle" fill="#78716C" font-size="10">10月</text>
+  <text x="466" y="368" text-anchor="middle" fill="#78716C" font-size="10">11月</text>
+  <text x="524" y="368" text-anchor="middle" fill="#78716C" font-size="10">12月</text>
+  <text x="582" y="368" text-anchor="middle" fill="#78716C" font-size="10">1月</text>
+  <text x="640" y="368" text-anchor="middle" fill="#78716C" font-size="10">2月</text>
+  <text x="698" y="368" text-anchor="middle" fill="#78716C" font-size="10">3月</text>
+
+  <!-- 一次評価 bar -->
+  <rect x="60" y="378" width="348" height="22" rx="6" fill="#1B4F3A" opacity="0.85"/>
+  <text x="234" y="393" text-anchor="middle" fill="#FEFEFC" font-size="11" font-weight="600">一次評価（4月〜10/31）</text>
+
+  <!-- 安全ライン for 一次 -->
+  <line x1="234" y1="378" x2="234" y2="400" stroke="#EF4444" stroke-width="2" stroke-dasharray="4"/>
+  <text x="234" y="414" text-anchor="middle" fill="#EF4444" font-size="9" font-weight="600">7月まで依頼推奨</text>
+
+  <!-- 二次評価 bar -->
+  <rect x="118" y="422" width="522" height="22" rx="6" fill="#3D5A80" opacity="0.85"/>
+  <text x="379" y="437" text-anchor="middle" fill="#FEFEFC" font-size="11" font-weight="600">二次評価（5月〜翌2/20）</text>
+
+  <!-- 安全ライン for 二次 -->
+  <line x1="466" y1="422" x2="466" y2="444" stroke="#EF4444" stroke-width="2" stroke-dasharray="4"/>
+  <text x="466" y="458" text-anchor="middle" fill="#EF4444" font-size="9" font-weight="600">11月まで依頼推奨</text>
+
+  <!-- 修了認定 bar -->
+  <rect x="582" y="464" width="174" height="22" rx="6" fill="#7F1D1D" opacity="0.85"/>
+  <text x="669" y="479" text-anchor="middle" fill="#FEFEFC" font-size="11" font-weight="600">修了認定 1月〜3/31</text>
+
+  <!-- Footer -->
+  <text x="756" y="510" text-anchor="end" fill="#A8A29E" font-size="9">© 内科ナビ naikanavi.com</text>
+</svg>

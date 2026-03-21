@@ -1,0 +1,139 @@
+---
+title: "Notionで専攻医のJ-OSLER進捗を管理する方法｜テンプレート活用術"
+description: "NotionをJ-OSLER進捗管理に活用する方法を解説。症例登録・病歴要約・講習会の進捗トラッキング、データベース設計のコツ、iworとの使い分けまで。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "iwor編集部"
+category: "ai-tools"
+cluster: "J"
+pillar: "josler-complete-guide"
+tags: ["Notion", "J-OSLER", "進捗管理", "タスク管理", "内科専攻医", "効率化"]
+cta_type: "progress"
+reading_time: 9
+status: "published"
+seo_checked: true
+---
+
+「J-OSLERの進捗管理、みんなどうやってるんだろう」「エクセルで管理しているけど、もっと見やすくしたい」と思ったことはありませんか。
+
+J-OSLERのシステム自体にも進捗確認機能はありますが、「今月中に何件承認が必要か」「病歴要約のどの篇が差し戻し中か」といった細かい状況を自分でコントロールしながら管理したいと感じる専攻医は多いです。そこで活用できるのがNotionです。柔軟なデータベース設計とシンプルな操作性から、医師の個人管理ツールとして採用する人が増えています。
+
+この記事では、NotionをJ-OSLERの進捗管理に使うための基本的な構成と活用のコツを解説します。
+
+> [iwor](/pro/)のダッシュボードでは、120症例・56疾患群・29病歴要約の進捗状況を自動集計して表示します。Notionと組み合わせることで、iworで「全体の達成状況」を把握しながら、Notionで「個々の作業の細かい状況」を管理するという使い方が効率的です。
+
+## NotionとJ-OSLERを組み合わせるメリット
+
+まず率直に言うと、Notionは「J-OSLERの代替」にはなりません。J-OSLERのシステムへの登録・承認・評価はJ-OSLER上でしか行えないため、Notionはあくまで「J-OSLERと自分の間の情報整理ツール」として使うものです。
+
+それでもNotionを使う価値があるのは、J-OSLER単体では難しい「自分流の管理」ができるからです。たとえばJ-OSLERシステムでは「病歴要約篇ごとのステータスをタグで管理する」「特定の症例に対して指導医からのフィードバックメモを残す」「来週中に終わらせたい作業をToDoリストにまとめる」といったことは難しいです。Notionはこういった「個人の作業管理」に柔軟に対応できます。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" role="img" aria-label="NotionとJ-OSLERの役割分担">
+  <defs><filter id="fj06a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="260" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">NotionとJ-OSLERの役割分担</text>
+  <rect x="40" y="76" width="340" height="152" rx="10" fill="#FEFEFC" filter="url(#fj06a)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="210" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">J-OSLER（公式システム）</text>
+  <text x="60" y="128" font-family="sans-serif" font-size="11" fill="#1A1917">・症例登録・指導医承認（必須）</text>
+  <text x="60" y="150" font-family="sans-serif" font-size="11" fill="#1A1917">・病歴要約の提出・評価（必須）</text>
+  <text x="60" y="172" font-family="sans-serif" font-size="11" fill="#1A1917">・JMECC・講習会の実績登録（必須）</text>
+  <text x="60" y="196" font-family="sans-serif" font-size="11" fill="#6B6760">公式記録として残るもの</text>
+  <text x="60" y="214" font-family="sans-serif" font-size="11" fill="#6B6760">→ J-OSLER上でしか操作できない</text>
+  <rect x="420" y="76" width="340" height="152" rx="10" fill="#E8F0EC" filter="url(#fj06a)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="590" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">Notion（個人管理ツール）</text>
+  <text x="440" y="128" font-family="sans-serif" font-size="11" fill="#1A1917">・各篇のステータス管理（作成中/提出中）</text>
+  <text x="440" y="150" font-family="sans-serif" font-size="11" fill="#1A1917">・フィードバックメモ・修正箇所の記録</text>
+  <text x="440" y="172" font-family="sans-serif" font-size="11" fill="#1A1917">・週ごとのタスクと目標管理</text>
+  <text x="440" y="196" font-family="sans-serif" font-size="11" fill="#6B6760">自分流の作業管理</text>
+  <text x="440" y="214" font-family="sans-serif" font-size="11" fill="#6B6760">→ 柔軟にカスタマイズできる</text>
+  <text x="400" y="250" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 病歴要約管理データベースの作り方
+
+Notionで最もよく使われるJ-OSLER管理の用途は、病歴要約29篇の進捗トラッキングです。各篇を1つのレコードとしてデータベースに登録し、進捗ステータスをビジュアルに管理します。
+
+データベースのプロパティ（列）として設定すると便利な項目は次の通りです。疾患群名と疾患名は必須で、ステータスには「下書き中・指導医確認中・個別承認済・一次評価中・一次評価済・二次評価中・Accept済」といったタグを設定すると、29篇全体の状況が一目でわかります。指導医の名前・提出日・最終更新日も記録しておくと、リマインドのタイミングが把握しやすくなります。
+
+「フィードバックメモ」列を追加しておくと、指導医から受けたコメントや修正依頼の内容を記録できます。差し戻し対応の際に何を修正したかをメモしておくことで、次の篇を書くときの参考にもなりますし、自己省察を書く際のヒントにもなります。こういった細かい記録が積み上がることで、後半の篇を書くときに「前回はここで詰まったな」という気づきが得られやすくなります。
+
+Notionのビュー機能を使うと、データベースを「ボードビュー（カンバン形式）」で表示することでステータス別に篇を視覚的に整理できます。タスク管理アプリに慣れている方には特に使いやすい形式です。
+
+## 症例登録の進捗管理
+
+症例登録については、Notionで「登録した症例の一覧」を管理しているか、「疾患群のカバー状況」を自己管理しているかによって、管理の深さが変わります。
+
+シンプルな方法は、月ごとの症例登録件数と累積件数をNotionのシンプルテーブルで記録していくものです。「今月5件登録した、累計47件」というように月次で追うだけでも、目標の120件まであと何件かが見えやすくなります。症例登録の具体的な書き方は[症例登録の書き方ガイド](/blog/b01-josler-shourei-touroku-kakikata)を参考にしてください。
+
+より細かく管理したい場合は、疾患群ごとに「登録済み/未登録」のチェックを管理するデータベースを作ると、どの疾患群が不足しているかを一目で把握できます。ただし、この作業はJ-OSLERのモニタリング機能でも確認できます。Notionでやる場合は「細かいメモや計画を残したい」というニーズがある場合に限定するほうが、管理の二重化を防げます。
+
+[iwor](/pro/)のダッシュボードでは、56疾患群のカバー状況が自動集計されており、未達疾患群がひと目でわかります。疾患群の管理はNotionよりiworに任せて、Notionは「週次のタスクや病歴要約の細かい状況管理」に特化するというスタイルが効率的です。
+
+## 週次タスク管理との組み合わせ
+
+J-OSLERの作業を計画的に進めるうえで、Notionの「週次タスクページ」は非常に有効です。毎週月曜日に「今週やること」を書き出し、金曜日に振り返るサイクルを作るだけで、後回しになりがちな病歴要約の執筆に着実に取り組めるようになります。
+
+具体的には「今週：○○病の病歴要約の下書きを完成させる」「来週：△△先生に症例3件の承認をリマインドする」といった形でタスクを書き出し、完了したらチェックを入れていくだけです。シンプルですが、「やらなければいけないことを可視化する」効果は大きく、専攻医の忙しい日常の中で作業を前に進めるための習慣づくりに役立ちます。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 230" role="img" aria-label="NotionでのJ-OSLER週次管理サイクル">
+  <defs><filter id="fj06b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="230" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">Notion 週次管理サイクル</text>
+  <rect x="40" y="76" width="168" height="120" rx="10" fill="#FEFEFC" filter="url(#fj06b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="124" y="102" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">月曜</text>
+  <text x="60" y="124" font-family="sans-serif" font-size="10" fill="#1A1917">今週のタスクを書き出す</text>
+  <text x="60" y="142" font-family="sans-serif" font-size="10" fill="#6B6760">・病歴要約○篇の作業</text>
+  <text x="60" y="158" font-family="sans-serif" font-size="10" fill="#6B6760">・承認リマインド</text>
+  <text x="60" y="174" font-family="sans-serif" font-size="10" fill="#6B6760">・J-OSLER登録</text>
+  <text x="220" y="136" fill="#1B4F3A" font-size="16" font-family="sans-serif">→</text>
+  <rect x="240" y="76" width="168" height="120" rx="10" fill="#E8F0EC" filter="url(#fj06b)" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="324" y="102" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">平日</text>
+  <text x="260" y="124" font-family="sans-serif" font-size="10" fill="#1A1917">タスクを消化していく</text>
+  <text x="260" y="142" font-family="sans-serif" font-size="10" fill="#6B6760">完了したらチェック</text>
+  <text x="260" y="158" font-family="sans-serif" font-size="10" fill="#6B6760">フィードバックはメモ</text>
+  <text x="260" y="174" font-family="sans-serif" font-size="10" fill="#6B6760">に即座に記録</text>
+  <text x="420" y="136" fill="#1B4F3A" font-size="16" font-family="sans-serif">→</text>
+  <rect x="440" y="76" width="168" height="120" rx="10" fill="#FEFEFC" filter="url(#fj06b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="524" y="102" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">金曜</text>
+  <text x="460" y="124" font-family="sans-serif" font-size="10" fill="#1A1917">今週の振り返り</text>
+  <text x="460" y="142" font-family="sans-serif" font-size="10" fill="#6B6760">達成できたこと</text>
+  <text x="460" y="158" font-family="sans-serif" font-size="10" fill="#6B6760">持ち越しタスク確認</text>
+  <text x="460" y="174" font-family="sans-serif" font-size="10" fill="#6B6760">来週の目標を決める</text>
+  <text x="620" y="136" fill="#1B4F3A" font-size="16" font-family="sans-serif">→</text>
+  <rect x="640" y="76" width="120" height="120" rx="10" fill="#E8F0EC" filter="url(#fj06b)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="700" y="102" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1B4F3A">繰り返し</text>
+  <text x="660" y="136" font-family="sans-serif" font-size="10" fill="#6B6760">1週1週の積み</text>
+  <text x="660" y="152" font-family="sans-serif" font-size="10" fill="#6B6760">重ねが3年間の</text>
+  <text x="660" y="168" font-family="sans-serif" font-size="10" fill="#6B6760">達成につながる</text>
+  <text x="400" y="220" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 無料版と有料版の違い
+
+Notionは無料プランでも個人利用に十分な機能が使えます。J-OSLER管理に必要なデータベース作成・フィルタリング・ビューの切り替えは無料プランの範囲内でほぼカバーできます。
+
+有料プランが必要になるのは、作成したテンプレートや管理データを他の専攻医と共有して共同編集したい場合や、データの履歴管理を細かく行いたい場合などです。個人の進捗管理目的であれば無料プランで十分です。
+
+## よくある質問（FAQ）
+
+### Q. Notionを使ったことがない初心者でも使えますか？
+
+はい。Notionはドラッグ&ドロップで直感的に操作できるため、プログラミングの知識は不要です。まずは「シンプルなテーブル」を1つ作るところから始めることをおすすめします。慣れてくればデータベースのフィルタリングやビューのカスタマイズに挑戦していけます。
+
+### Q. スマートフォンでも使えますか？
+
+はい。NotionはiOS・Androidアプリが提供されており、スマートフォンからもデータの確認・更新が可能です。ただし、複雑なデータベース設計や大量の入力はPCで行うほうが効率的です。
+
+### Q. J-OSLERの公式システムとNotionの二重管理にならないですか？
+
+重複を避けるためには、「J-OSLERには公式の記録」「Notionには自分のメモと作業管理」と明確に役割を分けることが大切です。J-OSLERに登録すべき情報はJ-OSLERに入力し、Notionは「それ以上の細かい状況」や「スケジュール管理」に特化しましょう。iworのダッシュボードと組み合わせると、進捗の全体把握→細部の作業管理という流れがスムーズになります。
+
+## まとめ
+
+Notionは、J-OSLERの公式システムやiworを補完する「個人の作業管理ツール」として有効です。病歴要約29篇の進捗ステータス管理・フィードバックメモの記録・週次タスク管理といった用途に特に力を発揮します。
+
+大事なのは「完璧なデータベースを作ること」ではなく「自分が使い続けられるシンプルな仕組みを作ること」です。複雑なテンプレートを作って満足するより、毎週10分だけNotionを更新する習慣のほうが、3年間の研修を乗り越えるうえでずっと価値があります。
+
+J-OSLER進捗管理の全体方針は[J-OSLER進捗管理の方法](/blog/e01-josler-shinchoku-kanri)で、AI活用の全体戦略は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)で解説しています。

@@ -1,0 +1,36 @@
+# iwor PRO API — Cloudflare Worker 設定
+#
+# デプロイ手順:
+#   1. KV namespace 作成:
+#      npx wrangler kv namespace create IWOR_KV
+#   2. 下の kv_namespaces.id に返ってきたIDを貼り付け
+#   3. Secrets 設定:
+#      npx wrangler secret put ADMIN_KEY
+#      npx wrangler secret put GAS_KEY
+#   4. デプロイ:
+#      cd workers && npx wrangler deploy
+
+name = "iwor-api"
+main = "api.js"
+compatibility_date = "2024-01-01"
+
+# ── KV バインディング ──
+# npx wrangler kv namespace create IWOR_KV の結果で id を埋める
+[[kv_namespaces]]
+binding = "IWOR_KV"
+id = "4af092a9ddd243f09a0f6d2f1979dc6e"  # IWOR_KV
+
+# ── Workers AI バインディング ──
+[ai]
+binding = "AI"
+
+# ── Cron Trigger（競合監視 日次） ──
+[triggers]
+crons = ["0 22 * * *"]  # 毎日 22:00 UTC = 翌朝 7:00 JST
+
+# ── カスタムドメイン（任意） ──
+# Cloudflare Dashboard → Workers → iwor-api → Settings → Triggers で
+# api.iwor.jp を追加するか、以下を設定:
+# [routes]
+# pattern = "api.iwor.jp/*"
+# zone_name = "iwor.jp"

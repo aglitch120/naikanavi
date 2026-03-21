@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="'Noto Sans JP', sans-serif">
+  <rect width="800" height="380" rx="12" fill="#F5F4F0"/>
+  <text x="400" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">血液2篇のおすすめ組み合わせパターン</text>
+  <rect x="30" y="55" width="235" height="270" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="30" y="55" width="235" height="38" rx="10" fill="#1B4F3A"/>
+  <rect x="30" y="82" width="235" height="11" fill="#1B4F3A"/>
+  <text x="147" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Pattern A: 王道</text>
+  <text x="147" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">全専攻医向け</text>
+  <text x="50" y="145" font-size="12" font-weight="bold" fill="#1A1917">1篇目:</text>
+  <text x="50" y="165" font-size="11" fill="#6B6760">疾患群2（白血球系）</text>
+  <text x="50" y="183" font-size="11" fill="#1B4F3A">→ 悪性リンパ腫 / 白血病</text>
+  <line x1="50" y1="195" x2="245" y2="195" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="50" y="215" font-size="12" font-weight="bold" fill="#1A1917">2篇目:</text>
+  <text x="50" y="235" font-size="11" fill="#6B6760">疾患群1（赤血球系）</text>
+  <text x="50" y="253" font-size="11" fill="#1B4F3A">→ 鉄欠乏性貧血 / 溶血性貧血</text>
+  <rect x="50" y="275" width="195" height="30" rx="6" fill="#DCFCE7"/>
+  <text x="147" y="295" text-anchor="middle" font-size="11" fill="#166534">経験頻度が高く書きやすい</text>
+  <rect x="283" y="55" width="235" height="270" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="283" y="55" width="235" height="38" rx="10" fill="#155230"/>
+  <rect x="283" y="82" width="235" height="11" fill="#155230"/>
+  <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Pattern B: 血液志望</text>
+  <text x="400" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">血液内科サブスペ向け</text>
+  <text x="303" y="145" font-size="12" font-weight="bold" fill="#1A1917">1篇目:</text>
+  <text x="303" y="165" font-size="11" fill="#6B6760">疾患群2（白血球系）</text>
+  <text x="303" y="183" font-size="11" fill="#1B4F3A">→ 急性白血病 / MDS</text>
+  <line x1="303" y1="195" x2="498" y2="195" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="303" y="215" font-size="12" font-weight="bold" fill="#1A1917">2篇目:</text>
+  <text x="303" y="235" font-size="11" fill="#6B6760">疾患群3（出血・凝固系）</text>
+  <text x="303" y="253" font-size="11" fill="#1B4F3A">→ ITP / DIC</text>
+  <rect x="303" y="275" width="195" height="30" rx="6" fill="#E8F0EC"/>
+  <text x="400" y="295" text-anchor="middle" font-size="11" fill="#1B4F3A">考察の深さを出しやすい</text>
+  <rect x="536" y="55" width="235" height="270" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5"/>
+  <rect x="536" y="55" width="235" height="38" rx="10" fill="#6B6760"/>
+  <rect x="536" y="82" width="235" height="11" fill="#6B6760"/>
+  <text x="653" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Pattern C: バックアップ</text>
+  <text x="653" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">症例確保が困難な場合</text>
+  <text x="556" y="145" font-size="12" font-weight="bold" fill="#1A1917">1篇目:</text>
+  <text x="556" y="165" font-size="11" fill="#6B6760">疾患群1（赤血球系）</text>
+  <text x="556" y="183" font-size="11" fill="#1B4F3A">→ 再生不良性貧血 / 出血性貧血</text>
+  <line x1="556" y1="195" x2="751" y2="195" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="556" y="215" font-size="12" font-weight="bold" fill="#1A1917">2篇目:</text>
+  <text x="556" y="235" font-size="11" fill="#6B6760">疾患群2（白血球系）</text>
+  <text x="556" y="253" font-size="11" fill="#1B4F3A">→ 多発性骨髄腫 / 骨髄腫瘍</text>
+  <rect x="556" y="275" width="195" height="30" rx="6" fill="#FEF3C7"/>
+  <text x="653" y="295" text-anchor="middle" font-size="11" fill="#92400E">症例確保を優先した選択</text>
+  <text x="400" y="355" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">※ 2篇は必ず異なる疾患群から選択すること</text>
+  <text x="400" y="374" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

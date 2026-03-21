@@ -1,0 +1,338 @@
+---
+title: "J-OSLER病歴要約はWordで下書きが正解｜コピペ手順と注意点"
+description: "J-OSLER病歴要約をWordで下書きしてコピペする手順を解説。自動ログアウト対策、A4 2枚の分量調整、書式崩れ防止のコツまで。29症例を効率的に仕上げるワークフローがわかります。"
+date: "2026-03-10"
+updated: "2026-03-10"
+author: "iwor編集部"
+category: "medical-history"
+cluster: "C"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "Word", "コピペ", "テンプレート", "時短"]
+cta_type: "template"
+reading_time: 8
+status: "published"
+seo_checked: true
+---
+
+「病歴要約を書いていたら、J-OSLERが突然ログアウトして全部消えた...」「直接入力で1時間かけた総合考察が保存されていなかった...」
+
+こうした悲劇は、J-OSLERの病歴要約を直接入力している専攻医に起こりがちです。この記事では、Wordで下書きしてからJ-OSLERにコピペするワークフローを具体的な手順とともに解説します。29症例を効率よく、安全に仕上げるためのノウハウをまとめました。
+
+> [iwor](/pro/)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。
+
+## なぜWordで下書きすべきなのか
+
+J-OSLERに直接入力する方法にはいくつかのリスクがあります。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 354" role="img" aria-label="Wordで下書きする3つのメリット">
+  <defs><filter id="fc_c14" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="354" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">Wordで下書きする3つのメリット</text>
+  <rect x="24" y="92" width="368" height="90" rx="10" fill="#E8F0EC" filter="url(#fc_c14)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="114" r="14" fill="#1B4F3A"/>
+  <text x="52" y="119" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">1</text>
+  <text x="76" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">書式を自由に整形</text>
+  <text x="76" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">フォントサイズ・太字・表など</text>
+  <text x="76" y="162" font-family="sans-serif" font-size="11" fill="#6B6760">J-OSLER入力前に仕上げられる</text>
+  <rect x="412" y="92" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_c14)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="440" cy="114" r="14" fill="#1B4F3A"/>
+  <text x="440" y="119" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="464" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">バックアップ確保</text>
+  <text x="464" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">J-OSLERの入力データが</text>
+  <text x="464" y="162" font-family="sans-serif" font-size="11" fill="#6B6760">消えても復元できる</text>
+  <rect x="24" y="198" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_c14)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="220" r="14" fill="#1B4F3A"/>
+  <text x="52" y="225" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="76" y="224" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">指導医レビュー</text>
+  <text x="76" y="248" font-family="sans-serif" font-size="11" fill="#6B6760">Word形式で送れば</text>
+  <text x="76" y="268" font-family="sans-serif" font-size="11" fill="#6B6760">指導医がコメントしやすい</text>
+  <text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+
+まず、一定時間操作がないと自動ログアウトされる仕様があります。総合考察を練りながら文献を調べている間に接続が切れ、未保存の内容が失われるケースは珍しくありません。
+
+次に、J-OSLERの入力画面では文字数の把握が難しいという問題があります。[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）では、病歴要約全体の記載量について「印刷（もしくはPDF）で打ち出したときに、A4 2枚（もしくはA3 1枚）を越えないようにすること」と定められています。直接入力では、この分量制限に収まっているかをPDF出力するまで確認できません。
+
+さらに、Wordであれば校正機能や検索置換が使えます。29症例を並行して管理する際にも、ローカルにファイルが残るため安心です。
+
+![Wordで下書きする3つのメリット：自動ログアウトのリスク回避・A4 2枚の分量を事前確認・校正機能と検索置換が使える](/images/blog/c14-josler-byoreki-youyaku-word-copipe/word-merit-overview.svg)
+
+## Wordテンプレートの作り方
+
+J-OSLERの入力項目に合わせたWordテンプレートを最初に1つ作っておけば、29症例すべてに使い回せます。
+
+### 項目構成
+
+[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)に準拠して、以下の項目でテンプレートを構成します。
+
+```
+【基本情報】
+症例タイトル:
+患者ID:
+年齢:　　性別:
+入院日:　　退院日:
+受持期間:
+転帰: □治癒 □軽快 □不変 □転科 □死亡
+
+【病歴（現病歴・既往歴・社会生活歴・家族歴）】
+
+
+【主な入院時現症】
+
+
+【主要な検査所見】
+
+
+【プロブレムリスト】
+#1
+#2
+#3
+
+【入院後経過と考察】
+
+
+【退院時処方】
+
+
+【総合考察】
+
+
+【文献】
+1.
+2.
+3.
+```
+
+テンプレートの詳細な使い方や項目別の書き方は[病歴要約テンプレートの記事](/blog/c02-josler-byoreki-youyaku-template)で解説しています。
+
+### フォント・書式の設定
+
+J-OSLERにコピペした際に書式崩れを防ぐため、Word側の設定をシンプルにしておくことが重要です。
+
+フォントは等幅フォント（MSゴシック、メイリオなど）を推奨します。J-OSLERの入力欄はプレーンテキストとして扱われるため、太字・斜体・色付けなどの装飾は反映されません。Wordの段階で装飾に凝っても、コピペ後にすべて失われます。
+
+フォントサイズは10.5pt〜11ptが目安です。A4 2枚に収まるかをWord上で確認する際に、実際のPDF出力に近い見た目になります。
+
+## コピペの手順
+
+### Step 1: Wordで下書きを完成させる
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 532" role="img" aria-label="Wordから J-OSLERへのコピペ手順">
+  <defs><filter id="fs_c14" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter>
+    <marker id="afs_c14" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1B4F3A"/></marker></defs>
+  <rect width="800" height="532" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">Wordから J-OSLERへのコピペ手順</text>
+  <rect x="160" y="92" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_c14)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="112" r="14" fill="#1B4F3A"/>
+  <text x="190" y="117" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">1</text>
+  <text x="214" y="116" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">Wordで下書き完成</text>
+  <text x="214" y="137" font-family="sans-serif" font-size="11" fill="#6B6760">テンプレートに沿って全項目を記入</text>
+  <line x1="400" y1="150" x2="400" y2="170" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_c14)"/>
+  <rect x="160" y="170" width="480" height="58" rx="10" fill="#FEFEFC" filter="url(#fs_c14)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="190" r="14" fill="#1B4F3A"/>
+  <text x="190" y="195" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="214" y="194" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">書式をプレーンテキストに変換</text>
+  <text x="214" y="215" font-family="sans-serif" font-size="11" fill="#6B6760">Ctrl+A → Ctrl+Shift+Vで書式除去</text>
+  <line x1="400" y1="228" x2="400" y2="248" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_c14)"/>
+  <rect x="160" y="248" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_c14)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="268" r="14" fill="#1B4F3A"/>
+  <text x="190" y="273" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="214" y="272" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">J-OSLERの各欄にコピペ</text>
+  <text x="214" y="293" font-family="sans-serif" font-size="11" fill="#6B6760">項目ごとに該当欄へ貼り付け</text>
+  <line x1="400" y1="306" x2="400" y2="326" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_c14)"/>
+  <rect x="160" y="326" width="480" height="58" rx="10" fill="#FEFEFC" filter="url(#fs_c14)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="346" r="14" fill="#1B4F3A"/>
+  <text x="190" y="351" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">4</text>
+  <text x="214" y="350" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">プレビューで確認</text>
+  <text x="214" y="371" font-family="sans-serif" font-size="11" fill="#6B6760">改行崩れ・文字化けがないかチェック</text>
+  <line x1="400" y1="384" x2="400" y2="404" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_c14)"/>
+  <rect x="160" y="404" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_c14)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="424" r="14" fill="#1B4F3A"/>
+  <text x="190" y="429" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">5</text>
+  <text x="214" y="428" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">指導医に提出</text>
+  <text x="214" y="449" font-family="sans-serif" font-size="11" fill="#6B6760">一次評価の依頼を送信</text>
+  <text x="400" y="518" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+
+各項目を埋め、全体の分量をWord上で確認します。A4用紙2ページ（余白を標準設定にした状態）に収まることを目安にしてください。ただし最終的な分量確認はJ-OSLER上でPDF出力して行います。
+
+何を書くか迷う場合は、[iworのAI病歴要約テンプレート](/pro/)で疾患群と疾患名を選ぶとOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで構成の骨組みが出力されるので、それをWordに貼り付けて肉付けしていく流れが効率的です。
+
+### Step 2: 検査所見のフォーマットを整える
+
+検査所見は単位の統一が重要です。Wordの検索置換機能を活用すると効率的に整えられます。
+
+```
+WBC 8,500 /μL, Hb 13.2 g/dL, Plt 22.5×10^4 /μL
+AST 45 U/L, ALT 52 U/L, LDH 280 U/L
+BUN 18 mg/dL, Cr 0.8 mg/dL, eGFR 78 mL/min/1.73m^2
+CRP 5.8 mg/dL
+```
+
+検査結果のフォーマット変換や単位統一の効率化については、カルテからの転記を効率化するフォーマットテンプレートを活用しましょう。
+
+### Step 3: J-OSLERに項目ごとにコピペする
+
+ここが最も注意が必要なステップです。
+
+J-OSLERの病歴要約入力画面では、項目ごとに入力欄が分かれています。Wordの下書きから該当部分を選択してコピー（Ctrl+C）し、J-OSLERの各欄にペースト（Ctrl+V）します。
+
+項目ごとにコピペする理由は、全文を一括でペーストする欄がないためです。「病歴」「主な入院時現症」「主要な検査所見」など、それぞれの入力欄に分けて貼り付ける必要があります。
+
+### Step 4: 一時保存とPDF確認
+
+コピペが完了したら、必ず **一時保存** をクリックしてください。その後「印刷・PDF化」でPDFを出力し、以下を確認します。
+
+確認ポイントは3つあります。A4 2枚に収まっているか（画像データは除く）、紙面の80%以上を埋められているか、そして改行やスペースが意図どおり反映されているかです。
+
+分量が多すぎる場合は、入院後経過や検査所見を削って調整します。逆に少なすぎる場合は、総合考察の深掘りや全人的視点の追加を検討してください。項目ごとの文字数配分の目安や、分量オーバー時にどこを削るべきかは[病歴要約の文字数・分量ルール](/blog/c13-josler-byoreki-youyaku-mojisuu)で具体的に解説しています。総合考察の書き方は[総合考察の書き方ガイド](/blog/c04-josler-sougou-kousatsu-kakikata)を参照してください。
+
+### Step 5: 修正と再保存
+
+PDF確認で問題があれば、Word側で修正してから再度コピペします。J-OSLER上で直接修正することも可能ですが、Word側にも同じ修正を反映しておくことをおすすめします。指導医の個別評価でrevisionが入った際に、Wordファイルがあれば修正箇所の把握が容易になります。
+
+![コピペのワークフロー5ステップ：Word下書き→検査所見フォーマット→項目別コピペ→一時保存とPDF確認→修正と再保存](/images/blog/c14-josler-byoreki-youyaku-word-copipe/copipe-workflow.svg)
+
+## コピペ時のよくあるトラブルと対策
+
+### 改行が消える・増える
+
+Wordの改行コードとJ-OSLERの入力欄で改行の扱いが異なる場合があります。コピペ後に改行位置を確認し、不要な空行が入っていれば削除、改行が消えていれば手動で追加してください。
+
+特に検査所見で改行を使って項目を区切っている場合、コピペ後に1行にまとまってしまうことがあります。
+
+### 特殊文字・記号の文字化け
+
+丸囲み数字（①②③）、ローマ数字（Ⅰ、Ⅱ、Ⅲ）、上付き文字（m^2）などは、コピペ時に文字化けする可能性があります。J-OSLER上のPDF出力で確認し、化けている場合は代替表記に変更してください。
+
+具体的には、ローマ数字はアルファベットのI, II, IIIで代替し、上付き文字は「^」で表記する方法が安全です。
+
+### 修正ボタンと削除ボタンの誤操作
+
+J-OSLERの操作画面では、修正ボタンと削除ボタンが近い位置にあることが知られています。誤って削除を押してしまうリスクがあるため、Wordファイルをバックアップとして保持しておくことが重要です。
+
+## 29症例を効率的に管理するコツ
+
+### フォルダ構成
+
+29症例のWordファイルを体系的に管理するためのフォルダ構成を紹介します。
+
+```
+J-OSLER_病歴要約/
+├── テンプレート/
+│   └── 病歴要約テンプレート_v1.docx
+├── 01_消化管（肝を除く）/
+│   └── No01_胃癌_20260315.docx
+├── 02_肝臓/
+│   └── No02_肝硬変_20260320.docx
+├── 03_胆・膵/
+│   └── No03_急性膵炎_20260401.docx
+...
+└── 進捗管理表.xlsx
+```
+
+ファイル名に「No番号_疾患群_日付」を入れておくと、どの症例がどの段階にあるかが一目でわかります。
+
+29症例の疾患群バランスや選び方については[29症例の選び方ガイド](/blog/c09-josler-byoreki-youyaku-29cases)で詳しく解説しています。
+
+### バージョン管理
+
+指導医からrevisionが入るたびに、修正前のファイルを残しておくと便利です。ファイル名に「_v2」「_v3」をつけるか、Wordの変更履歴機能を活用してください。
+
+何をどう修正したかの記録が残るため、2回目以降のrevision対応が速くなります。
+
+### 検査所見テンプレートの使い回し
+
+血液生化学の基本項目は症例間で共通部分が多いため、1つ目の症例で作ったフォーマットを2つ目以降にコピーして使い回すと時短になります。
+
+```
+【血液検査】
+WBC　　/μL, Hb　　g/dL, Plt　　×10^4 /μL
+【生化学】
+TP　　g/dL, Alb　　g/dL
+AST　　U/L, ALT　　U/L, LDH　　U/L
+T-Bil　　mg/dL
+BUN　　mg/dL, Cr　　mg/dL, eGFR　　mL/min/1.73m^2
+Na　　mEq/L, K　　mEq/L, Cl　　mEq/L
+CRP　　mg/dL
+【凝固】
+PT-INR　　, APTT　　sec, D-dimer　　μg/mL
+```
+
+このテンプレートの各疾患群別カスタマイズ版は[検査所見の書き方テンプレート](/blog/c02-josler-byoreki-youyaku-template)でも紹介しています。
+
+> [iwor](/pro/)のダッシュボードなら、29病歴要約の進捗を一覧管理できます。作成中・修正中・受理済のステータスと指導医からの修正メモを一括管理。
+
+## 直接入力 vs Word下書きの比較
+
+どちらの方法にもメリット・デメリットがあります。自分のスタイルに合う方を選んでください。
+
+直接入力のメリットは、PDF出力での分量確認がリアルタイムでできることです。入力→保存→PDF出力を繰り返しながら、分量を調整できます。一方で、自動ログアウトのリスクと、バックアップがない点がデメリットです。
+
+Word下書きのメリットは、ローカルに安全にファイルが残ること、校正機能が使えること、複数症例を並行管理しやすいことです。デメリットは、コピペの手間と、PDF出力で分量が想定と異なる場合に再調整が必要な点です。
+
+おすすめは、Word下書きをベースにしつつ、入院後経過まで入力した段階で一度J-OSLERにコピペしてPDF出力し、残りの文字数・スペースを確認してから総合考察のボリュームを決める方法です。このハイブリッドなアプローチが、分量オーバーのリスクと効率のバランスが最も良いと言えます。
+
+## よくある質問（FAQ）
+
+### Q. J-OSLERに貼り付けた後、Wordファイルは消してもいい？
+
+消さないでください。指導医の個別評価や一次評価・二次評価でrevisionが入った場合、Wordファイルがあれば修正箇所を素早く特定できます。29症例すべての最終版を、修了認定が完了するまで保管しておくことを推奨します。
+
+### Q. Wordの表やインデント付きリストはコピペできる？
+
+J-OSLERの入力欄はプレーンテキスト形式です。表やインデント、箇条書きの記号はそのまま反映されません。検査所見の表形式は半角スペースやカンマ区切りで代替し、箇条書きは「・」や「-」を使って表現してください。
+
+### Q. Googleドキュメントでも同じことはできる？
+
+基本的には可能です。ただし、Googleドキュメントからのコピペでは書式情報が付随しやすいため、J-OSLERに貼り付ける際に「プレーンテキストとして貼り付け」（Ctrl+Shift+V）を使うとトラブルが減ります。Wordと同様に、PDF出力後の確認は必須です。
+
+### Q. NotePadやメモ帳でもいい？
+
+テキストエディタでも下書き自体は可能ですが、校正機能や文字数カウントがないため、Wordのほうが効率的です。文字数を気にしなくてよい項目（基本情報や退院時処方など短い項目）だけならメモ帳でも問題ありません。
+
+### Q. 一時保存はどのくらいの頻度でするべき？
+
+1つの項目を入力するごとに保存するのが安全です。最低でも、「病歴」「現症・検査所見」「入院後経過」「総合考察」の各ブロックが終わるたびに一時保存してください。自動ログアウトによるデータ消失を防ぐための最も確実な対策は、こまめな保存です。
+
+## よくある失敗パターン
+
+### ❌ 「病歴要約.docx」という共通名で保存して上書きしてしまう
+
+29篇を管理するうえで最も多いのが、ファイル名を「病歴要約.docx」のままにしてしまい、後から別の疾患の内容で上書きしてしまう事故です。**疾患名と疾患群番号を含むファイル名**（例: `c01_循環器2_心不全.docx`）をルール化してフォルダに保存しましょう。ファイル名ルールを最初の1篇から徹底すれば、後から名前を変える手間もなくなります。
+
+### ❌ PDF確認をせずに提出してA4 2枚超えで差し戻される
+
+Wordで書いた本文がコピペ後に「A4 2枚に収まっているか」「紙面の80%以上埋まっているか」を確認しないまま提出し、フォーマットエラーで差し戻されるケースがあります。J-OSLERで一時保存後、必ず**PDFプレビューで2ページ以内かを確認** してから指導医に評価依頼を送りましょう。
+
+### ❌ J-OSLERにコピペ後に一時保存を忘れて入力内容が消える
+
+Wordからコピペした直後に「一時保存」を押さずに長時間放置すると、セッションタイムアウトでコピペした内容がすべて消えます。**コピペしたらすぐ一時保存** を鉄則にしてください。特に「現症・検査所見」「入院後経過」「総合考察」の各ブロックを貼り付けるたびに保存する習慣が重要です。
+
+## まとめ
+
+J-OSLERの病歴要約は、Wordで下書きしてからコピペするワークフローが安全で効率的です。自動ログアウトによるデータ消失を防ぎ、29症例の並行管理もしやすくなります。
+
+まず1つ目の症例でテンプレートを作り、コピペの手順に慣れてしまえば、2症例目からは格段にスピードが上がります。検査所見テンプレートの使い回しやフォルダ管理の工夫で、さらに効率化が可能です。
+
+病歴要約の各項目の具体的な書き方は[病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)を、テンプレートは[病歴要約テンプレート](/blog/c02-josler-byoreki-youyaku-template)を、例文は[病歴要約の例文集](/blog/c03-josler-byoreki-youyaku-reibun)をそれぞれ参照してください。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [eGFR計算（CKD-EPI）](/tools/calc/egfr)
+- [Child-Pugh](/tools/calc/child-pugh)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

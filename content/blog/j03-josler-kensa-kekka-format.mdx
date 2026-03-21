@@ -1,0 +1,389 @@
+---
+title: "J-OSLER検査結果のフォーマット変換術｜カルテからコピペで整形する方法"
+description: "J-OSLER病歴要約の検査結果をカルテからコピペで正しいフォーマットに整形する方法を解説。AI活用の具体的プロンプト例、検査項目テンプレート、よくあるミスと対策まで。"
+date: "2026-03-11"
+updated: "2026-03-11"
+author: "iwor編集部"
+category: "ai-tools"
+cluster: "J"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "検査結果", "フォーマット", "テンプレート", "コピペ", "AI", "病歴要約"]
+cta_type: "template"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「カルテの検査結果をJ-OSLERに入力するだけで30分以上かかる...」「項目の並び順やカンマ区切りがバラバラで毎回手直しが大変...」
+
+J-OSLERの病歴要約で地味に時間を食うのが **検査結果のフォーマット整形** です。電子カルテからコピーした検査値は施設ごとに表示形式が異なり、そのままではJ-OSLERの書式に合いません。29編の病歴要約すべてでこの作業を繰り返すのは、かなりの時間ロスです。
+
+この記事では、カルテの検査結果をJ-OSLERの正しいフォーマットに変換する具体的な方法を解説します。AIを使ったフォーマット変換のプロンプト例も紹介するので、1症例あたりの整形時間を大幅に短縮できます。
+
+> [iwor](/pro/)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。
+
+## J-OSLERが求める検査結果のフォーマットとは
+
+まず、J-OSLERの病歴要約で検査結果がどのような形式で求められているかを確認しましょう。
+
+日本内科学会の「[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)」（2023年10月版）では、検査結果について以下のように記載されています。
+
+### 記載のルール
+
+**記載すべき検査結果の選び方**
+
+手引きでは、ルーチン検査をすべて羅列する必要はないとされています。たとえば肝機能が正常であれば「肝機能正常」という表記でも構いません。ただし、その疾患で異常になり得る検査項目、注目すべき正常値、特殊検査は具体的な数値を記載する必要があります。たとえば血液疾患であればLDやフェリチンなどの検査値が重要です。
+
+**フォーマットのポイント**
+
+J-OSLERの[病歴要約サンプル](https://www.naika.or.jp/wp-content/uploads/2024/07/35a75d9e2a04130148491c77a1037343.pdf)（2024年7月版）から読み取れる書式ルールをまとめます。
+
+句読点は「,」「.」を使い、「、」「。」は使いません。検査項目と数値の間はスペースで区切ります（例：WBC 8,500/μL）。カテゴリごとにまとめて記載し、順序は血算・生化学・免疫血清・凝固・尿検査・画像検査が基本です。
+
+画像検査と生理検査（心電図・呼吸機能など）は文章形式で「〜を認める」「〜はない」と記載します。略語は国家試験レベルで通用するもの（WBC, Hb, Cr, BUN, Na, K, CT, MRIなど）はそのまま使用できます。
+
+### カルテとJ-OSLERのフォーマットの違い
+
+電子カルテの検査結果表示は施設ごとに異なりますが、よくある形式との違いを整理すると以下のようになります。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-label="電子カルテとJ-OSLERの検査結果フォーマットの違いを比較した図">
+  <defs>
+    <filter id="shadow1" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="380" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="48" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="51" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">電子カルテ vs J-OSLER フォーマット比較</text>
+  <rect x="24" y="84" width="364" height="256" rx="10" fill="#FEFEFC" filter="url(#shadow1)" stroke="#DDD9D2" stroke-width="1"/>
+  <rect x="24" y="84" width="364" height="36" rx="10" fill="#FEE2E2"/>
+  <text x="206" y="107" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#991B1B">電子カルテ（よくある形式）</text>
+  <text x="44" y="145" font-family="monospace" font-size="12" fill="#1A1917">WBC    8500   /uL</text>
+  <text x="44" y="165" font-family="monospace" font-size="12" fill="#1A1917">RBC    450    x10^4/uL</text>
+  <text x="44" y="185" font-family="monospace" font-size="12" fill="#1A1917">Hb     13.5   g/dL</text>
+  <text x="44" y="205" font-family="monospace" font-size="12" fill="#1A1917">Plt    22.5   x10^4/uL</text>
+  <text x="44" y="225" font-family="monospace" font-size="12" fill="#1A1917">AST    25     U/L</text>
+  <text x="44" y="245" font-family="monospace" font-size="12" fill="#1A1917">ALT    18     U/L</text>
+  <text x="44" y="265" font-family="monospace" font-size="12" fill="#1A1917">BUN    15.2   mg/dL</text>
+  <text x="44" y="285" font-family="monospace" font-size="12" fill="#1A1917">Cre    0.85   mg/dL</text>
+  <text x="44" y="310" font-family="sans-serif" font-size="11" fill="#991B1B">※ タブ区切り・単位表記バラバラ</text>
+  <rect x="412" y="84" width="364" height="256" rx="10" fill="#FEFEFC" filter="url(#shadow1)" stroke="#DDD9D2" stroke-width="1"/>
+  <rect x="412" y="84" width="364" height="36" rx="10" fill="#DCFCE7"/>
+  <text x="594" y="107" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#166534">J-OSLER（正しいフォーマット）</text>
+  <text x="432" y="145" font-family="sans-serif" font-size="12" fill="#1A1917">末梢血：WBC 8,500/μL, RBC</text>
+  <text x="432" y="165" font-family="sans-serif" font-size="12" fill="#1A1917">450×10⁴/μL, Hb 13.5g/dL, Plt</text>
+  <text x="432" y="185" font-family="sans-serif" font-size="12" fill="#1A1917">22.5×10⁴/μL</text>
+  <text x="432" y="215" font-family="sans-serif" font-size="12" fill="#1A1917">生化学：AST 25U/L, ALT 18U/L,</text>
+  <text x="432" y="235" font-family="sans-serif" font-size="12" fill="#1A1917">BUN 15.2mg/dL, Cr 0.85mg/dL</text>
+  <text x="432" y="275" font-family="sans-serif" font-size="11" fill="#166534">✓ カンマ区切り</text>
+  <text x="432" y="295" font-family="sans-serif" font-size="11" fill="#166534">✓ カテゴリ別にまとめ</text>
+  <text x="432" y="315" font-family="sans-serif" font-size="11" fill="#166534">✓ 単位統一（μL, ×10⁴ など）</text>
+  <text x="400" y="368" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+この変換作業を29編分繰り返すのが、J-OSLERの「見えない時間泥棒」です。
+
+## 検査結果テンプレート｜カテゴリ別の基本フォーマット
+
+ここでは、どの疾患でも使える基本テンプレートを提示します。該当する検査結果がない項目は省略してください。
+
+### 末梢血（血算）
+
+```
+末梢血：WBC ○○/μL（Neut ○○%, Ly ○○%, Mono ○○%, Eo ○○%, Baso ○○%）, RBC ○○×10⁴/μL, Hb ○○g/dL, Ht ○○%, Plt ○○×10⁴/μL
+```
+
+白血球分画は感染症や血液疾患で特に重要です。それ以外の疾患では省略可能ですが、記載したほうが丁寧な印象を与えます。
+
+### 凝固
+
+```
+凝固：PT ○○秒（INR ○○）, APTT ○○秒, Fib ○○mg/dL, D-dimer ○○μg/mL
+```
+
+### 生化学
+
+```
+生化学：TP ○○g/dL, Alb ○○g/dL, T-Bil ○○mg/dL, AST ○○U/L, ALT ○○U/L, LDH ○○U/L, ALP ○○U/L, γ-GTP ○○U/L, BUN ○○mg/dL, Cr ○○mg/dL, eGFR ○○mL/min/1.73m², UA ○○mg/dL, Na ○○mEq/L, K ○○mEq/L, Cl ○○mEq/L, Ca ○○mg/dL, P ○○mg/dL, 血糖 ○○mg/dL, HbA1c ○○%
+```
+
+疾患に関連する項目を中心に記載しましょう。たとえば腎疾患ならBUN・Cr・eGFR・電解質を詳しく、肝疾患ならAST・ALT・T-Bil・ALP・γ-GTPを詳しく記載します。
+
+### 免疫血清
+
+```
+免疫血清：CRP ○○mg/dL, RF ○○IU/mL, 抗核抗体 ○○倍, IgG ○○mg/dL, IgA ○○mg/dL, IgM ○○mg/dL
+```
+
+### 尿検査
+
+```
+尿検査：比重 ○○, pH ○○, 蛋白（○）, 糖（○）, 潜血（○）, 尿中赤血球 ○○/HPF, 尿中白血球 ○○/HPF, 尿蛋白/Cr比 ○○g/gCr
+```
+
+### 画像検査（文章形式）
+
+```
+胸部X線：心胸郭比○○%, 両側肺野に浸潤影を認めない.
+腹部CT：○○に○○を認める. ○○の所見はない.
+```
+
+画像検査は必ず文章形式で記載します。「心拡大なし」のような言い止めではなく、「心拡大を認めない」と書きます。
+
+### 生理検査（文章形式）
+
+```
+心電図：洞調律, 心拍数○○/分. ST変化を認めない.
+心臓超音波検査：EF ○○%, LVDd ○○mm, LVDs ○○mm. 弁膜症を認めない.
+```
+
+生理検査もカルテの箇条書きをそのままコピペせず、文章形式に直す必要があります。
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## AIでフォーマット変換する方法｜プロンプト例つき
+
+2024年11月に日本内科学会が公表した[生成AI利用ガイドライン](https://www.naika.or.jp/wp-content/uploads/2024/11/660e0ab9ceb7e389b5eccbc7520a23f4.pdf)では、条件つきでAI活用が認められています。検査結果のフォーマット変換は **個人情報を含まない数値の整形作業** なので、AI活用と特に相性が良い領域です。
+
+ただし、以下の4つのルールは必ず守ってください。
+
+1. **学習データへの反映を無効化する**（ChatGPT: Settings > Data Controls > Improve the model for everyone をOFF）
+2. **患者の個人情報を入力しない**（ID, 氏名, 生年月日, 施設名は削除してから入力）
+3. **AI出力を鵜呑みにしない**（数値の転記ミスがないか必ず確認）
+4. **AIを使用した事実を開示する**
+
+AIガイドラインの詳細は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)で解説しています。
+
+### プロンプト例：検査結果フォーマット変換
+
+以下のプロンプトをChatGPTやClaudeにコピペして使えます。
+
+```
+あなたはJ-OSLER病歴要約の作成を支援するアシスタントです。
+
+以下のルールに従って、私が入力する検査結果をJ-OSLERのフォーマットに整形してください。
+
+【フォーマットルール】
+1. カテゴリ別にまとめる（末梢血, 凝固, 生化学, 免疫血清, 尿検査, 画像検査, 生理検査）
+2. 同カテゴリ内はカンマ（,）とスペースで区切る
+3. 検査項目と数値の間はスペース1つ
+
+4. 単位はμL, ×10⁴, mEq/L など正式表記にする
+5. 画像検査・生理検査は「〜を認める」「〜はない」の文章形式にする
+6. 入力されなかった項目は出力しない
+7. 句読点は「,」「.」を使用（「、」「。」は使わない）
+
+私が入力する検査結果を整形してください。
+```
+
+### 使い方の手順
+
+**ステップ1**: 電子カルテから検査結果をコピーする。この時点で **患者ID・氏名・生年月日・施設名は必ず削除** します。
+
+**ステップ2**: 上記プロンプトをAIに貼り付けた後、コピーした検査結果を貼り付けます。
+
+**ステップ3**: AIの出力を確認します。特に以下の点をチェックしましょう。
+
+- 数値が元データと一致しているか（転記ミスがないか）
+- 単位が正しいか（mg/dLとg/dLの変換ミスに注意）
+- カテゴリの分類が適切か
+- 画像検査・生理検査が文章形式になっているか
+
+**ステップ4**: 疾患に関連しない検査項目を削除・追加して、最終版を仕上げます。
+
+### AIフォーマット変換の実例
+
+入力例（カルテからコピペした生データ）：
+
+```
+WBC 12300/uL
+Hb 9.8 g/dL
+Plt 8.5 万/uL
+CRP 14.52 mg/dL
+AST 85 U/L
+ALT 62 U/L
+LDH 580 U/L
+BUN 28.5 mg/dL
+Cre 1.62 mg/dL
+Na 138 mEq/L
+K 4.8 mEq/L
+PT-INR 1.35
+胸部CT 右下葉にconsolidation 少量胸水あり
+```
+
+AI出力例：
+
+```
+末梢血：WBC 12,300/μL, Hb 9.8g/dL, Plt 8.5×10⁴/μL
+凝固：PT-INR 1.35
+生化学：AST 85U/L, ALT 62U/L, LDH 580U/L, BUN 28.5mg/dL,
+Cr 1.62mg/dL, Na 138mEq/L, K 4.8mEq/L
+免疫血清：CRP 14.52mg/dL
+胸部CT：右下葉にconsolidationを認める. 少量の胸水貯留を認める.
+```
+
+このように、数秒でJ-OSLERの正式フォーマットに変換できます。ただし出力結果は **必ず元データと照合** してください。
+
+## よくあるフォーマットミスと対策
+
+検査結果のフォーマットで差し戻しの原因になりやすいミスを整理します。
+
+### ミス1：句読点が「、」「。」になっている
+
+J-OSLERの病歴要約では句読点にカンマとピリオドを使います。電子カルテからコピーした際に日本語の句読点が混在していないか確認しましょう。Wordの置換機能（Ctrl+H）で一括変換できます。
+
+### ミス2：画像検査を箇条書きで書いている
+
+「心拡大なし」「胸水なし」のような箇条書きは避けてください。「心拡大を認めない. 胸水貯留を認めない.」と文章形式で書きます。
+
+### ミス3：単位がカルテのまま
+
+カルテでは「/uL」と表示されることがありますが、J-OSLERでは「/μL」と正式表記を使います。同様に「x10^4」は「×10⁴」に、「10*4」も「×10⁴」に直しましょう。
+
+J-OSLERの入力画面では特殊文字の入力が制限される場合があります。「μ」や「×」「⁴」が入力できない場合は、Wordで作成してからコピペするか、ユニコード文字をコピーして貼り付けてください。
+
+### ミス4：不要な検査項目を全部記載している
+
+手引きではルーチン検査の全羅列は不要とされています。疾患と直接関係のない正常値は「肝機能正常」「腎機能正常」のようにまとめて記載しても問題ありません。一方で、主病名に関連する検査項目は正常値であっても数値を記載すべきです（例：肺炎患者のプロカルシトニンが正常範囲内だった場合など）。
+
+### ミス5：基準値や異常マークを含めている
+
+カルテの検査結果に付いている「H」「L」「↑」「↓」などの異常マークや基準値範囲は削除してください。J-OSLERでは数値のみを記載します。
+
+## 疾患別：特に記載すべき検査項目
+
+ここでは主要な疾患群ごとに、「これは記載したほうがいい」という検査項目のチェックリストを紹介します。基本の血算・生化学に加えて記載を検討してください。
+
+### 感染症
+
+BT（体温）, WBC分画（Neut%, Ly%）, CRP, PCT（プロカルシトニン）, 血液培養結果, 喀痰培養・グラム染色, 尿培養, β-D-グルカン, アスペルギルス抗原（免疫不全時）
+
+### 循環器疾患
+
+BNP or NT-proBNP, トロポニン, CK/CK-MB, 心電図所見（波形の詳細）, 心臓超音波検査（EF, 壁運動異常, 弁逆流）, 冠動脈造影所見
+
+### 腎疾患
+
+BUN, Cr, eGFR, 電解質（Na, K, Cl, Ca, P）, 尿蛋白/Cr比, 尿中赤血球・円柱, 血清Alb, 補体（C3, C4, CH50）, 抗核抗体, ANCA, 腎生検所見
+
+### 血液疾患
+
+WBC分画（芽球%）, 末梢血塗抹所見, LDH, フェリチン, 網赤血球, ハプトグロビン, 直接・間接Coombs, 骨髄穿刺所見, 染色体・遺伝子検査
+
+### 内分泌・代謝疾患
+
+血糖, HbA1c, TSH, FT3, FT4, コルチゾール, ACTH, 各種負荷試験結果, 脂質プロファイル（TC, TG, HDL, LDL）
+
+疾患別の病歴要約の書き方については、[消化器](/blog/d01-josler-byoreki-youyaku-shoukaki)、[循環器](/blog/d02-josler-byoreki-youyaku-junkanki)、[呼吸器](/blog/d03-josler-byoreki-youyaku-kokyuuki)の各記事で詳しく解説しています（順次公開予定）。
+
+## 効率的なワークフロー：検査結果入力を5分で終わらせる
+
+ここまでの内容を踏まえて、検査結果のフォーマット変換を最短で終わらせるワークフローを提案します。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-label="検査結果フォーマット変換の5ステップワークフロー">
+  <defs><filter id="fj03b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="520" rx="16" fill="#F5F4F0" filter="url(#fj03b)"/>
+  <rect x="24" y="20" width="752" height="48" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="51" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">検査結果フォーマット変換 5ステップ</text>
+  <rect x="60" y="88" width="680" height="70" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="100" cy="123" r="22" fill="#E8F0EC"/>
+  <text x="100" y="129" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#1B4F3A">1</text>
+  <text x="140" y="115" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">カルテから検査結果をコピー</text>
+  <text x="140" y="137" font-family="sans-serif" font-size="12" fill="#6B6760">患者ID・氏名・生年月日・施設名を削除してからコピーする</text>
+  <text x="400" y="175" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1B4F3A">▼</text>
+  <rect x="60" y="186" width="680" height="70" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="100" cy="221" r="22" fill="#E8F0EC"/>
+  <text x="100" y="227" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#1B4F3A">2</text>
+  <text x="140" y="213" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">AIにフォーマット変換を依頼</text>
+  <text x="140" y="235" font-family="sans-serif" font-size="12" fill="#6B6760">プロンプトテンプレートを使い, カテゴリ別・カンマ区切りに整形</text>
+  <text x="400" y="273" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1B4F3A">▼</text>
+  <rect x="60" y="284" width="680" height="70" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="100" cy="319" r="22" fill="#FEF3C7"/>
+  <text x="100" y="325" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#92400E">3</text>
+  <text x="140" y="311" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">数値の照合チェック（最重要）</text>
+  <text x="140" y="333" font-family="sans-serif" font-size="12" fill="#92400E">元データとAI出力を1項目ずつ照合. 数値・単位の転記ミスを確認</text>
+  <text x="400" y="371" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1B4F3A">▼</text>
+  <rect x="60" y="382" width="680" height="70" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="100" cy="417" r="22" fill="#E8F0EC"/>
+  <text x="100" y="423" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#1B4F3A">4</text>
+  <text x="140" y="409" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">疾患に応じて項目を取捨選択</text>
+  <text x="140" y="431" font-family="sans-serif" font-size="12" fill="#6B6760">不要な正常値を削除, 疾患特異的な検査を追記</text>
+  <text x="400" y="467" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1B4F3A">▼</text>
+  <text x="400" y="492" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1B4F3A">5. J-OSLERに貼り付け → 最終確認して保存</text>
+  <text x="400" y="510" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+ステップ3の数値照合は絶対に省略しないでください。AIは稀に数値を変えてしまったり、単位変換を誤ったりすることがあります。特に桁数の多い検査値（WBC, LDHなど）や、カンマを含む数値は要注意です。
+
+## iworのテンプレートを活用する
+
+[iwor](/pro/)のAI病歴要約テンプレートには、疾患群ごとに最適化された検査項目リストが含まれています。疾患群と疾患名を選ぶだけで、記載すべき検査項目の一覧が自動生成されるため、「この疾患で何を書くべきか」で迷う時間がなくなります。
+
+さらに、OPQRST形式の現病歴テンプレート、プロブレムリスト、考察の方向性、引用文献候補（PubMed照合済み）まで一括で出力されるので、検査結果だけでなく病歴要約全体の作成時間を大幅に短縮できます。
+
+## よくある失敗3パターン
+
+検査結果フォーマットで専攻医がはまりがちな失敗を3つ挙げます。
+
+**❶ カルテの「単位なし」をそのままコピペしてしまう**
+
+カルテの検査値表示は施設ごとに異なり、単位が省略されている場合があります。J-OSLERでは単位の明記が必要です。WBC 8,500/μL、Hb 12.5g/dLのように必ず単位を付けて記載してください。
+
+**❷ 画像・生理検査を箇条書きで書いてしまう**
+
+胸部CTや心電図の所見を「・浸潤影あり」のような箇条書きで書くと減点対象になります。「胸部CT：右下葉にconsolidationを認め、少量胸水を伴う」のように文章形式で記載するのが正しい書き方です。
+
+**❸ 基準値外なのにフラグを付けない**
+
+異常値（H/L）のフラグを付け忘れると、指導医が問題点を把握しにくくなります。AIでフォーマット変換する際も、「正常範囲から外れた項目には（H）または（L）を付与して」と明示的に指示することが大切です。
+
+## まとめ
+
+J-OSLERの検査結果フォーマット変換は、ルールさえ押さえれば機械的に処理できる作業です。ポイントを振り返りましょう。
+
+**フォーマットの基本ルール** ：カテゴリ別にまとめ、カンマ区切り、文章形式（画像・生理検査）、句読点は「,」「.」。記載すべき項目の選び方や単位の統一ルールについては[検査結果の記載ルール・単位統一ガイド](/blog/c15-josler-kensa-kekka-tani)もあわせて確認してください
+
+**AI活用のコツ** ：プロンプトテンプレートを使えば数秒で変換可能。ただし個人情報の削除と数値の照合チェックは必須
+
+**差し戻しを防ぐ注意点** ：句読点の統一、画像検査の文章形式、不要項目の削除、異常マークの除去
+
+病歴要約の書き方全般については[J-OSLER病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)で解説しています。テンプレートを活用した効率的な作成方法は[病歴要約テンプレート｜項目別の書き方](/blog/c02-josler-byoreki-youyaku-template)をご覧ください。
+
+J-OSLER作業全体の時短テクニックは[J-OSLER作業を時短する5つのテクニック](/blog/j04-josler-jitan)で紹介しています（近日公開予定）。
+
+## よくある質問（FAQ）
+
+### Q. カルテの検査結果をそのままコピペしたらダメ？
+
+そのままでは書式が合わないため、差し戻しの原因になります。J-OSLERでは句読点（カンマ・ピリオド）、単位表記（μL, ×10⁴）、画像検査の文章形式など独自のフォーマットが求められます。最低限これらの変換は必要です。
+
+### Q. 検査結果はどこまで詳しく書くべき？
+
+手引きでは「ルーチンの全羅列は不要」とされています。疾患に関連する検査項目と注目すべき正常値を中心に記載しましょう。ただし実際の査読では「基本的な検査結果は一通り書いてある方が無難」という意見もあり、主要項目はカバーしておくのが安全です。
+
+### Q. AIで変換した検査値に数値の転記ミスはある？
+
+あります。特にWBCの桁区切り（8,500 と 85,00）やPltの単位変換（8.5万 → 8.5×10⁴）でミスが起きやすいです。AI出力後は必ず元データと照合してください。これはガイドラインでも「AI出力を鵜呑みにしない」と明記されている点です。
+
+### Q. J-OSLERの入力画面でμや×が入力できない
+
+一部のブラウザ環境ではJ-OSLERの入力画面で特殊文字の入力が制限されることがあります。Wordなどで先に作成し、コピペで貼り付ける方法が確実です。J-OSLERの操作全般については[J-OSLERの使い方完全ガイド](/blog/a03-josler-tsukaikata)で解説しています。
+
+### Q. 検査結果の記載順に決まりはある？
+
+公式に厳密な順序は定められていませんが、病歴要約サンプルでは「末梢血 → 凝固 → 生化学 → 免疫血清 → 尿検査 → 画像検査 → 生理検査」の順で記載されています。この順序に揃えるのが無難です。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [eGFR計算（CKD-EPI）](/tools/calc/egfr)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

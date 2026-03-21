@@ -1,0 +1,181 @@
+---
+title: "AIを使った医学文献検索術｜PubMedプロンプトとPerplexity活用法"
+description: "PubMedの効率的な検索方法とAIツール（Claude・Perplexity・ChatGPT）を使った医学文献検索術を解説。J-OSLER病歴要約の引用文献を効率よく見つけるコツまで。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "iwor編集部"
+category: "ai-tools"
+cluster: "J"
+pillar: "josler-complete-guide"
+tags: ["PubMed", "文献検索", "AI", "Perplexity", "Claude", "病歴要約", "引用文献", "内科専攻医"]
+cta_type: "template"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「PubMedで検索しても、どれが適切な文献か選べない」「AIに聞いたら存在しない論文を出されて困った」という経験をお持ちの方は多いのではないでしょうか。
+
+J-OSLERの病歴要約には引用文献が求められますが、適切な文献を効率よく見つけるのは初めてのうちは特に難しく感じます。PubMedの検索に慣れていない専攻医が何時間もかけて文献を探すという状況は珍しくありません。そこで活用したいのが、PubMedの効率的な検索術とAIツールの組み合わせです。
+
+> [iwor](/pro/)のAI病歴要約テンプレートは、Claude PubMed MCPでPubMedの実データと照合済みの引用文献候補を提示します。文献探しを一から自力でやる必要がなくなり、病歴要約の作成時間を大幅に短縮できます。全70疾患群・373疾患対応。
+
+## PubMedの効率的な検索術
+
+PubMedは世界最大規模の医学文献データベースで、NIH（米国国立衛生研究所）が運営しています。無料で使えますが、単純なキーワード検索だけでは関係のない文献が大量にヒットしてしまい、目的の文献にたどり着くまでに時間がかかります。
+
+PubMedの検索精度を上げる基本テクニックとして覚えておきたいのが **MeSH用語** と **Boolean演算子** です。MeSH（Medical Subject Headings）はPubMedが独自に整理した医学用語の体系で、同じ疾患や概念に対して複数の呼び方がある場合でも、MeSHで検索すると包括的にカバーできます。検索バーの右にある「Advanced」から「MeSH Database」を選ぶと、MeSH用語を調べながら検索式を組み立てられます。
+
+Boolean演算子（AND / OR / NOT）を組み合わせることで検索の絞り込みができます。たとえば「heart failure AND ejection fraction」のように入力すると、両方のキーワードを含む文献だけに絞れます。PubMedでは大文字のAND/OR/NOTが演算子として機能します。さらにフィルター機能（Publication Types → Randomized Controlled Trial、Language → Japanese / English）を使うと、一気に関連性の高い文献に絞ることができます。
+
+病歴要約に引用する文献として特に使いやすいのは、システマティックレビュー・メタアナリシス、および日本のガイドライン（学会の公式PDF）です。これらは信頼性が高く、「Evidence-Based Medicine」として査読委員にも受け入れられやすいです。
+
+## Perplexityを使った医学情報収集
+
+Perplexityは、Web検索と回答生成を組み合わせたAIツールです。「〇〇の第一選択薬は何か」「この疾患のガイドライン推奨は」といった医学的な質問に対して、参照元URLを明示しながら回答を生成してくれます。引用ソースが表示されるため、ChatGPTに比べてハルシネーション（根拠のない情報の生成）のリスクが低いのが特徴です。
+
+Perplexityを医学情報収集に使う際は、**「Academic」モード**（Focus: Academic）を選ぶことをおすすめします。このモードではPubMed・Semantic Scholar・arXivなどの学術データベースを優先して検索するため、より信頼性の高い出典が提示されます。「Perplexity Academic heart failure treatment guideline 2024」のような英語クエリで検索すると、最新のガイドラインや総説に近い情報が得られやすいです。
+
+ただし、Perplexityでの検索結果はあくまで「情報収集の入り口」として使うべきです。Perplexityが提示する参照URLを実際に開いて、文献の内容を自分で確認することが必要です。AIが要約した情報をそのまま引用情報として使うのではなく、「この論文が使えそうだ」という目星をつけるための道具として位置づけましょう。
+
+## ChatGPTで文献を探す際の注意点
+
+ChatGPT（GPT-4以降）は医学的な質問への回答の質が向上していますが、**文献の提示においては特に注意が必要** です。ChatGPTは学習データから「それらしい」文献情報を生成してしまうことがあり、著者名・タイトル・雑誌名・年号が一見もっともらしくても実際には存在しない論文を出力するケースがあります。これをハルシネーション（幻覚）と呼びます。
+
+「この論文は本当に存在するか」を確認せずにJ-OSLERの病歴要約の引用文献として記載してしまうと、存在しない論文を引用した病歴要約が提出されることになります。査読委員が文献を確認した場合に問題となる可能性があるため、ChatGPTから得た文献情報は必ずPubMedで実在確認をしてください。
+
+ChatGPTをうまく使う方法としては、「文献の内容を要約してほしい」「この疾患のKey Messageを教えてほしい」のように **文献探し以外の補助的な用途** に限定することです。文献のABSTRACTをコピーして貼り付け、「この論文の要点を3行でまとめて」と指示する使い方は比較的安全で実用的です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-label="AIツールの文献検索における信頼性比較（ChatGPT・Perplexity・Claude+MCP）">
+  <defs><filter id="fj08a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="300" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#4338CA"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#fff">AIツール別 文献検索の信頼性比較</text>
+  <rect x="40" y="72" width="224" height="196" rx="10" fill="#FEFEFC" filter="url(#fj08a)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="152" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">ChatGPT</text>
+  <rect x="56" y="112" width="80" height="20" rx="4" fill="#FEE2E2"/>
+  <text x="96" y="126" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#B91C1C">ハルシネーション高</text>
+  <text x="60" y="158" font-family="sans-serif" font-size="11" fill="#1A1917">文献の実在確認が必須</text>
+  <text x="60" y="178" font-family="sans-serif" font-size="11" fill="#1A1917">PubMedと照合しないと危険</text>
+  <text x="60" y="214" font-family="sans-serif" font-weight="bold" font-size="11" fill="#6B6760">向いている用途</text>
+  <text x="60" y="234" font-family="sans-serif" font-size="11" fill="#6B6760">文章整形・要約・翻訳</text>
+  <rect x="288" y="72" width="224" height="196" rx="10" fill="#FEFEFC" filter="url(#fj08a)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="400" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">Perplexity</text>
+  <rect x="304" y="112" width="80" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="344" y="126" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#92400E">ハルシネーション中</text>
+  <text x="308" y="158" font-family="sans-serif" font-size="11" fill="#1A1917">ソースURLが表示される</text>
+  <text x="308" y="178" font-family="sans-serif" font-size="11" fill="#1A1917">URLを開いて実在確認推奨</text>
+  <text x="308" y="214" font-family="sans-serif" font-weight="bold" font-size="11" fill="#6B6760">向いている用途</text>
+  <text x="308" y="234" font-family="sans-serif" font-size="11" fill="#6B6760">情報収集の入り口として</text>
+  <rect x="536" y="72" width="224" height="196" rx="10" fill="#E8F0EC" filter="url(#fj08a)" stroke="#4338CA" stroke-width="1.5"/>
+  <text x="648" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1B4F3A">Claude + PubMed MCP</text>
+  <rect x="552" y="112" width="80" height="20" rx="4" fill="#D1FAE5"/>
+  <text x="592" y="126" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#065F46">ハルシネーション低</text>
+  <text x="556" y="158" font-family="sans-serif" font-size="11" fill="#1A1917">PubMedに直接アクセス</text>
+  <text x="556" y="178" font-family="sans-serif" font-size="11" fill="#1A1917">実在する論文のみ返却</text>
+  <text x="556" y="214" font-family="sans-serif" font-weight="bold" font-size="11" fill="#6B6760">向いている用途</text>
+  <text x="556" y="234" font-family="sans-serif" font-size="11" fill="#6B6760">引用文献の確定・取得</text>
+  <text x="400" y="290" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## Claude + PubMed MCPを使った信頼性の高い文献取得
+
+ChatGPTのハルシネーション問題を解決する最も効果的な方法が、**Claude + PubMed MCP連携** です。MCP（Model Context Protocol）はAnthropicが開発したAIと外部サービスを接続する規格で、これを使うとClaudeがPubMedのデータベースに直接アクセスして論文を検索・取得できます。
+
+ClaudeがPubMedに直接アクセスする仕組みであるため、ChatGPTのように学習データから「それらしい論文情報を生成する」のではなく、**PubMedに実際に存在する論文だけを返します**。著者名・雑誌名・DOI・アブストラクトがすべてPubMedの実データから取得されるため、引用文献として使える情報を高い信頼性で得られます。詳しい設定方法は[ClaudeとPubMed MCPの連携方法](/blog/j10-claude-pubmed-mcp)で解説しています。
+
+PubMed MCP経由でClaudeに文献検索を依頼するときの実用的なプロンプト例を示します。「心不全の予後予測に関するシステマティックレビューを3本、日本語の病歴要約で引用しやすいものを探してほしい」のように具体的に指示することで、引用候補として使いやすい文献が返ってきます。また「この疾患のガイドライン的な推奨をPubMedで探して」と依頼することで、実在するガイドラインや総説の引用情報を得ることもできます。
+
+iworのAI病歴要約テンプレートは、このClaude PubMed MCPによるファクトチェックをベースに引用文献候補を整備しており、**PubMedの実データと照合済みの引用文献候補** を提示します。存在しない論文が提示されるリスクが低く、安心して参考にできます。
+
+## 「引用文献3本以上」の要件を効率よく満たすコツ
+
+J-OSLERの病歴要約では引用文献の記載が求められますが、「3本以上」という数字にこだわりすぎると文献探しに多くの時間をかけてしまいます。効率的に引用文献を揃えるためのコツを知っておくと、作業の負担が減ります。
+
+まず、引用文献として特に使いやすいのは**日本の学会ガイドライン**（各学会が公式PDFとして無料公開）です。日本心不全学会・日本腎臓学会・日本糖尿病学会などが公開しているガイドラインは、多くの疾患をカバーしており、「現在の標準的な治療方針」の根拠として使いやすいです。PubMedにも掲載されていることが多く、引用情報の形式で記載しやすいです。
+
+次に、**総説論文**（Review article）はオリジナル研究に比べて内容が包括的で、引用しやすい記述が多いです。PubMedのフィルターで「Review」を選ぶと総説だけに絞って検索できます。「特定の疾患 management overview」「treatment review 2023」のような検索で関連する総説がヒットしやすくなります。
+
+さらに、**二次文献から一次文献を辿る** 方法が効率的です。ガイドラインや総説の中には一次研究への引用が記載されているため、「ガイドラインが根拠としている元の研究」を一次文献として引用するアプローチがとれます。PMIDを使ってPubMedで検索することで、数分で引用情報が揃います。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" role="img" aria-label="PubMed検索から引用文献完成までのフロー">
+  <defs><filter id="fj08b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="240" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#4338CA"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">PubMed検索 → 引用文献完成 フロー</text>
+  <rect x="24" y="72" width="136" height="132" rx="10" fill="#FEFEFC" filter="url(#fj08b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="92" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#4338CA">1. キーワード検索</text>
+  <text x="40" y="120" font-family="sans-serif" font-size="10" fill="#1A1917">疾患名 + 英語</text>
+  <text x="40" y="138" font-family="sans-serif" font-size="10" fill="#1A1917">MeSH用語使用</text>
+  <text x="40" y="156" font-family="sans-serif" font-size="10" fill="#6B6760">またはClaude</text>
+  <text x="40" y="172" font-family="sans-serif" font-size="10" fill="#6B6760">+PubMed MCPに</text>
+  <text x="40" y="188" font-family="sans-serif" font-size="10" fill="#6B6760">依頼</text>
+  <text x="168" y="138" font-family="sans-serif" font-size="16" fill="#4338CA">→</text>
+  <rect x="192" y="72" width="136" height="132" rx="10" fill="#FEFEFC" filter="url(#fj08b)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="260" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#4338CA">2. 文献の絞り込み</text>
+  <text x="208" y="120" font-family="sans-serif" font-size="10" fill="#1A1917">フィルター：Review</text>
+  <text x="208" y="138" font-family="sans-serif" font-size="10" fill="#1A1917">言語・年度指定</text>
+  <text x="208" y="156" font-family="sans-serif" font-size="10" fill="#6B6760">ガイドライン優先</text>
+  <text x="208" y="172" font-family="sans-serif" font-size="10" fill="#6B6760">総説を活用</text>
+  <text x="336" y="138" font-family="sans-serif" font-size="16" fill="#4338CA">→</text>
+  <rect x="360" y="72" width="136" height="132" rx="10" fill="#E8F0EC" filter="url(#fj08b)" stroke="#4338CA" stroke-width="1"/>
+  <text x="428" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#4338CA">3. アブスト確認</text>
+  <text x="376" y="120" font-family="sans-serif" font-size="10" fill="#1A1917">アブストラクトを読む</text>
+  <text x="376" y="138" font-family="sans-serif" font-size="10" fill="#1A1917">使えるか判断</text>
+  <text x="376" y="156" font-family="sans-serif" font-size="10" fill="#6B6760">二次文献から</text>
+  <text x="376" y="172" font-family="sans-serif" font-size="10" fill="#6B6760">一次文献を辿る</text>
+  <text x="504" y="138" font-family="sans-serif" font-size="16" fill="#4338CA">→</text>
+  <rect x="528" y="72" width="244" height="132" rx="10" fill="#E8F0EC" filter="url(#fj08b)" stroke="#4338CA" stroke-width="1.5"/>
+  <text x="650" y="100" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#4338CA">4. 引用情報の記載</text>
+  <text x="548" y="120" font-family="sans-serif" font-size="10" fill="#1A1917">著者名. タイトル. 雑誌名.</text>
+  <text x="548" y="138" font-family="sans-serif" font-size="10" fill="#1A1917">年;巻(号):ページ. PMID:</text>
+  <text x="548" y="156" font-family="sans-serif" font-size="10" fill="#6B6760">PubMedの引用情報から</text>
+  <text x="548" y="172" font-family="sans-serif" font-size="10" fill="#6B6760">コピーすれば正確</text>
+  <text x="400" y="228" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 文献の引用情報の正しい書き方
+
+引用文献の記載形式は病歴要約の評価にも関わります。PubMedの各論文ページには「Cite」ボタンがあり、そこからAPA・NLM等の形式でコピーできます。J-OSLERの病歴要約では特定のフォーマットの指定がある場合、手引きを確認してください。一般的には「著者名. タイトル. 雑誌名. 年;巻(号):開始ページ-終了ページ. PMID: ○○.」という形が使われます。
+
+PMIDは論文固有のID番号で、PubMedの検索結果ページに表示されます。引用文献にPMIDを記載しておくと、査読委員が文献を確認する際に便利です。またPubMedのページで「Send to → Citation manager」からEndNoteやZotero形式でエクスポートすることもできます。文献管理ツールを使っている場合はこの方法が効率的です。
+
+## よくある質問（FAQ）
+
+### Q. PubMedは英語の文献しかないですか？
+
+原則として英語の文献が中心ですが、日本語文献も収録されています。言語フィルターで「Japanese」を選ぶと日本語の文献に絞れます。また、J-OSLERの病歴要約では英語文献が引用に使えるかという点については、手引きに特段の言語制限は記載されていないため、英語文献も引用できると考えられます（指導医に確認することを推奨）。
+
+### Q. Claude + PubMed MCPはどうやって使いますか？
+
+Claude.aiのデスクトップアプリまたはClaude.aiのサイトにアクセスし、MCP（Tools）設定からPubMed MCPを追加することで使えます。詳しい設定手順は[ClaudeとPubMed MCPの連携方法](/blog/j10-claude-pubmed-mcp)で図解しています。
+
+### Q. 引用文献は必ず一次文献でないといけませんか？
+
+J-OSLERの病歴要約の手引きには引用文献の種類について明確な制限は記載されていませんが、ガイドラインや総説も広く使われています。査読委員の評価の文脈から、引用された内容の根拠となる文献であることが重要です。自施設の指導医に確認することをおすすめします。
+
+## よくある失敗3パターン
+
+AI文献検索で専攻医がはまりがちな失敗を3つ挙げます。
+
+**❶ ChatGPTが提示した論文をPubMed確認なしで引用する**
+
+ChatGPTは存在しない論文タイトルや著者名を自信たっぷりに生成することがあります（ハルシネーション）。必ずPubMedで著者・タイトル・掲載誌・年を確認してから引用してください。確認が取れない文献は使用しないのが原則です。
+
+**❷ PubMedの検索で英語キーワードのみを使う**
+
+日本人患者に多い疾患の管理や、日本のガイドライン固有の基準を調べる場合、英語のみの検索では適切な文献が出にくいことがあります。J-OSLERでは日本のガイドライン・指針を引用することが多いため、CiNiiやMindsも活用しましょう。
+
+**❸ 文献の「関連度」だけで選び、発行年を確認しない**
+
+医学ガイドラインは5〜10年で大きく改訂されることがあります。古いガイドラインを最新のものとして引用すると、指導医から指摘を受けます。常に発行年を確認し、10年以内の文献を優先するのが安全です。
+
+## まとめ
+
+医学文献の検索は、ツールを正しく使えば大幅に効率化できます。PubMedのMeSH検索とフィルター機能、Perplexityの Academic モード、そしてClaude + PubMed MCPの組み合わせを使い分けることで、文献探しに費やす時間を減らしながら信頼性の高い引用文献を揃えられます。
+
+特に引用文献の「実在確認」は必ず自分で行ってください。ChatGPTが生成した文献情報は必ずPubMedで確認し、存在しない論文を引用してしまうリスクを防ぐことが大切です。[iwor](/pro/)のAI病歴要約テンプレートはClaude PubMed MCPによる引用文献候補を提示するため、文献探しの効率化と信頼性確保の両立に役立ちます。
+
+病歴要約の作成全体については[J-OSLER病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)も参照してください。

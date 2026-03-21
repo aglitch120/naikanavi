@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="400" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">J-OSLER修了への3ステップ</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">症例登録 → 病歴要約 → 専門医試験</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="90" width="210" height="260" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="145" cy="125" r="24" fill="#1B4F3A"/>
+  <text x="145" y="132" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">1</text>
+  <text x="145" y="170" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A1917">症例登録</text>
+  <text x="145" y="195" text-anchor="middle" font-size="12" fill="#6B6760">120症例（56疾患群）</text>
+  <rect x="65" y="215" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="145" y="236" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 主担当医として登録</text>
+  <rect x="65" y="255" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="145" y="276" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 指導医の承認を取得</text>
+  <rect x="65" y="295" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="145" y="316" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 疾患群バランスを確認</text>
+
+  <!-- Arrow 1 -->
+  <polygon points="265,220 285,210 285,215 305,215 305,225 285,225 285,230" fill="#1B4F3A" opacity="0.5"/>
+
+  <!-- Step 2 -->
+  <rect x="295" y="90" width="210" height="260" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="400" cy="125" r="24" fill="#1B4F3A"/>
+  <text x="400" y="132" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">2</text>
+  <text x="400" y="170" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A1917">病歴要約</text>
+  <text x="400" y="195" text-anchor="middle" font-size="12" fill="#6B6760">29篇（主要疾患群を網羅）</text>
+  <rect x="320" y="215" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="400" y="236" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 総合考察を充実させる</text>
+  <rect x="320" y="255" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="400" y="276" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 指導医＋査読を通過</text>
+  <rect x="320" y="295" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="400" y="316" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 差し戻しゼロを目指す</text>
+
+  <!-- Arrow 2 -->
+  <polygon points="520,220 540,210 540,215 560,215 560,225 540,225 540,230" fill="#1B4F3A" opacity="0.5"/>
+
+  <!-- Step 3 -->
+  <rect x="550" y="90" width="210" height="260" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="655" cy="125" r="24" fill="#1B4F3A"/>
+  <text x="655" y="132" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">3</text>
+  <text x="655" y="170" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A1917">専門医試験</text>
+  <text x="655" y="195" text-anchor="middle" font-size="12" fill="#6B6760">マーク式250問・1日</text>
+  <rect x="575" y="215" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="655" y="236" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 6ヶ月前から計画的に</text>
+  <rect x="575" y="255" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="655" y="276" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 過去問3周が合格目安</text>
+  <rect x="575" y="295" width="160" height="32" rx="6" fill="#E8F0EC"/>
+  <text x="655" y="316" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">✓ 13領域をバランス対策</text>
+
+  <!-- Footer -->
+  <text x="400" y="380" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

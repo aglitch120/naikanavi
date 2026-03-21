@@ -1,0 +1,77 @@
+name: 医学データ検証（週次 + push時）
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'app/tools/**'
+      - 'lib/source-registry.ts'
+      - 'lib/medical-data/**'
+
+jobs:
+  verify-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 医学データ検証スクリプト実行
+        id: verify
+        continue-on-error: true
+        run: node scripts/verify-sources.mjs
+
+      - name: レポートをアーティファクトとして保存
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-verify-report-${{ github.run_number }}
+          path: |
+            docs/source-verify-report.json
+            docs/source-data-hashes.json
+
+      - name: WARN/FAIL 検出時にIssueを作成
+        if: steps.verify.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('docs/source-verify-report.json', 'utf-8'));
+            const today = new Date().toISOString().slice(0, 10);
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'medical-data-verification',
+            });
+            if (existing.some(i => i.title.includes(today))) {
+              console.log('今日のIssueは既に存在。スキップ。');
+              return;
+            }
+            const body = report.tools.map(t => {
+              const problems = t.checks.filter(c => c.status !== 'PASS')
+                .map(c => `- ${c.status === 'WARN' ? '⚠️' : '❌'} **[${c.check}]** ${c.message}`).join('\n');
+              return problems ? `### ${t.id}\n\`${t.path}\`\n${problems}` : null;
+            }).filter(Boolean).join('\n\n');
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: `⚠️ 医学データ検証 [${today}]: ${report.summary.warn} WARN / ${report.summary.fail} FAIL`,
+              body: `## 自動検証レポート\n実行: ${report.timestamp} | トリガー: ${context.eventName}\n\n${body}\n\n---\n### 対応手順\n1. \`node scripts/verify-sources.mjs\` で詳細確認\n2. 問題を修正して push → 再実行されます`,
+              labels: ['medical-data-verification'],
+              assignees: ['aglitch120'],
+            });
+
+      - name: 検証結果サマリー
+        if: always()
+        run: |
+          echo "## 検証結果" >> $GITHUB_STEP_SUMMARY
+          if [ -f docs/source-verify-report.json ]; then
+            PASS=$(jq '.summary.pass' docs/source-verify-report.json)
+            WARN=$(jq '.summary.warn' docs/source-verify-report.json)
+            FAIL=$(jq '.summary.fail' docs/source-verify-report.json)
+            echo "| ✅ PASS | ⚠️ WARN | ❌ FAIL |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|---------|---------|" >> $GITHUB_STEP_SUMMARY
+            echo "| $PASS | $WARN | $FAIL |" >> $GITHUB_STEP_SUMMARY
+          fi

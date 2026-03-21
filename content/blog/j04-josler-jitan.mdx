@@ -1,0 +1,353 @@
+---
+title: "J-OSLER作業を時短する5つのテクニック｜テンプレ・ツール活用術"
+description: "J-OSLERの症例登録・病歴要約・進捗管理を効率化する5つの時短テクニックを解説。テンプレート活用・AI補助・検査値整形・進捗管理ツールまで、忙しい専攻医のための実践ガイド。"
+date: "2026-03-11"
+updated: "2026-03-11"
+author: "iwor編集部"
+category: "ai-tools"
+cluster: "J"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "時短", "効率化", "テンプレート", "ツール", "症例登録", "病歴要約"]
+cta_type: "template"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「当直明けにJ-OSLERなんて無理...」「1件の病歴要約に3時間もかかってしまう...」
+
+忙しい臨床の合間にJ-OSLERをこなすのは本当に大変です。しかし、やり方次第で作業時間は大幅に短縮できます。症例登録なら1件15分、病歴要約なら1件2時間以内が現実的な目標です。
+
+この記事では、J-OSLER作業を効率化する5つのテクニックを、症例登録・病歴要約・進捗管理の3つの軸で解説します。
+
+> [iwor](/pro/)なら、120症例・56疾患群・29病歴要約の進捗をダッシュボードで一覧管理。AI病歴要約テンプレートで構成の骨組みも30秒で手に入ります。
+
+## テクニック1｜症例登録はテンプレートで「流れ作業化」する
+
+症例登録は[120症例（7期生以降）](/blog/b03-josler-120cases)または[160症例（6期生以前）](/blog/b02-josler-160cases)を完了させる必要がありますが、1件ずつ丁寧に書いていては時間がいくらあっても足りません。症例登録は外部査読がないため、一定のフォーマットに沿って効率よく埋めていくのが正解です。
+
+### 現病歴のテンプレート
+
+現病歴は「受診理由→既往・背景→経過→治療→転帰」の5ステップで書くとスムーズです。以下のテンプレートをベースに、症例ごとに内容を差し替えるだけで完成します。
+
+```
+【主訴】○○
+【現病歴】X日前から○○を自覚し, 改善なく当院救急外来を受診した.
+【既往歴】高血圧症, 2型糖尿病
+【内服薬】アムロジピン5mg, メトホルミン500mg
+【入院後経過】○○と診断し, △△を開始した. 第○病日に症状改善を確認し, 第○病日に退院した.
+【転帰】軽快退院. 外来フォロー継続.
+```
+
+### 自己省察のテンプレート
+
+自己省察は「起承転結+α」のパターンで書くと迷いがなくなります。詳しい書き方とパターン別の例文は[症例登録の書き方ガイド](/blog/b01-josler-shourei-touroku-kakikata)で解説していますが、基本構成は以下の通りです。
+
+```
+本症例では○○（疾患名）の診断・治療を経験した.
+○○（検査・治療）の適応と実施タイミングについて学ぶことができた.
+今後は○○（課題・今後の方針）について理解を深めたい.
+```
+
+テンプレートの詳細は[症例登録テンプレート集](/blog/b05-josler-shourei-touroku-template)にパターン別でまとめています。コピペして使ってください。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="J-OSLER症例登録の時短フロー図。退院サマリー作成時にJ-OSLERも同時入力する流れを示す">
+  <defs>
+    <filter id="s1" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="420" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">症例登録の時短フロー｜退院サマリーと同時に入力する</text>
+  <rect x="40" y="92" width="200" height="100" rx="10" fill="#FEFEFC" filter="url(#s1)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="72" cy="118" r="18" fill="#E8F0EC"/>
+  <text x="72" y="124" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#1B4F3A">1</text>
+  <text x="100" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">退院サマリー作成</text>
+  <text x="100" y="140" font-family="sans-serif" font-size="12" fill="#6B6760">カルテを開いている</text>
+  <text x="100" y="158" font-family="sans-serif" font-size="12" fill="#6B6760">このタイミングがベスト</text>
+  <text x="100" y="178" font-family="sans-serif" font-size="12" fill="#1B4F3A">所要: 15〜20分</text>
+  <line x1="240" y1="142" x2="280" y2="142" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1B4F3A"/></marker></defs>
+  <rect x="290" y="92" width="200" height="100" rx="10" fill="#FEFEFC" filter="url(#s1)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="322" cy="118" r="18" fill="#E8F0EC"/>
+  <text x="322" y="124" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#1B4F3A">2</text>
+  <text x="350" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">テンプレにコピペ</text>
+  <text x="350" y="140" font-family="sans-serif" font-size="12" fill="#6B6760">現病歴はサマリーを流用</text>
+  <text x="350" y="158" font-family="sans-serif" font-size="12" fill="#6B6760">自己省察は型に当てはめ</text>
+  <text x="350" y="178" font-family="sans-serif" font-size="12" fill="#1B4F3A">所要: 5〜10分</text>
+  <line x1="490" y1="142" x2="530" y2="142" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="540" y="92" width="220" height="100" rx="10" fill="#FEFEFC" filter="url(#s1)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="572" cy="118" r="18" fill="#E8F0EC"/>
+  <text x="572" y="124" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#1B4F3A">3</text>
+  <text x="600" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">J-OSLERに入力・提出</text>
+  <text x="600" y="140" font-family="sans-serif" font-size="12" fill="#6B6760">疾患群の選択を確認</text>
+  <text x="600" y="158" font-family="sans-serif" font-size="12" fill="#6B6760">入退院日の西暦を確認</text>
+  <text x="600" y="178" font-family="sans-serif" font-size="12" fill="#1B4F3A">所要: 3〜5分</text>
+  <rect x="40" y="220" width="720" height="80" rx="10" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1"/>
+  <text x="400" y="250" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1B4F3A">ポイント: 退院サマリーを書くタイミングでJ-OSLERも同時に入力する</text>
+  <text x="400" y="275" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#6B6760">「後でまとめてやろう」は最大の時間ロス。カルテを開いている今が最も効率的</text>
+  <rect x="40" y="320" width="720" height="70" rx="10" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="400" y="348" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#92400E">注意: 入退院日の西暦（2024年→2025年など年またぎ）の入力ミスに注意</text>
+  <text x="400" y="370" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#92400E">病歴要約に使う症例で日付を間違えると、修正手順が非常に煩雑になります</text>
+  <text x="400" y="408" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+### 「退院サマリーと同時入力」が最大の時短
+
+症例登録で最も時間がかかるのは「後からカルテを掘り返す作業」です。退院サマリーを書くタイミングでJ-OSLERも同時に入力するだけで、1件あたりの所要時間は15分程度まで短縮できます。
+
+退院サマリーの現病歴をそのまま症例登録の「症例の概略」に流用し、自己省察はテンプレートに当てはめる。この流れを習慣化すれば、120症例でも合計30時間程度で完了できます。
+
+## テクニック2｜病歴要約の構成をAIで下書きする
+
+[病歴要約](/blog/c01-josler-byoreki-youyaku-kakikata)は29編を作成する必要があり、J-OSLER作業の中で最も時間がかかるパートです。特に[総合考察](/blog/c04-josler-sougou-kousatsu-kakikata)の執筆と[文献検索](/blog/c07-josler-bunken-inyo)に多くの時間を費やしている方が多いのではないでしょうか。
+
+2024年11月、日本内科学会が[J-OSLERにおける生成AI利用ガイドライン](https://www.naika.or.jp/wp-content/uploads/2024/11/660e0ab9ceb7e389b5eccbc7520a23f4.pdf)を公表し、条件つきでAIの活用が認められました。AIを「下書きツール」として正しく使えば、病歴要約1編あたりの作業時間を大幅に短縮できます。
+
+### AIを使える作業・使えない作業
+
+| 作業 | AI活用 | 注意点 |
+|------|--------|--------|
+| 文献検索の補助 | **活用OK** | 必ず原著にあたって裏取りする |
+| 検査値のフォーマット整形 | **活用OK** | 値の転記ミスがないか確認 |
+| 考察の構成案・壁打ち | **活用OK** | 最終的には自分の言葉で書き直す |
+| 考察・自己省察の本文 | **自分で書く** | AIの出力をそのままコピペはNG |
+| 患者情報の入力 | **絶対禁止** | 個人識別情報は匿名化必須 |
+
+AIの具体的な活用方法は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)と[病歴要約の総合考察をAIで下書きする方法](/blog/j02-byoreki-youyaku-ai-jidou-seisei)で詳しく解説しています。
+
+### 文献検索はClaude + PubMed MCPが時短の決め手
+
+病歴要約の考察で最も時間がかかるのが文献検索です。PubMedで手動検索すると、適切な論文を見つけるまでに30分〜1時間かかることも珍しくありません。
+
+[Claude](https://claude.ai/)は[PubMed MCP連携](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)を使うことで、PubMedの論文データベースに直接アクセスできます。論文タイトル・著者・掲載誌を実データから取得するため、ChatGPTで起きがちなハルシネーション（存在しない論文の生成）のリスクを大幅に減らせます。
+
+たとえば「2型糖尿病の血糖管理目標に関するメタアナリシス」を探す場合、Claudeに「2型糖尿病 HbA1c target メタアナリシス 最新のものを3本ほど探してください」と依頼するだけで、PubMedから該当する論文の書誌情報を取得してくれます。その後は実際の論文に目を通して、自分の考察に必要な部分を引用しましょう。
+
+> iworの[AI病歴要約テンプレート](/pro/)は、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済みです。
+
+## テクニック3｜検査値のフォーマット変換を自動化する
+
+病歴要約の「検査結果」セクションは、カルテからコピペしただけでは使えません。電子カルテの出力形式はJ-OSLERのフォーマットと異なるため、毎回手作業で整形している方も多いはずです。
+
+### カルテの出力をJ-OSLERフォーマットに変換する
+
+カルテから検査値をコピーして、以下のようなフォーマットに変換する必要があります。
+
+```
+【血液検査】WBC 8,500/uL, RBC 420万/uL, Hb 13.2g/dL, Plt 22.0万/uL
+【生化学】TP 7.0g/dL, Alb 3.8g/dL, T-Bil 0.8mg/dL, AST 24U/L, ALT 18U/L, LDH 180U/L, ALP 220U/L, BUN 15mg/dL, Cr 0.8mg/dL, Na 140mEq/L, K 4.2mEq/L, Cl 105mEq/L, CRP 0.3mg/dL
+【凝固】PT-INR 1.05, APTT 28.5秒, D-dimer 0.5ug/mL
+```
+
+この変換作業にChatGPTやClaudeを使うと、数分で完了します。カルテの検査結果画面をそのままコピペして「J-OSLERの病歴要約フォーマットに整形してください」と指示するだけです。ただし **患者のID・氏名は必ず削除してから** AIに入力してください。
+
+詳しい手順は[検査結果のフォーマット変換術](/blog/j03-josler-kensa-kekka-format)で解説しています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="J-OSLER病歴要約の作業時間比較。従来の方法とテンプレ・ツール活用時の時間の違いを示すグラフ">
+  <defs>
+    <filter id="s2" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">病歴要約1編の作業時間比較（目安）</text>
+  <text x="120" y="108" text-anchor="end" font-family="sans-serif" font-size="13" fill="#6B6760">検査値の整形</text>
+  <rect x="140" y="92" width="300" height="24" rx="4" fill="#FCA5A5"/>
+  <text x="450" y="108" font-family="sans-serif" font-size="12" fill="#991B1B">30分</text>
+  <rect x="140" y="122" width="50" height="24" rx="4" fill="#86EFAC"/>
+  <text x="200" y="138" font-family="sans-serif" font-size="12" fill="#166534">5分（AI整形）</text>
+  <text x="120" y="182" text-anchor="end" font-family="sans-serif" font-size="13" fill="#6B6760">文献検索</text>
+  <rect x="140" y="166" width="500" height="24" rx="4" fill="#FCA5A5"/>
+  <text x="650" y="182" font-family="sans-serif" font-size="12" fill="#991B1B">50分</text>
+  <rect x="140" y="196" width="100" height="24" rx="4" fill="#86EFAC"/>
+  <text x="250" y="212" font-family="sans-serif" font-size="12" fill="#166534">10分（AI検索+確認）</text>
+  <text x="120" y="256" text-anchor="end" font-family="sans-serif" font-size="13" fill="#6B6760">考察の構成</text>
+  <rect x="140" y="240" width="200" height="24" rx="4" fill="#FCA5A5"/>
+  <text x="350" y="256" font-family="sans-serif" font-size="12" fill="#991B1B">20分</text>
+  <rect x="140" y="270" width="50" height="24" rx="4" fill="#86EFAC"/>
+  <text x="200" y="286" font-family="sans-serif" font-size="12" fill="#166534">5分（AI壁打ち）</text>
+  <text x="120" y="330" text-anchor="end" font-family="sans-serif" font-size="13" fill="#6B6760">本文の執筆</text>
+  <rect x="140" y="314" width="400" height="24" rx="4" fill="#E8E5DF"/>
+  <text x="550" y="330" font-family="sans-serif" font-size="12" fill="#6B6760">40分（変わらず）</text>
+  <rect x="140" y="344" width="400" height="24" rx="4" fill="#E8E5DF"/>
+  <text x="550" y="360" font-family="sans-serif" font-size="12" fill="#6B6760">40分（自分で書く）</text>
+  <text x="120" y="404" text-anchor="end" font-family="sans-serif" font-size="13" fill="#6B6760">見直し・修正</text>
+  <rect x="140" y="388" width="200" height="24" rx="4" fill="#E8E5DF"/>
+  <text x="350" y="404" font-family="sans-serif" font-size="12" fill="#6B6760">20分</text>
+  <rect x="140" y="418" width="200" height="24" rx="4" fill="#E8E5DF"/>
+  <text x="350" y="434" font-family="sans-serif" font-size="12" fill="#6B6760">20分</text>
+  <line x1="40" y1="92" x2="40" y2="448" stroke="#DDD9D2" stroke-width="0"/>
+  <rect x="500" y="92" width="16" height="16" rx="3" fill="#FCA5A5"/>
+  <text x="522" y="104" font-family="sans-serif" font-size="12" fill="#6B6760">従来の方法</text>
+  <rect x="620" y="92" width="16" height="16" rx="3" fill="#86EFAC"/>
+  <text x="642" y="104" font-family="sans-serif" font-size="12" fill="#6B6760">ツール活用時</text>
+  <rect x="40" y="456" width="720" height="30" rx="6" fill="#E8F0EC"/>
+  <text x="400" y="476" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">合計: 約2時間40分 → 約1時間20分（約半分に短縮）</text>
+  <text x="696" y="496" text-anchor="end" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+### 検査値テンプレートを作っておく
+
+もう一つの時短テクニックは、検査項目のテンプレートを事前に作っておくことです。毎回ゼロから検査項目を列挙するのではなく、「血算」「生化学」「凝固」「尿検査」「血液ガス」のブロックをテンプレートとして保存しておけば、値を埋めるだけで済みます。
+
+[病歴要約テンプレート](/blog/c02-josler-byoreki-youyaku-template)に検査結果欄のテンプレートも掲載しているので、活用してください。
+
+## テクニック4｜進捗管理を可視化して「漏れ」を防ぐ
+
+J-OSLERで意外と時間を奪われるのが「今どこまで終わっているか」を把握する作業です。特に[56疾患群](/blog/a06-josler-shuryo-youken)の充足状況を確認するためにJ-OSLERのモニタリング画面を何度も開いては閉じ...という経験はありませんか？
+
+### 進捗管理の問題点
+
+J-OSLERのモニタリング画面は情報が網羅されている一方で、直感的に「何が足りないか」が把握しにくい設計です。たとえば以下のような状況に陥りがちです。
+
+- 症例登録は進んでいるが、特定の疾患群が0件のまま
+- 病歴要約の提出状況と一次評価の進捗がごちゃ混ぜになる
+- 修了要件全体（症例登録・病歴要約・JMECC・講習会）を横断的に確認できない
+
+### 進捗を一元管理するツールを使う
+
+Excelやスプレッドシートで自作の管理表を作るのも有効ですが、手動更新の手間がかかります。[J-OSLER進捗管理の方法](/blog/e01-josler-shinchoku-kanri)で紹介しているチェックリストを活用するか、専用のツールを使うのがおすすめです。
+
+iworの[ダッシュボード](/pro/)では、120症例・56疾患群・29病歴要約の進捗を一覧で表示します。領域ごとの達成状況を自動集計し、未達の疾患群や不足症例数がひと目でわかります。病歴要約も「作成中→修正中→受理済」のステータスを29編すべて管理できるので、指導医からの修正メモやリマインダーも一箇所にまとめられます。
+
+進捗管理を可視化するメリットは、「次に何をやるべきか」の判断が一瞬で済むことです。当直明けの疲れた頭でも、ダッシュボードを開けば今日やるべきタスクが明確になります。
+
+## テクニック5｜Wordの下書き環境を整えて効率を上げる
+
+病歴要約は[Wordで下書きしてからJ-OSLERにコピペする](/blog/c14-josler-byoreki-youyaku-word-copipe)のが鉄板の方法です。J-OSLERのテキスト入力欄は操作性が悪く、直接入力すると誤操作で内容が消えるリスクもあります。
+
+### Word下書きの環境構築
+
+Wordでの効率を最大化するために、以下の準備をしておきましょう。
+
+- **テンプレートファイルを1つ作る**: 主訴・現病歴・身体所見・検査結果・問題リスト・入院後経過・総合考察・文献の各セクションを見出しで区切ったテンプレートを用意する
+- **ユーザー辞書に医学用語を登録**: 「びょれき」→「病歴要約」、「そうごう」→「総合考察」など頻出語句の変換を登録しておく
+- **文字数カウントのショートカットを覚える**: A4 2枚分に収める必要があるため、こまめに文字数を確認する（Ctrl+Shift+G）
+
+### コピペ時の注意点
+
+J-OSLERにWordからコピペする際、フォーマットが崩れることがあります。必ず「テキストのみ貼り付け」（Ctrl+Shift+V）を使い、書式情報を除去してから貼り付けてください。
+
+詳しいコピペ手順と注意点は[J-OSLER病歴要約はWordで下書きが正解](/blog/c14-josler-byoreki-youyaku-word-copipe)で解説しています。
+
+## 5つのテクニックまとめ｜まずは1つから始めよう
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-label="J-OSLER時短テクニック5つのまとめ図。症例登録・病歴要約・進捗管理の各テクニックと期待される時短効果を一覧で示す">
+  <defs>
+    <filter id="s3" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">J-OSLER 時短テクニック 5つのまとめ</text>
+  <rect x="24" y="88" width="365" height="120" rx="10" fill="#FEFEFC" filter="url(#s3)" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="34" y="98" width="28" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="48" y="118" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1B4F3A">1</text>
+  <text x="72" y="115" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">症例登録をテンプレ流れ作業化</text>
+  <text x="72" y="138" font-family="sans-serif" font-size="12" fill="#6B6760">現病歴・自己省察を型に当てはめる</text>
+  <text x="72" y="156" font-family="sans-serif" font-size="12" fill="#6B6760">退院サマリーと同時に入力する</text>
+  <text x="72" y="180" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">1件30分 → 15分に短縮</text>
+  <rect x="411" y="88" width="365" height="120" rx="10" fill="#FEFEFC" filter="url(#s3)" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="421" y="98" width="28" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="435" y="118" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1B4F3A">2</text>
+  <text x="459" y="115" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">病歴要約の構成をAIで下書き</text>
+  <text x="459" y="138" font-family="sans-serif" font-size="12" fill="#6B6760">文献検索・考察の構成案にAIを活用</text>
+  <text x="459" y="156" font-family="sans-serif" font-size="12" fill="#6B6760">Claude PubMed MCPで文献検索を高速化</text>
+  <text x="459" y="180" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">文献検索50分 → 10分に短縮</text>
+  <rect x="24" y="224" width="365" height="120" rx="10" fill="#FEFEFC" filter="url(#s3)" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="34" y="234" width="28" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="48" y="254" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1B4F3A">3</text>
+  <text x="72" y="251" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">検査値フォーマットを自動変換</text>
+  <text x="72" y="274" font-family="sans-serif" font-size="12" fill="#6B6760">カルテの出力をAIで一括整形</text>
+  <text x="72" y="292" font-family="sans-serif" font-size="12" fill="#6B6760">テンプレートで検査項目を統一</text>
+  <text x="72" y="316" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">1件30分 → 5分に短縮</text>
+  <rect x="411" y="224" width="365" height="120" rx="10" fill="#FEFEFC" filter="url(#s3)" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="421" y="234" width="28" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="435" y="254" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1B4F3A">4</text>
+  <text x="459" y="251" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">進捗管理を可視化する</text>
+  <text x="459" y="274" font-family="sans-serif" font-size="12" fill="#6B6760">疾患群・病歴要約の達成状況を一元管理</text>
+  <text x="459" y="292" font-family="sans-serif" font-size="12" fill="#6B6760">「次にやるべきこと」が一目瞭然</text>
+  <text x="459" y="316" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">判断の迷い・重複ミスを防止</text>
+  <rect x="24" y="360" width="752" height="100" rx="10" fill="#FEFEFC" filter="url(#s3)" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="34" y="370" width="28" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="48" y="390" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="15" fill="#1B4F3A">5</text>
+  <text x="72" y="387" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">Wordの下書き環境を整備する</text>
+  <text x="72" y="410" font-family="sans-serif" font-size="12" fill="#6B6760">テンプレートファイル・ユーザー辞書・文字数カウントを準備し、「テキストのみ貼り付け」でコピペ</text>
+  <text x="72" y="435" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">操作ミス・フォーマット崩れのリスクを回避</text>
+  <text x="696" y="508" text-anchor="end" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+5つのテクニックすべてを一度に導入する必要はありません。まずは最も時間がかかっている作業から1つ選んで試してみてください。
+
+個人的なおすすめは **テクニック1**（テンプレートによる症例登録の流れ作業化） です。症例登録は件数が多い分、1件あたりの時短効果が積み上がるインパクトが大きいからです。テンプレートを使い始めるだけなら準備も5分で済みます。
+
+J-OSLERの全体的なスケジュール感や、[修了要件の全体像](/blog/a06-josler-shuryo-youken)を把握した上で計画的に進めたい方は、[J-OSLER進捗管理の方法](/blog/e01-josler-shinchoku-kanri)や[J-OSLERチェックリスト](/blog/e04-josler-checklist)も参考にしてください。
+
+この記事で紹介した5つのテクニックのうち、テクニック2（AIテンプレート）・テクニック3（検査値整形）・テクニック4（進捗管理）は[iwor](/pro/)に統合されています。ダッシュボードで進捗を管理しながら、AI病歴要約テンプレートで構成の骨組みを手に入れ、病歴要約のステータスを29編一括管理する。バラバラのツールを組み合わせる手間なく、J-OSLER作業全体を効率化できます。
+
+## よくある質問（FAQ）
+
+### Q. AIを使って病歴要約を書いたら不正になりますか？
+
+いいえ、日本内科学会のガイドラインに沿っていれば問題ありません。ただし、4つの遵守事項（学習データ反映の無効化、個人情報の入力禁止、AI使用の開示、考察・自己省察は自分の言葉で記載）を必ず守ってください。詳しくは[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)を参照してください。
+
+### Q. 症例登録の自己省察はどのくらいの量が必要ですか？
+
+2024年10月の[プログラム整備基準第2版](https://www.naika.or.jp/nintei/j-osler/)の改定で、症例登録の記載字数の目安は気にしなくてよいと明言されました。1〜2行でも問題ないとのことなので、質より量を重視して効率的に進めましょう。
+
+### Q. 病歴要約はA4何枚に収める必要がありますか？
+
+病歴要約は[「A4用紙2枚以内」に収め、紙面の80%以上を記載する](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)ことが求められています。J-OSLERのPDF出力機能で確認しながら調整してください。Wordで下書きする際は、PDF出力時にA4 2ページに収まるよう文字量を調整しましょう。
+
+### Q. J-OSLERの進捗が遅れている場合はどうすれば？
+
+まず現在の達成状況を正確に把握し、残りの作業量から逆算してスケジュールを立て直しましょう。残り期間別の具体的な戦略は[J-OSLERが間に合わない場合の巻き返し戦略](/blog/e02-josler-manianai)で解説しています。
+
+### Q. 退院サマリーとJ-OSLERの症例登録は同時にやるべきですか？
+
+はい、強くおすすめします。退院サマリーを書くタイミングではカルテの情報が手元にあり、症例の記憶も新鮮です。サマリーの現病歴をそのまま症例登録の「症例の概略」に流用できるため、追加の作業は自己省察の3行程度だけです。
+
+## よくある失敗パターン
+
+### ❌ 「後でまとめてやろう」でテンプレートを作らずに進める
+
+時短の効果を一番実感しやすいのがテンプレート導入ですが、「急いでいるから今は直接書く」という判断を繰り返すと、永遠にテンプレート作成に着手できません。最初の30分でテンプレートを1つ作るだけで、その後の**数十件分の入力時間** が短縮されます。最初の症例登録を一番丁寧にやって、それをテンプレートとして保存するのが最も現実的な手順です。
+
+### ❌ AI補助ツールを「AIに書かせること」と勘違いして使わない
+
+「AIに病歴要約を書かせるのは不正では？」という誤解から、AI補助ツールを一切使わない専攻医が多くいます。しかし内科学会のガイドラインが認めているのは、**文献検索・構成案の整理・翻訳補助** などのサポート的な使用です。考察の内容は自分で書く必要がありますが、文献候補の列挙や構成の骨組みをAIに作らせる時短効果は大きく、3時間かかっていた作業が1.5時間になることもあります。
+
+### ❌ Wordテンプレートを整備せずにJ-OSLERに直接入力する
+
+29篇の病歴要約を全てJ-OSLERの入力フォームで直接作成していると、「フォーマットが毎回崩れる」「セッションタイムアウトで消える」「文字数が把握できない」という三重苦に悩まされます。Wordで統一テンプレートを作り、**全篇を同じフォーマットで下書き→コピペ** する運用に切り替えるだけで、1篇あたり20〜30分の節約になります。
+
+## まとめ
+
+J-OSLERの時短は「賢く手を抜く」のではなく、「繰り返しの作業を仕組み化する」ことで実現します。
+
+- **症例登録**: テンプレートを1つ作って流れ作業化。退院当日に15分で完了させる
+- **病歴要約**: 構成のひな形はAIやiworで取得し、考察に集中する
+- **検査結果**: AIフォーマット変換プロンプトで1篇あたり20分節約
+- **進捗管理**: 疾患群・病歴要約の達成状況を月1回確認して軌道修正
+- **Word環境**: 下書きはWord、J-OSLERにはコピペのみ。セッションタイムアウト事故ゼロへ
+
+J-OSLER全体の修了要件と進め方は[J-OSLER修了要件まとめ](/blog/a06-josler-shuryo-youken)、進捗管理の具体的な方法は[J-OSLER進捗管理の方法](/blog/e01-josler-shinchoku-kanri)で確認してください。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [インスリンスライディングスケール](/tools/calc/insulin-sliding)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

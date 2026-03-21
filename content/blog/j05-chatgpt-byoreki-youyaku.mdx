@@ -1,0 +1,194 @@
+---
+title: "ChatGPTで病歴要約を書く方法｜プロンプトテンプレートと注意点"
+description: "ChatGPTを使ってJ-OSLERの病歴要約を効率的に下書きする方法を解説。現病歴・OPQRST・検査所見・プロブレムリストのプロンプトテンプレート付き。ハルシネーション対策も。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "iwor編集部"
+category: "ai-tools"
+cluster: "J"
+pillar: "josler-complete-guide"
+tags: ["ChatGPT", "病歴要約", "AI", "J-OSLER", "プロンプト", "効率化", "内科専攻医"]
+cta_type: "template"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「病歴要約を書き始めるたびに、何から手をつければいいか迷ってしまう」「現病歴の流れをうまくまとめられない」という悩みを抱えたことはありませんか。
+
+J-OSLERの病歴要約は29編が必要で、一編ごとに相当な時間と労力がかかります。そこで近年、専攻医の間で広まっているのがChatGPTをはじめとするAIを使った下書き作成の方法です。AIをうまく活用することで、白紙から書き始めるストレスを大幅に減らし、「AIが出した骨格を整える」作業に集中できるようになります。
+
+ただし、AIを使う際には注意点もあります。この記事では、ChatGPTを使って病歴要約を効率化するためのプロンプトテンプレートと、医師として押さえておくべき使い方のルールを解説します。
+
+> [iwor](/pro/)のAI病歴要約テンプレート機能は、疾患群と疾患名を選ぶだけで構成テンプレートを自動生成します。OPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで提示されるため、ChatGPTと組み合わせることで作業時間をさらに短縮できます。
+
+## ChatGPTを病歴要約に使う前に知っておくこと
+
+ChatGPTは非常に高性能な文章生成AIですが、医療文書に使う場合にはいくつかの制約を理解したうえで活用することが重要です。
+
+最も注意すべきなのが**ハルシネーション**（幻覚）の問題です。ChatGPTは存在しない検査値や実際には行っていない処置を、もっともらしい文体で生成してしまうことがあります。AIが出力した文章を「そのまま」病歴要約に貼り付けることは絶対に避けてください。患者の実際のカルテ情報とAIの出力を必ず照合し、事実と異なる記述がないかを人間の目でチェックすることが大前提です。
+
+また、患者の個人情報（氏名・生年月日・住所・カルテ番号など）をChatGPTに入力することは適切ではありません。病歴要約をAIに入力する際は、個人を特定できる情報をすべて除いた「匿名化済みの情報」のみを使いましょう。施設によってはAIツールの使用に関するガイドラインが定められている場合もあるため、事前に確認しておくことをおすすめします。
+
+こうした制約を踏まえたうえで、「AIは下書きのたたき台を作る道具」として使うのが最も安全で効果的な活用法です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" role="img" aria-label="ChatGPT病歴要約活用の正しいフロー">
+  <defs><filter id="fj05a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="280" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">ChatGPTを使った病歴要約作成フロー</text>
+  <rect x="30" y="76" width="142" height="170" rx="8" fill="#FEFEFC" filter="url(#fj05a)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="101" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">STEP 1</text>
+  <text x="101" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">カルテ情報を</text>
+  <text x="101" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">匿名化してメモ</text>
+  <text x="101" y="162" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">氏名・ID等を</text>
+  <text x="101" y="178" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">除いた情報のみ</text>
+  <text x="184" y="162" fill="#1B4F3A" font-size="18" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="204" y="76" width="142" height="170" rx="8" fill="#E8F0EC" filter="url(#fj05a)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="275" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">STEP 2</text>
+  <text x="275" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">プロンプトに貼り</text>
+  <text x="275" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">付けてAI生成</text>
+  <text x="275" y="162" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">ChatGPT or Claude</text>
+  <text x="275" y="178" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">で下書き生成</text>
+  <text x="358" y="162" fill="#1B4F3A" font-size="18" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="378" y="76" width="142" height="170" rx="8" fill="#FEFEFC" filter="url(#fj05a)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="449" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">STEP 3</text>
+  <text x="449" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">カルテと照合</text>
+  <text x="449" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">して事実確認</text>
+  <text x="449" y="162" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#991B1B">ハルシネーション</text>
+  <text x="449" y="178" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#991B1B">チェック必須</text>
+  <text x="532" y="162" fill="#1B4F3A" font-size="18" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="552" y="76" width="212" height="170" rx="8" fill="#E8F0EC" filter="url(#fj05a)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="658" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">STEP 4</text>
+  <text x="658" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">自分の言葉で加筆・</text>
+  <text x="658" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1A1917">修正して完成</text>
+  <text x="658" y="162" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">考察・全人的視点は</text>
+  <text x="658" y="178" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">必ず自分で書く</text>
+  <text x="400" y="268" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## 現病歴・OPQRSTの下書きプロンプト
+
+病歴要約の中で最も時間がかかる部分の一つが現病歴です。患者の主訴から始まり、症状の経過・受診のきっかけ・前医での加療歴などを論理的に整理する必要があります。ChatGPTを使うと、カルテに散在する情報を「読みやすい時系列の流れ」に整理する作業を大幅に効率化できます。
+
+以下のプロンプトテンプレートを参考にしてください。山括弧（＜　＞）の部分に実際の症例情報を入れて使います。
+
+```
+以下の情報をもとに、J-OSLER病歴要約の「現病歴」セクションを医学的な文体で下書きしてください。
+200〜300字程度、OPQRST形式を意識した時系列の流れで記述してください。
+個人を特定する情報は含まれていません。
+
+【症例情報】
+- 主訴: ＜例: 労作時息切れ＞
+- 発症時期: ＜例: X年Y月頃から＞
+- 経過: ＜例: 徐々に悪化し、2週間前から安静時にも息切れが出現＞
+- 関連症状: ＜例: 両下腿浮腫、夜間発作性呼吸困難あり＞
+- 前医での経過: ＜例: かかりつけ医でフロセミド処方、改善乏しく紹介＞
+- 既往: ＜例: 高血圧・2型糖尿病＞
+```
+
+AIが生成した現病歴は、実際のカルテと照合しながら事実と異なる部分を修正し、自分の言葉で加筆してください。発症時期や症状の表現は特に確認が必要です。
+
+## 検査所見セクションの整形プロンプト
+
+カルテに記載された検査値をJ-OSLER病歴要約の書式に整えるのも、地道な作業の一つです。ChatGPTを使うと「コピペした生の検査データ」を「医学文書として読みやすい形式」に変換する手間を省けます。
+
+```
+以下の検査データを病歴要約の「入院時検査所見」セクション向けに
+医学的な文体で整理してください。
+異常値は太字にする指定は不要です。通常の文章形式でまとめてください。
+
+【血液検査データ】
+WBC 11.2（×10³/μL）, Hb 10.2（g/dL）, Plt 18.4（×10⁴/μL）
+BUN 28, Cr 1.1, Na 138, K 4.2, Cl 102
+BNP 820 pg/mL, トロポニンI 0.08 ng/mL
+【画像所見】
+胸部X線: 心拡大（CTR 0.58）、両側肺野のうっ血像
+心エコー: EF 32%, 左室拡大, 中等度僧帽弁逆流
+
+※これは架空の症例例です。実際の患者情報は使用しないでください。
+```
+
+このプロンプトで生成された検査所見は、元のカルテデータと数値・単位・所見の内容を一つひとつ照合してください。検査値の転記ミスや単位の誤りは指導医からのフィードバックで指摘されやすいため、特に丁寧に確認しましょう。
+
+## プロブレムリストと考察の方向性
+
+プロブレムリストの作成と総合考察は、病歴要約の中核です。ここはAIに「完成品」を作らせるのではなく、「たたき台」として使うことが重要です。
+
+```
+以下の情報をもとに、病歴要約のプロブレムリスト（問題点リスト）の案を
+3〜5項目で提示してください。
+診断名だけでなく、問題となる項目（管理上の課題・社会的背景なども含む）を挙げてください。
+
+【症例の概要】
+- 主診断: ＜例: 急性非代償性心不全（収縮不全型）＞
+- 合併症: ＜例: 2型糖尿病、慢性腎臓病G3b＞
+- 入院の直接原因: ＜例: 塩分制限の不徹底と利尿剤の自己中断＞
+- 社会的背景: ＜例: 独居、食事管理が困難な状況＞
+```
+
+AIが提示するプロブレムリストはあくまで出発点です。実際の症例では、検査所見や臨床経過から自分が「問題として挙げるべき点」を主体的に判断し、AIの案に加筆・修正を加えることが求められます。総合考察の書き方については[総合考察の書き方ガイド](/blog/c04-josler-sougou-kousatsu-kakikata)で詳しく解説しています。
+
+## ClaudeとChatGPTの使い分け
+
+病歴要約の下書きにAIを使う際、ChatGPTとClaudeを使い分けると効果的です。
+
+ChatGPTは日本語の文章生成が得意で、日常的な対話形式のプロンプトに素直に応答します。現病歴の流れを整理したり、検査所見をまとめたりといった「文章整形」の作業に向いています。
+
+ClaudeはPubMed MCPと連携することで、PubMedの論文データベースに直接アクセスして実在する論文のタイトル・著者・掲載誌を取得できます。病歴要約の引用文献候補を探す作業では、ChatGPTのように「存在しない論文をもっともらしく生成する」ハルシネーションのリスクが低く、より信頼性の高い文献情報を得られます。引用文献の探し方については[ClaudeでPubMed論文検索](/blog/j10-claude-pubmed-mcp)も参考にしてください。
+
+> [iwor](/pro/)のAI病歴要約テンプレートは、Claude PubMed MCPでPubMedの実データと照合済みの引用文献候補を提示します。「存在しない論文を書いてしまった」というリスクを大幅に減らせます。
+
+## ChatGPTを使う際の7つの注意点
+
+AIを病歴要約に活用するうえで、守るべきルールをまとめておきます。実際の作業に入る前に確認してください。
+
+まず患者情報の匿名化は絶対条件です。氏名・生年月日・ID番号・住所などの直接識別情報はもちろん、希少疾患や特定の地域に限定される事情など、間接的に個人を特定できる情報も入力しないよう注意しましょう。
+
+次に、AIの出力は必ず一次情報（カルテ）と照合してください。検査値・日付・処置内容など、事実に関わるすべての記述を確認します。「もっともらしい数値」がAIによって挿入されている場合があります。
+
+考察・全人的視点・自己省察は自分の言葉で書いてください。病歴要約の評価において査読委員が最も重視するのは「担当医として何を考え、何を学んだか」という部分です。ここをAIに任せると、評価者に一目でわかってしまいます。
+
+施設の方針にも従ってください。AIツールの業務利用について施設ごとにガイドラインがある場合、それを順守することが求められます。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" role="img" aria-label="ChatGPT病歴要約 NG・OK比較">
+  <defs><filter id="fj05b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="240" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="16" width="752" height="44" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fff">ChatGPT活用 NG vs OK</text>
+  <rect x="40" y="76" width="340" height="140" rx="10" fill="#FEE2E2" filter="url(#fj05b)" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="210" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#991B1B">❌ NG</text>
+  <text x="60" y="128" font-family="sans-serif" font-size="11" fill="#1A1917">患者の氏名・IDをそのまま入力する</text>
+  <text x="60" y="150" font-family="sans-serif" font-size="11" fill="#1A1917">AI出力をそのままコピペして提出する</text>
+  <text x="60" y="172" font-family="sans-serif" font-size="11" fill="#1A1917">考察・自己省察をAIに丸投げする</text>
+  <text x="60" y="194" font-family="sans-serif" font-size="11" fill="#1A1917">カルテとの照合を省略する</text>
+  <rect x="420" y="76" width="340" height="140" rx="10" fill="#E8F0EC" filter="url(#fj05b)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="590" y="104" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1B4F3A">✅ OK</text>
+  <text x="440" y="128" font-family="sans-serif" font-size="11" fill="#1A1917">匿名化した情報でたたき台を生成する</text>
+  <text x="440" y="150" font-family="sans-serif" font-size="11" fill="#1A1917">カルテと照合して事実を確認・修正する</text>
+  <text x="440" y="172" font-family="sans-serif" font-size="11" fill="#1A1917">考察は自分の言葉で加筆・完成させる</text>
+  <text x="440" y="194" font-family="sans-serif" font-size="11" fill="#1A1917">AIを「下書きの骨格」として使う</text>
+  <text x="400" y="230" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+## よくある質問（FAQ）
+
+### Q. AIを使って書いた病歴要約は、査読で分かりますか？
+
+AIが生成した文章は、査読委員が経験を積めば識別できることがあります。特に「考察・全人的視点・自己省察」の部分がAIの文体のまま（均一で抽象的な表現が続く）だと気づかれやすいです。これらのセクションは必ず自分の言葉で書いてください。現病歴や検査所見の整形にAIを使う分には、最終的に自分で確認・修正していれば問題ありません。
+
+### Q. ChatGPT以外のAIも使えますか？
+
+はい、ClaudeやGeminiなども同様に活用できます。中でもClaude（Anthropic）はPubMed MCP連携により、論文引用の信頼性が高まります。文章整形はChatGPT、引用文献探しはClaude、という使い分けが現時点では最も効率的です。
+
+### Q. 無料版のChatGPTでも使えますか？
+
+無料版（GPT-3.5ベース）でも基本的なプロンプトには対応できますが、より自然で正確な文章を求めるなら有料版（GPT-4o）のほうが品質は上がります。
+
+## まとめ
+
+ChatGPTをJ-OSLER病歴要約に活用するポイントは「AIはたたき台を作る道具」という位置づけを守ることです。現病歴の整理や検査所見の整形にはChatGPTが役立ちますが、考察・全人的視点・自己省察は必ず自分の言葉で書く必要があります。
+
+また、引用文献の収集にはClaude＋PubMed MCPを組み合わせることで、ハルシネーションのリスクを大幅に減らせます。AIをうまく使いながら、最終的な責任は医師自身が持つという原則を守って活用してください。
+
+AI活用の全体戦略は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)で、引用文献探しの詳細は[ClaudeでPubMed論文検索](/blog/j10-claude-pubmed-mcp)で解説しています。病歴要約の書き方全般は[病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)も参照してください。

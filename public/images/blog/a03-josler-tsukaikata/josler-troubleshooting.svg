@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow3" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="460" rx="12" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">J-OSLER よくあるトラブルと対処法</text>
+
+  <!-- Row 1 -->
+  <rect x="30" y="55" width="360" height="115" rx="8" fill="#FEE2E2" stroke="#991B1B" stroke-width="1.5" filter="url(#shadow3)"/>
+  <text x="45" y="78" font-size="12" font-weight="bold" fill="#991B1B">❌ ログインできない</text>
+  <line x1="45" y1="86" x2="375" y2="86" stroke="rgba(153,27,27,0.2)" stroke-width="1"/>
+  <text x="45" y="104" font-size="11" fill="#6B6760">1. PW 5回ミス → 60分待って再試行</text>
+  <text x="45" y="122" font-size="11" fill="#6B6760">2. PW忘れ → ログイン画面「PW再発行」</text>
+  <text x="45" y="140" font-size="11" fill="#6B6760">3. それでもNG → ヘルプデスクに連絡</text>
+  <text x="45" y="158" font-size="10" fill="#991B1B">PWルール: 8〜20文字、過去3回と異なること</text>
+
+  <rect x="410" y="55" width="360" height="115" rx="8" fill="#FEF3C7" stroke="#92400E" stroke-width="1.5" filter="url(#shadow3)"/>
+  <text x="425" y="78" font-size="12" font-weight="bold" fill="#92400E">⚠️ 承認ボタンが表示されない</text>
+  <line x1="425" y1="86" x2="755" y2="86" stroke="rgba(146,64,14,0.2)" stroke-width="1"/>
+  <text x="425" y="104" font-size="11" fill="#6B6760">1. ブラウザのウィンドウを最大化</text>
+  <text x="425" y="122" font-size="11" fill="#6B6760">2. ブラウザのズームを100%に</text>
+  <text x="425" y="140" font-size="11" fill="#6B6760">3. 表示→ズーム→縮小で調整</text>
+  <text x="425" y="158" font-size="10" fill="#92400E">画面が狭いとボタンが隠れることがある</text>
+
+  <!-- Row 2 -->
+  <rect x="30" y="185" width="360" height="115" rx="8" fill="#FEE2E2" stroke="#991B1B" stroke-width="1.5" filter="url(#shadow3)"/>
+  <text x="45" y="208" font-size="12" font-weight="bold" fill="#991B1B">❌ 入力内容が消えた</text>
+  <line x1="45" y1="216" x2="375" y2="216" stroke="rgba(153,27,27,0.2)" stroke-width="1"/>
+  <text x="45" y="234" font-size="11" fill="#6B6760">原因: セッションタイムアウト（1時間）</text>
+  <text x="45" y="252" font-size="11" fill="#6B6760">対策1: こまめに「一時保存」ボタンを押す</text>
+  <text x="45" y="270" font-size="11" fill="#6B6760">対策2: 長文はWordで下書き → コピペ</text>
+  <text x="45" y="288" font-size="10" fill="#991B1B">メンテナンス中のログインでもデータ消失あり</text>
+
+  <rect x="410" y="185" width="360" height="115" rx="8" fill="#FEF3C7" stroke="#92400E" stroke-width="1.5" filter="url(#shadow3)"/>
+  <text x="425" y="208" font-size="12" font-weight="bold" fill="#92400E">⚠️ 症例が登録できない</text>
+  <line x1="425" y1="216" x2="755" y2="216" stroke="rgba(146,64,14,0.2)" stroke-width="1"/>
+  <text x="425" y="234" font-size="11" fill="#6B6760">1. 担当指導医が未承認 → 承認依頼</text>
+  <text x="425" y="252" font-size="11" fill="#6B6760">2. 研修開始日前 → 4月1日以降に再試行</text>
+  <text x="425" y="270" font-size="11" fill="#6B6760">3. 入力エラー → 赤字メッセージを確認</text>
+  <text x="425" y="288" font-size="10" fill="#92400E">主担当医として受け持った症例のみ登録可</text>
+
+  <!-- Row 3 -->
+  <rect x="30" y="315" width="360" height="115" rx="8" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5" filter="url(#shadow3)"/>
+  <text x="45" y="338" font-size="12" font-weight="bold" fill="#1B4F3A">💡 ブラウザの「戻る」が使えない</text>
+  <line x1="45" y1="346" x2="375" y2="346" stroke="rgba(27,79,58,0.2)" stroke-width="1"/>
+  <text x="45" y="364" font-size="11" fill="#6B6760">J-OSLERの仕様でブラウザの戻るは無効</text>
+  <text x="45" y="382" font-size="11" fill="#6B6760">→ 必ずJ-OSLER画面内の「戻る」を使う</text>
+  <text x="45" y="400" font-size="11" fill="#6B6760">→ サイドメニューからの画面遷移が確実</text>
+  <text x="45" y="418" font-size="10" fill="#1B4F3A">ブラウザ戻るを使うとエラーが発生する場合も</text>
+
+  <rect x="410" y="315" width="360" height="115" rx="8" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5" filter="url(#shadow3)"/>
+  <text x="425" y="338" font-size="12" font-weight="bold" fill="#1B4F3A">💡 異動時の手続き</text>
+  <line x1="425" y1="346" x2="755" y2="346" stroke="rgba(27,79,58,0.2)" stroke-width="1"/>
+  <text x="425" y="364" font-size="11" fill="#6B6760">1. 転出届をJ-OSLER上で提出</text>
+  <text x="425" y="382" font-size="11" fill="#6B6760">2. 新施設で転入申請 + 指導医変更</text>
+  <text x="425" y="400" font-size="11" fill="#6B6760">3. 研修委員会委員長の承認が必要</text>
+  <text x="425" y="418" font-size="10" fill="#1B4F3A">異動前に必ず手続きを。後からでは困難に</text>
+
+  <!-- Footer -->
+  <text x="400" y="452" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

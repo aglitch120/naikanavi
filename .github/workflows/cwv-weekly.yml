@@ -1,0 +1,36 @@
+name: Weekly Core Web Vitals
+
+on:
+  schedule:
+    # 毎週月曜 9:00 JST (0:00 UTC)
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  cwv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.14.x
+
+      - name: Run Lighthouse on key pages
+        run: |
+          lhci autorun --collect.url=http://localhost:3000/ \
+            --collect.url=http://localhost:3000/blog \
+            --collect.url=http://localhost:3000/blog/josler-complete-guide \
+            --collect.url=http://localhost:3000/blog/a01-josler-toha \
+            --collect.url=http://localhost:3000/blog/category/josler-basics

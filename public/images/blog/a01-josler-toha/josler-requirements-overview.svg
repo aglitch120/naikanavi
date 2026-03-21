@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#1B4F3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+
+  <!-- Header -->
+  <rect x="24" y="20" width="752" height="56" rx="12" fill="url(#headerGrad)"/>
+  <text x="400" y="55" text-anchor="middle" fill="#FEFEFC" font-size="22" font-weight="700">J-OSLER 修了に必要な5つの要件</text>
+
+  <!-- Requirement 1: 症例登録 -->
+  <rect x="24" y="96" width="365" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="24" y="96" width="365" height="36" rx="12" fill="#1E3A5F"/>
+  <rect x="24" y="116" width="365" height="16" fill="#1E3A5F"/>
+  <circle cx="52" cy="114" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <text x="52" y="119" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">1</text>
+  <text x="76" y="119" fill="#FEFEFC" font-size="15" font-weight="700">症例登録</text>
+  <!-- ミニアイコン：クリップボード -->
+  <rect x="350" y="140" width="22" height="28" rx="3" fill="#E8F0EC" stroke="#1E3A5F" stroke-width="1.2"/>
+  <rect x="356" y="136" width="10" height="6" rx="2" fill="#1E3A5F"/>
+  <rect x="354" y="150" width="14" height="2" rx="1" fill="#1E3A5F" opacity="0.3"/>
+  <rect x="354" y="155" width="10" height="2" rx="1" fill="#1E3A5F" opacity="0.3"/>
+  <rect x="354" y="160" width="12" height="2" rx="1" fill="#1E3A5F" opacity="0.3"/>
+  <text x="44" y="155" fill="#1A1917" font-size="13">主担当医として経験した症例を登録</text>
+  <text x="44" y="178" fill="#1B4F3A" font-size="18" font-weight="700">120症例以上</text>
+  <text x="190" y="178" fill="#6B6760" font-size="12">（56疾患群以上をカバー）</text>
+  <text x="44" y="200" fill="#6B6760" font-size="12">※7期生以降：各領域の最低症例数あり</text>
+
+  <!-- Requirement 2: 病歴要約 -->
+  <rect x="411" y="96" width="365" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="411" y="96" width="365" height="36" rx="12" fill="#991B1B"/>
+  <rect x="411" y="116" width="365" height="16" fill="#991B1B"/>
+  <circle cx="439" cy="114" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <text x="439" y="119" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">2</text>
+  <text x="463" y="119" fill="#FEFEFC" font-size="15" font-weight="700">病歴要約 ← 最大の関門</text>
+  <!-- ミニアイコン：ペンと紙 -->
+  <rect x="738" y="140" width="20" height="26" rx="2" fill="#FEE2E2" stroke="#991B1B" stroke-width="1"/>
+  <line x1="742" y1="148" x2="754" y2="148" stroke="#991B1B" stroke-width="1" opacity="0.3"/>
+  <line x1="742" y1="153" x2="752" y2="153" stroke="#991B1B" stroke-width="1" opacity="0.3"/>
+  <line x1="742" y1="158" x2="750" y2="158" stroke="#991B1B" stroke-width="1" opacity="0.3"/>
+  <path d="M760 138 L764 134 L768 138 L764 162 Z" fill="#991B1B" opacity="0.6"/>
+  <text x="431" y="155" fill="#1A1917" font-size="13">詳細な病歴要約を作成し3段階評価</text>
+  <text x="431" y="178" fill="#991B1B" font-size="18" font-weight="700">29症例</text>
+  <text x="520" y="178" fill="#6B6760" font-size="12">（個別→一次→二次評価）</text>
+  <text x="431" y="200" fill="#6B6760" font-size="12">※全て異なる疾患群から選択が必要</text>
+
+  <!-- Requirement 3: 技術技能評価 -->
+  <rect x="24" y="236" width="240" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="24" y="236" width="240" height="36" rx="12" fill="#2D6A4F"/>
+  <rect x="24" y="256" width="240" height="16" fill="#2D6A4F"/>
+  <circle cx="52" cy="254" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <text x="52" y="259" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">3</text>
+  <text x="76" y="259" fill="#FEFEFC" font-size="15" font-weight="700">技術技能評価</text>
+  <text x="44" y="298" fill="#1A1917" font-size="13">自己評価+360度評価</text>
+  <text x="44" y="320" fill="#2D6A4F" font-size="16" font-weight="700">6ヶ月ごとに登録</text>
+  <text x="44" y="342" fill="#6B6760" font-size="12">忘れると修了認定ストップ</text>
+
+  <!-- Requirement 4: 共通講習 -->
+  <rect x="280" y="236" width="240" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="280" y="236" width="240" height="36" rx="12" fill="#4338CA"/>
+  <rect x="280" y="256" width="240" height="16" fill="#4338CA"/>
+  <circle cx="308" cy="254" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <text x="308" y="259" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">4</text>
+  <text x="332" y="259" fill="#FEFEFC" font-size="15" font-weight="700">共通講習</text>
+  <text x="300" y="298" fill="#1A1917" font-size="13">医療倫理・安全・感染対策</text>
+  <text x="300" y="320" fill="#4338CA" font-size="16" font-weight="700">年2回 × 3年 = 計6回</text>
+  <text x="300" y="342" fill="#6B6760" font-size="12">e-learning（1講座2,200円）も可</text>
+
+  <!-- Requirement 5: JMECC・学会 -->
+  <rect x="536" y="236" width="240" height="120" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="536" y="236" width="240" height="36" rx="12" fill="#6D28D9"/>
+  <rect x="536" y="256" width="240" height="16" fill="#6D28D9"/>
+  <circle cx="564" cy="254" r="14" fill="#FEFEFC" opacity="0.2"/>
+  <text x="564" y="259" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">5</text>
+  <text x="588" y="259" fill="#FEFEFC" font-size="15" font-weight="700">JMECC・学会</text>
+  <text x="556" y="298" fill="#1A1917" font-size="13">JMECC受講（1回）</text>
+  <text x="556" y="320" fill="#6D28D9" font-size="16" font-weight="700">学会発表 2回以上</text>
+  <text x="556" y="342" fill="#6B6760" font-size="12">枠が埋まりやすいので早めに</text>
+
+  <!-- Bottom: Goal -->
+  <line x1="400" y1="370" x2="400" y2="400" stroke="#1B4F3A" stroke-width="2.5" stroke-dasharray="6,4"/>
+  <polygon points="393,398 400,412 407,398" fill="#1B4F3A"/>
+
+  <rect x="180" y="420" width="440" height="72" rx="16" fill="#1B4F3A" filter="url(#shadow)"/>
+  <text x="400" y="452" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">5つすべてクリア → 内科専門医試験 受験資格</text>
+  <text x="400" y="476" text-anchor="middle" fill="#E8F0EC" font-size="13">試験合格 + 全要件達成 → 内科専門医 認定</text>
+
+  <!-- Footer -->
+  <text x="780" y="512" text-anchor="end" fill="#C8C4BC" font-size="10">© 内科ナビ naikanavi.com</text>
+</svg>

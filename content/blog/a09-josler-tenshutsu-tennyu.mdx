@@ -1,0 +1,251 @@
+---
+title: "J-OSLER施設異動の手続き完全ガイド｜転出・転入申請の流れと注意点"
+description: "J-OSLERでの施設異動（転出・転入）手続きを完全解説。プログラム内異動とプログラム間異動の違い、申請の流れ、症例データの引き継ぎ、担当指導医の変更方法まで。公式FAQに基づく最新情報。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "iwor編集部"
+category: "josler-basics"
+cluster: "A"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "転出", "転入", "施設異動", "プログラム変更"]
+cta_type: "template"
+reading_time: 8
+status: "published"
+seo_checked: true
+---
+
+「ローテーション先が変わるけど、J-OSLERの手続きは？」「プログラムを変更したら症例データはどうなる？」
+
+内科専門研修中、連携施設へのローテーションやプログラム変更により **施設異動** が発生します。J-OSLERでは異動の種類によって手続きが異なり、手順を間違えると症例登録や病歴要約に影響が出ます。この記事では、J-OSLER公式FAQに基づいて、転出・転入申請の流れと注意点を解説します。
+
+> [iwor](/pro/)のダッシュボードなら、施設異動後も含めたすべてのJ-OSLER修了要件の進捗をひと目で確認できます。
+
+## 施設異動の2つのパターン
+
+J-OSLERでの施設異動には **2つのパターン** があります。手続きの流れが異なるため、自分の異動がどちらに該当するか確認しましょう。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="施設異動の2パターン｜プログラム内異動とプログラム間異動">
+  <defs>
+    <filter id="sa9a" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="400" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1E3A5F"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">施設異動の2つのパターン</text>
+
+  <rect x="40" y="92" width="350" height="270" rx="10" fill="#FEFEFC" filter="url(#sa9a)" stroke="#1E3A5F" stroke-width="2"/>
+  <rect x="40" y="92" width="350" height="44" rx="10" fill="#1E3A5F"/>
+  <text x="215" y="120" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold" font-family="sans-serif">パターン1: プログラム内異動</text>
+  <text x="56" y="160" fill="#1A1917" font-size="13" font-weight="bold" font-family="sans-serif">同じプログラム内での施設移動</text>
+  <text x="56" y="186" fill="#6B6760" font-size="12" font-family="sans-serif">例: 基幹施設 → 連携施設へローテーション</text>
+  <text x="56" y="206" fill="#6B6760" font-size="12" font-family="sans-serif">例: 連携施設A → 連携施設B への異動</text>
+  <text x="56" y="240" fill="#1E3A5F" font-size="12" font-weight="bold" font-family="sans-serif">特徴:</text>
+  <text x="56" y="262" fill="#1A1917" font-size="12" font-family="sans-serif">・プログラム統括責任者の承認で完了</text>
+  <text x="56" y="282" fill="#1A1917" font-size="12" font-family="sans-serif">・異動日の夜間に切り替わる</text>
+  <text x="56" y="302" fill="#1A1917" font-size="12" font-family="sans-serif">・症例データはそのまま引き継がれる</text>
+  <text x="56" y="322" fill="#1A1917" font-size="12" font-family="sans-serif">・翌日に担当指導医の変更が必要</text>
+  <rect x="56" y="336" width="80" height="20" rx="4" fill="#E8F0EC"/>
+  <text x="96" y="351" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="bold" font-family="sans-serif">手続き簡単</text>
+
+  <rect x="410" y="92" width="350" height="270" rx="10" fill="#FEFEFC" filter="url(#sa9a)" stroke="#1E3A5F" stroke-width="2"/>
+  <rect x="410" y="92" width="350" height="44" rx="10" fill="#1E3A5F"/>
+  <text x="585" y="120" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold" font-family="sans-serif">パターン2: プログラム間異動</text>
+  <text x="426" y="160" fill="#1A1917" font-size="13" font-weight="bold" font-family="sans-serif">異なるプログラムへの変更</text>
+  <text x="426" y="186" fill="#6B6760" font-size="12" font-family="sans-serif">例: A大学プログラム → B病院プログラム</text>
+  <text x="426" y="206" fill="#6B6760" font-size="12" font-family="sans-serif">例: 転居に伴うプログラム変更</text>
+  <text x="426" y="240" fill="#1E3A5F" font-size="12" font-weight="bold" font-family="sans-serif">特徴:</text>
+  <text x="426" y="262" fill="#1A1917" font-size="12" font-family="sans-serif">・両プログラム統括責任者の承認が必要</text>
+  <text x="426" y="282" fill="#1A1917" font-size="12" font-family="sans-serif">・異動前の実績登録を完了させる必要あり</text>
+  <text x="426" y="302" fill="#1A1917" font-size="12" font-family="sans-serif">・症例データは引き継がれる</text>
+  <text x="426" y="322" fill="#1A1917" font-size="12" font-family="sans-serif">・翌日に担当指導医の変更が必要</text>
+  <rect x="426" y="336" width="80" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="466" y="351" text-anchor="middle" fill="#92400E" font-size="11" font-weight="bold" font-family="sans-serif">要事前準備</text>
+
+  <text x="400" y="392" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+### パターン1：プログラム内異動（ローテーション）
+
+同じ専門研修プログラム内で所属施設が変わるケースです。基幹施設から連携施設へのローテーション、連携施設間の異動などが該当します。これは研修プログラムの中で**予定された移動** なので、両プログラム間の交渉は不要でシンプルに完了できます。
+
+ただし「シンプル」とはいえ、手続きを忘れると実害が生じます。典型的な失敗は「ローテーション初日に担当指導医変更を忘れ、新施設で経験した症例の評価依頼ができない」というケースです。**転出・転入申請→翌日に指導医変更、この2ステップをセットで覚えておいてください。** 多くの専攻医がローテーション直後の忙しい時期にこの手続きを後回しにして、1〜2週間後に気づいて焦るパターンを繰り返しています。
+
+### パターン2：プログラム間異動（プログラム変更）
+
+異なる専門研修プログラムに移るケースです。転居、指導体制への不満、プログラムの方針変更などが理由になります。プログラム間異動は**両方のプログラム統括責任者の承認** が必要で、事前準備も重要です。
+
+特に注意すべきなのは、転出元プログラムの統括責任者が「なかなか承認してくれない」というケースです。関係が良好でない場合は承認が遅れることもあるため、**異動の意向が決まったら早めに両プログラムに連絡し、日程を合意した上でJ-OSLER申請を行うのがベストプラクティスです。** 事前に口頭で合意を取った後にシステム上の申請をするイメージで動きましょう。
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## 転出・転入申請の手順
+
+### ステップ1：J-OSLERで申請
+
+J-OSLERにログインし、サイドメニューの **「申請」→「転出・転入」** から所属プログラム・施設の変更を申請します。
+
+**異動日のルール:**
+- **未来日のみ入力可能**（過去日は設定できない）
+- 最短で申請日の翌日を異動日に設定できる
+- 異動日は実際の赴任日に合わせるのが一般的
+
+### ステップ2：承認を待つ
+
+- **プログラム内異動**: プログラム統括責任者の承認のみ
+- **プログラム間異動**: 転出元・転入先の **両方の** プログラム統括責任者の承認が必要
+
+承認後、 **異動日の夜間** に所属が切り替わります。
+
+### ステップ3：担当指導医を変更する
+
+所属が切り替わった後（ **異動日の翌日の朝以降** ）、サイドメニューの **「申請」→「担当指導医変更」** から新しい施設の担当指導医への変更を申請します。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-label="転出・転入申請の3ステップ">
+  <defs>
+    <filter id="sa9b" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="300" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1E3A5F"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">転出・転入申請の3ステップ</text>
+
+  <rect x="40" y="92" width="220" height="160" rx="10" fill="#FEFEFC" filter="url(#sa9b)" stroke="#1E3A5F" stroke-width="2"/>
+  <circle cx="150" cy="120" r="20" fill="#1E3A5F"/>
+  <text x="150" y="126" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="sans-serif">1</text>
+  <text x="150" y="156" text-anchor="middle" fill="#1A1917" font-size="14" font-weight="bold" font-family="sans-serif">J-OSLERで申請</text>
+  <text x="56" y="182" fill="#6B6760" font-size="11" font-family="sans-serif">「申請」→「転出・転入」</text>
+  <text x="56" y="200" fill="#6B6760" font-size="11" font-family="sans-serif">異動日を設定（未来日のみ）</text>
+  <text x="56" y="218" fill="#6B6760" font-size="11" font-family="sans-serif">最短: 申請日の翌日</text>
+  <text x="56" y="240" fill="#1E3A5F" font-size="10" font-weight="bold" font-family="sans-serif">プログラム間異動は事前に実績登録を完了</text>
+
+  <text x="276" y="172" fill="#1E3A5F" font-size="24" font-weight="bold" font-family="sans-serif">→</text>
+
+  <rect x="295" y="92" width="220" height="160" rx="10" fill="#FEFEFC" filter="url(#sa9b)" stroke="#1E3A5F" stroke-width="2"/>
+  <circle cx="405" cy="120" r="20" fill="#1E3A5F"/>
+  <text x="405" y="126" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="sans-serif">2</text>
+  <text x="405" y="156" text-anchor="middle" fill="#1A1917" font-size="14" font-weight="bold" font-family="sans-serif">承認・切替</text>
+  <text x="311" y="182" fill="#6B6760" font-size="11" font-family="sans-serif">統括責任者が承認</text>
+  <text x="311" y="200" fill="#6B6760" font-size="11" font-family="sans-serif">（プログラム間は両方の承認）</text>
+  <text x="311" y="218" fill="#6B6760" font-size="11" font-family="sans-serif">異動日の夜間に所属切替</text>
+
+  <text x="531" y="172" fill="#1E3A5F" font-size="24" font-weight="bold" font-family="sans-serif">→</text>
+
+  <rect x="550" y="92" width="210" height="160" rx="10" fill="#E8F0EC" filter="url(#sa9b)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="655" cy="120" r="20" fill="#1B4F3A"/>
+  <text x="655" y="126" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="sans-serif">3</text>
+  <text x="655" y="156" text-anchor="middle" fill="#1A1917" font-size="14" font-weight="bold" font-family="sans-serif">指導医変更</text>
+  <text x="566" y="182" fill="#6B6760" font-size="11" font-family="sans-serif">翌日の朝以降に申請</text>
+  <text x="566" y="200" fill="#6B6760" font-size="11" font-family="sans-serif">「申請」→「担当指導医変更」</text>
+  <text x="566" y="218" fill="#6B6760" font-size="11" font-family="sans-serif">新施設の指導医を選択</text>
+
+  <text x="400" y="288" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+## プログラム間異動の場合の事前準備
+
+プログラムを変更する場合は、 **異動日までに以下の実績登録を完了** させてください。
+
+- 異動前のプログラムで経験した **症例登録** の評価依頼・承認
+- 作成中の **病歴要約** の登録・評価
+- **技術・技能** の登録
+- 研修評価期間中であれば **研修評価** の登録
+
+これらが未完了のまま異動すると、異動前の施設の指導医に評価を依頼できなくなる可能性があります。特に気づきにくいのが「評価待ち症例」の存在です。自分では登録済みのつもりでも、**指導医の承認が保留中のまま異動してしまう** と、新プログラムの指導医には評価依頼できず、旧プログラムの指導医には権限がないという宙に浮いた状態になります。異動が決まったら早めに指導医と相談し、**評価待ち症例リストをJ-OSLERで確認してから異動日を設定する** のが賢明です。
+
+## 異動後の症例登録
+
+### 異動前の施設で経験した症例
+
+異動後でも、異動前の施設で経験した症例を登録することは可能です。症例の経験時期が **「専門研修（プログラム研修）」** の場合、 **「この症例の指導医」に異動前の施設の症例指導医を選択** することで評価依頼ができます。
+
+ただし、異動前の指導医がJ-OSLERの権限を持っている必要があります。また、時間が経つほど指導医の記憶も薄れ、評価コメントの質が下がることもあります。**「あの症例、後で登録すればいい」と思って異動すると、半年後に指導医へ連絡が取りにくくなる** というケースは珍しくありません。できる限り異動前に評価依頼まで完了させておくことを強くおすすめします。
+
+### 異動先の施設での症例
+
+異動先では、担当指導医変更後から新しい施設の指導医に評価を依頼できるようになります。異動直後は手続きの遅れが生じやすいため、 **異動日翌日に速やかに担当指導医変更を申請** してください。指導医変更の申請を出すだけでは完了ではなく、新しい指導医側でも受理の操作が必要なプログラムもあるため、事前に指導医に一声かけておくとスムーズです。
+
+## 施設異動のタイミングと注意点
+
+### ローテーション時期の目安
+
+多くのプログラムでは、 **4月・7月・10月・1月** にローテーションのタイミングが設定されています。これは研修評価の登録期間（上期：7〜9月、下期：1〜3月）と連動していることが多く、評価期間をまたいで異動する場合は特に注意が必要です。半期の途中で施設が変わった場合、研修評価は異動先の指導医に依頼することになりますが、** その前に担当指導医変更を完了させておかないと評価依頼ができません。** 異動の1〜2週間前には以下を確認しましょう。
+
+- J-OSLERの転出・転入申請を済ませたか
+- 異動前の施設で評価待ちの症例はないか
+- 新しい施設の担当指導医を確認したか
+
+### よくあるトラブル
+
+1. **異動日に過去日を入力しようとしてエラー**: 未来日のみ入力可能。異動日を過ぎてしまった場合はJ-OSLERヘルプデスクに問い合わせ
+2. **異動後に前施設の指導医に評価依頼できない**: 症例指導医の選択で異動前の施設の指導医を指定する
+3. **担当指導医変更を忘れる**: 異動翌日に必ず申請。忘れると新施設での症例登録時に指導医が選択できない
+
+> 施設異動があっても、[iwor](/pro/)のダッシュボードで修了要件の進捗を一元管理できます。異動前後で「何が完了していて何が未完了か」をすぐに確認できるので、引き継ぎ漏れを防げます。
+
+## よくある質問（FAQ）
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" role="img" aria-label="施設異動チェックリスト">
+  <defs>
+    <filter id="sa9c" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="280" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1E3A5F"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">施設異動前チェックリスト</text>
+
+  <rect x="40" y="88" width="720" height="160" rx="10" fill="#FEFEFC" filter="url(#sa9c)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="60" y="116" fill="#1E3A5F" font-size="13" font-weight="bold" font-family="sans-serif">異動1〜2週間前</text>
+  <text x="60" y="140" fill="#1A1917" font-size="12" font-family="sans-serif">□ J-OSLERで転出・転入申請を行った（異動日は未来日で設定）</text>
+  <text x="60" y="162" fill="#1A1917" font-size="12" font-family="sans-serif">□ 異動前の施設で評価待ちの症例・病歴要約を全て完了させた</text>
+  <text x="60" y="184" fill="#1A1917" font-size="12" font-family="sans-serif">□ 異動前の指導医と連絡手段を確保した（メール等）</text>
+  <text x="60" y="206" fill="#1A1917" font-size="12" font-family="sans-serif">□ 新しい施設の担当指導医を確認した</text>
+  <text x="60" y="232" fill="#1E3A5F" font-size="13" font-weight="bold" font-family="sans-serif">異動翌日</text>
+  <text x="218" y="232" fill="#1A1917" font-size="12" font-family="sans-serif">□ 「申請」→「担当指導医変更」で新施設の指導医に変更した</text>
+
+  <text x="400" y="272" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+### Q. ローテーション（プログラム内異動）でも毎回申請が必要ですか？
+
+はい、同じプログラム内の施設異動でもJ-OSLERでの転出・転入申請は必要です。申請しないと新しい施設の指導医に評価依頼ができません。「プログラムは同じだから手続きは不要」と思い込んで申請しないまま新施設で症例を経験し、後から評価依頼できないと気づくケースが毎年一定数いますので、ローテーション先が決まったら異動日前に必ず申請を済ませてください。
+
+### Q. 異動日を過去日に設定できますか？
+
+できません。J-OSLERでは **未来日のみ入力可能** で、最短で申請日の翌日です。うっかり申請を忘れて異動日を過ぎてしまった場合は、J-OSLERヘルプデスクに問い合わせてください。
+
+### Q. プログラムを変更すると、今まで登録した症例はどうなりますか？
+
+症例データは **引き継がれます**。プログラムを変更しても、これまで登録した症例や病歴要約が消えることはありません。ただし、異動前の施設で未承認の症例があると評価依頼が困難になるため、異動前に登録を完了させることが重要です。
+
+### Q. 異動先で前の施設の指導医に評価依頼できますか？
+
+可能です。症例の経験時期を「専門研修（プログラム研修）」に設定し、「この症例の指導医」に異動前の施設の症例指導医を選択すれば、異動後でも評価依頼ができます。
+
+### Q. プログラム変更にはどのくらい時間がかかりますか？
+
+プログラム間異動は、転出元・転入先の **両方のプログラム統括責任者の承認** が必要です。両者の承認が得られれば、設定した異動日の夜間に切り替わります。承認までの期間は施設によりますが、事前に両方のプログラム責任者に連絡しておくとスムーズです。
+
+## よくある失敗3パターン
+
+J-OSLER施設異動で専攻医がはまりがちな失敗を3つ挙げます。
+
+**❶ ローテーション初日に転出・転入申請を忘れ、新施設での症例が宙に浮く**
+
+「ローテーション初日は忙しいから後でいいか」と後回しにして、1〜2週間後に気づくケースが毎年あります。申請を忘れると担当指導医変更もできず、新施設での症例の評価依頼ができません。ローテーション前に申請を完了させ、当日の手順は「翌日に担当指導医変更」だけにするのが理想です。
+
+**❷ 評価待ち症例を残したままプログラム間異動を申請する**
+
+プログラム間異動の場合、未承認のまま異動すると旧指導医への評価依頼権限が失われる可能性があります。「あとで登録すればいい」と思っていた症例が評価できなくなるリスクがあります。異動日が決まったら、J-OSLERで評価待ち症例リストを確認し、指導医に承認をお願いしてから異動しましょう。
+
+**❸ 異動日を過去日に設定しようとしてエラーになり、申請が遅れる**
+
+J-OSLERは異動日に未来日しか入力できません。「実際の異動日は昨日だったのに申請を忘れた」という場合、過去日を入力するとエラーになります。この場合はJ-OSLERヘルプデスクへの問い合わせが必要になり、処理に時間がかかります。ローテーションの日程が決まった段階で、余裕を持って事前申請しておくことが重要です。
+
+## まとめ
+
+J-OSLERの施設異動は「申請」→「転出・転入」メニューから行います。プログラム内異動は統括責任者の承認のみで完了しますが、プログラム間異動は両方の承認が必要で、事前に実績登録を完了させることが重要です。異動日は未来日のみ設定可能で、翌日に担当指導医の変更を忘れずに行いましょう。
+
+J-OSLERの全体像は[J-OSLERとは？](/blog/a01-josler-toha)で、修了要件の全体は[J-OSLER修了要件を完全解説](/blog/a06-josler-shuryo-youken)で確認できます。進捗管理には[J-OSLER進捗管理の方法](/blog/e01-josler-shinchoku-kanri)と[J-OSLERチェックリスト](/blog/e04-josler-checklist)を活用してください。

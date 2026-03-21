@@ -1,0 +1,166 @@
+---
+title: "J-OSLER症例登録が承認されない原因と対処法"
+description: "J-OSLERの症例登録が指導医に承認されない・差し戻される原因を解説。現病歴の書き方、疾患群の選び方、指導医への依頼方法まで。承認率を上げる具体的な対策を紹介します。"
+date: "2026-03-12"
+updated: "2026-03-12"
+author: "iwor編集部"
+category: "case-registration"
+cluster: "B"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "症例登録", "承認", "差し戻し", "指導医"]
+cta_type: "progress"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「症例登録したのに指導医から差し戻された...」「何度出しても承認されない原因がわからない」
+
+J-OSLERの症例登録は120症例（7期生以降）をクリアする必要がありますが、差し戻しが続くと大幅にスケジュールが遅れます。この記事では、承認されない主な原因と具体的な対処法を解説します。
+
+> iworの[ダッシュボード](/pro/)では120症例・56疾患群の進捗を一覧で管理できます。未達の疾患群がひと目でわかるので、漏れなく計画的に進められます。
+
+## 承認されない主な原因5つ
+
+症例登録が差し戻される原因は、大きく5つに分類できます。以下の図で全体像を確認してから、それぞれ詳しく見ていきましょう。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-label="J-OSLER症例登録が承認されない5つの原因">
+  <defs><filter id="sh_b7a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="380" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#991B1B"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">症例登録が承認されない5つの原因</text>
+  <rect x="40" y="88" width="340" height="120" rx="12" fill="#FEFEFC" filter="url(#sh_b7a)"/>
+  <rect x="52" y="100" width="28" height="28" rx="14" fill="#991B1B"/>
+  <text x="66" y="119" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="sans-serif">1</text>
+  <text x="92" y="115" fill="#1A1917" font-size="14" font-weight="bold" font-family="sans-serif">現病歴の情報不足</text>
+  <text x="64" y="140" fill="#6B6760" font-size="11" font-family="sans-serif">発症時期・経過が曖昧</text>
+  <text x="64" y="158" fill="#6B6760" font-size="11" font-family="sans-serif">受診理由が不明確</text>
+  <text x="64" y="176" fill="#6B6760" font-size="11" font-family="sans-serif">時系列が整理されていない</text>
+  <rect x="420" y="88" width="340" height="120" rx="12" fill="#FEFEFC" filter="url(#sh_b7a)"/>
+  <rect x="432" y="100" width="28" height="28" rx="14" fill="#991B1B"/>
+  <text x="446" y="119" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="sans-serif">2</text>
+  <text x="472" y="115" fill="#1A1917" font-size="14" font-weight="bold" font-family="sans-serif">疾患群・主病名の不一致</text>
+  <text x="444" y="140" fill="#6B6760" font-size="11" font-family="sans-serif">副病名を主病名として登録</text>
+  <text x="444" y="158" fill="#6B6760" font-size="11" font-family="sans-serif">疾患群と実際の疾患がズレている</text>
+  <text x="444" y="176" fill="#6B6760" font-size="11" font-family="sans-serif">考察の方向性が疾患群と合わない</text>
+  <rect x="40" y="224" width="226" height="120" rx="12" fill="#FEFEFC" filter="url(#sh_b7a)"/>
+  <rect x="52" y="236" width="28" height="28" rx="14" fill="#92400E"/>
+  <text x="66" y="255" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="sans-serif">3</text>
+  <text x="92" y="252" fill="#1A1917" font-size="13" font-weight="bold" font-family="sans-serif">自己省察の不備</text>
+  <text x="64" y="276" fill="#6B6760" font-size="11" font-family="sans-serif">1行だけの感想文</text>
+  <text x="64" y="294" fill="#6B6760" font-size="11" font-family="sans-serif">学びが具体的でない</text>
+  <text x="64" y="312" fill="#6B6760" font-size="11" font-family="sans-serif">次に活かす視点がない</text>
+  <rect x="287" y="224" width="226" height="120" rx="12" fill="#FEFEFC" filter="url(#sh_b7a)"/>
+  <rect x="299" y="236" width="28" height="28" rx="14" fill="#92400E"/>
+  <text x="313" y="255" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="sans-serif">4</text>
+  <text x="339" y="252" fill="#1A1917" font-size="13" font-weight="bold" font-family="sans-serif">受持期間の問題</text>
+  <text x="311" y="276" fill="#6B6760" font-size="11" font-family="sans-serif">受持期間が短すぎる</text>
+  <text x="311" y="294" fill="#6B6760" font-size="11" font-family="sans-serif">主担当でない症例</text>
+  <text x="311" y="312" fill="#6B6760" font-size="11" font-family="sans-serif">研修施設外の症例</text>
+  <rect x="534" y="224" width="226" height="120" rx="12" fill="#FEFEFC" filter="url(#sh_b7a)"/>
+  <rect x="546" y="236" width="28" height="28" rx="14" fill="#92400E"/>
+  <text x="560" y="255" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="sans-serif">5</text>
+  <text x="586" y="252" fill="#1A1917" font-size="13" font-weight="bold" font-family="sans-serif">指導医側の問題</text>
+  <text x="558" y="276" fill="#6B6760" font-size="11" font-family="sans-serif">評価依頼に気づいていない</text>
+  <text x="558" y="294" fill="#6B6760" font-size="11" font-family="sans-serif">多忙で後回しにされている</text>
+  <text x="558" y="312" fill="#6B6760" font-size="11" font-family="sans-serif">求められる基準が不明確</text>
+  <text x="400" y="370" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+### 原因1: 現病歴の情報不足
+
+最も多い差し戻し理由は現病歴の記載不足です。「発熱で入院」だけでは情報が足りません。いつから、どのような経過で、何を主訴に受診したのかを時系列で整理して記載する必要があります。
+
+症例登録の段階では簡潔でよいですが、最低限「発症時期→症状の経過→受診のきっかけ→入院時の状態」の流れが読み取れる記載にしましょう。
+
+### 原因2: 疾患群と主病名の不一致
+
+これは病歴要約でも大きな問題になりますが、症例登録の段階から注意が必要です。たとえば感染症の疾患群に登録したいからといって、実際には循環器疾患が主病態の患者の副病名（肺炎など）で無理に登録すると、指導医に見抜かれて差し戻されます。
+
+[疾患群一覧表](/blog/b04-josler-shikkanngun-ichiran)を確認して、正しい疾患群に分類されているか確認しましょう。
+
+### 原因3: 自己省察が不十分
+
+症例登録には自己省察（振り返り）の記載が求められます。「勉強になった」「良い経験だった」だけでは不十分です。具体的に何を学んだのか、次の診療にどう活かすのかまで踏み込んで書く必要があります。
+
+[症例登録の書き方](/blog/b01-josler-shourei-touroku-kakikata)で自己省察の例文を紹介しているので参考にしてください。
+
+### 原因4: 受持期間や主担当の問題
+
+J-OSLERに登録できるのは主担当医として受け持った症例のみです。チーム医療の中で副担当だった症例や、受持期間が極端に短い症例は指導医が承認をためらうことがあります。
+
+### 原因5: 指導医が評価依頼に気づいていない
+
+意外と多いのがこのパターンです。指導医にとってJ-OSLERの評価は多くの業務のひとつであり、通知を見落としていたり、後回しにされていたりすることがあります。
+
+## 指導医に催促するコツ
+
+指導医が承認してくれない場合、適切な催促が必要です。ただし「まだですか？」とストレートに聞くのは角が立ちます。
+
+おすすめは「先日お送りした症例ですが、正しく届いていますでしょうか？不備があれば修正しますので教えてください」という聞き方です。催促ではなく確認というスタンスにすることで、指導医の面子を傷つけずに対応を促せます。
+
+提出後1〜2週間で反応がなければ一度声をかけ、それでも進まない場合はプログラム統括責任者に相談することも選択肢です。
+
+> iworの[ダッシュボード](/pro/)なら、承認待ちの症例も含めて進捗を一元管理。56疾患群の達成状況がひと目でわかるので、催促すべき症例の優先順位も明確になります。
+
+## 差し戻しを防ぐためのチェックリスト
+
+症例登録を提出する前に、以下の項目を確認しましょう。
+
+- 現病歴に発症時期・経過・受診理由が含まれているか
+- 選択した疾患群と主病名が一致しているか
+- 自己省察に具体的な学びと今後への活かし方が書かれているか
+- 受持期間が適切で、主担当として関わった症例か
+- 誤字脱字やコピペミスがないか
+- 指導医に提出前に口頭で一声かけたか
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" role="img" aria-label="症例登録 承認されるためのフロー">
+  <defs><filter id="sh_b7b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="280" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">承認される症例登録の流れ</text>
+  <rect x="40" y="88" width="160" height="100" rx="12" fill="#FEFEFC" filter="url(#sh_b7b)"/>
+  <text x="120" y="118" text-anchor="middle" fill="#1B4F3A" font-size="24" font-weight="bold" font-family="sans-serif">1</text>
+  <text x="120" y="142" text-anchor="middle" fill="#1A1917" font-size="12" font-weight="bold" font-family="sans-serif">退院後すぐに登録</text>
+  <text x="120" y="160" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">記憶が新鮮なうちに</text>
+  <text x="120" y="176" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">溜めない</text>
+  <text x="216" y="140" fill="#1B4F3A" font-size="22" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="236" y="88" width="160" height="100" rx="12" fill="#FEFEFC" filter="url(#sh_b7b)"/>
+  <text x="316" y="118" text-anchor="middle" fill="#1B4F3A" font-size="24" font-weight="bold" font-family="sans-serif">2</text>
+  <text x="316" y="142" text-anchor="middle" fill="#1A1917" font-size="12" font-weight="bold" font-family="sans-serif">チェックリスト確認</text>
+  <text x="316" y="160" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">疾患群・主病名OK?</text>
+  <text x="316" y="176" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">自己省察は具体的?</text>
+  <text x="412" y="140" fill="#1B4F3A" font-size="22" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="432" y="88" width="160" height="100" rx="12" fill="#FEFEFC" filter="url(#sh_b7b)"/>
+  <text x="512" y="118" text-anchor="middle" fill="#1B4F3A" font-size="24" font-weight="bold" font-family="sans-serif">3</text>
+  <text x="512" y="142" text-anchor="middle" fill="#1A1917" font-size="12" font-weight="bold" font-family="sans-serif">指導医に一声</text>
+  <text x="512" y="160" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">提出前に口頭で確認</text>
+  <text x="512" y="176" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">優先的に見てもらえる</text>
+  <text x="608" y="140" fill="#1B4F3A" font-size="22" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="628" y="88" width="132" height="100" rx="12" fill="#E8F0EC" filter="url(#sh_b7b)"/>
+  <text x="694" y="118" text-anchor="middle" fill="#166534" font-size="24" font-weight="bold" font-family="sans-serif">✓</text>
+  <text x="694" y="142" text-anchor="middle" fill="#166534" font-size="14" font-weight="bold" font-family="sans-serif">承認</text>
+  <text x="694" y="162" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">スムーズに通過</text>
+  <text x="400" y="220" text-anchor="middle" fill="#6B6760" font-size="12" font-family="sans-serif">ポイント: 症例は退院後1〜2週間以内に登録。月2件ペースを維持すると120症例を無理なく達成できます。</text>
+  <text x="400" y="260" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+## よくある質問
+
+### 何度差し戻されても同じ症例で再提出できますか？
+
+はい、修正して再提出できます。ただし根本的に疾患群と合わない症例の場合は、別の症例に切り替えたほうが効率的です。
+
+### 指導医が変わった場合、過去の症例はどうなりますか？
+
+症例指導医の変更はJ-OSLER上で可能です。異動などで担当が変わった場合は、過去の症例について新しい指導医に引き継いで評価を受けることができます。
+
+### 1つの症例を複数の疾患群に登録できますか？
+
+できません。1症例は1つの疾患群にのみ登録します。同じ患者で複数の疾患がある場合は、主病態に最も適した疾患群を選んでください。
+
+## まとめ
+
+症例登録が承認されない原因は、現病歴の不足、疾患群の不一致、自己省察の不備、受持期間の問題、指導医の見落としの5つに集約されます。提出前のチェックリスト確認と、指導医への事前の一声が承認率を大きく上げます。
+
+120症例を効率的に進めるには[120症例の進め方](/blog/b03-josler-120cases)、テンプレートを活用するなら[症例登録テンプレート](/blog/b05-josler-shourei-touroku-template)もあわせて確認してください。

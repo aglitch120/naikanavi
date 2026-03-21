@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="560" rx="16" fill="#F5F4F0"/>
+
+  <!-- Header -->
+  <rect x="24" y="20" width="752" height="48" rx="12" fill="#1B4F3A"/>
+  <text x="400" y="50" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">領域別 最低症例数一覧（7期生以降）</text>
+
+  <!-- Table Header -->
+  <rect x="24" y="80" width="366" height="32" rx="0" fill="#E8F0EC"/>
+  <rect x="390" y="80" width="190" height="32" rx="0" fill="#E8F0EC"/>
+  <rect x="580" y="80" width="196" height="32" rx="0" fill="#E8F0EC"/>
+  <text x="207" y="100" text-anchor="middle" fill="#1B4F3A" font-size="13" font-weight="700">領域</text>
+  <text x="485" y="100" text-anchor="middle" fill="#1B4F3A" font-size="13" font-weight="700">最低症例数</text>
+  <text x="678" y="100" text-anchor="middle" fill="#1B4F3A" font-size="13" font-weight="700">必要疾患群数</text>
+
+  <!-- Row 1 -->
+  <rect x="24" y="112" width="366" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="112" width="190" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="112" width="196" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="130" fill="#1A1917" font-size="12">総合内科I（一般）/II（高齢者）/III（腫瘍）</text>
+  <text x="485" y="130" text-anchor="middle" fill="#3D5A80" font-size="13" font-weight="700">計10以上</text>
+  <text x="678" y="130" text-anchor="middle" fill="#6B6760" font-size="12">各1以上</text>
+
+  <!-- Row 2 -->
+  <rect x="24" y="140" width="366" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="140" width="190" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="140" width="196" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="158" fill="#1A1917" font-size="12">消化器</text>
+  <text x="485" y="158" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">10以上</text>
+  <text x="678" y="158" text-anchor="middle" fill="#6B6760" font-size="12">5以上</text>
+
+  <!-- Row 3 -->
+  <rect x="24" y="168" width="366" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="168" width="190" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="168" width="196" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="186" fill="#1A1917" font-size="12">循環器</text>
+  <text x="485" y="186" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">10以上</text>
+  <text x="678" y="186" text-anchor="middle" fill="#6B6760" font-size="12">5以上</text>
+
+  <!-- Row 4 -->
+  <rect x="24" y="196" width="366" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="196" width="190" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="196" width="196" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="214" fill="#1A1917" font-size="12">内分泌</text>
+  <text x="485" y="214" text-anchor="middle" fill="#3D5A80" font-size="13" font-weight="700">3以上</text>
+  <text x="678" y="214" text-anchor="middle" fill="#6B6760" font-size="12">2以上</text>
+
+  <!-- Row 5 -->
+  <rect x="24" y="224" width="366" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="224" width="190" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="224" width="196" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="242" fill="#1A1917" font-size="12">代謝</text>
+  <text x="485" y="242" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">10以上</text>
+  <text x="678" y="242" text-anchor="middle" fill="#6B6760" font-size="12">3以上</text>
+
+  <!-- Row 6 -->
+  <rect x="24" y="252" width="366" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="252" width="190" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="252" width="196" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="270" fill="#1A1917" font-size="12">腎臓</text>
+  <text x="485" y="270" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">10以上</text>
+  <text x="678" y="270" text-anchor="middle" fill="#6B6760" font-size="12">4以上</text>
+
+  <!-- Row 7 -->
+  <rect x="24" y="280" width="366" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="280" width="190" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="280" width="196" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="298" fill="#1A1917" font-size="12">呼吸器</text>
+  <text x="485" y="298" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">10以上</text>
+  <text x="678" y="298" text-anchor="middle" fill="#6B6760" font-size="12">4以上</text>
+
+  <!-- Row 8 -->
+  <rect x="24" y="308" width="366" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="308" width="190" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="308" width="196" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="326" fill="#1A1917" font-size="12">血液</text>
+  <text x="485" y="326" text-anchor="middle" fill="#3D5A80" font-size="13" font-weight="700">3以上</text>
+  <text x="678" y="326" text-anchor="middle" fill="#6B6760" font-size="12">2以上</text>
+
+  <!-- Row 9 -->
+  <rect x="24" y="336" width="366" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="336" width="190" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="336" width="196" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="354" fill="#1A1917" font-size="12">神経</text>
+  <text x="485" y="354" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">10以上</text>
+  <text x="678" y="354" text-anchor="middle" fill="#6B6760" font-size="12">5以上</text>
+
+  <!-- Row 10 -->
+  <rect x="24" y="364" width="366" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="364" width="190" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="364" width="196" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="382" fill="#1A1917" font-size="12">アレルギー</text>
+  <text x="485" y="382" text-anchor="middle" fill="#3D5A80" font-size="13" font-weight="700">3以上</text>
+  <text x="678" y="382" text-anchor="middle" fill="#6B6760" font-size="12">1以上</text>
+
+  <!-- Row 11 -->
+  <rect x="24" y="392" width="366" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="392" width="190" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="392" width="196" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="410" fill="#1A1917" font-size="12">膠原病及び類縁疾患</text>
+  <text x="485" y="410" text-anchor="middle" fill="#3D5A80" font-size="13" font-weight="700">3以上</text>
+  <text x="678" y="410" text-anchor="middle" fill="#6B6760" font-size="12">1以上</text>
+
+  <!-- Row 12 -->
+  <rect x="24" y="420" width="366" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="420" width="190" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="420" width="196" height="28" fill="#F5F4F0" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="438" fill="#1A1917" font-size="12">感染症</text>
+  <text x="485" y="438" text-anchor="middle" fill="#3D5A80" font-size="13" font-weight="700">8以上</text>
+  <text x="678" y="438" text-anchor="middle" fill="#6B6760" font-size="12">2以上</text>
+
+  <!-- Row 13 -->
+  <rect x="24" y="448" width="366" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="390" y="448" width="190" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <rect x="580" y="448" width="196" height="28" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="36" y="466" fill="#1A1917" font-size="12">救急</text>
+  <text x="485" y="466" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">10以上</text>
+  <text x="678" y="466" text-anchor="middle" fill="#6B6760" font-size="12">4</text>
+
+  <!-- Total -->
+  <rect x="24" y="480" width="366" height="32" rx="0" fill="#1B4F3A"/>
+  <rect x="390" y="480" width="190" height="32" rx="0" fill="#1B4F3A"/>
+  <rect x="580" y="480" width="196" height="32" rx="0" fill="#1B4F3A"/>
+  <text x="207" y="501" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">合計</text>
+  <text x="485" y="501" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">120症例以上</text>
+  <text x="678" y="501" text-anchor="middle" fill="#FEFEFC" font-size="14" font-weight="700">56疾患群以上</text>
+
+  <!-- Note -->
+  <text x="36" y="536" fill="#6B6760" font-size="10">赤字の領域は10症例以上が必要で負担が大きい。サブスペ以外の領域を早めに埋める戦略が重要。</text>
+
+  <!-- Footer -->
+  <text x="776" y="552" text-anchor="end" fill="#6B6760" font-size="10">© 内科ナビ naikanavi.com</text>
+</svg>

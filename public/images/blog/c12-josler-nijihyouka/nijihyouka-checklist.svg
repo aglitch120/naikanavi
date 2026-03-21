@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="s3" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="hg3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B4F3A"/>
+      <stop offset="100%" stop-color="#155230"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+
+  <!-- ヘッダー -->
+  <rect x="0" y="0" width="800" height="56" rx="16" fill="url(#hg3)"/>
+  <rect x="0" y="28" width="800" height="28" fill="url(#hg3)"/>
+  <text x="400" y="36" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="bold">二次評価 提出前チェックリスト</text>
+
+  <!-- カテゴリA: 症例構成 -->
+  <rect x="30" y="76" width="360" height="185" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2" filter="url(#s3)"/>
+  <rect x="30" y="76" width="360" height="36" rx="12" fill="#1B4F3A"/>
+  <rect x="30" y="96" width="360" height="16" fill="#1B4F3A"/>
+  <text x="210" y="100" text-anchor="middle" fill="white" font-size="14" font-weight="bold">症例構成の確認</text>
+
+  <rect x="50" y="124" width="18" height="18" rx="3" fill="none" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="78" y="138" fill="#1A1917" font-size="12">29件全件が一次評価でAccept済み</text>
+
+  <rect x="50" y="154" width="18" height="18" rx="3" fill="none" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="78" y="168" fill="#1A1917" font-size="12">全件が異なる疾患群から作成</text>
+
+  <rect x="50" y="184" width="18" height="18" rx="3" fill="none" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="78" y="198" fill="#1A1917" font-size="12">外来症例が7件以内</text>
+
+  <rect x="50" y="214" width="18" height="18" rx="3" fill="none" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="78" y="228" fill="#1A1917" font-size="12">提出分野と主病名が一致</text>
+
+  <!-- カテゴリB: 個人情報・コンプライアンス -->
+  <rect x="410" y="76" width="360" height="185" rx="12" fill="#FEFEFC" stroke="#92400E" stroke-width="2" filter="url(#s3)"/>
+  <rect x="410" y="76" width="360" height="36" rx="12" fill="#92400E"/>
+  <rect x="410" y="96" width="360" height="16" fill="#92400E"/>
+  <text x="590" y="100" text-anchor="middle" fill="white" font-size="14" font-weight="bold">個人情報・コンプライアンス</text>
+
+  <rect x="430" y="124" width="18" height="18" rx="3" fill="none" stroke="#92400E" stroke-width="2"/>
+  <text x="458" y="138" fill="#1A1917" font-size="12">患者の個人情報が含まれていない</text>
+
+  <rect x="430" y="154" width="18" height="18" rx="3" fill="none" stroke="#92400E" stroke-width="2"/>
+  <text x="458" y="168" fill="#1A1917" font-size="12">施設を特定できる情報がない</text>
+
+  <rect x="430" y="184" width="18" height="18" rx="3" fill="none" stroke="#92400E" stroke-width="2"/>
+  <text x="458" y="198" fill="#1A1917" font-size="12">薬剤名が一般名で記載</text>
+
+  <rect x="430" y="214" width="18" height="18" rx="3" fill="none" stroke="#92400E" stroke-width="2"/>
+  <text x="458" y="228" fill="#1A1917" font-size="12">紹介元は「近医」と記載</text>
+
+  <!-- カテゴリC: 内容の質 -->
+  <rect x="30" y="281" width="360" height="185" rx="12" fill="#FEFEFC" stroke="#155230" stroke-width="2" filter="url(#s3)"/>
+  <rect x="30" y="281" width="360" height="36" rx="12" fill="#155230"/>
+  <rect x="30" y="301" width="360" height="16" fill="#155230"/>
+  <text x="210" y="305" text-anchor="middle" fill="white" font-size="14" font-weight="bold">内容の質</text>
+
+  <rect x="50" y="329" width="18" height="18" rx="3" fill="none" stroke="#155230" stroke-width="2"/>
+  <text x="78" y="343" fill="#1A1917" font-size="12">検査所見に単位と基準範囲を併記</text>
+
+  <rect x="50" y="359" width="18" height="18" rx="3" fill="none" stroke="#155230" stroke-width="2"/>
+  <text x="78" y="373" fill="#1A1917" font-size="12">総合考察が個別具体的な内容</text>
+
+  <rect x="50" y="389" width="18" height="18" rx="3" fill="none" stroke="#155230" stroke-width="2"/>
+  <text x="78" y="403" fill="#1A1917" font-size="12">全人的視点が記載されている</text>
+
+  <rect x="50" y="419" width="18" height="18" rx="3" fill="none" stroke="#155230" stroke-width="2"/>
+  <text x="78" y="433" fill="#1A1917" font-size="12">略語の初出にフルスペルあり</text>
+
+  <!-- カテゴリD: 体裁 -->
+  <rect x="410" y="281" width="360" height="185" rx="12" fill="#FEFEFC" stroke="#3D5A80" stroke-width="2" filter="url(#s3)"/>
+  <rect x="410" y="281" width="360" height="36" rx="12" fill="#3D5A80"/>
+  <rect x="410" y="301" width="360" height="16" fill="#3D5A80"/>
+  <text x="590" y="305" text-anchor="middle" fill="white" font-size="14" font-weight="bold">体裁・フォーマット</text>
+
+  <rect x="430" y="329" width="18" height="18" rx="3" fill="none" stroke="#3D5A80" stroke-width="2"/>
+  <text x="458" y="343" fill="#1A1917" font-size="12">印刷時A4用紙2枚以内</text>
+
+  <rect x="430" y="359" width="18" height="18" rx="3" fill="none" stroke="#3D5A80" stroke-width="2"/>
+  <text x="458" y="373" fill="#1A1917" font-size="12">紙面の80%以上を記載</text>
+
+  <rect x="430" y="389" width="18" height="18" rx="3" fill="none" stroke="#3D5A80" stroke-width="2"/>
+  <text x="458" y="403" fill="#1A1917" font-size="12">誤字脱字のチェック完了</text>
+
+  <rect x="430" y="419" width="18" height="18" rx="3" fill="none" stroke="#3D5A80" stroke-width="2"/>
+  <text x="458" y="433" fill="#1A1917" font-size="12">文献引用の形式統一</text>
+
+  <!-- フッター -->
+  <text x="400" y="506" text-anchor="middle" fill="#6B6760" font-size="9">© 内科ナビ naikanavi.com</text>
+</svg>

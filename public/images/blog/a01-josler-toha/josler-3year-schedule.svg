@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="timeline" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3D5A80"/>
+      <stop offset="50%" stop-color="#1B4F3A"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <rect x="24" y="16" width="752" height="48" rx="12" fill="#1E3A5F"/>
+  <text x="400" y="47" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">J-OSLER 3年間の理想スケジュール</text>
+
+  <!-- Timeline bar -->
+  <rect x="60" y="86" width="680" height="8" rx="4" fill="url(#timeline)"/>
+  <!-- Year markers -->
+  <circle cx="60" cy="90" r="8" fill="#3D5A80" stroke="#FEFEFC" stroke-width="2"/>
+  <circle cx="286" cy="90" r="8" fill="#1B4F3A" stroke="#FEFEFC" stroke-width="2"/>
+  <circle cx="513" cy="90" r="8" fill="#1B4F3A" stroke="#FEFEFC" stroke-width="2"/>
+  <circle cx="740" cy="90" r="8" fill="#166534" stroke="#FEFEFC" stroke-width="2"/>
+  <text x="60" y="78" text-anchor="middle" fill="#3D5A80" font-size="11" font-weight="600">研修開始</text>
+  <text x="286" y="78" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">2年目開始</text>
+  <text x="513" y="78" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">3年目開始</text>
+  <text x="740" y="78" text-anchor="middle" fill="#166534" font-size="11" font-weight="600">修了</text>
+
+  <!-- Year 1 -->
+  <rect x="40" y="112" width="230" height="280" rx="12" fill="#FEFEFC" stroke="#3D5A80" stroke-width="2" filter="url(#sh)"/>
+  <rect x="40" y="112" width="230" height="44" rx="12" fill="#3D5A80"/>
+  <rect x="40" y="136" width="230" height="20" fill="#3D5A80"/>
+  <text x="155" y="141" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">1年目：基盤づくり</text>
+
+  <!-- Year 1 items -->
+  <text x="60" y="184" fill="#1A1917" font-size="13" font-weight="600">症例登録</text>
+  <rect x="140" y="170" width="116" height="22" rx="6" fill="#E8F0EC"/>
+  <text x="198" y="186" text-anchor="middle" fill="#1B4F3A" font-size="13" font-weight="700">50〜60症例</text>
+
+  <text x="60" y="216" fill="#1A1917" font-size="13" font-weight="600">疾患群</text>
+  <rect x="140" y="202" width="116" height="22" rx="6" fill="#FEF3C7"/>
+  <text x="198" y="218" text-anchor="middle" fill="#92400E" font-size="13" font-weight="700">56群を網羅！</text>
+
+  <text x="60" y="248" fill="#1A1917" font-size="13" font-weight="600">病歴要約</text>
+  <text x="140" y="248" fill="#6B6760" font-size="12">着手開始（5〜8症例）</text>
+
+  <text x="60" y="276" fill="#1A1917" font-size="13" font-weight="600">共通講習</text>
+  <text x="140" y="276" fill="#6B6760" font-size="12">2回受講</text>
+
+  <text x="60" y="304" fill="#1A1917" font-size="13" font-weight="600">技術評価</text>
+  <text x="140" y="304" fill="#6B6760" font-size="12">初回+2回目登録</text>
+
+  <!-- Year 1 priority tag -->
+  <rect x="56" y="330" width="200" height="44" rx="8" fill="#3D5A80" opacity="0.1"/>
+  <text x="156" y="350" text-anchor="middle" fill="#3D5A80" font-size="12" font-weight="700">★ 最優先：疾患群の網羅</text>
+  <text x="156" y="367" text-anchor="middle" fill="#3D5A80" font-size="11">他科ローテで幅広く経験</text>
+
+  <!-- Year 2 -->
+  <rect x="285" y="112" width="230" height="280" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2" filter="url(#sh)"/>
+  <rect x="285" y="112" width="230" height="44" rx="12" fill="#1B4F3A"/>
+  <rect x="285" y="136" width="230" height="20" fill="#1B4F3A"/>
+  <text x="400" y="141" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">2年目：病歴集中</text>
+
+  <!-- Year 2 items -->
+  <text x="305" y="184" fill="#1A1917" font-size="13" font-weight="600">症例登録</text>
+  <rect x="385" y="170" width="116" height="22" rx="6" fill="#E8F0EC"/>
+  <text x="443" y="186" text-anchor="middle" fill="#1B4F3A" font-size="13" font-weight="700">90〜110症例</text>
+
+  <text x="305" y="216" fill="#1A1917" font-size="13" font-weight="600">病歴要約</text>
+  <rect x="385" y="202" width="116" height="22" rx="6" fill="#FEE2E2"/>
+  <text x="443" y="218" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700">29症例完了！</text>
+
+  <text x="305" y="248" fill="#1A1917" font-size="13" font-weight="600">個別評価</text>
+  <text x="385" y="248" fill="#6B6760" font-size="12">全29症例の承認取得</text>
+
+  <text x="305" y="276" fill="#1A1917" font-size="13" font-weight="600">JMECC</text>
+  <text x="385" y="276" fill="#6B6760" font-size="12">受講完了</text>
+
+  <text x="305" y="304" fill="#1A1917" font-size="13" font-weight="600">共通講習</text>
+  <text x="385" y="304" fill="#6B6760" font-size="12">累計4回</text>
+
+  <!-- Year 2 priority tag -->
+  <rect x="301" y="330" width="200" height="44" rx="8" fill="#991B1B" opacity="0.1"/>
+  <text x="401" y="350" text-anchor="middle" fill="#991B1B" font-size="12" font-weight="700">★ 最優先：病歴要約29症例</text>
+  <text x="401" y="367" text-anchor="middle" fill="#991B1B" font-size="11">月2〜3症例ペースで完了</text>
+
+  <!-- Year 3 -->
+  <rect x="530" y="112" width="230" height="280" rx="12" fill="#FEFEFC" stroke="#166534" stroke-width="2" filter="url(#sh)"/>
+  <rect x="530" y="112" width="230" height="44" rx="12" fill="#166534"/>
+  <rect x="530" y="136" width="230" height="20" fill="#166534"/>
+  <text x="645" y="141" text-anchor="middle" fill="#FEFEFC" font-size="18" font-weight="700">3年目：評価＆修了</text>
+
+  <!-- Year 3 items -->
+  <text x="550" y="184" fill="#1A1917" font-size="13" font-weight="600">症例登録</text>
+  <rect x="630" y="170" width="116" height="22" rx="6" fill="#DCFCE7"/>
+  <text x="688" y="186" text-anchor="middle" fill="#166534" font-size="13" font-weight="700">120症例達成</text>
+
+  <text x="550" y="216" fill="#1A1917" font-size="13" font-weight="600">一次評価</text>
+  <text x="630" y="216" fill="#6B6760" font-size="12">プログラム内通過</text>
+
+  <text x="550" y="248" fill="#1A1917" font-size="13" font-weight="600">二次評価</text>
+  <text x="630" y="248" fill="#6B6760" font-size="12">外部査読委員通過</text>
+
+  <text x="550" y="276" fill="#1A1917" font-size="13" font-weight="600">修了見込</text>
+  <rect x="630" y="262" width="116" height="22" rx="6" fill="#DCFCE7"/>
+  <text x="688" y="278" text-anchor="middle" fill="#166534" font-size="12" font-weight="700">1月〜3月に申請</text>
+
+  <text x="550" y="304" fill="#1A1917" font-size="13" font-weight="600">試験準備</text>
+  <text x="630" y="304" fill="#6B6760" font-size="12">内科専門医試験対策</text>
+
+  <!-- Year 3 priority tag -->
+  <rect x="546" y="330" width="200" height="44" rx="8" fill="#166534" opacity="0.1"/>
+  <text x="646" y="350" text-anchor="middle" fill="#166534" font-size="12" font-weight="700">★ 最優先：一次・二次評価</text>
+  <text x="646" y="367" text-anchor="middle" fill="#166534" font-size="11">差戻しバッファを確保</text>
+
+  <!-- Bottom tip -->
+  <rect x="40" y="408" width="720" height="68" rx="12" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+  <text x="400" y="434" text-anchor="middle" fill="#92400E" font-size="14" font-weight="700">💡 成功のカギ：「3年目に追い込まれない」こと</text>
+  <text x="400" y="458" text-anchor="middle" fill="#92400E" font-size="12">病歴要約は2年目中に29症例の個別評価を完了させるのが理想。週1〜2時間のJ-OSLER時間を確保しよう。</text>
+
+  <!-- Footer -->
+  <text x="780" y="494" text-anchor="end" fill="#C8C4BC" font-size="10">© 内科ナビ naikanavi.com</text>
+</svg>

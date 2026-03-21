@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="s" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrowG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1B4F3A"/>
+    </marker>
+    <marker id="arrowR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#991B1B"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <rect x="24" y="16" width="752" height="48" rx="12" fill="#1B4F3A"/>
+  <text x="400" y="47" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">病歴要約の評価フロー（29症例すべてを通過させる）</text>
+
+  <!-- Step 0: 作成 -->
+  <rect x="40" y="90" width="150" height="80" rx="12" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1.5" filter="url(#s)"/>
+  <text x="115" y="118" text-anchor="middle" fill="#6B6760" font-size="11" font-weight="600">STEP 0</text>
+  <text x="115" y="140" text-anchor="middle" fill="#1A1917" font-size="15" font-weight="700">病歴要約作成</text>
+  <text x="115" y="158" text-anchor="middle" fill="#6B6760" font-size="11">専攻医が執筆</text>
+
+  <!-- Arrow 0→1 -->
+  <line x1="190" y1="130" x2="225" y2="130" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Step 1: 個別評価 -->
+  <rect x="230" y="84" width="150" height="92" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2" filter="url(#s)"/>
+  <text x="305" y="108" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">STEP 1</text>
+  <text x="305" y="130" text-anchor="middle" fill="#1A1917" font-size="15" font-weight="700">個別評価</text>
+  <text x="305" y="150" text-anchor="middle" fill="#6B6760" font-size="11">担当指導医が</text>
+  <text x="305" y="165" text-anchor="middle" fill="#6B6760" font-size="11">1症例ずつ評価</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="380" y1="130" x2="415" y2="130" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Step 2: 一次評価 -->
+  <rect x="420" y="84" width="160" height="92" rx="12" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="2" filter="url(#s)"/>
+  <text x="500" y="108" text-anchor="middle" fill="#1B4F3A" font-size="11" font-weight="600">STEP 2</text>
+  <text x="500" y="130" text-anchor="middle" fill="#1A1917" font-size="15" font-weight="700">一次評価</text>
+  <text x="500" y="150" text-anchor="middle" fill="#6B6760" font-size="11">プログラム内の</text>
+  <text x="500" y="165" text-anchor="middle" fill="#6B6760" font-size="11">病歴指導医が評価</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="580" y1="130" x2="615" y2="130" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Step 3: 二次評価 -->
+  <rect x="620" y="84" width="156" height="92" rx="12" fill="#1B4F3A" filter="url(#s)"/>
+  <text x="698" y="108" text-anchor="middle" fill="#E8F0EC" font-size="11" font-weight="600">STEP 3</text>
+  <text x="698" y="130" text-anchor="middle" fill="#FEFEFC" font-size="15" font-weight="700">二次評価</text>
+  <text x="698" y="150" text-anchor="middle" fill="#E8F0EC" font-size="11">内科学会の</text>
+  <text x="698" y="165" text-anchor="middle" fill="#E8F0EC" font-size="11">査読委員が評価</text>
+
+  <!-- 評価結果の分岐 -->
+  <rect x="40" y="210" width="736" height="46" rx="10" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="400" y="228" text-anchor="middle" fill="#6B6760" font-size="12">一次・二次評価 の結果（各症例ごとに判定）</text>
+  <text x="400" y="246" text-anchor="middle" fill="#6B6760" font-size="11">1件でも Revision / Reject があると → 29件全体が差戻し</text>
+
+  <!-- Accept -->
+  <rect x="40" y="275" width="220" height="68" rx="12" fill="#DCFCE7" stroke="#86EFAC" stroke-width="2"/>
+  <circle cx="68" cy="309" r="16" fill="#166534"/>
+  <text x="68" y="314" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">✓</text>
+  <text x="100" y="302" fill="#166534" font-size="16" font-weight="700">Accept（承認）</text>
+  <text x="100" y="322" fill="#166534" font-size="12">問題なし → 次のステップへ</text>
+
+  <!-- Revision -->
+  <rect x="290" y="275" width="220" height="68" rx="12" fill="#FEF3C7" stroke="#FCD34D" stroke-width="2"/>
+  <circle cx="318" cy="309" r="16" fill="#92400E"/>
+  <text x="318" y="314" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">△</text>
+  <text x="350" y="302" fill="#92400E" font-size="16" font-weight="700">Revision（要修正）</text>
+  <text x="350" y="322" fill="#92400E" font-size="12">修正して再提出</text>
+
+  <!-- Reject -->
+  <rect x="540" y="275" width="236" height="68" rx="12" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="2"/>
+  <circle cx="568" cy="309" r="16" fill="#991B1B"/>
+  <text x="568" y="314" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">✕</text>
+  <text x="600" y="302" fill="#991B1B" font-size="16" font-weight="700">Reject（要差替え）</text>
+  <text x="600" y="322" fill="#991B1B" font-size="12">別の症例で書き直し</text>
+
+  <!-- Revision loop arrow -->
+  <path d="M400 343 L400 370 Q400 380 390 380 L305 380 Q295 380 295 370 L295 345" stroke="#92400E" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrowR)"/>
+  <text x="355" y="395" text-anchor="middle" fill="#92400E" font-size="10">修正→再評価</text>
+
+  <!-- Key point -->
+  <rect x="40" y="370" width="736" height="52" rx="10" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="400" y="393" text-anchor="middle" fill="#991B1B" font-size="14" font-weight="700">⚠ 重要：差戻しが発生すると数ヶ月の遅延に → 個別評価の段階で質を高めることが最重要</text>
+  <text x="400" y="412" text-anchor="middle" fill="#991B1B" font-size="12">二次評価では氏名・所属は匿名化され、レポート内容のみで判定される</text>
+
+  <!-- Footer -->
+  <text x="780" y="436" text-anchor="end" fill="#C8C4BC" font-size="10">© 内科ナビ naikanavi.com</text>
+</svg>

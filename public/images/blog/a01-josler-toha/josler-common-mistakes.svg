@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <rect width="600" height="120" rx="12" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+  
+  <!-- 警告アイコン -->
+  <circle cx="60" cy="60" r="30" fill="#FCD34D" opacity="0.3"/>
+  <path d="M60 35 L78 75 L42 75 Z" fill="none" stroke="#92400E" stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="60" y1="50" x2="60" y2="62" stroke="#92400E" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="60" cy="68" r="1.5" fill="#92400E"/>
+  
+  <!-- テキスト -->
+  <text x="110" y="45" fill="#92400E" font-size="15" font-weight="700">知らないと数ヶ月のロス！</text>
+  <text x="110" y="68" fill="#92400E" font-size="12" opacity="0.8">多くの専攻医がハマる3つの落とし穴を事前にチェック。</text>
+  <text x="110" y="88" fill="#92400E" font-size="12" opacity="0.8">特に「疾患群の重複」は二次評価で発覚すると致命的です。</text>
+  
+  <!-- 数字バッジ -->
+  <circle cx="520" cy="40" r="16" fill="#92400E"/>
+  <text x="520" y="45" text-anchor="middle" fill="white" font-size="14" font-weight="700">3</text>
+  <text x="520" y="65" text-anchor="middle" fill="#92400E" font-size="10">つの</text>
+  <text x="520" y="78" text-anchor="middle" fill="#92400E" font-size="10">落とし穴</text>
+  
+  <text x="590" y="114" text-anchor="end" fill="#FCD34D" font-size="8">© 内科ナビ</text>
+</svg>

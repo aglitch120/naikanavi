@@ -1,0 +1,153 @@
+---
+title: "J-OSLER病歴要約のAccept・Revision・Rejectの違いと対処法"
+description: "J-OSLER病歴要約のAccept（承認）・Revision（要修正）・Reject（要差替え）の違いを解説。一次評価・二次評価それぞれの判定基準と、RevisionやRejectを受けた時の具体的な対処法を紹介します。"
+date: "2026-03-12"
+updated: "2026-03-12"
+author: "iwor編集部"
+category: "medical-history"
+cluster: "C"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "Accept", "Revision", "Reject", "一次評価", "二次評価"]
+cta_type: "template"
+reading_time: 12
+status: "published"
+seo_checked: true
+---
+
+「病歴要約がRevisionで返ってきたけど、どう修正すればいいの？」「Rejectって言われたらもう終わり？」
+
+J-OSLER病歴要約の評価では、Accept（承認）・Revision（要修正）・Reject（要差替え）の3段階で判定されます。この記事ではそれぞれの違いと、Revision・Rejectを受けた場合の具体的な対処法を解説します。
+
+> iworの[AI病歴要約テンプレート](/pro/)は、疾患群と疾患名を選ぶだけで構成テンプレートを自動生成。Claude PubMed MCPでファクトチェック済みの引用文献候補も提示します。
+
+## Accept・Revision・Rejectとは
+
+J-OSLERの病歴要約評価では、一次評価（プログラム内）と二次評価（プログラム外の査読委員）の両方で、29編の病歴要約に対してそれぞれ以下の3段階で判定されます。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-label="Accept・Revision・Rejectの違い">
+  <defs><filter id="sh_c10a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="360" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">病歴要約の評価判定 3段階</text>
+  <rect x="40" y="88" width="226" height="230" rx="12" fill="#DCFCE7" filter="url(#sh_c10a)"/>
+  <rect x="52" y="100" width="202" height="36" rx="8" fill="#166534"/>
+  <text x="153" y="124" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="sans-serif">Accept（承認）</text>
+  <text x="153" y="160" text-anchor="middle" fill="#166534" font-size="13" font-weight="bold" font-family="sans-serif">合格 = 修正不要</text>
+  <text x="64" y="188" fill="#1A1917" font-size="11" font-family="sans-serif">その病歴要約はクリア。</text>
+  <text x="64" y="206" fill="#1A1917" font-size="11" font-family="sans-serif">29編すべてAcceptで評価完了。</text>
+  <text x="64" y="232" fill="#6B6760" font-size="11" font-family="sans-serif">一次評価・二次評価とも</text>
+  <text x="64" y="250" fill="#6B6760" font-size="11" font-family="sans-serif">29編全Accept = 通過</text>
+  <text x="64" y="278" fill="#166534" font-size="12" font-weight="bold" font-family="sans-serif">対応: 何もしなくてOK</text>
+  <rect x="287" y="88" width="226" height="230" rx="12" fill="#FEF3C7" filter="url(#sh_c10a)"/>
+  <rect x="299" y="100" width="202" height="36" rx="8" fill="#92400E"/>
+  <text x="400" y="124" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="sans-serif">Revision（要修正）</text>
+  <text x="400" y="160" text-anchor="middle" fill="#92400E" font-size="13" font-weight="bold" font-family="sans-serif">修正して再提出</text>
+  <text x="311" y="188" fill="#1A1917" font-size="11" font-family="sans-serif">内容に不備あり。修正すれば</text>
+  <text x="311" y="206" fill="#1A1917" font-size="11" font-family="sans-serif">同じ症例で再評価を受けられる。</text>
+  <text x="311" y="232" fill="#6B6760" font-size="11" font-family="sans-serif">考察の追記、記載の修正、</text>
+  <text x="311" y="250" fill="#6B6760" font-size="11" font-family="sans-serif">フォーマットの修正など</text>
+  <text x="311" y="278" fill="#92400E" font-size="12" font-weight="bold" font-family="sans-serif">対応: コメントに従い修正</text>
+  <rect x="534" y="88" width="226" height="230" rx="12" fill="#FEE2E2" filter="url(#sh_c10a)"/>
+  <rect x="546" y="100" width="202" height="36" rx="8" fill="#991B1B"/>
+  <text x="647" y="124" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="sans-serif">Reject（要差替え）</text>
+  <text x="647" y="160" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="bold" font-family="sans-serif">別の症例に差替え</text>
+  <text x="558" y="188" fill="#1A1917" font-size="11" font-family="sans-serif">症例自体が不適切。別の症例</text>
+  <text x="558" y="206" fill="#1A1917" font-size="11" font-family="sans-serif">で作り直す必要がある。</text>
+  <text x="558" y="232" fill="#6B6760" font-size="11" font-family="sans-serif">二次評価では初回のみ選択可。</text>
+  <text x="558" y="250" fill="#6B6760" font-size="11" font-family="sans-serif">差替後は一次評価からやり直し。</text>
+  <text x="558" y="278" fill="#991B1B" font-size="12" font-weight="bold" font-family="sans-serif">対応: 別症例で再作成</text>
+  <text x="400" y="345" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">© iwor iwor.jp ｜出典: 日本内科学会 病歴要約 作成と評価の手引き</text>
+</svg>
+
+**Accept**（承認） はその病歴要約が基準を満たしているという判定です。29編すべてがAcceptされれば、その評価フェーズは完了となります。
+
+**Revision**（要修正） は内容に不備があるものの、修正すれば同じ症例で再評価を受けられる判定です。評価者のコメントに従って修正し、再提出します。
+
+**Reject**（要差替え） は症例自体が不適切であるという判定です。その症例での修正は認められず、別の症例で作り直す必要があります。なお、二次評価ではRejectは初回評価時のみ選択可能です。
+
+## 一次評価と二次評価での違い
+
+一次評価と二次評価では評価の仕組みが少し異なります。
+
+一次評価はプログラム内の病歴指導医とプログラム統括責任者が行います。29編をまとめて評価し、差し戻された場合はRevisionの病歴要約を修正、Rejectの病歴要約は別の症例に差替えて再度評価依頼します。評価期間は研修3年目以降の5月〜翌年2月20日です。
+
+二次評価は内科学会が指定した査読委員が行います。一人の査読委員が29編すべてを評価するため、評価基準は統一されています。初回の評価期間の目安は21日以内、差し戻し後の2回目は7日以内です。二次評価では、専攻医の所属施設や氏名が表示されない匿名の状態で評価されます。
+
+Acceptされるまでの評価回数は最大3回までとされています。つまり、3回の評価で通過できなければ大きな問題となるため、一次評価の段階でしっかり仕上げることが極めて重要です。
+
+[一次評価の流れ](/blog/c11-josler-ichijihyouka)（準備中）も参考にしてください。
+
+## Revisionを受けた場合の対処法
+
+Revisionは最も一般的な差し戻しパターンです。多くの場合、評価者のコメントに修正のヒントが書かれています。
+
+よくあるRevisionの理由は以下のとおりです。総合考察が浅い（疾患の一般論に終始し、本症例ならではの考察がない）、プロブレムリストが不適切（主病態と副病名の優先順位が間違っている）、検査結果の記載が不十分（必要な検査データが抜けている）、入院後経過が時系列で整理されていない、文献引用が不適切（UpToDateやガイドラインの引用形式が間違っている）、などが代表的です。
+
+修正のコツは、評価者のコメントをそのまま取り入れるだけでなく、「なぜその指摘を受けたのか」を理解して修正することです。表面的な修正だけでは再度Revisionになるリスクがあります。
+
+[病歴要約の差し戻し対策](/blog/c08-josler-byoreki-youyaku-sashimodoshi)で具体的な修正パターンを解説しています。[総合考察の書き方](/blog/c04-josler-sougou-kousatsu-kakikata)もあわせて確認してください。
+
+> iworの[病歴要約ステータス管理](/pro/)では、29編の進捗を「作成中→修正中→受理済」まで一括管理。修正メモやリマインダーも残せます。
+
+## Rejectを受けた場合の対処法
+
+Rejectは「この症例では通せない」という判定なので、別の症例で作り直す必要があります。ショックを受けるかもしれませんが、落ち着いて対処しましょう。
+
+Rejectになりやすいケースは、疾患群と主病態が合っていない（副病名で無理に登録した症例）、受持期間が短すぎて十分な考察ができない症例、症例の診療密度が低い（外来で数回診ただけなど）、といったパターンです。
+
+差替え後の病歴要約は一次評価からやり直しになります。そのため、差替え用の症例をストックしておくことが重要です。個別評価の段階で29編ちょうどではなく、30〜35編程度の候補を準備しておくと安心です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-label="Reject時の対応フロー">
+  <defs><filter id="sh_c10b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="300" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#991B1B"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">Reject時の対応フロー</text>
+  <rect x="40" y="88" width="150" height="80" rx="12" fill="#FEE2E2" filter="url(#sh_c10b)"/>
+  <text x="115" y="118" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="bold" font-family="sans-serif">Reject判定</text>
+  <text x="115" y="140" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">症例が不適切</text>
+  <text x="115" y="155" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">修正では対応不可</text>
+  <text x="206" y="130" fill="#991B1B" font-size="22" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="224" y="88" width="150" height="80" rx="12" fill="#FEFEFC" filter="url(#sh_c10b)"/>
+  <text x="299" y="118" text-anchor="middle" fill="#1A1917" font-size="13" font-weight="bold" font-family="sans-serif">代替症例を選定</text>
+  <text x="299" y="140" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">同じ疾患群から</text>
+  <text x="299" y="155" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">適切な症例を選ぶ</text>
+  <text x="390" y="130" fill="#1B4F3A" font-size="22" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="408" y="88" width="150" height="80" rx="12" fill="#FEFEFC" filter="url(#sh_c10b)"/>
+  <text x="483" y="118" text-anchor="middle" fill="#1A1917" font-size="13" font-weight="bold" font-family="sans-serif">病歴要約を再作成</text>
+  <text x="483" y="140" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">個別評価→一次評価</text>
+  <text x="483" y="155" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">のフローをやり直し</text>
+  <text x="574" y="130" fill="#1B4F3A" font-size="22" font-weight="bold" font-family="sans-serif">→</text>
+  <rect x="592" y="88" width="168" height="80" rx="12" fill="#DCFCE7" filter="url(#sh_c10b)"/>
+  <text x="676" y="118" text-anchor="middle" fill="#166534" font-size="13" font-weight="bold" font-family="sans-serif">再度二次評価へ</text>
+  <text x="676" y="140" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">差替えた病歴要約のみ</text>
+  <text x="676" y="155" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">再評価を受ける</text>
+  <rect x="40" y="188" width="720" height="80" rx="12" fill="#FEF3C7" filter="url(#sh_c10b)"/>
+  <text x="64" y="214" fill="#92400E" font-size="13" font-weight="bold" font-family="sans-serif">Reject対策のポイント</text>
+  <text x="64" y="238" fill="#1A1917" font-size="11" font-family="sans-serif">個別評価の段階で30〜35編の候補を作っておく / 疾患群と主病態の一致を必ず確認する / 副病名での登録は避ける</text>
+  <text x="64" y="256" fill="#1A1917" font-size="11" font-family="sans-serif">一次評価で指摘を受けた場合は二次評価に進む前に確実に修正する / 不安な症例は事前に指導医に相談</text>
+  <text x="400" y="290" text-anchor="middle" fill="#6B6760" font-size="10" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+## よくある質問
+
+### 一次評価でRejectされた場合、二次評価でもRejectされやすいですか？
+
+直接の因果関係はありません。一次評価でのRejectは差替え後の新しい症例で再評価されるため、適切な症例を選び直せば二次評価で問題になることは少ないです。むしろ一次評価でしっかり指摘を受けて修正した病歴要約は、二次評価では通りやすい傾向にあります。
+
+### 二次評価でのRejectは初回のみ可能とはどういう意味ですか？
+
+査読委員がRejectを選択できるのは初回の評価時のみです。つまり、差替え後の再評価ではRejectは出されず、AcceptかRevisionのいずれかになります。これは、一度差替えを経た病歴要約は修正の余地があると判断されるためです。
+
+### 29編中1編だけRejectされた場合、他の28編はどうなりますか？
+
+Acceptされた病歴要約はそのまま維持されます。Rejectされた1編だけを別の症例に差替え、その病歴要約のみ一次評価からやり直します。他のAccept済みの病歴要約に影響はありません。
+
+### Revisionの修正回数に上限はありますか？
+
+Acceptされるまでの評価回数は最大3回までとされています。3回の評価で通過できない場合は、プログラム統括責任者と相談して対応を検討する必要があります。
+
+## まとめ
+
+J-OSLER病歴要約の評価はAccept・Revision・Rejectの3段階で行われます。Revisionは修正して再提出、Rejectは別の症例に差替えが必要です。一次評価の段階で丁寧に仕上げることが、二次評価をスムーズに通過する最大のポイントです。
+
+[病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)や[二次評価完全ガイド](/blog/c12-josler-nijihyouka)もあわせて確認し、Accept率を高めましょう。

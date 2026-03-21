@@ -1,0 +1,300 @@
+---
+title: "J-OSLER剖検症例の書き方｜4条件・考察の対比・疾患群ルール"
+description: "J-OSLER病歴要約の剖検症例（No.29）の書き方を解説。4つの必須条件、臨床経過と剖検所見の対比考察、疾患群重複ルール、転帰設定まで。2023年10月版手引きに基づく最新情報。"
+date: "2026-03-13"
+updated: "2026-03-13"
+author: "iwor編集部"
+category: "disease-specific"
+cluster: "D"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "剖検症例", "病理解剖", "書き方"]
+cta_type: "template"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「剖検症例って他の病歴要約と何が違うの？」「病理所見がまだ出てないんだけど書ける？」
+
+剖検症例は29病歴要約の **No.29** に配置される特別な1篇です。他の28篇とは異なる独自の条件があり、考察でも ** 臨床経過と剖検所見の対比** が求められます。この記事では、[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）に基づいて、剖検症例の書き方を解説します。
+
+> [iwor](/pro/)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。
+
+## 剖検症例の4つの必須条件
+
+剖検症例としてNo.29に配置するには、[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)に記載された **4つの条件を全て** 満たす必要があります。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-label="剖検症例の4つの必須条件">
+  <defs>
+    <filter id="sd_d13a" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif">剖検症例の4つの必須条件（全て満たすこと）</text>
+
+  <rect x="40" y="92" width="720" height="84" rx="10" fill="#FEFEFC" filter="url(#sd_d13a)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="76" cy="122" r="22" fill="#1B4F3A"/>
+  <text x="76" y="128" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">1</text>
+  <text x="110" y="120" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">死亡の宣告あるいは死亡の診断に関与したこと</text>
+  <text x="110" y="148" fill="#6B6760" font-size="12" font-family="sans-serif">主治医または担当医として患者の死亡に直接関与していること</text>
+
+  <rect x="40" y="192" width="720" height="84" rx="10" fill="#FEFEFC" filter="url(#sd_d13a)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="76" cy="222" r="22" fill="#1B4F3A"/>
+  <text x="76" y="228" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">2</text>
+  <text x="110" y="220" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">遺族に対する剖検の依頼に関与したこと</text>
+  <text x="110" y="248" fill="#6B6760" font-size="12" font-family="sans-serif">主治医・指導医とともに遺族への病理解剖の説明・依頼に参加すること</text>
+
+  <rect x="40" y="292" width="720" height="84" rx="10" fill="#FEFEFC" filter="url(#sd_d13a)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="76" cy="322" r="22" fill="#1B4F3A"/>
+  <text x="76" y="328" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">3</text>
+  <text x="110" y="320" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">臨床上の問題点を病理に提出していること</text>
+  <text x="110" y="348" fill="#6B6760" font-size="12" font-family="sans-serif">剖検依頼書（臨床情報提供書）に臨床的な疑問点・検討事項を記載すること</text>
+
+  <rect x="40" y="392" width="720" height="84" rx="10" fill="#FEFEFC" filter="url(#sd_d13a)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="76" cy="422" r="22" fill="#1B4F3A"/>
+  <text x="76" y="428" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">4</text>
+  <text x="110" y="420" fill="#1B4F3A" font-size="15" font-weight="bold" font-family="sans-serif">剖検に立ち会っていること</text>
+  <text x="110" y="448" fill="#6B6760" font-size="12" font-family="sans-serif">病理解剖の現場に立ち会い、肉眼的所見を直接確認すること</text>
+
+  <text x="400" y="508" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+4条件のうち、特に注意が必要なのが **条件3と4** です。剖検依頼書には「臨床経過で解明できなかった点」や「病理学的に確認したい点」を具体的に記載し、剖検当日は実際に立ち会って肉眼的所見を確認する必要があります。
+
+## J-OSLERでの転帰設定｜「死亡：剖検あり」を必ず選ぶ
+
+剖検症例で最もよくあるミスが **転帰の設定忘れ** です。症例登録を済ませてから転帰の選択肢を見ると「死亡」と「死亡：剖検あり（剖検症例として作成）」の2つがあることに気づきます。この違いを知らずに「死亡」を選んでしまうと、No.29の枠にセットしても剖検症例としてカウントされません。
+
+修正するには症例指導医に「承認取消」と「差戻し」を依頼した上で、再度登録しなおす必要があります。指導医の手を何度も煩わせることになるため、**症例登録の段階で転帰を正しく設定** することが非常に重要です。剖検が行われた症例を登録するときは、冒頭で必ず「死亡：剖検あり（剖検症例として作成）」を選択したか確認する習慣をつけましょう。
+
+## 疾患群の重複ルール｜剖検症例の特権
+
+29病歴要約は原則「全て異なる疾患群から作成すること」がルールですが、剖検症例（No.29）は外科紹介症例（No.27・28）と同様に **他の病歴要約と疾患群が重複してもよい** とされています。
+
+たとえば、呼吸器領域（No.11-13）で「呼吸器感染症」の疾患群を使っていても、剖検症例のNo.29で肺炎による死亡症例を「呼吸器感染症」として提出できます。
+
+この特権は剖検症例の性質上、疾患が限定される（死亡に至った重症例）ことへの配慮です。疾患群選択の自由度が高い分、書きやすい疾患を選べるメリットがあります。
+
+> iworの[ダッシュボード](https://iwor.jp)では、29病歴要約のステータスを一覧管理できます。剖検症例の進捗も「作成中→修正中→受理済」まで追跡可能。
+
+## 考察の書き方｜臨床経過と剖検所見の対比が核
+
+剖検症例の考察で最も重要なのは、 **臨床経過と剖検所見を対比して考察する** ことです。通常の病歴要約の考察とは異なり、「生前の臨床診断は正しかったか」「剖検で新たに判明した所見は何か」を検討する構成が求められます。
+
+この対比考察が剖検症例の最大の特徴であり、査読委員が重点的に確認するポイントです。よくある失敗は「剖検所見を羅列するだけで、臨床経過との対比がない」というケースです。たとえば「剖検でDAAが確認された」だけでなく、「臨床的にIP急性増悪と診断していたが、剖検でDADパターンとして病理学的に確認され、診断の妥当性が裏付けられた」という形で**臨床診断の検証** まで踏み込むことが求められます。「見落としがなかったか」「治療選択は適切だったか」という自己批判的な視点も重要で、これが剖検症例の学術的価値を示す部分です。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="剖検症例の考察構成｜臨床所見と剖検所見の対比">
+  <defs>
+    <filter id="sd_d13b" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif">剖検症例の考察構成</text>
+
+  <rect x="40" y="92" width="340" height="200" rx="10" fill="#FEFEFC" filter="url(#sd_d13b)" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="40" y="92" width="340" height="36" rx="10" fill="#E8F0EC"/>
+  <text x="210" y="116" text-anchor="middle" fill="#1B4F3A" font-size="14" font-weight="bold" font-family="sans-serif">臨床経過のまとめ</text>
+  <text x="56" y="148" fill="#1A1917" font-size="12" font-family="sans-serif">臨床診断と診断根拠</text>
+  <text x="56" y="170" fill="#1A1917" font-size="12" font-family="sans-serif">治療経過と効果判定</text>
+  <text x="56" y="192" fill="#1A1917" font-size="12" font-family="sans-serif">死因の臨床的推定</text>
+  <text x="56" y="214" fill="#1A1917" font-size="12" font-family="sans-serif">生前に解明できなかった点</text>
+  <text x="56" y="240" fill="#6B6760" font-size="11" font-family="sans-serif">剖検依頼書に記載した</text>
+  <text x="56" y="256" fill="#6B6760" font-size="11" font-family="sans-serif">臨床上の問題点を反映</text>
+
+  <text x="400" y="192" text-anchor="middle" fill="#1B4F3A" font-size="28" font-weight="bold" font-family="sans-serif">⇔</text>
+
+  <rect x="420" y="92" width="340" height="200" rx="10" fill="#FEFEFC" filter="url(#sd_d13b)" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="420" y="92" width="340" height="36" rx="10" fill="#E8F0EC"/>
+  <text x="590" y="116" text-anchor="middle" fill="#1B4F3A" font-size="14" font-weight="bold" font-family="sans-serif">剖検所見との対比</text>
+  <text x="436" y="148" fill="#1A1917" font-size="12" font-family="sans-serif">病理診断と臨床診断の一致・相違</text>
+  <text x="436" y="170" fill="#1A1917" font-size="12" font-family="sans-serif">新たに判明した病変の考察</text>
+  <text x="436" y="192" fill="#1A1917" font-size="12" font-family="sans-serif">病理学的死因と臨床的推定の比較</text>
+  <text x="436" y="214" fill="#1A1917" font-size="12" font-family="sans-serif">治療の妥当性の振り返り</text>
+  <text x="436" y="240" fill="#6B6760" font-size="11" font-family="sans-serif">臨床診断が正しかったか、</text>
+  <text x="436" y="256" fill="#6B6760" font-size="11" font-family="sans-serif">見落としがなかったかを検討</text>
+
+  <rect x="40" y="312" width="720" height="130" rx="10" fill="#FEFEFC" filter="url(#sd_d13b)" stroke="#DDD9D2" stroke-width="1"/>
+  <rect x="40" y="312" width="720" height="36" rx="10" fill="#E8F0EC"/>
+  <text x="400" y="336" text-anchor="middle" fill="#1B4F3A" font-size="14" font-weight="bold" font-family="sans-serif">考察の記載例（肺癌・間質性肺炎合併例）</text>
+  <text x="56" y="366" fill="#1A1917" font-size="12" font-family="sans-serif">臨床的にはIP合併肺癌に対し化学療法を施行したが、IP急性増悪で死亡に至った。</text>
+  <text x="56" y="386" fill="#1A1917" font-size="12" font-family="sans-serif">剖検では、肺にDAD所見を認めIP急性増悪の診断を病理学的に確認した。</text>
+  <text x="56" y="406" fill="#1A1917" font-size="12" font-family="sans-serif">一方、臨床的に指摘されていなかった小腸への転移巣が発見された。</text>
+  <text x="56" y="426" fill="#1A1917" font-size="12" font-family="sans-serif">化学療法の適応・レジメン選択は妥当であったが、IP急性増悪のリスク管理が課題として残った。</text>
+
+  <text x="400" y="470" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+### 考察テンプレート
+
+剖検症例の考察は、以下の流れで構成すると書きやすくなります。
+
+```
+1. 臨床経過の要約
+ - 臨床診断と診断根拠
+ - 治療内容と経過
+ - 死因の臨床的推定
+
+2. 剖検所見の要約
+ - 肉眼的所見（主要臓器の変化）
+ - 組織学的所見（病理診断名）
+ - 病理学的死因
+
+3. 臨床診断と病理診断の対比
+ - 一致した所見：臨床診断の妥当性
+ - 相違した所見：見落としの要因分析
+ - 新たに判明した病変の臨床的意義
+
+4. 考察のまとめ
+ - 本症例から学んだ教訓
+ - 診断・治療の改善点
+ - 文献的考察
+```
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## 病理所見が出るまでに時間がかかる場合
+
+剖検後、最終的な病理診断報告書が完成するまでには **数週間〜数ヶ月** かかることがあります。しかし、病歴要約の提出期限は待ってくれません。
+
+手引きには、 **病理所見が出るまでに時間がかかる場合は、肉眼的所見に基づく考察でも認められる** と記載されています。剖検に立ち会い（条件4）、肉眼的に確認した所見を基に考察を行えば、組織学的所見が確定する前でも提出は可能です。
+
+ただし、可能であれば最終的な病理診断を待ってから記載する方が、考察の質は格段に高くなります。スケジュールに余裕がある場合は、病理報告を待つことをおすすめします。
+
+### 入院後経過の書き方
+
+剖検症例では、「入院→治療経過→死亡→剖検」の流れを時系列で記載します。通常の病歴要約と異なる点は、 **死亡に至る経緯を詳しく記載** すること、そして ** 剖検所見を考察に組み込む** ことです。
+
+入院後経過の例を示します。
+
+```
+第1病日, 急性呼吸不全にてICU入室. 人工呼吸管理を開始した.
+CT上両側びまん性すりガラス影を認め, IP急性増悪と臨床診断した.
+mPSL 1000 mg×3日のパルス療法を施行, 後療法としてPSL 1 mg/kgを継続した.
+第7病日, 低酸素血症は改善傾向であったが, 第12病日に再度SpO2低下を認めた.
+第14病日, 多臓器不全にて死亡した.
+遺族の同意を得て, 第15病日に病理解剖を施行した.
+肉眼的に両肺はびまん性に硬化し, 割面ではDADパターンを示唆する所見であった.
+組織学的検索にて, DAD（器質化期）を確認, IP急性増悪と矛盾しない所見であった.
+```
+
+## 剖検症例に適した疾患選択
+
+剖検症例はそもそも「死亡した症例」に限られるため、選択肢は自然と限定されます。剖検が行われやすい典型的な疾患カテゴリを挙げます。
+
+- **悪性腫瘍**: 肺癌、膵臓癌、血液悪性腫瘍など。臨床診断と病理診断の対比がしやすい
+- **感染症**: 敗血症、真菌感染症、結核。死因の病理学的確認に有用
+- **膠原病・血管炎**: 全身性の病変が多臓器に及ぶため、剖検での新規所見が得られやすい
+- **間質性肺炎**: 急性増悪例。DADパターンの確認や合併病変の発見
+- **原因不明の病態**: 不明熱で死亡した症例など。剖検で初めて診断がつくケースも
+
+疾患群の重複が許される特権を活かし、他の26篇で経験の多い疾患群と重複させても問題ありません。
+
+> [2025年4月版の病歴要約サンプル](https://www.naika.or.jp/wp-content/uploads/2025/04/c137f83d8e848946260f2e6255ef9044.pdf)では、外科紹介症例と剖検症例の病歴要約サンプルが新たに追加されています。実際の記載例を確認してから書き始めることをおすすめします。
+
+## 剖検症例が見つからない場合
+
+近年、日本の剖検率は低下傾向にあり、専攻医が剖検症例を経験できない場合もあります。
+
+現行の制度では、 **剖検症例は29病歴要約の必須要件** です。剖検症例を経験していない場合は、以下の対策を検討してください。
+
+- **指導医・プログラム責任者に相談**: 関連施設での剖検機会の確保を依頼する
+- **複数施設をローテーション**: 大学病院や基幹病院では剖検率が比較的高い
+- **CPC（臨床病理検討会）に積極参加**: 直接の担当ではなくても、剖検に関与する機会を増やす
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" role="img" aria-label="剖検症例確保のための3つのアクション">
+  <defs>
+    <filter id="sd_d13c" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="340" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif">剖検症例を確保するための3つのアクション</text>
+
+  <rect x="40" y="92" width="226" height="200" rx="10" fill="#FEFEFC" filter="url(#sd_d13c)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="153" cy="126" r="22" fill="#1B4F3A"/>
+  <text x="153" y="132" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">1</text>
+  <text x="153" y="168" text-anchor="middle" fill="#1B4F3A" font-size="14" font-weight="bold" font-family="sans-serif">早めに相談</text>
+  <text x="56" y="196" fill="#6B6760" font-size="11" font-family="sans-serif">指導医・プログラム</text>
+  <text x="56" y="214" fill="#6B6760" font-size="11" font-family="sans-serif">責任者に剖検症例の</text>
+  <text x="56" y="232" fill="#6B6760" font-size="11" font-family="sans-serif">必要性を伝え、機会を</text>
+  <text x="56" y="250" fill="#6B6760" font-size="11" font-family="sans-serif">確保してもらう</text>
+
+  <rect x="286" y="92" width="226" height="200" rx="10" fill="#FEFEFC" filter="url(#sd_d13c)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="399" cy="126" r="22" fill="#1B4F3A"/>
+  <text x="399" y="132" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">2</text>
+  <text x="399" y="168" text-anchor="middle" fill="#1B4F3A" font-size="14" font-weight="bold" font-family="sans-serif">施設選択の工夫</text>
+  <text x="302" y="196" fill="#6B6760" font-size="11" font-family="sans-serif">大学病院・基幹病院は</text>
+  <text x="302" y="214" fill="#6B6760" font-size="11" font-family="sans-serif">剖検率が比較的高い。</text>
+  <text x="302" y="232" fill="#6B6760" font-size="11" font-family="sans-serif">ローテーション先に</text>
+  <text x="302" y="250" fill="#6B6760" font-size="11" font-family="sans-serif">含めることを検討</text>
+
+  <rect x="532" y="92" width="226" height="200" rx="10" fill="#FEFEFC" filter="url(#sd_d13c)" stroke="#1B4F3A" stroke-width="2"/>
+  <circle cx="645" cy="126" r="22" fill="#1B4F3A"/>
+  <text x="645" y="132" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">3</text>
+  <text x="645" y="168" text-anchor="middle" fill="#1B4F3A" font-size="14" font-weight="bold" font-family="sans-serif">CPCに積極参加</text>
+  <text x="548" y="196" fill="#6B6760" font-size="11" font-family="sans-serif">臨床病理検討会に</text>
+  <text x="548" y="214" fill="#6B6760" font-size="11" font-family="sans-serif">参加し、剖検への関心を</text>
+  <text x="548" y="232" fill="#6B6760" font-size="11" font-family="sans-serif">示す。担当患者以外でも</text>
+  <text x="548" y="250" fill="#6B6760" font-size="11" font-family="sans-serif">立ち会いの機会を得やすい</text>
+
+  <text x="400" y="328" text-anchor="middle" fill="#6B6760" font-size="11" font-family="sans-serif">© iwor iwor.jp</text>
+</svg>
+
+## よくある失敗3パターン
+
+剖検症例の病歴要約で専攻医がはまりがちな失敗を3つ挙げます。
+
+**❶ 転帰選択のミス — 「死亡」を選んでしまう**
+
+症例登録時に「死亡」と「死亡：剖検あり（剖検症例として作成）」の2択があることを知らず、単純に「死亡」を選んでしまうケースです。指導医に承認してもらった後に誤りに気づくと、承認取消・差戻し・再登録と大きな手間が発生します。剖検症例を登録する際は、転帰選択を最初に確認する習慣をつけましょう。
+
+**❷ 考察で臨床経過と剖検所見を対比できていない**
+
+「剖検で○○が確認された」と剖検所見を羅列するだけで、臨床診断との対比・検証が抜けてしまうパターンです。査読委員が最も重点的に確認するのは「生前の臨床診断は正しかったか」「治療選択は適切だったか」という自己批判的な視点です。臨床経過と剖検所見を必ず対比させた考察にしましょう。
+
+**❸ 病理報告書を待ちすぎて提出が遅れる**
+
+最終病理診断報告書が出るまで数週間〜数ヶ月かかることがあり、「報告書が来てから書く」と待ち続けて提出期限を過ぎてしまうことがあります。手引きには「病理所見が出るまでに時間がかかる場合は肉眼的所見での考察も認められる」と明記されています。期限が迫っているなら肉眼的所見をベースに提出し、後で補記する方法を検討しましょう。
+
+
+---
+
+**関連記事**
+
+- [病歴要約【消化器】書き方](/blog/d01-josler-byoreki-youyaku-shoukaki)
+- [病歴要約【循環器】書き方](/blog/d02-josler-byoreki-youyaku-junkanki)
+- [病歴要約【呼吸器】書き方](/blog/d03-josler-byoreki-youyaku-kokyuuki)
+- [J-OSLER完全攻略ガイド](/blog/josler-complete-guide)
+
+## よくある質問（FAQ）
+
+### Q. 剖検症例を初期研修中の症例で書くことはできますか？
+
+初期研修中の症例でも、4つの必須条件を全て満たしていれば剖検症例として提出できます。ただし、初期研修中の症例で提出できる病歴要約は **14篇が上限** です。剖検症例を初期研修の症例で書く場合、この上限枠を1つ消費することになります。
+
+### Q. 病理報告書が出る前に病歴要約を提出できますか？
+
+提出できます。手引きには「病理所見が出るまでに時間がかかる場合は、肉眼的所見での考察も認められる」と記載されています。剖検に立ち会い、肉眼的に確認した所見を基に考察を行えば問題ありません。ただし、可能であれば最終病理報告を待つ方が考察の質は向上します。
+
+### Q. 外科紹介症例の患者が術後に亡くなった場合、剖検症例にできますか？
+
+可能です。その患者で剖検が行われ、4条件を全て満たしていればNo.29に配置できます。ただし、同一症例を外科紹介症例（No.27・28）と剖検症例（No.29）の両方に使うことはできません。どちらか一方の枠で提出してください。
+
+### Q. 剖検症例の疾患群は他の病歴要約と重複してもいいのですか？
+
+はい、剖検症例（No.29）は外科紹介症例（No.27・28）と同様に、他の26篇と疾患群が重複しても認められます。これは死亡症例という性質上、疾患選択の幅が限定されることへの配慮です。
+
+### Q. CPCで発表した症例をそのまま剖検症例として書いてもいいですか？
+
+可能です。CPC（臨床病理検討会）で発表した症例は、病歴要約の素材として非常に優れています。すでに臨床経過と病理所見の対比がなされているため、考察部分も書きやすくなります。ただし、CPC発表のスライドをそのまま転記するのではなく、病歴要約のフォーマットに従って再構成してください。
+
+## まとめ
+
+剖検症例はNo.29に配置される特別な1篇で、4つの必須条件（死亡の宣告・剖検依頼・臨床問題の提出・剖検立ち会い）を全て満たす必要があります。転帰は必ず「死亡：剖検あり（剖検症例として作成）」を選択し、考察では臨床経過と剖検所見の対比を中心に記載しましょう。疾患群は他の病歴要約と重複可能です。剖検率の低下により経験が難しい場合は、早めに指導医に相談し、機会を確保してください。
+
+剖検症例の病歴要約も、[iworのAI病歴要約テンプレート](/pro/)を活用すれば考察の方向性と引用文献候補が手に入ります。臨床経過と剖検所見の対比構成をゼロから考える手間を減らせます。

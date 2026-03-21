@@ -1,0 +1,342 @@
+---
+title: "J-OSLER病歴要約の文献引用ルール｜UpToDate・ガイドラインの書き方"
+description: "J-OSLER病歴要約の文献引用ルールを公式手引きに基づいて解説。引用形式、UpToDateやガイドラインの正しい書き方、差し戻されない文献選びのコツまで。コピペで使えるテンプレート付き。"
+date: "2026-03-10"
+updated: "2026-03-10"
+author: "iwor編集部"
+category: "medical-history"
+cluster: "C"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "文献引用", "UpToDate", "ガイドライン", "参考文献"]
+cta_type: "template"
+reading_time: 10
+status: "published"
+seo_checked: true
+---
+
+「文献ってどう書けばいいの？」「UpToDateは引用していいの？」「ガイドラインの書き方がわからない...」
+
+J-OSLERの病歴要約で意外とつまずくのが文献の引用です。総合考察や入院後経過で根拠を示すとき、引用形式が間違っていると差し戻しの原因になります。この記事では、[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）に基づいて、正しい引用ルールと実践的な書き方を解説します。
+
+> [iwor](/pro/)のAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけで考察の方向性・引用文献候補まで骨組みが手に入ります。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。
+
+## 公式手引きが定める文献引用の基本ルール
+
+まず、[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）に記載されている文献に関するルールを正確に押さえましょう。手引きでは以下のように定められています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 354" role="img" aria-label="文献引用の3つのルール">
+  <defs><filter id="fc_c7" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="354" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">文献引用の3つのルール</text>
+  <rect x="24" y="92" width="368" height="90" rx="10" fill="#E8F0EC" filter="url(#fc_c7)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="114" r="14" fill="#1B4F3A"/>
+  <text x="52" y="119" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">1</text>
+  <text x="76" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">引用形式の統一</text>
+  <text x="76" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">Vancouver形式を推奨</text>
+  <text x="76" y="162" font-family="sans-serif" font-size="11" fill="#6B6760">番号制で本文中に[1]等と記載</text>
+  <rect x="412" y="92" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_c7)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="440" cy="114" r="14" fill="#1B4F3A"/>
+  <text x="440" y="119" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="464" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">一次文献を優先</text>
+  <text x="464" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">UpToDateよりも原著論文や</text>
+  <text x="464" y="162" font-family="sans-serif" font-size="11" fill="#6B6760">ガイドラインを引用する</text>
+  <rect x="24" y="198" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_c7)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="220" r="14" fill="#1B4F3A"/>
+  <text x="52" y="225" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="76" y="224" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">3本以上の引用</text>
+  <text x="76" y="248" font-family="sans-serif" font-size="11" fill="#6B6760">最低3本の文献を引用し</text>
+  <text x="76" y="268" font-family="sans-serif" font-size="11" fill="#6B6760">考察の裏付けとする</text>
+  <text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+
+**文献はEBMを重視の上、症例に適した原著論文・ガイドライン・レビューなどを引用し、必ず文中に記載する** ということが求められています。「文中に記載する」とは、本文の該当箇所に直接引用を挿入する形式であり、末尾にまとめて参考文献リストを置く形式ではありません。
+
+もうひとつ重要なのが引用元の制限です。紙媒体の場合は「全国の図書館で閲覧できるような公的機関の医学雑誌ないしは学術図書に掲載されたもの」に限るとされています。つまり、個人ブログや一般向けの医療情報サイト、SNSの投稿などは引用元として認められません。
+
+Web媒体からの引用については、UpToDate等の医療情報源や、各学会・厚生科学研究班等から出されたガイドライン等、「出典がオーソライズされたもの」に限って認められています。
+
+## 引用形式のテンプレート
+
+手引きに示された引用形式は非常にシンプルです。本文の該当箇所に括弧で挿入する形式を取ります。
+
+### 英語論文の引用形式
+
+```
+(著者名. 雑誌名 出版年;巻:開始ページ)
+```
+
+具体的な記載例は以下のとおりです。
+
+```
+(Abe S. JAMA 1997;278:485)
+```
+
+著者が複数いる場合は筆頭著者のみを記載し、et al. を付けます。
+
+```
+(Tanaka K, et al. N Engl J Med 2020;382:1564)
+```
+
+### 日本語論文の引用形式
+
+```
+(著者名. 雑誌名 出版年;巻:開始ページ)
+```
+
+記載例は以下のとおりです。
+
+```
+(工藤翔二. 日内会誌 2006;95:564)
+```
+
+### ガイドライン（Web媒体）の引用形式
+
+学会ガイドラインをWeb上で参照した場合は、以下の形式です。
+
+```
+(●●学会編: ●●ガイドライン. ●●学会HP)
+```
+
+具体例をいくつか挙げます。
+
+```
+(日本循環器学会編: 急性・慢性心不全診療ガイドライン(2017年改訂版). 日本循環器学会HP)
+```
+
+```
+(日本呼吸器学会編: 成人肺炎診療ガイドライン2024. 日本呼吸器学会HP)
+```
+
+```
+(日本消化器病学会編: 消化性潰瘍診療ガイドライン2020(改訂第3版). 日本消化器病学会HP)
+```
+
+### UpToDateの引用形式
+
+UpToDateは手引きで「医療情報源」として明示的に認められています。ただし、引用形式は手引きに具体例がないため、以下のように書くのが一般的です。
+
+```
+(著者名. 記事タイトル. UpToDate. Accessed YYYY-MM-DD)
+```
+
+記載例は以下のとおりです。
+
+```
+(Loscalzo J. Harrison's Principles of Internal Medicine. UpToDate. Accessed 2025-10-15)
+```
+
+UpToDateの記事は定期的に更新されるため、アクセス日を記載することで情報の時点を明確にできます。
+
+## 引用する文献の選び方
+
+### 文献の種類と優先順位
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 454" role="img" aria-label="文献検索から引用までの手順">
+  <defs><filter id="fs_c7" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter>
+    <marker id="afs_c7" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1B4F3A"/></marker></defs>
+  <rect width="800" height="454" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">文献検索から引用までの手順</text>
+  <rect x="160" y="92" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_c7)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="112" r="14" fill="#1B4F3A"/>
+  <text x="190" y="117" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">1</text>
+  <text x="214" y="116" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">キーワードで検索</text>
+  <text x="214" y="137" font-family="sans-serif" font-size="11" fill="#6B6760">PubMed・医中誌・ガイドラインを検索</text>
+  <line x1="400" y1="150" x2="400" y2="170" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_c7)"/>
+  <rect x="160" y="170" width="480" height="58" rx="10" fill="#FEFEFC" filter="url(#fs_c7)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="190" r="14" fill="#1B4F3A"/>
+  <text x="190" y="195" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="214" y="194" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">一次文献を優先選択</text>
+  <text x="214" y="215" font-family="sans-serif" font-size="11" fill="#6B6760">原著論文・システマティックレビューを選ぶ</text>
+  <line x1="400" y1="228" x2="400" y2="248" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_c7)"/>
+  <rect x="160" y="248" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_c7)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="268" r="14" fill="#1B4F3A"/>
+  <text x="190" y="273" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="214" y="272" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">引用形式を整える</text>
+  <text x="214" y="293" font-family="sans-serif" font-size="11" fill="#6B6760">著者名. 論文名. 雑誌名. 年;巻:頁.</text>
+  <line x1="400" y1="306" x2="400" y2="326" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_c7)"/>
+  <rect x="160" y="326" width="480" height="58" rx="10" fill="#FEFEFC" filter="url(#fs_c7)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="346" r="14" fill="#1B4F3A"/>
+  <text x="190" y="351" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">4</text>
+  <text x="214" y="350" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">本文中に引用番号を付与</text>
+  <text x="214" y="371" font-family="sans-serif" font-size="11" fill="#6B6760">考察の該当箇所に[1][2]等を挿入</text>
+  <text x="400" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+
+引用する文献には優先順位があります。基本的には、より質の高いエビデンスを優先して引用しましょう。
+
+最も説得力が高いのは、大規模臨床試験の原著論文です。たとえば循環器領域なら、心不全の薬物治療に関するランドマーク試験などが該当します。総合考察で「本症例では●●を選択した」という治療方針を示すとき、その根拠として原著論文を引用できると評価が高くなります。
+
+次に優先されるのが各学会のガイドラインです。診断基準や治療アルゴリズムに言及するとき、ガイドラインは最も適切な引用元となります。ガイドラインは日常診療の標準を示すものであり、「この症例ではガイドラインに従って●●を行った」という記載は、内科専門医として標準的な診療ができていることの証明になります。
+
+レビュー論文やメタアナリシスも有用です。疾患の概要や病態生理に言及する際に引用できます。UpToDateの記事もこのカテゴリに近い位置づけです。
+
+### 文献数の目安
+
+手引きには「何本引用せよ」という明確な数の指定はありません。ただし、総合考察で治療方針の妥当性を論じる際にエビデンスの裏付けは欠かせません。実際に二次評価を通過した病歴要約では、1篇あたり2〜4本程度の文献を引用しているケースが多いです。
+
+あまり多すぎると「文献を並べているだけ」という印象になりますし、少なすぎると「根拠が不十分」と判断されます。自分が担当した症例に直接関連する文献を厳選して引用するのがポイントです。
+
+## 本文中での引用の入れ方
+
+引用は「入院後経過と考察」と「総合考察」の2箇所で特に重要です。
+
+### 入院後経過と考察での引用
+
+入院後経過では、診断根拠や治療選択の妥当性を示す場面で文献を引用します。[入院後経過と考察の書き方](/blog/c06-josler-nyuingo-keika-kakikata)でも解説していますが、治療法のエビデンスを示す際に文献があると説得力が増します。
+
+以下はコードブロックで記載例を示します。
+
+```
+#1 急性心不全
+入院後, フロセミド静注にて利尿を図り, 循環動態の安定後にエナラプリルおよびカルベジロールの導入を行った. HFrEF（LVEF 32%）に対するACE阻害薬およびβ遮断薬の併用は, 死亡率の低下が示されており(Packer M, et al. N Engl J Med 2001;344:1651), ガイドラインでも推奨されている(日本循環器学会編: 急性・慢性心不全診療ガイドライン(2017年改訂版). 日本循環器学会HP).
+```
+
+### 総合考察での引用
+
+[総合考察の書き方](/blog/c04-josler-sougou-kousatsu-kakikata)でも解説しているとおり、総合考察では治療方針の妥当性や、この症例から何を学んだかを論じます。ここでの文献引用は、自分の考察を客観的に裏付ける役割を果たします。
+
+```
+本症例はステロイド抵抗性のネフローゼ症候群に対してシクロスポリンを導入し, 寛解を得た一例である. 膜性腎症におけるシクロスポリンの有効性は複数の研究で示されており(Cattran DC, et al. Kidney Int 2001;59:1484), KDIGOガイドラインでもリツキシマブとともに一次治療として推奨されている.
+```
+
+## よくある引用の間違いと対策
+
+### 間違い1: 末尾にまとめて参考文献リストを置く
+
+学術論文の形式に慣れていると、本文末に「参考文献」としてまとめたくなりますが、J-OSLERの病歴要約ではこの形式は適切ではありません。手引きに「必ず文中に記載する」と明記されているとおり、引用は本文の該当箇所に直接挿入してください。
+
+### 間違い2: 教科書だけを引用する
+
+「Harrison内科学に記載があるとおり...」のような教科書の引用だけでは、EBMを重視した引用とはいえません。教科書の記載は根拠のひとつにはなりますが、可能な限り原著論文やガイドラインと組み合わせて引用しましょう。
+
+### 間違い3: 個人ブログやSNSからの引用
+
+手引きでは引用元が明確に限定されています。個人ブログ、X（旧Twitter）の投稿、YouTubeの動画などは引用元として認められません。「UpToDateに記載があった」という形でも、正確な引用形式で記載しなければ差し戻しの原因になります。
+
+### 間違い4: 古すぎる文献のみの引用
+
+10年以上前の文献しか引用していないと、最新のエビデンスを把握していない印象を与えます。ランドマーク試験など歴史的に重要な論文は古くても問題ありませんが、治療方針に関する引用には直近5〜10年以内の文献やガイドラインを含めるようにしましょう。Claude PubMed MCPで「この疾患の最新のRCTを検索して」と指示すれば、最新の文献候補を効率的に見つけられます。
+
+### 間違い5: 引用形式の不統一
+
+同じ病歴要約の中で引用形式が統一されていないと、査読委員に雑な印象を与えます。英語論文は英語論文の形式、ガイドラインはガイドラインの形式で、29篇を通して統一してください。
+
+## 効率的な文献検索の方法
+
+29篇の病歴要約それぞれに文献を付けるとなると、文献検索だけで相当な時間がかかります。効率よく進めるためのコツを紹介します。
+
+### ガイドラインを先に押さえる
+
+各領域のガイドラインは、その疾患群の治療方針を示す最も標準的な文献です。まず自分が書く症例の疾患群に対応するガイドラインを確認し、それを軸に引用を構成すると効率的です。主要な学会のガイドラインはWebで公開されているものが多く、日本内科学会、各サブスペシャリティ学会のHPからアクセスできます。
+
+### PubMedの活用
+
+原著論文を検索する際はPubMedが基本です。疾患名と治療法を組み合わせたキーワードで検索し、引用数の多い論文やランドマーク試験を探しましょう。「Clinical Trial」や「Meta-Analysis」でフィルターをかけると、質の高いエビデンスに絞り込めます。
+
+ただし、PubMedの検索に慣れていないと、キーワードの選び方や絞り込みに時間がかかります。そこでおすすめなのが **Claude + PubMed MCP連携** です。Claudeは[PubMed MCP連携](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)を使うことで、PubMedの論文データベースに直接アクセスできます。「この疾患の治療に関するランドマーク試験を探して」と指示するだけで、論文タイトル・著者・掲載誌・PMIDを実データから取得してくれます。ChatGPTやPerplexityで起きがちなハルシネーション（存在しない論文の生成）のリスクを大幅に減らせるのが最大のメリットです。
+
+設定方法と具体的な使い方は[Claude PubMed MCPで医学文献を検索する方法](/blog/j10-claude-pubmed-mcp)で詳しく解説しています。29篇分の文献検索を効率化したい方はぜひ活用してください。
+
+### UpToDateからの逆引き
+
+UpToDateの各記事には参考文献リストが付いています。UpToDateで疾患を調べ、そこに引用されている原著論文をPubMedで確認するという「逆引き」は、効率的な文献検索の方法として広く使われています。
+
+UpToDate自体を引用することも認められていますが、できれば元の原著論文まで遡って引用するほうが評価は高くなります。
+
+### AIツールを使った文献検索
+
+29篇それぞれに文献を付ける作業は、手動では膨大な時間がかかります。AIツールを活用すれば大幅に効率化できます。
+
+文献検索に最もおすすめなのは **Claude + PubMed MCP** の組み合わせです。PubMedの実データに直接アクセスして論文を検索するため、存在しない論文が提示されるリスクが低く、PMID付きで正確な文献情報を取得できます。「糖尿病性腎症のSGLT2阻害薬に関するRCTを3本探して」のように自然言語で指示するだけで、適切な文献候補がリストアップされます。
+
+ChatGPTやPerplexityも文献検索に活用できますが、論文のタイトルや著者名がハルシネーション（実在しない情報の生成）で不正確になるリスクがある点に注意してください。AIが提示した文献は、必ずPubMedで実在を確認してから引用しましょう。AIツール全般の活用法は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)で解説しています。
+
+### iworのAI病歴要約テンプレートを活用する
+
+文献検索そのものに時間をかけたくない方には、[iwor](/pro/)のAI病歴要約テンプレートが便利です。疾患群と疾患名を選ぶだけで、考察の方向性に加えて **引用文献の候補** まで自動生成されます。引用文献候補はClaude PubMed MCPでPubMedの論文データベースと照合してファクトチェック済みのため、存在しない論文が提示されるリスクが低く、安心して参考にできます。全70疾患群・373疾患対応です。
+
+もちろん、テンプレートが提示する文献候補はあくまで「出発点」です。自分の症例に最も適した文献を最終的に選ぶのは専攻医自身の判断ですが、ゼロから検索する手間を大幅に削減できます。
+
+### 文献リストの事前作成
+
+29症例分の文献をまとめて管理するために、疾患群ごとに「よく使うガイドライン」と「主要なランドマーク試験」をリスト化しておくと便利です。たとえば循環器領域なら、心不全ガイドライン、PARADIGM-HF試験、DAPA-HF試験など、複数の症例で引用する可能性がある文献をあらかじめ整理しておけば、病歴要約を書くたびにゼロから検索する手間が省けます。
+
+[病歴要約をWordで下書きする方法](/blog/c14-josler-byoreki-youyaku-word-copipe)と組み合わせれば、Wordファイル上で文献リストを管理しながら効率よく執筆できます。
+
+## 領域別の引用ポイント
+
+[29症例の選び方](/blog/c09-josler-byoreki-youyaku-29cases)で解説しているとおり、病歴要約は全領域から作成する必要があります。領域ごとに引用のポイントが異なるため、代表的な領域について補足します。
+
+### 循環器領域
+
+心不全、虚血性心疾患、不整脈など、大規模試験が豊富な領域です。薬物治療の選択根拠として原著論文を引用しやすいのが特徴です。ESC/AHAのガイドラインも引用可能ですが、J-OSLERの査読委員は日本人医師ですので、日本循環器学会のガイドラインを優先するのが安全です。
+
+### 消化器領域
+
+消化管・肝臓・胆膵の3つから提出する必要があるため、それぞれに対応するガイドラインを押さえておきましょう。消化性潰瘍、肝硬変、膵炎など、日本消化器病学会のガイドラインが充実しています。
+
+### 感染症領域
+
+抗菌薬の選択根拠を示す場面が多い領域です。JAID/JSCの感染症治療ガイドや、各種サーベイランスデータが引用元として適しています。感受性試験に基づくde-escalationの根拠として原著論文を引用すると、考察に深みが出ます。
+
+### 膠原病・アレルギー領域
+
+免疫抑制薬の選択根拠や、分類基準の引用が重要です。ACR/EULARの分類基準は原著論文として引用できます。日本リウマチ学会のガイドラインと組み合わせて引用するとバランスが取れます。
+
+## よくある質問（FAQ）
+
+### UpToDateだけで引用は足りますか？
+
+UpToDateは手引きで認められた医療情報源ですので、引用自体は問題ありません。ただし、UpToDateだけを引用すると「自分で文献検索をしていない」と受け取られる可能性があります。UpToDateに加えて、原著論文かガイドラインを1〜2本組み合わせるのが望ましいです。
+
+### 引用の数に上限はありますか？
+
+手引きには引用数の上限は定められていません。ただし、病歴要約全体がA4で2枚以内という制限があるため、文献の引用だけで紙面を圧迫しないよう注意してください。1篇あたり2〜4本が現実的な範囲です。
+
+### 海外のガイドラインは引用できますか？
+
+引用できます。ESC、AHA、KDIGO、AATSなど海外学会のガイドラインは、公的機関が出した学術文献に該当します。ただし、日本のガイドラインと推奨が異なる場合は、日本のガイドラインも併せて引用し、自分の治療選択がどちらに基づいているかを明示するとよいでしょう。
+
+### 書籍（教科書）は引用できますか？
+
+「全国の図書館で閲覧できる学術図書」であれば引用可能です。Harrison内科学や朝倉内科学などが該当します。ただし、教科書は概説的な内容が多いため、治療方針の具体的な根拠としてはガイドラインや原著論文のほうが適しています。
+
+### 医中誌の論文は引用できますか？
+
+医中誌に収載されている論文は、公的機関の医学雑誌に掲載されたものに該当しますので引用可能です。日本語の症例報告や臨床研究を引用したい場合は、医中誌で検索してください。
+
+### AIが提示した文献をそのまま引用しても大丈夫ですか？
+
+そのまま引用するのは危険です。ChatGPTやPerplexityは、実在しない論文をもっともらしく生成する（ハルシネーション）ことがあります。AIが提示した文献は、必ずPubMedでPMIDを確認し、著者名・雑誌名・出版年・ページ番号が正確であることを検証してから引用してください。存在しない論文を引用すると、査読委員に信頼性を疑われ差し戻しの原因になります。Claude + PubMed MCPはPubMedの実データに直接アクセスして検索するため、このリスクを大幅に減らせます。設定方法は[Claude PubMed MCPガイド](/blog/j10-claude-pubmed-mcp)をご覧ください。
+
+## まとめ
+
+J-OSLER病歴要約の文献引用で押さえるべきポイントは以下のとおりです。
+
+手引きのルールとして、文献はEBMを重視して原著論文・ガイドライン・レビューを引用し、必ず本文中に直接記載するという形式が求められています。引用元は公的機関の医学雑誌・学術図書か、UpToDate等のオーソライズされたWeb媒体に限定されます。
+
+引用形式は「(著者名. 雑誌名 出版年;巻:ページ)」が基本で、ガイドラインは「(学会名編: ガイドライン名. 学会HP)」の形式です。29篇を通して統一した形式で記載してください。
+
+文献の数は1篇あたり2〜4本を目安に、ガイドラインと原著論文を組み合わせるのが理想的です。UpToDateの逆引きやPubMedのフィルター機能を活用すれば、29篇分の文献検索も効率よく進められます。
+
+文献引用のルールを正しく理解した上で、[病歴要約の書き方完全ガイド](/blog/c01-josler-byoreki-youyaku-kakikata)や[テンプレート](/blog/c02-josler-byoreki-youyaku-template)も活用しながら、29症例の完成を目指してください。Claude + PubMed MCP連携の設定方法と使い方は[Claude PubMed MCPの完全ガイド](/blog/j10-claude-pubmed-mcp)で、AIを文献検索に活用する方法全般は[J-OSLERをAIで効率化する方法](/blog/j01-josler-ai-katsuyo)で解説しています。総合考察の下書きにAIを使う実践的なプロンプト例は[病歴要約の総合考察をAIで下書きする方法](/blog/j02-byoreki-youyaku-ai-jidou-seisei)もご参照ください。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [Child-Pugh](/tools/calc/child-pugh)
+- [抗菌薬 腎機能別用量](/tools/calc/renal-dose-abx)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

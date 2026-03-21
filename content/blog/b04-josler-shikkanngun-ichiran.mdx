@@ -1,0 +1,446 @@
+---
+title: "J-OSLER疾患群一覧表｜70疾患群の分類と56疾患群の選び方"
+description: "J-OSLERの70疾患群を領域別に一覧表で整理。修了要件の56疾患群をどう選ぶか、埋まりにくい疾患群の対策、領域別の最低症例数まで徹底解説。"
+date: "2026-03-12"
+updated: "2026-03-12"
+author: "iwor編集部"
+category: "case-registration"
+cluster: "B"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "疾患群", "一覧", "56疾患群", "症例登録", "修了要件", "研修手帳"]
+cta_type: "template"
+reading_time: 12
+status: "published"
+seo_checked: true
+---
+
+「56疾患群って具体的に何？」「70疾患群あるのに56でいい理由は？」「どの疾患群が埋まりにくいの？」――J-OSLERの症例登録で最も混乱するのが「疾患群」の概念です。
+
+[J-OSLERの修了要件](/blog/a06-josler-shuryo-youken)では、120症例の登録に加えて **56疾患群以上のカバー** が求められます。しかし、研修手帳には70の疾患群が定義されており、どれを優先すべきか迷う方が多いのが実情です。この記事では、70疾患群の完全な一覧表と、56疾患群を効率よくクリアするための戦略を解説します。
+
+> [iwor](/pro/)のダッシュボードなら、56疾患群の達成状況を領域別に自動集計。未達の疾患群と不足症例数がひと目でわかるので、「あと何が足りないか」を常に把握できます。
+
+## そもそも「疾患群」とは？｜領域との違いを正確に理解する
+
+J-OSLERで最初に混乱するのが「領域」と「疾患群」の違いです。[日本内科学会の研修手帳](https://www.naika.or.jp/wp-content/uploads/2015/08/2015-log.pdf)に基づいて整理しましょう。
+
+**領域** とは「消化器」「循環器」「呼吸器」といった診療科レベルの大分類です。全部で15領域あります。
+
+**疾患群** とは、各領域をさらに細分化したグループです。たとえば消化器領域には「食道・胃・十二指腸の腫瘍性疾患」「肝疾患の炎症性疾患」など9つの疾患群があります。全領域を合わせると **67＋3（総合内科Ⅰ・Ⅱ・Ⅲ）＝ 70疾患群** になります。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-label="領域と疾患群の関係図">
+  <defs><filter id="fc_b4a" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="380" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">領域と疾患群の関係</text>
+
+  <rect x="24" y="92" width="752" height="80" rx="10" fill="#E8F0EC" filter="url(#fc_b4a)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="44" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1B4F3A">領域（15領域）</text>
+  <text x="44" y="140" font-family="sans-serif" font-size="12" fill="#6B6760">総合内科(3) / 消化器 / 循環器 / 内分泌 / 代謝 / 腎臓 / 呼吸器 / 血液 / 神経</text>
+  <text x="44" y="160" font-family="sans-serif" font-size="12" fill="#6B6760">アレルギー / 膠原病 / 感染症 / 救急 / 外科紹介症例 / 剖検症例</text>
+
+  <line x1="400" y1="172" x2="400" y2="196" stroke="#1B4F3A" stroke-width="2" marker-end="url(#arrowB4)"/>
+  <defs><marker id="arrowB4" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#1B4F3A"/></marker></defs>
+
+  <rect x="24" y="196" width="752" height="80" rx="10" fill="#FEFEFC" filter="url(#fc_b4a)" stroke="#DDD9D2" stroke-width="1"/>
+  <text x="44" y="222" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1B4F3A">疾患群（70疾患群）</text>
+  <text x="44" y="244" font-family="sans-serif" font-size="12" fill="#6B6760">各領域をさらに細分化したグループ。例: 消化器 = 9疾患群、循環器 = 10疾患群</text>
+  <text x="44" y="264" font-family="sans-serif" font-size="12" fill="#6B6760">研修手帳の番号（消化器-1, 消化器-2, ...）で識別される</text>
+
+  <rect x="24" y="296" width="752" height="60" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="44" y="320" font-family="sans-serif" font-weight="bold" font-size="13" fill="#92400E">修了要件: 70疾患群のうち56疾患群以上をカバーすること（目標は70疾患群）</text>
+  <text x="44" y="340" font-family="sans-serif" font-size="11" fill="#92400E">同じ疾患群の症例を何例登録しても、疾患群カウントは1。異なる疾患群を広くカバーすることが重要</text>
+  <text x="400" y="372" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+ポイントは「同じ疾患群の症例を何例登録しても、疾患群カウントは1」ということです。たとえば食道癌と胃癌はどちらも消化器-1（腫瘍性疾患）に該当するため、両方登録しても疾患群としては1カウントです。食道癌（消化器-1）と胃食道逆流症（消化器-2）なら、疾患群は2カウントになります。
+
+## 70疾患群の完全一覧｜領域別の疾患群数と代表疾患
+
+[日本内科学会の研修手帳](https://www.naika.or.jp/wp-content/uploads/2015/08/2015-log.pdf)に記載されている全70疾患群を、領域別に整理します。各疾患群の番号、内容、代表疾患を一覧にしました。
+
+### 総合内科（3疾患群）
+
+総合内科は特定の臓器別領域ではなく、横断的なテーマで構成されています。
+
+- **総合内科Ⅰ**（一般）: 輸血と移植、介護と在宅医療、喫煙、終末期ケア、緩和ケア、睡眠障害など
+- **総合内科Ⅱ**（高齢者）: 高齢者の慢性疾患管理（糖尿病・高血圧）、低栄養・脱水、嚥下性肺炎、認知症合併、廃用症候群、転倒・骨折・骨粗鬆症、polypharmacyなど
+- **総合内科Ⅲ**（腫瘍）: がん薬物療法の副作用と支持療法、緩和医療と終末期医療、がんの主要症候への対応、腫瘍随伴症候群、オンコロジーエマージェンシーなど
+
+### 消化器（9疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 食道・胃・十二指腸の腫瘍性疾患 | 胃癌、食道癌、GIST |
+| 2 | 食道・胃・十二指腸の非腫瘍性疾患 | GERD、消化性潰瘍、機能性ディスペプシア |
+| 3 | 小腸・大腸の腫瘍性疾患 | 大腸癌、大腸ポリープ |
+| 4 | 小腸・大腸の炎症性・その他の疾患 | 潰瘍性大腸炎、Crohn病、感染性腸炎、虚血性腸炎 |
+| 5 | 全消化管に関わる疾患 | 消化管アレルギー、薬物性消化管障害、好酸球性消化管疾患 |
+| 6 | 肝疾患の炎症性疾患 | 肝硬変、慢性肝炎、アルコール性肝障害、NAFLD/NASH |
+| 7 | 肝疾患の腫瘍性・局所性疾患 | 肝細胞癌、転移性肝癌、肝膿瘍 |
+| 8 | 胆道・膵臓疾患 | 胆石症、胆囊炎、急性膵炎、膵癌 |
+| 9 | 急性腹症・腹腔疾患 | 腸閉塞、消化管穿孔、急性腹膜炎 |
+
+消化器は9疾患群と多く、[病歴要約では消化管・肝臓・胆膵からそれぞれ含める](/blog/c04-josler-sougou-kousatsu-kakikata)ルールがあります。疾患群カバーと病歴要約の両方を意識して症例を選びましょう。
+
+### 循環器（10疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 急性冠症候群 | 急性心筋梗塞、不安定狭心症 |
+| 2 | 安定型狭心症・陳旧性心筋梗塞 | 労作性狭心症、異型狭心症 |
+| 3 | 血圧異常 | 本態性高血圧、二次性高血圧（原発性アルドステロン症など） |
+| 4 | 不整脈 | 心房細動、心室頻拍、房室ブロック、WPW症候群 |
+| 5 | 失神 | 神経調節性失神、心原性失神 |
+| 6 | 弁膜疾患 | 僧帽弁閉鎖不全症、大動脈弁狭窄症、感染性心内膜炎 |
+| 7 | 肺循環異常 | 肺高血圧症、肺血栓塞栓症、肺性心 |
+| 8 | 心膜疾患・心筋疾患 | 急性心膜炎、心タンポナーデ、肥大型心筋症、拡張型心筋症 |
+| 9 | 大動脈・末梢血管疾患 | 大動脈解離、大動脈瘤、閉塞性動脈硬化症、深部静脈血栓症 |
+| 10 | 心不全 | 急性心不全、慢性心不全、心原性ショック |
+
+循環器は10疾患群で全領域中最多です。循環器ローテーション中に効率よく複数の疾患群を埋めることを意識しましょう。
+
+### 内分泌（4疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 視床下部・下垂体疾患 | 先端巨大症、下垂体前葉機能低下症、尿崩症 |
+| 2 | 甲状腺疾患 | バセドウ病、橋本病、甲状腺腫瘍 |
+| 3 | 副甲状腺・カルシウム代謝疾患 | 原発性副甲状腺機能亢進症、骨粗鬆症 |
+| 4 | 副腎疾患 | 原発性アルドステロン症、Cushing症候群、褐色細胞腫 |
+
+### 代謝（5疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 糖尿病 | 1型糖尿病、2型糖尿病、糖尿病合併症 |
+| 2 | 脂質異常症 | 家族性高コレステロール血症、高トリグリセリド血症 |
+| 3 | 肥満症・栄養障害 | 肥満症、メタボリックシンドローム、ビタミン欠乏症 |
+| 4 | 尿酸代謝異常 | 痛風、高尿酸血症 |
+| 5 | 先天性代謝異常・その他 | ポルフィリア、アミロイドーシス |
+
+病歴要約では内分泌と代謝からそれぞれ1症例ずつ以上の提出が必要です。症例登録の段階から両方の疾患群を意識しておきましょう。
+
+### 腎臓（7疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 糸球体疾患（一次性） | IgA腎症、膜性腎症、微小変化型ネフローゼ |
+| 2 | 糸球体疾患（二次性） | ループス腎炎、糖尿病性腎症、アミロイド腎 |
+| 3 | 尿細管・間質性疾患 | 薬剤性腎障害、Fanconi症候群 |
+| 4 | 腎血管性疾患 | 腎硬化症、腎梗塞、腎動脈狭窄 |
+| 5 | 腎不全 | 急性腎障害、慢性腎臓病、透析 |
+| 6 | 電解質・酸塩基平衡異常 | 高カリウム血症、低ナトリウム血症、代謝性アシドーシス |
+| 7 | その他の腎疾患 | 多発性嚢胞腎、腎腫瘍、尿路結石 |
+
+### 呼吸器（8疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 感染性呼吸器疾患 | 肺炎（市中・院内）、肺結核、肺非結核性抗酸菌症 |
+| 2 | 閉塞性肺疾患 | COPD、びまん性汎細気管支炎 |
+| 3 | 間質性肺疾患 | 特発性肺線維症、薬剤性肺障害、放射線肺炎 |
+| 4 | 免疫学的肺疾患 | 好酸球性肺炎、過敏性肺炎、サルコイドーシス |
+| 5 | 肺腫瘍 | 肺癌、転移性肺腫瘍、中皮腫 |
+| 6 | 肺循環障害 | 肺血栓塞栓症、肺高血圧症 |
+| 7 | 胸膜・縦隔疾患 | 気胸、胸水、縦隔腫瘍 |
+| 8 | 呼吸不全・呼吸調節障害 | 急性呼吸窮迫症候群（ARDS）、睡眠時無呼吸症候群 |
+
+### 血液（3疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 赤血球系疾患 | 鉄欠乏性貧血、巨赤芽球性貧血、溶血性貧血、再生不良性貧血 |
+| 2 | 白血球系・造血器腫瘍 | 急性白血病、慢性骨髄性白血病、悪性リンパ腫、多発性骨髄腫 |
+| 3 | 止血・凝固系疾患 | DIC、ITP、血友病、血栓性血小板減少性紫斑病 |
+
+### 神経（9疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 脳血管障害 | 脳梗塞、脳出血、くも膜下出血、一過性脳虚血発作 |
+| 2 | 認知症性疾患 | アルツハイマー型認知症、レビー小体型認知症 |
+| 3 | 変性疾患 | パーキンソン病、筋萎縮性側索硬化症、脊髄小脳変性症 |
+| 4 | 脱髄疾患 | 多発性硬化症、視神経脊髄炎 |
+| 5 | 末梢神経疾患 | Guillain-Barre症候群、CIDP、糖尿病性ニューロパチー |
+| 6 | 筋疾患 | 重症筋無力症、筋ジストロフィー、多発性筋炎 |
+| 7 | 感染性疾患 | 髄膜炎、脳炎、脳膿瘍、プリオン病 |
+| 8 | てんかん | てんかん、けいれん重積 |
+| 9 | 機能性疾患・頭痛 | 片頭痛、緊張型頭痛、本態性振戦 |
+
+### アレルギー（2疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 気管支喘息関連 | 気管支喘息、アレルギー性気管支肺アスペルギルス症（ABPA） |
+| 2 | 全身性アレルギー疾患 | アナフィラキシー、薬物アレルギー、食物アレルギー |
+
+### 膠原病および類縁疾患（2疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 全身性結合組織疾患 | SLE、強皮症、皮膚筋炎/多発性筋炎、混合性結合組織病 |
+| 2 | 血管炎・関節疾患 | 関節リウマチ、ANCA関連血管炎、ベーチェット病、IgG4関連疾患 |
+
+### 感染症（4疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | 細菌感染症 | 敗血症、MRSA感染症、結核、感染性心内膜炎 |
+| 2 | ウイルス・真菌感染症 | インフルエンザ、HIV/AIDS、深在性真菌症 |
+| 3 | 寄生虫・その他の感染症 | マラリア、アメーバ赤痢、性感染症 |
+| 4 | 院内感染・耐性菌 | 院内肺炎、カテーテル関連血流感染症、Clostridioides difficile感染症 |
+
+### 救急（4疾患群）
+
+| 番号 | 疾患群の内容 | 代表疾患 |
+|------|------------|---------|
+| 1 | ショック・意識障害 | 各種ショック、意識障害、昏睡 |
+| 2 | 中毒・環境因子 | 急性薬物中毒、一酸化炭素中毒、熱中症、低体温症 |
+| 3 | 救急処置 | 心肺蘇生、気管挿管、人工呼吸管理 |
+| 4 | 多臓器不全・重症病態 | 多臓器不全、DIC、重症急性膵炎、重症感染症 |
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## 修了要件の56疾患群｜領域別の必要数を把握する
+
+[日本内科学会が公開している修了要件一覧表](https://www.naika.or.jp/wp-content/uploads/2024/09/youken2024.pdf)（2024年9月版）によると、各領域に最低必要な疾患群数が設定されています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" role="img" aria-label="領域別の必要疾患群数と症例数">
+  <defs><filter id="fc_b4b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="620" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="17" fill="#fff">修了要件: 領域別の疾患群数と最低症例数</text>
+
+  <rect x="24" y="88" width="170" height="30" rx="4" fill="#E8E5DF"/>
+  <text x="109" y="108" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">領域</text>
+  <rect x="194" y="88" width="80" height="30" rx="4" fill="#E8E5DF"/>
+  <text x="234" y="108" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">全疾患群</text>
+  <rect x="274" y="88" width="90" height="30" rx="4" fill="#1B4F3A"/>
+  <text x="319" y="108" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#fff">必要疾患群</text>
+  <rect x="364" y="88" width="90" height="30" rx="4" fill="#E8E5DF"/>
+  <text x="409" y="108" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">最低症例数</text>
+  <rect x="454" y="88" width="90" height="30" rx="4" fill="#E8E5DF"/>
+  <text x="499" y="108" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">病歴要約</text>
+  <rect x="544" y="88" width="232" height="30" rx="4" fill="#E8E5DF"/>
+  <text x="660" y="108" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">備考</text>
+
+  <text x="109" y="142" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">総合内科</text>
+  <text x="234" y="142" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3</text>
+  <text x="319" y="142" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">3</text>
+  <text x="409" y="142" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="142" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="660" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">I, II, IIIから各1例ずつ(計2例)</text>
+  <line x1="24" y1="154" x2="776" y2="154" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="172" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">消化器</text>
+  <text x="234" y="172" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">9</text>
+  <text x="319" y="172" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">5以上</text>
+  <text x="409" y="172" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="172" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3</text>
+  <text x="660" y="172" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">消化管+肝臓+胆膵を含むこと</text>
+  <line x1="24" y1="184" x2="776" y2="184" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="202" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">循環器</text>
+  <text x="234" y="202" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10</text>
+  <text x="319" y="202" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">5以上</text>
+  <text x="409" y="202" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="202" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3</text>
+  <text x="660" y="202" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="214" x2="776" y2="214" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="232" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">内分泌</text>
+  <text x="234" y="232" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">4</text>
+  <text x="319" y="232" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">2以上</text>
+  <text x="409" y="232" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3以上</text>
+  <text x="499" y="232" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">1-2</text>
+  <text x="660" y="232" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">内分泌+代謝で計3(各1以上)</text>
+  <line x1="24" y1="244" x2="776" y2="244" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="262" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">代謝</text>
+  <text x="234" y="262" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">5</text>
+  <text x="319" y="262" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">3以上</text>
+  <text x="409" y="262" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="262" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">1-2</text>
+  <text x="660" y="262" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">内分泌+代謝で計3(各1以上)</text>
+  <line x1="24" y1="274" x2="776" y2="274" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="292" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">腎臓</text>
+  <text x="234" y="292" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">7</text>
+  <text x="319" y="292" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">4以上</text>
+  <text x="409" y="292" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="292" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="660" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="304" x2="776" y2="304" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">呼吸器</text>
+  <text x="234" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">8</text>
+  <text x="319" y="322" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">4以上</text>
+  <text x="409" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3</text>
+  <text x="660" y="322" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="334" x2="776" y2="334" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="352" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">血液</text>
+  <text x="234" y="352" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3</text>
+  <text x="319" y="352" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">2以上</text>
+  <text x="409" y="352" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3以上</text>
+  <text x="499" y="352" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="660" y="352" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="364" x2="776" y2="364" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="382" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">神経</text>
+  <text x="234" y="382" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">9</text>
+  <text x="319" y="382" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">5以上</text>
+  <text x="409" y="382" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="382" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="660" y="382" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="394" x2="776" y2="394" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="412" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">アレルギー</text>
+  <text x="234" y="412" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="319" y="412" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">1以上</text>
+  <text x="409" y="412" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3以上</text>
+  <text x="499" y="412" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">1</text>
+  <text x="660" y="412" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="424" x2="776" y2="424" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="442" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">膠原病</text>
+  <text x="234" y="442" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="319" y="442" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">1以上</text>
+  <text x="409" y="442" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">3以上</text>
+  <text x="499" y="442" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">1</text>
+  <text x="660" y="442" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="454" x2="776" y2="454" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="472" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">感染症</text>
+  <text x="234" y="472" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">4</text>
+  <text x="319" y="472" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">2以上</text>
+  <text x="409" y="472" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">8以上</text>
+  <text x="499" y="472" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="660" y="472" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">-</text>
+  <line x1="24" y1="484" x2="776" y2="484" stroke="#DDD9D2" stroke-width="1"/>
+
+  <text x="109" y="502" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1A1917">救急</text>
+  <text x="234" y="502" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">4</text>
+  <text x="319" y="502" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1B4F3A">4</text>
+  <text x="409" y="502" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">10以上</text>
+  <text x="499" y="502" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">2</text>
+  <text x="660" y="502" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">4疾患群すべて必須</text>
+  <line x1="24" y1="514" x2="776" y2="514" stroke="#DDD9D2" stroke-width="1"/>
+
+  <rect x="24" y="524" width="752" height="36" rx="6" fill="#E8F0EC"/>
+  <text x="109" y="546" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#1A1917">合計</text>
+  <text x="234" y="546" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#6B6760">70</text>
+  <text x="319" y="546" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1B4F3A">41+15=56</text>
+  <text x="409" y="546" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#6B6760">120以上</text>
+  <text x="499" y="546" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#6B6760">29</text>
+  <text x="660" y="546" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">+外科紹介2+剖検1</text>
+
+  <rect x="24" y="572" width="752" height="28" rx="6" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="400" y="591" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#92400E">各領域の必要疾患群の合計は41。残り15は全領域から任意に選択して合計56以上とする</text>
+  <text x="400" y="614" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+各領域の最低必要疾患群数を合計すると41疾患群です。残りの15疾患群は、どの領域から選んでも構いません。つまり、得意な領域で余分に疾患群を埋めることで56に到達する戦略が可能です。
+
+> **iworの[問題演習機能](/pro/)** で今すぐ演習。苦手分野を自動特定して効率よく仕上げましょう。
+
+## 埋まりにくい疾患群と対策｜早めに意識すべき領域
+
+多くの専攻医が苦労するのは、日常診療で遭遇しにくい疾患群です。以下の疾患群は早めに意識して症例を確保しましょう。
+
+### 血液領域
+
+血液内科のない施設では、白血球系・造血器腫瘍（血液-2）の症例が特に集まりにくい傾向があります。併診やコンサルトの形で関わった症例も、主担当医として登録できる場合があります。血液内科のローテーション期間中に集中的に疾患群を埋めることを推奨します。
+
+### 神経領域
+
+脱髄疾患（神経-4）や筋疾患（神経-6）は症例数自体が少なく、施設によっては経験が難しい場合があります。連携施設へのローテーションや、初期研修中の症例を活用することを検討しましょう。
+
+### 感染症領域
+
+感染症-2（ウイルス・真菌感染症）や感染症-3（寄生虫・その他）は、専門的な感染症科がない施設では遭遇しにくいことがあります。HIV症例やインフルエンザ入院症例など、見落としがちな症例を意識的に登録しましょう。
+
+### 総合内科Ⅲ（腫瘍）
+
+がん薬物療法を扱わない施設では、総合内科Ⅲの症例確保が難しくなります。内科で担当するがん患者の化学療法副作用管理や、終末期ケアの症例を活用しましょう。
+
+> [iwor](/pro/)のダッシュボードでは、56疾患群のうち未達の疾患群が自動表示されます。「あとどの疾患群が足りないか」を常に確認しながら、戦略的に症例登録を進められます。
+
+## 疾患群を効率よく埋める3つの戦略
+
+### 戦略①｜複数領域にまたがる症例を活用する
+
+一部の疾患は複数の領域に該当します。たとえば気管支喘息は呼吸器とアレルギーの両方に該当しますが、登録できるのはどちらか一方です。どちらの疾患群が不足しているかを確認してから登録先を決めましょう。
+
+### 戦略②｜初期研修中の症例を活用する
+
+初期研修中に経験した症例は、最大60症例まで（6期生以前は80症例まで）J-OSLERに登録できます。特に血液内科や神経内科など、専攻医になってからローテーションの機会が限られる領域の症例は、初期研修中のデータを保管しておくことが重要です。詳しくは[120症例の効率的な集め方](/blog/b03-josler-120cases)を参照してください。
+
+### 戦略③｜モニタリング画面を活用する
+
+J-OSLERのモニタリング画面では、領域別・疾患群別の登録状況をリアルタイムで確認できます。[J-OSLERの使い方](/blog/a03-josler-tsukaikata)で操作方法を確認し、月に1回は進捗をチェックする習慣をつけましょう。[進捗管理の方法](/blog/e01-josler-shinchoku-kanri)も参考にしてください。
+
+## よくある質問（FAQ）
+
+### Q. 70疾患群すべてを埋める必要がありますか？
+
+修了要件は56疾患群以上です。ただし、日本内科学会は目標値として70疾患群の経験を掲げています。余裕があれば70疾患群を目指すことで、より幅広い内科研修になります。
+
+### Q. 同じ疾患群で複数の症例を登録してもいいですか？
+
+もちろん可能です。120症例の登録自体は同じ疾患群の症例を何例登録しても問題ありません。ただし、疾患群カウントとしては1つにしかなりません。56疾患群のカバーを優先しつつ、得意な領域で症例数を稼ぐのが効率的です。
+
+### Q. 複数の領域に該当する疾患はどちらに登録すべきですか？
+
+専攻医の判断でどちらか一方の領域に登録できます。両方の領域にカウントすることはできません。不足している疾患群のほうに登録するのが戦略的です。
+
+### Q. 「その他の疾患」で登録した症例は疾患群にカウントされますか？
+
+各疾患群には「その他の疾患」という項目が設けられています。研修手帳に記載のない希少疾患を経験した場合、最も近い疾患群の「その他の疾患」として登録でき、その疾患群のカウントに含まれます。
+
+## よくある失敗パターン
+
+### ❌ 得意な疾患群だけを積み上げて3年目に56疾患群未達
+
+「糖尿病の症例が12例ある」「肺炎を8例登録した」といった状態で2年目後半を迎えると、56疾患群に届かないことに気づくケースがあります。修了要件は120症例の登録数だけでなく、**56疾患群以上のカバー** が独立した要件として存在します。特に血液-2（造血器腫瘍）、神経-4（脱髄疾患）、総合内科Ⅲ（腫瘍）のような「経験しにくい疾患群」は早期から意識して確保しましょう。
+
+### ❌ 救急の4疾患群がすべて必須であることを見落とす
+
+感染症（2疾患群以上）や消化器（5疾患群以上）は「以上」なのに対し、**救急だけは4疾患群すべて必須** です。ローテーション施設によっては救急-2（中毒・環境因子）や救急-3（救急処置）の症例が集まりにくいことがあります。救急科や集中治療室のローテーション時に意識的に登録しておかないと、3年目に慌てることになります。
+
+### ❌ 複数領域にまたがる疾患をダブルカウントしようとする
+
+気管支喘息は「呼吸器-閉塞性肺疾患」と「アレルギー-気管支喘息関連」の両方に関連しますが、**1例の症例は1つの疾患群にしか登録できません**。「呼吸器と両方にカウントできる」と思い込んでいた場合、後から疾患群数が目標より少ないことに気づきます。疾患群カウントが不足している領域に優先的に振り分けましょう。
+
+## まとめ｜疾患群を意識した症例登録が修了への近道
+
+J-OSLERの70疾患群と56疾患群の修了要件について整理しました。
+
+- J-OSLERには15領域・70疾患群が定義されている
+- 修了要件は56疾患群以上のカバー（各領域の必要疾患群41＋任意15）
+- 同じ疾患群の症例を何例登録しても疾患群カウントは1
+- 血液、神経、感染症、総合内科Ⅲは埋まりにくい疾患群が多い
+- 初期研修中の症例活用、複数領域またがり症例の戦略的登録が有効
+
+[症例登録の書き方](/blog/b01-josler-shourei-touroku-kakikata)とあわせて、疾患群を常に意識しながら登録を進めていきましょう。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [CHA₂DS₂-VASc](/tools/calc/cha2ds2-vasc)
+- [CHADS₂](/tools/calc/chads2)
+- [Child-Pugh](/tools/calc/child-pugh)
+- [Wells PE](/tools/calc/wells-pe)
+- [Wells DVT](/tools/calc/wells-dvt)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

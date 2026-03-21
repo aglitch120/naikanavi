@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="540" fill="#F5F4F0" rx="12"/>
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1A1917">内科専門医試験 過去問・問題集の活用ロードマップ</text>
+  <line x1="60" y1="52" x2="740" y2="52" stroke="#DDD9D2" stroke-width="1"/>
+  <rect x="40" y="70" width="170" height="175" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <rect x="40" y="70" width="170" height="36" rx="10" fill="#1B4F3A"/>
+  <rect x="40" y="88" width="170" height="18" fill="#1B4F3A"/>
+  <text x="125" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">STEP 1: 公式過去問</text>
+  <text x="55" y="124" font-size="11" fill="#1A1917">認定内科医・総合内科</text>
+  <text x="55" y="140" font-size="11" fill="#1A1917">専門医 過去問題集</text>
+  <text x="55" y="160" font-size="10" fill="#6B6760">計650題 / 5,000〜6,000円</text>
+  <text x="55" y="176" font-size="10" fill="#6B6760">入手先: 内科学会HP</text>
+  <text x="55" y="196" font-size="10" fill="#6B6760">2〜3周がマスト</text>
+  <text x="55" y="228" font-size="10" fill="#7F1D1D" font-weight="bold">出題傾向の把握に必須</text>
+  <path d="M210 157 L228 157" stroke="#1B4F3A" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#1B4F3A"/>
+    </marker>
+  </defs>
+  <rect x="228" y="70" width="170" height="175" rx="10" fill="#FEFEFC" stroke="#2D6A4F" stroke-width="2"/>
+  <rect x="228" y="70" width="170" height="36" rx="10" fill="#2D6A4F"/>
+  <rect x="228" y="88" width="170" height="18" fill="#2D6A4F"/>
+  <text x="313" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">STEP 2: QB + QC</text>
+  <text x="243" y="124" font-size="11" fill="#1A1917">QBオンライン内科専門医</text>
+  <text x="243" y="140" font-size="11" fill="#1A1917">+ Quick Check</text>
+  <text x="243" y="160" font-size="10" fill="#6B6760">セット44,000円</text>
+  <text x="243" y="176" font-size="10" fill="#6B6760">Q-Assist講義動画付き</text>
+  <text x="243" y="196" font-size="10" fill="#6B6760">イヤーノート連携</text>
+  <text x="243" y="228" font-size="10" fill="#7F1D1D" font-weight="bold">知識の補強と弱点発見</text>
+  <path d="M398 157 L416 157" stroke="#1B4F3A" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="416" y="70" width="170" height="175" rx="10" fill="#FEFEFC" stroke="#3D5A80" stroke-width="2"/>
+  <rect x="416" y="70" width="170" height="36" rx="10" fill="#3D5A80"/>
+  <rect x="416" y="88" width="170" height="18" fill="#3D5A80"/>
+  <text x="501" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">STEP 3: 模試・実戦</text>
+  <text x="431" y="124" font-size="11" fill="#1A1917">CareNeTV バーチャル模試</text>
+  <text x="431" y="140" font-size="11" fill="#1A1917">THE内科専門医問題集</text>
+  <text x="431" y="160" font-size="10" fill="#6B6760">模試180問 / 問題集600問</text>
+  <text x="431" y="176" font-size="10" fill="#6B6760">WEB内科塾 1,600問超</text>
+  <text x="431" y="196" font-size="10" fill="#6B6760">余裕がある場合に</text>
+  <text x="431" y="228" font-size="10" fill="#7F1D1D" font-weight="bold">本番形式での仕上げ</text>
+  <path d="M586 157 L604 157" stroke="#1B4F3A" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="604" y="70" width="156" height="175" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="3"/>
+  <rect x="604" y="70" width="156" height="36" rx="10" fill="#7F1D1D"/>
+  <rect x="604" y="88" width="156" height="18" fill="#7F1D1D"/>
+  <text x="682" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">常時: 内科ナビ</text>
+  <text x="619" y="124" font-size="11" fill="#1A1917" font-weight="bold">問題演習機能</text>
+  <text x="619" y="142" font-size="10" fill="#6B6760">疾患ごとの5択問題</text>
+  <text x="619" y="158" font-size="10" fill="#6B6760">苦手分野を自動判定</text>
+  <text x="619" y="174" font-size="10" fill="#6B6760">苦手克服モード搭載</text>
+  <text x="619" y="190" font-size="10" fill="#6B6760">1クレジット = 5問</text>
+  <text x="619" y="206" font-size="10" fill="#6B6760">スマホでスキマ時間に</text>
+  <text x="619" y="228" font-size="10" fill="#7F1D1D" font-weight="bold">弱点の発見と克服</text>
+  <rect x="40" y="265" width="720" height="60" rx="10" fill="#E8F0EC" stroke="#1B4F3A" stroke-width="1.5"/>
+  <text x="60" y="288" font-size="13" font-weight="bold" fill="#1B4F3A">補助教材（余裕があれば）</text>
+  <text x="60" y="308" font-size="11" fill="#1A1917">セルフトレーニング問題集（第5集）/ 出るズバ! BOOK / 復元問題（SNS・note）/ 最新の医師国家試験問題</text>
+  <rect x="40" y="340" width="720" height="60" rx="10" fill="#FEF3C7" stroke="#92400E" stroke-width="1.5"/>
+  <text x="60" y="364" font-size="13" font-weight="bold" fill="#92400E">鉄則: 消化不良を避ける</text>
+  <text x="60" y="386" font-size="11" fill="#1A1917">STEP 1 → 2 を2〜3周して完璧にすることが最優先。間違えた問題の復習 > 新しい教材に手を出す。</text>
+  <rect x="40" y="415" width="720" height="94" rx="10" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2"/>
+  <text x="60" y="440" font-size="13" font-weight="bold" fill="#1B4F3A">内科ナビなら試験対策とJ-OSLER管理を1つのアプリで</text>
+  <text x="60" y="462" font-size="11" fill="#1A1917">問題演習: 苦手分野を自動判定 → 苦手克服モードで重点出題 → スキマ時間に弱点克服</text>
+  <text x="60" y="480" font-size="11" fill="#1A1917">J-OSLER管理: ダッシュボードで120症例・56疾患群・29病歴要約の進捗を一覧管理</text>
+  <text x="60" y="498" font-size="11" fill="#1B4F3A" font-weight="bold">naikanavi.booth.pm で詳細を見る</text>
+  <text x="400" y="530" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

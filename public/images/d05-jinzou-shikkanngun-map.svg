@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow1" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="520" rx="16" fill="#F5F4F0"/>
+
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">腎臓領域 7疾患群マッピング</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">病歴要約29篇のうち2篇を提出（異なる疾患群から選択）</text>
+
+  <rect x="30" y="80" width="230" height="120" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2" filter="url(#shadow1)"/>
+  <rect x="30" y="80" width="230" height="30" rx="12" fill="#1B4F3A"/>
+  <rect x="30" y="98" width="230" height="12" fill="#1B4F3A"/>
+  <text x="145" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">1. ネフローゼ症候群</text>
+  <text x="45" y="130" font-size="11" fill="#1A1917">微小変化群 / FSGS</text>
+  <text x="45" y="148" font-size="11" fill="#1A1917">膜性腎症 / 膜性増殖性糸球体腎炎</text>
+  <text x="45" y="170" font-size="11" font-weight="bold" fill="#1B4F3A">おすすめ度: ★★★</text>
+  <text x="45" y="188" font-size="10" fill="#6B6760">腎生検+ステロイド治療の考察が書きやすい</text>
+
+  <rect x="285" y="80" width="230" height="120" rx="12" fill="#FEFEFC" stroke="#3D5A80" stroke-width="2" filter="url(#shadow1)"/>
+  <rect x="285" y="80" width="230" height="30" rx="12" fill="#3D5A80"/>
+  <rect x="285" y="98" width="230" height="12" fill="#3D5A80"/>
+  <text x="400" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">2. 原発性糸球体疾患</text>
+  <text x="300" y="130" font-size="11" fill="#1A1917">IgA腎症 / RPGN</text>
+  <text x="300" y="148" font-size="11" fill="#1A1917">急性糸球体腎炎</text>
+  <text x="300" y="170" font-size="11" font-weight="bold" fill="#3D5A80">おすすめ度: ★★☆</text>
+  <text x="300" y="188" font-size="10" fill="#6B6760">腎臓内科ローテ経験者向け</text>
+
+  <rect x="540" y="80" width="230" height="120" rx="12" fill="#FEFEFC" stroke="#2D6A4F" stroke-width="2" filter="url(#shadow1)"/>
+  <rect x="540" y="80" width="230" height="30" rx="12" fill="#2D6A4F"/>
+  <rect x="540" y="98" width="230" height="12" fill="#2D6A4F"/>
+  <text x="655" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">3. 続発性腎疾患</text>
+  <text x="555" y="130" font-size="11" fill="#1A1917">糖尿病性腎症 / ループス腎炎</text>
+  <text x="555" y="148" font-size="11" fill="#1A1917">アミロイド腎症 / 妊娠高血圧腎症</text>
+  <text x="555" y="170" font-size="11" font-weight="bold" fill="#2D6A4F">おすすめ度: ★★☆</text>
+  <text x="555" y="188" font-size="10" fill="#6B6760">原疾患との切り分けが考察のカギ</text>
+
+  <rect x="30" y="220" width="230" height="120" rx="12" fill="#FEFEFC" stroke="#1B4F3A" stroke-width="2" filter="url(#shadow1)"/>
+  <rect x="30" y="220" width="230" height="30" rx="12" fill="#1B4F3A"/>
+  <rect x="30" y="238" width="230" height="12" fill="#1B4F3A"/>
+  <text x="145" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">4. 腎不全（CKD・AKI）</text>
+  <text x="45" y="270" font-size="11" fill="#1A1917">CKD（慢性腎臓病）</text>
+  <text x="45" y="288" font-size="11" fill="#1A1917">AKI（急性腎障害）/ 透析関連</text>
+  <text x="45" y="310" font-size="11" font-weight="bold" fill="#1B4F3A">おすすめ度: ★★★</text>
+  <text x="45" y="328" font-size="10" fill="#6B6760">症例豊富・どの科でも遭遇しやすい</text>
+
+  <rect x="285" y="220" width="230" height="120" rx="12" fill="#FEFEFC" stroke="#6B6760" stroke-width="1.5" filter="url(#shadow1)"/>
+  <rect x="285" y="220" width="230" height="30" rx="12" fill="#6B6760"/>
+  <rect x="285" y="238" width="230" height="12" fill="#6B6760"/>
+  <text x="400" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">5. 間質性腎炎・尿細管障害</text>
+  <text x="300" y="270" font-size="11" fill="#1A1917">薬剤性間質性腎炎</text>
+  <text x="300" y="288" font-size="11" fill="#1A1917">Fanconi症候群 / 腎性尿崩症</text>
+  <text x="300" y="310" font-size="11" font-weight="bold" fill="#6B6760">おすすめ度: ★☆☆</text>
+  <text x="300" y="328" font-size="10" fill="#6B6760">症例が限られる・経験機会が少ない</text>
+
+  <rect x="540" y="220" width="230" height="120" rx="12" fill="#FEFEFC" stroke="#6B6760" stroke-width="1.5" filter="url(#shadow1)"/>
+  <rect x="540" y="220" width="230" height="30" rx="12" fill="#6B6760"/>
+  <rect x="540" y="238" width="230" height="12" fill="#6B6760"/>
+  <text x="655" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">6. 腎血管障害</text>
+  <text x="555" y="270" font-size="11" fill="#1A1917">腎血管性高血圧 / 腎梗塞</text>
+  <text x="555" y="288" font-size="11" fill="#1A1917">腎静脈血栓症</text>
+  <text x="555" y="310" font-size="11" font-weight="bold" fill="#6B6760">おすすめ度: ★☆☆</text>
+  <text x="555" y="328" font-size="10" fill="#6B6760">稀少症例・非推奨</text>
+
+  <rect x="160" y="360" width="480" height="120" rx="12" fill="#FEFEFC" stroke="#4338CA" stroke-width="2" filter="url(#shadow1)"/>
+  <rect x="160" y="360" width="480" height="30" rx="12" fill="#4338CA"/>
+  <rect x="160" y="378" width="480" height="12" fill="#4338CA"/>
+  <text x="400" y="380" text-anchor="middle" font-size="13" font-weight="bold" fill="#FEFEFC">7. 水・電解質・酸塩基平衡の異常</text>
+  <text x="175" y="410" font-size="11" fill="#1A1917">低Na血症 / 高K血症 / 代謝性アシドーシス / 尿細管性アシドーシス</text>
+  <text x="175" y="430" font-size="11" fill="#1A1917">低Ca血症 / 高Ca血症 / 低Mg血症 / 脱水 / 浮腫</text>
+  <text x="175" y="455" font-size="11" font-weight="bold" fill="#4338CA">おすすめ度: ★★★</text>
+  <text x="335" y="455" font-size="10" fill="#6B6760">どの診療科でも遭遇・鑑別過程が考察の核になる</text>
+
+  <text x="400" y="510" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

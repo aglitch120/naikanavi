@@ -1,0 +1,322 @@
+---
+title: "【2026年最新】J-OSLER病歴要約の書き方完全ガイド"
+description: "J-OSLERの病歴要約を効率的に書く方法を徹底解説。29症例の配分ルール・評価フロー・スケジュール戦略から差し戻しを防ぐコツまで、公式手引きに基づき網羅。"
+date: "2026-03-10"
+updated: "2026-03-10"
+author: "iwor編集部"
+category: "medical-history"
+cluster: "C"
+pillar: "josler-complete-guide"
+tags: ["J-OSLER", "病歴要約", "書き方", "テンプレート", "29症例"]
+cta_type: "template"
+reading_time: 12
+status: "published"
+seo_checked: true
+---
+
+「病歴要約、29本も書けるのか...」「どの症例を選べばいいかわからない...」「差し戻しが怖い...」
+
+J-OSLERの病歴要約は、内科専門医取得における最大のハードルです。症例登録と違い、項目ごとの記述様式、疾患群の配分ルール、評価基準のすべてを理解したうえで29本を書き上げる必要があります。
+
+この記事では、日本内科学会の[病歴要約 作成の手引き](https://www.naika.or.jp/wp-content/uploads/2023/10/2e5a70e7ec35fd38bfba84276602ddd2.pdf)（2023年10月版）と[病歴要約サンプル](https://www.naika.or.jp/wp-content/uploads/2024/07/35a75d9e2a04130148491c77a1037343.pdf)（2024年7月版）に基づき、病歴要約の全体像から29症例の戦略的な配分、評価フローとスケジュール管理まで解説します。
+
+> **30秒で病歴要約の下書きを生成** — iworのAI病歴要約テンプレートなら、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・総合考察の方向性・引用文献候補まで自動生成。引用文献候補はClaude PubMed MCPでPubMedの実データと照合済み。全70疾患群・373疾患対応。[無料で試してみる →](/pro/)
+
+## そもそも病歴要約とは？──位置づけと目的
+
+病歴要約は、内科専門医制度の修了確認において「最も重要な要件」と位置づけられています。公式手引きでは、所定領域の症例経験を病歴要約として取りまとめ、プログラム内の一次評価と内科学会査読委員による二次評価の2段階の審査を受けることが求められています。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 532" role="img" aria-label="病歴要約の作成から評価までの流れ">
+  <defs><filter id="fs_b1b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter>
+    <marker id="afs_b1b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1B4F3A"/></marker></defs>
+  <rect width="800" height="532" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">病歴要約の作成から評価までの流れ</text>
+  <rect x="160" y="92" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_b1b)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="112" r="14" fill="#1B4F3A"/>
+  <text x="190" y="117" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">1</text>
+  <text x="214" y="116" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">症例を選定</text>
+  <text x="214" y="137" font-family="sans-serif" font-size="11" fill="#6B6760">29篇の疾患群バランスを確認して症例を選ぶ</text>
+  <line x1="400" y1="150" x2="400" y2="170" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_b1b)"/>
+  <rect x="160" y="170" width="480" height="58" rx="10" fill="#FEFEFC" filter="url(#fs_b1b)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="190" r="14" fill="#1B4F3A"/>
+  <text x="190" y="195" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="214" y="194" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">Wordで下書き</text>
+  <text x="214" y="215" font-family="sans-serif" font-size="11" fill="#6B6760">テンプレートに沿って各項目を記入</text>
+  <line x1="400" y1="228" x2="400" y2="248" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_b1b)"/>
+  <rect x="160" y="248" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_b1b)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="268" r="14" fill="#1B4F3A"/>
+  <text x="190" y="273" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="214" y="272" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">J-OSLERに入力</text>
+  <text x="214" y="293" font-family="sans-serif" font-size="11" fill="#6B6760">下書きをコピペして提出</text>
+  <line x1="400" y1="306" x2="400" y2="326" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_b1b)"/>
+  <rect x="160" y="326" width="480" height="58" rx="10" fill="#FEFEFC" filter="url(#fs_b1b)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="346" r="14" fill="#1B4F3A"/>
+  <text x="190" y="351" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">4</text>
+  <text x="214" y="350" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">一次評価（施設内）</text>
+  <text x="214" y="371" font-family="sans-serif" font-size="11" fill="#6B6760">指導医がAccept / Revision / Rejectを判定</text>
+  <line x1="400" y1="384" x2="400" y2="404" stroke="#1B4F3A" stroke-width="2" marker-end="url(#afs_b1b)"/>
+  <rect x="160" y="404" width="480" height="58" rx="10" fill="#E8F0EC" filter="url(#fs_b1b)" stroke="#1B4F3A" stroke-width="1.5"/>
+  <circle cx="190" cy="424" r="14" fill="#1B4F3A"/>
+  <text x="190" y="429" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">5</text>
+  <text x="214" y="428" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">二次評価（学会査読）</text>
+  <text x="214" y="449" font-family="sans-serif" font-size="11" fill="#6B6760">外部査読委員による最終評価</text>
+  <text x="400" y="518" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+
+つまり病歴要約は単なるカルテの要約ではなく、あなたが「内科専門医として必要な診療能力を身につけたか」を証明する文書です。評価者は、病歴要約を通じて以下を確認しています。
+
+- 適切な情報収集と記載（病歴・身体所見・検査所見）ができているか
+- 根拠に基づいた診断推論と治療方針の選択ができているか
+- 全人的な視点で患者を捉えているか
+
+この目的を意識するかどうかで、病歴要約の質は大きく変わります。「手引きに書いてあるから項目を埋める」のではなく、「この症例で自分がどう考え、何を学んだか」が伝わる記載を目指しましょう。
+
+J-OSLER制度全体の仕組みを確認したい方は[J-OSLERとは？全体像を徹底解説](/blog/a01-josler-toha)で、修了に必要な6つの要件は[J-OSLER修了要件を完全解説](/blog/a06-josler-shuryo-youken)でまとめています。
+
+## 29症例の配分ルール──疾患群・領域別の条件
+
+病歴要約で最もつまずきやすいのが、29症例の配分ルールです。ここを正確に理解しないまま書き始めると、あとで大幅な修正が必要になります。公式手引き（2023年10月版）と[29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)に基づいて整理します。
+
+![病歴要約29症例の配分マップ：領域別のNo.割当・提出数・消化器3分野ルール・内分泌代謝ルール・外科紹介と剖検の疾患群重複OKルールを一覧で図解](/images/blog/b01-josler-byoreki-youyaku-kakikata/byoreki-29cases-allocation.svg)
+
+### 基本ルール
+
+29症例は内科全領域から指定された配分で提出します。最も重要な原則は 「**29病歴要約は、すべて異なる疾患群から作成すること**」 です。ただし、外科紹介症例（No.27, 28）と剖検症例（No.29）については他の病歴要約と疾患群が重複しても認められます。
+
+### 領域別の内訳
+
+29症例の内訳は細則で決められています。総合内科（一般）2例、総合内科（高齢者）1例、消化器3例、循環器3例、内分泌・代謝3例に加え、腎臓、呼吸器、血液、神経、アレルギー・膠原病、感染症、救急の各領域からそれぞれ指定数を提出します。さらに外科紹介症例2例と剖検症例1例が加わります。
+
+### 見落としやすい特殊ルール
+
+配分ルールにはいくつか見落としやすいポイントがあります。
+
+消化器分野では「消化管」「肝臓」「胆・膵」のそれぞれから最低1例ずつ含める必要があります。また、消化器領域の疾患群9（腹腔・腹壁疾患、急性腹症）は消化器分野の病歴要約には使えません。救急領域や外科紹介症例、剖検症例としてなら提出可能です。
+
+内分泌と代謝はそれぞれ最低1例ずつ必要です。29病歴要約のNo.9には内分泌、No.10には代謝の病歴要約のみがセットでき、No.11にはどちらでもセットできます。
+
+外来症例は最大7篇までです。初期研修中の症例は3つの条件（内科系の成人症例であること、内科指導医から指導を受けていたこと、プログラムが認めること）をすべて満たす場合に限り登録でき、病歴要約への使用は14篇が上限です。
+
+29症例の選び方についてさらに詳しくは[29症例の選び方｜疾患群バランスと書きやすい症例の見つけ方](/blog/c09-josler-byoreki-youyaku-29cases)で解説しています。
+
+## 記述様式とボリュームの目安
+
+病歴要約はPOS（Problem Oriented System）方式で作成します。記載事項は手引きで細かく指定されていますが、ここでは全体的なルールを押さえておきましょう。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" role="img" aria-label="病歴要約29篇の領域別配分">
+  <defs><filter id="fc_b1b" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/></filter></defs>
+  <rect width="800" height="460" rx="16" fill="#F5F4F0"/>
+  <rect x="24" y="20" width="752" height="52" rx="8" fill="#1B4F3A"/>
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#fff">病歴要約29篇の領域別配分</text>
+  <rect x="24" y="92" width="368" height="90" rx="10" fill="#E8F0EC" filter="url(#fc_b1b)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="114" r="14" fill="#1B4F3A"/>
+  <text x="52" y="119" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="76" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">消化器</text>
+  <text x="76" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">消化管・肝臓・胆膵から</text>
+  <text x="76" y="162" font-family="sans-serif" font-size="11" fill="#6B6760">各1篇ずつ</text>
+  <rect x="412" y="92" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_b1b)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="440" cy="114" r="14" fill="#1B4F3A"/>
+  <text x="440" y="119" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">3</text>
+  <text x="464" y="118" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">循環器</text>
+  <text x="464" y="142" font-family="sans-serif" font-size="11" fill="#6B6760">3疾患群から</text>
+  <text x="464" y="162" font-family="sans-serif" font-size="11" fill="#6B6760">異なる疾患群で3篇</text>
+  <rect x="24" y="198" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_b1b)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="220" r="14" fill="#1B4F3A"/>
+  <text x="52" y="225" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="76" y="224" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">呼吸器</text>
+  <text x="76" y="248" font-family="sans-serif" font-size="11" fill="#6B6760">2篇を異なる</text>
+  <text x="76" y="268" font-family="sans-serif" font-size="11" fill="#6B6760">疾患群から選択</text>
+  <rect x="412" y="198" width="368" height="90" rx="10" fill="#E8F0EC" filter="url(#fc_b1b)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="440" cy="220" r="14" fill="#1B4F3A"/>
+  <text x="440" y="225" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="464" y="224" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">血液</text>
+  <text x="464" y="248" font-family="sans-serif" font-size="11" fill="#6B6760">貧血・白血病など</text>
+  <text x="464" y="268" font-family="sans-serif" font-size="11" fill="#6B6760">2つの疾患群から</text>
+  <rect x="24" y="304" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_b1b)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="52" cy="326" r="14" fill="#1B4F3A"/>
+  <text x="52" y="331" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="76" y="330" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">腎臓</text>
+  <text x="76" y="354" font-family="sans-serif" font-size="11" fill="#6B6760">CKD・ネフローゼなど</text>
+  <text x="76" y="374" font-family="sans-serif" font-size="11" fill="#6B6760">7疾患群から2篇</text>
+  <rect x="412" y="304" width="368" height="90" rx="10" fill="#FEFEFC" filter="url(#fc_b1b)" stroke="#DDD9D2" stroke-width="1"/>
+  <circle cx="440" cy="326" r="14" fill="#1B4F3A"/>
+  <text x="440" y="331" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#fff">2</text>
+  <text x="464" y="330" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1A1917">内分泌</text>
+  <text x="464" y="354" font-family="sans-serif" font-size="11" fill="#6B6760">甲状腺・副腎など</text>
+  <text x="464" y="374" font-family="sans-serif" font-size="11" fill="#6B6760">6疾患群から2篇</text>
+  <text x="400" y="446" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6B6760">© iwor iwor.jp</text>
+</svg>
+
+
+### A4用紙2枚に収める
+
+病歴要約全体の記載は、印刷（またはPDF）でA4用紙2枚（A3用紙1枚）を超えないようにします。これは文字数制限とは別の制約で、意外と見落とされがちです。J-OSLERの各入力欄には文字数上限がありますが、それを全部使うとA4の2枚に収まらないことがあります。提出前に必ずPDFで出力して確認しましょう。
+
+### 各項目の記載ポイント（概要）
+
+病歴要約の入力項目は、症例タイトル・基本情報・病歴・主な入院時現症・主要な検査所見・プロブレムリスト・入院後経過と考察・退院時処方・総合考察・添付画像・文献・略語一覧で構成されています。
+
+特に差がつくのは「**プロブレムリスト**」「** 入院後経過と考察**」「** 総合考察**」の3つです。プロブレムリストは単に診断名を並べるだけでなく、重症度・重要性に従って#1に主病名を記載し、合併症や併存疾患は主要なものに絞ります。入院後経過と考察ではプロブレムごとに経過を整理し、総合考察では症例全体を振り返って臨床的な教訓や全人的な視点を述べます。
+
+各項目の具体的な書き方とテンプレートは[J-OSLER病歴要約の書き方完全ガイド｜Accept率を上げるコツ](/blog/c01-josler-byoreki-youyaku-kakikata)で項目別に詳しく解説しています。また、テンプレートをすぐに使いたい方は[病歴要約テンプレート｜項目別の書き方と入力のコツ](/blog/c02-josler-byoreki-youyaku-template)を参照してください。
+
+## 評価フロー──個別評価・一次評価・二次評価
+
+病歴要約は3段階の評価を経て承認されます。このフローを把握しておくことが、スケジュール管理の基盤になります。
+
+### ステップ1：個別評価（専攻医1年目〜2年目末が目安）
+
+症例登録した症例から病歴要約を作成し、担当指導医に個別評価を依頼します。個別評価者は「これまでの担当指導医」の中から、専攻医が自分で指名できます。この段階で29症例以上を作成しておくことが推奨されています。
+
+個別評価は形成的評価の性格が強く、指導医からフィードバックをもらいながら修正を重ねるフェーズです。ここで丁寧にブラッシュアップしておくと、一次評価・二次評価がスムーズに進みます。
+
+### ステップ2：一次評価（専攻医3年目の春〜夏頃）
+
+個別評価でストックした病歴要約から29症例を選んでセットし、プログラム内で評価を受けます。プログラム統括責任者が「病歴指導医」を指名し、病歴指導医の評価完了後、統括責任者が最終確認して一次評価が完了します。
+
+一次評価では個々の病歴要約の内容に加え、29症例全体としてバランスが取れているかも確認されます。疾患群の重複や配分ルール違反がないか、この段階でしっかりチェックしましょう。
+
+### ステップ3：二次評価（専攻医3年目の夏〜秋頃）
+
+一次評価が完了すると、内科学会が指定した査読委員（プログラム外の評価者）による二次評価に進みます。二次評価では29症例の個別評価と病歴全体の評価が行われ、必要に応じて最大3回の差し戻しがあります。
+
+査読委員は1名あたり2名程度の専攻医を評価する体制です。査読委員経験者の声として「しっかり書けている人に当たると安心して読める」「逆にアラが目立つ人はアラ探しの読み方になる」という傾向が知られています。最初の1〜2本の印象が全体の評価に影響するため、総合内科やメジャー科の症例は特に丁寧に仕上げましょう。
+
+## スケジュール戦略──いつ何を進めるか
+
+29本の病歴要約を計画的に進めるには、逆算のスケジューリングが欠かせません。
+
+![病歴要約の3年間スケジュール戦略：1年目は土台づくりで試し書き3〜5本、2年目は集中執筆で月2〜3本ペース、3年目は一次評価10月末・二次評価翌2月末の締切に向けた評価クリアフェーズ](/images/blog/b01-josler-byoreki-youyaku-kakikata/byoreki-schedule-strategy.svg)
+
+### 専攻医1年目：症例をストックしながら試し書き
+
+1年目のうちに3〜5本の病歴要約を試し書きし、指導医からフィードバックをもらいましょう。「書式の感覚」「A4の2枚に収める感覚」「総合考察のボリューム感」を早めにつかむことが目的です。この段階で書き方を固められると、2年目以降の効率が格段に上がります。
+
+並行して、症例登録を着実に進めておくことも重要です。病歴要約は登録済み症例からしか作成できないため、症例登録が遅れるとそのまま病歴要約のボトルネックになります。症例登録の効率的な進め方は[症例を効率的に集める方法](/blog/b02-josler-160cases)を参考にしてください。
+
+### 専攻医2年目：月2〜3本ペースで書き上げる
+
+2年目に入ったら本格的に病歴要約を書き進めます。月2〜3本のペースで進めれば、2年目の終わりまでに29本を超える本数を確保できます。
+
+効率化のコツとして、同じ領域の症例をまとめて書く「バッチ処理」がおすすめです。たとえば消化器3症例を同じ週にまとめて書くと、記述のフォーマットが頭に残っているため、1本あたりの所要時間を短縮できます。
+
+> iworの[AI病歴要約テンプレート](/pro/)を使えば、疾患群と疾患名を選ぶだけでOPQRST・検査所見・プロブレムリスト・考察の方向性・引用文献候補まで下書きを生成できます。引用文献候補はClaude PubMed MCPで照合済み。ゼロから書く場合に比べて初稿の作成時間を大幅に短縮できます。
+
+### 専攻医3年目：一次評価・二次評価への対応
+
+3年目の10月末までに29本の一次評価を完了させるのが一般的な締め切りです。その後、翌年2月末までに二次評価の承認を得る必要があります。
+
+二次評価での差し戻しに備え、3年目の前半は「提出可能な状態の29本を揃える」ことに集中し、後半は差し戻し対応のバッファとして確保しておきましょう。
+
+## 差し戻しを防ぐ5つのポイント
+
+査読委員経験者の知見と公式手引きの評価基準から、差し戻しになりやすいパターンと対策をまとめます。
+
+![差し戻しを防ぐ5つのチェックポイント：疾患群と考察の不一致・総合考察不十分・全人的視点の欠如・身体所見検査所見の不足・A4用紙2枚オーバーの5項目をカード形式で図解](/images/blog/b01-josler-byoreki-youyaku-kakikata/byoreki-reject-prevention.svg)
+
+### 1. 疾患群と考察の不一致
+
+最も致命的なのが、指定された疾患群と総合考察の内容が合っていないケースです。たとえば血液領域で主病名を貧血としているのに、考察が原因となった消化管出血に終始していると、「血液領域として不適切」と判断されます。考察は必ず「その疾患群として」の考察になっているか確認しましょう。
+
+### 2. 総合考察の不足
+
+総合考察は病歴要約の中で最も配点が大きいパートです。単なる教科書的な知識のまとめではなく、「この症例で自分が何を考え、何を学んだか」を書くことが求められます。臨床推論のプロセス、鑑別診断の根拠、治療選択の理由、そして全人的な視点を盛り込みましょう。
+
+総合考察の書き方は[J-OSLER総合考察の書き方｜全人的視点の入れ方](/blog/c04-josler-sougou-kousatsu-kakikata)で詳しく解説しています。
+
+### 3. 全人的視点の欠如
+
+手引きでは「全人的視点」を明確に求めています。患者の社会的背景、家族構成、職業、心理面への配慮、退院後の生活を見据えた方針など、身体面以外の視点が含まれていない病歴要約は差し戻しの対象になります。
+
+全人的視点の具体的な書き方とフレーズ集は[J-OSLER「全人的視点」の書き方｜具体例とテンプレートで解説](/blog/c05-josler-zenjinteki-shiten)を参照してください。
+
+### 4. 身体所見・検査所見の記載不足
+
+身体所見はすべてを網羅的に記載する必要はありませんが、主病名に関連する所見は省略してはいけません。また、陽性所見だけでなく「重要な陰性所見」の記載も求められています。たとえば心不全の症例で頸静脈怒張がなかったなら、それは記載すべき所見です。
+
+### 5. A4用紙2枚のオーバー
+
+意外と多いのがボリューム超過です。J-OSLERの文字数制限をフルに使うとA4の2枚に収まらないことがあります。提出前に必ずPDFで出力して確認し、必要に応じて簡潔化しましょう。
+
+## 効率的に書くためのワークフロー
+
+29本を効率よく書くためのワークフローを整理します。
+
+### ステップ1：症例選定
+
+まず29症例の枠を埋める症例を選びます。「珍しさ」より「考察の深めやすさ」で選ぶのがコツです。自分が主担当医として深く関わり、診断や治療に悩んだ症例、教訓を得た症例が最も書きやすく、評価も高くなります。
+
+### ステップ2：Word等で下書き
+
+J-OSLERに直接入力するのではなく、まずWord等で下書きを作成しましょう。J-OSLERのシステム上、修正ボタンと削除ボタンが近く誤操作のリスクがあること、また一定時間操作がないと自動ログアウトされることが理由です。下書きを作ってからコピー＆ペーストする方が安全です。
+
+### ステップ3：指導医にフィードバックを依頼
+
+下書きが完成したら、J-OSLERに入力する前に指導医に一度見てもらうのが理想です。特に最初の数本は、記載のクセや改善点を指摘してもらうことで、以降の病歴要約の品質が安定します。
+
+### ステップ4：J-OSLERへの入力とPDF確認
+
+フィードバックを反映したら、J-OSLERに入力して「印刷・PDF化」でA4の2枚に収まるか確認します。問題なければ個別評価を依頼しましょう。
+
+iworのダッシュボードでは、29病歴要約の進捗を一覧で管理できます。作成中・修正中・受理済のステータスを可視化し、どの疾患群が未着手かをひと目で把握できます。[iworを見てみる →](https://iwor.jp/)
+
+## よくある質問（FAQ）
+
+### Q. 病歴要約は何文字くらいが適切？
+
+文字数の明確な目安は公式には示されていません。各入力欄に文字数上限があり、全体としてA4用紙2枚に収まることが条件です。紙面（PDF版）の80%以上を埋められているかも評価のチェックポイントになっています。短すぎると「記載不十分」、長すぎると「要約力不足」と見なされるので、過不足なく記載しましょう。
+
+### Q. 同じ疾患名で2つの病歴要約を書いてもいい？
+
+疾患群が異なれば同じ疾患名でも問題ありません。ただし「主病名がバランスよく選択されていること」が重視されるため、可能な限り異なる疾患を選ぶのが望ましいです。
+
+### Q. 文献はどのように記載する？
+
+手引きでは文献の記載方法が指定されています。総合考察で引用した文献を末尾にまとめます。UpToDate、PubMed、国内のガイドラインなどから根拠となる文献を選び、標準的な引用形式で記載しましょう。
+
+### Q. 救急領域と他領域で同じ疾患名は使える？
+
+救急領域の病歴要約は、他の領域と病名が重複していても、焦点を当てる部分が異なれば提出が認められています。救急領域では救急領域として学ぶべき内容（初期対応、トリアージ、急性期管理など）を中心に考察する必要があります。
+
+## よくある失敗パターン
+
+### ❌ 同じ疾患群から2篇提出して差し戻される
+
+「1年目に肺炎で病歴要約を出した。もう1篇呼吸器系を書こうとCOPDを選んだ」というケースで、どちらも「感染性呼吸器疾患」か「閉塞性肺疾患」かを確認せずに両方提出し、二次評価で疾患群重複が発覚するパターンがあります。**29篇は全て異なる疾患群** でなければならず、同じ疾患群からの2篇提出は受理されません。提出前に[病歴要約29症例の細則](https://www.naika.or.jp/wp-content/uploads/2023/12/byoreki29_saisoku.pdf)で疾患群を必ず確認しましょう。
+
+### ❌ 外科紹介症例・剖検症例を3年目に確保しようとして症例がない
+
+29篇のうち**外科紹介症例2篇・剖検症例1篇** は必須です。しかしこれを「最後に書けばいい」と後回しにした結果、3年目の秋に「適切な外科紹介症例がない」と焦るケースがあります。外科紹介症例は外科コンサルトで手術に至った症例、剖検症例は病理解剖が行われた症例である必要があります。1〜2年目から意識して症例を確保・記録しておきましょう。
+
+### ❌ 文字数がA4 2枚を大幅に超えて3年目に大規模な削除作業をする
+
+「とりあえず詳しく書いておこう」とA4 3〜4枚分の内容を書いた後、半分以上を削除する作業で何時間も消費するケースがあります。病歴要約はA4 2枚以内・紙面80%以上が必須です。最初からWordで**A4 2枚の文字数感覚**（フォント10.5pt・約1,800〜2,200字程度）を意識して書けば、大幅な削除作業を避けられます。
+
+## まとめ──29本を乗り越えるための3つの鍵
+
+病歴要約29本は確かに大きな負担ですが、全体像を把握して計画的に進めれば、確実にクリアできます。
+
+まず **配分ルールを正確に理解する** こと。疾患群の重複禁止、消化器の3分野ルール、内分泌・代謝の個別枠、外来7篇上限など、細則の見落としが最も痛い手戻りの原因になります。
+
+次に **早く始めて早くフィードバックをもらう** こと。1年目のうちに書式を固め、2年目に月2〜3本ペースで書き上げ、3年目は評価対応に集中するスケジュールが理想です。
+
+そして **総合考察と全人的視点に力を入れる** こと。評価者が最も重視するのはこの2点です。テンプレートを活用しつつ、自分の臨床経験に基づいた「自分だけの考察」を書きましょう。
+
+病歴要約のなかでも最も差がつく「総合考察」の書き方は、[J-OSLER総合考察の書き方｜全人的視点の入れ方](/blog/c04-josler-sougou-kousatsu-kakikata)で詳しく解説しています。各項目の具体的なテンプレートとWordで下書きする手順は[病歴要約テンプレート｜項目別の書き方と入力のコツ](/blog/c02-josler-byoreki-youyaku-template)にまとめています。29症例の疾患群バランスや書きやすい症例の選び方は[29症例の選び方｜疾患群バランスと書きやすい症例の見つけ方](/blog/c09-josler-byoreki-youyaku-29cases)を参照してください。また、病歴要約に使う29症例を選ぶためにも、まずは[症例を効率的に集める方法](/blog/b02-josler-160cases)で登録を進めておくことが大切です。
+
+
+{/* iwor-tool-links */}
+
+---
+
+<div style={{background: 'var(--color-s1, #f5f4f0)', border: '1px solid var(--color-br, #ddd9d2)', borderRadius: '12px', padding: '20px', marginTop: '32px'}}>
+
+**🔧 関連する臨床ツール**
+
+- [eGFR計算（CKD-EPI）](/tools/calc/egfr)
+
+すべてのツールは[臨床計算ツール一覧](/tools)からご覧いただけます。
+
+</div>

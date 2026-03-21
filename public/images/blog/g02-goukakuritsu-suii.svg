@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <rect width="800" height="420" rx="16" fill="#FEFEFC"/>
+  <rect x="0" y="0" width="800" height="56" rx="16" fill="#1B4F3A"/>
+  <rect x="0" y="28" width="800" height="28" fill="#1B4F3A"/>
+  <text x="400" y="38" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" font-size="20">内科専門医試験 合格率の推移（第1回〜第5回）</text>
+
+  <!-- Y axis labels -->
+  <text x="60" y="105" text-anchor="end" fill="#6B6760" font-family="sans-serif" font-size="13">100%</text>
+  <text x="60" y="165" text-anchor="end" fill="#6B6760" font-family="sans-serif" font-size="13">90%</text>
+  <text x="60" y="225" text-anchor="end" fill="#6B6760" font-family="sans-serif" font-size="13">80%</text>
+  <text x="60" y="285" text-anchor="end" fill="#6B6760" font-family="sans-serif" font-size="13">70%</text>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="100" x2="740" y2="100" stroke="#E8E5DF" stroke-width="1"/>
+  <line x1="80" y1="160" x2="740" y2="160" stroke="#E8E5DF" stroke-width="1"/>
+  <line x1="80" y1="220" x2="740" y2="220" stroke="#E8E5DF" stroke-width="1"/>
+  <line x1="80" y1="280" x2="740" y2="280" stroke="#E8E5DF" stroke-width="1"/>
+
+  <!-- Bar chart -->
+  <!-- 第1回 94.4% → y = 100 + (100-94.4)*6 = 133.6 h = 280-133.6=146.4 -->
+  <rect x="120" y="134" width="80" height="146" rx="6" fill="#1B4F3A" opacity="0.8"/>
+  <text x="160" y="124" text-anchor="middle" fill="#1B4F3A" font-family="sans-serif" font-weight="bold" font-size="15">94.4%</text>
+  <text x="160" y="300" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="12">第1回</text>
+  <text x="160" y="316" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="11">(2021)</text>
+
+  <!-- 第2回 90.0% → y = 100 + (100-90)*6 = 160 h = 120 -->
+  <rect x="250" y="160" width="80" height="120" rx="6" fill="#1B4F3A" opacity="0.8"/>
+  <text x="290" y="150" text-anchor="middle" fill="#1B4F3A" font-family="sans-serif" font-weight="bold" font-size="15">90.0%</text>
+  <text x="290" y="300" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="12">第2回</text>
+  <text x="290" y="316" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="11">(2022)</text>
+
+  <!-- 第3回 85.3% → y = 100 + (100-85.3)*6 = 188.2 h = 91.8 -->
+  <rect x="380" y="188" width="80" height="92" rx="6" fill="#991B1B" opacity="0.8"/>
+  <text x="420" y="178" text-anchor="middle" fill="#991B1B" font-family="sans-serif" font-weight="bold" font-size="15">85.3%</text>
+  <text x="420" y="300" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="12">第3回</text>
+  <text x="420" y="316" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="11">(2023)</text>
+
+  <!-- 第4回 93.6% → y = 100 + (100-93.6)*6 = 138.4 h = 141.6 -->
+  <rect x="510" y="138" width="80" height="142" rx="6" fill="#1B4F3A" opacity="0.8"/>
+  <text x="550" y="128" text-anchor="middle" fill="#1B4F3A" font-family="sans-serif" font-weight="bold" font-size="15">93.6%</text>
+  <text x="550" y="300" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="12">第4回</text>
+  <text x="550" y="316" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="11">(2024)</text>
+
+  <!-- 第5回 95.6% → y = 100 + (100-95.6)*6 = 126.4 h = 153.6 -->
+  <rect x="640" y="126" width="80" height="154" rx="6" fill="#166534" opacity="0.9"/>
+  <text x="680" y="116" text-anchor="middle" fill="#166534" font-family="sans-serif" font-weight="bold" font-size="15">95.6%</text>
+  <text x="680" y="300" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="12">第5回</text>
+  <text x="680" y="316" text-anchor="middle" fill="#6B6760" font-family="sans-serif" font-size="11">(2025)</text>
+
+  <!-- Annotation -->
+  <rect x="350" y="335" width="220" height="28" rx="6" fill="#FEF3C7"/>
+  <text x="460" y="354" text-anchor="middle" fill="#92400E" font-family="sans-serif" font-size="12">第3回の落ち込み後、V字回復</text>
+
+  <!-- Footer -->
+  <text x="400" y="400" text-anchor="middle" fill="#C8C4BC" font-family="sans-serif" font-size="11">© 内科ナビ naikanavi.com</text>
+</svg>

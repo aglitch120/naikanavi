@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="'Noto Sans JP', sans-serif">
+  <defs>
+    <filter id="shadow2" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">年次別チェックポイント（7期生以降: 120症例版）</text>
+
+  <!-- Timeline line -->
+  <line x1="60" y1="80" x2="740" y2="80" stroke="#1B4F3A" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Year markers -->
+  <circle cx="140" cy="80" r="10" fill="#1B4F3A"/>
+  <text x="140" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">1年目</text>
+  <circle cx="400" cy="80" r="10" fill="#1B4F3A"/>
+  <text x="400" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">2年目</text>
+  <circle cx="660" cy="80" r="10" fill="#1B4F3A"/>
+  <text x="660" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B4F3A">3年目</text>
+
+  <!-- Year 1 Card -->
+  <rect x="30" y="105" width="230" height="290" rx="10" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow2)"/>
+  <rect x="30" y="105" width="230" height="36" rx="10" fill="#E8F0EC"/>
+  <rect x="30" y="130" width="230" height="11" fill="#E8F0EC"/>
+  <text x="145" y="129" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">専攻医1年目（4月〜3月）</text>
+
+  <text x="50" y="166" font-size="12" font-weight="bold" fill="#1A1917">症例登録</text>
+  <rect x="50" y="174" width="120" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="50" y="174" width="40" height="8" rx="4" fill="#1B4F3A"/>
+  <text x="180" y="182" font-size="11" fill="#6B6760">40件目安</text>
+
+  <text x="50" y="206" font-size="12" font-weight="bold" fill="#1A1917">病歴要約</text>
+  <rect x="50" y="214" width="120" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="50" y="214" width="20" height="8" rx="4" fill="#3D5A80"/>
+  <text x="180" y="222" font-size="11" fill="#6B6760">5〜8編着手</text>
+
+  <text x="50" y="246" font-size="12" font-weight="bold" fill="#1A1917">その他</text>
+  <text x="50" y="264" font-size="11" fill="#6B6760">- 学会参加 2回</text>
+  <text x="50" y="280" font-size="11" fill="#6B6760">- 講習会 2回</text>
+  <text x="50" y="296" font-size="11" fill="#6B6760">- JMECC受講</text>
+  <text x="50" y="312" font-size="11" fill="#6B6760">- 研修評価の実施</text>
+
+  <rect x="44" y="330" width="200" height="24" rx="6" fill="#DCFCE7" stroke="#86EFAC"/>
+  <text x="144" y="346" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">基盤づくりの時期</text>
+
+  <rect x="44" y="360" width="200" height="24" rx="6" fill="#FEF3C7" stroke="#FCD34D"/>
+  <text x="144" y="376" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">疾患群の幅を広げる意識を</text>
+
+  <!-- Year 2 Card -->
+  <rect x="285" y="105" width="230" height="290" rx="10" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow2)"/>
+  <rect x="285" y="105" width="230" height="36" rx="10" fill="#E8F0EC"/>
+  <rect x="285" y="130" width="230" height="11" fill="#E8F0EC"/>
+  <text x="400" y="129" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">専攻医2年目（4月〜3月）</text>
+
+  <text x="305" y="166" font-size="12" font-weight="bold" fill="#1A1917">症例登録</text>
+  <rect x="305" y="174" width="120" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="305" y="174" width="80" height="8" rx="4" fill="#1B4F3A"/>
+  <text x="435" y="182" font-size="11" fill="#6B6760">90〜110件</text>
+
+  <text x="305" y="206" font-size="12" font-weight="bold" fill="#1A1917">病歴要約</text>
+  <rect x="305" y="214" width="120" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="305" y="214" width="90" height="8" rx="4" fill="#3D5A80"/>
+  <text x="435" y="222" font-size="11" fill="#6B6760">25〜29編完成</text>
+
+  <text x="305" y="246" font-size="12" font-weight="bold" fill="#1A1917">その他</text>
+  <text x="305" y="264" font-size="11" fill="#6B6760">- 学会参加 累計4回</text>
+  <text x="305" y="280" font-size="11" fill="#6B6760">- 講習会 累計4回</text>
+  <text x="305" y="296" font-size="11" fill="#6B6760">- 学会発表 1件以上</text>
+  <text x="305" y="312" font-size="11" fill="#6B6760">- 個別評価を進める</text>
+
+  <rect x="299" y="330" width="200" height="24" rx="6" fill="#FEF3C7" stroke="#FCD34D"/>
+  <text x="399" y="346" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">病歴要約が最優先</text>
+
+  <rect x="299" y="360" width="200" height="24" rx="6" fill="#FEE2E2" stroke="#FCA5A5"/>
+  <text x="399" y="376" text-anchor="middle" font-size="11" font-weight="bold" fill="#991B1B">年度末までに個別評価完了が理想</text>
+
+  <!-- Year 3 Card -->
+  <rect x="540" y="105" width="230" height="290" rx="10" fill="#FEFEFC" stroke="#DDD9D2" filter="url(#shadow2)"/>
+  <rect x="540" y="105" width="230" height="36" rx="10" fill="#E8F0EC"/>
+  <rect x="540" y="130" width="230" height="11" fill="#E8F0EC"/>
+  <text x="655" y="129" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B4F3A">専攻医3年目（4月〜）</text>
+
+  <text x="560" y="166" font-size="12" font-weight="bold" fill="#1A1917">症例登録</text>
+  <rect x="560" y="174" width="120" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="560" y="174" width="120" height="8" rx="4" fill="#1B4F3A"/>
+  <text x="690" y="182" font-size="11" fill="#6B6760">120件完了</text>
+
+  <text x="560" y="206" font-size="12" font-weight="bold" fill="#1A1917">病歴要約</text>
+  <rect x="560" y="214" width="120" height="8" rx="4" fill="#E8E5DF"/>
+  <rect x="560" y="214" width="120" height="8" rx="4" fill="#3D5A80"/>
+  <text x="690" y="222" font-size="11" fill="#6B6760">29編 評価完了</text>
+
+  <text x="560" y="246" font-size="12" font-weight="bold" fill="#1A1917">その他</text>
+  <text x="560" y="264" font-size="11" fill="#6B6760">- 学会参加 累計6回</text>
+  <text x="560" y="280" font-size="11" fill="#6B6760">- 講習会 累計6回</text>
+  <text x="560" y="296" font-size="11" fill="#6B6760">- 学会発表 累計2件</text>
+  <text x="560" y="312" font-size="11" fill="#6B6760">- 一次評価→二次評価</text>
+
+  <rect x="554" y="330" width="200" height="24" rx="6" fill="#FEE2E2" stroke="#FCA5A5"/>
+  <text x="654" y="346" text-anchor="middle" font-size="11" font-weight="bold" fill="#991B1B">8月末: 一次評価完了期限</text>
+
+  <rect x="554" y="360" width="200" height="24" rx="6" fill="#DCFCE7" stroke="#86EFAC"/>
+  <text x="654" y="376" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">1〜3月: 修了見込申請</text>
+
+  <!-- Footer -->
+  <text x="400" y="425" text-anchor="middle" font-size="10" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

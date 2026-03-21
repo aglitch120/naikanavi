@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="'Helvetica Neue', Arial, sans-serif">
+  <rect width="800" height="380" fill="#F5F4F0" rx="16"/>
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A1917">大学病院 vs 市中病院 比較表</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#6B6760">給与・専門性・ワークライフバランス・キャリア発展性</text>
+
+  <!-- Table header -->
+  <rect x="40" y="80" width="180" height="40" rx="0" fill="#DDD9D2"/>
+  <text x="130" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A1917">比較項目</text>
+  <rect x="220" y="80" width="270" height="40" rx="0" fill="#1B4F3A"/>
+  <text x="355" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">大学病院</text>
+  <rect x="490" y="80" width="270" height="40" rx="0" fill="#3D7A5F"/>
+  <text x="625" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">市中病院</text>
+
+  <!-- Row 1: 給与 -->
+  <rect x="40" y="120" width="180" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="130" y="147" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">給与水準</text>
+  <rect x="220" y="120" width="270" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="355" y="142" text-anchor="middle" font-size="11" fill="#6B6760">年収 600〜900万円</text>
+  <text x="355" y="157" text-anchor="middle" font-size="10" fill="#C8C4BC">★★☆☆☆</text>
+  <rect x="490" y="120" width="270" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="625" y="142" text-anchor="middle" font-size="11" fill="#6B6760">年収 900〜1,500万円</text>
+  <text x="625" y="157" text-anchor="middle" font-size="10" fill="#1B4F3A">★★★★☆</text>
+
+  <!-- Row 2: 専門性 -->
+  <rect x="40" y="164" width="180" height="44" fill="#E8F0EC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="130" y="191" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">専門性・研究</text>
+  <rect x="220" y="164" width="270" height="44" fill="#E8F0EC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="355" y="186" text-anchor="middle" font-size="11" fill="#6B6760">学位取得・論文執筆が可能</text>
+  <text x="355" y="201" text-anchor="middle" font-size="10" fill="#1B4F3A">★★★★★</text>
+  <rect x="490" y="164" width="270" height="44" fill="#E8F0EC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="625" y="186" text-anchor="middle" font-size="11" fill="#6B6760">臨床経験は豊富</text>
+  <text x="625" y="201" text-anchor="middle" font-size="10" fill="#C8C4BC">★★★☆☆</text>
+
+  <!-- Row 3: WLB -->
+  <rect x="40" y="208" width="180" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="130" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">WLB</text>
+  <rect x="220" y="208" width="270" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="355" y="230" text-anchor="middle" font-size="11" fill="#6B6760">研究・当直で多忙</text>
+  <text x="355" y="245" text-anchor="middle" font-size="10" fill="#C8C4BC">★★☆☆☆</text>
+  <rect x="490" y="208" width="270" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="625" y="230" text-anchor="middle" font-size="11" fill="#6B6760">施設による（交渉余地大）</text>
+  <text x="625" y="245" text-anchor="middle" font-size="10" fill="#1B4F3A">★★★★☆</text>
+
+  <!-- Row 4: キャリア発展性 -->
+  <rect x="40" y="252" width="180" height="44" fill="#E8F0EC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="130" y="279" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">キャリア発展性</text>
+  <rect x="220" y="252" width="270" height="44" fill="#E8F0EC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="355" y="274" text-anchor="middle" font-size="11" fill="#6B6760">教授・准教授ポスト</text>
+  <text x="355" y="289" text-anchor="middle" font-size="10" fill="#1B4F3A">★★★★☆</text>
+  <rect x="490" y="252" width="270" height="44" fill="#E8F0EC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="625" y="274" text-anchor="middle" font-size="11" fill="#6B6760">部長・院長・開業</text>
+  <text x="625" y="289" text-anchor="middle" font-size="10" fill="#1B4F3A">★★★★☆</text>
+
+  <!-- Row 5: おすすめ -->
+  <rect x="40" y="296" width="180" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="130" y="323" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1917">こんな人に</text>
+  <rect x="220" y="296" width="270" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="355" y="323" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">研究・教育に情熱がある人</text>
+  <rect x="490" y="296" width="270" height="44" fill="#FEFEFC" stroke="#DDD9D2" stroke-width="0.5"/>
+  <text x="625" y="323" text-anchor="middle" font-size="11" fill="#1B4F3A" font-weight="600">臨床力・収入・WLBを重視する人</text>
+
+  <text x="400" y="368" text-anchor="middle" font-size="11" fill="#6B6760">© 内科ナビ naikanavi.com</text>
+</svg>

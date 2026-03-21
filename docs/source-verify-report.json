@@ -1,0 +1,252 @@
+{
+  "timestamp": "2026-03-20T13:14:00.311Z",
+  "summary": {
+    "pass": 30,
+    "warn": 2,
+    "fail": 0
+  },
+  "tools": [
+    {
+      "id": "gamma-calc",
+      "path": "app/tools/calc/gamma/page.tsx",
+      "priority": "critical",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (b80e0b0dc5e8963a)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "WARN",
+          "message": "⚠️ 「第一選択」"
+        }
+      ]
+    },
+    {
+      "id": "renal-dose-abx",
+      "path": "app/tools/calc/renal-dose-abx/page.tsx",
+      "priority": "high",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (abe55245727068ef)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "PASS",
+          "message": "OK"
+        }
+      ]
+    },
+    {
+      "id": "antibiotics",
+      "path": "app/tools/drugs/antibiotics/page.tsx",
+      "priority": "high",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (285b1ea4d4eebf39)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "WARN",
+          "message": "⚠️ 「第一選択」"
+        }
+      ]
+    },
+    {
+      "id": "steroid-cover",
+      "path": "app/tools/drugs/steroid-cover/page.tsx",
+      "priority": "high",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (874b92e16d412ed6)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "PASS",
+          "message": "OK"
+        }
+      ]
+    },
+    {
+      "id": "na-correction-rate",
+      "path": "app/tools/calc/na-correction-rate/page.tsx",
+      "priority": "medium",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (5b68d41d1ed77836)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "PASS",
+          "message": "OK"
+        }
+      ]
+    },
+    {
+      "id": "opioid-conversion",
+      "path": "app/tools/calc/opioid-conversion/page.tsx",
+      "priority": "medium",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (36494823a32b6719)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "PASS",
+          "message": "OK"
+        }
+      ]
+    },
+    {
+      "id": "lab-values",
+      "path": "app/tools/calc/lab-values/page.tsx",
+      "priority": "medium",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (48f3035021e3015b)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "PASS",
+          "message": "OK"
+        }
+      ]
+    },
+    {
+      "id": "combination",
+      "path": "app/tools/drugs/combination/page.tsx",
+      "priority": "medium",
+      "checks": [
+        {
+          "check": "DATA_HASH",
+          "status": "PASS",
+          "message": "変更なし (7d5a6e1f23380a19)"
+        },
+        {
+          "check": "DOSE_FORMAT",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "SAMD_WORDING",
+          "status": "PASS",
+          "message": "OK"
+        }
+      ]
+    }
+  ],
+  "calculations": [
+    {
+      "id": "egfr-ckdepi",
+      "description": "eGFR (CKD-EPI 2021) — 70歳男性 Cr=1.2",
+      "expected": 65.06,
+      "actual": 65.057,
+      "tolerance": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "cockcroft-gault",
+      "description": "CCr (Cockcroft-Gault) — 70歳男性 70kg Cr=1.2",
+      "expected": 56.9,
+      "actual": 56.713,
+      "tolerance": 2,
+      "status": "PASS"
+    },
+    {
+      "id": "bmi",
+      "description": "BMI — 170cm 70kg",
+      "expected": 24.22,
+      "actual": 24.221,
+      "tolerance": 0.1,
+      "status": "PASS"
+    },
+    {
+      "id": "bsa-dubois",
+      "description": "BSA (Du Bois) — 170cm 70kg",
+      "expected": 1.81,
+      "actual": 1.81,
+      "tolerance": 0.05,
+      "status": "PASS"
+    },
+    {
+      "id": "anion-gap",
+      "description": "AG — Na=140 Cl=105 HCO3=24",
+      "expected": 11,
+      "actual": 11,
+      "tolerance": 0.1,
+      "status": "PASS"
+    },
+    {
+      "id": "corrected-ca",
+      "description": "補正Ca (Payne式) — Ca=8.0 Alb=2.5",
+      "expected": 9.2,
+      "actual": 9.2,
+      "tolerance": 0.1,
+      "status": "PASS"
+    },
+    {
+      "id": "fena",
+      "description": "FENa — 尿Na=40 尿Cr=60 血Na=140 血Cr=2.0",
+      "expected": 0.952,
+      "actual": 0.952,
+      "tolerance": 0.05,
+      "status": "PASS"
+    },
+    {
+      "id": "gamma-norad",
+      "description": "ノルアドレナリン γ→mL/h — 0.1μg/kg/min, 60kg, 3mg/50mL",
+      "expected": 6,
+      "actual": 6,
+      "tolerance": 0.1,
+      "status": "PASS"
+    }
+  ]
+}

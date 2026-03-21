@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1917" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="360" rx="16" fill="#F5F4F0"/>
+
+  <!-- Title -->
+  <rect x="24" y="16" width="752" height="48" rx="12" fill="#1B4F3A"/>
+  <text x="400" y="47" text-anchor="middle" fill="#FEFEFC" font-size="20" font-weight="700">修了認定 vs 修了見込 ：どちらを使う？</text>
+
+  <!-- 修了認定 Card -->
+  <rect x="40" y="82" width="350" height="245" rx="12" fill="#FEFEFC" filter="url(#sh)"/>
+  <rect x="40" y="82" width="350" height="40" rx="12" fill="#166534"/>
+  <rect x="40" y="110" width="350" height="12" fill="#166534"/>
+  <text x="215" y="108" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">修了認定</text>
+
+  <text x="60" y="150" fill="#44403C" font-size="12" font-weight="600">対象</text>
+  <text x="60" y="170" fill="#44403C" font-size="12">全修了要件をクリア済みの方</text>
+
+  <text x="60" y="198" fill="#44403C" font-size="12" font-weight="600">条件</text>
+  <text x="60" y="218" fill="#44403C" font-size="11">&#x2705; 120症例・56疾患群 完了</text>
+  <text x="60" y="236" fill="#44403C" font-size="11">&#x2705; 29病歴要約 二次評価Accept</text>
+  <text x="60" y="254" fill="#44403C" font-size="11">&#x2705; JMECC・講習会・学術活動 完了</text>
+  <text x="60" y="272" fill="#44403C" font-size="11">&#x2705; 研修期間 30ヶ月以上</text>
+
+  <rect x="60" y="286" width="310" height="28" rx="6" fill="#E8F0EC"/>
+  <text x="215" y="305" text-anchor="middle" fill="#166534" font-size="12" font-weight="700">申請期間：1月1日〜3月31日</text>
+
+  <!-- 修了見込 Card -->
+  <rect x="410" y="82" width="350" height="245" rx="12" fill="#FEFEFC" filter="url(#sh)"/>
+  <rect x="410" y="82" width="350" height="40" rx="12" fill="#3D5A80"/>
+  <rect x="410" y="110" width="350" height="12" fill="#3D5A80"/>
+  <text x="585" y="108" text-anchor="middle" fill="#FEFEFC" font-size="16" font-weight="700">修了見込</text>
+
+  <text x="430" y="150" fill="#44403C" font-size="12" font-weight="600">対象</text>
+  <text x="430" y="170" fill="#44403C" font-size="12">一部未完了だが一定基準を満たす方</text>
+
+  <text x="430" y="198" fill="#44403C" font-size="12" font-weight="600">条件</text>
+  <text x="430" y="218" fill="#44403C" font-size="11">&#x2705; 120症例の登録・承認 完了</text>
+  <text x="430" y="236" fill="#44403C" font-size="11">&#x2705; 29病歴要約の個別承認 完了</text>
+  <text x="430" y="254" fill="#44403C" font-size="11">&#x26A0;&#xFE0F; 二次評価は受験年度中に並行OK</text>
+  <text x="430" y="272" fill="#44403C" font-size="11">&#x26A0;&#xFE0F; 年度末までに全要件達成が必要</text>
+
+  <rect x="430" y="286" width="310" height="28" rx="6" fill="#DBEAFE"/>
+  <text x="585" y="305" text-anchor="middle" fill="#3D5A80" font-size="12" font-weight="700">申請期間：1月1日〜3月31日</text>
+
+  <!-- 共通注意 -->
+  <rect x="200" y="333" width="400" height="22" rx="6" fill="#FEE2E2"/>
+  <text x="400" y="349" text-anchor="middle" fill="#EF4444" font-size="11" font-weight="700">4月1日以降は申請・承認不可（絶対期限）</text>
+
+  <!-- Footer -->
+  <text x="756" y="355" text-anchor="end" fill="#A8A29E" font-size="9">© 内科ナビ naikanavi.com</text>
+</svg>
