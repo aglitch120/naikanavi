@@ -7,6 +7,7 @@ import { getTemplateByDisease, getPubmedSearchUrl, type DiseaseTemplate } from '
 import { convertPrescriptionToGeneric } from '@/lib/drug-name-converter'
 import { parseKarteText, generateDiscussionTemplate } from '@/lib/karte-parser'
 import { getRichDiscussion } from '@/lib/josler-discussions'
+import { generateJoslerPrompt, generateRefinePrompt } from '@/lib/josler-prompt-generator'
 import { SPECIALTIES as SP, DISEASE_GROUPS as DG } from '@/lib/josler-data'
 
 const MC = '#1B4F3A'
@@ -73,6 +74,7 @@ function SummaryGeneratorInner() {
   // フォーム値
   const [values, setValues] = useState<Record<string, string>>({})
   const [copied, setCopied] = useState(false)
+  const [promptCopied, setPromptCopied] = useState<string>('')
 
   // 処方変換
   const [rxInput, setRxInput] = useState('')
@@ -238,30 +240,13 @@ function SummaryGeneratorInner() {
             <p>・<strong>ページを閉じると全データが消去</strong>されます</p>
           </div>
 
-          {/* 同意チェックボックス（3つ全てチェック必須） */}
-          <div className="bg-wnl border border-wnb rounded-lg p-3 mb-3">
-            <p className="text-xs font-bold text-wn mb-2">⚠ カルテ情報を貼り付ける前に、以下の全てに同意してください</p>
-            <div className="space-y-2">
-              <label className="flex items-start gap-2 cursor-pointer text-[11px] text-wn">
-                <input type="checkbox" checked={karteConsent.anonymized}
-                  onChange={e => setKarteConsent(p => ({ ...p, anonymized: e.target.checked }))}
-                  className="mt-0.5 rounded flex-shrink-0" />
-                <span>入力する情報から<strong>全ての患者識別情報</strong>（氏名・生年月日・住所・連絡先・患者ID等）を削除済みであり、<strong>日本内科学会J-OSLER「病歴要約 作成と評価の手引き」の匿名化基準</strong>を満たしていることを確認しました。病院名は「近医」「前医」に変更済みです。</span>
-              </label>
-              <label className="flex items-start gap-2 cursor-pointer text-[11px] text-wn">
-                <input type="checkbox" checked={karteConsent.patientConsent}
-                  onChange={e => setKarteConsent(p => ({ ...p, patientConsent: e.target.checked }))}
-                  className="mt-0.5 rounded flex-shrink-0" />
-                <span>本症例の病歴要約作成について、<strong>患者本人（または代理人）の同意</strong>を得ていること、または所属施設の倫理規定に基づき同意が不要であることを確認しました。</span>
-              </label>
-              <label className="flex items-start gap-2 cursor-pointer text-[11px] text-wn">
-                <input type="checkbox" checked={karteConsent.hospitalRules}
-                  onChange={e => setKarteConsent(p => ({ ...p, hospitalRules: e.target.checked }))}
-                  className="mt-0.5 rounded flex-shrink-0" />
-                <span>本ツールの使用が<strong>所属病院・施設の情報セキュリティ規則</strong>に合致していることを確認しました。診療情報の外部ツールでの利用について施設のルールを遵守しています。</span>
-              </label>
-            </div>
-          </div>
+          {/* 同意チェック（簡素化: 1つの包括同意） */}
+          <label className="flex items-start gap-2 cursor-pointer bg-wnl border border-wnb rounded-lg p-3 mb-3 text-[11px] text-wn">
+            <input type="checkbox" checked={karteConsent.anonymized && karteConsent.patientConsent && karteConsent.hospitalRules}
+              onChange={e => setKarteConsent({ anonymized: e.target.checked, patientConsent: e.target.checked, hospitalRules: e.target.checked })}
+              className="mt-0.5 rounded flex-shrink-0" />
+            <span>入力する情報は<strong>J-OSLER匿名化基準を満たしており</strong>、患者同意を取得済みで、所属施設の情報セキュリティ規則に合致していることを確認しました。</span>
+          </label>
 
           {/* テキストエリア（全同意時のみ有効） */}
           {karteConsent.anonymized && karteConsent.patientConsent && karteConsent.hospitalRules ? (
@@ -313,10 +298,8 @@ function SummaryGeneratorInner() {
             </div>
           )}
 
-          {/* 免責（iwor側） */}
-          <div className="mt-2 p-2 rounded-lg bg-s1 text-[9px] text-muted leading-relaxed">
-            <p><strong>免責事項:</strong> 本ツールは匿名化済みテキストのテンプレート整形機能を提供するものであり、診療情報の収集・保存・分析は行いません。入力データの匿名化の適切性、患者同意の取得、施設規則の遵守は全て利用者（医師）の責任において行われるものとし、iwor運営者は入力内容に関して一切の責任を負いません。</p>
-          </div>
+          {/* 免責 */}
+          <p className="mt-1 text-[8px] text-muted">※ iworはテンプレート・プロンプトを提供するのみです。データの収集・保存・送信は一切行いません。匿名化・同意取得・施設規則遵守は利用者の責任であり、iwor運営者は入力内容に関して一切の責任を負いません。</p>
         </div>
 
         {/* Step 1: 領域選択 */}
@@ -417,6 +400,71 @@ function SummaryGeneratorInner() {
             )}
           </div>
         )}
+
+        {/* AIプロンプト生成（ChatGPT/Claude/Gemini用） */}
+        <div className="bg-s0 border border-ac/30 rounded-xl p-3 mb-3">
+          <div className="flex items-center justify-between mb-2">
+            <div>
+              <span className="text-xs font-bold text-tx">✨ AIで下書き生成</span>
+              <p className="text-[9px] text-muted">ChatGPT / Claude / Gemini にコピペして使えるプロンプト</p>
+            </div>
+          </div>
+          {/* プロンプトコピーボタン */}
+          <div className="flex gap-2 mb-2">
+            <button onClick={() => {
+              const prompt = generateJoslerPrompt(selectedDisease, activeTemplate)
+              navigator.clipboard.writeText(prompt).then(() => {
+                setPromptCopied('new')
+                setTimeout(() => setPromptCopied(''), 3000)
+              })
+            }} className="flex-1 py-2 rounded-lg text-[10px] font-bold transition-all"
+              style={{ background: promptCopied === 'new' ? 'var(--ok)' : MCL, color: promptCopied === 'new' ? '#fff' : MC }}>
+              {promptCopied === 'new' ? '✓ コピー済み' : '📋 新規作成プロンプトをコピー'}
+            </button>
+            {Object.values(values).some(v => v?.trim()) && (
+              <button onClick={() => {
+                const draft = generateText()
+                const prompt = generateRefinePrompt(draft)
+                navigator.clipboard.writeText(prompt).then(() => {
+                  setPromptCopied('refine')
+                  setTimeout(() => setPromptCopied(''), 3000)
+                })
+              }} className="flex-1 py-2 rounded-lg text-[10px] font-bold transition-all"
+                style={{ background: promptCopied === 'refine' ? 'var(--ok)' : 'var(--s1)', color: promptCopied === 'refine' ? '#fff' : 'var(--m)' }}>
+                {promptCopied === 'refine' ? '✓ コピー済み' : '📋 査読プロンプトをコピー'}
+              </button>
+            )}
+          </div>
+          {/* AIサービスへの直接リンク（プロンプト埋め込み） */}
+          {promptCopied && (() => {
+            const prompt = promptCopied === 'refine'
+              ? generateRefinePrompt(generateText())
+              : generateJoslerPrompt(selectedDisease, activeTemplate)
+            const encoded = encodeURIComponent(prompt.slice(0, 4000)) // URL長制限
+            return (
+              <div className="flex gap-1.5">
+                <a href={`https://chatgpt.com/?q=${encoded}`} target="_blank" rel="noopener noreferrer"
+                  className="flex-1 py-1.5 rounded-lg text-[10px] font-bold text-center transition-colors"
+                  style={{ background: '#10a37f', color: '#fff' }}>
+                  ChatGPT で開く
+                </a>
+                <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer"
+                  className="flex-1 py-1.5 rounded-lg text-[10px] font-bold text-center transition-colors"
+                  style={{ background: '#d97706', color: '#fff' }}>
+                  Claude で開く
+                </a>
+                <a href={`https://gemini.google.com/app?q=${encoded}`} target="_blank" rel="noopener noreferrer"
+                  className="flex-1 py-1.5 rounded-lg text-[10px] font-bold text-center transition-colors"
+                  style={{ background: '#4285f4', color: '#fff' }}>
+                  Gemini で開く
+                </a>
+              </div>
+            )
+          })()}
+          <p className="text-[8px] text-muted mt-1.5 leading-relaxed">
+            ※ iworはプロンプト（書式指示文）を生成するのみです。医療情報の処理は行いません。外部AIサービスでの使用時のデータ匿名化・施設規則遵守はユーザーの責任です。
+          </p>
+        </div>
 
         {/* セクション入力 */}
         <div className="space-y-3">
