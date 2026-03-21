@@ -92,3 +92,26 @@ export const IF_RANGES = [
   { label: 'IF ≧ 10', min: 10 },
   { label: 'すべて', min: 0 },
 ]
+
+// ── Guideline sources (日本の学会ガイドライン) ──
+
+export interface GuidelineSource {
+  id: string
+  name: string
+  nameShort: string
+  specialty: string
+  searchTerms: string[] // PubMed search terms for guidelines from this org
+}
+
+export const GUIDELINE_SOURCES: GuidelineSource[] = [
+  { id: 'jcs', name: '日本循環器学会', nameShort: '循環器学会', specialty: '循環器', searchTerms: ['Japanese Circulation Society[Affiliation] AND guideline'] },
+  { id: 'jas', name: '日本動脈硬化学会', nameShort: '動脈硬化学会', specialty: '循環器', searchTerms: ['Japan Atherosclerosis Society[Affiliation] AND guideline'] },
+  { id: 'jcvs', name: '日本心臓血管外科学会', nameShort: '心臓外科学会', specialty: '循環器', searchTerms: ['Japanese Association for Thoracic Surgery[Affiliation] AND guideline'] },
+  { id: 'jrs', name: '日本呼吸器学会', nameShort: '呼吸器学会', specialty: '呼吸器', searchTerms: ['Japanese Respiratory Society[Affiliation] AND guideline'] },
+  { id: 'jsge', name: '日本消化器病学会', nameShort: '消化器学会', specialty: '消化器', searchTerms: ['Japanese Society of Gastroenterology[Affiliation] AND guideline'] },
+  { id: 'jsn', name: '日本腎臓学会', nameShort: '腎臓学会', specialty: '腎臓', searchTerms: ['Japanese Society of Nephrology[Affiliation] AND guideline'] },
+  { id: 'jsnp', name: '日本神経学会', nameShort: '神経学会', specialty: '神経', searchTerms: ['Japanese Society of Neurology[Affiliation] AND guideline'] },
+  { id: 'jsh', name: '日本血液学会', nameShort: '血液学会', specialty: '血液', searchTerms: ['Japanese Society of Hematology[Affiliation] AND guideline'] },
+  { id: 'jaid', name: '日本感染症学会', nameShort: '感染症学会', specialty: '感染症', searchTerms: ['Japanese Association for Infectious Diseases[Affiliation] AND guideline'] },
+  { id: 'jds', name: '日本糖尿病学会', nameShort: '糖尿病学会', specialty: '内分泌', searchTerms: ['Japan Diabetes Society[Affiliation] AND guideline'] },
+]

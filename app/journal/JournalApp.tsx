@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useProStatus } from '@/components/pro/useProStatus'
 import ProModal from '@/components/pro/ProModal'
 import AppHeader from '@/components/AppHeader'
-import { JOURNALS, Journal, TOP4_IDS, SPECIALTIES } from './journals-data'
+import { JOURNALS, Journal, TOP4_IDS, SPECIALTIES, GUIDELINE_SOURCES, GuidelineSource } from './journals-data'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -38,6 +38,19 @@ async function fetchArticlesFromCache(lang: string = 'en'): Promise<Article[]> {
   }
 }
 
+async function fetchGuidelinesFromAPI(specialties: string[]): Promise<Article[]> {
+  try {
+    const params = specialties.length > 0 ? `&specialties=${encodeURIComponent(specialties.join(','))}` : ''
+    const res = await fetch(`${API_BASE}/api/journal?type=guidelines${params}`)
+    const data = await res.json()
+    if (data.ok && Array.isArray(data.articles)) return data.articles
+    return []
+  } catch (e) {
+    console.error('Guidelines API error:', e)
+    return []
+  }
+}
+
 export default function JournalApp() {
   const { isPro } = useProStatus()
   const [showProModal, setShowProModal] = useState(false)
@@ -45,6 +58,12 @@ export default function JournalApp() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [lang, setLang] = useState<'en' | 'ja'>('en')
+
+  // Content type toggle
+  const [contentType, setContentType] = useState<'articles' | 'guidelines'>('articles')
+  const [guidelines, setGuidelines] = useState<Article[]>([])
+  const [guidelinesLoading, setGuidelinesLoading] = useState(false)
+  const [guidelinesError, setGuidelinesError] = useState('')
 
   // Filters — unified (Top4 always included + specialty + IF)
   const [selectedSpecialties, setSelectedSpecialties] = useState<Set<string>>(new Set())
@@ -92,6 +111,19 @@ export default function JournalApp() {
   }, [lang])
 
   useEffect(() => { doFetch() }, [doFetch])
+
+  // ── Fetch guidelines when tab switches or specialty filter changes ──
+  useEffect(() => {
+    if (contentType !== 'guidelines') return
+    const specialties = Array.from(selectedSpecialties)
+    setGuidelinesLoading(true); setGuidelinesError('')
+    fetchGuidelinesFromAPI(specialties).then(res => {
+      setGuidelines(res)
+      setGuidelinesLoading(false)
+    }).catch(() => {
+      setGuidelinesLoading(false)
+    })
+  }, [contentType, selectedSpecialties])
 
   // ── Bookmark toggle ──
   const toggleBookmark = useCallback((pmid: string) => {
@@ -156,8 +188,28 @@ export default function JournalApp() {
         favoriteHref="/journal"
       />
 
+      {/* ── Content Type Toggle ── */}
+      <div className="flex gap-2 mb-4">
+        <button
+          onClick={() => setContentType('articles')}
+          className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-all ${
+            contentType === 'articles' ? 'text-white border-transparent' : 'bg-s0 border-br text-muted'
+          }`}
+          style={contentType === 'articles' ? { background: MC } : undefined}>
+          論文
+        </button>
+        <button
+          onClick={() => setContentType('guidelines')}
+          className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-all ${
+            contentType === 'guidelines' ? 'text-white border-transparent' : 'bg-s0 border-br text-muted'
+          }`}
+          style={contentType === 'guidelines' ? { background: MC } : undefined}>
+          ガイドライン
+        </button>
+      </div>
+
       {/* ── Language Toggle ── */}
-      <div className="flex bg-s1 rounded-xl p-1 mb-4">
+      <div className={`flex bg-s1 rounded-xl p-1 mb-4 ${contentType === 'guidelines' ? 'opacity-40 pointer-events-none' : ''}`}>
         <button onClick={() => setLang('en')}
           className={`flex-1 py-2 rounded-lg text-xs font-medium transition-all ${lang === 'en' ? 'bg-s0 shadow-sm' : 'text-muted hover:text-tx'}`}
           style={lang === 'en' ? { color: MC } : undefined}>
@@ -255,8 +307,8 @@ export default function JournalApp() {
         </div>
       )}
 
-      {/* ── IF Slider ── */}
-      <div className="bg-s0 border border-br rounded-xl p-3 mb-4">
+      {/* ── IF Slider (articles only) ── */}
+      {contentType === 'articles' && <div className="bg-s0 border border-br rounded-xl p-3 mb-4">
         <div className="flex items-center justify-between mb-2">
           <p className="text-[11px] font-medium text-tx">Impact Factor フィルタ</p>
           <span className="text-xs font-bold" style={{ color: MC }}>
@@ -274,10 +326,10 @@ export default function JournalApp() {
         <div className="flex justify-between text-[9px] text-muted mt-1">
           <span>0</span><span>20</span><span>40</span><span>60</span><span>80+</span>
         </div>
-      </div>
+      </div>}
 
-      {/* ── Bookmarks / Feed toggle ── */}
-      <div className="flex items-center justify-between mb-4">
+      {/* ── Bookmarks / Feed toggle (articles only) ── */}
+      {contentType === 'articles' && <div className="flex items-center justify-between mb-4">
         <div className="flex gap-2">
           <button onClick={() => setShowBookmarks(false)}
             className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${!showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
@@ -297,16 +349,57 @@ export default function JournalApp() {
             プレゼン用コピー
           </button>
         )}
-      </div>
+      </div>}
 
-      {/* ── Loading / Error ── */}
-      {loading && (
+      {/* ── Guidelines View ── */}
+      {contentType === 'guidelines' && (
+        <>
+          {guidelinesLoading && (
+            <div className="bg-s0 border border-br rounded-xl p-8 text-center mb-4">
+              <div className="w-8 h-8 border-2 border-br border-t-ac rounded-full animate-spin mx-auto mb-3" />
+              <p className="text-xs text-muted">ガイドラインを取得中...</p>
+            </div>
+          )}
+          {!guidelinesLoading && guidelines.length === 0 && (
+            <div className="bg-s0 border border-br rounded-xl p-8 text-center mb-4">
+              <p className="text-sm font-bold text-tx mb-1">ガイドラインの取得に対応準備中です</p>
+              <p className="text-xs text-muted mt-1">
+                {selectedSpecialties.size > 0
+                  ? `選択中の診療科（${Array.from(selectedSpecialties).join('・')}）のガイドラインを近日対応予定です`
+                  : '診療科を選ぶと対応学会のガイドラインが表示されます（準備中）'}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-1.5 justify-center">
+                {GUIDELINE_SOURCES
+                  .filter(gs => selectedSpecialties.size === 0 || selectedSpecialties.has(gs.specialty))
+                  .map(gs => (
+                    <span key={gs.id} className="text-[10px] font-medium px-2.5 py-1 rounded-lg border border-br text-muted">
+                      {gs.nameShort}
+                    </span>
+                  ))}
+              </div>
+            </div>
+          )}
+          {!guidelinesLoading && guidelines.length > 0 && (
+            <div className="space-y-3">
+              {guidelines.map(a => (
+                <ArticleCard key={a.pmid} article={a}
+                  isBookmarked={bookmarks.has(a.pmid)}
+                  onToggleBookmark={() => toggleBookmark(a.pmid)}
+                  isPro={isPro} />
+              ))}
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ── Loading / Error (articles mode) ── */}
+      {contentType === 'articles' && loading && (
         <div className="bg-s0 border border-br rounded-xl p-8 text-center mb-4">
           <div className="w-8 h-8 border-2 border-br border-t-ac rounded-full animate-spin mx-auto mb-3" />
           <p className="text-xs text-muted">論文を取得中...</p>
         </div>
       )}
-      {error && !loading && (
+      {contentType === 'articles' && error && !loading && (
         <div className="bg-s0 border border-br rounded-xl p-6 text-center mb-4">
           <p className="text-xs text-muted mb-3">{error}</p>
           <button onClick={doFetch} className="text-xs font-medium px-4 py-2 rounded-lg text-white" style={{ background: MC }}>再取得</button>
@@ -314,9 +407,9 @@ export default function JournalApp() {
       )}
 
       {/* ── Article List ── */}
-      {!loading && (
+      {contentType === 'articles' && !loading && (
         <div className="space-y-3">
-          {visibleArticles.map((a, i) => (
+          {visibleArticles.map((a) => (
             <ArticleCard key={a.pmid} article={a}
               isBookmarked={bookmarks.has(a.pmid)}
               onToggleBookmark={() => toggleBookmark(a.pmid)}
