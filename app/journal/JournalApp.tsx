@@ -61,6 +61,9 @@ export default function JournalApp() {
   const [lang, setLang] = useState<'en' | 'ja'>('en')
   const [displayLang, setDisplayLang] = useState<'ja' | 'en'>('ja') // 表示言語（デフォルト日本語訳）
 
+  // 記事統計（コメント数・ブックマーク数）
+  const [articleStats, setArticleStats] = useState<Record<string, { comments: number; bookmarks: number }>>({})
+
   // Content type toggle
   const [contentType, setContentType] = useState<'articles' | 'guidelines'>('articles')
   const [guidelines, setGuidelines] = useState<Article[]>([])
@@ -108,6 +111,15 @@ export default function JournalApp() {
       const res = await fetchArticlesFromCache(lang)
       setArticles(res)
       if (res.length === 0) setError('論文の取得に失敗しました。しばらく待ってから再取得してください。')
+      // 統計一括取得
+      if (res.length > 0) {
+        try {
+          const pmids = res.slice(0, 50).map(a => a.pmid).join(',')
+          const statsRes = await fetch(`${API_BASE}/api/journal/stats?pmids=${pmids}`)
+          const statsData = await statsRes.json()
+          if (statsData.ok) setArticleStats(statsData.stats || {})
+        } catch {}
+      }
     } catch { setError('取得に失敗しました。') }
     setLoading(false)
   }, [lang])
@@ -403,7 +415,7 @@ export default function JournalApp() {
                 <ArticleCard key={a.pmid} article={a}
                   isBookmarked={bookmarks.has(a.pmid)}
                   onToggleBookmark={() => toggleBookmark(a.pmid)}
-                  isPro={isPro} displayLang={displayLang} />
+                  isPro={isPro} displayLang={displayLang} stats={articleStats[a.pmid]} />
               ))}
             </div>
           )}
@@ -431,7 +443,7 @@ export default function JournalApp() {
             <ArticleCard key={a.pmid} article={a}
               isBookmarked={bookmarks.has(a.pmid)}
               onToggleBookmark={() => toggleBookmark(a.pmid)}
-              isPro={isPro} displayLang={displayLang} />
+              isPro={isPro} displayLang={displayLang} stats={articleStats[a.pmid]} />
           ))}
 
           {/* PRO gate */}
@@ -460,59 +472,131 @@ export default function JournalApp() {
 }
 
 // ── Article Card ──
-function ArticleCard({ article: a, isBookmarked, onToggleBookmark, isPro, displayLang = 'en' }: {
+function ArticleCard({ article: a, isBookmarked, onToggleBookmark, isPro, displayLang = 'en', stats }: {
   article: Article; isBookmarked: boolean; onToggleBookmark: () => void; isPro: boolean; displayLang?: 'ja' | 'en'
+  stats?: { comments: number; bookmarks: number }
 }) {
+  const [showComments, setShowComments] = useState(false)
+  const [comments, setComments] = useState<{ id: string; text: string; displayName: string; createdAt: string }[]>([])
+  const [commentText, setCommentText] = useState('')
+  const [loadingComments, setLoadingComments] = useState(false)
+
   const ifColor = a.impactFactor >= 50 ? '#991B1B' : a.impactFactor >= 20 ? '#B45309' : a.impactFactor >= 10 ? MC : '#6B6760'
+  const commentCount = stats?.comments || 0
+  const bookmarkCount = stats?.bookmarks || 0
+
+  const loadComments = useCallback(async () => {
+    setLoadingComments(true)
+    try {
+      const res = await fetch(`${API_BASE}/api/journal/comments?pmid=${a.pmid}`)
+      const data = await res.json()
+      if (data.ok) setComments(data.comments || [])
+    } catch {}
+    setLoadingComments(false)
+  }, [a.pmid])
+
+  const postComment = useCallback(async () => {
+    if (!commentText.trim()) return
+    const token = typeof window !== 'undefined' ? localStorage.getItem('iwor_session_token') : null
+    if (!token) return
+    try {
+      const res = await fetch(`${API_BASE}/api/journal/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify({ pmid: a.pmid, text: commentText.trim(), displayName: '医師' }),
+      })
+      const data = await res.json()
+      if (data.ok && data.comment) {
+        setComments(prev => [...prev, data.comment])
+        setCommentText('')
+      }
+    } catch {}
+  }, [a.pmid, commentText])
 
   return (
-    <div className="bg-s0 border border-br rounded-xl p-4 hover:border-ac/30 transition-all">
-      <div className="flex items-start gap-3">
-        <div className="flex-1 min-w-0">
-          {/* Journal + IF badge */}
-          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ background: MCL, color: MC }}>
-              {a.journal}
-            </span>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: `${ifColor}15`, color: ifColor }}>
-              IF {a.impactFactor}
-            </span>
-            <span className="text-[10px] text-muted">{a.date}</span>
-          </div>
+    <div className="bg-s0 border border-br rounded-xl overflow-hidden hover:border-ac/30 transition-all">
+      <div className="p-3">
+        <div className="flex items-start gap-2">
+          <div className="flex-1 min-w-0">
+            {/* Journal + IF + Date */}
+            <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: MCL, color: MC }}>{a.journal}</span>
+              <span className="text-[9px] font-bold px-1 py-0.5 rounded" style={{ background: `${ifColor}15`, color: ifColor }}>IF {a.impactFactor}</span>
+              <span className="text-[9px] text-muted">{a.date}</span>
+            </div>
 
-          {/* Title */}
-          <a href={`https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/`} target="_blank" rel="noopener noreferrer"
-            className="text-sm font-bold text-tx hover:text-ac transition-colors leading-snug block mb-1.5">
-            {displayLang === 'ja' && a.titleJa ? a.titleJa : a.title}
-          </a>
-
-          {/* Authors */}
-          <p className="text-[11px] text-muted truncate">{a.authors}</p>
-
-          {/* Links */}
-          <div className="flex items-center gap-3 mt-2">
+            {/* Title */}
             <a href={`https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/`} target="_blank" rel="noopener noreferrer"
-              className="text-[10px] text-ac hover:underline">PubMed</a>
-            {a.doi && (
-              <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer"
-                className="text-[10px] text-ac hover:underline">DOI</a>
+              className="text-xs font-bold text-tx hover:text-ac transition-colors leading-snug block mb-1">
+              {displayLang === 'ja' && a.titleJa ? a.titleJa : a.title}
+            </a>
+            {displayLang === 'ja' && a.titleJa && (
+              <p className="text-[9px] text-muted mb-1 line-clamp-1">{a.title}</p>
             )}
-            <Link href={`/presenter?type=journal-club&topic=${encodeURIComponent(a.title)}`}
-              className="text-[10px] text-ac hover:underline">📚 抄読会資料</Link>
-            <span className="text-[10px] text-muted">PMID: {a.pmid}</span>
-          </div>
-        </div>
 
-        {/* Bookmark button */}
-        <button onClick={onToggleBookmark}
-          className={`flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center transition-all ${
-            isBookmarked ? 'border-amber-400 bg-amber-50' : 'border-br hover:border-ac/30'
-          }`}>
-          <span className={`text-base ${isBookmarked ? '' : 'opacity-30'}`}>
-            {isBookmarked ? '★' : '☆'}
-          </span>
-        </button>
+            {/* Authors */}
+            <p className="text-[10px] text-muted truncate mb-1.5">{a.authors}</p>
+
+            {/* Actions row */}
+            <div className="flex items-center gap-2 flex-wrap">
+              <a href={`https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/`} target="_blank" rel="noopener noreferrer"
+                className="text-[9px] text-ac hover:underline">PubMed</a>
+              {a.doi && <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer"
+                className="text-[9px] text-ac hover:underline">DOI</a>}
+              <Link href={`/presenter?type=journal-club&topic=${encodeURIComponent(a.title)}`}
+                className="text-[9px] text-ac hover:underline">📚 抄読会</Link>
+
+              {/* コメント・ブックマーク数 */}
+              <button onClick={() => { setShowComments(!showComments); if (!showComments && comments.length === 0) loadComments() }}
+                className="text-[9px] text-muted hover:text-ac flex items-center gap-0.5">
+                💬 {commentCount > 0 ? commentCount : ''}
+              </button>
+              <span className="text-[9px] text-muted flex items-center gap-0.5">★ {bookmarkCount}</span>
+            </div>
+          </div>
+
+          {/* Bookmark */}
+          <button onClick={onToggleBookmark}
+            className={`flex-shrink-0 w-8 h-8 rounded-lg border flex items-center justify-center transition-all ${
+              isBookmarked ? 'border-amber-400 bg-amber-50' : 'border-br hover:border-ac/30'
+            }`}>
+            <span className={`text-sm ${isBookmarked ? '' : 'opacity-30'}`}>{isBookmarked ? '★' : '☆'}</span>
+          </button>
+        </div>
       </div>
+
+      {/* コメントセクション */}
+      {showComments && (
+        <div className="border-t border-br px-3 py-2 bg-s1/50">
+          {loadingComments ? (
+            <p className="text-[10px] text-muted text-center py-2">読み込み中...</p>
+          ) : comments.length === 0 ? (
+            <p className="text-[10px] text-muted text-center py-2">まだコメントはありません</p>
+          ) : (
+            <div className="space-y-1.5 mb-2 max-h-40 overflow-y-auto">
+              {comments.map(c => (
+                <div key={c.id} className="text-[10px]">
+                  <span className="font-bold text-tx">{c.displayName}</span>
+                  <span className="text-muted ml-1">{new Date(c.createdAt).toLocaleDateString('ja-JP')}</span>
+                  <p className="text-tx mt-0.5">{c.text}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          {isPro ? (
+            <div className="flex gap-1.5">
+              <input value={commentText} onChange={e => setCommentText(e.target.value)}
+                placeholder="コメントを追加..."
+                className="flex-1 px-2 py-1 bg-bg border border-br rounded text-[10px] outline-none focus:border-ac"
+                onKeyDown={e => e.key === 'Enter' && postComment()} />
+              <button onClick={postComment} disabled={!commentText.trim()}
+                className="px-2 py-1 rounded text-[9px] font-bold text-white disabled:opacity-30" style={{ background: MC }}>送信</button>
+            </div>
+          ) : (
+            <p className="text-[9px] text-center" style={{ color: MC }}>コメントにはPROが必要です</p>
+          )}
+        </div>
+      )}
     </div>
   )
 }
