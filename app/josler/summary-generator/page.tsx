@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { getTemplateByDisease, getPubmedSearchUrl, type DiseaseTemplate } from '@/lib/josler-templates'
 import { convertPrescriptionToGeneric } from '@/lib/drug-name-converter'
 import { parseKarteText, generateDiscussionTemplate } from '@/lib/karte-parser'
+import { getRichDiscussion } from '@/lib/josler-discussions'
 import { SPECIALTIES as SP, DISEASE_GROUPS as DG } from '@/lib/josler-data'
 
 const MC = '#1B4F3A'
@@ -141,19 +142,17 @@ function SummaryGeneratorInner() {
       }
     }
 
-    // 考察テンプレート生成（AI不使用 — テンプレートの穴埋め構造のみ）
-    if (tmpl) {
+    // 考察テンプレート生成（AI不使用）
+    // Step 1: リッチ考察テンプレート（高品質事前作成文章）を探す
+    const richDisc = getRichDiscussion(disease)
+    if (richDisc) {
+      if (!init.courseAndDiscussion) init.courseAndDiscussion = richDisc.courseAndDiscussion
+      if (!init.overallDiscussion) init.overallDiscussion = richDisc.overallDiscussion
+    } else if (tmpl) {
+      // Step 2: リッチがなければ基本テンプレートから骨格生成
       const { courseTemplate, discussionTemplate } = generateDiscussionTemplate(tmpl, init.problemList, init.diagnosis)
-      // カルテの経過データがなければテンプレートを使用
-      if (!init.courseAndDiscussion) {
-        init.courseAndDiscussion = courseTemplate
-      } else {
-        // カルテの経過に考察テンプレートを追加
-        init.courseAndDiscussion += '\n\n' + courseTemplate.split('【考察】')[1] ? '【考察】\n' + courseTemplate.split('【考察】').slice(1).join('【考察】') : ''
-      }
-      if (!init.overallDiscussion) {
-        init.overallDiscussion = discussionTemplate
-      }
+      if (!init.courseAndDiscussion) init.courseAndDiscussion = courseTemplate
+      if (!init.overallDiscussion) init.overallDiscussion = discussionTemplate
     }
 
     setValues(init)
