@@ -77,6 +77,7 @@ function SummaryGeneratorInner() {
 
   // カルテ貼り付け
   const [karteInput, setKarteInput] = useState('')
+  const [karteConsent, setKarteConsent] = useState({ anonymized: false, patientConsent: false, hospitalRules: false })
 
   // URLパラメータから初期値
   useEffect(() => {
@@ -194,18 +195,60 @@ function SummaryGeneratorInner() {
 
         {/* カルテ貼り付け（匿名化済みデータのみ） */}
         <div className="bg-s0 border border-br rounded-xl p-4 mb-3">
-          <h2 className="text-sm font-bold text-tx mb-1">カルテ情報の貼り付け（任意）</h2>
-          <div className="bg-wnl border border-wnb rounded-lg p-2 mb-2 text-[10px] text-wn">
-            <p className="font-bold">⚠ 匿名化必須</p>
-            <p>・患者氏名・生年月日・住所・連絡先は削除してください</p>
-            <p>・病院名は「近医」「前医」に変更してください</p>
-            <p>・内科学会に提出できるレベルで匿名化された情報のみ入力可能です</p>
-            <p>・入力データはサーバーに送信されず、ページを閉じると消去されます</p>
+          <h2 className="text-sm font-bold text-tx mb-2">カルテ情報の貼り付け（任意）</h2>
+
+          {/* 免責・技術説明 */}
+          <div className="bg-acl border border-ac/20 rounded-lg p-2 mb-3 text-[10px]" style={{ color: MC }}>
+            <p className="font-bold mb-1">本ツールの技術的仕様</p>
+            <p>・<strong>AI不使用</strong>: テンプレートエンジン（JavaScript関数）による機械的な文字列処理のみ</p>
+            <p>・<strong>データ非保持</strong>: 入力内容はブラウザのメモリ上でのみ処理され、サーバーに送信されません</p>
+            <p>・<strong>保存なし</strong>: localStorage・Cookie・IndexedDB等への保存は一切行いません</p>
+            <p>・<strong>ページを閉じると全データが消去</strong>されます</p>
           </div>
-          <textarea value={karteInput} onChange={e => setKarteInput(e.target.value)}
-            rows={6} placeholder="匿名化済みのカルテ情報（現病歴・入院時現症・検査所見・処方など）をここに貼り付けてください。&#10;&#10;疾患を選択後「作成開始」を押すと、貼り付けた内容が各セクションに自動展開されます。"
-            className="w-full px-3 py-2 bg-bg border border-br rounded-lg text-xs focus:border-ac outline-none resize-y leading-relaxed" />
-          <p className="text-[9px] text-muted mt-1">貼り付けた内容は病歴・現症・検査所見・処方のセクションに自動振り分けされます</p>
+
+          {/* 同意チェックボックス（3つ全てチェック必須） */}
+          <div className="bg-wnl border border-wnb rounded-lg p-3 mb-3">
+            <p className="text-xs font-bold text-wn mb-2">⚠ カルテ情報を貼り付ける前に、以下の全てに同意してください</p>
+            <div className="space-y-2">
+              <label className="flex items-start gap-2 cursor-pointer text-[11px] text-wn">
+                <input type="checkbox" checked={karteConsent.anonymized}
+                  onChange={e => setKarteConsent(p => ({ ...p, anonymized: e.target.checked }))}
+                  className="mt-0.5 rounded flex-shrink-0" />
+                <span>入力する情報から<strong>全ての患者識別情報</strong>（氏名・生年月日・住所・連絡先・患者ID等）を削除済みであり、<strong>日本内科学会J-OSLER「病歴要約 作成と評価の手引き」の匿名化基準</strong>を満たしていることを確認しました。病院名は「近医」「前医」に変更済みです。</span>
+              </label>
+              <label className="flex items-start gap-2 cursor-pointer text-[11px] text-wn">
+                <input type="checkbox" checked={karteConsent.patientConsent}
+                  onChange={e => setKarteConsent(p => ({ ...p, patientConsent: e.target.checked }))}
+                  className="mt-0.5 rounded flex-shrink-0" />
+                <span>本症例の病歴要約作成について、<strong>患者本人（または代理人）の同意</strong>を得ていること、または所属施設の倫理規定に基づき同意が不要であることを確認しました。</span>
+              </label>
+              <label className="flex items-start gap-2 cursor-pointer text-[11px] text-wn">
+                <input type="checkbox" checked={karteConsent.hospitalRules}
+                  onChange={e => setKarteConsent(p => ({ ...p, hospitalRules: e.target.checked }))}
+                  className="mt-0.5 rounded flex-shrink-0" />
+                <span>本ツールの使用が<strong>所属病院・施設の情報セキュリティ規則</strong>に合致していることを確認しました。診療情報の外部ツールでの利用について施設のルールを遵守しています。</span>
+              </label>
+            </div>
+          </div>
+
+          {/* テキストエリア（全同意時のみ有効） */}
+          {karteConsent.anonymized && karteConsent.patientConsent && karteConsent.hospitalRules ? (
+            <>
+              <textarea value={karteInput} onChange={e => setKarteInput(e.target.value)}
+                rows={6} placeholder="匿名化済みのカルテ情報（現病歴・入院時現症・検査所見・処方など）をここに貼り付けてください。&#10;&#10;疾患を選択後「作成開始」を押すと、貼り付けた内容が各セクションに自動展開されます。"
+                className="w-full px-3 py-2 bg-bg border border-br rounded-lg text-xs focus:border-ac outline-none resize-y leading-relaxed" />
+              <p className="text-[9px] text-muted mt-1">貼り付けた内容は病歴・現症・検査所見・処方のセクションに自動振り分けされます</p>
+            </>
+          ) : (
+            <div className="w-full px-3 py-6 bg-s1 border border-br rounded-lg text-center">
+              <p className="text-xs text-muted">上の3項目すべてにチェックを入れると入力欄が表示されます</p>
+            </div>
+          )}
+
+          {/* 免責（iwor側） */}
+          <div className="mt-2 p-2 rounded-lg bg-s1 text-[9px] text-muted leading-relaxed">
+            <p><strong>免責事項:</strong> 本ツールは匿名化済みテキストのテンプレート整形機能を提供するものであり、診療情報の収集・保存・分析は行いません。入力データの匿名化の適切性、患者同意の取得、施設規則の遵守は全て利用者（医師）の責任において行われるものとし、iwor運営者は入力内容に関して一切の責任を負いません。</p>
+          </div>
         </div>
 
         {/* Step 1: 領域選択 */}
