@@ -1466,6 +1466,50 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       return json({ ok: true }, 200, request);
     }
 
+    // ══════════════════════════════════════════════════
+    //  自己分析フォローアップ質問生成
+    //  POST /api/self-analysis
+    //  Body: { answers: { question: string, answer: string }[] }
+    //  認証不要（個人情報なし・キャリア質問のみ）
+    // ══════════════════════════════════════════════════
+    if (path === "/api/self-analysis" && request.method === "POST") {
+      const body = await parseBody(request);
+      if (!body || !body.answers) return json({ error: "answers required" }, 400, request);
+
+      const answers = body.answers.slice(-3); // 直近3回答のみ使用（コスト制限）
+      const context = answers.map(a => `Q: ${a.question}\nA: ${a.answer}`).join("\n\n");
+
+      try {
+        const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+          messages: [
+            {
+              role: "system",
+              content: "あなたは医学生のキャリアカウンセラーです。相手の回答を受けて、より深い自己理解を促す1つのフォローアップ質問を日本語で生成してください。質問は簡潔に（50文字以内）。選択肢は3-4個提示してください。出力はJSON形式: {\"question\": \"...\", \"choices\": [\"...\", \"...\", \"...\"]}"
+            },
+            {
+              role: "user",
+              content: `以下のキャリアに関する回答を踏まえて、より深い自己分析を促すフォローアップ質問を1つ生成してください。\n\n${context}`
+            }
+          ],
+          max_tokens: 200,
+        });
+
+        let parsed;
+        try {
+          const text = result.response || "";
+          const jsonMatch = text.match(/\{[\s\S]*\}/);
+          parsed = jsonMatch ? JSON.parse(jsonMatch[0]) : null;
+        } catch {
+          parsed = null;
+        }
+
+        return json({ ok: true, followUp: parsed }, 200, request);
+      } catch (err) {
+        console.error("Self-analysis AI error:", err);
+        return json({ ok: true, followUp: null }, 200, request);
+      }
+    }
+
     // ── 404 ──
     return json({ error: "Not Found" }, 404, request);
   },
