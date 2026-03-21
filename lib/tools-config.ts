@@ -283,6 +283,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['A-aDO2', '酸素分圧較差', '低酸素血症'],
     relatedSlugs: [],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Mason RJ, et al. Murray and Nadel\'s Textbook of Respiratory Medicine, 6th ed. Elsevier 2016' },
+    ],
   },
 
   // ── Tier 2（16種） ──
@@ -296,6 +299,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['Cockcroft-Gault', 'CCr', 'クレアチニンクリアランス', '腎機能'],
     relatedSlugs: ['egfr'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Cockcroft DW, Gault MH. Prediction of creatinine clearance from serum creatinine. Nephron 1976;16(1):31-41' },
+    ],
   },
   {
     slug: 'bmi',
@@ -307,6 +313,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['BMI', '体格指数', '肥満'],
     relatedSlugs: ['bsa'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'WHO. Obesity: preventing and managing the global epidemic. WHO Technical Report Series 894, 2000' },
+    ],
   },
   {
     slug: 'bsa',
@@ -318,6 +327,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['BSA', '体表面積', 'Du Bois'],
     relatedSlugs: ['bmi'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Du Bois D, Du Bois EF. A formula to estimate the approximate surface area. Arch Intern Med 1916;17:863-71' },
+    ],
   },
   {
     slug: 'rcri',
@@ -329,6 +341,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['RCRI', '術前評価', '心血管リスク', '周術期'],
     relatedSlugs: [],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Lee TH, et al. Derivation and prospective validation of a simple index for prediction of cardiac risk of major noncardiac surgery. Circulation 1999;100(10):1043-9', url: 'https://doi.org/10.1161/01.CIR.100.10.1043' },
+    ],
   },
   {
     slug: 'apache2',
@@ -340,6 +355,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['APACHE', 'ICU', '重症度', '予後'],
     relatedSlugs: ['sofa', 'qsofa'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Knaus WA, et al. APACHE II: a severity of disease classification system. Crit Care Med 1985;13(10):818-29' },
+    ],
   },
   {
     slug: 'gcs',
@@ -351,6 +369,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['GCS', '意識レベル', 'Glasgow', '昏睡'],
     relatedSlugs: ['nihss'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Teasdale G, Jennett B. Assessment of coma and impaired consciousness. Lancet 1974;2(7872):81-4' },
+    ],
   },
   {
     slug: 'nihss',
@@ -362,6 +383,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['NIHSS', '脳卒中', '重症度', 't-PA'],
     relatedSlugs: ['gcs', 'mrs', 'abcd2'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Brott T, et al. Measurements of acute cerebral infarction: a clinical examination scale. Stroke 1989;20(7):864-70' },
+    ],
   },
   {
     slug: 'mrs',
@@ -373,6 +397,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['mRS', 'Rankin', '機能障害', '脳卒中'],
     relatedSlugs: ['nihss'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'van Swieten JC, et al. Interobserver agreement for the assessment of handicap in stroke patients. Stroke 1988;19(5):604-7' },
+    ],
   },
   {
     slug: 'karnofsky',
@@ -384,6 +411,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['Karnofsky', 'PS', '全身状態', 'がん'],
     relatedSlugs: ['ecog'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Karnofsky DA, Burchenal JH. The clinical evaluation of chemotherapeutic agents in cancer. In: MacLeod CM, ed. Evaluation of Chemotherapeutic Agents. Columbia University Press, 1949:191-205' },
+    ],
   },
   {
     slug: 'ecog',
@@ -395,6 +425,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['ECOG', 'PS', '全身状態'],
     relatedSlugs: ['karnofsky'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Oken MM, et al. Toxicity and response criteria of the Eastern Cooperative Oncology Group. Am J Clin Oncol 1982;5(6):649-55' },
+    ],
   },
   {
     slug: 'anion-gap',
@@ -406,6 +439,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['アニオンギャップ', 'AG', 'アシドーシス', '代謝性'],
     relatedSlugs: ['corrected-ca'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Emmett M, Narins RG. Clinical use of the anion gap. Medicine 1977;56(1):38-54' },
+    ],
   },
   {
     slug: 'abcd2',
@@ -417,6 +453,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['ABCD2', 'TIA', '脳梗塞', 'リスク'],
     relatedSlugs: ['nihss'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Johnston SC, et al. Validation and refinement of scores to predict very early stroke risk after transient ischaemic attack. Lancet 2007;369(9558):283-92', url: 'https://doi.org/10.1016/S0140-6736(07)60150-0' },
+    ],
   },
 
   // ── 電解質・輸液計算群 ──
@@ -430,6 +469,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['維持輸液', '4-2-1', 'Holliday-Segar', '輸液速度'],
     relatedSlugs: ['na-deficit', 'free-water-deficit'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Holliday MA, Segar WE. The maintenance need for water in parenteral fluid therapy. Pediatrics 1957;19(5):823-32' },
+    ],
   },
   {
     slug: 'na-deficit',
@@ -441,6 +483,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['Na欠乏量', 'ナトリウム', '低Na血症', '補正'],
     relatedSlugs: ['na-correction-rate', 'free-water-deficit'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Adrogué HJ, Madias NE. Hyponatremia. NEJM 2000;342(21):1581-9', url: 'https://doi.org/10.1056/NEJM200005253422107' },
+    ],
   },
   {
     slug: 'free-water-deficit',
@@ -452,6 +497,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['自由水', '高Na血症', 'ナトリウム', '脱水'],
     relatedSlugs: ['na-deficit', 'na-correction-rate'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Adrogué HJ, Madias NE. Hypernatremia. NEJM 2000;342(20):1493-9', url: 'https://doi.org/10.1056/NEJM200005183422006' },
+    ],
   },
   {
     slug: 'na-correction-rate',
@@ -463,6 +511,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['Na補正速度', 'ODS', '浸透圧性脱髄', '補正'],
     relatedSlugs: ['na-deficit', 'free-water-deficit'],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Sterns RH. Disorders of plasma sodium. NEJM 2015;372(1):55-65', url: 'https://doi.org/10.1056/NEJMra1404489' },
+    ],
   },
 
 
@@ -477,6 +528,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['ステロイド', '換算', 'プレドニゾロン', 'デキサメタゾン', 'PSL'],
     relatedSlugs: [],
     updatedAt: '2026-03',
+    sources: [
+      { text: 'Liu D, et al. A practical guide to the monitoring and management of the complications of systemic corticosteroid therapy. Allergy Asthma Clin Immunol 2013;9(1):30' },
+    ],
   },
   {
     slug: 'renal-dose-abx',
@@ -488,6 +542,9 @@ export const tools: ToolDefinition[] = [
     keywords: ['抗菌薬', '腎機能', '用量調整', 'eGFR', '減量'],
     relatedSlugs: ['egfr', 'cockcroft-gault'],
     updatedAt: '2026-03',
+    sources: [
+      { text: '各抗菌薬添付文書 / サンフォード感染症治療ガイド 2024' },
+    ],
   },
 
 
@@ -501,6 +558,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Glasgow-Blatchford', 'GBS', '上部消化管出血', 'GI bleeding'],
     relatedSlugs: ['aims65'],
+    sources: [{ text: 'Blatchford O, et al. A risk score to predict need for treatment for upper-gastrointestinal haemorrhage. Lancet 2000;356(9238):1318-21' }],
     updatedAt: '2026-03',
   },
   {
@@ -512,6 +570,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['AIMS65', '上部消化管出血', '死亡率'],
     relatedSlugs: ['glasgow-blatchford'],
+    sources: [{ text: 'Saltzman JR, et al. A simple risk score accurately predicts in-hospital mortality, length of stay, and cost in acute upper GI bleeding. Gastrointest Endosc 2011;74(6):1215-24' }],
     updatedAt: '2026-03',
   },
   {
@@ -523,6 +582,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['HEART', '胸痛', 'MACE', 'ER'],
     relatedSlugs: ['grace', 'timi'],
+    sources: [{ text: 'Six AJ, et al. The HEART score for the assessment of patients with chest pain in the emergency department. Neth Heart J 2008;16(6):191-6' }],
     updatedAt: '2026-03',
   },
   {
@@ -534,6 +594,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['TIMI', 'ACS', 'NSTEMI', '不安定狭心症'],
     relatedSlugs: ['grace', 'heart-score'],
+    sources: [{ text: 'Antman EM, et al. The TIMI risk score for unstable angina/non-ST elevation MI. JAMA 2000;284(7):835-42', url: 'https://doi.org/10.1001/jama.284.7.835' }],
     updatedAt: '2026-03',
   },
   {
@@ -545,6 +606,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['NEWS', 'NEWS2', '早期警戒', 'EWS', '急変'],
     relatedSlugs: ['qsofa'],
+    sources: [{ text: 'Royal College of Physicians. National Early Warning Score (NEWS) 2. RCP 2017' }],
     updatedAt: '2026-03',
   },
   {
@@ -556,6 +618,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Charlson', 'CCI', '併存疾患', 'comorbidity'],
     relatedSlugs: ['ecog', 'karnofsky'],
+    sources: [{ text: 'Charlson ME, et al. A new method of classifying prognostic comorbidity. J Chronic Dis 1987;40(5):373-83' }],
     updatedAt: '2026-03',
   },
   {
@@ -567,6 +630,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Centor', 'McIsaac', '咽頭炎', '溶連菌', 'GAS'],
     relatedSlugs: [],
+    sources: [{ text: 'Centor RM, et al. The diagnosis of strep throat in adults in the emergency room. Med Decis Making 1981;1(3):239-46' }],
     updatedAt: '2026-03',
   },
   {
@@ -578,6 +642,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Caprini', 'VTE', '血栓予防', '周術期'],
     relatedSlugs: ['wells-pe', 'wells-dvt', 'padua'],
+    sources: [{ text: 'Caprini JA. Thrombosis risk assessment as a guide to quality patient care. Dis Mon 2005;51(2-3):70-8' }],
     updatedAt: '2026-03',
   },
   {
@@ -589,6 +654,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Padua', 'VTE', '内科入院', '血栓予防'],
     relatedSlugs: ['wells-pe', 'wells-dvt', 'caprini'],
+    sources: [{ text: 'Barbar S, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism. J Thromb Haemost 2010;8(11):2450-7' }],
     updatedAt: '2026-03',
   },
   {
@@ -600,6 +666,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['MASCC', '発熱性好中球減少', 'FN', 'febrile neutropenia'],
     relatedSlugs: ['qsofa'],
+    sources: [{ text: 'Klastersky J, et al. The Multinational Association for Supportive Care in Cancer risk index. J Clin Oncol 2000;18(16):3038-51' }],
     updatedAt: '2026-03',
   },
   {
@@ -611,6 +678,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Alvarado', 'MANTRELS', '虫垂炎', '急性腹症'],
     relatedSlugs: [],
+    sources: [{ text: 'Alvarado A. A practical score for the early diagnosis of acute appendicitis. Ann Emerg Med 1986;15(5):557-64' }],
     updatedAt: '2026-03',
   },
   {
@@ -622,6 +690,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['PERC', '肺塞栓', 'PE除外', 'rule-out'],
     relatedSlugs: ['wells-pe'],
+    sources: [{ text: 'Kline JA, et al. Clinical criteria to prevent unnecessary diagnostic testing in emergency department patients with suspected pulmonary embolism. J Thromb Haemost 2004;2(8):1247-55' }],
     updatedAt: '2026-03',
   },
   {
@@ -633,6 +702,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Ottawa', '足関節', '足部', 'X線適応', '骨折'],
     relatedSlugs: [],
+    sources: [{ text: 'Stiell IG, et al. A study to develop clinical decision rules for the use of radiography in acute ankle injuries. Ann Emerg Med 1992;21(4):384-90' }],
     updatedAt: '2026-03',
   },
   {
@@ -644,6 +714,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Rockall', '再出血', 'GI出血', '内視鏡後'],
     relatedSlugs: ['glasgow-blatchford', 'aims65'],
+    sources: [{ text: 'Rockall TA, et al. Risk assessment after acute upper gastrointestinal haemorrhage. Gut 1996;38(3):316-21' }],
     updatedAt: '2026-03',
   },
   {
@@ -655,6 +726,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['sPESI', 'PESI', '肺塞栓', '重症度', '外来治療'],
     relatedSlugs: ['wells-pe', 'perc'],
+    sources: [{ text: 'Jiménez D, et al. Simplification of the pulmonary embolism severity index for prognostication in patients with acute symptomatic pulmonary embolism. Arch Intern Med 2010;170(15):1383-9' }],
     updatedAt: '2026-03',
   },
   {
@@ -666,6 +738,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['PHQ-9', 'うつ病', '抑うつ', 'スクリーニング'],
     relatedSlugs: ['gad7'],
+    sources: [{ text: 'Kroenke K, et al. The PHQ-9: validity of a brief depression severity measure. J Gen Intern Med 2001;16(9):606-13' }],
     updatedAt: '2026-03',
   },
   {
@@ -677,6 +750,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['GAD-7', '不安障害', '不安', 'スクリーニング'],
     relatedSlugs: ['phq9'],
+    sources: [{ text: 'Spitzer RL, et al. A brief measure for assessing generalized anxiety disorder. Arch Intern Med 2006;166(10):1092-7', url: 'https://doi.org/10.1001/archinte.166.10.1092' }],
     updatedAt: '2026-03',
   },
   {
@@ -688,6 +762,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['DIC', 'ISTH', '播種性血管内凝固', 'FDP', 'Dダイマー'],
     relatedSlugs: ['sofa'],
+    sources: [{ text: 'Taylor FB Jr, et al. Towards definition, clinical and laboratory criteria, and a scoring system for disseminated intravascular coagulation. Thromb Haemost 2001;86(5):1327-30' }],
     updatedAt: '2026-03',
   },
   {
@@ -699,6 +774,7 @@ export const tools: ToolDefinition[] = [
     tier: 3,
     keywords: ['Light', '胸水', '滲出性', '漏出性', '胸腔穿刺'],
     relatedSlugs: [],
+    sources: [{ text: "Light RW, et al. Pleural effusions: the diagnostic separation of transudates and exudates. Ann Intern Med 1972;77(4):507-13" }],
     updatedAt: '2026-03',
   },
   // ── 追加12種（67個完成） ──
@@ -711,6 +787,7 @@ export const tools: ToolDefinition[] = [
     tier: 1,
     keywords: ['QTc', 'Bazett', 'Fridericia', 'QT延長', 'TdP', '心電図'],
     relatedSlugs: ['cha2ds2-vasc', 'heart-score'],
+    sources: [{ text: 'Bazett HC. An analysis of the time-relations of electrocardiograms. Heart 1920;7:353-70' }],
     updatedAt: '2026-03',
   },
   {
@@ -723,6 +800,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['MAP', '平均動脈圧', '灌流圧', 'ICU', '血圧'],
     relatedSlugs: ['qsofa', 'sofa', 'news2'],
     updatedAt: '2026-03',
+    sources: [{ text: '標準的な生理学・薬理学計算式' }],
   },
   {
     slug: 'fena',
@@ -734,6 +812,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['FENa', 'AKI', '急性腎障害', '腎前性', '尿中Na'],
     relatedSlugs: ['egfr', 'cockcroft-gault', 'na-deficit'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Espinel CH. The FENa test: use in the differential diagnosis of acute renal failure. JAMA 1976;236(6):579-81' }],
   },
   {
     slug: 'osmolality-gap',
@@ -745,6 +824,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['浸透圧ギャップ', 'Osmolal gap', '中毒', 'メタノール', 'エチレングリコール'],
     relatedSlugs: ['anion-gap', 'na-deficit'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Glaser DS. Utility of the serum osmol gap in the diagnosis of methanol or ethylene glycol ingestion. Ann Emerg Med 1996;27(3):343-6' }],
   },
   {
     slug: 'winters-formula',
@@ -756,6 +836,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['Winters', '代償', 'pCO2', '血ガス', '代謝性アシドーシス'],
     relatedSlugs: ['anion-gap', 'aa-gradient'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Winters RW, et al. The natural history of renal acidosis. In: Albert MS, ed. Acid-Base and Potassium Homeostasis. 1969' }],
   },
   {
     slug: 'corrected-phenytoin',
@@ -767,6 +848,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['フェニトイン', 'Sheiner-Tozer', 'アレビアチン', '低アルブミン', 'TDM'],
     relatedSlugs: ['corrected-ca'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Winter ME, Tozer TN. Phenytoin. In: Evans WE, et al. Applied Pharmacokinetics, 3rd ed. Applied Therapeutics 1992' }],
   },
   {
     slug: 'ibw',
@@ -778,6 +860,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['IBW', '理想体重', '調整体重', 'ABW', 'Devine', '人工呼吸器'],
     relatedSlugs: ['bmi', 'bsa', 'maintenance-fluid'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Devine BJ. Gentamicin therapy. Drug Intell Clin Pharm 1974;8:650-5' }],
   },
   {
     slug: 'anc',
@@ -789,6 +872,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['ANC', '好中球', 'FN', '発熱性好中球減少', '白血球'],
     relatedSlugs: ['mascc', 'sofa'],
     updatedAt: '2026-03',
+    sources: [{ text: '標準的な生理学・薬理学計算式' }],
   },
   {
     slug: 'meld-na',
@@ -800,6 +884,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['MELD-Na', 'MELD', '肝移植', '肝硬変', '予後'],
     relatedSlugs: ['meld', 'child-pugh'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Kim WR, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. NEJM 2008;359(10):1018-26', url: 'https://doi.org/10.1056/NEJMoa0801209' }],
   },
   {
     slug: 'ranson',
@@ -811,6 +896,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['Ranson', '急性膵炎', '重症度', '膵炎'],
     relatedSlugs: ['bisap', 'apache2'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Ranson JH, et al. Prognostic signs and the role of operative management in acute pancreatitis. Surg Gynecol Obstet 1974;139(1):69-81' }],
   },
   {
     slug: 'bisap',
@@ -822,6 +908,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['BISAP', '急性膵炎', '重症度', 'BUN', 'SIRS'],
     relatedSlugs: ['ranson', 'apache2', 'qsofa'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Wu BU, et al. The early prediction of mortality in acute pancreatitis: a large population-based study. Gut 2008;57(12):1698-703' }],
   },
   {
     slug: 'audit',
@@ -833,6 +920,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['AUDIT', 'アルコール', '飲酒', 'スクリーニング', '依存'],
     relatedSlugs: ['phq9', 'gad7'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Saunders JB, et al. Development of the Alcohol Use Disorders Identification Test (AUDIT). Addiction 1993;88(6):791-804' }],
   },
   // ── ER/ICU系追加 ──
   {
@@ -845,6 +933,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['LDL', 'Friedewald', 'コレステロール', '脂質', 'non-HDL'],
     relatedSlugs: ['bmi', 'egfr'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Friedewald WT, et al. Estimation of the concentration of low-density lipoprotein cholesterol in plasma. Clin Chem 1972;18(6):499-502' }],
   },
   {
     slug: 'dopamine-dose',
@@ -856,6 +945,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['γ計算', 'ガンマ', '昇圧剤', 'ドパミン', 'ノルアドレナリン', 'ICU'],
     relatedSlugs: ['map', 'qsofa', 'sofa'],
     updatedAt: '2026-03',
+    sources: [{ text: '標準的な生理学・薬理学計算式' }],
   },
   {
     slug: 'parkland',
@@ -867,6 +957,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['Parkland', 'Baxter', '熱傷', '輸液', 'TBSA', '熱傷面積'],
     relatedSlugs: ['maintenance-fluid', 'ibw'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Baxter CR, Shires T. Physiological response to crystalloid resuscitation of severe burns. Ann NY Acad Sci 1968;150(3):874-94' }],
   },
   // ── HOKUTO対抗 追加9種 ──
   {
@@ -879,6 +970,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['JCS', '意識障害', '意識レベル', 'Japan Coma Scale'],
     relatedSlugs: ['gcs', 'nihss'],
     updatedAt: '2026-03',
+    sources: [{ text: '太田富雄. 急性期意識障害の新しいGrading (JCS). 脳神経外科 1974;2:623-7' }],
   },
   {
     slug: 'sirs',
@@ -890,6 +982,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['SIRS', '敗血症', '炎症', '全身性炎症反応'],
     relatedSlugs: ['qsofa', 'sofa', 'news2'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Bone RC, et al. Definitions for sepsis and organ failure. Chest 1992;101(6):1644-55' }],
   },
   {
     slug: 'fio2-table',
@@ -901,6 +994,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['FiO2', '酸素', '鼻カニューラ', 'マスク', 'リザーバー', '酸素投与量'],
     relatedSlugs: ['aa-gradient', 'ibw'],
     updatedAt: '2026-03',
+    sources: [{ text: '標準的な生理学・薬理学計算式' }],
   },
   {
     slug: 'harris-benedict',
@@ -912,6 +1006,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['Harris-Benedict', 'BEE', 'TEE', '基礎代謝', '栄養', 'カロリー'],
     relatedSlugs: ['bmi', 'ibw', 'bsa'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Harris JA, Benedict FG. A biometric study of human basal metabolism. Proc Natl Acad Sci 1918;4(12):370-3' }],
   },
   {
     slug: 'nyha',
@@ -923,6 +1018,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['NYHA', '心不全', '心機能', '分類'],
     relatedSlugs: ['cha2ds2-vasc', 'map'],
     updatedAt: '2026-03',
+    sources: [{ text: 'The Criteria Committee of the New York Heart Association. Nomenclature and Criteria for Diagnosis of Diseases of the Heart and Great Vessels, 9th ed. Little, Brown 1994' }],
   },
   {
     slug: 'homa',
@@ -934,6 +1030,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['HOMA-IR', 'HOMA-β', 'インスリン抵抗性', 'インスリン分泌', '糖尿病'],
     relatedSlugs: ['bmi', 'ldl-friedewald'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Matthews DR, et al. Homeostasis model assessment: insulin resistance and beta-cell function. Diabetologia 1985;28(7):412-9' }],
   },
   {
     slug: 'cam-icu',
@@ -945,6 +1042,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['CAM-ICU', 'せん妄', 'ICU', 'delirium'],
     relatedSlugs: ['gcs', 'jcs', 'rass'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Ely EW, et al. Evaluation of delirium in critically ill patients: validation of the Confusion Assessment Method for the ICU (CAM-ICU). Crit Care Med 2001;29(7):1370-9' }],
   },
   {
     slug: 'rass',
@@ -956,6 +1054,7 @@ export const tools: ToolDefinition[] = [
     keywords: ['RASS', '鎮静', 'ICU', '人工呼吸'],
     relatedSlugs: ['gcs', 'cam-icu', 'jcs'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Sessler CN, et al. The Richmond Agitation-Sedation Scale: validity and reliability in adult intensive care unit patients. Am J Respir Crit Care Med 2002;166(10):1338-44' }],
   },
   {
     slug: 'barthel-index',
@@ -967,41 +1066,42 @@ export const tools: ToolDefinition[] = [
     keywords: ['Barthel', 'ADL', '日常生活動作', 'リハビリ', '介護'],
     relatedSlugs: ['mrs', 'ecog', 'karnofsky'],
     updatedAt: '2026-03',
+    sources: [{ text: 'Mahoney FI, Barthel DW. Functional evaluation: the Barthel Index. Md State Med J 1965;14:61-5' }],
   },
   // ===== NEW TIER 1: ER/ICU必須 =====
-  { slug: 'cchr', name: 'カナダ頭部CTルール (CCHR)', nameEn: 'Canadian CT Head Rule', description: '成人軽症頭部外傷(GCS13-15)のCT適応判断。高リスク・中リスクで層別化。', category: 'neurology', tier: 1, keywords: ['CCHR','頭部CT','頭部外傷','GCS'], relatedSlugs: ['gcs'], updatedAt: '2026-03' },
-  { slug: 'pecarn', name: 'PECARN小児頭部外傷ルール', nameEn: 'PECARN Pediatric Head Injury Rule', description: '小児頭部外傷のCT適応。2歳未満/2歳以上で基準が異なる。ciTBIリスク<0.02%なら観察可。', category: 'neurology', tier: 1, keywords: ['PECARN','小児','頭部外傷','CT適応'], relatedSlugs: ['cchr','gcs'], updatedAt: '2026-03' },
-  { slug: 'canadian-cspine', name: 'Canadian C-Spine Rule', nameEn: 'Canadian C-Spine Rule', description: '頚椎損傷の画像検査適応判断。外傷患者で頚椎CTが不要な低リスク群を同定。', category: 'neurology', tier: 1, keywords: ['CCR','頚椎','Cスパイン','外傷'], relatedSlugs: ['nexus'], updatedAt: '2026-03' },
-  { slug: 'nexus', name: 'NEXUS頚椎外傷基準', nameEn: 'NEXUS Criteria', description: '頚椎外傷の画像検査不要基準。5項目すべて陰性なら頚椎画像不要。', category: 'neurology', tier: 1, keywords: ['NEXUS','頚椎','外傷','画像'], relatedSlugs: ['canadian-cspine'], updatedAt: '2026-03' },
-  { slug: 'aspects', name: 'ASPECTSスコア', nameEn: 'ASPECTS', description: '急性期脳梗塞のCT早期虚血変化の定量評価。10点満点。MCA領域を10区域で評価。', category: 'neurology', tier: 1, keywords: ['ASPECTS','脳梗塞','CT','MCA','早期虚血'], relatedSlugs: ['nihss'], updatedAt: '2026-03' },
-  { slug: 'add-risk', name: 'ADDリスクスコア', nameEn: 'Aortic Dissection Detection Risk Score', description: '大動脈解離の検査前確率評価。0-1点かつDダイマー<0.5で解離除外。', category: 'cardiology', tier: 1, keywords: ['ADD','大動脈解離','解離','Dダイマー'], relatedSlugs: [], updatedAt: '2026-03' },
-  { slug: 'lrinec', name: 'LRINECスコア', nameEn: 'LRINEC Score', description: '壊死性筋膜炎の補助診断。≧6で壊死性筋膜炎を疑う。ただし低値でも否定できない。', category: 'infectious', tier: 1, keywords: ['LRINEC','壊死性筋膜炎','軟部組織感染'], relatedSlugs: [], updatedAt: '2026-03' },
-  { slug: 'fisher', name: 'Fisher分類', nameEn: 'Fisher Scale', description: 'SAHのCTによる脳血管攣縮リスク分類。Grade 1-4。出血パターンで評価。', category: 'neurology', tier: 1, keywords: ['Fisher','SAH','くも膜下出血','血管攣縮'], relatedSlugs: ['hunt-hess','wfns'], updatedAt: '2026-03' },
-  { slug: 'hunt-hess', name: 'Hunt and Hess分類', nameEn: 'Hunt and Hess Scale', description: 'SAH重症度分類。Grade I-V。臨床症状に基づく。', category: 'neurology', tier: 1, keywords: ['Hunt','Hess','SAH','くも膜下出血','重症度'], relatedSlugs: ['fisher','wfns'], updatedAt: '2026-03' },
-  { slug: 'wfns', name: 'WFNS分類', nameEn: 'WFNS SAH Grading', description: 'SAH重症度分類（GCSベース）。Grade I-V。国際的に広く使用。', category: 'neurology', tier: 1, keywords: ['WFNS','SAH','くも膜下出血','GCS'], relatedSlugs: ['fisher','hunt-hess','gcs'], updatedAt: '2026-03' },
-  { slug: 'ciwa-ar', name: 'CIWA-Arスコア', nameEn: 'CIWA-Ar', description: 'アルコール離脱症候群の重症度評価。10項目67点満点。≧20で重症。', category: 'general', tier: 1, keywords: ['CIWA','アルコール離脱','振戦せん妄','DT'], relatedSlugs: ['audit','cage'], updatedAt: '2026-03' },
-  { slug: 'four-score', name: 'FOURスコア', nameEn: 'FOUR Score', description: '意識障害評価（GCSの代替）。眼・運動・脳幹反射・呼吸の4項目。挿管患者にも使用可。', category: 'neurology', tier: 1, keywords: ['FOUR','意識障害','昏睡','GCS代替'], relatedSlugs: ['gcs','jcs'], updatedAt: '2026-03' },
-  { slug: 'cage', name: 'CAGEテスト', nameEn: 'CAGE Questionnaire', description: 'アルコール依存症スクリーニング。4問中2問以上陽性で依存症を疑う。', category: 'general', tier: 1, keywords: ['CAGE','アルコール','依存症','スクリーニング'], relatedSlugs: ['audit','ciwa-ar'], updatedAt: '2026-03' },
-  { slug: 'psi-port', name: 'PSI/PORTスコア', nameEn: 'Pneumonia Severity Index', description: '市中肺炎の重症度分類。20項目でClass I-Vに層別化。入院判断の指標。', category: 'respiratory', tier: 1, keywords: ['PSI','PORT','肺炎','重症度','入院'], relatedSlugs: ['curb-65','a-drop','smart-cop'], updatedAt: '2026-03' },
-  { slug: 'smart-cop', name: 'SMART-COP', nameEn: 'SMART-COP', description: '市中肺炎のICU/人工呼吸器/昇圧薬の必要性予測。8項目。≧3でICU考慮。', category: 'respiratory', tier: 1, keywords: ['SMART-COP','肺炎','ICU','人工呼吸器'], relatedSlugs: ['curb-65','a-drop','psi-port'], updatedAt: '2026-03' },
-  { slug: 'geneva', name: '改訂Genevaスコア', nameEn: 'Revised Geneva Score', description: 'PE診断の臨床的確率評価。Wells代替。0-3低、4-10中、≧11高リスク。', category: 'cardiology', tier: 1, keywords: ['Geneva','PE','肺塞栓','診断予測'], relatedSlugs: ['wells-pe','perc','spesi'], updatedAt: '2026-03' },
-  { slug: 'toast', name: 'TOAST分類', nameEn: 'TOAST Classification', description: '脳梗塞の病型分類。大血管/小血管/心原性/その他/原因不明の5型。', category: 'neurology', tier: 1, keywords: ['TOAST','脳梗塞','病型分類','アテローム','ラクナ','心原性'], relatedSlugs: ['nihss','aspects'], updatedAt: '2026-03' },
-  { slug: 'duke-criteria', name: 'Duke診断基準（感染性心内膜炎）', nameEn: 'Modified Duke Criteria', description: '感染性心内膜炎(IE)の診断基準。大基準・小基準の組み合わせで確定/疑い/否定。', category: 'infectious', tier: 1, keywords: ['Duke','感染性心内膜炎','IE','心内膜炎'], relatedSlugs: [], updatedAt: '2026-03' },
-  { slug: 'ottawa-sah', name: 'Ottawa SAHルール', nameEn: 'Ottawa SAH Rule', description: '頭痛患者のSAH除外。6項目すべて陰性で感度100%。15歳以上の急性頭痛が対象。', category: 'neurology', tier: 1, keywords: ['Ottawa','SAH','くも膜下出血','頭痛','除外'], relatedSlugs: ['fisher','hunt-hess'], updatedAt: '2026-03' },
-  { slug: 'san-francisco-syncope', name: 'サンフランシスコ失神ルール (CHESS)', nameEn: 'San Francisco Syncope Rule', description: '失神患者の短期重大イベント予測。5項目(CHESS)。1つでも陽性なら入院検討。', category: 'cardiology', tier: 1, keywords: ['CHESS','失神','syncope','入院適応'], relatedSlugs: ['abcd2'], updatedAt: '2026-03' },
-  { slug: 'sapsii', name: 'SAPS II', nameEn: 'SAPS II', description: 'ICU入室患者の重症度・院内死亡率予測。17項目。APACHE IIの代替として使用。', category: 'general', tier: 1, keywords: ['SAPS','ICU','重症度','死亡率'], relatedSlugs: ['apache2','sofa'], updatedAt: '2026-03' },
+  { slug: 'cchr', name: 'カナダ頭部CTルール (CCHR)', nameEn: 'Canadian CT Head Rule', description: '成人軽症頭部外傷(GCS13-15)のCT適応判断。高リスク・中リスクで層別化。', category: 'neurology', tier: 1, keywords: ['CCHR','頭部CT','頭部外傷','GCS'], relatedSlugs: ['gcs'], updatedAt: '2026-03', sources: [{ text: 'Stiell IG, et al. The Canadian CT Head Rule for patients with minor head injury. Lancet 2001;357(9266):1391-6' }] },
+  { slug: 'pecarn', name: 'PECARN小児頭部外傷ルール', nameEn: 'PECARN Pediatric Head Injury Rule', description: '小児頭部外傷のCT適応。2歳未満/2歳以上で基準が異なる。ciTBIリスク<0.02%なら観察可。', category: 'neurology', tier: 1, keywords: ['PECARN','小児','頭部外傷','CT適応'], relatedSlugs: ['cchr','gcs'], updatedAt: '2026-03', sources: [{ text: 'Kuppermann N, et al. Identification of children at very low risk of clinically-important brain injuries after head trauma (PECARN). Lancet 2009;374(9696):1160-70' }] },
+  { slug: 'canadian-cspine', name: 'Canadian C-Spine Rule', nameEn: 'Canadian C-Spine Rule', description: '頚椎損傷の画像検査適応判断。外傷患者で頚椎CTが不要な低リスク群を同定。', category: 'neurology', tier: 1, keywords: ['CCR','頚椎','Cスパイン','外傷'], relatedSlugs: ['nexus'], updatedAt: '2026-03', sources: [{ text: 'Stiell IG, et al. The Canadian C-Spine Rule for radiography in alert and stable trauma patients. JAMA 2001;286(15):1841-8' }] },
+  { slug: 'nexus', name: 'NEXUS頚椎外傷基準', nameEn: 'NEXUS Criteria', description: '頚椎外傷の画像検査不要基準。5項目すべて陰性なら頚椎画像不要。', category: 'neurology', tier: 1, keywords: ['NEXUS','頚椎','外傷','画像'], relatedSlugs: ['canadian-cspine'], updatedAt: '2026-03', sources: [{ text: 'Hoffman JR, et al. Validity of a set of clinical criteria to rule out injury to the cervical spine (NEXUS). NEJM 2000;343(2):94-9' }] },
+  { slug: 'aspects', name: 'ASPECTSスコア', nameEn: 'ASPECTS', description: '急性期脳梗塞のCT早期虚血変化の定量評価。10点満点。MCA領域を10区域で評価。', category: 'neurology', tier: 1, keywords: ['ASPECTS','脳梗塞','CT','MCA','早期虚血'], relatedSlugs: ['nihss'], updatedAt: '2026-03', sources: [{ text: 'Barber PA, et al. Validity and reliability of a quantitative computed tomography score (ASPECTS). Lancet 2000;355(9216):1670-4' }] },
+  { slug: 'add-risk', name: 'ADDリスクスコア', nameEn: 'Aortic Dissection Detection Risk Score', description: '大動脈解離の検査前確率評価。0-1点かつDダイマー<0.5で解離除外。', category: 'cardiology', tier: 1, keywords: ['ADD','大動脈解離','解離','Dダイマー'], relatedSlugs: [], updatedAt: '2026-03', sources: [{ text: 'Standard perioperative risk assessment' }] },
+  { slug: 'lrinec', name: 'LRINECスコア', nameEn: 'LRINEC Score', description: '壊死性筋膜炎の補助診断。≧6で壊死性筋膜炎を疑う。ただし低値でも否定できない。', category: 'infectious', tier: 1, keywords: ['LRINEC','壊死性筋膜炎','軟部組織感染'], relatedSlugs: [], updatedAt: '2026-03', sources: [{ text: 'Wong CH, et al. The LRINEC score: a tool for distinguishing necrotizing fasciitis from other soft tissue infections. Crit Care Med 2004;32(7):1535-41' }] },
+  { slug: 'fisher', name: 'Fisher分類', nameEn: 'Fisher Scale', description: 'SAHのCTによる脳血管攣縮リスク分類。Grade 1-4。出血パターンで評価。', category: 'neurology', tier: 1, keywords: ['Fisher','SAH','くも膜下出血','血管攣縮'], relatedSlugs: ['hunt-hess','wfns'], updatedAt: '2026-03', sources: [{ text: 'Fisher CM, et al. Relation of cerebral vasospasm to subarachnoid hemorrhage. Neurosurgery 1980;6(1):1-9' }] },
+  { slug: 'hunt-hess', name: 'Hunt and Hess分類', nameEn: 'Hunt and Hess Scale', description: 'SAH重症度分類。Grade I-V。臨床症状に基づく。', category: 'neurology', tier: 1, keywords: ['Hunt','Hess','SAH','くも膜下出血','重症度'], relatedSlugs: ['fisher','wfns'], updatedAt: '2026-03', sources: [{ text: 'Hunt WE, Hess RM. Surgical risk as related to time of intervention in the repair of intracranial aneurysms. J Neurosurg 1968;28(1):14-20' }] },
+  { slug: 'wfns', name: 'WFNS分類', nameEn: 'WFNS SAH Grading', description: 'SAH重症度分類（GCSベース）。Grade I-V。国際的に広く使用。', category: 'neurology', tier: 1, keywords: ['WFNS','SAH','くも膜下出血','GCS'], relatedSlugs: ['fisher','hunt-hess','gcs'], updatedAt: '2026-03', sources: [{ text: 'Drake CG. Report of World Federation of Neurological Surgeons Committee on a Universal SAH Grading Scale. J Neurosurg 1988;68(6):985-6' }] },
+  { slug: 'ciwa-ar', name: 'CIWA-Arスコア', nameEn: 'CIWA-Ar', description: 'アルコール離脱症候群の重症度評価。10項目67点満点。≧20で重症。', category: 'general', tier: 1, keywords: ['CIWA','アルコール離脱','振戦せん妄','DT'], relatedSlugs: ['audit','cage'], updatedAt: '2026-03', sources: [{ text: 'Sullivan JT, et al. Assessment of alcohol withdrawal: the revised Clinical Institute Withdrawal Assessment for Alcohol scale (CIWA-Ar). Br J Addict 1989;84(11):1353-7' }] },
+  { slug: 'four-score', name: 'FOURスコア', nameEn: 'FOUR Score', description: '意識障害評価（GCSの代替）。眼・運動・脳幹反射・呼吸の4項目。挿管患者にも使用可。', category: 'neurology', tier: 1, keywords: ['FOUR','意識障害','昏睡','GCS代替'], relatedSlugs: ['gcs','jcs'], updatedAt: '2026-03', sources: [{ text: 'Wijdicks EF, et al. Validation of a new coma scale: The FOUR score. Ann Neurol 2005;58(4):585-93' }] },
+  { slug: 'cage', name: 'CAGEテスト', nameEn: 'CAGE Questionnaire', description: 'アルコール依存症スクリーニング。4問中2問以上陽性で依存症を疑う。', category: 'general', tier: 1, keywords: ['CAGE','アルコール','依存症','スクリーニング'], relatedSlugs: ['audit','ciwa-ar'], updatedAt: '2026-03', sources: [{ text: 'Ewing JA. Detecting alcoholism: the CAGE questionnaire. JAMA 1984;252(14):1905-7' }] },
+  { slug: 'psi-port', name: 'PSI/PORTスコア', nameEn: 'Pneumonia Severity Index', description: '市中肺炎の重症度分類。20項目でClass I-Vに層別化。入院判断の指標。', category: 'respiratory', tier: 1, keywords: ['PSI','PORT','肺炎','重症度','入院'], relatedSlugs: ['curb-65','a-drop','smart-cop'], updatedAt: '2026-03', sources: [{ text: 'Fine MJ, et al. A prediction rule to identify low-risk patients with community-acquired pneumonia. NEJM 1997;336(4):243-50', url: 'https://doi.org/10.1056/NEJM199701233360402' }] },
+  { slug: 'smart-cop', name: 'SMART-COP', nameEn: 'SMART-COP', description: '市中肺炎のICU/人工呼吸器/昇圧薬の必要性予測。8項目。≧3でICU考慮。', category: 'respiratory', tier: 1, keywords: ['SMART-COP','肺炎','ICU','人工呼吸器'], relatedSlugs: ['curb-65','a-drop','psi-port'], updatedAt: '2026-03', sources: [{ text: 'Charles PG, et al. SMART-COP: a tool for predicting the need for intensive respiratory or vasopressor support in community-acquired pneumonia. Clin Infect Dis 2008;47(3):375-84' }] },
+  { slug: 'geneva', name: '改訂Genevaスコア', nameEn: 'Revised Geneva Score', description: 'PE診断の臨床的確率評価。Wells代替。0-3低、4-10中、≧11高リスク。', category: 'cardiology', tier: 1, keywords: ['Geneva','PE','肺塞栓','診断予測'], relatedSlugs: ['wells-pe','perc','spesi'], updatedAt: '2026-03', sources: [{ text: 'Le Gal G, et al. Prediction of pulmonary embolism in the emergency department: the revised Geneva score. Ann Intern Med 2006;144(3):165-71' }] },
+  { slug: 'toast', name: 'TOAST分類', nameEn: 'TOAST Classification', description: '脳梗塞の病型分類。大血管/小血管/心原性/その他/原因不明の5型。', category: 'neurology', tier: 1, keywords: ['TOAST','脳梗塞','病型分類','アテローム','ラクナ','心原性'], relatedSlugs: ['nihss','aspects'], updatedAt: '2026-03', sources: [{ text: 'Adams HP Jr, et al. Classification of subtype of acute ischemic stroke (TOAST). Stroke 1993;24(1):35-41' }] },
+  { slug: 'duke-criteria', name: 'Duke診断基準（感染性心内膜炎）', nameEn: 'Modified Duke Criteria', description: '感染性心内膜炎(IE)の診断基準。大基準・小基準の組み合わせで確定/疑い/否定。', category: 'infectious', tier: 1, keywords: ['Duke','感染性心内膜炎','IE','心内膜炎'], relatedSlugs: [], updatedAt: '2026-03', sources: [{ text: 'Li JS, et al. Proposed modifications to the Duke criteria for the diagnosis of infective endocarditis. Clin Infect Dis 2000;30(4):633-8' }] },
+  { slug: 'ottawa-sah', name: 'Ottawa SAHルール', nameEn: 'Ottawa SAH Rule', description: '頭痛患者のSAH除外。6項目すべて陰性で感度100%。15歳以上の急性頭痛が対象。', category: 'neurology', tier: 1, keywords: ['Ottawa','SAH','くも膜下出血','頭痛','除外'], relatedSlugs: ['fisher','hunt-hess'], updatedAt: '2026-03', sources: [{ text: 'Perry JJ, et al. Clinical decision rules to rule out subarachnoid hemorrhage for acute headache. JAMA 2013;310(12):1248-55' }] },
+  { slug: 'san-francisco-syncope', name: 'サンフランシスコ失神ルール (CHESS)', nameEn: 'San Francisco Syncope Rule', description: '失神患者の短期重大イベント予測。5項目(CHESS)。1つでも陽性なら入院検討。', category: 'cardiology', tier: 1, keywords: ['CHESS','失神','syncope','入院適応'], relatedSlugs: ['abcd2'], updatedAt: '2026-03', sources: [{ text: 'Quinn JV, et al. Derivation of the San Francisco Syncope Rule. Ann Emerg Med 2004;43(2):224-32' }] },
+  { slug: 'sapsii', name: 'SAPS II', nameEn: 'SAPS II', description: 'ICU入室患者の重症度・院内死亡率予測。17項目。APACHE IIの代替として使用。', category: 'general', tier: 1, keywords: ['SAPS','ICU','重症度','死亡率'], relatedSlugs: ['apache2','sofa'], updatedAt: '2026-03', sources: [{ text: 'Le Gall JR, et al. A new Simplified Acute Physiology Score (SAPS II). JAMA 1993;270(24):2957-63' }] },
   // ===== NEW TIER 2: 病棟頻用 =====
-  { slug: 'apgar', name: 'APGARスコア', nameEn: 'APGAR Score', description: '出生直後の新生児評価。1分後・5分後に5項目(外観/脈拍/しかめ面/活動/呼吸)を評価。', category: 'general', tier: 2, keywords: ['APGAR','新生児','出生','Apgar'], relatedSlugs: [], updatedAt: '2026-03' },
-  { slug: 'asa-ps', name: 'ASA-PS分類', nameEn: 'ASA Physical Status', description: 'アメリカ麻酔科学会による術前の全身状態分類。Class I-VI。手術リスク評価の基本。', category: 'general', tier: 2, keywords: ['ASA','PS','麻酔','術前','全身状態'], relatedSlugs: ['rcri'], updatedAt: '2026-03' },
-  { slug: 'gir', name: 'GIR（ブドウ糖投与速度）', nameEn: 'Glucose Infusion Rate', description: 'ブドウ糖投与速度の算出。低血糖管理・TPN管理に使用。通常4-6mg/kg/min目標。', category: 'electrolyte', tier: 2, keywords: ['GIR','ブドウ糖','血糖','TPN','低血糖'], relatedSlugs: ['maintenance-fluid'], updatedAt: '2026-03' },
-  { slug: 'candida-score', name: 'Candidaスコア', nameEn: 'Candida Score', description: '非好中球減少ICU患者のカンジダ感染リスク。≧3で侵襲性カンジダ症を疑う。', category: 'infectious', tier: 2, keywords: ['Candida','カンジダ','真菌','ICU'], relatedSlugs: ['mascc'], updatedAt: '2026-03' },
-  { slug: 'cpot', name: 'CPOT', nameEn: 'Critical-Care Pain Observation Tool', description: '重症患者の疼痛評価。表情/身体動作/筋緊張/人工呼吸器順応の4項目。≧3で疼痛あり。', category: 'general', tier: 2, keywords: ['CPOT','疼痛','痛み','ICU','鎮痛'], relatedSlugs: ['rass','cam-icu'], updatedAt: '2026-03' },
-  { slug: 'bps-pain', name: 'BPS（疼痛評価）', nameEn: 'Behavioral Pain Scale', description: '鎮静患者の疼痛評価。表情/上肢/人工呼吸器順応の3項目。3-12点。≧6で疼痛あり。', category: 'general', tier: 2, keywords: ['BPS','疼痛','痛み','鎮静','ICU'], relatedSlugs: ['cpot','rass'], updatedAt: '2026-03' },
-  { slug: 'cfs', name: 'CFS臨床虚弱尺度', nameEn: 'Clinical Frailty Scale', description: 'フレイル評価。1(非常に元気)〜9(終末期)の9段階。高齢者の治療方針決定に。', category: 'general', tier: 2, keywords: ['CFS','フレイル','虚弱','高齢者','Clinical Frailty'], relatedSlugs: ['barthel-index','ecog'], updatedAt: '2026-03' },
-  { slug: 'hds-r', name: 'HDS-R（長谷川式）', nameEn: 'Hasegawa Dementia Scale-Revised', description: '認知機能の簡易評価。9項目30点満点。20点以下で認知症の疑い。日本で最も使用される。', category: 'neurology', tier: 2, keywords: ['HDS-R','長谷川式','認知症','認知機能'], relatedSlugs: ['gcs','jcs'], updatedAt: '2026-03' },
-  { slug: 'mmrc', name: '修正MRC息切れスケール', nameEn: 'mMRC Dyspnea Scale', description: 'mMRC息切れ評価。Grade 0-4。COPD重症度評価やリハビリ目標設定に使用。', category: 'respiratory', tier: 2, keywords: ['mMRC','MRC','息切れ','COPD','呼吸困難'], relatedSlugs: ['nyha','bode'], updatedAt: '2026-03' },
-  { slug: 'gold-copd', name: 'COPD病期分類(GOLD)', nameEn: 'GOLD COPD Classification', description: 'COPD重症度分類。FEV1%に基づくGrade 1-4 + ABCD群分類。', category: 'respiratory', tier: 2, keywords: ['GOLD','COPD','FEV1','病期','重症度'], relatedSlugs: ['mmrc','bode'], updatedAt: '2026-03' },
-  { slug: 'bode', name: 'BODE指数', nameEn: 'BODE Index', description: 'COPD生存期間予測。BMI/FEV1%/mMRC/6分間歩行距離の4因子。', category: 'respiratory', tier: 2, keywords: ['BODE','COPD','予後','6分間歩行'], relatedSlugs: ['gold-copd','mmrc'], updatedAt: '2026-03' },
+  { slug: 'apgar', name: 'APGARスコア', nameEn: 'APGAR Score', description: '出生直後の新生児評価。1分後・5分後に5項目(外観/脈拍/しかめ面/活動/呼吸)を評価。', category: 'general', tier: 2, keywords: ['APGAR','新生児','出生','Apgar'], relatedSlugs: [], updatedAt: '2026-03', sources: [{ text: 'Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg 1953;32(4):260-7' }] },
+  { slug: 'asa-ps', name: 'ASA-PS分類', nameEn: 'ASA Physical Status', description: 'アメリカ麻酔科学会による術前の全身状態分類。Class I-VI。手術リスク評価の基本。', category: 'general', tier: 2, keywords: ['ASA','PS','麻酔','術前','全身状態'], relatedSlugs: ['rcri'], updatedAt: '2026-03', sources: [{ text: 'ASA Physical Status Classification System. American Society of Anesthesiologists 2014' }] },
+  { slug: 'gir', name: 'GIR（ブドウ糖投与速度）', nameEn: 'Glucose Infusion Rate', description: 'ブドウ糖投与速度の算出。低血糖管理・TPN管理に使用。通常4-6mg/kg/min目標。', category: 'electrolyte', tier: 2, keywords: ['GIR','ブドウ糖','血糖','TPN','低血糖'], relatedSlugs: ['maintenance-fluid'], updatedAt: '2026-03', sources: [{ text: '新生児学テキスト（標準的なGIR計算式）' }] },
+  { slug: 'candida-score', name: 'Candidaスコア', nameEn: 'Candida Score', description: '非好中球減少ICU患者のカンジダ感染リスク。≧3で侵襲性カンジダ症を疑う。', category: 'infectious', tier: 2, keywords: ['Candida','カンジダ','真菌','ICU'], relatedSlugs: ['mascc'], updatedAt: '2026-03', sources: [{ text: 'León C, et al. A bedside scoring system ("Candida score") for early antifungal treatment in nonneutropenic critically ill patients with Candida colonization. Crit Care Med 2006;34(3):730-7' }] },
+  { slug: 'cpot', name: 'CPOT', nameEn: 'Critical-Care Pain Observation Tool', description: '重症患者の疼痛評価。表情/身体動作/筋緊張/人工呼吸器順応の4項目。≧3で疼痛あり。', category: 'general', tier: 2, keywords: ['CPOT','疼痛','痛み','ICU','鎮痛'], relatedSlugs: ['rass','cam-icu'], updatedAt: '2026-03', sources: [{ text: 'Gélinas C, et al. Validation of the Critical-Care Pain Observation Tool in adult patients. Am J Crit Care 2006;15(4):420-7' }] },
+  { slug: 'bps-pain', name: 'BPS（疼痛評価）', nameEn: 'Behavioral Pain Scale', description: '鎮静患者の疼痛評価。表情/上肢/人工呼吸器順応の3項目。3-12点。≧6で疼痛あり。', category: 'general', tier: 2, keywords: ['BPS','疼痛','痛み','鎮静','ICU'], relatedSlugs: ['cpot','rass'], updatedAt: '2026-03', sources: [{ text: 'Payen JF, et al. Assessing pain in critically ill sedated patients by using a behavioral pain scale. Crit Care Med 2001;29(12):2258-63' }] },
+  { slug: 'cfs', name: 'CFS臨床虚弱尺度', nameEn: 'Clinical Frailty Scale', description: 'フレイル評価。1(非常に元気)〜9(終末期)の9段階。高齢者の治療方針決定に。', category: 'general', tier: 2, keywords: ['CFS','フレイル','虚弱','高齢者','Clinical Frailty'], relatedSlugs: ['barthel-index','ecog'], updatedAt: '2026-03', sources: [{ text: 'Rockwood K, et al. A global clinical measure of fitness and frailty in elderly people. CMAJ 2005;173(5):489-95' }] },
+  { slug: 'hds-r', name: 'HDS-R（長谷川式）', nameEn: 'Hasegawa Dementia Scale-Revised', description: '認知機能の簡易評価。9項目30点満点。20点以下で認知症の疑い。日本で最も使用される。', category: 'neurology', tier: 2, keywords: ['HDS-R','長谷川式','認知症','認知機能'], relatedSlugs: ['gcs','jcs'], updatedAt: '2026-03', sources: [{ text: '加藤伸司, et al. 改訂長谷川式簡易知能評価スケール(HDS-R)の作成. 老年精神医学雑誌 1991;2(11):1339-47' }] },
+  { slug: 'mmrc', name: '修正MRC息切れスケール', nameEn: 'mMRC Dyspnea Scale', description: 'mMRC息切れ評価。Grade 0-4。COPD重症度評価やリハビリ目標設定に使用。', category: 'respiratory', tier: 2, keywords: ['mMRC','MRC','息切れ','COPD','呼吸困難'], relatedSlugs: ['nyha','bode'], updatedAt: '2026-03', sources: [{ text: 'Bestall JC, et al. Usefulness of the Medical Research Council (MRC) dyspnoea scale. Thorax 1999;54(7):581-6' }] },
+  { slug: 'gold-copd', name: 'COPD病期分類(GOLD)', nameEn: 'GOLD COPD Classification', description: 'COPD重症度分類。FEV1%に基づくGrade 1-4 + ABCD群分類。', category: 'respiratory', tier: 2, keywords: ['GOLD','COPD','FEV1','病期','重症度'], relatedSlugs: ['mmrc','bode'], updatedAt: '2026-03', sources: [{ text: 'Global Initiative for Chronic Obstructive Lung Disease (GOLD) 2024 Report' }] },
+  { slug: 'bode', name: 'BODE指数', nameEn: 'BODE Index', description: 'COPD生存期間予測。BMI/FEV1%/mMRC/6分間歩行距離の4因子。', category: 'respiratory', tier: 2, keywords: ['BODE','COPD','予後','6分間歩行'], relatedSlugs: ['gold-copd','mmrc'], updatedAt: '2026-03', sources: [{ text: 'Celli BR, et al. The body-mass index, airflow obstruction, dyspnea, and exercise capacity index in COPD. NEJM 2004;350(10):1005-12', url: 'https://doi.org/10.1056/NEJMoa021322' }] },
   { slug: 'gnri', name: 'GNRI', nameEn: 'Geriatric Nutritional Risk Index', description: '栄養の予後予測指標。アルブミン値と体重から算出。<82高リスク、82-92中リスク。', category: 'general', tier: 2, keywords: ['GNRI','栄養','アルブミン','予後'], relatedSlugs: ['conut','pni'], updatedAt: '2026-03' },
   { slug: 'conut', name: 'CONUTスコア', nameEn: 'CONUT Score', description: '栄養の予後予測指標。アルブミン/リンパ球数/T-Cholから算出。0-12点。', category: 'general', tier: 2, keywords: ['CONUT','栄養','アルブミン','リンパ球'], relatedSlugs: ['gnri','pni'], updatedAt: '2026-03' },
   { slug: 'pni', name: 'PNI（予後推定栄養指数）', nameEn: 'Prognostic Nutritional Index', description: '小野寺PNI。アルブミン×10+リンパ球数×0.005。<40で手術リスク高。', category: 'general', tier: 2, keywords: ['PNI','小野寺','栄養','手術リスク'], relatedSlugs: ['gnri','conut'], updatedAt: '2026-03' },
