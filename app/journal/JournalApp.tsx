@@ -27,9 +27,9 @@ interface Article {
 // ── Worker API（サーバーサイドキャッシュ経由） ──
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
 
-async function fetchArticlesFromCache(lang: string = 'en'): Promise<Article[]> {
+async function fetchArticlesFromCache(lang: string = 'en', sort: string = 'date'): Promise<Article[]> {
   try {
-    const res = await fetch(`${API_BASE}/api/journal?lang=${lang}`)
+    const res = await fetch(`${API_BASE}/api/journal?lang=${lang}&sort=${sort}`)
     const data = await res.json()
     if (data.ok && Array.isArray(data.articles)) return data.articles
     return []
@@ -63,6 +63,8 @@ export default function JournalApp() {
 
   // 記事統計（コメント数・ブックマーク数）
   const [articleStats, setArticleStats] = useState<Record<string, { comments: number; bookmarks: number }>>({})
+  // 並び替え
+  const [sortBy, setSortBy] = useState<'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year'>('date')
 
   // Content type toggle
   const [contentType, setContentType] = useState<'articles' | 'guidelines'>('articles')
@@ -108,7 +110,7 @@ export default function JournalApp() {
   const doFetch = useCallback(async () => {
     setLoading(true); setError('')
     try {
-      const res = await fetchArticlesFromCache(lang)
+      const res = await fetchArticlesFromCache(lang, sortBy)
       setArticles(res)
       if (res.length === 0) setError('論文の取得に失敗しました。しばらく待ってから再取得してください。')
       // 統計一括取得
@@ -122,7 +124,7 @@ export default function JournalApp() {
       }
     } catch { setError('取得に失敗しました。') }
     setLoading(false)
-  }, [lang])
+  }, [lang, sortBy])
 
   useEffect(() => { doFetch() }, [doFetch])
 
@@ -358,18 +360,36 @@ export default function JournalApp() {
         )}
       </div>
 
-      {/* ── Bookmarks / Feed toggle (articles only) ── */}
-      {contentType === 'articles' && <div className="flex items-center justify-between mb-4">
-        <div className="flex gap-2">
+      {/* ── Sort + Feed/Bookmark toggle ── */}
+      {contentType === 'articles' && <>
+      <div className="flex items-center gap-1.5 mb-2 overflow-x-auto">
+        {[
+          { id: 'date' as const, label: '新着順' },
+          { id: 'bm-today' as const, label: '今日' },
+          { id: 'bm-week' as const, label: '今週' },
+          { id: 'bm-month' as const, label: '今月' },
+          { id: 'bm-year' as const, label: '今年' },
+        ].map(s => (
+          <button key={s.id} onClick={() => setSortBy(s.id)}
+            className={`px-2 py-1 rounded text-[9px] font-medium whitespace-nowrap border transition-all ${
+              sortBy === s.id ? 'text-white border-transparent' : 'border-br text-muted'
+            }`}
+            style={sortBy === s.id ? { background: MC } : undefined}>
+            {s.id === 'date' ? '📅' : '🔥'} {s.label}
+          </button>
+        ))}
+      </div>
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex gap-1.5">
           <button onClick={() => setShowBookmarks(false)}
-            className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${!showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
+            className={`text-[10px] font-medium px-2.5 py-1 rounded-lg transition-all ${!showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
             style={!showBookmarks ? { background: MC } : undefined}>
             フィード ({filteredArticles.length})
           </button>
           <button onClick={() => { if (!isPro) { setShowProModal(true); return }; setShowBookmarks(true) }}
-            className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 ${showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
+            className={`text-[10px] font-medium px-2.5 py-1 rounded-lg transition-all flex items-center gap-1 ${showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
             style={showBookmarks ? { background: MC } : undefined}>
-            ★ ブックマーク ({bookmarks.size})
+            ★ ({bookmarks.size})
             {!isPro && <span className="text-[8px] px-1 py-0.5 rounded" style={{ background: MCL, color: MC }}>PRO</span>}
           </button>
         </div>
@@ -379,7 +399,8 @@ export default function JournalApp() {
             プレゼン用コピー
           </button>
         )}
-      </div>}
+      </div>
+      </>}
 
       {/* ── Guidelines View ── */}
       {contentType === 'guidelines' && (

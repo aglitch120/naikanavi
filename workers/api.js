@@ -906,7 +906,9 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
 
       // ── 通常の論文フィードモード ──
       const lang = url.searchParams.get("lang") || "en";
+      const sort = url.searchParams.get("sort") || "date"; // date, bm-today, bm-week, bm-month, bm-year
       const CACHE_KEY = `journal:articles:${lang}`;
+      const ARCHIVE_KEY = `journal:archive:${lang}`;
       const CACHE_TTL = 3600; // 1時間（秒）
 
       // KVキャッシュ確認
@@ -915,7 +917,35 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         if (cached && cached.fetchedAt) {
           const age = (Date.now() - cached.fetchedAt) / 1000;
           if (age < CACHE_TTL) {
-            return json({ ok: true, articles: cached.articles, cached: true, age: Math.round(age) }, 200, request);
+            // アーカイブとマージ
+            let allArticles = cached.articles || [];
+            if (sort !== "date") {
+              // ブックマーク並び替え時はアーカイブも含める
+              try {
+                const archive = await env.IWOR_KV.get(ARCHIVE_KEY, "json");
+                if (archive?.articles) {
+                  const existingPmids = new Set(allArticles.map(a => a.pmid));
+                  const archiveNew = archive.articles.filter(a => !existingPmids.has(a.pmid));
+                  allArticles = [...allArticles, ...archiveNew];
+                }
+              } catch {}
+            }
+            // ブックマーク数で並び替え
+            if (sort.startsWith("bm-")) {
+              const statsRaw = await env.IWOR_KV.get("journal:stats");
+              const stats = statsRaw ? JSON.parse(statsRaw) : {};
+              const bmTimeRaw = await env.IWOR_KV.get("journal:bookmark-events");
+              const bmEvents = bmTimeRaw ? JSON.parse(bmTimeRaw) : {};
+              const now = Date.now();
+              const periods = { "bm-today": 86400000, "bm-week": 604800000, "bm-month": 2592000000, "bm-year": 31536000000 };
+              const period = periods[sort] || 31536000000;
+              allArticles.sort((a, b) => {
+                const aEvents = (bmEvents[a.pmid] || []).filter(t => now - t < period).length;
+                const bEvents = (bmEvents[b.pmid] || []).filter(t => now - t < period).length;
+                return bEvents - aEvents || b.impactFactor - a.impactFactor;
+              });
+            }
+            return json({ ok: true, articles: allArticles.slice(0, 200), cached: true, age: Math.round(age), total: allArticles.length }, 200, request);
           }
         }
       } catch (e) {
@@ -1064,9 +1094,23 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
           }
         }
 
-        // KVに保存
+        // KVに保存（キャッシュ）
         const cacheData = { articles, fetchedAt: Date.now() };
         await env.IWOR_KV.put(CACHE_KEY, JSON.stringify(cacheData));
+
+        // アーカイブに追加（1年分蓄積）
+        try {
+          const archiveRaw = await env.IWOR_KV.get(ARCHIVE_KEY, "json");
+          const archive = archiveRaw?.articles || [];
+          const existingPmids = new Set(archive.map(a => a.pmid));
+          const newArticles = articles.filter(a => !existingPmids.has(a.pmid));
+          if (newArticles.length > 0) {
+            const merged = [...newArticles, ...archive].slice(0, 5000); // 最大5000件
+            await env.IWOR_KV.put(ARCHIVE_KEY, JSON.stringify({ articles: merged, updatedAt: Date.now() }), { expirationTtl: 31536000 }); // 1年
+          }
+        } catch (archErr) {
+          console.error("Archive save error:", archErr);
+        }
 
         return json({ ok: true, articles, cached: false }, 200, request);
       } catch (err) {
@@ -1631,6 +1675,18 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       if (!stats[pmid]) stats[pmid] = { comments: 0, bookmarks: 0 };
       stats[pmid].bookmarks = Math.max(0, stats[pmid].bookmarks + (action === 'add' ? 1 : -1));
       await env.IWOR_KV.put("journal:stats", JSON.stringify(stats));
+
+      // ブックマークイベント記録（時間帯別ソート用）
+      if (action === 'add') {
+        const bmEventsRaw = await env.IWOR_KV.get("journal:bookmark-events");
+        const bmEvents = bmEventsRaw ? JSON.parse(bmEventsRaw) : {};
+        if (!bmEvents[pmid]) bmEvents[pmid] = [];
+        bmEvents[pmid].push(Date.now());
+        // 1年以上前のイベントを削除
+        const oneYearAgo = Date.now() - 31536000000;
+        bmEvents[pmid] = bmEvents[pmid].filter(t => t > oneYearAgo).slice(-1000);
+        await env.IWOR_KV.put("journal:bookmark-events", JSON.stringify(bmEvents));
+      }
 
       return json({ ok: true, bookmarks: stats[pmid].bookmarks }, 200, request);
     }
