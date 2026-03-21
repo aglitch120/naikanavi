@@ -29,6 +29,184 @@
 //    POST /api/competitors/dismiss — 競合アラート非表示（管理者認証）
 // ═══════════════════════════════════════════════════════════════
 
+// ── ジャーナルDB構築（cronおよび手動トリガーから呼ばれる） ──
+async function buildJournalDb(env) {
+  const EN_JOURNALS = [
+    { id:"lancet", shortName:"Lancet", issn:"0140-6736", impactFactor:98.4 },
+    { id:"nejm", shortName:"NEJM", issn:"0028-4793", impactFactor:78.5 },
+    { id:"jama", shortName:"JAMA", issn:"0098-7484", impactFactor:55.0 },
+    { id:"bmj", shortName:"BMJ", issn:"0959-8138", impactFactor:42.7 },
+    { id:"nat-med", shortName:"Nat Med", issn:"1078-8956", impactFactor:82.9 },
+    { id:"ann-intern", shortName:"Ann Intern Med", issn:"0003-4819", impactFactor:39.2 },
+    { id:"lancet-dig", shortName:"Lancet Dig Health", issn:"2589-7500", impactFactor:23.8 },
+    { id:"jama-intern", shortName:"JAMA Intern Med", issn:"2168-6106", impactFactor:39.2 },
+    { id:"plos-med", shortName:"PLOS Med", issn:"1549-1676", impactFactor:15.8 },
+    { id:"jacc", shortName:"JACC", issn:"0735-1097", impactFactor:21.7 },
+    { id:"eur-heart", shortName:"Eur Heart J", issn:"0195-668X", impactFactor:37.6 },
+    { id:"circulation", shortName:"Circulation", issn:"0009-7322", impactFactor:35.5 },
+    { id:"jco", shortName:"JCO", issn:"0732-183X", impactFactor:42.1 },
+    { id:"lancet-onc", shortName:"Lancet Oncol", issn:"1470-2045", impactFactor:41.3 },
+    { id:"lancet-resp", shortName:"Lancet Respir Med", issn:"2213-2600", impactFactor:38.9 },
+    { id:"ajrccm", shortName:"AJRCCM", issn:"1073-449X", impactFactor:19.3 },
+    { id:"lancet-id", shortName:"Lancet Infect Dis", issn:"1473-3099", impactFactor:36.4 },
+    { id:"cid", shortName:"CID", issn:"1058-4838", impactFactor:11.8 },
+    { id:"gastro", shortName:"Gastroenterology", issn:"0016-5085", impactFactor:25.7 },
+    { id:"hepatology", shortName:"Hepatology", issn:"0270-9139", impactFactor:12.9 },
+    { id:"jasn", shortName:"JASN", issn:"1046-6673", impactFactor:10.3 },
+    { id:"kid-int", shortName:"Kidney Int", issn:"0085-2538", impactFactor:14.8 },
+    { id:"lancet-neuro", shortName:"Lancet Neurol", issn:"1474-4422", impactFactor:46.3 },
+    { id:"neurology", shortName:"Neurology", issn:"0028-3878", impactFactor:8.8 },
+    { id:"ccm", shortName:"Crit Care Med", issn:"0090-3493", impactFactor:7.7 },
+    { id:"intensive-care", shortName:"Intensive Care Med", issn:"0342-4642", impactFactor:27.1 },
+    { id:"diabetes-care", shortName:"Diabetes Care", issn:"0149-5992", impactFactor:14.8 },
+    { id:"blood", shortName:"Blood", issn:"0006-4971", impactFactor:20.3 },
+    { id:"ard", shortName:"Ann Rheum Dis", issn:"0003-4967", impactFactor:20.3 },
+    { id:"jcem", shortName:"JCEM", issn:"0021-972X", impactFactor:5.8 },
+    { id:"thyroid", shortName:"Thyroid", issn:"1050-7256", impactFactor:5.2 },
+    { id:"jaad", shortName:"JAAD", issn:"0190-9622", impactFactor:11.5 },
+    { id:"bjd", shortName:"Br J Dermatol", issn:"0007-0963", impactFactor:8.1 },
+    { id:"ajp", shortName:"Am J Psychiatry", issn:"0002-953X", impactFactor:13.4 },
+    { id:"lancet-psych", shortName:"Lancet Psychiatry", issn:"2215-0366", impactFactor:64.3 },
+    { id:"pediatrics", shortName:"Pediatrics", issn:"0031-4005", impactFactor:8.0 },
+    { id:"jpeds", shortName:"J Pediatr", issn:"0022-3476", impactFactor:3.7 },
+    { id:"eur-urol", shortName:"Eur Urol", issn:"0302-2838", impactFactor:25.3 },
+    { id:"radiology", shortName:"Radiology", issn:"0033-8419", impactFactor:12.1 },
+    { id:"anesthesiology", shortName:"Anesthesiology", issn:"0003-3022", impactFactor:8.0 },
+    { id:"ann-emerg", shortName:"Ann Emerg Med", issn:"0196-0644", impactFactor:5.6 },
+    { id:"jags", shortName:"JAGS", issn:"0002-8614", impactFactor:6.3 },
+    { id:"jbjs", shortName:"JBJS", issn:"0021-9355", impactFactor:5.3 },
+    { id:"ophthalmology", shortName:"Ophthalmology", issn:"0161-6420", impactFactor:13.7 },
+  ];
+  const JA_JOURNALS = [
+    { id:"naika", shortName:"日本内科学会雑誌", issn:"0021-5384", impactFactor:0.3 },
+    { id:"igaku-zasshi", shortName:"日本医事新報", issn:"0385-9215", impactFactor:0.2 },
+    { id:"rinsho", shortName:"臨床雑誌内科", issn:"0022-1961", impactFactor:0.2 },
+    { id:"jjsem", shortName:"日本救急医学会雑誌", issn:"0915-924X", impactFactor:0.3 },
+    { id:"jsim", shortName:"日本集中治療医学会雑誌", issn:"1340-7988", impactFactor:0.3 },
+    { id:"circ-j", shortName:"Circ J", issn:"1346-9843", impactFactor:3.2 },
+    { id:"jjc", shortName:"日本循環器学会誌", issn:"0047-1828", impactFactor:0.5 },
+    { id:"jga", shortName:"日本消化器病学会雑誌", issn:"0446-6586", impactFactor:0.3 },
+    { id:"jjca", shortName:"日本癌学会誌", issn:"0021-4922", impactFactor:0.5 },
+    { id:"jpn-j-surg", shortName:"日本外科学会雑誌", issn:"0301-4894", impactFactor:0.3 },
+  ];
+
+  for (const { langKey, journals } of [
+    { langKey: "en", journals: EN_JOURNALS },
+    { langKey: "ja", journals: JA_JOURNALS },
+  ]) {
+    const DB_KEY = `journal:db:${langKey}`;
+    const ARCHIVE_KEY = `journal:archive:${langKey}`;
+
+    // 既存DB読み込み（差分更新）
+    let existingDb = {};
+    try {
+      const raw = await env.IWOR_KV.get(DB_KEY, "json");
+      if (raw?.articles) {
+        for (const a of raw.articles) existingDb[a.pmid] = a;
+      }
+    } catch {}
+
+    // PubMed検索（過去30日）
+    const issns = journals.map(j => j.issn);
+    const q = encodeURIComponent(`(${issns.map(i => `${i}[ISSN]`).join(" OR ")}) AND ("last 30 days"[dp])`);
+    const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=200&sort=date&retmode=json`;
+    const sRes = await fetch(sUrl);
+    const sData = await sRes.json();
+    const ids = sData?.esearchresult?.idlist || [];
+
+    if (ids.length === 0) continue;
+
+    // 新規PMIDのみ取得
+    const newIds = ids.filter(id => !existingDb[id]);
+    let newArticles = [];
+
+    if (newIds.length > 0) {
+      const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${newIds.join(",")}&retmode=json`;
+      const fRes = await fetch(fUrl);
+      const fData = await fRes.json();
+
+      for (const id of newIds) {
+        const d = fData?.result?.[id];
+        if (!d || !d.title) continue;
+        const jTitle = (d.fulljournalname || d.source || "").toLowerCase();
+        const mj = journals.find(j =>
+          jTitle.includes(j.shortName.toLowerCase()) || d.issn === j.issn
+        );
+        newArticles.push({
+          pmid: id,
+          title: d.title || "",
+          authors: (d.authors || []).slice(0, 3).map(a => a.name).join(", ") + ((d.authors || []).length > 3 ? " et al." : ""),
+          journal: mj?.shortName || d.source || "",
+          journalId: mj?.id || "",
+          date: (d.pubdate || d.sortpubdate || "").split(" ").slice(0, 2).join(" "),
+          doi: (d.elocationid || "").replace("doi: ", ""),
+          impactFactor: mj?.impactFactor || 0,
+        });
+      }
+    }
+
+    // DeepL翻訳（英語論文の新規分のみ）
+    if (langKey === "en" && newArticles.length > 0) {
+      const DEEPL_KEY = env.DEEPL_API_KEY || "";
+      for (const article of newArticles) {
+        try {
+          if (DEEPL_KEY) {
+            const dlRes = await fetch("https://api-free.deepl.com/v2/translate", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: `auth_key=${DEEPL_KEY}&text=${encodeURIComponent(article.title)}&source_lang=EN&target_lang=JA`,
+            });
+            const dlData = await dlRes.json();
+            if (dlData?.translations?.[0]?.text) {
+              article.titleJa = dlData.translations[0].text;
+              continue;
+            }
+          }
+          // フォールバック: Workers AI
+          const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+            messages: [
+              { role: "system", content: "あなたは医学論文の翻訳者です。以下の英語の医学論文タイトルを、自然で正確な日本語に翻訳してください。医学専門用語は日本の医学文献で一般的に使われる訳語を使用してください。固有名詞（薬剤名、試験名、略語）はそのまま残してください。翻訳のみを出力し、余計な説明は不要です。" },
+              { role: "user", content: article.title },
+            ],
+            max_tokens: 200,
+          });
+          if (trResult?.response) {
+            const cleaned = trResult.response.trim().replace(/^["「]|["」]$/g, '').replace(/^翻訳[：:]\s*/i, '');
+            if (cleaned.length > 3) article.titleJa = cleaned;
+          }
+        } catch {}
+      }
+    }
+
+    // DBマージ
+    for (const a of newArticles) existingDb[a.pmid] = a;
+    const allArticles = Object.values(existingDb)
+      .sort((a, b) => (b.impactFactor || 0) - (a.impactFactor || 0) || (b.date || "").localeCompare(a.date || ""));
+
+    // DB保存（最大500件、翻訳済み）
+    await env.IWOR_KV.put(DB_KEY, JSON.stringify({
+      articles: allArticles.slice(0, 500),
+      updatedAt: Date.now(),
+      totalFetched: allArticles.length,
+      newCount: newArticles.length,
+    }));
+
+    // アーカイブ追加（1年分、最大5000件）
+    try {
+      const archiveRaw = await env.IWOR_KV.get(ARCHIVE_KEY, "json");
+      const archive = archiveRaw?.articles || [];
+      const archivePmids = new Set(archive.map(a => a.pmid));
+      const archiveNew = newArticles.filter(a => !archivePmids.has(a.pmid));
+      if (archiveNew.length > 0) {
+        const merged = [...archiveNew, ...archive].slice(0, 5000);
+        await env.IWOR_KV.put(ARCHIVE_KEY, JSON.stringify({ articles: merged, updatedAt: Date.now() }), { expirationTtl: 31536000 });
+      }
+    } catch {}
+
+    console.log(`Journal DB [${langKey}]: ${newArticles.length} new, ${allArticles.length} total`);
+  }
+}
+
 const ALLOWED_ORIGINS = ["https://iwor.jp", "http://localhost:3000"];
 
 function getCors(request) {
@@ -822,7 +1000,19 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
     }
 
     // ═══════════════════════════════════════════════════════════════
-    //  GET /api/journal — 論文フィード（サーバーサイドキャッシュ）
+    //  POST /api/journal/build — 手動DB構築（Admin）
+    // ═══════════════════════════════════════════════════════════════
+    if (path === "/api/journal/build" && request.method === "POST") {
+      const adminKey = request.headers.get("X-Admin-Key") || new URL(request.url).searchParams.get("key") || "";
+      if (!adminKey || adminKey !== env.ADMIN_KEY) {
+        return json({ error: "Unauthorized" }, 401, request);
+      }
+      ctx.waitUntil(buildJournalDb(env));
+      return json({ ok: true, message: "Journal DB build started in background" }, 200, request);
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    //  GET /api/journal — 論文フィード（KVから完成データ配信）
     // ═══════════════════════════════════════════════════════════════
     if (path === "/api/journal" && request.method === "GET") {
       const url = new URL(request.url);
@@ -914,283 +1104,48 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         }
       }
 
-      // ── 通常の論文フィードモード ──
+      // ── 通常の論文フィードモード（KVから完成データを返すだけ） ──
       const lang = url.searchParams.get("lang") || "en";
-      const sort = url.searchParams.get("sort") || "date"; // date, bm-today, bm-week, bm-month, bm-year
-      const CACHE_KEY = `journal:articles:${lang}`;
+      const sort = url.searchParams.get("sort") || "date";
+      const DB_KEY = `journal:db:${lang}`;
       const ARCHIVE_KEY = `journal:archive:${lang}`;
-      const CACHE_TTL = 3600; // 1時間（秒）
-
-      // KVキャッシュ確認
-      try {
-        const cached = await env.IWOR_KV.get(CACHE_KEY, "json");
-        if (cached && cached.fetchedAt) {
-          const age = (Date.now() - cached.fetchedAt) / 1000;
-          if (age < CACHE_TTL) {
-            // キャッシュヒット時も翻訳をマージ + 未翻訳なら翻訳実行
-            let allArticles = cached.articles || [];
-            let translations = {};
-            try {
-              const trRaw = await env.IWOR_KV.get("journal:translations", "json");
-              if (trRaw) translations = trRaw;
-            } catch {}
-
-            // 未翻訳の記事があれば翻訳実行
-            const untranslated = allArticles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 15);
-            if (untranslated.length > 0) {
-              // DeepL API（無料枠: 500K文字/月）で高品質翻訳
-              const DEEPL_KEY = env.DEEPL_API_KEY || "";
-              for (const article of untranslated) {
-                try {
-                  if (DEEPL_KEY) {
-                    const dlRes = await fetch("https://api-free.deepl.com/v2/translate", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                      body: `auth_key=${DEEPL_KEY}&text=${encodeURIComponent(article.title)}&source_lang=EN&target_lang=JA`,
-                    });
-                    const dlData = await dlRes.json();
-                    if (dlData?.translations?.[0]?.text) {
-                      translations[article.pmid] = dlData.translations[0].text;
-                      continue;
-                    }
-                  }
-                  // DeepL未設定 or 失敗時はWorkers AI フォールバック
-                  const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-                    messages: [
-                      { role: "system", content: "あなたは医学論文の翻訳者です。以下の英語の医学論文タイトルを、自然で正確な日本語に翻訳してください。医学専門用語は日本の医学文献で一般的に使われる訳語を使用してください。固有名詞（薬剤名、試験名、略語）はそのまま残してください。翻訳のみを出力し、余計な説明は不要です。" },
-                      { role: "user", content: article.title },
-                    ],
-                    max_tokens: 200,
-                  });
-                  if (trResult?.response) {
-                    const cleaned = trResult.response.trim().replace(/^["「]|["」]$/g, '').replace(/^翻訳[：:]\s*/i, '');
-                    if (cleaned.length > 3) translations[article.pmid] = cleaned;
-                  }
-                } catch {}
-              }
-              await env.IWOR_KV.put("journal:translations", JSON.stringify(translations), { expirationTtl: 604800 });
-            }
-
-            // 翻訳をarticlesに付与
-            for (const a of allArticles) {
-              if (translations[a.pmid]) a.titleJa = translations[a.pmid];
-            }
-            if (sort !== "date") {
-              // ブックマーク並び替え時はアーカイブも含める
-              try {
-                const archive = await env.IWOR_KV.get(ARCHIVE_KEY, "json");
-                if (archive?.articles) {
-                  const existingPmids = new Set(allArticles.map(a => a.pmid));
-                  const archiveNew = archive.articles.filter(a => !existingPmids.has(a.pmid));
-                  allArticles = [...allArticles, ...archiveNew];
-                }
-              } catch {}
-            }
-            // ブックマーク数で並び替え
-            if (sort.startsWith("bm-")) {
-              const statsRaw = await env.IWOR_KV.get("journal:stats");
-              const stats = statsRaw ? JSON.parse(statsRaw) : {};
-              const bmTimeRaw = await env.IWOR_KV.get("journal:bookmark-events");
-              const bmEvents = bmTimeRaw ? JSON.parse(bmTimeRaw) : {};
-              const now = Date.now();
-              const periods = { "bm-today": 86400000, "bm-week": 604800000, "bm-month": 2592000000, "bm-year": 31536000000 };
-              const period = periods[sort] || 31536000000;
-              allArticles.sort((a, b) => {
-                const aEvents = (bmEvents[a.pmid] || []).filter(t => now - t < period).length;
-                const bEvents = (bmEvents[b.pmid] || []).filter(t => now - t < period).length;
-                return bEvents - aEvents || b.impactFactor - a.impactFactor;
-              });
-            }
-            return json({ ok: true, articles: allArticles.slice(0, 200), cached: true, age: Math.round(age), total: allArticles.length }, 200, request);
-          }
-        }
-      } catch (e) {
-        // キャッシュ読み取り失敗は無視してフェッチへ
-      }
-
-      // PubMedから取得
-      const EN_JOURNALS = [
-        { id:"lancet", shortName:"Lancet", issn:"0140-6736", impactFactor:98.4 },
-        { id:"nejm", shortName:"NEJM", issn:"0028-4793", impactFactor:78.5 },
-        { id:"jama", shortName:"JAMA", issn:"0098-7484", impactFactor:55.0 },
-        { id:"bmj", shortName:"BMJ", issn:"0959-8138", impactFactor:42.7 },
-        { id:"nat-med", shortName:"Nat Med", issn:"1078-8956", impactFactor:82.9 },
-        { id:"ann-intern", shortName:"Ann Intern Med", issn:"0003-4819", impactFactor:39.2 },
-        { id:"lancet-dig", shortName:"Lancet Dig Health", issn:"2589-7500", impactFactor:23.8 },
-        { id:"jama-intern", shortName:"JAMA Intern Med", issn:"2168-6106", impactFactor:39.2 },
-        { id:"plos-med", shortName:"PLOS Med", issn:"1549-1676", impactFactor:15.8 },
-        { id:"jacc", shortName:"JACC", issn:"0735-1097", impactFactor:21.7 },
-        { id:"eur-heart", shortName:"Eur Heart J", issn:"0195-668X", impactFactor:37.6 },
-        { id:"circulation", shortName:"Circulation", issn:"0009-7322", impactFactor:35.5 },
-        { id:"jco", shortName:"JCO", issn:"0732-183X", impactFactor:42.1 },
-        { id:"lancet-onc", shortName:"Lancet Oncol", issn:"1470-2045", impactFactor:41.3 },
-        { id:"lancet-resp", shortName:"Lancet Respir Med", issn:"2213-2600", impactFactor:38.9 },
-        { id:"ajrccm", shortName:"AJRCCM", issn:"1073-449X", impactFactor:19.3 },
-        { id:"lancet-id", shortName:"Lancet Infect Dis", issn:"1473-3099", impactFactor:36.4 },
-        { id:"cid", shortName:"CID", issn:"1058-4838", impactFactor:11.8 },
-        { id:"gastro", shortName:"Gastroenterology", issn:"0016-5085", impactFactor:25.7 },
-        { id:"hepatology", shortName:"Hepatology", issn:"0270-9139", impactFactor:12.9 },
-        { id:"jasn", shortName:"JASN", issn:"1046-6673", impactFactor:10.3 },
-        { id:"kid-int", shortName:"Kidney Int", issn:"0085-2538", impactFactor:14.8 },
-        { id:"lancet-neuro", shortName:"Lancet Neurol", issn:"1474-4422", impactFactor:46.3 },
-        { id:"neurology", shortName:"Neurology", issn:"0028-3878", impactFactor:8.8 },
-        { id:"ccm", shortName:"Crit Care Med", issn:"0090-3493", impactFactor:7.7 },
-        { id:"intensive-care", shortName:"Intensive Care Med", issn:"0342-4642", impactFactor:27.1 },
-        { id:"diabetes-care", shortName:"Diabetes Care", issn:"0149-5992", impactFactor:14.8 },
-        { id:"blood", shortName:"Blood", issn:"0006-4971", impactFactor:20.3 },
-        { id:"ard", shortName:"Ann Rheum Dis", issn:"0003-4967", impactFactor:20.3 },
-        { id:"jcem", shortName:"JCEM", issn:"0021-972X", impactFactor:5.8 },
-        { id:"thyroid", shortName:"Thyroid", issn:"1050-7256", impactFactor:5.2 },
-        { id:"jaad", shortName:"JAAD", issn:"0190-9622", impactFactor:11.5 },
-        { id:"bjd", shortName:"Br J Dermatol", issn:"0007-0963", impactFactor:8.1 },
-        { id:"ajp", shortName:"Am J Psychiatry", issn:"0002-953X", impactFactor:13.4 },
-        { id:"lancet-psych", shortName:"Lancet Psychiatry", issn:"2215-0366", impactFactor:64.3 },
-        { id:"pediatrics", shortName:"Pediatrics", issn:"0031-4005", impactFactor:8.0 },
-        { id:"jpeds", shortName:"J Pediatr", issn:"0022-3476", impactFactor:3.7 },
-        { id:"eur-urol", shortName:"Eur Urol", issn:"0302-2838", impactFactor:25.3 },
-        { id:"radiology", shortName:"Radiology", issn:"0033-8419", impactFactor:12.1 },
-        { id:"anesthesiology", shortName:"Anesthesiology", issn:"0003-3022", impactFactor:8.0 },
-        { id:"ann-emerg", shortName:"Ann Emerg Med", issn:"0196-0644", impactFactor:5.6 },
-        { id:"jags", shortName:"JAGS", issn:"0002-8614", impactFactor:6.3 },
-        { id:"jbjs", shortName:"JBJS", issn:"0021-9355", impactFactor:5.3 },
-        { id:"ophthalmology", shortName:"Ophthalmology", issn:"0161-6420", impactFactor:13.7 },
-      ];
-
-      const JA_JOURNALS = [
-        { id:"naika", shortName:"日本内科学会雑誌", issn:"0021-5384", impactFactor:0.3 },
-        { id:"igaku-zasshi", shortName:"日本医事新報", issn:"0385-9215", impactFactor:0.2 },
-        { id:"rinsho", shortName:"臨床雑誌内科", issn:"0022-1961", impactFactor:0.2 },
-        { id:"jjsem", shortName:"日本救急医学会雑誌", issn:"0915-924X", impactFactor:0.3 },
-        { id:"jsim", shortName:"日本集中治療医学会雑誌", issn:"1340-7988", impactFactor:0.3 },
-        { id:"circ-j", shortName:"Circ J", issn:"1346-9843", impactFactor:3.2 },
-        { id:"jjc", shortName:"日本循環器学会誌", issn:"0047-1828", impactFactor:0.5 },
-        { id:"jga", shortName:"日本消化器病学会雑誌", issn:"0446-6586", impactFactor:0.3 },
-        { id:"jjca", shortName:"日本癌学会誌", issn:"0021-4922", impactFactor:0.5 },
-        { id:"jpn-j-surg", shortName:"日本外科学会雑誌", issn:"0301-4894", impactFactor:0.3 },
-      ];
-
-      const JOURNALS = lang === "ja" ? JA_JOURNALS : EN_JOURNALS;
 
       try {
-        const issns = JOURNALS.map(j => j.issn);
-        const q = encodeURIComponent(`(${issns.map(i => `${i}[ISSN]`).join(" OR ")}) AND ("last 60 days"[dp])`);
-        const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=100&sort=date&retmode=json`;
-        const sRes = await fetch(sUrl);
-        const sData = await sRes.json();
-        const ids = sData?.esearchresult?.idlist || [];
-
-        if (ids.length === 0) {
-          return json({ ok: true, articles: [], cached: false }, 200, request);
+        let allArticles = [];
+        const db = await env.IWOR_KV.get(DB_KEY, "json");
+        if (db?.articles) {
+          allArticles = db.articles;
         }
 
-        const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(",")}&retmode=json`;
-        const fRes = await fetch(fUrl);
-        const fData = await fRes.json();
+        // ブックマーク並び替え時はアーカイブも含める
+        if (sort !== "date" && allArticles.length > 0) {
+          try {
+            const archive = await env.IWOR_KV.get(ARCHIVE_KEY, "json");
+            if (archive?.articles) {
+              const existingPmids = new Set(allArticles.map(a => a.pmid));
+              const archiveNew = archive.articles.filter(a => !existingPmids.has(a.pmid));
+              allArticles = [...allArticles, ...archiveNew];
+            }
+          } catch {}
+        }
 
-        const articles = [];
-        for (const id of ids) {
-          const d = fData?.result?.[id];
-          if (!d || !d.title) continue;
-          const jTitle = (d.fulljournalname || d.source || "").toLowerCase();
-          const mj = JOURNALS.find(j =>
-            jTitle.includes(j.shortName.toLowerCase()) || d.issn === j.issn
-          );
-          articles.push({
-            pmid: id,
-            title: d.title || "",
-            authors: (d.authors || []).slice(0, 3).map(a => a.name).join(", ") + ((d.authors || []).length > 3 ? " et al." : ""),
-            journal: mj?.shortName || d.source || "",
-            journalId: mj?.id || "",
-            date: (d.pubdate || d.sortpubdate || "").split(" ").slice(0, 2).join(" "),
-            doi: (d.elocationid || "").replace("doi: ", ""),
-            impactFactor: mj?.impactFactor || 0,
+        if (sort.startsWith("bm-")) {
+          const bmTimeRaw = await env.IWOR_KV.get("journal:bookmark-events");
+          const bmEvents = bmTimeRaw ? JSON.parse(bmTimeRaw) : {};
+          const now = Date.now();
+          const periods = { "bm-today": 86400000, "bm-week": 604800000, "bm-month": 2592000000, "bm-year": 31536000000 };
+          const period = periods[sort] || 31536000000;
+          allArticles.sort((a, b) => {
+            const aEvents = (bmEvents[a.pmid] || []).filter(t => now - t < period).length;
+            const bEvents = (bmEvents[b.pmid] || []).filter(t => now - t < period).length;
+            return bEvents - aEvents || (b.impactFactor || 0) - (a.impactFactor || 0);
           });
         }
 
-        articles.sort((a, b) => b.impactFactor - a.impactFactor || b.date.localeCompare(a.date));
-
-        // タイトル日本語翻訳（DeepL優先 → Workers AIフォールバック）
-        const TR_CACHE_KEY = `journal:translations`;
-        let translations = {};
-        try {
-          const trRaw = await env.IWOR_KV.get(TR_CACHE_KEY, "json");
-          if (trRaw) translations = trRaw;
-        } catch {}
-
-        const untranslatedFresh = articles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 15);
-        if (untranslatedFresh.length > 0) {
-          const DEEPL_KEY = env.DEEPL_API_KEY || "";
-          for (const article of untranslatedFresh) {
-            try {
-              if (DEEPL_KEY) {
-                const dlRes = await fetch("https://api-free.deepl.com/v2/translate", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                  body: `auth_key=${DEEPL_KEY}&text=${encodeURIComponent(article.title)}&source_lang=EN&target_lang=JA`,
-                });
-                const dlData = await dlRes.json();
-                if (dlData?.translations?.[0]?.text) {
-                  translations[article.pmid] = dlData.translations[0].text;
-                  continue;
-                }
-              }
-              // フォールバック: Workers AI
-              const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-                messages: [
-                  { role: "system", content: "あなたは医学論文の翻訳者です。以下の英語の医学論文タイトルを、自然で正確な日本語に翻訳してください。医学専門用語は日本の医学文献で一般的に使われる訳語を使用してください。固有名詞（薬剤名、試験名、略語）はそのまま残してください。翻訳のみを出力し、余計な説明は不要です。" },
-                  { role: "user", content: article.title },
-                ],
-                max_tokens: 200,
-              });
-              if (trResult?.response) {
-                const cleaned = trResult.response.trim().replace(/^["「]|["」]$/g, '').replace(/^翻訳[：:]\s*/i, '');
-                if (cleaned.length > 3) translations[article.pmid] = cleaned;
-              }
-            } catch {}
-          }
-          try {
-            await env.IWOR_KV.put(TR_CACHE_KEY, JSON.stringify(translations), { expirationTtl: 604800 });
-          } catch (trErr) {
-            console.error("Translation error:", trErr);
-          }
-        }
-
-        // 翻訳をarticlesに付加
-        for (const a of articles) {
-          if (translations[a.pmid]) {
-            a.titleJa = translations[a.pmid];
-          }
-        }
-
-        // KVに保存（キャッシュ）
-        const cacheData = { articles, fetchedAt: Date.now() };
-        await env.IWOR_KV.put(CACHE_KEY, JSON.stringify(cacheData));
-
-        // アーカイブに追加（1年分蓄積）
-        try {
-          const archiveRaw = await env.IWOR_KV.get(ARCHIVE_KEY, "json");
-          const archive = archiveRaw?.articles || [];
-          const existingPmids = new Set(archive.map(a => a.pmid));
-          const newArticles = articles.filter(a => !existingPmids.has(a.pmid));
-          if (newArticles.length > 0) {
-            const merged = [...newArticles, ...archive].slice(0, 5000); // 最大5000件
-            await env.IWOR_KV.put(ARCHIVE_KEY, JSON.stringify({ articles: merged, updatedAt: Date.now() }), { expirationTtl: 31536000 }); // 1年
-          }
-        } catch (archErr) {
-          console.error("Archive save error:", archErr);
-        }
-
-        return json({ ok: true, articles, cached: false }, 200, request);
+        return json({ ok: true, articles: allArticles.slice(0, 200), cached: true, updatedAt: db?.updatedAt || null, total: allArticles.length }, 200, request);
       } catch (err) {
-        console.error("Journal fetch error:", err);
-        // フェッチ失敗時は古いキャッシュを返す
-        try {
-          const stale = await env.IWOR_KV.get(CACHE_KEY, "json");
-          if (stale?.articles) {
-            return json({ ok: true, articles: stale.articles, cached: true, stale: true }, 200, request);
-          }
-        } catch (e) {}
-        return json({ error: "PubMed fetch failed" }, 502, request);
+        console.error("Journal DB read error:", err);
+        return json({ ok: true, articles: [], cached: false }, 200, request);
       }
     }
 
@@ -1780,6 +1735,14 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
   //  PR TIMES RSS（医療カテゴリ）をフェッチしキーワードマッチ
   // ══════════════════════════════════════════════════
   async scheduled(event, env, ctx) {
+    // ジャーナルDB構築（PubMed取得 + DeepL翻訳 + KV保存）
+    try {
+      await buildJournalDb(env);
+    } catch (err) {
+      console.error("Journal DB build error:", err);
+    }
+
+    // 競合監視（PR TIMES RSS）
     const PRTIMES_RSS = "https://prtimes.jp/topics/keyword/%E5%8C%BB%E7%99%82/feed";
 
     // 監視キーワード定義
