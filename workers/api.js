@@ -823,7 +823,9 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
     //  GET /api/journal — 論文フィード（サーバーサイドキャッシュ）
     // ═══════════════════════════════════════════════════════════════
     if (path === "/api/journal" && request.method === "GET") {
-      const CACHE_KEY = "journal:articles";
+      const url = new URL(request.url);
+      const lang = url.searchParams.get("lang") || "en";
+      const CACHE_KEY = `journal:articles:${lang}`;
       const CACHE_TTL = 3600; // 1時間（秒）
 
       // KVキャッシュ確認
@@ -840,7 +842,7 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       }
 
       // PubMedから取得
-      const JOURNALS = [
+      const EN_JOURNALS = [
         { id:"lancet", shortName:"Lancet", issn:"0140-6736", impactFactor:98.4 },
         { id:"nejm", shortName:"NEJM", issn:"0028-4793", impactFactor:78.5 },
         { id:"jama", shortName:"JAMA", issn:"0098-7484", impactFactor:55.0 },
@@ -871,6 +873,21 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         { id:"blood", shortName:"Blood", issn:"0006-4971", impactFactor:20.3 },
         { id:"ard", shortName:"Ann Rheum Dis", issn:"0003-4967", impactFactor:20.3 },
       ];
+
+      const JA_JOURNALS = [
+        { id:"naika", shortName:"日本内科学会雑誌", issn:"0021-5384", impactFactor:0.3 },
+        { id:"igaku-zasshi", shortName:"日本医事新報", issn:"0385-9215", impactFactor:0.2 },
+        { id:"rinsho", shortName:"臨床雑誌内科", issn:"0022-1961", impactFactor:0.2 },
+        { id:"jjsem", shortName:"日本救急医学会雑誌", issn:"0915-924X", impactFactor:0.3 },
+        { id:"jsim", shortName:"日本集中治療医学会雑誌", issn:"1340-7988", impactFactor:0.3 },
+        { id:"circ-j", shortName:"Circ J", issn:"1346-9843", impactFactor:3.2 },
+        { id:"jjc", shortName:"日本循環器学会誌", issn:"0047-1828", impactFactor:0.5 },
+        { id:"jga", shortName:"日本消化器病学会雑誌", issn:"0446-6586", impactFactor:0.3 },
+        { id:"jjca", shortName:"日本癌学会誌", issn:"0021-4922", impactFactor:0.5 },
+        { id:"jpn-j-surg", shortName:"日本外科学会雑誌", issn:"0301-4894", impactFactor:0.3 },
+      ];
+
+      const JOURNALS = lang === "ja" ? JA_JOURNALS : EN_JOURNALS;
 
       try {
         const issns = JOURNALS.map(j => j.issn);
