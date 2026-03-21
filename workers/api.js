@@ -917,8 +917,40 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         if (cached && cached.fetchedAt) {
           const age = (Date.now() - cached.fetchedAt) / 1000;
           if (age < CACHE_TTL) {
-            // アーカイブとマージ
+            // キャッシュヒット時も翻訳をマージ + 未翻訳なら翻訳実行
             let allArticles = cached.articles || [];
+            let translations = {};
+            try {
+              const trRaw = await env.IWOR_KV.get("journal:translations", "json");
+              if (trRaw) translations = trRaw;
+            } catch {}
+
+            // 未翻訳の記事があれば翻訳実行（非同期で裏で実行、結果はKVに保存）
+            const untranslated = allArticles.filter(a => !translations[a.pmid] && lang === "en").slice(0, 10);
+            if (untranslated.length > 0) {
+              try {
+                const titlesToTranslate = untranslated.map(a => a.title).join("\n---\n");
+                const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+                  messages: [
+                    { role: "system", content: "医学論文タイトルを日本語に翻訳。---で区切り。専門用語は適切な日本語訳、固有名詞はそのまま。" },
+                    { role: "user", content: titlesToTranslate },
+                  ],
+                  max_tokens: 1500,
+                });
+                if (trResult?.response) {
+                  const translated = trResult.response.split("---").map(t => t.trim());
+                  untranslated.forEach((a, i) => {
+                    if (translated[i] && translated[i].length > 3) translations[a.pmid] = translated[i];
+                  });
+                  await env.IWOR_KV.put("journal:translations", JSON.stringify(translations), { expirationTtl: 604800 });
+                }
+              } catch (trErr) { console.error("Cache-hit translation error:", trErr); }
+            }
+
+            // 翻訳をarticlesに付与
+            for (const a of allArticles) {
+              if (translations[a.pmid]) a.titleJa = translations[a.pmid];
+            }
             if (sort !== "date") {
               // ブックマーク並び替え時はアーカイブも含める
               try {
