@@ -18,8 +18,9 @@ interface CalculatorLayoutProps {
   categoryIcon: string
   children: ReactNode
   result?: ReactNode
-  /** SEO解説 */
+  /** @deprecated 非表示化済み — propsは受け付けるがレンダリングしない */
   explanation?: ReactNode
+  /** @deprecated 非表示化済み */
   relatedTools?: { slug: string; name: string }[]
   references?: { text: string; url?: string }[]
 }
@@ -120,8 +121,8 @@ export default function CalculatorLayout({
   categoryIcon,
   children,
   result,
-  explanation,
-  relatedTools,
+  explanation: _explanation,
+  relatedTools: _relatedTools,
   references,
 }: CalculatorLayoutProps) {
   // PLG: ツール利用回数トラッキング
@@ -205,31 +206,6 @@ export default function CalculatorLayout({
           <VerifyStatus />
         </div>
       </div>
-
-      {/* SEO解説 */}
-      {explanation && (
-        <section className="mb-8">
-          {explanation}
-        </section>
-      )}
-
-      {/* 関連ツール */}
-      {relatedTools && relatedTools.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-lg font-bold mb-3">関連ツール</h2>
-          <div className="flex flex-wrap gap-2">
-            {relatedTools.map(tool => (
-              <Link
-                key={tool.slug}
-                href={`/tools/calc/${tool.slug}`}
-                className="inline-block text-sm bg-s1 text-tx px-3 py-1.5 rounded-lg hover:bg-acl hover:text-ac transition-colors"
-              >
-                {tool.name}
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* 参考文献（明示的propsまたはtoolDef.sourcesから自動表示） */}
       {(() => {

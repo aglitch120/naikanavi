@@ -13,8 +13,15 @@ const categories = [
     slug: 'calc',
     icon: '🧮',
     name: '臨床計算ツール',
-    description: '循環器・腎臓・呼吸器・神経・血液など152種+',
+    description: '循環器・腎臓・呼吸器・神経・血液など166種+',
     href: '/tools/calc',
+  },
+  {
+    slug: 'lab-values',
+    icon: '📋',
+    name: '基準値早見表',
+    description: '血液検査・尿検査の基準値一覧',
+    href: '/tools/interpret/lab-values',
   },
   {
     slug: 'drugs',
@@ -38,18 +45,11 @@ const categories = [
     href: '/tools/procedures',
   },
   {
-    slug: 'lab-values',
-    icon: '📋',
-    name: '基準値早見表',
-    description: '血液検査・尿検査の基準値一覧',
-    href: '/tools/interpret/lab-values',
-  },
-  {
     slug: 'gamma',
     icon: '💉',
-    name: 'γ計算',
+    name: 'γ計算（流量⇔γ換算）',
     description: '昇圧薬・鎮静薬15種の流量⇔γ換算',
-    href: '/tools/icu/gamma',
+    href: '/tools/calc/gamma',
   },
 ]
 

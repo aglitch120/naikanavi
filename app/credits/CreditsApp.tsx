@@ -208,7 +208,7 @@ export default function CreditsApp() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 pt-6 pb-24">
+    <div className="max-w-2xl mx-auto px-4 pt-6 pb-32">
       <AppHeader title="専門医単位" subtitle="専門医更新に必要な単位を管理" badge="PRO" />
 
       <div>
@@ -432,6 +432,21 @@ export default function CreditsApp() {
       {/* ── PRO Modal ── */}
       {showProModal && (
         <ProModal feature="save" onClose={() => setShowProModal(false)} />
+      )}
+
+      {/* ── Sticky bottom banner ── */}
+      {specialty && (
+        <div className="fixed left-0 right-0 px-4 z-40" style={{ bottom: '56px' }}>
+          <div className="max-w-2xl mx-auto">
+            <button
+              onClick={() => setShowAddModal(true)}
+              className="w-full py-3.5 rounded-2xl text-sm font-bold text-white shadow-lg"
+              style={{ background: C.ac }}
+            >
+              + 単位を追加
+            </button>
+          </div>
+        </div>
       )}
     </div>
   )

@@ -62,76 +62,119 @@ export default function HeroBackground() {
           <line x1="0" y1="220" x2="800" y2="220" stroke="#1B4F3A" strokeWidth="0.5" opacity="0.08" />
 
           {/* ═══ 川（アニメーション強化） ═══ */}
-          {/* メインの川面 */}
+          {/* メインの川面 — パス形状モーフィングで波うねり */}
           <path
-            d="M0,238 Q100,228 200,242 Q350,258 500,235 Q650,212 800,238 L800,258 Q650,232 500,255 Q350,278 200,262 Q100,248 0,258Z"
             fill="#1B4F3A"
-            opacity="0.06"
+            opacity="0.10"
           >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; -30,3; 0,0"
-              dur="5s"
+            <animate
+              attributeName="d"
+              values="
+                M0,235 Q100,222 200,238 Q350,256 500,230 Q650,204 800,235 L800,260 Q650,228 500,254 Q350,280 200,264 Q100,248 0,260Z;
+                M0,242 Q100,258 200,244 Q350,228 500,252 Q650,272 800,242 L800,265 Q650,268 500,272 Q350,248 200,262 Q100,280 0,266Z;
+                M0,235 Q100,222 200,238 Q350,256 500,230 Q650,204 800,235 L800,260 Q650,228 500,254 Q350,280 200,264 Q100,248 0,260Z
+              "
+              dur="4s"
               repeatCount="indefinite"
-            />
-          </path>
-          {/* 第2の波 */}
-          <path
-            d="M0,250 Q150,242 300,255 Q500,268 700,248 L800,250 L800,262 Q700,254 500,274 Q300,262 150,252 L0,262Z"
-            fill="#1B4F3A"
-            opacity="0.04"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; 25,-2; 0,0"
-              dur="7s"
-              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
             />
           </path>
 
-          {/* 川のストローク線（流れの質感）×3本 */}
+          {/* 第2の波 — 逆位相でリアルな川の流れ */}
           <path
-            d="M-100,240 Q100,230 300,245 Q500,260 700,238 Q900,216 1100,240"
-            fill="none"
-            stroke="url(#hero-river)"
-            strokeWidth="1.5"
+            fill="#1B4F3A"
+            opacity="0.07"
           >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; -40,2; 0,0"
-              dur="4s"
-              repeatCount="indefinite"
-            />
-          </path>
-          <path
-            d="M-50,248 Q150,238 350,252 Q550,266 750,244 Q950,222 1150,248"
-            fill="none"
-            stroke="url(#hero-river2)"
-            strokeWidth="1"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; 30,-1.5; 0,0"
-              dur="6s"
-              repeatCount="indefinite"
-            />
-          </path>
-          <path
-            d="M-80,255 Q120,245 320,258 Q520,272 720,250 Q920,228 1120,255"
-            fill="none"
-            stroke="url(#hero-river2)"
-            strokeWidth="0.8"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; -20,1; 0,0"
+            <animate
+              attributeName="d"
+              values="
+                M0,248 Q150,260 300,252 Q500,242 700,258 L800,252 L800,268 Q700,272 500,258 Q300,268 150,272 L0,268Z;
+                M0,254 Q150,240 300,258 Q500,272 700,246 L800,258 L800,274 Q700,260 500,274 Q300,256 150,260 L0,274Z;
+                M0,248 Q150,260 300,252 Q500,242 700,258 L800,252 L800,268 Q700,272 500,258 Q300,268 150,272 L0,268Z
+              "
               dur="5.5s"
               repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+            />
+          </path>
+
+          {/* 第3の波 — 細い水面ライン（やや速め） */}
+          <path
+            fill="#1B4F3A"
+            opacity="0.05"
+          >
+            <animate
+              attributeName="d"
+              values="
+                M0,262 Q200,252 400,266 Q600,280 800,262 L800,272 Q600,288 400,276 Q200,264 0,272Z;
+                M0,268 Q200,280 400,264 Q600,250 800,268 L800,278 Q600,264 400,278 Q200,290 0,278Z;
+                M0,262 Q200,252 400,266 Q600,280 800,262 L800,272 Q600,288 400,276 Q200,264 0,272Z
+              "
+              dur="3.5s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+            />
+          </path>
+
+          {/* 川のストローク線（流れの質感）×3本 — パスモーフィング */}
+          <path
+            fill="none"
+            stroke="url(#hero-river)"
+            strokeWidth="1.8"
+            opacity="0.9"
+          >
+            <animate
+              attributeName="d"
+              values="
+                M0,238 Q200,224 400,242 Q600,260 800,238;
+                M0,244 Q200,260 400,246 Q600,232 800,244;
+                M0,238 Q200,224 400,242 Q600,260 800,238
+              "
+              dur="3s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+            />
+          </path>
+          <path
+            fill="none"
+            stroke="url(#hero-river2)"
+            strokeWidth="1.2"
+            opacity="0.8"
+          >
+            <animate
+              attributeName="d"
+              values="
+                M0,250 Q200,264 400,252 Q600,240 800,250;
+                M0,256 Q200,242 400,258 Q600,272 800,256;
+                M0,250 Q200,264 400,252 Q600,240 800,250
+              "
+              dur="4.5s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+            />
+          </path>
+          <path
+            fill="none"
+            stroke="url(#hero-river2)"
+            strokeWidth="0.9"
+            opacity="0.7"
+          >
+            <animate
+              attributeName="d"
+              values="
+                M0,258 Q200,246 400,260 Q600,274 800,258;
+                M0,264 Q200,278 400,264 Q600,252 800,264;
+                M0,258 Q200,246 400,260 Q600,274 800,258
+              "
+              dur="6s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
             />
           </path>
 
