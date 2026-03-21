@@ -841,16 +841,25 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
           }
         } catch {}
 
-        // 診療科→学会名マッピング
+        // 診療科→学会名マッピング（全主要学会）
         const SOCIETY_MAP = {
-          "循環器": ["Japanese Circulation Society", "Japan Atherosclerosis Society"],
-          "呼吸器": ["Japanese Respiratory Society"],
-          "消化器": ["Japanese Society of Gastroenterology"],
+          "循環器": ["Japanese Circulation Society", "Japan Atherosclerosis Society", "Japanese Society of Hypertension"],
+          "呼吸器": ["Japanese Respiratory Society", "Japanese Society of Allergology"],
+          "消化器": ["Japanese Society of Gastroenterology", "Japan Society of Hepatology"],
           "腎臓": ["Japanese Society of Nephrology"],
-          "神経": ["Japanese Society of Neurology"],
+          "神経": ["Japanese Society of Neurology", "Japan Stroke Society"],
           "血液": ["Japanese Society of Hematology"],
-          "感染症": ["Japanese Association for Infectious Diseases"],
-          "内分泌": ["Japan Diabetes Society"],
+          "感染症": ["Japanese Association for Infectious Diseases", "Japanese Society of Chemotherapy"],
+          "内分泌": ["Japan Diabetes Society", "Japan Thyroid Association", "Japan Endocrine Society"],
+          "リウマチ": ["Japan College of Rheumatology"],
+          "腫瘍": ["Japanese Society of Clinical Oncology", "Japanese Society of Medical Oncology"],
+          "皮膚科": ["Japanese Dermatological Association"],
+          "精神科": ["Japanese Society of Psychiatry and Neurology"],
+          "小児科": ["Japan Pediatric Society"],
+          "救急": ["Japanese Association for Acute Medicine"],
+          "集中治療": ["Japanese Society of Intensive Care Medicine"],
+          "麻酔科": ["Japanese Society of Anesthesiologists"],
+          "総合内科": ["Japanese Society of Internal Medicine"],
         };
 
         const societies = specialties.length > 0
@@ -862,8 +871,9 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         }
 
         try {
+          // 2段クエリ: Affiliation + (guideline OR consensus OR recommendation)
           const affTerms = societies.map(s => `"${s}"[Affiliation]`).join(" OR ");
-          const q = encodeURIComponent(`(${affTerms}) AND (guideline[Title] OR practice guideline[Publication Type]) AND ("last 2 years"[dp])`);
+          const q = encodeURIComponent(`(${affTerms}) AND (guideline[Title] OR practice guideline[Publication Type] OR consensus[Title] OR recommendation[Title] OR "clinical practice"[Title]) AND ("last 3 years"[dp])`);
           const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=50&sort=date&retmode=json`;
           const sRes = await fetch(sUrl);
           const sData = await sRes.json();

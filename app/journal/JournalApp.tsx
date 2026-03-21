@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useProStatus } from '@/components/pro/useProStatus'
 import ProModal from '@/components/pro/ProModal'
 import AppHeader from '@/components/AppHeader'
-import { JOURNALS, Journal, TOP4_IDS, SPECIALTIES, GUIDELINE_SOURCES, GuidelineSource } from './journals-data'
+import { JOURNALS, Journal, TOP4_IDS, SPECIALTIES, SPECIALTY_KEYWORDS, GUIDELINE_SOURCES, GuidelineSource } from './journals-data'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -170,12 +170,23 @@ export default function JournalApp() {
     })
   }, [])
 
-  // ── Filtered articles (journal + IF applied client-side) ──
+  // ── Filtered articles (journal + IF + Top4 specialty keyword filtering) ──
   const filteredArticles = useMemo(() => {
     let list = articles.filter(a => activeJournalIds.has(a.journalId))
     if (ifMin > 0) list = list.filter(a => a.impactFactor >= ifMin)
+    // Top4雑誌の診療科フィルタリング: 診療科選択時、Top4記事はキーワードマッチのみ表示
+    if (selectedSpecialties.size > 0) {
+      const keywords = Array.from(selectedSpecialties).flatMap(sp => SPECIALTY_KEYWORDS[sp] || [])
+      if (keywords.length > 0) {
+        list = list.filter(a => {
+          if (!TOP4_IDS.includes(a.journalId)) return true // 専門誌はそのまま通す
+          const titleLower = (a.title + ' ' + (a.titleJa || '')).toLowerCase()
+          return keywords.some(kw => titleLower.includes(kw.toLowerCase()))
+        })
+      }
+    }
     return list
-  }, [articles, activeJournalIds, ifMin])
+  }, [articles, activeJournalIds, ifMin, selectedSpecialties])
 
   // ── Visible articles (FREE/PRO gate) ──
   const visibleArticles = showBookmarks

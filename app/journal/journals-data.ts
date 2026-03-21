@@ -136,6 +136,31 @@ export const IF_RANGES = [
   { label: 'すべて', min: 0 },
 ]
 
+// Top4雑誌の診療科フィルタリング用キーワード（タイトルマッチング）
+export const SPECIALTY_KEYWORDS: Record<string, string[]> = {
+  '循環器': ['heart', 'cardiac', 'cardiovascular', 'coronary', 'atrial', 'ventricular', 'aortic', 'myocardial', 'arrhythmia', 'hypertension', 'heart failure', 'statin', 'anticoagul', 'thromboembol', 'stroke', 'cerebrovascular', 'aneurysm', 'valvular', 'pericardi', 'endocarditis', 'cardiomyopath'],
+  '腫瘍': ['cancer', 'tumor', 'oncol', 'carcinoma', 'melanoma', 'lymphoma', 'leukemia', 'sarcoma', 'chemotherap', 'immunotherap', 'checkpoint inhibitor', 'metasta', 'neoplasm', 'malignant', 'pembrolizumab', 'nivolumab', 'atezolizumab'],
+  '呼吸器': ['pulmonary', 'respiratory', 'lung', 'asthma', 'copd', 'pneumonia', 'bronch', 'ventilat', 'oxygen', 'fibrosis', 'tuberculosis', 'pleural', 'airway'],
+  '感染症': ['infect', 'antibiotic', 'antimicrobial', 'sepsis', 'bacterial', 'viral', 'fungal', 'hiv', 'hepatitis', 'covid', 'sars-cov', 'influenza', 'vaccine', 'tuberculosis', 'mrsa', 'resistance'],
+  '消化器': ['gastro', 'hepat', 'liver', 'colon', 'intestin', 'pancrea', 'biliary', 'cirrhosis', 'crohn', 'colitis', 'celiac', 'endoscop', 'esophag', 'bowel', 'gallbladder'],
+  '腎臓': ['renal', 'kidney', 'nephro', 'dialysis', 'glomerul', 'proteinuria', 'creatinine', 'ckd', 'aki', 'transplant', 'hemodialysis', 'peritoneal'],
+  '神経': ['neuro', 'brain', 'alzheimer', 'parkinson', 'epilepsy', 'seizure', 'dementia', 'multiple sclerosis', 'migraine', 'cerebral', 'spinal cord', 'neuropath', 'meningitis', 'encephalitis'],
+  '血液': ['hematol', 'blood', 'anemia', 'thrombocytop', 'coagul', 'transfusion', 'myeloma', 'lymphoma', 'leukemia', 'hemophilia', 'platelet', 'neutropeni', 'bone marrow'],
+  '内分泌': ['diabetes', 'diabetic', 'insulin', 'thyroid', 'adrenal', 'pituitary', 'endocrin', 'hba1c', 'glucose', 'metabolic', 'obesity', 'osteoporosis', 'calcium', 'parathyroid', 'glp-1', 'semaglutide', 'tirzepatide'],
+  'リウマチ': ['rheumat', 'arthritis', 'lupus', 'vasculitis', 'autoimmune', 'connective tissue', 'spondyl', 'gout', 'fibromyalgia', 'sjogren', 'scleroderma'],
+  '皮膚科': ['dermat', 'skin', 'psoriasis', 'eczema', 'melanoma', 'atopic', 'wound', 'cutaneous', 'urticaria'],
+  '精神科': ['psychiatr', 'depression', 'anxiety', 'schizophren', 'bipolar', 'mental health', 'antidepressant', 'psychosis', 'suicid', 'ptsd', 'adhd'],
+  '小児科': ['pediatr', 'child', 'infant', 'neonat', 'adolescent', 'newborn', 'preterm', 'vaccination', 'developmental'],
+  '泌尿器': ['urolog', 'prostate', 'bladder', 'kidney stone', 'renal cell', 'urinary', 'incontinence', 'erectile', 'testicular'],
+  '放射線': ['radiol', 'imaging', 'ct scan', 'mri', 'ultrasound', 'mammograph', 'radiograph', 'pet scan', 'radiation therapy'],
+  '麻酔科': ['anesthes', 'anaesthes', 'perioperative', 'sedation', 'pain management', 'regional block', 'intubation', 'airway management'],
+  '救急': ['emergency', 'trauma', 'resuscitat', 'critical care', 'triage', 'acute care', 'cardiac arrest', 'shock', 'burn'],
+  '老年病': ['geriatr', 'elderly', 'aging', 'frailty', 'dementia', 'falls', 'polypharmacy', 'sarcopenia', 'nursing home'],
+  '整形外科': ['orthop', 'fracture', 'arthroplasty', 'bone', 'joint', 'musculoskeletal', 'spine', 'knee', 'hip replacement', 'tendon'],
+  '眼科': ['ophthalm', 'retina', 'glaucoma', 'cataract', 'macular', 'cornea', 'visual', 'intraocular', 'optic nerve'],
+  '集中治療': ['intensive care', 'icu', 'critical care', 'mechanical ventilat', 'sepsis', 'shock', 'organ failure', 'vasopressor', 'ecmo'],
+}
+
 // ── Guideline sources (日本の学会ガイドライン) ──
 
 export interface GuidelineSource {
@@ -147,14 +172,48 @@ export interface GuidelineSource {
 }
 
 export const GUIDELINE_SOURCES: GuidelineSource[] = [
-  { id: 'jcs', name: '日本循環器学会', nameShort: '循環器学会', specialty: '循環器', searchTerms: ['Japanese Circulation Society[Affiliation] AND guideline'] },
-  { id: 'jas', name: '日本動脈硬化学会', nameShort: '動脈硬化学会', specialty: '循環器', searchTerms: ['Japan Atherosclerosis Society[Affiliation] AND guideline'] },
-  { id: 'jcvs', name: '日本心臓血管外科学会', nameShort: '心臓外科学会', specialty: '循環器', searchTerms: ['Japanese Association for Thoracic Surgery[Affiliation] AND guideline'] },
-  { id: 'jrs', name: '日本呼吸器学会', nameShort: '呼吸器学会', specialty: '呼吸器', searchTerms: ['Japanese Respiratory Society[Affiliation] AND guideline'] },
-  { id: 'jsge', name: '日本消化器病学会', nameShort: '消化器学会', specialty: '消化器', searchTerms: ['Japanese Society of Gastroenterology[Affiliation] AND guideline'] },
-  { id: 'jsn', name: '日本腎臓学会', nameShort: '腎臓学会', specialty: '腎臓', searchTerms: ['Japanese Society of Nephrology[Affiliation] AND guideline'] },
-  { id: 'jsnp', name: '日本神経学会', nameShort: '神経学会', specialty: '神経', searchTerms: ['Japanese Society of Neurology[Affiliation] AND guideline'] },
-  { id: 'jsh', name: '日本血液学会', nameShort: '血液学会', specialty: '血液', searchTerms: ['Japanese Society of Hematology[Affiliation] AND guideline'] },
-  { id: 'jaid', name: '日本感染症学会', nameShort: '感染症学会', specialty: '感染症', searchTerms: ['Japanese Association for Infectious Diseases[Affiliation] AND guideline'] },
-  { id: 'jds', name: '日本糖尿病学会', nameShort: '糖尿病学会', specialty: '内分泌', searchTerms: ['Japan Diabetes Society[Affiliation] AND guideline'] },
+  // 循環器
+  { id: 'jcs', name: '日本循環器学会', nameShort: '循環器学会', specialty: '循環器', searchTerms: ['Japanese Circulation Society'] },
+  { id: 'jas', name: '日本動脈硬化学会', nameShort: '動脈硬化学会', specialty: '循環器', searchTerms: ['Japan Atherosclerosis Society'] },
+  { id: 'jsh-hyper', name: '日本高血圧学会', nameShort: '高血圧学会', specialty: '循環器', searchTerms: ['Japanese Society of Hypertension'] },
+  // 呼吸器
+  { id: 'jrs', name: '日本呼吸器学会', nameShort: '呼吸器学会', specialty: '呼吸器', searchTerms: ['Japanese Respiratory Society'] },
+  // 消化器
+  { id: 'jsge', name: '日本消化器病学会', nameShort: '消化器学会', specialty: '消化器', searchTerms: ['Japanese Society of Gastroenterology'] },
+  { id: 'jsh-hepat', name: '日本肝臓学会', nameShort: '肝臓学会', specialty: '消化器', searchTerms: ['Japan Society of Hepatology'] },
+  // 腎臓
+  { id: 'jsn', name: '日本腎臓学会', nameShort: '腎臓学会', specialty: '腎臓', searchTerms: ['Japanese Society of Nephrology'] },
+  // 神経
+  { id: 'jsnp', name: '日本神経学会', nameShort: '神経学会', specialty: '神経', searchTerms: ['Japanese Society of Neurology'] },
+  { id: 'jss', name: '日本脳卒中学会', nameShort: '脳卒中学会', specialty: '神経', searchTerms: ['Japan Stroke Society'] },
+  // 血液
+  { id: 'jsh', name: '日本血液学会', nameShort: '血液学会', specialty: '血液', searchTerms: ['Japanese Society of Hematology'] },
+  // 感染症
+  { id: 'jaid', name: '日本感染症学会', nameShort: '感染症学会', specialty: '感染症', searchTerms: ['Japanese Association for Infectious Diseases'] },
+  { id: 'jsc', name: '日本化学療法学会', nameShort: '化学療法学会', specialty: '感染症', searchTerms: ['Japanese Society of Chemotherapy'] },
+  // 内分泌
+  { id: 'jds', name: '日本糖尿病学会', nameShort: '糖尿病学会', specialty: '内分泌', searchTerms: ['Japan Diabetes Society'] },
+  { id: 'jts', name: '日本甲状腺学会', nameShort: '甲状腺学会', specialty: '内分泌', searchTerms: ['Japan Thyroid Association'] },
+  { id: 'jes', name: '日本内分泌学会', nameShort: '内分泌学会', specialty: '内分泌', searchTerms: ['Japan Endocrine Society'] },
+  // リウマチ
+  { id: 'jcr', name: '日本リウマチ学会', nameShort: 'リウマチ学会', specialty: 'リウマチ', searchTerms: ['Japan College of Rheumatology'] },
+  // 腫瘍
+  { id: 'jsco', name: '日本臨床腫瘍学会', nameShort: '臨床腫瘍学会', specialty: '腫瘍', searchTerms: ['Japanese Society of Clinical Oncology'] },
+  { id: 'jsmo', name: '日本癌治療学会', nameShort: '癌治療学会', specialty: '腫瘍', searchTerms: ['Japanese Society of Medical Oncology'] },
+  // 皮膚科
+  { id: 'jda', name: '日本皮膚科学会', nameShort: '皮膚科学会', specialty: '皮膚科', searchTerms: ['Japanese Dermatological Association'] },
+  // 精神科
+  { id: 'jspn', name: '日本精神神経学会', nameShort: '精神神経学会', specialty: '精神科', searchTerms: ['Japanese Society of Psychiatry and Neurology'] },
+  // 小児科
+  { id: 'jps', name: '日本小児科学会', nameShort: '小児科学会', specialty: '小児科', searchTerms: ['Japan Pediatric Society'] },
+  // 救急
+  { id: 'jaam', name: '日本救急医学会', nameShort: '救急医学会', specialty: '救急', searchTerms: ['Japanese Association for Acute Medicine'] },
+  // 集中治療
+  { id: 'jsicm', name: '日本集中治療医学会', nameShort: '集中治療学会', specialty: '集中治療', searchTerms: ['Japanese Society of Intensive Care Medicine'] },
+  // 麻酔科
+  { id: 'jsa', name: '日本麻酔科学会', nameShort: '麻酔科学会', specialty: '麻酔科', searchTerms: ['Japanese Society of Anesthesiologists'] },
+  // 総合内科
+  { id: 'jsim', name: '日本内科学会', nameShort: '内科学会', specialty: '総合内科', searchTerms: ['Japanese Society of Internal Medicine'] },
+  // アレルギー
+  { id: 'jsallergy', name: '日本アレルギー学会', nameShort: 'アレルギー学会', specialty: '呼吸器', searchTerms: ['Japanese Society of Allergology'] },
 ]
