@@ -148,7 +148,6 @@ export default function ProfileWizard({
   const [step, setStep] = useState(0) // 0 = overview, 1-9 = steps
   const [profile, setProfile] = useState<WizardProfile>(EMPTY_WIZARD_PROFILE)
   const [saved, setSaved] = useState(false)
-  const [showResume, setShowResume] = useState(false)
 
   // ── 読み込み（クラウド優先 → localStorage fallback） ──
   useEffect(() => {
@@ -232,62 +231,46 @@ export default function ProfileWizard({
   // ── Overview（ステップ選択画面） ──
   if (step === 0) {
     return (
-      <div className="space-y-4">
-        {/* 案内 */}
-        <div className="bg-s0 border border-br rounded-xl p-4">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-xs font-medium text-tx">プロフィール完成度</p>
-            <p className="text-sm font-bold" style={{ color: MC }}>{completion}%</p>
-          </div>
-          <div className="w-full h-2 bg-s1 rounded-full overflow-hidden">
+      <div className="pb-20">
+        {/* 完成度プログレスバー */}
+        <div className="flex items-center gap-2 mb-3">
+          <div className="flex-1 h-2 bg-s1 rounded-full overflow-hidden">
             <div className="h-full rounded-full transition-all duration-500" style={{ width: `${completion}%`, background: MC }} />
           </div>
-          <p className="text-[11px] text-muted mt-2">各ステップをタップして入力。約10分で完成します。</p>
+          <p className="text-xs font-bold flex-shrink-0" style={{ color: MC }}>{completion}%</p>
         </div>
 
-        {/* ステップカード */}
-        <div className="grid grid-cols-2 gap-3">
+        {/* ステップカード — 3列コンパクト */}
+        <div className="grid grid-cols-3 gap-2 mb-4">
           {STEPS.map(s => {
             const filled = getStepFilled(s.num, profile)
             return (
-              <button
-                key={s.num}
-                onClick={() => goStep(s.num)}
-                className="bg-s0 border border-br rounded-xl p-4 text-left hover:border-ac/40 hover:shadow-sm transition-all group relative"
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <span className="text-2xl">{s.icon}</span>
-                  {filled && (
-                    <span className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background: MC }}>
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                  )}
-                </div>
-                <p className="text-sm font-bold text-tx group-hover:text-ac transition-colors">
-                  STEP {s.num}
-                </p>
-                <p className="text-xs font-medium text-tx mt-0.5">{s.title}</p>
-                <p className="text-[10px] text-muted mt-1">{s.desc}</p>
+              <button key={s.num} onClick={() => goStep(s.num)}
+                className="p-2 rounded-xl border text-center transition-all hover:border-ac/30"
+                style={{ borderColor: filled ? MC + '40' : 'var(--br)', background: filled ? MCL : 'var(--s0)' }}>
+                <span className="text-lg block">{s.icon}</span>
+                <p className="text-[10px] font-bold mt-1" style={{ color: filled ? MC : 'var(--m)' }}>{s.title}</p>
+                <p className="text-[8px]" style={{ color: filled ? MC : 'var(--m)' }}>{filled ? '✓' : '未入力'}</p>
               </button>
             )
           })}
         </div>
 
-        {/* 保存ボタン */}
-        <button onClick={handleSave}
-          className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2"
-          style={{ background: MC, boxShadow: `0 4px 14px ${MC}33` }}>
-          {saved ? (
-            <><CheckIcon />保存しました</>
-          ) : (
-            <><SaveIcon />{isPro ? 'プロフィールを保存' : 'プロフィールを保存（PRO）'}</>
-          )}
-        </button>
+        {/* 履歴書プレビュー — 常時表示 */}
+        <ResumePreview profile={profile} isPro={isPro} />
 
-        {/* 履歴書プレビュー */}
-        <ResumePreview profile={profile} isPro={isPro} show={showResume} onToggle={() => setShowResume(!showResume)} />
+        {/* 保存ボタン — sticky */}
+        <div className="fixed bottom-16 left-0 right-0 px-4 z-10">
+          <button onClick={handleSave}
+            className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2"
+            style={{ background: MC, boxShadow: `0 4px 14px ${MC}33` }}>
+            {saved ? (
+              <><CheckIcon />保存しました</>
+            ) : (
+              <><SaveIcon />{isPro ? 'プロフィールを保存' : 'プロフィールを保存（PRO）'}</>
+            )}
+          </button>
+        </div>
       </div>
     )
   }
@@ -726,8 +709,8 @@ function Step9({ profile, updateField, toggleArrayField }: StepProps & { toggleA
 // ═══════════════════════════════════════
 //  履歴書プレビュー
 // ═══════════════════════════════════════
-function ResumePreview({ profile, isPro, show, onToggle }: {
-  profile: WizardProfile; isPro: boolean; show: boolean; onToggle: () => void
+function ResumePreview({ profile, isPro }: {
+  profile: WizardProfile; isPro: boolean
 }) {
   const hasData = profile.name && profile.university
 
@@ -956,7 +939,8 @@ td, th { border: 1px solid #333; padding: 3pt 5pt; vertical-align: top; }
 
   return (
     <div className="bg-s0 border border-br rounded-xl overflow-hidden">
-      <button onClick={onToggle} className="w-full flex items-center justify-between p-4 hover:bg-s1/50 transition-colors">
+      {/* ヘッダー（トグルなし） */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-br">
         <span className="text-sm font-bold text-tx flex items-center gap-2">
           <svg className="w-4 h-4" style={{ stroke: MC }} fill="none" viewBox="0 0 24 24" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -964,68 +948,63 @@ td, th { border: 1px solid #333; padding: 3pt 5pt; vertical-align: top; }
           履歴書プレビュー
           {!isPro && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: MCL, color: MC }}>PRO</span>}
         </span>
-        <span className={`text-muted transition-transform ${show ? 'rotate-180' : ''}`}>▾</span>
-      </button>
-      {show && (
-        <div className="border-t border-br">
-          {!hasData ? (
-            <div className="p-6 text-center"><p className="text-xs text-muted">STEP 1で氏名と大学を入力すると表示されます</p></div>
-          ) : (
-            <div className="p-5 relative">
-              {/* PDF出力ボタン (PRO only) */}
-              {isPro && (
-                <div className="flex justify-end mb-3">
-                  <button onClick={handlePrintPDF}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium text-white transition-all hover:opacity-90"
-                    style={{ background: MC }}>
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-                    </svg>
-                    PDF出力
-                  </button>
+      </div>
+      {!hasData ? (
+        <div className="p-6 text-center"><p className="text-xs text-muted">STEP 1で氏名と大学を入力すると表示されます</p></div>
+      ) : (
+        <div className="p-4 relative">
+          {/* PDF出力ボタン (PRO only) */}
+          {isPro && (
+            <div className="flex justify-end mb-3">
+              <button onClick={handlePrintPDF}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium text-white transition-all hover:opacity-90"
+                style={{ background: MC }}>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                </svg>
+                PDF出力
+              </button>
+            </div>
+          )}
+          <div className="space-y-4">
+            <div className="flex gap-4">
+              <div className="w-20 h-24 bg-s1 border border-br rounded-lg flex items-center justify-center flex-shrink-0"><span className="text-[10px] text-muted">写真</span></div>
+              <div className="flex-1 min-w-0">
+                <p className="text-lg font-bold text-tx mb-1">{profile.name}</p>
+                <div className="space-y-0.5 text-xs text-muted">
+                  <p>{profile.university}</p>
+                  {profile.graduationYear && <p>{profile.graduationYear}年3月卒業見込み</p>}
+                  {profile.preferredSpecialty && <p>志望科: <span className="font-medium text-tx">{profile.preferredSpecialty}</span></p>}
                 </div>
-              )}
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  <div className="w-20 h-24 bg-s1 border border-br rounded-lg flex items-center justify-center flex-shrink-0"><span className="text-[10px] text-muted">写真</span></div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-lg font-bold text-tx mb-1">{profile.name}</p>
-                    <div className="space-y-0.5 text-xs text-muted">
-                      <p>{profile.university}</p>
-                      {profile.graduationYear && <p>{profile.graduationYear}年3月卒業見込み</p>}
-                      {profile.preferredSpecialty && <p>志望科: <span className="font-medium text-tx">{profile.preferredSpecialty}</span></p>}
-                    </div>
-                  </div>
-                </div>
-                <hr className="border-br" />
-                <RSection title="志望動機" content={profile.motivation} />
-                <RSection title="強み" content={
-                  profile.strengthsList.length > 0
-                    ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? `\n${profile.strengthsEpisode}` : '')
-                    : profile.strengths
-                } />
-                <RSection title="部活・課外活動" content={[profile.clubs, profile.clubRole ? `（${profile.clubRole}）` : '', profile.clubLearning].filter(Boolean).join(' ')} />
-                <RSection title="研究経験" content={[profile.research, profile.researchResults].filter(Boolean).join('／')} />
-                {profile.preferredRegions.length > 0 && (
-                  <div>
-                    <p className="text-xs font-bold text-tx mb-1">希望研修地域</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {profile.preferredRegions.map(r => <span key={r} className="px-2 py-0.5 rounded text-[11px] font-medium" style={{ background: MCL, color: MC }}>{r}</span>)}
-                    </div>
-                  </div>
-                )}
               </div>
-              {!isPro && (
-                <div className="absolute inset-0 top-32">
-                  <div className="w-full h-full backdrop-blur-md bg-s0/60 flex flex-col items-center justify-center px-6">
-                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3" style={{ background: MCL }}>
-                      <svg className="w-6 h-6" style={{ stroke: MC }} fill="none" viewBox="0 0 24 24" strokeWidth={2}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                    </div>
-                    <p className="text-sm font-bold text-tx mb-1">PRO会員で履歴書を完全生成</p>
-                    <p className="text-xs text-muted text-center">PDF出力・AI添削が使えます</p>
-                  </div>
+            </div>
+            <hr className="border-br" />
+            <RSection title="志望動機" content={profile.motivation} />
+            <RSection title="強み" content={
+              profile.strengthsList.length > 0
+                ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? `\n${profile.strengthsEpisode}` : '')
+                : profile.strengths
+            } />
+            <RSection title="部活・課外活動" content={[profile.clubs, profile.clubRole ? `（${profile.clubRole}）` : '', profile.clubLearning].filter(Boolean).join(' ')} />
+            <RSection title="研究経験" content={[profile.research, profile.researchResults].filter(Boolean).join('／')} />
+            {profile.preferredRegions.length > 0 && (
+              <div>
+                <p className="text-xs font-bold text-tx mb-1">希望研修地域</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {profile.preferredRegions.map(r => <span key={r} className="px-2 py-0.5 rounded text-[11px] font-medium" style={{ background: MCL, color: MC }}>{r}</span>)}
                 </div>
-              )}
+              </div>
+            )}
+          </div>
+          {!isPro && (
+            <div className="absolute inset-0 top-32">
+              <div className="w-full h-full backdrop-blur-md bg-s0/60 flex flex-col items-center justify-center px-6">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3" style={{ background: MCL }}>
+                  <svg className="w-6 h-6" style={{ stroke: MC }} fill="none" viewBox="0 0 24 24" strokeWidth={2}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                </div>
+                <p className="text-sm font-bold text-tx mb-1">PRO会員で履歴書を完全生成</p>
+                <p className="text-xs text-muted text-center">PDF出力・AI添削が使えます</p>
+              </div>
             </div>
           )}
         </div>
