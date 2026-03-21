@@ -24,7 +24,7 @@ const SORT_OPTIONS: { key: SortKey; label: string }[] = [
 ]
 
 // ── サブタブ ──
-type SubTab = 'search' | 'interested' | 'wishlist'
+type SubTab = 'search' | 'interested' | 'wishlist' | 'ranking'
 
 interface Profile {
   name: string
@@ -67,6 +67,7 @@ export default function HospitalTab({
   const [wishlistIds, setWishlistIds] = useState<number[]>([])
   const [expandedId, setExpandedId] = useState<number | null>(null)
   const [dragIdx, setDragIdx] = useState<number | null>(null)
+  const [interestCounts, setInterestCounts] = useState<Record<string, number>>({})
 
   // localStorage読み込み
   useEffect(() => {
@@ -76,6 +77,11 @@ export default function HospitalTab({
       if (i) setInterestedIds(JSON.parse(i))
       if (w) setWishlistIds(JSON.parse(w))
     } catch { /* ignore */ }
+    // 気になるカウント取得
+    fetch('https://iwor-api.mightyaddnine.workers.dev/api/hospital/interest-counts')
+      .then(r => r.json())
+      .then(d => { if (d.ok && d.counts) setInterestCounts(d.counts) })
+      .catch(() => {})
   }, [])
 
   // localStorage保存
@@ -88,10 +94,26 @@ export default function HospitalTab({
 
   const toggleInterested = useCallback((id: number) => {
     if (!isPro) { onShowProModal(); return }
+    const wasInterested = interestedIds.includes(id)
     setInterestedIds(prev =>
       prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
     )
-  }, [isPro, onShowProModal])
+    // サーバー同期
+    const token = localStorage.getItem('iwor_session_token')
+    if (token) {
+      const action = wasInterested ? 'remove' : 'add'
+      fetch('https://iwor-api.mightyaddnine.workers.dev/api/hospital/interest', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ hospitalId: id, action }),
+      })
+        .then(r => r.json())
+        .then(d => {
+          if (d.ok) setInterestCounts(prev => ({ ...prev, [String(id)]: d.count }))
+        })
+        .catch(() => {})
+    }
+  }, [isPro, onShowProModal, interestedIds])
 
   const toggleWishlist = useCallback((id: number) => {
     if (!isPro) { onShowProModal(); return }
@@ -182,6 +204,7 @@ export default function HospitalTab({
       <div className="flex gap-1 bg-s1 rounded-xl p-1">
         {([
           { id: 'search' as SubTab, label: '病院検索', count: HOSPITALS.length },
+          { id: 'ranking' as SubTab, label: '人気', count: 0 },
           { id: 'interested' as SubTab, label: '気になる', count: interestedIds.length },
           { id: 'wishlist' as SubTab, label: '志望リスト', count: wishlistIds.length },
         ]).map(t => (
@@ -358,6 +381,7 @@ export default function HospitalTab({
                 isWishlist={wishlistIds.includes(h.id)}
                 onToggleInterested={() => toggleInterested(h.id)}
                 onToggleWishlist={() => toggleWishlist(h.id)}
+                interestCount={interestCounts[String(h.id)] || 0}
               />
             ))}
           </div>
@@ -374,6 +398,58 @@ export default function HospitalTab({
             </div>
           )}
         </>
+      )}
+
+      {/* ══════ 人気ランキングタブ ══════ */}
+      {subTab === 'ranking' && (
+        <div className="space-y-3">
+          <div className="bg-s0 border border-br rounded-xl p-4">
+            <p className="text-xs font-bold text-tx mb-1">🔥 気になるランキング</p>
+            <p className="text-[11px] text-muted mb-4">全ユーザーの「気になる」数で集計</p>
+            {(() => {
+              const ranked = HOSPITALS
+                .map(h => ({ ...h, count: interestCounts[String(h.id)] || 0 }))
+                .filter(h => h.count > 0)
+                .sort((a, b) => b.count - a.count)
+                .slice(0, 20)
+
+              if (ranked.length === 0) return (
+                <p className="text-xs text-muted text-center py-8">まだデータがありません</p>
+              )
+
+              return (
+                <div className="space-y-2">
+                  {ranked.map((h, i) => {
+                    const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}.`
+                    return (
+                      <div key={h.id} className="flex items-center gap-3 py-2 border-b last:border-b-0" style={{ borderColor: 'var(--br)' }}>
+                        <span className="text-sm w-8 text-center flex-shrink-0">{medal}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold text-tx truncate">{h.name}</p>
+                          <p className="text-[10px] text-muted">{h.prefecture} · {h.type}</p>
+                        </div>
+                        {isPro ? (
+                          <span className="text-xs font-bold flex-shrink-0" style={{ color: MC }}>♥ {h.count}</span>
+                        ) : (
+                          <span className="text-xs flex-shrink-0 blur-[3px] select-none" style={{ color: MC }}>♥ {h.count}</span>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })()}
+            {!isPro && (
+              <div className="mt-4 pt-3 border-t" style={{ borderColor: 'var(--br)' }}>
+                <p className="text-[11px] text-muted text-center mb-2">PRO会員で人気数を確認</p>
+                <button onClick={onShowProModal}
+                  className="w-full py-2 rounded-lg text-xs font-bold text-white" style={{ background: MC }}>
+                  PRO会員になる
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       )}
 
       {/* ══════ 気になるタブ ══════ */}
@@ -423,6 +499,7 @@ export default function HospitalTab({
 function HospitalCard({
   hospital: h, isPro, expanded, onToggle,
   isInterested, isWishlist, onToggleInterested, onToggleWishlist,
+  interestCount,
 }: {
   hospital: Hospital
   isPro: boolean
@@ -432,6 +509,7 @@ function HospitalCard({
   isWishlist: boolean
   onToggleInterested: () => void
   onToggleWishlist: () => void
+  interestCount: number
 }) {
   // 倍率の色分け
   const rateColor = h.matchRate <= 2 ? { bg: '#DCFCE7', text: '#166534' }
@@ -513,6 +591,11 @@ function HospitalCard({
             isInterested ? 'border-pink-300 bg-pink-50 text-pink-600' : 'border-br text-muted hover:text-tx'
           }`}>
           {isInterested ? '♥' : '♡'} 気になる
+          {interestCount > 0 && (
+            isPro
+              ? <span className="text-[10px] opacity-70">({interestCount})</span>
+              : <span className="text-[10px] opacity-40 blur-[3px] select-none">({interestCount})</span>
+          )}
         </button>
         <button onClick={e => { e.stopPropagation(); onToggleWishlist() }}
           className={`flex-1 py-2 rounded-lg text-[11px] font-medium border transition-all flex items-center justify-center gap-1 ${
