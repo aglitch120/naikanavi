@@ -134,6 +134,11 @@ function SummaryGeneratorInner() {
       if (parsed.labFindings) {
         init.labFindings = parsed.labFindings + '\n\n--- テンプレート（不足分を補完） ---\n' + init.labFindings
       }
+      if (parsed.imaging) {
+        // 画像所見を検査所見に統合
+        init.labFindings = (init.labFindings ? init.labFindings + '\n\n' : '') + '【画像所見】\n' + parsed.imaging
+      }
+      if (parsed.problemList) init.problemList = parsed.problemList
       if (parsed.diagnosis) init.diagnosis = parsed.diagnosis
       if (parsed.dischargeMeds) init.dischargeMeds = parsed.dischargeMeds
       if (parsed.course) {
