@@ -175,16 +175,12 @@ export default function CombinationDrugsPage() {
         <span>配合錠リスト</span>
       </nav>
 
-      <header className="mb-6">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium">💊 薬剤ガイド</span>
+      <header className="mb-4">
+        <div className="flex items-center justify-between mb-1">
+          <h1 className="text-lg font-bold text-tx">配合錠リスト</h1>
           <FavoriteButton slug="tool-combination-tablets" title="配合錠リスト" href="/tools/drugs/combination" type="tool" size="sm" />
         </div>
-        <h1 className="text-2xl font-bold text-tx mb-2">配合錠リスト</h1>
-        <p className="text-sm text-muted">
-          高血圧・脂質異常症・糖尿病で使用される配合錠 {totalDrugs}品目。成分と含量を一覧で確認。
-        </p>
-        <UpdatedAt />
+        <p className="text-xs text-muted">{totalDrugs}品目 — 高血圧・脂質異常症・糖尿病</p>
       </header>
 
       {/* Category tabs */}
@@ -206,57 +202,37 @@ export default function CombinationDrugsPage() {
       </div>
 
       {/* Search */}
-      <div className="mb-6">
-        <div className="flex items-center gap-2 bg-s0 border border-br rounded-lg px-3 py-2.5 focus-within:border-ac/40 transition-colors">
-          <svg className="w-4 h-4 text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
-          </svg>
-          <input
-            type="text"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="商品名・成分名で検索..."
-            className="flex-1 bg-transparent text-sm text-tx outline-none placeholder:text-muted/50"
-          />
-          {search && (
-            <button onClick={() => setSearch('')} className="text-muted hover:text-tx">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
-          )}
-        </div>
+      <div className="mb-3">
+        <input
+          type="text"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="🔍 商品名・成分名で検索"
+          className="w-full bg-s0 border border-br rounded-lg px-3 py-2 text-xs text-tx outline-none focus:border-ac/40 placeholder:text-muted/50"
+        />
       </div>
 
-      {/* Drug list */}
+      {/* Drug list — compact table */}
       {filteredSubs.length === 0 ? (
         <div className="bg-s0 border border-br rounded-xl p-8 text-center text-sm text-muted">
           「{search}」に一致する配合錠が見つかりません
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-4">
           {filteredSubs.map(sub => (
-            <section key={sub.title}>
-              <h2 className="text-sm font-bold text-ac mb-3 flex items-center gap-2">
-                <div className="w-5 h-0.5 bg-ac rounded-full" />
+            <section key={sub.title} className="bg-s0 border border-br rounded-xl overflow-hidden">
+              <h2 className="text-[11px] font-bold text-white px-3 py-1.5" style={{ background: 'var(--ac)' }}>
                 {sub.title}
               </h2>
-              <div className="space-y-2">
+              <div className="divide-y divide-br">
                 {sub.drugs.map(drug => (
-                  <div
-                    key={drug.brand}
-                    className="bg-s0 border border-br rounded-xl p-4 hover:border-ac/20 transition-colors"
-                  >
-                    <div className="flex items-start justify-between gap-2 mb-1">
-                      <h3 className="text-sm font-bold text-tx">{drug.brand}</h3>
+                  <div key={drug.brand} className="px-3 py-2">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-xs font-bold text-tx">{drug.brand}</span>
+                      <span className="text-[10px] text-ac">{drug.generic}</span>
                     </div>
-                    <p className="text-xs text-ac font-medium mb-1">{drug.generic}</p>
-                    <p className="text-xs text-muted leading-relaxed">{drug.composition}</p>
-                    {drug.note && (
-                      <p className="text-[11px] text-muted mt-1.5 bg-s1 rounded-lg px-2.5 py-1.5 leading-relaxed">
-                        💡 {drug.note}
-                      </p>
-                    )}
+                    <p className="text-[10px] text-muted mt-0.5">{drug.composition}</p>
+                    {drug.note && <p className="text-[9px] text-muted/70 mt-0.5">💡 {drug.note}</p>}
                   </div>
                 ))}
               </div>
