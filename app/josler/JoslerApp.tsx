@@ -690,6 +690,20 @@ function SummariesTab({ summaries, eg, updSum, openSumId, setOpenSumId, openSumD
 
   return (
     <>
+      {/* 病歴要約ジェネレーター導線 */}
+      <a href="/josler/summary-generator" style={{
+        display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px',
+        borderRadius: 12, background: `linear-gradient(135deg, ${C.acl}, #d4e8dc)`,
+        border: `1px solid ${C.ac}30`, textDecoration: 'none', marginBottom: 12,
+      }}>
+        <span style={{ fontSize: 20 }}>📝</span>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: C.ac }}>病歴要約ジェネレーター</div>
+          <div style={{ fontSize: 10, color: C.m }}>J-OSLER手引き準拠 / AI不使用 / ブラウザ完結</div>
+        </div>
+        <span style={{ fontSize: 14, color: C.ac }}>→</span>
+      </a>
+
       {/* Progress */}
       <Card>
         <CardT>病歴要約 進捗</CardT>
