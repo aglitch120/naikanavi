@@ -237,23 +237,27 @@ export default function JoslerApp() {
 
   // ── モード切り替えUI ──
   const ModeSwitch = () => (
-    <div style={{ display: 'flex', background: C.s1, borderRadius: 10, padding: 3, margin: '12px 18px 0' }}>
+    <div style={{ display: 'flex', gap: 6, padding: '14px 18px 0' }}>
       {([
-        { id: 'epoc' as RecordMode, label: '初期研修', sub: 'EPOC', disabled: false },
-        { id: 'josler' as RecordMode, label: '内科専攻', sub: 'J-OSLER', disabled: false },
+        { id: 'epoc' as RecordMode, label: 'EPOC', sub: '初期研修', disabled: false },
+        { id: 'josler' as RecordMode, label: 'J-OSLER', sub: '内科専攻', disabled: false },
         { id: null, label: '外科専攻', sub: '準備中', disabled: true },
-      ]).map((m, i) => (
-        <button key={i} onClick={() => !m.disabled && m.id && switchMode(m.id)} style={{
-          flex: 1, padding: '8px 4px', border: 'none', borderRadius: 8, cursor: m.disabled ? 'default' : 'pointer',
-          background: !m.disabled && mode === m.id ? C.s0 : 'transparent',
-          boxShadow: !m.disabled && mode === m.id ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
-          opacity: m.disabled ? 0.4 : 1,
-          transition: 'all .2s',
-        }}>
-          <div style={{ fontSize: 12, fontWeight: !m.disabled && mode === m.id ? 700 : 400, color: !m.disabled && mode === m.id ? C.ac : C.m }}>{m.label}</div>
-          <div style={{ fontSize: 10, color: !m.disabled && mode === m.id ? C.ac : C.br2 }}>{m.sub}</div>
-        </button>
-      ))}
+      ]).map((m, i) => {
+        const active = !m.disabled && mode === m.id
+        return (
+          <button key={i} onClick={() => !m.disabled && m.id && switchMode(m.id)} style={{
+            display: 'flex', alignItems: 'center', gap: 6,
+            padding: '6px 14px', border: `1.5px solid ${active ? C.ac : C.br}`,
+            borderRadius: 20, cursor: m.disabled ? 'default' : 'pointer',
+            background: active ? C.ac : C.s0,
+            opacity: m.disabled ? 0.38 : 1,
+            transition: 'all .18s',
+          }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: active ? C.s0 : C.m, letterSpacing: '0.01em' }}>{m.label}</span>
+            <span style={{ fontSize: 10, color: active ? 'rgba(255,255,255,0.7)' : C.br2, lineHeight: 1 }}>{m.sub}</span>
+          </button>
+        )
+      })}
     </div>
   )
 
@@ -275,23 +279,23 @@ export default function JoslerApp() {
 
     return (
       <div style={{ background: C.bg, minHeight: '100vh', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN',sans-serif", color: C.tx, maxWidth: 960, margin: '0 auto', position: 'relative', paddingBottom: 80 }}>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 18px 0', fontSize: 12, color: C.m }}>
-          <a href="/" style={{ color: C.m, textDecoration: 'none' }}>ホーム</a>
-          <span>›</span>
-          <span style={{ color: C.tx, fontWeight: 500 }}>研修記録</span>
-        </nav>
-        <ModeSwitch />
         <div style={{ padding: '12px 18px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <span style={{ fontSize: 18, fontWeight: 700, color: C.tx }}>EPOC 研修記録</span>
+          <nav style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: C.m, marginBottom: 10 }}>
+            <a href="/" style={{ color: C.m, textDecoration: 'none' }}>ホーム</a>
+            <span style={{ opacity: 0.5 }}>›</span>
+            <span style={{ color: C.tx }}>研修記録</span>
+          </nav>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: 20, fontWeight: 700, color: C.tx, letterSpacing: '-0.02em' }}>研修記録</span>
             <FavoriteButton slug="app-josler" title="研修記録" href="/josler" type="app" size="sm" />
           </div>
         </div>
-        <div style={{ display: 'flex', background: C.s0, borderBottom: `1px solid ${C.br}`, overflowX: 'auto' }}>
+        <ModeSwitch />
+        <div style={{ display: 'flex', background: C.bg, borderBottom: `1px solid ${C.br}`, overflowX: 'auto', marginTop: 14 }}>
           {EPOC_TABS.map(t => (
             <button key={t.id} onClick={() => setEpocTab(t.id)} style={{
-              flex: 1, padding: '11px 4px', border: 'none', background: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
-              borderBottom: epocTab === t.id ? `2.5px solid ${C.ac}` : '2.5px solid transparent',
+              flex: 1, padding: '10px 4px', border: 'none', background: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
+              borderBottom: epocTab === t.id ? `2px solid ${C.ac}` : '2px solid transparent',
               color: epocTab === t.id ? C.ac : C.m, fontWeight: epocTab === t.id ? 600 : 400, fontSize: 12,
             }}>
               {t.l}
@@ -312,34 +316,33 @@ export default function JoslerApp() {
   // ── J-OSLER画面（既存）──
   return (
     <div style={{ background: C.bg, minHeight: '100vh', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN',sans-serif", color: C.tx, maxWidth: 960, margin: '0 auto', position: 'relative', paddingBottom: 80 }}>
-      {/* Breadcrumb */}
-      <nav style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 18px 0', fontSize: 12, color: C.m }}>
-        <a href="/" style={{ color: C.m, textDecoration: 'none' }}>ホーム</a>
-        <span>›</span>
-        <span style={{ color: C.tx, fontWeight: 500 }}>研修記録</span>
-      </nav>
-      <ModeSwitch />
-      {/* Header */}
+      {/* Breadcrumb + Title */}
       <div style={{ padding: '12px 18px 0' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-          <span style={{ fontSize: 18, fontWeight: 700, color: C.tx }}>J-OSLER管理</span>
-          <span style={{ fontSize: 10, color: C.ac, background: C.acl, padding: '2px 7px', borderRadius: 4, fontWeight: 700 }}>PRO</span>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: C.m, marginBottom: 10 }}>
+          <a href="/" style={{ color: C.m, textDecoration: 'none' }}>ホーム</a>
+          <span style={{ opacity: 0.5 }}>›</span>
+          <span style={{ color: C.tx }}>研修記録</span>
+        </nav>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 20, fontWeight: 700, color: C.tx, letterSpacing: '-0.02em' }}>研修記録</span>
+          <span style={{ fontSize: 10, color: C.ac, background: C.acl, padding: '2px 7px', borderRadius: 10, fontWeight: 700, letterSpacing: '0.04em' }}>PRO</span>
           <FavoriteButton slug="app-josler" title="J-OSLER管理" href="/josler" type="app" size="sm" />
           <span style={{ flex: 1 }} />
           {isPro && (
-            <span style={{ fontSize: 11, padding: '3px 8px', borderRadius: 12, fontFamily: 'monospace', background: saveStatus === 'saved' ? '#DCFCE7' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#FEF3C7' : saveStatus === 'error' ? '#FEE2E2' : '#EEF4FF', color: saveStatus === 'saved' ? '#166534' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#92400E' : saveStatus === 'error' ? '#991B1B' : '#1E40AF', transition: 'all .3s' }}>
+            <span style={{ fontSize: 11, padding: '3px 10px', borderRadius: 20, fontFamily: 'monospace', background: saveStatus === 'saved' ? '#DCFCE7' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#FEF3C7' : saveStatus === 'error' ? '#FEE2E2' : '#EEF4FF', color: saveStatus === 'saved' ? '#166534' : saveStatus === 'saving' || saveStatus === 'dirty' ? '#92400E' : saveStatus === 'error' ? '#991B1B' : '#1E40AF', transition: 'all .3s' }}>
               {saveStatus === 'saved' ? '✓ 保存済み' : saveStatus === 'saving' || saveStatus === 'dirty' ? '⟳ 保存中…' : saveStatus === 'error' ? '✕ 保存失敗' : '☁ オフライン'}
             </span>
           )}
         </div>
       </div>
+      <ModeSwitch />
 
       {/* Tabs */}
-      <div style={{ display: 'flex', background: C.s0, borderBottom: `1px solid ${C.br}`, overflowX: 'auto' }}>
+      <div style={{ display: 'flex', background: C.bg, borderBottom: `1px solid ${C.br}`, overflowX: 'auto', marginTop: 14 }}>
         {TABS.map(t => (
           <button key={t.id} onClick={() => { setTab(t.id); setOpenSp(null); setOpenSumId(null) }} style={{
-            flex: 1, padding: '11px 4px', border: 'none', background: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
-            borderBottom: tab === t.id ? `2.5px solid ${C.ac}` : '2.5px solid transparent',
+            flex: 1, padding: '10px 4px', border: 'none', background: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
+            borderBottom: tab === t.id ? `2px solid ${C.ac}` : '2px solid transparent',
             color: tab === t.id ? C.ac : C.m, fontWeight: tab === t.id ? 600 : 400, fontSize: 12,
           }}>
             {t.l}

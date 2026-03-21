@@ -826,6 +826,85 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
     // ═══════════════════════════════════════════════════════════════
     if (path === "/api/journal" && request.method === "GET") {
       const url = new URL(request.url);
+      const contentType = url.searchParams.get("type") || "articles";
+
+      // ── ガイドライン検索モード ──
+      if (contentType === "guidelines") {
+        const specialties = (url.searchParams.get("specialties") || "").split(",").filter(Boolean);
+        const GL_CACHE_KEY = `journal:guidelines:${specialties.sort().join(",")}`;
+        const GL_CACHE_TTL = 86400; // 24時間
+
+        try {
+          const cached = await env.IWOR_KV.get(GL_CACHE_KEY, "json");
+          if (cached && cached.fetchedAt && (Date.now() - cached.fetchedAt) / 1000 < GL_CACHE_TTL) {
+            return json({ ok: true, articles: cached.articles, cached: true }, 200, request);
+          }
+        } catch {}
+
+        // 診療科→学会名マッピング
+        const SOCIETY_MAP = {
+          "循環器": ["Japanese Circulation Society", "Japan Atherosclerosis Society"],
+          "呼吸器": ["Japanese Respiratory Society"],
+          "消化器": ["Japanese Society of Gastroenterology"],
+          "腎臓": ["Japanese Society of Nephrology"],
+          "神経": ["Japanese Society of Neurology"],
+          "血液": ["Japanese Society of Hematology"],
+          "感染症": ["Japanese Association for Infectious Diseases"],
+          "内分泌": ["Japan Diabetes Society"],
+        };
+
+        const societies = specialties.length > 0
+          ? specialties.flatMap(sp => SOCIETY_MAP[sp] || [])
+          : Object.values(SOCIETY_MAP).flat();
+
+        if (societies.length === 0) {
+          return json({ ok: true, articles: [], cached: false }, 200, request);
+        }
+
+        try {
+          const affTerms = societies.map(s => `"${s}"[Affiliation]`).join(" OR ");
+          const q = encodeURIComponent(`(${affTerms}) AND (guideline[Title] OR practice guideline[Publication Type]) AND ("last 2 years"[dp])`);
+          const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=50&sort=date&retmode=json`;
+          const sRes = await fetch(sUrl);
+          const sData = await sRes.json();
+          const ids = sData?.esearchresult?.idlist || [];
+
+          if (ids.length === 0) {
+            return json({ ok: true, articles: [], cached: false }, 200, request);
+          }
+
+          const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(",")}&retmode=json`;
+          const fRes = await fetch(fUrl);
+          const fData = await fRes.json();
+
+          const articles = [];
+          for (const id of ids) {
+            const d = fData?.result?.[id];
+            if (!d || !d.title) continue;
+            articles.push({
+              pmid: id,
+              title: d.title || "",
+              authors: (d.authors || []).slice(0, 3).map(a => a.name).join(", ") + ((d.authors || []).length > 3 ? " et al." : ""),
+              journal: d.source || "",
+              journalId: "",
+              date: (d.pubdate || "").split(" ").slice(0, 2).join(" "),
+              doi: (d.elocationid || "").replace("doi: ", ""),
+              impactFactor: 0,
+              isGuideline: true,
+            });
+          }
+
+          const cacheData = { articles, fetchedAt: Date.now() };
+          await env.IWOR_KV.put(GL_CACHE_KEY, JSON.stringify(cacheData), { expirationTtl: 86400 });
+
+          return json({ ok: true, articles, cached: false }, 200, request);
+        } catch (err) {
+          console.error("Guideline fetch error:", err);
+          return json({ ok: true, articles: [], cached: false }, 200, request);
+        }
+      }
+
+      // ── 通常の論文フィードモード ──
       const lang = url.searchParams.get("lang") || "en";
       const CACHE_KEY = `journal:articles:${lang}`;
       const CACHE_TTL = 3600; // 1時間（秒）
