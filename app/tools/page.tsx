@@ -70,19 +70,21 @@ export default function ToolsHubPage() {
           </Link>
         ))}
       </div>
-      {/* SEO: 全ツール一覧（SSR出力でGooglebotに見える） */}
-      <section className="mt-10 border-t border-br pt-8">
-        <h2 className="text-base font-bold text-tx mb-1">全{implementedTools.size}種の臨床計算ツール</h2>
-        <p className="text-xs text-muted mb-4">すべて無料・登録不要でご利用いただけます</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5">
+      {/* SEO: 全ツール一覧（折りたたみ — Googlebotにはopen状態で見える） */}
+      <details className="mt-8 border-t border-br pt-6 group">
+        <summary className="flex items-center justify-between cursor-pointer text-xs text-muted hover:text-ac transition-colors">
+          <span>全{implementedTools.size}種の計算ツール一覧</span>
+          <span className="group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1 mt-3">
           {tools.filter(t => implementedTools.has(t.slug)).map(t => (
             <Link key={t.slug} href={`/tools/calc/${t.slug}`}
-              className="px-3 py-2 rounded-lg text-[11px] text-tx hover:bg-acl hover:text-ac transition-colors border border-transparent hover:border-ac/20 truncate">
+              className="px-2.5 py-1.5 rounded text-[11px] text-muted hover:bg-acl hover:text-ac transition-colors truncate">
               {t.name}
             </Link>
           ))}
         </div>
-      </section>
+      </details>
 
       <ToolsTutorial />
     </main>
