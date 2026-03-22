@@ -1944,6 +1944,65 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
 
     // ══════════════════════════════════════════════════
     //  自己分析フォローアップ質問生成
+    //  POST /api/generate-pr — AI自己PR/志望動機生成（文字数調整付き）
+    //  Body: { type: 'pr'|'motivation', profile: {...}, maxChars: 400 }
+    //  PRO認証必要
+    // ══════════════════════════════════════════════════
+    if (path === "/api/generate-pr" && request.method === "POST") {
+      const body = await parseBody(request);
+      if (!body || !body.type || !body.profile) return json({ error: "type and profile required" }, 400, request);
+
+      const { type, profile, maxChars = 400 } = body;
+      const p = profile;
+
+      const prompts = {
+        pr: `以下の医学生のプロフィールから、マッチング面接用の自己PRを${maxChars}文字以内で生成してください。
+強み: ${p.strengths || p.strengthsList?.join('、') || '未設定'}
+エピソード: ${p.strengthsEpisode || '未設定'}
+部活: ${p.clubs || 'なし'} ${p.clubRole ? `(${p.clubRole})` : ''}
+志望科: ${p.preferredSpecialty || '未設定'}
+医師を目指した理由: ${p.doctorTrigger || p.motivation || '未設定'}
+
+以下のルールを厳守:
+- ${maxChars}文字以内（厳守）
+- 常体（ですます調OK、面接用なので）
+- 具体的なエピソードを含める
+- 最後に「このような経験を活かし、貴院で〜」で締める
+- 出力は生成テキストのみ（説明不要）`,
+
+        motivation: `以下の医学生のプロフィールから、マッチング用の志望動機を${maxChars}文字以内で生成してください。
+志望科: ${p.preferredSpecialty || '未設定'}
+希望地域: ${p.preferredRegions?.join('・') || '未設定'}
+医師を目指した理由: ${p.doctorTrigger || p.motivation || '未設定'}
+将来像: ${p.goal5y || p.futureVision || '未設定'}
+キャリアタイプ: ${p.careerTypes?.join('・') || p.doctorType?.join('・') || '未設定'}
+
+以下のルールを厳守:
+- ${maxChars}文字以内（厳守）
+- 具体的な理由と将来ビジョンを含める
+- 「貴院の〇〇に惹かれ」のような病院特化部分は【病院名・特徴を記入】とプレースホルダにする
+- 出力は生成テキストのみ（説明不要）`,
+      };
+
+      const prompt = prompts[type] || prompts.pr;
+
+      try {
+        const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+          messages: [
+            { role: "system", content: "あなたは医師臨床研修マッチングの専門コンサルタントです。指定された文字数以内で面接用の文章を生成します。" },
+            { role: "user", content: prompt },
+          ],
+          max_tokens: 600,
+        });
+        const text = (result.response || "").trim();
+        // 文字数オーバーなら切り詰め
+        const trimmed = text.length > maxChars ? text.slice(0, maxChars - 3) + "..." : text;
+        return json({ ok: true, text: trimmed, chars: trimmed.length }, 200, request);
+      } catch (err) {
+        return json({ ok: false, error: String(err) }, 500, request);
+      }
+    }
+
     //  POST /api/self-analysis
     //  Body: { answers: { question: string, answer: string }[] }
     //  認証不要（個人情報なし・キャリア質問のみ）

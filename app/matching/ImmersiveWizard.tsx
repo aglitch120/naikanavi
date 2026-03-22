@@ -7,12 +7,30 @@ const MCL = '#E8F0EC'
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
 
 interface Answer { choices: string[]; freeText: string }
-type Phase = 'basic' | 'q1' | 'q2' | 'insight' | 'q3' | 'q4' | 'q5' | 'result'
+type Phase = 'basic' | 'specialty' | 'q1' | 'q2' | 'activity' | 'insight' | 'q3' | 'q4' | 'q5' | 'result'
 
 // ── 基本情報 ──
 const BASIC_INFO = {
   icon: '👤', question: 'まず、基本情報を教えてください',
   sub: '履歴書に必要な情報です',
+}
+
+// ── 志望科選択 ──
+const SPECIALTY_Q = {
+  icon: '🏥', question: '志望する診療科は？',
+  sub: '複数選択可（まだ決まっていなくてもOK）',
+  choices: ['内科','外科','小児科','産婦人科','整形外科','脳神経外科','皮膚科','眼科','耳鼻咽喉科','泌尿器科','精神科','放射線科','麻酔科','救急科','総合診療科','未定'],
+  maxChoices: 3,
+  freeLabel: '志望理由を一言で',
+}
+
+// ── 課外活動 ──
+const ACTIVITY_Q = {
+  icon: '🏃', question: '大学時代に力を入れたことは？',
+  sub: '面接で必ず聞かれます。部活・バイト・ボランティアなど',
+  choices: ['運動部', '文化部', '研究室・ラボ', 'アルバイト', 'ボランティア', '学生団体', '留学・海外経験', '資格取得'],
+  maxChoices: 3,
+  freeLabel: '具体的な内容・学んだこと',
 }
 
 // ── 固定質問（コア5問）──
@@ -67,7 +85,7 @@ export default function ImmersiveWizard({ onComplete, savedAnswers }: Props) {
   const [loading, setLoading] = useState(false)
   const [resumeCopied, setResumeCopied] = useState(false)
 
-  const phases: Phase[] = ['basic', 'q1', 'q2', 'insight', 'q3', 'q4', 'q5', 'result']
+  const phases: Phase[] = ['basic', 'specialty', 'q1', 'q2', 'activity', 'insight', 'q3', 'q4', 'q5', 'result']
   const phaseIndex = phases.indexOf(phase)
   const progress = Math.round((phaseIndex / (phases.length - 1)) * 100)
 
@@ -226,8 +244,10 @@ export default function ImmersiveWizard({ onComplete, savedAnswers }: Props) {
   }, [phase, selected, freeText, answers, saveAnswer, callAI, onComplete])
 
   const getQ = () => {
+    if (phase === 'specialty') return SPECIALTY_Q
     if (phase === 'q1') return QUESTIONS.q1
     if (phase === 'q2') return QUESTIONS.q2
+    if (phase === 'activity') return ACTIVITY_Q
     if (phase === 'q4') return QUESTIONS.q4
     if (phase === 'q5') return { ...QUESTIONS.q5, choices: aiCatchphrases }
     return null

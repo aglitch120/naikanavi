@@ -978,9 +978,27 @@ td, th { border: 1px solid #333; padding: 3pt 5pt; vertical-align: top; }
         <div className="p-6 text-center"><p className="text-xs text-muted">STEP 1で氏名と大学を入力すると表示されます</p></div>
       ) : (
         <div className="p-4 relative">
-          {/* PDF出力ボタン (PRO only) */}
+          {/* PDF出力 + AI生成ボタン (PRO only) */}
           {isPro && (
-            <div className="flex justify-end mb-3">
+            <div className="flex justify-end gap-2 mb-3">
+              <button onClick={async () => {
+                const API = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
+                try {
+                  const res = await fetch(`${API}/api/generate-pr`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'pr', profile, maxChars: 400 }),
+                  })
+                  const data = await res.json()
+                  if (data.ok && data.text) {
+                    navigator.clipboard.writeText(data.text)
+                    alert(`自己PR（${data.chars}文字）をコピーしました`)
+                  }
+                } catch {}
+              }}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium border border-ac/30 text-ac transition-all hover:bg-acl">
+                AI自己PR生成
+              </button>
               <button onClick={handlePrintPDF}
                 className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium text-white transition-all hover:opacity-90"
                 style={{ background: MC }}>
