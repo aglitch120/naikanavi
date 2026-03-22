@@ -4,13 +4,40 @@ import { useState, useEffect, type ReactNode } from 'react'
 import Link from 'next/link'
 import OnboardingModal, { type UserRole, getStoredRole } from './OnboardingModal'
 
-// ── Role → recommended hrefs mapping ──
-// Based on PRODUCT.md segment design
-const recommendations: Record<string, string[]> = {
-  student:   ['/matching', '/study', '/tools'],
-  resident:  ['/tools', '/study', '/shift'],
-  fellow:    ['/josler', '/journal', '/study'],
-  attending: ['/tools', '/journal', '/money'],
+// ── Role → アプリ並び順 ──
+const ORDER_BY_ROLE: Record<string, string[]> = {
+  student:   ['/matching', '/study', '/presenter', '/tools', '/journal', '/josler', '/epoc', '/josler/summary-generator', '/credits', '/conferences', '/money', '/shift'],
+  resident:  ['/tools', '/epoc', '/study', '/journal', '/presenter', '/matching', '/conferences', '/josler', '/josler/summary-generator', '/credits', '/money', '/shift'],
+  fellow:    ['/tools', '/josler', '/josler/summary-generator', '/study', '/journal', '/shift', '/presenter', '/matching', '/conferences', '/credits', '/money', '/epoc'],
+  attending: ['/tools', '/journal', '/conferences', '/credits', '/study', '/presenter', '/shift', '/matching', '/money', '/epoc', '/josler', '/josler/summary-generator'],
+}
+
+// Role別のラベル上書き
+const LABEL_OVERRIDES: Record<string, Record<string, string>> = {
+  student:   { '/matching': 'マッチング対策' },
+  resident:  { '/matching': '転職対策' },
+  fellow:    { '/matching': '転職対策' },
+  attending: { '/matching': '転職対策' },
+}
+
+// 年度切替で属性を自動更新（4/1に研修医→専攻医等）
+function autoUpgradeRole(): void {
+  if (typeof window === 'undefined') return
+  try {
+    const role = localStorage.getItem('iwor_user_role')
+    const gradYear = localStorage.getItem('iwor_profile') ? JSON.parse(localStorage.getItem('iwor_profile')!).graduationYear : null
+    if (!role || !gradYear) return
+    const now = new Date()
+    const year = now.getFullYear()
+    const month = now.getMonth() + 1
+    if (month < 4) return // 4月以降のみ
+    const yearsAfterGrad = year - parseInt(gradYear)
+    if (role === 'student' && yearsAfterGrad >= 0) {
+      localStorage.setItem('iwor_user_role', 'resident')
+    } else if (role === 'resident' && yearsAfterGrad >= 2) {
+      localStorage.setItem('iwor_user_role', 'fellow')
+    }
+  } catch {}
 }
 
 interface AppItem {
@@ -36,22 +63,33 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
   const [showRecommend, setShowRecommend] = useState(false)
 
   useEffect(() => {
+    autoUpgradeRole()
     const stored = getStoredRole()
     if (stored) {
       setRole(stored)
-      // Don't flash highlight for returning users
     }
   }, [])
 
   const handleRoleSelect = (selected: UserRole & string) => {
     setRole(selected)
-    // Animate highlight after modal closes
     setTimeout(() => setShowRecommend(true), 100)
-    // Auto-hide highlight after 4 seconds
     setTimeout(() => setShowRecommend(false), 4500)
   }
 
-  const recSet = role ? new Set(recommendations[role] || []) : new Set<string>()
+  // Role別にアプリを並び替え+ラベル上書き
+  const sortedApps = role && ORDER_BY_ROLE[role]
+    ? [...apps].sort((a, b) => {
+        const order = ORDER_BY_ROLE[role]
+        const ai = order.indexOf(a.href)
+        const bi = order.indexOf(b.href)
+        return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi)
+      }).map(app => {
+        const override = LABEL_OVERRIDES[role]?.[app.href]
+        return override ? { ...app, label: override } : app
+      })
+    : apps
+
+  const recSet = role ? new Set((ORDER_BY_ROLE[role] || []).slice(0, 3)) : new Set<string>()
   const isHighlighted = (href: string) => showRecommend && recSet.has(href)
 
   return (
@@ -68,7 +106,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
       )}
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3" aria-label="アプリ一覧">
-        {apps.map(app => {
+        {sortedApps.map(app => {
           const isDisabled = app.badge === '準備中'
           const highlighted = isHighlighted(app.href)
 
