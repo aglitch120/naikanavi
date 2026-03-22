@@ -15,6 +15,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddn
 
 // localStorage keys
 const ATTEND_KEY = 'iwor_conf_attending'
+const REMIND_KEY = 'iwor_conf_reminders'
 
 function getLocalAttending(): string[] {
   try {
@@ -25,6 +26,25 @@ function getLocalAttending(): string[] {
 
 function setLocalAttending(ids: string[]) {
   localStorage.setItem(ATTEND_KEY, JSON.stringify(ids))
+}
+
+// リマインダー: { confId: string, remindDate: string (ISO), confName: string, confDate: string }
+interface Reminder {
+  confId: string
+  remindDate: string
+  confName: string
+  confDate: string
+}
+
+function getLocalReminders(): Reminder[] {
+  try {
+    const raw = localStorage.getItem(REMIND_KEY)
+    return raw ? JSON.parse(raw) : []
+  } catch { return [] }
+}
+
+function setLocalReminders(reminders: Reminder[]) {
+  localStorage.setItem(REMIND_KEY, JSON.stringify(reminders))
 }
 
 function formatDateRange(start: string, end: string): string {
@@ -51,6 +71,8 @@ export default function ConferencesApp() {
   const [filterTier, setFilterTier] = useState<string>('basic')
   const [listFilter, setListFilter] = useState<ListFilter>('all')
   const [attending, setAttending] = useState<string[]>([])
+  const [reminders, setReminders] = useState<Reminder[]>([])
+  const [reminderToast, setReminderToast] = useState('')
   const [proLimitHit, setProLimitHit] = useState(false)
   const [showAreaFilter, setShowAreaFilter] = useState(false)
   const [counts, setCounts] = useState<Record<string, string | number>>({})
@@ -60,6 +82,20 @@ export default function ConferencesApp() {
   // Init: load attending from localStorage, then sync from server
   useEffect(() => {
     setAttending(getLocalAttending())
+    setReminders(getLocalReminders())
+
+    // リマインダー通知チェック
+    const savedReminders = getLocalReminders()
+    const today = new Date().toISOString().split('T')[0]
+    const dueReminders = savedReminders.filter(r => r.remindDate <= today)
+    if (dueReminders.length > 0) {
+      setReminderToast(`${dueReminders[0].confName} が近づいています`)
+      // 通知済みのリマインダーを削除
+      const remaining = savedReminders.filter(r => r.remindDate > today)
+      setLocalReminders(remaining)
+      setReminders(remaining)
+    }
+
     const token = localStorage.getItem('iwor_session_token')
     if (token) {
       fetch(`${API_BASE}/api/conferences/my`, {
@@ -118,6 +154,31 @@ export default function ConferencesApp() {
       }).catch(() => {})
     }
   }, [attending])
+
+  const toggleRemind = useCallback((conf: Conference) => {
+    const existing = reminders.find(r => r.confId === conf.id)
+    if (existing) {
+      const next = reminders.filter(r => r.confId !== conf.id)
+      setReminders(next)
+      setLocalReminders(next)
+      setReminderToast('リマインド解除')
+    } else {
+      // 学会開始日の7日前にリマインド
+      const confStart = new Date(conf.startDate + 'T00:00:00')
+      const remindDate = new Date(confStart.getTime() - 7 * 86400000)
+      const newReminder: Reminder = {
+        confId: conf.id,
+        remindDate: remindDate.toISOString().split('T')[0],
+        confName: conf.meetingName,
+        confDate: conf.startDate,
+      }
+      const next = [...reminders, newReminder]
+      setReminders(next)
+      setLocalReminders(next)
+      setReminderToast(`${conf.meetingName} の7日前にリマインド`)
+    }
+    setTimeout(() => setReminderToast(''), 3000)
+  }, [reminders])
 
   // ソート: 日付順
   const sorted = useMemo(() => {
@@ -282,7 +343,7 @@ export default function ConferencesApp() {
                 <h3 className="text-sm font-bold text-tx mb-3">{y}年{parseInt(m)}月</h3>
                 <div className="space-y-3">
                   {confs.map(conf => (
-                    <ConferenceCard key={conf.id} conf={conf} isAttending={attending.includes(conf.id)} onToggleAttend={toggleAttend} count={counts[conf.id]} isPro={isPro} onShowPro={() => setShowProModal(true)} />
+                    <ConferenceCard key={conf.id} conf={conf} isAttending={attending.includes(conf.id)} onToggleAttend={toggleAttend} isReminded={reminders.some(r => r.confId === conf.id)} onToggleRemind={toggleRemind} count={counts[conf.id]} isPro={isPro} onShowPro={() => setShowProModal(true)} />
                   ))}
                 </div>
               </div>
@@ -298,12 +359,20 @@ export default function ConferencesApp() {
 
       {/* ProGateモーダル */}
       {showProModal && <ProModal feature="full_access" onClose={() => setShowProModal(false)} />}
+
+      {/* リマインドトースト */}
+      {reminderToast && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 bg-tx text-white text-xs font-medium px-4 py-2 rounded-full shadow-lg z-50">
+          🔔 {reminderToast}
+        </div>
+      )}
     </div>
   )
 }
 
-function ConferenceCard({ conf, isAttending, onToggleAttend, count, isPro, onShowPro }: {
+function ConferenceCard({ conf, isAttending, onToggleAttend, isReminded, onToggleRemind, count, isPro, onShowPro }: {
   conf: Conference; isAttending?: boolean; onToggleAttend?: (id: string) => void
+  isReminded?: boolean; onToggleRemind?: (conf: Conference) => void
   count?: string | number; isPro?: boolean; onShowPro?: () => void
 }) {
   const days = getDaysUntil(conf.startDate)
@@ -361,6 +430,19 @@ function ConferenceCard({ conf, isAttending, onToggleAttend, count, isPro, onSho
                 }}
               >
                 {isAttending ? '⭐ 参加予定' : '☆ 参加予定に追加'}
+              </button>
+            )}
+            {onToggleRemind && !isPast && (
+              <button
+                onClick={(e) => { e.stopPropagation(); onToggleRemind(conf) }}
+                className="text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
+                style={{
+                  background: isReminded ? '#FEF3C7' : 'transparent',
+                  color: isReminded ? '#92400E' : 'var(--m)',
+                  borderColor: isReminded ? '#FCD34D' : 'var(--br)',
+                }}
+              >
+                {isReminded ? '🔔 リマインド中' : '🔕 リマインド'}
               </button>
             )}
             {count !== undefined && (
