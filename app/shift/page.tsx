@@ -810,6 +810,42 @@ export default function ShiftPage() {
       {/* Calendar */}
       {renderCalendar('result')}
 
+      {/* スロット別リスト */}
+      <div className="mt-4 bg-s0 border border-br rounded-xl p-4">
+        <h3 className="text-xs font-bold text-tx mb-3">日別詳細</h3>
+        <div className="space-y-1 max-h-64 overflow-y-auto">
+          {Array.from({ length: totalDays }, (_, i) => i + 1).map(day => {
+            const dayKeys = Object.keys(assignments).filter(k => k.startsWith(`${day}-`))
+            if (dayKeys.length === 0) return null
+            const dow = new Date(year, month - 1, day).getDay()
+            const hol = isHoliday(year, month, day)
+            return (
+              <div key={day} className={`flex items-center gap-2 py-1.5 px-2 rounded text-[11px] ${isWeekend(year, month, day) || hol ? 'bg-blue-50/50' : ''}`}>
+                <span className={`w-8 font-bold ${dow === 0 ? 'text-red-500' : dow === 6 ? 'text-blue-500' : 'text-tx'}`}>{day}日</span>
+                <span className="text-[9px] text-muted w-4">{DAY_LABELS[dow]}</span>
+                <div className="flex-1 flex flex-wrap gap-1">
+                  {dayKeys.map(key => {
+                    const parts = key.split('-')
+                    const dutyType = parts[1]
+                    const catId = parts.slice(2).join('-')
+                    const cat = categories.find(c => c.id === catId)
+                    const ids = assignments[key] || []
+                    return ids.map((id, j) => {
+                      const doc = doctors.find(d => d.id === id)
+                      return (
+                        <span key={`${key}-${j}`} className={`px-1.5 py-0.5 rounded text-[9px] font-medium border ${doctorColorMap.get(id) || 'bg-s1 text-muted border-br'}`}>
+                          {DUTY_TYPE_LABELS[dutyType]?.replace('当直','').replace('日直','') || ''}{cat ? `${cat.name.replace('当直','')}` : ''} {doc?.name || '?'}
+                        </span>
+                      )
+                    })
+                  })}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
       {/* Stats */}
       <div className="mt-4 bg-s0 border border-br rounded-xl p-4">
         <h3 className="text-xs font-bold text-tx mb-2">担当回数</h3>
