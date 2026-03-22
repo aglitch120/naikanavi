@@ -30,12 +30,11 @@ Each piece of info lives in exactly ONE file. Check docs/README.md for ownership
 
 | File | Owns | Does NOT own |
 |------|------|-------------|
-| STRATEGY.md | Price, roadmap, competitors, brand, business model | Product specs, code |
+| STRATEGY.md | Core values, price, roadmap, competitors, brand, business model | Product specs, code |
 | PRODUCT.md | Feature specs, PRO/FREE gates, DB schema, PLG design | Price, roadmap |
+| BACKLOG.md | Tasks, priorities (🔴🟠🟡🟢), feature requests, progress | Strategy reasoning |
 | IMPLEMENTATION.md | Tech stack, coding rules, SEO implementation | Product specs |
 | DESIGN_SYSTEM.md | Colors, fonts, spacing, component styles | Code logic |
-| TODO.md | Tasks, progress, completion dates | Strategy reasoning |
-| FEATURE_REQUESTS_v6.md | Feature backlog with priority (🔴🟠🟡🟢) | Implementation details |
 
 When adding info: find the owner in docs/README.md → write there ONLY.
 When referencing: don't copy, write "→ STRATEGY.md 参照".
@@ -87,7 +86,7 @@ cd workers && npx wrangler dev
 - Blog: 173 articles
 - Hero Product: Study (全ユーザーをStudyに誘導する3層戦略)
 
-See TODO.md for current priorities.
+See BACKLOG.md for current priorities.
 
 ## Gotchas — Claude's Known Failure Points
 

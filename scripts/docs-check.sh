@@ -33,19 +33,19 @@ for name in $(grep -oP '\*\*[A-Z_]+(?:_v\d+)?\.md\*\*' docs/README.md | tr -d '*
 done
 [ $ERRORS -eq 0 ] && green "ファイル一覧: OK"
 
-# 2. TODO.md と FEATURE_REQUESTS_v6.md の完了状態の矛盾
+# 2. BACKLOG.md の完了数カウント
 echo ""
-echo "--- TODO ↔ FEATURE_REQUESTS 整合チェック ---"
-TODO_DONE=$(grep -c '^\- \[x\]' docs/TODO.md 2>/dev/null || echo 0)
-FR_DONE=$(grep -c '✅' docs/FEATURE_REQUESTS_v6.md 2>/dev/null || echo 0)
-green "TODO.md 完了: $TODO_DONE 項目 / FEATURE_REQUESTS_v6.md 完了: $FR_DONE 項目"
+echo "--- BACKLOG 完了状況 ---"
+BACKLOG_DONE=$(grep -c '✅' docs/BACKLOG.md 2>/dev/null || echo 0)
+BACKLOG_TODO=$(grep -cE '🔴|🟠|🟡|🟢' docs/BACKLOG.md 2>/dev/null || echo 0)
+green "BACKLOG.md 完了: $BACKLOG_DONE 項目 / 残: $BACKLOG_TODO 項目"
 
 # 3. 古い注釈が残っていないか
 echo ""
 echo "--- 古い注釈チェック ---"
 STALE_PATTERNS=("← 新規" "← 既存" "削除予定")
 for pattern in "${STALE_PATTERNS[@]}"; do
-  hits=$(grep -rn "$pattern" docs/*.md --include="*.md" | grep -v "README.md" | grep -v "FEATURE_REQUESTS" || true)
+  hits=$(grep -rn "$pattern" docs/*.md --include="*.md" | grep -v "README.md" | grep -v "BACKLOG" || true)
   if [ -n "$hits" ]; then
     yellow "「$pattern」が残っている:"
     echo "$hits" | head -3
@@ -71,10 +71,10 @@ fi
 # 5. 重複コンテンツの検出（カラーパレットが複数箇所にないか）
 echo ""
 echo "--- 重複検出 ---"
-PALETTE_FILES=$(grep -rl "#F5F4F0" docs/*.md 2>/dev/null | grep -v CONTENT_GUIDE | wc -l)
+PALETTE_FILES=$(grep -rl "#F5F4F0" docs/*.md 2>/dev/null | grep -v REF_BLOG | wc -l)
 if [ "$PALETTE_FILES" -gt 1 ]; then
   yellow "カラーパレット(#F5F4F0)が docs/ 内の $PALETTE_FILES ファイルに存在（DESIGN_SYSTEM.md のみであるべき）"
-  grep -rl "#F5F4F0" docs/*.md | grep -v CONTENT_GUIDE
+  grep -rl "#F5F4F0" docs/*.md | grep -v REF_BLOG
   WARNINGS=$((WARNINGS + 1))
 else
   green "カラーパレット: 重複なし"

@@ -2,7 +2,7 @@
 
 > 作成: 2026-03-20
 > ステータス: 設計確定 → 実装待ち
-> 関連: FEATURE_REQUESTS_v6.md F-2 / TODO.md Phase C2
+> 関連: BACKLOG.md F-2
 
 ---
 
@@ -196,7 +196,7 @@ conf-count:{confId}    → number（学会ごとの参加予定者数）
 4. `feat: Worker API - 参加予定 PUT/GET エンドポイント`
 5. `feat: 参加予定ボタン + マイリスト機能（localStorage + KV同期）`
 6. `feat: PRO参加予定者数表示 + FREEぼかし + ProGateモーダル`
-7. `docs: TODO.md, FEATURE_REQUESTS_v6.md 更新`
+7. `docs: BACKLOG.md 更新`
 
 ---
 

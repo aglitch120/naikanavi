@@ -122,6 +122,54 @@ export const JOURNALS: Journal[] = [
   { id: 'jga', name: '日本消化器病学会雑誌', shortName: '日本消化器病学会雑誌', issn: '0446-6586', impactFactor: 0.3, category: 'japanese', tier: 'specialty_ext', specialty: '消化器', lang: 'ja' },
   { id: 'jjca', name: '日本癌学会誌', shortName: '日本癌学会誌', issn: '0021-4922', impactFactor: 0.5, category: 'japanese', tier: 'specialty_ext', specialty: '腫瘍', lang: 'ja' },
   { id: 'jpn-j-surg', name: '日本外科学会雑誌', shortName: '日本外科学会雑誌', issn: '0301-4894', impactFactor: 0.3, category: 'japanese', tier: 'specialty_ext', specialty: '外科', lang: 'ja' },
+
+  // ── 追加: 各分野IFトップ10拡充 ──
+
+  // 血液（追加）
+  { id: 'jco-hematol', name: 'Journal of Clinical Oncology', shortName: 'JCO', issn: '0732-183X', impactFactor: 42.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  { id: 'blood-adv', name: 'Blood Advances', shortName: 'Blood Adv', issn: '2473-9529', impactFactor: 7.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  { id: 'leukemia', name: 'Leukemia', shortName: 'Leukemia', issn: '0887-6924', impactFactor: 12.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  { id: 'haematologica', name: 'Haematologica', shortName: 'Haematologica', issn: '0390-6078', impactFactor: 10.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+
+  // 膠原病・リウマチ（追加）
+  { id: 'arth-rheum', name: 'Arthritis & Rheumatology', shortName: 'Arthritis Rheumatol', issn: '2326-5191', impactFactor: 13.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '膠原病' },
+  { id: 'lupus-sci-med', name: 'Lupus Science & Medicine', shortName: 'Lupus Sci Med', issn: '2053-8790', impactFactor: 4.5, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q2', specialty: '膠原病' },
+  { id: 'rmd-open', name: 'RMD Open', shortName: 'RMD Open', issn: '2056-5933', impactFactor: 5.1, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q1', specialty: '膠原病' },
+
+  // 外科（追加）
+  { id: 'ann-surg', name: 'Annals of Surgery', shortName: 'Ann Surg', issn: '0003-4932', impactFactor: 9.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '外科' },
+  { id: 'brit-j-surg', name: 'British Journal of Surgery', shortName: 'BJS', issn: '0007-1323', impactFactor: 8.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '外科' },
+  { id: 'jama-surg', name: 'JAMA Surgery', shortName: 'JAMA Surg', issn: '2168-6254', impactFactor: 16.9, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '外科' },
+  { id: 'surg-endosc', name: 'Surgical Endoscopy', shortName: 'Surg Endosc', issn: '0930-2794', impactFactor: 3.5, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q2', specialty: '外科' },
+
+  // 泌尿器（追加）
+  { id: 'j-urol', name: 'Journal of Urology', shortName: 'J Urol', issn: '0022-5347', impactFactor: 6.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '泌尿器' },
+  { id: 'bju-int', name: 'BJU International', shortName: 'BJU Int', issn: '1464-4096', impactFactor: 4.6, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q1', specialty: '泌尿器' },
+
+  // 放射線（追加）
+  { id: 'eur-radiol', name: 'European Radiology', shortName: 'Eur Radiol', issn: '0938-7994', impactFactor: 5.9, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '放射線' },
+  { id: 'ajr', name: 'American Journal of Roentgenology', shortName: 'AJR', issn: '0361-803X', impactFactor: 4.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '放射線' },
+
+  // 眼科（追加）
+  { id: 'jama-ophthalmol', name: 'JAMA Ophthalmology', shortName: 'JAMA Ophthalmol', issn: '2168-6165', impactFactor: 7.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '眼科' },
+  { id: 'iovs', name: 'Investigative Ophthalmology & Visual Science', shortName: 'IOVS', issn: '0146-0404', impactFactor: 4.4, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q1', specialty: '眼科' },
+
+  // 整形外科（追加）
+  { id: 'ajsm', name: 'American Journal of Sports Medicine', shortName: 'AJSM', issn: '0363-5465', impactFactor: 6.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '整形外科' },
+  { id: 'clin-orthop', name: 'Clinical Orthopaedics and Related Research', shortName: 'CORR', issn: '0009-921X', impactFactor: 4.2, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q1', specialty: '整形外科' },
+  { id: 'osteoarth-cartil', name: 'Osteoarthritis and Cartilage', shortName: 'Osteoarthritis Cartilage', issn: '1063-4584', impactFactor: 7.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '整形外科' },
+
+  // 麻酔科（追加）
+  { id: 'brit-j-anaesth', name: 'British Journal of Anaesthesia', shortName: 'BJA', issn: '0007-0912', impactFactor: 9.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '麻酔科' },
+  { id: 'anesth-analg', name: 'Anesthesia & Analgesia', shortName: 'Anesth Analg', issn: '0003-2999', impactFactor: 5.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '麻酔科' },
+
+  // 救急（追加）
+  { id: 'acad-emerg', name: 'Academic Emergency Medicine', shortName: 'Acad Emerg Med', issn: '1069-6563', impactFactor: 4.2, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q1', specialty: '救急' },
+  { id: 'emerg-med-j', name: 'Emergency Medicine Journal', shortName: 'Emerg Med J', issn: '1472-0205', impactFactor: 2.9, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q2', specialty: '救急' },
+
+  // 総合内科（追加）
+  { id: 'jgim', name: 'Journal of General Internal Medicine', shortName: 'JGIM', issn: '0884-8734', impactFactor: 5.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '総合内科' },
+  { id: 'bmj-open', name: 'BMJ Open', shortName: 'BMJ Open', issn: '2044-6055', impactFactor: 2.9, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q2', specialty: '総合内科' },
 ]
 
 export const TOP4_IDS = ['lancet', 'nejm', 'jama', 'bmj']

@@ -2,7 +2,7 @@
 
 > 作成: 2026-03-20
 > ステータス: 設計確定 → 実装待ち
-> 関連: FEATURE_REQUESTS_v6.md C-10, C-11 / TODO.md Phase C1
+> 関連: BACKLOG.md C-10, C-11
 
 ---
 
@@ -154,7 +154,7 @@ streak:leaderboard   → ソート済みランキング配列（JSON、最大200
 3. `feat: Study - セッション完了時にストリークをサーバー同期`
 4. `feat: Study - ランキングUIをデッキ選択画面に追加`
 5. `feat: Study - FREEユーザーにProGateブラー + 7日達成モーダル`
-6. `docs: TODO.md, FEATURE_REQUESTS_v6.md 更新`
+6. `docs: BACKLOG.md 更新`
 
 各コミット後に push。Worker変更は `cd workers && npx wrangler deploy`。
 

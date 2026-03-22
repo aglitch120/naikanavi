@@ -269,7 +269,48 @@ export default function ImmersiveWizard({ onComplete, savedAnswers }: Props) {
           )}
         </div>
 
-        <button onClick={() => { setPhase('q1'); setAnswers({}); setSelected([]); setFreeText('') }}
+        {/* JIS履歴書テンプレート */}
+        <div className="bg-s0 border border-br rounded-xl p-4 mb-4 text-left">
+          <h3 className="text-xs font-bold text-tx mb-2">📋 JIS履歴書テンプレート</h3>
+          <p className="text-[9px] text-muted mb-2">基本情報+自己分析データを履歴書形式でコピー</p>
+          <button onClick={() => {
+            let profile: any = {}
+            try { profile = JSON.parse(localStorage.getItem('iwor_matching_profile') || '{}') } catch {}
+            const template = `━━━━━━━━━━━━━━━━━━━━━━━━
+　　　　　　　　　　履　歴　書
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+氏名: ${profile.name || '【記入】'}
+生年月日: 【記入】
+現住所: 【記入】
+連絡先: 【記入】
+
+━━ 学歴 ━━
+【記入】年3月　○○高等学校 卒業
+【記入】年4月　${profile.university || '○○大学医学部医学科'} 入学
+${profile.graduationYear || '【記入】'}年3月　${profile.university || '○○大学医学部医学科'} 卒業見込
+
+━━ 免許・資格 ━━
+【記入】年　普通自動車第一種運転免許 取得
+${profile.graduationYear || '【記入】'}年　医師国家試験 合格見込
+
+━━ 志望の動機・特技・自己PR ━━
+${aiSummary || '【志望動機プロンプトをAIで生成してここに貼り付け】'}
+
+━━ 志望科 ━━
+${profile.preferredSpecialty || answers['future-5y']?.choices?.[0] || '【記入】'}
+
+━━ 本人希望 ━━
+貴院の研修プログラムにて研修を希望いたします.
+`
+            navigator.clipboard.writeText(template)
+          }}
+            className="w-full py-2 rounded-xl text-xs font-bold text-white" style={{ background: MC }}>
+            📋 JIS履歴書テンプレートをコピー
+          </button>
+        </div>
+
+        <button onClick={() => { setPhase('basic'); setAnswers({}); setSelected([]); setFreeText('') }}
           className="text-[10px] text-muted underline">やり直す</button>
       </div>
     )

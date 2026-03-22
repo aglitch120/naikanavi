@@ -261,7 +261,7 @@ NOTION_DATABASE_ID=31c08315-9502-805c-af3b-e3552f26d9fb
    - [ ] explanation: 1000文字以上、FAQ含む
    - [ ] 型チェック通過（`npx tsc --noEmit`）
    - [ ] コミット → プッシュ
-   - [ ] TODO.md 更新
+   - [ ] BACKLOG.md 更新
 
 ---
 

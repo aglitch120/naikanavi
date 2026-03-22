@@ -2,3 +2,16 @@
 node_modules
 .env.local
 .env*.local
+
+# Generated verification files
+docs/source-data-hashes.json
+docs/source-verify-report.json
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
