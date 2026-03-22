@@ -1169,6 +1169,9 @@ export const tools: ToolDefinition[] = [
   { slug: 'pf-ratio', name: 'P/F比（PaO2/FiO2比）', nameEn: 'P/F Ratio', description: 'PaO2をFiO2で除した酸素化指標。ARDS Berlin定義の重症度分類に使用。', category: 'respiratory', tier: 1, keywords: ['PF比','P/F ratio','ARDS','酸素化','PaO2','FiO2','Berlin定義','呼吸不全'], relatedSlugs: ['aa-gradient','oxygen-delivery','fio2-table'], updatedAt: '2026-03', sources: [{ text: 'ARDS Definition Task Force. JAMA 2012;307:2526-33', url: 'https://pubmed.ncbi.nlm.nih.gov/22797452/' }] },
   { slug: 'due-date', name: '出産予定日・妊娠週数', nameEn: 'Estimated Due Date / Gestational Age', description: '最終月経初日から出産予定日と現在の妊娠週数を計算（Naegele式: LMP + 280日）。', category: 'obstetrics', tier: 1, keywords: ['出産予定日','妊娠週数','EDC','EDD','最終月経','Naegele','妊娠','産科'], relatedSlugs: ['apgar','bishop'], updatedAt: '2026-03', sources: [{ text: '日本産科婦人科学会 産婦人科診療ガイドライン 産科編 2020' }] },
   { slug: 'heat-stroke', name: '熱中症 重症度分類', nameEn: 'Heat Stroke Severity Classification', description: '日本救急医学会の熱中症重症度分類（I度〜III度）。症状から重症度を判定。', category: 'emergency', tier: 1, keywords: ['熱中症','重症度','heat stroke','暑さ指数','WBGT','日射病','脱水','体温'], relatedSlugs: ['gcs','news2','parkland'], updatedAt: '2026-03', sources: [{ text: '日本救急医学会 熱中症診療ガイドライン 2015', url: 'https://www.jaam.jp/info/2015/pdf/info-20150413.pdf' }] },
+  { slug: 'ascvd', name: '10年ASCVDリスク', nameEn: '10-Year ASCVD Risk (Pooled Cohort Equations)', description: 'Pooled Cohort Equations (2013 ACC/AHA) による10年間の動脈硬化性心血管疾患リスク推算。', category: 'cardiology', tier: 1, keywords: ['ASCVD','動脈硬化','心血管リスク','Pooled Cohort','ACC/AHA','スタチン','予防'], relatedSlugs: ['cha2ds2-vasc','has-bled','grace'], updatedAt: '2026-03', sources: [{ text: 'Goff DC Jr, et al. Circulation 2014;129:S49-S73', url: 'https://pubmed.ncbi.nlm.nih.gov/24222018/' }] },
+  { slug: 'ckd-stage', name: 'CKDステージ分類（CGA分類）', nameEn: 'CKD Stage Classification (CGA)', description: 'eGFRとアルブミン尿からCKD重症度をG1-G5/A1-A3で分類。KDIGO 2012準拠。', category: 'nephrology', tier: 1, keywords: ['CKD','慢性腎臓病','ステージ','CGA','GFR','アルブミン尿','KDIGO'], relatedSlugs: ['egfr','cockcroft-gault','fena'], updatedAt: '2026-03', sources: [{ text: 'KDIGO 2012 CKD Guideline. Kidney Int Suppl 2013;3:1-150', url: 'https://pubmed.ncbi.nlm.nih.gov/25018975/' }] },
+  { slug: 'nafld-fibrosis', name: 'NAFLD線維化スコア (NFS)', nameEn: 'NAFLD Fibrosis Score', description: '非アルコール性脂肪肝の線維化進行度を非侵襲的に評価。', category: 'hepatology', tier: 1, keywords: ['NAFLD','NASH','線維化','NFS','脂肪肝','FIB-4','肝生検'], relatedSlugs: ['fib-4','child-pugh','meld'], updatedAt: '2026-03', sources: [{ text: 'Angulo P, et al. Hepatology 2007;45:846-54', url: 'https://pubmed.ncbi.nlm.nih.gov/17393509/' }] },
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
@@ -1189,6 +1192,7 @@ export const implementedTools = new Set(['gamma', 'egfr', 'cha2ds2-vasc', 'chads
   'plasma-osmolality', 'urine-osmolality', 'tsat', 'hba1c-glucose',
   // 2026-03-22追加
   'pf-ratio', 'due-date', 'heat-stroke',
+  'ascvd', 'ckd-stage', 'nafld-fibrosis',
 ])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
