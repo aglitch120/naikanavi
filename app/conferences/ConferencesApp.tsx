@@ -334,7 +334,13 @@ export default function ConferencesApp() {
       )}
 
       {/* リスト表示 */}
-      {viewMode === 'list' && (
+      {viewMode === 'list' && (() => {
+        const twoWeeksLater = new Date()
+        twoWeeksLater.setDate(twoWeeksLater.getDate() + 14)
+        const cutoff = twoWeeksLater.toISOString().split('T')[0]
+        let proGateShown = false
+
+        return (
         <div className="space-y-6">
           {Array.from(grouped.entries()).map(([month, confs]) => {
             const [y, m] = month.split('-')
@@ -342,15 +348,32 @@ export default function ConferencesApp() {
               <div key={month}>
                 <h3 className="text-sm font-bold text-tx mb-3">{y}年{parseInt(m)}月</h3>
                 <div className="space-y-3">
-                  {confs.map(conf => (
-                    <ConferenceCard key={conf.id} conf={conf} isAttending={attending.includes(conf.id)} onToggleAttend={toggleAttend} isReminded={reminders.some(r => r.confId === conf.id)} onToggleRemind={toggleRemind} count={counts[conf.id]} isPro={isPro} onShowPro={() => setShowProModal(true)} />
-                  ))}
+                  {confs.map(conf => {
+                    const isBeyond2w = conf.startDate > cutoff
+                    if (isBeyond2w && !isPro && !proGateShown) {
+                      proGateShown = true
+                      return (
+                        <div key="pro-gate-2w" className="rounded-xl p-5 text-center border-2 border-dashed" style={{ borderColor: `${MC}40`, background: '#E8F0EC' }}>
+                          <p className="text-sm font-bold text-tx mb-1">2週間以降の学会スケジュール</p>
+                          <p className="text-xs text-muted mb-3">PRO会員で全日程を確認できます</p>
+                          <button onClick={() => setShowProModal(true)} className="px-5 py-2.5 rounded-xl text-xs font-bold text-white" style={{ background: MC }}>
+                            PRO会員で全日程を見る
+                          </button>
+                        </div>
+                      )
+                    }
+                    if (isBeyond2w && !isPro) return null
+                    return (
+                      <ConferenceCard key={conf.id} conf={conf} isAttending={attending.includes(conf.id)} onToggleAttend={toggleAttend} isReminded={reminders.some(r => r.confId === conf.id)} onToggleRemind={toggleRemind} count={counts[conf.id]} isPro={isPro} onShowPro={() => setShowProModal(true)} />
+                    )
+                  })}
                 </div>
               </div>
             )
           })}
         </div>
-      )}
+        )
+      })()}
 
       {/* カレンダー表示 */}
       {viewMode === 'calendar' && (
