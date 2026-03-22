@@ -83,6 +83,20 @@ export default function ActivatePage() {
       ...(profileSpecialty && { specialty: profileSpecialty }),
     }
     await updateProfile(profile)
+    // マイページプロフィールにも連動保存
+    try {
+      const existing = JSON.parse(localStorage.getItem('iwor_profile') || '{}')
+      localStorage.setItem('iwor_profile', JSON.stringify({
+        ...existing,
+        role: profileRole,
+        specialty: profileSpecialty,
+        hospitalSize: profileHospitalSize,
+        graduationYear: profileGradYear,
+        displayName: existing.displayName || '',
+        licenseYear: existing.licenseYear || '',
+      }))
+      if (profileRole) localStorage.setItem('iwor_user_role', profileRole)
+    } catch {}
     setIsSubmitting(false)
     // 完了後ツールページへ
     window.location.href = '/tools'
@@ -97,6 +111,22 @@ export default function ActivatePage() {
     if (res.success) {
       trackProLogin()
       refresh()
+      // サーバーからプロフィールを取得してマイページに連動
+      try {
+        const fpRes = await fetchProfile()
+        if (fpRes.success && fpRes.profile) {
+          const p = fpRes.profile
+          const existing = JSON.parse(localStorage.getItem('iwor_profile') || '{}')
+          localStorage.setItem('iwor_profile', JSON.stringify({
+            ...existing,
+            role: p.role || existing.role || '',
+            specialty: p.specialty || existing.specialty || '',
+            hospitalSize: p.hospitalSize || existing.hospitalSize || '',
+            graduationYear: p.graduationYear || existing.graduationYear || '',
+          }))
+          if (p.role) localStorage.setItem('iwor_user_role', p.role)
+        }
+      } catch {}
     } else {
       setError(res.error || 'ログインに失敗しました。')
     }

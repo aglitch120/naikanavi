@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { useProStatus } from '@/components/pro/useProStatus'
 import { loadFavorites, type FavoriteItem } from '@/components/tools/FavoriteButton'
@@ -8,7 +8,6 @@ import IworLoader from '@/components/IworLoader'
 
 const STORAGE_KEY = 'iwor_favorites'
 
-// カテゴリ定義
 const CATEGORIES = [
   { id: 'all', label: 'すべて', icon: '📌' },
   { id: 'app', label: 'アプリ', icon: '📱' },
@@ -30,6 +29,11 @@ export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [activeCategory, setActiveCategory] = useState('all')
+  const [editMode, setEditMode] = useState(false)
+  const [dragIdx, setDragIdx] = useState<number | null>(null)
+  const [overIdx, setOverIdx] = useState<number | null>(null)
+  const touchStartRef = useRef<{ x: number; y: number; idx: number } | null>(null)
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     setFavorites(loadFavorites())
@@ -46,20 +50,36 @@ export default function FavoritesPage() {
     window.dispatchEvent(new CustomEvent('favorites-changed'))
   }
 
-  const moveUp = (index: number) => {
-    if (index <= 0) return
+  const reorder = useCallback((fromIdx: number, toIdx: number) => {
+    if (fromIdx === toIdx) return
     const next = [...favorites]
-    ;[next[index - 1], next[index]] = [next[index], next[index - 1]]
+    const [moved] = next.splice(fromIdx, 1)
+    next.splice(toIdx, 0, moved)
     saveFavorites(next)
     setFavorites(next)
-  }
+  }, [favorites])
 
-  const moveDown = (index: number) => {
-    if (index >= favorites.length - 1) return
-    const next = [...favorites]
-    ;[next[index], next[index + 1]] = [next[index + 1], next[index]]
-    saveFavorites(next)
-    setFavorites(next)
+  // Drag handlers (desktop)
+  const handleDragStart = (idx: number) => { setDragIdx(idx) }
+  const handleDragOver = (e: React.DragEvent, idx: number) => { e.preventDefault(); setOverIdx(idx) }
+  const handleDrop = (idx: number) => {
+    if (dragIdx !== null) reorder(dragIdx, idx)
+    setDragIdx(null)
+    setOverIdx(null)
+  }
+  const handleDragEnd = () => { setDragIdx(null); setOverIdx(null) }
+
+  // Long press for mobile edit mode
+  const handleTouchStart = (idx: number, e: React.TouchEvent) => {
+    const touch = e.touches[0]
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY, idx }
+    longPressTimer.current = setTimeout(() => setEditMode(true), 500)
+  }
+  const handleTouchMove = () => {
+    if (longPressTimer.current) { clearTimeout(longPressTimer.current); longPressTimer.current = null }
+  }
+  const handleTouchEnd = () => {
+    if (longPressTimer.current) { clearTimeout(longPressTimer.current); longPressTimer.current = null }
   }
 
   if (proLoading || !isLoaded) {
@@ -81,23 +101,26 @@ export default function FavoritesPage() {
     )
   }
 
-  // Filter by category
   const filtered = activeCategory === 'all' ? favorites : favorites.filter(f => f.type === activeCategory)
-
-  // Categories that have items (for badge counts)
   const categoryCounts: Record<string, number> = {}
   favorites.forEach(f => { categoryCounts[f.type] = (categoryCounts[f.type] || 0) + 1 })
-
-  // Only show category tabs that exist
   const visibleCategories = CATEGORIES.filter(c => c.id === 'all' || categoryCounts[c.id])
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-8">
-      <div className="mb-5">
-        <h1 className="text-xl font-bold text-tx">お気に入り</h1>
-        <p className="text-sm text-muted mt-1">
-          よく使うツールにすぐアクセス。{favorites.length > 0 && <span className="text-ac font-medium">{favorites.length}件</span>}
-        </p>
+    <main className="max-w-2xl mx-auto px-4 py-8 pb-24">
+      <div className="flex items-center justify-between mb-5">
+        <div>
+          <h1 className="text-xl font-bold text-tx">お気に入り</h1>
+          <p className="text-sm text-muted mt-1">
+            よく使うツールにすぐアクセス。{favorites.length > 0 && <span className="text-ac font-medium">{favorites.length}件</span>}
+          </p>
+        </div>
+        {favorites.length > 0 && (
+          <button onClick={() => setEditMode(!editMode)}
+            className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${editMode ? 'bg-ac text-white' : 'bg-s1 text-muted hover:text-ac'}`}>
+            {editMode ? '完了' : '編集'}
+          </button>
+        )}
       </div>
 
       {favorites.length === 0 ? (
@@ -113,7 +136,6 @@ export default function FavoritesPage() {
         </div>
       ) : (
         <>
-          {/* Category filter tabs */}
           {visibleCategories.length > 2 && (
             <div className="flex gap-1.5 mb-4 overflow-x-auto pb-1">
               {visibleCategories.map(c => {
@@ -123,8 +145,7 @@ export default function FavoritesPage() {
                   <button key={c.id} onClick={() => setActiveCategory(c.id)}
                     className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all border ${
                       isActive ? 'bg-acl border-ac/30 text-ac' : 'bg-s0 border-br text-muted hover:border-ac/20'
-                    }`}
-                  >
+                    }`}>
                     <span>{c.icon}</span>
                     <span>{c.label}</span>
                     <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
@@ -136,123 +157,57 @@ export default function FavoritesPage() {
             </div>
           )}
 
-          {/* Favorites list */}
           {filtered.length === 0 ? (
             <div className="text-center py-8 text-sm text-muted">このカテゴリにはお気に入りがありません</div>
           ) : (
-            <div className="space-y-2">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
               {filtered.map((fav) => {
-                // Find global index for move operations
                 const globalIdx = favorites.findIndex(f => f.id === fav.id)
                 const catInfo = CATEGORIES.find(c => c.id === fav.type)
+                const isDragging = dragIdx === globalIdx
+                const isOver = overIdx === globalIdx
                 return (
-                  <div key={fav.id} className="flex items-center gap-3 bg-s0 border border-br rounded-xl p-4 hover:border-ac/20 transition-colors">
-                    <span className="text-lg flex-shrink-0">{fav.icon || catInfo?.icon || '📌'}</span>
-                    <Link href={fav.href} className="flex-1 min-w-0">
-                      <p className="text-sm font-bold text-tx truncate hover:text-ac transition-colors">{fav.title}</p>
-                      <p className="text-[10px] text-muted">{catInfo?.label || fav.type}</p>
+                  <div key={fav.id}
+                    draggable={editMode}
+                    onDragStart={() => handleDragStart(globalIdx)}
+                    onDragOver={(e) => handleDragOver(e, globalIdx)}
+                    onDrop={() => handleDrop(globalIdx)}
+                    onDragEnd={handleDragEnd}
+                    onTouchStart={(e) => handleTouchStart(globalIdx, e)}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                    className={`relative bg-s0 border rounded-xl p-3 text-center transition-all ${
+                      isDragging ? 'opacity-40 scale-95' : isOver ? 'border-ac shadow-md scale-105' : 'border-br hover:border-ac/20'
+                    } ${editMode ? 'animate-[wiggle_0.3s_ease-in-out_infinite]' : ''}`}
+                  >
+                    {editMode && (
+                      <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); remove(fav.id) }}
+                        className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold z-10 shadow-sm">
+                        x
+                      </button>
+                    )}
+                    <Link href={editMode ? '#' : fav.href} onClick={e => editMode && e.preventDefault()}>
+                      <span className="text-2xl block mb-1.5">{fav.icon || catInfo?.icon || '📌'}</span>
+                      <p className="text-[11px] font-medium text-tx leading-tight line-clamp-2">{fav.title}</p>
                     </Link>
-                    {/* Reorder */}
-                    <div className="flex flex-col gap-0.5 flex-shrink-0">
-                      <button onClick={() => moveUp(globalIdx)} disabled={globalIdx === 0}
-                        className="w-7 h-7 rounded-md bg-s1 border border-br flex items-center justify-center text-muted hover:text-tx hover:border-ac/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
-                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path d="M18 15l-6-6-6 6" /></svg>
-                      </button>
-                      <button onClick={() => moveDown(globalIdx)} disabled={globalIdx === favorites.length - 1}
-                        className="w-7 h-7 rounded-md bg-s1 border border-br flex items-center justify-center text-muted hover:text-tx hover:border-ac/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
-                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path d="M6 9l6 6 6-6" /></svg>
-                      </button>
-                    </div>
-                    {/* Delete */}
-                    <button onClick={() => remove(fav.id)}
-                      className="w-7 h-7 rounded-md flex items-center justify-center text-muted hover:text-dn hover:bg-dnl transition-all flex-shrink-0" title="お気に入りから削除">
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M18 6L6 18M6 6l12 12" /></svg>
-                    </button>
                   </div>
                 )
               })}
             </div>
           )}
+
+          {editMode && (
+            <p className="text-[10px] text-muted text-center mt-4">ドラッグで並べ替え / x で削除</p>
+          )}
         </>
       )}
+
+      <style jsx>{`
+        @keyframes wiggle {
+          0%, 100% { transform: rotate(-0.5deg); }
+          50% { transform: rotate(0.5deg); }
+        }
+      `}</style>
     </main>
-  )
-}
-
-/* ── プロフィールカード ── */
-function ProfileCard() {
-  const [email, setEmail] = useState('')
-  const [displayName, setDisplayName] = useState('')
-  const [segment, setSegment] = useState('')
-  const [editing, setEditing] = useState(false)
-  const [editName, setEditName] = useState('')
-
-  useEffect(() => {
-    try {
-      const token = localStorage.getItem('iwor_session_token')
-      const storedEmail = localStorage.getItem('iwor_user_email')
-      const storedName = localStorage.getItem('iwor_display_name') || ''
-      const storedSegment = localStorage.getItem('iwor_user_segment') || ''
-      if (storedEmail) setEmail(storedEmail)
-      if (storedName) setDisplayName(storedName)
-      if (storedSegment) setSegment(storedSegment)
-    } catch {}
-  }, [])
-
-  const handleSaveName = () => {
-    if (editName.trim()) {
-      setDisplayName(editName.trim())
-      localStorage.setItem('iwor_display_name', editName.trim())
-    }
-    setEditing(false)
-  }
-
-  const SEGMENTS = [
-    { id: 'student', label: '医学生', icon: '🎓' },
-    { id: 'resident', label: '初期研修医', icon: '🏥' },
-    { id: 'fellow', label: '専攻医', icon: '📋' },
-    { id: 'attending', label: '勤務医', icon: '⚕️' },
-  ]
-
-  return (
-    <div className="bg-s0 border border-br rounded-2xl p-5 mb-6">
-      <div className="flex items-center gap-4 mb-4">
-        <div className="w-14 h-14 rounded-full bg-acl border-2 border-ac/30 flex items-center justify-center text-xl">
-          {SEGMENTS.find(s => s.id === segment)?.icon || '👤'}
-        </div>
-        <div className="flex-1">
-          {editing ? (
-            <div className="flex gap-2">
-              <input type="text" value={editName} onChange={e => setEditName(e.target.value)}
-                placeholder="表示名" className="flex-1 px-2 py-1 border border-br rounded text-sm" />
-              <button onClick={handleSaveName} className="text-xs text-ac font-bold">保存</button>
-            </div>
-          ) : (
-            <div className="flex items-center gap-2">
-              <p className="text-base font-bold text-tx">{displayName || '名前未設定'}</p>
-              <button onClick={() => { setEditName(displayName); setEditing(true) }} className="text-[10px] text-muted hover:text-ac">編集</button>
-            </div>
-          )}
-          <p className="text-xs text-muted">{email || '未ログイン'}</p>
-          {segment && <span className="text-[10px] px-2 py-0.5 rounded-full bg-acl text-ac font-medium">{SEGMENTS.find(s => s.id === segment)?.label}</span>}
-        </div>
-      </div>
-
-      {/* セグメント変更 */}
-      <div className="flex gap-1.5">
-        {SEGMENTS.map(s => (
-          <button key={s.id} onClick={() => { setSegment(s.id); localStorage.setItem('iwor_user_segment', s.id) }}
-            className={`flex-1 py-1.5 rounded-lg text-[10px] font-medium transition-all ${segment === s.id ? 'bg-ac text-white' : 'bg-s1 text-muted'}`}>
-            {s.icon} {s.label}
-          </button>
-        ))}
-      </div>
-
-      {!email && (
-        <Link href="/pro/activate" className="block mt-3 text-center text-xs text-ac font-bold hover:underline">
-          ログインしてデータを保存
-        </Link>
-      )}
-    </div>
   )
 }

@@ -150,12 +150,17 @@ export default function CreditsApp() {
     }
   }, [isPro])
 
-  const specialty = data.selectedSpecialty ? getSpecialtyById(data.selectedSpecialty) : null
+  // 複数専門医対応: selectedSpecialtiesが空なら旧selectedSpecialtyを使う
+  const selectedIds = data.selectedSpecialties?.length ? data.selectedSpecialties : (data.selectedSpecialty ? [data.selectedSpecialty] : [])
+  // 現在表示中の専門医（タブ切替）
+  const [activeSpecIdx, setActiveSpecIdx] = useState(0)
+  const activeSpecId = selectedIds[activeSpecIdx] || selectedIds[0] || null
+  const specialty = activeSpecId ? getSpecialtyById(activeSpecId) : null
 
   // 現在の専門医に紐づくエントリーのみ表示
   const filteredEntries = useMemo(() => {
-    return data.entries.filter(e => !e.specialtyId || e.specialtyId === data.selectedSpecialty)
-  }, [data.entries, data.selectedSpecialty])
+    return data.entries.filter(e => !e.specialtyId || e.specialtyId === activeSpecId)
+  }, [data.entries, activeSpecId])
 
   const totalCredits = useMemo(() => {
     return filteredEntries.reduce((sum, e) => sum + e.credits, 0)
@@ -173,12 +178,22 @@ export default function CreditsApp() {
     return [...filteredEntries].sort((a, b) => b.date.localeCompare(a.date))
   }, [filteredEntries])
 
-  const handleSelectSpecialty = (id: string) => {
-    save({ ...data, selectedSpecialty: id || null })
+  const handleToggleSpecialty = (id: string) => {
+    const current = data.selectedSpecialties?.length ? [...data.selectedSpecialties] : (data.selectedSpecialty ? [data.selectedSpecialty] : [])
+    const idx = current.indexOf(id)
+    if (idx >= 0) {
+      current.splice(idx, 1)
+    } else {
+      current.push(id)
+    }
+    save({ ...data, selectedSpecialties: current, selectedSpecialty: current[0] || null })
+    // タブを追加した専門医に切り替え
+    if (idx < 0) setActiveSpecIdx(current.length - 1)
+    else if (activeSpecIdx >= current.length) setActiveSpecIdx(Math.max(0, current.length - 1))
   }
 
   const handleAddEntry = (entry: Omit<CreditEntry, 'id'>) => {
-    const newEntry: CreditEntry = { ...entry, id: genId(), specialtyId: data.selectedSpecialty || undefined }
+    const newEntry: CreditEntry = { ...entry, id: genId(), specialtyId: activeSpecId || undefined }
     save({ ...data, entries: [...data.entries, newEntry] })
   }
 
@@ -217,24 +232,51 @@ export default function CreditsApp() {
       <AppHeader title="専門医単位" subtitle="専門医更新に必要な単位を管理" badge="PRO" />
 
       <div>
-        {/* ── 診療科選択 ── */}
+        {/* ── 診療科選択（複数可） ── */}
         <div className="rounded-xl p-4 mb-4" style={{ background: C.s0, border: `1px solid ${C.br}` }}>
-          <label className="text-xs font-medium mb-2 block" style={{ color: C.m }}>診療科を選択</label>
-          <select
-            value={data.selectedSpecialty || ''}
-            onChange={e => handleSelectSpecialty(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-lg text-sm border appearance-none"
-            style={{ borderColor: C.br, color: C.tx, background: 'white' }}
-          >
-            <option value="">-- 選択してください --</option>
-            <optgroup label="基本領域（19科）">
-              {basicSpecs.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-            </optgroup>
-            <optgroup label="サブスペシャリティ">
-              {subSpecs.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-            </optgroup>
-          </select>
+          <div className="flex items-center justify-between mb-2">
+            <label className="text-xs font-medium" style={{ color: C.m }}>診療科を選択（複数可）</label>
+            <span className="text-[10px]" style={{ color: C.m }}>{selectedIds.length}科選択中</span>
+          </div>
+          <details className="group">
+            <summary className="cursor-pointer px-3 py-2.5 rounded-lg text-sm border flex items-center justify-between"
+              style={{ borderColor: C.br, color: selectedIds.length ? C.tx : C.m, background: 'white' }}>
+              <span>{selectedIds.length ? selectedIds.map(id => getSpecialtyById(id)?.name).filter(Boolean).join('、') : '-- 選択してください --'}</span>
+              <svg className="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div className="mt-2 space-y-2 max-h-60 overflow-y-auto">
+              <p className="text-[10px] font-bold px-1" style={{ color: C.m }}>基本領域（19科）</p>
+              <div className="flex flex-wrap gap-1.5">
+                {basicSpecs.map(s => {
+                  const sel = selectedIds.includes(s.id)
+                  return <button key={s.id} onClick={() => handleToggleSpecialty(s.id)}
+                    className={`px-2.5 py-1.5 rounded-lg text-[11px] font-medium border transition-all ${sel ? 'bg-acl border-ac/30 text-ac' : 'bg-white border-br text-muted hover:border-ac/20'}`}>{s.name.replace('専門医','')}</button>
+                })}
+              </div>
+              <p className="text-[10px] font-bold px-1 pt-1" style={{ color: C.m }}>サブスペシャリティ</p>
+              <div className="flex flex-wrap gap-1.5">
+                {subSpecs.map(s => {
+                  const sel = selectedIds.includes(s.id)
+                  return <button key={s.id} onClick={() => handleToggleSpecialty(s.id)}
+                    className={`px-2.5 py-1.5 rounded-lg text-[11px] font-medium border transition-all ${sel ? 'bg-acl border-ac/30 text-ac' : 'bg-white border-br text-muted hover:border-ac/20'}`}>{s.name.replace('専門医','')}</button>
+                })}
+              </div>
+            </div>
+          </details>
         </div>
+
+        {/* ── 専門医タブ切り替え ── */}
+        {selectedIds.length > 1 && (
+          <div className="flex gap-1.5 mb-4 overflow-x-auto pb-1">
+            {selectedIds.map((id, i) => {
+              const sp = getSpecialtyById(id)
+              return <button key={id} onClick={() => setActiveSpecIdx(i)}
+                className={`px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap border transition-all ${
+                  i === activeSpecIdx ? 'bg-ac text-white border-ac' : 'bg-s0 border-br text-muted hover:border-ac/20'
+                }`}>{sp?.name.replace('専門医','') || id}</button>
+            })}
+          </div>
+        )}
 
         {specialty && (
           <>
