@@ -308,7 +308,20 @@ export default function CreditsApp() {
 
               {/* 更新期限 */}
               <div className="mt-3 pt-3" style={{ borderTop: `1px solid ${C.s2}` }}>
-                {data.targetDate && daysUntilTarget !== null ? (
+                {showTargetInput ? (
+                  <div className="flex items-center gap-2">
+                    <input type="date" className="flex-1 px-2 py-1.5 rounded-lg text-sm border"
+                      style={{ borderColor: C.br }}
+                      defaultValue={data.targetDate || ''}
+                      onChange={e => handleSetTargetDate(e.target.value)} />
+                    <button onClick={() => setShowTargetInput(false)}
+                      className="text-xs px-2 py-1" style={{ color: C.m }}>取消</button>
+                    {data.targetDate && (
+                      <button onClick={() => { handleSetTargetDate(''); setShowTargetInput(false) }}
+                        className="text-xs px-2 py-1 text-red-500">削除</button>
+                    )}
+                  </div>
+                ) : data.targetDate && daysUntilTarget !== null ? (
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-xs" style={{ color: C.m }}>更新期限: {data.targetDate}</span>
@@ -319,14 +332,6 @@ export default function CreditsApp() {
                     </div>
                     <button onClick={() => setShowTargetInput(true)}
                       className="text-xs px-2 py-1 rounded" style={{ color: C.ac }}>変更</button>
-                  </div>
-                ) : showTargetInput ? (
-                  <div className="flex items-center gap-2">
-                    <input type="date" className="flex-1 px-2 py-1.5 rounded-lg text-sm border"
-                      style={{ borderColor: C.br }}
-                      onChange={e => handleSetTargetDate(e.target.value)} />
-                    <button onClick={() => setShowTargetInput(false)}
-                      className="text-xs px-2 py-1" style={{ color: C.m }}>取消</button>
                   </div>
                 ) : (
                   <button onClick={() => setShowTargetInput(true)}
