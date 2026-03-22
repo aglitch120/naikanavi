@@ -66,26 +66,46 @@ export default function JournalApp() {
   const [articles, setArticles] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [lang, setLang] = useState<'en' | 'ja'>('en')
-  const [displayLang, setDisplayLang] = useState<'ja' | 'en'>('ja') // 表示言語（デフォルト日本語訳）
+  const [lang, setLang] = useState<'en' | 'ja'>(() => {
+    if (typeof window === 'undefined') return 'en'
+    return (localStorage.getItem('iwor_journal_filter_lang') as 'en' | 'ja') || 'en'
+  })
+  const [displayLang, setDisplayLang] = useState<'ja' | 'en'>('ja')
 
   // 記事統計（コメント数・ブックマーク数）
   const [articleStats, setArticleStats] = useState<Record<string, { comments: number; bookmarks: number }>>({})
   // 並び替え
-  const [sortBy, setSortBy] = useState<'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year' | 'comments'>('date')
+  const [sortBy, setSortBy] = useState<'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year' | 'comments'>(() => {
+    if (typeof window === 'undefined') return 'date'
+    return (localStorage.getItem('iwor_journal_filter_sort') as 'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year' | 'comments') || 'date'
+  })
 
   // Content type toggle
-  const [contentType, setContentType] = useState<'articles' | 'guidelines'>('articles')
+  const [contentType, setContentType] = useState<'articles' | 'guidelines'>(() => {
+    if (typeof window === 'undefined') return 'articles'
+    return (localStorage.getItem('iwor_journal_filter_type') as 'articles' | 'guidelines') || 'articles'
+  })
   const [guidelines, setGuidelines] = useState<Article[]>([])
   const [guidelinesLoading, setGuidelinesLoading] = useState(false)
   const [guidelinesError, setGuidelinesError] = useState('')
 
   // Filters — unified (Top4 always included + specialty + IF)
-  const [selectedSpecialties, setSelectedSpecialties] = useState<Set<string>>(new Set())
-  const [ifMin, setIfMin] = useState(0)
+  // localStorage復元
+  const [selectedSpecialties, setSelectedSpecialties] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set()
+    try { const s = localStorage.getItem('iwor_journal_filter_sp'); return s ? new Set(JSON.parse(s)) : new Set() } catch { return new Set() }
+  })
+  const [ifMin, setIfMin] = useState(() => {
+    if (typeof window === 'undefined') return 0
+    try { return Number(localStorage.getItem('iwor_journal_filter_if')) || 0 } catch { return 0 }
+  })
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [showSortPanel, setShowSortPanel] = useState(false)
-  const [excludedJournals, setExcludedJournals] = useState<Set<string>>(new Set())
+  const [excludedJournals, setExcludedJournals] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set()
+    try { const s = localStorage.getItem('iwor_journal_filter_excl'); return s ? new Set(JSON.parse(s)) : new Set() } catch { return new Set() }
+  })
+  const [filterSaved, setFilterSaved] = useState(false)
 
   // Infinite scroll
   const PAGE_SIZE = 10
@@ -216,6 +236,23 @@ export default function JournalApp() {
 
   // Reset displayCount when filters/sort/lang change
   useEffect(() => { setDisplayCount(PAGE_SIZE) }, [lang, sortBy, selectedSpecialties, ifMin, showBookmarks, contentType])
+
+  // フィルタ条件自動保存
+  useEffect(() => {
+    try {
+      localStorage.setItem('iwor_journal_filter_sp', JSON.stringify(Array.from(selectedSpecialties)))
+      localStorage.setItem('iwor_journal_filter_if', String(ifMin))
+      localStorage.setItem('iwor_journal_filter_excl', JSON.stringify(Array.from(excludedJournals)))
+      localStorage.setItem('iwor_journal_filter_lang', lang)
+      localStorage.setItem('iwor_journal_filter_sort', sortBy)
+      localStorage.setItem('iwor_journal_filter_type', contentType)
+      if (selectedSpecialties.size > 0 || ifMin > 0 || excludedJournals.size > 0) {
+        setFilterSaved(true)
+        const t = setTimeout(() => setFilterSaved(false), 2000)
+        return () => clearTimeout(t)
+      }
+    } catch {}
+  }, [selectedSpecialties, ifMin, excludedJournals, lang, sortBy, contentType])
 
   // IntersectionObserver for infinite scroll
   useEffect(() => {
@@ -437,6 +474,13 @@ export default function JournalApp() {
         )}
       </div>
 
+      {/* フィルタ保存確認 */}
+      {filterSaved && (
+        <div className="mb-2 px-3 py-1.5 bg-okl border border-okb rounded-lg text-center transition-opacity">
+          <p className="text-[10px] text-ok font-medium">フィルタ設定を保存しました</p>
+        </div>
+      )}
+
       {/* ── Feed/Bookmark toggle ── */}
       {contentType === 'articles' && <>
       <div className="flex items-center justify-between mb-3">
@@ -543,11 +587,22 @@ export default function JournalApp() {
           {hiddenCount > 0 && !hasMore && (
             <div className="bg-s0 border border-dashed rounded-xl p-6 text-center" style={{ borderColor: `${MC}40` }}>
               <p className="text-sm font-bold text-tx mb-1">あと{hiddenCount}件の論文があります</p>
-              <p className="text-xs text-muted mb-4">PRO会員で全件閲覧＋ブックマーク＋プレゼン連携</p>
-              <button onClick={() => setShowProModal(true)}
-                className="px-6 py-2.5 rounded-xl text-sm font-bold text-white" style={{ background: MC }}>
-                PRO会員になる
-              </button>
+              <p className="text-xs text-muted mb-3">PRO会員で全件閲覧＋ブックマーク＋プレゼン連携</p>
+              {selectedSpecialties.size > 0 && (
+                <div className="bg-acl rounded-lg px-3 py-2 mb-3 inline-block">
+                  <p className="text-[10px] text-ac font-medium">
+                    {Array.from(selectedSpecialties).join('・')}のフィルタ設定を保存済み
+                  </p>
+                  <p className="text-[9px] text-ac/70">次回も同じ設定で表示されます</p>
+                </div>
+              )}
+              <div className="space-y-2">
+                <button onClick={() => setShowProModal(true)}
+                  className="block w-full max-w-xs mx-auto px-6 py-2.5 rounded-xl text-sm font-bold text-white" style={{ background: MC }}>
+                  PRO会員で全{filteredArticles.length}件を読む
+                </button>
+                <p className="text-[9px] text-muted">フィルタ設定はFREEでも自動保存されます</p>
+              </div>
             </div>
           )}
 
