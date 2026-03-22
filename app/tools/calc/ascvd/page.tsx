@@ -75,10 +75,10 @@ export default function ASCVDPage() {
       categoryIcon="❤️"
       result={result && (
         <ResultCard
-          title="10年ASCVDリスク"
+          label="10年ASCVDリスク"
           value={`${result.risk}%`}
           severity={result.severity}
-          items={[
+          details={[
             { label: 'リスクカテゴリ', value: result.category },
             { label: '判定基準', value: '<5%: 低 / 5-7.5%: ボーダーライン / 7.5-20%: 中 / >=20%: 高' },
           ]}

@@ -67,10 +67,10 @@ export default function CKDStagePage() {
       categoryIcon="💧"
       result={result && (
         <ResultCard
-          title="CKDステージ"
+          label="CKDステージ"
           value={result.cga}
           severity={result.severity}
-          items={[
+          details={[
             { label: 'GFR区分', value: `${result.gStage}（${result.gLabel}）` },
             { label: 'アルブミン尿区分', value: `${result.aStage}（${result.aLabel}）` },
             { label: 'CGA分類リスク', value: result.riskLevel },

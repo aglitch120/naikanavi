@@ -40,10 +40,10 @@ export default function HeatStrokePage() {
       categoryIcon="🌡️"
       result={result && (
         <ResultCard
-          title="重症度"
+          label="重症度"
           value={result.grade}
           severity={result.severity}
-          items={[
+          details={[
             { label: '対応', value: result.action },
           ]}
         />

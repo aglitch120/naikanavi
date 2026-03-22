@@ -431,8 +431,8 @@ export default function DocumentsTab({
       {subTab === 'emails' && <EmailTemplates profile={profile} mode={mode} />}
       {subTab === 'resume-guide' && <ResumeGuide />}
       {subTab === 'checklist' && <VisitChecklist />}
-      {subTab === 'questions' && <VisitQuestions />}
-      {subTab === 'compare' && <HospitalCompare />}
+      {subTab === 'questions' && <VisitQuestions isPro={isPro} onShowProModal={onShowProModal} />}
+      {subTab === 'compare' && <HospitalCompare isPro={isPro} onShowProModal={onShowProModal} />}
     </div>
   )
 }
@@ -682,7 +682,7 @@ function VisitChecklist() {
 // ═══════════════════════════════════════
 //  聞くべきことリスト
 // ═══════════════════════════════════════
-function VisitQuestions() {
+function VisitQuestions({ isPro, onShowProModal }: { isPro?: boolean; onShowProModal?: () => void }) {
   const [openCat, setOpenCat] = useState<number>(0)
   const STORAGE_KEY = 'iwor_visit_questions_notes'
   const [notes, setNotes] = useState<Record<string, string>>(() => {
@@ -893,7 +893,7 @@ const COMPARE_CATEGORIES: CompareCategory[] = [
   },
 ]
 
-function HospitalCompare() {
+function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; onShowProModal?: () => void }) {
   const MAX_HOSPITALS = 3
   const [hospitalNames, setHospitalNames] = useState<string[]>(['病院A', '病院B', '病院C'])
   const [activeHospitals, setActiveHospitals] = useState<number>(2)

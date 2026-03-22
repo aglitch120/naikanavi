@@ -241,8 +241,8 @@ export default function HospitalTab({
                           <p className="text-[10px] text-muted">{h.prefecture} · 空席{h.vacancy}</p>
                         </div>
                       </div>
-                      {isPro && (
-                        <p className="text-[10px] font-medium flex-shrink-0 ml-2 max-w-[45%] text-right" style={{ color: MC }}>{h.anabaReason}</p>
+                      {isPro && h.vacancy > 0 && (
+                        <p className="text-[10px] font-medium flex-shrink-0 ml-2 text-right" style={{ color: MC }}>空席{h.vacancy}</p>
                       )}
                     </div>
                     {/* FREE: 全てモザイク（1位もバレないように） */}
@@ -365,7 +365,7 @@ export default function HospitalTab({
                         <span className="text-sm w-8 text-center flex-shrink-0">{medal}</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-bold text-tx truncate">{h.name}</p>
-                          <p className="text-[10px] text-muted">{h.prefecture} · {h.type}</p>
+                          <p className="text-[10px] text-muted">{h.prefecture} · 倍率{h.popularity}</p>
                         </div>
                         {isPro ? (
                           <span className="text-xs font-bold flex-shrink-0" style={{ color: MC }}>♥ {h.count}</span>
@@ -683,8 +683,8 @@ function ListTab({
             <p className="text-xs font-bold text-tx truncate">{h.name}</p>
             <div className="flex items-center gap-2 text-[10px] text-muted">
               <span>{h.prefecture}</span>
-              <span className="font-medium" style={{ color: MC }}>{h.matchRateLabel}</span>
-              <span>{h.salaryLabel}</span>
+              <span className="font-medium" style={{ color: MC }}>{`${h.popularity}倍`}</span>
+              <span>定員{h.capacity}</span>
             </div>
           </div>
 

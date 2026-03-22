@@ -118,10 +118,10 @@ export default function FraminghamPage() {
       categoryIcon="❤️"
       result={result && (
         <ResultCard
-          title="10年CHDリスク"
+          label="10年CHDリスク"
           value={`${result.risk}%`}
           severity={result.severity}
-          items={[
+          details={[
             { label: 'ポイント', value: `${result.points}点` },
             { label: 'リスクカテゴリ', value: result.category },
           ]}

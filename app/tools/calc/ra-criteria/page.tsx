@@ -55,10 +55,10 @@ export default function RACriteriaPage() {
       categoryIcon="🦴"
       result={(
         <ResultCard
-          title="ACR/EULAR 2010"
+          label="ACR/EULAR 2010"
           value={`${result.score}/10`}
           severity={result.severity}
-          items={[
+          details={[
             { label: '判定', value: result.label },
           ]}
         />

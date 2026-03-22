@@ -53,10 +53,10 @@ export default function DueDatePage() {
       categoryIcon="🤰"
       result={result && (
         <ResultCard
-          title="出産予定日"
+          label="出産予定日"
           value={result.edd}
           severity="ok"
-          items={[
+          details={[
             { label: '妊娠週数', value: result.ga },
             { label: '三半期', value: result.trimester },
             { label: '予定日まで', value: result.remaining > 0 ? `あと${result.remaining}日` : '予定日超過' },

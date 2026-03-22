@@ -30,7 +30,7 @@ export interface CompareData {
   relatedTools: { href: string; name: string }[]
 }
 
-const columnLabels: Record<keyof DrugEntry, string> = {
+const columnLabels: Partial<Record<keyof DrugEntry, string>> = {
   generic: '一般名',
   brand: '商品名',
   specs: '規格',

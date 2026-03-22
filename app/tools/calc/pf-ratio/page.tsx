@@ -37,11 +37,11 @@ export default function PFRatioPage() {
       categoryIcon="🫁"
       result={result && (
         <ResultCard
-          title="P/F比"
+          label="P/F比"
           value={`${result.ratio}`}
           unit="mmHg"
           severity={result.severity}
-          items={[
+          details={[
             { label: '判定', value: result.label },
             { label: 'Berlin定義', value: result.ratio >= 300 ? '該当なし' : result.ratio >= 200 ? 'Mild ARDS (200-300)' : result.ratio >= 100 ? 'Moderate ARDS (100-200)' : 'Severe ARDS (<100)' },
           ]}

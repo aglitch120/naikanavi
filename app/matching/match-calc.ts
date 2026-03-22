@@ -44,21 +44,21 @@ export function calculateMatchProbability(
   // 地域の重複チェック（同地域が2つ以上あれば面接慣れボーナス）
   const regionCounts: Record<string, number> = {}
   wishlist.forEach(h => {
-    regionCounts[h.region] = (regionCounts[h.region] || 0) + 1
+    regionCounts[h.prefecture] = (regionCounts[h.prefecture] || 0) + 1
   })
 
   const perHospital = wishlist.map((h, index) => {
     // 基本確率: 1/倍率
-    let prob = 1 / h.matchRate
+    let prob = 1 / h.popularity
 
     // 第1希望ボーナス（+15%相対）: 志望理由の深さで有利
     if (index === 0) prob *= 1.15
 
     // 穴場ボーナス（+10%相対）
-    if (h.isAnaba) prob *= 1.10
+    if (h.vacancy && h.vacancy > 0) prob *= 1.10  // 空席ありの病院はマッチ確率UP
 
     // 同地域複数志望ボーナス（+5%相対）
-    if (regionCounts[h.region] >= 2) prob *= 1.05
+    if (regionCounts[h.prefecture] >= 2) prob *= 1.05
 
     // 上限100%
     const probability = Math.min(prob * 100, 95)
@@ -93,7 +93,7 @@ export function calculateMatchProbability(
     recommendation = `マッチング成功確率${totalProbability}%。倍率2倍以下の病院をあと${needed}院追加すると95%に近づきます。`
   } else {
     safetyLevel = 'danger'
-    const avgRate = wishlist.reduce((s, h) => s + h.matchRate, 0) / wishlist.length
+    const avgRate = wishlist.reduce((s, h) => s + h.popularity, 0) / wishlist.length
     if (avgRate > 3.5) {
       recommendation = `マッチング成功確率${totalProbability}%。人気病院に偏っています。倍率2倍以下の「滑り止め」を追加しましょう。`
     } else {

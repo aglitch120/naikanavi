@@ -10,7 +10,7 @@ interface NumberInputProps {
   min?: number
   max?: number
   step?: number
-  id: string
+  id?: string
 }
 
 export function NumberInput({

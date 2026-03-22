@@ -51,10 +51,10 @@ export default function DAS28Page() {
       categoryIcon="🦴"
       result={result && (
         <ResultCard
-          title={result.type}
+          label={result.type}
           value={`${result.score}`}
           severity={result.severity}
-          items={[
+          details={[
             { label: '疾患活動性', value: result.category },
             { label: '判定基準', value: '<=2.6 寛解 / <=3.2 低 / <=5.1 中 / >5.1 高' },
           ]}

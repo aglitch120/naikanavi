@@ -46,10 +46,10 @@ export default function NAFLDFibrosisPage() {
       categoryIcon="🫁"
       result={result && (
         <ResultCard
-          title="NAFLD線維化スコア"
+          label="NAFLD線維化スコア"
           value={`${result.nfs}`}
           severity={result.severity}
-          items={[
+          details={[
             { label: '判定', value: result.category },
             { label: 'カットオフ', value: '<-1.455: F0-F2（除外） / >0.676: F3-F4（進行線維化）' },
           ]}

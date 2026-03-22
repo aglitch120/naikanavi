@@ -32,12 +32,6 @@ const organizationJsonLd = {
   description: siteConfig.description,
 }
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-}
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
