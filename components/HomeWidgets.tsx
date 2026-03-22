@@ -209,9 +209,9 @@ export default function HomeWidgets() {
         </Link>
       )}
 
-      {/* ── J-OSLER Widget (Goal Gradient) ── */}
+      {/* ── J-OSLER Widget (Goal Gradient) — PC only ── */}
       {showJosler && (
-        <Link href="/josler" className="block" aria-label={`J-OSLER — ${120 - data.joslerCases > 0 ? `あと${120 - data.joslerCases}症例` : '症例数クリア'}`}>
+        <Link href="/josler" className="hidden sm:block" aria-label={`J-OSLER — ${120 - data.joslerCases > 0 ? `あと${120 - data.joslerCases}症例` : '症例数クリア'}`}>
           <div
             className="rounded-xl p-4 transition-all hover:shadow-md"
             style={{ background: 'var(--s0)', border: '1px solid var(--br)' }}

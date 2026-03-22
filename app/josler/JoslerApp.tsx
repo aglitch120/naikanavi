@@ -418,6 +418,19 @@ function OverviewTab({ totalC, totalG, totalAcc, totalWip, summaries, overallPct
         ))}
       </div>
 
+      {/* EPOC連携 */}
+      <Card>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 600, color: C.tx, marginBottom: 2 }}>EPOCから症例を取り込む</div>
+            <div style={{ fontSize: 10, color: C.m }}>初期研修で経験した症例をJ-OSLERに反映</div>
+          </div>
+          <a href="/epoc" style={{ fontSize: 11, fontWeight: 700, color: 'white', background: C.ac, padding: '6px 14px', borderRadius: 8, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            EPOC &rsaquo;
+          </a>
+        </div>
+      </Card>
+
       {/* Specialty table */}
       <Card>
         <CardT>領域別 達成状況</CardT>
@@ -1027,6 +1040,19 @@ function EpocOverview({ symDone, disDone, proDone, overallPct }: { symDone: numb
           </Card>
         ))}
       </div>
+
+      {/* JOSLER連携 */}
+      <Card>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 600, color: C.tx, marginBottom: 2 }}>J-OSLERに経験を引き継ぐ</div>
+            <div style={{ fontSize: 10, color: C.m }}>EPOCで経験した症例をJ-OSLERの症例登録に反映</div>
+          </div>
+          <a href="/josler" style={{ fontSize: 11, fontWeight: 700, color: 'white', background: C.ac, padding: '6px 14px', borderRadius: 8, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            J-OSLERへ &rsaquo;
+          </a>
+        </div>
+      </Card>
 
       <Card style={{ background: C.s1 }}>
         <div style={{ fontSize: 12, color: C.m, lineHeight: 1.7 }}>
