@@ -16,6 +16,7 @@ const recommendations: Record<string, string[]> = {
 interface AppItem {
   href: string
   label: string
+  sub?: string
   badge: string
   icon: ReactNode
 }
@@ -100,16 +101,23 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
                 {app.icon}
               </div>
 
-              {/* Label */}
-              <span className={`text-xs font-bold text-center leading-tight transition-colors ${
-                isDisabled
-                  ? 'text-muted'
-                  : highlighted
-                    ? 'text-ac'
-                    : 'text-tx group-hover:text-ac'
-              }`}>
-                {app.label}
-              </span>
+              {/* Label + Sub */}
+              <div className="text-center">
+                <span className={`text-xs font-bold leading-tight transition-colors block ${
+                  isDisabled
+                    ? 'text-muted'
+                    : highlighted
+                      ? 'text-ac'
+                      : 'text-tx group-hover:text-ac'
+                }`}>
+                  {app.label}
+                </span>
+                {app.sub && (
+                  <span className="text-[9px] text-muted leading-tight block mt-0.5 hidden sm:block">
+                    {app.sub}
+                  </span>
+                )}
+              </div>
             </>
           )
 

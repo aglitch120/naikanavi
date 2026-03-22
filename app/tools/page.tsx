@@ -12,17 +12,15 @@ const categories = [
     slug: 'calc',
     icon: '🧮',
     name: '臨床計算ツール',
-    description: '循環器・腎臓・呼吸器・神経・血液など166種+',
+    description: '循環器・腎臓・呼吸器・神経・血液など',
     href: '/tools/calc',
-    count: '166',
   },
   {
     slug: 'drugs',
     icon: '💊',
     name: '薬剤ガイド',
-    description: '抗菌薬・ステロイド・オピオイド・腎機能別用量・薬剤比較25カテゴリ155薬剤',
+    description: '抗菌薬・ステロイド・オピオイド・腎機能別用量・薬剤比較',
     href: '/tools/drugs',
-    count: '25+',
   },
   {
     slug: 'procedures',
@@ -30,7 +28,6 @@ const categories = [
     name: '手技ガイド',
     description: '採血・挿管・CVC・腰椎穿刺・胸腔ドレーンなど',
     href: '/tools/procedures',
-    count: '15',
   },
   {
     slug: 'lab-values',
@@ -38,7 +35,6 @@ const categories = [
     name: '基準値早見表',
     description: '血液検査・尿検査の基準値一覧',
     href: '/tools/interpret/lab-values',
-    count: '',
   },
 ]
 
@@ -70,9 +66,6 @@ export default function ToolsHubPage() {
               {cat.name}
             </h2>
             <p className="text-[11px] text-muted mt-1 leading-relaxed hidden sm:block">{cat.description}</p>
-            {cat.count && (
-              <p className="text-[10px] font-bold text-ac mt-2">{cat.count}</p>
-            )}
           </Link>
         ))}
       </div>

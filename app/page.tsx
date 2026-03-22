@@ -17,6 +17,7 @@ const apps = [
   {
     href: '/tools',
     label: '臨床ツール',
+    sub: '計算・薬剤・手技・基準値',
     badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -27,6 +28,7 @@ const apps = [
   {
     href: '/josler',
     label: 'JOSLER',
+    sub: '症例・病歴要約を一元管理',
     badge: 'PRO',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -37,6 +39,7 @@ const apps = [
   {
     href: '/josler/summary-generator',
     label: '病歴要約AI',
+    sub: 'カルテから病歴要約を自動生成',
     badge: 'NEW',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -49,6 +52,7 @@ const apps = [
   {
     href: '/epoc',
     label: 'EPOC',
+    sub: '初期研修の経験を記録',
     badge: 'PRO',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -59,6 +63,7 @@ const apps = [
   {
     href: '/credits',
     label: '専門医単位',
+    sub: '取得単位をカウント&管理',
     badge: 'PRO',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -69,6 +74,7 @@ const apps = [
   {
     href: '/conferences',
     label: '学会カレンダー',
+    sub: '主要学会の日程を一覧',
     badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -80,6 +86,7 @@ const apps = [
   {
     href: '/matching',
     label: 'マッチング・転職',
+    sub: '病院選び・履歴書・面接対策',
     badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -91,6 +98,7 @@ const apps = [
   {
     href: '/journal',
     label: '論文フィード',
+    sub: '主要誌の最新論文を毎日配信',
     badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -102,6 +110,7 @@ const apps = [
   {
     href: '/presenter',
     label: 'プレゼン資料',
+    sub: '抄読会・カンファ資料を即作成',
     badge: 'PRO',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -113,6 +122,7 @@ const apps = [
   {
     href: '/study',
     label: 'Study',
+    sub: '医学知識を毎日5分で定着',
     badge: 'NEW',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -123,6 +133,7 @@ const apps = [
   {
     href: '/money',
     label: 'マネー',
+    sub: 'ふるさと納税・手取り・NISA',
     badge: 'NEW',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -133,6 +144,7 @@ const apps = [
   {
     href: '/shift',
     label: '当直シフト',
+    sub: 'シフト自動作成&共有',
     badge: 'NEW',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
