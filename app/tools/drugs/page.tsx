@@ -27,9 +27,9 @@ export default function DrugsHubPage() {
         <UpdatedAt />
       </header>
 
-      {/* 個別ツール */}
+      {/* ツール一覧 */}
       <div className="grid gap-3 mb-6">
-        {subTools.map(t => (
+        {[...subTools, { href: '/tools/drugs/compare', icon: '⚖️', name: '薬剤比較表', desc: '添付文書の公開情報に基づく薬剤一覧比較。25カテゴリ' }].map(t => (
           <Link key={t.name} href={t.href}>
             <div className="bg-s0 border border-ac/15 rounded-xl p-4 hover:border-ac/40 hover:bg-acl transition-all">
               <div className="flex items-start gap-3">
@@ -44,20 +44,6 @@ export default function DrugsHubPage() {
           </Link>
         ))}
       </div>
-
-      {/* 薬剤比較表 */}
-      <Link href="/tools/drugs/compare">
-        <div className="bg-s0 border border-ac/15 rounded-xl p-4 hover:border-ac/40 hover:bg-acl transition-all">
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 bg-ac/10 border border-ac/20 rounded-xl flex items-center justify-center text-lg shrink-0">⚖️</div>
-            <div className="flex-1 min-w-0">
-              <h2 className="text-sm font-bold text-tx">薬剤比較表</h2>
-              <p className="text-xs text-muted mt-0.5">添付文書の公開情報に基づく薬剤一覧比較。25カテゴリ</p>
-            </div>
-            <span className="text-muted text-sm">&rsaquo;</span>
-          </div>
-        </div>
-      </Link>
 
       {/* 免責 */}
       <div className="bg-wnl border border-wnb rounded-lg p-3 mt-8 mb-8 text-sm text-wn">
