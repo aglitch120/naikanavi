@@ -33,7 +33,7 @@ export function loadFavorites(): FavoriteItem[] {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated))
       return migrated
     }
-    // Migration v2: fix broken hrefs and slug-as-title
+    // Migration v2: fix broken hrefs, slug-as-title, missing titles
     const HREF_FIXES: Record<string, string> = {
       'icu-gamma-calc': '/tools/calc/gamma',
     }
@@ -41,6 +41,14 @@ export function loadFavorites(): FavoriteItem[] {
     const fixed = (raw as FavoriteItem[]).map((f: FavoriteItem) => {
       let changed = false
       let item = { ...f }
+      // Fix slug-as-title (e.g. "egfr" → proper name from tools-config)
+      if (item.title && /^[a-z0-9-]+$/.test(item.title) && item.title.length < 30) {
+        try {
+          const { tools } = require('@/lib/tools-config')
+          const tool = (tools as any[]).find((t: any) => t.slug === item.title || t.slug === item.id)
+          if (tool) { item.title = tool.name; changed = true }
+        } catch {}
+      }
       // Fix known broken hrefs
       if (HREF_FIXES[f.id] && f.href !== HREF_FIXES[f.id]) {
         item.href = HREF_FIXES[f.id]

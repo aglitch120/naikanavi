@@ -217,6 +217,69 @@ export default function JoslerApp({ initialMode }: { initialMode?: RecordMode } 
   const updSum = (id: number, upd: any) => setSummaries(p => p.map(s => s.id === id ? { ...s, ...upd } : s))
   const updOther = (upd: any) => setOther((p: any) => ({ ...p, ...upd }))
 
+  // ── EPOC → J-OSLER 引き継ぎ ──
+  // EPOC疾病ID → J-OSLER { specialtyId, diseaseGroupId, diseaseName } マッピング
+  const EPOC_TO_JOSLER: Record<string, { sp: string; dg: string; dis: string }[]> = {
+    d01: [{ sp: 'neuro', dg: 'g49', dis: '脳梗塞（アテローム性）' }],
+    d02: [{ sp: 'generalII', dg: 'g5', dis: 'アルツハイマー型認知症' }],
+    d03: [{ sp: 'cardio', dg: 'g16', dis: '急性心筋梗塞（STEMI）' }],
+    d04: [{ sp: 'cardio', dg: 'g17', dis: '急性心不全' }],
+    d05: [{ sp: 'cardio', dg: 'g21', dis: '大動脈瘤' }],
+    d06: [{ sp: 'cardio', dg: 'g21', dis: '閉塞性動脈硬化症' }], // 高血圧は独立疾患群なし→血管疾患
+    d07: [{ sp: 'pulm', dg: 'g43', dis: '肺癌（腺癌）' }],
+    d08: [{ sp: 'pulm', dg: 'g39', dis: '市中肺炎' }],
+    d09: [{ sp: 'infection', dg: 'g63', dis: 'インフルエンザ' }],
+    d10: [{ sp: 'pulm', dg: 'g38', dis: '気管支喘息' }],
+    d11: [{ sp: 'pulm', dg: 'g38', dis: 'COPD' }],
+    d12: [{ sp: 'gastro', dg: 'g10', dis: '感染性腸炎' }],
+    d13: [{ sp: 'gastro', dg: 'g9', dis: '胃癌' }],
+    d14: [{ sp: 'gastro', dg: 'g9', dis: '胃潰瘍・十二指腸潰瘍' }],
+    d15: [{ sp: 'gastro', dg: 'g12', dis: '慢性肝炎' }, { sp: 'gastro', dg: 'g12', dis: '肝硬変' }],
+    d16: [{ sp: 'gastro', dg: 'g13', dis: '胆石症・胆嚢炎' }],
+    d17: [{ sp: 'gastro', dg: 'g10', dis: '大腸癌' }],
+    d18: [{ sp: 'renal', dg: 'g37', dis: '尿路感染症' }],
+    d19: [{ sp: 'renal', dg: 'g37', dis: '尿路結石' }],
+    d20: [{ sp: 'renal', dg: 'g33', dis: '腎前性AKI' }, { sp: 'renal', dg: 'g34', dis: '慢性糸球体腎炎' }],
+    d22: [{ sp: 'metabolic', dg: 'g28', dis: '2型糖尿病' }],
+    d23: [{ sp: 'metabolic', dg: 'g29', dis: '高トリグリセリド血症' }],
+  }
+
+  const [transferResult, setTransferResult] = useState<{ count: number; details: string[] } | null>(null)
+
+  const transferEpocToJosler = useCallback(() => {
+    const checkedDiseases = Object.entries(epocData.diseases).filter(([, v]) => v).map(([k]) => k)
+    if (checkedDiseases.length === 0) {
+      setTransferResult({ count: 0, details: ['EPOCで経験した疾病がありません'] })
+      return
+    }
+
+    let transferred = 0
+    const details: string[] = []
+    const newEg = JSON.parse(JSON.stringify(eg))
+
+    for (const diseaseId of checkedDiseases) {
+      const mappings = EPOC_TO_JOSLER[diseaseId]
+      if (!mappings) continue
+
+      for (const m of mappings) {
+        if (!newEg[m.sp]?.[m.dg]) continue
+        // 既にチェック済みならスキップ
+        if (newEg[m.sp][m.dg].d[m.dis]) continue
+        // チェックを入れる
+        newEg[m.sp][m.dg].d[m.dis] = true
+        newEg[m.sp][m.dg].on = true
+        transferred++
+        const epocName = EPOC_DISEASES.find(d => d.id === diseaseId)?.name || diseaseId
+        details.push(`${epocName} → ${m.dis}`)
+      }
+    }
+
+    if (transferred > 0) {
+      setEg(newEg)
+    }
+    setTransferResult({ count: transferred, details })
+  }, [epocData.diseases, eg])
+
   // ── EPOC toggles ──
   const toggleEpocItem = useCallback((section: 'symptoms' | 'diseases' | 'procedures', id: string) => {
     setEpocData(prev => ({
@@ -1083,17 +1146,37 @@ function EpocOverview({ symDone, disDone, proDone, overallPct }: { symDone: numb
         ))}
       </div>
 
-      {/* JOSLER連携 */}
+      {/* JOSLER連携・引き継ぎ */}
       <Card>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div>
-            <div style={{ fontSize: 12, fontWeight: 600, color: C.tx, marginBottom: 2 }}>J-OSLERに経験を引き継ぐ</div>
-            <div style={{ fontSize: 10, color: C.m }}>EPOCで経験した症例をJ-OSLERの症例登録に反映</div>
+        <div style={{ marginBottom: 8 }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: C.tx, marginBottom: 2 }}>J-OSLERに経験を引き継ぐ</div>
+          <div style={{ fontSize: 10, color: C.m, lineHeight: 1.6 }}>
+            EPOCで✓した疾病のうち、J-OSLERの疾患群と重複する項目を自動でチェックします。
+            <br/>対応: 脳血管障害・心不全・肺炎・糖尿病・胃癌・大腸癌 等 23疾病
           </div>
-          <a href="/josler" style={{ fontSize: 11, fontWeight: 700, color: 'white', background: C.ac, padding: '6px 14px', borderRadius: 8, textDecoration: 'none', whiteSpace: 'nowrap' }}>
-            J-OSLERへ &rsaquo;
-          </a>
         </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button onClick={() => { switchMode('josler'); transferEpocToJosler() }}
+            style={{ flex: 1, fontSize: 11, fontWeight: 700, color: 'white', background: C.ac, padding: '8px 14px', borderRadius: 8, border: 'none', cursor: 'pointer' }}>
+            引き継いでJ-OSLERへ
+          </button>
+          <button onClick={() => switchMode('josler')}
+            style={{ fontSize: 11, fontWeight: 600, color: C.ac, background: C.acl, padding: '8px 14px', borderRadius: 8, border: `1px solid ${C.ac}30`, cursor: 'pointer' }}>
+            J-OSLERへ
+          </button>
+        </div>
+        {transferResult && (
+          <div style={{ marginTop: 8, padding: 10, background: transferResult.count > 0 ? '#E8F0EC' : C.s1, borderRadius: 8 }}>
+            <div style={{ fontSize: 11, fontWeight: 600, color: transferResult.count > 0 ? C.ac : C.m }}>
+              {transferResult.count > 0 ? `✓ ${transferResult.count}件の疾病をJ-OSLERに反映しました` : '引き継ぎ可能な新しい項目はありません'}
+            </div>
+            {transferResult.details.length > 0 && transferResult.count > 0 && (
+              <div style={{ marginTop: 4, fontSize: 10, color: C.m, lineHeight: 1.6 }}>
+                {transferResult.details.map((d, i) => <div key={i}>・{d}</div>)}
+              </div>
+            )}
+          </div>
+        )}
       </Card>
 
       <Card style={{ background: C.s1 }}>
