@@ -14,12 +14,11 @@ const STORAGE_INTERESTED = 'iwor_matching_interested'
 const STORAGE_WISHLIST = 'iwor_matching_wishlist'
 
 // ── ソート方式 ──
-type SortKey = 'name' | 'matchRate' | 'salary' | 'beds' | 'residents'
+type SortKey = 'name' | 'matchRate' | 'salary' | 'beds' | 'residents' | 'anaba' | 'honmei'
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: 'matchRate', label: '倍率' },
-  { key: 'salary', label: '年収' },
-  { key: 'beds', label: '病床数' },
-  { key: 'residents', label: '研修医数' },
+  { key: 'anaba', label: '穴場度' },
+  { key: 'honmei', label: '本命度' },
   { key: 'name', label: '名前' },
 ]
 
@@ -138,24 +137,34 @@ export default function HospitalTab({
       if (searchQuery && !h.name.includes(searchQuery) && !h.prefecture.includes(searchQuery) && !h.program.includes(searchQuery)) return false
       if (filterRegion) {
         const PREF_TO_REGION: Record<string, string> = {
-          '北海道':'北海道','青森':'東北','岩手':'東北','宮城':'東北','秋田':'東北','山形':'東北','福島':'東北',
-          '茨城':'関東','栃木':'関東','群馬':'関東','埼玉':'関東','千葉':'関東','東京':'関東','神奈川':'関東',
-          '新潟':'中部','富山':'中部','石川':'中部','福井':'中部','山梨':'中部','長野':'中部','岐阜':'中部','静岡':'中部','愛知':'中部',
-          '三重':'近畿','滋賀':'近畿','京都':'近畿','大阪':'近畿','兵庫':'近畿','奈良':'近畿','和歌山':'近畿',
-          '鳥取':'中国','島根':'中国','岡山':'中国','広島':'中国','山口':'中国',
-          '徳島':'四国','香川':'四国','愛媛':'四国','高知':'四国',
-          '福岡':'九州・沖縄','佐賀':'九州・沖縄','長崎':'九州・沖縄','熊本':'九州・沖縄','大分':'九州・沖縄','宮崎':'九州・沖縄','鹿児島':'九州・沖縄','沖縄':'九州・沖縄',
+          '北海道':'北海道',
+          '青森県':'東北','岩手県':'東北','宮城県':'東北','秋田県':'東北','山形県':'東北','福島県':'東北',
+          '茨城県':'関東','栃木県':'関東','群馬県':'関東','埼玉県':'関東','千葉県':'関東','東京都':'関東','神奈川県':'関東',
+          '新潟県':'中部','富山県':'中部','石川県':'中部','福井県':'中部','山梨県':'中部','長野県':'中部','岐阜県':'中部','静岡県':'中部','愛知県':'中部',
+          '三重県':'近畿','滋賀県':'近畿','京都府':'近畿','大阪府':'近畿','兵庫県':'近畿','奈良県':'近畿','和歌山県':'近畿',
+          '鳥取県':'中国','島根県':'中国','岡山県':'中国','広島県':'中国','山口県':'中国',
+          '徳島県':'四国','香川県':'四国','愛媛県':'四国','高知県':'四国',
+          '福岡県':'九州・沖縄','佐賀県':'九州・沖縄','長崎県':'九州・沖縄','熊本県':'九州・沖縄','大分県':'九州・沖縄','宮崎県':'九州・沖縄','鹿児島県':'九州・沖縄','沖縄県':'九州・沖縄',
         }
         if (PREF_TO_REGION[h.prefecture] !== filterRegion) return false
       }
       return true
     })
 
+    // 穴場度計算用ヘルパー
+    const calcAnaba = (h: typeof HOSPITALS[0]) => {
+      const p = h.capacity > 0 ? h.applicants / h.capacity : 0
+      const vacR = h.capacity > 0 ? h.vacancy / h.capacity : 0
+      const trend = (h as any).popularityTrend
+      return (vacR * 40) + (p < 2 ? 30 : p < 3 ? 15 : 0) + (trend !== undefined && trend < 0.8 ? 20 : trend !== undefined && trend < 1.0 ? 10 : 0) + (h.matchRate < 80 ? 10 : 0)
+    }
     // ソート
     result.sort((a, b) => {
       let cmp = 0
       switch (sortKey) {
         case 'matchRate': cmp = a.popularity - b.popularity; break
+        case 'anaba': cmp = calcAnaba(b) - calcAnaba(a); break
+        case 'honmei': cmp = ((b as any).honmeiIndex || 0) - ((a as any).honmeiIndex || 0); break
         case 'name': cmp = a.name.localeCompare(b.name); break
         default: cmp = a.name.localeCompare(b.name)
       }
@@ -564,6 +573,49 @@ function HospitalCard({
               )}
             </div>
           )}
+
+          {/* 穴場度分析 — PRO限定 */}
+          {(() => {
+            const vacancyRate = h.capacity > 0 ? h.vacancy / h.capacity : 0
+            const lowCompetition = pop < 2.0
+            const trend = (h as any).popularityTrend
+            const trendDown = trend !== undefined && trend < 0.8
+            const anabaScore = Math.round(
+              (vacancyRate * 40) +
+              (lowCompetition ? 30 : pop < 3 ? 15 : 0) +
+              (trendDown ? 20 : trend !== undefined && trend < 1.0 ? 10 : 0) +
+              (h.matchRate < 80 ? 10 : 0)
+            )
+            if (anabaScore < 10) return null
+            const anabaLabel = anabaScore >= 60 ? '超穴場' : anabaScore >= 40 ? '穴場' : anabaScore >= 20 ? 'やや穴場' : ''
+            const anabaColor = anabaScore >= 60 ? '#166534' : anabaScore >= 40 ? '#1B4F3A' : '#6B6760'
+            return (
+              <div className="relative">
+                <div className="bg-s1 rounded-lg p-3">
+                  <p className="text-[10px] font-medium text-tx mb-1">穴場度分析</p>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-lg font-bold" style={{ color: anabaColor }}>{anabaScore}点</span>
+                    {anabaLabel && <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ background: anabaScore >= 40 ? '#E8F0EC' : '#F5F4F0', color: anabaColor }}>{anabaLabel}</span>}
+                  </div>
+                  <div className="space-y-1 text-[9px] text-muted">
+                    {vacancyRate > 0 && <p>空席率 {Math.round(vacancyRate * 100)}%（{h.vacancy}/{h.capacity}）</p>}
+                    {lowCompetition && <p>低倍率（{pop}倍）</p>}
+                    {trendDown && <p>人気下降傾向（前年比 {((trend || 0) * 100).toFixed(0)}%）</p>}
+                    {(h as any).avgMatchRate3y !== undefined && <p>3年平均マッチ率: {(h as any).avgMatchRate3y}%</p>}
+                  </div>
+                  <p className="text-[8px] text-muted mt-2 leading-relaxed">
+                    穴場度 = 空席率(40) + 低倍率(30) + 人気下降(20) + マッチ率(10)の合計.
+                    iwor独自指標. 病院の質を評価するものではありません.
+                  </p>
+                </div>
+                {!isPro && (
+                  <div className="absolute inset-0 backdrop-blur-md bg-s0/95 rounded-lg flex items-center justify-center">
+                    <span className="text-[10px] font-medium" style={{ color: MC }}>PRO会員で穴場度を表示</span>
+                  </div>
+                )}
+              </div>
+            )
+          })()}
 
           {/* プログラム名 */}
           {h.program && (
