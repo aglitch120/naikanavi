@@ -158,7 +158,7 @@ export default function Header() {
             </Link>
           )}
           <Link
-            href="/pro/activate"
+            href={isPro ? '/mypage' : '/pro/activate'}
             className="text-xs md:text-sm bg-ac text-white px-2.5 py-1.5 md:px-3 rounded-lg hover:bg-ac2 transition-colors font-medium"
           >
             {isPro ? 'マイページ' : 'ログイン'}
