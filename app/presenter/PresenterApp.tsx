@@ -131,10 +131,23 @@ export default function PresenterApp() {
     const typeParam = searchParams.get('type') as PresentationType | null
     const topicParam = searchParams.get('topic')
     if (typeParam && TYPES.some(t => t.id === typeParam)) {
+      let topic = topicParam || ''
+      // journal-club: ブックマークからインポート
+      if (typeParam === 'journal-club' && !topicParam) {
+        try {
+          const bmRaw = localStorage.getItem('iwor_journal_bookmarks')
+          if (bmRaw) {
+            const bmIds: string[] = JSON.parse(bmRaw)
+            if (bmIds.length > 0) {
+              topic = `ブックマーク論文${bmIds.length}件から選択（PMID: ${bmIds.slice(0, 5).join(', ')}${bmIds.length > 5 ? '...' : ''}）`
+            }
+          }
+        } catch {}
+      }
       setSettings(prev => ({
         ...prev,
         type: typeParam,
-        ...(topicParam ? { topic: topicParam } : {}),
+        ...(topic ? { topic } : {}),
         ...(typeParam === 'journal-club' ? { duration: 10, audience: 'resident' as Audience } : {}),
       }))
     }

@@ -90,15 +90,31 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
             {msg.description}
           </p>
 
+          {/* ネガティブフレーミング: 失うもの */}
+          <div className="bg-wnl border border-wnb rounded-xl p-3 mb-3 text-left">
+            <p className="text-[11px] font-bold text-wn mb-1">FREE会員では使えません</p>
+            <ul className="text-[10px] text-wn space-y-0.5">
+              <li>・ データ保存（ブラウザを閉じると消えます）</li>
+              <li>・ お気に入り・進捗管理・エクスポート</li>
+              <li>・ 同期のベンチマーク・ランキング詳細</li>
+            </ul>
+          </div>
+
           <div className="bg-acl/50 border border-ac/20 rounded-xl p-4 mb-4">
             <p className="text-sm font-bold text-ac mb-1">iwor PRO</p>
             <p className="text-xs text-muted">
-              解釈・アクションプラン・データ保存・お気に入りが使い放題
+              全機能アンロック・データ保存・進捗管理
             </p>
-            <p className="text-lg font-bold text-tx mt-2">
-              ¥9,800<span className="text-xs font-normal text-muted">/年</span>
-            </p>
-            <p className="text-xs text-muted mt-1">月額換算 約817円</p>
+            <div className="flex items-baseline justify-center gap-2 mt-2">
+              <p className="text-lg font-bold text-tx">
+                ¥980<span className="text-xs font-normal text-muted">/月</span>
+              </p>
+              <p className="text-xs text-muted">or</p>
+              <p className="text-lg font-bold text-tx">
+                ¥9,800<span className="text-xs font-normal text-muted">/年</span>
+              </p>
+            </div>
+            <p className="text-[10px] text-ok mt-1">年額なら2ヶ月分おトク</p>
           </div>
 
           <a

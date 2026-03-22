@@ -257,6 +257,65 @@ export default function HomeWidgets() {
           </div>
         </Link>
       )}
+
+      {/* ── コミットメント階段バナー ── */}
+      <CommitmentBanner />
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════
+   コミットメント階段
+   ユーザー行動に基づいて次のステップを提案
+═══════════════════════════════════ */
+function CommitmentBanner() {
+  const [stage, setStage] = useState<'hidden' | 'try-tool' | 'add-favorite' | 'create-account' | 'try-study' | 'go-pro'>('hidden')
+  const [dismissed, setDismissed] = useState(false)
+
+  useEffect(() => {
+    if (localStorage.getItem('iwor_commitment_dismissed')) { setDismissed(true); return }
+
+    let toolUses = 0
+    try { const u = JSON.parse(localStorage.getItem('iwor_tool_usage') || '{}'); toolUses = u._total || 0 } catch {}
+    const hasFavorites = (localStorage.getItem('iwor_favorites') || '').length > 5
+    const isLoggedIn = !!localStorage.getItem('iwor_session_token')
+    const isPro = localStorage.getItem('iwor_pro_user') === 'true'
+    const hasStudied = !!localStorage.getItem('iwor_study_fsrs')
+
+    if (isPro) setStage('hidden')
+    else if (isLoggedIn && hasStudied) setStage('go-pro')
+    else if (isLoggedIn && !hasStudied) setStage('try-study')
+    else if (hasFavorites && !isLoggedIn) setStage('create-account')
+    else if (toolUses >= 3 && !hasFavorites) setStage('add-favorite')
+    else if (toolUses < 3) setStage('try-tool')
+    else setStage('hidden')
+  }, [])
+
+  if (dismissed || stage === 'hidden') return null
+
+  const dismiss = () => {
+    setDismissed(true)
+    localStorage.setItem('iwor_commitment_dismissed', '1')
+  }
+
+  const STAGES = {
+    'try-tool': { text: '臨床ツールを使ってみましょう', cta: 'ツール一覧', href: '/tools', color: '#6B6760' },
+    'add-favorite': { text: 'よく使うツールをお気に入りに追加', cta: 'お気に入り追加', href: '/tools', color: '#1B4F3A' },
+    'create-account': { text: 'アカウントを作成してデータを保存', cta: 'アカウント作成', href: '/pro', color: '#1B4F3A' },
+    'try-study': { text: 'iwor Studyで医学知識を定着', cta: 'Studyを始める', href: '/study', color: '#1B4F3A' },
+    'go-pro': { text: 'PRO会員で全機能を解放', cta: 'PRO詳細', href: '/pro', color: '#1B4F3A' },
+  }
+  const s = STAGES[stage]
+
+  return (
+    <div className="mt-3 relative">
+      <Link href={s.href} className="block bg-s0 border border-br rounded-xl p-3 hover:border-ac/30 transition-all">
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-muted">{s.text}</p>
+          <span className="text-[10px] font-bold px-2.5 py-1 rounded-lg text-white" style={{ background: s.color }}>{s.cta}</span>
+        </div>
+      </Link>
+      <button onClick={dismiss} className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-s2 text-muted text-[10px] flex items-center justify-center hover:bg-s1" aria-label="閉じる">&times;</button>
     </div>
   )
 }

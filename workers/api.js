@@ -773,6 +773,37 @@ export default {
     }
 
     // ══════════════════════════════════════════════════
+    //  ソーシャルプルーフ シードデータ投入
+    //  POST /api/admin/seed-leaderboard (X-Admin-Key header)
+    // ══════════════════════════════════════════════════
+    if (path === "/api/admin/seed-leaderboard" && request.method === "POST") {
+      const key = request.headers.get("X-Admin-Key");
+      if (key !== env.ADMIN_KEY) return json({ error: "Forbidden" }, 403, request);
+
+      const body = await parseBody(request);
+      if (!body?.leaderboard) return json({ error: "leaderboard array required" }, 400, request);
+
+      // リーダーボード上書き
+      const lb = body.leaderboard.slice(0, 200);
+      await env.IWOR_KV.put("streak:leaderboard", JSON.stringify(lb));
+
+      // 個別ストリークデータも書き込み
+      for (const entry of lb) {
+        if (entry.email?.startsWith("seed_")) {
+          await env.IWOR_KV.put(`streak:${entry.email}`, JSON.stringify({
+            count: entry.count,
+            best: entry.count,
+            lastDate: new Date().toISOString().split("T")[0],
+            displayName: entry.displayName,
+            updatedAt: new Date().toISOString(),
+          }));
+        }
+      }
+
+      return json({ ok: true, seeded: lb.length }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
     //  ダッシュボードデータ保存
     //  PUT /api/dashboard
     //  Authorization: Bearer {sessionToken}
