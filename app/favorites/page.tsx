@@ -92,9 +92,6 @@ export default function FavoritesPage() {
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-8">
-      {/* プロフィールカード */}
-      <ProfileCard />
-
       <div className="mb-5">
         <h1 className="text-xl font-bold text-tx">お気に入り</h1>
         <p className="text-sm text-muted mt-1">

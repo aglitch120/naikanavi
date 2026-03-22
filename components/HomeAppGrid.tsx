@@ -67,7 +67,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
         </div>
       )}
 
-      <div className="grid grid-cols-3 md:grid-cols-5 gap-3" aria-label="アプリ一覧">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3" aria-label="アプリ一覧">
         {apps.map(app => {
           const isDisabled = app.badge === '準備中'
           const highlighted = isHighlighted(app.href)
@@ -113,7 +113,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
                   {app.label}
                 </span>
                 {app.sub && (
-                  <span className="text-[9px] text-muted leading-tight block mt-0.5 hidden sm:block">
+                  <span className="text-[9px] text-muted leading-tight block mt-0.5">
                     {app.sub}
                   </span>
                 )}
