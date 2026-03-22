@@ -66,6 +66,43 @@ export default function AdminPage() {
         </Link>
       </div>
 
+      {/* 管理メニュー */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        {[
+          { href: '/admin', label: 'コンテンツ', icon: '📝', active: true },
+          { href: '/admin/competitors', label: '競合監視', icon: '🔍' },
+          { href: '/admin/seo-health', label: 'SEO', icon: '📊' },
+          { href: '/admin/pro-codes', label: 'PROコード', icon: '🔑' },
+        ].map(item => (
+          <Link key={item.href} href={item.href}
+            className={`p-3 rounded-xl border text-center text-xs font-medium transition-all ${
+              item.active ? 'bg-acl border-ac/30 text-ac' : 'bg-s0 border-br text-muted hover:border-ac/30'
+            }`}>
+            <span className="text-base block mb-1">{item.icon}</span>
+            {item.label}
+          </Link>
+        ))}
+      </div>
+
+      {/* セキュリティ・売上サマリー（簡易版） */}
+      <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <div className="bg-s0 border border-br rounded-xl p-4">
+          <p className="text-xs text-muted mb-1">PRO会員</p>
+          <p className="text-2xl font-bold text-ac">1</p>
+          <p className="text-[10px] text-muted">テスト用</p>
+        </div>
+        <div className="bg-s0 border border-br rounded-xl p-4">
+          <p className="text-xs text-muted mb-1">MRR</p>
+          <p className="text-2xl font-bold text-tx">¥100</p>
+          <p className="text-[10px] text-muted">BOOTH (非公開済み)</p>
+        </div>
+        <div className="bg-s0 border border-br rounded-xl p-4">
+          <p className="text-xs text-muted mb-1">セキュリティ</p>
+          <p className="text-2xl font-bold text-ok">正常</p>
+          <p className="text-[10px] text-muted">PBKDF2 + レート制限</p>
+        </div>
+      </div>
+
       {/* KPIカード */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {[
