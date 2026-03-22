@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useCallback, useMemo, Suspense } from 'react'
+import { useState, useCallback, useMemo, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { getTemplateByDisease, type DiseaseTemplate } from '@/lib/josler-templates'
 import { generateJoslerPrompt, generateRefinePrompt } from '@/lib/josler-prompt-generator'
@@ -14,13 +15,38 @@ export default function SummaryGeneratorPage() {
 }
 
 function SummaryGeneratorInner() {
+  const searchParams = useSearchParams()
+
   // Step 1: カルテ貼り付け
   const [karteInput, setKarteInput] = useState('')
   const [karteConsent, setKarteConsent] = useState(false)
 
-  // Step 2: 疾患選択
+  // Step 2: 疾患選択（URLパラメータから初期化）
   const [selectedSpecialty, setSelectedSpecialty] = useState('')
   const [selectedDisease, setSelectedDisease] = useState('')
+
+  // URLパラメータから疾患を自動選択
+  useEffect(() => {
+    const sp = searchParams.get('specialty')
+    const dg = searchParams.get('dg')
+    const diseases = searchParams.get('diseases')
+    if (sp) {
+      setSelectedSpecialty(sp)
+      // dgから疾患名を取得
+      if (dg) {
+        const dgList = DG[sp] || []
+        const dgObj = dgList.find((d: { id: string }) => d.id === dg)
+        if (dgObj) {
+          // diseasesパラメータがあればそれを、なければ疾患群名を使う
+          if (diseases) {
+            setSelectedDisease(diseases.split(',')[0])
+          } else {
+            setSelectedDisease(dgObj.name || dg)
+          }
+        }
+      }
+    }
+  }, [searchParams])
 
   // State
   const [promptCopied, setPromptCopied] = useState<string>('')

@@ -133,11 +133,13 @@ export default function JoslerApp({ initialMode }: { initialMode?: RecordMode } 
   }), [eg, summaries, other])
 
   const saveTimer = useRef<any>(null)
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
   useEffect(() => {
     if (!loaded) return
     if (!isPro) {
-      // FREE: localStorage only
-      saveToLocal(getPayload())
+      // FREE: 保存しない（セッション中のみ state で保持）
+      // データ変更があったことを記録
+      setHasUnsavedChanges(true)
       return
     }
     // PRO: debounced save (localStorage immediate + cloud debounced)
@@ -155,6 +157,26 @@ export default function JoslerApp({ initialMode }: { initialMode?: RecordMode } 
     }
     return () => { stopAutoSave() }
   }, [loaded, isPro, getPayload])
+
+  // FREE: ページ離脱時に警告
+  useEffect(() => {
+    if (isPro || !hasUnsavedChanges) return
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault()
+      e.returnValue = ''
+    }
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [isPro, hasUnsavedChanges])
+
+  // FREE: 一定時間操作後にPRO誘導
+  useEffect(() => {
+    if (isPro || !loaded) return
+    const timer = setTimeout(() => {
+      if (hasUnsavedChanges) setShowProModal(true)
+    }, 120000) // 2分後
+    return () => clearTimeout(timer)
+  }, [isPro, loaded, hasUnsavedChanges])
 
   // Computed
   const { cases, groups } = recalc(eg)
@@ -310,9 +332,28 @@ export default function JoslerApp({ initialMode }: { initialMode?: RecordMode } 
               {saveStatus === 'saved' ? '✓ 保存済み' : saveStatus === 'saving' || saveStatus === 'dirty' ? '⟳ 保存中…' : saveStatus === 'error' ? '✕ 保存失敗' : '☁ オフライン'}
             </span>
           )}
+          {!isPro && (
+            <span style={{ fontSize: 10, padding: '3px 10px', borderRadius: 20, background: '#FEF3C7', color: '#92400E', cursor: 'pointer' }}
+              onClick={() => setShowProModal(true)}>
+              未保存 — PROで保存
+            </span>
+          )}
         </div>
       </div>
       <ModeSwitch />
+
+      {/* FREE: 保存誘導バナー */}
+      {!isPro && hasUnsavedChanges && (
+        <div style={{ margin: '8px 14px 0', padding: '10px 14px', borderRadius: 10, background: '#FEF3C7', border: '1px solid #FCD34D', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 600, color: '#92400E' }}>データは保存されていません</div>
+            <div style={{ fontSize: 10, color: '#92400E', opacity: 0.8 }}>ページを閉じると入力内容が失われます</div>
+          </div>
+          <button onClick={() => setShowProModal(true)} style={{ padding: '6px 12px', borderRadius: 8, background: C.ac, color: '#fff', fontSize: 11, fontWeight: 700, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+            PROで保存
+          </button>
+        </div>
+      )}
 
       {/* Tabs */}
       <div style={{ display: 'flex', background: C.bg, borderBottom: `1px solid ${C.br}`, overflowX: 'auto', marginTop: 14 }}>
