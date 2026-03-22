@@ -73,20 +73,22 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
     })
   }, [])
 
-  // ステップ開始時に既存回答を復元
+  // ステップ開始時: 編集モードなら既存回答を復元、新規なら空
   useEffect(() => {
     if (done) return
     const s = STEPS[stepIdx]
     if (!s) return
-    const existing = answers[s.id]
-    if (existing) {
-      setSelected(existing.choices || [])
-      setFreeText(existing.freeText || '')
-    } else {
-      setSelected([])
-      setFreeText('')
+    if (editMode) {
+      const existing = answers[s.id]
+      if (existing) {
+        setSelected(existing.choices || [])
+        setFreeText(existing.freeText || '')
+        return
+      }
     }
-  }, [stepIdx, done])
+    setSelected([])
+    setFreeText('')
+  }, [stepIdx, done, editMode])
 
   const handleNext = useCallback(() => {
     const s = STEPS[stepIdx]
