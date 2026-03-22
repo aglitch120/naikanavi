@@ -22,6 +22,7 @@ interface Article {
   date: string
   doi: string
   impactFactor: number
+  articleType?: string
 }
 
 // ── Worker API（サーバーサイドキャッシュ経由） ──
@@ -643,6 +644,11 @@ function ArticleCard({ article: a, isBookmarked, onToggleBookmark, isPro, displa
             <div className="flex items-center gap-1.5 mb-1 flex-wrap">
               <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: MCL, color: MC }}>{a.journal}</span>
               <span className="text-[9px] font-bold px-1 py-0.5 rounded" style={{ background: `${ifColor}15`, color: ifColor }}>IF {a.impactFactor}</span>
+              {a.articleType && a.articleType !== 'article' && (
+                <span className="text-[9px] font-bold px-1 py-0.5 rounded bg-acl text-ac">
+                  {a.articleType === 'meta-analysis' ? 'MA' : a.articleType === 'systematic-review' ? 'SR' : a.articleType === 'rct' ? 'RCT' : a.articleType === 'clinical-trial' ? 'CT' : a.articleType === 'review' ? 'Review' : a.articleType === 'guideline' ? 'GL' : a.articleType === 'observational' ? 'Obs' : a.articleType.slice(0, 4).toUpperCase()}
+                </span>
+              )}
               <span className="text-[9px] text-muted">{a.date}</span>
             </div>
 

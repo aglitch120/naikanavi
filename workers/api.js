@@ -112,7 +112,10 @@ async function buildJournalDb(env) {
     let ids = [];
     for (let i = 0; i < issns.length; i += BATCH_SIZE) {
       const batch = issns.slice(i, i + BATCH_SIZE);
-      const q = encodeURIComponent(`(${batch.map(issn => `${issn}[ISSN]`).join(" OR ")}) AND ("last 30 days"[dp])`);
+      // 記事タイプフィルタ: 臨床医に価値のある論文に限定（Letter/Comment/Editorial等を除外）
+      const ptFilter = '("Journal Article"[pt] OR "Meta-Analysis"[pt] OR "Systematic Review"[pt] OR "Review"[pt] OR "Randomized Controlled Trial"[pt] OR "Clinical Trial"[pt] OR "Guideline"[pt] OR "Practice Guideline"[pt] OR "Multicenter Study"[pt] OR "Observational Study"[pt] OR "Comparative Study"[pt])';
+      const ptExclude = 'NOT ("Letter"[pt] OR "Comment"[pt] OR "Editorial"[pt] OR "Erratum"[pt] OR "News"[pt] OR "Biography"[pt] OR "Published Erratum"[pt] OR "Retracted Publication"[pt])';
+      const q = encodeURIComponent(`(${batch.map(issn => `${issn}[ISSN]`).join(" OR ")}) AND ("last 30 days"[dp]) AND ${ptFilter} ${ptExclude}`);
       const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=100&sort=date&retmode=json`;
       try {
         const sRes = await fetch(sUrl);
@@ -143,6 +146,19 @@ async function buildJournalDb(env) {
         const mj = journals.find(j =>
           jTitle.includes(j.shortName.toLowerCase()) || d.issn === j.issn
         );
+        // Publication type detection
+        const pubTypes = (d.pubtype || []).map(t => t.toLowerCase());
+        let articleType = "article";
+        if (pubTypes.some(t => t.includes("meta-analysis"))) articleType = "meta-analysis";
+        else if (pubTypes.some(t => t.includes("systematic review"))) articleType = "systematic-review";
+        else if (pubTypes.some(t => t.includes("randomized controlled"))) articleType = "rct";
+        else if (pubTypes.some(t => t.includes("clinical trial"))) articleType = "clinical-trial";
+        else if (pubTypes.some(t => t.includes("review"))) articleType = "review";
+        else if (pubTypes.some(t => t.includes("guideline"))) articleType = "guideline";
+        else if (pubTypes.some(t => t.includes("observational"))) articleType = "observational";
+        else if (pubTypes.some(t => t.includes("multicenter"))) articleType = "multicenter";
+        else if (pubTypes.some(t => t.includes("comparative"))) articleType = "comparative";
+
         newArticles.push({
           pmid: id,
           title: d.title || "",
@@ -152,6 +168,7 @@ async function buildJournalDb(env) {
           date: (d.pubdate || d.sortpubdate || "").split(" ").slice(0, 2).join(" "),
           doi: (d.elocationid || "").replace("doi: ", ""),
           impactFactor: mj?.impactFactor || 0,
+          articleType,
         });
       }
     }
