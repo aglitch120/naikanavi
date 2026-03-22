@@ -76,6 +76,41 @@ async function buildJournalDb(env) {
     { id:"jags", shortName:"JAGS", issn:"0002-8614", impactFactor:6.3 },
     { id:"jbjs", shortName:"JBJS", issn:"0021-9355", impactFactor:5.3 },
     { id:"ophthalmology", shortName:"Ophthalmology", issn:"0161-6420", impactFactor:13.7 },
+    // 2026-03-22: 35誌追加
+    { id:"eur-resp-j", shortName:"Eur Respir J", issn:"0903-1936", impactFactor:16.7 },
+    { id:"chest", shortName:"CHEST", issn:"0012-3692", impactFactor:9.6 },
+    { id:"thorax", shortName:"Thorax", issn:"0040-6376", impactFactor:9.0 },
+    { id:"gut", shortName:"Gut", issn:"0017-5749", impactFactor:24.5 },
+    { id:"j-hepatol", shortName:"J Hepatol", issn:"0168-8278", impactFactor:25.7 },
+    { id:"am-j-gastro", shortName:"Am J Gastroenterol", issn:"0002-9270", impactFactor:10.2 },
+    { id:"clin-micro-rev", shortName:"Clin Microbiol Rev", issn:"0893-8512", impactFactor:20.6 },
+    { id:"jid", shortName:"J Infect Dis", issn:"0022-1899", impactFactor:6.4 },
+    { id:"jac", shortName:"JAC", issn:"0305-7453", impactFactor:5.4 },
+    { id:"jama-neurol", shortName:"JAMA Neurol", issn:"2168-6149", impactFactor:22.0 },
+    { id:"brain", shortName:"Brain", issn:"0006-8950", impactFactor:13.5 },
+    { id:"ann-neurol", shortName:"Ann Neurol", issn:"0364-5134", impactFactor:11.2 },
+    { id:"am-j-kidney", shortName:"Am J Kidney Dis", issn:"0272-6386", impactFactor:9.4 },
+    { id:"cjasn", shortName:"CJASN", issn:"1555-9041", impactFactor:8.6 },
+    { id:"ndt", shortName:"NDT", issn:"0931-0509", impactFactor:5.3 },
+    { id:"lancet-child", shortName:"Lancet Child Adolesc Health", issn:"2352-4642", impactFactor:16.3 },
+    { id:"jama-pediatr", shortName:"JAMA Pediatr", issn:"2168-6203", impactFactor:16.0 },
+    { id:"arch-dis-child", shortName:"Arch Dis Child", issn:"0003-9888", impactFactor:3.6 },
+    { id:"jama-dermatol", shortName:"JAMA Dermatol", issn:"2168-6068", impactFactor:11.8 },
+    { id:"j-invest-dermatol", shortName:"J Invest Dermatol", issn:"0022-202X", impactFactor:7.6 },
+    { id:"jama-psych", shortName:"JAMA Psychiatry", issn:"2168-622X", impactFactor:22.5 },
+    { id:"biol-psych", shortName:"Biol Psychiatry", issn:"0006-3223", impactFactor:12.8 },
+    { id:"mol-psych", shortName:"Mol Psychiatry", issn:"1359-4184", impactFactor:11.0 },
+    { id:"lancet-diab", shortName:"Lancet Diabetes Endocrinol", issn:"2213-8587", impactFactor:44.9 },
+    { id:"diabetologia", shortName:"Diabetologia", issn:"0012-186X", impactFactor:8.2 },
+    { id:"age-ageing", shortName:"Age Ageing", issn:"0002-0729", impactFactor:12.0 },
+    { id:"j-amda", shortName:"JAMDA", issn:"1525-8610", impactFactor:7.0 },
+    { id:"j-gerontol-a", shortName:"J Gerontol A", issn:"1079-5006", impactFactor:5.1 },
+    { id:"mayo-clin-proc", shortName:"Mayo Clin Proc", issn:"0025-6196", impactFactor:8.0 },
+    { id:"ajog", shortName:"AJOG", issn:"0002-9378", impactFactor:9.8 },
+    { id:"obst-gynecol", shortName:"Obstet Gynecol", issn:"0029-7844", impactFactor:7.2 },
+    { id:"bjog", shortName:"BJOG", issn:"1470-0328", impactFactor:6.4 },
+    { id:"fertil-steril", shortName:"Fertil Steril", issn:"0015-0282", impactFactor:6.3 },
+    { id:"hum-reprod", shortName:"Hum Reprod", issn:"0268-1161", impactFactor:6.1 },
   ];
   const JA_JOURNALS = [
     { id:"naika", shortName:"日本内科学会雑誌", issn:"0021-5384", impactFactor:0.3 },
@@ -1317,6 +1352,35 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
               impactFactor: 0,
               isGuideline: true,
             });
+          }
+
+          // ガイドライン翻訳（DeepL → AI fallback、最大30件）
+          const DEEPL_KEY = env.DEEPL_API_KEY || "";
+          for (const article of articles.slice(0, 30)) {
+            try {
+              if (DEEPL_KEY) {
+                const dlRes = await fetch("https://api-free.deepl.com/v2/translate", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", "Authorization": `DeepL-Auth-Key ${DEEPL_KEY}` },
+                  body: JSON.stringify({ text: [article.title], source_lang: "EN", target_lang: "JA" }),
+                });
+                if (dlRes.ok) {
+                  const dlData = await dlRes.json();
+                  if (dlData?.translations?.[0]?.text) { article.titleJa = dlData.translations[0].text; continue; }
+                }
+              }
+              const trResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+                messages: [
+                  { role: "system", content: "Translate the following medical guideline title to Japanese. Output only the translation." },
+                  { role: "user", content: article.title },
+                ],
+                max_tokens: 200,
+              });
+              if (trResult?.response) {
+                const cleaned = trResult.response.trim().replace(/^["「]|["」]$/g, '');
+                if (cleaned.length > 3) article.titleJa = cleaned;
+              }
+            } catch {}
           }
 
           const cacheData = { articles, fetchedAt: Date.now() };

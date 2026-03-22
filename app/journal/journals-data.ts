@@ -170,6 +170,67 @@ export const JOURNALS: Journal[] = [
   // 総合内科（追加）
   { id: 'jgim', name: 'Journal of General Internal Medicine', shortName: 'JGIM', issn: '0884-8734', impactFactor: 5.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '総合内科' },
   { id: 'bmj-open', name: 'BMJ Open', shortName: 'BMJ Open', issn: '2044-6055', impactFactor: 2.9, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q2', specialty: '総合内科' },
+
+  // ── 2026-03-22 追加: 各分野トップ10充足 (35誌) ──
+
+  // 呼吸器（+3）
+  { id: 'eur-resp-j', name: 'European Respiratory Journal', shortName: 'Eur Respir J', issn: '0903-1936', impactFactor: 16.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '呼吸器' },
+  { id: 'chest', name: 'CHEST', shortName: 'CHEST', issn: '0012-3692', impactFactor: 9.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '呼吸器' },
+  { id: 'thorax', name: 'Thorax', shortName: 'Thorax', issn: '0040-6376', impactFactor: 9.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '呼吸器' },
+
+  // 消化器（+3）
+  { id: 'gut', name: 'Gut', shortName: 'Gut', issn: '0017-5749', impactFactor: 24.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '消化器' },
+  { id: 'j-hepatol', name: 'Journal of Hepatology', shortName: 'J Hepatol', issn: '0168-8278', impactFactor: 25.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '消化器' },
+  { id: 'am-j-gastro', name: 'American Journal of Gastroenterology', shortName: 'Am J Gastroenterol', issn: '0002-9270', impactFactor: 10.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '消化器' },
+
+  // 感染症（+3）
+  { id: 'clin-micro-rev', name: 'Clinical Microbiology Reviews', shortName: 'Clin Microbiol Rev', issn: '0893-8512', impactFactor: 20.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+  { id: 'jid', name: 'Journal of Infectious Diseases', shortName: 'J Infect Dis', issn: '0022-1899', impactFactor: 6.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+  { id: 'jac', name: 'Journal of Antimicrobial Chemotherapy', shortName: 'JAC', issn: '0305-7453', impactFactor: 5.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+
+  // 神経（+3）
+  { id: 'jama-neurol', name: 'JAMA Neurology', shortName: 'JAMA Neurol', issn: '2168-6149', impactFactor: 22.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+  { id: 'brain', name: 'Brain', shortName: 'Brain', issn: '0006-8950', impactFactor: 13.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+  { id: 'ann-neurol', name: 'Annals of Neurology', shortName: 'Ann Neurol', issn: '0364-5134', impactFactor: 11.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+
+  // 腎臓（+3）
+  { id: 'am-j-kidney', name: 'American Journal of Kidney Diseases', shortName: 'Am J Kidney Dis', issn: '0272-6386', impactFactor: 9.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腎臓' },
+  { id: 'cjasn', name: 'Clinical Journal of the American Society of Nephrology', shortName: 'CJASN', issn: '1555-9041', impactFactor: 8.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腎臓' },
+  { id: 'ndt', name: 'Nephrology Dialysis Transplantation', shortName: 'NDT', issn: '0931-0509', impactFactor: 5.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腎臓' },
+
+  // 小児科（+3）
+  { id: 'lancet-child', name: 'Lancet Child & Adolescent Health', shortName: 'Lancet Child Adolesc Health', issn: '2352-4642', impactFactor: 16.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '小児科' },
+  { id: 'jama-pediatr', name: 'JAMA Pediatrics', shortName: 'JAMA Pediatr', issn: '2168-6203', impactFactor: 16.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '小児科' },
+  { id: 'arch-dis-child', name: 'Archives of Disease in Childhood', shortName: 'Arch Dis Child', issn: '0003-9888', impactFactor: 3.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '小児科' },
+
+  // 皮膚科（+2）
+  { id: 'jama-dermatol', name: 'JAMA Dermatology', shortName: 'JAMA Dermatol', issn: '2168-6068', impactFactor: 11.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '皮膚科' },
+  { id: 'j-invest-dermatol', name: 'Journal of Investigative Dermatology', shortName: 'J Invest Dermatol', issn: '0022-202X', impactFactor: 7.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '皮膚科' },
+
+  // 精神科（+3）
+  { id: 'jama-psych', name: 'JAMA Psychiatry', shortName: 'JAMA Psychiatry', issn: '2168-622X', impactFactor: 22.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '精神科' },
+  { id: 'biol-psych', name: 'Biological Psychiatry', shortName: 'Biol Psychiatry', issn: '0006-3223', impactFactor: 12.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '精神科' },
+  { id: 'mol-psych', name: 'Molecular Psychiatry', shortName: 'Mol Psychiatry', issn: '1359-4184', impactFactor: 11.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '精神科' },
+
+  // 内分泌（+2）
+  { id: 'lancet-diab', name: 'Lancet Diabetes & Endocrinology', shortName: 'Lancet Diabetes Endocrinol', issn: '2213-8587', impactFactor: 44.9, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '内分泌' },
+  { id: 'diabetologia', name: 'Diabetologia', shortName: 'Diabetologia', issn: '0012-186X', impactFactor: 8.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '内分泌' },
+
+  // 老年病（+3）
+  { id: 'age-ageing', name: 'Age and Ageing', shortName: 'Age Ageing', issn: '0002-0729', impactFactor: 12.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '老年病' },
+  { id: 'j-amda', name: 'Journal of the American Medical Directors Association', shortName: 'JAMDA', issn: '1525-8610', impactFactor: 7.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '老年病' },
+  { id: 'j-gerontol-a', name: 'Journals of Gerontology Series A', shortName: 'J Gerontol A', issn: '1079-5006', impactFactor: 5.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '老年病' },
+
+  // 総合内科（+2）
+  { id: 'mayo-clin-proc', name: 'Mayo Clinic Proceedings', shortName: 'Mayo Clin Proc', issn: '0025-6196', impactFactor: 8.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '総合内科' },
+  { id: 'medicine-balt', name: 'Medicine', shortName: 'Medicine', issn: '0025-7974', impactFactor: 1.6, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q3', specialty: '総合内科' },
+
+  // 産婦人科（新規 +5）
+  { id: 'ajog', name: 'American Journal of Obstetrics and Gynecology', shortName: 'AJOG', issn: '0002-9378', impactFactor: 9.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
+  { id: 'obst-gynecol', name: 'Obstetrics & Gynecology', shortName: 'Obstet Gynecol', issn: '0029-7844', impactFactor: 7.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
+  { id: 'bjog', name: 'BJOG', shortName: 'BJOG', issn: '1470-0328', impactFactor: 6.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
+  { id: 'fertil-steril', name: 'Fertility and Sterility', shortName: 'Fertil Steril', issn: '0015-0282', impactFactor: 6.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
+  { id: 'hum-reprod', name: 'Human Reproduction', shortName: 'Hum Reprod', issn: '0268-1161', impactFactor: 6.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
 ]
 
 export const TOP4_IDS = ['lancet', 'nejm', 'jama', 'bmj']
@@ -195,7 +256,7 @@ export const SPECIALTY_KEYWORDS: Record<string, string[]> = {
   '神経': ['neuro', 'brain', 'alzheimer', 'parkinson', 'epilepsy', 'seizure', 'dementia', 'multiple sclerosis', 'migraine', 'cerebral', 'spinal cord', 'neuropath', 'meningitis', 'encephalitis'],
   '血液': ['hematol', 'blood', 'anemia', 'thrombocytop', 'coagul', 'transfusion', 'myeloma', 'lymphoma', 'leukemia', 'hemophilia', 'platelet', 'neutropeni', 'bone marrow'],
   '内分泌': ['diabetes', 'diabetic', 'insulin', 'thyroid', 'adrenal', 'pituitary', 'endocrin', 'hba1c', 'glucose', 'metabolic', 'obesity', 'osteoporosis', 'calcium', 'parathyroid', 'glp-1', 'semaglutide', 'tirzepatide'],
-  'リウマチ': ['rheumat', 'arthritis', 'lupus', 'vasculitis', 'autoimmune', 'connective tissue', 'spondyl', 'gout', 'fibromyalgia', 'sjogren', 'scleroderma'],
+
   '皮膚科': ['dermat', 'skin', 'psoriasis', 'eczema', 'melanoma', 'atopic', 'wound', 'cutaneous', 'urticaria'],
   '精神科': ['psychiatr', 'depression', 'anxiety', 'schizophren', 'bipolar', 'mental health', 'antidepressant', 'psychosis', 'suicid', 'ptsd', 'adhd'],
   '小児科': ['pediatr', 'child', 'infant', 'neonat', 'adolescent', 'newborn', 'preterm', 'vaccination', 'developmental'],
@@ -207,6 +268,10 @@ export const SPECIALTY_KEYWORDS: Record<string, string[]> = {
   '整形外科': ['orthop', 'fracture', 'arthroplasty', 'bone', 'joint', 'musculoskeletal', 'spine', 'knee', 'hip replacement', 'tendon'],
   '眼科': ['ophthalm', 'retina', 'glaucoma', 'cataract', 'macular', 'cornea', 'visual', 'intraocular', 'optic nerve'],
   '集中治療': ['intensive care', 'icu', 'critical care', 'mechanical ventilat', 'sepsis', 'shock', 'organ failure', 'vasopressor', 'ecmo'],
+  '総合内科': ['internal medicine', 'general medicine', 'hospitalist', 'multimorbidity', 'primary care', 'diagnostic', 'clinical reasoning'],
+  '外科': ['surgical', 'surgery', 'laparoscop', 'resection', 'appendectomy', 'cholecystectomy', 'hernia', 'operative', 'postoperative', 'anastomosis'],
+  '産婦人科': ['obstetric', 'gynecol', 'pregnan', 'maternal', 'fetal', 'cesarean', 'preeclampsia', 'labor', 'delivery', 'fertility', 'ivf', 'endometri', 'ovarian', 'uterine', 'menopaus', 'contracepti', 'miscarriage', 'gestational'],
+  '膠原病': ['rheumat', 'arthritis', 'lupus', 'vasculitis', 'autoimmune', 'connective tissue', 'spondyl', 'gout', 'fibromyalgia', 'sjogren', 'scleroderma'],
 }
 
 // ── Guideline sources (日本の学会ガイドライン) ──
