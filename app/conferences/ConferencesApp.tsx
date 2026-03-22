@@ -443,30 +443,50 @@ function ConferenceCard({ conf, isAttending, onToggleAttend, isReminded, onToggl
           )}
           <div className="flex items-center gap-2 mt-2 flex-wrap">
             {onToggleAttend && !isPast && (
-              <button
-                onClick={(e) => { e.stopPropagation(); onToggleAttend(conf.id) }}
-                className="text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
-                style={{
-                  background: isAttending ? MCL : 'transparent',
-                  color: isAttending ? MC : 'var(--m)',
-                  borderColor: isAttending ? `${MC}40` : 'var(--br)',
-                }}
-              >
-                {isAttending ? '⭐ 参加予定' : '☆ 参加予定に追加'}
-              </button>
+              isPro ? (
+                <button
+                  onClick={(e) => { e.stopPropagation(); onToggleAttend(conf.id) }}
+                  className="text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
+                  style={{
+                    background: isAttending ? MCL : 'transparent',
+                    color: isAttending ? MC : 'var(--m)',
+                    borderColor: isAttending ? `${MC}40` : 'var(--br)',
+                  }}
+                >
+                  {isAttending ? '⭐ 参加予定' : '☆ 参加予定に追加'}
+                </button>
+              ) : (
+                <button
+                  onClick={(e) => { e.stopPropagation(); onShowPro?.() }}
+                  className="text-[11px] font-medium px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1"
+                  style={{ color: 'var(--m)', borderColor: 'var(--br)' }}
+                >
+                  ☆ 参加予定 <span className="text-[9px] font-bold px-1 py-0.5 rounded" style={{ background: MCL, color: MC }}>PRO</span>
+                </button>
+              )
             )}
             {onToggleRemind && !isPast && (
-              <button
-                onClick={(e) => { e.stopPropagation(); onToggleRemind(conf) }}
-                className="text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
-                style={{
-                  background: isReminded ? '#FEF3C7' : 'transparent',
-                  color: isReminded ? '#92400E' : 'var(--m)',
-                  borderColor: isReminded ? '#FCD34D' : 'var(--br)',
-                }}
-              >
+              isPro ? (
+                <button
+                  onClick={(e) => { e.stopPropagation(); onToggleRemind(conf) }}
+                  className="text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all"
+                  style={{
+                    background: isReminded ? '#FEF3C7' : 'transparent',
+                    color: isReminded ? '#92400E' : 'var(--m)',
+                    borderColor: isReminded ? '#FCD34D' : 'var(--br)',
+                  }}
+                >
                 {isReminded ? '🔔 リマインド中' : '🔕 リマインド'}
               </button>
+              ) : (
+                <button
+                  onClick={(e) => { e.stopPropagation(); onShowPro?.() }}
+                  className="text-[11px] font-medium px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1"
+                  style={{ color: 'var(--m)', borderColor: 'var(--br)' }}
+                >
+                  🔕 リマインド <span className="text-[9px] font-bold px-1 py-0.5 rounded" style={{ background: '#FEF3C7', color: '#92400E' }}>PRO</span>
+                </button>
+              )
             )}
             {count !== undefined && (
               isPro ? (
