@@ -152,6 +152,12 @@ export default function ProPage() {
   // GA4: PRO page view
   useEffect(() => {
     try { const { trackProPageView } = require('@/lib/gtag'); trackProPageView() } catch {}
+    // Referral code capture
+    try {
+      const params = new URLSearchParams(window.location.search)
+      const ref = params.get('ref')
+      if (ref) localStorage.setItem('iwor_referred_by', ref)
+    } catch {}
   }, [])
 
   // ── タブ自動切り替え ──

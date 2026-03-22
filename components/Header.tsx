@@ -130,12 +130,12 @@ export default function Header() {
             )}
           </div>
 
-          {/* デスクトップ: アプリ */}
+          {/* デスクトップ: お気に入り */}
           <Link
-            href="/app"
+            href="/favorites"
             className="hidden md:block text-sm px-2 py-1.5 rounded-md text-muted hover:text-ac transition-colors"
           >
-            アプリ
+            お気に入り
           </Link>
 
           <SearchDialog />

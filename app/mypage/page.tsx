@@ -178,6 +178,9 @@ export default function MyPage() {
             </div>
           )}
         </Section>
+
+        {/* 友達を招待（Referral） */}
+        <ReferralSection isPro={isPro} />
       </div>
 
       {/* Save confirmation */}
@@ -187,20 +190,25 @@ export default function MyPage() {
         </div>
       )}
 
-      {/* Quick links */}
-      <div className="grid grid-cols-2 gap-2">
-        <Link href="/favorites" className="bg-s0 border border-br rounded-xl p-3 text-center text-xs text-muted hover:text-ac hover:border-ac/20 transition-colors">
-          お気に入り
-        </Link>
-        <Link href="/pro" className="bg-s0 border border-br rounded-xl p-3 text-center text-xs text-muted hover:text-ac hover:border-ac/20 transition-colors">
-          PROプラン
-        </Link>
-        <Link href="/privacy" className="bg-s0 border border-br rounded-xl p-3 text-center text-xs text-muted hover:text-ac hover:border-ac/20 transition-colors">
-          プライバシーポリシー
-        </Link>
-        <Link href="/terms" className="bg-s0 border border-br rounded-xl p-3 text-center text-xs text-muted hover:text-ac hover:border-ac/20 transition-colors">
-          利用規約
-        </Link>
+      {/* ログアウト */}
+      {email && (
+        <button onClick={() => {
+          localStorage.removeItem('iwor_pro_user')
+          localStorage.removeItem('iwor_session_token')
+          localStorage.removeItem('iwor_user_email')
+          window.location.href = '/'
+        }}
+          className="w-full bg-s0 border border-br rounded-xl p-3 text-center text-xs text-dn hover:border-dn/30 transition-colors">
+          ログアウト
+        </button>
+      )}
+
+      {/* リンク */}
+      <div className="flex justify-center gap-4 mt-4 text-[10px] text-muted">
+        <Link href="/privacy" className="hover:text-ac">プライバシー</Link>
+        <Link href="/terms" className="hover:text-ac">利用規約</Link>
+        <Link href="/tokushoho" className="hover:text-ac">特商法</Link>
+        <Link href="/contact" className="hover:text-ac">お問い合わせ</Link>
       </div>
     </main>
   )
@@ -221,6 +229,85 @@ function Field({ label, sub, children }: { label: string; sub?: string; children
       <label className="text-xs font-medium text-tx block mb-1">{label}</label>
       {sub && <p className="text-[10px] text-muted mb-1.5">{sub}</p>}
       {children}
+    </div>
+  )
+}
+
+function ReferralSection({ isPro }: { isPro: boolean }) {
+  const [copied, setCopied] = useState(false)
+  const [refCode, setRefCode] = useState('')
+
+  useEffect(() => {
+    // 紹介コード生成: メールのハッシュ6文字 or ランダム
+    try {
+      const email = localStorage.getItem('iwor_user_email') || ''
+      const profile = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}')
+      const seed = email || profile.displayName || Math.random().toString()
+      let hash = 0
+      for (let i = 0; i < seed.length; i++) { hash = ((hash << 5) - hash) + seed.charCodeAt(i); hash |= 0 }
+      const code = Math.abs(hash).toString(36).slice(0, 6).toUpperCase()
+      setRefCode(code)
+      localStorage.setItem('iwor_referral_code', code)
+    } catch {}
+
+    // 紹介コードで来た人の記録
+    const params = new URLSearchParams(window.location.search)
+    const ref = params.get('ref')
+    if (ref) localStorage.setItem('iwor_referred_by', ref)
+  }, [])
+
+  const referralUrl = `https://iwor.jp/pro?ref=${refCode}`
+
+  const shareText = `iworを使ってみて！医師のためのワークスペース。臨床ツール・Study・J-OSLER管理が全部入り。\n${referralUrl}`
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(referralUrl)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {}
+  }
+
+  return (
+    <div className="bg-s0 border border-br rounded-xl p-4">
+      <h2 className="text-sm font-bold text-tx mb-1">友達を招待</h2>
+      <p className="text-[10px] text-muted mb-3">紹介リンクから登録した方にPRO初月無料特典（決済導入後に適用）</p>
+
+      {refCode ? (
+        <div className="space-y-3">
+          {/* 紹介コード */}
+          <div className="flex items-center gap-2">
+            <div className="flex-1 bg-bg border border-br rounded-lg px-3 py-2 font-mono text-sm text-tx select-all">
+              {refCode}
+            </div>
+            <button onClick={copy}
+              className="px-3 py-2 bg-ac text-white text-xs font-bold rounded-lg hover:bg-ac2 transition-colors">
+              {copied ? 'OK!' : 'コピー'}
+            </button>
+          </div>
+
+          {/* シェアボタン */}
+          <div className="flex gap-2">
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`}
+              target="_blank" rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-br text-xs text-muted hover:bg-s1 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+              X
+            </a>
+            <a href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(referralUrl)}`}
+              target="_blank" rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-br text-xs text-muted hover:bg-s1 transition-colors">
+              LINE
+            </a>
+            <button onClick={() => { navigator.clipboard.writeText(shareText) }}
+              className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-br text-xs text-muted hover:bg-s1 transition-colors">
+              テキスト
+            </button>
+          </div>
+        </div>
+      ) : (
+        <p className="text-xs text-muted">読み込み中...</p>
+      )}
     </div>
   )
 }

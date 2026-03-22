@@ -114,11 +114,11 @@ export default function MobileMenu() {
               ブログ一覧
             </Link>
             <Link
-              href="/app"
+              href="/favorites"
               onClick={handleLinkClick}
               className="block py-2.5 px-3 text-sm font-medium text-tx rounded-lg hover:bg-s1 transition-colors"
             >
-              アプリ
+              お気に入り
             </Link>
           </div>
 
