@@ -1,11 +1,17 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useProStatus } from '@/components/pro/useProStatus'
 
 export default function BottomNav() {
   const pathname = usePathname()
+
+  // ページ遷移時にスクロール位置をトップにリセット
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   const { isPro } = useProStatus()
 
   const navItems = [
