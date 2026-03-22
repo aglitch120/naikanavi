@@ -74,7 +74,7 @@ export default function HeroBackground() {
                 M0,252 Q100,260 200,250 Q350,242 500,254 Q650,264 800,252 L800,272 Q650,266 500,270 Q350,260 200,266 Q100,274 0,272Z;
                 M0,248 Q100,242 200,250 Q350,258 500,246 Q650,238 800,248 L800,268 Q650,258 500,264 Q350,274 200,268 Q100,260 0,268Z
               "
-              dur="8s"
+              dur="5s"
               repeatCount="indefinite"
               calcMode="spline"
               keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
@@ -93,7 +93,7 @@ export default function HeroBackground() {
                 M0,260 Q150,252 300,262 Q500,270 700,254 L800,262 L800,278 Q700,268 500,276 Q300,264 150,268 L0,278Z;
                 M0,256 Q150,264 300,258 Q500,250 700,262 L800,258 L800,274 Q700,270 500,264 Q300,272 150,274 L0,274Z
               "
-              dur="10s"
+              dur="8s"
               repeatCount="indefinite"
               calcMode="spline"
               keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
@@ -112,7 +112,7 @@ export default function HeroBackground() {
                 M0,272 Q200,278 400,268 Q600,262 800,272 L800,280 Q600,270 400,278 Q200,284 0,280Z;
                 M0,268 Q200,262 400,270 Q600,278 800,268 L800,276 Q600,282 400,278 Q200,270 0,276Z
               "
-              dur="7s"
+              dur="5s"
               repeatCount="indefinite"
               calcMode="spline"
               keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
@@ -133,7 +133,7 @@ export default function HeroBackground() {
                 M0,254 Q200,262 400,254 Q600,246 800,254;
                 M0,250 Q200,244 400,252 Q600,260 800,250
               "
-              dur="6s"
+              dur="5s"
               repeatCount="indefinite"
               calcMode="spline"
               keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
@@ -152,7 +152,7 @@ export default function HeroBackground() {
                 M0,264 Q200,254 400,264 Q600,272 800,264;
                 M0,260 Q200,268 400,260 Q600,252 800,260
               "
-              dur="9s"
+              dur="7s"
               repeatCount="indefinite"
               calcMode="spline"
               keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
