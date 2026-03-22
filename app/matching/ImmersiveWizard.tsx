@@ -1,6 +1,5 @@
 'use client'
 import { useState, useCallback, useEffect } from 'react'
-import { generateResumePrompt } from '@/lib/matching-questions'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -46,7 +45,6 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
   const [basicUniv, setBasicUniv] = useState('')
   const [basicYear, setBasicYear] = useState('')
   const [done, setDone] = useState(false)
-  const [resumeCopied, setResumeCopied] = useState(false)
 
   // 既存データを読み込み
   useEffect(() => {
@@ -73,22 +71,20 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
     })
   }, [])
 
-  // ステップ開始時: 編集モードなら既存回答を復元、新規なら空
+  // ステップ開始時: 既存回答があれば復元（新規でも編集でも）
   useEffect(() => {
     if (done) return
     const s = STEPS[stepIdx]
     if (!s) return
-    if (editMode) {
-      const existing = answers[s.id]
-      if (existing) {
-        setSelected(existing.choices || [])
-        setFreeText(existing.freeText || '')
-        return
-      }
+    const existing = answers[s.id]
+    if (existing) {
+      setSelected(existing.choices || [])
+      setFreeText(existing.freeText || '')
+    } else {
+      setSelected([])
+      setFreeText('')
     }
-    setSelected([])
-    setFreeText('')
-  }, [stepIdx, done, editMode])
+  }, [stepIdx, done, answers])
 
   const handleNext = useCallback(() => {
     const s = STEPS[stepIdx]
@@ -130,47 +126,21 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
 
   // ═══ 完了画面 ═══
   if (done) {
-    const summary = [
-      answers['doctor-reason']?.choices[0] ? `「${answers['doctor-reason'].choices[0]}」をきっかけに医師を志し` : '',
-      answers['strengths']?.choices[0] ? `「${answers['strengths'].choices[0]}」を武器に` : '',
-      answers['future-5y']?.choices[0] ? `「${answers['future-5y'].choices[0]}」を目指す` : '',
-      answers['catchphrase']?.freeText ? `「${answers['catchphrase'].freeText}」` : '',
-    ].filter(Boolean).join('、')
-
     return (
       <div className="max-w-md mx-auto text-center py-6">
         <div className="text-4xl mb-3">✨</div>
         <h2 className="text-lg font-bold text-tx mb-2">プロフィール完成！</h2>
-        <div className="bg-s0 border border-br rounded-xl p-4 mb-4 text-left">
-          <p className="text-sm text-tx leading-relaxed">{summary || 'プロフィールが保存されました'}</p>
-        </div>
-
-        <div className="bg-s0 border border-ac/30 rounded-xl p-4 mb-4">
-          <h3 className="text-xs font-bold text-tx mb-2">📄 AIで自己PR・志望動機を生成</h3>
-          <p className="text-[9px] text-muted mb-2">回答をもとにJIS規格の文字数に合った文章を生成します</p>
-          <button onClick={() => {
-            const prompt = generateResumePrompt(answers)
-            navigator.clipboard.writeText(prompt).then(() => {
-              setResumeCopied(true)
-              setTimeout(() => setResumeCopied(false), 3000)
-            })
-          }}
-            className="w-full py-2 rounded-xl text-xs font-bold transition-all"
-            style={{ background: resumeCopied ? 'var(--ok)' : MC, color: '#fff' }}>
-            {resumeCopied ? '✓ コピー済み' : '📋 AIプロンプトをコピー'}
+        <p className="text-xs text-muted mb-4">AIが自己PR・志望動機を生成して履歴書に反映しています...</p>
+        <div className="flex gap-3">
+          <button onClick={() => { setStepIdx(0); setDone(false) }}
+            className="flex-1 py-2.5 rounded-xl text-xs font-medium" style={{ color: MC, background: MCL }}>
+            編集する
           </button>
-          {resumeCopied && (
-            <div className="flex gap-1.5 mt-2">
-              <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"
-                className="flex-1 py-1.5 rounded-lg text-[10px] font-bold text-center" style={{ background: '#10a37f', color: '#fff' }}>ChatGPT</a>
-              <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer"
-                className="flex-1 py-1.5 rounded-lg text-[10px] font-bold text-center" style={{ background: '#d97706', color: '#fff' }}>Claude</a>
-            </div>
-          )}
+          <button onClick={() => onComplete(answers)}
+            className="flex-1 py-2.5 rounded-xl text-xs font-bold text-white" style={{ background: MC }}>
+            閉じる
+          </button>
         </div>
-
-        <button onClick={() => { setStepIdx(0); setDone(false) }}
-          className="text-[10px] text-muted underline">編集する</button>
       </div>
     )
   }

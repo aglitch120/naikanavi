@@ -268,7 +268,7 @@ export default function ProfileWizard({
             <div className="flex-1 overflow-y-auto px-4 py-6">
               <div className="max-w-lg mx-auto">
                 <ImmersiveWizard
-                  onComplete={(answers) => {
+                  onComplete={async (answers) => {
                     // ウィザード回答からプロフィールフィールドを埋める
                     try {
                       const raw = localStorage.getItem('iwor_matching_profile')
@@ -284,6 +284,34 @@ export default function ProfileWizard({
                         clubs: answers['activity']?.choices?.join('、') || '',
                         goal5y: answers['future-5y']?.choices?.[0] || '',
                       }
+
+                      // AI自己PR生成（バックグラウンド）
+                      const API = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
+                      try {
+                        const res = await fetch(`${API}/api/generate-pr`, {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ type: 'pr', profile: { ...profile, ...merged }, maxChars: 400 }),
+                        })
+                        const data = await res.json()
+                        if (data.ok && data.text) {
+                          merged.strengths = data.text
+                        }
+                      } catch {}
+
+                      // AI志望動機生成
+                      try {
+                        const res = await fetch(`${API}/api/generate-pr`, {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ type: 'motivation', profile: { ...profile, ...merged }, maxChars: 300 }),
+                        })
+                        const data = await res.json()
+                        if (data.ok && data.text) {
+                          merged.motivation = data.text
+                        }
+                      } catch {}
+
                       const next = { ...profile, ...merged }
                       setProfile(next)
                       autoSave(next)
