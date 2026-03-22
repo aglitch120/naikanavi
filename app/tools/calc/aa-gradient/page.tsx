@@ -199,64 +199,7 @@ export default function AAGradientPage() {
             </div>
           )
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">A-aDO₂とは</h2>
-              <p className="text-muted">
-                A-aDO₂（Alveolar-arterial oxygen gradient）は、肺胞内の酸素分圧（PAO₂）と動脈血の酸素分圧（PaO₂）の差です。
-                この値が大きい（開大している）場合は肺でのガス交換に問題があることを示し、
-                低酸素血症の原因が肺胞低換気（A-aDO₂正常）か肺実質の問題（A-aDO₂開大）かを鑑別する上で重要な指標です。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">計算式</h3>
-              <div className="bg-s0 border border-br rounded-lg p-3 space-y-1">
-                <p className="text-xs font-mono text-muted">PAO₂ = FiO₂ × (Patm − PH₂O) − PaCO₂ / R</p>
-                <p className="text-xs font-mono text-muted">A-aDO₂ = PAO₂ − PaO₂</p>
-                <p className="text-xs text-muted mt-2">
-                  Patm = 760 mmHg（海面気圧）、PH₂O = 47 mmHg（37°C飽和水蒸気圧）、R = 0.8（呼吸商）
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">低酸素血症の鑑別フロー</h3>
-              <div className="bg-s0 border border-br rounded-lg p-3 text-xs text-muted space-y-1">
-                <p className="font-medium text-tx">低酸素血症（PaO₂低下）を認めたら：</p>
-                <p>1. A-aDO₂を計算</p>
-                <p>2. A-aDO₂ <span className="font-medium">正常</span> → 肺胞低換気が原因</p>
-                <p className="pl-4">→ 神経筋疾患、薬物（オピオイド等）、中枢性、高度肥満</p>
-                <p>3. A-aDO₂ <span className="font-medium">開大</span> → 肺実質の問題</p>
-                <p className="pl-4">→ V/Q mismatch: 肺炎、COPD、肺塞栓</p>
-                <p className="pl-4">→ シャント: ARDS、無気肺、心内シャント（100% O₂でも改善しない場合）</p>
-                <p className="pl-4">→ 拡散障害: 間質性肺疾患、肺線維症</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. 高濃度酸素下でA-aDO₂は使えますか？</p>
-                  <p className="text-muted mt-1">
-                    FiO₂が高いほどA-aDO₂は大きくなるため、室内気（FiO₂ 0.21）での評価が最も信頼性が高いです。
-                    高濃度O₂下では吸収性無気肺の影響もあり解釈が難しくなります。
-                    可能であれば室内気でのABGで評価してください。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. 高地ではどうしますか？</p>
-                  <p className="text-muted mt-1">
-                    高地では大気圧（Patm）が低下するため、PAO₂も低下します。
-                    本ツールは海面気圧（760 mmHg）で計算しています。高地での評価には現地の気圧値を使用する必要があります。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-3">
           <NumberInput id="aa-age" label="年齢" unit="歳" value={age} onChange={setAge} hint="例: 65" min={18} max={120} step={1} />

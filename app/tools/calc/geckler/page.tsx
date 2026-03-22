@@ -14,7 +14,7 @@ export default function GecklerPage(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]} result={null}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Geckler分類とは</h2><p>喀痰のグラム染色時に100倍視野で扁平上皮細胞と好中球の数を評価。4-5群が培養に適した良質検体。1-3群は口腔内常在菌の混入が多く再提出が望ましい。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Geckler RW et al. Microscopic and bacteriological comparison of paired sputa and transtracheal aspirates. J Clin Microbiol 1977;6:396-399'}]}
     >
       <div className="overflow-x-auto -mx-4 px-4">

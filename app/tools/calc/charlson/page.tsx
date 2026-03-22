@@ -53,12 +53,7 @@ export default function CharlsonPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Charlson CCI" value={result.total} unit="点" interpretation={`推定10年生存率: ${result.surv}`} severity={result.severity}
         details={[{ label: '併存疾患スコア', value: `${result.comorbScore}点` }, { label: '年齢スコア', value: `${result.agePoints}点` }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">チャールソン併存疾患指数（CCI）とは</h2>
-          <p>19の併存疾患に重み付けしたスコアで、10年生存率を予測します。臨床研究でのリスク調整や、治療方針決定時の予後評価に広く使用されています。年齢補正版では10歳ごとに1点加算します。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Charlson ME, et al. J Chronic Dis 1987;40:373-383' }]}
     >

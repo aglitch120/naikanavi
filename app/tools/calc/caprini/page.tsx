@@ -65,12 +65,7 @@ export default function CapriniPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Caprini Score" value={result.score} unit="点" interpretation={result.label} severity={result.severity}
         details={[{ label: '参考予防策', value: result.prevention }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Caprini スコアとは</h2>
-          <p>手術患者のVTE（静脈血栓塞栓症）リスクを多因子で評価するスコアです。リスクに応じた予防策（弾性ストッキング・IPC・薬物的予防）を選択する指針となります。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Caprini JA. Dis Mon 2005;51:70-78' }]}
     >

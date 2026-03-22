@@ -60,19 +60,7 @@ export default function CockcroftGaultPage() {
           severity={result.severity}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Cockcroft-Gault式とは</h2>
-          <p>Cockcroft-Gault式は、血清クレアチニン値からクレアチニンクリアランス（CCr）を推算する計算式です。多くの薬剤の添付文書がCCrに基づいて用量調整を記載しています。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">CCr = (140 - 年齢) × 体重(kg) / (72 × Cr) × (0.85 if 女性)</p>
-          <h3 className="font-bold text-tx">eGFRとの使い分け</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>CCr: 薬剤の用量調整（添付文書に準拠）</li>
-            <li>eGFR: CKDの病期分類・腎機能評価</li>
-            <li>CCrはGFRより約10〜15%高値（尿細管からのCr分泌を含むため）</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

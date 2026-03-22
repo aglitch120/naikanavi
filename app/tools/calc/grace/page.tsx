@@ -226,60 +226,7 @@ export default function GRACEPage() {
             </div>
           )
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">GRACEスコアとは</h2>
-              <p className="text-muted">
-                GRACE（Global Registry of Acute Coronary Events）スコアは、急性冠症候群（ACS）患者の
-                短期・中期死亡リスクを予測するスコアリングシステムです。
-                2003年にGrangerらがArch Intern Med誌で発表し、ESCガイドラインでNSTE-ACS（非ST上昇型ACS）の
-                リスク層別化に示されています。8つの臨床変数（年齢、心拍数、収縮期血圧、クレアチニン、
-                Killip分類、ST変化、心停止、心筋マーカー上昇）から算出されます。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">リスク層別と治療戦略（ESC 2020）</h3>
-              <div className="space-y-2 text-muted">
-                <p><span className="font-medium text-tx">≤108点（低リスク）：</span>院内死亡率 &lt;1%。保存的戦略も許容。非侵襲的評価で虚血を確認後、選択的CAGも可。</p>
-                <p><span className="font-medium text-tx">109-140点（中リスク）：</span>院内死亡率 1-3%。24-72時間以内の侵襲的戦略（CAG）を検討。</p>
-                <p><span className="font-medium text-tx">&gt;140点（高リスク）：</span>院内死亡率 &gt;3%。24時間以内の早期侵襲的戦略を強く検討。</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">Killip分類</h3>
-              <div className="space-y-1 text-muted text-xs">
-                <p><span className="font-medium text-tx">Class I：</span>心不全徴候なし</p>
-                <p><span className="font-medium text-tx">Class II：</span>軽度心不全（ラ音、III音、頸静脈怒張）</p>
-                <p><span className="font-medium text-tx">Class III：</span>肺水腫</p>
-                <p><span className="font-medium text-tx">Class IV：</span>心原性ショック</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. STEMIにもGRACEスコアは使いますか？</p>
-                  <p className="text-muted mt-1">
-                    GRACEスコアは主にNSTE-ACSのリスク層別化に使用されます。STEMIでは再灌流療法（Primary PCI）の
-                    適応が明確なため、GRACEスコアによるリスク層別化よりも時間（Door-to-Balloon time）が優先されます。
-                    ただし退院後の予後評価にはSTEMI患者にも適用可能です。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. TIMIスコアとの違いは？</p>
-                  <p className="text-muted mt-1">
-                    GRACEスコアはより多くの変数を使用し、連続変数として予測精度が高いとされています。
-                    TIMIスコアは7項目で簡便ですが、ESCガイドラインではGRACEがより示されています。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-4">
           <div className="space-y-3">

@@ -66,18 +66,7 @@ export default function TSATPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">TSAT（トランスフェリン飽和度）とは</h2>
-          <p>血清中のトランスフェリンのうち鉄が結合している割合。鉄欠乏と鉄過剰の評価に用いる基本的な鉄代謝マーカーです。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">TSAT (%) = 血清鉄 ÷ TIBC × 100</p>
-          <h3 className="font-bold text-tx">臨床的意義</h3>
-          <p>TSAT &lt; 20%: 鉄欠乏（絶対的 or 機能的）。フェリチンと組み合わせて評価します。CKD患者ではTSAT &lt; 20% かつ フェリチン &lt; 100 ng/mL で鉄補充の適応。</p>
-          <p>TSAT &gt; 45%: 鉄過剰を示唆。遺伝性ヘモクロマトーシスのスクリーニング閾値として用いられます。</p>
-          <h3 className="font-bold text-tx">注意点</h3>
-          <p>血清鉄は日内変動（朝高値・夕低値）があり、食事・炎症の影響も受けます。単回測定のTSATだけで判断せず、フェリチン・CRP・網赤血球と合わせて総合評価してください。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

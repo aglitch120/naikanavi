@@ -36,27 +36,7 @@ export default function Fio2TablePage() {
         <ResultCard label="推定FiO2" value={`${result.fio2Pct}%`} interpretation={`${result.device} ${result.flow} L/分`} severity="neutral"
           details={[{ label: 'FiO2（小数）', value: result.fio2.toFixed(2) }]} />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">FiO2換算表とは</h2>
-          <p>酸素デバイスの種類と流量（L/分）から推定される吸入酸素濃度（FiO2）を換算します。A-aDO2の計算やP/F比の算出に必要です。</p>
-          <div className="overflow-x-auto">
-            <table className="text-xs w-full border-collapse">
-              <thead><tr className="border-b border-br"><th className="text-left py-1 pr-2">L/分</th><th className="px-2">鼻カニューラ</th><th className="px-2">マスク</th><th className="px-2">リザーバー</th></tr></thead>
-              <tbody>
-                {[1,2,3,4,5,6,7,8,9,10].map(l => (<tr key={l} className="border-b border-br/50">
-                  <td className="py-1 pr-2 font-mono">{l}</td>
-                  <td className="px-2 font-mono">{fio2Data.nasal.fio2[l] ? (fio2Data.nasal.fio2[l] * 100).toFixed(0) + '%' : '—'}</td>
-                  <td className="px-2 font-mono">{fio2Data.mask.fio2[l] ? (fio2Data.mask.fio2[l] * 100).toFixed(0) + '%' : '—'}</td>
-                  <td className="px-2 font-mono">{fio2Data.reservoir.fio2[l] ? (fio2Data.reservoir.fio2[l] * 100).toFixed(0) + '%' : '—'}</td>
-                </tr>))}
-              </tbody>
-            </table>
-          </div>
-          <h3 className="font-bold text-tx">注意点</h3>
-          <p>FiO2は推定値であり、口呼吸・呼吸パターン・デバイスのフィットにより変動します。正確なFiO2が必要な場合はベンチュリーマスクを使用してください。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'American Association for Respiratory Care Clinical Practice Guideline' }]}
     >

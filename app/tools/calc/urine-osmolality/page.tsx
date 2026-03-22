@@ -65,18 +65,7 @@ export default function UrineOsmolalityPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">尿浸透圧（推算）とは</h2>
-          <p>尿比重から尿浸透圧を簡易的に推算する方法です。実測値が得られないときのスクリーニングに有用ですが、尿中に糖・蛋白・造影剤が大量に含まれると乖離します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">推算 Uosm ≈ (尿比重 − 1.000) × 35,000</p>
-          <p className="text-xs text-muted mt-1">※ 係数は文献により 35,000〜40,000 と幅があるため、範囲で表示しています。</p>
-          <h3 className="font-bold text-tx">低Na血症の鑑別での使い方</h3>
-          <p>尿浸透圧 &lt; 100 mOsm/kg → ADH抑制（水中毒・心因性多飲）。尿浸透圧 &gt; 100 mOsm/kg → ADH分泌あり（SIADH・副腎不全・甲状腺機能低下症などを鑑別）。</p>
-          <h3 className="font-bold text-tx">注意点</h3>
-          <p>尿糖(+)・尿蛋白大量・造影剤使用後は尿比重が偽高値となり、推算値が実際より高くなります。正確な評価には実測浸透圧を検討します。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

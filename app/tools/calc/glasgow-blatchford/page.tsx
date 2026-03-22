@@ -81,18 +81,7 @@ export default function GlasgowBlatchfordPage() {
           interpretation={result.label} severity={result.severity}
           details={[{ label: '注目', value: 'スコア0 = 内視鏡不要で安全に退院可能' }]} />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Glasgow-Blatchford スコアとは</h2>
-          <p>上部消化管出血患者の内視鏡前リスク層別化ツール。スコア0は内視鏡なしでの退院が安全とされ、不要な入院を減らすエビデンスがあります。</p>
-          <h3 className="font-bold text-tx">臨床的意義</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>スコア0: 外来管理安全（感度99%以上で介入不要を予測）</li>
-            <li>スコア1-6: 中リスク（入院・待機的内視鏡）</li>
-            <li>スコア7以上: 高リスク（緊急内視鏡考慮）</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Blatchford O, et al. Lancet 2000;356:1318-1321' }]}
     >

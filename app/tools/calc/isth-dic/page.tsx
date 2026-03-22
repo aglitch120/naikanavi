@@ -25,20 +25,7 @@ export default function IsthDicPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="ISTH DIC Score" value={result.score} unit="/ 8点" interpretation={result.label} severity={result.severity}
         details={[{ label: '判定', value: result.overt ? 'Overt DIC' : 'Non-overt' }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">ISTH DIC スコアとは</h2>
-          <p>国際血栓止血学会（ISTH）の播種性血管内凝固（DIC）診断スコアです。基礎疾患の存在を前提に、血小板数・FDP/Dダイマー・PT延長・フィブリノゲンの4項目で評価します。</p>
-          <h3 className="font-bold text-tx">前提条件</h3>
-          <p>DICの基礎疾患（敗血症、外傷、悪性腫瘍、産科合併症等）が存在する患者にのみ適用。基礎疾患がなければ本スコアは使用しません。</p>
-          <h3 className="font-bold text-tx">判定</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>≥5点: Overt DIC → 治療開始・連日再評価</li>
-            <li>3-4点: DIC疑い → 1-2日後に再評価</li>
-            <li>&lt;3点: DICの可能性低い</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Taylor FB Jr, et al. Thromb Haemost 2001;86:1327-1330' }]}
     >

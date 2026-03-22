@@ -67,18 +67,7 @@ export default function ParklandPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Parkland（Baxter）式とは</h2>
-          <p>熱傷患者の初期輸液量を計算する標準式。乳酸リンゲル液を使用します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">輸液量 = 4 mL × TBSA(%) × 体重(kg)</p>
-          <p className="text-xs mt-1">受傷後8時間で半量、残り16時間で半量を投与。</p>
-          <h3 className="font-bold text-tx">投与量の調整</h3>
-          <p>バイタルサイン安定＋尿量 0.5〜1.0 mL/kg/h を目標に投与速度を調整。計算値はあくまで出発点であり、実際の臨床所見に基づいて増減します。</p>
-          <h3 className="font-bold text-tx">9の法則（成人TBSA概算）</h3>
-          <p>頭頸部9%、上肢各9%、体幹前面18%、体幹後面18%、下肢各18%、会陰1%</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

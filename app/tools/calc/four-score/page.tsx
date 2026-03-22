@@ -23,7 +23,7 @@ export default function FOURScorePage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="FOUR Score" value={result.score} unit="/16点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">FOURスコアとは</h2><p>Full Outline of UnResponsiveness。GCSの代替として開発。挿管患者でも評価可能（言語項目なし）。脳幹反射・呼吸パターンを含み、GCSより詳細な神経学的情報を提供。全項目0で脳死の可能性。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Wijdicks EF et al. Validation of a new coma scale: The FOUR score. Ann Neurol 2005;58:585-593'}]}
     >
       <div className="space-y-4">{domains.map(d=><RadioGroup key={d.id} id={d.id} label={d.label} options={d.options} value={vals[d.id]} onChange={v=>setVals(p=>({...p,[d.id]:v}))} />)}</div>

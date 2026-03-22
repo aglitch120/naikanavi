@@ -43,12 +43,7 @@ export default function HarrisBenedictPage() {
       result={result && (<ResultCard label="TEE（総エネルギー）" value={result.tee} unit="kcal/日"
         interpretation={`BEE ${result.bee} kcal × 係数 ${result.factor}`} severity="neutral"
         details={[{ label: 'BEE（基礎代謝）', value: `${result.bee} kcal/日` }]} />)}
-      explanation={<section className="space-y-4 text-sm text-muted">
-        <h2 className="text-base font-bold text-tx">Harris-Benedict式とは</h2>
-        <p>基礎エネルギー消費量（BEE）を推算する古典的な式。TEE = BEE × 活動/ストレス係数。栄養管理の基本。</p>
-        <p className="font-mono bg-bg p-2 rounded text-xs">男性: BEE = 66.47 + 13.75×W + 5.0×H - 6.76×A</p>
-        <p className="font-mono bg-bg p-2 rounded text-xs mt-1">女性: BEE = 655.1 + 9.56×W + 1.85×H - 4.68×A</p>
-      </section>}
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Harris JA, Benedict FG. Proc Natl Acad Sci 1918;4:370-373' }]}
     >

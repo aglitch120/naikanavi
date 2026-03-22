@@ -61,16 +61,7 @@ export default function CorrectedPhenytoinPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">補正フェニトイン濃度とは</h2>
-          <p>フェニトインは約90%がアルブミンに結合。低アルブミン時は遊離型が増加し、総濃度は低くても有効濃度は十分な場合があります。Sheiner-Tozer式で補正します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">補正濃度 = 実測濃度 / (0.2 × Alb + 0.1)</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">腎不全時: 補正濃度 = 実測濃度 / (0.1 × Alb + 0.1)</p>
-          <h3 className="font-bold text-tx">臨床的注意</h3>
-          <p>遊離型フェニトイン濃度の直接測定が可能な施設ではそちらが示されます（治療域: 1〜2 μg/mL）。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

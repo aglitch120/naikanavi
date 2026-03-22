@@ -111,41 +111,7 @@ export default function CHADS2Page() {
             ]}
           />
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">CHADS₂スコアとは</h2>
-              <p className="text-muted">
-                CHADS₂スコアは、非弁膜症性心房細動（NVAF）患者における脳卒中リスクを簡易評価する5項目のスコアです。
-                2001年にGageらがJAMAで発表し、広く普及しました。
-                現在はより精密なCHA₂DS₂-VAScスコアが国際標準ですが、日本の不整脈ガイドラインではCHADS₂も引き続き参照されています。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">スコア別年間脳卒中リスク</h3>
-              <div className="bg-s1 rounded-lg p-4">
-                <div className="grid grid-cols-7 gap-1 text-center text-xs">
-                  {[0,1,2,3,4,5,6].map(s => (
-                    <div key={s} className={`py-1.5 rounded ${result.score === s ? 'bg-ac text-white font-bold' : 'text-muted'}`}>
-                      <div>{s}点</div>
-                      <div className="mt-0.5">{strokeRisk[s]}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">CHA₂DS₂-VAScとの使い分け</h3>
-              <p className="text-muted">
-                CHADS₂は簡便ですが、0-1点の低〜中リスク層の識別が粗いという限界があります。
-                CHADS₂ 0点でもCHA₂DS₂-VAScで2点以上になる場合は抗凝固療法が示されるため、
-                低リスク例ではCHA₂DS₂-VAScでの再評価が重要です。
-              </p>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-2">
           {criteria.map(c => (

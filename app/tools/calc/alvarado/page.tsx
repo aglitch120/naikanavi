@@ -32,18 +32,7 @@ export default function AlvaradoPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Alvarado (MANTRELS)" value={result.score} unit="/ 10点" interpretation={result.label} severity={result.severity} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Alvarado スコアとは</h2>
-          <p>急性虫垂炎の臨床的確率を評価する10点満点のスコアで、MANTRELS（Migration, Anorexia, Nausea, Tenderness, Rebound, Elevation, Leukocytosis, Shift）の頭文字から構成されます。</p>
-          <h3 className="font-bold text-tx">判定目安</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0-4点: 虫垂炎の可能性低い</li>
-            <li>5-6点: 虫垂炎の可能性あり → CT検討</li>
-            <li>7-10点: 虫垂炎の可能性高い → 外科コンサルト</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={[]} references={[{ text: 'Alvarado A. Ann Emerg Med 1986;15:557-564' }]}
     >
       <div className="space-y-2">

@@ -53,14 +53,7 @@ export default function BisapPage() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">BISAPスコアとは</h2>
-          <p>BISAP（Bedside Index for Severity in Acute Pancreatitis）は入院後24時間以内に5項目で急性膵炎の重症度を予測するスコアです。Ranson基準より早期に判定可能。</p>
-          <h3 className="font-bold text-tx">BISAPの利点</h3>
-          <p>入院時のルーチン検査と画像のみで評価可能。3点以上で臓器不全リスクが有意に上昇し、ICU管理を検討すべきとされます。APACHE IIと同等の予測精度を5項目で達成。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

@@ -76,20 +76,7 @@ export default function GcsPage() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">GCS（Glasgow Coma Scale）とは</h2>
-          <p>GCSは意識レベルを定量的に評価するスケールで、開眼（E）・言語（V）・運動（M）の3要素から構成されます。合計3〜15点。</p>
-          <h3 className="font-bold text-tx">重症度分類</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>13〜15: 軽症</li>
-            <li>9〜12: 中等症</li>
-            <li>3〜8: 重症（気管挿管の目安: GCS ≤ 8）</li>
-          </ul>
-          <h3 className="font-bold text-tx">臨床的注意点</h3>
-          <p>GCSは合計点だけでなく、各要素の内訳（例: E2V3M5 = 10）を記録することが示されます。特に運動反応（M）が予後予測に最も重要です。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

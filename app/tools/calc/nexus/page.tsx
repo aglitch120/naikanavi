@@ -20,7 +20,7 @@ export default function NEXUSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="NEXUS" value={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">NEXUS基準とは</h2><p>5項目すべて陰性なら頚椎損傷の確率が極めて低く、画像検査なしに頚椎を除外できる。感度99.6%、NPV 99.9%。Canadian C-Spine Ruleと併用されることが多い。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Hoffman JR et al. Validity of a set of clinical criteria to rule out injury to the cervical spine in patients with blunt trauma. NEJM 2000;343:94-99'}]}
     >
       <div className="space-y-2"><p className="text-xs text-muted mb-2">以下が1つでもあれば頚椎画像が必要:</p>{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div>

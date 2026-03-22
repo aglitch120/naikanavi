@@ -22,7 +22,7 @@ export default function STONEPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="STONE" value={result.score} unit="/13点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">STONEスコアとは</h2><p>5項目(Sex/Timing/Origin/Nausea/Erythrocytes)で尿路結石の確率を予測。高スコアではCT不要で結石として対応可能な場合も。低スコアでは他疾患の鑑別を。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Moore CL et al. Derivation and validation of a clinical prediction rule for uncomplicated ureteral stone. Acad Emerg Med 2014;21:1-10'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={`${i.label} (+${i.points}点)`} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

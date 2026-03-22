@@ -19,7 +19,7 @@ export default function IPSSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="IPSS" value={result.score} unit="/35点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">IPSSとは</h2><p>国際前立腺症状スコア。7項目(残尿感/頻尿/尿線途絶/尿意切迫/勢い低下/いきみ/夜間頻尿)各0-5点の35点満点。0-7軽症、8-19中等症、20-35重症。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Barry MJ et al. The American Urological Association symptom index for benign prostatic hyperplasia. J Urol 1992;148:1549-1557'}]}
     ><div className="space-y-3">{qs.map(q=><RadioGroup key={q.id} id={q.id} label={q.label} options={opts} value={vals[q.id]} onChange={v=>setVals(p=>({...p,[q.id]:v}))} />)}</div></CalculatorLayout>
   )

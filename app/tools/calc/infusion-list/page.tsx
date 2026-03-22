@@ -18,7 +18,7 @@ export default function InfusionListPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">輸液製剤の選択</h2><p>細胞外液補充→生食/リンゲル。維持輸液→3号液。脱水→1-2号液。自由水補給→5%Glu。高Na血症→5%Glu or 0.45%NaCl。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'日本輸液学会. 輸液療法のガイドライン'}]}
     >
       <div className="overflow-x-auto -mx-4 px-4">

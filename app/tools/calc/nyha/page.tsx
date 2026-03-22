@@ -23,12 +23,7 @@ export default function NyhaPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="NYHA" value={`Class ${cls.value}`} interpretation={cls.label} severity={cls.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted">
-        <h2 className="text-base font-bold text-tx">NYHA心機能分類とは</h2>
-        <p>New York Heart Associationによる心不全の機能分類。症状に基づき4段階に分類。治療方針決定、臨床試験のエントリー基準として世界的に使用。</p>
-        <h3 className="font-bold text-tx">治療との対応（2025 JCS/JHFS GL）</h3>
-        <p>I-II度: 基本薬4剤（ACE-I/ARB/ARNI + β遮断薬 + MRA + SGLT2i）。III度: 上記＋利尿薬調整。IV度: 強心薬・機械的補助・移植検討。</p>
-      </section>}
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'The Criteria Committee of the NYHA. Diseases of the Heart and Blood Vessels, 6th ed. 1964' }]}
     >

@@ -68,14 +68,7 @@ export default function RansonPage() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Ranson基準とは</h2>
-          <p>急性膵炎の重症度を予測する古典的スコア。入院時5項目と48時間後6項目の計11項目で評価します。3点以上で重症膵炎と判定。</p>
-          <h3 className="font-bold text-tx">制限事項</h3>
-          <p>完全な評価に48時間を要する点が欠点。入院時の早期評価にはBISAPスコアがより実用的とされます。アルコール性と胆石性で基準値が若干異なりますが、本ツールではアルコール性（原法）を使用しています。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

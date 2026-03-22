@@ -16,7 +16,7 @@ export default function TDSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="TDS" value={result.score} unit="/10" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">TDSとは</h2><p>ニコチン依存症スクリーニング。10問中5問以上で依存症。禁煙治療の保険適用要件（TDS≧5 + BI≧200）。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Kawakami N et al. Addict Behav 1999;24:155-166'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

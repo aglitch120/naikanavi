@@ -41,14 +41,7 @@ export default function OttawaAnklePage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Ottawa Ankle Rules" value={result.anyPos ? 'X線検討' : 'X線不要'} unit="" interpretation={result.label} severity={result.severity} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Ottawa Ankle Rulesとは</h2>
-          <p>足関節・足部外傷患者にX線検査が必要かどうかを判断する臨床決定ルールです。感度約98%で骨折を除外でき、不要なX線検査を30-40%削減するエビデンスがあります。</p>
-          <h3 className="font-bold text-tx">適用対象</h3>
-          <p>足関節・足部の外傷で受診した成人患者。小児（&lt;18歳）や妊婦にはデータ限定的。意識障害・多発外傷・糖尿病性ニューロパチー等の患者には適用しないこと。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={[]} references={[{ text: 'Stiell IG, et al. JAMA 1994;271:827-832' }]}
     >
       <div className="space-y-4">

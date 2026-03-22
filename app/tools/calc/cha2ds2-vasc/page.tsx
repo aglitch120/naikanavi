@@ -132,59 +132,7 @@ export default function CHA2DS2VAScPage() {
             />
           </div>
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">CHA₂DS₂-VAScスコアとは</h2>
-              <p className="text-muted">
-                CHA₂DS₂-VAScスコアは、非弁膜症性心房細動（NVAF）患者における脳卒中・全身性塞栓症のリスクを評価するスコアリングシステムです。
-                CHADS₂スコアを拡張し、より詳細なリスク層別化を可能にしました。
-                ESC・AHAガイドラインで抗凝固療法の適応判断に示されています。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">抗凝固療法の参考</h3>
-              <div className="bg-s1 rounded-lg p-4 space-y-2 text-muted">
-                <p><span className="font-medium text-ok">0点（男性）/ 1点（女性のみ）：</span> 抗凝固療法は不要</p>
-                <p><span className="font-medium text-wn">1点（男性）/ 2点（女性）：</span> 抗凝固療法を考慮（DOAC参照）</p>
-                <p><span className="font-medium text-dn">≥2点（男性）/ ≥3点（女性）：</span> 抗凝固療法を検討（DOAC参照）</p>
-              </div>
-              <p className="text-xs text-muted mt-2">
-                ※ 女性の性別ポイント（+1）は単独ではリスク因子とならないため、実質スコアから1を引いて判断します。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">CHADS₂との違い</h3>
-              <p className="text-muted">
-                CHADS₂スコアは5項目で簡便ですが、低〜中リスク層の識別が不十分でした。
-                CHA₂DS₂-VAScは血管疾患・年齢65-74歳・女性を追加し、特に「CHADS₂ 0-1点」の患者をより精密に層別化します。
-                現在の国際ガイドラインではCHA₂DS₂-VAScが標準です。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. DOACとワルファリン、どちらを選ぶべきですか？</p>
-                  <p className="text-muted mt-1">
-                    NVAFではDOACが第一選択です。ただし、機械弁・中等度以上の僧帽弁狭窄症ではワルファリンが必須です。
-                    腎機能（CCr）に応じてDOACの種類・用量を選択します。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. HAS-BLEDスコアが高い場合、抗凝固は中止すべきですか？</p>
-                  <p className="text-muted mt-1">
-                    いいえ。HAS-BLEDスコアが高いことは抗凝固中止の理由にはなりません。
-                    出血リスク因子の是正（血圧管理、不要なNSAID中止等）を行いつつ、抗凝固を継続することが示されます。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-2">
           {criteria.map(c => (

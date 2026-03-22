@@ -22,7 +22,7 @@ export default function McMahonPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="McMahon" value={result.score} unit="点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">McMahonスコアとは</h2><p>横紋筋融解症の腎不全・死亡リスク予測。≧6で高リスク。運動/筋炎/NMS原因は-3点（予後良好な傾向）。積極的輸液（200-300mL/h）と電解質管理が治療の要。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'McMahon GM et al. A risk prediction score for kidney failure or mortality in rhabdomyolysis. JAMA Intern Med 2013;173:1821-1828'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={`${i.label} (${i.points>0?'+':''}${i.points}点)`} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

@@ -65,16 +65,7 @@ export default function JcsPage() {
           severity={result.severity}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">JCS（Japan Coma Scale）とは</h2>
-          <p>日本で最も広く使われる意識障害の評価スケール。太田らが1974年に提唱。I（1桁: 覚醒）、II（2桁: 刺激で覚醒）、III（3桁: 覚醒しない）の3段階×3レベル。</p>
-          <h3 className="font-bold text-tx">付加情報（R, I, A）</h3>
-          <p>R: 不穏、I: 便尿失禁、A: 自発性喪失（無動性無言/失外套症候群）。例: JCS III-200-RI</p>
-          <h3 className="font-bold text-tx">GCSとの対応（目安）</h3>
-          <p>JCS 0 = GCS 15、JCS I-3 ≈ GCS 14、JCS II-10 ≈ GCS 11-13、JCS III-100 ≈ GCS 6-8、JCS III-300 ≈ GCS 3</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: '太田富雄 他. 脳神経外科 1974;2:623-627' }, { text: '日本脳神経外科学会 意識障害の分類' }]}
     >

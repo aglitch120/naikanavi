@@ -194,10 +194,10 @@ export default function GammaCalcPage(){
       </nav>
 
       <header className="mb-6"><div className="flex items-start justify-between gap-3"><div>
-        <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium mb-2">💉 ICU</span>
-        <h1 className="text-2xl font-bold text-tx mb-1">ICU薬剤 γ計算</h1>
+        <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium mb-2">💉 γ計算</span>
+        <h1 className="text-2xl font-bold text-tx mb-1">薬剤 γ計算</h1>
         <p className="text-sm text-muted">昇圧剤・強心薬・鎮静剤・麻薬・降圧剤 + その他薬剤のγ⇔mL/h変換。</p>
-      </div><ProPulseHint><FavoriteButton slug="icu-gamma-calc" title="γ計算（昇圧薬・鎮静薬）" href="/tools/icu/gamma" type="icu" /></ProPulseHint></div></header>
+      </div><ProPulseHint><FavoriteButton slug="icu-gamma-calc" title="γ計算（昇圧薬・鎮静薬）" href="/tools/calc/gamma" type="calc" /></ProPulseHint></div></header>
       <UpdatedAt />
 
       {/* カテゴリ */}

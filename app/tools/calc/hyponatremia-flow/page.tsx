@@ -72,74 +72,7 @@ export default function HyponatremiaFlowPage() {
           ? <ResultCard label="鑑別診断" value={diagnosis.title} interpretation={diagnosis.detail} severity={diagnosis.severity} />
           : <ResultCard label="低Na血症フロー" value="選択中…" interpretation="上の項目を順に選択してください" severity={'neutral' as const} />
       }
-      explanation={
-        <div className="space-y-6 text-sm text-tx leading-relaxed">
-          <div>
-            <h2 className="text-lg font-bold mb-2">低Na血症の診断アルゴリズム</h2>
-            <p className="text-muted">
-              低Na血症（Na &lt;135 mEq/L）は入院患者で最も頻度の高い電解質異常です。
-              Step 1で血漿浸透圧により高張・等張・低張に分類し、Step 2で低張性なら尿浸透圧で腎の希釈能を評価、
-              Step 3で体液量と尿中Na濃度を組み合わせて原因を絞り込みます。
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-base font-bold mb-2">重症度分類と緊急対応</h3>
-            <div className="bg-s1 rounded-lg p-4 space-y-2 text-muted text-xs">
-              <p><span className="font-medium text-dn">重症（けいれん・意識障害）:</span> 3% NaCl 100-150 mL を10-20分でボーラス投与。1-2 mEq/L上昇を目標。改善なければ繰り返し可（最大3回）</p>
-              <p><span className="font-medium text-wn">中等症（嘔気・頭痛・見当識障害）:</span> 3% NaCl を持続投与。1-2 mEq/L/hの上昇を目標</p>
-              <p><span className="font-medium text-ok">軽症・無症候性:</span> 原因治療が優先。急速補正は不要</p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-base font-bold mb-2">補正速度の上限（ODS予防）</h3>
-            <p className="text-muted">
-              浸透圧性脱髄症候群（ODS）予防のため、Na補正速度は24時間で8 mEq/L以内（高リスク群では6 mEq/L以内）に制限します。
-              高リスク群は、慢性低Na（48時間以上）、Na ≦105 mEq/L、低K血症合併、アルコール使用障害、肝硬変、低栄養です。
-            </p>
-            <p className="text-muted mt-2">
-              過補正した場合はデスモプレシン（DDAVP）2μg IV + 5%ブドウ糖液でNaを再低下させます（re-lowering therapy）。
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-base font-bold mb-2">SIADHの診断ポイント</h3>
-            <p className="text-muted">
-              低張性・正常循環血液量・尿浸透圧 &gt;100・尿Na &gt;30-40 mEq/LでSIADHを疑います。
-              甲状腺機能低下症・副腎不全を除外した上で診断します。治療は水制限（800-1000 mL/日）が基本で、
-              効果不十分ならトルバプタン（V2受容体拮抗薬）を考慮します。
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-base font-bold mb-2">よくある質問</h3>
-            <div className="space-y-3">
-              <div>
-                <p className="font-medium">Q. 高血糖による偽性低Naの補正式は？</p>
-                <p className="text-muted mt-1">
-                  補正Na = 実測Na + 1.6 × (血糖 - 100) / 100。血糖が400以上の場合は係数2.4を使用する報告もあります。
-                  補正Naが正常であれば、真の低Na血症ではありません。
-                </p>
-              </div>
-              <div>
-                <p className="font-medium">Q. 利尿薬が原因の低Naはどう対応しますか？</p>
-                <p className="text-muted mt-1">
-                  サイアザイド系利尿薬が最も多い原因です（ループ利尿薬は稀）。原因薬を中止し、Naと水分を補充します。
-                  中止後に急速な水利尿が生じてNaが過補正されるリスクがあるため、頻回なNaモニタリングが必要です。
-                </p>
-              </div>
-              <div>
-                <p className="font-medium">Q. 急性か慢性かの判断はどうしますか？</p>
-                <p className="text-muted mt-1">
-                  発症から48時間以内を急性、48時間以上または不明を慢性と定義します。
-                  急性低Naは脳浮腫リスクが高いため比較的速い補正が許容されますが、慢性低NaはODSリスクのため緩徐な補正が必要です。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      }
+      explanation={undefined}
       relatedTools={[]}
       references={[
         { text: 'Spasovski G et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol 2014;170:G1-G47' },

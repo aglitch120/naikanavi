@@ -68,15 +68,7 @@ export default function WintersFormulaPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Winters式とは</h2>
-          <p>代謝性アシドーシスに対する適切な呼吸性代償（pCO2低下）の予測式。実測pCO2が予測範囲外なら混合性酸塩基障害を示唆します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">予測 pCO2 = 1.5 × HCO₃⁻ + 8 ± 2</p>
-          <h3 className="font-bold text-tx">判定</h3>
-          <p>実測pCO2 &lt; 予測下限 → 呼吸性アルカローシスの合併。実測pCO2 &gt; 予測上限 → 呼吸性アシドーシスの合併。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

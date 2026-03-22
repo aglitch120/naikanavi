@@ -173,68 +173,7 @@ export default function FIB4Page() {
             </div>
           )
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">FIB-4 indexとは</h2>
-              <p className="text-muted">
-                FIB-4 indexは、肝線維化の進行度を年齢・AST・ALT・血小板数の4項目から非侵襲的に評価するスコアです。
-                2006年にSterlingらがHIV/HCV共感染患者で開発し（Hepatology 2006; PMID: 16729309）、
-                その後NAFLD/MASLDやアルコール性肝疾患でも広く検証されています。
-                EASLガイドライン（2021）では、プライマリケアでの肝線維化スクリーニングの第一選択として示されています。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">計算式</h3>
-              <div className="bg-s0 border border-br rounded-lg p-3">
-                <p className="text-xs font-mono text-muted">
-                  FIB-4 = (年齢 [歳] × AST [U/L]) / (血小板数 [10⁹/L] × √ALT [U/L])
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">カットオフ値と臨床的意義</h3>
-              <div className="space-y-2 text-muted">
-                <p><span className="font-medium text-tx">&lt;1.3（低リスク）：</span>進行線維化（F3-F4）の陰性的中率 90%以上。追加検査不要。原因疾患の治療を継続し、定期的に再評価。</p>
-                <p><span className="font-medium text-tx">1.3-2.67（中間）：</span>グレーゾーン。エラストグラフィ（FibroScan: LSM）やELFテストで追加評価を検討。</p>
-                <p><span className="font-medium text-tx">&gt;2.67（高リスク）：</span>進行線維化（F3-F4）の陽性的中率 65%以上。肝臓専門医への紹介を検討。</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">年齢による注意</h3>
-              <div className="bg-wnl border border-wnb rounded-lg p-3 text-sm text-wn">
-                <p>
-                  FIB-4は年齢が分子に含まれるため、高齢者（65歳以上）では偽陽性が増加します。
-                  McPhersonら（Am J Gastroenterol 2017; PMID: 27725647）は、65歳以上では低リスクのカットオフを &lt;2.0 に引き上げることを提案しています。
-                  35歳未満の若年者では感度が低下する可能性があります。
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. 血小板数の単位は？</p>
-                  <p className="text-muted mt-1">
-                    本ツールでは ×10⁹/L（= ×10³/μL = 万/μL × 10）で入力してください。
-                    例：血小板 15万/μL = 150 × 10⁹/L → 「150」と入力。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. FIB-4はどの肝疾患に使えますか？</p>
-                  <p className="text-muted mt-1">
-                    NAFLD/MASLD、C型肝炎、B型肝炎、アルコール性肝疾患で広く検証されています。
-                    ただし急性肝炎や肝外疾患による血小板低下（ITPなど）がある場合は信頼性が低下します。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-3">
           <NumberInput id="fib4-age" label="年齢" unit="歳" value={age} onChange={setAge} hint="例: 55" min={18} max={100} step={1} />

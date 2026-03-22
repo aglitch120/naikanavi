@@ -19,7 +19,7 @@ export default function CFSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="CFS" value={val} unit="/9" interpretation={v<=3?'フレイルなし':v<=5?'プレフレイル〜軽度フレイル':'中等度〜重度フレイル'} severity={sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">CFS臨床虚弱尺度とは</h2><p>Clinical Frailty Scale。高齢者の虚弱(フレイル)を1-9の9段階で評価。ICU入室の可否判断・治療方針決定・COVID-19トリアージなどに広く使用。CFS≧5でフレイルと判断。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Rockwood K et al. A global clinical measure of fitness and frailty in elderly people. CMAJ 2005;173:489-495'}]}
     >
       <RadioGroup id="cfs" label="最も当てはまるレベル" options={levels} value={val} onChange={setVal} />

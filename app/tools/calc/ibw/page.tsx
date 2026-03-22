@@ -63,17 +63,7 @@ export default function IbwPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">理想体重（IBW）と調整体重（ABW）</h2>
-          <p>IBW（Devine式）は身長に基づく体重推定値。人工呼吸器の一回換気量（6-8 mL/kg IBW）やアミノグリコシド等の薬物投与量計算に使用します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">男性: IBW = 50 + 2.3 × (身長inch − 60)</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">女性: IBW = 45.5 + 2.3 × (身長inch − 60)</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">ABW = IBW + 0.4 × (実体重 − IBW)</p>
-          <h3 className="font-bold text-tx">使い分け</h3>
-          <p>実体重がIBWの120%未満 → IBWを使用。120%以上（肥満）→ ABWを使用（バンコマイシン等の親水性薬剤）。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

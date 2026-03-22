@@ -210,20 +210,7 @@ export default function Apache2Page() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">APACHE IIとは</h2>
-          <p>APACHE II（Acute Physiology and Chronic Health Evaluation II）はICU入室後24時間以内の最悪値を用いて重症度と院内死亡率を予測するスコアリングシステムです。</p>
-          <h3 className="font-bold text-tx">構成要素</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>急性生理学スコア（APS）: 12項目の生理学的パラメータ（0〜60点）</li>
-            <li>年齢スコア（0〜6点）</li>
-            <li>慢性疾患スコア（0〜5点）</li>
-          </ul>
-          <h3 className="font-bold text-tx">注意点</h3>
-          <p>ICU入室後24時間以内の最悪値を使用します。個別の患者予後を断定するものではなく、集団レベルでの重症度比較に用います。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

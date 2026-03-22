@@ -180,74 +180,7 @@ export default function WellsPEPage() {
             </div>
           </div>
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">Wells PEスコアとは</h2>
-              <p className="text-muted">
-                Wells PEスコアは、肺塞栓症（Pulmonary Embolism: PE）の臨床的検査前確率を評価するスコアリングシステムです。
-                2000年にWellsらがThrombosis and Haemostasis誌で発表し、現在ESC/AHA/ACCPのガイドラインで示されています。
-                7つの臨床項目を評価し、D-dimer検査やCTPA（造影CT肺動脈造影）の適応を判断します。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">評価モデル</h3>
-              <div className="space-y-3 text-muted">
-                <div>
-                  <p className="font-medium text-tx">3段階モデル（Traditional）</p>
-                  <p>&lt;2点: 低リスク（PE確率 約3.6%）、2-6点: 中リスク（約20.5%）、&gt;6点: 高リスク（約66.7%）</p>
-                </div>
-                <div>
-                  <p className="font-medium text-tx">2段階モデル（Dichotomous）— ESC参照</p>
-                  <p>≤4点: PE unlikely → D-dimer施行。陰性ならPE除外。&gt;4点: PE likely → CTPAを直接施行。</p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">診断アルゴリズム</h3>
-              <div className="bg-s0 border border-br rounded-lg p-3 text-xs text-muted space-y-1">
-                <p>1. Wells PEスコアを評価</p>
-                <p>2. PE unlikely（≤4点）→ D-dimer検査</p>
-                <p className="pl-4">→ D-dimer 陰性 → PE除外（追加検査不要）</p>
-                <p className="pl-4">→ D-dimer 陽性 → CTPA施行</p>
-                <p>3. PE likely（&gt;4点）→ CTPA直接施行</p>
-                <p>4. 血行動態不安定 → 心エコー → 右心負荷あれば血栓溶解検討</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">注意点</h3>
-              <div className="space-y-2 text-muted">
-                <p>「PE以外の診断の可能性が低い」（3点）は主観的判断を含むため、評価者間のばらつきが生じる可能性があります。</p>
-                <p>妊婦、入院患者、高齢者ではD-dimerの偽陽性率が高く、年齢調整D-dimer（年齢×10 μg/L）の使用を検討してください。</p>
-                <p>PERC rule（Pulmonary Embolism Rule-out Criteria）は低リスク群でのD-dimer省略に有用ですが、日本での検証は限定的です。</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. Wells PEとGeneva scoreの違いは？</p>
-                  <p className="text-muted mt-1">
-                    両者ともPEの検査前確率を評価するスコアです。Geneva score（改訂版）はすべて客観的項目で構成されており主観的判断が不要ですが、
-                    Wellsスコアの方が広く検証され使用されています。ESCガイドラインでは両方が示されています。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. 1.5点の項目があるのはなぜですか？</p>
-                  <p className="text-muted mt-1">
-                    原著の多変量ロジスティック回帰分析で得られた係数を簡略化した結果です。
-                    小数点を避けたい場合、全項目を2倍にした修正版（Modified Wells）も提案されていますが、
-                    オリジナルの小数点版が最も広く検証されています。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-2">
           {criteria.map(c => (

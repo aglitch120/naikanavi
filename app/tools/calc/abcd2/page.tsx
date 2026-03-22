@@ -59,19 +59,7 @@ export default function Abcd2Page() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">ABCD²スコアとは</h2>
-          <p>TIA（一過性脳虚血発作）後の短期的な脳梗塞リスクを評価するスコアです。合計0〜7点。</p>
-          <h3 className="font-bold text-tx">リスク分類</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0〜3点: 低リスク（2日以内 1.0%）</li>
-            <li>4〜5点: 中リスク（2日以内 4.1%）</li>
-            <li>6〜7点: 高リスク（2日以内 8.1%）</li>
-          </ul>
-          <p>※ ABCD²スコア単独での判断は不十分であり、画像所見（DWI陽性、頸動脈狭窄）も考慮すべきです。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

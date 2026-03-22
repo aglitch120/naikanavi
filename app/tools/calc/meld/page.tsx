@@ -206,70 +206,7 @@ export default function MELDPage() {
             </div>
           )
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">MELDスコアとは</h2>
-              <p className="text-muted">
-                MELD（Model for End-Stage Liver Disease）スコアは、末期肝疾患患者の短期予後を予測するために開発された連続変数スコアです。
-                2002年よりUNOS（全米臓器配分ネットワーク）で肝移植の優先順位決定に採用されています。
-                ビリルビン、クレアチニン、PT-INRの3つの客観的検査値から算出され、6〜40点の範囲を取ります。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">計算式</h3>
-              <div className="bg-s0 border border-br rounded-lg p-3">
-                <p className="text-xs font-mono text-muted">
-                  MELD = 10 × [0.957 × ln(Cr) + 0.378 × ln(Bil) + 1.120 × ln(INR) + 0.643]
-                </p>
-                <p className="text-xs text-muted mt-2">
-                  ※ 各値の下限は1.0。透析患者はCr = 4.0。スコアは6〜40の範囲にクランプ。
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">MELD 3.0（2022年改訂版）</h3>
-              <p className="text-muted">
-                2022年にUNOSが採用した改良版です。従来のMELDでは女性が低く評価される傾向がありましたが、
-                MELD 3.0では性別補正（女性+1.33）、血清Na、アルブミンを追加し、より公平な臓器配分を実現しています。
-                Na・Alb・性別を入力すると自動的にMELD 3.0も表示されます。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">スコアと予後の目安</h3>
-              <div className="space-y-2 text-muted">
-                <p><span className="font-medium text-tx">≤9点：</span>3ヶ月死亡率 1.9%。外来経過観察。</p>
-                <p><span className="font-medium text-tx">10-19点：</span>3ヶ月死亡率 6.0%。移植の適応を検討開始。</p>
-                <p><span className="font-medium text-tx">20-29点：</span>3ヶ月死亡率 19.6%。移植リスト登録を検討。</p>
-                <p><span className="font-medium text-tx">30-39点：</span>3ヶ月死亡率 52.6%。緊急移植を検討。</p>
-                <p><span className="font-medium text-tx">40点：</span>3ヶ月死亡率 71.3%。最重症。</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. 透析患者のクレアチニン値はどう扱いますか？</p>
-                  <p className="text-muted mt-1">
-                    週2回以上の透析を受けている場合、またはCVVHDを施行した場合はCr = 4.0として計算します。
-                    MELD 3.0ではCr = 3.0がキャップ値として使用されます。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. Child-Pugh分類との違いは？</p>
-                  <p className="text-muted mt-1">
-                    Child-Pughは3段階のカテゴリ分類で臨床判断に適しますが、主観的要素（脳症・腹水）が含まれます。
-                    MELDは客観的検査値のみで算出される連続変数のため、移植の優先順位決定など公平な比較に優れています。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-4">
           {/* 必須3項目 */}

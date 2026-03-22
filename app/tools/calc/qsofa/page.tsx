@@ -156,72 +156,7 @@ export default function QSOFAPage() {
             )}
           </div>
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">qSOFAとは</h2>
-              <p className="text-muted">
-                qSOFA（quick Sequential Organ Failure Assessment）は、2016年のSepsis-3コンセンサスで提唱された
-                敗血症のベッドサイドスクリーニングツールです。意識変容（GCS &lt;15）、呼吸数（≥22回/分）、
-                収縮期血圧（≤100 mmHg）の3項目をチェックし、2点以上で敗血症を疑います。
-                検査なしでバイタルサインのみで評価可能な点が特徴です。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">Sepsis-3の診断フロー</h3>
-              <div className="bg-s0 border border-br rounded-lg p-3 text-xs text-muted space-y-1">
-                <p>1. 感染症（疑い含む）の患者</p>
-                <p>2. qSOFA ≥2点 → 敗血症の可能性あり</p>
-                <p>3. SOFAスコアがベースラインから≥2点上昇 → <span className="font-medium text-tx">敗血症と診断</span></p>
-                <p>4. 十分な輸液にも関わらず MAP &lt;65 かつ 乳酸 &gt;2 mmol/L → <span className="font-medium text-dn">敗血症性ショック</span></p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">qSOFAの限界と注意点</h3>
-              <div className="bg-wnl border border-wnb rounded-lg p-3 text-sm text-wn">
-                <p className="font-medium mb-1">⚠️ qSOFA陰性 ≠ 敗血症除外</p>
-                <p className="text-xs">
-                  qSOFAの感度は約50-60%と報告されており（Freund Y, et al. JAMA 2017; PMID: 28114554）、
-                  陰性でも敗血症を除外できません。ICU外でのスクリーニングとして有用ですが、
-                  臨床的に敗血症が疑われる場合はqSOFAスコアに関わらずSOFA評価・乳酸値測定を行ってください。
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">SIRSとqSOFAの違い</h3>
-              <p className="text-muted">
-                従来のSIRS基準（体温、心拍数、呼吸数、白血球数）は感度が高い一方で特異度が低く、
-                感染のない患者でも陽性になることが多い点が問題でした。Sepsis-3ではSIRSに代わり
-                qSOFA/SOFAが示されていますが、SIRSが完全に不要になったわけではなく、
-                施設やガイドラインによってはSIRSも併用されています。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. ICU患者にもqSOFAを使いますか？</p>
-                  <p className="text-muted mt-1">
-                    qSOFAはICU外（一般病棟・救急外来）でのスクリーニングを想定しています。
-                    ICU患者では直接SOFAスコアを用いて臓器障害を評価してください。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. 呼吸数の閾値が22回/分なのはなぜですか？</p>
-                  <p className="text-muted mt-1">
-                    Sepsis-3のデータ解析（Seymour CW, et al. JAMA 2016; PMID: 26903335）で
-                    院内死亡の予測に最も有用なカットオフ値として22回/分が選定されました。
-                    SIRSの20回/分より高い閾値が設定されています。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-2">
           {criteria.map(c => (

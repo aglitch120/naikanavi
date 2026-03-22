@@ -35,14 +35,7 @@ export default function PercPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="PERC Rule" value={result.anyPositive ? '除外不可' : 'PE除外'} unit="" interpretation={result.label} severity={result.severity}
         details={[{ label: '該当項目数', value: `${result.count} / 8` }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">PERC Ruleとは</h2>
-          <p>PE（肺塞栓症）の検査前確率が低い（&lt;15%）患者に対し、8項目すべて陰性であればD-dimer検査なしでPEを除外できるルールです。不要なD-dimer検査とCT検査を削減します。</p>
-          <h3 className="font-bold text-tx">適用条件</h3>
-          <p>Wellsスコア ≤ 4（PE unlikely）の患者にのみ適用。1項目でも該当すればPERC陰性とならず、通常の検査フローに進みます。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Kline JA, et al. J Thromb Haemost 2004;2:1247-1255' }]}
     >

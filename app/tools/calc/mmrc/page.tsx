@@ -18,7 +18,7 @@ export default function MMRCPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="mMRC" value={`Grade ${val}`} interpretation={v<=1?'軽度の息切れ':v<=2?'中等度':v<=3?'高度':'最重度'} severity={sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">修正MRC息切れスケールとは</h2><p>呼吸困難の程度を5段階(Grade 0-4)で評価。COPDのGOLD分類でABCD群の判定に使用（mMRC≧2でB/D群）。リハビリの目標設定にも。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Bestall JC et al. Usefulness of the Medical Research Council (MRC) dyspnoea scale. Thorax 1999;54:581-586'}]}
     ><RadioGroup id="mmrc" label="息切れの程度" options={grades} value={val} onChange={setVal} /></CalculatorLayout>
   )

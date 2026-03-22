@@ -169,70 +169,7 @@ export default function EgfrPage() {
             </div>
           )
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">eGFR（推算糸球体濾過量）とは</h2>
-              <p className="text-muted">
-                eGFR（estimated Glomerular Filtration Rate）は、血清クレアチニン値から腎機能（糸球体濾過量）を推算する指標です。
-                CKD（慢性腎臓病）のステージ分類やフォローアップ、薬剤の用量調整に広く用いられます。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">CKD-EPI 2021式について</h3>
-              <p className="text-muted mb-2">
-                2021年にInkerらがNEJMで発表したCKD-EPI 2021式は、従来の式から人種係数を廃止した改訂版です。
-                本ツールでは、この国際標準式に日本人係数（0.813）を掛けた値を算出しています。
-              </p>
-              <p className="text-muted">
-                参考値として、日本腎臓学会（JSN）の推算式（194 × Cr<sup>-1.094</sup> × Age<sup>-0.287</sup>）による結果も表示しています。
-                日常診療では両者に大きな差はありませんが、学会発表や論文投稿時はどちらの式を用いたか明記してください。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">CKDステージ分類（KDIGO 2024）</h3>
-              <p className="text-muted">
-                CKDのステージはeGFRと尿蛋白（アルブミン尿）の2軸で分類されます。
-                本ツールではeGFRに基づくGFRカテゴリ（G1〜G5）を判定しています。
-                正確なCKDステージ評価には、3ヶ月以上持続する腎障害の確認とアルブミン尿区分（A1〜A3）の評価が必要です。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">使用上の注意</h3>
-              <ul className="list-disc list-inside text-muted space-y-1">
-                <li>18歳未満には適用できません（小児にはSchwartz式を使用）</li>
-                <li>急性腎障害（AKI）では正確な推算ができません</li>
-                <li>筋肉量が極端に多い/少ない場合（四肢切断、筋萎縮等）は誤差が大きくなります</li>
-                <li>妊婦ではeGFRの解釈に注意が必要です</li>
-                <li>薬剤の腎排泄量調整にはCockcroft-Gault式によるCCrが求められる場合があります</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. CKD-EPI式とJSN式、どちらを使えば良いですか？</p>
-                  <p className="text-muted mt-1">
-                    日本の日常診療ではどちらも使われています。
-                    健診ではJSN式が多く用いられ、国際共同研究ではCKD-EPI式が標準です。
-                    大きな差は生じませんが、一貫性のため同一患者では同じ式でフォローしましょう。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. eGFRが低いと言われました。どうすれば良いですか？</p>
-                  <p className="text-muted mt-1">
-                    eGFR 60未満が3ヶ月以上続く場合、CKDと診断されます。
-                    まずかかりつけ医に相談し、原因検索（尿検査、腎エコー等）と生活指導を受けてください。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         {/* 入力フォーム */}
         <div className="space-y-4">

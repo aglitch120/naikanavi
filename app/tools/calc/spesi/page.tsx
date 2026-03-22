@@ -32,17 +32,7 @@ export default function SpesiPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="sPESI" value={result.score} unit="/ 6点" interpretation={result.label} severity={result.severity}
         details={[{ label: '30日死亡率', value: result.lowRisk ? '1.0%' : '10.9%' }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">sPESI（簡易PESI）とは</h2>
-          <p>肺塞栓症（PE）確定後の短期予後（30日死亡率）を予測する簡易スコアです。0点なら低リスクとして外来治療を検討できます。ESCガイドラインでも示されています。</p>
-          <h3 className="font-bold text-tx">判定</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0点: 低リスク（30日死亡率 1.0%）→ 外来治療を検討</li>
-            <li>≥1点: 高リスク（30日死亡率 10.9%）→ 入院管理</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Jiménez D, et al. Arch Intern Med 2010;170:1383-1389' }]}
     >

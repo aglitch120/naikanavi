@@ -19,7 +19,7 @@ export default function TOASTPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="TOAST分類" value={t.label} interpretation={t.desc} severity={t.sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">TOAST分類とは</h2><p>脳梗塞を5つの病型に分類。病型により二次予防戦略が異なる。大血管・心原性は抗血栓薬の選択に直結。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Adams HP et al. Classification of subtype of acute ischemic stroke. Stroke 1993;24:35-41'}]}
     >
       <RadioGroup id="toast" label="脳梗塞の病型" options={types.map(t=>({label:t.label,value:t.value}))} value={type} onChange={setType} />

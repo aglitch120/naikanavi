@@ -18,7 +18,7 @@ export default function PECARNPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="PECARN" value={result.label} severity={result.sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">PECARNとは</h2><p>GCS14-15の小児頭部外傷(0-18歳)を対象。2歳未満と2歳以上で異なる基準。ciTBI(clinically important TBI)リスクを3層に分類。42,412例の大規模研究に基づく。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Kuppermann N et al. Identification of children at very low risk of clinically-important brain injuries after head trauma. Lancet 2009;374:1160-1170'}]}
     >
       <div className="space-y-4">

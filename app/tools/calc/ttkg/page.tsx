@@ -23,7 +23,7 @@ export default function TTKGPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="TTKG" value={result.ttkg} interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">TTKGとは</h2><p>Transtubular Potassium Gradient。皮質集合管でのK分泌を反映。TTKG = (尿K ÷ (尿Osm/血漿Osm)) ÷ 血漿K。高K血症でTTKG&lt;7→腎性K排泄低下（アルドステロン不足等）。低K血症でTTKG&gt;3→腎性K喪失。</p><p className="text-wn font-medium">⚠️ 尿浸透圧が血漿浸透圧より高いことが前提条件（尿Osm &gt; 血漿Osm）。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Ethier JH et al. The transtubular potassium concentration in patients with hypokalemia and hyperkalemia. Am J Kidney Dis 1990;15:309-315'}]}
     >
       <div className="space-y-3">

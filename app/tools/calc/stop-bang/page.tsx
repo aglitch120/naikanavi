@@ -18,7 +18,7 @@ export default function StopBangPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="STOP-Bang" value={result.score} unit="/8" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">STOP-Bangとは</h2><p>OSASスクリーニング。8項目。≧3でOSAS疑い。術前評価にも重要。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Chung F et al. Chest 2016;149:631-638'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

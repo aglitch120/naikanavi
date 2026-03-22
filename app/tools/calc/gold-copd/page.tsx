@@ -21,7 +21,7 @@ export default function GOLDCOPDPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="GOLD分類" value={`GOLD ${spiro} / ${group}群`} interpretation={group==='A'?'LAMA or LABA単剤':group==='B'?'LAMA+LABA併用':'LAMA+LABA±ICS（好酸球≧300ならICS追加）'} severity={sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">GOLD COPD分類とは</h2><p>GOLD 2024では気流制限(FEV1%)によるGrade 1-4 + 症状/増悪頻度によるABE群分類の2軸で評価。E群（旧C/D群を統合）は増悪頻度が高いグループ。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'GOLD 2024 Report. Global Initiative for Chronic Obstructive Lung Disease'}]}
     ><div className="space-y-4"><RadioGroup id="spiro" label="気流制限（スパイロメトリー）" options={spirometry} value={spiro} onChange={setSpiro} /><RadioGroup id="group" label="ABE群（症状+増悪頻度）" options={abcd} value={group} onChange={setGroup} /></div></CalculatorLayout>
   )

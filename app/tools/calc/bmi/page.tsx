@@ -63,23 +63,7 @@ export default function BmiPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">BMI（Body Mass Index）とは</h2>
-          <p>BMI（体格指数）は体重(kg)を身長(m)の二乗で割った値で、肥満度の国際的な指標です。</p>
-          <p className="font-mono bg-bg p-2 rounded">BMI = 体重(kg) ÷ 身長(m)²</p>
-          <h3 className="font-bold text-tx">日本肥満学会の基準</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>＜18.5: 低体重（やせ）</li>
-            <li>18.5〜24.9: 普通体重</li>
-            <li>25〜29.9: 肥満（1度）</li>
-            <li>30〜34.9: 肥満（2度）</li>
-            <li>35〜39.9: 肥満（3度）</li>
-            <li>≧40: 肥満（4度）</li>
-          </ul>
-          <p>日本ではBMI 22が最も疾病リスクが低いとされ、これを基に算出した体重を「標準体重」としています。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

@@ -20,7 +20,7 @@ export default function ASAPSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="ASA-PS" value={`Class ${val}`} interpretation={v<=2?'低リスク':v<=3?'中リスク':'高リスク'} severity={sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">ASA-PS分類とは</h2><p>米国麻酔科学会による術前全身状態分類。Class I(健康)〜VI(脳死ドナー)。周術期リスク評価の基本。緊急手術は各クラスに"E"を付加。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'ASA Physical Status Classification System. American Society of Anesthesiologists 2020'}]}
     >
       <RadioGroup id="asa" label="患者の全身状態" options={levels} value={val} onChange={setVal} />

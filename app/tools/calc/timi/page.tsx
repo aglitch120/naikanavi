@@ -33,12 +33,7 @@ export default function TimiPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="TIMI Risk Score" value={result.score} unit="/ 7点" interpretation={result.label} severity={result.severity}
         details={[{ label: '14日以内イベント率', value: result.risk }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">TIMI Risk Scoreとは</h2>
-          <p>非ST上昇型ACS（不安定狭心症・NSTEMI）患者の14日以内の死亡・心筋梗塞・緊急血行再建のリスクを予測する7項目のスコアです。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Antman EM, et al. JAMA 2000;284:835-842' }]}
     >

@@ -203,22 +203,7 @@ export default function NihssPage() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">NIHSS（NIH Stroke Scale）とは</h2>
-          <p>NIHSSは脳卒中の神経学的重症度を定量的に評価する15項目のスケールです。合計0〜42点で、スコアが高いほど重症。rt-PA静注療法の適応判断や治療効果の経時的評価に用いられます。</p>
-          <h3 className="font-bold text-tx">重症度分類</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0: 正常</li>
-            <li>1〜4: 軽症</li>
-            <li>5〜15: 中等症</li>
-            <li>16〜24: 重症</li>
-            <li>25〜42: 最重症</li>
-          </ul>
-          <h3 className="font-bold text-tx">rt-PA適応の目安</h3>
-          <p>一般にNIHSS 5〜25が静注rt-PA療法の適応範囲とされますが、個別の臨床判断が最優先です。軽症例（NIHSS &lt; 5）でも主幹動脈閉塞では血栓回収術の適応となることがあります。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

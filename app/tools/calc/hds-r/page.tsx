@@ -28,7 +28,7 @@ export default function HDSRPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="HDS-R" value={result.score} unit="/30点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">HDS-Rとは</h2><p>改訂長谷川式簡易知能評価スケール。日本で最も広く使用される認知機能評価。9項目30点満点。20点以下で認知症の疑い（感度93%、特異度86%）。うつ病・せん妄でも低下するため鑑別が必要。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'加藤伸司ら. 改訂長谷川式簡易知能評価スケール(HDS-R)の作成. 老年精神医学雑誌 1991;2:1339-1347'}]}
     ><div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

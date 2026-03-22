@@ -26,7 +26,7 @@ export default function OpioidConversionPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="経口モルヒネ換算" value={result.morphineEq} unit="mg/日" interpretation={`フェンタニル注射換算: ${result.fentanylHourly} μg/h`} severity="ok" />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">オピオイド換算表とは</h2><p>経口モルヒネ30mg/日を基準とした等力価換算。ローテーション時は安全域として25-50%減量して開始。個人差が大きいため、必ず臨床的に用量調整を。</p><p className="font-medium text-wn">⚠️ 換算比は概算値であり個人差が大きい。ローテーション時は減量して開始（不完全交差耐性）。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'日本緩和医療学会. がん疼痛の薬物療法に関するガイドライン 2020年版'}]}
     >
       <div className="space-y-4">

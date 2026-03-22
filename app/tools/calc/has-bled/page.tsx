@@ -120,68 +120,7 @@ export default function HASBLEDPage() {
             )}
           </div>
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">HAS-BLEDスコアとは</h2>
-              <p className="text-muted">
-                HAS-BLEDスコアは、心房細動患者の抗凝固療法中における大出血リスクを評価するツールです。
-                2010年にPistersらがChest誌で発表し、ESCガイドラインで出血リスク評価に示されています。
-                9項目（最大9点）で評価し、3点以上を「高リスク」とします。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">重要：高スコア＝抗凝固中止ではない</h3>
-              <div className="bg-wnl border border-wnb rounded-lg p-3 text-wn">
-                <p className="text-sm">
-                  HAS-BLEDスコアが高いことは、抗凝固療法の中止理由にはなりません。
-                  スコアの目的は「是正可能なリスク因子を特定し、介入する」ことです。
-                  血圧コントロール、不要なNSAID中止、INR不安定例へのDOAC切替などが有効です。
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">是正可能な因子と介入</h3>
-              <div className="space-y-2 text-muted">
-                <p><span className="font-medium text-tx">高血圧：</span>降圧目標の見直し（140/90未満への厳格管理）</p>
-                <p><span className="font-medium text-tx">INR不安定：</span>ワルファリンからDOACへの切替を検討</p>
-                <p><span className="font-medium text-tx">薬剤：</span>不要な抗血小板薬・NSAIDの中止。PPI併用の検討</p>
-                <p><span className="font-medium text-tx">アルコール：</span>減酒指導</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">CHA₂DS₂-VAScとの併用</h3>
-              <p className="text-muted">
-                臨床では CHA₂DS₂-VASc（脳卒中リスク）と HAS-BLED（出血リスク）を並べて評価し、
-                リスク・ベネフィットのバランスで抗凝固療法の適応を判断します。
-                多くの場合、脳卒中予防のベネフィットが出血リスクを上回ります。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. 「A」が2回あるのはなぜですか？</p>
-                  <p className="text-muted mt-1">
-                    Abnormal renal function（腎機能障害）とAbnormal liver function（肝機能障害）で
-                    それぞれ1点ずつ加算されます。両方該当すれば「A」だけで2点になります。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. DOACでもHAS-BLEDは使えますか？</p>
-                  <p className="text-muted mt-1">
-                    はい。元々はワルファリン患者で検証されましたが、DOAC患者でも出血リスク評価に有用であることが複数の研究で示されています。
-                    ただし「L: INR不安定」の項目はDOAC使用時は該当しません。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-2">
           {criteria.map(c => (

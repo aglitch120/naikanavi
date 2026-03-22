@@ -48,20 +48,7 @@ export default function FreeWaterDeficitPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">自由水欠乏量とは</h2>
-          <p>高ナトリウム血症（Na &gt; 145 mEq/L）における自由水の不足量を計算します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">自由水欠乏量(L) = TBW × (現在Na/140 − 1)</p>
-          <h3 className="font-bold text-tx">補正の原則</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Na低下速度: 24時間で10 mEq/L以下</li>
-            <li>最初の24時間で欠乏量の半分を補正</li>
-            <li>残りを次の24〜48時間で補正</li>
-            <li>5%ブドウ糖液（自由水）or 経口水分摂取で補正</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

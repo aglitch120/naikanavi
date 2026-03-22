@@ -39,17 +39,7 @@ export default function MasccPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="MASCC Score" value={result.score} unit="/ 26点" interpretation={result.label} severity={result.severity}
         details={[{ label: 'リスク', value: result.complication }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">MASCC Risk Indexとは</h2>
-          <p>発熱性好中球減少症（FN）患者の重篤合併症リスクを評価するスコアです。21点以上を低リスクとし、外来での経口抗菌薬治療を検討できます。IDSAガイドラインでも示されています。</p>
-          <h3 className="font-bold text-tx">判定</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>≥21点: 低リスク — 外来経口抗菌薬治療を検討</li>
-            <li>&lt;21点: 高リスク — 入院・静注抗菌薬が標準</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Klastersky J, et al. J Clin Oncol 2000;18:3038-3051' }]}
     >

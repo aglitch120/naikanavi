@@ -170,76 +170,7 @@ export default function CURB65Page() {
             </div>
           </div>
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">CURB-65とは</h2>
-              <p className="text-muted">
-                CURB-65は、市中肺炎（Community-Acquired Pneumonia: CAP）の重症度を迅速に評価するスコアです。
-                2003年にLimらがThorax誌で発表し、英国BTS（British Thoracic Society）ガイドラインで示されています。
-                5つの臨床指標（Confusion, Urea, Respiratory rate, Blood pressure, 65歳以上）をチェックするだけで、
-                外来治療・入院・ICU管理のトリアージ判断を支援します。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">スコア別の参考マネジメント</h3>
-              <div className="space-y-2 text-muted">
-                <p><span className="font-medium text-tx">0-1点（低リスク）：</span>30日死亡率 0.6-2.7%。外来治療を検討。ただし社会的因子（独居、経口摂取困難等）があれば入院も考慮。</p>
-                <p><span className="font-medium text-tx">2点（中リスク）：</span>30日死亡率 6.8%。短期入院または Hospital-supervised outpatient treatment を検討。</p>
-                <p><span className="font-medium text-tx">3点以上（高リスク）：</span>30日死亡率 14-57%。入院管理が必要。4-5点ではICU入室を積極的に検討。</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">CRB-65（血液検査不要版）</h3>
-              <p className="text-muted">
-                BUNを除いた4項目版がCRB-65です。プライマリケアや救急外来での初期評価に有用で、
-                血液検査結果を待たずにベッドサイドで迅速に判定できます。
-                0点は外来、1-2点は入院検討、3-4点は緊急入院が示されます。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">A-DROPとの比較</h3>
-              <p className="text-muted">
-                日本呼吸器学会は日本人データに基づく A-DROP スコアを検討しています。
-                CURB-65とA-DROPは類似の項目を評価しますが、A-DROPでは年齢基準に性差を設けている（男性≥70歳、女性≥75歳）点、
-                脱水指標としてBUNの代わりにSpO2を採用している点が異なります。
-                日本国内ではA-DROPの使用が示されますが、国際的な比較にはCURB-65が適しています。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">注意点と限界</h3>
-              <div className="space-y-2 text-muted">
-                <p>CURB-65は重症度の一指標であり、臨床判断を代替するものではありません。社会的因子（独居、認知症、経口摂取困難）や画像所見、酸素化も考慮してください。</p>
-                <p>免疫不全患者、医療介護関連肺炎（NHCAP）、院内肺炎（HAP）には適用しないでください。</p>
-                <p>若年患者では死亡率が過小評価される可能性があります。qSOFAやPSIとの併用も検討してください。</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. 「Confusion」はどう評価しますか？</p>
-                  <p className="text-muted mt-1">
-                    Abbreviated Mental Test（AMT）スコアが8点以下、または新規に出現した見当識障害（時・場所・人の認識障害）で判定します。
-                    従来のGCSではなくAMTが原著で使用されています。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. BUNとクレアチニン、どちらを使いますか？</p>
-                  <p className="text-muted mt-1">
-                    CURB-65ではBUN（血中尿素窒素）を使用します。基準値は &gt;20 mg/dL（&gt;7 mmol/L）です。
-                    クレアチニンではありませんのでご注意ください。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-2">
           {criteria.map(c => (

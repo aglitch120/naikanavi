@@ -41,12 +41,7 @@ export default function BarthelIndexPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Barthel Index" value={result.total} unit="/ 100" interpretation={result.interpretation} severity={result.severity}
         details={[{ label: '100: 完全自立', value: '85-100: 軽度依存, 60-84: 中等度, < 60: 重度' }]} />}
-      explanation={<section className="space-y-4 text-sm text-muted">
-        <h2 className="text-base font-bold text-tx">Barthel Indexとは</h2>
-        <p>日常生活動作（ADL）を10項目で評価。0〜100点。リハビリの目標設定、介護度判定、退院先の決定に使用。60点以上で部分自立の目安。</p>
-        <h3 className="font-bold text-tx">FIM（機能的自立度評価表）との違い</h3>
-        <p>BIは10項目・5分で評価可能な簡便さが利点。FIMは18項目・認知項目を含みより詳細。スクリーニングにはBI、詳細評価にはFIMを使い分けます。</p>
-      </section>}
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Mahoney FI, Barthel DW. Md State Med J 1965;14:61-65' }]}
     >

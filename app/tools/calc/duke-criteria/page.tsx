@@ -30,7 +30,7 @@ export default function DukeCriteriaPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Modified Duke基準" value={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Duke診断基準とは</h2><p>感染性心内膜炎(IE)の臨床診断基準。大基準（血培・心エコー）と小基準（素因・発熱・血管/免疫現象・微生物）の組み合わせで確定/疑い/否定に分類。2023年にDuke-ISCVID基準として改訂。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Li JS et al. Proposed modifications to the Duke criteria for the diagnosis of infective endocarditis. Clin Infect Dis 2000;30:633-638'}]}
     >
       <div className="space-y-4">

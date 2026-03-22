@@ -19,7 +19,7 @@ export default function HolidaySegarPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="維持輸液量" value={result.daily} unit={`mL/日 (${result.hourly} mL/h)`} interpretation="4-2-1ルールによる維持輸液量" severity="ok" />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Holiday-Segar法とは</h2><p>小児の維持輸液量計算（4-2-1ルール）。体重10kgまで: 4mL/kg/h、10-20kg: +2mL/kg/h、20kg超: +1mL/kg/h。成人にも適用可能。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Holliday MA, Segar WE. The maintenance need for water in parenteral fluid therapy. Pediatrics 1957;19:823-832'}]}
     >
       <NumberInput id="weight" label="体重" value={weight} onChange={setWeight} unit="kg" />

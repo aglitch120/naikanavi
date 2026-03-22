@@ -59,19 +59,7 @@ export default function RcriPage() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">RCRI（Revised Cardiac Risk Index）とは</h2>
-          <p>RCRIは非心臓手術における周術期の主要心血管合併症（心筋梗塞・肺水腫・心室細動/心停止・完全房室ブロック）のリスクを評価するスコアです。6項目の有無で0〜6点。</p>
-          <h3 className="font-bold text-tx">スコア別リスク</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0点: 3.9%</li>
-            <li>1点: 6.0%</li>
-            <li>2点: 10.1%</li>
-            <li>≧3点: 15%以上</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={[]}
       references={[
         { text: 'Lee TH et al. Circulation 1999;100:1043-1049' },

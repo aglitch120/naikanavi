@@ -81,24 +81,7 @@ export default function LdlFriedewaldPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">LDL-C計算（Friedewald式）とは</h2>
-          <p>TC（総コレステロール）、HDL-C、TG（中性脂肪）からLDL-Cを間接的に算出する式です。空腹時採血が前提で、TG 400 mg/dL以上では不正確になるため直接法を使用します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">LDL-C = TC − HDL-C − TG/5</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">non-HDL-C = TC − HDL-C</p>
-          <h3 className="font-bold text-tx">管理目標値（動脈硬化性疾患予防GL 2022）</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>低リスク: LDL &lt; 160 mg/dL</li>
-            <li>中リスク: LDL &lt; 140 mg/dL</li>
-            <li>高リスク: LDL &lt; 120 mg/dL</li>
-            <li>二次予防: LDL &lt; 100 mg/dL</li>
-            <li>FH/ACS: LDL &lt; 70 mg/dL も考慮</li>
-          </ul>
-          <h3 className="font-bold text-tx">non-HDL-Cの臨床的意義</h3>
-          <p>non-HDL-C = TC − HDL-C は、LDL-Cに加えVLDLやレムナントも含む指標。食後採血でも使用可能で、TG高値時の動脈硬化リスク評価に優れます。管理目標はLDL目標+30 mg/dL。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

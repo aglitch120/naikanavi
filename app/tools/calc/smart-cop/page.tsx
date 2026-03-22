@@ -27,7 +27,7 @@ export default function SMARTCOPPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="SMART-COP" value={result.score} unit="/11点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">SMART-COPとは</h2><p>市中肺炎で集中治療（ICU/人工呼吸器/昇圧薬）が必要になるかを予測。8項目11点満点。CURB-65やPSI/PORTとは異なり、ICU入室の必要性に特化。≧3でICU考慮、≧5で高確率。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Charles PG et al. SMART-COP: a tool for predicting the need for intensive respiratory or vasopressor support in community-acquired pneumonia. Clin Infect Dis 2008;47:375-384'}]}
     >
       <div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={`${i.label} (+${i.points}点)`} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div>

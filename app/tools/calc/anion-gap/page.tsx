@@ -70,22 +70,7 @@ export default function AnionGapPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">アニオンギャップ（AG）とは</h2>
-          <p>AGは血漿中の測定されない陰イオンの指標で、代謝性アシドーシスの鑑別に不可欠です。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">AG = Na⁺ − Cl⁻ − HCO₃⁻（正常: 8〜12 mEq/L）</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">補正AG = AG + 2.5 ×（4.0 − Alb）</p>
-          <h3 className="font-bold text-tx">AG開大の鑑別（MUDPILES）</h3>
-          <p>Methanol, Uremia, DKA, Propylene glycol, Isoniazid/Iron, Lactic acidosis, Ethylene glycol, Salicylates</p>
-          <h3 className="font-bold text-tx">ΔAG/ΔHCO₃⁻ 比</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>&lt;1: 非AG開大型アシドーシスの合併</li>
-            <li>1〜2: 純粋なAG開大型アシドーシス</li>
-            <li>&gt;2: 代謝性アルカローシスの合併</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

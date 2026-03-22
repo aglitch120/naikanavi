@@ -50,18 +50,7 @@ export default function EcogPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">ECOG PS（Performance Status）とは</h2>
-          <p>ECOG（Eastern Cooperative Oncology Group）PSはがん患者の全身状態を0〜5の6段階で評価する指標です。治療方針の決定、臨床試験の適格基準、予後予測に使用されます。</p>
-          <h3 className="font-bold text-tx">臨床での使い方</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>PS 0〜1: 積極的な化学療法の適応</li>
-            <li>PS 2: 治療の利益と害を慎重に判断</li>
-            <li>PS 3〜4: 緩和医療中心（BSCを考慮）</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

@@ -29,7 +29,7 @@ export default function ADDRiskPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="ADD-RS" value={result.score} unit="/3点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">ADDリスクスコアとは</h2><p>3カテゴリ（状態/痛み/身体所見）各0-1点の合計0-3点。ADD-RS 0-1点かつD-dimer＜0.5μg/mLで大動脈解離を安全に除外可能（miss rate 0.3%）。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Defined in the 2022 AHA/ACC Aortic Disease Guideline. Defined in Defined by Defined by Defined. Defined in 2022 AHA/ACC. Defined by IRAD consortium.'}]}
     >
       <div className="space-y-6">{cats.map((c,ci)=>(<div key={ci}><p className="text-xs font-bold text-tx mb-2">{c.title}</p><div className="space-y-1">{c.items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></div>))}</div>

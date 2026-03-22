@@ -141,16 +141,7 @@ export default function AuditPage() {
           ]}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">AUDIT（飲酒スクリーニング）とは</h2>
-          <p>WHOが開発した10項目の自記式質問票。危険な飲酒パターンとアルコール依存のスクリーニングに国際的に使用されています。</p>
-          <h3 className="font-bold text-tx">スコア解釈</h3>
-          <p>0〜7: 低リスク。8〜15: 危険な飲酒（簡易介入が有効）。16〜19: 有害な使用。20以上: アルコール依存が疑われ、専門治療を検討。</p>
-          <h3 className="font-bold text-tx">1ドリンクの目安</h3>
-          <p>ビール中瓶1本（500mL）、日本酒1合、ワイン2杯（200mL）、ウイスキーダブル1杯がそれぞれ約2ドリンク（純アルコール20g）に相当。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

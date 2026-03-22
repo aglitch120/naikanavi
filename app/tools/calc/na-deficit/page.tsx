@@ -58,20 +58,7 @@ export default function NaDeficitPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Na欠乏量の計算</h2>
-          <p className="font-mono bg-bg p-2 rounded text-xs">Na欠乏量(mEq) = TBW × (目標Na − 現在Na)</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">TBW = 体重 × 0.6（男性）or 0.5（女性）</p>
-          <h3 className="font-bold text-tx">Na補正の注意点</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>24時間で10 mEq/L以下の補正（ODS予防）</li>
-            <li>高リスク患者（低K、アルコール多飲、低栄養）: 8 mEq/L以下</li>
-            <li>急性（48時間以内）低Na血症: より迅速な補正が許容される場合あり</li>
-            <li>頻回のNa測定（4-6時間ごと）で速度を監視</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

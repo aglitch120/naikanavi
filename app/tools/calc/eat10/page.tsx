@@ -23,7 +23,7 @@ export default function EAT10Page(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="EAT-10" value={result.score} unit="/40点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">EAT-10とは</h2><p>Eating Assessment Tool。嚥下障害の自己記入式スクリーニング。10問各0-4点の40点満点。≧3で嚥下障害の疑い。簡便で再現性が高い。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Belafsky PC et al. Validity and reliability of the Eating Assessment Tool (EAT-10). Ann Otol Rhinol Laryngol 2008;117:919-924'}]}
     ><div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={opts} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

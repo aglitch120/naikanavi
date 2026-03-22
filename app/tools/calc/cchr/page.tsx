@@ -33,16 +33,7 @@ export default function CCHRPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="CCHR判定" value={result.label} severity={result.severity} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">カナダ頭部CTルールとは</h2>
-          <p>GCS 13-15の軽症頭部外傷成人患者に対し、頭部CTの適応を判断するルール。高リスク因子（5項目）が1つでもあれば脳外科介入が必要な損傷のリスクあり→CT必須。中リスク因子（2項目）が1つでもあれば臨床的に重要な脳損傷のリスクあり→CT検討。</p>
-          <h3 className="font-bold text-tx">適応条件</h3>
-          <p>成人（16歳以上）、GCS 13-15、受傷後24時間以内、鈍的外傷。除外：抗凝固薬使用中、開放性頭蓋骨折が明らか、不安定なバイタル。</p>
-          <h3 className="font-bold text-tx">感度</h3>
-          <p>高リスク: 脳外科介入を要する損傷に対し感度100%。全7項目: 臨床的に重要な脳損傷に対し感度98.4%。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Stiell IG et al. The Canadian CT Head Rule for patients with minor head injury. Lancet 2001;357:1391-1396'}]}
     >
       <div className="space-y-1">

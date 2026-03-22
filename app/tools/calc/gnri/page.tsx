@@ -21,7 +21,7 @@ export default function GNRIPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="GNRI" value={result.gnri} interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">GNRIとは</h2><p>Geriatric Nutritional Risk Index。入院高齢者の栄養関連リスクを評価。GNRI = 14.89 × Alb(g/dL) + 41.7 × (体重/理想体重)。理想体重はBMI22から算出。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Bouillanne O et al. Geriatric Nutritional Risk Index: a new index for evaluating at-risk elderly medical patients. Am J Clin Nutr 2005;82:777-783'}]}
     >
       <div className="space-y-3">

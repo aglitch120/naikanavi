@@ -23,7 +23,7 @@ export default function BODEPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="BODE" value={result.score} unit="/10点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">BODE指数とは</h2><p>BMI/airflow Obstruction/Dyspnea/Exercise capacityの4因子でCOPDの予後を予測。0-10点。FEV1単独より生存予測精度が高い。肺移植・肺容量減少術の適応判断にも使用。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Celli BR et al. The body-mass index, airflow obstruction, dyspnea, and exercise capacity index in chronic obstructive pulmonary disease. NEJM 2004;350:1005-1012'}]}
     ><div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

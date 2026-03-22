@@ -73,15 +73,7 @@ export default function MeldNaPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">MELD-Naとは</h2>
-          <p>MELDスコアに血清Naを組み込んだ改良版。低Na血症を伴う肝硬変患者の予後予測精度が向上します。2016年以降、米国の臓器移植ネットワーク（UNOS）で標準採用。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">MELD-Na = MELD + 1.32×(137−Na) − 0.033×MELD×(137−Na)</p>
-          <h3 className="font-bold text-tx">MELDとの違い</h3>
-          <p>低Na血症（希釈性）は門脈圧亢進症の重症度を反映し、肝硬変の予後不良因子。MELD単独では過小評価されるケースを補正します。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

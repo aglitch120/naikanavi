@@ -20,7 +20,7 @@ export default function BPSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="BPS" value={result.score} unit="/12点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">BPSとは</h2><p>Behavioral Pain Scale。鎮静下の挿管患者の疼痛を3項目（表情/上肢/呼吸器順応）で評価。3-12点。≧6で有意な疼痛。CPOTとともにPADISガイドラインでが一般的。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Payen JF et al. Assessing pain in critically ill sedated patients by using a behavioral pain scale. Crit Care Med 2001;29:2258-2263'}]}
     ><div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

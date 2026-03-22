@@ -38,16 +38,7 @@ export default function Gad7Page() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="GAD-7" value={result.total} unit="/ 21点" interpretation={result.label} severity={result.severity} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">GAD-7とは</h2>
-          <p>Generalized Anxiety Disorder 7-item scaleは全般性不安障害の重症度評価に使用される自記式スクリーニングツールです。カットオフ10点で感度89%・特異度82%と報告されています。</p>
-          <h3 className="font-bold text-tx">重症度分類</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0-4: 最小限</li><li>5-9: 軽度</li><li>10-14: 中等度</li><li>15-21: 重度</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Spitzer RL, et al. Arch Intern Med 2006;166:1092-1097' }]}
     >

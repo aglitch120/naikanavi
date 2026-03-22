@@ -56,18 +56,7 @@ export default function QtcPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">QTc（補正QT間隔）とは</h2>
-          <p>QT間隔は心室の脱分極から再分極までの時間で、心拍数に依存します。QTcは心拍数による影響を補正した値です。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">Bazett: QTc = QT / √RR</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">Fridericia: QTc = QT / ∛RR</p>
-          <h3 className="font-bold text-tx">QTc延長の主な原因</h3>
-          <p>抗不整脈薬（Ia, III群）、抗菌薬（マクロライド、フルオロキノロン）、抗精神病薬、低K・低Mg・低Ca、先天性QT延長症候群</p>
-          <h3 className="font-bold text-tx">臨床的意義</h3>
-          <p>QTc ≥ 500msではTorsades de Pointes（TdP）のリスクが有意に上昇。HR 60-100の範囲ではBazett式が標準ですが、頻脈・徐脈ではFridericia式がより正確とされます。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

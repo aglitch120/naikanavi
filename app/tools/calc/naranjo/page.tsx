@@ -30,7 +30,7 @@ export default function NaranjoPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Naranjo" value={result.score} unit="点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Naranjo評価スケールとは</h2><p>薬物有害事象（ADR）と薬剤の因果関係を10項目で評価。≧9確実、5-8 probable、1-4 possible、≦0 unlikely。医薬品安全性報告や論文での標準ツール。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Naranjo CA et al. A method for estimating the probability of adverse drug reactions. Clin Pharmacol Ther 1981;30:239-245'}]}
     ><div className="space-y-3">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={[{label:'はい',value:'yes'},{label:'いいえ',value:'no'},{label:'不明',value:'unknown'}]} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

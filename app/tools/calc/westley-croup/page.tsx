@@ -24,7 +24,7 @@ export default function WestleyPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Westley" value={result.score} unit="/17点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Westleyクループスコアとは</h2><p>クループ症候群の重症度を5項目（stridor/陥没呼吸/空気流入/チアノーゼ/意識）で評価。≦2軽症、3-7中等症、≧8重症。デキサメタゾン0.6mg/kg経口/筋注が全例にが一般的。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Westley CR et al. Nebulized racemic epinephrine by IPPB for the treatment of croup. Am J Dis Child 1978;132:484-487'}]}
     ><div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

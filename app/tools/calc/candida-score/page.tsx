@@ -20,7 +20,7 @@ export default function CandidaScorePage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Candida Score" value={result.score} unit="/5点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Candidaスコアとは</h2><p>非好中球減少ICU患者の侵襲性カンジダ症リスクを評価。≧3でプリエンプティブ抗真菌薬治療を検討。βDグルカンと併用して判断。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'León C et al. A bedside scoring system (Candida score) for early antifungal treatment in non-neutropenic critically ill patients with Candida colonization. Crit Care Med 2006;34:730-737'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={`${i.label} (+${i.points}点)`} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

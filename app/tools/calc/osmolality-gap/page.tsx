@@ -63,16 +63,7 @@ export default function OsmolalityGapPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">浸透圧ギャップ（Osmolal Gap）とは</h2>
-          <p>実測浸透圧と計算浸透圧の差。通常は-10〜+10 mOsm/kg。開大は血中に測定されない浸透圧物質の存在を示唆します。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">計算浸透圧 = 2×Na + Glu/18 + BUN/2.8</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">浸透圧ギャップ = 実測浸透圧 − 計算浸透圧</p>
-          <h3 className="font-bold text-tx">OG開大の鑑別</h3>
-          <p>メタノール、エチレングリコール、イソプロパノール、エタノール、プロピレングリコール、マンニトール</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

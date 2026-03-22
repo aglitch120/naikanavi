@@ -25,7 +25,7 @@ export default function NRS2002Page(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="NRS 2002" value={result.score} unit="/7点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">NRS 2002とは</h2><p>Nutritional Risk Screening 2002。入院患者の栄養リスクを評価。栄養状態(0-3)+疾患重症度(0-3)+年齢補正(70歳以上+1)=最大7点。≧3で栄養介入を検討。ESPENで示されるツール。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Kondrup J et al. Nutritional risk screening (NRS 2002): a new method based on an analysis of controlled clinical trials. Clin Nutr 2003;22:321-336'}]}
     ><div className="space-y-4"><RadioGroup id="n" label="栄養状態の障害" options={nutrition} value={n} onChange={setN} /><RadioGroup id="d" label="疾患の重症度" options={disease} value={d} onChange={setD} /><CheckItem id="age70" label="70歳以上 (+1点)" checked={age70} onChange={setAge70} /></div></CalculatorLayout>
   )

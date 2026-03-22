@@ -19,7 +19,7 @@ export default function WFNSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="WFNS Grade" value={`Grade ${result.grade}`} interpretation={result.grade<=2?'良好な予後':result.grade===3?'中等度':'不良な予後'} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">WFNS分類とは</h2><p>World Federation of Neurological Surgeonsによるくも膜下出血の重症度分類。GCSと局所神経脱落の有無に基づく。国際的に最も広く使用される。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Report of WFNS Committee on a Universal SAH Grading Scale. J Neurosurg 1988;68:985-986'}]}
     >
       <RadioGroup id="wfns" label="GCS + 神経学的所見" options={grades.map(g=>({label:g.label,value:g.value}))} value={grade} onChange={setGrade} />

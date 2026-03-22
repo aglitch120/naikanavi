@@ -29,7 +29,7 @@ export default function CIWAArPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="CIWA-Ar" value={result.score} unit="/67点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">CIWA-Arとは</h2><p>Clinical Institute Withdrawal Assessment for Alcohol, revised。アルコール離脱症候群の重症度を10項目で評価。Symptom-triggered therapyの指標として使用：スコア≧10でBZD投与、1-2時間毎に再評価。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Sullivan JT et al. Assessment of alcohol withdrawal: the revised clinical institute withdrawal assessment for alcohol scale (CIWA-Ar). Br J Addict 1989;84:1353-1357'}]}
     >
       <div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div>

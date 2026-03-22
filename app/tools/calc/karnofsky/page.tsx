@@ -55,20 +55,7 @@ export default function KarnofskyPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Karnofsky Performance Status（KPS）とは</h2>
-          <p>KPSはがん患者の全身状態を100%（正常）から0%（死亡）まで10%刻みで評価するスケールです。ECOG PSと並んで広く使用されています。</p>
-          <h3 className="font-bold text-tx">KPSとECOG PSの対応</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>KPS 100〜90% ≒ ECOG PS 0</li>
-            <li>KPS 80〜70% ≒ ECOG PS 1</li>
-            <li>KPS 60〜50% ≒ ECOG PS 2</li>
-            <li>KPS 40〜30% ≒ ECOG PS 3</li>
-            <li>KPS 20〜10% ≒ ECOG PS 4</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

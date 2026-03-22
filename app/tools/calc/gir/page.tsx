@@ -19,7 +19,7 @@ export default function GIRPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="GIR" value={result.gir} unit="mg/kg/min" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">GIRとは</h2><p>Glucose Infusion Rate。ブドウ糖投与速度。通常4-6 mg/kg/min(成人)が目標。TPN管理や低血糖時の維持輸液設計に使用。計算式: GIR = ブドウ糖濃度(%) × 投与速度(mL/h) × 1000 / (体重(kg) × 60)</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'日本静脈経腸栄養学会. 静脈経腸栄養ガイドライン 第3版'}]}
     >
       <div className="space-y-3">

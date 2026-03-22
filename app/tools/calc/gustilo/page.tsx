@@ -13,7 +13,7 @@ export default function GustiloPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Gustilo-Anderson" value={'Type '+type} interpretation={'抗菌薬: '+t.abx} severity={t.sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Gustilo-Anderson分類とは</h2><p>開放骨折の重症度分類。Type I-IIIC。6-8h以内のデブリドマンが重要。破傷風予防も併せて。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Gustilo RB, Anderson JT. J Bone Joint Surg Am 1976;58:453-458'}]}
     ><RadioGroup id="gustilo" label="分類" options={types.map(t=>({'label':t.label,'value':t.value}))} value={type} onChange={setType} /></CalculatorLayout>
   )

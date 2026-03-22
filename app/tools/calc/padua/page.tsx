@@ -38,17 +38,7 @@ export default function PaduaPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Padua Score" value={result.score} unit="/ 20点" interpretation={result.label} severity={result.severity}
         details={[{ label: 'VTE発生率', value: result.vteRate }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Padua Prediction Scoreとは</h2>
-          <p>内科入院患者のVTEリスクを評価するスコアです。4点以上で高リスクと判定され、薬物的VTE予防（低分子ヘパリン等）の適応となります。ACCPガイドラインでも示されています。</p>
-          <h3 className="font-bold text-tx">判定基準</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>≥ 4点: 高リスク（VTE 11%）→ 薬物的予防を検討</li>
-            <li>&lt; 4点: 低リスク（VTE 0.3%）→ 薬物的予防は不要</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Barbar S, et al. J Thromb Haemost 2010;8:2450-2457' }]}
     >

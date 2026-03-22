@@ -25,7 +25,7 @@ export default function ASPECTSPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="ASPECTS" value={result.score} unit="/10点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">ASPECTSとは</h2><p>Alberta Stroke Program Early CT Score。MCA領域を10区域に分割し、早期虚血変化がある領域ごとに1点減点（10点満点→0点が最悪）。rt-PA・血管内治療の適応判断に使用。ASPECTS≧6が一般的なカットオフ。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Barber PA et al. Validity and reliability of a quantitative computed tomography score in predicting outcome of hyperacute stroke. Lancet 2000;355:1670-1674'}]}
     >
       <div className="space-y-1"><p className="text-xs text-muted mb-2">CTで早期虚血変化がある領域にチェック（チェック=1点減点）:</p>{regions.map(r=><CheckItem key={r.id} id={r.id} label={r.label} checked={checks[r.id]} onChange={v=>setChecks(p=>({...p,[r.id]:v}))} />)}</div>

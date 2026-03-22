@@ -42,18 +42,7 @@ export default function MrsPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">mRS（modified Rankin Scale）とは</h2>
-          <p>mRSは脳卒中後の機能障害の程度を0〜6の7段階で評価するスケールです。臨床試験の主要アウトカムとして国際的に最も広く使用されています。</p>
-          <h3 className="font-bold text-tx">臨床での使い方</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>mRS 0〜2: 良好な転帰（自立）</li>
-            <li>mRS 3〜5: 不良な転帰（介助が必要）</li>
-            <li>t-PA投与の効果判定にも使用</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

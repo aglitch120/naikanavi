@@ -27,7 +27,7 @@ export default function PSIPortPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="PSI/PORT" value={result.score} unit={`点 (Class ${result.cls})`} interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">PSI/PORTスコアとは</h2><p>Pneumonia Severity Index。市中肺炎の30日死亡率を予測し、入院の要否を判断。20項目で算出。Class I-IIは外来、III は短期入院or外来、IV-Vは入院。CURB-65より詳細だが項目が多い。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Fine MJ et al. A prediction rule to identify low-risk patients with community-acquired pneumonia. NEJM 1997;336:243-250'}]}
     >
       <div className="space-y-4">

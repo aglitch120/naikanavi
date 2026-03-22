@@ -51,7 +51,7 @@ export default function SAPSIIPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="SAPS II" value={result.score} unit="点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">SAPS IIとは</h2><p>Simplified Acute Physiology Score II。ICU入室後24時間以内の最悪値を使用。17項目で院内死亡率を予測。APACHE IIに比べ項目数が少なく算出しやすい。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Le Gall JR et al. A new Simplified Acute Physiology Score (SAPS II) based on a European/North American multicenter study. JAMA 1993;270:2957-2963'}]}
     >
       <div className="space-y-3">

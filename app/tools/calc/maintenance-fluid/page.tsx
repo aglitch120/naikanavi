@@ -52,24 +52,7 @@ export default function MaintenanceFluidPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">4-2-1ルール（Holliday-Segar法）とは</h2>
-          <p>維持輸液量を体重から簡易的に計算する方法です。</p>
-          <h3 className="font-bold text-tx">計算方法</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>最初の10 kg: 4 mL/kg/時</li>
-            <li>次の10 kg: 2 mL/kg/時</li>
-            <li>それ以上: 1 mL/kg/時</li>
-          </ul>
-          <h3 className="font-bold text-tx">補正が必要な場合</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>発熱: 体温1℃上昇ごとに10〜12%増量</li>
-            <li>ドレーン排液・嘔吐・下痢: 喪失量を追加</li>
-            <li>心不全・腎不全: 減量を考慮</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

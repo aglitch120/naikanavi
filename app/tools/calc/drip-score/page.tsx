@@ -17,7 +17,7 @@ export default function DRIPScorePage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="DRIP" value={result.score} unit="点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">DRIPスコアとは</h2><p>Drug Resistance in Pneumonia。市中肺炎で耐性菌（MRSA/緑膿菌等）のリスクを評価。≧4で広域抗菌薬を検討。旧HCAPの概念に代わるツール。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Webb BJ et al. Derivation and Multicenter Validation of the Drug Resistance in Pneumonia Clinical Prediction Score. Antimicrob Agents Chemother 2016'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label+' (+'+String(i.points)+'点)'} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

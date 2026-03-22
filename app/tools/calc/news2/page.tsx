@@ -43,19 +43,7 @@ export default function News2Page() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="NEWS2" value={result.total} unit="/ 20点" interpretation={result.label} severity={result.severity}
         details={result.hasAny3 ? [{ label: '⚠ 注意', value: '個別パラメータ3点あり — 緊急対応を検討' }] : []} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">NEWS2とは</h2>
-          <p>National Early Warning Score 2は入院患者の急性増悪を早期に検出するためのスクリーニングツールです。バイタル6項目＋酸素投与で0-20点を算出。英国NHSで標準採用されています。</p>
-          <h3 className="font-bold text-tx">対応レベル</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0-4点: 低リスク（4-6時間ごと観察）</li>
-            <li>個別3点: 緊急対応を検討</li>
-            <li>5-6点: 中リスク（1時間ごと観察、医師報告）</li>
-            <li>≥7点: 高リスク（RRT/MET起動、持続モニタリング）</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Royal College of Physicians. NEWS2, 2017' }]}
     >

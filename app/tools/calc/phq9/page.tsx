@@ -45,21 +45,7 @@ export default function Phq9Page() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="PHQ-9" value={result.total} unit="/ 27点" interpretation={result.label} severity={result.severity}
         details={result.q9 ? [{ label: '⚠ 希死念慮', value: '問9が1点以上 — 安全性の評価が必要' }] : []} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">PHQ-9とは</h2>
-          <p>Patient Health Questionnaire-9はDSM基準に基づくうつ病の自記式スクリーニングツールです。プライマリケアでのうつ病スクリーニングや治療効果の経時的評価に広く使用されます。</p>
-          <h3 className="font-bold text-tx">重症度分類</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0-4: 症状なし〜最小限</li>
-            <li>5-9: 軽度</li>
-            <li>10-14: 中等度（治療検討）</li>
-            <li>15-19: 中等度〜重度（治療を検討）</li>
-            <li>20-27: 重度（積極的治療）</li>
-          </ul>
-          <p className="font-medium text-tx">問9（希死念慮）が1点以上の場合は必ず安全性の評価を行ってください。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Kroenke K, et al. J Gen Intern Med 2001;16:606-613' }]}
     >

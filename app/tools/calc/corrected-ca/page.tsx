@@ -179,73 +179,7 @@ export default function CorrectedCaPage() {
             </div>
           )
         }
-        explanation={
-          <div className="space-y-6 text-sm text-tx leading-relaxed">
-            <div>
-              <h2 className="text-lg font-bold mb-2">補正Caとは</h2>
-              <p className="text-muted">
-                血清総カルシウムの約40%はアルブミンと結合しています。低アルブミン血症（肝硬変、ネフローゼ症候群、低栄養など）では
-                アルブミン結合Ca分が減少するため、血清Ca値が見かけ上低下します。
-                補正Ca（Payneの式）はアルブミン値を用いてこの影響を補正し、真のカルシウム濃度を推定するものです。
-                1973年にPayneらがBr Med J誌で発表しました（PMID: 4758544）。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">計算式</h3>
-              <div className="bg-s0 border border-br rounded-lg p-3">
-                <p className="text-xs font-mono text-muted">
-                  補正Ca (mg/dL) = 実測Ca (mg/dL) + 0.8 × (4.0 − Alb [g/dL])
-                </p>
-                <p className="text-xs text-muted mt-2">
-                  ※ Alb ≥ 4.0 g/dL の場合は補正不要（補正Ca = 実測Ca）
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">基準値と臨床的意義</h3>
-              <div className="space-y-2 text-muted">
-                <p><span className="font-medium text-tx">&lt;8.4 mg/dL：</span>低Ca血症。テタニー・Chvostek/Trousseau徴候・QT延長に注意。</p>
-                <p><span className="font-medium text-tx">8.4-10.2 mg/dL：</span>正常範囲。</p>
-                <p><span className="font-medium text-tx">10.2-12.0 mg/dL：</span>軽度高Ca血症。原因検索を開始。</p>
-                <p><span className="font-medium text-tx">12.0-14.0 mg/dL：</span>中等度高Ca血症。輸液と原因検索。</p>
-                <p><span className="font-medium text-tx">&gt;14.0 mg/dL：</span>高Ca血症クリーゼ。緊急対応が必要。</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">Payneの式の限界</h3>
-              <div className="bg-wnl border border-wnb rounded-lg p-3 text-sm text-wn">
-                <p>
-                  Payneの式は広く使用されていますが、ICU患者では精度が低下することが報告されています
-                  （Dickerson RN, et al. JPEN 2004; PMID: 15141404）。
-                  重症患者・酸塩基異常・高グロブリン血症ではイオン化Ca（iCa）の直接測定が示されます。
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold mb-2">よくある質問</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q. 日本の補正式は海外と違いますか？</p>
-                  <p className="text-muted mt-1">
-                    日本で広く使用されているのはPayneの式（係数0.8）です。一部の文献では係数1.0の式も見られますが、
-                    Payneの原著論文に基づく0.8が国際的にも最も広く使用されています。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Q. アルブミンが正常以上（&gt;4.0）の場合は？</p>
-                  <p className="text-muted mt-1">
-                    アルブミンが正常範囲以上の場合、補正の必要はありません。
-                    本ツールではAlb ≥ 4.0の場合、補正Ca = 実測Caと表示します。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        explanation={undefined}
       >
         <div className="space-y-3">
           <NumberInput id="ca-total" label="血清Ca（総カルシウム）" unit="mg/dL" value={ca} onChange={setCa} hint="例: 8.2" min={1} max={20} step={0.1} />

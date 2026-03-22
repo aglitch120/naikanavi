@@ -32,14 +32,7 @@ export default function CamIcuPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="CAM-ICU" value={result.isDelirium ? '陽性' : '陰性'} interpretation={result.interpretation} severity={result.severity}
         details={[{ label: '判定基準', value: '特徴1 + 特徴2 + (特徴3 or 特徴4)' }]} />}
-      explanation={<section className="space-y-4 text-sm text-muted">
-        <h2 className="text-base font-bold text-tx">CAM-ICUとは</h2>
-        <p>ICU患者のせん妄を4つの特徴で評価。非言語的に評価できるため、挿管患者にも使用可能。RASS -3〜+4の患者が対象（RASS -4/-5は評価不能）。</p>
-        <h3 className="font-bold text-tx">4つの特徴</h3>
-        <p>1. 急性発症 or 変動性の経過、2. 注意力障害、3. 思考の混乱、4. 意識レベルの変容（RASS ≠ 0）。1+2+(3 or 4)でせん妄。</p>
-        <h3 className="font-bold text-tx">注意力障害の評価法</h3>
-        <p>ASE（Attention Screening Examination）: 「サ・ク・ラ・サ・ク」と聞いて「サ」の時に手を握る。2回以上のエラーで陽性。</p>
-      </section>}
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Ely EW, et al. JAMA 2001;286:2703-2710' }]}
     >

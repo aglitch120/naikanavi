@@ -62,15 +62,7 @@ export default function AncPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">好中球数（ANC）とは</h2>
-          <p>ANCは白血球数に好中球の割合（分葉核球＋桿状核球）を乗じて算出。化学療法後の感染リスク評価に必須です。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">ANC = WBC × (好中球% + 桿状核球%) / 100</p>
-          <h3 className="font-bold text-tx">FN（発熱性好中球減少症）</h3>
-          <p>ANC &lt; 500/μL ＋ 体温 ≧ 38.3℃（または38.0℃が1時間以上持続）で定義。MASCC スコアで低リスク/高リスクを層別化します。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

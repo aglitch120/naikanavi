@@ -62,19 +62,7 @@ export default function SteroidConverterPage() {
           severity="neutral"
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">ステロイド等価用量換算とは</h2>
-          <p>ステロイド（糖質コルチコイド）の種類を変更する際、抗炎症作用が等しくなる用量に換算して投与量を決定します。プレドニゾロン（PSL）5mgを基準とします。</p>
-          <h3 className="font-bold text-tx">臨床的注意点</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>鉱質コルチコイド作用は等価ではない（HC/PSLは強い、DEX/mPSLはほぼ0）</li>
-            <li>作用時間が異なるため、投与回数の調整が必要</li>
-            <li>高用量・長期使用時の副腎抑制に注意</li>
-            <li>PSL 7.5mg以上/日の長期投与は骨粗鬆症予防を考慮</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

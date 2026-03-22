@@ -25,7 +25,7 @@ export default function LRINECPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="LRINEC" value={result.score} unit="/13点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">LRINECスコアとは</h2><p>Laboratory Risk Indicator for Necrotizing Fasciitisの略。血液検査値から壊死性筋膜炎のリスクを評価する補助診断ツール。</p><p className="text-wn font-medium">⚠️ スコアが低くても壊死性筋膜炎は否定できません。臨床的に疑わしい場合は外科コンサルト必須。Pain out of proportionが重要なサイン。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Wong CH et al. The LRINEC Score: A Tool for Distinguishing Necrotizing Fasciitis from Other Soft Tissue Infections. Crit Care Med 2004'}]}
     >
       <div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options.map(o=>({label:o.label,value:String(o.value)}))} value={String(vals[i.id])} onChange={v=>setVals(p=>({...p,[i.id]:Number(v)}))} />)}</div>

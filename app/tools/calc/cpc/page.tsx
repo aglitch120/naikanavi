@@ -19,7 +19,7 @@ export default function CPCPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="CPC" value={`CPC ${val}`} interpretation={v<=2?'良好な神経学的予後':v===3?'重度障害':'不良'} severity={sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">CPCとは</h2><p>Cerebral Performance Category。心肺蘇生後(ROSC後)の神経学的予後を5段階で評価。CPC 1-2を「良好な転帰」、CPC 3-5を「不良な転帰」と定義することが多い。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Jennett B, Bond M. Assessment of outcome after severe brain damage. Lancet 1975;1:480-484'}]}
     ><RadioGroup id="cpc" label="神経学的転帰" options={levels} value={val} onChange={setVal} /></CalculatorLayout>
   )

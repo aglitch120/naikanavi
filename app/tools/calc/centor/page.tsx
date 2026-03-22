@@ -37,18 +37,7 @@ export default function CentorPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Centor/McIsaac" value={result.score} unit="/ 5点" interpretation={result.recommendation} severity={result.severity}
         details={[{ label: 'GAS咽頭炎確率', value: result.gasProb }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Centor スコア（McIsaac変法）とは</h2>
-          <p>急性咽頭炎患者におけるA群溶血性連鎖球菌（GAS）感染の確率を評価するスコアです。McIsaac変法では年齢因子を追加し、小児〜成人まで対応します。不要な抗菌薬処方の削減に有用です。</p>
-          <h3 className="font-bold text-tx">参考アクション</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0-1点: 検査・抗菌薬不要</li>
-            <li>2-3点: 迅速抗原検査を実施 → 陽性なら抗菌薬</li>
-            <li>4-5点: 経験的抗菌薬投与を検討（または迅速検査後）</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Centor RM, et al. Med Decis Making 1981;1:239-246' }, { text: 'McIsaac WJ, et al. CMAJ 1998;158:75-83' }]}
     >

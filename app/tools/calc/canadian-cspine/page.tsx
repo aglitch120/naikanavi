@@ -12,7 +12,7 @@ export default function CanadianCSpinePage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result?<ResultCard label="CCR判定" value={result.label} severity={result.sev} />:<ResultCard label="CCR" value="質問に回答してください" severity="ok" />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Canadian C-Spine Ruleとは</h2><p>3段階の質問で頚椎損傷の画像検査適応を判断。Step1:高リスク因子→あればCT。Step2:低リスク因子→1つもなければCT。Step3:頚部の能動的回旋45°可能→不要。感度99.4%でNEXUSより特異度が高い。</p><p className="text-wn font-medium">⚠️ 対象: 意識清明(GCS15)、バイタル安定、16歳以上の鈍的外傷。除外: 不安定なバイタル、麻痺、既知の脊椎疾患。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Stiell IG et al. The Canadian C-Spine Rule versus the NEXUS Low-Risk Criteria in Patients with Trauma. NEJM 2003;349:2510-2518'}]}
     >
       <div className="space-y-4">

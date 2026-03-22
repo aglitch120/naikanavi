@@ -60,20 +60,7 @@ export default function LightCriteriaPage() {
           severity={result.severity}
         />
       }
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">Light基準とは</h2>
-          <p>胸水が滲出性か漏出性かを鑑別するゴールドスタンダードです。以下の3基準のうち1つでも満たせば滲出性と判定します。感度98%・特異度83%。</p>
-          <h3 className="font-bold text-tx">3つの基準</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>胸水蛋白/血清蛋白 &gt; 0.5</li>
-            <li>胸水LDH/血清LDH &gt; 0.6</li>
-            <li>胸水LDH &gt; 血清LDH正常上限の2/3</li>
-          </ul>
-          <h3 className="font-bold text-tx">注意</h3>
-          <p>利尿剤使用中の心不全患者では偽陽性（漏出性が滲出性と判定される）が起きやすく、血清-胸水アルブミン差（&gt;1.2 g/dLで漏出性）の併用が示されます。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={[]}
       references={[{ text: 'Light RW, et al. Ann Intern Med 1972;77:507-513' }]}
     >

@@ -13,7 +13,7 @@ export default function BorgPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="修正Borg" value={val} unit="/10" interpretation={v<=3?'軽度':v<=6?'中等度':'高度'} severity={sev} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">修正ボルグスケールとは</h2><p>主観的な息切れ・疲労感を0-10で評価。リハビリの運動処方（Borg 3-4目標）や6分間歩行試験に使用。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Borg GA. Med Sci Sports Exerc 1982;14:377-381'}]}
     ><RadioGroup id="borg" label="息切れの程度" options={levels} value={val} onChange={setVal} /></CalculatorLayout>
   )

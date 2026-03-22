@@ -20,7 +20,7 @@ export default function SFSyncopePage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="SFSR (CHESS)" value={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">SFSRとは</h2><p>CHESS(CHF/Hematocrit/ECG/Shortness of breath/Systolic BP)の5項目。1つでも陽性で7日以内の重大イベント(死亡/MI/不整脈/PE/脳卒中/出血/再入院)リスクあり。感度98%。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Quinn JV et al. Derivation of the San Francisco Syncope Rule. Ann Emerg Med 2004;43:224-232'}]}
     >
       <div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div>

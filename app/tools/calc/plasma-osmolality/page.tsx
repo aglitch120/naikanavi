@@ -71,18 +71,7 @@ export default function PlasmaOsmolalityPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">血漿浸透圧（推算）とは</h2>
-          <p>血漿中の溶質濃度の指標。Na・血糖・BUNの3項目から推算できます。実測浸透圧との差が浸透圧ギャップです。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">推算 Posm = 2×Na + Glu/18 + BUN/2.8</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">有効浸透圧 = 2×Na + Glu/18（BUNは細胞膜自由通過のため除外）</p>
-          <h3 className="font-bold text-tx">臨床的意義</h3>
-          <p>低Na血症の評価（真の低浸透圧か偽性か）、高浸透圧の鑑別（DKA・HHS・高Na血症）、浸透圧ギャップ（実測値との差→中毒スクリーニング）に使用します。</p>
-          <h3 className="font-bold text-tx">有効浸透圧と推算浸透圧の違い</h3>
-          <p>BUNは細胞膜を自由に通過するため浸透圧勾配を生じません。水の移動を考える場合は有効浸透圧を用います。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

@@ -22,7 +22,7 @@ export default function FisherPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Fisher" value={`Grade ${result.grade}`} interpretation={result.risk} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">Fisher分類とは</h2><p>SAHの初回CTでの出血パターンにより脳血管攣縮（vasospasm）のリスクを予測。Grade 3が最もvasospasmリスクが高い。Modified Fisher分類では脳室内出血の有無を加味。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Fisher CM et al. Relation of cerebral vasospasm to subarachnoid hemorrhage visualized by computerized tomographic scanning. Neurosurgery 1980;6:1-9'}]}
     >
       <RadioGroup id="fisher" label="CT所見" options={grades.map(g=>({label:g.label,value:g.value}))} value={grade} onChange={setGrade} />

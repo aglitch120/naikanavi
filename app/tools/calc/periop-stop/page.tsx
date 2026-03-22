@@ -12,7 +12,7 @@ export default function PeriopStopPage(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]} result={null}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">周術期の休薬について</h2><p>手術の出血リスクと血栓リスクを天秤にかけて判断。抗血栓薬は循環器科/処方医と必ず相談。施設プロトコルを優先。</p><p className="text-wn font-medium">⚠️ この表は一般的な目安です。施設プロトコル・患者の個別リスクに基づき判断してください。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'日本麻酔科学会. 術前絶飲食ガイドライン 他'},{text:'各薬剤の添付文書・ガイドライン'}]}
     >
       <div className="space-y-6">{drugs.map(c=>(

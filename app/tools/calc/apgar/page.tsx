@@ -24,7 +24,7 @@ export default function ApgarPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="APGAR" value={result.score} unit="/10点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">APGARスコアとは</h2><p>出生後1分・5分に評価。5項目(外観/脈拍/反応/筋緊張/呼吸)各0-2点の10点満点。5分後APGARが低いほど予後不良のリスク。ただし単独では長期予後の予測因子としては限界あり。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg 1953;32:260-267'}]}
     >
       <div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div>

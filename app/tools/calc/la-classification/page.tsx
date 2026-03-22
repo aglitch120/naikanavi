@@ -13,7 +13,7 @@ export default function Page(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="逆流性食道炎 改訂LA分類" value={count+'/'+items.length+'項目'} interpretation={count>=Math.ceil(items.length/2)?'基準を満たす可能性あり':'基準を満たさない'} severity={count>=Math.ceil(items.length/2)?'wn' as const:'ok' as const} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">逆流性食道炎 改訂LA分類とは</h2><p>Grade A-B: PPI標準量。Grade C-D: PPI倍量 → 維持療法。Grade M: 症状あればPPI。Barrett食道の合併にも注意。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'逆流性食道炎の内視鏡所見分類'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}/>)}</div></CalculatorLayout>
   )

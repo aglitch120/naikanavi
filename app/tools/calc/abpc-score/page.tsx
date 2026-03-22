@@ -20,7 +20,7 @@ export default function AbpcScorePage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="非定型肺炎スコア" value={`${result.count}/6項目`} interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">非定型肺炎スコアとは</h2><p>日本呼吸器学会の市中肺炎診療ガイドラインでが一般的。6項目中4項目以上で非定型肺炎（マイコプラズマ等）を疑い、マクロライド系を選択。3項目以下は細菌性肺炎としてβラクタム系。感度78%、特異度93%。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'日本呼吸器学会. 成人市中肺炎診療ガイドライン 2024'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

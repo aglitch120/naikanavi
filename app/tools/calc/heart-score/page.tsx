@@ -36,18 +36,7 @@ export default function HeartScorePage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="HEART Score" value={result.total} unit="/ 10点" interpretation={result.label} severity={result.severity}
         details={[{ label: '6週間MACE発生率', value: result.mace }]} />}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">HEART Scoreとは</h2>
-          <p>ER受診の胸痛患者におけるMACE（主要心血管イベント）リスクを評価するスコア。History, ECG, Age, Risk factors, Troponinの5項目で構成。低リスク（0-3点）患者の安全な早期退院を支援します。</p>
-          <h3 className="font-bold text-tx">リスク分類</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>0-3点: 低リスク（MACE 1.7%）— 退院・外来フォロー検討</li>
-            <li>4-6点: 中リスク（MACE 12-16%）— 入院・追加検査</li>
-            <li>7-10点: 高リスク（MACE 50-65%）— 早期侵襲的戦略</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Six AJ, et al. Neth Heart J 2008;16:191-196' }, { text: 'Backus BE, et al. Int J Cardiol 2013;168:2153-2158' }]}
     >

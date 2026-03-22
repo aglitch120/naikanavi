@@ -23,7 +23,7 @@ export default function CONUTPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="CONUT" value={result.score} unit="/12点" interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">CONUTスコアとは</h2><p>Controlling Nutritional Status。アルブミン/リンパ球数/総コレステロールの3項目で栄養状態を評価。0-12点。採血データのみで自動算出可能な簡便さが利点。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Ignacio de Ulíbarri J et al. CONUT: a tool for controlling nutritional status. Clin Nutr 2005;24:848-855'}]}
     >
       <div className="space-y-4">{items.map(i=><RadioGroup key={i.id} id={i.id} label={i.label} options={i.options} value={vals[i.id]} onChange={v=>setVals(p=>({...p,[i.id]:v}))} />)}</div>

@@ -61,15 +61,7 @@ export default function FenaPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">FENa（ナトリウム排泄率）とは</h2>
-          <p>糸球体で濾過されたNaのうち、尿中に排泄される割合。AKIの腎前性 vs 腎性の鑑別に使用されます。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">FENa (%) = (尿Na × 血清Cr) / (血清Na × 尿Cr) × 100</p>
-          <h3 className="font-bold text-tx">注意点</h3>
-          <p>利尿薬使用中はFENaが偽高値となるため、FEUrea（尿素排泄率）を代用します（FEUrea &lt; 35%で腎前性）。造影剤腎症・横紋筋融解・急性糸球体腎炎ではFENa &lt; 1%でも腎性AKIの可能性があります。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

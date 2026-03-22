@@ -58,22 +58,7 @@ export default function BsaPage() {
           ]}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">BSA（体表面積）とは</h2>
-          <p>体表面積は、抗がん剤の投与量算出、心拍出量の指数化（CI）、GFR補正など、臨床で広く用いられる指標です。</p>
-          <h3 className="font-bold text-tx">計算式</h3>
-          <p className="font-mono bg-bg p-2 rounded text-xs">Du Bois: BSA = 0.007184 × H(cm)^0.725 × W(kg)^0.425</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">Mosteller: BSA = √(H(cm) × W(kg) / 3600)</p>
-          <h3 className="font-bold text-tx">臨床での使用場面</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>抗がん剤の投与量算出（mg/m²）</li>
-            <li>心係数（CI = CO/BSA）の算出</li>
-            <li>GFRの体表面積補正（mL/min/1.73m²）</li>
-            <li>熱傷面積の評価</li>
-          </ul>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

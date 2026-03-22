@@ -140,18 +140,7 @@ export default function HbA1cGlucosePage() {
           details={result.details}
         />
       )}
-      explanation={
-        <section className="space-y-4 text-sm text-muted">
-          <h2 className="text-base font-bold text-tx">HbA1c ↔ 平均血糖値換算とは</h2>
-          <p>HbA1c（NGSP値）は過去1〜2ヶ月の平均血糖を反映するマーカーです。ADAG研究（Nathan 2008）のデータに基づき、HbA1cと推定平均血糖値（eAG）を相互変換できます。</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs">eAG (mg/dL) = 28.7 × HbA1c − 46.7（ADAG式）</p>
-          <p className="font-mono bg-bg p-2 rounded text-xs mt-1">HbA1c = (eAG + 46.7) ÷ 28.7</p>
-          <h3 className="font-bold text-tx">各血糖値タイプの推算について</h3>
-          <p>eAG（推定平均血糖）: ADAG研究に基づく標準的な変換。早朝空腹時血糖: Rohlfing 2002 の回帰式で近似。食後2時間血糖: eAG比で概算（eAG × 1.25）。随時血糖: eAGに近似として計算。</p>
-          <h3 className="font-bold text-tx">注意点</h3>
-          <p>これらは集団レベルの回帰式であり、個人差があります。貧血・異常Hb・透析・妊娠ではHbA1cと実際の血糖が乖離することがあります。グリコアルブミンや1,5-AGも合わせて評価してください。</p>
-        </section>
-      }
+      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

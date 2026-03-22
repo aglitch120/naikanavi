@@ -16,7 +16,7 @@ export default function PNIPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="PNI" value={result.pni} interpretation={result.label} severity={result.severity} />}
-      explanation={<section className="space-y-4 text-sm text-muted"><h2 className="text-base font-bold text-tx">PNIとは</h2><p>小野寺の予後推定栄養指数。PNI = 10 × Alb(g/dL) + 0.005 × リンパ球数(/μL)。消化器外科手術の術前栄養評価として開発。{'<'}40は手術リスク高。</p></section>}
+      explanation={undefined}
       relatedTools={[]} references={[{text:'Onodera T et al. Prognostic nutritional index in gastrointestinal surgery of malnourished cancer patients. Nihon Geka Gakkai Zasshi 1984;85:1001-1005'}]}
     ><div className="space-y-3"><NumberInput id="alb" label="アルブミン" value={alb} onChange={setAlb} unit="g/dL" /><NumberInput id="lymph" label="リンパ球数" value={lymph} onChange={setLymph} unit="/μL" /></div></CalculatorLayout>
   )
