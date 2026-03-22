@@ -66,46 +66,46 @@ export default function JournalApp() {
   const [articles, setArticles] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [lang, setLang] = useState<'en' | 'ja'>(() => {
-    if (typeof window === 'undefined') return 'en'
-    return (localStorage.getItem('iwor_journal_filter_lang') as 'en' | 'ja') || 'en'
-  })
+  const [lang, setLang] = useState<'en' | 'ja'>('en')
   const [displayLang, setDisplayLang] = useState<'ja' | 'en'>('ja')
 
   // 記事統計（コメント数・ブックマーク数）
   const [articleStats, setArticleStats] = useState<Record<string, { comments: number; bookmarks: number }>>({})
   // 並び替え
-  const [sortBy, setSortBy] = useState<'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year' | 'comments'>(() => {
-    if (typeof window === 'undefined') return 'date'
-    return (localStorage.getItem('iwor_journal_filter_sort') as 'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year' | 'comments') || 'date'
-  })
+  const [sortBy, setSortBy] = useState<'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year' | 'comments'>('date')
 
   // Content type toggle
-  const [contentType, setContentType] = useState<'articles' | 'guidelines'>(() => {
-    if (typeof window === 'undefined') return 'articles'
-    return (localStorage.getItem('iwor_journal_filter_type') as 'articles' | 'guidelines') || 'articles'
-  })
+  const [contentType, setContentType] = useState<'articles' | 'guidelines'>('articles')
   const [guidelines, setGuidelines] = useState<Article[]>([])
   const [guidelinesLoading, setGuidelinesLoading] = useState(false)
   const [guidelinesError, setGuidelinesError] = useState('')
 
   // Filters — unified (Top4 always included + specialty + IF)
-  // localStorage復元
-  const [selectedSpecialties, setSelectedSpecialties] = useState<Set<string>>(() => {
-    if (typeof window === 'undefined') return new Set()
-    try { const s = localStorage.getItem('iwor_journal_filter_sp'); return s ? new Set(JSON.parse(s)) : new Set() } catch { return new Set() }
-  })
-  const [ifMin, setIfMin] = useState(() => {
-    if (typeof window === 'undefined') return 0
-    try { return Number(localStorage.getItem('iwor_journal_filter_if')) || 0 } catch { return 0 }
-  })
+  const [selectedSpecialties, setSelectedSpecialties] = useState<Set<string>>(new Set())
+  const [ifMin, setIfMin] = useState(0)
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [showSortPanel, setShowSortPanel] = useState(false)
-  const [excludedJournals, setExcludedJournals] = useState<Set<string>>(() => {
-    if (typeof window === 'undefined') return new Set()
-    try { const s = localStorage.getItem('iwor_journal_filter_excl'); return s ? new Set(JSON.parse(s)) : new Set() } catch { return new Set() }
-  })
+  const [excludedJournals, setExcludedJournals] = useState<Set<string>>(new Set())
   const [filterSaved, setFilterSaved] = useState(false)
+
+  // フィルタ復元（PRO限定）
+  useEffect(() => {
+    if (!isPro) return
+    try {
+      const sp = localStorage.getItem('iwor_journal_filter_sp')
+      if (sp) setSelectedSpecialties(new Set(JSON.parse(sp)))
+      const ifV = localStorage.getItem('iwor_journal_filter_if')
+      if (ifV) setIfMin(Number(ifV) || 0)
+      const excl = localStorage.getItem('iwor_journal_filter_excl')
+      if (excl) setExcludedJournals(new Set(JSON.parse(excl)))
+      const langV = localStorage.getItem('iwor_journal_filter_lang') as 'en' | 'ja'
+      if (langV) setLang(langV)
+      const sortV = localStorage.getItem('iwor_journal_filter_sort')
+      if (sortV) setSortBy(sortV as typeof sortBy)
+      const typeV = localStorage.getItem('iwor_journal_filter_type') as 'articles' | 'guidelines'
+      if (typeV) setContentType(typeV)
+    } catch {}
+  }, [isPro])
 
   // Infinite scroll
   const PAGE_SIZE = 10
@@ -237,8 +237,9 @@ export default function JournalApp() {
   // Reset displayCount when filters/sort/lang change
   useEffect(() => { setDisplayCount(PAGE_SIZE) }, [lang, sortBy, selectedSpecialties, ifMin, showBookmarks, contentType])
 
-  // フィルタ条件自動保存
+  // フィルタ条件自動保存（PRO限定）
   useEffect(() => {
+    if (!isPro) return
     try {
       localStorage.setItem('iwor_journal_filter_sp', JSON.stringify(Array.from(selectedSpecialties)))
       localStorage.setItem('iwor_journal_filter_if', String(ifMin))
@@ -252,7 +253,7 @@ export default function JournalApp() {
         return () => clearTimeout(t)
       }
     } catch {}
-  }, [selectedSpecialties, ifMin, excludedJournals, lang, sortBy, contentType])
+  }, [isPro, selectedSpecialties, ifMin, excludedJournals, lang, sortBy, contentType])
 
   // IntersectionObserver for infinite scroll
   const hasMoreRef = useRef(hasMore)
@@ -476,10 +477,16 @@ export default function JournalApp() {
         )}
       </div>
 
-      {/* フィルタ保存確認 */}
-      {filterSaved && (
-        <div className="mb-2 px-3 py-1.5 bg-okl border border-okb rounded-lg text-center transition-opacity">
+      {/* フィルタ保存確認 (PRO) / PRO誘導 (FREE) */}
+      {filterSaved && isPro && (
+        <div className="mb-2 px-3 py-1.5 bg-okl border border-okb rounded-lg text-center">
           <p className="text-[10px] text-ok font-medium">フィルタ設定を保存しました</p>
+        </div>
+      )}
+      {!isPro && (selectedSpecialties.size > 0 || ifMin > 0) && (
+        <div className="mb-2 px-3 py-2 bg-acl border border-ac/20 rounded-lg text-center">
+          <p className="text-[10px] text-ac font-medium">フィルタ設定の保存にはPROが必要です</p>
+          <button onClick={() => setShowProModal(true)} className="text-[10px] text-ac font-bold underline mt-0.5">PRO会員になる</button>
         </div>
       )}
 

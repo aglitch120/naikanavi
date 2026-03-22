@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useHintStatus } from './useProStatus'
 
 interface ProPulseHintProps {
   children: React.ReactNode
@@ -10,40 +9,50 @@ interface ProPulseHintProps {
 /**
  * ProPulseHint — お気に入りボタンのパルスアニメーション
  *
- * 初回のみ表示:
- * - ボタン周囲にリングが広がるパルス（2回）
- * - 横に「お気に入りに保存 →」ツールチップ（3秒後フェードアウト）
- * - 1度表示したら二度と表示しない（localStorage管理）
+ * お気に入りが0件の場合、ツール使用5回目以降に表示。
+ * その後は3回に1回の頻度で繰り返し光る（うざくない頻度）。
+ * お気に入りが1件以上あれば表示しない。
  */
 export default function ProPulseHint({ children }: ProPulseHintProps) {
-  const { isShown, markShown } = useHintStatus('favPulse')
   const [showHint, setShowHint] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
 
   useEffect(() => {
-    if (isShown()) return
+    // お気に入りが既にあれば表示しない
+    try {
+      const favs = JSON.parse(localStorage.getItem('iwor_favorites') || '[]')
+      if (favs.length > 0) return
+    } catch {}
 
-    // 500ms待ってから表示（ページロード直後だとユーザーが見逃す）
+    // ツール使用回数を確認
+    try {
+      const usage = JSON.parse(localStorage.getItem('iwor_tool_usage') || '{"_total":0}')
+      const total = usage._total || 0
+      if (total < 5) return // 5回未満は表示しない
+
+      // 3回に1回の頻度（使用回数 mod 3 === 0）
+      if (total % 3 !== 0) return
+    } catch { return }
+
     const showTimer = setTimeout(() => {
       setShowHint(true)
       setShowTooltip(true)
-      markShown()
-    }, 500)
+    }, 800)
 
     return () => clearTimeout(showTimer)
-  }, [isShown, markShown])
+  }, [])
 
-  // ツールチップ3秒後にフェードアウト
+  // ツールチップ4秒後にフェードアウト
   useEffect(() => {
     if (!showTooltip) return
-    const timer = setTimeout(() => setShowTooltip(false), 3000)
+    const timer = setTimeout(() => setShowTooltip(false), 4000)
     return () => clearTimeout(timer)
   }, [showTooltip])
 
-  // パルスアニメーション終了後にクリーンアップ
+  // パルス終了後にクリーンアップ
   useEffect(() => {
     if (!showHint) return
-    const timer = setTimeout(() => setShowHint(false), 3200) // 1.5s × 2回 + buffer
+    const timer = setTimeout(() => setShowHint(false), 3200)
     return () => clearTimeout(timer)
   }, [showHint])
 
@@ -59,7 +68,7 @@ export default function ProPulseHint({ children }: ProPulseHintProps) {
           showTooltip ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
         }`}
       >
-        お気に入りに保存 →
+        お気に入りに保存 &rarr;
       </div>
 
       <style jsx>{`
