@@ -32,6 +32,8 @@ export type ToolCategory =
   | 'general'
   | 'electrolyte'
   | 'antimicrobial'
+  | 'emergency'
+  | 'obstetrics'
 
 export const categoryLabels: Record<ToolCategory, string> = {
   cardiology: '循環器',
@@ -44,6 +46,8 @@ export const categoryLabels: Record<ToolCategory, string> = {
   general: '総合・身体計測',
   electrolyte: '電解質・輸液',
   antimicrobial: '抗菌薬・薬剤',
+  emergency: '救急',
+  obstetrics: '産科',
 }
 
 export const categoryIcons: Record<ToolCategory, string> = {
@@ -57,6 +61,8 @@ export const categoryIcons: Record<ToolCategory, string> = {
   general: '📊',
   electrolyte: '💉',
   antimicrobial: '💊',
+  emergency: '🚑',
+  obstetrics: '🤰',
 }
 
 export const tools: ToolDefinition[] = [
@@ -1159,6 +1165,10 @@ export const tools: ToolDefinition[] = [
   { slug: 'urine-osmolality', name: '尿浸透圧（推算）', nameEn: 'Estimated Urine Osmolality', description: '尿比重から尿浸透圧を推算。低Na血症の鑑別（ADH適切/不適切分泌）や腎濃縮能評価に。', category: 'nephrology', tier: 2, keywords: ['尿浸透圧','尿比重','Uosm','濃縮能','SIADH','希釈尿'], relatedSlugs: ['plasma-osmolality','hyponatremia-flow','siadh','fena'], updatedAt: '2026-03', sources: [{ text: '標準的な腎臓生理学推算式' }] },
   { slug: 'tsat', name: 'TSAT（トランスフェリン飽和度）', nameEn: 'Transferrin Saturation', description: '血清鉄とTIBCからTSATを算出。鉄欠乏（<20%）や鉄過剰（>45%）の評価に。貧血の鑑別に必須。', category: 'hematology', tier: 2, keywords: ['TSAT','トランスフェリン飽和度','鉄','TIBC','鉄欠乏','貧血','フェリチン'], relatedSlugs: ['iron-deficit','rpi'], updatedAt: '2026-03', sources: [{ text: '標準的な鉄代謝指標計算式（TSAT = Fe/TIBC × 100）' }] },
   { slug: 'hba1c-glucose', name: 'HbA1c ↔ 平均血糖値換算', nameEn: 'HbA1c ↔ Estimated Average Glucose', description: 'HbA1cから推定平均血糖値(eAG)、または血糖値からHbA1cを推算。NGSP/ADAG/日本の実臨床データに基づく3方式対応。', category: 'general', tier: 2, keywords: ['HbA1c','eAG','平均血糖','糖尿病','血糖コントロール','NGSP','グリコヘモグロビン'], relatedSlugs: ['homa','bmi'], updatedAt: '2026-03', sources: [{ text: 'Nathan DM, et al. Translating the A1C assay into estimated average glucose values (ADAG study). Diabetes Care 2008;31(8):1473-8', url: 'https://doi.org/10.2337/dc08-0545' }] },
+  // 2026-03-22 追加
+  { slug: 'pf-ratio', name: 'P/F比（PaO2/FiO2比）', nameEn: 'P/F Ratio', description: 'PaO2をFiO2で除した酸素化指標。ARDS Berlin定義の重症度分類に使用。', category: 'respiratory', tier: 1, keywords: ['PF比','P/F ratio','ARDS','酸素化','PaO2','FiO2','Berlin定義','呼吸不全'], relatedSlugs: ['aa-gradient','oxygen-delivery','fio2-table'], updatedAt: '2026-03', sources: [{ text: 'ARDS Definition Task Force. JAMA 2012;307:2526-33', url: 'https://pubmed.ncbi.nlm.nih.gov/22797452/' }] },
+  { slug: 'due-date', name: '出産予定日・妊娠週数', nameEn: 'Estimated Due Date / Gestational Age', description: '最終月経初日から出産予定日と現在の妊娠週数を計算（Naegele式: LMP + 280日）。', category: 'obstetrics', tier: 1, keywords: ['出産予定日','妊娠週数','EDC','EDD','最終月経','Naegele','妊娠','産科'], relatedSlugs: ['apgar','bishop'], updatedAt: '2026-03', sources: [{ text: '日本産科婦人科学会 産婦人科診療ガイドライン 産科編 2020' }] },
+  { slug: 'heat-stroke', name: '熱中症 重症度分類', nameEn: 'Heat Stroke Severity Classification', description: '日本救急医学会の熱中症重症度分類（I度〜III度）。症状から重症度を判定。', category: 'emergency', tier: 1, keywords: ['熱中症','重症度','heat stroke','暑さ指数','WBGT','日射病','脱水','体温'], relatedSlugs: ['gcs','news2','parkland'], updatedAt: '2026-03', sources: [{ text: '日本救急医学会 熱中症診療ガイドライン 2015', url: 'https://www.jaam.jp/info/2015/pdf/info-20150413.pdf' }] },
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
@@ -1177,6 +1187,8 @@ export const implementedTools = new Set(['gamma', 'egfr', 'cha2ds2-vasc', 'chads
   'drip-rate', 'cardiac-index', 'svri', 'maddrey', 'iron-deficit', 'rpi', 'nnt', 'post-test-probability', 'delta-gap', 'oxygen-delivery',
   // v6追加
   'plasma-osmolality', 'urine-osmolality', 'tsat', 'hba1c-glucose',
+  // 2026-03-22追加
+  'pf-ratio', 'due-date', 'heat-stroke',
 ])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
