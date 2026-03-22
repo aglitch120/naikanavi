@@ -1390,7 +1390,7 @@ export default function AdminDashboard() {
   // Fetch analysis data
   useEffect(() => {
     if (!isAuth) return
-    fetch('/api/admin/analysis')
+    fetch('/admin-analysis.json')
       .then(r => r.json())
       .then(data => {
         setAnalysis(data)
@@ -1436,7 +1436,7 @@ export default function AdminDashboard() {
         </div>
         <div className="flex items-center gap-3">
           <button onClick={() => {
-            fetch('/api/admin/analysis').then(r => r.json()).then(data => {
+            fetch('/admin-analysis.json').then(r => r.json()).then(data => {
               setAnalysis(data)
               setLastRefresh(new Date().toLocaleTimeString('ja-JP'))
             })
