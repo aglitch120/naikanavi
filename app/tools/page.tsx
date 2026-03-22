@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ToolsTutorial } from "@/components/tutorials"
+import { tools, implementedTools } from '@/lib/tools-config'
 
 export const metadata: Metadata = {
-  title: '臨床ツール — iwor',
-  description: '臨床計算ツール166種、薬剤ガイド・薬剤比較25カテゴリ、手技ガイド15種、基準値早見表。すべて無料。',
+  title: '臨床計算ツール178種 無料 — iwor',
+  description: 'eGFR・CHA2DS2-VASc・Child-Pugh・CURB-65・Wells・SOFA・BMI・A-DROP等178種の臨床計算ツール。薬剤ガイド・比較25種、手技ガイド15種、基準値早見表。すべて無料。医師・研修医向け。',
 }
 
 const categories = [
@@ -69,6 +70,20 @@ export default function ToolsHubPage() {
           </Link>
         ))}
       </div>
+      {/* SEO: 全ツール一覧（SSR出力でGooglebotに見える） */}
+      <section className="mt-10 border-t border-br pt-8">
+        <h2 className="text-base font-bold text-tx mb-1">全{implementedTools.size}種の臨床計算ツール</h2>
+        <p className="text-xs text-muted mb-4">すべて無料・登録不要でご利用いただけます</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5">
+          {tools.filter(t => implementedTools.has(t.slug)).map(t => (
+            <Link key={t.slug} href={`/tools/calc/${t.slug}`}
+              className="px-3 py-2 rounded-lg text-[11px] text-tx hover:bg-acl hover:text-ac transition-colors border border-transparent hover:border-ac/20 truncate">
+              {t.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <ToolsTutorial />
     </main>
   )

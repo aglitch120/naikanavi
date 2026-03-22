@@ -248,6 +248,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══ SEO: サービス説明（SSR） ═══ */}
+      <section className="mb-6 px-4">
+        <div className="bg-s0 border border-br rounded-xl p-5 space-y-4">
+          <h2 className="text-sm font-bold text-tx">iwor（イウォール）でできること</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-muted leading-relaxed">
+            <div>
+              <h3 className="font-bold text-tx mb-1">臨床計算ツール 178種</h3>
+              <p>eGFR、CHA2DS2-VASc、CHADS2、HAS-BLED、Child-Pugh、MELD、CURB-65、A-DROP、Wells PE/DVT、qSOFA、SOFA、BMI、BSA、GCS、NIHSS、APACHE II、Glasgow-Blatchford、HEART Score、TIMI、NEWS2 等178種の臨床スコアリングツール。すべて無料・登録不要。</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-tx mb-1">薬剤ガイド・比較表 25種</h3>
+              <p>抗菌薬スペクトラム、腎機能別抗菌薬用量、ステロイド換算、オピオイド換算。DOAC・スタチン・ARB・CCB・SGLT2i・DPP-4i・GLP-1RA・NSAIDs・PPI等25カテゴリの薬剤比較表。</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-tx mb-1">J-OSLER・EPOC 管理</h3>
+              <p>内科専門研修J-OSLERの症例登録数・疾患群数・病歴要約数をカウント。初期研修EPOCの経験すべき症候29・疾病26・手技14のチェックリスト。EPOCからJ-OSLERへの経験引き継ぎ機能。</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-tx mb-1">マッチング対策・キャリア</h3>
+              <p>全国1,470病院のマッチングデータベース。倍率・マッチ率・本命度・穴場度の独自分析。プロフィールウィザードで履歴書・自己PR自動生成。見学申込メール・お礼メールテンプレート。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ 免責 ═══ */}
       <section className="mb-4 px-4">
         <div className="bg-s1 rounded-xl p-4 text-[11px] text-muted leading-relaxed space-y-1">
