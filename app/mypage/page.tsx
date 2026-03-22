@@ -87,6 +87,18 @@ export default function MyPage() {
       <h1 className="text-xl font-bold text-tx mb-1">マイページ</h1>
       <p className="text-xs text-muted mb-6">プロフィール・設定を管理</p>
 
+      {/* 友達を招待（一番上） */}
+      <div className="rounded-xl p-4 mb-4 border border-amber-200 bg-amber-50">
+        <div className="flex items-center gap-3">
+          <span className="text-2xl">🎁</span>
+          <div className="flex-1">
+            <p className="text-sm font-bold text-tx">友達を招待して特典をもらう</p>
+            <p className="text-[10px] text-muted">紹介した方もされた方もPRO初月無料</p>
+          </div>
+        </div>
+        <ReferralSection isPro={isPro} />
+      </div>
+
       {/* PRO Status */}
       <div className={`rounded-xl p-4 mb-6 border ${isPro ? 'bg-acl border-ac/20' : 'bg-s0 border-br'}`}>
         <div className="flex items-center justify-between">
@@ -179,8 +191,6 @@ export default function MyPage() {
           )}
         </Section>
 
-        {/* 友達を招待（Referral） */}
-        <ReferralSection isPro={isPro} />
       </div>
 
       {/* Save confirmation */}

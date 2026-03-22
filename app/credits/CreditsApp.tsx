@@ -62,7 +62,7 @@ function AddEntryModal({ categories, onAdd, onClose }: {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40" onClick={onClose}>
-      <div className="bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-md p-5 space-y-4" onClick={e => e.stopPropagation()}>
+      <div className="bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-md p-5 pb-24 sm:pb-5 space-y-4" onClick={e => e.stopPropagation()}>
         <h3 className="text-base font-bold" style={{ color: C.tx }}>単位を追加</h3>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div>
@@ -486,8 +486,8 @@ export default function CreditsApp() {
         <ProModal feature="save" onClose={() => setShowProModal(false)} />
       )}
 
-      {/* ── Sticky bottom banner ── */}
-      {specialty && (
+      {/* ── Sticky bottom banner (モーダル表示中は非表示) ── */}
+      {specialty && !showAddModal && !showProModal && (
         <div className="fixed left-0 right-0 px-4 z-40 bottom-20 md:bottom-4">
           <div className="max-w-2xl mx-auto">
             <button

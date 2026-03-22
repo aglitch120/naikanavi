@@ -207,8 +207,7 @@ export default function HeroBackground() {
             <g transform="translate(0,100) scale(1.5)">
               {/* 細い胴体 */}
               <ellipse cx="0" cy="0" rx="5" ry="1.2" fill="#1B4F3A" />
-              {/* 二股の尾 */}
-              <path d="M-5,0 L-10,-2.5 L-7,0 L-10,2.5Z" fill="#1B4F3A" />
+
               {/* 左翼 — 長く尖った形状 */}
               <path d="M-2,-1 Q0,-8 8,-14 Q9,-13.5 6,-8 Q3,-4 1,-1Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
@@ -230,7 +229,6 @@ export default function HeroBackground() {
               values="920,5; -80,5" dur="32s" repeatCount="indefinite" />
             <g transform="translate(0,85) scale(1.1)">
               <ellipse cx="0" cy="0" rx="4.5" ry="1" fill="#1B4F3A" />
-              <path d="M-4.5,0 L-8.5,-2 L-6,0 L-8.5,2Z" fill="#1B4F3A" />
               <path d="M-1.5,-0.8 Q0.5,-7 7,-12 Q7.8,-11.5 5,-7 Q2.5,-3.5 0.5,-0.8Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
                   values="0,0,-0.8; -13,0,-0.8; 0,0,-0.8" dur="1.2s" repeatCount="indefinite"
@@ -250,7 +248,6 @@ export default function HeroBackground() {
               values="950,-5; -50,-5" dur="40s" repeatCount="indefinite" />
             <g transform="translate(0,72) scale(0.8)">
               <ellipse cx="0" cy="0" rx="4" ry="0.9" fill="#1B4F3A" />
-              <path d="M-4,0 L-7.5,-1.8 L-5.5,0 L-7.5,1.8Z" fill="#1B4F3A" />
               <path d="M-1,-0.7 Q0.5,-6 6,-10 Q6.8,-9.5 4.5,-6 Q2,-3 0.5,-0.7Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
                   values="0,0,-0.7; -11,0,-0.7; 0,0,-0.7" dur="1.5s" repeatCount="indefinite"
@@ -270,7 +267,6 @@ export default function HeroBackground() {
               values="840,15; -60,15" dur="36s" repeatCount="indefinite" />
             <g transform="translate(0,90) scale(0.6)">
               <ellipse cx="0" cy="0" rx="3.5" ry="0.8" fill="#1B4F3A" />
-              <path d="M-3.5,0 L-6.5,-1.5 L-5,0 L-6.5,1.5Z" fill="#1B4F3A" />
               <path d="M-1,-0.6 Q0.5,-5.5 5.5,-9 Q6.2,-8.5 4,-5.5 Q2,-2.5 0.5,-0.6Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
                   values="0,0,-0.6; -10,0,-0.6; 0,0,-0.6" dur="1.7s" repeatCount="indefinite"

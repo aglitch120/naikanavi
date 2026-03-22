@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* iOS: 16px未満のinputでフォーカス時にズームするのを防止 */
+@supports (-webkit-touch-callout: none) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
 @layer base {
   :root {
     /* ── ページ背景 ── */
