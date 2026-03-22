@@ -15,7 +15,7 @@ const roles: RoleOption[] = [
   { key: 'student',   label: '医学生',     sub: 'CBT・マッチング・国試', emoji: '🎓' },
   { key: 'resident',  label: '初期研修医',  sub: '臨床ツール・症例記録',   emoji: '🏥' },
   { key: 'fellow',    label: '専攻医',     sub: 'J-OSLER・論文・学会',   emoji: '📋' },
-  { key: 'attending', label: '勤務医',     sub: '臨床ツール・論文・マネー', emoji: '🩺' },
+  { key: 'attending', label: '医師',       sub: '臨床ツール・論文・マネー', emoji: '🩺' },
 ]
 
 const STORAGE_KEY = 'iwor_role'

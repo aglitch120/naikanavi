@@ -20,7 +20,7 @@ const ROLES = [
   { id: 'student', label: '医学生' },
   { id: 'resident', label: '初期研修医' },
   { id: 'fellow', label: '専攻医' },
-  { id: 'attending', label: '勤務医' },
+  { id: 'attending', label: '医師' },
 ]
 
 const SPECIALTIES = [
