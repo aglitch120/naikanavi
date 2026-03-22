@@ -198,92 +198,87 @@ export default function HeroBackground() {
             />
           </ellipse>
 
-          {/* ═══ 鳥 — 横向き飛翔シルエット（カモメ風） ═══ */}
+          {/* ═══ 鳥 — 山鳥シルエット（トビ/ツバメ型: 細身・長翼・二股尾） ═══ */}
 
-          {/* 鳥1 — 手前、大きめ */}
-          <g opacity="0.18">
+          {/* 鳥1 — 手前 */}
+          <g opacity="0.15">
             <animateTransform attributeName="transform" type="translate"
-              values="880,0; -120,0" dur="24s" repeatCount="indefinite" />
-            <g transform="translate(0,105) scale(1.6)">
-              {/* 胴体 */}
-              <ellipse cx="0" cy="0" rx="7" ry="2.2" fill="#1B4F3A" />
-              {/* くちばし */}
-              <path d="M7,0 L11,-0.5 L7,0.5Z" fill="#1B4F3A" />
-              {/* 尾 */}
-              <path d="M-7,0 Q-10,-1 -12,1 Q-10,0.5 -7,0.5Z" fill="#1B4F3A" />
-              {/* 上翼 — 羽ばたき */}
-              <path d="M-3,-2 Q-2,-10 6,-14 Q8,-14 5,-9 Q2,-5 3,-2Z" fill="#1B4F3A">
+              values="880,0; -120,0" dur="26s" repeatCount="indefinite" />
+            <g transform="translate(0,100) scale(1.5)">
+              {/* 細い胴体 */}
+              <ellipse cx="0" cy="0" rx="5" ry="1.2" fill="#1B4F3A" />
+              {/* 二股の尾 */}
+              <path d="M-5,0 L-10,-2.5 L-7,0 L-10,2.5Z" fill="#1B4F3A" />
+              {/* 左翼 — 長く尖った形状 */}
+              <path d="M-2,-1 Q0,-8 8,-14 Q9,-13.5 6,-8 Q3,-4 1,-1Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,-2; -18,0,-2; 0,0,-2" dur="0.8s" repeatCount="indefinite"
+                  values="0,0,-1; -15,0,-1; 0,0,-1" dur="1.0s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
-              {/* 下翼 — 逆位相 */}
-              <path d="M-3,2 Q-2,8 5,12 Q7,12 4,8 Q2,4 3,2Z" fill="#1B4F3A">
+              {/* 右翼 */}
+              <path d="M-2,1 Q0,7 7,12 Q8,11.5 5,7 Q3,3.5 1,1Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,2; 14,0,2; 0,0,2" dur="0.8s" repeatCount="indefinite"
+                  values="0,0,1; 12,0,1; 0,0,1" dur="1.0s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
             </g>
           </g>
 
           {/* 鳥2 — 中距離 */}
-          <g opacity="0.14">
+          <g opacity="0.12">
             <animateTransform attributeName="transform" type="translate"
-              values="920,8; -80,8" dur="30s" repeatCount="indefinite" />
-            <g transform="translate(0,88) scale(1.2)">
-              <ellipse cx="0" cy="0" rx="6" ry="2" fill="#1B4F3A" />
-              <path d="M6,0 L9.5,-0.4 L6,0.4Z" fill="#1B4F3A" />
-              <path d="M-6,0 Q-8.5,-0.8 -10,0.8 Q-8.5,0.4 -6,0.4Z" fill="#1B4F3A" />
-              <path d="M-2.5,-1.8 Q-1.5,-8 5,-11.5 Q6.5,-11.5 4,-7.5 Q1.5,-4 2.5,-1.8Z" fill="#1B4F3A">
+              values="920,5; -80,5" dur="32s" repeatCount="indefinite" />
+            <g transform="translate(0,85) scale(1.1)">
+              <ellipse cx="0" cy="0" rx="4.5" ry="1" fill="#1B4F3A" />
+              <path d="M-4.5,0 L-8.5,-2 L-6,0 L-8.5,2Z" fill="#1B4F3A" />
+              <path d="M-1.5,-0.8 Q0.5,-7 7,-12 Q7.8,-11.5 5,-7 Q2.5,-3.5 0.5,-0.8Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,-1.8; -16,0,-1.8; 0,0,-1.8" dur="1.0s" repeatCount="indefinite"
+                  values="0,0,-0.8; -13,0,-0.8; 0,0,-0.8" dur="1.2s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
-              <path d="M-2.5,1.8 Q-1.5,7 4,10 Q5.5,10 3.5,6.5 Q1.5,3.5 2.5,1.8Z" fill="#1B4F3A">
+              <path d="M-1.5,0.8 Q0.5,6 6,10 Q6.8,9.5 4.5,6 Q2.5,3 0.5,0.8Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,1.8; 12,0,1.8; 0,0,1.8" dur="1.0s" repeatCount="indefinite"
+                  values="0,0,0.8; 10,0,0.8; 0,0,0.8" dur="1.2s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
             </g>
           </g>
 
-          {/* 鳥3 — 遠景、小さめ */}
-          <g opacity="0.10">
+          {/* 鳥3 — 遠景 */}
+          <g opacity="0.09">
             <animateTransform attributeName="transform" type="translate"
-              values="950,-3; -50,-3" dur="38s" repeatCount="indefinite" />
-            <g transform="translate(0,75) scale(0.9)">
-              <ellipse cx="0" cy="0" rx="5" ry="1.6" fill="#1B4F3A" />
-              <path d="M5,0 L8,-0.3 L5,0.3Z" fill="#1B4F3A" />
-              <path d="M-5,0 Q-7,-0.6 -8.5,0.6Z" fill="#1B4F3A" />
-              <path d="M-2,-1.5 Q-1,-7 4,-9.5 Q5.5,-9 3.5,-6 Q1,-3 2,-1.5Z" fill="#1B4F3A">
+              values="950,-5; -50,-5" dur="40s" repeatCount="indefinite" />
+            <g transform="translate(0,72) scale(0.8)">
+              <ellipse cx="0" cy="0" rx="4" ry="0.9" fill="#1B4F3A" />
+              <path d="M-4,0 L-7.5,-1.8 L-5.5,0 L-7.5,1.8Z" fill="#1B4F3A" />
+              <path d="M-1,-0.7 Q0.5,-6 6,-10 Q6.8,-9.5 4.5,-6 Q2,-3 0.5,-0.7Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,-1.5; -14,0,-1.5; 0,0,-1.5" dur="1.3s" repeatCount="indefinite"
+                  values="0,0,-0.7; -11,0,-0.7; 0,0,-0.7" dur="1.5s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
-              <path d="M-2,1.5 Q-1,6 3.5,8.5 Q5,8 3,5.5 Q1,3 2,1.5Z" fill="#1B4F3A">
+              <path d="M-1,0.7 Q0.5,5 5.5,8.5 Q6.3,8 4,5.5 Q2,2.8 0.5,0.7Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,1.5; 10,0,1.5; 0,0,1.5" dur="1.3s" repeatCount="indefinite"
+                  values="0,0,0.7; 9,0,0.7; 0,0,0.7" dur="1.5s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
             </g>
           </g>
 
-          {/* 鳥4 — 遠景追加、さらに小さい */}
-          <g opacity="0.08">
+          {/* 鳥4 — 最遠景 */}
+          <g opacity="0.07">
             <animateTransform attributeName="transform" type="translate"
-              values="860,20; -60,20" dur="34s" repeatCount="indefinite" />
-            <g transform="translate(0,95) scale(0.7)">
-              <ellipse cx="0" cy="0" rx="5" ry="1.5" fill="#1B4F3A" />
-              <path d="M5,0 L7.5,-0.3 L5,0.3Z" fill="#1B4F3A" />
-              <path d="M-5,0 Q-6.5,-0.5 -7.5,0.5Z" fill="#1B4F3A" />
-              <path d="M-2,-1.3 Q-1,-6.5 3.5,-8.5 Q5,-8 3,-5.5 Q1,-2.8 2,-1.3Z" fill="#1B4F3A">
+              values="840,15; -60,15" dur="36s" repeatCount="indefinite" />
+            <g transform="translate(0,90) scale(0.6)">
+              <ellipse cx="0" cy="0" rx="3.5" ry="0.8" fill="#1B4F3A" />
+              <path d="M-3.5,0 L-6.5,-1.5 L-5,0 L-6.5,1.5Z" fill="#1B4F3A" />
+              <path d="M-1,-0.6 Q0.5,-5.5 5.5,-9 Q6.2,-8.5 4,-5.5 Q2,-2.5 0.5,-0.6Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,-1.3; -12,0,-1.3; 0,0,-1.3" dur="1.5s" repeatCount="indefinite"
+                  values="0,0,-0.6; -10,0,-0.6; 0,0,-0.6" dur="1.7s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
-              <path d="M-2,1.3 Q-1,5.5 3,7.5 Q4.5,7 2.5,5 Q1,2.5 2,1.3Z" fill="#1B4F3A">
+              <path d="M-1,0.6 Q0.5,4.5 5,7.5 Q5.7,7 3.5,4.5 Q2,2.3 0.5,0.6Z" fill="#1B4F3A">
                 <animateTransform attributeName="transform" type="rotate"
-                  values="0,0,1.3; 10,0,1.3; 0,0,1.3" dur="1.5s" repeatCount="indefinite"
+                  values="0,0,0.6; 8,0,0.6; 0,0,0.6" dur="1.7s" repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" />
               </path>
             </g>
