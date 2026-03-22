@@ -18,26 +18,29 @@ export default function ProPulseHint({ children }: ProPulseHintProps) {
   const [showTooltip, setShowTooltip] = useState(false)
 
   useEffect(() => {
+    // PRO会員は表示しない
+    if (localStorage.getItem('iwor_pro_user') === 'true') return
+
     // お気に入りが既にあれば表示しない
     try {
       const favs = JSON.parse(localStorage.getItem('iwor_favorites') || '[]')
       if (favs.length > 0) return
     } catch {}
 
-    // ツール使用回数を確認
+    // ページ訪問回数で判定（ツール使用回数がなくても動くように）
     try {
-      const usage = JSON.parse(localStorage.getItem('iwor_tool_usage') || '{"_total":0}')
-      const total = usage._total || 0
-      if (total < 5) return // 5回未満は表示しない
+      const visitCount = parseInt(localStorage.getItem('iwor_visit_count') || '0', 10) + 1
+      localStorage.setItem('iwor_visit_count', String(visitCount))
 
-      // 3回に1回の頻度（使用回数 mod 3 === 0）
-      if (total % 3 !== 0) return
+      // 初回〜2回目はスキップ、3回目以降は5回に1回
+      if (visitCount < 3) return
+      if (visitCount % 5 !== 0) return
     } catch { return }
 
     const showTimer = setTimeout(() => {
       setShowHint(true)
       setShowTooltip(true)
-    }, 800)
+    }, 1200)
 
     return () => clearTimeout(showTimer)
   }, [])
