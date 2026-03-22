@@ -62,7 +62,7 @@ export default function HospitalTab({
   const [sortKey, setSortKey] = useState<SortKey>('matchRate')
   const [sortAsc, setSortAsc] = useState(true)
 
-  // ── 気になる / 志望 リスト ──
+  // ── 志望 / 志望 リスト ──
   const [interestedIds, setInterestedIds] = useState<number[]>([])
   const [wishlistIds, setWishlistIds] = useState<number[]>([])
   const [expandedId, setExpandedId] = useState<number | null>(null)
@@ -77,7 +77,7 @@ export default function HospitalTab({
       if (i) setInterestedIds(JSON.parse(i))
       if (w) setWishlistIds(JSON.parse(w))
     } catch { /* ignore */ }
-    // 気になるカウント取得
+    // 志望カウント取得
     fetch('https://iwor-api.mightyaddnine.workers.dev/api/hospital/interest-counts')
       .then(r => r.json())
       .then(d => { if (d.ok && d.counts) setInterestCounts(d.counts) })
@@ -412,12 +412,12 @@ export default function HospitalTab({
         </>
       )}
 
-      {/* ══════ 人気ランキングタブ ══════ */}
+      {/* ══════ 志望ランキングタブ ══════ */}
       {subTab === 'ranking' && (
         <div className="space-y-3">
           <div className="bg-s0 border border-br rounded-xl p-4">
-            <p className="text-xs font-bold text-tx mb-1">🔥 気になるランキング</p>
-            <p className="text-[11px] text-muted mb-4">全ユーザーの「気になる」数で集計</p>
+            <p className="text-xs font-bold text-tx mb-1">🔥 志望ランキング</p>
+            <p className="text-[11px] text-muted mb-4">全ユーザーの「志望」数で集計</p>
             {(() => {
               const ranked = HOSPITALS
                 .map(h => ({ ...h, count: interestCounts[String(h.id)] || 0 }))
@@ -464,7 +464,7 @@ export default function HospitalTab({
         </div>
       )}
 
-      {/* ══════ 気になるタブ ══════ */}
+      {/* ══════ 志望タブ ══════ */}
       {subTab === 'interested' && (
         <ListTab
           ids={interestedIds}
@@ -477,7 +477,7 @@ export default function HospitalTab({
             removeFromList('interested', id)
             if (!wishlistIds.includes(id)) setWishlistIds(prev => [...prev, id])
           }}
-          emptyMessage="気になる病院をタップして追加しましょう"
+          emptyMessage="志望病院をタップして追加しましょう"
           emptySubMessage="病院検索タブで ♡ ボタンを押すと追加されます"
         />
       )}
@@ -602,7 +602,7 @@ function HospitalCard({
           className={`flex-1 py-2 rounded-lg text-[11px] font-medium border transition-all flex items-center justify-center gap-1 ${
             isInterested ? 'border-pink-300 bg-pink-50 text-pink-600' : 'border-br text-muted hover:text-tx'
           }`}>
-          {isInterested ? '♥' : '♡'} 気になる
+          {isInterested ? '♥' : '♡'} 志望
           {interestCount > 0 && (
             isPro
               ? <span className="text-[10px] opacity-70">({interestCount})</span>
@@ -719,7 +719,7 @@ function StatBox({ label, value, highlight }: { label: string; value: string; hi
 
 
 // ═══════════════════════════════════════
-//  気になる / 志望リスト タブ
+//  志望 / 志望リスト タブ
 // ═══════════════════════════════════════
 function ListTab({
   ids, listType, isPro, onShowProModal, onRemove, onMove, onMoveToWishlist,
@@ -746,7 +746,7 @@ function ListTab({
           </svg>
         </div>
         <p className="text-sm font-bold text-tx mb-1">PRO限定機能</p>
-        <p className="text-xs text-muted mb-4">{listType === 'interested' ? '気になる病院リスト' : '志望リスト＆マッチ確率計算'}はPRO会員で使えます</p>
+        <p className="text-xs text-muted mb-4">{listType === 'interested' ? '志望病院リスト' : '志望リスト＆マッチ確率計算'}はPRO会員で使えます</p>
         <button onClick={onShowProModal} className="px-6 py-2.5 rounded-xl text-sm font-bold text-white" style={{ background: MC }}>
           PRO会員になる
         </button>

@@ -433,9 +433,7 @@ function EmailTemplates({ profile, mode }: { profile: Profile; mode: 'matching' 
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({})
   const [copied, setCopied] = useState(false)
 
-  const templates = mode === 'career'
-    ? TEMPLATES.filter(t => t.id !== 'adoption-thanks')
-    : TEMPLATES
+  const templates = TEMPLATES
 
   const selected = templates.find(t => t.id === selectedId) ?? null
 
