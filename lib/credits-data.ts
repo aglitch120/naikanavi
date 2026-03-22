@@ -38,10 +38,12 @@ export interface CreditEntry {
   credits: number
   memo: string
   date: string
+  specialtyId?: string  // エントリーがどの専門医に属するか（未指定=現在選択中の専門医）
 }
 
 export interface UserCreditsData {
   selectedSpecialty: string | null
+  selectedSpecialties?: string[]  // 複数専門医（PRO機能）
   entries: CreditEntry[]
   targetDate?: string
 }

@@ -152,28 +152,33 @@ export default function CreditsApp() {
 
   const specialty = data.selectedSpecialty ? getSpecialtyById(data.selectedSpecialty) : null
 
+  // 現在の専門医に紐づくエントリーのみ表示
+  const filteredEntries = useMemo(() => {
+    return data.entries.filter(e => !e.specialtyId || e.specialtyId === data.selectedSpecialty)
+  }, [data.entries, data.selectedSpecialty])
+
   const totalCredits = useMemo(() => {
-    return data.entries.reduce((sum, e) => sum + e.credits, 0)
-  }, [data.entries])
+    return filteredEntries.reduce((sum, e) => sum + e.credits, 0)
+  }, [filteredEntries])
 
   const creditsByCategory = useMemo(() => {
     const map: Record<string, number> = {}
-    for (const e of data.entries) {
+    for (const e of filteredEntries) {
       map[e.categoryId] = (map[e.categoryId] || 0) + e.credits
     }
     return map
-  }, [data.entries])
+  }, [filteredEntries])
 
   const sortedEntries = useMemo(() => {
-    return [...data.entries].sort((a, b) => b.date.localeCompare(a.date))
-  }, [data.entries])
+    return [...filteredEntries].sort((a, b) => b.date.localeCompare(a.date))
+  }, [filteredEntries])
 
   const handleSelectSpecialty = (id: string) => {
     save({ ...data, selectedSpecialty: id || null })
   }
 
   const handleAddEntry = (entry: Omit<CreditEntry, 'id'>) => {
-    const newEntry: CreditEntry = { ...entry, id: genId() }
+    const newEntry: CreditEntry = { ...entry, id: genId(), specialtyId: data.selectedSpecialty || undefined }
     save({ ...data, entries: [...data.entries, newEntry] })
   }
 
