@@ -7,7 +7,13 @@ const MCL = '#E8F0EC'
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
 
 interface Answer { choices: string[]; freeText: string }
-type Phase = 'q1' | 'q2' | 'insight' | 'q3' | 'q4' | 'q5' | 'result'
+type Phase = 'basic' | 'q1' | 'q2' | 'insight' | 'q3' | 'q4' | 'q5' | 'result'
+
+// ── 基本情報 ──
+const BASIC_INFO = {
+  icon: '👤', question: 'まず、基本情報を教えてください',
+  sub: '履歴書に必要な情報です',
+}
 
 // ── 固定質問（コア5問）──
 const QUESTIONS = {
@@ -47,10 +53,13 @@ interface Props {
 }
 
 export default function ImmersiveWizard({ onComplete, savedAnswers }: Props) {
-  const [phase, setPhase] = useState<Phase>('q1')
+  const [phase, setPhase] = useState<Phase>('basic')
   const [answers, setAnswers] = useState<Record<string, Answer>>(savedAnswers || {})
   const [selected, setSelected] = useState<string[]>([])
   const [freeText, setFreeText] = useState('')
+  const [basicName, setBasicName] = useState('')
+  const [basicUniv, setBasicUniv] = useState('')
+  const [basicYear, setBasicYear] = useState('')
   const [aiInsight, setAiInsight] = useState('')
   const [aiQuestion, setAiQuestion] = useState<{ question: string; choices: string[] } | null>(null)
   const [aiCatchphrases, setAiCatchphrases] = useState<string[]>([])
@@ -58,7 +67,7 @@ export default function ImmersiveWizard({ onComplete, savedAnswers }: Props) {
   const [loading, setLoading] = useState(false)
   const [resumeCopied, setResumeCopied] = useState(false)
 
-  const phases: Phase[] = ['q1', 'q2', 'insight', 'q3', 'q4', 'q5', 'result']
+  const phases: Phase[] = ['basic', 'q1', 'q2', 'insight', 'q3', 'q4', 'q5', 'result']
   const phaseIndex = phases.indexOf(phase)
   const progress = Math.round((phaseIndex / (phases.length - 1)) * 100)
 
@@ -97,6 +106,20 @@ export default function ImmersiveWizard({ onComplete, savedAnswers }: Props) {
   // ═══ 遷移ロジック ═══
   const next = useCallback(async () => {
     setLoading(true)
+
+    if (phase === 'basic') {
+      // 基本情報を保存
+      try {
+        const existing = JSON.parse(localStorage.getItem('iwor_matching_profile') || '{}')
+        if (basicName) existing.name = basicName
+        if (basicUniv) existing.university = basicUniv
+        if (basicYear) existing.graduationYear = basicYear
+        localStorage.setItem('iwor_matching_profile', JSON.stringify(existing))
+      } catch {}
+      setLoading(false)
+      setPhase('q1')
+      return
+    }
 
     if (phase === 'q1') {
       const newAnswers = saveAnswer('doctor-reason')
@@ -343,6 +366,54 @@ export default function ImmersiveWizard({ onComplete, savedAnswers }: Props) {
           className="w-full py-3 rounded-xl text-sm font-bold text-white disabled:opacity-30"
           style={{ background: MC }}>
           {loading ? '分析中...' : '次へ →'}
+        </button>
+        <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+      </div>
+    )
+  }
+
+  // ═══ 基本情報画面 ═══
+  if (phase === 'basic') {
+    return (
+      <div className="max-w-md mx-auto">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--s2)' }}>
+            <div className="h-full rounded-full transition-all duration-500" style={{ width: `${progress}%`, background: MC }} />
+          </div>
+        </div>
+        <div style={{ animation: 'fadeIn 0.3s ease-out' }}>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-2xl">{BASIC_INFO.icon}</span>
+          </div>
+          <h2 className="text-lg font-bold text-tx mb-1">{BASIC_INFO.question}</h2>
+          <p className="text-[10px] text-muted mb-5">{BASIC_INFO.sub}</p>
+          <div className="space-y-3">
+            <div>
+              <label className="text-[10px] font-bold text-muted block mb-1">氏名</label>
+              <input type="text" value={basicName} onChange={e => setBasicName(e.target.value)}
+                placeholder="山田 太郎"
+                className="w-full px-3 py-2.5 bg-s0 border border-br rounded-xl text-xs focus:border-ac outline-none" />
+            </div>
+            <div>
+              <label className="text-[10px] font-bold text-muted block mb-1">大学</label>
+              <input type="text" value={basicUniv} onChange={e => setBasicUniv(e.target.value)}
+                placeholder="○○大学医学部"
+                className="w-full px-3 py-2.5 bg-s0 border border-br rounded-xl text-xs focus:border-ac outline-none" />
+            </div>
+            <div>
+              <label className="text-[10px] font-bold text-muted block mb-1">卒業年度</label>
+              <select value={basicYear} onChange={e => setBasicYear(e.target.value)}
+                className="w-full px-3 py-2.5 bg-s0 border border-br rounded-xl text-xs focus:border-ac outline-none">
+                <option value="">選択してください</option>
+                {[2026, 2027, 2028, 2029, 2030].map(y => <option key={y} value={String(y)}>{y}年3月卒業</option>)}
+              </select>
+            </div>
+          </div>
+        </div>
+        <button onClick={next} disabled={loading}
+          className="w-full mt-6 py-3 rounded-xl text-sm font-bold text-white"
+          style={{ background: MC }}>
+          次へ →
         </button>
         <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
       </div>
