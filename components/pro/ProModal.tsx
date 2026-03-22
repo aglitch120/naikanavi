@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { trackProModalView, trackCtaClick } from '@/lib/gtag'
 
-type ProFeature = 'interpretation' | 'action_plan' | 'favorites' | 'save' | 'result' | 'full_access'
+type ProFeature = 'interpretation' | 'action_plan' | 'favorites' | 'save' | 'result' | 'full_access' | 'first_taste' | 'social_proof'
 
 const featureMessages: Record<ProFeature, { icon: string; title: string; description: string }> = {
   interpretation: {
@@ -36,6 +36,16 @@ const featureMessages: Record<ProFeature, { icon: string; title: string; descrip
     title: 'すべての機能を使う',
     description: 'データ保存・進捗管理・エクスポートが使い放題になります。',
   },
+  first_taste: {
+    icon: '🎁',
+    title: '初回無料プレビュー終了',
+    description: '2回目以降はPRO会員でご利用いただけます。',
+  },
+  social_proof: {
+    icon: '📊',
+    title: 'みんなのデータを見る',
+    description: '同期の進捗・ランキング・人気データはPRO限定です。',
+  },
 }
 
 interface ProModalProps {
@@ -45,6 +55,7 @@ interface ProModalProps {
 
 export default function ProModal({ feature = 'favorites', onClose }: ProModalProps) {
   const msg = featureMessages[feature]
+  const [userData, setUserData] = useState({ study: 0, josler: 0, bookmarks: 0 })
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -56,6 +67,20 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
   useEffect(() => {
     trackProModalView(feature)
   }, [feature])
+
+  // 損失回避カウンター: ユーザーの蓄積データ量を集計
+  useEffect(() => {
+    try {
+      let study = 0, josler = 0, bookmarks = 0
+      const fsrs = localStorage.getItem('iwor_study_fsrs')
+      if (fsrs) { const arr = JSON.parse(fsrs); study = Array.isArray(arr) ? arr.length : 0 }
+      const jd = localStorage.getItem('iwor_josler_data')
+      if (jd) { const d = JSON.parse(jd); josler = d?.totalCases || 0 }
+      const bm = localStorage.getItem('iwor_journal_bookmarks')
+      if (bm) { const arr = JSON.parse(bm); bookmarks = Array.isArray(arr) ? arr.length : 0 }
+      setUserData({ study, josler, bookmarks })
+    } catch {}
+  }, [])
 
   // body スクロール抑止
   useEffect(() => {
@@ -89,6 +114,34 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
           <p className="text-sm text-muted mb-4 leading-relaxed">
             {msg.description}
           </p>
+
+          {/* 損失回避カウンター: あなたの蓄積データ */}
+          {(userData.study > 0 || userData.josler > 0 || userData.bookmarks > 0) && (
+            <div className="bg-s1 rounded-xl p-3 mb-3 text-left">
+              <p className="text-[11px] font-bold text-tx mb-1.5">あなたのデータ</p>
+              <div className="flex gap-3 text-center">
+                {userData.study > 0 && (
+                  <div className="flex-1">
+                    <p className="text-base font-bold text-ac">{userData.study}</p>
+                    <p className="text-[9px] text-muted">Study枚</p>
+                  </div>
+                )}
+                {userData.josler > 0 && (
+                  <div className="flex-1">
+                    <p className="text-base font-bold text-ac">{userData.josler}</p>
+                    <p className="text-[9px] text-muted">JOSLER症例</p>
+                  </div>
+                )}
+                {userData.bookmarks > 0 && (
+                  <div className="flex-1">
+                    <p className="text-base font-bold text-ac">{userData.bookmarks}</p>
+                    <p className="text-[9px] text-muted">ブックマーク</p>
+                  </div>
+                )}
+              </div>
+              <p className="text-[9px] text-wn mt-1.5 font-medium">FREE会員ではブラウザを閉じるとデータが失われます</p>
+            </div>
+          )}
 
           {/* ネガティブフレーミング: 失うもの */}
           <div className="bg-wnl border border-wnb rounded-xl p-3 mb-3 text-left">

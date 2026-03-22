@@ -880,6 +880,124 @@ export default {
     }
 
     // ══════════════════════════════════════════════════
+    //  J-OSLER ベンチマーク（同期比較）
+    //  GET /api/josler/benchmark
+    //  PRO認証必須
+    // ══════════════════════════════════════════════════
+    if (path === "/api/josler/benchmark" && request.method === "GET") {
+      const authResult = await authenticate(request, env);
+      if (authResult.error) return json({ error: authResult.error }, authResult.status, request);
+
+      // ベンチマークキャッシュ（1時間）
+      const BM_CACHE_KEY = "josler:benchmark:cache";
+      try {
+        const cached = await env.IWOR_KV.get(BM_CACHE_KEY, "json");
+        if (cached && cached.updatedAt && (Date.now() - cached.updatedAt) < 3600000) {
+          // 自分のデータと比較
+          const myRaw = await env.IWOR_KV.get(`josler:${authResult.email}`);
+          const myData = myRaw ? JSON.parse(myRaw)?.data : null;
+          return json({ ok: true, benchmark: cached.benchmark, myData: myData ? { cases: myData.totalCases || 0, groups: myData.totalGroups || 0, summaries: myData.totalSummaries || 0 } : null }, 200, request);
+        }
+      } catch {}
+
+      // 全ユーザーのJOSLERデータを集計
+      const allKeys = await env.IWOR_KV.list({ prefix: "josler:" });
+      const stats = { cases: [], groups: [], summaries: [] };
+
+      for (const key of allKeys.keys) {
+        if (key.name === BM_CACHE_KEY) continue;
+        try {
+          const raw = await env.IWOR_KV.get(key.name, "json");
+          if (raw?.data) {
+            stats.cases.push(raw.data.totalCases || 0);
+            stats.groups.push(raw.data.totalGroups || 0);
+            stats.summaries.push(raw.data.totalSummaries || 0);
+          }
+        } catch {}
+      }
+
+      const calcStats = (arr) => {
+        if (arr.length === 0) return { avg: 0, median: 0, p25: 0, p75: 0, count: 0 };
+        arr.sort((a, b) => a - b);
+        const avg = Math.round(arr.reduce((a, b) => a + b, 0) / arr.length);
+        const median = arr[Math.floor(arr.length / 2)];
+        const p25 = arr[Math.floor(arr.length * 0.25)];
+        const p75 = arr[Math.floor(arr.length * 0.75)];
+        return { avg, median, p25, p75, count: arr.length };
+      };
+
+      const benchmark = {
+        cases: calcStats(stats.cases),
+        groups: calcStats(stats.groups),
+        summaries: calcStats(stats.summaries),
+        totalUsers: stats.cases.length,
+      };
+
+      // キャッシュ保存
+      await env.IWOR_KV.put(BM_CACHE_KEY, JSON.stringify({ benchmark, updatedAt: Date.now() }));
+
+      const myRaw = await env.IWOR_KV.get(`josler:${authResult.email}`);
+      const myData = myRaw ? JSON.parse(myRaw)?.data : null;
+
+      return json({ ok: true, benchmark, myData: myData ? { cases: myData.totalCases || 0, groups: myData.totalGroups || 0, summaries: myData.totalSummaries || 0 } : null }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  EPOC ベンチマーク（同期比較）
+    //  GET /api/epoc/benchmark
+    //  PRO認証必須
+    // ══════════════════════════════════════════════════
+    if (path === "/api/epoc/benchmark" && request.method === "GET") {
+      const authResult = await authenticate(request, env);
+      if (authResult.error) return json({ error: authResult.error }, authResult.status, request);
+
+      const BM_CACHE_KEY = "epoc:benchmark:cache";
+      try {
+        const cached = await env.IWOR_KV.get(BM_CACHE_KEY, "json");
+        if (cached && cached.updatedAt && (Date.now() - cached.updatedAt) < 3600000) {
+          return json({ ok: true, benchmark: cached.benchmark }, 200, request);
+        }
+      } catch {}
+
+      const allKeys = await env.IWOR_KV.list({ prefix: "epoc:" });
+      const stats = { symptoms: [], diseases: [], procedures: [] };
+
+      for (const key of allKeys.keys) {
+        if (key.name === BM_CACHE_KEY) continue;
+        try {
+          const raw = await env.IWOR_KV.get(key.name, "json");
+          if (raw?.data) {
+            stats.symptoms.push(raw.data.totalSymptoms || 0);
+            stats.diseases.push(raw.data.totalDiseases || 0);
+            stats.procedures.push(raw.data.totalProcedures || 0);
+          }
+        } catch {}
+      }
+
+      const calcStats = (arr) => {
+        if (arr.length === 0) return { avg: 0, median: 0, p25: 0, p75: 0, count: 0 };
+        arr.sort((a, b) => a - b);
+        return {
+          avg: Math.round(arr.reduce((a, b) => a + b, 0) / arr.length),
+          median: arr[Math.floor(arr.length / 2)],
+          p25: arr[Math.floor(arr.length * 0.25)],
+          p75: arr[Math.floor(arr.length * 0.75)],
+          count: arr.length,
+        };
+      };
+
+      const benchmark = {
+        symptoms: calcStats(stats.symptoms),
+        diseases: calcStats(stats.diseases),
+        procedures: calcStats(stats.procedures),
+        totalUsers: stats.symptoms.length,
+      };
+
+      await env.IWOR_KV.put(BM_CACHE_KEY, JSON.stringify({ benchmark, updatedAt: Date.now() }));
+      return json({ ok: true, benchmark }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
     //  マッチングプロフィール保存
     //  PUT /api/matching-profile
     //  Authorization: Bearer {sessionToken}

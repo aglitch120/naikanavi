@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useProStatus } from './useProStatus'
 import ProModal from './ProModal'
 
-type ProFeature = 'interpretation' | 'action_plan' | 'favorites' | 'save' | 'result' | 'full_access'
+type ProFeature = 'interpretation' | 'action_plan' | 'favorites' | 'save' | 'result' | 'full_access' | 'first_taste' | 'social_proof'
 
 interface ProGateProps {
   children: React.ReactNode
@@ -16,6 +16,8 @@ interface ProGateProps {
   previewHeight?: number
   /** ラベル（モザイク上に表示するテキスト） */
   label?: string
+  /** ファーストテイスト用: このゲートの一意識別子 */
+  tasteId?: string
 }
 
 /**
@@ -34,11 +36,13 @@ export default function ProGate({
   blurIntensity = 8,
   previewHeight = 60,
   label,
+  tasteId,
 }: ProGateProps) {
   const { isPro, isLoading } = useProStatus()
   const [showModal, setShowModal] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [needsGate, setNeedsGate] = useState(true)
+  const [tasteUsed, setTasteUsed] = useState(false)
 
   // コンテンツがpreviewHeight以下なら、ゲート不要
   useEffect(() => {
@@ -47,9 +51,45 @@ export default function ProGate({
     }
   }, [children, previewHeight])
 
+  // ファーストテイスト: 初回1回だけ無料閲覧
+  useEffect(() => {
+    if (feature === 'first_taste' && tasteId) {
+      const key = `iwor_first_taste_${tasteId}`
+      if (localStorage.getItem(key)) {
+        setTasteUsed(true)
+      }
+    }
+  }, [feature, tasteId])
+
+  const handleFirstTaste = () => {
+    if (feature === 'first_taste' && tasteId && !tasteUsed) {
+      localStorage.setItem(`iwor_first_taste_${tasteId}`, '1')
+      setTasteUsed(true)
+      return // 初回は無料で見せる
+    }
+    setShowModal(true)
+  }
+
   // PROユーザーまたはロード中 → そのまま表示
   if (isPro || isLoading) {
     return <>{children}</>
+  }
+
+  // ファーストテイスト: 初回はゲートなしで表示
+  if (feature === 'first_taste' && !tasteUsed) {
+    return (
+      <div onClick={handleFirstTaste} className="cursor-pointer">
+        <div className="bg-acl border border-ac/20 rounded-lg px-3 py-1.5 mb-2 text-center">
+          <span className="text-[10px] font-bold" style={{ color: '#1B4F3A' }}>初回無料プレビュー — タップで表示</span>
+        </div>
+        {showModal && <ProModal feature="full_access" onClose={() => setShowModal(false)} />}
+      </div>
+    )
+  }
+
+  // ファーストテイスト使用済み or 通常 → ゲート表示
+  if (feature === 'first_taste' && tasteUsed) {
+    // 2回目以降はPROモーダル
   }
 
   const defaultLabel = feature === 'interpretation'

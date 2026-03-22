@@ -67,52 +67,53 @@ const PURCHASE_URL = '/contact' // 移行完了までお問い合わせへ誘導
 // ── 料金プラン ──
 const plans = [
   {
-    id: '1y',
-    label: '1年パス',
-    price: 9800,
-    priceDisplay: '¥9,800',
-    monthly: '約¥550〜',
-    period: '/ 年',
+    id: 'monthly',
+    label: '月額プラン',
+    price: 980,
+    priceDisplay: '¥980',
+    monthly: '¥980/月',
+    period: '/ 月',
     discount: null,
     popular: false,
   },
   {
-    id: '2y',
-    label: '2年パス',
-    price: 15800,
-    priceDisplay: '¥15,800',
-    monthly: '約¥550〜',
-    period: '/ 2年',
-    discount: '19%OFF',
-    popular: true,
+    id: '6m',
+    label: '6ヶ月プラン',
+    price: 5400,
+    priceDisplay: '¥5,400',
+    monthly: '¥900/月',
+    period: '/ 6ヶ月',
+    discount: '8%OFF',
+    popular: false,
   },
   {
-    id: '3y',
-    label: '3年パス',
-    price: 19800,
-    priceDisplay: '¥19,800',
-    monthly: '約¥550',
-    period: '/ 3年',
-    discount: '33%OFF',
-    popular: false,
+    id: '1y',
+    label: '年額プラン',
+    price: 9800,
+    priceDisplay: '¥9,800',
+    monthly: '¥817/月',
+    period: '/ 年',
+    discount: '2ヶ月分おトク',
+    popular: true,
   },
 ]
 
 // ── FREE vs PRO 比較 ──
 const comparison = [
-  { feature: '臨床計算ツール（152種）', free: '✓ 計算・結果表示', pro: '✓ + 解釈・アクションプラン' },
-  { feature: 'ER対応ツリー（20本）', free: '✓ 全公開', pro: '✓ 全公開' },
-  { feature: 'ACLS/BLS フロー（4本）', free: '✓ 全公開', pro: '✓ 全公開' },
-  { feature: 'ICU管理ツール（4本）', free: '✓ 全公開', pro: '✓ 全公開' },
-  { feature: '検査読影（11本）', free: '✓ フロー操作', pro: '✓ + 総合解釈・鑑別' },
+  { feature: '臨床計算ツール（166種）', free: '✓ 計算・結果表示', pro: '✓ 全機能' },
   { feature: '薬剤比較（25カテゴリ）', free: '✓ 全公開', pro: '✓ 全公開' },
-  { feature: '薬剤ガイド', free: '✓ 全公開', pro: '✓ 全公開' },
-  { feature: '生活習慣病 総合管理', free: '✓ 判定結果', pro: '✓ + アクションプラン' },
+  { feature: '薬剤ガイド・手技ガイド', free: '✓ 全公開', pro: '✓ 全公開' },
+  { feature: 'iwor Study（フラッシュカード）', free: '✓ 自作デッキ+デフォルト3', pro: '✓ + コミュニティ + AI生成' },
   { feature: 'お気に入りツール保存', free: '—', pro: '✓ 無制限' },
-  { feature: '症例ログ（ドロップダウン）', free: 'UIプレビュー', pro: '✓ 無制限 + クラウド同期' },
   { feature: '論文フィード', free: '最新3件', pro: '✓ 全アーカイブ + ブックマーク' },
-  { feature: 'J-OSLER進捗管理', free: '—', pro: '✓ 全機能' },
-  { feature: 'マッチング・転職対策', free: 'UIプレビュー', pro: '✓ 無制限 + 志望リスト + マッチ確率' },
+  { feature: 'J-OSLER管理', free: '—', pro: '✓ 全機能 + 同期ベンチマーク' },
+  { feature: 'EPOC管理', free: '—', pro: '✓ 全機能 + 同期ベンチマーク' },
+  { feature: 'マッチング・転職対策', free: '病院検索のみ', pro: '✓ 志望リスト + おすすめ + 履歴書' },
+  { feature: '学会カレンダー', free: '3学会まで', pro: '✓ 無制限 + 参加予定者数' },
+  { feature: '専門医単位カウンター', free: '—', pro: '✓ 全機能' },
+  { feature: 'ストリークランキング', free: '自分のみ', pro: '✓ 全国順位 + 凍結権' },
+  { feature: 'プレゼン資料生成', free: '—', pro: '✓ 全機能' },
+  { feature: 'データ クラウド同期', free: '—', pro: '✓ 全データ保存' },
 ]
 
 // ── FAQ ──
@@ -205,10 +206,10 @@ export default function ProPage() {
       </section>
 
       {/* ═══ 数字 ═══ */}
-      <section className="grid grid-cols-3 gap-4 mb-16">
+      <section className="grid grid-cols-3 gap-4 mb-8">
         {[
-          { num: '152+', label: '臨床ツール', sub: '計算・薬剤・手技・基準値・γ計算' },
-          { num: '¥550〜', label: '月あたり', sub: '3年パス ¥19,800' },
+          { num: '166+', label: '臨床ツール', sub: '計算・薬剤・手技・基準値' },
+          { num: '¥817〜', label: '月あたり', sub: '年額プラン ¥9,800' },
           { num: '0', label: '患者データ保存', sub: 'キャリアデータのみ' },
         ].map((s) => (
           <div key={s.label} className="text-center p-4 bg-s0 border border-br rounded-xl">
@@ -217,6 +218,20 @@ export default function ProPage() {
             <p className="text-[11px] text-muted mt-0.5">{s.sub}</p>
           </div>
         ))}
+      </section>
+
+      {/* ═══ 権威バイアス（ソーシャルプルーフ） ═══ */}
+      <section className="mb-16 text-center">
+        <div className="inline-flex items-center gap-3 bg-s0 border border-br rounded-full px-5 py-2.5">
+          <div className="flex -space-x-2">
+            {['bg-blue-400', 'bg-green-400', 'bg-purple-400', 'bg-orange-400'].map((c, i) => (
+              <div key={i} className={`w-7 h-7 rounded-full ${c} border-2 border-white flex items-center justify-center text-white text-[10px] font-bold`}>
+                {['Dr', 'MD', 'Dr', 'MD'][i]}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-muted"><span className="font-bold text-tx">全国の医師</span>が利用中</p>
+        </div>
       </section>
 
       {/* ═══ セグメント別訴求 ═══ */}
@@ -377,9 +392,9 @@ export default function ProPage() {
           <h2 className="text-lg font-bold text-tx mb-4 text-center">iworの約束</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { icon: '🛡️', title: '患者データゼロ', desc: '患者の個人情報・検査値は一切保存しません。キャリアデータ（経験疾患数等）のみ。' },
-              { icon: '🚨', title: '緊急ツール永久無料', desc: 'ER対応・ACLS・ICU管理は完全公開。患者安全に関わる情報は絶対に有料化しません。' },
-              { icon: '📖', title: '出典明記・E-E-A-T準拠', desc: '全ツールに根拠論文・ガイドラインを明記。医師が監修。' },
+              { icon: '🛡️', title: '患者データゼロ', desc: '患者の個人情報・検査値は一切保存しません。キャリアデータのみ。' },
+              { icon: '🚨', title: '臨床ツール永久無料', desc: '計算ツール166種・薬剤ガイド・手技ガイドは完全無料。緊急時に使うツールは有料化しません。' },
+              { icon: '📖', title: '出典明記・医師監修', desc: '全ツールに根拠論文・ガイドラインを明記。製薬・医療広告ゼロ。' },
             ].map((item) => (
               <div key={item.title} className="text-center">
                 <span className="text-2xl block mb-2">{item.icon}</span>
@@ -431,7 +446,7 @@ export default function ProPage() {
                 今日から、臨床をもっと深く。
               </h2>
               <p className="text-white/70 text-sm mb-6 max-w-md mx-auto">
-                152+の臨床ツール、J-OSLER、マッチング対策。月あたり約¥550〜で全機能アクセス。
+                166+の臨床ツール、Study、J-OSLER、マッチング対策。月額¥980〜で全機能アクセス。
               </p>
               <a
                 href="/contact"
@@ -448,7 +463,7 @@ export default function ProPage() {
               >
                 購入済みの方はこちら
               </a>
-              <p className="text-white/40 text-xs mt-3">¥9,800/年〜 ・ クレジットカード・PayPay・コンビニ払い</p>
+              <p className="text-white/40 text-xs mt-3">月額¥980 / 年額¥9,800 ・ 決済システム準備中</p>
             </div>
           </div>
         </div>

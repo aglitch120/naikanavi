@@ -354,6 +354,31 @@ export default function MoneyPage() {
       {/* おすすめ返礼品ランキング */}
       <FurusatoRanking />
 
+      {/* 医師おすすめランキング */}
+      <section className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-0.5 bg-ac rounded-full" />
+          <h2 className="text-lg font-bold text-tx">医師おすすめランキング</h2>
+          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-acl text-ac">準備中</span>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {[
+            { icon: '💳', title: 'クレジットカード', desc: '医師に人気のクレカ', status: 'coming' },
+            { icon: '📈', title: 'NISA銘柄', desc: 'おすすめの投資信託', status: 'coming' },
+            { icon: '🏥', title: 'バイト会社', desc: '医師バイトサイト比較', status: 'coming' },
+          ].map(item => (
+            <div key={item.title} className="bg-s0 border border-br rounded-xl p-4 opacity-60">
+              <div className="text-center">
+                <span className="text-2xl block mb-2">{item.icon}</span>
+                <p className="text-sm font-bold text-tx">{item.title}</p>
+                <p className="text-[10px] text-muted mt-1">{item.desc}</p>
+                <p className="text-[9px] text-muted mt-2 bg-s1 rounded px-2 py-1 inline-block">upvote機能 準備中</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* 関連記事 */}
       <section className="mb-8">
         <div className="flex items-center gap-3 mb-4">

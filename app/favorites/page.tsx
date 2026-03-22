@@ -92,6 +92,9 @@ export default function FavoritesPage() {
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-8">
+      {/* プロフィールカード */}
+      <ProfileCard />
+
       <div className="mb-5">
         <h1 className="text-xl font-bold text-tx">お気に入り</h1>
         <p className="text-sm text-muted mt-1">
@@ -175,5 +178,83 @@ export default function FavoritesPage() {
         </>
       )}
     </main>
+  )
+}
+
+/* ── プロフィールカード ── */
+function ProfileCard() {
+  const [email, setEmail] = useState('')
+  const [displayName, setDisplayName] = useState('')
+  const [segment, setSegment] = useState('')
+  const [editing, setEditing] = useState(false)
+  const [editName, setEditName] = useState('')
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem('iwor_session_token')
+      const storedEmail = localStorage.getItem('iwor_user_email')
+      const storedName = localStorage.getItem('iwor_display_name') || ''
+      const storedSegment = localStorage.getItem('iwor_user_segment') || ''
+      if (storedEmail) setEmail(storedEmail)
+      if (storedName) setDisplayName(storedName)
+      if (storedSegment) setSegment(storedSegment)
+    } catch {}
+  }, [])
+
+  const handleSaveName = () => {
+    if (editName.trim()) {
+      setDisplayName(editName.trim())
+      localStorage.setItem('iwor_display_name', editName.trim())
+    }
+    setEditing(false)
+  }
+
+  const SEGMENTS = [
+    { id: 'student', label: '医学生', icon: '🎓' },
+    { id: 'resident', label: '初期研修医', icon: '🏥' },
+    { id: 'fellow', label: '専攻医', icon: '📋' },
+    { id: 'attending', label: '勤務医', icon: '⚕️' },
+  ]
+
+  return (
+    <div className="bg-s0 border border-br rounded-2xl p-5 mb-6">
+      <div className="flex items-center gap-4 mb-4">
+        <div className="w-14 h-14 rounded-full bg-acl border-2 border-ac/30 flex items-center justify-center text-xl">
+          {SEGMENTS.find(s => s.id === segment)?.icon || '👤'}
+        </div>
+        <div className="flex-1">
+          {editing ? (
+            <div className="flex gap-2">
+              <input type="text" value={editName} onChange={e => setEditName(e.target.value)}
+                placeholder="表示名" className="flex-1 px-2 py-1 border border-br rounded text-sm" />
+              <button onClick={handleSaveName} className="text-xs text-ac font-bold">保存</button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <p className="text-base font-bold text-tx">{displayName || '名前未設定'}</p>
+              <button onClick={() => { setEditName(displayName); setEditing(true) }} className="text-[10px] text-muted hover:text-ac">編集</button>
+            </div>
+          )}
+          <p className="text-xs text-muted">{email || '未ログイン'}</p>
+          {segment && <span className="text-[10px] px-2 py-0.5 rounded-full bg-acl text-ac font-medium">{SEGMENTS.find(s => s.id === segment)?.label}</span>}
+        </div>
+      </div>
+
+      {/* セグメント変更 */}
+      <div className="flex gap-1.5">
+        {SEGMENTS.map(s => (
+          <button key={s.id} onClick={() => { setSegment(s.id); localStorage.setItem('iwor_user_segment', s.id) }}
+            className={`flex-1 py-1.5 rounded-lg text-[10px] font-medium transition-all ${segment === s.id ? 'bg-ac text-white' : 'bg-s1 text-muted'}`}>
+            {s.icon} {s.label}
+          </button>
+        ))}
+      </div>
+
+      {!email && (
+        <Link href="/pro/activate" className="block mt-3 text-center text-xs text-ac font-bold hover:underline">
+          ログインしてデータを保存
+        </Link>
+      )}
+    </div>
   )
 }
