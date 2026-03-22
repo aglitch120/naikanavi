@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-// γ計算ページへのリダイレクト
+// γ計算はICU管理ツールに統合されました
 export default function DopamineDosePage() {
-  redirect('/tools/calc/gamma')
+  redirect('/tools/icu/gamma')
 }

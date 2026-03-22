@@ -1,10 +1,10 @@
 'use client'
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import Link from 'next/link'
 import { useProStatus } from '@/components/pro/useProStatus'
 import ProModal from '@/components/pro/ProModal'
 import AppHeader from '@/components/AppHeader'
-import { JOURNALS, Journal, TOP4_IDS, SPECIALTIES, SPECIALTY_KEYWORDS, GUIDELINE_SOURCES, GuidelineSource } from './journals-data'
+import { JOURNALS, Journal, TOP4_IDS, SPECIALTIES, GUIDELINE_SOURCES, GuidelineSource } from './journals-data'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -27,9 +27,9 @@ interface Article {
 // ── Worker API（サーバーサイドキャッシュ経由） ──
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
 
-async function fetchArticlesFromCache(lang: string = 'en', sort: string = 'date'): Promise<Article[]> {
+async function fetchArticlesFromCache(lang: string = 'en'): Promise<Article[]> {
   try {
-    const res = await fetch(`${API_BASE}/api/journal?lang=${lang}&sort=${sort}`)
+    const res = await fetch(`${API_BASE}/api/journal?lang=${lang}`)
     const data = await res.json()
     if (data.ok && Array.isArray(data.articles)) return data.articles
     return []
@@ -61,11 +61,6 @@ export default function JournalApp() {
   const [lang, setLang] = useState<'en' | 'ja'>('en')
   const [displayLang, setDisplayLang] = useState<'ja' | 'en'>('ja') // 表示言語（デフォルト日本語訳）
 
-  // 記事統計（コメント数・ブックマーク数）
-  const [articleStats, setArticleStats] = useState<Record<string, { comments: number; bookmarks: number }>>({})
-  // 並び替え
-  const [sortBy, setSortBy] = useState<'date' | 'bm-today' | 'bm-week' | 'bm-month' | 'bm-year'>('date')
-
   // Content type toggle
   const [contentType, setContentType] = useState<'articles' | 'guidelines'>('articles')
   const [guidelines, setGuidelines] = useState<Article[]>([])
@@ -77,11 +72,6 @@ export default function JournalApp() {
   const [ifMin, setIfMin] = useState(0)
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [excludedJournals, setExcludedJournals] = useState<Set<string>>(new Set())
-
-  // Infinite scroll
-  const PAGE_SIZE = 10
-  const [displayCount, setDisplayCount] = useState(PAGE_SIZE)
-  const sentinelRef = useRef<HTMLDivElement>(null)
 
   // Bookmarks
   const [bookmarks, setBookmarks] = useState<Set<string>>(() => {
@@ -115,21 +105,12 @@ export default function JournalApp() {
   const doFetch = useCallback(async () => {
     setLoading(true); setError('')
     try {
-      const res = await fetchArticlesFromCache(lang, sortBy)
+      const res = await fetchArticlesFromCache(lang)
       setArticles(res)
       if (res.length === 0) setError('論文の取得に失敗しました。しばらく待ってから再取得してください。')
-      // 統計一括取得
-      if (res.length > 0) {
-        try {
-          const pmids = res.slice(0, 50).map(a => a.pmid).join(',')
-          const statsRes = await fetch(`${API_BASE}/api/journal/stats?pmids=${pmids}`)
-          const statsData = await statsRes.json()
-          if (statsData.ok) setArticleStats(statsData.stats || {})
-        } catch {}
-      }
     } catch { setError('取得に失敗しました。') }
     setLoading(false)
-  }, [lang, sortBy])
+  }, [lang])
 
   useEffect(() => { doFetch() }, [doFetch])
 
@@ -175,50 +156,18 @@ export default function JournalApp() {
     })
   }, [])
 
-  // ── Filtered articles (journal + IF + Top4 specialty keyword filtering) ──
+  // ── Filtered articles (journal + IF applied client-side) ──
   const filteredArticles = useMemo(() => {
     let list = articles.filter(a => activeJournalIds.has(a.journalId))
     if (ifMin > 0) list = list.filter(a => a.impactFactor >= ifMin)
-    // Top4雑誌の診療科フィルタリング: 診療科選択時、Top4記事はキーワードマッチのみ表示
-    if (selectedSpecialties.size > 0) {
-      const keywords = Array.from(selectedSpecialties).flatMap(sp => SPECIALTY_KEYWORDS[sp] || [])
-      if (keywords.length > 0) {
-        list = list.filter(a => {
-          if (!TOP4_IDS.includes(a.journalId)) return true // 専門誌はそのまま通す
-          const titleLower = (a.title + ' ' + (a.titleJa || '')).toLowerCase()
-          return keywords.some(kw => titleLower.includes(kw.toLowerCase()))
-        })
-      }
-    }
     return list
-  }, [articles, activeJournalIds, ifMin, selectedSpecialties])
+  }, [articles, activeJournalIds, ifMin])
 
-  // ── Visible articles (FREE/PRO gate + infinite scroll) ──
-  const gatedArticles = showBookmarks
+  // ── Visible articles (FREE/PRO gate) ──
+  const visibleArticles = showBookmarks
     ? filteredArticles.filter(a => bookmarks.has(a.pmid))
     : isPro ? filteredArticles : filteredArticles.slice(0, FREE_LIMIT)
-  const visibleArticles = gatedArticles.slice(0, displayCount)
-  const hasMore = displayCount < gatedArticles.length
   const hiddenCount = showBookmarks ? 0 : isPro ? 0 : Math.max(0, filteredArticles.length - FREE_LIMIT)
-
-  // Reset displayCount when filters/sort/lang change
-  useEffect(() => { setDisplayCount(PAGE_SIZE) }, [lang, sortBy, selectedSpecialties, ifMin, showBookmarks, contentType])
-
-  // IntersectionObserver for infinite scroll
-  useEffect(() => {
-    const el = sentinelRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setDisplayCount(prev => prev + PAGE_SIZE)
-        }
-      },
-      { rootMargin: '200px' }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [hasMore])
 
   // ── Export bookmarks to clipboard (for presenter) ──
   const exportBookmarks = useCallback(() => {
@@ -293,7 +242,7 @@ export default function JournalApp() {
 
             {/* 診療科フィルタ */}
             <div className="bg-s0 border border-br rounded-xl p-3">
-              <p className="text-[11px] font-medium text-tx mb-2">診療科フィルタ（Top 4 は関連論文のみ表示）</p>
+              <p className="text-[11px] font-medium text-tx mb-2">診療科フィルタ（Top 4 は常に表示）</p>
               <div className="flex flex-wrap gap-1.5">
                 {SPECIALTIES.map(sp => (
                   <button key={sp} onClick={() => toggleSpecialty(sp)}
@@ -397,36 +346,18 @@ export default function JournalApp() {
         )}
       </div>
 
-      {/* ── Sort + Feed/Bookmark toggle ── */}
-      {contentType === 'articles' && <>
-      <div className="flex items-center gap-1.5 mb-2 overflow-x-auto">
-        {[
-          { id: 'date' as const, label: '新着順' },
-          { id: 'bm-today' as const, label: '今日' },
-          { id: 'bm-week' as const, label: '今週' },
-          { id: 'bm-month' as const, label: '今月' },
-          { id: 'bm-year' as const, label: '今年' },
-        ].map(s => (
-          <button key={s.id} onClick={() => setSortBy(s.id)}
-            className={`px-2 py-1 rounded text-[9px] font-medium whitespace-nowrap border transition-all ${
-              sortBy === s.id ? 'text-white border-transparent' : 'border-br text-muted'
-            }`}
-            style={sortBy === s.id ? { background: MC } : undefined}>
-            {s.id === 'date' ? '📅' : '🔥'} {s.label}
-          </button>
-        ))}
-      </div>
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex gap-1.5">
+      {/* ── Bookmarks / Feed toggle (articles only) ── */}
+      {contentType === 'articles' && <div className="flex items-center justify-between mb-4">
+        <div className="flex gap-2">
           <button onClick={() => setShowBookmarks(false)}
-            className={`text-[10px] font-medium px-2.5 py-1 rounded-lg transition-all ${!showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
+            className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${!showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
             style={!showBookmarks ? { background: MC } : undefined}>
             フィード ({filteredArticles.length})
           </button>
           <button onClick={() => { if (!isPro) { setShowProModal(true); return }; setShowBookmarks(true) }}
-            className={`text-[10px] font-medium px-2.5 py-1 rounded-lg transition-all flex items-center gap-1 ${showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
+            className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 ${showBookmarks ? 'text-white' : 'text-muted border border-br'}`}
             style={showBookmarks ? { background: MC } : undefined}>
-            ★ ({bookmarks.size})
+            ★ ブックマーク ({bookmarks.size})
             {!isPro && <span className="text-[8px] px-1 py-0.5 rounded" style={{ background: MCL, color: MC }}>PRO</span>}
           </button>
         </div>
@@ -436,8 +367,7 @@ export default function JournalApp() {
             プレゼン用コピー
           </button>
         )}
-      </div>
-      </>}
+      </div>}
 
       {/* ── Guidelines View ── */}
       {contentType === 'guidelines' && (
@@ -473,7 +403,7 @@ export default function JournalApp() {
                 <ArticleCard key={a.pmid} article={a}
                   isBookmarked={bookmarks.has(a.pmid)}
                   onToggleBookmark={() => toggleBookmark(a.pmid)}
-                  isPro={isPro} displayLang={displayLang} stats={articleStats[a.pmid]} />
+                  isPro={isPro} displayLang={displayLang} />
               ))}
             </div>
           )}
@@ -501,18 +431,11 @@ export default function JournalApp() {
             <ArticleCard key={a.pmid} article={a}
               isBookmarked={bookmarks.has(a.pmid)}
               onToggleBookmark={() => toggleBookmark(a.pmid)}
-              isPro={isPro} displayLang={displayLang} stats={articleStats[a.pmid]} />
+              isPro={isPro} displayLang={displayLang} />
           ))}
 
-          {/* Infinite scroll sentinel */}
-          {hasMore && (
-            <div ref={sentinelRef} className="flex justify-center py-4">
-              <div className="w-5 h-5 border-2 border-br border-t-ac rounded-full animate-spin" />
-            </div>
-          )}
-
           {/* PRO gate */}
-          {hiddenCount > 0 && !hasMore && (
+          {hiddenCount > 0 && (
             <div className="bg-s0 border border-dashed rounded-xl p-6 text-center" style={{ borderColor: `${MC}40` }}>
               <p className="text-sm font-bold text-tx mb-1">あと{hiddenCount}件の論文があります</p>
               <p className="text-xs text-muted mb-4">PRO会員で全件閲覧＋ブックマーク＋プレゼン連携</p>
@@ -537,131 +460,59 @@ export default function JournalApp() {
 }
 
 // ── Article Card ──
-function ArticleCard({ article: a, isBookmarked, onToggleBookmark, isPro, displayLang = 'en', stats }: {
+function ArticleCard({ article: a, isBookmarked, onToggleBookmark, isPro, displayLang = 'en' }: {
   article: Article; isBookmarked: boolean; onToggleBookmark: () => void; isPro: boolean; displayLang?: 'ja' | 'en'
-  stats?: { comments: number; bookmarks: number }
 }) {
-  const [showComments, setShowComments] = useState(false)
-  const [comments, setComments] = useState<{ id: string; text: string; displayName: string; createdAt: string }[]>([])
-  const [commentText, setCommentText] = useState('')
-  const [loadingComments, setLoadingComments] = useState(false)
-
   const ifColor = a.impactFactor >= 50 ? '#991B1B' : a.impactFactor >= 20 ? '#B45309' : a.impactFactor >= 10 ? MC : '#6B6760'
-  const commentCount = stats?.comments || 0
-  const bookmarkCount = stats?.bookmarks || 0
-
-  const loadComments = useCallback(async () => {
-    setLoadingComments(true)
-    try {
-      const res = await fetch(`${API_BASE}/api/journal/comments?pmid=${a.pmid}`)
-      const data = await res.json()
-      if (data.ok) setComments(data.comments || [])
-    } catch {}
-    setLoadingComments(false)
-  }, [a.pmid])
-
-  const postComment = useCallback(async () => {
-    if (!commentText.trim()) return
-    const token = typeof window !== 'undefined' ? localStorage.getItem('iwor_session_token') : null
-    if (!token) return
-    try {
-      const res = await fetch(`${API_BASE}/api/journal/comments`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify({ pmid: a.pmid, text: commentText.trim(), displayName: '医師' }),
-      })
-      const data = await res.json()
-      if (data.ok && data.comment) {
-        setComments(prev => [...prev, data.comment])
-        setCommentText('')
-      }
-    } catch {}
-  }, [a.pmid, commentText])
 
   return (
-    <div className="bg-s0 border border-br rounded-xl overflow-hidden hover:border-ac/30 transition-all">
-      <div className="p-3">
-        <div className="flex items-start gap-2">
-          <div className="flex-1 min-w-0">
-            {/* Journal + IF + Date */}
-            <div className="flex items-center gap-1.5 mb-1 flex-wrap">
-              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: MCL, color: MC }}>{a.journal}</span>
-              <span className="text-[9px] font-bold px-1 py-0.5 rounded" style={{ background: `${ifColor}15`, color: ifColor }}>IF {a.impactFactor}</span>
-              <span className="text-[9px] text-muted">{a.date}</span>
-            </div>
-
-            {/* Title */}
-            <a href={`https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/`} target="_blank" rel="noopener noreferrer"
-              className="text-xs font-bold text-tx hover:text-ac transition-colors leading-snug block mb-1">
-              {displayLang === 'ja' && a.titleJa ? a.titleJa : a.title}
-            </a>
-            {displayLang === 'ja' && a.titleJa && (
-              <p className="text-[9px] text-muted mb-1 line-clamp-1">{a.title}</p>
-            )}
-
-            {/* Authors */}
-            <p className="text-[10px] text-muted truncate mb-1.5">{a.authors}</p>
-
-            {/* Actions row */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <a href={`https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/`} target="_blank" rel="noopener noreferrer"
-                className="text-[9px] text-ac hover:underline">PubMed</a>
-              {a.doi && <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer"
-                className="text-[9px] text-ac hover:underline">DOI</a>}
-              <Link href={`/presenter?type=journal-club&topic=${encodeURIComponent(a.title)}`}
-                className="text-[9px] text-ac hover:underline">📚 抄読会</Link>
-
-              {/* コメント・ブックマーク数 */}
-              <button onClick={() => { setShowComments(!showComments); if (!showComments && comments.length === 0) loadComments() }}
-                className="text-[9px] text-muted hover:text-ac flex items-center gap-0.5">
-                💬 {commentCount > 0 ? commentCount : ''}
-              </button>
-              <span className="text-[9px] text-muted flex items-center gap-0.5">★ {bookmarkCount}</span>
-            </div>
+    <div className="bg-s0 border border-br rounded-xl p-4 hover:border-ac/30 transition-all">
+      <div className="flex items-start gap-3">
+        <div className="flex-1 min-w-0">
+          {/* Journal + IF badge */}
+          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ background: MCL, color: MC }}>
+              {a.journal}
+            </span>
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: `${ifColor}15`, color: ifColor }}>
+              IF {a.impactFactor}
+            </span>
+            <span className="text-[10px] text-muted">{a.date}</span>
           </div>
 
-          {/* Bookmark */}
-          <button onClick={onToggleBookmark}
-            className={`flex-shrink-0 w-8 h-8 rounded-lg border flex items-center justify-center transition-all ${
-              isBookmarked ? 'border-amber-400 bg-amber-50' : 'border-br hover:border-ac/30'
-            }`}>
-            <span className={`text-sm ${isBookmarked ? '' : 'opacity-30'}`}>{isBookmarked ? '★' : '☆'}</span>
-          </button>
-        </div>
-      </div>
+          {/* Title */}
+          <a href={`https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/`} target="_blank" rel="noopener noreferrer"
+            className="text-sm font-bold text-tx hover:text-ac transition-colors leading-snug block mb-1.5">
+            {displayLang === 'ja' && a.titleJa ? a.titleJa : a.title}
+          </a>
 
-      {/* コメントセクション */}
-      {showComments && (
-        <div className="border-t border-br px-3 py-2 bg-s1/50">
-          {loadingComments ? (
-            <p className="text-[10px] text-muted text-center py-2">読み込み中...</p>
-          ) : comments.length === 0 ? (
-            <p className="text-[10px] text-muted text-center py-2">まだコメントはありません</p>
-          ) : (
-            <div className="space-y-1.5 mb-2 max-h-40 overflow-y-auto">
-              {comments.map(c => (
-                <div key={c.id} className="text-[10px]">
-                  <span className="font-bold text-tx">{c.displayName}</span>
-                  <span className="text-muted ml-1">{new Date(c.createdAt).toLocaleDateString('ja-JP')}</span>
-                  <p className="text-tx mt-0.5">{c.text}</p>
-                </div>
-              ))}
-            </div>
-          )}
-          {isPro ? (
-            <div className="flex gap-1.5">
-              <input value={commentText} onChange={e => setCommentText(e.target.value)}
-                placeholder="コメントを追加..."
-                className="flex-1 px-2 py-1 bg-bg border border-br rounded text-[10px] outline-none focus:border-ac"
-                onKeyDown={e => e.key === 'Enter' && postComment()} />
-              <button onClick={postComment} disabled={!commentText.trim()}
-                className="px-2 py-1 rounded text-[9px] font-bold text-white disabled:opacity-30" style={{ background: MC }}>送信</button>
-            </div>
-          ) : (
-            <p className="text-[9px] text-center" style={{ color: MC }}>コメントにはPROが必要です</p>
-          )}
+          {/* Authors */}
+          <p className="text-[11px] text-muted truncate">{a.authors}</p>
+
+          {/* Links */}
+          <div className="flex items-center gap-3 mt-2">
+            <a href={`https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/`} target="_blank" rel="noopener noreferrer"
+              className="text-[10px] text-ac hover:underline">PubMed</a>
+            {a.doi && (
+              <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer"
+                className="text-[10px] text-ac hover:underline">DOI</a>
+            )}
+            <Link href={`/presenter?type=journal-club&topic=${encodeURIComponent(a.title)}`}
+              className="text-[10px] text-ac hover:underline">📚 抄読会資料</Link>
+            <span className="text-[10px] text-muted">PMID: {a.pmid}</span>
+          </div>
         </div>
-      )}
+
+        {/* Bookmark button */}
+        <button onClick={onToggleBookmark}
+          className={`flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center transition-all ${
+            isBookmarked ? 'border-amber-400 bg-amber-50' : 'border-br hover:border-ac/30'
+          }`}>
+          <span className={`text-base ${isBookmarked ? '' : 'opacity-30'}`}>
+            {isBookmarked ? '★' : '☆'}
+          </span>
+        </button>
+      </div>
     </div>
   )
 }

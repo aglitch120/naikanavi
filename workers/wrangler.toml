@@ -24,9 +24,9 @@ id = "4af092a9ddd243f09a0f6d2f1979dc6e"  # IWOR_KV
 [ai]
 binding = "AI"
 
-# ── Cron Trigger（ジャーナルDB構築 + 競合監視 1日2回） ──
+# ── Cron Trigger（競合監視 日次） ──
 [triggers]
-crons = ["0 22 * * *", "0 10 * * *"]  # 7:00 JST + 19:00 JST
+crons = ["0 22 * * *"]  # 毎日 22:00 UTC = 翌朝 7:00 JST
 
 # ── カスタムドメイン（任意） ──
 # Cloudflare Dashboard → Workers → iwor-api → Settings → Triggers で
