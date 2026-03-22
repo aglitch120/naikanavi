@@ -250,12 +250,31 @@ export default function HomePage() {
 
       {/* ═══ SEO: サービス説明（折りたたみ — Googlebotには見える） ═══ */}
       <details className="mb-6 px-4">
-        <summary className="text-[11px] text-muted cursor-pointer hover:text-ac transition-colors">iworについて</summary>
-        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-muted leading-relaxed">
-          <p><strong className="text-tx">臨床計算ツール 178種</strong> — eGFR、CHA2DS2-VASc、CHADS2、HAS-BLED、Child-Pugh、MELD、CURB-65、A-DROP、Wells PE/DVT、qSOFA、SOFA、BMI、BSA、GCS、NIHSS、APACHE II等。すべて無料。</p>
-          <p><strong className="text-tx">薬剤ガイド・比較表 25種</strong> — 抗菌薬スペクトラム、腎機能別用量、ステロイド換算、DOAC・スタチン・ARB・SGLT2i等の比較表。</p>
-          <p><strong className="text-tx">J-OSLER・EPOC</strong> — 症例登録・疾患群・病歴要約カウント。EPOCチェックリスト。引き継ぎ機能。</p>
-          <p><strong className="text-tx">マッチング・キャリア</strong> — 1,470病院DB。倍率・本命度・穴場度分析。履歴書自動生成。</p>
+        <summary className="text-[10px] text-muted/60 cursor-pointer hover:text-muted transition-colors">iworについて</summary>
+        <div className="mt-3 space-y-4 text-[11px] text-muted leading-relaxed">
+          <p className="text-xs text-tx font-medium">iwor（イウォール）は、医学生・研修医・専攻医・医師のキャリア全体をカバーするオールインワンワークスペースです。CBT対策から臨床現場、専門医取得、転職・開業まで — 医師人生のあらゆる場面で必要なツールがひとつの場所に揃っています。</p>
+
+          <div>
+            <p className="text-tx font-bold mb-1">医学生のあなたへ</p>
+            <p><strong>マッチング対策</strong> — 全国1,470病院のデータベースで倍率・マッチ率・本命度・穴場度を独自分析。プロフィールウィザードで履歴書・自己PRをAI自動生成。見学申込メール・お礼メールのテンプレートも。<strong>iwor Study</strong> — CBT・国試対策のフラッシュカード。科学的な間隔反復アルゴリズム(FSRS)で効率的に暗記。ストリークランキングで全国の医学生と競える。<strong>プレゼン資料生成</strong> — 学会発表・カンファ・抄読会のスライド構成をテンプレートから即作成。</p>
+          </div>
+
+          <div>
+            <p className="text-tx font-bold mb-1">初期研修医のあなたへ</p>
+            <p><strong>臨床計算ツール 178種</strong> — eGFR・CHA2DS2-VASc・Child-Pugh・CURB-65・Wells・qSOFA・SOFA・BMI・GCS・NIHSS・APACHE II等。当直中にすぐ使える。すべて無料・登録不要。<strong>薬剤ガイド・比較表 25種</strong> — 抗菌薬スペクトラム・腎機能別用量・ステロイド換算・オピオイド換算。DOAC・スタチン・ARB・CCB・SGLT2i・DPP-4i等の薬剤比較。<strong>EPOC管理</strong> — 経験すべき症候29・疾病26・手技14のチェックリスト。達成率を一目で把握。<strong>当直シフト作成</strong> — 救急当直・病棟当直の自動割り当て。NG日アンケートをURLで共有、勤務量バランス・最小間隔も設定可能。</p>
+          </div>
+
+          <div>
+            <p className="text-tx font-bold mb-1">専攻医のあなたへ</p>
+            <p><strong>J-OSLER管理</strong> — 16領域の症例登録数・疾患群数・病歴要約数をカウント。修了要件の達成状況を一目で確認。EPOCからの経験引き継ぎ機能。<strong>病歴要約AIジェネレーター</strong> — カルテのコピペから病歴要約のプロンプトを自動生成。Claude/ChatGPTに貼るだけ。<strong>論文フィード</strong> — NEJM・Lancet・JAMA等211誌の最新論文を日本語タイトル付きで毎日配信。ブックマーク・コメント・抄読会連携。<strong>専門医単位管理</strong> — 複数の専門医を一元管理。カテゴリ別の取得単位をカウント。更新期限リマインダー（90日前・30日前）。単位取得に使える学会・地方会・e-learningの情報も。<strong>学会カレンダー</strong> — 主要学会の日程・演題締切を一覧。参加予定・リマインダー機能。</p>
+          </div>
+
+          <div>
+            <p className="text-tx font-bold mb-1">医師のあなたへ</p>
+            <p><strong>転職対策</strong> — 履歴書・職務経歴書のAI自動生成。書類テンプレート。<strong>マネー</strong> — ふるさと納税上限概算・手取り概算・NISA運用シミュレーター。医師向けクレカ・バイト会社ランキング（準備中）。<strong>プレゼン資料</strong> — 学会発表・カンファ・コンサル用のスライドテンプレート。</p>
+          </div>
+
+          <p className="text-[10px]">すべての臨床計算ツール・薬剤ガイドは無料・登録不要でご利用いただけます。J-OSLER管理・論文フィード・マッチング対策も基本機能は無料。PRO会員（月額¥980〜）で全機能が解放されます。</p>
         </div>
       </details>
 
