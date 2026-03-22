@@ -269,6 +269,7 @@ export default function ProfileWizard({
               <div className="max-w-lg mx-auto">
                 <ImmersiveWizard
                   onComplete={() => setShowWizardModal(false)}
+                  editMode={!!profile.name}
                   savedAnswers={(() => {
                     try {
                       const raw = localStorage.getItem('iwor_matching_profile')
@@ -1040,13 +1041,41 @@ td, th { border: 1px solid #333; padding: 3pt 5pt; vertical-align: top; }
             )}
           </div>
           {!isPro && (
-            <div className="absolute inset-0 top-32">
-              <div className="w-full h-full backdrop-blur-md bg-s0/60 flex flex-col items-center justify-center px-6">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3" style={{ background: MCL }}>
-                  <svg className="w-6 h-6" style={{ stroke: MC }} fill="none" viewBox="0 0 24 24" strokeWidth={2}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <div className="absolute inset-0 top-20">
+              {/* JIS履歴書風の背景 */}
+              <div className="w-full px-3 py-4" style={{ filter: 'blur(6px)' }}>
+                <div className="bg-white border border-gray-300 rounded shadow-sm p-4 text-[8px] text-gray-500 leading-relaxed" style={{ fontFamily: 'serif' }}>
+                  <div className="text-center text-[10px] font-bold border-b border-gray-300 pb-1 mb-2">履　歴　書</div>
+                  <div className="grid grid-cols-3 gap-px mb-2">
+                    <div className="border border-gray-200 p-1">氏名<br/><span className="text-[10px] font-bold">{profile.name || '山田 太郎'}</span></div>
+                    <div className="border border-gray-200 p-1">生年月日<br/>平成○年○月○日</div>
+                    <div className="border border-gray-200 p-1">写真<br/><div className="w-8 h-10 bg-gray-100 mx-auto mt-0.5" /></div>
+                  </div>
+                  <div className="border border-gray-200 p-1 mb-1">現住所：東京都○○区○○町○-○-○</div>
+                  <div className="text-center font-bold border-b border-gray-200 pb-0.5 mb-1">学　歴</div>
+                  <div className="space-y-0.5 mb-2">
+                    <div>令和○年3月　○○高等学校 卒業</div>
+                    <div>令和○年4月　{profile.university || '○○大学'}医学部医学科 入学</div>
+                    <div>令和○年3月　{profile.university || '○○大学'}医学部医学科 卒業見込</div>
+                  </div>
+                  <div className="text-center font-bold border-b border-gray-200 pb-0.5 mb-1">免許・資格</div>
+                  <div className="mb-2">令和○年　医師国家試験 合格見込</div>
+                  <div className="text-center font-bold border-b border-gray-200 pb-0.5 mb-1">志望の動機・特技・自己PR</div>
+                  <div className="h-16 text-[7px] leading-tight overflow-hidden">
+                    私は○○をきっかけに医師を志しました。大学では○○部に所属し、チームワークの大切さを学びました。臨床実習では○○科での経験が最も印象的で、患者さんの人生に寄り添う医療を実践したいと考えるようになりました。貴院の研修プログラムでは...
+                  </div>
                 </div>
-                <p className="text-sm font-bold text-tx mb-1">PRO会員で履歴書を完全生成</p>
-                <p className="text-xs text-muted text-center">PDF出力・AI添削が使えます</p>
+              </div>
+              {/* オーバーレイ */}
+              <div className="absolute inset-0 bg-gradient-to-b from-s0/40 via-s0/80 to-s0/95 flex flex-col items-center justify-center px-6">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 shadow-lg" style={{ background: MC }}>
+                  <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                </div>
+                <p className="text-base font-bold text-tx mb-1">JIS履歴書を自動生成</p>
+                <p className="text-xs text-muted text-center mb-3">PDF出力・AI添削・印刷対応</p>
+                <button onClick={() => {}} className="px-6 py-2.5 rounded-xl text-xs font-bold text-white shadow-lg" style={{ background: MC }}>
+                  PROで使う
+                </button>
               </div>
             </div>
           )}

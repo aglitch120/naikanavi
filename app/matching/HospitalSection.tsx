@@ -245,9 +245,9 @@ export default function HospitalTab({
                         <p className="text-[10px] font-medium flex-shrink-0 ml-2 text-right" style={{ color: MC }}>空席{h.vacancy}</p>
                       )}
                     </div>
-                    {/* FREE: 全てモザイク（1位もバレないように） */}
+                    {/* FREE: 完全に隠す */}
                     {!isPro && (
-                      <div className="absolute inset-0 backdrop-blur-lg bg-white/80 rounded-lg flex items-center justify-center" style={{ backdropFilter: 'blur(12px)' }}>
+                      <div className="absolute inset-0 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #E8F0EC, #F5F4F0)' }}>
                         <span className="text-[10px] text-muted">🔒 PRO限定</span>
                       </div>
                     )}
@@ -516,24 +516,13 @@ function HospitalCard({
       </button>
 
       {/* アクションボタン */}
-      <div className="px-4 pb-3 flex gap-2">
-        <button onClick={e => { e.stopPropagation(); onToggleInterested() }}
-          className={`flex-1 py-2 rounded-lg text-[11px] font-medium border transition-all flex items-center justify-center gap-1 ${
-            isInterested ? 'border-pink-300 bg-pink-50 text-pink-600' : 'border-br text-muted hover:text-tx'
-          }`}>
-          {isInterested ? '♥' : '♡'} 志望
-          {interestCount > 0 && (
-            isPro
-              ? <span className="text-[10px] opacity-70">({interestCount})</span>
-              : <span className="text-[10px] opacity-40 blur-[3px] select-none">({interestCount})</span>
-          )}
-        </button>
+      <div className="px-4 pb-3">
         <button onClick={e => { e.stopPropagation(); onToggleWishlist() }}
-          className={`flex-1 py-2 rounded-lg text-[11px] font-medium border transition-all flex items-center justify-center gap-1 ${
+          className={`w-full py-2.5 rounded-lg text-[11px] font-medium border transition-all flex items-center justify-center gap-1 ${
             isWishlist ? 'text-white' : 'border-br text-muted hover:text-tx'
           }`}
           style={isWishlist ? { background: MC, borderColor: MC } : undefined}>
-          ★ 志望する
+          {isWishlist ? '★ 志望中' : '☆ 志望リストに追加'}
         </button>
       </div>
 

@@ -80,7 +80,7 @@ export default function MyPage() {
     setTimeout(() => setSaved(false), 2000)
   }
 
-  const email = typeof window !== 'undefined' ? localStorage.getItem('iwor_user_email') || '' : ''
+  const email = typeof window !== 'undefined' ? (localStorage.getItem('iwor_user_email') || localStorage.getItem('iwor_pro_email') || '') : ''
 
   return (
     <main className="max-w-lg mx-auto px-4 py-8 pb-24">
