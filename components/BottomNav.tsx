@@ -49,7 +49,7 @@ export default function BottomNav() {
       style={{
         background: 'var(--s0)',
         borderTop: '1px solid var(--br)',
-        paddingBottom: 'env(safe-area-inset-bottom)',
+        paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 0px)',
       }}
     >
       <ul className="flex items-stretch h-14">

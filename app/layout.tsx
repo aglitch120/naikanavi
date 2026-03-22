@@ -12,6 +12,14 @@ import ServiceWorkerRegister from '@/components/ServiceWorkerRegister'
 import PWAInstallPrompt from '@/components/PWAInstallPrompt'
 import OfflineIndicator from '@/components/OfflineIndicator'
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',  // iOSでenv(safe-area-inset-bottom)を有効にする
+  themeColor: '#1B4F3A',
+}
+
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 // Organization構造化データ
@@ -72,7 +80,6 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   other: {
-    'theme-color': '#1B4F3A',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'apple-mobile-web-app-title': 'iwor',
