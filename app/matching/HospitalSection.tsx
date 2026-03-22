@@ -51,13 +51,7 @@ export default function HospitalTab({
   // ── フィルタ状態 ──
   const [searchQuery, setSearchQuery] = useState('')
   const [filterRegion, setFilterRegion] = useState('')
-  const [filterType, setFilterType] = useState('')
-  const [filterSpecialty, setFilterSpecialty] = useState('')
-  const [filterBusyness, setFilterBusyness] = useState('')
-  const [filterErType, setFilterErType] = useState('')
-  const [filterSalary, setFilterSalary] = useState('')
-  const [filterMatchRate, setFilterMatchRate] = useState('')
-  const [filterDeptScale, setFilterDeptScale] = useState('')
+  // 旧フィルタは削除済み（新型Hospitalでは地域+検索のみ）
   const [showFilters, setShowFilters] = useState(false)
   const [sortKey, setSortKey] = useState<SortKey>('matchRate')
   const [sortAsc, setSortAsc] = useState(true)
@@ -141,23 +135,18 @@ export default function HospitalTab({
   // ── フィルタリング＆ソート ──
   const filtered = useMemo(() => {
     let result = HOSPITALS.filter(h => {
-      if (searchQuery && !h.name.includes(searchQuery) && !h.prefecture.includes(searchQuery)) return false
-      if (filterRegion && h.region !== filterRegion) return false
-      if (filterType && h.type !== filterType) return false
-      if (filterSpecialty && !h.specialties.includes(filterSpecialty)) return false
-      if (filterBusyness && h.busyness !== filterBusyness) return false
-      if (filterErType && h.erType !== filterErType) return false
-      if (filterSalary) {
-        const range = SALARY_RANGES.find(r => r.label === filterSalary)
-        if (range && (h.salaryNum < range.min || h.salaryNum >= range.max)) return false
-      }
-      if (filterMatchRate) {
-        const range = MATCH_RATE_RANGES.find(r => r.label === filterMatchRate)
-        if (range && (h.matchRate < range.min || h.matchRate >= range.max)) return false
-      }
-      if (filterDeptScale) {
-        const hasScale = Object.values(h.deptScale).some(s => s === filterDeptScale)
-        if (!hasScale) return false
+      if (searchQuery && !h.name.includes(searchQuery) && !h.prefecture.includes(searchQuery) && !h.program.includes(searchQuery)) return false
+      if (filterRegion) {
+        const PREF_TO_REGION: Record<string, string> = {
+          '北海道':'北海道','青森':'東北','岩手':'東北','宮城':'東北','秋田':'東北','山形':'東北','福島':'東北',
+          '茨城':'関東','栃木':'関東','群馬':'関東','埼玉':'関東','千葉':'関東','東京':'関東','神奈川':'関東',
+          '新潟':'中部','富山':'中部','石川':'中部','福井':'中部','山梨':'中部','長野':'中部','岐阜':'中部','静岡':'中部','愛知':'中部',
+          '三重':'近畿','滋賀':'近畿','京都':'近畿','大阪':'近畿','兵庫':'近畿','奈良':'近畿','和歌山':'近畿',
+          '鳥取':'中国','島根':'中国','岡山':'中国','広島':'中国','山口':'中国',
+          '徳島':'四国','香川':'四国','愛媛':'四国','高知':'四国',
+          '福岡':'九州・沖縄','佐賀':'九州・沖縄','長崎':'九州・沖縄','熊本':'九州・沖縄','大分':'九州・沖縄','宮崎':'九州・沖縄','鹿児島':'九州・沖縄','沖縄':'九州・沖縄',
+        }
+        if (PREF_TO_REGION[h.prefecture] !== filterRegion) return false
       }
       return true
     })
@@ -166,26 +155,19 @@ export default function HospitalTab({
     result.sort((a, b) => {
       let cmp = 0
       switch (sortKey) {
-        case 'matchRate': cmp = a.matchRate - b.matchRate; break
-        case 'salary': cmp = a.salaryNum - b.salaryNum; break
-        case 'beds': cmp = a.beds - b.beds; break
-        case 'residents': cmp = a.residents - b.residents; break
+        case 'matchRate': cmp = a.popularity - b.popularity; break
         case 'name': cmp = a.name.localeCompare(b.name); break
+        default: cmp = a.name.localeCompare(b.name)
       }
       return sortAsc ? cmp : -cmp
     })
     return result
-  }, [searchQuery, filterRegion, filterType, filterSpecialty, filterBusyness, filterErType, filterSalary, filterMatchRate, filterDeptScale, sortKey, sortAsc])
+  }, [searchQuery, filterRegion, sortKey, sortAsc])
 
-  // FREE: 上位5件のみ
-  const FREE_LIMIT = 5
+  // FREE: 上位10件のみ
+  const FREE_LIMIT = 10
   const visible = isPro ? filtered : filtered.slice(0, FREE_LIMIT)
   const hiddenCount = isPro ? 0 : Math.max(0, filtered.length - FREE_LIMIT)
-
-  // 穴場病院（上位3つ）
-  const anabaHospitals = useMemo(() =>
-    HOSPITALS.filter(h => h.isAnaba).sort((a, b) => a.matchRate - b.matchRate).slice(0, 3)
-  , [])
 
   // ── マッチ確率 ──
   const wishlistHospitals = useMemo(() =>
@@ -196,7 +178,7 @@ export default function HospitalTab({
     calculateMatchProbability(wishlistHospitals)
   , [wishlistHospitals])
 
-  const activeFilters = [filterRegion, filterType, filterSpecialty, filterBusyness, filterErType, filterSalary, filterMatchRate, filterDeptScale].filter(Boolean).length
+  const activeFilters = filterRegion ? 1 : 0
 
   return (
     <div className="space-y-4">
@@ -246,7 +228,7 @@ export default function HospitalTab({
                 )}
               </div>
               <div className="space-y-2">
-                {anabaHospitals.map((h, i) => (
+                {HOSPITALS.filter(h => h.vacancy > 0).sort((a, b) => b.vacancy - a.vacancy).slice(0, 3).map((h, i) => (
                   <div key={h.id} className="relative">
                     <div className={`flex items-center justify-between py-2.5 px-3 rounded-lg bg-white/80 border border-white ${!isPro ? 'select-none' : ''}`}>
                       <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -256,7 +238,7 @@ export default function HospitalTab({
                         }}>{i + 1}</span>
                         <div className="min-w-0">
                           <p className="text-xs font-bold text-tx truncate">{h.name}</p>
-                          <p className="text-[10px] text-muted">{h.prefecture} · {h.matchRateLabel}</p>
+                          <p className="text-[10px] text-muted">{h.prefecture} · 空席{h.vacancy}</p>
                         </div>
                       </div>
                       {isPro && (
@@ -295,70 +277,15 @@ export default function HospitalTab({
               />
             </div>
 
-            {/* 基本フィルタ行 */}
+            {/* フィルタ行 */}
             <div className="flex gap-2 flex-wrap">
               <select value={filterRegion} onChange={e => setFilterRegion(e.target.value)}
                 className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none">
                 <option value="">全地域</option>
                 {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
               </select>
-              <select value={filterType} onChange={e => setFilterType(e.target.value)}
-                className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none">
-                <option value="">全タイプ</option>
-                <option value="大学病院">大学病院</option>
-                <option value="市中病院">市中病院</option>
-              </select>
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className={`px-3 py-2 rounded-lg text-xs font-medium border transition-all flex items-center gap-1 ${
-                  activeFilters > 0 ? 'border-ac/40' : 'border-br'
-                }`}
-                style={activeFilters > 0 ? { background: MCL, color: MC } : undefined}
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
-                </svg>
-                詳細フィルタ{activeFilters > 0 && ` (${activeFilters})`}
-              </button>
+              <span className="text-[10px] text-muted self-center">{filtered.length}件</span>
             </div>
-
-            {/* 詳細フィルタ */}
-            {showFilters && (
-              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-br">
-                <select value={filterSpecialty} onChange={e => setFilterSpecialty(e.target.value)}
-                  className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx outline-none">
-                  <option value="">全診療科</option>
-                  {ALL_SPECIALTIES.map(s => <option key={s} value={s}>{s}</option>)}
-                </select>
-                <select value={filterBusyness} onChange={e => setFilterBusyness(e.target.value)}
-                  className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx outline-none">
-                  <option value="">忙しさ</option>
-                  {Object.entries(BUSYNESS_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-                </select>
-                <select value={filterErType} onChange={e => setFilterErType(e.target.value)}
-                  className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx outline-none">
-                  <option value="">救急体制</option>
-                  {ER_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-                </select>
-                <select value={filterSalary} onChange={e => setFilterSalary(e.target.value)}
-                  className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx outline-none">
-                  <option value="">年収</option>
-                  {SALARY_RANGES.map(r => <option key={r.label} value={r.label}>{r.label}</option>)}
-                </select>
-                <select value={filterMatchRate} onChange={e => setFilterMatchRate(e.target.value)}
-                  className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx outline-none">
-                  <option value="">倍率</option>
-                  {MATCH_RATE_RANGES.map(r => <option key={r.label} value={r.label}>{r.label}</option>)}
-                </select>
-                <select value={filterDeptScale} onChange={e => setFilterDeptScale(e.target.value)}
-                  className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx outline-none">
-                  <option value="">診療科規模</option>
-                  <option value="L">大（スタッフ多）</option>
-                  <option value="M">中</option>
-                  <option value="S">小（少人数）</option>
-                </select>
-              </div>
-            )}
 
             {/* ソート＆件数 */}
             <div className="flex items-center justify-between">
@@ -523,13 +450,18 @@ function HospitalCard({
   onToggleWishlist: () => void
   interestCount: number
 }) {
-  // 倍率の色分け
-  const rateColor = h.matchRate <= 2 ? { bg: '#DCFCE7', text: '#166534' }
-    : h.matchRate <= 4 ? { bg: '#FEF3C7', text: '#92400E' }
+  // 倍率の色分け (popularity = applicants/capacity)
+  const pop = h.popularity || 0
+  const rateColor = pop <= 2 ? { bg: '#DCFCE7', text: '#166534' }
+    : pop <= 4 ? { bg: '#FEF3C7', text: '#92400E' }
     : { bg: '#FEE2E2', text: '#991B1B' }
 
-  // 忙しさドット
-  const busynessLevel = h.busyness === 'high' ? 3 : h.busyness === 'medium' ? 2 : 1
+  // 本命度の色分け
+  const honmei = (h as any).honmeiIndex || 0
+  const honmeiColor = honmei >= 0.8 ? { bg: '#DCFCE7', text: '#166534', label: '本命' }
+    : honmei >= 0.5 ? { bg: '#FEF3C7', text: '#92400E', label: '併願多め' }
+    : honmei > 0 ? { bg: '#FEE2E2', text: '#991B1B', label: 'おさえ' }
+    : { bg: '#F0EDE7', text: '#6B6760', label: '--' }
 
   return (
     <div className="bg-s0 border border-br rounded-xl overflow-hidden transition-all hover:border-br2">
@@ -538,13 +470,8 @@ function HospitalCard({
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1.5 flex-wrap">
               <p className="text-sm font-bold text-tx truncate">{h.name}</p>
-              <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded flex-shrink-0 ${
-                h.type === '市中病院' ? 'bg-blue-50 text-blue-700' : 'bg-purple-50 text-purple-700'
-              }`}>{h.type}</span>
-              {h.isAnaba && (
-                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 flex-shrink-0">
-                  💎 おすすめ
-                </span>
+              {h.isUniversity && (
+                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-purple-50 text-purple-700 flex-shrink-0">大学</span>
               )}
             </div>
 
@@ -552,46 +479,38 @@ function HospitalCard({
             <div className="flex items-center gap-2 mb-2 flex-wrap">
               <span className="text-[11px] text-muted">{h.prefecture}</span>
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: rateColor.bg, color: rateColor.text }}>
-                {h.matchRateLabel}
+                倍率 {pop}
               </span>
-              <span className="text-[11px] text-muted">{h.salaryLabel}</span>
-              <span className="text-[10px] text-muted flex items-center gap-0.5" title={BUSYNESS_LABELS[h.busyness]}>
-                {[1, 2, 3].map(i => (
-                  <span key={i} className={`inline-block w-1.5 h-1.5 rounded-full ${i <= busynessLevel ? 'bg-amber-500' : 'bg-s2'}`} />
-                ))}
-                <span className="ml-0.5">{BUSYNESS_LABELS[h.busyness]}</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-s1 text-muted">
+                定員{h.capacity} / マッチ{h.matched}
               </span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-s1 text-muted">{h.erType}</span>
-            </div>
-
-            {/* サブ情報 */}
-            <div className="flex items-center gap-3 text-[10px] text-muted">
-              <span>{h.beds}床</span>
-              <span>研修医{h.residents}名/年</span>
-            </div>
-          </div>
-
-          {/* マッチ度バッジ */}
-          <div className="flex flex-col items-center gap-1 flex-shrink-0 ml-1">
-            <div className="relative">
-              <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ background: MCL }}>
-                <span className="text-xs font-bold" style={{ color: MC }}>{getMatchDegree(h)}%</span>
-              </div>
-              {!isPro && (
-                <div className="absolute inset-0 backdrop-blur-sm bg-s0/80 rounded-full flex items-center justify-center">
-                  <span className="text-[9px]">🔒</span>
-                </div>
+              {h.vacancy > 0 && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-700">空席{h.vacancy}</span>
               )}
             </div>
-            <span className="text-[8px] text-muted">マッチ度</span>
+
+            {/* マッチ率 */}
+            <div className="flex items-center gap-3 text-[10px] text-muted">
+              <span>マッチ率 {h.matchRate}%</span>
+              <span>応募{h.applicants}人</span>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-wrap gap-1 mt-2">
-          {h.features.slice(0, 4).map(f => (
-            <span key={f} className="text-[10px] px-1.5 py-0.5 rounded bg-s1 text-muted">{f}</span>
-          ))}
-          {h.features.length > 4 && (
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-s1 text-muted">+{h.features.length - 4}</span>
+
+          {/* 本命度バッジ (PRO) */}
+          {honmei > 0 && (
+            <div className="flex flex-col items-center gap-1 flex-shrink-0 ml-1">
+              <div className="relative">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ background: honmeiColor.bg }}>
+                  <span className="text-[10px] font-bold" style={{ color: honmeiColor.text }}>{honmeiColor.label}</span>
+                </div>
+                {!isPro && (
+                  <div className="absolute inset-0 backdrop-blur-sm bg-s0/80 rounded-full flex items-center justify-center">
+                    <span className="text-[9px]">🔒</span>
+                  </div>
+                )}
+              </div>
+              <span className="text-[8px] text-muted">本命度</span>
+            </div>
           )}
         </div>
       </button>
@@ -622,88 +541,52 @@ function HospitalCard({
       {expanded && (
         <div className="px-4 pb-4 border-t border-br pt-3 space-y-3">
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <StatBox label="病床数" value={`${h.beds}床`} />
-            <StatBox label="研修医数" value={`${h.residents}名/年`} />
-            <StatBox label="マッチング倍率" value={h.matchRateLabel} highlight />
-            <StatBox label="年収目安" value={h.salaryLabel} />
-            <StatBox label="忙しさ" value={BUSYNESS_LABELS[h.busyness]} />
-            <StatBox label="救急体制" value={h.erType} />
+            <StatBox label="定員" value={`${h.capacity}名`} />
+            <StatBox label="マッチ者数" value={`${h.matched}名`} />
+            <StatBox label="倍率" value={`${pop}倍`} highlight />
+            <StatBox label="応募者数" value={`${h.applicants}名`} />
+            <StatBox label="マッチ率" value={`${h.matchRate}%`} />
+            <StatBox label="空席" value={h.vacancy > 0 ? `${h.vacancy}名` : 'なし'} />
           </div>
 
-          {/* 倍率推移 — PROモザイク */}
-          <div className="relative">
-            <div className="bg-s1 rounded-lg p-3">
-              <p className="text-[10px] text-muted mb-2">倍率推移（過去3年）</p>
-              <div className="flex items-end gap-3 h-12">
-                {h.historicalRates.map((r, i) => {
-                  const maxR = Math.max(...h.historicalRates.map(x => x.rate))
-                  const pct = (r.rate / maxR) * 100
-                  return (
-                    <div key={r.year} className="flex-1 flex flex-col items-center gap-1">
-                      <span className="text-[10px] font-bold text-tx">{r.rate}倍</span>
-                      <div className="w-full rounded-t" style={{
-                        height: `${pct}%`, background: i === h.historicalRates.length - 1 ? MC : '#DDD9D2',
-                      }} />
-                      <span className="text-[9px] text-muted">{r.year}</span>
-                    </div>
-                  )
-                })}
+          {/* 本命度 — PRO限定 */}
+          {honmei > 0 && (
+            <div className="relative">
+              <div className="bg-s1 rounded-lg p-3">
+                <p className="text-[10px] font-medium text-tx mb-1">本命度スコア</p>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-lg font-bold" style={{ color: honmeiColor.text }}>{honmei.toFixed(2)}</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ background: honmeiColor.bg, color: honmeiColor.text }}>{honmeiColor.label}</span>
+                </div>
+                <p className="text-[9px] text-muted leading-relaxed">
+                  本命度 = 実際のマッチ者数 / 中間発表時点の第1希望者数（3年平均）.
+                  1.0以上は中間でも最終でも第1希望に選ばれる「超本命」.
+                  0.5以下は中間で候補に入れたが最終的に外した人が多い「おさえ」傾向.
+                  この指標はiwor独自の算出であり, 病院の質を評価するものではありません.
+                </p>
+                {(h as any).avgMatchRate3y > 0 && (
+                  <p className="text-[10px] text-muted mt-1">3年平均マッチ率: {(h as any).avgMatchRate3y}%</p>
+                )}
               </div>
+              {!isPro && (
+                <div className="absolute inset-0 backdrop-blur-md bg-s0/95 rounded-lg flex items-center justify-center">
+                  <span className="text-[10px] font-medium" style={{ color: MC }}>PRO会員で本命度を表示</span>
+                </div>
+              )}
             </div>
-            {!isPro && (
-              <div className="absolute inset-0 backdrop-blur-md bg-s0/95 rounded-lg flex items-center justify-center">
-                <span className="text-[10px] font-medium" style={{ color: MC }}>🔒 PRO会員で倍率推移を表示</span>
-              </div>
-            )}
-          </div>
+          )}
 
-          {/* 診療科 */}
-          <div>
-            <p className="text-[10px] text-muted mb-1">強い診療科</p>
-            <div className="flex flex-wrap gap-1">
-              {h.specialties.map(s => (
-                <span key={s} className="text-[10px] px-2 py-0.5 rounded font-medium" style={{ background: MCL, color: MC }}>
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* 診療科規模 */}
-          <div>
-            <p className="text-[10px] text-muted mb-1">診療科規模（スタッフ数）</p>
-            <div className="flex flex-wrap gap-1">
-              {Object.entries(h.deptScale).map(([dept, scale]) => (
-                <span key={dept} className={`text-[10px] px-2 py-0.5 rounded ${
-                  scale === 'L' ? 'bg-green-50 text-green-700' :
-                  scale === 'M' ? 'bg-blue-50 text-blue-700' :
-                  'bg-gray-100 text-gray-600'
-                }`}>
-                  {dept}（{scale === 'L' ? '大' : scale === 'M' ? '中' : '小'}）
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* 病院理念（面接対策用） */}
-          {h.philosophy && (
-            <div className="bg-s1 rounded-lg p-3">
-              <p className="text-[10px] font-medium text-muted mb-1 flex items-center gap-1">
-                <span>💡</span>病院理念（面接対策に活用）
-              </p>
-              <p className="text-xs text-tx leading-relaxed">「{h.philosophy}」</p>
+          {/* プログラム名 */}
+          {h.program && (
+            <div>
+              <p className="text-[10px] text-muted mb-0.5">研修プログラム名</p>
+              <p className="text-xs text-tx">{h.program}</p>
             </div>
           )}
         </div>
       )}
     </div>
   )
-}
-
-// ダミーマッチ度（病院IDベースで一貫性のある値を生成）
-function getMatchDegree(h: Hospital): number {
-  const seed = h.id * 17 + h.beds + h.residents
-  return 60 + (seed % 35) // 60-94%
 }
 
 function StatBox({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
