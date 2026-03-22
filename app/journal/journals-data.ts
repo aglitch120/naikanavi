@@ -231,6 +231,91 @@ export const JOURNALS: Journal[] = [
   { id: 'bjog', name: 'BJOG', shortName: 'BJOG', issn: '1470-0328', impactFactor: 6.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
   { id: 'fertil-steril', name: 'Fertility and Sterility', shortName: 'Fertil Steril', issn: '0015-0282', impactFactor: 6.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
   { id: 'hum-reprod', name: 'Human Reproduction', shortName: 'Hum Reprod', issn: '0268-1161', impactFactor: 6.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '産婦人科' },
+
+  // ── 2026-03-22 追加: 各分野5-10誌充足（63誌） ──
+
+  // 循環器 +5 → 10
+  { id: 'circ-res', name: 'Circulation Research', shortName: 'Circ Res', issn: '0009-7330', impactFactor: 14.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '循環器' },
+  { id: 'jama-cardiol', name: 'JAMA Cardiology', shortName: 'JAMA Cardiol', issn: '2380-6583', impactFactor: 14.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '循環器' },
+  { id: 'eur-j-heart-fail', name: 'European Journal of Heart Failure', shortName: 'Eur J Heart Fail', issn: '1388-9842', impactFactor: 16.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '循環器' },
+  { id: 'heart', name: 'Heart', shortName: 'Heart', issn: '1355-6037', impactFactor: 5.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '循環器' },
+  { id: 'j-am-heart-assoc', name: 'Journal of the American Heart Association', shortName: 'JAHA', issn: '2047-9980', impactFactor: 5.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '循環器' },
+  // 消化器 +4 → 10
+  { id: 'lancet-gastro', name: 'Lancet Gastroenterology & Hepatology', shortName: 'Lancet Gastroenterol Hepatol', issn: '2468-1253', impactFactor: 35.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '消化器' },
+  { id: 'clin-gastro-hepatol', name: 'Clinical Gastroenterology and Hepatology', shortName: 'Clin Gastroenterol Hepatol', issn: '1542-3565', impactFactor: 11.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '消化器' },
+  { id: 'j-crohns-colitis', name: 'Journal of Crohns and Colitis', shortName: 'J Crohns Colitis', issn: '1873-9946', impactFactor: 8.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '消化器' },
+  { id: 'aliment-pharmacol', name: 'Alimentary Pharmacology & Therapeutics', shortName: 'Aliment Pharmacol Ther', issn: '0269-2813', impactFactor: 6.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '消化器' },
+  // 呼吸器 +5 → 10
+  { id: 'eur-resp-rev', name: 'European Respiratory Review', shortName: 'Eur Respir Rev', issn: '0905-9180', impactFactor: 9.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '呼吸器' },
+  { id: 'j-thorac-oncol', name: 'Journal of Thoracic Oncology', shortName: 'J Thorac Oncol', issn: '1556-0864', impactFactor: 20.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '呼吸器' },
+  { id: 'respirology', name: 'Respirology', shortName: 'Respirology', issn: '1323-7799', impactFactor: 6.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '呼吸器' },
+  { id: 'am-j-resp-cell', name: 'American Journal of Respiratory Cell and Molecular Biology', shortName: 'Am J Respir Cell Mol Biol', issn: '1044-1549', impactFactor: 5.9, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '呼吸器' },
+  { id: 'respir-med', name: 'Respiratory Medicine', shortName: 'Respir Med', issn: '0954-6111', impactFactor: 3.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q2', specialty: '呼吸器' },
+  // 感染症 +5 → 10
+  { id: 'lancet-hiv', name: 'Lancet HIV', shortName: 'Lancet HIV', issn: '2352-3018', impactFactor: 15.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+  { id: 'emerging-infect', name: 'Emerging Infectious Diseases', shortName: 'Emerg Infect Dis', issn: '1080-6040', impactFactor: 7.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+  { id: 'j-clin-micro', name: 'Journal of Clinical Microbiology', shortName: 'J Clin Microbiol', issn: '0095-1137', impactFactor: 6.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+  { id: 'int-j-antimicrob', name: 'International Journal of Antimicrobial Agents', shortName: 'Int J Antimicrob Agents', issn: '0924-8579', impactFactor: 5.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+  { id: 'open-forum-id', name: 'Open Forum Infectious Diseases', shortName: 'Open Forum Infect Dis', issn: '2328-8957', impactFactor: 4.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '感染症' },
+  // 神経 +5 → 10
+  { id: 'stroke', name: 'Stroke', shortName: 'Stroke', issn: '0039-2499', impactFactor: 7.9, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+  { id: 'j-neurol-neurosurg-psych', name: 'Journal of Neurology Neurosurgery and Psychiatry', shortName: 'JNNP', issn: '0022-3050', impactFactor: 8.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+  { id: 'neurology-neuroimmunol', name: 'Neurology Neuroimmunology & Neuroinflammation', shortName: 'Neurol Neuroimmunol Neuroinflamm', issn: '2332-7812', impactFactor: 7.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+  { id: 'mov-disord', name: 'Movement Disorders', shortName: 'Mov Disord', issn: '0885-3185', impactFactor: 9.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+  { id: 'epilepsia', name: 'Epilepsia', shortName: 'Epilepsia', issn: '0013-9580', impactFactor: 5.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '神経' },
+  // 腎臓 +5 → 10
+  { id: 'nat-rev-nephrol', name: 'Nature Reviews Nephrology', shortName: 'Nat Rev Nephrol', issn: '1759-5061', impactFactor: 28.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腎臓' },
+  { id: 'kid-int-rep', name: 'Kidney International Reports', shortName: 'Kidney Int Rep', issn: '2468-0249', impactFactor: 4.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腎臓' },
+  { id: 'clin-kidney-j', name: 'Clinical Kidney Journal', shortName: 'Clin Kidney J', issn: '2048-8505', impactFactor: 3.9, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腎臓' },
+  { id: 'kid-360', name: 'Kidney360', shortName: 'Kidney360', issn: '2641-7650', impactFactor: 3.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腎臓' },
+  { id: 'nephron', name: 'Nephron', shortName: 'Nephron', issn: '2235-3186', impactFactor: 2.4, category: 'specialty', tier: 'specialty_ext', jcrQuartile: 'Q2', specialty: '腎臓' },
+  // 血液 +5 → 10
+  { id: 'lancet-haematol', name: 'Lancet Haematology', shortName: 'Lancet Haematol', issn: '2352-3026', impactFactor: 11.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  { id: 'am-j-hematol', name: 'American Journal of Hematology', shortName: 'Am J Hematol', issn: '0361-8609', impactFactor: 10.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  { id: 'blood-cancer-j', name: 'Blood Cancer Journal', shortName: 'Blood Cancer J', issn: '2044-5385', impactFactor: 12.9, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  { id: 'j-thromb-haemost', name: 'Journal of Thrombosis and Haemostasis', shortName: 'J Thromb Haemost', issn: '1538-7933', impactFactor: 10.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  { id: 'brit-j-haematol', name: 'British Journal of Haematology', shortName: 'Br J Haematol', issn: '0007-1048', impactFactor: 5.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '血液' },
+  // 腫瘍 +7 → 10
+  { id: 'nat-rev-clin-oncol', name: 'Nature Reviews Clinical Oncology', shortName: 'Nat Rev Clin Oncol', issn: '1759-4774', impactFactor: 81.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腫瘍' },
+  { id: 'ann-oncol', name: 'Annals of Oncology', shortName: 'Ann Oncol', issn: '0923-7534', impactFactor: 32.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腫瘍' },
+  { id: 'jama-oncol', name: 'JAMA Oncology', shortName: 'JAMA Oncol', issn: '2374-2437', impactFactor: 28.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腫瘍' },
+  { id: 'cancer-discov', name: 'Cancer Discovery', shortName: 'Cancer Discov', issn: '2159-8274', impactFactor: 29.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腫瘍' },
+  { id: 'cancer-cell', name: 'Cancer Cell', shortName: 'Cancer Cell', issn: '1535-6108', impactFactor: 48.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腫瘍' },
+  { id: 'clin-cancer-res', name: 'Clinical Cancer Research', shortName: 'Clin Cancer Res', issn: '1078-0432', impactFactor: 10.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腫瘍' },
+  { id: 'eur-j-cancer', name: 'European Journal of Cancer', shortName: 'Eur J Cancer', issn: '0959-8049', impactFactor: 8.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '腫瘍' },
+  // 内分泌 +5 → 10
+  { id: 'diabetes', name: 'Diabetes', shortName: 'Diabetes', issn: '0012-1797', impactFactor: 7.7, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '内分泌' },
+  { id: 'eur-j-endocrinol', name: 'European Journal of Endocrinology', shortName: 'Eur J Endocrinol', issn: '0804-4643', impactFactor: 5.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '内分泌' },
+  { id: 'diab-obes-metab', name: 'Diabetes Obesity & Metabolism', shortName: 'Diabetes Obes Metab', issn: '1462-8902', impactFactor: 5.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '内分泌' },
+  { id: 'obesity', name: 'Obesity', shortName: 'Obesity', issn: '1930-7381', impactFactor: 5.3, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '内分泌' },
+  { id: 'j-diab-investig', name: 'Journal of Diabetes Investigation', shortName: 'J Diabetes Investig', issn: '2040-1116', impactFactor: 3.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q2', specialty: '内分泌' },
+  // 泌尿器 +2 → 5
+  { id: 'nat-rev-urol', name: 'Nature Reviews Urology', shortName: 'Nat Rev Urol', issn: '1759-4812', impactFactor: 13.4, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '泌尿器' },
+  { id: 'prostate-cancer', name: 'Prostate Cancer and Prostatic Diseases', shortName: 'Prostate Cancer Prostatic Dis', issn: '1365-7852', impactFactor: 5.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '泌尿器' },
+  // 放射線 +2 → 5
+  { id: 'j-nucl-med', name: 'Journal of Nuclear Medicine', shortName: 'J Nucl Med', issn: '0161-5505', impactFactor: 9.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '放射線' },
+  { id: 'eur-j-nucl-med', name: 'European Journal of Nuclear Medicine and Molecular Imaging', shortName: 'Eur J Nucl Med Mol Imaging', issn: '1619-7070', impactFactor: 9.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '放射線' },
+  // 眼科 +2 → 5
+  { id: 'prog-retin-eye', name: 'Progress in Retinal and Eye Research', shortName: 'Prog Retin Eye Res', issn: '1350-9462', impactFactor: 18.6, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '眼科' },
+  { id: 'am-j-ophthalmol', name: 'American Journal of Ophthalmology', shortName: 'Am J Ophthalmol', issn: '0002-9394', impactFactor: 4.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '眼科' },
+  // 整形外科 +1 → 5
+  { id: 'spine-j', name: 'Spine Journal', shortName: 'Spine J', issn: '1529-9430', impactFactor: 3.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '整形外科' },
+  // 救急 +1 → 5
+  { id: 'resuscitation', name: 'Resuscitation', shortName: 'Resuscitation', issn: '0300-9572', impactFactor: 6.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '救急' },
+  // 集中治療 +2 → 5
+  { id: 'crit-care', name: 'Critical Care', shortName: 'Crit Care', issn: '1364-8535', impactFactor: 15.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '集中治療' },
+  { id: 'ann-intensive-care', name: 'Annals of Intensive Care', shortName: 'Ann Intensive Care', issn: '2110-5820', impactFactor: 8.1, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '集中治療' },
+  // 麻酔科 +2 → 5
+  { id: 'reg-anesth-pain', name: 'Regional Anesthesia and Pain Medicine', shortName: 'Reg Anesth Pain Med', issn: '1098-7339', impactFactor: 9.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '麻酔科' },
+  { id: 'j-clin-anesth', name: 'Journal of Clinical Anesthesia', shortName: 'J Clin Anesth', issn: '0952-8180', impactFactor: 5.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '麻酔科' },
+  // 膠原病 +1 → 5
+  { id: 'j-autoimmun', name: 'Journal of Autoimmunity', shortName: 'J Autoimmun', issn: '0896-8411', impactFactor: 12.8, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '膠原病' },
+  // 老年病 +1 → 5
+  { id: 'aging-clin-exp', name: 'Aging Clinical and Experimental Research', shortName: 'Aging Clin Exp Res', issn: '1594-0667', impactFactor: 4.0, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '老年病' },
+  // 総合内科 +1 → 5
+  { id: 'j-hosp-med', name: 'Journal of Hospital Medicine', shortName: 'J Hosp Med', issn: '1553-5592', impactFactor: 3.5, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '総合内科' },
+  // 皮膚科 +1 → 5
+  { id: 'j-eur-acad-dermatol', name: 'Journal of the European Academy of Dermatology and Venereology', shortName: 'JEADV', issn: '0926-9959', impactFactor: 6.2, category: 'specialty', tier: 'specialty_top', jcrQuartile: 'Q1', specialty: '皮膚科' },
 ]
 
 export const TOP4_IDS = ['lancet', 'nejm', 'jama', 'bmj']
