@@ -229,34 +229,57 @@ export default function ProfileWizard({
     return Math.round((checks.filter(Boolean).length / checks.length) * 100)
   })()
 
-  // ── Overview: 没入型ウィザード + 履歴書プレビュー ──
+  const [showWizardModal, setShowWizardModal] = useState(false)
+
+  // ── Overview: プロフィール開始 + 履歴書プレビュー ──
   if (step === 0) {
     return (
       <div className="pb-20">
-        {/* 没入型自己分析ウィザード */}
-        <ImmersiveWizard
-          onComplete={() => {}}
-          savedAnswers={(() => {
-            try {
-              const raw = localStorage.getItem('iwor_matching_profile')
-              return raw ? JSON.parse(raw)?._wizardAnswers : undefined
-            } catch { return undefined }
-          })()}
-        />
-
-        {/* 詳細編集リンク */}
-        <div className="mt-6 mb-4">
-          <p className="text-[10px] text-muted text-center mb-2">詳細を編集したい場合</p>
-          <div className="grid grid-cols-3 gap-1.5">
-            {STEPS.slice(0, 6).map(s => (
-              <button key={s.num} onClick={() => goStep(s.num)}
-                className="p-1.5 rounded-lg border text-center text-[9px] transition-all hover:border-ac/30"
-                style={{ borderColor: 'var(--br)', color: 'var(--m)' }}>
-                {s.icon} {s.title}
-              </button>
-            ))}
-          </div>
+        {/* プロフィール作成ボタン */}
+        <div className="bg-s0 border border-ac/20 rounded-2xl p-6 text-center mb-4">
+          <span className="text-3xl block mb-3">📝</span>
+          <h2 className="text-base font-bold text-tx mb-1">プロフィールを作成</h2>
+          <p className="text-xs text-muted mb-4">質問に答えるだけで履歴書・自己PRが自動生成されます</p>
+          <button onClick={() => setShowWizardModal(true)}
+            className="px-8 py-3 rounded-xl text-sm font-bold text-white"
+            style={{ background: MC }}>
+            {profile.name ? 'プロフィールを編集' : '作成を開始'}
+          </button>
+          <p className="text-[9px] text-muted mt-3 leading-relaxed">
+            入力された情報はお使いの端末にのみ保存され, 第三者に公開されることはありません.
+            <a href="/privacy" className="text-ac hover:underline ml-0.5">プライバシーポリシー</a>
+          </p>
         </div>
+
+        {/* 没入型ウィザードモーダル */}
+        {showWizardModal && (
+          <div className="fixed inset-0 z-50 flex flex-col" style={{ background: 'var(--bg)' }}>
+            {/* 閉じるヘッダー */}
+            <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'var(--br)', background: 'var(--s0)' }}>
+              <button onClick={() => setShowWizardModal(false)} className="text-sm text-muted hover:text-ac">
+                &larr; 戻る
+              </button>
+              <span className="text-xs font-bold text-tx">プロフィール作成</span>
+              <button onClick={() => setShowWizardModal(false)} className="text-sm text-muted hover:text-dn">
+                &times;
+              </button>
+            </div>
+            {/* ウィザード本体 */}
+            <div className="flex-1 overflow-y-auto px-4 py-6">
+              <div className="max-w-lg mx-auto">
+                <ImmersiveWizard
+                  onComplete={() => setShowWizardModal(false)}
+                  savedAnswers={(() => {
+                    try {
+                      const raw = localStorage.getItem('iwor_matching_profile')
+                      return raw ? JSON.parse(raw)?._wizardAnswers : undefined
+                    } catch { return undefined }
+                  })()}
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* 履歴書プレビュー — 常時表示 */}
         <ResumePreview profile={profile} isPro={isPro} />
