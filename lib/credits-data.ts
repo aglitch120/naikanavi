@@ -27,6 +27,9 @@ export interface SpecialtyRequirement {
   categories: CreditCategory[]
   type: 'basic' | 'subspecialty'
   notes?: string
+  hasElearning?: boolean
+  regionalMeetings?: string[]
+  veteranExemption?: string
 }
 
 export interface CreditEntry {
@@ -62,14 +65,17 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     society: '日本内科学会',
     requiredCredits: 50,
     renewalYears: 5,
-    officialUrl: 'https://www.naika.or.jp/',
+    officialUrl: 'https://www.naika.or.jp/nintei/koshin/',
     categories: [
       { id: 'practice', name: '診療実績', maxCredits: 10 },
       { id: 'common_lecture', name: '専門医共通講習', maxCredits: 10, minCredits: 3 },
-      { id: 'specialty_lecture', name: '領域講習', minCredits: 20 },
-      { id: 'academic', name: '学術業績（セルフトレーニング含む）' },
+      { id: 'specialty_lecture', name: '領域講習（セルトレ10+生涯教育5+JMECC4等）', minCredits: 20 },
+      { id: 'academic', name: '学術業績（学会発表・論文 各1単位）' },
     ],
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['北海道','東北','関東','信越','東海','北陸','近畿','中国','四国','九州'],
+    notes: 'セルフトレーニング問題(オンライン)60%正答で診療実績証明。地方会は年間約35回開催。更新料16,000円。',
   },
   {
     id: 'surgery',
@@ -309,10 +315,16 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     society: '日本循環器学会',
     requiredCredits: 50,
     renewalYears: 5,
-    officialUrl: 'https://www.j-circ.or.jp/',
-    categories: JMSB_STANDARD_CATEGORIES,
+    officialUrl: 'https://www.j-circ.or.jp/specialist/current/current_update/credit/',
+    categories: [
+      { id: 'cat1_required', name: '必修研修カテゴリ1（最新医療知識）', minCredits: 30 },
+      { id: 'cat2_required', name: '必修研修カテゴリ2（医療安全・倫理）', minCredits: 2 },
+      { id: 'elective', name: '選択単位（論文・e-learning等）', minCredits: 18 },
+    ],
     type: 'subspecialty',
-    notes: '必修研修30単位含む',
+    hasElearning: true,
+    regionalMeetings: ['北海道','東北','関東甲信越','東海','北陸','近畿','中国','四国','九州'],
+    notes: 'e-learning最大15単位/期間。学術集会参加10+教育5, 地方会参加5+教育3。地方会は年2-3回/支部。',
   },
   {
     id: 'gastroenterology',
@@ -320,7 +332,7 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     society: '日本消化器病学会',
     requiredCredits: 50,
     renewalYears: 5,
-    officialUrl: 'https://www.jsge.or.jp/',
+    officialUrl: 'https://www.jsge.or.jp/specialist/senmoni/koshin/tani/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
   },
