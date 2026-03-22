@@ -21,22 +21,41 @@ interface SearchResult {
   href: string
 }
 
+import { tools, implementedTools } from '@/lib/tools-config'
+
+// 正規化: ハイフン・記号・スペースを除去してあいまい一致
+function normalize(s: string): string {
+  return s.toLowerCase().replace(/[-_・．.　\s₂]/g, '')
+}
+
 // App/tool entries for search
 const appEntries: SearchResult[] = [
-  { slug: 'tools', title: '臨床ツール', description: '臨床計算166種・薬剤ガイド・比較・手技・基準値・γ計算', categoryName: 'アプリ', type: 'app', href: '/tools' },
+  { slug: 'tools', title: '臨床ツール', description: '臨床計算178種・薬剤ガイド・比較・手技・基準値・γ計算', categoryName: 'アプリ', type: 'app', href: '/tools' },
   { slug: 'study', title: 'iwor Study', description: '医学フラッシュカード — CBT・国試・専門医対策', categoryName: 'アプリ', type: 'app', href: '/study' },
-  { slug: 'josler', title: '研修記録（J-OSLER）', description: 'J-OSLER症例登録・進捗管理', categoryName: 'アプリ', type: 'app', href: '/josler' },
-  { slug: 'matching', title: 'マッチング・転職対策', description: '履歴書作成・病院検索・書類生成', categoryName: 'アプリ', type: 'app', href: '/matching' },
-  { slug: 'journal', title: '論文フィード', description: '最新論文の日本語要約・ブックマーク', categoryName: 'アプリ', type: 'app', href: '/journal' },
-  { slug: 'presenter', title: 'プレゼン資料生成', description: '学会・カンファ・コンサル用テンプレート', categoryName: 'アプリ', type: 'app', href: '/presenter' },
-  { slug: 'money', title: 'マネー', description: 'ふるさと納税・手取り概算・NISA・確定申告', categoryName: 'アプリ', type: 'app', href: '/money' },
-  { slug: 'calc', title: '臨床計算ツール', description: 'eGFR, CHA₂DS₂-VASc, SOFA, Wells, A-DROP, qSOFA, BMI, BSA, 補正Na, AG', categoryName: 'ツール', type: 'tool', href: '/tools/calc' },
-  { slug: 'drugs', title: '薬剤ガイド', description: '抗菌薬スペクトラム・エンピリック・ステロイド換算・オピオイド換算・腎機能別用量・術前休薬・簡易懸濁', categoryName: 'ツール', type: 'tool', href: '/tools/drugs' },
-  { slug: 'compare', title: '薬剤比較', description: '降圧薬・スタチン・DPP-4・SGLT2・GLP-1・PPI・抗凝固薬・抗血小板薬', categoryName: 'ツール', type: 'tool', href: '/compare' },
+  { slug: 'josler', title: '研修記録（J-OSLER）', description: 'J-OSLER JOSLER ジェイオスラー 症例登録・進捗管理 EPOC 内科専攻', categoryName: 'アプリ', type: 'app', href: '/josler' },
+  { slug: 'matching', title: 'マッチング・転職対策', description: '履歴書作成・病院検索・書類生成 マッチング対策', categoryName: 'アプリ', type: 'app', href: '/matching' },
+  { slug: 'journal', title: '論文フィード', description: '最新論文の日本語要約・ブックマーク PubMed', categoryName: 'アプリ', type: 'app', href: '/journal' },
+  { slug: 'presenter', title: 'プレゼン資料生成', description: '学会・カンファ・コンサル用テンプレート 抄読会', categoryName: 'アプリ', type: 'app', href: '/presenter' },
+  { slug: 'money', title: 'マネー', description: 'ふるさと納税・手取り概算・NISA・確定申告 節税', categoryName: 'アプリ', type: 'app', href: '/money' },
+  { slug: 'credits', title: '専門医単位', description: '専門医単位 更新 学会 単位管理 リマインダー', categoryName: 'アプリ', type: 'app', href: '/credits' },
+  { slug: 'conferences', title: '学会カレンダー', description: '学会 カレンダー 日程 演題締切', categoryName: 'アプリ', type: 'app', href: '/conferences' },
+  { slug: 'shift', title: 'シフト', description: 'シフト管理 当直 カレンダー', categoryName: 'アプリ', type: 'app', href: '/shift' },
+  { slug: 'calc', title: '臨床計算ツール一覧', description: 'eGFR CHA2DS2VASc SOFA Wells ADROP qSOFA BMI BSA 補正Na AG', categoryName: 'ツール', type: 'tool', href: '/tools/calc' },
+  { slug: 'drugs', title: '薬剤ガイド', description: '抗菌薬スペクトラム・エンピリック・ステロイド換算・オピオイド換算・腎機能別用量', categoryName: 'ツール', type: 'tool', href: '/tools/drugs' },
+  { slug: 'compare', title: '薬剤比較', description: '降圧薬・スタチン・DPP4・SGLT2・GLP1・PPI・DOAC・抗血小板', categoryName: 'ツール', type: 'tool', href: '/compare' },
   { slug: 'procedures', title: '手技ガイド', description: 'CV・Aライン・腰椎穿刺・胸腔穿刺・腹腔穿刺・気管挿管', categoryName: 'ツール', type: 'tool', href: '/tools/procedures' },
   { slug: 'lab-values', title: '基準値早見表', description: '血算・生化学・凝固・血液ガスの基準値', categoryName: 'ツール', type: 'tool', href: '/tools/interpret/lab-values' },
-  { slug: 'gamma', title: 'γ計算', description: 'DOA・DOB・NAd・ニカルジピン・ニトログリセリン', categoryName: 'ツール', type: 'tool', href: '/tools/calc/gamma' },
-  { slug: 'combination', title: '配合錠リスト', description: '高血圧・脂質異常症・糖尿病の配合錠一覧。エックスフォージ・ロスーゼット・カナリア', categoryName: 'ツール', type: 'tool', href: '/tools/drugs/combination' },
+  { slug: 'gamma', title: 'γ計算', description: 'DOA・DOB・NAd・ニカルジピン・ニトログリセリン ガンマ計算', categoryName: 'ツール', type: 'tool', href: '/tools/calc/gamma' },
+  { slug: 'combination', title: '配合錠リスト', description: '高血圧・脂質異常症・糖尿病の配合錠一覧', categoryName: 'ツール', type: 'tool', href: '/tools/drugs/combination' },
+  // 個別計算ツール178種
+  ...tools.filter(t => implementedTools.has(t.slug)).map(t => ({
+    slug: t.slug,
+    title: t.name,
+    description: `${t.nameEn || ''} ${t.description} ${(t.keywords || []).join(' ')}`,
+    categoryName: '計算ツール',
+    type: 'tool' as const,
+    href: `/tools/calc/${t.slug}`,
+  })),
 ]
 
 let cachedIndex: IndexEntry[] | null = null
@@ -49,25 +68,34 @@ async function loadIndex(): Promise<IndexEntry[]> {
 }
 
 function searchAll(index: IndexEntry[], query: string): SearchResult[] {
+  const normalizedQuery = normalize(query)
   const keywords = query.toLowerCase().split(/\s+/).filter(Boolean)
   if (keywords.length === 0) return []
 
-  // Search apps/tools
+  // Search apps/tools (normalize matching)
   const appResults = appEntries
     .map(entry => {
-      const haystack = `${entry.title} ${entry.description} ${entry.categoryName}`.toLowerCase()
-      const matchCount = keywords.filter(kw => haystack.includes(kw)).length
-      if (matchCount === 0) return null
-      return { ...entry, relevance: matchCount / keywords.length + 0.5 } // Boost apps
+      const haystack = normalize(`${entry.title} ${entry.description} ${entry.categoryName} ${entry.slug}`)
+      // normalized match (josler → josler in "josler症例登録")
+      const normalMatch = haystack.includes(normalizedQuery) ? 1 : 0
+      // keyword match
+      const kwHaystack = `${entry.title} ${entry.description} ${entry.categoryName}`.toLowerCase()
+      const matchCount = keywords.filter(kw => kwHaystack.includes(kw)).length
+      const score = normalMatch + matchCount / keywords.length
+      if (score === 0) return null
+      return { ...entry, relevance: score + (entry.type === 'app' ? 0.5 : 0.3) }
     })
     .filter(r => r !== null) as (SearchResult & { relevance: number })[]
 
   // Search articles
   const articleResults = index
     .map(entry => {
-      const haystack = `${entry.t} ${entry.d} ${entry.c} ${entry.g}`.toLowerCase()
-      const matchCount = keywords.filter(kw => haystack.includes(kw)).length
-      if (matchCount === 0) return null
+      const haystack = normalize(`${entry.t} ${entry.d} ${entry.c} ${entry.g}`)
+      const normalMatch = haystack.includes(normalizedQuery) ? 1 : 0
+      const kwHaystack = `${entry.t} ${entry.d} ${entry.c} ${entry.g}`.toLowerCase()
+      const matchCount = keywords.filter(kw => kwHaystack.includes(kw)).length
+      const score = normalMatch + matchCount / keywords.length
+      if (score === 0) return null
       return {
         slug: entry.s,
         title: entry.t,
@@ -75,14 +103,14 @@ function searchAll(index: IndexEntry[], query: string): SearchResult[] {
         categoryName: entry.c,
         type: 'article' as const,
         href: `/blog/${entry.s}`,
-        relevance: matchCount / keywords.length,
+        relevance: score,
       }
     })
     .filter(r => r !== null) as (SearchResult & { relevance: number })[]
 
   return [...appResults, ...articleResults]
     .sort((a, b) => b.relevance - a.relevance)
-    .slice(0, 8)
+    .slice(0, 12)
 }
 
 export default function HomeSearch() {

@@ -27,26 +27,56 @@ async function loadIndex(): Promise<IndexEntry[]> {
   return cachedIndex!
 }
 
+import { tools, implementedTools } from '@/lib/tools-config'
+
+function normalize(s: string): string {
+  return s.toLowerCase().replace(/[-_・．.　\s₂]/g, '')
+}
+
+// ツール+アプリのエントリ
+const toolEntries = tools.filter(t => implementedTools.has(t.slug)).map(t => ({
+  s: t.slug, t: t.name, d: `${t.nameEn || ''} ${t.description} ${(t.keywords || []).join(' ')}`, c: '計算ツール', g: t.slug, href: `/tools/calc/${t.slug}`,
+}))
+const appFixedEntries = [
+  { s: 'josler', t: '研修記録（J-OSLER）', d: 'J-OSLER JOSLER ジェイオスラー 症例登録 EPOC 内科', c: 'アプリ', g: 'josler', href: '/josler' },
+  { s: 'study', t: 'iwor Study', d: 'フラッシュカード CBT 国試 専門医 暗記', c: 'アプリ', g: 'study', href: '/study' },
+  { s: 'matching', t: 'マッチング・転職対策', d: '履歴書 病院検索 マッチング', c: 'アプリ', g: 'matching', href: '/matching' },
+  { s: 'journal', t: '論文フィード', d: '論文 PubMed 最新 日本語', c: 'アプリ', g: 'journal', href: '/journal' },
+  { s: 'credits', t: '専門医単位', d: '専門医 単位 更新 学会', c: 'アプリ', g: 'credits', href: '/credits' },
+  { s: 'conferences', t: '学会カレンダー', d: '学会 日程 カレンダー', c: 'アプリ', g: 'conferences', href: '/conferences' },
+  { s: 'money', t: 'マネー', d: 'ふるさと納税 手取り NISA 確定申告 節税', c: 'アプリ', g: 'money', href: '/money' },
+  { s: 'presenter', t: 'プレゼン資料生成', d: '学会 カンファ 抄読会 スライド', c: 'アプリ', g: 'presenter', href: '/presenter' },
+  { s: 'shift', t: 'シフト', d: 'シフト 当直 カレンダー', c: 'アプリ', g: 'shift', href: '/shift' },
+]
+
 function search(index: IndexEntry[], query: string): SearchResult[] {
+  const normalizedQuery = normalize(query)
   const keywords = query.toLowerCase().split(/\s+/).filter(Boolean)
   if (keywords.length === 0) return []
 
-  return index
+  const allEntries = [...appFixedEntries, ...toolEntries, ...index.map(e => ({ ...e, href: `/blog/${e.s}` }))]
+
+  return allEntries
     .map((entry) => {
-      const haystack = `${entry.t} ${entry.d} ${entry.c} ${entry.g}`.toLowerCase()
-      const matchCount = keywords.filter((kw) => haystack.includes(kw)).length
-      if (matchCount === 0) return null
+      const haystack = normalize(`${entry.t} ${entry.d} ${entry.c} ${entry.g} ${entry.s}`)
+      const normalMatch = haystack.includes(normalizedQuery) ? 1 : 0
+      const kwHaystack = `${entry.t} ${entry.d} ${entry.c} ${entry.g}`.toLowerCase()
+      const matchCount = keywords.filter((kw) => kwHaystack.includes(kw)).length
+      const score = normalMatch + matchCount / keywords.length
+      if (score === 0) return null
+      const isApp = appFixedEntries.some(a => a.s === entry.s)
       return {
         slug: entry.s,
         title: entry.t,
         description: entry.d,
         categoryName: entry.c,
-        relevance: matchCount / keywords.length,
+        href: (entry as any).href || `/blog/${entry.s}`,
+        relevance: score + (isApp ? 0.5 : 0),
       }
     })
-    .filter((r): r is SearchResult & { relevance: number } => r !== null)
+    .filter((r): r is SearchResult & { relevance: number; href: string } => r !== null)
     .sort((a, b) => b.relevance - a.relevance)
-    .slice(0, 10)
+    .slice(0, 12)
 }
 
 export default function SearchDialog() {
@@ -200,7 +230,7 @@ export default function SearchDialog() {
                 {results.map((result, i) => (
                   <li key={result.slug}>
                     <Link
-                      href={`/blog/${result.slug}`}
+                      href={(result as any).href || `/blog/${result.slug}`}
                       onClick={close}
                       className={`block px-4 py-3 transition-colors ${
                         i === selectedIndex ? 'bg-acl' : 'hover:bg-s1'
