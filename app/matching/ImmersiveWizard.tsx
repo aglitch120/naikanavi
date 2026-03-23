@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -38,6 +38,7 @@ interface Props {
 
 export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: Props) {
   const [stepIdx, setStepIdx] = useState(editMode ? 0 : 0)
+  const answersRef = useRef<Record<string, Answer>>(savedAnswers || {})
   const [answers, setAnswers] = useState<Record<string, Answer>>(savedAnswers || {})
   const [selected, setSelected] = useState<string[]>([])
   const [freeText, setFreeText] = useState('')
@@ -55,7 +56,16 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
         if (p.name) setBasicName(p.name)
         if (p.university) setBasicUniv(p.university)
         if (p.graduationYear) setBasicYear(p.graduationYear)
-        if (p._wizardAnswers) setAnswers(p._wizardAnswers)
+        if (p._wizardAnswers) {
+          setAnswers(p._wizardAnswers)
+          answersRef.current = p._wizardAnswers
+          // 初期ステップの回答を復元
+          const firstStep = STEPS[0]
+          if (firstStep && p._wizardAnswers[firstStep.id]) {
+            setSelected(p._wizardAnswers[firstStep.id].choices || [])
+            setFreeText(p._wizardAnswers[firstStep.id].freeText || '')
+          }
+        }
       }
     } catch {}
   }, [])
@@ -71,12 +81,11 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
     })
   }, [])
 
-  // ステップ開始時: 既存回答があれば復元（新規でも編集でも）
-  useEffect(() => {
-    if (done) return
-    const s = STEPS[stepIdx]
+  // ステップ遷移ヘルパー: refから即座に復元
+  const restoreStep = useCallback((idx: number) => {
+    const s = STEPS[idx]
     if (!s) return
-    const existing = answers[s.id]
+    const existing = answersRef.current[s.id]
     if (existing) {
       setSelected(existing.choices || [])
       setFreeText(existing.freeText || '')
@@ -84,7 +93,7 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
       setSelected([])
       setFreeText('')
     }
-  }, [stepIdx, done, answers])
+  }, [])
 
   const handleNext = useCallback(() => {
     const s = STEPS[stepIdx]
@@ -100,6 +109,7 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
     } else {
       const a: Answer = { choices: selected, freeText }
       const newAnswers = { ...answers, [s.id]: a }
+      answersRef.current = newAnswers
       setAnswers(newAnswers)
       try {
         const existing = JSON.parse(localStorage.getItem('iwor_matching_profile') || '{}')
@@ -109,8 +119,9 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
     }
 
     if (stepIdx < STEPS.length - 1) {
-      setStepIdx(stepIdx + 1)
-      // selected/freeTextはuseEffect[stepIdx, answers]で自動復元されるので手動クリア不要
+      const nextIdx = stepIdx + 1
+      setStepIdx(nextIdx)
+      restoreStep(nextIdx)
     } else {
       // 全完了
       const finalAnswers = { ...answers, [s.id]: { choices: selected, freeText } }
@@ -120,7 +131,24 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
   }, [stepIdx, selected, freeText, answers, basicName, basicUniv, basicYear, onComplete])
 
   const handleBack = () => {
-    if (stepIdx > 0) setStepIdx(stepIdx - 1)
+    if (stepIdx > 0) {
+      // 現在のステップの回答を保存してから戻る
+      const s = STEPS[stepIdx]
+      if (s && s.type !== 'basic') {
+        const a: Answer = { choices: selected, freeText }
+        const newAnswers = { ...answers, [s.id]: a }
+        answersRef.current = newAnswers
+        setAnswers(newAnswers)
+        try {
+          const existing = JSON.parse(localStorage.getItem('iwor_matching_profile') || '{}')
+          existing._wizardAnswers = newAnswers
+          localStorage.setItem('iwor_matching_profile', JSON.stringify(existing))
+        } catch {}
+      }
+      const prevIdx = stepIdx - 1
+      setStepIdx(prevIdx)
+      restoreStep(prevIdx)
+    }
   }
 
   // ═══ 完了画面 ═══
