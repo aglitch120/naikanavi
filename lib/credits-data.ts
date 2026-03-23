@@ -108,6 +108,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
       { id: 'academic', name: '学術業績' },
     ],
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','九州'],
   },
   {
     id: 'obgyn',
@@ -118,6 +120,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://www.jsog.or.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','中部','九州','東北','北海道','中国四国'],
   },
   {
     id: 'psychiatry',
@@ -128,6 +132,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://www.jspn.or.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','東北','九州','中部','北海道'],
     notes: 'A群（特別講演）・B群（地方学会）・C群（地域学会）分類あり',
   },
   {
@@ -139,6 +145,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://www.dermatol.or.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['東京','近畿','中部','九州','東北','北海道','中国四国'],
     notes: '2028年度以降: 診療実績10単位（100症例）必須',
   },
   {
@@ -150,6 +158,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://www.nichigan.or.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','中部','九州','東北'],
   },
   {
     id: 'otolaryngology',
@@ -165,6 +175,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
       { id: 'academic', name: '学術業績' },
     ],
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','東海','九州','東北','中国四国'],
     notes: '3回以上更新者は40単位に軽減',
   },
   {
@@ -181,6 +193,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
       { id: 'academic', name: '学術業績', maxCredits: 15, minCredits: 3 },
     ],
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['東京','北海道','近畿','九州','東海','東北','中国四国'],
     notes: '4回目以降は診療実績免除可（40単位）',
   },
   {
@@ -197,6 +211,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
       { id: 'academic', name: '学術業績' },
     ],
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','中部','九州','東北','北海道','中国四国'],
   },
   {
     id: 'neurosurgery',
@@ -207,6 +223,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://jns-official.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','東海','九州','東北','北海道'],
   },
   {
     id: 'plastic_surgery',
@@ -217,6 +235,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://jsprs.or.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','九州'],
     notes: '旧制度150点から新制度50単位に変更',
   },
   {
@@ -233,6 +253,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
       { id: 'academic', name: '学術業績' },
     ],
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東'],
   },
   {
     id: 'anesthesiology',
@@ -248,6 +270,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
       { id: 'academic', name: '学術業績', minCredits: 6 },
     ],
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東甲信越','近畿','九州','東海','東北','北海道'],
     notes: '2026年度より共通講習8単位必須',
   },
   {
@@ -259,6 +283,7 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://pathology.or.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
   },
   {
     id: 'clinical_lab',
@@ -269,6 +294,7 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://www.jslm.org/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
   },
   {
     id: 'emergency',
@@ -279,6 +305,8 @@ const BASIC_SPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://www.jaam.jp/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'basic',
+    hasElearning: true,
+    regionalMeetings: ['関東','中部','近畿','九州','東北'],
     notes: 'e-learning（80%以上正解で単位付与）あり',
   },
   {
@@ -337,6 +365,8 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
     officialUrl: 'https://www.jsge.or.jp/specialist/senmoni/koshin/tani/',
     categories: JMSB_STANDARD_CATEGORIES,
     type: 'subspecialty',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','九州','東北','北海道','東海','中国四国'],
   },
   {
     id: 'pulmonology',
@@ -352,6 +382,8 @@ const SUBSPECIALTIES: SpecialtyRequirement[] = [
       { id: 'academic', name: '学術業績' },
     ],
     type: 'subspecialty',
+    hasElearning: true,
+    regionalMeetings: ['関東','近畿','東海','九州','東北','北海道'],
   },
   {
     id: 'endocrinology',

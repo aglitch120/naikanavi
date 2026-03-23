@@ -5,6 +5,7 @@ import AppHeader from '@/components/AppHeader'
 import ProModal from '@/components/pro/ProModal'
 import { useProStatus } from '@/components/pro/useProStatus'
 import { ALL_SPECIALTIES, getSpecialtyById, type CreditEntry, type UserCreditsData } from '@/lib/credits-data'
+import { CONFERENCES_2026, type Conference } from '@/lib/conferences-data'
 import {
   loadCreditsData, saveCreditsToLocal, saveCreditsToCloud,
 } from '@/lib/josler-storage'
@@ -439,8 +440,31 @@ export default function CreditsApp() {
                           ))}
                         </div>
                       </div>
+                      {/* 今後の日程（conferences-data.tsから） */}
+                      {(() => {
+                        const now = new Date().toISOString().split('T')[0]
+                        const matched = CONFERENCES_2026.filter(c =>
+                          c.societyShort === specialty.name.replace('専門医','').replace('科','') ||
+                          c.society.includes(specialty.society.replace('日本','').replace('学会',''))
+                        ).filter(c => c.startDate >= now).slice(0, 3)
+                        if (matched.length === 0) return null
+                        return (
+                          <div>
+                            <p className="text-[10px] font-bold text-white/70 mb-1">今後の日程</p>
+                            <div className="space-y-1">
+                              {matched.map(c => (
+                                <div key={c.id} className="flex items-center gap-2 bg-white/10 rounded-md px-2 py-1.5">
+                                  <span className="text-[9px] text-white/80 w-16 shrink-0">{c.startDate.slice(5).replace('-','/')}</span>
+                                  <span className="text-[9px] text-white truncate flex-1">{c.meetingName}</span>
+                                  <span className="text-[8px] text-white/50 shrink-0">{c.city}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )
+                      })()}
                       <a href="/conferences" className="block text-[11px] font-bold py-2.5 text-center rounded-lg transition-all hover:opacity-90 bg-white text-ac">
-                        学会カレンダーで日程を確認 →
+                        学会カレンダーで全日程を確認 →
                       </a>
                     </>
                   ) : (
