@@ -124,6 +124,8 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
         if (basicName) existing.name = basicName
         if (basicUniv) existing.university = basicUniv
         if (basicYear) existing.graduationYear = basicYear
+        // _wizardAnswersがなければ初期化（次ステップでの復元に必要）
+        if (!existing._wizardAnswers) existing._wizardAnswers = answersRef.current
         localStorage.setItem('iwor_matching_profile', JSON.stringify(existing))
       } catch {}
     } else {
@@ -143,8 +145,14 @@ export default function ImmersiveWizard({ onComplete, savedAnswers, editMode }: 
       setStepIdx(nextIdx)
       restoreStep(nextIdx)
     } else {
-      // 全完了
+      // 全完了 — 最後のステップの回答もlocalStorageに保存
       const finalAnswers = { ...answers, [s.id]: { choices: selected, freeText } }
+      answersRef.current = finalAnswers
+      try {
+        const existing = JSON.parse(localStorage.getItem('iwor_matching_profile') || '{}')
+        existing._wizardAnswers = finalAnswers
+        localStorage.setItem('iwor_matching_profile', JSON.stringify(existing))
+      } catch {}
       onComplete(finalAnswers)
       setDone(true)
     }
