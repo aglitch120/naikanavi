@@ -41,7 +41,7 @@ export default function AnemiaCriteriaPage() {
           <button key={v} onClick={()=>setSex(v)} className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${sex===v?'bg-ac text-white':'bg-s1 text-muted'}`}>{l}</button>
         ))}
       </div>
-      <NumberInput label="Hb (g/dL)" value={hb} onChange={setHb} step="0.1" />
+      <NumberInput label="Hb (g/dL)" value={hb} onChange={setHb} step={0.1} />
       <NumberInput label="MCV (fL) ※任意" value={mcv} onChange={setMcv} />
     </CalculatorLayout>
   )
