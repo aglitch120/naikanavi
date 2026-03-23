@@ -144,6 +144,41 @@ const faqs = [
   },
 ]
 
+// 属性別ヒーローテキスト
+function ProHeroText() {
+  const [role, setRole] = useState('')
+  useEffect(() => { setRole(localStorage.getItem('iwor_user_role') || '') }, [])
+
+  const texts: Record<string, { h1: React.ReactNode; sub: string }> = {
+    student: {
+      h1: <>マッチング対策と<span className="text-ac">CBT・国試</span>を<br className="md:hidden" /><span className="text-ac">PROで万全に</span>。</>,
+      sub: '1,470病院の穴場度分析、履歴書AI自動生成、フラッシュカード350枚+。全てPROで解放。',
+    },
+    resident: {
+      h1: <>当直中に頼れる<span className="text-ac">臨床ツール</span>と<br className="md:hidden" /><span className="text-ac">研修記録</span>を。</>,
+      sub: '臨床計算178種の深い解釈、EPOC管理、お気に入り保存。使うほど価値が積み上がる。',
+    },
+    fellow: {
+      h1: <><span className="text-ac">J-OSLER</span>・論文・<span className="text-ac">専門医単位</span>を<br className="md:hidden" />一元管理。</>,
+      sub: '症例登録、病歴要約AI、211誌の論文フィード、専門医単位管理。専攻医の全てをカバー。',
+    },
+    attending: {
+      h1: <>臨床・論文・<span className="text-ac">マネー</span>を<br className="md:hidden" /><span className="text-ac">もっと効率的に</span>。</>,
+      sub: '臨床計算ツール、論文フィード、学会カレンダー、ふるさと納税・NISA。医師のオールインワン。',
+    },
+  }
+  const t = role && texts[role] ? texts[role] : {
+    h1: <>臨床ツールの<span className="text-ac">深い解釈</span>と<br className="md:hidden" /><span className="text-ac">キャリアデータ</span>を、あなたに。</>,
+    sub: '計算結果の意味、次にすべきアクション、経験症例の記録。使うほど価値が積み上がる、医師のためのプロツール。',
+  }
+  return (
+    <>
+      <h1 className="text-3xl md:text-4xl font-bold text-tx leading-tight mb-4">{t.h1}</h1>
+      <p className="text-base text-muted max-w-xl mx-auto leading-relaxed mb-6">{t.sub}</p>
+    </>
+  )
+}
+
 export default function ProPage() {
   const [activeSegment, setActiveSegment] = useState('resident')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -191,15 +226,7 @@ export default function ProPage() {
             ✦ iwor PRO
           </span>
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-tx leading-tight mb-4">
-          臨床ツールの<span className="text-ac">深い解釈</span>と<br className="md:hidden" />
-          <span className="text-ac">キャリアデータ</span>を、あなたに。
-        </h1>
-        <p className="text-base text-muted max-w-xl mx-auto leading-relaxed mb-6">
-          計算結果の意味、次にすべきアクション、経験症例の記録。
-          <br className="hidden sm:inline" />
-          使うほど価値が積み上がる、医師のためのプロツール。
-        </p>
+        <ProHeroText />
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href="#pricing"

@@ -53,9 +53,18 @@ interface ProModalProps {
   onClose: () => void
 }
 
+// 属性別パーソナライズメッセージ
+const ROLE_MESSAGES: Record<string, { headline: string; sub: string }> = {
+  student: { headline: 'マッチング・CBT対策を万全に', sub: '1,470病院DB、履歴書AI生成、フラッシュカード350枚+' },
+  resident: { headline: '当直中に頼れるツールを', sub: '臨床計算178種、薬剤ガイド、EPOC管理、シフト作成' },
+  fellow: { headline: 'J-OSLER・論文・単位を一元管理', sub: '症例登録、病歴要約AI、211誌の論文フィード、専門医単位' },
+  attending: { headline: '臨床・論文・マネーをもっと効率的に', sub: '臨床計算、論文フィード、ふるさと納税、専門医単位管理' },
+}
+
 export default function ProModal({ feature = 'favorites', onClose }: ProModalProps) {
   const msg = featureMessages[feature]
   const [userData, setUserData] = useState({ study: 0, josler: 0, bookmarks: 0 })
+  const [role, setRole] = useState('')
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -67,6 +76,11 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
   useEffect(() => {
     trackProModalView(feature)
   }, [feature])
+
+  // 属性取得
+  useEffect(() => {
+    setRole(localStorage.getItem('iwor_user_role') || '')
+  }, [])
 
   // 損失回避カウンター: ユーザーの蓄積データ量を集計
   useEffect(() => {
@@ -111,9 +125,16 @@ export default function ProModal({ feature = 'favorites', onClose }: ProModalPro
         <div className="text-center">
           <div className="text-3xl mb-3">{msg.icon}</div>
           <h2 className="text-lg font-bold text-tx mb-1">{msg.title}</h2>
-          <p className="text-sm text-muted mb-4 leading-relaxed">
+          <p className="text-sm text-muted mb-2 leading-relaxed">
             {msg.description}
           </p>
+          {/* パーソナライズ: 属性別メッセージ */}
+          {role && ROLE_MESSAGES[role] && (
+            <div className="bg-acl/50 rounded-lg px-3 py-2 mb-2">
+              <p className="text-[11px] font-bold text-ac">{ROLE_MESSAGES[role].headline}</p>
+              <p className="text-[9px] text-muted mt-0.5">{ROLE_MESSAGES[role].sub}</p>
+            </div>
+          )}
 
           {/* 損失回避カウンター: あなたの蓄積データ */}
           {(userData.study > 0 || userData.josler > 0 || userData.bookmarks > 0) && (
