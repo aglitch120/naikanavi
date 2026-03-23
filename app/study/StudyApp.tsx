@@ -488,7 +488,7 @@ export default function StudyApp() {
       <div className="px-4 py-8 max-w-lg mx-auto">
         <AppHeader
           title="iwor Study"
-          subtitle="医学フラッシュカード — FSRS搭載の科学的復習スケジューラー"
+          subtitle="医学フラッシュカード — 忘却曲線に基づく科学的復習"
           badge="NEW"
           favoriteSlug="app-study"
           favoriteHref="/study"
@@ -676,10 +676,10 @@ export default function StudyApp() {
           </div>
         )}
 
-        {/* FSRS説明 */}
+        {/* 忘却曲線説明 */}
         <div className="bg-s1 rounded-xl p-4 mb-6 text-[11px] text-muted leading-relaxed">
-          <p className="font-bold text-tx mb-1">📊 FSRSアルゴリズム搭載</p>
-          <p>科学的な復習スケジューリングで効率よく記憶を定着。回答の自信度に応じて次の復習タイミングを最適化します。</p>
+          <p className="font-bold text-tx mb-1">📊 忘却曲線に基づく間隔反復</p>
+          <p>Anki同様の科学的な復習スケジューリング。回答の自信度に応じて「忘れかけるタイミング」で自動的に再出題し、効率よく記憶を定着させます。</p>
         </div>
 
         <div className="text-center">

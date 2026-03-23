@@ -125,7 +125,7 @@ function SummaryGeneratorInner() {
           <input type="checkbox" checked={karteConsent}
             onChange={e => setKarteConsent(e.target.checked)}
             className="mt-0.5 rounded flex-shrink-0" />
-          <span>入力する情報は<strong>内科学会の指定する匿名化処理</strong>を施行済みであることを確認しました。</span>
+          <span>入力する情報は<strong>内科学会の指定する匿名化処理</strong>を施行済みで、患者同意を取得済みかつ施設規則に合致していることを確認しました。</span>
         </label>
 
         {karteConsent ? (

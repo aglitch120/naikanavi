@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'iwor Study — 医師・医学生のためのフラッシュカード | Anki日本語対応',
-  description: 'FSRS搭載の医学フラッシュカードアプリ。CBT・国試・専門医試験対策。Ankiデッキ(.apkg)インポート対応。日本語ネイティブUI。無料で始められます。',
+  description: '忘却曲線に基づく間隔反復で効率的に暗記。CBT・国試・専門医試験対策。Ankiデッキ(.apkg)インポート対応。日本語ネイティブUI。無料。',
   alternates: { canonical: 'https://iwor.jp/study/lp' },
   openGraph: {
     title: 'iwor Study — 医師・医学生のためのフラッシュカード',
-    description: 'FSRS搭載。CBT・国試・専門医試験対策。Ankiデッキ互換。無料。',
+    description: '忘却曲線に基づく間隔反復。CBT・国試・専門医試験対策。Ankiデッキ互換。無料。',
     url: 'https://iwor.jp/study/lp',
   },
 }
@@ -19,13 +19,13 @@ const studyLpJsonLd = {
   applicationCategory: 'EducationalApplication',
   operatingSystem: 'Web',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
-  description: '医師・医学生のためのFSRS搭載フラッシュカードアプリ。CBT・国試・専門医試験対策。',
+  description: '医師・医学生のための間隔反復フラッシュカードアプリ。CBT・国試・専門医試験対策。',
 }
 
 const features = [
   {
-    title: 'FSRS — 最新の間隔反復アルゴリズム',
-    desc: 'Ankiを超える次世代アルゴリズム。あなたの記憶状態を数学的にモデリングし、最適なタイミングで復習カードを出題。忘却率を最小化します。',
+    title: '忘却曲線に基づく科学的復習',
+    desc: 'Anki同様の間隔反復アルゴリズム。あなたの回答パターンを学習し、忘れかけるタイミングで自動的に再出題。効率よく記憶を定着させます。',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
     ),
@@ -68,7 +68,7 @@ const features = [
 ]
 
 const comparisons = [
-  { feature: 'アルゴリズム', anki: 'SM-2（1987年）', iwor: 'FSRS（2023年、最新）' },
+  { feature: 'アルゴリズム', anki: 'SM-2（1987年）', iwor: '最新の間隔反復（2023年）' },
   { feature: '日本語UI', anki: '英語のみ', iwor: '完全日本語' },
   { feature: 'セットアップ', anki: 'アプリDL + 設定', iwor: 'ブラウザで即開始' },
   { feature: '.apkgインポート', anki: '○', iwor: '○（互換）' },
@@ -101,7 +101,7 @@ export default function StudyLPPage() {
           医師・医学生のための<br className="hidden sm:inline" />フラッシュカード
         </h1>
         <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8" style={{ color: 'var(--m)' }}>
-          FSRS搭載。Ankiデッキ互換。日本語ネイティブUI。<br />
+          忘却曲線に基づく間隔反復。Ankiデッキ互換。日本語ネイティブUI。<br />
           CBT・国試・専門医試験を、科学的に効率よく。
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -197,7 +197,7 @@ export default function StudyLPPage() {
           {[
             { step: '1', title: 'デッキを選ぶ', desc: 'CBT・国試・内科から選択。または自作デッキを作成。Ankiの.apkgファイルもインポート可能。' },
             { step: '2', title: 'カードをめくる', desc: 'タップでカードをフリップ。4段階（もう一度・難しい・普通・簡単）で自己評価。' },
-            { step: '3', title: 'FSRSが最適化', desc: 'あなたの回答パターンを学習し、忘れかけたタイミングで自動的にカードを再出題。' },
+            { step: '3', title: '忘却曲線が最適化', desc: 'あなたの回答パターンを学習し、忘れかけたタイミングで自動的にカードを再出題。' },
           ].map(s => (
             <div key={s.step} className="text-center">
               <div
@@ -227,7 +227,7 @@ export default function StudyLPPage() {
             <ul className="space-y-2.5 text-sm" style={{ color: 'var(--m)' }}>
               {[
                 'カード作成・編集 無制限',
-                'FSRS間隔反復 無制限',
+                '間隔反復 無制限',
                 '自作デッキ 無制限',
                 'デフォルト3デッキ（150枚）',
                 '.apkgインポート',
@@ -272,10 +272,10 @@ export default function StudyLPPage() {
         <div className="space-y-4 max-w-2xl mx-auto">
           {[
             { q: 'Ankiのデッキはそのまま使えますか？', a: 'はい。.apkgファイルをインポートするだけで、カードがそのままiwor Studyに取り込まれます。画像やHTML装飾にも対応しています。' },
-            { q: 'FSRSとは何ですか？', a: 'Free Spaced Repetition Schedulerの略。2023年に発表された最新の間隔反復アルゴリズムで、従来のSM-2（Anki標準）より記憶効率が高いことが論文で示されています。' },
+            { q: '間隔反復とは何ですか？', a: '忘却曲線（エビングハウス）に基づき、忘れかけるタイミングで復習するアルゴリズムです。Ankiと同様の仕組みで、従来のSM-2より効率が高い最新アルゴリズムを搭載しています。' },
             { q: 'データはどこに保存されますか？', a: '学習データはブラウザのlocalStorageに保存されます。サーバーには送信されません。PRO会員はクラウド同期が利用可能になる予定です。' },
             { q: 'スマホでも使えますか？', a: 'はい。WebアプリなのでiPhone/Android/PC全てのブラウザで利用できます。ホーム画面に追加すればアプリのように使えます。' },
-            { q: '無料で使い続けられますか？', a: 'はい。カード作成・FSRS学習・自作デッキ・.apkgインポートはすべて永久無料です。PROは将来のコミュニティ機能やAI機能を追加するオプションです。' },
+            { q: '無料で使い続けられますか？', a: 'はい。カード作成・間隔反復学習・自作デッキ・.apkgインポートはすべて永久無料です。PROは将来のコミュニティ機能やAI機能を追加するオプションです。' },
           ].map(faq => (
             <details
               key={faq.q}
