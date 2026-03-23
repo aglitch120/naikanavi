@@ -797,37 +797,38 @@ function ResumePreview({ profile, isPro }: {
     const dateStr = `令和${reiwaYear}年${m}月${d}日現在`
 
     // 学歴・職歴テーブル行
+    // 学歴（高校卒業→大学入学→卒業見込）
+    const gradYear = parseInt(profile.graduationYear || '0')
+    const univEntryYear = gradYear ? gradYear - 6 : 0
+    const hsGradYear = univEntryYear
     const eduRows: string[] = []
-    if (profile.university) {
-      eduRows.push(`<tr><td class="year-col">${profile.graduationYear ? profile.graduationYear + '年　3月' : '　　年　　月'}</td><td>${profile.university}　卒業見込み</td></tr>`)
-    }
-    if (profile.retentionYear) {
-      eduRows.push(`<tr><td class="year-col">${profile.retentionYear}年　　月</td><td>留年（1年）</td></tr>`)
-    }
+    eduRows.push(`<tr><td class="year-col">${hsGradYear ? hsGradYear + '年　3月' : '　　年　3月'}</td><td>○○高等学校　卒業</td></tr>`)
+    eduRows.push(`<tr><td class="year-col">${univEntryYear ? univEntryYear + '年　4月' : '　　年　4月'}</td><td>${profile.university || '○○大学医学部医学科'}　入学</td></tr>`)
+    eduRows.push(`<tr><td class="year-col">${gradYear ? gradYear + '年　3月' : '　　年　3月'}</td><td>${profile.university || '○○大学医学部医学科'}　卒業見込み</td></tr>`)
     while (eduRows.length < 6) {
       eduRows.push('<tr><td class="year-col">&nbsp;</td><td>&nbsp;</td></tr>')
     }
 
     // 資格・免許テーブル行
     const licenseRows: string[] = []
+    // 運転免許（一般的）
+    licenseRows.push(`<tr><td class="year-col">　　年　　月</td><td>普通自動車第一種運転免許　取得</td></tr>`)
+    // ユーザー入力の資格
     if (profile.qualifications) {
       profile.qualifications.split(/[、,，\n]/).filter(Boolean).forEach(q => {
         licenseRows.push(`<tr><td class="year-col">　　年　　月</td><td>${q.trim()}</td></tr>`)
       })
     }
-    if (profile.languageSkills.length > 0) {
-      profile.languageSkills.forEach(l => {
-        licenseRows.push(`<tr><td class="year-col">　　年　　月</td><td>${l}</td></tr>`)
-      })
-    }
+    // 医師国家試験（卒業年の2月）
+    licenseRows.push(`<tr><td class="year-col">${gradYear ? gradYear + '年　2月' : '　　年　2月'}</td><td>医師国家試験　合格見込み</td></tr>`)
     while (licenseRows.length < 4) {
       licenseRows.push('<tr><td class="year-col">&nbsp;</td><td>&nbsp;</td></tr>')
     }
 
-    // 自己PR本文
-    const prText = profile.strengthsList.length > 0
+    // 自己PR本文（AI生成があればそれを使う）
+    const prText = profile.strengths || (profile.strengthsList.length > 0
       ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? '\n' + profile.strengthsEpisode : '')
-      : (profile.strengths || '')
+      : '')
 
     // 趣味・特技
     const hobbyText = [profile.hobbies, profile.clubs ? `（部活）${profile.clubs}` : ''].filter(Boolean).join('　')
@@ -1036,36 +1037,78 @@ td, th { border: 1px solid #333; padding: 3pt 5pt; vertical-align: top; }
               </button>
             </div>
           )}
-          <div className="space-y-4">
-            <div className="flex gap-4">
-              <div className="w-20 h-24 bg-s1 border border-br rounded-lg flex items-center justify-center flex-shrink-0"><span className="text-[10px] text-muted">写真</span></div>
-              <div className="flex-1 min-w-0">
-                <p className="text-lg font-bold text-tx mb-1">{profile.name}</p>
-                <div className="space-y-0.5 text-xs text-muted">
-                  <p>{profile.university}</p>
-                  {profile.graduationYear && <p>{profile.graduationYear}年3月卒業見込み</p>}
-                  {profile.preferredSpecialty && <p>志望科: <span className="font-medium text-tx">{profile.preferredSpecialty}</span></p>}
+          {/* A4見開きプレビュー */}
+          {(() => {
+            const gy = parseInt(profile.graduationYear || '0')
+            const entryY = gy ? gy - 6 : 0
+            const prText = profile.strengths || (profile.strengthsList.length > 0
+              ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? `。${profile.strengthsEpisode}` : '')
+              : '')
+            const trimStr = (s: string, max: number) => s.length > max ? s.slice(0, max) + '...' : s
+            return (
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                {/* PAGE 1 */}
+                <div className="flex-shrink-0 bg-white border border-gray-300 rounded shadow-sm p-3" style={{ width: 280, minHeight: 396, fontFamily: 'serif', fontSize: 7, color: '#222', lineHeight: 1.5 }}>
+                  <div className="text-center font-bold mb-1" style={{ fontSize: 11, letterSpacing: '0.5em' }}>履　歴　書</div>
+                  <div className="text-right mb-1.5" style={{ fontSize: 6 }}>令和{gy ? gy - 2018 : '○'}年{new Date().getMonth()+1}月{new Date().getDate()}日現在</div>
+                  <div className="flex border border-gray-400 mb-1">
+                    <div className="flex-1 border-r border-gray-400">
+                      <div className="border-b border-gray-300 px-1 py-0.5" style={{ fontSize: 5 }}>ふりがな</div>
+                      <div className="px-1 py-1 font-bold" style={{ fontSize: 10 }}>{profile.name || '　'}</div>
+                    </div>
+                    <div className="flex items-center justify-center" style={{ width: 55 }}>
+                      <div className="border border-gray-200 flex items-center justify-center" style={{ width: 48, height: 64, fontSize: 5, color: '#999', background: '#fafafa' }}>写真貼付<br/>30×40mm</div>
+                    </div>
+                  </div>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 6 }}>
+                    <tbody>
+                      <tr><td style={{ border: '1px solid #999', padding: '1px 3px', width: 40, background: '#f5f5f5', fontWeight: 'bold' }}>生年月日</td><td style={{ border: '1px solid #999', padding: '1px 3px' }}>　年　月　日生（満　歳）</td><td style={{ border: '1px solid #999', padding: '1px 3px', width: 20, background: '#f5f5f5', fontWeight: 'bold' }}>性別</td><td style={{ border: '1px solid #999', padding: '1px 3px', width: 25 }}>&nbsp;</td></tr>
+                      <tr><td style={{ border: '1px solid #999', padding: '1px 3px', background: '#f5f5f5', fontWeight: 'bold' }}>現住所</td><td colSpan={3} style={{ border: '1px solid #999', padding: '1px 3px', height: 18 }}>&nbsp;</td></tr>
+                    </tbody>
+                  </table>
+                  <div className="text-center font-bold border-b border-gray-400 mt-1 pb-0.5" style={{ fontSize: 7 }}>学　歴　・　職　歴</div>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 6 }}>
+                    <tbody>
+                      <tr><td colSpan={2} style={{ border: '1px solid #ccc', textAlign: 'center', fontSize: 6, padding: '1px' }}>学　歴</td></tr>
+                      <tr><td style={{ border: '1px solid #ccc', width: 50, textAlign: 'center', padding: '1px 2px' }}>{entryY ? `${entryY}年 3月` : '　年　月'}</td><td style={{ border: '1px solid #ccc', padding: '1px 2px' }}>○○高等学校　卒業</td></tr>
+                      <tr><td style={{ border: '1px solid #ccc', textAlign: 'center', padding: '1px 2px' }}>{entryY ? `${entryY}年 4月` : '　年　月'}</td><td style={{ border: '1px solid #ccc', padding: '1px 2px' }}>{profile.university || '○○大学'}　入学</td></tr>
+                      <tr><td style={{ border: '1px solid #ccc', textAlign: 'center', padding: '1px 2px' }}>{gy ? `${gy}年 3月` : '　年　月'}</td><td style={{ border: '1px solid #ccc', padding: '1px 2px' }}>{profile.university || '○○大学'}　卒業見込み</td></tr>
+                      <tr><td colSpan={2} style={{ border: '1px solid #ccc', textAlign: 'center', fontSize: 6, padding: '1px' }}>職　歴</td></tr>
+                      <tr><td style={{ border: '1px solid #ccc', textAlign: 'center', padding: '1px 2px' }}>&nbsp;</td><td style={{ border: '1px solid #ccc', padding: '1px 2px' }}>なし</td></tr>
+                      <tr><td style={{ border: '1px solid #ccc', textAlign: 'center', padding: '1px 2px' }}>&nbsp;</td><td style={{ border: '1px solid #ccc', padding: '1px 2px', textAlign: 'right' }}>以上</td></tr>
+                    </tbody>
+                  </table>
+                  <div className="text-center font-bold border-b border-gray-400 mt-1 pb-0.5" style={{ fontSize: 7 }}>資　格　・　免　許</div>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 6 }}>
+                    <tbody>
+                      <tr><td style={{ border: '1px solid #ccc', width: 50, textAlign: 'center', padding: '1px 2px' }}>{gy ? `${gy}年 2月` : '　年　月'}</td><td style={{ border: '1px solid #ccc', padding: '1px 2px' }}>医師国家試験　合格見込み</td></tr>
+                      {profile.qualifications ? <tr><td style={{ border: '1px solid #ccc', textAlign: 'center', padding: '1px 2px' }}>&nbsp;</td><td style={{ border: '1px solid #ccc', padding: '1px 2px' }}>{trimStr(profile.qualifications, 30)}</td></tr> : null}
+                    </tbody>
+                  </table>
+                </div>
+                {/* PAGE 2 */}
+                <div className="flex-shrink-0 bg-white border border-gray-300 rounded shadow-sm p-3" style={{ width: 280, minHeight: 396, fontFamily: 'serif', fontSize: 7, color: '#222', lineHeight: 1.5 }}>
+                  <div className="text-center font-bold mb-1.5" style={{ fontSize: 9, letterSpacing: '0.3em' }}>履歴書（続き）</div>
+                  <div className="text-center font-bold border-b border-gray-400 pb-0.5 mb-1" style={{ fontSize: 7 }}>志　望　動　機</div>
+                  <div className="border border-gray-300 p-1.5 mb-1.5" style={{ minHeight: 80, fontSize: 6.5, lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+                    {trimStr(profile.motivation || '', 300) || <span style={{ color: '#ccc' }}>ウィザード完了後にAIが自動生成します</span>}
+                  </div>
+                  <div className="text-center font-bold border-b border-gray-400 pb-0.5 mb-1" style={{ fontSize: 7 }}>自　己　Ｐ　Ｒ　・　強　み</div>
+                  <div className="border border-gray-300 p-1.5 mb-1.5" style={{ minHeight: 55, fontSize: 6.5, lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+                    {trimStr(prText, 250) || <span style={{ color: '#ccc' }}>ウィザード完了後にAIが自動生成します</span>}
+                  </div>
+                  <div className="text-center font-bold border-b border-gray-400 pb-0.5 mb-1" style={{ fontSize: 7 }}>趣　味　・　特　技</div>
+                  <div className="border border-gray-300 p-1.5 mb-1.5" style={{ minHeight: 30, fontSize: 6.5 }}>
+                    {[profile.hobbies, profile.clubs].filter(Boolean).join('、') || '　'}
+                  </div>
+                  <div className="text-center font-bold border-b border-gray-400 pb-0.5 mb-1" style={{ fontSize: 7 }}>本人希望欄（志望科・希望地域など）</div>
+                  <div className="border border-gray-300 p-1.5" style={{ minHeight: 30, fontSize: 6.5 }}>
+                    {profile.preferredSpecialty ? `志望科：${profile.preferredSpecialty}` : ''}{profile.preferredSpecialty && profile.preferredRegions.length > 0 ? '\n' : ''}{profile.preferredRegions.length > 0 ? `希望研修地域：${profile.preferredRegions.join('・')}` : ''}
+                  </div>
                 </div>
               </div>
-            </div>
-            <hr className="border-br" />
-            <RSection title="志望動機" content={profile.motivation} />
-            <RSection title="強み" content={
-              profile.strengthsList.length > 0
-                ? profile.strengthsList.join('、') + (profile.strengthsEpisode ? `\n${profile.strengthsEpisode}` : '')
-                : profile.strengths
-            } />
-            <RSection title="部活・課外活動" content={[profile.clubs, profile.clubRole ? `（${profile.clubRole}）` : '', profile.clubLearning].filter(Boolean).join(' ')} />
-            <RSection title="研究経験" content={[profile.research, profile.researchResults].filter(Boolean).join('／')} />
-            {profile.preferredRegions.length > 0 && (
-              <div>
-                <p className="text-xs font-bold text-tx mb-1">希望研修地域</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {profile.preferredRegions.map(r => <span key={r} className="px-2 py-0.5 rounded text-[11px] font-medium" style={{ background: MCL, color: MC }}>{r}</span>)}
-                </div>
-              </div>
-            )}
-          </div>
+            )
+          })()}
           {!isPro && (
             <div className="absolute inset-0 top-20">
               {/* A4見開き2ページのJIS履歴書 */}
