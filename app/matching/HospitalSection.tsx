@@ -9,6 +9,22 @@ import { calculateMatchProbability, MatchProbabilityResult } from './match-calc'
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
 
+const PREF_TO_REGION: Record<string, string> = {
+  '北海道':'北海道',
+  '青森県':'東北','岩手県':'東北','宮城県':'東北','秋田県':'東北','山形県':'東北','福島県':'東北',
+  '茨城県':'関東','栃木県':'関東','群馬県':'関東','埼玉県':'関東','千葉県':'関東','東京都':'関東','神奈川県':'関東',
+  '新潟県':'中部','富山県':'中部','石川県':'中部','福井県':'中部','山梨県':'中部','長野県':'中部','岐阜県':'中部','静岡県':'中部','愛知県':'中部',
+  '三重県':'近畿','滋賀県':'近畿','京都府':'近畿','大阪府':'近畿','兵庫県':'近畿','奈良県':'近畿','和歌山県':'近畿',
+  '鳥取県':'中国','島根県':'中国','岡山県':'中国','広島県':'中国','山口県':'中国',
+  '徳島県':'四国','香川県':'四国','愛媛県':'四国','高知県':'四国',
+  '福岡県':'九州・沖縄','佐賀県':'九州・沖縄','長崎県':'九州・沖縄','熊本県':'九州・沖縄','大分県':'九州・沖縄','宮崎県':'九州・沖縄','鹿児島県':'九州・沖縄','沖縄県':'九州・沖縄',
+}
+const REGION_TO_PREFS: Record<string, string[]> = {}
+Object.entries(PREF_TO_REGION).forEach(([pref, region]) => {
+  if (!REGION_TO_PREFS[region]) REGION_TO_PREFS[region] = []
+  REGION_TO_PREFS[region].push(pref)
+})
+
 // ── localStorage keys ──
 const STORAGE_INTERESTED = 'iwor_matching_interested'
 const STORAGE_WISHLIST = 'iwor_matching_wishlist'
@@ -50,6 +66,7 @@ export default function HospitalTab({
   // ── フィルタ状態 ──
   const [searchQuery, setSearchQuery] = useState('')
   const [filterRegion, setFilterRegion] = useState('')
+  const [filterPref, setFilterPref] = useState('')
   // 旧フィルタは削除済み（新型Hospitalでは地域+検索のみ）
   const [showFilters, setShowFilters] = useState(false)
   const [sortKey, setSortKey] = useState<SortKey>('matchRate')
@@ -136,18 +153,9 @@ export default function HospitalTab({
     let result = HOSPITALS.filter(h => {
       if (searchQuery && !h.name.includes(searchQuery) && !h.prefecture.includes(searchQuery) && !h.program.includes(searchQuery)) return false
       if (filterRegion) {
-        const PREF_TO_REGION: Record<string, string> = {
-          '北海道':'北海道',
-          '青森県':'東北','岩手県':'東北','宮城県':'東北','秋田県':'東北','山形県':'東北','福島県':'東北',
-          '茨城県':'関東','栃木県':'関東','群馬県':'関東','埼玉県':'関東','千葉県':'関東','東京都':'関東','神奈川県':'関東',
-          '新潟県':'中部','富山県':'中部','石川県':'中部','福井県':'中部','山梨県':'中部','長野県':'中部','岐阜県':'中部','静岡県':'中部','愛知県':'中部',
-          '三重県':'近畿','滋賀県':'近畿','京都府':'近畿','大阪府':'近畿','兵庫県':'近畿','奈良県':'近畿','和歌山県':'近畿',
-          '鳥取県':'中国','島根県':'中国','岡山県':'中国','広島県':'中国','山口県':'中国',
-          '徳島県':'四国','香川県':'四国','愛媛県':'四国','高知県':'四国',
-          '福岡県':'九州・沖縄','佐賀県':'九州・沖縄','長崎県':'九州・沖縄','熊本県':'九州・沖縄','大分県':'九州・沖縄','宮崎県':'九州・沖縄','鹿児島県':'九州・沖縄','沖縄県':'九州・沖縄',
-        }
         if (PREF_TO_REGION[h.prefecture] !== filterRegion) return false
       }
+      if (filterPref && h.prefecture !== filterPref) return false
       return true
     })
 
@@ -171,7 +179,7 @@ export default function HospitalTab({
       return sortAsc ? cmp : -cmp
     })
     return result
-  }, [searchQuery, filterRegion, sortKey, sortAsc])
+  }, [searchQuery, filterRegion, filterPref, sortKey, sortAsc])
 
   // FREE: 上位10件のみ
   const FREE_LIMIT = 10
@@ -287,34 +295,35 @@ export default function HospitalTab({
               />
             </div>
 
-            {/* フィルタ行 */}
-            <div className="flex gap-2 flex-wrap">
-              <select value={filterRegion} onChange={e => setFilterRegion(e.target.value)}
-                className="px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none">
+            {/* フィルタ + ソート 横並び */}
+            <div className="flex gap-2 flex-wrap items-center">
+              <select value={filterRegion} onChange={e => { setFilterRegion(e.target.value); setFilterPref('') }}
+                className="px-2.5 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none">
                 <option value="">全地域</option>
                 {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
               </select>
-              <span className="text-[10px] text-muted self-center">{filtered.length}件</span>
-            </div>
-
-            {/* ソート＆件数 */}
-            <div className="flex items-center justify-between">
-              <p className="text-[11px] text-muted">
-                {filtered.length}件{!isPro && ` — ${FREE_LIMIT}件表示`}
-              </p>
-              <div className="flex items-center gap-1">
+              {filterRegion && (
+                <select value={filterPref} onChange={e => setFilterPref(e.target.value)}
+                  className="px-2.5 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none">
+                  <option value="">全{filterRegion}</option>
+                  {(REGION_TO_PREFS[filterRegion] || []).map(p => <option key={p} value={p}>{p}</option>)}
+                </select>
+              )}
+              <div className="ml-auto flex items-center gap-1.5">
                 <select value={sortKey} onChange={e => setSortKey(e.target.value as SortKey)}
-                  className="px-2 py-1 border border-br rounded text-[11px] bg-bg text-tx outline-none">
-                  {SORT_OPTIONS.map(o => <option key={o.key} value={o.key}>{o.label}</option>)}
+                  className="px-2.5 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none">
+                  {SORT_OPTIONS.map(o => <option key={o.key} value={o.key}>{o.label}順</option>)}
                 </select>
                 <button onClick={() => setSortAsc(!sortAsc)}
-                  className="p-1 border border-br rounded text-muted hover:text-tx transition-colors">
+                  className="p-1.5 border border-br rounded-lg text-muted hover:text-tx transition-colors"
+                  title={sortAsc ? '昇順' : '降順'}>
                   <svg className={`w-3.5 h-3.5 transition-transform ${sortAsc ? '' : 'rotate-180'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"/>
                   </svg>
                 </button>
               </div>
             </div>
+            <p className="text-[10px] text-muted">{filtered.length}件{!isPro && ` — ${FREE_LIMIT}件表示`}</p>
           </div>
 
           {/* 病院リスト */}
