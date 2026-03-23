@@ -128,31 +128,35 @@ const DEFAULT_CATEGORIES: DutyCategory[] = [
 ]
 
 const DUTY_TYPES = [
-  { id: 'weekday_night', label: '平日当直' },
-  { id: 'holiday_day', label: '休日日直' },
-  { id: 'holiday_night', label: '休日当直' },
+  { id: 'weekday_night', label: '平日当直', when: 'weekday' },
+  { id: 'holiday_day', label: '休日日直', when: 'holiday' },
+  { id: 'holiday_night', label: '休日当直', when: 'holiday' },
+  { id: 'holiday_daynight', label: '休日日当直（24h通し）', when: 'holiday' },
 ] as const
 
 const DUTY_TYPE_LABELS: Record<string, string> = {
   weekday_night: '平日当直',
   holiday_day: '休日日直',
   holiday_night: '休日当直',
+  holiday_daynight: '休日日当直',
 }
 
 function buildDefaultSlotConfigs(categories: DutyCategory[]): SlotConfig[] {
   const configs: SlotConfig[] = []
   for (const cat of categories) {
     for (const dt of DUTY_TYPES) {
-      configs.push({ dutyType: dt.id, categoryId: cat.id, enabled: true, required: 1 })
+      // 日当直はデフォルト無効（日直+当直の分離が一般的）
+      const enabled = dt.id !== 'holiday_daynight'
+      configs.push({ dutyType: dt.id, categoryId: cat.id, enabled, required: 1 })
     }
   }
   return configs
 }
 
-// スロット表示名: "平日救急当直" "休日病棟日直" 等
+// スロット表示名: "平日救急当直" "休日病棟日直" "休日救急日当直" 等
 function slotDisplayName(dutyType: string, categoryName: string): string {
   const prefix = dutyType === 'weekday_night' ? '平日' : '休日'
-  const suffix = dutyType === 'holiday_day' ? '日直' : '当直'
+  const suffix = dutyType === 'holiday_day' ? '日直' : dutyType === 'holiday_daynight' ? '日当直' : '当直'
   return `${prefix}${categoryName}${suffix}`
 }
 
@@ -206,9 +210,22 @@ function autoAssign(data: ShiftData): Record<string, string[]> {
     const assigned: string[] = []
 
     for (let n = 0; n < needed; n++) {
+      // 同日に既に割り当てられた医師（日当直は同日の他スロットと排他）
+      const sameDayAssigned = new Set<string>()
+      Object.entries(assignments).forEach(([k, ids]) => {
+        if (k.startsWith(`${slot.day}-`)) ids.forEach(id => sameDayAssigned.add(id))
+      })
+
       const eligible = doctors.filter(d => {
         if (ngSets.get(d.id)?.has(slot.day)) return false
         if (assigned.includes(d.id)) return false
+        // 日当直の排他: 日当直が入っている日に他スロットは入れない
+        if (sameDayAssigned.has(d.id)) {
+          const dayNightKey = Object.keys(assignments).find(k => k.startsWith(`${slot.day}-holiday_daynight`) && assignments[k]?.includes(d.id))
+          if (dayNightKey) return false
+        }
+        // この枠が日当直なら、同日に既に入っている人は除外
+        if (slot.dutyType === 'holiday_daynight' && sameDayAssigned.has(d.id)) return false
         // カテゴリ制限チェック
         if (d.categoryIds.length > 0 && !d.categoryIds.includes(slot.categoryId)) return false
         // 最小間隔チェック
@@ -239,10 +256,11 @@ function autoAssign(data: ShiftData): Record<string, string[]> {
       if (sorted.length > 0) {
         const doc = sorted[0]
         assigned.push(doc.id)
-        counts.set(doc.id, (counts.get(doc.id) || 0) + 1)
+        const increment = slot.dutyType === 'holiday_daynight' ? 2 : 1 // 日当直は2コマ分
+        counts.set(doc.id, (counts.get(doc.id) || 0) + increment)
         lastDay.set(doc.id, slot.day)
         const wm = weekCounts.get(doc.id)!
-        wm.set(week, (wm.get(week) || 0) + 1)
+        wm.set(week, (wm.get(week) || 0) + increment)
       }
     }
     assignments[key] = assigned
