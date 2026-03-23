@@ -304,39 +304,40 @@ export default function ProfileWizard({
                         workplaceAtmosphere: answers['workplace']?.choices || [],
                       }
 
-                      // AI自己PR生成（バックグラウンド）
+                      // AI自己PR+志望動機生成（15秒タイムアウト）
                       const API = process.env.NEXT_PUBLIC_API_URL || 'https://iwor-api.mightyaddnine.workers.dev'
+                      const fetchWithTimeout = (url: string, opts: RequestInit, ms = 15000) => {
+                        const ctrl = new AbortController()
+                        const timer = setTimeout(() => ctrl.abort(), ms)
+                        return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(timer))
+                      }
                       try {
-                        const res = await fetch(`${API}/api/generate-pr`, {
+                        const res = await fetchWithTimeout(`${API}/api/generate-pr`, {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({ type: 'pr', profile: { ...profile, ...merged }, maxChars: 400 }),
                         })
                         const data = await res.json()
-                        if (data.ok && data.text) {
-                          merged.strengths = data.text
-                        }
+                        if (data.ok && data.text) merged.strengths = data.text
                       } catch {}
 
-                      // AI志望動機生成
                       try {
-                        const res = await fetch(`${API}/api/generate-pr`, {
+                        const res = await fetchWithTimeout(`${API}/api/generate-pr`, {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({ type: 'motivation', profile: { ...profile, ...merged }, maxChars: 300 }),
                         })
                         const data = await res.json()
-                        if (data.ok && data.text) {
-                          merged.motivation = data.text
-                        }
+                        if (data.ok && data.text) merged.motivation = data.text
                       } catch {}
 
                       const next = { ...profile, ...merged }
                       setProfile(next)
                       autoSave(next)
-                    } catch {}
-                    setAiGenerating(false)
-                    setShowWizardModal(false)
+                    } finally {
+                      setAiGenerating(false)
+                      setShowWizardModal(false)
+                    }
                   }}
                   editMode={!!profile.name}
                   savedAnswers={(() => {
