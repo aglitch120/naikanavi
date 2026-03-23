@@ -26,7 +26,7 @@ export default function CpiIndexPage() {
       relatedTools={[{ slug: 'homa', name: 'HOMA-IR/β' }, { slug: 'hba1c-glucose', name: 'HbA1c↔血糖' }, { slug: 'ga-hba1c', name: 'GA↔HbA1c' }]}
       references={toolDef.sources || []}
     >
-      <NumberInput label="空腹時CPR (ng/mL)" value={cpr} onChange={setCpr} step="0.1" />
+      <NumberInput label="空腹時CPR (ng/mL)" value={cpr} onChange={setCpr} step={0.1} />
       <NumberInput label="空腹時血糖 (mg/dL)" value={glu} onChange={setGlu} />
     </CalculatorLayout>
   )

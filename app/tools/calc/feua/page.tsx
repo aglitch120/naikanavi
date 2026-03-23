@@ -40,9 +40,9 @@ export default function FeuaPage() {
       references={toolDef.sources || []}
     >
       <NumberInput label="尿中UA (mg/dL)" value={uUA} onChange={setUUA} />
-      <NumberInput label="血清UA (mg/dL)" value={sUA} onChange={setSUA} step="0.1" />
+      <NumberInput label="血清UA (mg/dL)" value={sUA} onChange={setSUA} step={0.1} />
       <NumberInput label="尿中Cr (mg/dL)" value={uCr} onChange={setUCr} />
-      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step="0.1" />
+      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step={0.1} />
     </CalculatorLayout>
   )
 }

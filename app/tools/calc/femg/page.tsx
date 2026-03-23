@@ -28,10 +28,10 @@ export default function FemgPage() {
       relatedTools={[{ slug: 'fena', name: 'FENa' }, { slug: 'fek', name: 'FEK' }]}
       references={toolDef.sources || []}
     >
-      <NumberInput label="尿中Mg (mg/dL)" value={uMg} onChange={setUMg} step="0.1" />
-      <NumberInput label="血清Mg (mg/dL)" value={sMg} onChange={setSMg} step="0.1" />
+      <NumberInput label="尿中Mg (mg/dL)" value={uMg} onChange={setUMg} step={0.1} />
+      <NumberInput label="血清Mg (mg/dL)" value={sMg} onChange={setSMg} step={0.1} />
       <NumberInput label="尿中Cr (mg/dL)" value={uCr} onChange={setUCr} />
-      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step="0.1" />
+      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step={0.1} />
     </CalculatorLayout>
   )
 }

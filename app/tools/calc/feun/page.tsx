@@ -43,7 +43,7 @@ export default function FeunPage() {
       <NumberInput label="尿中UN (mg/dL)" value={uUN} onChange={setUUN} />
       <NumberInput label="血清UN (mg/dL)" value={sUN} onChange={setSUN} />
       <NumberInput label="尿中Cr (mg/dL)" value={uCr} onChange={setUCr} />
-      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step="0.1" />
+      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step={0.1} />
     </CalculatorLayout>
   )
 }

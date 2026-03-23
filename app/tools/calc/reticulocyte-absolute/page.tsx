@@ -26,7 +26,7 @@ export default function ReticulocyteAbsPage() {
       relatedTools={[{ slug: 'rpi', name: 'RPI' }, { slug: 'anemia-criteria', name: '貧血の診断基準' }]}
       references={toolDef.sources || []}
     >
-      <NumberInput label="網赤血球比率 (%)" value={retPct} onChange={setRetPct} step="0.1" />
+      <NumberInput label="網赤血球比率 (%)" value={retPct} onChange={setRetPct} step={0.1} />
       <NumberInput label="RBC (万/μL)" value={rbc} onChange={setRbc} />
     </CalculatorLayout>
   )

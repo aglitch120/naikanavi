@@ -31,7 +31,7 @@ export default function GaHba1cPage() {
         <button onClick={() => { setMode('ga-to-hba1c'); setValue('21') }} className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${mode === 'ga-to-hba1c' ? 'bg-ac text-white' : 'bg-s1 text-muted'}`}>GA → HbA1c</button>
         <button onClick={() => { setMode('hba1c-to-ga'); setValue('7.0') }} className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${mode === 'hba1c-to-ga' ? 'bg-ac text-white' : 'bg-s1 text-muted'}`}>HbA1c → GA</button>
       </div>
-      <NumberInput label={mode === 'ga-to-hba1c' ? 'GA (%)' : 'HbA1c (%)'} value={value} onChange={setValue} step="0.1" />
+      <NumberInput label={mode === 'ga-to-hba1c' ? 'GA (%)' : 'HbA1c (%)'} value={value} onChange={setValue} step={0.1} />
     </CalculatorLayout>
   )
 }

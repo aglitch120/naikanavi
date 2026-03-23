@@ -28,7 +28,7 @@ export default function InsensibleLossPage() {
       references={toolDef.sources || []}
     >
       <NumberInput label="体重 (kg)" value={weight} onChange={setWeight} />
-      <NumberInput label="体温 (℃)" value={temp} onChange={setTemp} step="0.1" />
+      <NumberInput label="体温 (℃)" value={temp} onChange={setTemp} step={0.1} />
     </CalculatorLayout>
   )
 }

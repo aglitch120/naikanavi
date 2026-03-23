@@ -28,7 +28,7 @@ export default function RbcTransfusionPage() {
     >
       <NumberInput label="RCC-LR 投与単位数" value={units} onChange={setUnits} />
       <NumberInput label="体重 (kg)" value={weight} onChange={setWeight} />
-      <NumberInput label="現在のHb (g/dL) ※任意" value={currentHb} onChange={setCurrentHb} step="0.1" />
+      <NumberInput label="現在のHb (g/dL) ※任意" value={currentHb} onChange={setCurrentHb} step={0.1} />
     </CalculatorLayout>
   )
 }

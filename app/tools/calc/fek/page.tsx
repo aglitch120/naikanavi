@@ -40,9 +40,9 @@ export default function FekPage() {
       references={toolDef.sources || []}
     >
       <NumberInput label="尿中K (mEq/L)" value={uK} onChange={setUK} />
-      <NumberInput label="血清K (mEq/L)" value={sK} onChange={setSK} step="0.1" />
+      <NumberInput label="血清K (mEq/L)" value={sK} onChange={setSK} step={0.1} />
       <NumberInput label="尿中Cr (mg/dL)" value={uCr} onChange={setUCr} />
-      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step="0.1" />
+      <NumberInput label="血清Cr (mg/dL)" value={sCr} onChange={setSCr} step={0.1} />
     </CalculatorLayout>
   )
 }

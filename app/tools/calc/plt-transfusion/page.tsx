@@ -29,7 +29,7 @@ export default function PltTransfusionPage() {
     >
       <NumberInput label="PC投与単位数" value={units} onChange={setUnits} />
       <NumberInput label="体重 (kg)" value={weight} onChange={setWeight} />
-      <NumberInput label="現在のPlt (万/μL) ※任意" value={currentPlt} onChange={setCurrentPlt} step="0.1" />
+      <NumberInput label="現在のPlt (万/μL) ※任意" value={currentPlt} onChange={setCurrentPlt} step={0.1} />
     </CalculatorLayout>
   )
 }

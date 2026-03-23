@@ -29,10 +29,10 @@ export default function CciPlateletPage() {
       relatedTools={[{ slug: 'plt-transfusion', name: 'PLT輸血上昇予測' }, { slug: 'bsa', name: 'BSA' }]}
       references={toolDef.sources || []}
     >
-      <NumberInput label="輸血後Plt (万/μL)" value={pltPost} onChange={setPltPost} step="0.1" />
-      <NumberInput label="輸血前Plt (万/μL)" value={pltPre} onChange={setPltPre} step="0.1" />
-      <NumberInput label="BSA (m²)" value={bsaVal} onChange={setBsaVal} step="0.01" />
-      <NumberInput label="輸血血小板数 (×10¹¹)" value={pltDose} onChange={setPltDose} step="0.1" />
+      <NumberInput label="輸血後Plt (万/μL)" value={pltPost} onChange={setPltPost} step={0.1} />
+      <NumberInput label="輸血前Plt (万/μL)" value={pltPre} onChange={setPltPre} step={0.1} />
+      <NumberInput label="BSA (m²)" value={bsaVal} onChange={setBsaVal} step={0.01} />
+      <NumberInput label="輸血血小板数 (×10¹¹)" value={pltDose} onChange={setPltDose} step={0.1} />
     </CalculatorLayout>
   )
 }

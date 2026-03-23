@@ -34,7 +34,7 @@ export default function SdaiPage() {
       <NumberInput label="腫脹関節数 SJC28" value={sjc} onChange={setSjc} />
       <NumberInput label="患者VAS (mm, 0-100)" value={ptVas} onChange={setPtVas} />
       <NumberInput label="医師VAS (mm, 0-100)" value={mdVas} onChange={setMdVas} />
-      <NumberInput label="CRP (mg/dL)" value={crp} onChange={setCrp} step="0.1" />
+      <NumberInput label="CRP (mg/dL)" value={crp} onChange={setCrp} step={0.1} />
     </CalculatorLayout>
   )
 }
