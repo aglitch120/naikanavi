@@ -8,8 +8,16 @@ import Link from 'next/link'
 // 当直カテゴリ（admin が自由に追加可能）
 interface DutyCategory {
   id: string
-  name: string        // 例: "救急当直", "病棟当直"
+  name: string        // 例: "救急", "病棟"
   color: string       // Tailwind color class
+}
+
+// スロット設定: カテゴリ × 日タイプ（平日当直/休日日直/休日当直）ごとの有効/人数
+interface SlotConfig {
+  dutyType: string    // weekday_night | holiday_day | holiday_night
+  categoryId: string  // DutyCategoryのid
+  enabled: boolean
+  required: number    // 必要人数
 }
 
 // 各日のスロット定義
@@ -37,6 +45,7 @@ interface ShiftData {
   month: number
   doctors: Doctor[]
   categories: DutyCategory[]
+  slotConfigs: SlotConfig[]
   assignments: Record<string, string[]>  // key -> [doctorId, ...] (複数人対応)
   slotsPerDay: number
 }
@@ -79,19 +88,18 @@ function isHolidayOrWeekend(year: number, month: number, day: number): boolean {
   return isWeekend(year, month, day) || !!isHoliday(year, month, day)
 }
 
-// 月のスロット定義を生成（カテゴリ×日付×dutyType）
-function generateSlots(year: number, month: number, categories: DutyCategory[], requiredPerSlot: number = 1): SlotDef[] {
+// 月のスロット定義を生成（slotConfigsベース）
+function generateSlots(year: number, month: number, configs: SlotConfig[]): SlotDef[] {
   const totalDays = getDaysInMonth(year, month)
   const slots: SlotDef[] = []
   for (let day = 1; day <= totalDays; day++) {
     const holiday = isHolidayOrWeekend(year, month, day)
-    for (const cat of categories) {
-      if (holiday) {
-        slots.push({ day, dutyType: 'holiday_day', categoryId: cat.id, required: requiredPerSlot })
-        slots.push({ day, dutyType: 'holiday_night', categoryId: cat.id, required: requiredPerSlot })
-      } else {
-        slots.push({ day, dutyType: 'weekday_night', categoryId: cat.id, required: requiredPerSlot })
-      }
+    for (const cfg of configs) {
+      if (!cfg.enabled) continue
+      // 平日の日に休日スロットは不要、逆も然り
+      if (!holiday && cfg.dutyType !== 'weekday_night') continue
+      if (holiday && cfg.dutyType === 'weekday_night') continue
+      slots.push({ day, dutyType: cfg.dutyType, categoryId: cfg.categoryId, required: cfg.required })
     }
   }
   return slots
@@ -102,14 +110,37 @@ function slotKey(day: number, dutyType: string, categoryId: string): string {
 }
 
 const DEFAULT_CATEGORIES: DutyCategory[] = [
-  { id: 'er', name: '救急当直', color: 'bg-red-100 text-red-700 border-red-200' },
-  { id: 'ward', name: '病棟当直', color: 'bg-blue-100 text-blue-700 border-blue-200' },
+  { id: 'er', name: '救急', color: 'bg-red-100 text-red-700 border-red-200' },
+  { id: 'ward', name: '病棟', color: 'bg-blue-100 text-blue-700 border-blue-200' },
 ]
+
+const DUTY_TYPES = [
+  { id: 'weekday_night', label: '平日当直' },
+  { id: 'holiday_day', label: '休日日直' },
+  { id: 'holiday_night', label: '休日当直' },
+] as const
 
 const DUTY_TYPE_LABELS: Record<string, string> = {
   weekday_night: '平日当直',
   holiday_day: '休日日直',
   holiday_night: '休日当直',
+}
+
+function buildDefaultSlotConfigs(categories: DutyCategory[]): SlotConfig[] {
+  const configs: SlotConfig[] = []
+  for (const cat of categories) {
+    for (const dt of DUTY_TYPES) {
+      configs.push({ dutyType: dt.id, categoryId: cat.id, enabled: true, required: 1 })
+    }
+  }
+  return configs
+}
+
+// スロット表示名: "平日救急当直" "休日病棟日直" 等
+function slotDisplayName(dutyType: string, categoryName: string): string {
+  const prefix = dutyType === 'weekday_night' ? '平日' : '休日'
+  const suffix = dutyType === 'holiday_day' ? '日直' : '当直'
+  return `${prefix}${categoryName}${suffix}`
 }
 
 const DUTY_TYPE_COLORS: Record<string, string> = {
@@ -126,8 +157,8 @@ function generateId() {
 // ─── Auto-assign algorithm ───
 // 制約: NG日回避, 連日回避, 同一週2回回避, 均等分配
 function autoAssign(data: ShiftData): Record<string, string[]> {
-  const { year, month, doctors, categories } = data
-  const slots = generateSlots(year, month, categories)
+  const { year, month, doctors, slotConfigs } = data
+  const slots = generateSlots(year, month, slotConfigs)
   const assignments: Record<string, string[]> = {}
 
   if (doctors.length === 0) return assignments
@@ -215,6 +246,7 @@ function compressData(data: ShiftData): string {
     m: data.month,
     d: data.doctors.map(d => ({ i: d.id, n: d.name, ng: d.ngDays })),
     c: data.categories,
+    sc: data.slotConfigs,
     a: data.assignments,
   }
   try {
@@ -235,6 +267,7 @@ function decompressData(encoded: string): ShiftData | null {
         id: d.i, name: d.n, ngDays: d.ng, weight: 1.0, minInterval: 2, categoryIds: [],
       })),
       categories: slim.c || DEFAULT_CATEGORIES,
+      slotConfigs: slim.sc || buildDefaultSlotConfigs(slim.c || DEFAULT_CATEGORIES),
       assignments: slim.a || {},
       slotsPerDay: 1,
     }
@@ -267,6 +300,7 @@ export default function ShiftPage() {
   const [month, setMonth] = useState(new Date().getMonth() + 2 > 12 ? 1 : new Date().getMonth() + 2) // default: next month
   const [doctors, setDoctors] = useState<Doctor[]>([])
   const [categories, setCategories] = useState<DutyCategory[]>(DEFAULT_CATEGORIES)
+  const [slotConfigs, setSlotConfigs] = useState<SlotConfig[]>(buildDefaultSlotConfigs(DEFAULT_CATEGORIES))
   const [newDoctorName, setNewDoctorName] = useState('')
   const [assignments, setAssignments] = useState<Record<string, string[]>>({})
   const [editingDay, setEditingDay] = useState<number | null>(null)
@@ -337,19 +371,19 @@ export default function ShiftPage() {
   }
 
   const handleGenerate = () => {
-    const data: ShiftData = { groupName, year, month, doctors, categories, assignments: {}, slotsPerDay: 1 }
+    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, assignments: {}, slotsPerDay: 1 }
     const result = autoAssign(data)
     setAssignments(result)
     setStep('result')
   }
 
   const handleRegenerate = () => {
-    const data: ShiftData = { groupName, year, month, doctors, categories, assignments: {}, slotsPerDay: 1 }
+    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, assignments: {}, slotsPerDay: 1 }
     setAssignments(autoAssign(data))
   }
 
   const handleShare = () => {
-    const data: ShiftData = { groupName, year, month, doctors, categories, assignments, slotsPerDay: 1 }
+    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, assignments, slotsPerDay: 1 }
     const compressed = compressData(data)
     const url = `${window.location.origin}/shift#${compressed}`
     setShareUrl(url)
@@ -531,53 +565,91 @@ export default function ShiftPage() {
       {renderStepIndicator()}
 
       <div className="space-y-5">
-        {/* 当直カテゴリ */}
+        {/* ① 当直カテゴリ定義 */}
         <div>
-          <label className="text-xs font-bold text-tx block mb-2">当直カテゴリ</label>
+          <label className="text-xs font-bold text-tx block mb-2">① 当直カテゴリ</label>
+          <p className="text-[10px] text-muted mb-2">病院にある当直の種類を設定してください</p>
           <div className="space-y-2">
             {categories.map(cat => (
               <div key={cat.id} className="flex items-center gap-2 bg-s0 border border-br rounded-lg px-3 py-2.5">
                 <span className={`w-3 h-3 rounded-full ${cat.color.split(' ')[0]}`} />
                 <span className="text-sm text-tx flex-1">{cat.name}</span>
                 {categories.length > 1 && (
-                  <button onClick={() => setCategories(prev => prev.filter(c => c.id !== cat.id))}
-                    className="text-[10px] text-muted hover:text-red-500">削除</button>
+                  <button onClick={() => {
+                    setCategories(prev => prev.filter(c => c.id !== cat.id))
+                    setSlotConfigs(prev => prev.filter(s => s.categoryId !== cat.id))
+                  }} className="text-[10px] text-muted hover:text-red-500">削除</button>
                 )}
               </div>
             ))}
             <button onClick={() => {
-              const name = prompt('カテゴリ名（例: ICU当直、外来当直）')
-              if (name) setCategories(prev => [...prev, { id: generateId(), name, color: 'bg-teal-100 text-teal-700 border-teal-200' }])
-            }}
-              className="text-[11px] text-ac hover:underline">+ カテゴリを追加</button>
+              const name = prompt('カテゴリ名（例: ICU、外来、産科）')
+              if (name) {
+                const id = generateId()
+                setCategories(prev => [...prev, { id, name, color: 'bg-teal-100 text-teal-700 border-teal-200' }])
+                // 新カテゴリの全日タイプを追加
+                setSlotConfigs(prev => [...prev,
+                  { dutyType: 'weekday_night', categoryId: id, enabled: true, required: 1 },
+                  { dutyType: 'holiday_day', categoryId: id, enabled: true, required: 1 },
+                  { dutyType: 'holiday_night', categoryId: id, enabled: true, required: 1 },
+                ])
+              }
+            }} className="text-[11px] text-ac hover:underline">+ カテゴリを追加</button>
           </div>
         </div>
 
-        {/* 各カテゴリの必要人数 */}
+        {/* ② スロット設定（カテゴリ×日タイプ） */}
         <div>
-          <label className="text-xs font-bold text-tx block mb-2">各当直枠の必要人数</label>
-          <div className="space-y-2">
-            {categories.map(cat => (
-              <div key={cat.id} className="flex items-center gap-3 bg-s0 border border-br rounded-lg px-3 py-2.5">
-                <span className="text-xs text-tx flex-1">{cat.name}</span>
-                <div className="flex items-center gap-1">
-                  {[1, 2, 3].map(n => (
-                    <button key={n} onClick={() => {
-                      setCategories(prev => prev.map(c => c.id === cat.id ? { ...c, required: n } : c))
-                    }}
-                      className={`w-8 h-8 rounded-lg text-xs font-bold border transition-all ${
-                        ((cat as any).required || 1) === n ? 'bg-ac text-white border-ac' : 'border-br text-muted'
-                      }`}>{n}人</button>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <label className="text-xs font-bold text-tx block mb-2">② スロット設定</label>
+          <p className="text-[10px] text-muted mb-2">各カテゴリが平日・休日のどこに該当するか、必要人数を設定</p>
+          <div className="bg-s0 border border-br rounded-xl overflow-hidden">
+            {/* ヘッダー */}
+            <div className="grid grid-cols-4 gap-px bg-s1 border-b border-br text-center">
+              <div className="py-2 text-[10px] font-bold text-muted">スロット</div>
+              <div className="py-2 text-[10px] font-bold text-muted">有効</div>
+              <div className="py-2 text-[10px] font-bold text-muted">人数</div>
+              <div className="py-2 text-[10px] font-bold text-muted">月合計</div>
+            </div>
+            {/* 各行 */}
+            {categories.flatMap(cat =>
+              DUTY_TYPES.map(dt => {
+                const cfg = slotConfigs.find(s => s.categoryId === cat.id && s.dutyType === dt.id)
+                if (!cfg) return null
+                const totalDays = getDaysInMonth(year, month)
+                let count = 0
+                for (let d = 1; d <= totalDays; d++) {
+                  const hol = isHolidayOrWeekend(year, month, d)
+                  if (dt.id === 'weekday_night' && !hol) count++
+                  if (dt.id !== 'weekday_night' && hol) count++
+                }
+                return (
+                  <div key={`${cat.id}-${dt.id}`} className="grid grid-cols-4 gap-px border-b border-br/50 items-center">
+                    <div className="px-2 py-2 text-[10px] text-tx">{slotDisplayName(dt.id, cat.name)}</div>
+                    <div className="text-center">
+                      <button onClick={() => setSlotConfigs(prev => prev.map(s =>
+                        s.categoryId === cat.id && s.dutyType === dt.id ? { ...s, enabled: !s.enabled } : s
+                      ))} className={`w-6 h-6 rounded border text-[10px] font-bold ${cfg.enabled ? 'bg-ac text-white border-ac' : 'border-br text-muted'}`}>
+                        {cfg.enabled ? '✓' : '−'}
+                      </button>
+                    </div>
+                    <div className="text-center">
+                      <select value={cfg.required} disabled={!cfg.enabled} onChange={e => setSlotConfigs(prev => prev.map(s =>
+                        s.categoryId === cat.id && s.dutyType === dt.id ? { ...s, required: parseInt(e.target.value) } : s
+                      ))} className="text-[11px] border border-br rounded px-1 py-0.5 bg-bg disabled:opacity-30">
+                        {[1,2,3].map(n => <option key={n} value={n}>{n}人</option>)}
+                      </select>
+                    </div>
+                    <div className="text-center text-[10px] text-muted">{cfg.enabled ? count * cfg.required : 0}枠</div>
+                  </div>
+                )
+              })
+            )}
           </div>
         </div>
 
-        {/* 全体の最小間隔（デフォルト） */}
+        {/* ③ 最小間隔 */}
         <div>
-          <label className="text-xs font-bold text-tx block mb-2">デフォルト最小間隔（全医師共通）</label>
+          <label className="text-xs font-bold text-tx block mb-2">③ デフォルト最小間隔</label>
           <div className="flex gap-1.5">
             {[1, 2, 3, 4, 5].map(n => (
               <button key={n} onClick={() => setDefaultMinInterval(n)}
@@ -586,25 +658,25 @@ export default function ShiftPage() {
                 }`}>{n}日</button>
             ))}
           </div>
-          <p className="text-[9px] text-muted mt-1">医師ごとの個別設定はNG日入力ステップで可能</p>
         </div>
 
-        {/* スロット確認 */}
+        {/* スロット概要 */}
         <div className="bg-s1 rounded-xl p-3">
           <p className="text-[10px] font-bold text-tx mb-1">{month}月のスロット概要</p>
           {(() => {
-            const totalDays = getDaysInMonth(year, month)
-            let weekdays = 0, holidays = 0
-            for (let d = 1; d <= totalDays; d++) {
-              if (isHolidayOrWeekend(year, month, d)) holidays++
-              else weekdays++
-            }
-            const totalSlots = (weekdays * categories.length) + (holidays * categories.length * 2)
+            const totalSlots = slotConfigs.filter(s => s.enabled).reduce((sum, cfg) => {
+              const totalDays = getDaysInMonth(year, month)
+              let count = 0
+              for (let d = 1; d <= totalDays; d++) {
+                const hol = isHolidayOrWeekend(year, month, d)
+                if (cfg.dutyType === 'weekday_night' && !hol) count++
+                if (cfg.dutyType !== 'weekday_night' && hol) count++
+              }
+              return sum + count * cfg.required
+            }, 0)
             return (
-              <div className="text-[10px] text-muted space-y-0.5">
-                <p>平日 {weekdays}日 × {categories.length}カテゴリ = {weekdays * categories.length}枠（当直のみ）</p>
-                <p>休日 {holidays}日 × {categories.length}カテゴリ × 2（日直+当直） = {holidays * categories.length * 2}枠</p>
-                <p className="font-bold text-tx">合計 {totalSlots}枠</p>
+              <div className="text-[10px] text-muted">
+                <p className="font-bold text-tx">合計 {totalSlots}枠（{slotConfigs.filter(s => s.enabled).length}種類のスロット）</p>
               </div>
             )
           })()}
