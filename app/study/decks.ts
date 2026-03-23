@@ -12,6 +12,7 @@ import { ketsueki_cards } from './data/ketsueki-cards'
 import { kansensho_cards } from './data/kansensho-cards'
 import { meneki_cards } from './data/meneki-cards'
 import { allergy_cards } from './data/allergy-cards'
+import { kyukyu_cards } from './data/kyukyu-cards'
 
 const TAISHA_TAGS = Array.from(new Set(TAISHA_CARDS.map(c => c.tag)))
 const SHINKEI_TAGS = Array.from(new Set(shinkei_cards.map(c => c.tag)))
@@ -20,6 +21,7 @@ const KETSUEKI_TAGS = Array.from(new Set(ketsueki_cards.map(c => c.tag)))
 const KANSENSHO_TAGS = Array.from(new Set(kansensho_cards.map(c => c.tag)))
 const MENEKI_TAGS = Array.from(new Set(meneki_cards.map(c => c.tag)))
 const ALLERGY_TAGS = Array.from(new Set(allergy_cards.map(c => c.tag)))
+const KYUKYU_TAGS = Array.from(new Set(kyukyu_cards.map(c => c.tag)))
 
 // ── 型定義 ──
 
@@ -153,6 +155,17 @@ const DEFAULT_DECKS: Deck[] = [
     description: '内科専門医試験 アレルギー疾患 15問（国試逆算設計）',
     cards: allergy_cards,
     tags: ALLERGY_TAGS,
+    isDefault: true,
+    createdAt: '2026-03-23T00:00:00Z',
+    updatedAt: '2026-03-23T00:00:00Z',
+  },
+  {
+    id: 'default-kyukyu',
+    name: '救急',
+    emoji: '🚑',
+    description: '救急・集中治療 25問（国試逆算設計）',
+    cards: kyukyu_cards,
+    tags: KYUKYU_TAGS,
     isDefault: true,
     createdAt: '2026-03-23T00:00:00Z',
     updatedAt: '2026-03-23T00:00:00Z',
