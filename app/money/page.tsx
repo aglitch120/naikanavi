@@ -288,15 +288,39 @@ const relatedArticles = [
 ]
 
 // ─── メインページ ───
-type ToolKey = 'furusato' | 'tedori' | 'nisa' | 'creditcard' | 'nisa-picks' | 'baito'
+type ToolKey = 'furusato' | 'tedori' | 'nisa' | 'creditcard' | 'baito'
 
-const tools: { key: ToolKey; label: string; icon: string; coming?: boolean }[] = [
+const tools: { key: ToolKey; label: string; icon: string }[] = [
   { key: 'furusato', label: 'ふるさと納税', icon: '🏠' },
   { key: 'tedori', label: '手取り概算', icon: '💴' },
   { key: 'nisa', label: 'NISA運用', icon: '📈' },
-  { key: 'creditcard', label: 'クレカ', icon: '💳', coming: true },
-  { key: 'nisa-picks', label: 'NISA銘柄', icon: '🏦', coming: true },
-  { key: 'baito', label: 'バイト会社', icon: '🏥', coming: true },
+  { key: 'creditcard', label: 'クレカ', icon: '💳' },
+  { key: 'baito', label: 'バイト会社', icon: '🏥' },
+]
+
+// ── ランキングデータ ──
+const NISA_PICKS = [
+  { rank: 1, name: 'eMAXIS Slim 全世界株式（オール・カントリー）', reason: '低コスト・全世界分散。迷ったらこれ', fee: '0.05775%' },
+  { rank: 2, name: 'eMAXIS Slim 米国株式（S&P500）', reason: '米国500社に分散。成長重視派に', fee: '0.09372%' },
+  { rank: 3, name: 'eMAXIS Slim 先進国株式インデックス', reason: '日本を除く先進国。安定志向', fee: '0.09889%' },
+  { rank: 4, name: '楽天・全世界株式インデックス・ファンド', reason: 'VT連動。楽天証券ユーザーに', fee: '0.192%' },
+  { rank: 5, name: 'SBI・V・S&P500インデックス・ファンド', reason: 'SBI証券ユーザーに。VOO連動', fee: '0.0938%' },
+]
+
+const CREDIT_CARDS = [
+  { rank: 1, name: 'アメックス・ゴールド', reason: '空港ラウンジ+高還元。学会出張に', fee: '31,900円/年' },
+  { rank: 2, name: '三井住友カード ゴールド(NL)', reason: 'SBI証券積立1%還元。NISA連携に最適', fee: '5,500円/年(条件付無料)' },
+  { rank: 3, name: '楽天プレミアムカード', reason: 'プライオリティパス付。楽天経済圏', fee: '11,000円/年' },
+  { rank: 4, name: 'JCBゴールド', reason: '国内使いに強い。保険充実', fee: '11,000円/年(初年度無料)' },
+  { rank: 5, name: 'エポスゴールドカード', reason: '年間50万利用で年会費永年無料', fee: '5,000円/年(条件付無料)' },
+]
+
+const BAITO_SITES = [
+  { rank: 1, name: '民間医局', reason: '老舗。求人数・サポート充実', url: 'https://www.doctor-agent.com/' },
+  { rank: 2, name: 'Dr.アルなび', reason: 'スポットバイトに強い。当日マッチング', url: 'https://www.dr-alnavi.com/' },
+  { rank: 3, name: 'メディカルトリビューン', reason: '高単価案件多め。専門医向け', url: 'https://www.medical-tribune.co.jp/' },
+  { rank: 4, name: 'm3.com CAREER', reason: '常勤・非常勤両対応。情報量多い', url: 'https://career.m3.com/' },
+  { rank: 5, name: 'マイナビDOCTOR', reason: '大手の安心感。初めてのバイトに', url: 'https://doctor.mynavi.jp/' },
 ]
 
 export default function MoneyPage() {
@@ -314,49 +338,66 @@ export default function MoneyPage() {
       />
 
       {/* Tool Tabs */}
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6">
+      <div className="grid grid-cols-5 gap-1.5 mb-6">
         {tools.map(tool => (
           <button
             key={tool.key}
-            onClick={() => !tool.coming && setActiveTool(tool.key)}
-            className={`flex flex-col items-center gap-1 rounded-xl p-3 border transition-all ${
-              tool.coming
-                ? 'border-br bg-s1 opacity-50 cursor-default'
-                : activeTool === tool.key
-                  ? 'border-ac/30 bg-acl shadow-sm'
-                  : 'border-br bg-s0 hover:border-ac/20'
+            onClick={() => setActiveTool(tool.key)}
+            className={`flex flex-col items-center gap-1 rounded-xl p-2.5 border transition-all ${
+              activeTool === tool.key
+                ? 'border-ac/30 bg-acl shadow-sm'
+                : 'border-br bg-s0 hover:border-ac/20'
             }`}
           >
             <span className="text-lg">{tool.icon}</span>
-            <span className={`text-[10px] font-bold ${tool.coming ? 'text-muted' : activeTool === tool.key ? 'text-ac' : 'text-muted'}`}>
+            <span className={`text-[10px] font-bold ${activeTool === tool.key ? 'text-ac' : 'text-muted'}`}>
               {tool.label}
             </span>
-            {tool.coming && <span className="text-[8px] text-muted">準備中</span>}
           </button>
         ))}
       </div>
 
       {/* Active Calculator */}
-      <div className="bg-s0 border border-br rounded-2xl p-5 md:p-6 mb-6">
-        <h2 className="text-base font-bold text-tx mb-4">
-          {tools.find(t => t.key === activeTool)?.icon}{' '}
-          {tools.find(t => t.key === activeTool)?.label}
-          <span className="text-xs font-normal text-muted ml-2">概算ツール</span>
-        </h2>
+      {(activeTool === 'furusato' || activeTool === 'tedori' || activeTool === 'nisa') && (
+        <div className="bg-s0 border border-br rounded-2xl p-5 md:p-6 mb-6">
+          <h2 className="text-base font-bold text-tx mb-4">
+            {tools.find(t => t.key === activeTool)?.icon}{' '}
+            {tools.find(t => t.key === activeTool)?.label}
+            <span className="text-xs font-normal text-muted ml-2">概算ツール</span>
+          </h2>
+          {activeTool === 'furusato' && <FurusatoCalc />}
+          {activeTool === 'tedori' && <TedoriCalc />}
+          {activeTool === 'nisa' && <NisaCalc />}
+        </div>
+      )}
 
-        {activeTool === 'furusato' && <FurusatoCalc />}
-        {activeTool === 'tedori' && <TedoriCalc />}
-        {activeTool === 'nisa' && <NisaCalc />}
-      </div>
+      {/* Disclaimer（計算ツールタブのみ） */}
+      {(activeTool === 'furusato' || activeTool === 'tedori' || activeTool === 'nisa') && (
+        <div className="bg-wnl border border-wnb rounded-xl p-3 mb-6 text-[11px] text-wn leading-relaxed">
+          ⚠️ 計算結果はあくまで概算・目安です。正確な金額は税理士・所轄税務署にご確認ください。
+        </div>
+      )}
 
-      {/* Disclaimer */}
-      <div className="bg-wnl border border-wnb rounded-xl p-3 mb-8 text-[11px] text-wn leading-relaxed">
-        ⚠️ 計算結果はあくまで概算・目安です。正確な金額は税理士・所轄税務署にご確認ください。
-        本ツールは税務相談・助言を行うものではありません。
-      </div>
+      {/* ── タブ別ランキング ── */}
+      {activeTool === 'furusato' && <FurusatoRanking />}
 
-      {/* おすすめ返礼品ランキング */}
-      <FurusatoRanking />
+      {activeTool === 'nisa' && (
+        <RankingSection title="医師におすすめのNISA銘柄" icon="📈" items={NISA_PICKS.map(p => ({
+          rank: p.rank, name: p.name, sub: p.reason, badge: `信託報酬 ${p.fee}`,
+        }))} />
+      )}
+
+      {activeTool === 'creditcard' && (
+        <RankingSection title="医師に人気のクレジットカード" icon="💳" items={CREDIT_CARDS.map(c => ({
+          rank: c.rank, name: c.name, sub: c.reason, badge: c.fee,
+        }))} />
+      )}
+
+      {activeTool === 'baito' && (
+        <RankingSection title="医師バイトサイト比較" icon="🏥" items={BAITO_SITES.map(b => ({
+          rank: b.rank, name: b.name, sub: b.reason, badge: '', url: b.url,
+        }))} />
+      )}
 
 
       {/* 関連記事 */}
@@ -384,5 +425,38 @@ export default function MoneyPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+// ── 汎用ランキングセクション ──
+function RankingSection({ title, icon, items }: {
+  title: string; icon: string
+  items: { rank: number; name: string; sub: string; badge: string; url?: string }[]
+}) {
+  const MEDAL = ['', '🥇', '🥈', '🥉']
+  return (
+    <section className="mb-8">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-8 h-0.5 bg-ac rounded-full" />
+        <h2 className="text-lg font-bold text-tx">{icon} {title}</h2>
+      </div>
+      <div className="space-y-2">
+        {items.map(item => (
+          <div key={item.rank} className="bg-s0 border border-br rounded-xl p-4 flex items-start gap-3">
+            <span className="text-lg font-bold flex-shrink-0 w-7 text-center">
+              {MEDAL[item.rank] || item.rank}
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-bold text-tx">{item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:text-ac">{item.name}</a> : item.name}</p>
+              <p className="text-[11px] text-muted mt-0.5">{item.sub}</p>
+            </div>
+            {item.badge && (
+              <span className="text-[10px] font-medium px-2 py-0.5 bg-s1 rounded text-muted flex-shrink-0">{item.badge}</span>
+            )}
+          </div>
+        ))}
+      </div>
+      <p className="text-[9px] text-muted mt-2">※ ランキングは一般的な情報に基づく参考です。投資・契約の判断は自己責任で行ってください。</p>
+    </section>
   )
 }
