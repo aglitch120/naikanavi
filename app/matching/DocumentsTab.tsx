@@ -17,7 +17,7 @@ interface Profile {
   motivation: string
 }
 
-type DocSubTab = 'emails' | 'checklist' | 'questions' | 'resume-guide' | 'compare'
+type DocSubTab = 'emails' | 'checklist' | 'questions' | 'resume-guide'
 
 // ── メールテンプレート ──
 type TemplateId = 'visit-request' | 'visit-thanks' | 'adoption-thanks' | 'cover-letter'
@@ -393,7 +393,6 @@ export default function DocumentsTab({
     ...(mode === 'matching' ? [
       { id: 'checklist' as DocSubTab, label: '見学準備', icon: '✅' },
       { id: 'questions' as DocSubTab, label: '聞くべきこと', icon: '❓' },
-      { id: 'compare' as DocSubTab, label: '病院比較表', icon: '📊' },
     ] : []),
   ]
 
@@ -432,7 +431,6 @@ export default function DocumentsTab({
       {subTab === 'resume-guide' && <ResumeGuide />}
       {subTab === 'checklist' && <VisitChecklist />}
       {subTab === 'questions' && <VisitQuestions isPro={isPro} onShowProModal={onShowProModal} />}
-      {subTab === 'compare' && <HospitalCompare isPro={isPro} onShowProModal={onShowProModal} />}
     </div>
   )
 }
@@ -893,7 +891,7 @@ const COMPARE_CATEGORIES: CompareCategory[] = [
   },
 ]
 
-function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; onShowProModal?: () => void }) {
+export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; onShowProModal?: () => void }) {
   const MAX_HOSPITALS = 3
   const [hospitalNames, setHospitalNames] = useState<string[]>(['病院A', '病院B', '病院C'])
   const [activeHospitals, setActiveHospitals] = useState<number>(2)

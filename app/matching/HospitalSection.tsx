@@ -191,12 +191,12 @@ export default function HospitalTab({
 
   return (
     <div className="space-y-4">
-      {/* ── サブタブ ── */}
+      {/* ── サブタブ（病院DBタブのみ表示。比較表・志望リストは親タブから直接呼ばれる） ── */}
+      {initialSubTab !== 'ranking' && initialSubTab !== 'wishlist' && (
       <div className="flex gap-1 bg-s1 rounded-xl p-1">
         {([
           { id: 'search' as SubTab, label: '検索', count: HOSPITALS.length },
           { id: 'ranking' as SubTab, label: '人気', count: 0 },
-          { id: 'wishlist' as SubTab, label: '志望リスト', count: wishlistIds.length },
         ]).map(t => (
           <button
             key={t.id}
@@ -217,6 +217,7 @@ export default function HospitalTab({
           </button>
         ))}
       </div>
+      )}
 
       {/* ══════ 検索タブ ══════ */}
       {subTab === 'search' && (
@@ -330,6 +331,7 @@ export default function HospitalTab({
                 onToggleInterested={() => toggleInterested(h.id)}
                 onToggleWishlist={() => toggleWishlist(h.id)}
                 interestCount={interestCounts[String(h.id)] || 0}
+                onShowPro={onShowProModal}
               />
             ))}
           </div>
@@ -447,7 +449,7 @@ export default function HospitalTab({
 function HospitalCard({
   hospital: h, isPro, expanded, onToggle,
   isInterested, isWishlist, onToggleInterested, onToggleWishlist,
-  interestCount,
+  interestCount, onShowPro,
 }: {
   hospital: Hospital
   isPro: boolean
@@ -458,6 +460,7 @@ function HospitalCard({
   onToggleInterested: () => void
   onToggleWishlist: () => void
   interestCount: number
+  onShowPro?: () => void
 }) {
   // 倍率の色分け (popularity = applicants/capacity)
   const pop = h.popularity || 0
@@ -547,29 +550,29 @@ function HospitalCard({
             <StatBox label="空席" value={h.vacancy > 0 ? `${h.vacancy}名` : 'なし'} />
           </div>
 
-          {/* 本命度 — PRO限定 */}
+          {/* 本命度 — スコアはPRO限定、解説は全員に表示 */}
           {honmei > 0 && (
-            <div className="relative">
-              <div className="bg-s1 rounded-lg p-3">
-                <p className="text-[10px] font-medium text-tx mb-1">本命度スコア</p>
+            <div className="bg-s1 rounded-lg p-3">
+              <p className="text-[10px] font-medium text-tx mb-1">本命度スコア</p>
+              {isPro ? (
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-lg font-bold" style={{ color: honmeiColor.text }}>{honmei.toFixed(2)}</span>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ background: honmeiColor.bg, color: honmeiColor.text }}>{honmeiColor.label}</span>
                 </div>
-                <p className="text-[9px] text-muted leading-relaxed">
-                  本命度 = 実際のマッチ者数 / 中間発表時点の第1希望者数（3年平均）.
-                  1.0以上は中間でも最終でも第1希望に選ばれる「超本命」.
-                  0.5以下は中間で候補に入れたが最終的に外した人が多い「おさえ」傾向.
-                  この指標はiwor独自の算出であり, 病院の質を評価するものではありません.
-                </p>
-                {(h as any).avgMatchRate3y > 0 && (
-                  <p className="text-[10px] text-muted mt-1">3年平均マッチ率: {(h as any).avgMatchRate3y}%</p>
-                )}
-              </div>
-              {!isPro && (
-                <div className="absolute inset-0 backdrop-blur-md bg-s0/95 rounded-lg flex items-center justify-center">
-                  <span className="text-[10px] font-medium" style={{ color: MC }}>PRO会員で本命度を表示</span>
-                </div>
+              ) : (
+                <button onClick={e => { e.stopPropagation(); onShowPro?.() }}
+                  className="flex items-center gap-2 mb-2 px-3 py-1.5 rounded-lg text-[11px] font-bold text-white" style={{ background: MC }}>
+                  🔒 スコアを見る（PRO）
+                </button>
+              )}
+              <p className="text-[9px] text-muted leading-relaxed">
+                本命度 = 実際のマッチ者数 / 中間発表時点の第1希望者数（3年平均）.
+                1.0以上は中間でも最終でも第1希望に選ばれる「超本命」.
+                0.5以下は中間で候補に入れたが最終的に外した人が多い「おさえ」傾向.
+                この指標はiwor独自の算出であり, 病院の質を評価するものではありません.
+              </p>
+              {isPro && (h as any).avgMatchRate3y > 0 && (
+                <p className="text-[10px] text-muted mt-1">3年平均マッチ率: {(h as any).avgMatchRate3y}%</p>
               )}
             </div>
           )}
@@ -609,8 +612,16 @@ function HospitalCard({
                   </p>
                 </div>
                 {!isPro && (
-                  <div className="absolute inset-0 backdrop-blur-md bg-s0/95 rounded-lg flex items-center justify-center">
-                    <span className="text-[10px] font-medium" style={{ color: MC }}>PRO会員で穴場度を表示</span>
+                  <div className="absolute inset-0 rounded-lg flex flex-col items-center justify-center" style={{ background: `linear-gradient(135deg, ${MC}, #2D7A5A)` }}>
+                    <div className="text-2xl mb-1">{anabaScore >= 40 ? '💎' : '🔍'}</div>
+                    <p className="text-xs font-bold text-white mb-0.5">
+                      {anabaScore >= 60 ? 'この病院は超穴場かも？' : anabaScore >= 40 ? '穴場スコアが高めです' : '穴場度を確認'}
+                    </p>
+                    <p className="text-[9px] text-white/60 mb-2">PRO会員でスコア詳細を表示</p>
+                    <button onClick={e => { e.stopPropagation(); onShowPro?.() }}
+                      className="px-4 py-1.5 rounded-lg text-[10px] font-bold bg-white shadow-sm" style={{ color: MC }}>
+                      穴場度を見る
+                    </button>
                   </div>
                 )}
               </div>

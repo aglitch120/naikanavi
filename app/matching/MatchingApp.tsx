@@ -5,7 +5,7 @@ import { useProStatus } from '@/components/pro/useProStatus'
 import ProModal from '@/components/pro/ProModal'
 import AppHeader from '@/components/AppHeader'
 import HospitalTab from './HospitalSection'
-import DocumentsTab from './DocumentsTab'
+import DocumentsTab, { HospitalCompare } from './DocumentsTab'
 import ProfileWizard from './ProfileWizard'
 
 const MC = '#1B4F3A'
@@ -147,7 +147,7 @@ export default function MatchingApp() {
         <HospitalTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} initialSubTab="search" />
       )}
       {tab === 'compare' && (
-        <HospitalTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} initialSubTab="ranking" />
+        <HospitalCompare isPro={isPro} onShowProModal={() => setShowProModal(true)} />
       )}
       {tab === 'wishlist' && (
         <HospitalTab profile={basicProfile} isPro={isPro} onShowProModal={() => setShowProModal(true)} initialSubTab="wishlist" />
