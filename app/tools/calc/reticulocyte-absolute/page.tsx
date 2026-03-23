@@ -23,7 +23,7 @@ export default function ReticulocyteAbsPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`絶対値Ret = ${result.absRet} /μL`} interpretation={result.interpretation} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> 絶対値Ret = 網赤血球比率(%) × RBC(万/μL) × 100</p><p>正常: 約5-10万/μL。貧血時は比率(%)ではなく絶対値で評価すべき。RPIも併用。</p></div>}
-      relatedTools={[{ href: '/tools/calc/rpi', name: 'RPI' }, { href: '/tools/calc/anemia-criteria', name: '貧血の診断基準' }]}
+      relatedTools={[{ slug: 'rpi', name: 'RPI' }, { slug: 'anemia-criteria', name: '貧血の診断基準' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="網赤血球比率 (%)" value={retPct} onChange={setRetPct} step="0.1" />

@@ -22,7 +22,7 @@ export default function TidalVolumePage() {
         value={`TV = ${result.tv6}〜${result.tv8} mL`}
         interpretation={`予測体重(PBW) = ${result.pbw} kg\n6 mL/kg = ${result.tv6} mL\n8 mL/kg = ${result.tv8} mL\n\nARDSでは6 mL/kg以下を目標。プラトー圧 ≦30 cmH₂Oを確認。`} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">予測体重(PBW):</strong></p><p>男性: 50 + 0.91 × (身長cm - 152.4)</p><p>女性: 45.5 + 0.91 × (身長cm - 152.4)</p><p>実体重ではなく予測体重を使用。肥満患者で過大な一回換気量にならないよう注意。</p></div>}
-      relatedTools={[{ href: '/tools/calc/ibw', name: '理想体重(IBW)' }, { href: '/tools/calc/pf-ratio', name: 'P/F比' }, { href: '/tools/calc/oxygen-delivery', name: '酸素運搬量' }]}
+      relatedTools={[{ slug: 'ibw', name: '理想体重(IBW)' }, { slug: 'pf-ratio', name: 'P/F比' }, { slug: 'oxygen-delivery', name: '酸素運搬量' }]}
       references={toolDef.sources || []}
     >
       <div className="flex gap-2 mb-2">

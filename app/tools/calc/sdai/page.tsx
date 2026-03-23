@@ -27,7 +27,7 @@ export default function SdaiPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`SDAI = ${result.sdai}`} interpretation={result.activity} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> SDAI = TJC28 + SJC28 + PtVAS(cm) + MdVAS(cm) + CRP(mg/dL)</p><p>VASは0-100mmを0-10cmで入力。DAS28より計算が簡易。</p></div>}
-      relatedTools={[{ href: '/tools/calc/das28', name: 'DAS28' }, { href: '/tools/calc/ra-criteria', name: 'RA分類基準' }]}
+      relatedTools={[{ slug: 'das28', name: 'DAS28' }, { slug: 'ra-criteria', name: 'RA分類基準' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="圧痛関節数 TJC28" value={tjc} onChange={setTjc} />

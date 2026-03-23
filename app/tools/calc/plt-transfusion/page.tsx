@@ -24,7 +24,7 @@ export default function PltTransfusionPage() {
         value={`予測Plt上昇 ≒ ${result.pltRise} 万/μL`}
         interpretation={result.expected ? `予測Plt ≒ ${result.expected} 万/μL\n\n` : '' + '10単位PCで体重60kgの場合、約3-5万/μL上昇（回収率2/3として）。\n脾腫・DIC・HIT等では上昇が不良になる。'} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">予測上昇:</strong> Plt上昇 = 輸血血小板数 / (循環血液量L × 1000) × 回収率(2/3)</p><p>10単位PC = 約2.0×10¹¹個含有。1時間後と24時間後に評価。</p></div>}
-      relatedTools={[{ href: '/tools/calc/cci-platelet', name: 'CCI' }, { href: '/tools/calc/rbc-transfusion-hb', name: 'RBC輸血Hb上昇' }]}
+      relatedTools={[{ slug: 'cci-platelet', name: 'CCI' }, { slug: 'rbc-transfusion-hb', name: 'RBC輸血Hb上昇' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="PC投与単位数" value={units} onChange={setUnits} />

@@ -34,7 +34,7 @@ export default function MmsePage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`MMSE = ${result.total}/30`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>23/24点をカットオフとして認知症のスクリーニングに使用。教育歴の影響を受ける。HDS-Rと併用推奨。</p></div>}
-      relatedTools={[{ href: '/tools/calc/hds-r', name: 'HDS-R' }, { href: '/tools/calc/barthel-index', name: 'Barthel Index' }, { href: '/tools/calc/iadl', name: 'IADL' }]}
+      relatedTools={[{ slug: 'hds-r', name: 'HDS-R' }, { slug: 'barthel-index', name: 'Barthel Index' }, { slug: 'iadl', name: 'IADL' }]}
       references={toolDef.sources || []}
     >
       <div className="space-y-3">

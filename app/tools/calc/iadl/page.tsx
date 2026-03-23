@@ -34,7 +34,7 @@ export default function IadlPage() {
       result={<ResultCard severity={result.severity} value={`IADL = ${result.total}/8`}
         interpretation={`8: 完全自立 / 0: 完全依存\n高齢者の在宅生活能力・介護度判定に使用。`} />}
       explanation={<div className="text-sm text-muted"><p>Lawton IADL。基本的ADL(Barthel Index)より高次の日常活動を評価。認知機能低下の早期発見に有用。</p></div>}
-      relatedTools={[{href:'/tools/calc/barthel-index',name:'Barthel Index'},{href:'/tools/calc/mmse',name:'MMSE'},{href:'/tools/calc/sarc-f',name:'SARC-F'}]}
+      relatedTools={[{slug:'barthel-index',name:'Barthel Index'},{slug:'mmse',name:'MMSE'},{slug:'sarc-f',name:'SARC-F'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">{items.map((item,i)=>(

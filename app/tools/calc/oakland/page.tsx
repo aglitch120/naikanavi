@@ -44,7 +44,7 @@ export default function OaklandPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`Oakland = ${result.total}点`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>≦8点で安全な帰宅を予測。下部消化管出血の入院判断に使用。</p></div>}
-      relatedTools={[{ href: '/tools/calc/glasgow-blatchford', name: 'Glasgow-Blatchford' }, { href: '/tools/calc/rockall', name: 'Rockall' }]}
+      relatedTools={[{ slug: 'glasgow-blatchford', name: 'Glasgow-Blatchford' }, { slug: 'rockall', name: 'Rockall' }]}
       references={toolDef.sources || []}
     >
       <div className="space-y-3">

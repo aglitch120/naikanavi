@@ -17,7 +17,7 @@ export default function FailureMnemonicPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>心不全増悪時の原因検索チェックリスト。入院時に全項目をスクリーニングする。</p></div>}
-      relatedTools={[{href:'/tools/calc/nyha',name:'NYHA'}]}
+      relatedTools={[{slug:'nyha',name:'NYHA'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-2">{items.map(item=>(

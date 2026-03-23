@@ -30,7 +30,7 @@ export default function PancreatitisPrognosticPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`予後因子 ${result.total}/9`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>≧3項目で重症。予後因子と造影CTグレード(Balthazar)を合わせてseverity indexを算出。入院48時間以内に評価。</p></div>}
-      relatedTools={[{href:'/tools/calc/pancreatitis-ct',name:'膵炎CTグレード'},{href:'/tools/calc/ranson',name:'Ranson'},{href:'/tools/calc/bisap',name:'BISAP'}]}
+      relatedTools={[{slug:'pancreatitis-ct',name:'膵炎CTグレード'},{slug:'ranson',name:'Ranson'},{slug:'bisap',name:'BISAP'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-2">{items.map((item,i)=>(

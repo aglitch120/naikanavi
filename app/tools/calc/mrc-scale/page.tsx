@@ -21,7 +21,7 @@ export default function MrcScalePage() {
       result={<ResultCard severity={selected>=4?'ok':selected>=2?'wn':'dn'}
         value={`MRC Grade ${g.grade}/5`} interpretation={g.desc} />}
       explanation={<div className="text-sm text-muted"><p>Grade 4は4-/4/4+と細分化する場合もある。記録は「右上肢 三角筋 4/5」のように部位・筋を明記。MRC sum score(12筋群合計0-60)はGBS等で使用。</p></div>}
-      relatedTools={[{href:'/tools/calc/nihss',name:'NIHSS'},{href:'/tools/calc/gcs',name:'GCS'}]}
+      relatedTools={[{slug:'nihss',name:'NIHSS'},{slug:'gcs',name:'GCS'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-2">{grades.map((gr,i)=>(

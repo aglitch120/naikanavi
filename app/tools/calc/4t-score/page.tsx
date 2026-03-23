@@ -41,7 +41,7 @@ export default function FourTScorePage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`4T's = ${result.total}点`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>0-3: 低確率 / 4-5: 中間確率 / 6-8: 高確率。陰性予測値が高く、低スコアでHITを除外できる。</p></div>}
-      relatedTools={[{ href: '/tools/calc/isth-dic', name: 'ISTH DIC' }, { href: '/tools/calc/plt-transfusion', name: 'PLT輸血' }]}
+      relatedTools={[{ slug: 'isth-dic', name: 'ISTH DIC' }, { slug: 'plt-transfusion', name: 'PLT輸血' }]}
       references={toolDef.sources || []}
     >
       <div className="space-y-4">

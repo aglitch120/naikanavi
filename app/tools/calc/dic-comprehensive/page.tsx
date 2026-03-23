@@ -33,7 +33,7 @@ export default function DicComprehensivePage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>急性期DIC基準は感染症関連で感度が高い。ISTHは国際標準だが造血器腫瘍では低感度。産科は独自基準。状況に応じて使い分ける。</p></div>}
-      relatedTools={[{href:'/tools/calc/isth-dic',name:'ISTH DICスコア計算'},{href:'/tools/calc/4t-score',name:'4T\'s(HIT)'}]}
+      relatedTools={[{slug:'isth-dic',name:'ISTH DICスコア計算'},{slug:'4t-score',name:'4T\'s(HIT)'}]}
       references={toolDef.sources||[]}
     >
       <div className="flex gap-1 mb-4 overflow-x-auto pb-1">

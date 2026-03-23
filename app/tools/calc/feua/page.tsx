@@ -36,7 +36,7 @@ export default function FeuaPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`FEUA = ${result.feua}%`} interpretation={result.interpretation} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> FEUA = (尿UA × 血清Cr) / (血清UA × 尿Cr) × 100</p><p><strong className="text-tx">臨床的意義:</strong> 低Na血症の鑑別でSIADH（FEUA&gt;11%）とvolume depletion（FEUA&lt;7%）の区別に有用。FENaより利尿薬の影響を受けにくい。</p></div>}
-      relatedTools={[{ href: '/tools/calc/fena', name: 'FENa' }, { href: '/tools/calc/fek', name: 'FEK' }, { href: '/tools/calc/siadh', name: 'SIADH診断基準' }]}
+      relatedTools={[{ slug: 'fena', name: 'FENa' }, { slug: 'fek', name: 'FEK' }, { slug: 'siadh', name: 'SIADH診断基準' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="尿中UA (mg/dL)" value={uUA} onChange={setUUA} />

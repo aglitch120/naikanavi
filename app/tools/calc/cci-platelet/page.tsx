@@ -26,7 +26,7 @@ export default function CciPlateletPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`CCI = ${result.cci}`} interpretation={result.interpretation} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> CCI = (輸血後Plt - 輸血前Plt) × BSA / 輸血血小板数(×10¹¹)</p><p><strong className="text-tx">判定(1時間値):</strong> ≧7,500 良好 / &lt;5,000 不応</p><p><strong className="text-tx">判定(24時間値):</strong> ≧4,500 良好 / &lt;2,500 不応</p></div>}
-      relatedTools={[{ href: '/tools/calc/plt-transfusion', name: 'PLT輸血上昇予測' }, { href: '/tools/calc/bsa', name: 'BSA' }]}
+      relatedTools={[{ slug: 'plt-transfusion', name: 'PLT輸血上昇予測' }, { slug: 'bsa', name: 'BSA' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="輸血後Plt (万/μL)" value={pltPost} onChange={setPltPost} step="0.1" />

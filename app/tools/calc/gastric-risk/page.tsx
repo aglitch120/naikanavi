@@ -14,7 +14,7 @@ export default function GastricRiskPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>内視鏡的萎縮度(木村・竹本分類)と腸上皮化生の程度から胃癌サーベイランス間隔を決定。除菌後も発癌リスクは残存。</p></div>}
-      relatedTools={[{href:'/tools/calc/kyoto-classification',name:'京都分類'}]}
+      relatedTools={[{slug:'kyoto-classification',name:'京都分類'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-3">{riskGroups.map(r=>(

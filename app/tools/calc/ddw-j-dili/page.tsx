@@ -60,7 +60,7 @@ export default function DdwjDiliPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`DDW-J = ${result.total}点`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>まずR ratioで肝細胞障害型/胆汁うっ滞型/混合型を分類してからスコアリング。</p><p>※2023年にRECAM-Jが後継として公表。新規評価ではRECAM-Jも参照。</p></div>}
-      relatedTools={[{href:'/tools/calc/r-ratio',name:'R ratio'},{href:'/tools/calc/recam-j',name:'RECAM-J'}]}
+      relatedTools={[{slug:'r-ratio',name:'R ratio'},{slug:'recam-j',name:'RECAM-J'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">{items.map((item,i)=>(

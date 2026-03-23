@@ -29,7 +29,7 @@ export default function RRatioPage() {
       result={result ? <ResultCard severity={result.severity} value={`R = ${result.r} → ${result.type}`}
         interpretation={`ALT/ULN = ${result.altRatio}、ALP/ULN = ${result.alpRatio}\n• R ≧ 5: 肝細胞障害型\n• R ≦ 2: 胆汁うっ滞型\n• 2 < R < 5: 混合型`} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> R = (ALT / ALT基準上限) / (ALP / ALP基準上限)</p><p>薬剤性肝障害(DILI)の初期分類に使用。DDW-J 2004やRECAM-Jでも最初のステップとして利用。</p></div>}
-      relatedTools={[{ href: '/tools/calc/ddw-j-dili', name: 'DDW-J 2004' }, { href: '/tools/calc/recam-j', name: 'RECAM-J' }, { href: '/tools/calc/child-pugh', name: 'Child-Pugh' }]}
+      relatedTools={[{ slug: 'ddw-j-dili', name: 'DDW-J 2004' }, { slug: 'recam-j', name: 'RECAM-J' }, { slug: 'child-pugh', name: 'Child-Pugh' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="ALT (U/L)" value={alt} onChange={setAlt} />

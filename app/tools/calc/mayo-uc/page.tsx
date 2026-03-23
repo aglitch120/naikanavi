@@ -26,7 +26,7 @@ export default function MayoUcPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`Mayo = ${result.total}/12`} interpretation={result.activity} />}
       explanation={<div className="text-sm text-muted"><p>内視鏡を含まないPartial Mayo(0-9点)も使用可。臨床試験ではMayo 6以上を中等度以上の活動性と定義。</p></div>}
-      relatedTools={[{href:'/tools/calc/ibs-rome',name:'IBS Rome IV'}]}
+      relatedTools={[{slug:'ibs-rome',name:'IBS Rome IV'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">{items.map((item,i)=>(

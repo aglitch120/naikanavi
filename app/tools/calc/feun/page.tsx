@@ -37,7 +37,7 @@ export default function FeunPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`FEUN = ${result.feun}%`} interpretation={result.interpretation} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> FEUN = (尿UN × 血清Cr) / (血清UN × 尿Cr) × 100</p><p><strong className="text-tx">臨床的意義:</strong> 利尿薬使用中はFENaが上昇するため、FEUNがAKIの鑑別に有用。&lt;35%で腎前性を示唆。</p></div>}
-      relatedTools={[{ href: '/tools/calc/fena', name: 'FENa' }, { href: '/tools/calc/fek', name: 'FEK' }, { href: '/tools/calc/feua', name: 'FEUA' }]}
+      relatedTools={[{ slug: 'fena', name: 'FENa' }, { slug: 'fek', name: 'FEK' }, { slug: 'feua', name: 'FEUA' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="尿中UN (mg/dL)" value={uUN} onChange={setUUN} />

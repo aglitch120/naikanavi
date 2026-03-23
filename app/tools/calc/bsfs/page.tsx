@@ -21,7 +21,7 @@ export default function BsfsPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={t.severity} value={`Type ${t.type}`} interpretation={`${t.desc}\n→ ${t.clinical}\n\nType 3-5が正常範囲。Type 1-2は便秘、Type 6-7は下痢を示す。`} />}
       explanation={<div className="text-sm text-muted"><p>便の形状を7段階で評価。IBS-Romeとの併用で腸管通過時間の客観的指標になる。</p></div>}
-      relatedTools={[{ href: '/tools/calc/ibs-rome', name: 'IBS Rome IV' }]}
+      relatedTools={[{ slug: 'ibs-rome', name: 'IBS Rome IV' }]}
       references={toolDef.sources || []}
     >
       <div className="space-y-2">

@@ -44,7 +44,7 @@ export default function TokyoCholangitisPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={result.dx} interpretation={result.grade} />}
       explanation={<div className="text-sm text-muted"><p>Charcot三徴(発熱+黄疸+腹痛)→Reynolds五徴(+意識障害+ショック)。TG18はA+B+Cで確診。</p></div>}
-      relatedTools={[{href:'/tools/calc/tokyo-cholecystitis',name:'胆嚢炎 TG18'}]}
+      relatedTools={[{slug:'tokyo-cholecystitis',name:'胆嚢炎 TG18'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">

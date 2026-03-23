@@ -24,7 +24,7 @@ export default function RecamjPage() {
         </div>
         <p className="text-wn bg-wnl p-2 rounded-lg border border-wnb">※ 完全なスコアリングシートは日本肝臓学会のRECAM-J原著を参照してください。項目数が多く著作権に配慮し、ここでは構造の概要のみ記載しています。</p>
       </div>}
-      relatedTools={[{href:'/tools/calc/r-ratio',name:'R ratio'},{href:'/tools/calc/ddw-j-dili',name:'DDW-J 2004'},{href:'/tools/calc/child-pugh',name:'Child-Pugh'}]}
+      relatedTools={[{slug:'r-ratio',name:'R ratio'},{slug:'ddw-j-dili',name:'DDW-J 2004'},{slug:'child-pugh',name:'Child-Pugh'}]}
       references={toolDef.sources||[]}
     >
       <div className="text-center py-6">

@@ -36,7 +36,7 @@ export default function FekPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`FEK = ${result.fek}%`} interpretation={result.interpretation} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> FEK = (尿K × 血清Cr) / (血清K × 尿Cr) × 100</p><p><strong className="text-tx">低K血症の鑑別:</strong> FEK &gt; 6-10%: 腎性喪失（利尿薬・RTA・Bartter等）</p><p><strong className="text-tx">高K血症の鑑別:</strong> FEK &lt; 10%: 腎からの排泄低下（低アルドステロン・腎不全）</p></div>}
-      relatedTools={[{ href: '/tools/calc/fena', name: 'FENa' }, { href: '/tools/calc/feua', name: 'FEUA' }, { href: '/tools/calc/feun', name: 'FEUN' }, { href: '/tools/calc/femg', name: 'FEMg' }]}
+      relatedTools={[{ slug: 'fena', name: 'FENa' }, { slug: 'feua', name: 'FEUA' }, { slug: 'feun', name: 'FEUN' }, { slug: 'femg', name: 'FEMg' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="尿中K (mEq/L)" value={uK} onChange={setUK} />

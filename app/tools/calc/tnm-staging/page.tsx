@@ -69,7 +69,7 @@ export default function TnmStagingPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>TNM分類は定期的に改訂されます。最新版は各癌の治療ガイドラインまたはUICC TNM Classification原著を参照してください。</p></div>}
-      relatedTools={[{href:'/tools/calc/ann-arbor',name:'Ann Arbor(リンパ腫)'},{href:'/tools/calc/ecog',name:'ECOG PS'}]}
+      relatedTools={[{slug:'ann-arbor',name:'Ann Arbor(リンパ腫)'},{slug:'ecog',name:'ECOG PS'}]}
       references={toolDef.sources||[]}
     >
       {/* 癌種セレクター */}

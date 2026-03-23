@@ -28,7 +28,7 @@ export default function LegionellaScorePage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`スコア = ${result.total}点`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>市中肺炎の中からレジオネラ肺炎を予測するスコア。温泉歴・循環水曝露がある場合は臨床的に疑う。</p></div>}
-      relatedTools={[{ href: '/tools/calc/curb-65', name: 'CURB-65' }, { href: '/tools/calc/a-drop', name: 'A-DROP' }, { href: '/tools/calc/psi-port', name: 'PSI/PORT' }]}
+      relatedTools={[{ slug: 'curb-65', name: 'CURB-65' }, { slug: 'a-drop', name: 'A-DROP' }, { slug: 'psi-port', name: 'PSI/PORT' }]}
       references={toolDef.sources || []}
     >
       <div className="space-y-2">

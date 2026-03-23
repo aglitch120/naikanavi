@@ -24,7 +24,7 @@ export default function InsensibleLossPage() {
         value={`不感蒸泄 ≒ ${result.total} mL/日`}
         interpretation={`≒ ${result.perHour} mL/時\n\n基礎量: ${result.base} mL/日 (15 mL/kg)\n発熱補正係数: ×${result.feverFactor}\n\n※ 発汗は含まれない。発汗著明な場合はさらに追加が必要。`} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> 不感蒸泄 = 15 mL/kg/日 × 1.15^(体温-37)</p><p>皮膚(2/3)と呼気(1/3)からの水分喪失。体温1℃上昇ごとに約15%増加。</p><p>人工呼吸中は呼気からの蒸泄が減少（加温加湿回路使用時）。</p></div>}
-      relatedTools={[{ href: '/tools/calc/maintenance-fluid', name: '維持輸液量' }, { href: '/tools/calc/holiday-segar', name: 'Holiday-Segar' }, { href: '/tools/calc/free-water-deficit', name: '自由水欠乏量' }]}
+      relatedTools={[{ slug: 'maintenance-fluid', name: '維持輸液量' }, { slug: 'holiday-segar', name: 'Holiday-Segar' }, { slug: 'free-water-deficit', name: '自由水欠乏量' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="体重 (kg)" value={weight} onChange={setWeight} />

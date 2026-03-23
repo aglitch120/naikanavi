@@ -16,7 +16,7 @@ export default function StsScorePage() {
           <p className="text-wn text-xs">TAVI vs SAVR の術式選択判断にSTSスコアが使用されます（STS≧8%で高リスク→TAVI考慮）。</p>
         </div>
       </div>}
-      relatedTools={[{href:'/tools/calc/rcri',name:'RCRI'},{href:'/tools/calc/ascvd',name:'ASCVD'}]}
+      relatedTools={[{slug:'rcri',name:'RCRI'},{slug:'ascvd',name:'ASCVD'}]}
       references={toolDef.sources||[]}
     >
       <div className="text-center py-8">

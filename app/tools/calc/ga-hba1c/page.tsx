@@ -24,7 +24,7 @@ export default function GaHba1cPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity="ok" value={result.label} interpretation={result.sub + '\n\n※ GA ≒ 3.6 × HbA1c − 1.73 (Furusyo式)\n透析・貧血・異常Hb症ではHbA1cが不正確 → GAを使用'} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">換算式:</strong> GA = 3.6 × HbA1c − 1.73 (Furusyo N, et al.)</p><p><strong className="text-tx">GA反映期間:</strong> 過去約2週間（HbA1cは過去1-2ヶ月）</p><p><strong className="text-tx">GAが有用な場面:</strong> 透析患者、貧血、異常Hb症、急速な血糖変動の評価</p></div>}
-      relatedTools={[{ href: '/tools/calc/hba1c-glucose', name: 'HbA1c↔平均血糖' }, { href: '/tools/calc/homa', name: 'HOMA-IR/β' }, { href: '/tools/calc/cpi-index', name: 'CPI' }]}
+      relatedTools={[{ slug: 'hba1c-glucose', name: 'HbA1c↔平均血糖' }, { slug: 'homa', name: 'HOMA-IR/β' }, { slug: 'cpi-index', name: 'CPI' }]}
       references={toolDef.sources || []}
     >
       <div className="flex gap-2 mb-2">

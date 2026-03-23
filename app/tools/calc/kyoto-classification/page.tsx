@@ -15,7 +15,7 @@ export default function KyotoClassificationPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>5つの内視鏡所見からH.pylori感染状態と胃癌リスクを評価。未感染/現感染/既感染の判定に使用。</p></div>}
-      relatedTools={[{href:'/tools/calc/gastric-risk',name:'胃癌リスクスコア'},{href:'/tools/calc/la-classification',name:'LA分類'}]}
+      relatedTools={[{slug:'gastric-risk',name:'胃癌リスクスコア'},{slug:'la-classification',name:'LA分類'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">{findings.map(f=>(

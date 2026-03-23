@@ -45,7 +45,7 @@ export default function TokyoCholecystitisPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={result.dx} interpretation={result.grade} />}
       explanation={<div className="text-sm text-muted"><p>TG18: A(局所)+B(全身)+C(画像)で確診。A+BまたはA+Cで疑診。</p></div>}
-      relatedTools={[{href:'/tools/calc/tokyo-cholangitis',name:'胆管炎 TG18'}]}
+      relatedTools={[{slug:'tokyo-cholangitis',name:'胆管炎 TG18'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">

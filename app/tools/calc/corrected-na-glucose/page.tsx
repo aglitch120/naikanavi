@@ -25,7 +25,7 @@ export default function CorrectedNaGlucosePage() {
         value={`補正Na = ${result.katz} mEq/L（Katz式）`}
         interpretation={`Hillier式: ${result.hillier} mEq/L\n\n• Katz式: +1.6 mEq/L per 血糖100mg/dL上昇\n• Hillier式: +2.4 mEq/L per 血糖100mg/dL上昇（血糖400以上ではこちら推奨）`} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">Katz式:</strong> 補正Na = 実測Na + 1.6 × (血糖 - 100) / 100</p><p><strong className="text-tx">Hillier式:</strong> 補正Na = 実測Na + 2.4 × (血糖 - 100) / 100</p><p>高血糖による浸透圧移動で見かけ上Naが低下する。DKA/HHS管理に必須。</p></div>}
-      relatedTools={[{ href: '/tools/calc/na-deficit', name: 'Na欠乏量' }, { href: '/tools/calc/na-correction-rate', name: 'Na補正速度' }, { href: '/tools/calc/plasma-osmolality', name: '血漿浸透圧' }]}
+      relatedTools={[{ slug: 'na-deficit', name: 'Na欠乏量' }, { slug: 'na-correction-rate', name: 'Na補正速度' }, { slug: 'plasma-osmolality', name: '血漿浸透圧' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="実測Na (mEq/L)" value={na} onChange={setNa} />

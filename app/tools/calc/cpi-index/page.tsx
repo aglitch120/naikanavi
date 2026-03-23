@@ -23,7 +23,7 @@ export default function CpiIndexPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`CPI = ${result.cpi}`} interpretation={result.interpretation} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> CPI = 空腹時CPR (ng/mL) ÷ 空腹時血糖 (mg/dL) × 100</p><p>HOMA-βと比較して、インスリン療法中でも評価可能（外因性インスリンはCPRに影響しないため）。</p></div>}
-      relatedTools={[{ href: '/tools/calc/homa', name: 'HOMA-IR/β' }, { href: '/tools/calc/hba1c-glucose', name: 'HbA1c↔血糖' }, { href: '/tools/calc/ga-hba1c', name: 'GA↔HbA1c' }]}
+      relatedTools={[{ slug: 'homa', name: 'HOMA-IR/β' }, { slug: 'hba1c-glucose', name: 'HbA1c↔血糖' }, { slug: 'ga-hba1c', name: 'GA↔HbA1c' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="空腹時CPR (ng/mL)" value={cpr} onChange={setCpr} step="0.1" />

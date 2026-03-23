@@ -33,7 +33,7 @@ export default function PancreatitisCTPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`CTSI = ${result.ctsi}/10`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>Balthazar CT Grade(0-4) + 壊死スコア(0-6) = CTSI(0-10)。造影CTは発症72時間以降が壊死の評価に最適。</p></div>}
-      relatedTools={[{href:'/tools/calc/pancreatitis-prognostic',name:'膵炎予後因子'},{href:'/tools/calc/ranson',name:'Ranson'}]}
+      relatedTools={[{slug:'pancreatitis-prognostic',name:'膵炎予後因子'},{slug:'ranson',name:'Ranson'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">

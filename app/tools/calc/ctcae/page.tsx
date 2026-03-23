@@ -30,7 +30,7 @@ export default function CtcaePage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>CTCAE v5.0は約800の有害事象を収載。ここでは頻用項目を抜粋。全項目はJCOG翻訳版PDFを参照。</p><p className="mt-1">LLN = 施設基準下限, ULN = 施設基準上限</p></div>}
-      relatedTools={[{href:'/tools/calc/naranjo',name:'Naranjo'},{href:'/tools/calc/extravasation',name:'血管外漏出'}]}
+      relatedTools={[{slug:'naranjo',name:'Naranjo'},{slug:'extravasation',name:'血管外漏出'}]}
       references={toolDef.sources||[]}
     >
       <div className="flex gap-2 mb-4">

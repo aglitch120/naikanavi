@@ -28,7 +28,7 @@ export default function ObesityClassPage() {
       result={result ? <ResultCard severity={result.severity} value={`BMI = ${result.bmi} → ${result.jpnClass}`}
         interpretation={`WHO分類: ${result.whoClass}\n標準体重(BMI22): ${result.ibw} kg\n\n日本肥満学会:\n <18.5: 低体重\n 18.5-25: 普通\n 25-30: 肥満1度\n 30-35: 肥満2度\n 35-40: 肥満3度\n ≧40: 肥満4度`} /> : null}
       explanation={<div className="text-sm text-muted"><p>日本人ではBMI≧25で肥満。WHO基準(≧30)とは異なる。BMI≧35は高度肥満で外科的治療の適応を検討。</p></div>}
-      relatedTools={[{href:'/tools/calc/bmi',name:'BMI'},{href:'/tools/calc/bsa',name:'BSA'}]}
+      relatedTools={[{slug:'bmi',name:'BMI'},{slug:'bsa',name:'BSA'}]}
       references={toolDef.sources||[]}
     >
       <NumberInput label="身長 (cm)" value={height} onChange={setHeight} />

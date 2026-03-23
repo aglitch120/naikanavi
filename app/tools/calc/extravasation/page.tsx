@@ -30,7 +30,7 @@ export default function ExtravasationPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>漏出を発見したら①即座に投与中止②可能な限り残液を吸引③リスク分類に応じた対応。写真記録を残す。</p></div>}
-      relatedTools={[{href:'/tools/calc/ctcae',name:'CTCAE v5.0'}]}
+      relatedTools={[{slug:'ctcae',name:'CTCAE v5.0'}]}
       references={toolDef.sources||[]}
     >
       <div className="flex gap-2 mb-4 overflow-x-auto pb-1">

@@ -19,7 +19,7 @@ export default function RestrictiveTransfusionPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
       explanation={<div className="text-sm text-muted"><p>制限的輸血戦略はほとんどの患者群で自由輸血と同等以上の転帰。ただしACSでは議論が続く（MINT 2023）。</p><p className="mt-1">症状（頻脈・低血圧・胸痛・呼吸困難）がある場合はHb値に関わらず輸血を検討。</p></div>}
-      relatedTools={[{href:'/tools/calc/rbc-transfusion-hb',name:'RBC輸血Hb上昇'},{href:'/tools/calc/anemia-criteria',name:'貧血の診断基準'}]}
+      relatedTools={[{slug:'rbc-transfusion-hb',name:'RBC輸血Hb上昇'},{slug:'anemia-criteria',name:'貧血の診断基準'}]}
       references={toolDef.sources||[]}
     >
       <div className="overflow-x-auto -mx-4 px-4">

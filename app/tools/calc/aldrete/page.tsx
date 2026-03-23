@@ -46,7 +46,7 @@ export default function AldretePage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`Aldrete = ${result.total}/10`} interpretation={result.interpretation} />}
       explanation={<div className="text-sm text-muted"><p>≧9点でPACU退室可。5項目各0-2点（計10点）。</p></div>}
-      relatedTools={[{ href: '/tools/calc/asa-ps', name: 'ASA-PS' }, { href: '/tools/calc/gcs', name: 'GCS' }]}
+      relatedTools={[{ slug: 'asa-ps', name: 'ASA-PS' }, { slug: 'gcs', name: 'GCS' }]}
       references={toolDef.sources || []}
     >
       <div className="space-y-4">

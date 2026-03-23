@@ -26,7 +26,7 @@ export default function ItpCriteriaPage() {
         value={plt && allExcluded ? 'ITPの診断基準を満たす' : '基準を満たさない'}
         interpretation={`ITPは除外診断:\n1. 血小板 < 10万/μL: ${plt?'✓':'✗'}\n2. 二次性の原因を除外: ${allExcluded?'✓':'✗'}\n\n確定的な検査はない。末梢血塗抹・骨髄検査・抗体検査等で総合判断。`} />}
       explanation={<div className="text-sm text-muted"><p>初発時は骨髄検査を考慮（特に60歳以上でMDS除外）。治療: PSL→IVIg→TPO-RA→脾摘→リツキシマブ。</p></div>}
-      relatedTools={[{href:'/tools/calc/4t-score',name:'4T\'s(HIT)'},{href:'/tools/calc/plt-transfusion',name:'PLT輸血'}]}
+      relatedTools={[{slug:'4t-score',name:'4T\'s(HIT)'},{slug:'plt-transfusion',name:'PLT輸血'}]}
       references={toolDef.sources||[]}
     >
       <div className="space-y-4">

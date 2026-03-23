@@ -25,7 +25,7 @@ export default function FemgPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`FEMg = ${result.femg}%`} interpretation={result.interpretation} /> : null}
       explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> FEMg = (尿Mg × 血清Cr) / (0.7 × 血清Mg × 尿Cr) × 100</p><p>0.7は蛋白結合分を補正するため。遊離Mgのみが糸球体濾過される。</p><p><strong className="text-tx">低Mg血症:</strong> FEMg &gt;4% → 腎性喪失（PPI・ループ利尿薬・シスプラチン・アルコール等）</p></div>}
-      relatedTools={[{ href: '/tools/calc/fena', name: 'FENa' }, { href: '/tools/calc/fek', name: 'FEK' }]}
+      relatedTools={[{ slug: 'fena', name: 'FENa' }, { slug: 'fek', name: 'FEK' }]}
       references={toolDef.sources || []}
     >
       <NumberInput label="尿中Mg (mg/dL)" value={uMg} onChange={setUMg} step="0.1" />
