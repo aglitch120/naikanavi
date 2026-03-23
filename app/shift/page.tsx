@@ -46,6 +46,7 @@ interface ShiftData {
   doctors: Doctor[]
   categories: DutyCategory[]
   slotConfigs: SlotConfig[]
+  saturdayMode?: SaturdayMode
   assignments: Record<string, string[]>  // key -> [doctorId, ...] (複数人対応)
   slotsPerDay: number
 }
@@ -84,16 +85,28 @@ function isHoliday(year: number, month: number, day: number): string | null {
   return HOLIDAYS[key] || null
 }
 
-function isHolidayOrWeekend(year: number, month: number, day: number): boolean {
-  return isWeekend(year, month, day) || !!isHoliday(year, month, day)
+type SaturdayMode = 'holiday' | 'weekday' | 'half'  // 休日扱い / 平日扱い / 半日（日直のみ）
+
+function isHolidayOrWeekend(year: number, month: number, day: number, satMode: SaturdayMode = 'holiday'): boolean {
+  const dow = new Date(year, month - 1, day).getDay()
+  if (dow === 0) return true // 日曜は常に休日
+  if (dow === 6) { // 土曜
+    if (satMode === 'weekday') return false
+    return true // holiday or half → 休日扱い
+  }
+  return !!isHoliday(year, month, day)
+}
+
+function isSaturday(year: number, month: number, day: number): boolean {
+  return new Date(year, month - 1, day).getDay() === 6
 }
 
 // 月のスロット定義を生成（slotConfigsベース）
-function generateSlots(year: number, month: number, configs: SlotConfig[]): SlotDef[] {
+function generateSlots(year: number, month: number, configs: SlotConfig[], satMode: SaturdayMode = 'holiday'): SlotDef[] {
   const totalDays = getDaysInMonth(year, month)
   const slots: SlotDef[] = []
   for (let day = 1; day <= totalDays; day++) {
-    const holiday = isHolidayOrWeekend(year, month, day)
+    const holiday = isHolidayOrWeekend(year, month, day, satMode)
     for (const cfg of configs) {
       if (!cfg.enabled) continue
       // 平日の日に休日スロットは不要、逆も然り
@@ -158,7 +171,7 @@ function generateId() {
 // 制約: NG日回避, 連日回避, 同一週2回回避, 均等分配
 function autoAssign(data: ShiftData): Record<string, string[]> {
   const { year, month, doctors, slotConfigs } = data
-  const slots = generateSlots(year, month, slotConfigs)
+  const slots = generateSlots(year, month, slotConfigs, data.saturdayMode)
   const assignments: Record<string, string[]> = {}
 
   if (doctors.length === 0) return assignments
@@ -309,6 +322,7 @@ export default function ShiftPage() {
   const [copied, setCopied] = useState(false)
   const [selectedDocId, setSelectedDocId] = useState('')
   const [defaultMinInterval, setDefaultMinInterval] = useState(2)
+  const [saturdayMode, setSaturdayMode] = useState<SaturdayMode>('holiday')
   const [surveyPassword, setSurveyPassword] = useState('')
   const [surveyUrls, setSurveyUrls] = useState<{ doctorId: string; name: string; url: string }[]>([])
   const [surveyId, setSurveyId] = useState('')
@@ -371,19 +385,19 @@ export default function ShiftPage() {
   }
 
   const handleGenerate = () => {
-    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, assignments: {}, slotsPerDay: 1 }
+    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, saturdayMode, assignments: {}, slotsPerDay: 1 }
     const result = autoAssign(data)
     setAssignments(result)
     setStep('result')
   }
 
   const handleRegenerate = () => {
-    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, assignments: {}, slotsPerDay: 1 }
+    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, saturdayMode, assignments: {}, slotsPerDay: 1 }
     setAssignments(autoAssign(data))
   }
 
   const handleShare = () => {
-    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, assignments, slotsPerDay: 1 }
+    const data: ShiftData = { groupName, year, month, doctors, categories, slotConfigs, saturdayMode, assignments, slotsPerDay: 1 }
     const compressed = compressData(data)
     const url = `${window.location.origin}/shift#${compressed}`
     setShareUrl(url)
@@ -644,6 +658,26 @@ export default function ShiftPage() {
                 )
               })
             )}
+          </div>
+        </div>
+
+        {/* 土曜日の扱い */}
+        <div>
+          <label className="text-xs font-bold text-tx block mb-2">土曜日の扱い</label>
+          <div className="flex gap-1.5">
+            {([
+              { v: 'holiday' as SaturdayMode, l: '休日扱い', sub: '日直+当直' },
+              { v: 'half' as SaturdayMode, l: '半日', sub: '日直のみ' },
+              { v: 'weekday' as SaturdayMode, l: '平日扱い', sub: '当直のみ' },
+            ]).map(opt => (
+              <button key={opt.v} onClick={() => setSaturdayMode(opt.v)}
+                className={`flex-1 py-2 rounded-lg text-center border transition-all ${
+                  saturdayMode === opt.v ? 'bg-ac text-white border-ac' : 'border-br text-muted'
+                }`}>
+                <span className="text-[11px] font-bold block">{opt.l}</span>
+                <span className="text-[9px] opacity-70">{opt.sub}</span>
+              </button>
+            ))}
           </div>
         </div>
 
