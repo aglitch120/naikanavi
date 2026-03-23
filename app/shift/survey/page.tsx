@@ -54,6 +54,8 @@ export default function SurveyPage() {
 
   const handleSubmit = async () => {
     if (!survey || !token) return
+    const ngStr = ngDays.length > 0 ? ngDays.sort((a, b) => a - b).join(', ') + '日' : 'なし（制限なし）'
+    if (!confirm(`以下の内容で送信します。確定後は変更できません。\n\nNG日: ${ngStr}\n\nよろしいですか？`)) return
     setSubmitting(true)
     try {
       const res = await fetch(`${API}/api/shift/survey/respond`, {

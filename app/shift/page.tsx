@@ -337,7 +337,8 @@ function clearDraft() {
 }
 
 export default function ShiftPage() {
-  const [step, setStep] = useState<Step>('setup')
+  const [step, _setStep] = useState<Step>('setup')
+  const setStep = (s: Step) => { _setStep(s); window.scrollTo(0, 0) }
   const [groupName, setGroupName] = useState('')
   const [year, setYear] = useState(new Date().getFullYear())
   const [month, setMonth] = useState(new Date().getMonth() + 2 > 12 ? 1 : new Date().getMonth() + 2)
@@ -775,7 +776,7 @@ export default function ShiftPage() {
           <div className="flex gap-1.5">
             {([
               { v: 'holiday' as SaturdayMode, l: '休日扱い', sub: '日直+当直' },
-              { v: 'half' as SaturdayMode, l: '半日', sub: '日直のみ' },
+              { v: 'half' as SaturdayMode, l: '日当直', sub: '24h通し' },
               { v: 'weekday' as SaturdayMode, l: '平日扱い', sub: '当直のみ' },
             ]).map(opt => (
               <button key={opt.v} onClick={() => setSaturdayMode(opt.v)}
