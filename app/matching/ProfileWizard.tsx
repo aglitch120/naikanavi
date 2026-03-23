@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from 'react'
 
 import { loadProfile, saveProfile } from '@/lib/matching-profile-storage'
 import ImmersiveWizard from './ImmersiveWizard'
+import IworLoader from '@/components/IworLoader'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -230,6 +231,7 @@ export default function ProfileWizard({
   })()
 
   const [showWizardModal, setShowWizardModal] = useState(false)
+  const [aiGenerating, setAiGenerating] = useState(false)
 
   // ── Overview: プロフィール開始 + 履歴書プレビュー ──
   if (step === 0) {
@@ -264,12 +266,22 @@ export default function ProfileWizard({
                 &times;
               </button>
             </div>
+            {/* AI生成中オーバーレイ */}
+            {aiGenerating && (
+              <div className="absolute inset-0 z-10 bg-bg/95 flex flex-col items-center justify-center gap-4">
+                <IworLoader size="lg" />
+                <div className="text-center">
+                  <p className="text-sm font-bold text-tx">AIが履歴書を生成中...</p>
+                  <p className="text-[11px] text-muted mt-1">自己PR・志望動機を自動作成しています</p>
+                </div>
+              </div>
+            )}
             {/* ウィザード本体 */}
             <div className="flex-1 overflow-y-auto px-4 py-6">
               <div className="max-w-lg mx-auto">
                 <ImmersiveWizard
                   onComplete={async (answers) => {
-                    // ウィザード回答からプロフィールフィールドを埋める
+                    setAiGenerating(true)
                     try {
                       const raw = localStorage.getItem('iwor_matching_profile')
                       const stored = raw ? JSON.parse(raw) : {}
@@ -323,6 +335,7 @@ export default function ProfileWizard({
                       setProfile(next)
                       autoSave(next)
                     } catch {}
+                    setAiGenerating(false)
                     setShowWizardModal(false)
                   }}
                   editMode={!!profile.name}
