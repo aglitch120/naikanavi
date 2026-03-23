@@ -14,6 +14,7 @@ import { meneki_cards } from './data/meneki-cards'
 import { allergy_cards } from './data/allergy-cards'
 import { kyukyu_cards } from './data/kyukyu-cards'
 import { shounika_cards } from './data/shounika-cards'
+import { sanka_cards } from './data/sanka-cards'
 
 const TAISHA_TAGS = Array.from(new Set(TAISHA_CARDS.map(c => c.tag)))
 const SHINKEI_TAGS = Array.from(new Set(shinkei_cards.map(c => c.tag)))
@@ -24,6 +25,7 @@ const MENEKI_TAGS = Array.from(new Set(meneki_cards.map(c => c.tag)))
 const ALLERGY_TAGS = Array.from(new Set(allergy_cards.map(c => c.tag)))
 const KYUKYU_TAGS = Array.from(new Set(kyukyu_cards.map(c => c.tag)))
 const SHOUNIKA_TAGS = Array.from(new Set(shounika_cards.map(c => c.tag)))
+const SANKA_TAGS = Array.from(new Set(sanka_cards.map(c => c.tag)))
 
 // ── 型定義 ──
 
@@ -179,6 +181,17 @@ const DEFAULT_DECKS: Deck[] = [
     description: '小児科 45問（国試逆算設計）',
     cards: shounika_cards,
     tags: SHOUNIKA_TAGS,
+    isDefault: true,
+    createdAt: '2026-03-23T00:00:00Z',
+    updatedAt: '2026-03-23T00:00:00Z',
+  },
+  {
+    id: 'default-sanka',
+    name: '産科',
+    emoji: '🤰',
+    description: '産科 40問（国試逆算設計）',
+    cards: sanka_cards,
+    tags: SANKA_TAGS,
     isDefault: true,
     createdAt: '2026-03-23T00:00:00Z',
     updatedAt: '2026-03-23T00:00:00Z',
