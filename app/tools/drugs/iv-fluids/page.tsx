@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import UpdatedAt from '@/components/tools/UpdatedAt'
+import FavoriteButton from '@/components/tools/FavoriteButton'
 
 // ── 型定義 ──
 interface Fluid {
@@ -184,7 +185,10 @@ export default function IVFluidsPage() {
       {/* ヘッダー */}
       <header className="mb-6">
         <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium mb-2">薬剤ガイド</span>
-        <h1 className="text-2xl font-bold text-tx mb-1">輸液製剤 一覧</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-tx mb-1 flex-1">輸液製剤 一覧</h1>
+          <FavoriteButton slug="iv-fluids" title="輸液製剤 一覧" href="/tools/drugs/iv-fluids" type="drugs" />
+        </div>
         <p className="text-sm text-muted">細胞外液補充液・1号液（開始液）・2号液（脱水補給液）・3号液（維持液）の電解質組成と糖質濃度。電解質はmEq/L表記。</p>
         <UpdatedAt />
       </header>

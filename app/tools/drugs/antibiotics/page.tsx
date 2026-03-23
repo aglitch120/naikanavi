@@ -4,6 +4,7 @@ import UpdatedAt from '@/components/tools/UpdatedAt'
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import ErrorReportButton from '@/components/tools/ErrorReportButton'
+import FavoriteButton from '@/components/tools/FavoriteButton'
 
 // ── スペクトラムデータ ──
 type Coverage = 'good' | 'some' | 'none' | 'variable'
@@ -85,7 +86,10 @@ export default function AntibioticsPage() {
 
       <header className="mb-6">
         <span className="inline-block text-sm bg-acl text-ac px-2.5 py-0.5 rounded-full font-medium mb-2">💊 抗菌薬</span>
-        <h1 className="text-2xl font-bold text-tx mb-1">抗菌薬ガイド</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-tx mb-1 flex-1">抗菌薬ガイド</h1>
+          <FavoriteButton slug="antibiotics" title="抗菌薬スペクトラム" href="/tools/drugs/antibiotics" type="drugs" />
+        </div>
         <p className="text-sm text-muted">18薬剤のスペクトラム一覧。腎機能別用量は<Link href="/tools/calc/renal-dose-abx" className="text-ac hover:underline ml-1">腎機能別用量調整ツール</Link>を参照。</p>
         <UpdatedAt />
       </header>
