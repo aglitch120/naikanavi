@@ -1245,6 +1245,8 @@ export const tools: ToolDefinition[] = [
   { slug: 'sdai', name: 'SDAI（簡易疾患活動性指標）', nameEn: 'Simplified Disease Activity Index', description: '関節リウマチ活動性。圧痛関節数+腫脹関節数+VAS(患者)+VAS(医師)+CRP。寛解≦3.3。', category: 'general', tier: 2, keywords: ['SDAI','関節リウマチ','RA','活動性','寛解','CRP'], relatedSlugs: ['das28','ra-criteria'], updatedAt: '2026-03', sources: [{ text: 'Smolen JS, et al. Rheumatology 2003;42:244-57' }] },
   { slug: 'legionella-score', name: 'レジオネラ肺炎予測スコア', nameEn: 'Legionella Pneumonia Prediction Score', description: '市中肺炎の中からレジオネラ肺炎を予測。6項目。≧5でレジオネラ疑い。', category: 'infectious', tier: 2, keywords: ['レジオネラ','Legionella','肺炎','市中肺炎','尿中抗原','温泉'], relatedSlugs: ['curb-65','a-drop','psi-port'], updatedAt: '2026-03', sources: [{ text: 'Fiumefreddo R, et al. Chest 2009;136:1576-82' }] },
   { slug: 'low-back-red-flags', name: '腰痛のレッドフラッグ', nameEn: 'Low Back Pain Red Flags', description: '腰痛における重篤な基礎疾患（悪性腫瘍・感染・骨折・馬尾症候群）を示唆する危険徴候チェックリスト。', category: 'general', tier: 2, keywords: ['腰痛','レッドフラッグ','red flag','馬尾','悪性腫瘍','脊椎'], relatedSlugs: [], updatedAt: '2026-03', sources: [{ text: '日本整形外科学会/日本腰痛学会 腰痛診療ガイドライン 2019' }] },
+  { slug: 'sts-score', name: 'STSスコア（心臓外科手術リスク）', nameEn: 'STS Risk Score', description: 'Society of Thoracic Surgeons Risk Calculator。心臓外科手術（CABG・弁置換等）の術後死亡率・合併症リスクを予測。外部リンク。', category: 'cardiology', tier: 2, keywords: ['STS','心臓外科','CABG','弁置換','手術リスク','TAVI','リスク計算'], relatedSlugs: ['ascvd','rcri'], updatedAt: '2026-03', sources: [{ text: 'Society of Thoracic Surgeons. STS Risk Calculator (riskcalc.sts.org)' }] },
+  { slug: 'tnm-staging', name: '各癌のTNM分類（主要癌種一覧）', nameEn: 'TNM Staging Reference', description: '肺癌・胃癌・大腸癌・乳癌・肝癌・膵癌・腎癌・膀胱癌・前立腺癌等のTNM臨床病期分類（UICC第8版/第9版）一覧。', category: 'general', tier: 1, keywords: ['TNM','病期','ステージ','UICC','癌','がん','分類','T','N','M'], relatedSlugs: ['ann-arbor'], updatedAt: '2026-03', sources: [{ text: 'UICC TNM分類 第8版/第9版' }] },
 ]
 
 // 実装済みツールのslug一覧（新ツール追加時にここに追加）
@@ -1282,6 +1284,7 @@ export const implementedTools = new Set(['gamma', 'egfr', 'cha2ds2-vasc', 'chads
   'mayo-uc', 'hisayama', 'failure-mnemonic', 'itp-criteria',
   'migraine-criteria', 'mrc-scale', 'iadl', 'obesity-class',
   'low-back-red-flags', 'pneumothorax-class', 'kyoto-classification', 'gastric-risk',
+  'sts-score', 'tnm-staging',
 ])
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
