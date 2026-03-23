@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface IndexEntry {
   s: string  // slug
@@ -86,6 +87,7 @@ export default function SearchDialog() {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [index, setIndex] = useState<IndexEntry[] | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const router = useRouter()
 
   const open = useCallback(() => {
     setIsOpen(true)
@@ -143,6 +145,8 @@ export default function SearchDialog() {
       e.preventDefault()
       setSelectedIndex((prev) => Math.max(prev - 1, 0))
     } else if (e.key === 'Enter' && results[selectedIndex]) {
+      const r = results[selectedIndex] as any
+      router.push(r.href || `/blog/${r.slug}`)
       close()
     }
   }
@@ -222,7 +226,7 @@ export default function SearchDialog() {
           <div className="max-h-[50vh] overflow-y-auto">
             {query.trim() && results.length === 0 && (
               <div className="px-4 py-8 text-center text-sm text-muted">
-                「{query}」に一致する記事が見つかりませんでした
+                「{query}」に一致する結果が見つかりませんでした
               </div>
             )}
             {results.length > 0 && (
