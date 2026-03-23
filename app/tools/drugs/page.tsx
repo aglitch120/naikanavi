@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 // ── サブツールカード（抗菌薬系を上に固める） ──
 const subTools = [
+  { href: '/tools/drugs/iv-fluids', icon: '💧', name: '輸液製剤 一覧', desc: '細胞外液・1〜3号液の電解質組成と糖質濃度。製剤別比較表' },
   { href: '/tools/drugs/antibiotics', icon: '🦠', name: '抗菌薬スペクトラム', desc: '18薬剤のスペクトラム一覧' },
   { href: '/tools/calc/renal-dose-abx', icon: '🧪', name: '抗菌薬 腎機能別用量', desc: 'eGFR/CCr別の参考用量。30薬剤対応' },
   { href: '/tools/calc/steroid-converter', icon: '💉', name: 'ステロイド力価換算', desc: 'プレドニゾロン基準の等力価換算。6薬剤対応' },
