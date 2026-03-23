@@ -127,7 +127,7 @@ export default function RootLayout({
           </>
         )}
         <Header />
-        <main className="max-w-5xl mx-auto px-6 sm:px-8 py-8 pb-24 md:pb-8">
+        <main className="max-w-5xl mx-auto px-6 sm:px-8 py-8 pb-24 md:pb-8 overflow-x-hidden">
           {children}
         </main>
         <Footer />
