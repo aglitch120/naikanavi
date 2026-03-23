@@ -2,7 +2,7 @@
 
 interface ResultCardProps {
   value: string | number
-  label: string
+  label?: string
   unit?: string
   interpretation?: string
   severity?: 'ok' | 'wn' | 'dn' | 'neutral'
@@ -26,7 +26,7 @@ export default function ResultCard({
 }: ResultCardProps) {
   return (
     <div className={`border rounded-xl p-4 sm:p-5 overflow-hidden ${severityStyles[severity]}`}>
-      <p className="text-sm font-medium mb-1">{label}</p>
+      {label && <p className="text-sm font-medium mb-1">{label}</p>}
       <div className="flex flex-wrap items-baseline gap-x-1.5">
         <span className="text-3xl font-bold tabular-nums">{value}</span>
         {unit && <span className="text-sm font-normal">{unit}</span>}
