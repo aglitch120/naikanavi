@@ -748,12 +748,8 @@ function ArticleCard({ article: a, isBookmarked, onToggleBookmark, isPro, displa
                 className="text-[11px] text-muted hover:text-ac flex items-center gap-1 px-2 py-1 bg-s1 rounded-md">
                 {expanded ? '▲ 閉じる' : '▼ 詳細'}
               </button>
-              {commentCount > 0 && (
-                <span className="text-[11px] text-muted flex items-center gap-0.5 px-2 py-1 bg-s1 rounded-md">💬 {commentCount}</span>
-              )}
-              {bookmarkCount > 0 && (
-                <span className="text-[11px] text-amber-600 flex items-center gap-0.5 px-2 py-1 bg-amber-50 rounded-md font-medium">★ {bookmarkCount}</span>
-              )}
+              <span className={`text-[11px] flex items-center gap-0.5 px-2 py-1 rounded-md ${commentCount > 0 ? 'text-ac bg-acl font-medium' : 'text-muted bg-s1'}`}>💬 {commentCount}</span>
+              <span className={`text-[11px] flex items-center gap-0.5 px-2 py-1 rounded-md ${bookmarkCount > 0 ? 'text-amber-600 bg-amber-50 font-medium' : 'text-muted bg-s1'}`}>🔖 {bookmarkCount}</span>
             </div>
           </div>
 

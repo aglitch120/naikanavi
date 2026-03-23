@@ -214,8 +214,8 @@ async function buildJournalDb(env) {
       // 記事タイプフィルタ: 臨床医に価値のある論文に限定（Letter/Comment/Editorial等を除外）
       const ptFilter = '("Journal Article"[pt] OR "Meta-Analysis"[pt] OR "Systematic Review"[pt] OR "Review"[pt] OR "Randomized Controlled Trial"[pt] OR "Clinical Trial"[pt] OR "Guideline"[pt] OR "Practice Guideline"[pt] OR "Multicenter Study"[pt] OR "Observational Study"[pt] OR "Comparative Study"[pt])';
       const ptExclude = 'NOT ("Letter"[pt] OR "Comment"[pt] OR "Editorial"[pt] OR "Erratum"[pt] OR "News"[pt] OR "Biography"[pt] OR "Published Erratum"[pt] OR "Retracted Publication"[pt])';
-      const q = encodeURIComponent(`(${batch.map(issn => `${issn}[ISSN]`).join(" OR ")}) AND ("last 30 days"[dp]) AND ${ptFilter} ${ptExclude}`);
-      const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=100&sort=date&retmode=json`;
+      const q = encodeURIComponent(`(${batch.map(issn => `${issn}[ISSN]`).join(" OR ")}) AND ("last 90 days"[dp]) AND ${ptFilter} ${ptExclude}`);
+      const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=200&sort=date&retmode=json`;
       try {
         const sRes = await fetch(sUrl);
         if (!sRes.ok) { console.error(`PubMed search error: ${sRes.status}`); continue; }
