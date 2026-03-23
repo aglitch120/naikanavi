@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useCallback, useMemo, useEffect } from 'react'
-import Link from 'next/link'
 import AppHeader from '@/components/AppHeader'
 import IworLoader from '@/components/IworLoader'
 import { FlashCard } from './cbt-cards'
@@ -18,6 +17,8 @@ import {
 import { parseApkgFile, ApkgImportResult } from './apkg-import'
 import ProModal from '@/components/pro/ProModal'
 import { useProStatus } from '@/components/pro/useProStatus'
+import CardFan from '@/components/study/CardFan'
+import { getOrderedCategories, getCategoryForDeck } from '@/lib/study-categories'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -224,6 +225,9 @@ export default function StudyApp() {
   const [showProModal, setShowProModal] = useState(false)
   const [streakPromoShown, setStreakPromoShown] = useState(false)
 
+  // User role (from onboarding)
+  const [userRole, setUserRole] = useState<string>('student')
+
   // ── Init ──
   useEffect(() => {
     setDayStats(getTodayStats())
@@ -232,6 +236,7 @@ export default function StudyApp() {
     setStreak(getStreak())
     setExamData(loadExam())
     setStreakPromoShown(localStorage.getItem('streak_promo_shown') === 'true')
+    setUserRole(localStorage.getItem('iwor_user_role') || 'student')
   }, [])
 
   // ── Active deck ──
@@ -282,6 +287,30 @@ export default function StudyApp() {
     }
     return { dueCount, newCount, total: deck.cards.length }
   }, [cardDataMap])
+
+  // ── Total due across ALL decks (for fixed review button) ──
+  const totalDueAll = useMemo(() => {
+    let total = 0
+    for (const deck of decks) {
+      const info = getDeckDueInfo(deck)
+      total += info.dueCount + info.newCount
+    }
+    return total
+  }, [decks, getDeckDueInfo])
+
+  // ── Deck color map (for card fan headers) ──
+  const DECK_COLORS: Record<string, string> = {
+    'default-cbt': '#1B4F3A', 'default-kokushi': '#1E3A5F', 'default-naika': '#1B4F3A',
+    'default-junkanki': '#991B1B', 'default-kokyuki': '#1E40AF', 'default-shokaki': '#92400E',
+    'default-kantansui': '#6D28D9', 'default-shinkei': '#4338CA', 'default-jinzo': '#1E3A5F',
+    'default-ketsueki': '#991B1B', 'default-taisha': '#92400E', 'default-kansensho': '#166534',
+    'default-meneki': '#6D28D9', 'default-allergy': '#9D174D', 'default-kyukyu': '#991B1B',
+    'default-shounika': '#4338CA', 'default-sanka': '#9D174D', 'default-fujinka': '#6D28D9',
+    'default-seikei': '#92400E', 'default-hinyoki': '#1E3A5F', 'default-seishin': '#134E4A',
+    'default-hifu': '#9D174D', 'default-ganka': '#4338CA', 'default-jibi': '#92400E',
+    'default-hoshasen': '#1E3A5F', 'default-masui': '#166534', 'default-geka': '#991B1B',
+    'default-koshueisei': '#134E4A',
+  }
 
   // ── Start session ──
   const startSession = useCallback(() => {
@@ -590,72 +619,110 @@ export default function StudyApp() {
           </div>
         </button>
 
-        {/* デッキ一覧 */}
-        <div className="mb-6">
-          <h2 className="text-sm font-bold text-tx mb-3">デッキ</h2>
-          <div className="space-y-3">
-            {decks.map(deck => {
-              const info = getDeckDueInfo(deck)
-              return (
-                <button
-                  key={deck.id}
-                  onClick={() => openDeck(deck.id)}
-                  className="w-full bg-s0 border border-br rounded-xl p-4 hover:border-ac/40 transition-all text-left"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style={{ background: MCL }}>
-                        {deck.emoji}
-                      </div>
-                      <div>
-                        <p className="text-sm font-bold text-tx">{deck.name}</p>
-                        <p className="text-[11px] text-muted">{info.total}枚{!deck.isDefault && ' · 自作'}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      {info.dueCount > 0 && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 border border-emerald-200">
-                          復習 {info.dueCount}
-                        </span>
-                      )}
-                      {info.newCount > 0 && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-100 text-blue-700 border border-blue-200">
-                          新規 {info.newCount}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </button>
-              )
-            })}
-          </div>
-        </div>
+        {/* デッキ一覧（カテゴリ別カードファン） */}
+        {(() => {
+          const categories = getOrderedCategories(userRole)
+          const defaultDecks = decks.filter(d => d.isDefault)
+          const customDecks = decks.filter(d => !d.isDefault)
 
-        {/* 自作デッキ作成 & .apkgインポート */}
-        <div className="flex gap-3 mb-4">
-          <button
-            onClick={() => { setFormName(''); setFormEmoji('📚'); setFormDesc(''); setScreen('create-deck') }}
-            className="flex-1 border-2 border-dashed border-br rounded-xl p-4 text-center hover:border-ac/40 transition-colors"
-          >
-            <span className="text-lg">＋</span>
-            <p className="text-xs font-medium text-muted mt-1">自作デッキ</p>
-          </button>
-          <label
-            className="flex-1 border-2 border-dashed border-br rounded-xl p-4 text-center hover:border-ac/40 transition-colors cursor-pointer"
-          >
-            <input
-              type="file"
-              accept=".apkg"
-              onChange={handleImportApkg}
-              className="hidden"
-              disabled={importLoading}
-            />
-            <span className="text-lg">{importLoading ? '⏳' : '📥'}</span>
-            <p className="text-xs font-medium text-muted mt-1">
-              {importLoading ? '読み込み中...' : '.apkgインポート'}
-            </p>
-          </label>
-        </div>
+          return (
+            <>
+              {/* 公式デッキ — カテゴリ別 */}
+              {categories.map(cat => {
+                const catDecks = cat.deckIds
+                  .map(id => defaultDecks.find(d => d.id === id))
+                  .filter((d): d is Deck => d != null)
+                if (catDecks.length === 0 && cat.deckIds.length === 0) {
+                  // カテゴリ自体が空（準備中）
+                  return (
+                    <CardFan
+                      key={cat.id}
+                      title={cat.title}
+                      subtitle={cat.subtitle}
+                      items={[]}
+                      onSelect={() => {}}
+                    />
+                  )
+                }
+                if (catDecks.length === 0) return null
+                return (
+                  <CardFan
+                    key={cat.id}
+                    title={cat.title}
+                    subtitle={cat.subtitle}
+                    items={catDecks.map(d => {
+                      const info = getDeckDueInfo(d)
+                      return {
+                        id: d.id,
+                        label: d.name,
+                        emoji: d.emoji,
+                        subtitle: d.description,
+                        cardCount: info.total,
+                        dueCount: info.dueCount,
+                        newCount: info.newCount,
+                        color: DECK_COLORS[d.id],
+                      }
+                    })}
+                    onSelect={(id) => openDeck(id)}
+                  />
+                )
+              })}
+
+              {/* 自作デッキ */}
+              {customDecks.length > 0 ? (
+                <CardFan
+                  title="自作デッキ"
+                  subtitle="あなたの定期試験・卒試対策"
+                  items={customDecks.map(d => {
+                    const info = getDeckDueInfo(d)
+                    return {
+                      id: d.id,
+                      label: d.name,
+                      emoji: d.emoji,
+                      subtitle: d.description,
+                      cardCount: info.total,
+                      dueCount: info.dueCount,
+                      newCount: info.newCount,
+                      color: '#4C1D95',
+                    }
+                  })}
+                  onSelect={(id) => openDeck(id)}
+                  showAddBtn
+                  onAdd={() => { setFormName(''); setFormEmoji('📚'); setFormDesc(''); setScreen('create-deck') }}
+                />
+              ) : (
+                <div className="px-5 mb-6">
+                  <p className="text-sm font-bold text-tx mb-2">自作デッキ</p>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => { setFormName(''); setFormEmoji('📚'); setFormDesc(''); setScreen('create-deck') }}
+                      className="flex-1 border-2 border-dashed border-br rounded-xl p-4 text-center hover:border-ac/40 transition-colors"
+                    >
+                      <span className="text-lg">＋</span>
+                      <p className="text-xs font-medium text-muted mt-1">自作デッキ</p>
+                    </button>
+                    <label className="flex-1 border-2 border-dashed border-br rounded-xl p-4 text-center hover:border-ac/40 transition-colors cursor-pointer">
+                      <input type="file" accept=".apkg" onChange={handleImportApkg} className="hidden" disabled={importLoading} />
+                      <span className="text-lg">{importLoading ? '⏳' : '📥'}</span>
+                      <p className="text-xs font-medium text-muted mt-1">{importLoading ? '読み込み中...' : '.apkgインポート'}</p>
+                    </label>
+                  </div>
+                </div>
+              )}
+            </>
+          )
+        })()}
+
+        {/* .apkg インポートボタン（自作デッキがある場合） */}
+        {decks.some(d => !d.isDefault) && (
+          <div className="px-5 mb-4">
+            <label className="block border-2 border-dashed border-br rounded-xl p-3 text-center hover:border-ac/40 transition-colors cursor-pointer">
+              <input type="file" accept=".apkg" onChange={handleImportApkg} className="hidden" disabled={importLoading} />
+              <span className="text-sm">{importLoading ? '⏳' : '📥'}</span>
+              <span className="text-xs font-medium text-muted ml-2">{importLoading ? '読み込み中...' : '.apkgインポート'}</span>
+            </label>
+          </div>
+        )}
 
         {/* インポート結果 */}
         {importResult && (
@@ -676,17 +743,39 @@ export default function StudyApp() {
           </div>
         )}
 
-        {/* 忘却曲線説明 */}
-        <div className="bg-s1 rounded-xl p-4 mb-6 text-[11px] text-muted leading-relaxed">
-          <p className="font-bold text-tx mb-1">📊 忘却曲線に基づく間隔反復</p>
-          <p>Anki同様の科学的な復習スケジューリング。回答の自信度に応じて「忘れかけるタイミング」で自動的に再出題し、効率よく記憶を定着させます。</p>
-        </div>
+        {/* 下部余白（固定ボタン分） */}
+        <div className="h-36" />
 
-        <div className="text-center">
-          <Link href="/" className="text-xs text-muted hover:text-ac transition-colors">
-            ← ホームに戻る
-          </Link>
-        </div>
+        {/* 固定: 復習を始めるボタン */}
+        {totalDueAll > 0 && (
+          <div
+            className="fixed left-1/2 -translate-x-1/2 w-full max-w-lg px-5"
+            style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 68px)', zIndex: 200 }}
+          >
+            <button
+              onClick={() => {
+                // due があるデッキを見つけて開始
+                const dueDecks = decks.filter(d => {
+                  const info = getDeckDueInfo(d)
+                  return info.dueCount > 0 || info.newCount > 0
+                })
+                if (dueDecks.length > 0) {
+                  openDeck(dueDecks[0].id)
+                }
+              }}
+              className="w-full py-3.5 rounded-xl text-[15px] font-bold text-white flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+              style={{
+                background: MC,
+                boxShadow: `0 4px 20px rgba(27,79,58,0.4), 0 -4px 12px ${MCL}`,
+              }}
+            >
+              ▶ 復習を始める
+              <span className="bg-white/20 px-2 py-0.5 rounded-md text-xs font-semibold">
+                {totalDueAll}枚
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     )
   }
