@@ -258,7 +258,7 @@ const DOCTOR_COLORS = [
 ]
 
 // ─── Steps ───
-type Step = 'setup' | 'doctors' | 'preferences' | 'result'
+type Step = 'setup' | 'config' | 'doctors' | 'preferences' | 'result'
 
 export default function ShiftPage() {
   const [step, setStep] = useState<Step>('setup')
@@ -274,6 +274,7 @@ export default function ShiftPage() {
   const [shareUrl, setShareUrl] = useState('')
   const [copied, setCopied] = useState(false)
   const [selectedDocId, setSelectedDocId] = useState('')
+  const [defaultMinInterval, setDefaultMinInterval] = useState(2)
   const [surveyPassword, setSurveyPassword] = useState('')
   const [surveyUrl, setSurveyUrl] = useState('')
   const [surveyId, setSurveyId] = useState('')
@@ -319,7 +320,7 @@ export default function ShiftPage() {
   const addDoctor = () => {
     const name = newDoctorName.trim()
     if (!name) return
-    setDoctors(prev => [...prev, { id: generateId(), name, ngDays: [], weight: 1.0, minInterval: 2, categoryIds: [] }])
+    setDoctors(prev => [...prev, { id: generateId(), name, ngDays: [], weight: 1.0, minInterval: defaultMinInterval, categoryIds: [] }])
     setNewDoctorName('')
   }
 
@@ -369,8 +370,9 @@ export default function ShiftPage() {
   const renderStepIndicator = () => {
     const steps: { key: Step; label: string }[] = [
       { key: 'setup', label: '基本設定' },
+      { key: 'config', label: '詳細設定' },
       { key: 'doctors', label: '医師登録' },
-      { key: 'preferences', label: 'NG日入力' },
+      { key: 'preferences', label: 'NG日' },
       { key: 'result', label: '結果' },
     ]
     const currentIdx = steps.findIndex(s => s.key === step)
@@ -506,12 +508,113 @@ export default function ShiftPage() {
         </div>
 
         <button
-          onClick={() => setStep('doctors')}
+          onClick={() => setStep('config')}
           disabled={!groupName.trim()}
           className="w-full bg-ac text-white py-3 rounded-xl font-bold text-sm hover:bg-ac2 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           次へ →
         </button>
+      </div>
+    </main>
+  )
+
+  // ─── Step: Config (詳細設定) ───
+  if (step === 'config') return (
+    <main className="max-w-lg mx-auto px-4 py-8">
+      <Breadcrumb />
+      <h1 className="text-2xl font-bold text-tx mb-1">当直シフト作成</h1>
+      <p className="text-sm text-muted mb-6">{groupName} — {year}年{month}月</p>
+      {renderStepIndicator()}
+
+      <div className="space-y-5">
+        {/* 当直カテゴリ */}
+        <div>
+          <label className="text-xs font-bold text-tx block mb-2">当直カテゴリ</label>
+          <div className="space-y-2">
+            {categories.map(cat => (
+              <div key={cat.id} className="flex items-center gap-2 bg-s0 border border-br rounded-lg px-3 py-2.5">
+                <span className={`w-3 h-3 rounded-full ${cat.color.split(' ')[0]}`} />
+                <span className="text-sm text-tx flex-1">{cat.name}</span>
+                {categories.length > 1 && (
+                  <button onClick={() => setCategories(prev => prev.filter(c => c.id !== cat.id))}
+                    className="text-[10px] text-muted hover:text-red-500">削除</button>
+                )}
+              </div>
+            ))}
+            <button onClick={() => {
+              const name = prompt('カテゴリ名（例: ICU当直、外来当直）')
+              if (name) setCategories(prev => [...prev, { id: generateId(), name, color: 'bg-teal-100 text-teal-700 border-teal-200' }])
+            }}
+              className="text-[11px] text-ac hover:underline">+ カテゴリを追加</button>
+          </div>
+        </div>
+
+        {/* 各カテゴリの必要人数 */}
+        <div>
+          <label className="text-xs font-bold text-tx block mb-2">各当直枠の必要人数</label>
+          <div className="space-y-2">
+            {categories.map(cat => (
+              <div key={cat.id} className="flex items-center gap-3 bg-s0 border border-br rounded-lg px-3 py-2.5">
+                <span className="text-xs text-tx flex-1">{cat.name}</span>
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3].map(n => (
+                    <button key={n} onClick={() => {
+                      setCategories(prev => prev.map(c => c.id === cat.id ? { ...c, required: n } : c))
+                    }}
+                      className={`w-8 h-8 rounded-lg text-xs font-bold border transition-all ${
+                        ((cat as any).required || 1) === n ? 'bg-ac text-white border-ac' : 'border-br text-muted'
+                      }`}>{n}人</button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 全体の最小間隔（デフォルト） */}
+        <div>
+          <label className="text-xs font-bold text-tx block mb-2">デフォルト最小間隔（全医師共通）</label>
+          <div className="flex gap-1.5">
+            {[1, 2, 3, 4, 5].map(n => (
+              <button key={n} onClick={() => setDefaultMinInterval(n)}
+                className={`flex-1 py-2 rounded-lg text-xs font-medium border transition-all ${
+                  defaultMinInterval === n ? 'bg-ac text-white border-ac' : 'border-br text-muted'
+                }`}>{n}日</button>
+            ))}
+          </div>
+          <p className="text-[9px] text-muted mt-1">医師ごとの個別設定はNG日入力ステップで可能</p>
+        </div>
+
+        {/* スロット確認 */}
+        <div className="bg-s1 rounded-xl p-3">
+          <p className="text-[10px] font-bold text-tx mb-1">{month}月のスロット概要</p>
+          {(() => {
+            const totalDays = getDaysInMonth(year, month)
+            let weekdays = 0, holidays = 0
+            for (let d = 1; d <= totalDays; d++) {
+              if (isHolidayOrWeekend(year, month, d)) holidays++
+              else weekdays++
+            }
+            const totalSlots = (weekdays * categories.length) + (holidays * categories.length * 2)
+            return (
+              <div className="text-[10px] text-muted space-y-0.5">
+                <p>平日 {weekdays}日 × {categories.length}カテゴリ = {weekdays * categories.length}枠（当直のみ）</p>
+                <p>休日 {holidays}日 × {categories.length}カテゴリ × 2（日直+当直） = {holidays * categories.length * 2}枠</p>
+                <p className="font-bold text-tx">合計 {totalSlots}枠</p>
+              </div>
+            )
+          })()}
+        </div>
+
+        <div className="flex gap-2">
+          <button onClick={() => setStep('setup')} className="flex-1 border border-br text-muted py-3 rounded-xl font-bold text-sm hover:bg-s1 transition-colors">
+            ← 戻る
+          </button>
+          <button onClick={() => setStep('doctors')}
+            className="flex-1 bg-ac text-white py-3 rounded-xl font-bold text-sm hover:bg-ac2 transition-colors">
+            次へ →
+          </button>
+        </div>
       </div>
     </main>
   )
@@ -549,16 +652,28 @@ export default function ShiftPage() {
         {doctors.length > 0 && (
           <div className="space-y-2">
             {doctors.map((d, i) => (
-              <div key={d.id} className="flex items-center gap-3 bg-s0 border border-br rounded-lg px-3 py-2.5">
-                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${DOCTOR_COLORS[i % DOCTOR_COLORS.length]}`}>
-                  {d.name[0]}
-                </span>
-                <span className="text-sm font-medium text-tx flex-1">{d.name}</span>
-                <button onClick={() => removeDoctor(d.id)} className="text-muted hover:text-red-500 transition-colors">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
-                </button>
+              <div key={d.id} className="bg-s0 border border-br rounded-lg px-3 py-2.5">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${DOCTOR_COLORS[i % DOCTOR_COLORS.length]}`}>
+                    {d.name[0]}
+                  </span>
+                  <span className="text-sm font-medium text-tx flex-1">{d.name}</span>
+                  <button onClick={() => removeDoctor(d.id)} className="text-muted hover:text-red-500 transition-colors">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                {/* 忙しさ5段階 */}
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[9px] text-muted w-10">忙しさ:</span>
+                  {[{v:0.6,l:'軽'},{v:0.8,l:'少'},{v:1.0,l:'標準'},{v:1.2,l:'多'},{v:1.5,l:'最多'}].map(({v,l}) => (
+                    <button key={v} onClick={() => setDoctors(prev => prev.map(doc => doc.id === d.id ? { ...doc, weight: v } : doc))}
+                      className={`flex-1 py-1 rounded text-[9px] font-medium border transition-all ${
+                        d.weight === v ? 'bg-ac text-white border-ac' : 'border-br text-muted'
+                      }`}>{l}</button>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -648,7 +763,7 @@ export default function ShiftPage() {
         )}
 
         <div className="flex gap-2">
-          <button onClick={() => setStep('setup')} className="flex-1 border border-br text-muted py-3 rounded-xl font-bold text-sm hover:bg-s1 transition-colors">
+          <button onClick={() => setStep('config')} className="flex-1 border border-br text-muted py-3 rounded-xl font-bold text-sm hover:bg-s1 transition-colors">
             ← 戻る
           </button>
         </div>

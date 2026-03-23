@@ -1956,19 +1956,31 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         return json({ error: "groupName, year, month, doctors required" }, 400, request);
       }
       const surveyId = crypto.randomUUID().slice(0, 8);
+      // 各医師に個別トークンを生成
+      const doctorTokens = {};
+      const doctorsWithTokens = body.doctors.map(d => {
+        const token = crypto.randomUUID().slice(0, 12);
+        doctorTokens[d.id] = token;
+        return { ...d, token };
+      });
       const survey = {
         id: surveyId,
         groupName: body.groupName,
         year: body.year,
         month: body.month,
-        doctors: body.doctors, // [{id, name}]
+        doctors: doctorsWithTokens,
         deadline: body.deadline || null,
-        password: body.password || null,
         createdAt: new Date().toISOString(),
-        responses: {}, // {doctorId: {name, ngDays: [1,3,5]}}
+        responses: {},
       };
-      await env.IWOR_KV.put(`shift:survey:${surveyId}`, JSON.stringify(survey), { expirationTtl: 60 * 60 * 24 * 90 }); // 90日保持
-      return json({ ok: true, surveyId, url: `https://iwor.jp/shift/survey?id=${surveyId}` }, 200, request);
+      await env.IWOR_KV.put(`shift:survey:${surveyId}`, JSON.stringify(survey), { expirationTtl: 60 * 60 * 24 * 90 });
+      // 個別URLリストを返す
+      const urls = doctorsWithTokens.map(d => ({
+        doctorId: d.id,
+        name: d.name,
+        url: `https://iwor.jp/shift/survey?id=${surveyId}&token=${d.token}`,
+      }));
+      return json({ ok: true, surveyId, urls }, 200, request);
     }
 
     // アンケート取得
@@ -1978,24 +1990,40 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       const raw = await env.IWOR_KV.get(`shift:survey:${surveyId}`);
       if (!raw) return json({ error: "not found" }, 404, request);
       const survey = JSON.parse(raw);
-      // パスワード保護: パスワードフィールドはクライアントに返さない
-      const safe = { ...survey, password: undefined, hasPassword: !!survey.password };
+      const token = url.searchParams.get("token");
+      if (token) {
+        // 個別トークンアクセス: 対象医師の情報のみ返す
+        const doctor = survey.doctors.find(d => d.token === token);
+        if (!doctor) return json({ error: "invalid token" }, 403, request);
+        const alreadyResponded = !!survey.responses[doctor.id];
+        return json({ ok: true, survey: {
+          id: survey.id, groupName: survey.groupName, year: survey.year, month: survey.month,
+          deadline: survey.deadline, doctorName: doctor.name, doctorId: doctor.id,
+          alreadyResponded,
+        }}, 200, request);
+      }
+      // Admin: トークンを含めた全情報を返す（パスワードは除外）
+      const safe = { ...survey, doctors: survey.doctors.map(d => ({ id: d.id, name: d.name, responded: !!survey.responses[d.id] })) };
       return json({ ok: true, survey: safe }, 200, request);
     }
 
-    // 回答送信
+    // 回答送信（個別トークン認証）
     if (path === "/api/shift/survey/respond" && request.method === "POST") {
       const body = await parseBody(request);
-      if (!body || !body.surveyId || !body.doctorId || !body.ngDays) {
-        return json({ error: "surveyId, doctorId, ngDays required" }, 400, request);
+      if (!body || !body.surveyId || !body.token || !body.ngDays) {
+        return json({ error: "surveyId, token, ngDays required" }, 400, request);
       }
       const raw = await env.IWOR_KV.get(`shift:survey:${body.surveyId}`);
       if (!raw) return json({ error: "survey not found" }, 404, request);
       const survey = JSON.parse(raw);
 
-      // パスワードチェック
-      if (survey.password && body.password !== survey.password) {
-        return json({ error: "invalid password" }, 403, request);
+      // トークンで医師を特定
+      const doctor = survey.doctors.find(d => d.token === body.token);
+      if (!doctor) return json({ error: "invalid token" }, 403, request);
+
+      // 回答済みチェック（1回限り）
+      if (survey.responses[doctor.id]) {
+        return json({ error: "already responded", doctorName: doctor.name }, 400, request);
       }
 
       // 締切チェック
@@ -2003,9 +2031,9 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         return json({ error: "deadline passed" }, 400, request);
       }
 
-      // 回答保存
-      survey.responses[body.doctorId] = {
-        name: body.name || survey.doctors.find(d => d.id === body.doctorId)?.name || "",
+      // 回答保存（トークンで特定した医師のIDで保存）
+      survey.responses[doctor.id] = {
+        name: doctor.name,
         ngDays: body.ngDays,
         respondedAt: new Date().toISOString(),
       };

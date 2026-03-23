@@ -25,26 +25,25 @@ export default function SurveyPage() {
   const [survey, setSurvey] = useState<Survey | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [selectedDoctor, setSelectedDoctor] = useState('')
+  const token = params.get('token')
   const [ngDays, setNgDays] = useState<number[]>([])
-  const [password, setPassword] = useState('')
-  const [needsPassword, setNeedsPassword] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    if (!surveyId) { setError('アンケートIDが不正です'); setLoading(false); return }
-    fetch(`${API}/api/shift/survey?id=${surveyId}`)
+    if (!surveyId || !token) { setError('無効なリンクです。管理者から受け取ったURLを使用してください。'); setLoading(false); return }
+    fetch(`${API}/api/shift/survey?id=${surveyId}&token=${token}`)
       .then(r => r.json())
       .then(d => {
         if (d.ok) {
           setSurvey(d.survey)
-          if (d.survey.hasPassword) setNeedsPassword(true)
-        } else setError(d.error || '取得に失敗しました')
+          if (d.survey.alreadyResponded) setSubmitted(true)
+        } else if (d.error === 'invalid token') setError('無効なトークンです。他の方のリンクを使用していませんか？')
+        else setError(d.error || '取得に失敗しました')
       })
       .catch(() => setError('通信エラー'))
       .finally(() => setLoading(false))
-  }, [surveyId])
+  }, [surveyId, token])
 
   const totalDays = useMemo(() => survey ? getDaysInMonth(survey.year, survey.month) : 0, [survey])
   const firstDow = useMemo(() => survey ? getFirstDow(survey.year, survey.month) : 0, [survey])
@@ -54,17 +53,19 @@ export default function SurveyPage() {
   }
 
   const handleSubmit = async () => {
-    if (!survey || !selectedDoctor) return
+    if (!survey || !token) return
     setSubmitting(true)
     try {
       const res = await fetch(`${API}/api/shift/survey/respond`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ surveyId: survey.id, doctorId: selectedDoctor, ngDays, password: password || undefined }),
+        body: JSON.stringify({ surveyId: survey.id, token, ngDays }),
       })
       const data = await res.json()
       if (data.ok) setSubmitted(true)
-      else setError(data.error === 'invalid password' ? 'パスワードが違います' : data.error === 'deadline passed' ? '回答期限を過ぎています' : data.error || '送信に失敗しました')
+      else if (data.error === 'already responded') setError('既に回答済みです。回答は1回限りです。')
+      else if (data.error === 'deadline passed') setError('回答期限を過ぎています')
+      else setError(data.error || '送信に失敗しました')
     } catch { setError('通信エラー') }
     setSubmitting(false)
   }
@@ -91,6 +92,7 @@ export default function SurveyPage() {
         <p className="text-[10px] text-muted tracking-widest uppercase mb-1">iwor 当直シフト</p>
         <h1 className="text-lg font-bold text-tx">{survey.groupName}</h1>
         <p className="text-sm text-muted">{survey.year}年{survey.month}月 NG日アンケート</p>
+        <p className="text-xs font-bold mt-2" style={{ color: '#1B4F3A' }}>{(survey as any).doctorName}さん専用</p>
         {survey.deadline && (
           <p className={`text-[11px] mt-1 ${isExpired ? 'text-red-500 font-bold' : 'text-muted'}`}>
             回答期限: {survey.deadline} {isExpired ? '（期限切れ）' : ''}
@@ -104,40 +106,8 @@ export default function SurveyPage() {
         </div>
       ) : (
         <div className="space-y-5">
-          {/* 名前選択 */}
+          {/* NG日選択カレンダー */}
           <div>
-            <label className="text-xs font-bold text-tx block mb-2">あなたの名前を選択</label>
-            <div className="grid grid-cols-2 gap-2">
-              {survey.doctors.map(d => {
-                const responded = survey.responses[d.id]
-                return (
-                  <button key={d.id} onClick={() => !responded && setSelectedDoctor(d.id)}
-                    disabled={!!responded}
-                    className={`px-3 py-2.5 rounded-xl text-xs font-medium border transition-all ${
-                      responded ? 'bg-s1 border-br text-muted opacity-50' :
-                      selectedDoctor === d.id ? 'border-ac/40 bg-acl text-ac' : 'border-br bg-s0 text-tx hover:border-ac/20'
-                    }`}>
-                    {d.name} {responded && <span className="text-[9px]">✓回答済</span>}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-
-          {selectedDoctor && (
-            <>
-              {/* パスワード */}
-              {needsPassword && (
-                <div>
-                  <label className="text-xs font-bold text-tx block mb-1">パスワード</label>
-                  <input type="password" value={password} onChange={e => setPassword(e.target.value)}
-                    placeholder="管理者から共有されたパスワード"
-                    className="w-full px-3 py-2.5 border border-br rounded-xl text-sm bg-s0 outline-none focus:border-ac" />
-                </div>
-              )}
-
-              {/* NG日選択カレンダー */}
-              <div>
                 <label className="text-xs font-bold text-tx block mb-2">NG日を選択（タップで切り替え）</label>
                 <div className="bg-s0 border border-br rounded-xl p-3">
                   <div className="grid grid-cols-7 gap-0.5 mb-1">
@@ -172,10 +142,8 @@ export default function SurveyPage() {
               <button onClick={handleSubmit} disabled={submitting}
                 className="w-full py-3 rounded-xl text-sm font-bold text-white disabled:opacity-50"
                 style={{ background: MC }}>
-                {submitting ? '送信中...' : '回答を送信'}
+                {submitting ? '送信中...' : '回答を送信（確定後の変更不可）'}
               </button>
-            </>
-          )}
         </div>
       )}
 
