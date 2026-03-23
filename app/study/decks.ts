@@ -20,6 +20,7 @@ import { seikei_cards } from './data/seikei-cards'
 import { hinyoki_cards } from './data/hinyoki-cards'
 import { seishin_cards } from './data/seishin-cards'
 import { hifu_cards } from './data/hifu-cards'
+import { ganka_cards } from './data/ganka-cards'
 
 const TAISHA_TAGS = Array.from(new Set(TAISHA_CARDS.map(c => c.tag)))
 const SHINKEI_TAGS = Array.from(new Set(shinkei_cards.map(c => c.tag)))
@@ -36,6 +37,7 @@ const SEIKEI_TAGS = Array.from(new Set(seikei_cards.map(c => c.tag)))
 const HINYOKI_TAGS = Array.from(new Set(hinyoki_cards.map(c => c.tag)))
 const SEISHIN_TAGS = Array.from(new Set(seishin_cards.map(c => c.tag)))
 const HIFU_TAGS = Array.from(new Set(hifu_cards.map(c => c.tag)))
+const GANKA_TAGS = Array.from(new Set(ganka_cards.map(c => c.tag)))
 
 // ── 型定義 ──
 
@@ -257,6 +259,17 @@ const DEFAULT_DECKS: Deck[] = [
     description: '皮膚科 20問（国試逆算設計）',
     cards: hifu_cards,
     tags: HIFU_TAGS,
+    isDefault: true,
+    createdAt: '2026-03-23T00:00:00Z',
+    updatedAt: '2026-03-23T00:00:00Z',
+  },
+  {
+    id: 'default-ganka',
+    name: '眼科',
+    emoji: '👁️',
+    description: '眼科 18問（国試逆算設計）',
+    cards: ganka_cards,
+    tags: GANKA_TAGS,
     isDefault: true,
     createdAt: '2026-03-23T00:00:00Z',
     updatedAt: '2026-03-23T00:00:00Z',
