@@ -859,7 +859,7 @@ function MatchProbabilityCard({
                   <span className="text-[10px] text-muted w-4 text-right flex-shrink-0">{i + 1}</span>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-0.5">
-                      <p className="text-[11px] font-medium text-tx">{h.name}{programLabel(h) ? ` (${programLabel(h)})` : ''}</p>
+                      <p className="text-[11px] font-medium text-tx">{h.name}</p>
                       <span className="text-[11px] font-bold" style={{ color: MC }}>{h.prob}%</span>
                     </div>
                     <div className="h-1.5 bg-s1 rounded-full overflow-hidden">
