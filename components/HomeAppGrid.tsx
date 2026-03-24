@@ -107,36 +107,29 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
       )}
 
       {/* Featured apps (臨床ツール + Study) */}
-      <div className="grid grid-cols-2 gap-3 mb-3" aria-label="メインアプリ">
-        {sortedApps.filter(a => a.featured).map(app => {
-          const inner = (
-            <>
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3" aria-label="メインアプリ">
+        {sortedApps.filter(a => a.featured).map(app => (
+            <Link key={app.href} href={app.href}
+              className="group flex flex-row items-center gap-3 rounded-2xl border p-3 sm:p-4 transition-all bg-gradient-to-r from-[#1B4F3A]/[0.06] to-[#1B4F3A]/[0.02] border-[#1B4F3A]/20 hover:border-[#1B4F3A]/40 hover:shadow-lg"
+              aria-label={app.label}>
+              <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{ background: '#1B4F3A', color: '#fff' }}>
                 {app.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-bold" style={{ color: '#1B4F3A' }}>{app.label}</span>
-                  <span className={`text-[9px] font-bold tracking-wide px-1.5 py-0.5 rounded-md ${badgeStyle(app.badge)}`}>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-sm font-bold whitespace-nowrap" style={{ color: '#1B4F3A' }}>{app.label}</span>
+                  <span className={`text-[8px] font-bold tracking-wide px-1 py-0.5 rounded-md ${badgeStyle(app.badge)}`}>
                     {app.badge}
                   </span>
                 </div>
-                {app.sub && <span className="text-[11px] text-muted leading-tight block mt-0.5">{app.sub}</span>}
+                {app.sub && <span className="text-[10px] sm:text-[11px] text-muted leading-tight block mt-0.5">{app.sub}</span>}
               </div>
-              <svg className="w-5 h-5 text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <svg className="w-4 h-4 text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
-            </>
-          )
-          return (
-            <Link key={app.href} href={app.href}
-              className="group flex flex-row items-center gap-4 rounded-2xl border p-4 md:p-5 transition-all bg-gradient-to-r from-[#1B4F3A]/[0.06] to-[#1B4F3A]/[0.02] border-[#1B4F3A]/20 hover:border-[#1B4F3A]/40 hover:shadow-lg"
-              aria-label={app.label}>
-              {inner}
             </Link>
-          )
-        })}
+        ))}
       </div>
 
       {/* Other apps (4列グリッド) */}
