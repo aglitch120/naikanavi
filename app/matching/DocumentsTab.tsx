@@ -1017,9 +1017,9 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
       </div>
 
       {/* 病院名検索入力 */}
-      <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${activeHospitals}, 1fr)` }}>
+      <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${activeHospitals}, 1fr)`, overflow: 'visible' }}>
         {Array.from({ length: activeHospitals }, (_, hi) => (
-          <div key={hi}>
+          <div key={hi} style={{ position: 'relative', zIndex: 30 - hi }}>
             <label className="text-[11px] font-medium text-muted block mb-1">病院{hi + 1}</label>
             <HospitalSearchInput
               value={hospitalNames[hi]}

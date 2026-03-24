@@ -1268,18 +1268,25 @@ export default {
         }
         await env.IWOR_KV.put(proRateKey, String(proCount + 1), { expirationTtl: 86400 });
       } else {
-        // FREE: IPベース3ラリー/日
+        // FREE: IPベースで1日3セッション（各セッション内はラリー無制限）
+        // sessionIdがあれば同一セッション内→カウントしない
         const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
-        const rateKey = `rate:interview:${clientIP}:${today}`;
-        const count = parseInt(await env.IWOR_KV.get(rateKey) || "0", 10);
-        if (count >= 3) {
-          return json({
-            error: "rate_limited",
-            message: "無料体験は1日3回までです。PROプランで1日20回まで練習できます。",
-            remaining: 0,
-          }, 429, request);
+        const body2 = await request.clone().json().catch(() => ({}));
+        const sessionId = body2.sessionId || "";
+
+        if (!sessionId) {
+          // セッション開始時のみカウント（mode=interviewの最初のリクエスト）
+          const rateKey = `rate:interview:${clientIP}:${today}`;
+          const count = parseInt(await env.IWOR_KV.get(rateKey) || "0", 10);
+          if (count >= 3) {
+            return json({
+              error: "rate_limited",
+              message: "無料体験は1日3セッションまでです。PROプランで無制限に練習できます。",
+              remaining: 0,
+            }, 429, request);
+          }
+          // セッション開始時のみカウント増加（後続はsessionIdがあるのでスキップ）
         }
-        await env.IWOR_KV.put(rateKey, String(count + 1), { expirationTtl: 86400 });
       }
 
       const body = await parseBody(request);

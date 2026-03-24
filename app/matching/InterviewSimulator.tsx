@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react'
 import ProModal from '@/components/pro/ProModal'
+import IworLoader from '@/components/IworLoader'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -240,19 +241,28 @@ function useSpeechRecognition() {
 }
 
 // ── 面接官メッセージ（タイプライター付き） ──
-function InterviewerBubble({ content, hospitalType, ttsEnabled, isLatest }: {
+function InterviewerBubble({ content, hospitalType, ttsEnabled, isLatest, onTypingProgress }: {
   content: string; hospitalType: string; ttsEnabled: boolean; isLatest: boolean
+  onTypingProgress?: () => void
 }) {
-  // 日本語の話すスピード: 約5文字/秒 → 1文字200ms。ただし速すぎないように60msに
   const { displayed, done } = useTypewriter(isLatest ? content : '', 60)
   const shownText = isLatest && !done ? displayed : content
+  const bubbleRef = useRef<HTMLDivElement>(null)
+
+  // タイプライター進行中に自動スクロール
+  useEffect(() => {
+    if (isLatest && !done && bubbleRef.current) {
+      bubbleRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
+      onTypingProgress?.()
+    }
+  }, [displayed, isLatest, done, onTypingProgress])
 
   useEffect(() => {
     if (isLatest && done && ttsEnabled) speakText(content)
   }, [done, isLatest, ttsEnabled, content])
 
   return (
-    <div className="flex justify-start">
+    <div className="flex justify-start" ref={bubbleRef}>
       <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[10px] mr-2 mt-1"
         style={{ background: MC, color: '#fff' }}>
         {hospitalType === 'university' ? '教' : '医'}
@@ -280,6 +290,8 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const [ttsEnabled, setTtsEnabled] = useState(false)
+  const [silenceTimer, setSilenceTimer] = useState(0)
+  const silenceRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const { transcript, isListening, start: startMic, stop: stopMic, supported: micSupported } = useSpeechRecognition()
 
   // マイク入力を入力欄に反映
@@ -289,6 +301,19 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
+  }, [messages, isLoading])
+
+  // 沈黙タイマー: 最後の面接官メッセージから30秒経ったらフォロー
+  useEffect(() => {
+    const lastMsg = messages[messages.length - 1]
+    if (lastMsg?.role === 'interviewer' && !isLoading) {
+      setSilenceTimer(0)
+      if (silenceRef.current) clearInterval(silenceRef.current)
+      silenceRef.current = setInterval(() => {
+        setSilenceTimer(prev => prev + 1)
+      }, 1000)
+      return () => { if (silenceRef.current) clearInterval(silenceRef.current) }
+    }
   }, [messages, isLoading])
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -314,9 +339,9 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
   const isUrgent = timeLeft <= 60
 
   return (
-    <div className="flex flex-col" style={{ height: 'calc(100vh - 200px)', minHeight: 400 }}>
-      {/* ヘッダー */}
-      <div className="flex items-center justify-between px-4 py-3 rounded-t-2xl" style={{ background: MCL }}>
+    <div className="flex flex-col" style={{ height: 'calc(100dvh - 160px)', minHeight: 400 }}>
+      {/* ヘッダー（sticky） */}
+      <div className="flex items-center justify-between px-4 py-3 rounded-t-2xl sticky top-0 z-10" style={{ background: MCL }}>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: MC, color: '#fff' }}>
             {settings.hospitalType === 'university' ? '教' : '医'}
@@ -355,6 +380,7 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
               hospitalType={settings.hospitalType}
               ttsEnabled={ttsEnabled}
               isLatest={i === messages.length - 1}
+              onTypingProgress={() => scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })}
             />
           ) : (
             <div key={i} className="flex justify-end">
@@ -378,6 +404,14 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
                 <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '300ms' }} />
               </div>
             </div>
+          </div>
+        )}
+        {/* 沈黙が30秒以上続いた場合の催促 */}
+        {!isLoading && silenceTimer >= 30 && messages[messages.length - 1]?.role === 'interviewer' && (
+          <div className="text-center py-2">
+            <p className="text-[11px] animate-pulse" style={{ color: '#B45309' }}>
+              面接官が回答を待っています...（{silenceTimer}秒経過）
+            </p>
           </div>
         )}
       </div>
@@ -447,7 +481,13 @@ function ReportScreen({ report, isPro, onShowProModal, onRestart }: {
   onShowProModal: () => void
   onRestart: () => void
 }) {
-  if (!report) return <div className="text-center py-12 text-sm text-muted">レポートを生成中...</div>
+  if (!report) return (
+    <div className="flex flex-col items-center justify-center py-16 gap-4">
+      <IworLoader size="lg" />
+      <p className="text-sm font-medium" style={{ color: MC }}>面接レポートを作成中...</p>
+      <p className="text-[11px] text-muted">AIが会話を分析しています</p>
+    </div>
+  )
 
   return (
     <div className="space-y-4">
@@ -549,6 +589,8 @@ export default function InterviewSimulator({ isPro, onShowProModal, profile, mod
   const [timeLeft, setTimeLeft] = useState(0)
   const [report, setReport] = useState<InterviewReport | null>(null)
   const [showProModal, setShowProModal] = useState(false)
+  const [sessionId, setSessionId] = useState('')
+  const [reportLoading, setReportLoading] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // ── system prompt生成 ──
@@ -644,6 +686,8 @@ ${profileCtx ? `\n■ 受験者のプロフィール（手元の書類として�
 
   // ── 面接開始 ──
   const handleStart = useCallback(async (s: InterviewSettings) => {
+    const newSessionId = `s_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
+    setSessionId(newSessionId)
     setSettings(s)
     setMessages([])
     setTimeLeft(s.duration * 60)
@@ -699,6 +743,7 @@ ${profileCtx ? `\n■ 受験者のプロフィール（手元の書類として�
           mode: 'interview',
           userMessage: `これまでの会話:\n${recentContext}\n\n上記の流れを踏まえて、面接官として次の応答をしてください。`,
           systemPrompt: buildSystemPrompt(settings),
+          sessionId,
         }),
       })
       const data = await res.json()
