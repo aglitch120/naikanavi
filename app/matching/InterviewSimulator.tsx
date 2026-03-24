@@ -160,6 +160,111 @@ function SettingsScreen({ onStart }: { onStart: (s: InterviewSettings) => void }
   )
 }
 
+// ── タイプライター表示用Hook ──
+function useTypewriter(text: string, speed = 50) {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    if (!text) { setDisplayed(''); setDone(true); return }
+    setDisplayed('')
+    setDone(false)
+    let i = 0
+    const timer = setInterval(() => {
+      i++
+      setDisplayed(text.slice(0, i))
+      if (i >= text.length) { clearInterval(timer); setDone(true) }
+    }, speed)
+    return () => clearInterval(timer)
+  }, [text, speed])
+
+  return { displayed, done }
+}
+
+// ── 音声読み上げ ──
+function speakText(text: string, onEnd?: () => void) {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return
+  window.speechSynthesis.cancel()
+  const utterance = new SpeechSynthesisUtterance(text)
+  utterance.lang = 'ja-JP'
+  utterance.rate = 0.95
+  utterance.pitch = 0.9
+  // 日本語の低めの声を選択
+  const voices = window.speechSynthesis.getVoices()
+  const jaVoice = voices.find(v => v.lang.startsWith('ja') && v.name.includes('Otoya')) ||
+    voices.find(v => v.lang.startsWith('ja') && !v.name.includes('Kyoko')) ||
+    voices.find(v => v.lang.startsWith('ja'))
+  if (jaVoice) utterance.voice = jaVoice
+  if (onEnd) utterance.onend = onEnd
+  window.speechSynthesis.speak(utterance)
+}
+
+// ── マイク入力Hook ──
+function useSpeechRecognition() {
+  const [transcript, setTranscript] = useState('')
+  const [isListening, setIsListening] = useState(false)
+  const recognitionRef = useRef<any>(null)
+
+  const start = useCallback(() => {
+    if (typeof window === 'undefined') return
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+    if (!SpeechRecognition) return
+
+    const recognition = new SpeechRecognition()
+    recognition.lang = 'ja-JP'
+    recognition.continuous = true
+    recognition.interimResults = true
+
+    recognition.onresult = (event: any) => {
+      let final = ''
+      for (let i = 0; i < event.results.length; i++) {
+        final += event.results[i][0].transcript
+      }
+      setTranscript(final)
+    }
+    recognition.onend = () => setIsListening(false)
+    recognition.onerror = () => setIsListening(false)
+
+    recognitionRef.current = recognition
+    recognition.start()
+    setIsListening(true)
+    setTranscript('')
+  }, [])
+
+  const stop = useCallback(() => {
+    recognitionRef.current?.stop()
+    setIsListening(false)
+  }, [])
+
+  return { transcript, isListening, start, stop, supported: typeof window !== 'undefined' && !!((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition) }
+}
+
+// ── 面接官メッセージ（タイプライター付き） ──
+function InterviewerBubble({ content, hospitalType, ttsEnabled, isLatest }: {
+  content: string; hospitalType: string; ttsEnabled: boolean; isLatest: boolean
+}) {
+  // 日本語の話すスピード: 約5文字/秒 → 1文字200ms。ただし速すぎないように60msに
+  const { displayed, done } = useTypewriter(isLatest ? content : '', 60)
+  const shownText = isLatest && !done ? displayed : content
+
+  useEffect(() => {
+    if (isLatest && done && ttsEnabled) speakText(content)
+  }, [done, isLatest, ttsEnabled, content])
+
+  return (
+    <div className="flex justify-start">
+      <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[10px] mr-2 mt-1"
+        style={{ background: MC, color: '#fff' }}>
+        {hospitalType === 'university' ? '教' : '医'}
+      </div>
+      <div className="max-w-[80%] px-4 py-3 rounded-2xl rounded-bl-md text-sm leading-relaxed"
+        style={{ background: '#F0EDE7', color: '#1A1917' }}>
+        <p className="whitespace-pre-wrap">{shownText}{isLatest && !done ? '|' : ''}</p>
+      </div>
+    </div>
+  )
+}
+
 // ── チャット画面 ──
 function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, timeLeft, onEnd, isPro }: {
   settings: InterviewSettings
@@ -174,6 +279,13 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const [ttsEnabled, setTtsEnabled] = useState(false)
+  const { transcript, isListening, start: startMic, stop: stopMic, supported: micSupported } = useSpeechRecognition()
+
+  // マイク入力を入力欄に反映
+  useEffect(() => {
+    if (transcript) setInput(transcript)
+  }, [transcript, setInput])
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
@@ -182,7 +294,18 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
       e.preventDefault()
-      if (input.trim() && !isLoading) onSend()
+      if (input.trim() && !isLoading) {
+        if (isListening) stopMic()
+        onSend()
+      }
+    }
+  }
+
+  const handleMicToggle = () => {
+    if (isListening) {
+      stopMic()
+    } else {
+      startMic()
     }
   }
 
@@ -226,23 +349,21 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
       {/* メッセージ */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4" style={{ background: '#FEFEFC' }}>
         {messages.map((m, i) => (
-          <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            {m.role === 'interviewer' && (
-              <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[10px] mr-2 mt-1"
+          m.role === 'interviewer' ? (
+            <InterviewerBubble
+              key={i} content={m.content}
+              hospitalType={settings.hospitalType}
+              ttsEnabled={ttsEnabled}
+              isLatest={i === messages.length - 1}
+            />
+          ) : (
+            <div key={i} className="flex justify-end">
+              <div className="max-w-[80%] px-4 py-3 rounded-2xl rounded-br-md text-sm leading-relaxed"
                 style={{ background: MC, color: '#fff' }}>
-                {settings.hospitalType === 'university' ? '教' : '医'}
+                <p className="whitespace-pre-wrap">{m.content}</p>
               </div>
-            )}
-            <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
-              m.role === 'user'
-                ? 'rounded-br-md'
-                : 'rounded-bl-md'
-            }`} style={m.role === 'user'
-              ? { background: MC, color: '#fff' }
-              : { background: '#F0EDE7', color: '#1A1917' }}>
-              <p className="whitespace-pre-wrap">{m.content}</p>
             </div>
-          </div>
+          )
         ))}
         {isLoading && (
           <div className="flex justify-start">
@@ -263,24 +384,51 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
 
       {/* 入力欄 */}
       <div className="px-4 py-3" style={{ background: '#FEFEFC' }}>
+        {/* TTS + マイクコントロール */}
+        <div className="flex items-center justify-between mb-2">
+          <button onClick={() => setTtsEnabled(!ttsEnabled)}
+            className="flex items-center gap-1 text-[10px] px-2 py-1 rounded-lg transition-all"
+            style={ttsEnabled
+              ? { background: MCL, color: MC, border: `1px solid ${MC}40` }
+              : { background: 'transparent', color: '#C8C4BC', border: '1px solid #E8E5DF' }}>
+            {ttsEnabled ? '🔊' : '🔇'} 読み上げ{ttsEnabled ? 'ON' : 'OFF'}
+          </button>
+          {isListening && (
+            <span className="text-[10px] text-red-500 animate-pulse flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-red-500" /> 録音中...
+            </span>
+          )}
+        </div>
         <div className="flex gap-2 items-end">
+          {/* マイクボタン */}
+          {micSupported && (
+            <button onClick={handleMicToggle}
+              className="w-10 h-10 rounded-xl flex items-center justify-center transition-all flex-shrink-0"
+              style={isListening
+                ? { background: '#EF4444', color: '#fff' }
+                : { background: '#F0EDE7', color: '#6B6760', border: '1.5px solid #DDD9D2' }}>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+              </svg>
+            </button>
+          )}
           <textarea
             ref={inputRef}
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="回答を入力..."
             rows={1}
             className="flex-1 resize-none rounded-xl px-4 py-3 text-sm border focus:outline-none focus:ring-2"
             style={{ borderColor: '#DDD9D2', background: '#F0EDE7', fontSize: '16px', maxHeight: 120 }}
+            placeholder={isListening ? '話してください...' : '回答を入力...'}
             onInput={e => {
               const t = e.target as HTMLTextAreaElement
               t.style.height = 'auto'
               t.style.height = Math.min(t.scrollHeight, 120) + 'px'
             }}
           />
-          <button onClick={onSend} disabled={!input.trim() || isLoading}
-            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all disabled:opacity-30"
+          <button onClick={() => { if (isListening) stopMic(); onSend() }} disabled={!input.trim() || isLoading}
+            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all disabled:opacity-30 flex-shrink-0"
             style={{ background: MC, color: '#fff' }}>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 19V5M5 12l7-7 7 7" />
