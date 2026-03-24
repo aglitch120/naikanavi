@@ -832,3 +832,45 @@ theme,keyword,funnel,priority,search_vol_est,difficulty,target_persona,existing_
 34-drug-specific,睡眠薬 高齢者 選び方,BOFU,2,300-500,低,全医師,,未着手,,薬剤名KW
 34-drug-specific,鎮痛薬 NSAIDs アセトアミノフェン 使い分け,BOFU,2,300-500,低,全医師,,未着手,,薬剤名KW
 34-drug-specific,利尿薬 種類 使い分け,BOFU,2,300-500,低,全医師,,未着手,,薬剤名KW
+32-new-competitor,nogusan.com 医学書まとめ,META,0,0,0,全対象,,競合分析,,競合サイト。診療科別参考書レビューで流入。30冊まとめ/救急10選/感染症7選等
+32-new-competitor,nonbiriqq.com のんびり救急,META,0,0,0,全対象,,競合分析,,競合サイト。Q&A式おすすめ本/臨床研究おすすめ本
+32-new-competitor,saitamageka.com 埼玉外科,META,0,0,0,全対象,,競合分析,,競合サイト。外科研修本/紹介状書き方
+32-new-competitor,connect.doctor-agent.com 民間医局コネクト,META,0,0,0,全対象,,競合分析,,競合サイト。研修医おすすめ本10選(毎年更新)/ChatGPTシリーズ/手技特集
+32-new-competitor,ricecakemochi.com 研修医室に引きこもり,META,0,0,0,全対象,,競合分析,,競合サイト。ブログ村4位。研修医ライフ
+32-new-competitor,senkouhana.hatenablog.com 専攻医うーはな,META,0,0,0,全対象,,競合分析,,競合サイト。ブログ村16位。専攻医ライフ
+32-new-competitor,teppekitoushi.com 鉄壁投資,META,0,0,0,全対象,,競合分析,,競合サイト。ブログ村9位。医師の投資/資産形成
+32-new-competitor,medie.site MediE,META,0,0,0,全対象,,競合分析,,競合サイト。医師国試予備校。CBT/国試コース。外国人医師コースも
+32-new-competitor,gomec.co.jp MEC予備校,META,0,0,0,全対象,,競合分析,,競合サイト。国試予備校。メック流勉強法シリーズ
+32-new-competitor,gashi-blog.com ガッシーブログ,META,0,0,0,全対象,,競合分析,,競合サイト。医学生。CBT9割/マッチング対策
+32-new-competitor,ishin.kawai-juku.ac.jp 河合塾医進塾,META,0,0,0,全対象,,競合分析,,競合サイト。CBTレポート/ポリクリレポート
+32-new-competitor,medmixer.com MED MIXER,META,0,0,0,全対象,,競合分析,,競合サイト。Anki勉強法/医学生勉強法
+32-new-competitor,n-igaku.com メディデジ,META,0,0,0,全対象,,競合分析,,競合サイト。iPad活用/デジタル勉強法
+32-new-competitor,digista.net でじすたねっと,META,0,0,0,全対象,,競合分析,,競合サイト。医師のデジタル勉強法
+32-new-competitor,igakutankyuu.com 探究者の独り言,META,0,0,0,全対象,,競合分析,,競合サイト。Anki活用法
+32-new-competitor,docforfamily.com ビジネスマン勤務医,META,0,0,0,全対象,,競合分析,,競合サイト。Anki専門医合格/iPad活用/資産形成
+32-new-competitor,takuyukiji.com 内科医たくゆきじ,META,0,0,0,全対象,,競合分析,,競合サイト。学会発表スライド/論文引用
+32-new-competitor,katoiin.info 加藤医院ブログ,META,0,0,0,全対象,,競合分析,,競合サイト。J-OSLER査読委員視点
+32-new-competitor,e-resident.jp eレジデント,META,0,0,0,全対象,,競合分析,,競合サイト。初期研修医向けJ-OSLER
+32-new-competitor,plamed.com プラメド,META,0,0,0,全対象,,競合分析,,競合サイト。医師向けポイント/会員サイト
+32-new-competitor,medpeer.jp MedPeer,META,0,0,0,全対象,,競合分析,,競合サイト。医師SNS/薬剤評価60万件
+35-book-review,研修医 おすすめ 参考書 まとめ,MOFU,3,1000-3000,中,研修医,,未着手,,nogusan.com/connect人気KW。毎年更新で安定流入
+35-book-review,研修医 1年目 おすすめ 参考書,MOFU,3,500-1000,低,研修医,,未着手,,民間医局コネクト人気記事
+35-book-review,研修医 2年目 おすすめ 参考書,MOFU,2,300-500,低,研修医,,未着手,,
+35-book-review,救急 おすすめ 参考書,MOFU,3,500-1000,中,研修医,,未着手,,nogusan.com人気記事
+35-book-review,感染症 おすすめ 参考書,MOFU,2,300-500,低,研修医/医師,,未着手,,nogusan.com記事
+35-book-review,循環器 おすすめ 参考書,MOFU,2,300-500,低,研修医/医師,,未着手,,診療科別書籍KW
+35-book-review,消化器 おすすめ 参考書,MOFU,2,300-500,低,研修医/医師,,未着手,,
+35-book-review,神経内科 おすすめ 参考書,MOFU,2,200-300,低,研修医/医師,,未着手,,
+35-book-review,小児科 おすすめ 参考書,MOFU,2,200-300,低,研修医/医師,,未着手,,
+35-book-review,内科レジデントの鉄則 レビュー,MOFU,3,300-500,低,研修医,,未着手,,書籍名KW。踊る救急医で48K PV実績
+35-book-review,感染症プラチナマニュアル レビュー,MOFU,2,200-300,低,研修医/医師,,未着手,,書籍名KW
+35-book-review,研修医当直御法度 レビュー,MOFU,2,200-300,低,研修医,,未着手,,書籍名KW
+35-book-review,ねじ子のヒミツ手技 レビュー,MOFU,2,200-300,低,研修医,,未着手,,書籍名KW
+35-book-review,ICUブック レビュー,MOFU,2,100-200,低,研修医/医師,,未着手,,書籍名KW
+35-book-review,型が身につくカルテの書き方 レビュー,MOFU,2,200-300,低,研修医,,未着手,,書籍名KW
+35-book-review,外科研修 おすすめ 参考書,MOFU,2,200-300,低,研修医,,未着手,,saitamageka.com記事KW
+35-book-review,ChatGPT 退院サマリ,BOFU,3,200-300,低,研修医/医師,,未着手,病歴要約AI,民間医局コネクト人気1位記事
+35-book-review,ChatGPT 勉強会 スライド,MOFU,2,200-300,低,全医師,,未着手,,民間医局コネクト人気記事
+36-youtube,医学生 おすすめ YouTube,MOFU,2,300-500,低,医学生,,未着手,,igakuseidojoが記事化
+36-youtube,研修医 おすすめ YouTube,MOFU,2,200-300,低,研修医,,未着手,,動画学習KW
+36-youtube,医師 YouTube 勉強,MOFU,1,200-300,低,全医師,,未着手,,
