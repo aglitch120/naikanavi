@@ -510,7 +510,7 @@ export async function loadCbtDecks(): Promise<Deck[]> {
   return decks
 }
 
-/** 全デッキ（デフォルト + カスタム）を返す（同期: CBTデッキは含まない） */
+/** 全デッキ（デフォルト + CBTキャッシュ + カスタム）を返す */
 export function loadAllDecks(): Deck[] {
   const customMetas = loadCustomDeckMetas()
   const customDecks: Deck[] = customMetas.map(meta => {
@@ -522,7 +522,9 @@ export function loadAllDecks(): Deck[] {
       isDefault: false,
     }
   })
-  return [...DEFAULT_DECKS, ...customDecks]
+  // CBTデッキがキャッシュ済みなら含める
+  const cbt = cbtDecksCache || []
+  return [...DEFAULT_DECKS, ...cbt, ...customDecks]
 }
 
 /** カスタムデッキを新規作成 */
