@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import type { DeckFolder } from '@/lib/study-categories'
 
 export interface DeckItem {
@@ -50,16 +50,57 @@ function DeckCard({ item, onClick }: { item: DeckItem; onClick: () => void }) {
   )
 }
 
-// ── 横スクロールリスト ──
+// ── 横スクロールリスト（PC: 矢印ボタン付き） ──
 function HScrollList({ items, onSelect }: { items: DeckItem[]; onSelect: (id: string) => void }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const updateScrollState = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    setCanScrollLeft(el.scrollLeft > 8)
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 8)
+  }, [])
+
+  const scroll = useCallback((dir: 'left' | 'right') => {
+    const el = scrollRef.current
+    if (!el) return
+    el.scrollBy({ left: dir === 'right' ? 280 : -280, behavior: 'smooth' })
+  }, [])
+
   return (
-    <div
-      className="flex gap-2.5 overflow-x-auto pb-1 -mx-5 px-5"
-      style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
-    >
-      {items.map(item => (
-        <DeckCard key={item.id} item={item} onClick={() => onSelect(item.id)} />
-      ))}
+    <div className="relative group">
+      {/* 左矢印（PC hover時に表示） */}
+      {canScrollLeft && (
+        <button
+          onClick={() => scroll('left')}
+          className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 items-center justify-center rounded-full bg-white/90 border border-br shadow-md text-muted hover:text-tx transition-all opacity-0 group-hover:opacity-100"
+          aria-label="左へスクロール"
+        >
+          ‹
+        </button>
+      )}
+      <div
+        ref={scrollRef}
+        onScroll={updateScrollState}
+        className="flex gap-2.5 overflow-x-auto pb-1 -mx-5 px-5"
+        style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+      >
+        {items.map(item => (
+          <DeckCard key={item.id} item={item} onClick={() => onSelect(item.id)} />
+        ))}
+      </div>
+      {/* 右矢印（PC hover時に表示） */}
+      {canScrollRight && (
+        <button
+          onClick={() => scroll('right')}
+          className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 items-center justify-center rounded-full bg-white/90 border border-br shadow-md text-muted hover:text-tx transition-all opacity-0 group-hover:opacity-100"
+          aria-label="右へスクロール"
+        >
+          ›
+        </button>
+      )}
     </div>
   )
 }
