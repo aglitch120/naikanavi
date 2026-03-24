@@ -233,11 +233,12 @@ export default function StudyApp() {
   useEffect(() => {
     setDayStats(getTodayStats())
     setCardDataMap(loadAllCardData())
-    setDecks(loadAllDecks())
-    // CBTデッキを非同期で追加ロード
-    loadCbtDecks().then(cbtDecks => {
-      if (cbtDecks.length > 0) setDecks(prev => [...prev, ...cbtDecks])
+    // CBTデッキを先にロードしてからloadAllDecksを呼ぶ
+    loadCbtDecks().then(() => {
+      setDecks(loadAllDecks())
     })
+    // フォールバック: CBTロード前にも表示
+    setDecks(loadAllDecks())
     setStreak(getStreak())
     setExamData(loadExam())
     setStreakPromoShown(localStorage.getItem('streak_promo_shown') === 'true')

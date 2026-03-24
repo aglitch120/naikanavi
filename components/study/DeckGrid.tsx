@@ -20,7 +20,7 @@ function DeckCard({ item, onClick }: { item: DeckItem; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className="flex-shrink-0 w-[128px] md:w-auto bg-s0 border border-br rounded-2xl overflow-hidden text-left transition-all hover:border-ac/40 active:scale-[0.97]"
+      className="flex-shrink-0 w-[128px] md:w-full bg-s0 border border-br rounded-2xl overflow-hidden text-left transition-all hover:border-ac/40 active:scale-[0.97]"
     >
       <div
         className="h-11 flex items-center justify-center text-xl"
@@ -81,10 +81,11 @@ function HScrollList({ items, onSelect }: { items: DeckItem[]; onSelect: (id: st
           ‹
         </button>
       )}
+      {/* PC: グリッド / スマホ: 横スクロール */}
       <div
         ref={scrollRef}
         onScroll={updateScrollState}
-        className="flex gap-2.5 overflow-x-auto pb-1 -mx-5 px-5"
+        className="flex gap-2.5 overflow-x-auto pb-1 -mx-5 px-5 md:grid md:grid-cols-5 md:gap-3 md:overflow-visible md:mx-0 md:px-0 md:pb-0"
         style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
       >
         {items.map(item => (
