@@ -59,7 +59,7 @@ export const CONFERENCES_2026: Conference[] = [
   // ── 3月 ──
   { id: 'junkanki-2026', society: '日本循環器学会', societyShort: '循環器', specialtyArea: '循環器', tier: 'basic',
     meetingName: '第90回日本循環器学会学術集会（JCS2026）', theme: '社会を拓く新循環器学', president: '野出 孝一', presidentAffiliation: '佐賀大学',
-    startDate: '2026-03-20', endDate: '2026-03-22', venue: '福岡国際会議場/福岡サンパレス/マリンメッセ福岡', city: '福岡', url: 'https://www.congre.co.jp/jcs2026/', year: 2026 },
+    startDate: '2026-03-20', endDate: '2026-03-22', venue: '福岡国際会議場/福岡サンパレス/マリンメッセ福岡', city: '福岡', url: 'https://www.congre.co.jp/jcs2026/', year: 2026, abstractDeadline: '2025-09-10' },
 
   // ── 4月 ──
   { id: 'ganka-2026', society: '日本眼科学会', societyShort: '眼科', specialtyArea: '眼科', tier: 'basic',
@@ -73,13 +73,13 @@ export const CONFERENCES_2026: Conference[] = [
     startDate: '2026-04-16', endDate: '2026-04-19', venue: 'パシフィコ横浜', city: '横浜', url: 'https://site2.convention.co.jp/jrs85/', year: 2026, abstractDeadline: '2026-01-20' },
   { id: 'byori-2026', society: '日本病理学会', societyShort: '病理', specialtyArea: '病理', tier: 'basic',
     meetingName: '第115回日本病理学会総会', theme: 'Pathologists, be ambitious!', president: '田中 伸哉', presidentAffiliation: '北海道大学',
-    startDate: '2026-04-16', endDate: '2026-04-18', venue: 'グランドメルキュール札幌大通公園', city: '札幌', url: 'https://www.congre.co.jp/115jsp/', year: 2026 },
+    startDate: '2026-04-16', endDate: '2026-04-18', venue: 'グランドメルキュール札幌大通公園', city: '札幌', url: 'https://www.congre.co.jp/115jsp/', year: 2026, abstractDeadline: '2025-11-14' },
   { id: 'shonika-2026', society: '日本小児科学会', societyShort: '小児科', specialtyArea: '小児科', tier: 'basic',
     meetingName: '第129回日本小児科学会学術集会', theme: 'No dream, No success!', president: '長谷川 俊史', presidentAffiliation: '山口大学',
-    startDate: '2026-04-17', endDate: '2026-04-19', venue: '海峡メッセ下関', city: '下関', url: 'https://site2.convention.co.jp/129jps/', year: 2026 },
+    startDate: '2026-04-17', endDate: '2026-04-19', venue: '海峡メッセ下関', city: '下関', url: 'https://site2.convention.co.jp/129jps/', year: 2026, abstractDeadline: '2025-09-16' },
   { id: 'keisei-2026', society: '日本形成外科学会', societyShort: '形成外科', specialtyArea: '形成外科', tier: 'basic',
     meetingName: '第69回日本形成外科学会総会・学術集会', president: '橋本 一郎', presidentAffiliation: '徳島大学',
-    startDate: '2026-04-22', endDate: '2026-04-24', venue: 'あわぎんホール', city: '徳島', url: 'https://convention.jtbcom.co.jp/jsprs69/', year: 2026 },
+    startDate: '2026-04-22', endDate: '2026-04-24', venue: 'あわぎんホール', city: '徳島', url: 'https://convention.jtbcom.co.jp/jsprs69/', year: 2026, abstractDeadline: '2025-10-22' },
   { id: 'geka-2026', society: '日本外科学会', societyShort: '外科', specialtyArea: '外科', tier: 'basic',
     meetingName: '第126回日本外科学会定期学術集会', theme: '新たなる外科医療の共創', president: '平野 聡', presidentAffiliation: '北海道大学',
     startDate: '2026-04-23', endDate: '2026-04-25', venue: '京王プラザホテル札幌他', city: '札幌', url: 'https://www.jssoc.or.jp/jss126/', year: 2026, abstractDeadline: '2026-01-31' },
@@ -99,7 +99,7 @@ export const CONFERENCES_2026: Conference[] = [
     startDate: '2026-05-21', endDate: '2026-05-24', venue: '神戸コンベンションセンター', city: '神戸', url: 'https://www.congre.co.jp/joa2026/', year: 2026, abstractDeadline: '2026-02-20' },
   { id: 'masui-2026', society: '日本麻酔科学会', societyShort: '麻酔科', specialtyArea: '麻酔科', tier: 'basic',
     meetingName: '第73回日本麻酔科学会学術集会', president: '山蔭 道明', presidentAffiliation: '札幌医科大学',
-    startDate: '2026-05-21', endDate: '2026-05-23', venue: 'パシフィコ横浜', city: '横浜', url: 'https://73rd.anesth-meeting.org/', year: 2026 },
+    startDate: '2026-05-21', endDate: '2026-05-23', venue: 'パシフィコ横浜', city: '横浜', url: 'https://73rd.anesth-meeting.org/', year: 2026, abstractDeadline: '2025-12-01' },
   { id: 'sogo-shinryo-2026', society: '日本プライマリ・ケア連合学会', societyShort: '総合診療', specialtyArea: '総合診療', tier: 'basic',
     meetingName: '第17回日本プライマリ・ケア連合学会学術大会', theme: 'つながる、つなげる。', president: '鈴木 富雄', presidentAffiliation: '大阪医科薬科大学',
     startDate: '2026-05-29', endDate: '2026-05-31', venue: '国立京都国際会館', city: '京都', url: 'https://jpca2026.jp/', year: 2026, abstractDeadline: '2026-02-28' },
@@ -140,12 +140,12 @@ export const CONFERENCES_2026: Conference[] = [
   // 集中治療
   { id: 'icu-2026', society: '日本集中治療医学会', societyShort: '集中治療', specialtyArea: '集中治療', tier: 'sub',
     meetingName: '第53回日本集中治療医学会学術集会', theme: 'TO BE HAPPY', president: '佐藤 直樹',
-    startDate: '2026-03-05', endDate: '2026-03-07', venue: 'パシフィコ横浜', city: '横浜', url: 'https://www.jsicm.org/meeting/jsicm53/', year: 2026 },
+    startDate: '2026-03-05', endDate: '2026-03-07', venue: 'パシフィコ横浜', city: '横浜', url: 'https://www.jsicm.org/meeting/jsicm53/', year: 2026, abstractDeadline: '2025-09-17' },
 
   // 臨床腫瘍
   { id: 'jsmo-2026', society: '日本臨床腫瘍学会', societyShort: '腫瘍内科', specialtyArea: '腫瘍内科', tier: 'sub',
     meetingName: '第23回日本臨床腫瘍学会学術集会（JSMO2026）', president: '田村 研治', presidentAffiliation: '島根大学',
-    startDate: '2026-03-26', endDate: '2026-03-28', venue: 'パシフィコ横浜ノース', city: '横浜', url: 'https://www.congre.co.jp/jsmo2026/', year: 2026 },
+    startDate: '2026-03-26', endDate: '2026-03-28', venue: 'パシフィコ横浜ノース', city: '横浜', url: 'https://www.congre.co.jp/jsmo2026/', year: 2026, abstractDeadline: '2025-10-01' },
 
   // 腎臓（WCN2026と合同）
   { id: 'jinzou-2026', society: '日本腎臓学会', societyShort: '腎臓', specialtyArea: '腎臓', tier: 'sub',
@@ -155,7 +155,7 @@ export const CONFERENCES_2026: Conference[] = [
   // 消化器病
   { id: 'shoukaki-2026', society: '日本消化器病学会', societyShort: '消化器', specialtyArea: '消化器', tier: 'sub',
     meetingName: '第112回日本消化器病学会総会', president: '中本 安成', presidentAffiliation: '福井大学',
-    startDate: '2026-04-16', endDate: '2026-04-18', venue: 'コートヤード・バイ・マリオット福井他', city: '福井/金沢', url: 'https://site2.convention.co.jp/112jsge/', year: 2026 },
+    startDate: '2026-04-16', endDate: '2026-04-18', venue: 'コートヤード・バイ・マリオット福井他', city: '福井/金沢', url: 'https://site2.convention.co.jp/112jsge/', year: 2026, abstractDeadline: '2025-09-12' },
 
   // 呼吸器
   { id: 'kokyuuki-2026', society: '日本呼吸器学会', societyShort: '呼吸器', specialtyArea: '呼吸器', tier: 'sub',
@@ -165,7 +165,7 @@ export const CONFERENCES_2026: Conference[] = [
   // リウマチ
   { id: 'ryumachi-2026', society: '日本リウマチ学会', societyShort: 'リウマチ', specialtyArea: 'リウマチ', tier: 'sub',
     meetingName: '第70回日本リウマチ学会総会・学術集会', president: '渥美 達也', presidentAffiliation: '北海道大学',
-    startDate: '2026-04-22', endDate: '2026-04-24', venue: '福岡国際会議場/福岡サンパレス', city: '福岡', url: 'https://www.jcr2026.com/', year: 2026 },
+    startDate: '2026-04-22', endDate: '2026-04-24', venue: '福岡国際会議場/福岡サンパレス', city: '福岡', url: 'https://www.jcr2026.com/', year: 2026, abstractDeadline: '2025-10-31' },
 
   // 消化器内視鏡
   { id: 'naishikyo-2026', society: '日本消化器内視鏡学会', societyShort: '消化器内視鏡', specialtyArea: '消化器', tier: 'sub',
@@ -180,7 +180,7 @@ export const CONFERENCES_2026: Conference[] = [
   // 神経
   { id: 'shinkei-2026', society: '日本神経学会', societyShort: '神経内科', specialtyArea: '神経内科', tier: 'sub',
     meetingName: '第67回日本神経学会学術大会', president: '西山 和利', presidentAffiliation: '北里大学',
-    startDate: '2026-05-20', endDate: '2026-05-23', venue: 'パシフィコ横浜', city: '横浜', url: 'https://www.neurology-jp.org/neuro2026/', year: 2026 },
+    startDate: '2026-05-20', endDate: '2026-05-23', venue: 'パシフィコ横浜', city: '横浜', url: 'https://www.neurology-jp.org/neuro2026/', year: 2026, abstractDeadline: '2025-11-25' },
 
   // 糖尿病
   { id: 'tounyoubyou-2026', society: '日本糖尿病学会', societyShort: '糖尿病', specialtyArea: '糖尿病', tier: 'sub',
