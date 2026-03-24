@@ -57,125 +57,105 @@ function SettingsScreen({ onStart }: { onStart: (s: InterviewSettings) => void }
   const [prefecture, setPrefecture] = useState('東京都')
   const [pressure, setPressure] = useState<'gentle' | 'normal' | 'pressure'>('normal')
 
+  const BtnStyle = (active: boolean) => active
+    ? { background: MC, color: '#fff', border: `1.5px solid ${MC}` } as const
+    : { background: '#FEFEFC', color: '#1A1917', border: '1.5px solid #DDD9D2' } as const
+
   return (
-    <div className="space-y-6">
-      {/* ヘッダー説明 */}
-      <div className="rounded-2xl p-5 text-center" style={{ background: MCL }}>
-        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3" style={{ background: MC }}>
-          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6}>
+    <div className="space-y-4">
+      {/* コンパクトヘッダー */}
+      <div className="flex items-center gap-3 mb-1">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: MC }}>
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
         </div>
-        <h2 className="text-lg font-bold mb-1" style={{ color: MC }}>面接シミュレーション AI</h2>
-        <p className="text-xs leading-relaxed" style={{ color: '#6B6760' }}>
-          日本の臨床研修マッチング面接に特化したAIです。<br />
-          200問超の頻出質問データベース・大学病院/市中病院の面接スタイル・<br />
-          圧迫面接パターンを学習済み。汎用AIとは違う、リアルな面接体験を。
-        </p>
+        <div>
+          <h2 className="text-base font-bold" style={{ color: '#1A1917' }}>面接シミュレーション AI</h2>
+          <p className="text-[11px]" style={{ color: '#6B6760' }}>マッチング面接特化 / 200問+ / 病院タイプ別 / AIレポート</p>
+        </div>
       </div>
 
-      {/* 特徴カード */}
-      <div className="grid grid-cols-3 gap-2">
-        {[
-          { icon: '🏥', title: '病院別対応', desc: '大学/市中で質問が変わる' },
-          { icon: '📊', title: '詳細レポート', desc: '質問別の分析とアドバイス' },
-          { icon: '🎯', title: '200問+', desc: '実際の面接質問データベース' },
-        ].map(f => (
-          <div key={f.title} className="rounded-xl p-3 text-center" style={{ background: '#F5F3EF' }}>
-            <div className="text-xl mb-1">{f.icon}</div>
-            <p className="text-[11px] font-semibold" style={{ color: '#1A1917' }}>{f.title}</p>
-            <p className="text-[10px]" style={{ color: '#6B6760' }}>{f.desc}</p>
+      {/* 設定カード */}
+      <div className="rounded-2xl p-4 space-y-4" style={{ background: '#FEFEFC', border: '1px solid #E8E5DF' }}>
+        {/* 面接時間 */}
+        <div>
+          <label className="block text-xs font-semibold mb-1.5" style={{ color: '#6B6760' }}>面接時間</label>
+          <div className="flex gap-2">
+            {([5, 10, 15] as const).map(d => (
+              <button key={d} onClick={() => setDuration(d)}
+                className="flex-1 py-2 rounded-lg text-xs font-medium transition-all"
+                style={BtnStyle(duration === d)}>
+                {d}分
+              </button>
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* 病院タイプ */}
+        <div>
+          <label className="block text-xs font-semibold mb-1.5" style={{ color: '#6B6760' }}>病院タイプ</label>
+          <div className="flex gap-2">
+            {[
+              { id: 'community' as const, label: '市中病院' },
+              { id: 'university' as const, label: '大学病院' },
+            ].map(h => (
+              <button key={h.id} onClick={() => setHospitalType(h.id)}
+                className="flex-1 py-2 rounded-lg text-xs font-medium transition-all"
+                style={BtnStyle(hospitalType === h.id)}>
+                {h.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 都道府県 + 圧迫度を横並び */}
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="block text-xs font-semibold mb-1.5" style={{ color: '#6B6760' }}>都道府県</label>
+            <select value={prefecture} onChange={e => setPrefecture(e.target.value)}
+              className="w-full py-2 px-3 rounded-lg text-xs"
+              style={{ border: '1.5px solid #DDD9D2', background: '#FEFEFC', fontSize: '16px', color: '#1A1917' }}>
+              {PREFECTURES.map(p => <option key={p} value={p}>{p}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="block text-xs font-semibold mb-1.5" style={{ color: '#6B6760' }}>雰囲気</label>
+            <div className="flex gap-1.5">
+              {[
+                { id: 'gentle' as const, label: '穏' },
+                { id: 'normal' as const, label: '普通' },
+                { id: 'pressure' as const, label: '圧迫' },
+              ].map(p => (
+                <button key={p.id} onClick={() => setPressure(p.id)}
+                  className="flex-1 py-2 rounded-lg text-[11px] font-medium transition-all"
+                  style={BtnStyle(pressure === p.id)}>
+                  {p.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* 免責バナー */}
-      <div className="rounded-xl p-3 text-[10px] leading-relaxed" style={{ background: '#FFF8E7', border: '1px solid #E8DFC0', color: '#6B6760' }}>
-        <span className="font-semibold" style={{ color: '#8B7D3C' }}>ご利用にあたって: </span>
+      {/* 免責（1行） */}
+      <p className="text-center text-[10px]" style={{ color: '#C8C4BC' }}>
         AIによる面接練習ツールです。合否を保証しません。患者個人情報は入力しないでください。
-      </div>
-
-      {/* 面接時間 */}
-      <div>
-        <label className="block text-sm font-semibold mb-2" style={{ color: '#1A1917' }}>面接時間</label>
-        <div className="flex gap-2">
-          {([5, 10, 15] as const).map(d => (
-            <button key={d} onClick={() => setDuration(d)}
-              className="flex-1 py-3 rounded-xl text-sm font-medium transition-all"
-              style={duration === d
-                ? { background: MC, color: '#fff' }
-                : { background: '#F5F3EF', color: '#6B6760' }}>
-              {d}分
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 病院タイプ */}
-      <div>
-        <label className="block text-sm font-semibold mb-2" style={{ color: '#1A1917' }}>病院タイプ</label>
-        <div className="flex gap-2">
-          {[
-            { id: 'community' as const, label: '市中病院', icon: '🏥' },
-            { id: 'university' as const, label: '大学病院', icon: '🎓' },
-          ].map(h => (
-            <button key={h.id} onClick={() => setHospitalType(h.id)}
-              className="flex-1 py-3 rounded-xl text-sm font-medium transition-all"
-              style={hospitalType === h.id
-                ? { background: MC, color: '#fff' }
-                : { background: '#F5F3EF', color: '#6B6760' }}>
-              {h.icon} {h.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 都道府県 */}
-      <div>
-        <label className="block text-sm font-semibold mb-2" style={{ color: '#1A1917' }}>都道府県</label>
-        <select value={prefecture} onChange={e => setPrefecture(e.target.value)}
-          className="w-full py-3 px-4 rounded-xl text-sm border"
-          style={{ borderColor: '#DDD9D2', background: '#FEFEFC', fontSize: '16px' }}>
-          {PREFECTURES.map(p => <option key={p} value={p}>{p}</option>)}
-        </select>
-      </div>
-
-      {/* 圧迫度 */}
-      <div>
-        <label className="block text-sm font-semibold mb-2" style={{ color: '#1A1917' }}>面接官の雰囲気</label>
-        <div className="flex gap-2">
-          {[
-            { id: 'gentle' as const, label: 'やさしい', icon: '😊' },
-            { id: 'normal' as const, label: '普通', icon: '🙂' },
-            { id: 'pressure' as const, label: '圧迫面接', icon: '😤' },
-          ].map(p => (
-            <button key={p.id} onClick={() => setPressure(p.id)}
-              className="flex-1 py-3 rounded-xl text-sm font-medium transition-all"
-              style={pressure === p.id
-                ? { background: MC, color: '#fff' }
-                : { background: '#F5F3EF', color: '#6B6760' }}>
-              {p.icon} {p.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 練習回数 */}
-      {(() => {
-        const count = typeof window !== 'undefined' ? parseInt(localStorage.getItem('iwor_interview_count') || '0', 10) : 0
-        return count > 0 ? (
-          <div className="text-center text-xs" style={{ color: '#6B6760' }}>
-            これまでの練習回数: <span className="font-bold" style={{ color: MC }}>{count}回</span>
-          </div>
-        ) : null
-      })()}
+      </p>
 
       {/* 開始ボタン */}
       <button onClick={() => onStart({ duration, hospitalType, prefecture, pressure })}
-        className="w-full py-4 rounded-2xl text-base font-bold transition-all hover:opacity-90"
+        className="w-full py-3.5 rounded-xl text-sm font-bold transition-all hover:opacity-90"
         style={{ background: MC, color: '#fff' }}>
         面接を始める
       </button>
+
+      {/* 練習回数（あれば） */}
+      {typeof window !== 'undefined' && parseInt(localStorage.getItem('iwor_interview_count') || '0', 10) > 0 && (
+        <p className="text-center text-[10px]" style={{ color: '#C8C4BC' }}>
+          練習回数: {localStorage.getItem('iwor_interview_count')}回
+        </p>
+      )}
     </div>
   )
 }
@@ -244,7 +224,7 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
       </div>
 
       {/* メッセージ */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4" style={{ background: '#F5F3EF' }}>
+      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4" style={{ background: '#FEFEFC' }}>
         {messages.map((m, i) => (
           <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             {m.role === 'interviewer' && (
@@ -259,7 +239,7 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
                 : 'rounded-bl-md'
             }`} style={m.role === 'user'
               ? { background: MC, color: '#fff' }
-              : { background: '#fff', color: '#1A1917', border: '1px solid #E8E5DF' }}>
+              : { background: '#F0EDE7', color: '#1A1917' }}>
               <p className="whitespace-pre-wrap">{m.content}</p>
             </div>
           </div>
@@ -270,7 +250,7 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
               style={{ background: MC, color: '#fff' }}>
               {settings.hospitalType === 'university' ? '教' : '医'}
             </div>
-            <div className="px-4 py-3 rounded-2xl rounded-bl-md" style={{ background: '#fff', border: '1px solid #E8E5DF' }}>
+            <div className="px-4 py-3 rounded-2xl rounded-bl-md" style={{ background: '#F0EDE7' }}>
               <div className="flex gap-1">
                 <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '0ms' }} />
                 <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -282,7 +262,7 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
       </div>
 
       {/* 入力欄 */}
-      <div className="px-4 py-3 border-t" style={{ background: '#FEFEFC', borderColor: '#E8E5DF' }}>
+      <div className="px-4 py-3" style={{ background: '#FEFEFC' }}>
         <div className="flex gap-2 items-end">
           <textarea
             ref={inputRef}
@@ -292,7 +272,7 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
             placeholder="回答を入力..."
             rows={1}
             className="flex-1 resize-none rounded-xl px-4 py-3 text-sm border focus:outline-none focus:ring-2"
-            style={{ borderColor: '#DDD9D2', fontSize: '16px', maxHeight: 120 }}
+            style={{ borderColor: '#DDD9D2', background: '#F0EDE7', fontSize: '16px', maxHeight: 120 }}
             onInput={e => {
               const t = e.target as HTMLTextAreaElement
               t.style.height = 'auto'
