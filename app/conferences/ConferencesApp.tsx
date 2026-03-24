@@ -65,6 +65,14 @@ function getDaysUntil(dateStr: string): number {
   return Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
 }
 
+/** 地方会は学会名を先頭に付与して表示（例: "循環器 関東甲信越地方会"） */
+function confDisplayName(conf: Conference): string {
+  if (conf.meetingType === 'regional') {
+    return `${conf.societyShort} ${conf.meetingName}`
+  }
+  return conf.meetingName
+}
+
 export default function ConferencesApp() {
   const [viewMode, setViewMode] = useState<ViewMode>('list')
   const [filterArea, setFilterArea] = useState<string>('all')
@@ -169,13 +177,13 @@ export default function ConferencesApp() {
       const newReminder: Reminder = {
         confId: conf.id,
         remindDate: remindDate.toISOString().split('T')[0],
-        confName: conf.meetingName,
+        confName: confDisplayName(conf),
         confDate: conf.startDate,
       }
       const next = [...reminders, newReminder]
       setReminders(next)
       setLocalReminders(next)
-      setReminderToast(`${conf.meetingName} の7日前にリマインド`)
+      setReminderToast(`${confDisplayName(conf)} の7日前にリマインド`)
     }
     setTimeout(() => setReminderToast(''), 3000)
   }, [reminders])
@@ -429,7 +437,7 @@ function ConferenceCard({ conf, isAttending, onToggleAttend, isReminded, onToggl
               </span>
             )}
           </div>
-          <p className="text-sm font-bold text-tx mb-1 leading-snug">{conf.meetingName}</p>
+          <p className="text-sm font-bold text-tx mb-1 leading-snug">{confDisplayName(conf)}</p>
           <div className="flex items-center gap-2 text-[11px] text-muted">
             <span>📍 {conf.venue}（{conf.city}）</span>
           </div>
@@ -638,7 +646,7 @@ function CalendarGrid({ conferences, attending, onToggleAttend }: { conferences:
                             onClick={() => setSelectedConf(c)}
                             className="w-full text-[8px] font-bold truncate rounded px-0.5 py-px mt-0.5 text-white leading-tight"
                             style={{ background: color }}
-                            title={c.meetingName}
+                            title={confDisplayName(c)}
                           >
                             {c.societyShort}
                           </button>
@@ -689,7 +697,7 @@ function CalendarGrid({ conferences, attending, onToggleAttend }: { conferences:
             <p className="text-xs font-bold mb-1" style={{ color: SPECIALTY_COLORS[getSpecialtyCategory(selectedConf.specialtyArea)] }}>
               {formatDateRange(selectedConf.startDate, selectedConf.endDate)}
             </p>
-            <h3 className="text-sm font-bold text-tx mb-2">{selectedConf.meetingName}</h3>
+            <h3 className="text-sm font-bold text-tx mb-2">{confDisplayName(selectedConf)}</h3>
             <p className="text-xs text-muted mb-1">📍 {selectedConf.venue}（{selectedConf.city}）</p>
             {selectedConf.theme && <p className="text-xs text-muted italic mb-1">「{selectedConf.theme}」</p>}
             {selectedConf.president && (
