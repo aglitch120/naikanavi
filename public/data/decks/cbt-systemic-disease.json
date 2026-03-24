@@ -185,5 +185,588 @@
       "緩和",
       "ACP"
     ]
+  },
+  {
+    "id": "cbt-syst-018",
+    "front": "DICの病態と検査所見を説明せよ",
+    "back": "基礎疾患→組織因子放出→凝固系活性化→微小血栓形成+凝固因子消費→出血傾向。FDP↑, D-dimer↑, フィブリノーゲン↓, PT延長, 血小板↓",
+    "source_code": "E-1-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "血液",
+      "DIC"
+    ]
+  },
+  {
+    "id": "cbt-syst-019",
+    "front": "腫瘍随伴症候群（paraneoplastic syndrome）の代表例を5つ挙げよ",
+    "back": "①PTHrP産生→高Ca血症(扁平上皮癌) ②SIADH→低Na(小細胞肺癌) ③ACTH異所性→クッシング ④Lambert-Eaton(小細胞肺癌) ⑤赤血球増多(腎細胞癌: EPO)",
+    "source_code": "E-3-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "傍腫瘍"
+    ]
+  },
+  {
+    "id": "cbt-syst-020",
+    "front": "TNM分類のT, N, Mの意味と病期分類の考え方を述べよ",
+    "back": "T: 原発腫瘍の大きさ/浸潤度(T1-T4), N: 所属リンパ節転移(N0-N3), M: 遠隔転移(M0/M1)。TNMの組み合わせでStage I-IVに分類→治療方針決定",
+    "source_code": "E-3-2)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "病期"
+    ]
+  },
+  {
+    "id": "cbt-syst-021",
+    "front": "癌の化学療法の原則と主な有害事象を述べよ",
+    "back": "原則: 細胞周期依存性(S期: 代謝拮抗薬)と非依存性(アルキル化薬)。有害事象: 骨髄抑制(好中球減少→FN), 悪心嘔吐, 脱毛, 粘膜障害, 末梢神経障害, 心毒性(ドキソルビシン)",
+    "source_code": "E-3-3)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "化学療法"
+    ]
+  },
+  {
+    "id": "cbt-syst-022",
+    "front": "放射線治療の原理と早期/晩期有害事象を述べよ",
+    "back": "原理: DNA二本鎖切断→細胞死。分割照射の4R(Repair,Redistribution,Reoxygenation,Repopulation)。早期: 皮膚炎/粘膜炎/骨髄抑制。晩期: 肺線維症/脊髄症/二次発癌",
+    "source_code": "E-3-4)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "放射線"
+    ]
+  },
+  {
+    "id": "cbt-syst-023",
+    "front": "免疫チェックポイント阻害薬の作用機序と免疫関連有害事象(irAE)を述べよ",
+    "back": "PD-1/PD-L1阻害(ニボルマブ等)→T細胞の抗腫瘍免疫を再活性化。irAE: 間質性肺炎, 甲状腺機能異常, 大腸炎, 1型DM, 皮疹, 肝障害→自己免疫様の副作用",
+    "source_code": "E-3-5)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "免疫療法"
+    ]
+  },
+  {
+    "id": "cbt-syst-024",
+    "front": "敗血症のqSOFAスコアとSSCGのhour-1 bundleを述べよ",
+    "back": "qSOFA: SBP≤100, RR≥22, 意識変容(2/3以上で陽性)。Hour-1: ①乳酸測定 ②血培2セット ③広域抗菌薬 ④晶質液30mL/kg ⑤MAP≥65維持(ノルアド)",
+    "source_code": "E-2-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "感染症",
+      "敗血症"
+    ]
+  },
+  {
+    "id": "cbt-syst-025",
+    "front": "HIV/AIDSの免疫学的機序とAIDS指標疾患を5つ挙げよ",
+    "back": "HIV→CD4+ T細胞に感染→破壊→細胞性免疫低下。指標疾患: ①PCP ②カポジ肉腫 ③CMV網膜炎 ④CNS原発リンパ腫 ⑤食道カンジダ症",
+    "source_code": "E-2-2)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "感染症",
+      "HIV"
+    ]
+  },
+  {
+    "id": "cbt-syst-026",
+    "front": "結核の感染経路・診断・標準治療を述べよ",
+    "back": "空気感染(飛沫核)。診断: 喀痰抗酸菌塗抹+培養+TB-PCR, IGRA(QFT)。標準治療: HREZ(INH+RFP+PZA+EB)2ヶ月→HR4ヶ月=計6ヶ月。DOTS。感染症法2類→保健所届出",
+    "source_code": "E-2-3)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "感染症",
+      "結核"
+    ]
+  },
+  {
+    "id": "cbt-syst-027",
+    "front": "日和見感染症の代表5つと各々の対策を述べよ",
+    "back": "①PCP(CD4<200)→ST合剤予防 ②CMV→ガンシクロビル ③カンジダ→フルコナゾール ④クリプトコッカス→アムホテリシンB ⑤結核→IGRA+INH",
+    "source_code": "E-2-4)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "感染症",
+      "日和見"
+    ]
+  },
+  {
+    "id": "cbt-syst-028",
+    "front": "胃癌の組織型分類と進行度による治療選択を述べよ",
+    "back": "Lauren分類: 腸型(分化型,高齢男性)vs びまん型(未分化,若年)。早期: EMR/ESD(粘膜内, 潰瘍なし, 2cm以下)。進行: 胃切除+D2郭清+化学療法(S-1+CDDP)",
+    "source_code": "E-3-6)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "胃癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-029",
+    "front": "大腸癌のスクリーニング・診断・治療を述べよ",
+    "back": "スクリーニング: 便潜血(40歳〜年1回)。診断: 大腸内視鏡+生検。治療: 早期→EMR/ESD, 進行→手術(D3郭清)+化学療法(mFOLFOX6/FOLFIRI+分子標的薬)",
+    "source_code": "E-3-7)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "大腸癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-030",
+    "front": "肺癌の組織型別特徴と分子標的治療を述べよ",
+    "back": "腺癌(60%): 末梢,EGFR変異→ゲフィチニブ。扁平上皮癌(25%): 中枢,喫煙。小細胞癌(10%): 急速増殖,SIADH→化学療法+放射線。ALK転座→クリゾチニブ。PD-L1→ペムブロリズマブ",
+    "source_code": "E-3-8)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "肺癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-031",
+    "front": "乳癌のサブタイプ分類と治療戦略を述べよ",
+    "back": "Luminal A(ER+/HER2-/Ki67低): ホルモン療法。Luminal B(ER+/HER2-/Ki67高): ホルモン+化学療法。HER2+(ER-): トラスツズマブ+化学療法。Triple negative: 化学療法のみ",
+    "source_code": "E-3-9)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "乳癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-032",
+    "front": "肝細胞癌のリスク因子・診断・治療を述べよ",
+    "back": "リスク: HBV/HCV→肝硬変→肝癌。診断: AFP↑+PIVKA-II↑, 造影CT(動脈相で早期濃染→門脈相でwashout)。治療: 手術/RFA(≤3cm,3個以下)/TACE/ソラフェニブ/アテゾリズマブ+ベバシズマブ",
+    "source_code": "E-3-10)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "肝癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-033",
+    "front": "膵癌の特徴・診断・治療を述べよ",
+    "back": "予後不良(5年生存率<10%)。症状: 黄疸,体重減少,背部痛。診断: CA19-9↑, 造影CT(膵頭部腫瘤+膵管拡張+胆管拡張: double duct sign), EUS-FNA。治療: 手術(膵頭十二指腸切除)+GEM+nab-PTX",
+    "source_code": "E-3-11)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "膵癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-034",
+    "front": "子宮頸癌の原因・スクリーニング・治療を述べよ",
+    "back": "原因: HPV16/18型。予防: HPVワクチン(9価)。スクリーニング: 細胞診(20歳〜2年毎)→ASC-US→HPV→コルポスコピー。治療: CIN3→円錐切除, IB→広汎子宮全摘, IIB以降→CCRT",
+    "source_code": "E-3-12)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "子宮頸癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-035",
+    "front": "前立腺癌の診断・治療・ホルモン療法を述べよ",
+    "back": "診断: PSA↑→直腸診→経直腸エコーガイド下針生検→Gleason score。治療: 限局→手術(ロボット)/放射線。進行→ホルモン療法(GnRHアゴニスト+抗アンドロゲン薬)。CRPC→ドセタキセル",
+    "source_code": "E-3-13)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "前立腺癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-036",
+    "front": "悪性リンパ腫のホジキンと非ホジキンの違いを述べよ",
+    "back": "HL: RS細胞, 若年男性, 連続性進展, B症状, ABVD, 予後良好。NHL: 多彩な組織型, DLBCL最多→R-CHOP, 濾胞性→経過観察可, Burkitt→緊急化学療法",
+    "source_code": "E-3-14)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "リンパ腫"
+    ]
+  },
+  {
+    "id": "cbt-syst-037",
+    "front": "白血病の急性(AML/ALL)と慢性(CML/CLL)の違いを述べよ",
+    "back": "AML: Auer小体,MPO陽性, 3+7療法。ALL: PAS陽性,小児に多,化学療法高感受性。CML: Ph染色体(BCR-ABL), WBC↑↑, イマチニブ。CLL: 高齢, リンパ球↑, 経過観察 or BR療法",
+    "source_code": "E-3-15)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "白血病"
+    ]
+  },
+  {
+    "id": "cbt-syst-038",
+    "front": "SLEの診断基準と臓器障害を述べよ",
+    "back": "ANA+抗dsDNA+補体↓。臓器障害: ループス腎炎(最重要,Class IV=びまん性増殖性), CNSループス, 漿膜炎, 血球減少。治療: HCQ(全例)+ステロイド+免疫抑制(MMF/CYC)",
+    "source_code": "E-4-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "免疫",
+      "SLE"
+    ]
+  },
+  {
+    "id": "cbt-syst-039",
+    "front": "関節リウマチの診断・治療・合併症を述べよ",
+    "back": "診断: 対称性多関節炎+RF/抗CCP抗体+CRP↑。治療: MTX第一選択→効果不十分→生物学的製剤(TNFα阻害等)。合併症: 間質性肺炎, アミロイドーシス, 環軸椎亜脱臼",
+    "source_code": "E-4-2)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "免疫",
+      "RA"
+    ]
+  },
+  {
+    "id": "cbt-syst-040",
+    "front": "アナフィラキシーの機序と治療を述べよ",
+    "back": "I型アレルギー(IgE+肥満細胞)→ヒスタミン/LT放出→血管拡張+気管支攣縮+血管透過性↑。治療: ①アドレナリン0.3-0.5mg筋注(最優先) ②仰臥位+下肢挙上 ③O₂+輸液 ④ステロイド(二相性予防)",
+    "source_code": "E-4-3)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "免疫",
+      "アナフィラキシー"
+    ]
+  },
+  {
+    "id": "cbt-syst-041",
+    "front": "熱中症の分類と治療を述べよ",
+    "back": "I度(熱痙攣): 筋痙攣→経口補水。II度(熱疲労): 頭痛/嘔気→輸液。III度(熱射病): 意識障害+体温>40℃→全身冷却(目標38.5℃)+大量輸液+DIC対応",
+    "source_code": "E-5-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "救急",
+      "熱中症"
+    ]
+  },
+  {
+    "id": "cbt-syst-042",
+    "front": "放射線障害の急性/晩期影響と確定的/確率的影響を述べよ",
+    "back": "確定的影響: 閾値あり(白内障>2Gy, 不妊>2-6Gy)。確率的影響: 閾値なし(発がん, 遺伝的影響)。急性放射線症候群: >1Gy→骨髄型→消化管型→脳血管型",
+    "source_code": "E-5-2)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "放射線",
+      "障害"
+    ]
+  },
+  {
+    "id": "cbt-syst-043",
+    "front": "急性中毒の代表的解毒薬を5つ挙げよ",
+    "back": "①アセトアミノフェン→NAC ②ベンゾジアゼピン→フルマゼニル ③オピオイド→ナロキソン ④有機リン→アトロピン+PAM ⑤CO→100%O₂(高圧酸素)",
+    "source_code": "E-6-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "中毒",
+      "解毒"
+    ]
+  },
+  {
+    "id": "cbt-syst-044",
+    "front": "小児の発達マイルストーンを月齢別に述べよ",
+    "back": "3-4M: 定頸,追視,あやし笑い。6-7M: 寝返り,お坐り,人見知り。9-10M: つかまり立ち,パラシュート反射。1歳: 独歩,有意語。1.5歳: 走る,2語文。3歳: 片足立ち,名前が言える",
+    "source_code": "E-7-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "小児",
+      "発達"
+    ]
+  },
+  {
+    "id": "cbt-syst-045",
+    "front": "先天性代謝異常のマススクリーニング対象疾患を述べよ",
+    "back": "タンデムマス法: アミノ酸代謝(PKU,MSUD), 有機酸(プロピオン酸血症), 脂肪酸(MCAD欠損)。別検査: 先天性甲状腺機能低下(TSH), 先天性副腎過形成(17-OHP), ガラクトース血症",
+    "source_code": "E-7-2)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "小児",
+      "スクリーニング"
+    ]
+  },
+  {
+    "id": "cbt-syst-046",
+    "front": "川崎病の6徴候・合併症・治療を述べよ",
+    "back": "6徴: ①5日以上発熱 ②両側結膜充血 ③口唇発赤/イチゴ舌 ④不定形発疹 ⑤四肢末端変化 ⑥頸部リンパ節腫脹。合併症: 冠動脈瘤(最重要)。治療: IVIg 2g/kg+アスピリン",
+    "source_code": "E-7-3)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "小児",
+      "川崎病"
+    ]
+  },
+  {
+    "id": "cbt-syst-047",
+    "front": "高齢者の薬物動態の特徴と多剤併用(ポリファーマシー)の問題を述べよ",
+    "back": "腎機能↓→腎排泄型薬剤蓄積(ジゴキシン,アミノグリコシド)。肝代謝↓→CYP3A4基質蓄積。体脂肪↑→脂溶性薬剤の分布容積↑。ポリファーマシー(6剤以上)→薬物有害事象↑,転倒↑,認知機能↓",
+    "source_code": "E-8-1)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "老年",
+      "薬物"
+    ]
+  },
+  {
+    "id": "cbt-syst-048",
+    "front": "フレイル・サルコペニアの定義と介入を述べよ",
+    "back": "フレイル: 体重減少,疲労感,握力低下,歩行速度低下,活動量低下の3/5以上。サルコペニア: 骨格筋量↓+筋力↓。介入: 運動(レジスタンス+有酸素)+栄養(蛋白質1.2g/kg/日)+社会参加",
+    "source_code": "E-8-2)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "老年",
+      "フレイル"
+    ]
+  },
+  {
+    "id": "cbt-syst-049",
+    "front": "認知症の3大原因疾患と鑑別点を述べよ",
+    "back": "AD(60%): 記憶障害初発,海馬萎縮,ChE阻害薬。DLB(15%): 幻視+認知変動+パーキンソニズム,DATスキャン低下。VaD(15%): 階段状悪化,画像で脳血管病変。FTD: 人格変化初発",
+    "source_code": "E-8-3)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "老年",
+      "認知症"
+    ]
+  },
+  {
+    "id": "cbt-syst-050",
+    "front": "高齢者の転倒予防と骨粗鬆症治療を述べよ",
+    "back": "転倒予防: 筋力訓練+バランス訓練+環境整備+薬剤見直し(BZD減量)。骨粗鬆症: ビスホスホネート(第一選択)+VitD+Ca。高リスク: テリパラチド(骨形成促進)。DXAでT-score≤-2.5で診断",
+    "source_code": "E-8-4)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "老年",
+      "骨粗鬆症"
+    ]
+  },
+  {
+    "id": "cbt-syst-051",
+    "front": "腎細胞癌の特徴・診断・治療を述べよ",
+    "back": "淡明細胞型最多(80%)。3大症状: 血尿/側腹部痛/腫瘤(揃うのは10%)。VHL症候群合併。診断: 造影CT。治療: 根治的腎摘(T1a→部分切除)。進行→分子標的薬(スニチニブ)+ICI(ニボルマブ)",
+    "source_code": "E-3-16)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "腎癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-052",
+    "front": "膀胱癌の診断・治療を述べよ",
+    "back": "無症候性肉眼的血尿(高齢喫煙男性)→膀胱鏡+尿細胞診。治療: 表在性→TUR-BT+BCG膀胱内注入。筋層浸潤→膀胱全摘+尿路変向。リスク: 喫煙(最大),芳香族アミン",
+    "source_code": "E-3-17)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "膀胱癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-053",
+    "front": "精巣腫瘍の分類・診断・治療を述べよ",
+    "back": "セミノーマ(最多,放射線感受性) vs 非セミノーマ(AFP/hCG↑)。若年男性の無痛性陰嚢腫大。治療: 高位精巣摘除→セミノーマ:放射線, 非セミノーマ:BEP療法。5年生存率>90%",
+    "source_code": "E-3-18)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "精巣癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-054",
+    "front": "血管炎症候群の分類と代表疾患を述べよ",
+    "back": "大血管: 高安動脈炎(若年女性,脈なし), 巨細胞性動脈炎(高齢,側頭動脈)。中血管: 結節性多発動脈炎, 川崎病。小血管ANCA: GPA(PR3), MPA(MPO), EGPA(好酸球+喘息)。小血管IC: IgA血管炎",
+    "source_code": "E-4-4)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "免疫",
+      "血管炎"
+    ]
+  },
+  {
+    "id": "cbt-syst-055",
+    "front": "移植免疫の原理と拒絶反応の分類を述べよ",
+    "back": "HLA適合が重要。超急性拒絶: 既存抗体(分〜時間)→移植片除去。急性拒絶: T細胞介在(日〜週)→免疫抑制強化。慢性拒絶: 抗体介在(月〜年)→不可逆。GVHD: ドナーT細胞がレシピエント攻撃(骨髄移植)",
+    "source_code": "E-4-5)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "免疫",
+      "移植"
+    ]
+  },
+  {
+    "id": "cbt-syst-056",
+    "front": "抗菌薬の系統分類と各々のスペクトラムを述べよ",
+    "back": "βラクタム: ペニシリン(GP+一部GN),セフェム(世代で拡大),カルバペネム(最広域)。アミノグリコシド: GN好気性(腎毒性/聴毒性)。キノロン: 広域(結核マスク注意)。マクロライド: 非定型菌。グリコペプチド: MRSA",
+    "source_code": "E-2-5)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "感染症",
+      "抗菌薬"
+    ]
+  },
+  {
+    "id": "cbt-syst-057",
+    "front": "ウイルス性肝炎(A-E)の感染経路・慢性化・治療を述べよ",
+    "back": "A: 経口,慢性化しない。B: 血液/性行為,成人は95%自然治癒,母子感染→慢性化→核酸アナログ。C: 血液,70%慢性化→DAA(治癒率>95%)。D: B型と重感染。E: 経口(ジビエ),妊婦で重症化",
+    "source_code": "E-2-6)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "感染症",
+      "肝炎"
+    ]
+  },
+  {
+    "id": "cbt-syst-058",
+    "front": "先天性心疾患のチアノーゼ性/非チアノーゼ性分類と代表疾患を述べよ",
+    "back": "チアノーゼ性(R→Lシャント): TOF(最多), TGA, TA, TAPVR。非チアノーゼ性(L→Rシャント): VSD(最多), ASD, PDA, AVSD。動脈管依存性→PGE₁。TOF無酸素発作→膝胸位",
+    "source_code": "E-7-4)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "小児",
+      "先天性心疾患"
+    ]
+  },
+  {
+    "id": "cbt-syst-059",
+    "front": "新生児黄疸の生理的/病的の鑑別と核黄疸を述べよ",
+    "back": "生理的: 生後2-3日出現,7-10日消退,間接Bil主体。病的: 24h以内(早発: ABO/Rh不適合), 2週以上(遷延: 胆道閉鎖→直接Bil↑)。核黄疸: Bilの基底核沈着→脳性麻痺+感音難聴。治療: 光線療法/交換輸血",
+    "source_code": "E-7-5)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "小児",
+      "黄疸"
+    ]
+  },
+  {
+    "id": "cbt-syst-060",
+    "front": "甲状腺癌の組織型別特徴を述べよ",
+    "back": "乳頭癌(80%): 若年女性,予後良好,リンパ節転移多,砂粒体。濾胞癌(10%): 血行性転移(肺/骨)。髄様癌: カルシトニン産生,MEN2合併(RET)。未分化癌: 高齢,予後最悪",
+    "source_code": "E-3-19)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "甲状腺癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-061",
+    "front": "悪性黒色腫の特徴・診断・治療を述べよ",
+    "back": "ABCDE(非対称,不整辺縁,色調不均一,>6mm,変化)。日本では末端黒子型が最多。ダーモスコピーで判定→全切除生検→Breslow厚でマージン決定。進行: ニボルマブ/イピリムマブ。5年生存率: 早期>90%, 転移<20%",
+    "source_code": "E-3-20)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "メラノーマ"
+    ]
+  },
+  {
+    "id": "cbt-syst-062",
+    "front": "食道癌の特徴と治療を述べよ",
+    "back": "扁平上皮癌(90%): 飲酒+喫煙(ALDH2欠損)。腺癌: Barrett食道(GERD)。診断: 内視鏡+ヨード不染帯。治療: 早期→ESD, 進行→手術(食道亜全摘+3領域郭清), 切除不能→CCRT(5FU+CDDP)",
+    "source_code": "E-3-21)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "腫瘍",
+      "食道癌"
+    ]
+  },
+  {
+    "id": "cbt-syst-063",
+    "front": "臓器特異的自己免疫疾患の代表5つを述べよ",
+    "back": "①橋本病(抗TPO/Tg→甲状腺機能低下) ②バセドウ病(TRAb→機能亢進) ③1型DM(抗GAD→β細胞破壊) ④重症筋無力症(抗AChR→NMJ障害) ⑤自己免疫性溶血性貧血(直接Coombs陽性)",
+    "source_code": "E-4-6)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "免疫",
+      "臓器特異的"
+    ]
+  },
+  {
+    "id": "cbt-syst-064",
+    "front": "IgG4関連疾患の特徴・診断・治療を述べよ",
+    "back": "多臓器の腫大性病変+IgG4↑+storiform fibrosis+IgG4陽性形質細胞浸潤。好発: 涙腺/唾液腺(Mikulicz型), 膵臓(自己免疫性膵炎), 後腹膜。ステロイドが著効",
+    "source_code": "E-4-7)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "免疫",
+      "IgG4"
+    ]
+  },
+  {
+    "id": "cbt-syst-065",
+    "front": "アルコール依存症の離脱症状と長期合併症を述べよ",
+    "back": "離脱: 6-12h→振戦+不安, 12-24h→幻覚, 24-48h→痙攣, 48-72h→振戦せん妄(DT: 致死的)。治療: BZD+VitB1。長期: ウェルニッケ脳症, Korsakoff, 肝硬変, 慢性膵炎, 末梢神経障害",
+    "source_code": "E-6-2)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "中毒",
+      "アルコール"
+    ]
+  },
+  {
+    "id": "cbt-syst-066",
+    "front": "Down症候群の特徴・合併症・長期管理を述べよ",
+    "back": "21トリソミー(1/700出生)。特徴: 瞼裂斜上,内眼角贅皮,低い鼻根,筋緊張低下。合併症: AVSD(40%), 十二指腸閉鎖, 白血病, 甲状腺機能低下, Alzheimer。管理: 心疾患+甲状腺+聴力+視力の定期チェック",
+    "source_code": "E-7-6)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "小児",
+      "Down"
+    ]
+  },
+  {
+    "id": "cbt-syst-067",
+    "front": "二分脊椎と水頭症の病態と治療を述べよ",
+    "back": "二分脊椎: 神経管閉鎖障害→葉酸予防(妊娠前から0.4mg/日)。脊髄髄膜瘤→手術。水頭症合併多い→VPシャント。正常圧水頭症(iNPH): 歩行障害+認知症+尿失禁→タップテスト→VPシャント",
+    "source_code": "E-7-7)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "小児",
+      "神経管"
+    ]
+  },
+  {
+    "id": "cbt-syst-068",
+    "front": "創傷治癒の過程と阻害因子を述べよ",
+    "back": "①炎症期(0-3日: 血小板凝集+好中球浸潤) ②増殖期(3-21日: 肉芽組織+血管新生+コラーゲン合成) ③成熟期(21日-: リモデリング)。阻害因子: 糖尿病, ステロイド, 低栄養(低Alb), 感染, 血流障害",
+    "source_code": "E-5-3)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "外科",
+      "創傷"
+    ]
+  },
+  {
+    "id": "cbt-syst-069",
+    "front": "ショックの4分類と初期対応を述べよ",
+    "back": "①循環血液量減少(出血/脱水)→輸液/輸血 ②心原性(AMI)→PCI/強心薬 ③閉塞性(PE/心タンポナーデ)→原因除去 ④血液分布異常(敗血症/アナフィラキシー)→輸液+血管収縮薬",
+    "source_code": "E-5-4)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "救急",
+      "ショック"
+    ]
+  },
+  {
+    "id": "cbt-syst-070",
+    "front": "栄養評価の方法と経腸栄養の適応を述べよ",
+    "back": "評価: BMI, 体重減少率, 血清Alb(<3.0で低栄養), プレアルブミン(半減期2日: 急性指標)。原則: 腸が使えるなら腸を使う(If the gut works, use it)。経腸: 術後24-48hに開始推奨。経静脈: 腸管不使用時",
+    "source_code": "E-5-5)",
+    "deck": "cbt-systemic-disease",
+    "tags": [
+      "栄養",
+      "評価"
+    ]
   }
 ]
