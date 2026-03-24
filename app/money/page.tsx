@@ -281,10 +281,12 @@ function BaitoTaxCalc() {
   const [baitoIncome, setBaitoIncome] = useState('')
   const [family, setFamily] = useState('single')
   const [age, setAge] = useState('under40')
+  const [inputMode, setInputMode] = useState<'annual' | 'monthly'>('monthly')
 
   const result = (() => {
-    const main = Number(mainIncome)
-    const baito = Number(baitoIncome)
+    const mul = inputMode === 'monthly' ? 12 : 1
+    const main = Number(mainIncome) * mul
+    const baito = Number(baitoIncome) * mul
     if (!main || main <= 0) return null
     if (!baito || baito <= 0) return null
 
@@ -356,6 +358,7 @@ function BaitoTaxCalc() {
 
     return {
       total,
+      baitoAnnual: baito,
       mainIncomeTax: mainTaxWithFukkou,
       totalIncomeTax: totalTaxWithFukkou,
       mainJuminTax,
@@ -372,22 +375,39 @@ function BaitoTaxCalc() {
 
   return (
     <div className="space-y-4">
+      {/* 年収/月収切り替え */}
+      <div className="flex items-center gap-1 bg-s1 rounded-lg p-0.5 w-fit">
+        {(['monthly', 'annual'] as const).map(mode => (
+          <button key={mode} onClick={() => setInputMode(mode)}
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              inputMode === mode ? 'bg-s0 text-ac shadow-sm' : 'text-muted hover:text-tx'
+            }`}>
+            {mode === 'monthly' ? '月収で入力' : '年収で入力'}
+          </button>
+        ))}
+      </div>
       <div>
-        <label className="text-xs font-medium text-tx block mb-1.5">常勤先の年収（税込み）</label>
+        <label className="text-xs font-medium text-tx block mb-1.5">
+          常勤先の{inputMode === 'monthly' ? '月収' : '年収'}（税込み）
+        </label>
         <div className="relative">
           <input type="number" value={mainIncome} onChange={e => setMainIncome(e.target.value)}
-            placeholder="例: 6000000" className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors" />
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted">円</span>
+            placeholder={inputMode === 'monthly' ? '例: 500000' : '例: 6000000'}
+            className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors" />
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted">円{inputMode === 'monthly' ? '/月' : '/年'}</span>
         </div>
       </div>
       <div>
-        <label className="text-xs font-medium text-tx block mb-1.5">バイト年収合計（税込み）</label>
+        <label className="text-xs font-medium text-tx block mb-1.5">
+          バイト{inputMode === 'monthly' ? '月収' : '年収'}合計（税込み）
+        </label>
         <div className="relative">
           <input type="number" value={baitoIncome} onChange={e => setBaitoIncome(e.target.value)}
-            placeholder="例: 2000000" className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors" />
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted">円</span>
+            placeholder={inputMode === 'monthly' ? '例: 150000' : '例: 2000000'}
+            className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors" />
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted">円{inputMode === 'monthly' ? '/月' : '/年'}</span>
         </div>
-        <p className="text-[10px] text-muted mt-1">※ 当直バイト・外勤・スポットバイト等の合計</p>
+        <p className="text-[10px] text-muted mt-1">※ 当直バイト・外勤・スポットバイト等の{inputMode === 'monthly' ? '月平均' : '合計'}</p>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <div>
@@ -413,8 +433,9 @@ function BaitoTaxCalc() {
         <div className="space-y-3">
           {/* メイン結果: 追加納税額 */}
           <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
-            <p className="text-xs text-red-600 mb-1">確定申告で追加で払う税金（概算）</p>
+            <p className="text-xs text-red-600 mb-1">確定申告で追加で払う税金（年額概算）</p>
             <p className="text-3xl font-bold text-red-600">¥{result.additionalTotal.toLocaleString()}</p>
+            <p className="text-xs text-red-400 mt-0.5">月あたり約 ¥{Math.round(result.additionalTotal / 12).toLocaleString()}</p>
             <p className="text-[11px] text-red-500 mt-1">
               所得税 ¥{result.additionalIncomeTax.toLocaleString()} + 住民税 ¥{result.additionalJuminTax.toLocaleString()}
             </p>
@@ -422,10 +443,11 @@ function BaitoTaxCalc() {
 
           {/* バイトの実質手取り */}
           <div className="bg-acl border border-ac/15 rounded-xl p-4 text-center">
-            <p className="text-xs text-muted mb-1">バイト収入の実質手取り</p>
+            <p className="text-xs text-muted mb-1">バイト収入の実質手取り（年額）</p>
             <p className="text-2xl font-bold text-ac">¥{result.baitoTedori.toLocaleString()}</p>
+            <p className="text-xs text-ac/60 mt-0.5">月あたり約 ¥{Math.round(result.baitoTedori / 12).toLocaleString()}</p>
             <p className="text-[11px] text-muted mt-1">
-              バイト{Number(baitoIncome).toLocaleString()}円 → 手取り率 <span className="font-bold text-ac">{result.baitoTedoriRate}%</span>
+              バイト年収¥{result.baitoAnnual.toLocaleString()} → 手取り率 <span className="font-bold text-ac">{result.baitoTedoriRate}%</span>
             </p>
           </div>
 
