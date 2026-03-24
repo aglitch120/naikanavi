@@ -2199,16 +2199,39 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
 
       const prompt = prompts[type] || prompts.pr;
 
+      const sysPrompt = "あなたは医師臨床研修マッチングの専門コンサルタントです。依頼された文章をそのまま出力してください。前置き・説明は一切不要です。本文のみを出力。すべて自然な日本語で書いてください。文字数制限は絶対に守ってください。";
+
       try {
-        const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-          messages: [
-            { role: "system", content: "あなたは医師臨床研修マッチングの専門コンサルタントです。依頼された文章をそのまま出力してください。「以下に生成します」「志望動機として」等の前置き・説明は一切不要です。本文のみを出力。すべて日本語で書いてください。" },
-            { role: "user", content: prompt },
-          ],
-          max_tokens: 600,
+        // Claude Haikuで生成（自然な日本語+文字数遵守）
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "x-api-key": env.ANTHROPIC_API_KEY,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "claude-haiku-4-5-20251001",
+            max_tokens: 600,
+            system: sysPrompt,
+            messages: [{ role: "user", content: prompt }],
+          }),
         });
-        let text = (result.response || "").trim();
-        // メタ説明の除去（「以下の〜生成します。」等の前置きを削除）
+
+        let text = "";
+        if (res.ok) {
+          const data = await res.json();
+          text = (data.content?.[0]?.text || "").trim();
+        } else {
+          // フォールバック: Workers AI
+          const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+            messages: [{ role: "system", content: sysPrompt }, { role: "user", content: prompt }],
+            max_tokens: 600,
+          });
+          text = (result.response || "").trim();
+        }
+
+        // メタ説明の除去
         text = text.replace(/^.*?(生成します|以下に|以下の文章|志望動機として)[。．.、,]?\s*/s, '');
         // 文字数オーバーなら切り詰め
         const trimmed = text.length > maxChars ? text.slice(0, maxChars - 3) + "..." : text;
@@ -2229,24 +2252,40 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
       const answers = body.answers.slice(-3); // 直近3回答のみ使用（コスト制限）
       const context = answers.map(a => `Q: ${a.question}\nA: ${a.answer}`).join("\n\n");
 
+      const sysPrompt = "あなたは医師臨床研修マッチングのプロフェッショナルコンサルタントです。10年以上の経験で数百人の医学生を指導してきました。\n\n相手の回答パターンを分析し、以下の観点で最も効果的な1つのフォローアップ質問を生成してください：\n- 回答間の矛盾や一貫性の欠如があれば指摘する質問\n- 表面的な回答を具体的エピソードに落とし込む質問\n- 面接官が「この学生は深く考えている」と感じるレベルの洞察を引き出す質問\n- 医師のコアコンピテンシー（プロフェッショナリズム・患者中心・チーム医療・生涯学習）に紐づく質問\n\n質問は40文字以内で鋭く。選択肢は具体的なシナリオベースで4つ。出力はJSONのみ: {\"question\": \"...\", \"choices\": [\"...\", \"...\", \"...\", \"...\"]}";
+      const userMsg = `以下のキャリアに関する回答を踏まえて、より深い自己分析を促すフォローアップ質問を1つ生成してください。\n\n${context}`;
+
       try {
-        const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-          messages: [
-            {
-              role: "system",
-              content: "あなたは医師臨床研修マッチングのプロフェッショナルコンサルタントです。10年以上の経験で数百人の医学生を指導してきました。\n\n相手の回答パターンを分析し、以下の観点で最も効果的な1つのフォローアップ質問を生成してください：\n- 回答間の矛盾や一貫性の欠如があれば指摘する質問\n- 表面的な回答を具体的エピソードに落とし込む質問\n- 面接官が「この学生は深く考えている」と感じるレベルの洞察を引き出す質問\n- 医師のコアコンピテンシー（プロフェッショナリズム・患者中心・チーム医療・生涯学習）に紐づく質問\n\n質問は40文字以内で鋭く。選択肢は具体的なシナリオベースで4つ。出力はJSON: {\"question\": \"...\", \"choices\": [\"...\", \"...\", \"...\", \"...\"]}"
-            },
-            {
-              role: "user",
-              content: `以下のキャリアに関する回答を踏まえて、より深い自己分析を促すフォローアップ質問を1つ生成してください。\n\n${context}`
-            }
-          ],
-          max_tokens: 200,
+        let text = "";
+        // Claude Haikuで生成
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "x-api-key": env.ANTHROPIC_API_KEY,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "claude-haiku-4-5-20251001",
+            max_tokens: 200,
+            system: sysPrompt,
+            messages: [{ role: "user", content: userMsg }],
+          }),
         });
+        if (res.ok) {
+          const data = await res.json();
+          text = data.content?.[0]?.text || "";
+        } else {
+          // フォールバック: Workers AI
+          const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+            messages: [{ role: "system", content: sysPrompt }, { role: "user", content: userMsg }],
+            max_tokens: 200,
+          });
+          text = result.response || "";
+        }
 
         let parsed;
         try {
-          const text = result.response || "";
           const jsonMatch = text.match(/\{[\s\S]*\}/);
           parsed = jsonMatch ? JSON.parse(jsonMatch[0]) : null;
         } catch {
