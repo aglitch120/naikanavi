@@ -275,7 +275,195 @@ function KakuteiCheck() {
   )
 }
 
-// ─── 関連記事 ───
+// ─── バイト確定申告 税額シミュレーター ───
+function BaitoTaxCalc() {
+  const [mainIncome, setMainIncome] = useState('')
+  const [baitoIncome, setBaitoIncome] = useState('')
+  const [family, setFamily] = useState('single')
+  const [age, setAge] = useState('under40')
+
+  const result = (() => {
+    const main = Number(mainIncome)
+    const baito = Number(baitoIncome)
+    if (!main || main <= 0) return null
+    if (!baito || baito <= 0) return null
+
+    const total = main + baito
+
+    // ── 給与所得控除（2026年度） ──
+    function kyuyoKojo(income: number): number {
+      if (income <= 1625000) return 550000
+      if (income <= 1800000) return income * 0.4 - 100000
+      if (income <= 3600000) return income * 0.3 + 80000
+      if (income <= 6600000) return income * 0.2 + 440000
+      if (income <= 8500000) return income * 0.1 + 1100000
+      return 1950000
+    }
+
+    // ── 所得計算 ──
+    const mainKojo = kyuyoKojo(main)
+    const totalKojo = kyuyoKojo(total)
+
+    // 基礎控除48万 + 社会保険料控除（常勤のみ概算15%）
+    const shakaihokenRate = age === 'over40' ? 0.155 : 0.148
+    const shakaihoken = main * shakaihokenRate
+    let jinteKojo = 480000 // 基礎控除
+    if (family === 'spouse') jinteKojo += 380000 // 配偶者控除
+    if (family === 'spouse_child') jinteKojo += 380000 + 630000 // 配偶者+特定扶養
+
+    const mainShotoku = Math.max(0, main - mainKojo - shakaihoken - jinteKojo)
+    const totalShotoku = Math.max(0, total - totalKojo - shakaihoken - jinteKojo)
+
+    // ── 所得税（累進課税） ──
+    function incomeTax(shotoku: number): number {
+      const brackets = [
+        { limit: 1950000, rate: 0.05, deduction: 0 },
+        { limit: 3300000, rate: 0.10, deduction: 97500 },
+        { limit: 6950000, rate: 0.20, deduction: 427500 },
+        { limit: 9000000, rate: 0.23, deduction: 636000 },
+        { limit: 18000000, rate: 0.33, deduction: 1536000 },
+        { limit: 40000000, rate: 0.40, deduction: 2796000 },
+        { limit: Infinity, rate: 0.45, deduction: 4796000 },
+      ]
+      for (const b of brackets) {
+        if (shotoku <= b.limit) return shotoku * b.rate - b.deduction
+      }
+      return 0
+    }
+
+    const mainIncomeTax = Math.max(0, incomeTax(mainShotoku))
+    const totalIncomeTax = Math.max(0, incomeTax(totalShotoku))
+
+    // 復興特別所得税（2.1%）
+    const mainTaxWithFukkou = Math.round(mainIncomeTax * 1.021)
+    const totalTaxWithFukkou = Math.round(totalIncomeTax * 1.021)
+
+    // ── 住民税（一律10%）──
+    const mainJuminTax = Math.round(mainShotoku * 0.10 + 5000)
+    const totalJuminTax = Math.round(totalShotoku * 0.10 + 5000)
+
+    // ── 差額 = 確定申告で追加納付する金額 ──
+    const additionalIncomeTax = totalTaxWithFukkou - mainTaxWithFukkou
+    const additionalJuminTax = totalJuminTax - mainJuminTax
+    const additionalTotal = additionalIncomeTax + additionalJuminTax
+
+    // バイト分の実質手取り率
+    const baitoTedori = baito - additionalTotal
+    const baitoTedoriRate = Math.round((baitoTedori / baito) * 100)
+
+    // 限界税率（バイト収入にかかる税率）
+    const marginalRate = Math.round((additionalTotal / baito) * 100)
+
+    return {
+      total,
+      mainIncomeTax: mainTaxWithFukkou,
+      totalIncomeTax: totalTaxWithFukkou,
+      mainJuminTax,
+      totalJuminTax,
+      additionalIncomeTax,
+      additionalJuminTax,
+      additionalTotal,
+      baitoTedori,
+      baitoTedoriRate,
+      marginalRate,
+      shakaihoken: Math.round(shakaihoken),
+    }
+  })()
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <label className="text-xs font-medium text-tx block mb-1.5">常勤先の年収（税込み）</label>
+        <div className="relative">
+          <input type="number" value={mainIncome} onChange={e => setMainIncome(e.target.value)}
+            placeholder="例: 6000000" className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors" />
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted">円</span>
+        </div>
+      </div>
+      <div>
+        <label className="text-xs font-medium text-tx block mb-1.5">バイト年収合計（税込み）</label>
+        <div className="relative">
+          <input type="number" value={baitoIncome} onChange={e => setBaitoIncome(e.target.value)}
+            placeholder="例: 2000000" className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors" />
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted">円</span>
+        </div>
+        <p className="text-[10px] text-muted mt-1">※ 当直バイト・外勤・スポットバイト等の合計</p>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="text-xs font-medium text-tx block mb-1.5">家族構成</label>
+          <select value={family} onChange={e => setFamily(e.target.value)}
+            className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors">
+            <option value="single">独身 / 共働き</option>
+            <option value="spouse">配偶者あり</option>
+            <option value="spouse_child">配偶者+子あり</option>
+          </select>
+        </div>
+        <div>
+          <label className="text-xs font-medium text-tx block mb-1.5">年齢区分</label>
+          <select value={age} onChange={e => setAge(e.target.value)}
+            className="w-full border border-br rounded-lg px-3 py-2.5 text-sm bg-s0 text-tx outline-none focus:border-ac/40 transition-colors">
+            <option value="under40">39歳以下</option>
+            <option value="over40">40歳以上</option>
+          </select>
+        </div>
+      </div>
+
+      {result && (
+        <div className="space-y-3">
+          {/* メイン結果: 追加納税額 */}
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+            <p className="text-xs text-red-600 mb-1">確定申告で追加で払う税金（概算）</p>
+            <p className="text-3xl font-bold text-red-600">¥{result.additionalTotal.toLocaleString()}</p>
+            <p className="text-[11px] text-red-500 mt-1">
+              所得税 ¥{result.additionalIncomeTax.toLocaleString()} + 住民税 ¥{result.additionalJuminTax.toLocaleString()}
+            </p>
+          </div>
+
+          {/* バイトの実質手取り */}
+          <div className="bg-acl border border-ac/15 rounded-xl p-4 text-center">
+            <p className="text-xs text-muted mb-1">バイト収入の実質手取り</p>
+            <p className="text-2xl font-bold text-ac">¥{result.baitoTedori.toLocaleString()}</p>
+            <p className="text-[11px] text-muted mt-1">
+              バイト{Number(baitoIncome).toLocaleString()}円 → 手取り率 <span className="font-bold text-ac">{result.baitoTedoriRate}%</span>
+            </p>
+          </div>
+
+          {/* 内訳 */}
+          <div className="bg-s0 border border-br rounded-xl p-4 space-y-2">
+            <p className="text-xs font-bold text-tx mb-2">内訳</p>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="bg-s1 rounded-lg p-2.5">
+                <p className="text-[10px] text-muted">合算年収</p>
+                <p className="font-bold text-tx">¥{result.total.toLocaleString()}</p>
+              </div>
+              <div className="bg-s1 rounded-lg p-2.5">
+                <p className="text-[10px] text-muted">社会保険料</p>
+                <p className="font-bold text-tx">¥{result.shakaihoken.toLocaleString()}</p>
+              </div>
+              <div className="bg-s1 rounded-lg p-2.5">
+                <p className="text-[10px] text-muted">常勤のみの税額</p>
+                <p className="font-bold text-tx">¥{(result.mainIncomeTax + result.mainJuminTax).toLocaleString()}</p>
+              </div>
+              <div className="bg-s1 rounded-lg p-2.5">
+                <p className="text-[10px] text-muted">合算後の税額</p>
+                <p className="font-bold text-tx">¥{(result.totalIncomeTax + result.totalJuminTax).toLocaleString()}</p>
+              </div>
+            </div>
+            <div className="mt-2 p-2 bg-amber-50 rounded-lg">
+              <p className="text-[10px] text-amber-700">
+                💡 バイト収入に対する限界税率: <span className="font-bold">{result.marginalRate}%</span>
+                {result.marginalRate >= 30 && '（高税率帯。ふるさと納税や経費計上で節税を検討）'}
+                {result.marginalRate < 30 && result.marginalRate >= 20 && '（中程度。iDeCo等も活用しましょう）'}
+                {result.marginalRate < 20 && '（低税率帯。効率よく稼げています）'}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
 const relatedArticles = [
   { href: '/blog/m02-isha-furusato-nozei', title: '医師・専攻医のふるさと納税ガイド', tag: 'ふるさと納税' },
   { href: '/blog/m07-senkoui-shisan-unyo', title: '内科専攻医の資産運用入門｜NISAとiDeCo', tag: 'NISA' },
@@ -295,7 +483,7 @@ const tools: { key: ToolKey; label: string; icon: string }[] = [
   { key: 'tedori', label: '手取り概算', icon: '💴' },
   { key: 'nisa', label: 'NISA運用', icon: '📈' },
   { key: 'creditcard', label: 'クレカ', icon: '💳' },
-  { key: 'baito', label: 'バイト会社', icon: '🏥' },
+  { key: 'baito', label: 'バイト税金', icon: '🏥' },
 ]
 
 // ── ランキングデータ ──
@@ -358,21 +546,22 @@ export default function MoneyPage() {
       </div>
 
       {/* Active Calculator */}
-      {(activeTool === 'furusato' || activeTool === 'tedori' || activeTool === 'nisa') && (
+      {(activeTool === 'furusato' || activeTool === 'tedori' || activeTool === 'nisa' || activeTool === 'baito') && (
         <div className="bg-s0 border border-br rounded-2xl p-5 md:p-6 mb-6">
           <h2 className="text-base font-bold text-tx mb-4">
             {tools.find(t => t.key === activeTool)?.icon}{' '}
-            {tools.find(t => t.key === activeTool)?.label}
+            {activeTool === 'baito' ? 'バイト税金シミュレーター' : tools.find(t => t.key === activeTool)?.label}
             <span className="text-xs font-normal text-muted ml-2">概算ツール</span>
           </h2>
           {activeTool === 'furusato' && <FurusatoCalc />}
           {activeTool === 'tedori' && <TedoriCalc />}
           {activeTool === 'nisa' && <NisaCalc />}
+          {activeTool === 'baito' && <BaitoTaxCalc />}
         </div>
       )}
 
       {/* Disclaimer（計算ツールタブのみ） */}
-      {(activeTool === 'furusato' || activeTool === 'tedori' || activeTool === 'nisa') && (
+      {(activeTool === 'furusato' || activeTool === 'tedori' || activeTool === 'nisa' || activeTool === 'baito') && (
         <div className="bg-wnl border border-wnb rounded-xl p-3 mb-6 text-[11px] text-wn leading-relaxed">
           ⚠️ 計算結果はあくまで概算・目安です。正確な金額は税理士・所轄税務署にご確認ください。
         </div>
