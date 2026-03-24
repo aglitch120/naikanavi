@@ -231,7 +231,6 @@ export default function RenalDoseAbxPage() {
                 <tr key={abx.id} className="hover:bg-s1/50">
                   <td className="px-2 py-2 text-tx sticky left-0 bg-bg z-10 min-w-[100px]">
                     {(() => {
-                      // 「アンピシリン（ABPC）」→ 略称: ABPC, 一般名: アンピシリン
                       const m = abx.name.match(/^(.+?)（([^）]+)）$/)
                       if (m) {
                         return (
