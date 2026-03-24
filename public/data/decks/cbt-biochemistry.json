@@ -185,5 +185,285 @@
       "生化学",
       "臓器間代謝"
     ]
+  },
+  {
+    "id": "cbt-bio-018",
+    "front": "解糖系の全体像と律速酵素を述べよ",
+    "back": "グルコース→ピルビン酸(10段階,細胞質)。ATP 2分子生成(基質レベルリン酸化)。律速酵素: ①ヘキソキナーゼ ②PFK-1(最重要:ATP阻害,AMP/F2,6BP活性化) ③ピルビン酸キナーゼ",
+    "source_code": "C-2-5)-(1)-①",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-019",
+    "front": "TCA回路の全体像とエネルギー産生を述べよ",
+    "back": "アセチルCoA+OAA→クエン酸→...→OAA(ミトコンドリアマトリックス)。1回転: 3NADH+1FADH₂+1GTP+2CO₂。律速: イソクエン酸DH(ADP活性化,ATP阻害)。完全酸化: 1グルコース→約30-32ATP",
+    "source_code": "C-2-5)-(1)-②",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-020",
+    "front": "電子伝達系と酸化的リン酸化を述べよ",
+    "back": "NADH→複合体I→CoQ→複合体III→CytC→複合体IV→O₂→H₂O。H⁺勾配(プロトン駆動力)→複合体V(ATP synthase)→ATP合成。シアン化物: 複合体IV阻害。2,4-DNP: 脱共役(熱産生↑ATP↓)",
+    "source_code": "C-2-5)-(1)-③",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-021",
+    "front": "糖新生の経路と調節を述べよ",
+    "back": "ピルビン酸→OAA(ピルビン酸カルボキシラーゼ)→PEP(PEPCK)→F1,6BP(F1,6BPase)→G6P(G6Pase)→グルコース。肝臓と腎で行われる。空腹時: グルカゴン→cAMP↑→糖新生↑。基質: 乳酸,アラニン,グリセロール",
+    "source_code": "C-2-5)-(1)-④",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-022",
+    "front": "グリコーゲン代謝(合成と分解)を述べよ",
+    "back": "合成: グリコーゲンシンターゼ(インスリン→脱リン酸化→活性化)。分解: グリコーゲンホスホリラーゼ(グルカゴン/アドレナリン→cAMP→PKA→リン酸化→活性化)。肝臓: 血糖維持。筋: エネルギー供給",
+    "source_code": "C-2-5)-(1)-⑤",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-023",
+    "front": "脂肪酸のβ酸化を述べよ",
+    "back": "活性化(アシルCoA)→ミトコンドリア移行(カルニチンシャトル: CPT-I/II)→β酸化(4段階反復: FAD→NADH→アセチルCoA切り出し)。パルミチン酸(C16): 7回のβ酸化→8アセチルCoA→106ATP(net)",
+    "source_code": "C-2-5)-(2)-①",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-024",
+    "front": "脂肪酸合成の経路を述べよ",
+    "back": "アセチルCoA→マロニルCoA(ACCが律速: インスリン活性化,グルカゴン抑制)→脂肪酸シンターゼ(細胞質,NADPHを使用)→パルミチン酸(C16)。NADPH源: ペントースリン酸経路+リンゴ酸酵素",
+    "source_code": "C-2-5)-(2)-②",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-025",
+    "front": "コレステロール合成と脂質異常症を述べよ",
+    "back": "アセチルCoA→HMG-CoA→メバロン酸(HMG-CoA還元酵素: 律速,スタチンの標的)→コレステロール(肝臓)。LDL: コレステロール運搬(LDL受容体で取込み)。HDL: 逆転送。FH: LDL受容体異常→LDL↑↑",
+    "source_code": "C-2-5)-(2)-③",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-026",
+    "front": "アミノ酸代謝(アミノ基転移・尿素回路)を述べよ",
+    "back": "アミノ基転移(トランスアミナーゼ: ALT/AST): アミノ酸→α-ケト酸+グルタミン酸。グルタミン酸→NH₃(グルタミン酸DH)→尿素回路(肝ミトコンドリア+細胞質): 2NH₃+CO₂→尿素。欠損→高NH₃血症",
+    "source_code": "C-2-5)-(3)-①",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-027",
+    "front": "ヘム合成と分解(ビリルビン代謝)を述べよ",
+    "back": "合成: グリシン+スクシニルCoA→ALA(ALA synthase: 律速,ヘムで抑制)→ポルフォビリノーゲン→ヘム。分解: ヘム→ビリベルジン→間接Bil(非抱合,脂溶性)→肝でグルクロン酸抱合→直接Bil→胆汁排泄→腸内細菌→ウロビリノーゲン",
+    "source_code": "C-2-5)-(3)-②",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-028",
+    "front": "核酸代謝(プリン・ピリミジンの合成と分解)を述べよ",
+    "back": "プリン: IMP→AMP/GMP(de novo)。サルベージ経路: HGPRT(欠損→Lesch-Nyhan症候群: 高尿酸+自傷)。分解: プリン→キサンチン(XO)→尿酸(痛風)。アロプリノール/フェブキソスタット: XO阻害",
+    "source_code": "C-2-5)-(4)-①",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-029",
+    "front": "ペントースリン酸経路の意義を述べよ",
+    "back": "酸化相: G6P→6PG→リブロース5P+2NADPH+CO₂。G6PD(律速)。NADPH: 脂肪酸合成+還元型グルタチオン維持(酸化ストレス防御)。非酸化相: リボース5P(核酸合成)。G6PD欠損→溶血性貧血(酸化ストレス)",
+    "source_code": "C-2-5)-(1)-⑥",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-030",
+    "front": "ビタミンの種類と欠乏症を述べよ",
+    "back": "水溶性: B1(脚気/Wernicke),B2(口角炎),B3(ペラグラ),B6(末梢神経障害),B12(巨赤芽球性貧血/亜急性連合性脊髄変性),葉酸(巨赤芽球性貧血/神経管閉鎖障害),C(壊血病)。脂溶性: A(夜盲),D(くる病),E(溶血),K(出血)",
+    "source_code": "C-2-5)-(5)-①",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-031",
+    "front": "DNAの複製機構を述べよ",
+    "back": "半保存的複製。ヘリカーゼ→一本鎖結合蛋白→プライマーゼ(RNAプライマー)→DNAポリメラーゼIII(5'→3'合成,3'→5'校正)→リーディング鎖(連続)+ラギング鎖(岡崎フラグメント)→リガーゼで連結。テロメラーゼ: 末端複製問題",
+    "source_code": "C-2-5)-(4)-②",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-032",
+    "front": "転写と翻訳の概要を述べよ",
+    "back": "転写: DNA→mRNA(RNAポリメラーゼII)。プロモーター(TATA box)+エンハンサー。スプライシング(イントロン除去)。翻訳: mRNA→蛋白(リボソーム)。コドン(3塩基)→アミノ酸(遺伝暗号表)。開始: AUG(Met)。終止: UAA/UAG/UGA",
+    "source_code": "C-2-5)-(4)-③",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-033",
+    "front": "酵素の基本的性質(Km・Vmax・阻害)を述べよ",
+    "back": "Michaelis-Menten式: V=Vmax[S]/(Km+[S])。Km: 親和性の逆指標(低Km=高親和性)。競合阻害: Km↑,Vmax不変。非競合阻害: Km不変,Vmax↓。アロステリック調節: シグモイド型",
+    "source_code": "C-2-5)-(6)-①",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-034",
+    "front": "蛋白質の構造(一次〜四次)と変性を述べよ",
+    "back": "一次: アミノ酸配列。二次: αヘリックス,βシート(水素結合)。三次: 疎水結合/S-S結合等→立体構造。四次: 複数サブユニットの会合(Hb:α₂β₂)。変性: 高温/pH/有機溶媒→立体構造崩壊→活性喪失",
+    "source_code": "C-2-5)-(6)-②",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-035",
+    "front": "シグナル伝達の主要経路を述べよ",
+    "back": "Gタンパク質共役型: Gs→AC→cAMP↑→PKA。Gq→PLC→IP₃(Ca²⁺放出)+DAG(PKC)。受容体チロシンキナーゼ: インスリン→Ras-MAPK(増殖)+PI3K-Akt(代謝)。JAK-STAT: サイトカイン。核内受容体: ステロイドホルモン/甲状腺ホルモン",
+    "source_code": "C-2-5)-(6)-③",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-036",
+    "front": "アミノ酸の分類(必須/非必須,糖原性/ケト原性)を述べよ",
+    "back": "必須アミノ酸9種: Val,Leu,Ile,Thr,Met,Phe,Trp,Lys,His(フロバイスヒトリメ)。糖原性: Ala,Gly等→ピルビン酸/TCA中間体→糖新生。ケト原性: Leu,Lys→アセチルCoA。両方: Ile,Phe,Trp,Tyr",
+    "source_code": "C-2-5)-(3)-③",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-037",
+    "front": "先天性代謝異常の代表例を述べよ",
+    "back": "PKU: Phe水酸化酵素欠損→Phe↑→知的障害(低Phe食で予防)。MSUD: 分岐鎖ケト酸DH欠損→Leu/Ile/Val↑。ガラクトース血症: Gal-1-PUT欠損→白内障+肝障害。糖原病I型(von Gierke): G6Pase欠損→低血糖+肝腫大",
+    "source_code": "C-2-5)-(3)-④",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-038",
+    "front": "脂質の種類と機能を述べよ",
+    "back": "中性脂肪(TG): エネルギー貯蔵。リン脂質: 細胞膜構成(二重層)。コレステロール: 膜流動性調節+ステロイドホルモン/胆汁酸前駆体。スフィンゴ脂質: ミエリン鞘。エイコサノイド(PG/LT/TX): アラキドン酸由来→炎症メディエーター",
+    "source_code": "C-2-5)-(2)-④",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-039",
+    "front": "リポ蛋白の種類と代謝を述べよ",
+    "back": "カイロミクロン: 食事性TG輸送(腸→末梢)。VLDL: 内因性TG輸送(肝→末梢)。LDL: コレステロール運搬(動脈硬化)。HDL: 逆転送(末梢→肝)。リポ蛋白リパーゼ(LPL): TG分解。CETP: HDL↔LDL間のCE交換",
+    "source_code": "C-2-5)-(2)-⑤",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-040",
+    "front": "PCR法の原理と応用を述べよ",
+    "back": "変性(95℃: DNA二本鎖→一本鎖)→アニーリング(55-65℃: プライマー結合)→伸長(72℃: DNAポリメラーゼ[Taq]で合成)を反復→指数関数的増幅。応用: 感染症診断(TB-PCR),遺伝子検査,法医学",
+    "source_code": "C-2-5)-(4)-④",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-041",
+    "front": "エピジェネティクス(DNAメチル化・ヒストン修飾)を述べよ",
+    "back": "DNAメチル化: CpG島のメチル化→遺伝子サイレンシング(転写抑制)。ヒストン修飾: アセチル化(活性化),メチル化(活性化or抑制)。X染色体不活化。ゲノムインプリンティング: 親由来の遺伝子発現差",
+    "source_code": "C-2-5)-(4)-⑤",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-042",
+    "front": "ケトン体の合成と利用を述べよ",
+    "back": "肝ミトコンドリア: アセチルCoA→アセト酢酸/β-ヒドロキシ酪酸/アセトン(HMG-CoA synthase)。絶食/糖尿病(インスリン不足)→脂肪酸β酸化↑→アセチルCoA過剰→ケトン体↑→代謝性アシドーシス(DKA)。脳はケトン体を利用可能",
+    "source_code": "C-2-5)-(1)-⑦",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-043",
+    "front": "鉄代謝(吸収・輸送・貯蔵)を述べよ",
+    "back": "吸収: 十二指腸(Fe²⁺,DMT1)+ヘム鉄。フェロポルチンで血中へ。輸送: トランスフェリン(Fe³⁺)。貯蔵: フェリチン(肝/脾/骨髄)。ヘプシジン: 腸管Fe吸収↓+マクロファージFe放出↓(炎症時↑→ACD)",
+    "source_code": "C-2-5)-(5)-②",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-044",
+    "front": "クエン酸回路と脂肪酸合成の連携を述べよ",
+    "back": "クエン酸回路のクエン酸→ミトコンドリア外へ(クエン酸シャトル)→ATPクエン酸リアーゼ→アセチルCoA(脂肪酸合成の基質)+OAA。マロニルCoA(ACCの産物)はCPT-Iを阻害→β酸化抑制。つまり合成↑の時は分解↓",
+    "source_code": "C-2-5)-(2)-⑥",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
+  },
+  {
+    "id": "cbt-bio-045",
+    "front": "遺伝子変異の種類とDNA修復機構を述べよ",
+    "back": "変異: 点変異(ミスセンス/ナンセンス/サイレント), フレームシフト(挿入/欠失), トリヌクレオチドリピート(Huntington等)。修復: ミスマッチ修復(MLH1/MSH2: Lynch症候群), ヌクレオチド除去修復(XP), 相同組換え修復(BRCA1/2)",
+    "source_code": "C-2-5)-(4)-⑥",
+    "deck": "cbt-biochemistry",
+    "tags": [
+      "C"
+    ]
   }
 ]
