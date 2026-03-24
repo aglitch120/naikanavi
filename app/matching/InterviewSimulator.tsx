@@ -339,9 +339,9 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
   const isUrgent = timeLeft <= 60
 
   return (
-    <div className="flex flex-col" style={{ height: 'calc(100dvh - 160px)', minHeight: 400 }}>
-      {/* ヘッダー（sticky） */}
-      <div className="flex items-center justify-between px-4 py-3 rounded-t-2xl sticky top-0 z-10" style={{ background: MCL }}>
+    <div className="fixed inset-0 z-50 flex flex-col" style={{ background: '#FEFEFC' }}>
+      {/* ヘッダー（固定） */}
+      <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" style={{ background: MCL }}>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: MC, color: '#fff' }}>
             {settings.hospitalType === 'university' ? '教' : '医'}
@@ -367,7 +367,7 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
       </div>
 
       {/* 患者情報警告バナー（常時表示・dismissなし） */}
-      <div className="px-3 py-1.5 text-center text-[10px] font-medium" style={{ background: '#FEF3CD', color: '#856404' }}>
+      <div className="px-3 py-1.5 text-center text-[10px] font-medium flex-shrink-0" style={{ background: '#FEF3CD', color: '#856404' }}>
         患者個人情報は入力しないでください
       </div>
 
@@ -416,8 +416,8 @@ function ChatScreen({ settings, messages, input, setInput, onSend, isLoading, ti
         )}
       </div>
 
-      {/* 入力欄 */}
-      <div className="px-4 py-3" style={{ background: '#FEFEFC' }}>
+      {/* 入力欄（画面下部固定） */}
+      <div className="px-4 py-3 flex-shrink-0" style={{ background: '#FEFEFC', borderTop: '1px solid #E8E5DF', paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}>
         {/* TTS + マイクコントロール */}
         <div className="flex items-center justify-between mb-2">
           <button onClick={() => setTtsEnabled(!ttsEnabled)}
