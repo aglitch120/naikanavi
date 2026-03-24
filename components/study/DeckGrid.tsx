@@ -20,7 +20,7 @@ function DeckCard({ item, onClick }: { item: DeckItem; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className="flex-shrink-0 w-[128px] bg-s0 border border-br rounded-2xl overflow-hidden text-left transition-all hover:border-ac/40 active:scale-[0.97]"
+      className="flex-shrink-0 w-[128px] md:w-auto bg-s0 border border-br rounded-2xl overflow-hidden text-left transition-all hover:border-ac/40 active:scale-[0.97]"
     >
       <div
         className="h-11 flex items-center justify-center text-xl"
@@ -105,7 +105,7 @@ function HScrollList({ items, onSelect }: { items: DeckItem[]; onSelect: (id: st
   )
 }
 
-// ── フォルダ行（タップ展開 → 中も横スクロール） ──
+// ── フォルダ行（スマホ: toggle、PC: 常時展開グリッド） ──
 function FolderRow({
   folder, items, isOpen, onToggle, onSelectDeck,
 }: {
@@ -117,11 +117,12 @@ function FolderRow({
 
   return (
     <div>
+      {/* フォルダヘッダー（スマホ: toggle、PC: ラベルのみ） */}
       <button
         onClick={onToggle}
-        className={`w-full rounded-xl border px-3.5 py-2.5 text-left transition-all ${
+        className={`w-full rounded-xl border px-3.5 py-2.5 text-left transition-all md:cursor-default ${
           isOpen ? 'bg-acl border-ac/30' : 'bg-s0 border-br hover:border-ac/30'
-        }`}
+        } md:bg-transparent md:border-0 md:px-0 md:py-1`}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -135,15 +136,22 @@ function FolderRow({
             {totalDue > 0 && (
               <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-acl text-ac">{totalDue}</span>
             )}
-            <span className="text-muted text-xs transition-transform duration-200" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</span>
+            <span className="text-muted text-xs transition-transform duration-200 md:hidden" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</span>
           </div>
         </div>
       </button>
+      {/* スマホ: toggle開閉の横スクロール */}
       {isOpen && (
-        <div className="mt-2">
+        <div className="mt-2 md:hidden">
           <HScrollList items={items} onSelect={onSelectDeck} />
         </div>
       )}
+      {/* PC: 常時展開のグリッド */}
+      <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 mt-2">
+        {items.map(item => (
+          <DeckCard key={item.id} item={item} onClick={() => onSelectDeck(item.id)} />
+        ))}
+      </div>
     </div>
   )
 }
@@ -223,8 +231,18 @@ export default function DeckGrid({
           })}
         </div>
       ) : (
-        /* フラット: 横スクロール */
-        <HScrollList items={items} onSelect={onSelect} />
+        <>
+          {/* スマホ: 横スクロール */}
+          <div className="md:hidden">
+            <HScrollList items={items} onSelect={onSelect} />
+          </div>
+          {/* PC: グリッド */}
+          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5">
+            {items.map(item => (
+              <DeckCard key={item.id} item={item} onClick={() => onSelect(item.id)} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   )

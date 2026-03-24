@@ -525,7 +525,7 @@ export default function StudyApp() {
   if (screen === 'home') {
     return (
       <>
-      <div className="px-4 py-8 max-w-lg mx-auto">
+      <div className="px-4 py-8 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
         <AppHeader
           title="iwor Study"
           subtitle="医学フラッシュカード — 忘却曲線に基づく科学的復習"
