@@ -863,11 +863,16 @@ ${s.useProfile && profileCtx ? `\n■ 受験者のプロフィール（手元の
         }),
       })
       const data = await res.json()
-      if (data.feedback) {
+      if (data.error === 'rate_limited') {
+        setMessages([{ role: 'interviewer', content: `（${data.message || '本日の利用上限に達しました。明日またお試しください。'}）`, timestamp: Date.now() }])
+        setTimeLeft(0)
+      } else if (data.feedback) {
         setMessages([{ role: 'interviewer', content: data.feedback, timestamp: Date.now() }])
+      } else {
+        setMessages([{ role: 'interviewer', content: 'それでは面接を始めます。まず、お名前と受験番号をお願いいたします。', timestamp: Date.now() }])
       }
     } catch {
-      setMessages([{ role: 'interviewer', content: 'それでは面接を始めます。まず、お名前と受験番号をお願いいたします。', timestamp: Date.now() }])
+      setMessages([{ role: 'interviewer', content: '接続エラーが発生しました。ページを再読み込みしてお試しください。', timestamp: Date.now() }])
     }
     setIsLoading(false)
   }, [profile, buildSystemPrompt])
@@ -905,15 +910,19 @@ ${s.useProfile && profileCtx ? `\n■ 受験者のプロフィール（手元の
       if (data.error === 'rate_limited') {
         setMessages(prev => [...prev, {
           role: 'interviewer',
-          content: '（無料体験の上限に達しました。PROプランで無制限に練習できます）',
+          content: `（${data.message || '本日の利用上限に達しました。PROプランで1日20回まで練習できます。'}）`,
           timestamp: Date.now(),
+        }])
+      } else if (data.error) {
+        setMessages(prev => [...prev, {
+          role: 'interviewer', content: '（AIの応答に問題が発生しました。もう一度お試しください）', timestamp: Date.now(),
         }])
       } else if (data.feedback) {
         setMessages(prev => [...prev, { role: 'interviewer', content: data.feedback, timestamp: Date.now() }])
       }
     } catch {
       setMessages(prev => [...prev, {
-        role: 'interviewer', content: 'なるほど、わかりました。では次の質問です。', timestamp: Date.now(),
+        role: 'interviewer', content: '（接続エラーが発生しました。ページを再読み込みしてください）', timestamp: Date.now(),
       }])
     }
     setIsLoading(false)
