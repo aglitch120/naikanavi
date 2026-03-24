@@ -106,29 +106,11 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
         </div>
       )}
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3" aria-label="アプリ一覧">
-        {sortedApps.map(app => {
-          const isDisabled = app.badge === '準備中'
-          const highlighted = isHighlighted(app.href)
-          const isFeatured = app.featured === true
-
-          const cls = [
-            'group relative flex rounded-2xl border transition-all',
-            isFeatured
-              ? 'col-span-2 flex-row items-center gap-4 p-4 md:p-5'
-              : 'flex-col items-center gap-2 p-4 md:p-5',
-            isFeatured
-              ? 'bg-gradient-to-r from-[#1B4F3A]/[0.06] to-[#1B4F3A]/[0.02] border-[#1B4F3A]/20 hover:border-[#1B4F3A]/40 hover:shadow-lg'
-              : isDisabled
-                ? 'bg-s0 border-br/60 opacity-60 cursor-default'
-                : highlighted
-                  ? 'bg-s0 border-ac shadow-md ring-2 ring-ac/20 scale-[1.03]'
-                  : 'bg-s0 border-br hover:border-ac/30 hover:shadow-md',
-          ].join(' ')
-
-          const inner = isFeatured ? (
+      {/* Featured apps (臨床ツール + Study) */}
+      <div className="grid grid-cols-2 gap-3 mb-3" aria-label="メインアプリ">
+        {sortedApps.filter(a => a.featured).map(app => {
+          const inner = (
             <>
-              {/* Featured: 横並びレイアウト */}
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{ background: '#1B4F3A', color: '#fff' }}>
                 {app.icon}
@@ -146,7 +128,32 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </>
-          ) : (
+          )
+          return (
+            <Link key={app.href} href={app.href}
+              className="group flex flex-row items-center gap-4 rounded-2xl border p-4 md:p-5 transition-all bg-gradient-to-r from-[#1B4F3A]/[0.06] to-[#1B4F3A]/[0.02] border-[#1B4F3A]/20 hover:border-[#1B4F3A]/40 hover:shadow-lg"
+              aria-label={app.label}>
+              {inner}
+            </Link>
+          )
+        })}
+      </div>
+
+      {/* Other apps (4列グリッド) */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3" aria-label="アプリ一覧">
+        {sortedApps.filter(a => !a.featured).map(app => {
+          const isDisabled = app.badge === '準備中'
+          const highlighted = isHighlighted(app.href)
+          const cls = [
+            'group relative flex flex-col items-center gap-2 rounded-2xl border bg-s0 p-4 md:p-5 transition-all',
+            isDisabled
+              ? 'border-br/60 opacity-60 cursor-default'
+              : highlighted
+                ? 'border-ac shadow-md ring-2 ring-ac/20 scale-[1.03]'
+                : 'border-br hover:border-ac/30 hover:shadow-md',
+          ].join(' ')
+
+          const inner = (
             <>
               {/* Badge */}
               <span className={`absolute top-2 right-2 text-[9px] font-bold tracking-wide px-1.5 py-0.5 rounded-md ${
