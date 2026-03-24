@@ -603,18 +603,83 @@ function ReportScreen({ report, isPro, onShowProModal, onRestart }: {
           </div>
         </>
       ) : (
-        /* FREEユーザー向けPROゲート */
+        /* FREEユーザー向けPROゲート — リッチなフェイクプレビュー */
         <div className="relative">
-          <div className="space-y-4 opacity-30 blur-sm pointer-events-none select-none">
-            <div className="rounded-2xl p-5 h-24" style={{ background: '#F0FAF5' }} />
-            <div className="rounded-2xl p-5 h-24" style={{ background: '#FFF5F5' }} />
-            <div className="rounded-2xl p-5 h-32" style={{ background: '#FEFEFC' }} />
+          <div className="space-y-4 blur-[6px] pointer-events-none select-none" aria-hidden="true">
+            {/* 良かった点（フェイク） */}
+            <div className="rounded-2xl p-5" style={{ background: '#F0FAF5', border: '1px solid #C8E6D8' }}>
+              <p className="text-sm font-bold mb-3" style={{ color: '#2D6A4F' }}>良かった点</p>
+              <ul className="space-y-2">
+                <li className="flex gap-2 text-sm" style={{ color: '#1A1917' }}>
+                  <span style={{ color: '#2D6A4F' }}>+</span> 志望動機に具体的な病院見学のエピソードを盛り込めている
+                </li>
+                <li className="flex gap-2 text-sm" style={{ color: '#1A1917' }}>
+                  <span style={{ color: '#2D6A4F' }}>+</span> 質問に対して端的かつ論理的に回答できている
+                </li>
+                <li className="flex gap-2 text-sm" style={{ color: '#1A1917' }}>
+                  <span style={{ color: '#2D6A4F' }}>+</span> 将来のキャリアプランが明確で一貫性がある
+                </li>
+              </ul>
+            </div>
+
+            {/* 改善すべき点（フェイク） */}
+            <div className="rounded-2xl p-5" style={{ background: '#FFF5F5', border: '1px solid #E8C8C8' }}>
+              <p className="text-sm font-bold mb-3" style={{ color: '#C53030' }}>改善すべき点</p>
+              <ul className="space-y-2">
+                <li className="flex gap-2 text-sm" style={{ color: '#1A1917' }}>
+                  <span style={{ color: '#C53030' }}>!</span> 回答がやや短い。具体的なエピソードを追加しましょう
+                </li>
+                <li className="flex gap-2 text-sm" style={{ color: '#1A1917' }}>
+                  <span style={{ color: '#C53030' }}>!</span> 深堀り質問への準備が不足しています
+                </li>
+              </ul>
+            </div>
+
+            {/* 質問別フィードバック（フェイク） */}
+            <div className="rounded-2xl p-5" style={{ background: '#FEFEFC', border: '1px solid #E8E5DF' }}>
+              <p className="text-sm font-bold mb-3" style={{ color: '#1A1917' }}>質問別フィードバック</p>
+              <div className="space-y-3">
+                <div className="flex gap-3 text-xs">
+                  <div className="flex-shrink-0 text-sm">★★★★☆</div>
+                  <div>
+                    <p className="font-medium" style={{ color: '#6B6760' }}>志望動機を教えてください</p>
+                    <p style={{ color: '#1A1917' }}>病院の特色を踏まえた回答ができています。具体例をもう一つ加えると完璧です。</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 text-xs">
+                  <div className="flex-shrink-0 text-sm">★★★☆☆</div>
+                  <div>
+                    <p className="font-medium" style={{ color: '#6B6760' }}>チーム医療で大切にしていることは？</p>
+                    <p style={{ color: '#1A1917' }}>抽象的な表現が多いため、実際の経験に基づく回答が望ましいです。</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 text-xs">
+                  <div className="flex-shrink-0 text-sm">★★★★★</div>
+                  <div>
+                    <p className="font-medium" style={{ color: '#6B6760' }}>医師を目指したきっかけは？</p>
+                    <p style={{ color: '#1A1917' }}>個人的な体験を交えた説得力のある回答でした。非常に好印象です。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 次回のアドバイス（フェイク） */}
+            <div className="rounded-2xl p-5" style={{ background: '#F8F5FF', border: '1px solid #D8D0E8' }}>
+              <p className="text-sm font-bold mb-2" style={{ color: '#6B46C1' }}>次回のアドバイス</p>
+              <p className="text-sm leading-relaxed" style={{ color: '#1A1917' }}>病院見学で感じたことを3つのエピソードにまとめておきましょう。深堀り質問への準備として「なぜ？」を3回繰り返す練習が効果的です。</p>
+            </div>
           </div>
-          <div className="absolute inset-0 flex items-center justify-center">
+
+          {/* PROアンロックCTA */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+            <div className="text-center px-6">
+              <p className="text-lg font-bold mb-1" style={{ color: '#1A1917' }}>詳細レポートをアンロック</p>
+              <p className="text-xs" style={{ color: '#6B6760' }}>質問別の評価・改善点・次回のアドバイスを確認</p>
+            </div>
             <button onClick={onShowProModal}
-              className="px-6 py-4 rounded-2xl text-sm font-bold shadow-lg hover:opacity-90 transition-all"
+              className="px-8 py-4 rounded-2xl text-sm font-bold shadow-lg hover:opacity-90 transition-all"
               style={{ background: MC, color: '#fff' }}>
-              PRO で詳細レポートを見る
+              🔓 PRO で詳細レポートを見る
             </button>
           </div>
         </div>
