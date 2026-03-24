@@ -596,7 +596,7 @@ export default function ShiftPage() {
 
   // ─── Step: Setup ───
   if (step === 'setup') return (
-    <main className="max-w-lg mx-auto px-4 py-8">
+    <main className="max-w-4xl mx-auto px-4 py-8">
       <Breadcrumb />
       <h1 className="text-2xl font-bold text-tx mb-1">当直シフト作成</h1>
       <p className="text-sm text-muted mb-2">ブラウザ完結・登録不要・完全無料</p>
@@ -681,7 +681,7 @@ export default function ShiftPage() {
 
   // ─── Step: Config (詳細設定) ───
   if (step === 'config') return (
-    <main className="max-w-lg mx-auto px-4 py-8">
+    <main className="max-w-4xl mx-auto px-4 py-8">
       <Breadcrumb />
       <h1 className="text-2xl font-bold text-tx mb-1">当直シフト作成</h1>
       <p className="text-sm text-muted mb-6">{groupName} — {year}年{month}月</p>
@@ -840,7 +840,7 @@ export default function ShiftPage() {
 
   // ─── Step: Doctors ───
   if (step === 'doctors') return (
-    <main className="max-w-lg mx-auto px-4 py-8">
+    <main className="max-w-4xl mx-auto px-4 py-8">
       <Breadcrumb />
       <h1 className="text-2xl font-bold text-tx mb-1">当直シフト作成</h1>
       <p className="text-sm text-muted mb-6">{groupName} — {year}年{month}月</p>
@@ -962,8 +962,20 @@ export default function ShiftPage() {
             {/* 個別アンケートURL表示 */}
             {surveyUrls.length > 0 && (
               <div className="bg-acl border border-ac/20 rounded-xl p-3 space-y-2">
-                <p className="text-[10px] font-bold text-ac">個別URLを各医師に送信してください</p>
-                <p className="text-[9px] text-muted">各URLは本人専用です。回答は1回限り。期限: 7日後</p>
+                <p className="text-sm font-bold text-ac mb-2">URLを配布しました。次のステップ:</p>
+                <div className="space-y-1.5 mb-3">
+                  {[
+                    { step: '1', text: '下のURLを各医師にLINE・メール等で送信', done: false },
+                    { step: '2', text: '全員の回答を待つ（期限: 7日後）', done: false },
+                    { step: '3', text: 'このページに戻り「回答を取得」ボタンを押す', done: false },
+                  ].map(s => (
+                    <div key={s.step} className="flex items-start gap-2">
+                      <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-white" style={{ background: '#1B4F3A' }}>{s.step}</span>
+                      <span className="text-[11px] text-tx">{s.text}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[9px] text-muted">各URLは本人専用です。回答は1回限り。</p>
                 <div className="space-y-1.5">
                   {surveyUrls.map(u => (
                     <div key={u.doctorId} className="flex items-center gap-2 bg-white rounded-lg px-2 py-1.5 border border-br">
@@ -997,6 +1009,10 @@ export default function ShiftPage() {
                     </button>
                   </div>
                   <p className="text-[8px] text-muted mt-0.5">⚠️ このURLをブックマークしておけば、ブラウザキャッシュクリアしても復帰できます</p>
+                </div>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 mt-2">
+                  <p className="text-[11px] font-bold text-amber-800">全員の回答が揃ったら、このページに戻ってきてください</p>
+                  <p className="text-[9px] text-amber-700 mt-0.5">上の管理者用復帰URLをブックマークしておくと安心です</p>
                 </div>
                 <button onClick={async () => {
                   setSurveyLoading(true)
