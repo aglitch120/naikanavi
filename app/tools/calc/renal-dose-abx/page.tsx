@@ -215,7 +215,7 @@ export default function RenalDoseAbxPage() {
           <table className="w-full text-xs min-w-[500px]">
             <thead className="bg-s1">
               <tr>
-                <th className="text-left px-2 py-2 text-tx font-medium sticky left-0 bg-s1 z-10 w-[90px] max-w-[90px]">薬剤</th>
+                <th className="text-left px-2 py-2 text-tx font-medium sticky left-0 bg-s1 z-10 min-w-[100px]">薬剤</th>
                 {egfrRanges.map((r, i) => (
                   <th
                     key={r.label}
@@ -229,9 +229,21 @@ export default function RenalDoseAbxPage() {
             <tbody className="divide-y divide-br">
               {filteredAbx.map(abx => (
                 <tr key={abx.id} className="hover:bg-s1/50">
-                  <td className="px-2 py-2 text-tx sticky left-0 bg-bg z-10 w-[90px] max-w-[90px]">
-                    <div className="font-medium text-xs leading-tight truncate">{abx.name}</div>
-                    {abx.note && <div className="text-xs text-wn mt-0.5">⚠ {abx.note}</div>}
+                  <td className="px-2 py-2 text-tx sticky left-0 bg-bg z-10 min-w-[100px]">
+                    {(() => {
+                      // 「アンピシリン（ABPC）」→ 略称: ABPC, 一般名: アンピシリン
+                      const m = abx.name.match(/^(.+?)（([^）]+)）$/)
+                      if (m) {
+                        return (
+                          <>
+                            <div className="font-bold text-[11px] leading-tight" style={{ color: '#1B4F3A' }}>{m[2]}</div>
+                            <div className="text-[10px] text-muted leading-tight">{m[1]}</div>
+                          </>
+                        )
+                      }
+                      return <div className="font-medium text-[11px] leading-tight">{abx.name}</div>
+                    })()}
+                    {abx.note && <div className="text-[10px] text-wn mt-0.5 leading-tight">⚠ {abx.note}</div>}
                   </td>
                   {abx.doses.map((dose, i) => (
                     <td
