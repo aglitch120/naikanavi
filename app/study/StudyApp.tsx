@@ -10,7 +10,7 @@ import {
   getDueCards, loadAllCardData, saveAllCardData,
 } from './fsrs'
 import {
-  Deck, loadAllDecks, createCustomDeck, updateCustomDeck, deleteCustomDeck,
+  Deck, loadAllDecks, loadCbtDecks, createCustomDeck, updateCustomDeck, deleteCustomDeck,
   addCardToDeck, updateCardInDeck, deleteCardFromDeck, getDeckCards, getDeckTags,
   importDeckWithCards,
 } from './decks'
@@ -234,6 +234,10 @@ export default function StudyApp() {
     setDayStats(getTodayStats())
     setCardDataMap(loadAllCardData())
     setDecks(loadAllDecks())
+    // CBTデッキを非同期で追加ロード
+    loadCbtDecks().then(cbtDecks => {
+      if (cbtDecks.length > 0) setDecks(prev => [...prev, ...cbtDecks])
+    })
     setStreak(getStreak())
     setExamData(loadExam())
     setStreakPromoShown(localStorage.getItem('streak_promo_shown') === 'true')

@@ -436,7 +436,63 @@ function saveCustomCards(deckId: string, cards: FlashCard[]) {
 
 // ── Public API ──
 
-/** 全デッキ（デフォルト + カスタム）を返す */
+// ── CBTデッキ（JSON from public/data/decks/） ──
+
+const CBT_DECK_META: { id: string; name: string; emoji: string; file: string }[] = [
+  { id: 'cbt-professional', name: 'プロフェッショナリズム', emoji: '🩺', file: 'cbt-professional.json' },
+  { id: 'cbt-statistics-ebm', name: '統計・EBM', emoji: '📈', file: 'cbt-statistics-ebm.json' },
+  { id: 'cbt-epidemiology', name: '疫学・予防医学', emoji: '🔬', file: 'cbt-epidemiology.json' },
+  { id: 'cbt-health-system', name: '医療制度・法規', emoji: '⚖️', file: 'cbt-health-system.json' },
+  { id: 'cbt-cell-genetics', name: '細胞・遺伝学', emoji: '🧬', file: 'cbt-cell-genetics.json' },
+  { id: 'cbt-histology-embryology', name: '組織・発生学', emoji: '🔍', file: 'cbt-histology-embryology.json' },
+  { id: 'cbt-physiology', name: '生理学', emoji: '⚡', file: 'cbt-physiology.json' },
+  { id: 'cbt-biochemistry', name: '生化学', emoji: '🧪', file: 'cbt-biochemistry.json' },
+  { id: 'cbt-microbiology', name: '微生物学', emoji: '🦠', file: 'cbt-microbiology.json' },
+  { id: 'cbt-immunology', name: '免疫学', emoji: '🛡️', file: 'cbt-immunology.json' },
+  { id: 'cbt-pharmacology-pathology', name: '薬理・病理総論', emoji: '💊', file: 'cbt-pharmacology-pathology.json' },
+  { id: 'cbt-behavioral-science', name: '行動科学', emoji: '🧠', file: 'cbt-behavioral-science.json' },
+  { id: 'cbt-clinical-core', name: '臨床医学', emoji: '🏥', file: 'cbt-clinical-core.json' },
+  { id: 'cbt-systemic-disease', name: '全身性疾患', emoji: '🫀', file: 'cbt-systemic-disease.json' },
+  { id: 'cbt-clinical-reasoning', name: '臨床推論', emoji: '🎯', file: 'cbt-clinical-reasoning.json' },
+]
+
+let cbtDecksCache: Deck[] | null = null
+
+/** CBTデッキをpublic/data/decks/から非同期ロード */
+export async function loadCbtDecks(): Promise<Deck[]> {
+  if (cbtDecksCache) return cbtDecksCache
+  const decks: Deck[] = []
+  for (const meta of CBT_DECK_META) {
+    try {
+      const res = await fetch(`/data/decks/${meta.file}`)
+      if (!res.ok) continue
+      const rawCards = await res.json()
+      const cards: FlashCard[] = (Array.isArray(rawCards) ? rawCards : []).map((c: any) => ({
+        id: c.id,
+        front: c.front,
+        back: c.back,
+        tag: (c.tags && c.tags[0]) || c.deck || '',
+        explanation: c.explanation || '',
+        source: c.source_code || '',
+      }))
+      decks.push({
+        id: meta.id,
+        name: meta.name,
+        emoji: meta.emoji,
+        description: `CBT出題基準準拠 ${cards.length}問`,
+        cards,
+        tags: Array.from(new Set(cards.map(c => c.tag).filter(Boolean))),
+        isDefault: true,
+        createdAt: '2026-03-23T00:00:00Z',
+        updatedAt: '2026-03-23T00:00:00Z',
+      })
+    } catch {}
+  }
+  cbtDecksCache = decks
+  return decks
+}
+
+/** 全デッキ（デフォルト + カスタム）を返す（同期: CBTデッキは含まない） */
 export function loadAllDecks(): Deck[] {
   const customMetas = loadCustomDeckMetas()
   const customDecks: Deck[] = customMetas.map(meta => {

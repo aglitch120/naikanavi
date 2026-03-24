@@ -58,7 +58,16 @@ export const DECK_CATEGORIES: DeckCategory[] = [
     folders: KOKUSHI_FOLDERS,
     deckIds: ALL_KOKUSHI_IDS,
   },
-  { id: 'cbt', title: 'CBT・OSCE', subtitle: '臨床実習前', deckIds: ['default-cbt'] },
+  {
+    id: 'cbt', title: 'CBT対策', subtitle: '出題基準準拠 15デッキ',
+    deckIds: [
+      'default-cbt',
+      'cbt-professional', 'cbt-statistics-ebm', 'cbt-epidemiology', 'cbt-health-system',
+      'cbt-cell-genetics', 'cbt-histology-embryology', 'cbt-physiology', 'cbt-biochemistry',
+      'cbt-microbiology', 'cbt-immunology', 'cbt-pharmacology-pathology',
+      'cbt-behavioral-science', 'cbt-clinical-core', 'cbt-systemic-disease', 'cbt-clinical-reasoning',
+    ],
+  },
   { id: 'resident', title: '研修医サバイバル', subtitle: '初期研修の必須知識', deckIds: [] },
   { id: 'senmon', title: '内科専門医', subtitle: '専門医試験対策', deckIds: ['default-naika'] },
   { id: 'update', title: '最新アップデート', subtitle: 'ガイドライン・新薬', deckIds: [] },
