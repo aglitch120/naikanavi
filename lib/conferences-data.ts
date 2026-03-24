@@ -215,12 +215,12 @@ export const CONFERENCES_2026: Conference[] = [
   // 乳癌（乳腺外科）
   { id: 'nyuugan-2026', society: '日本乳癌学会', societyShort: '乳腺外科', specialtyArea: '乳腺外科', tier: 'sub',
     meetingName: '第34回日本乳癌学会学術総会', president: '佐治 重衡', presidentAffiliation: '福島県立医科大学',
-    startDate: '2026-06-25', endDate: '2026-06-27', venue: '国立京都国際会館', city: '京都', url: 'https://www.jbcs2026.org/', year: 2026 },
+    startDate: '2026-06-25', endDate: '2026-06-27', venue: '国立京都国際会館', city: '京都', url: 'https://www.jbcs2026.org/', year: 2026, abstractDeadline: '2026-01-08' },
 
   // 消化器外科
   { id: 'shoukaki-geka-2026', society: '日本消化器外科学会', societyShort: '消化器外科', specialtyArea: '消化器外科', tier: 'sub',
     meetingName: '第81回日本消化器外科学会総会', president: '比企 直樹', presidentAffiliation: '北里大学',
-    startDate: '2026-07-15', endDate: '2026-07-17', venue: 'パシフィコ横浜ノース', city: '横浜', url: 'https://jsgs-meeting.jp/81/', year: 2026 },
+    startDate: '2026-07-15', endDate: '2026-07-17', venue: 'パシフィコ横浜ノース', city: '横浜', url: 'https://jsgs-meeting.jp/81/', year: 2026, abstractDeadline: '2025-12-15' },
 
   // 血液
   { id: 'ketsueki-2026', society: '日本血液学会', societyShort: '血液', specialtyArea: '血液', tier: 'sub',
