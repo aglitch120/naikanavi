@@ -1225,75 +1225,121 @@ export default {
     // ══════════════════════════════════════════════════
     //  AI面接フィードバック
     //  POST /api/interview-feedback
-    //  認証: Bearer {sessionToken} — PRO無制限
-    //  認証なし: IPベースで5ラリー/日（FREE体験用）
-    //  Body: { mode, systemPrompt, userMessage, profile }
+    //  認証: Bearer {sessionToken} — PRO 20ラリー/日
+    //  認証なし: IPベースで3ラリー/日（FREE体験用）
+    //  Body: { mode, systemPrompt, userMessage, question, answer, profile }
+    //  AI: Claude Haiku 4.5（自然な日本語のため）
     // ══════════════════════════════════════════════════
     if (path === "/api/interview-feedback" && request.method === "POST") {
       const auth = request.headers.get("Authorization") || "";
       const token = auth.replace("Bearer ", "").trim();
       let isPro = false;
+      let userEmail = "";
 
-      // PRO認証チェック（任意）
+      // PRO認証チェック（セッション有効期限も確認）
       if (token) {
         const sessionRaw = await env.IWOR_KV.get(`session:${token}`);
-        if (sessionRaw) isPro = true;
+        if (sessionRaw) {
+          try {
+            const session = JSON.parse(sessionRaw);
+            if (session.expiresAt && new Date(session.expiresAt) > new Date()) {
+              isPro = true;
+              userEmail = session.email || "";
+            } else if (!session.expiresAt) {
+              isPro = true; // 旧形式互換
+            }
+          } catch { isPro = true; } // パース失敗時はKV存在=PRO扱い
+        }
       }
 
-      // FREE: IPベースレート制限（5ラリー/日）
-      if (!isPro) {
-        const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
-        const rateKey = `rate:interview:${clientIP}:${new Date().toISOString().slice(0, 10)}`;
-        const countRaw = await env.IWOR_KV.get(rateKey);
-        const count = countRaw ? parseInt(countRaw, 10) : 0;
+      const today = new Date().toISOString().slice(0, 10);
 
-        if (count >= 5) {
+      // レート制限
+      if (isPro) {
+        // PRO: 1日20ラリー上限（コスト安全弁）
+        const proRateKey = `rate:interview:pro:${userEmail || token}:${today}`;
+        const proCount = parseInt(await env.IWOR_KV.get(proRateKey) || "0", 10);
+        if (proCount >= 20) {
           return json({
             error: "rate_limited",
-            message: "無料体験は1日5ラリーまでです。PRO会員で無制限に使えます。",
+            message: "本日の上限（20回）に達しました。明日またお試しください。",
             remaining: 0,
           }, 429, request);
         }
-
-        // カウント増加（24時間TTL）
+        await env.IWOR_KV.put(proRateKey, String(proCount + 1), { expirationTtl: 86400 });
+      } else {
+        // FREE: IPベース3ラリー/日
+        const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
+        const rateKey = `rate:interview:${clientIP}:${today}`;
+        const count = parseInt(await env.IWOR_KV.get(rateKey) || "0", 10);
+        if (count >= 3) {
+          return json({
+            error: "rate_limited",
+            message: "無料体験は1日3回までです。PROプランで1日20回まで練習できます。",
+            remaining: 0,
+          }, 429, request);
+        }
         await env.IWOR_KV.put(rateKey, String(count + 1), { expirationTtl: 86400 });
       }
 
       const body = await parseBody(request);
       if (!body) return json({ error: "Invalid JSON" }, 400, request);
-      const { mode, userMessage, question, answer, profile } = body;
+      const { mode, systemPrompt, userMessage, question, answer, profile } = body;
 
-      // 面接会話モード（systemPromptはサーバー側で固定）
-      const INTERVIEW_SYSTEM_PROMPT = `あなたは医学部マッチング面接の面接官です。
-医学生が面接練習をしています。リアルな面接官として振る舞い、日本語で応答してください。
-- 1回の応答は2〜3文で簡潔に
-- 面接官らしい口調を維持
-- 適切にフォローアップ質問をする`;
+      // Claude Haiku API呼び出し共通関数
+      async function callClaude(system, userMsg, maxTokens = 400) {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "x-api-key": env.ANTHROPIC_API_KEY,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "claude-haiku-4-5-20251001",
+            max_tokens: maxTokens,
+            system: system,
+            messages: [{ role: "user", content: userMsg }],
+          }),
+        });
+        if (!res.ok) {
+          const errText = await res.text();
+          throw new Error(`Claude API error ${res.status}: ${errText}`);
+        }
+        const data = await res.json();
+        return data.content?.[0]?.text || "";
+      }
 
+      // ── 面接会話モード ──
       if (mode === "interview") {
         if (!userMessage) {
           return json({ error: "userMessage required" }, 400, request);
         }
+        // systemPromptはフロントエンドから送られる（設定に応じて動的生成）
+        const sysPrompt = systemPrompt || `あなたは日本の臨床研修マッチング面接の面接官です。
+医学生の面接練習をしています。リアルな面接官として自然な日本語で応答してください。
+1回の応答は2〜3文で簡潔に。面接官らしい口調を維持。`;
+
         try {
-          const aiResponse = await env.AI.run(
-            "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
-            {
-              messages: [
-                { role: "system", content: INTERVIEW_SYSTEM_PROMPT },
-                { role: "user", content: userMessage },
-              ],
-              max_tokens: 300,
-            }
-          );
-          const feedback = aiResponse?.response || "";
-          return json({ ok: true, feedback, isPro, source: "workers-ai" }, 200, request);
+          const feedback = await callClaude(sysPrompt, userMessage, 300);
+          return json({ ok: true, feedback, isPro, source: "claude-haiku" }, 200, request);
         } catch (err) {
-          console.error("Workers AI error:", err);
-          return json({ error: "AI processing failed" }, 500, request);
+          console.error("Claude API error:", err);
+          // フォールバック: Workers AIを試行
+          try {
+            const aiResponse = await env.AI.run(
+              "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+              { messages: [{ role: "system", content: sysPrompt }, { role: "user", content: userMessage }], max_tokens: 300 }
+            );
+            return json({ ok: true, feedback: aiResponse?.response || "", isPro, source: "workers-ai-fallback" }, 200, request);
+          } catch (fbErr) {
+            console.error("Fallback Workers AI error:", fbErr);
+            return json({ error: "AI processing failed" }, 500, request);
+          }
         }
       }
 
-      // フィードバックモード（旧互換 + mode="feedback"）
+      // ── フィードバック/レポートモード ──
       const q = question || "";
       const a = answer || userMessage || "";
       if (!q || !a) {
@@ -1309,40 +1355,41 @@ export default {
           ].filter(Boolean).join("\n")
         : "";
 
-      const feedbackPrompt = `あなたは医学部マッチング面接の指導経験豊富な面接コーチです。
-医学生の面接回答に対して、実践的で具体的なフィードバックを日本語で提供してください。
+      const feedbackPrompt = `あなたは日本の臨床研修マッチング面接の指導経験豊富な面接コーチです。
+医学生の面接での回答に対して、実践的で具体的なフィードバックを自然な日本語で提供してください。
 
-以下の構成で回答してください（各セクション2-3文、合計300字程度）:
+以下の構成で回答してください:
 
-【全体評価】回答の印象と完成度を一言で
-【良い点】具体的に良かった部分
-【改善ポイント】具体的な改善案（例文があれば短く示す）
-【次のステップ】次に意識すべきこと
+【総合評価】A+〜D の評価（A+=素晴らしい、A=良い、B+=まずまず、B=普通、C=要改善、D=大幅改善必要）
+【良い点】具体的に良かった部分を3つ挙げる
+【改善すべき点】具体的な改善案を3つ挙げる。甘い回答や浅い回答があれば「もっと自分自身と向き合って深く考える必要があります」と率直に指摘する
+【質問別コメント】面接で聞かれた各質問への回答を個別に評価
+【次のステップ】次回の練習で意識すべきこと
 
 ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
 
 注意:
-- 医学部マッチング面接の文脈で評価する
+- 日本の医学部マッチング面接の文脈で評価する
+- 面接官が深堀りしなかった回答は「面接官が興味を持たなかった可能性がある」と指摘する
 - 具体的で実行可能なアドバイスを心がける
-- 厳しすぎず、建設的なトーンで`;
+- 良い点も悪い点も率直に。媚びない`;
 
       try {
-        const aiResponse = await env.AI.run(
-          "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
-          {
-            messages: [
-              { role: "system", content: feedbackPrompt },
-              { role: "user", content: `面接質問: ${q}\n\n受験者の回答:\n${a}` },
-            ],
-            max_tokens: 800,
-          }
-        );
-
-        const feedback = aiResponse?.response || "フィードバックを生成できませんでした。もう一度お試しください。";
-        return json({ ok: true, feedback }, 200, request);
+        const feedback = await callClaude(feedbackPrompt, `面接の質問テーマ: ${q}\n\n面接の会話ログ:\n${a}`, 1200);
+        return json({ ok: true, feedback, isPro }, 200, request);
       } catch (err) {
-        console.error("Workers AI error:", err);
-        return json({ error: "AI processing failed" }, 500, request);
+        console.error("Claude API error:", err);
+        // フォールバック
+        try {
+          const aiResponse = await env.AI.run(
+            "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+            { messages: [{ role: "system", content: feedbackPrompt }, { role: "user", content: `面接質問: ${q}\n\n受験者の回答:\n${a}` }], max_tokens: 800 }
+          );
+          return json({ ok: true, feedback: aiResponse?.response || "フィードバックを生成できませんでした。", isPro }, 200, request);
+        } catch (fbErr) {
+          console.error("Fallback error:", fbErr);
+          return json({ error: "AI processing failed" }, 500, request);
+        }
       }
     }
 

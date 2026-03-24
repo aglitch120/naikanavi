@@ -7,6 +7,7 @@
 #   3. Secrets 設定:
 #      npx wrangler secret put ADMIN_KEY
 #      npx wrangler secret put GAS_KEY
+#      npx wrangler secret put ANTHROPIC_API_KEY
 #   4. デプロイ:
 #      cd workers && npx wrangler deploy
 
