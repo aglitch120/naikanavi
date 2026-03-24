@@ -834,6 +834,7 @@ ${s.useProfile && profileCtx ? `\n■ 受験者のプロフィール（手元の
 
     // 少し間を置いてレポート画面へ
     await new Promise(r => setTimeout(r, 1500))
+    window.scrollTo(0, 0)
     setPhase('report')
     setIsLoading(true)
 
