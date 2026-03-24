@@ -664,8 +664,13 @@ export function importDeckWithCards(name: string, emoji: string, description: st
 
 /** 特定デッキのカード一覧を取得 */
 export function getDeckCards(deckId: string): FlashCard[] {
+  // DEFAULT_DECKSを検索
   const defaultDeck = DEFAULT_DECKS.find(d => d.id === deckId)
   if (defaultDeck) return defaultDeck.cards
+  // CBTデッキキャッシュを検索
+  const cbtDeck = cbtDecksCache?.find(d => d.id === deckId)
+  if (cbtDeck) return cbtDeck.cards
+  // カスタムデッキ
   return loadCustomCards(deckId)
 }
 
@@ -673,6 +678,8 @@ export function getDeckCards(deckId: string): FlashCard[] {
 export function getDeckTags(deckId: string): string[] {
   const defaultDeck = DEFAULT_DECKS.find(d => d.id === deckId)
   if (defaultDeck) return defaultDeck.tags
+  const cbtDeck = cbtDecksCache?.find(d => d.id === deckId)
+  if (cbtDeck) return cbtDeck.tags
   const cards = loadCustomCards(deckId)
   return Array.from(new Set(cards.map(c => c.tag).filter(Boolean)))
 }
