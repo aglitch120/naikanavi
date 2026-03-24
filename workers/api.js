@@ -236,7 +236,10 @@ async function buildJournalDb(env) {
     if (newIds.length > 0) {
       const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${newIds.join(",")}&retmode=json`;
       const fRes = await fetch(fUrl);
-      const fData = await fRes.json();
+      if (!fRes.ok) { console.error(`PubMed summary error: ${fRes.status}`); continue; }
+      const fText = await fRes.text();
+      let fData;
+      try { fData = JSON.parse(fText); } catch { console.error("PubMed returned non-JSON:", fText.slice(0, 200)); continue; }
 
       for (const id of newIds) {
         const d = fData?.result?.[id];
