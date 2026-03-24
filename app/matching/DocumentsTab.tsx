@@ -1,5 +1,6 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
+import { HOSPITALS, Hospital } from './hospitals-data'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -891,9 +892,52 @@ const COMPARE_CATEGORIES: CompareCategory[] = [
   },
 ]
 
+// ── 病院検索コンポーネント ──
+function HospitalSearchInput({ value, onChange, allHospitals, color }: {
+  value: string; onChange: (name: string) => void
+  allHospitals: { name: string; prefecture: string }[]; color: string
+}) {
+  const [query, setQuery] = useState(value)
+  const [showSuggestions, setShowSuggestions] = useState(false)
+
+  const suggestions = query.length >= 1
+    ? allHospitals.filter(h => h.name.includes(query) || h.prefecture.includes(query)).slice(0, 8)
+    : []
+
+  // 重複除去（同名病院）
+  const uniqueSuggestions = suggestions.filter((h, i, arr) =>
+    arr.findIndex(a => a.name === h.name) === i
+  )
+
+  return (
+    <div className="relative">
+      <input
+        type="text"
+        value={query}
+        onChange={e => { setQuery(e.target.value); setShowSuggestions(true) }}
+        onFocus={() => setShowSuggestions(true)}
+        className="w-full px-2 py-1.5 border rounded-lg bg-s0 text-xs text-tx focus:outline-none transition-all font-medium"
+        style={{ borderColor: color + '66', fontSize: '16px' }}
+        placeholder="病院名を検索..."
+      />
+      {showSuggestions && uniqueSuggestions.length > 0 && (
+        <div className="absolute z-20 left-0 right-0 mt-1 bg-s0 border border-br rounded-lg shadow-lg max-h-48 overflow-y-auto">
+          {uniqueSuggestions.map((h, i) => (
+            <button key={i} onClick={() => { setQuery(h.name); onChange(h.name); setShowSuggestions(false) }}
+              className="w-full px-3 py-2 text-left text-xs hover:bg-s1 transition-all flex justify-between">
+              <span className="font-medium">{h.name}</span>
+              <span className="text-muted">{h.prefecture}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; onShowProModal?: () => void }) {
   const MAX_HOSPITALS = 3
-  const [hospitalNames, setHospitalNames] = useState<string[]>(['病院A', '病院B', '病院C'])
+  const [hospitalNames, setHospitalNames] = useState<string[]>(['', '', ''])
   const [activeHospitals, setActiveHospitals] = useState<number>(2)
 
   // weights[categoryIndex][itemIndex] = 1-5
@@ -972,25 +1016,106 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
         ))}
       </div>
 
-      {/* 病院名入力 */}
+      {/* 病院名検索入力 */}
       <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${activeHospitals}, 1fr)` }}>
         {Array.from({ length: activeHospitals }, (_, hi) => (
           <div key={hi}>
             <label className="text-[11px] font-medium text-muted block mb-1">病院{hi + 1}</label>
-            <input
-              type="text"
+            <HospitalSearchInput
               value={hospitalNames[hi]}
-              onChange={e => {
+              onChange={name => {
                 const next = [...hospitalNames]
-                next[hi] = e.target.value
+                next[hi] = name
                 setHospitalNames(next)
               }}
-              className="w-full px-2 py-1.5 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none transition-all font-medium"
-              style={{ borderColor: hospitalColors[hi] + '66' }}
+              allHospitals={HOSPITALS.map(h => ({ name: h.name, prefecture: h.prefecture }))}
+              color={hospitalColors[hi]}
             />
           </div>
         ))}
       </div>
+
+      {/* ハードデータ比較（DBから自動取得） */}
+      {(() => {
+        const matchedHospitals = hospitalNames.slice(0, activeHospitals).map(name =>
+          HOSPITALS.find(h => h.name === name)
+        )
+        const anyMatched = matchedHospitals.some(h => h)
+        if (!anyMatched) return null
+
+        const DATA_ROWS: { label: string; unit: string; key: keyof Hospital; format?: (v: any) => string; higher?: 'good' | 'bad' }[] = [
+          { label: '募集定員', unit: '人', key: 'capacity' },
+          { label: 'マッチ者数', unit: '人', key: 'matched' },
+          { label: '空席数', unit: '人', key: 'vacancy' },
+          { label: '第1希望者数', unit: '人', key: 'applicants' },
+          { label: 'マッチ率', unit: '%', key: 'matchRate', higher: 'good' },
+          { label: '人気度', unit: '倍', key: 'popularity', format: (v: number) => v.toFixed(1), higher: 'good' },
+          { label: '3年平均マッチ率', unit: '%', key: 'avgMatchRate3y' as any, higher: 'good' },
+          { label: '本命指数', unit: '', key: 'honmeiIndex' as any, format: (v: number) => v?.toFixed(2) || '—' },
+        ]
+
+        return (
+          <div className="bg-s0 border border-br rounded-xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-br flex items-center justify-between">
+              <p className="text-sm font-bold text-tx">マッチングデータ比較</p>
+              <span className="text-[10px] text-muted">2024年度JRMP公式データ</span>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs">
+                <thead className="bg-s1">
+                  <tr>
+                    <th className="px-3 py-2 text-left text-muted font-medium w-28">指標</th>
+                    {matchedHospitals.map((h, i) => (
+                      <th key={i} className="px-3 py-2 text-center font-semibold" style={{ color: hospitalColors[i] }}>
+                        {hospitalNames[i] || `病院${i + 1}`}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t border-br">
+                    <td className="px-3 py-2 text-muted">タイプ</td>
+                    {matchedHospitals.map((h, i) => (
+                      <td key={i} className="px-3 py-2 text-center">
+                        {h ? (h.isUniversity ? '🎓 大学' : '🏥 市中') : '—'}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr className="border-t border-br">
+                    <td className="px-3 py-2 text-muted">都道府県</td>
+                    {matchedHospitals.map((h, i) => (
+                      <td key={i} className="px-3 py-2 text-center">{h?.prefecture || '—'}</td>
+                    ))}
+                  </tr>
+                  {DATA_ROWS.map((row, ri) => {
+                    const values = matchedHospitals.map(h => h ? (h as any)[row.key] : null)
+                    const validValues = values.filter(v => v !== null && v !== undefined)
+                    const best = row.higher === 'good' ? Math.max(...validValues) :
+                      row.higher === 'bad' ? Math.min(...validValues) : null
+                    return (
+                      <tr key={ri} className="border-t border-br">
+                        <td className="px-3 py-2 text-muted">{row.label}</td>
+                        {matchedHospitals.map((h, i) => {
+                          const v = h ? (h as any)[row.key] : null
+                          const isBest = best !== null && v === best && validValues.length > 1
+                          return (
+                            <td key={i} className={`px-3 py-2 text-center font-mono ${isBest ? 'font-bold' : ''}`}
+                              style={isBest ? { color: hospitalColors[i] } : undefined}>
+                              {v !== null && v !== undefined
+                                ? `${row.format ? row.format(v) : v}${row.unit}`
+                                : '—'}
+                            </td>
+                          )
+                        })}
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )
+      })()}
 
       {/* 総合スコア */}
       <div className="bg-s0 border border-br rounded-xl p-4">
