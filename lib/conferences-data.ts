@@ -93,7 +93,7 @@ export const CONFERENCES_2026: Conference[] = [
     startDate: '2026-05-15', endDate: '2026-05-17', venue: 'グランドメルキュール札幌大通公園他', city: '札幌', url: 'https://www.congre.co.jp/jsog2026/', year: 2026, abstractDeadline: '2026-02-15' },
   { id: 'jibika-2026', society: '日本耳鼻咽喉科頭頸部外科学会', societyShort: '耳鼻咽喉科', specialtyArea: '耳鼻咽喉科', tier: 'basic',
     meetingName: '第127回日本耳鼻咽喉科頭頸部外科学会総会・学術講演会', president: '香取 幸夫', presidentAffiliation: '東北大学',
-    startDate: '2026-05-20', endDate: '2026-05-23', venue: '東北大学百周年記念館/仙台国際センター', city: '仙台', url: 'https://www.congre.co.jp/jibika127/', year: 2026 },
+    startDate: '2026-05-20', endDate: '2026-05-23', venue: '東北大学百周年記念館/仙台国際センター', city: '仙台', url: 'https://www.congre.co.jp/jibika127/', year: 2026, abstractDeadline: '2026-01-04' },
   { id: 'seikei-2026', society: '日本整形外科学会', societyShort: '整形外科', specialtyArea: '整形外科', tier: 'basic',
     meetingName: '第99回日本整形外科学会学術総会', president: '田中 栄', presidentAffiliation: '東京大学',
     startDate: '2026-05-21', endDate: '2026-05-24', venue: '神戸コンベンションセンター', city: '神戸', url: 'https://www.congre.co.jp/joa2026/', year: 2026, abstractDeadline: '2026-02-20' },
@@ -175,7 +175,7 @@ export const CONFERENCES_2026: Conference[] = [
   // 呼吸器外科
   { id: 'kokyuuki-geka-2026', society: '日本呼吸器外科学会', societyShort: '呼吸器外科', specialtyArea: '呼吸器外科', tier: 'sub',
     meetingName: '第43回日本呼吸器外科学会学術集会', theme: 'DESIGN THE FUTURE', president: '佐藤 幸夫', presidentAffiliation: '筑波大学',
-    startDate: '2026-05-14', endDate: '2026-05-15', venue: 'つくば国際会議場', city: 'つくば', url: 'https://www.congre.co.jp/jacs2026/', year: 2026 },
+    startDate: '2026-05-14', endDate: '2026-05-15', venue: 'つくば国際会議場', city: 'つくば', url: 'https://www.congre.co.jp/jacs2026/', year: 2026, abstractDeadline: '2025-12-16' },
 
   // 神経
   { id: 'shinkei-2026', society: '日本神経学会', societyShort: '神経内科', specialtyArea: '神経内科', tier: 'sub',
@@ -205,7 +205,7 @@ export const CONFERENCES_2026: Conference[] = [
   // 老年病
   { id: 'roujin-2026', society: '日本老年医学会', societyShort: '老年病', specialtyArea: '老年病', tier: 'sub',
     meetingName: '第68回日本老年医学会学術集会', president: '新村 健', presidentAffiliation: '兵庫医科大学',
-    startDate: '2026-06-11', endDate: '2026-06-13', venue: '神戸国際会議場/神戸ポートピアホテル', city: '神戸', url: 'https://www.congre.co.jp/68jgs2026/', year: 2026 },
+    startDate: '2026-06-11', endDate: '2026-06-13', venue: '神戸国際会議場/神戸ポートピアホテル', city: '神戸', url: 'https://www.congre.co.jp/68jgs2026/', year: 2026, abstractDeadline: '2026-01-19' },
 
   // 肝臓
   { id: 'kanzou-2026', society: '日本肝臓学会', societyShort: '肝臓', specialtyArea: '肝臓', tier: 'sub',
@@ -240,7 +240,7 @@ export const CONFERENCES_2026: Conference[] = [
   // JDDW（消化器関連学会週間）
   { id: 'jddw-2026', society: 'JDDW（消化器関連学会週間）', societyShort: 'JDDW', specialtyArea: '消化器', tier: 'major',
     meetingName: 'JDDW 2026 KOBE',
-    startDate: '2026-11-05', endDate: '2026-11-07', venue: '神戸コンベンションセンター', city: '神戸', url: 'https://www.jddw.jp/jddw2026/', year: 2026 },
+    startDate: '2026-11-05', endDate: '2026-11-07', venue: '神戸コンベンションセンター', city: '神戸', url: 'https://www.jddw.jp/jddw2026/', year: 2026, abstractDeadline: '2026-03-24' },
 
   // ═══════════════════════════════════════
   //  地方会（基本領域）
