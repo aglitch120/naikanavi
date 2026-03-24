@@ -29,6 +29,19 @@ Object.entries(PREF_TO_REGION).forEach(([pref, region]) => {
 const STORAGE_INTERESTED = 'iwor_matching_interested'
 const STORAGE_WISHLIST = 'iwor_matching_wishlist'
 
+/** programからhospital nameを除いた部分を抽出（コース名サブタイトル） */
+function programLabel(h: Hospital): string {
+  let label = h.program
+  // 病院名プレフィックスを除去
+  if (label.startsWith(h.name)) {
+    label = label.slice(h.name.length)
+  }
+  // よくある接頭辞を除去
+  label = label.replace(/^(卒後|医師|初期)?臨床研修/, '').replace(/^プログラム/, '').trim()
+  // 空なら表示なし
+  return label || ''
+}
+
 // ── ソート方式 ──
 type SortKey = 'name' | 'matchRate' | 'salary' | 'beds' | 'residents' | 'anaba' | 'honmei'
 const SORT_OPTIONS: { key: SortKey; label: string; pro?: boolean }[] = [
@@ -276,6 +289,7 @@ export default function HospitalTab({
                         }}>{i + 1}</span>
                         <div className="min-w-0">
                           <p className="text-xs font-bold text-tx truncate">{h.name}</p>
+                          {programLabel(h) && <p className="text-[10px] text-muted truncate">{programLabel(h)}</p>}
                           <p className="text-[10px] text-muted">{h.prefecture} · 空席{h.vacancy}</p>
                         </div>
                       </div>
@@ -410,6 +424,7 @@ export default function HospitalTab({
                         <span className="text-sm w-8 text-center flex-shrink-0">{medal}</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-bold text-tx truncate">{h.name}</p>
+                          {programLabel(h) && <p className="text-[10px] text-muted truncate">{programLabel(h)}</p>}
                           <p className="text-[10px] text-muted">{h.prefecture} · 倍率{h.popularity}</p>
                         </div>
                         {isPro ? (
@@ -516,6 +531,7 @@ function HospitalCard({
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1.5 flex-wrap">
               <p className="text-sm font-bold text-tx truncate">{h.name}</p>
+              {programLabel(h) && <p className="text-[11px] text-muted mt-0.5">{programLabel(h)}</p>}
               {h.isUniversity && (
                 <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-purple-50 text-purple-700 flex-shrink-0">大学</span>
               )}
@@ -767,6 +783,7 @@ function ListTab({
           {/* 病院情報 */}
           <div className="flex-1 min-w-0">
             <p className="text-xs font-bold text-tx truncate">{h.name}</p>
+            {programLabel(h) && <p className="text-[10px] text-muted truncate">{programLabel(h)}</p>}
             <div className="flex items-center gap-2 text-[10px] text-muted">
               <span>{h.prefecture}</span>
               <span className="font-medium" style={{ color: MC }}>{`${h.popularity}倍`}</span>
@@ -842,7 +859,7 @@ function MatchProbabilityCard({
                   <span className="text-[10px] text-muted w-4 text-right flex-shrink-0">{i + 1}</span>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-0.5">
-                      <p className="text-[11px] font-medium text-tx">{h.name}</p>
+                      <p className="text-[11px] font-medium text-tx">{h.name}{programLabel(h) ? ` (${programLabel(h)})` : ''}</p>
                       <span className="text-[11px] font-bold" style={{ color: MC }}>{h.prob}%</span>
                     </div>
                     <div className="h-1.5 bg-s1 rounded-full overflow-hidden">
