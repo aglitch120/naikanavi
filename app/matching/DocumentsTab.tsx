@@ -21,7 +21,7 @@ interface Profile {
 type DocSubTab = 'emails' | 'checklist' | 'questions' | 'resume-guide'
 
 // ── メールテンプレート ──
-type TemplateId = 'visit-request' | 'visit-thanks' | 'adoption-thanks' | 'cover-letter'
+type TemplateId = 'visit-request' | 'visit-thanks' | 'adoption-thanks' | 'cover-letter' | 'schedule-adjust' | 'decline'
 
 interface TemplateField {
   key: string
@@ -219,6 +219,73 @@ ${docs.map((d, i) => `　${i + 1}. ${d}　…… 1通`).join('\n')}
 
 　　　　　　　　　　　　　　　　　　　敬具`
     },
+  },
+  {
+    id: 'schedule-adjust' as TemplateId,
+    title: '面接日程調整',
+    icon: '📅',
+    desc: '面接の日程変更・調整をお願いするメール',
+    fields: [
+      { key: 'hospitalName', label: '病院名', placeholder: '○○病院' },
+      { key: 'contactName', label: '担当者名', placeholder: '○○様' },
+      { key: 'originalDate', label: '当初の面接日', placeholder: '○月○日', type: 'text' },
+      { key: 'preferredDates', label: '希望日（複数可）', placeholder: '○月○日、○月○日', type: 'textarea', rows: 2 },
+      { key: 'reason', label: '理由（簡潔に）', placeholder: '大学の試験日程と重なったため' },
+    ],
+    generate: (v, p) =>
+`${v.hospitalName || '○○病院'}
+${v.contactName || 'ご担当者'} 様
+
+お世話になっております。${p.university || '○○大学'}医学部の${p.name || '○○'}です。
+
+先日ご連絡いただきました面接日程（${v.originalDate || '○月○日'}）につきまして、
+誠に恐縮ではございますが、${v.reason || '都合により'}、
+日程の調整をお願いできないかと思いご連絡いたしました。
+
+以下の日程であれば伺うことが可能です。
+${(v.preferredDates || '○月○日').split(/[,、，\n]/).map(d => `・${d.trim()}`).join('\n')}
+
+ご多忙のところ大変恐れ入りますが、
+ご検討いただけますと幸いです。
+
+何卒よろしくお願い申し上げます。
+
+${p.name || '○○ ○○'}
+${p.university || '○○大学医学部'}`,
+  },
+  {
+    id: 'decline' as TemplateId,
+    title: '採用辞退',
+    icon: '🙏',
+    desc: '内定・採用を辞退するメール',
+    fields: [
+      { key: 'hospitalName', label: '病院名', placeholder: '○○病院' },
+      { key: 'contactName', label: '担当者名', placeholder: '○○様' },
+    ],
+    generate: (v, p) =>
+`${v.hospitalName || '○○病院'}
+${v.contactName || 'ご担当者'} 様
+
+お世話になっております。${p.university || '○○大学'}医学部の${p.name || '○○'}です。
+
+この度は貴院より採用のご連絡をいただき、誠にありがとうございます。
+大変光栄に存じますとともに、身に余るお言葉をいただきましたこと、
+心より感謝申し上げます。
+
+慎重に検討いたしました結果、誠に恐縮ではございますが、
+今回は辞退させていただきたく存じます。
+
+見学や面接を通じて、貴院の素晴らしい研修環境や
+先生方の温かいご指導に深く感銘を受けておりましたので、
+このようなご連絡となりますことを大変心苦しく思っております。
+
+お忙しい中、貴重なお時間をいただきましたことに
+重ねて御礼申し上げます。
+
+貴院の益々のご発展をお祈り申し上げます。
+
+${p.name || '○○ ○○'}
+${p.university || '○○大学医学部'}`,
   },
 ]
 
@@ -533,13 +600,21 @@ function EmailTemplates({ profile, mode }: { profile: Profile; mode: 'matching' 
                   className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all resize-none"
                 />
               ) : (
-                <input
-                  type="text"
-                  value={fieldValues[f.key] || ''}
-                  onChange={e => updateField(f.key, e.target.value)}
-                  placeholder={f.placeholder}
-                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all"
-                />
+                <>
+                  <input
+                    type="text"
+                    value={fieldValues[f.key] || ''}
+                    onChange={e => updateField(f.key, e.target.value)}
+                    placeholder={f.placeholder}
+                    list={f.key === 'hospitalName' ? 'hospital-list' : undefined}
+                    className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all"
+                  />
+                  {f.key === 'hospitalName' && (
+                    <datalist id="hospital-list">
+                      {HOSPITALS.slice(0, 500).map(h => <option key={h.id} value={h.name} />)}
+                    </datalist>
+                  )}
+                </>
               )}
             </div>
           ))}
