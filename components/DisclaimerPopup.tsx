@@ -22,6 +22,9 @@ export default function DisclaimerPopup() {
   useEffect(() => {
     if (!isToolPath(pathname)) return
     try {
+      // 属性が未設定ならまだ免責を出さない（OnboardingModalを先に表示）
+      const role = localStorage.getItem('iwor_user_role')
+      if (!role) return
       const accepted = localStorage.getItem(STORAGE_KEY)
       if (!accepted) setShow(true)
     } catch {

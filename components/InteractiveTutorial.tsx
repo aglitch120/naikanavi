@@ -30,6 +30,11 @@ export default function InteractiveTutorial({ storageKey, steps }: Props) {
   const [helpDismissed, setHelpDismissed] = useState(false)
 
   useEffect(() => {
+    // 属性未設定 or 免責未同意ならチュートリアルはまだ出さない
+    const role = localStorage.getItem('iwor_user_role')
+    const discAccepted = localStorage.getItem('iwor_disclaimer_accepted')
+    if (!role || !discAccepted) return
+
     if (localStorage.getItem(storageKey)) {
       setDone(true)
     } else {
