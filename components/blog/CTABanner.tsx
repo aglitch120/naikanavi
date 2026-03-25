@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { trackBoothClick } from '@/lib/gtag'
+import GlowButton from '@/components/GlowButton'
 
 interface CTAProps {
   title: string
@@ -104,7 +105,7 @@ export default function CTABanner({ cta, variant = 'inline' }: Props) {
           .cta-float-inline { animation: ctaFloat 0.4s ease-out both; }
           .cta-float-inline:hover { animation: ctaBob 2s ease-in-out infinite; }
         `}</style>
-        <div className="cta-float relative bg-ac rounded-2xl p-6 md:p-8 lg:p-10 my-10 overflow-hidden">
+        <div className="cta-float relative rounded-2xl p-6 md:p-8 lg:p-10 my-10 overflow-hidden" style={{ background: '#1A1917' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <svg className="absolute top-0 right-0 w-64 h-64 text-white/[0.03]" viewBox="0 0 200 200">
             {[30, 55, 80, 105].map((r) => (
@@ -151,17 +152,19 @@ export default function CTABanner({ cta, variant = 'inline' }: Props) {
               </span>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-              <a
-                href="/pro"
-                onClick={() => trackBoothClick('cta_banner')}
-                className="inline-flex items-center justify-center gap-2 bg-white text-ac px-6 py-3 rounded-xl font-bold text-base hover:bg-white/90 transition-colors shadow-lg shadow-black/10"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                無料で試してみる
-              </a>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start items-center md:items-start">
+              <GlowButton radius={12} intensity="strong">
+                <a
+                  href="/pro"
+                  onClick={() => trackBoothClick('cta_banner')}
+                  className="inline-flex items-center justify-center gap-2 bg-ac text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-ac2 transition-colors shadow-lg shadow-black/10"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  無料で試してみる
+                </a>
+              </GlowButton>
               <Link
                 href="/blog"
                 className="inline-flex items-center justify-center gap-2 bg-transparent text-white border border-white/30 px-6 py-3 rounded-xl font-medium hover:bg-white/10 transition-colors"

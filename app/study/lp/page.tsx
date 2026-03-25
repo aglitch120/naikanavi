@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GlowButton from '@/components/GlowButton'
 
 export const metadata: Metadata = {
   title: 'iwor Study — 医師・医学生のためのフラッシュカード | Anki日本語対応',
@@ -104,14 +105,16 @@ export default function StudyLPPage() {
           忘却曲線に基づく間隔反復。Ankiデッキ互換。日本語ネイティブUI。<br />
           CBT・国試・専門医試験を、科学的に効率よく。
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="/study"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl font-bold text-sm text-white shadow-lg hover:opacity-90 transition-opacity"
-            style={{ background: 'var(--ac)' }}
-          >
-            無料で始める
-          </Link>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <GlowButton radius={12}>
+            <Link
+              href="/study"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl font-bold text-sm text-white shadow-lg hover:opacity-90 transition-opacity"
+              style={{ background: 'var(--ac)' }}
+            >
+              無料で始める
+            </Link>
+          </GlowButton>
           <a
             href="#comparison"
             className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl font-medium text-sm border transition-colors"
@@ -296,20 +299,22 @@ export default function StudyLPPage() {
 
       {/* ═══ CTA ═══ */}
       <section className="px-4 mb-12">
-        <div className="rounded-2xl p-8 md:p-12 text-center" style={{ background: 'var(--ac)' }}>
+        <div className="rounded-2xl p-8 md:p-12 text-center" style={{ background: '#1A1917' }}>
           <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
             今すぐ、最初のカードをめくろう。
           </h2>
-          <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">
+          <p className="text-white/40 text-sm mb-6 max-w-md mx-auto">
             アカウント登録不要。ブラウザで即開始。
           </p>
-          <Link
-            href="/study"
-            className="inline-flex items-center justify-center bg-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg hover:bg-white/90 transition-colors"
-            style={{ color: 'var(--ac)' }}
-          >
-            無料で始める →
-          </Link>
+          <GlowButton radius={12} intensity="strong">
+            <Link
+              href="/study"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg hover:opacity-90 transition-colors"
+              style={{ background: 'var(--ac)', color: '#fff' }}
+            >
+              無料で始める →
+            </Link>
+          </GlowButton>
         </div>
       </section>
     </div>

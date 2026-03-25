@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react'
 import ProModal from '@/components/pro/ProModal'
+import GlowButton from '@/components/GlowButton'
 import IworLoader from '@/components/IworLoader'
 
 const MC = '#1B4F3A'
@@ -165,12 +166,16 @@ function SettingsScreen({ onStart, isPro }: { onStart: (s: InterviewSettings) =>
         AIによる面接練習ツールです。合否を保証しません。患者個人情報は入力しないでください。
       </p>
 
-      {/* 開始ボタン */}
-      <button onClick={() => onStart({ duration, hospitalType, prefecture, pressure, useProfile })}
-        className="pro-cta-glow w-full py-3.5 rounded-xl text-sm font-bold transition-all hover:opacity-90"
-        style={{ background: MC, color: '#fff' }}>
-        {isPro ? '面接を始める' : '無料で始める'}
-      </button>
+      {/* 開始ボタン（ダーク背景+回転グロー） */}
+      <div className="rounded-2xl px-4 py-5" style={{ background: '#1A1917' }}>
+        <GlowButton fullWidth radius={12}>
+          <button onClick={() => onStart({ duration, hospitalType, prefecture, pressure, useProfile })}
+            className="w-full py-3.5 rounded-xl text-sm font-bold transition-all hover:opacity-90"
+            style={{ background: MC, color: '#fff' }}>
+            {isPro ? '面接を始める' : '無料で始める'}
+          </button>
+        </GlowButton>
+      </div>
 
       {/* 練習回数（あれば） */}
       {typeof window !== 'undefined' && parseInt(localStorage.getItem('iwor_interview_count') || '0', 10) > 0 && (
