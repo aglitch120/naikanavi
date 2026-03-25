@@ -898,6 +898,17 @@ export default function ShiftPage() {
           </div>
         )}
 
+        {/* パスワード設定（アンケートURL生成の前に） */}
+        {doctors.length >= 2 && (
+          <div className="bg-s0 border border-br rounded-xl p-4">
+            <label className="text-[10px] text-muted block mb-1">アンケートのパスワード（任意）</label>
+            <input type="text" value={surveyPassword} onChange={e => setSurveyPassword(e.target.value)}
+              placeholder="設定しない場合は空欄"
+              className="w-full px-3 py-2 border border-br rounded-lg text-xs bg-bg outline-none focus:border-ac" />
+            <p className="text-[9px] text-muted mt-1">設定すると各医師がNG日回答時にパスワード入力が必要になります</p>
+          </div>
+        )}
+
         {/* NG日入力方法選択 */}
         {doctors.length >= 2 && (
           <div className="bg-s0 border border-br rounded-xl p-4 space-y-3">
@@ -951,13 +962,6 @@ export default function ShiftPage() {
                 <p className="text-xs font-bold text-tx">{surveyLoading ? 'URL生成中...' : '各自に入力してもらう'}</p>
                 <p className="text-[10px] text-muted">{surveyLoading ? '' : 'アンケートURLを共有'}</p>
               </button>
-            </div>
-            {/* パスワード設定（任意） */}
-            <div>
-              <label className="text-[10px] text-muted block mb-1">パスワード（任意）</label>
-              <input type="text" value={surveyPassword} onChange={e => setSurveyPassword(e.target.value)}
-                placeholder="設定しない場合は空欄"
-                className="w-full px-3 py-2 border border-br rounded-lg text-xs bg-bg outline-none focus:border-ac" />
             </div>
             {/* 個別アンケートURL表示 */}
             {surveyUrls.length > 0 && (
