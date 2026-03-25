@@ -216,8 +216,8 @@ function MatchingTutorial({ mode, onClose }: { mode: 'matching' | 'career'; onCl
           <button onClick={onClose} style={{ flex:1, padding:'12px 0', border:'1.5px solid #DDD9D2', borderRadius:12, background:'none', color:'#6B6760', fontSize:13, fontWeight:500, cursor:'pointer' }}>スキップ</button>
           <button onClick={() => isLast ? onClose() : setStep(step+1)} style={{ flex:2, padding:'12px 0', border:'none', borderRadius:12, background:'#1B4F3A', color:'#fff', fontSize:13, fontWeight:600, cursor:'pointer' }}>{isLast ? 'はじめる 🚀' : '次へ →'}</button>
         </div>
+        <FeedbackRow appName="マッチング対策" />
       </div>
-      <FeedbackRow appName="マッチング対策" />
       <style>{`@keyframes matchTutFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}`}</style>
     </div>
   )
