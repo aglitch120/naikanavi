@@ -170,26 +170,29 @@
   }
 }
 
-/* ── PRO CTAボタン ボーダーグロウエフェクト ── */
+/* ── PRO CTAボタン/カード ボーダーグロウエフェクト ── */
+/* 使い方: 外側wrapper(.pro-glow-wrap) > 回転レイヤー(.pro-glow-ray) + 中身 */
+/* ボタン用の簡易版: .pro-cta-glow をボタンに付けるだけ */
 .pro-cta-glow {
   position: relative;
-  overflow: hidden;
-  isolation: isolate;
+  z-index: 0;
 }
 .pro-cta-glow::before {
   content: '';
   position: absolute;
-  inset: -50%;
-  background: conic-gradient(from 0deg, transparent 0%, #2DD4BF 10%, #1B4F3A 20%, transparent 30%);
-  animation: proCTASpin 2.5s linear infinite, proCTAFadeOut 4s ease-out forwards;
-  z-index: -1;
+  inset: -3px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, transparent 40%, #2DD4BF 50%, #34D399 55%, #1B4F3A 60%, transparent 70%);
+  animation: proCTASpin 3s linear infinite, proCTAFadeOut 6s ease-out forwards;
+  z-index: -2;
+  filter: blur(4px);
 }
 .pro-cta-glow::after {
   content: '';
   position: absolute;
-  inset: 2px;
-  background: inherit;
+  inset: 0;
   border-radius: inherit;
+  background: inherit;
   z-index: -1;
 }
 @keyframes proCTASpin {
@@ -197,7 +200,35 @@
   to { transform: rotate(360deg); }
 }
 @keyframes proCTAFadeOut {
-  0%, 60% { opacity: 1; }
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── ホームfeaturedカード用グロウ ── */
+.featured-glow {
+  position: relative;
+  z-index: 0;
+}
+.featured-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: conic-gradient(from 0deg, transparent 30%, #2DD4BF 45%, #34D399 50%, #10B981 55%, #1B4F3A 60%, transparent 75%);
+  animation: proCTASpin 3s linear infinite, featuredGlowFade 6s ease-out forwards;
+  z-index: -2;
+  filter: blur(6px);
+}
+.featured-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(to right, rgba(27,79,58,0.06), rgba(27,79,58,0.02));
+  z-index: -1;
+}
+@keyframes featuredGlowFade {
+  0%, 65% { opacity: 1; }
   100% { opacity: 0; }
 }
 
