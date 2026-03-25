@@ -6,18 +6,26 @@ import OnboardingModal, { type UserRole, getStoredRole } from './OnboardingModal
 
 // ── Role → アプリ並び順 ──
 const ORDER_BY_ROLE: Record<string, string[]> = {
-  student:   ['/matching', '/study', '/presenter', '/tools', '/journal', '/josler', '/epoc', '/josler/summary-generator', '/credits', '/conferences', '/money', '/shift'],
-  resident:  ['/tools', '/epoc', '/study', '/journal', '/presenter', '/matching', '/conferences', '/josler', '/josler/summary-generator', '/credits', '/money', '/shift'],
-  fellow:    ['/tools', '/josler', '/josler/summary-generator', '/study', '/journal', '/shift', '/presenter', '/matching', '/conferences', '/credits', '/money', '/epoc'],
-  attending: ['/tools', '/journal', '/conferences', '/credits', '/study', '/presenter', '/shift', '/matching', '/money', '/epoc', '/josler', '/josler/summary-generator'],
+  student:   ['/study', '/tools', '/matching', '/matching/interview', '/presenter', '/journal', '/conferences', '/epoc', '/josler', '/josler/summary-generator', '/credits', '/money', '/shift', '/documents'],
+  resident:  ['/tools', '/study', '/epoc', '/presenter', '/documents', '/josler/summary-generator', '/shift', '/journal', '/conferences', '/credits', '/money', '/matching', '/matching/interview', '/josler'],
+  fellow:    ['/tools', '/study', '/josler', '/josler/summary-generator', '/documents', '/presenter', '/journal', '/shift', '/conferences', '/credits', '/money', '/matching', '/matching/interview', '/epoc'],
+  attending: ['/tools', '/study', '/documents', '/journal', '/conferences', '/credits', '/presenter', '/josler/summary-generator', '/shift', '/money', '/matching', '/matching/interview', '/epoc', '/josler'],
+}
+
+// Role別のおすすめアプリ（初回5回表示）
+const RECOMMEND_BY_ROLE: Record<string, string[]> = {
+  student:   ['/study', '/matching', '/matching/interview'],
+  resident:  ['/tools', '/study', '/epoc', '/presenter', '/documents'],
+  fellow:    ['/tools', '/josler', '/josler/summary-generator', '/documents', '/presenter'],
+  attending: ['/tools', '/documents', '/journal', '/conferences', '/credits', '/shift', '/josler'],
 }
 
 // Role別のラベル上書き
 const LABEL_OVERRIDES: Record<string, Record<string, string>> = {
-  student:   { '/matching': 'マッチング対策' },
-  resident:  { '/matching': '転職対策' },
-  fellow:    { '/matching': '転職対策' },
-  attending: { '/matching': '転職対策' },
+  student:   { '/matching': 'マッチング・転職' },
+  resident:  { '/matching': 'マッチング・転職' },
+  fellow:    { '/matching': 'マッチング・転職' },
+  attending: { '/matching': 'マッチング・転職' },
 }
 
 // 年度切替で属性を自動更新（4/1に研修医→専攻医等）
@@ -68,13 +76,21 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
     const stored = getStoredRole()
     if (stored) {
       setRole(stored)
+      // 初回5回まではおすすめハイライトを表示
+      const count = parseInt(localStorage.getItem('iwor_recommend_shown') || '0', 10)
+      if (count < 5) {
+        setTimeout(() => setShowRecommend(true), 300)
+        setTimeout(() => setShowRecommend(false), 5000)
+        localStorage.setItem('iwor_recommend_shown', String(count + 1))
+      }
     }
   }, [])
 
   const handleRoleSelect = (selected: UserRole & string) => {
     setRole(selected)
+    localStorage.setItem('iwor_recommend_shown', '1')
     setTimeout(() => setShowRecommend(true), 100)
-    setTimeout(() => setShowRecommend(false), 4500)
+    setTimeout(() => setShowRecommend(false), 5000)
   }
 
   // Role別にアプリを並び替え+ラベル上書き
@@ -90,7 +106,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
       })
     : apps
 
-  const recSet = role ? new Set((ORDER_BY_ROLE[role] || []).slice(0, 3)) : new Set<string>()
+  const recSet = role ? new Set(RECOMMEND_BY_ROLE[role] || []) : new Set<string>()
   const isHighlighted = (href: string) => showRecommend && recSet.has(href)
 
   return (
