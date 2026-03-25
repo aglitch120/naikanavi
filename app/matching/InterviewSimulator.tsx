@@ -27,7 +27,7 @@ interface Message {
 }
 
 interface InterviewSettings {
-  duration: 5 | 10 | 15
+  duration: 3 | 5 | 10 | 15
   hospitalType: 'community' | 'university'
   prefecture: string
   pressure: 'gentle' | 'normal' | 'pressure'
@@ -53,8 +53,8 @@ interface Props {
 }
 
 // ── 設定画面 ──
-function SettingsScreen({ onStart }: { onStart: (s: InterviewSettings) => void }) {
-  const [duration, setDuration] = useState<5 | 10 | 15>(10)
+function SettingsScreen({ onStart, isPro }: { onStart: (s: InterviewSettings) => void; isPro: boolean }) {
+  const [duration, setDuration] = useState<3 | 5 | 10 | 15>(5)
   const [hospitalType, setHospitalType] = useState<'community' | 'university'>('community')
   const [prefecture, setPrefecture] = useState('東京都')
   const [pressure, setPressure] = useState<'gentle' | 'normal' | 'pressure'>('normal')
@@ -85,7 +85,7 @@ function SettingsScreen({ onStart }: { onStart: (s: InterviewSettings) => void }
         <div>
           <label className="block text-xs font-semibold mb-1.5" style={{ color: '#6B6760' }}>面接時間</label>
           <div className="flex gap-2">
-            {([5, 10, 15] as const).map(d => (
+            {([3, 5, 10, 15] as const).map(d => (
               <button key={d} onClick={() => setDuration(d)}
                 className="flex-1 py-2 rounded-lg text-xs font-medium transition-all"
                 style={BtnStyle(duration === d)}>
@@ -169,7 +169,7 @@ function SettingsScreen({ onStart }: { onStart: (s: InterviewSettings) => void }
       <button onClick={() => onStart({ duration, hospitalType, prefecture, pressure, useProfile })}
         className="w-full py-3.5 rounded-xl text-sm font-bold transition-all hover:opacity-90"
         style={{ background: MC, color: '#fff' }}>
-        面接を始める
+        {isPro ? '面接を始める' : '無料で始める'}
       </button>
 
       {/* 練習回数（あれば） */}
@@ -800,6 +800,7 @@ ${hospitalCharacter}
    - 医師像・倫理（医師に大切なこと。チーム医療。患者対応）
    - 時事ネタ（医師の働き方改革。AI。地域医療偏在）
    - 突拍子もない質問を1つ（「動物に例えると？」「100万円もらったら？」「無人島に1つ持っていくなら？」「最後の晩餐は？」）
+   - 地域に関する質問（受験者の出身地や出身大学がある地域と、面接病院の地域が異なる場合は「なぜこの地方を選んだのですか？」「地元ではなくこの地域で研修したい理由は？」を自然に聞く。毎回聞く必要はないが、地方↔都会の移動がある場合は適宜）
 3. 最後に「何か質問はありますか？」で締める
 
 ■ 面接官のリアルな振る舞い:
@@ -1031,7 +1032,7 @@ ${s.useProfile && profileCtx ? `\n■ 受験者のプロフィール（手元の
 
   return (
     <>
-      {phase === 'settings' && <SettingsScreen onStart={handleStart} />}
+      {phase === 'settings' && <SettingsScreen onStart={handleStart} isPro={isPro} />}
       {phase === 'chat' && settings && (
         <ChatScreen
           settings={settings} messages={messages} input={input}

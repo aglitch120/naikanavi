@@ -405,8 +405,8 @@ export default function JoslerApp({ initialMode }: { initialMode?: RecordMode } 
       </div>
       <ModeSwitch />
 
-      {/* FREE: 保存誘導バナー */}
-      {!isPro && hasUnsavedChanges && (
+      {/* FREE: 保存誘導バナー（JOSLER/EPOC共通、loaded後に常時表示） */}
+      {!isPro && loaded && (
         <div style={{ margin: '8px 14px 0', padding: '10px 14px', borderRadius: 10, background: '#FEF3C7', border: '1px solid #FCD34D', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <div style={{ fontSize: 12, fontWeight: 600, color: '#92400E' }}>データは保存されていません</div>

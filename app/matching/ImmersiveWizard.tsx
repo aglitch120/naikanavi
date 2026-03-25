@@ -9,7 +9,7 @@ interface Answer { choices: string[]; freeText: string }
 // ── 全質問定義 ──
 const STEPS = [
   // ── 基本情報 ──
-  { id: 'basic', icon: '👤', question: '基本情報を教えてください', sub: '履歴書に必要な情報です', type: 'basic' as const },
+  { id: 'basic', icon: '👤', question: '基本情報を教えてください', sub: '入力情報は端末内のみに保存され、外部に公開・送信されません', type: 'basic' as const },
   // ── 志望 ──
   { id: 'specialty', icon: '🏥', question: '志望する診療科は？', sub: '複数選択可（まだ決まっていなくてもOK）',
     choices: ['内科','外科','小児科','産婦人科','整形外科','脳神経外科','皮膚科','眼科','耳鼻咽喉科','泌尿器科','精神科','放射線科','麻酔科','救急科','総合診療科','未定'],

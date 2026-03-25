@@ -127,6 +127,7 @@ export default function CreditsApp() {
   const [showTargetInput, setShowTargetInput] = useState(false)
   const [showProModal, setShowProModal] = useState(false)
   const [actionCount, setActionCount] = useState(0)
+  const [activeSpecIdx, setActiveSpecIdx] = useState(0)
 
   // Load data
   useEffect(() => {
@@ -162,8 +163,6 @@ export default function CreditsApp() {
   }
 
   const selectedIds = data.selectedSpecialties?.length ? data.selectedSpecialties : (data.selectedSpecialty ? [data.selectedSpecialty] : [])
-  // 現在表示中の専門医（タブ切替）
-  const [activeSpecIdx, setActiveSpecIdx] = useState(0)
   const activeSpecId = selectedIds[activeSpecIdx] || selectedIds[0] || null
   const specialty = activeSpecId ? getSpecialtyById(activeSpecId) : null
 

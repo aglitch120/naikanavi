@@ -138,10 +138,18 @@ export default function ProGate({
         {/* CTA オーバーレイ */}
         {needsGate && (
           <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center pb-4 pt-8 bg-gradient-to-t from-bg via-bg/90 to-transparent">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-ac text-white rounded-xl text-sm font-bold shadow-lg group-hover:bg-ac/90 transition-colors">
+            <div className="pro-glow-btn inline-flex items-center gap-2 px-5 py-2.5 bg-ac text-white rounded-xl text-sm font-bold shadow-lg group-hover:bg-ac/90 transition-colors relative overflow-hidden">
               <span className="text-base">🔒</span>
               {label || defaultLabel}
             </div>
+            <style>{`
+              .pro-glow-btn { animation: proGlowFade 3s ease-out forwards; }
+              @keyframes proGlowFade {
+                0% { box-shadow: 0 0 8px 2px rgba(27,79,58,0.6), 0 0 20px 4px rgba(27,79,58,0.3); }
+                50% { box-shadow: 0 0 16px 4px rgba(27,79,58,0.5), 0 0 32px 8px rgba(27,79,58,0.2); }
+                100% { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+              }
+            `}</style>
             <p className="text-xs text-muted mt-2">
               iwor PRO — ¥9,800/年
             </p>
