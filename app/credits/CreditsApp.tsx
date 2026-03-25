@@ -155,14 +155,6 @@ export default function CreditsApp() {
   }, [isPro])
 
   // 複数専門医対応: selectedSpecialtiesが空なら旧selectedSpecialtyを使う
-  if (!loaded) {
-    return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <IworLoader size="lg" />
-      </div>
-    )
-  }
-
   const selectedIds = data.selectedSpecialties?.length ? data.selectedSpecialties : (data.selectedSpecialty ? [data.selectedSpecialty] : [])
   const activeSpecId = selectedIds[activeSpecIdx] || selectedIds[0] || null
   const specialty = activeSpecId ? getSpecialtyById(activeSpecId) : null
@@ -250,6 +242,14 @@ export default function CreditsApp() {
       <div className="max-w-2xl mx-auto px-4 pt-6">
         <AppHeader title="専門医単位" subtitle="専門医更新に必要な単位を管理" badge="PRO" />
         <div className="text-center py-20 text-sm" style={{ color: C.m }}>読み込み中...</div>
+      </div>
+    )
+  }
+
+  if (!loaded) {
+    return (
+      <div className="flex items-center justify-center min-h-[50vh]">
+        <IworLoader size="lg" />
       </div>
     )
   }

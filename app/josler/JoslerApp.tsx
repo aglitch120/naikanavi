@@ -353,6 +353,20 @@ export default function JoslerApp({ initialMode }: { initialMode?: RecordMode } 
           </div>
         </div>
         <ModeSwitch />
+
+        {/* FREE: EPOC保存誘導バナー */}
+        {!isPro && loaded && (
+          <div style={{ margin: '8px 14px 0', padding: '10px 14px', borderRadius: 10, background: '#FEF3C7', border: '1px solid #FCD34D', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 600, color: '#92400E' }}>データは保存されていません</div>
+              <div style={{ fontSize: 10, color: '#92400E', opacity: 0.8 }}>ページを閉じると入力内容が失われます</div>
+            </div>
+            <button onClick={() => setShowProModal(true)} style={{ padding: '6px 12px', borderRadius: 8, background: C.ac, color: '#fff', fontSize: 11, fontWeight: 700, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+              PROで保存
+            </button>
+          </div>
+        )}
+
         <div style={{ display: 'flex', background: C.bg, borderBottom: `1px solid ${C.br}`, overflowX: 'auto', marginTop: 14 }}>
           {EPOC_TABS.map(t => (
             <button key={t.id} onClick={() => setEpocTab(t.id)} style={{
