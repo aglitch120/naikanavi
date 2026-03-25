@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useProStatus } from '@/components/pro/useProStatus'
 import ProModal from '@/components/pro/ProModal'
 import AppHeader from '@/components/AppHeader'
+import { FeedbackRow } from '@/components/tools/ErrorReportButton'
 import HospitalTab from './HospitalSection'
 import DocumentsTab, { HospitalCompare } from './DocumentsTab'
 import ProfileWizard from './ProfileWizard'
@@ -216,6 +217,7 @@ function MatchingTutorial({ mode, onClose }: { mode: 'matching' | 'career'; onCl
           <button onClick={() => isLast ? onClose() : setStep(step+1)} style={{ flex:2, padding:'12px 0', border:'none', borderRadius:12, background:'#1B4F3A', color:'#fff', fontSize:13, fontWeight:600, cursor:'pointer' }}>{isLast ? 'はじめる 🚀' : '次へ →'}</button>
         </div>
       </div>
+      <FeedbackRow appName="マッチング対策" />
       <style>{`@keyframes matchTutFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}`}</style>
     </div>
   )

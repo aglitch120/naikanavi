@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import IworLoader from '@/components/IworLoader'
 import AppHeader from '@/components/AppHeader'
+import { FeedbackRow } from '@/components/tools/ErrorReportButton'
 import ProModal from '@/components/pro/ProModal'
 import { useProStatus } from '@/components/pro/useProStatus'
 import { ALL_SPECIALTIES, getSpecialtyById, type CreditEntry, type UserCreditsData } from '@/lib/credits-data'
@@ -686,6 +687,7 @@ export default function CreditsApp() {
           </div>
         </div>
       )}
+      <FeedbackRow appName="専門医単位" />
     </div>
   )
 }

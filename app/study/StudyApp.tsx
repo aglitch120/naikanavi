@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import AppHeader from '@/components/AppHeader'
 import IworLoader from '@/components/IworLoader'
+import { FeedbackRow } from '@/components/tools/ErrorReportButton'
 import { FlashCard } from './cbt-cards'
 import {
   Rating, CardData,
@@ -732,6 +733,8 @@ export default function StudyApp() {
             <button onClick={() => setImportError('')} className="text-[10px] text-red-400 mt-1 underline">閉じる</button>
           </div>
         )}
+
+        <FeedbackRow appName="Study" />
 
         {/* 下部余白（固定ボタン + BottomNav分） */}
         <div className="h-40" />

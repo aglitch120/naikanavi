@@ -5,6 +5,7 @@ import AppHeader from '@/components/AppHeader'
 import ProModal from '@/components/pro/ProModal'
 import { useProStatus } from '@/components/pro/useProStatus'
 import { CONFERENCES_2026, Conference, getSpecialtyCategory, SPECIALTY_COLORS, TIER_LABELS } from '@/lib/conferences-data'
+import { FeedbackRow } from '@/components/tools/ErrorReportButton'
 
 type ViewMode = 'list' | 'calendar'
 type ListFilter = 'all' | 'mylist'
@@ -706,6 +707,7 @@ function CalendarGrid({ conferences, attending, onToggleAttend }: { conferences:
           </div>
         </div>
       )}
+      <FeedbackRow appName="学会カレンダー" />
     </div>
   )
 }
