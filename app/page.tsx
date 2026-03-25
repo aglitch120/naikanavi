@@ -240,7 +240,7 @@ export default function HomePage() {
       <section className="px-4 mb-8">
         <div className="relative">
           <div className="absolute inset-0 bg-ac/30 rounded-2xl translate-y-2 blur-xl" />
-          <div className="relative bg-ac rounded-2xl p-8 md:p-10 text-center overflow-hidden shadow-2xl">
+          <div className="pro-cta-glow relative bg-ac rounded-2xl p-8 md:p-10 text-center overflow-hidden shadow-2xl">
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
               <div className="absolute -top-24 -right-24 w-72 h-72 bg-white/[0.04] rounded-full" />
               <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-white/[0.03] rounded-full" />

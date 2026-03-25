@@ -35,7 +35,7 @@ const categories = [
     icon: '📋',
     name: '基準値早見表',
     description: '血液検査・尿検査の基準値一覧',
-    href: '/tools/interpret/lab-values',
+    href: '/tools/calc/lab-values',
   },
 ]
 

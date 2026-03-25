@@ -170,7 +170,7 @@ export default function LabValuesPage() {
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-ac">ホーム</Link><span className="mx-2">›</span>
         <Link href="/tools" className="hover:text-ac">臨床ツール</Link><span className="mx-2">›</span>
-        <Link href="/tools/interpret" className="hover:text-ac">検査読影</Link><span className="mx-2">›</span>
+        <Link href="/tools/calc" className="hover:text-ac">計算ツール</Link><span className="mx-2">›</span>
         <span>基準値早見表</span>
       </nav>
 
@@ -182,7 +182,7 @@ export default function LabValuesPage() {
             <p className="text-sm text-muted">年齢・性別を入力 → カテゴリ別に基準値を一覧表示</p>
           </div>
           <ProPulseHint>
-            <FavoriteButton slug="interpret-lab-values" title="基準値早見表" href="/tools/interpret/lab-values" type="calc" />
+            <FavoriteButton slug="lab-values" title="基準値早見表" href="/tools/calc/lab-values" type="calc" />
           </ProPulseHint>
         </div>
         <UpdatedAt />

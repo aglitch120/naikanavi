@@ -81,7 +81,7 @@ function ThirdUseBanner() {
 /** PRO CTA（ページ末尾） */
 function ProCTA() {
   return (
-    <div className="relative bg-ac rounded-2xl p-6 md:p-8 my-8 overflow-hidden">
+    <div className="pro-cta-glow relative bg-ac rounded-2xl p-6 md:p-8 my-8 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <svg className="absolute top-0 right-0 w-64 h-64 text-white/[0.03]" viewBox="0 0 200 200">
           {[30, 55, 80, 105].map((r) => (

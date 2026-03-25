@@ -70,26 +70,49 @@ function TedoriCalc() {
   const result = (() => {
     const y = Number(income)
     if (!y || y <= 0) return null
-    // 社会保険料概算（約15%）
+
+    // 給与所得控除（2024年度〜）
+    let kyuyoKojo: number
+    if (y <= 1625000) kyuyoKojo = 550000
+    else if (y <= 1800000) kyuyoKojo = y * 0.4 - 100000
+    else if (y <= 3600000) kyuyoKojo = y * 0.3 + 80000
+    else if (y <= 6600000) kyuyoKojo = y * 0.2 + 440000
+    else if (y <= 8500000) kyuyoKojo = y * 0.1 + 1100000
+    else kyuyoKojo = 1950000
+
+    // 社会保険料概算（健保+厚生年金+雇用保険 ≒ 約15%）
     const shakaihokenRate = age === 'over40' ? 0.155 : 0.148
     const shakaihoken = y * shakaihokenRate
-    // 所得税+住民税 概算
-    const shotoku = y - shakaihoken - 480000 // 基礎控除48万
-    let tax = 0
-    if (shotoku > 0) {
-      // 簡易累進税率（所得税+住民税≒15〜33%帯）
-      if (shotoku <= 1950000) tax = shotoku * 0.15
-      else if (shotoku <= 3300000) tax = 1950000 * 0.15 + (shotoku - 1950000) * 0.20
-      else if (shotoku <= 6950000) tax = 1950000 * 0.15 + 1350000 * 0.20 + (shotoku - 3300000) * 0.30
-      else if (shotoku <= 9000000) tax = 1950000 * 0.15 + 1350000 * 0.20 + 3650000 * 0.30 + (shotoku - 6950000) * 0.33
-      else tax = 1950000 * 0.15 + 1350000 * 0.20 + 3650000 * 0.30 + 2050000 * 0.33 + (shotoku - 9000000) * 0.43
-    }
+
+    // 課税所得 = 年収 - 給与所得控除 - 社会保険料 - 基礎控除48万
+    const shotoku = Math.max(0, y - kyuyoKojo - shakaihoken - 480000)
+
+    // 所得税（累進課税）
+    let incomeTax: number
+    if (shotoku <= 1950000) incomeTax = shotoku * 0.05
+    else if (shotoku <= 3300000) incomeTax = shotoku * 0.10 - 97500
+    else if (shotoku <= 6950000) incomeTax = shotoku * 0.20 - 427500
+    else if (shotoku <= 9000000) incomeTax = shotoku * 0.23 - 636000
+    else if (shotoku <= 18000000) incomeTax = shotoku * 0.33 - 1536000
+    else if (shotoku <= 40000000) incomeTax = shotoku * 0.40 - 2796000
+    else incomeTax = shotoku * 0.45 - 4796000
+    incomeTax = Math.max(0, incomeTax)
+    // 復興特別所得税 2.1%
+    incomeTax = incomeTax * 1.021
+
+    // 住民税（一律10% + 均等割5000円）
+    const juminTax = shotoku * 0.10 + 5000
+
+    const tax = incomeTax + juminTax
     const tedori = y - shakaihoken - tax
+
+    // 1000円単位に丸める
+    const round1k = (n: number) => Math.round(n / 1000) * 1000
     return {
-      tedori: Math.round(tedori),
-      shakaihoken: Math.round(shakaihoken),
-      tax: Math.round(tax),
-      monthly: Math.round(tedori / 12),
+      tedori: round1k(tedori),
+      shakaihoken: round1k(shakaihoken),
+      tax: round1k(tax),
+      monthly: round1k(tedori / 12),
     }
   })()
 
@@ -361,20 +384,21 @@ function BaitoTaxCalc() {
     // 限界税率（バイト収入にかかる税率）
     const marginalRate = Math.round((additionalTotal / baito) * 100)
 
+    const r1k = (n: number) => Math.round(n / 1000) * 1000
     return {
       total,
       baitoAnnual: baito,
-      mainIncomeTax: mainTaxWithFukkou,
-      totalIncomeTax: totalTaxWithFukkou,
-      mainJuminTax,
-      totalJuminTax,
-      additionalIncomeTax,
-      additionalJuminTax,
-      additionalTotal,
-      baitoTedori,
+      mainIncomeTax: r1k(mainTaxWithFukkou),
+      totalIncomeTax: r1k(totalTaxWithFukkou),
+      mainJuminTax: r1k(mainJuminTax),
+      totalJuminTax: r1k(totalJuminTax),
+      additionalIncomeTax: r1k(additionalIncomeTax),
+      additionalJuminTax: r1k(additionalJuminTax),
+      additionalTotal: r1k(additionalTotal),
+      baitoTedori: r1k(baitoTedori),
       baitoTedoriRate,
       marginalRate,
-      shakaihoken: Math.round(shakaihoken),
+      shakaihoken: r1k(shakaihoken),
     }
   })()
 
