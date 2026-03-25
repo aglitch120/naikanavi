@@ -1,6 +1,6 @@
 # iwor デザインシステム
 
-> 最終更新: 2026年3月16日
+> 最終更新: 2026年3月26日
 
 ---
 
@@ -102,7 +102,8 @@ body {
 - **フラットデザイン統一**: ガラスモーフィズム（backdrop-blur, gradient-to-br, bg-opacity）は使用禁止
 - **カードスタイル**: `bg-s0 border border-br rounded-xl` で統一。hover時は `hover:border-ac/30 hover:shadow-md`
 - **アイコン背景**: `bg-s1 border border-br`（フラット）。`bg-acl border-ac/10`（ガラス風）は廃止
-- **CTAバナー**: `bg-ac rounded-2xl shadow-2xl` + blur-xl シャドウレイヤーで立体感。ガラス装飾SVGは不使用
+- **CTAバナー**: ダーク背景（`#1A1917`）+ GlowButton 回転ボーダーグロー。メインCTA・PRO訴求に使用
+- **GlowButton**: `components/GlowButton.tsx`。細い回転グラデーションボーダー（conic-gradient）。`intensity="default"` は通常CTA、`"strong"` はLP末尾等の強調CTA。グロー適用はCTA限定、通常カード・UIには使用禁止
 - **比較表PRO列**: `-translate-y-2 shadow-lg` で浮き上がり表現
 - **価格表示**: 「月額¥980 / 年額¥9,800（2ヶ月分無料）」形式。年払いアンカリングで年払い誘導
 
