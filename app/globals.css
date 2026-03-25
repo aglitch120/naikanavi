@@ -170,36 +170,7 @@
   }
 }
 
-/* ── 回転グロウエフェクト ──
-   使い方: <div class="glow-wrap rounded-2xl"> の中に要素を入れる。
-   wrapperにpadding:2pxを設け、その隙間にconic-gradientが回る。
-   中身は .glow-inner で背景を再塗り。 */
-.glow-wrap {
-  position: relative;
-  padding: 2px;
-  overflow: hidden;
-  background: transparent;
-}
-.glow-wrap .glow-ray {
-  position: absolute;
-  inset: -40%;
-  background: conic-gradient(from 0deg, transparent 30%, #2DD4BF 45%, #34D399 50%, #10B981 55%, transparent 70%);
-  animation: glowSpin 2.5s linear infinite, glowFade 7s ease-out forwards;
-}
-.glow-wrap .glow-inner {
-  position: relative;
-  border-radius: inherit;
-  z-index: 1;
-}
-@keyframes glowSpin {
-  to { transform: rotate(360deg); }
-}
-@keyframes glowFade {
-  0%, 70% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* ── box-shadowフォールバック（glow-wrapが使えない場所用） ── */
+/* ── ボーダーグロウエフェクト（box-shadowパルス） ── */
 .pro-cta-glow {
   animation: glowPulse 1.5s ease-in-out 3, glowPulseFade 6s ease-out forwards;
 }

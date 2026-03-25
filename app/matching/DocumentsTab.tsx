@@ -21,7 +21,7 @@ interface Profile {
 type DocSubTab = 'emails' | 'checklist' | 'questions' | 'resume-guide'
 
 // ── メールテンプレート ──
-type TemplateId = 'visit-request' | 'visit-thanks' | 'adoption-thanks' | 'cover-letter' | 'schedule-adjust' | 'decline'
+type TemplateId = 'visit-request' | 'visit-thanks' | 'adoption-thanks' | 'cover-letter'
 
 interface TemplateField {
   key: string
@@ -51,12 +51,12 @@ const TEMPLATES: Template[] = [
       { key: 'hospitalName', label: '病院名', placeholder: '○○病院' },
       { key: 'department', label: '宛先部署', placeholder: '研修管理室 / 総務課 / 教育研修部' },
       { key: 'contactName', label: '担当者名（不明なら空欄）', placeholder: '○○様' },
-      { key: 'date1', label: '第1希望日', placeholder: '2026年7月1日（水）', type: 'text' },
-      { key: 'date2', label: '第2希望日', placeholder: '2026年7月3日（金）', type: 'text' },
-      { key: 'date3', label: '第3希望日', placeholder: '2026年7月8日（水）', type: 'text' },
-      { key: 'spec1', label: '見学希望科 第1希望', placeholder: '内科' },
-      { key: 'spec2', label: '見学希望科 第2希望', placeholder: '救急科' },
-      { key: 'spec3', label: '見学希望科 第3希望（任意）', placeholder: '外科' },
+      { key: 'date1', label: '第1希望日', placeholder: '', type: 'date' },
+      { key: 'date2', label: '第2希望日', placeholder: '', type: 'date' },
+      { key: 'date3', label: '第3希望日', placeholder: '', type: 'date' },
+      { key: 'spec1', label: '見学希望科 第1希望', placeholder: '内科', type: 'select', options: ['内科','外科','救急科','小児科','産婦人科','整形外科','脳神経外科','心臓血管外科','泌尿器科','眼科','耳鼻咽喉科','皮膚科','精神科','放射線科','麻酔科','病理診断科','リハビリテーション科','総合診療科'] },
+      { key: 'spec2', label: '見学希望科 第2希望', placeholder: '救急科', type: 'select', options: ['内科','外科','救急科','小児科','産婦人科','整形外科','脳神経外科','心臓血管外科','泌尿器科','眼科','耳鼻咽喉科','皮膚科','精神科','放射線科','麻酔科','病理診断科','リハビリテーション科','総合診療科'] },
+      { key: 'spec3', label: '見学希望科 第3希望（任意）', placeholder: '', type: 'select', options: ['','内科','外科','救急科','小児科','産婦人科','整形外科','脳神経外科','心臓血管外科','泌尿器科','眼科','耳鼻咽喉科','皮膚科','精神科','放射線科','麻酔科','病理診断科','リハビリテーション科','総合診療科'] },
       { key: 'phone', label: '電話番号', placeholder: '090-XXXX-XXXX' },
       { key: 'email', label: 'メールアドレス', placeholder: 'example@univ.ac.jp' },
       { key: 'zip', label: '郵便番号', placeholder: '〒XXX-XXXX' },
@@ -66,6 +66,12 @@ const TEMPLATES: Template[] = [
       const contact = v.contactName ? `${v.department} ${v.contactName}` : `${v.department} ご担当者 様`
       const year = p.graduationYear ? `${p.graduationYear}年卒業見込み` : ''
       const spec3Line = v.spec3 ? `\n第3希望: ${v.spec3}` : ''
+      const fmtDate = (d: string) => {
+        if (!d) return '○月○日（○）'
+        const dt = new Date(d + 'T00:00:00')
+        const dow = ['日','月','火','水','木','金','土'][dt.getDay()]
+        return `${dt.getFullYear()}年${dt.getMonth()+1}月${dt.getDate()}日（${dow}）`
+      }
       return `件名: 病院見学のお願い（${p.university || '○○大学医学部'}${p.graduationYear ? ` ${p.graduationYear}年卒` : ''} ${p.name || '○○'}）
 
 ${v.hospitalName || '○○病院'}
@@ -78,9 +84,9 @@ ${contact}
 是非、見学にお伺いさせていただきたく存じます。
 
 可能でしたら、
-第1希望日: ${v.date1 || '○月○日（○）'}
-第2希望日: ${v.date2 || '○月○日（○）'}
-第3希望日: ${v.date3 || '○月○日（○）'}
+第1希望日: ${fmtDate(v.date1)}
+第2希望日: ${fmtDate(v.date2)}
+第3希望日: ${fmtDate(v.date3)}
 のうち1日見学を希望したいのですが、貴院のご都合はいかがでしょうか。
 
 また、差し支え無ければ、以下の診療科を見学する機会をいただけますよう、お願い申し上げます。
@@ -219,73 +225,6 @@ ${docs.map((d, i) => `　${i + 1}. ${d}　…… 1通`).join('\n')}
 
 　　　　　　　　　　　　　　　　　　　敬具`
     },
-  },
-  {
-    id: 'schedule-adjust' as TemplateId,
-    title: '面接日程調整',
-    icon: '📅',
-    desc: '面接の日程変更・調整をお願いするメール',
-    fields: [
-      { key: 'hospitalName', label: '病院名', placeholder: '○○病院' },
-      { key: 'contactName', label: '担当者名', placeholder: '○○様' },
-      { key: 'originalDate', label: '当初の面接日', placeholder: '○月○日', type: 'text' },
-      { key: 'preferredDates', label: '希望日（複数可）', placeholder: '○月○日、○月○日', type: 'textarea', rows: 2 },
-      { key: 'reason', label: '理由（簡潔に）', placeholder: '大学の試験日程と重なったため' },
-    ],
-    generate: (v, p) =>
-`${v.hospitalName || '○○病院'}
-${v.contactName || 'ご担当者'} 様
-
-お世話になっております。${p.university || '○○大学'}医学部の${p.name || '○○'}です。
-
-先日ご連絡いただきました面接日程（${v.originalDate || '○月○日'}）につきまして、
-誠に恐縮ではございますが、${v.reason || '都合により'}、
-日程の調整をお願いできないかと思いご連絡いたしました。
-
-以下の日程であれば伺うことが可能です。
-${(v.preferredDates || '○月○日').split(/[,、，\n]/).map(d => `・${d.trim()}`).join('\n')}
-
-ご多忙のところ大変恐れ入りますが、
-ご検討いただけますと幸いです。
-
-何卒よろしくお願い申し上げます。
-
-${p.name || '○○ ○○'}
-${p.university || '○○大学医学部'}`,
-  },
-  {
-    id: 'decline' as TemplateId,
-    title: '採用辞退',
-    icon: '🙏',
-    desc: '内定・採用を辞退するメール',
-    fields: [
-      { key: 'hospitalName', label: '病院名', placeholder: '○○病院' },
-      { key: 'contactName', label: '担当者名', placeholder: '○○様' },
-    ],
-    generate: (v, p) =>
-`${v.hospitalName || '○○病院'}
-${v.contactName || 'ご担当者'} 様
-
-お世話になっております。${p.university || '○○大学'}医学部の${p.name || '○○'}です。
-
-この度は貴院より採用のご連絡をいただき、誠にありがとうございます。
-大変光栄に存じますとともに、身に余るお言葉をいただきましたこと、
-心より感謝申し上げます。
-
-慎重に検討いたしました結果、誠に恐縮ではございますが、
-今回は辞退させていただきたく存じます。
-
-見学や面接を通じて、貴院の素晴らしい研修環境や
-先生方の温かいご指導に深く感銘を受けておりましたので、
-このようなご連絡となりますことを大変心苦しく思っております。
-
-お忙しい中、貴重なお時間をいただきましたことに
-重ねて御礼申し上げます。
-
-貴院の益々のご発展をお祈り申し上げます。
-
-${p.name || '○○ ○○'}
-${p.university || '○○大学医学部'}`,
   },
 ]
 
@@ -598,6 +537,22 @@ function EmailTemplates({ profile, mode }: { profile: Profile; mode: 'matching' 
                   placeholder={f.placeholder}
                   rows={f.rows || 2}
                   className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all resize-none"
+                />
+              ) : f.type === 'select' && f.options ? (
+                <select
+                  value={fieldValues[f.key] || ''}
+                  onChange={e => updateField(f.key, e.target.value)}
+                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all"
+                >
+                  <option value="">選択してください</option>
+                  {f.options.filter(Boolean).map(o => <option key={o} value={o}>{o}</option>)}
+                </select>
+              ) : f.type === 'date' ? (
+                <input
+                  type="date"
+                  value={fieldValues[f.key] || ''}
+                  onChange={e => updateField(f.key, e.target.value)}
+                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all"
                 />
               ) : (
                 <>

@@ -109,11 +109,8 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
       {/* Featured apps (臨床ツール + Study) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3" aria-label="メインアプリ">
         {sortedApps.filter(a => a.featured).map(app => (
-          <div key={app.href} className="glow-wrap rounded-2xl">
-            <div className="glow-ray" />
-            <Link href={app.href}
-              className="glow-inner group flex flex-row items-center gap-3 py-5 px-4 sm:py-6 sm:px-5 transition-all hover:shadow-lg"
-              style={{ background: 'linear-gradient(to right, #f2f5f3, #f7f6f4)' }}
+            <Link key={app.href} href={app.href}
+              className="pro-cta-glow group flex flex-row items-center gap-3 rounded-2xl border py-5 px-4 sm:py-6 sm:px-5 transition-all bg-gradient-to-r from-[#1B4F3A]/[0.06] to-[#1B4F3A]/[0.02] border-[#1B4F3A]/20 hover:border-[#1B4F3A]/40 hover:shadow-lg"
               aria-label={app.label}>
               <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{ background: '#1B4F3A', color: '#fff' }}>
@@ -132,7 +129,6 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-          </div>
         ))}
       </div>
 
