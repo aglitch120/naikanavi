@@ -3,6 +3,8 @@ import { useState, useCallback, useMemo } from 'react'
 import { HOSPITALS, Hospital } from './hospitals-data'
 
 const MC = '#1B4F3A'
+
+const ALL_SPECIALTIES = ['内科','循環器内科','消化器内科','呼吸器内科','腎臓内科','内分泌・糖尿病内科','血液内科','神経内科','膠原病・リウマチ科','感染症科','腫瘍内科','外科','消化器外科','心臓血管外科','呼吸器外科','乳腺外科','小児科','産婦人科','整形外科','脳神経外科','皮膚科','眼科','耳鼻咽喉科','泌尿器科','精神科','放射線科','放射線治療科','麻酔科','救急科','総合診療科','リハビリテーション科','病理診断科','形成外科','小児外科']
 const MCL = '#E8F0EC'
 
 // ── 型 ──
@@ -54,9 +56,9 @@ const TEMPLATES: Template[] = [
       { key: 'date1', label: '第1希望日', placeholder: '', type: 'date' },
       { key: 'date2', label: '第2希望日', placeholder: '', type: 'date' },
       { key: 'date3', label: '第3希望日', placeholder: '', type: 'date' },
-      { key: 'spec1', label: '見学希望科 第1希望', placeholder: '内科', type: 'select', options: ['内科','外科','救急科','小児科','産婦人科','整形外科','脳神経外科','心臓血管外科','泌尿器科','眼科','耳鼻咽喉科','皮膚科','精神科','放射線科','麻酔科','病理診断科','リハビリテーション科','総合診療科'] },
-      { key: 'spec2', label: '見学希望科 第2希望', placeholder: '救急科', type: 'select', options: ['内科','外科','救急科','小児科','産婦人科','整形外科','脳神経外科','心臓血管外科','泌尿器科','眼科','耳鼻咽喉科','皮膚科','精神科','放射線科','麻酔科','病理診断科','リハビリテーション科','総合診療科'] },
-      { key: 'spec3', label: '見学希望科 第3希望（任意）', placeholder: '', type: 'select', options: ['','内科','外科','救急科','小児科','産婦人科','整形外科','脳神経外科','心臓血管外科','泌尿器科','眼科','耳鼻咽喉科','皮膚科','精神科','放射線科','麻酔科','病理診断科','リハビリテーション科','総合診療科'] },
+      { key: 'spec1', label: '見学希望科 第1希望', placeholder: '内科', type: 'select', options: ALL_SPECIALTIES },
+      { key: 'spec2', label: '見学希望科 第2希望', placeholder: '救急科', type: 'select', options: ALL_SPECIALTIES },
+      { key: 'spec3', label: '見学希望科 第3希望（任意）', placeholder: '', type: 'select', options: ['', ...ALL_SPECIALTIES] },
       { key: 'phone', label: '電話番号', placeholder: '090-XXXX-XXXX' },
       { key: 'email', label: 'メールアドレス', placeholder: 'example@univ.ac.jp' },
       { key: 'zip', label: '郵便番号', placeholder: '〒XXX-XXXX' },
@@ -112,7 +114,7 @@ E-mail: ${v.email || 'example@univ.ac.jp'}`
     fields: [
       { key: 'hospitalName', label: '病院名', placeholder: '○○病院' },
       { key: 'contactName', label: '担当者名', placeholder: '○○様' },
-      { key: 'visitedDept', label: '見学した診療科', placeholder: '内科' },
+      { key: 'visitedDept', label: '見学した診療科', placeholder: '内科', type: 'select', options: ALL_SPECIALTIES },
       { key: 'impression', label: '印象に残ったこと', placeholder: '先生方の患者さんへの丁寧な説明と迅速な診療', type: 'textarea', rows: 2 },
       { key: 'specific', label: '具体的なエピソード', placeholder: '研修医の先生が救急搬送の初期対応を主体的に行っていた場面', type: 'textarea', rows: 2 },
       { key: 'phone', label: '電話番号', placeholder: '090-XXXX-XXXX' },
@@ -409,14 +411,23 @@ export default function DocumentsTab({
       <style>{`
         @media print {
           body * { visibility: hidden; }
-          .print-area, .print-area * { visibility: visible; }
+          .print-area, .print-area * { visibility: visible !important; }
           .print-area { position: absolute; left: 0; top: 0; width: 100%; }
           nav, header, footer, .no-print { display: none !important; }
           @page { size: A4; margin: 10mm; }
-          /* 比較表: スコアが切れないように */
+          /* アコーディオン: 全展開して印刷 */
+          .print-area [class*="border-t"] { display: block !important; }
+          /* textarea: メモ欄を枠線付きで表示 */
+          .print-area textarea { border: 1px solid #ccc !important; min-height: 24px !important; visibility: visible !important; }
+          /* チェックボックス・スライダー */
           .print-area input[type="range"] { display: none; }
+          .print-area input[type="checkbox"] { visibility: visible !important; }
+          /* グリッド改ページ防止 */
           .print-area .grid { page-break-inside: avoid; }
-          .print-area button { border: 1px solid #ddd !important; }
+          .print-area > div { page-break-inside: avoid; }
+          /* ボタン非表示 */
+          .print-area button { display: none !important; }
+          .print-area button[disabled] { display: block !important; }
         }
       `}</style>
       {/* サブタブ */}
@@ -564,6 +575,19 @@ function EmailTemplates({ profile, mode }: { profile: Profile; mode: 'matching' 
                     type="text"
                     value={fieldValues[f.key] || ''}
                     onChange={e => updateField(f.key, e.target.value)}
+                    onBlur={f.key === 'zip' ? async (e) => {
+                      const zip = e.target.value.replace(/[^\d]/g, '')
+                      if (zip.length === 7) {
+                        try {
+                          const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zip}`)
+                          const data = await res.json()
+                          if (data.results?.[0]) {
+                            const r = data.results[0]
+                            updateField('address', `${r.address1}${r.address2}${r.address3}`)
+                          }
+                        } catch {}
+                      }
+                    } : undefined}
                     placeholder={f.placeholder}
                     list={f.key === 'hospitalName' ? 'hospital-list' : undefined}
                     className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all"

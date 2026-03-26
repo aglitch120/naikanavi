@@ -834,7 +834,8 @@ ${s.useProfile && profileCtx ? `\n■ 受験者のプロフィール（手元の
       timerRef.current = setInterval(() => {
         setTimeLeft(prev => {
           if (prev <= 1) {
-            handleEndInterview()
+            // 面接官の最後の発言を待つため5秒後にレポート画面へ
+            setTimeout(() => handleEndInterview(), 5000)
             return 0
           }
           return prev - 1

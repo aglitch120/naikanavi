@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from 'react'
 import { loadProfile, saveProfile } from '@/lib/matching-profile-storage'
 import ImmersiveWizard from './ImmersiveWizard'
 import IworLoader from '@/components/IworLoader'
+import GlowButton from '@/components/GlowButton'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -242,11 +243,13 @@ export default function ProfileWizard({
           <span className="text-3xl block mb-3">📝</span>
           <h2 className="text-base font-bold text-tx mb-1">プロフィールを作成</h2>
           <p className="text-xs text-muted mb-4">質問に答えるだけで履歴書・自己PRが自動生成されます</p>
-          <button onClick={() => setShowWizardModal(true)}
-            className="px-8 py-3 rounded-xl text-sm font-bold text-white"
-            style={{ background: MC }}>
-            {profile.name ? 'プロフィールを編集' : '作成を開始'}
-          </button>
+          <GlowButton radius={12}>
+            <button onClick={() => setShowWizardModal(true)}
+              className="px-8 py-3 rounded-xl text-sm font-bold text-white"
+              style={{ background: MC }}>
+              {profile.name ? 'プロフィールを編集' : '作成を開始'}
+            </button>
+          </GlowButton>
           <p className="text-[9px] text-muted mt-3 leading-relaxed">
             入力された情報はお使いの端末にのみ保存され, 第三者に公開されることはありません.
             <a href="/privacy" className="text-ac hover:underline ml-0.5">プライバシーポリシー</a>
