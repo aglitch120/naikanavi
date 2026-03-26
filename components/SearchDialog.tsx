@@ -90,12 +90,69 @@ function normalize(s: string): string {
   return katakanaToHiragana(stripped)
 }
 
+// 医学略語→日本語読み辞書（部分一致用）
+const ABBR_READINGS: Record<string, string[]> = {
+  'ckd': ['しーけーでぃー','まんせいじんぞうびょう'],
+  'aki': ['えーけーあい','きゅうせいじんしょうがい'],
+  'copd': ['しーおーぴーでぃー','まんせいへいそくせいはいしっかん'],
+  'dvt': ['でぃーぶいてぃー','しんぶじょうみゃくけっせん'],
+  'pe': ['ぴーいー','はいそくせん'],
+  'dic': ['でぃーあいしー'],
+  'hba1c': ['えいちびーえーわんしー','へもぐろびん'],
+  'bmi': ['びーえむあい'],
+  'egfr': ['いーじーえふあーる'],
+  'na': ['なとりうむ','そでぃうむ'],
+  'k': ['かりうむ'],
+  'ca': ['かるしうむ'],
+  'mg': ['まぐねしうむ'],
+  'sofa': ['そふぁ'],
+  'apache': ['あぱっち'],
+  'chads': ['ちゃっず'],
+  'meld': ['めるど'],
+  'nihss': ['えぬあいえいちえすえす'],
+  'gcs': ['じーしーえす'],
+  'wells': ['うぇるず'],
+  'curb': ['かーぶ'],
+  'grace': ['ぐれいす'],
+  'child': ['ちゃいるど'],
+  'qtc': ['きゅーてぃーしー'],
+  'bsa': ['びーえすえー','たいひょうめんせき'],
+  'ibw': ['あいびーだぶりゅー','りそうたいじゅう'],
+  'fio2': ['えふあいおーつー'],
+  'psi': ['ぴーえすあい'],
+  'has': ['はす'],
+  'bled': ['ぶれっど'],
+  'timi': ['てぃみ'],
+  'heart': ['はーと'],
+}
+
 // クエリを複数形式に展開して検索ヒット率を上げる
 function expandQuery(q: string): string[] {
   const base = normalize(q)
   const hiragana = romajiToHiragana(base)
   const katakana = hiraganaToKatakana(hiragana)
-  return [base, hiragana, katakanaToHiragana(katakana)].filter((v, i, a) => a.indexOf(v) === i)
+  const results = [base, hiragana, katakanaToHiragana(katakana)]
+
+  // 略語辞書から逆引き: ひらがなクエリ→英語略語
+  const hiraQuery = katakanaToHiragana(hiragana)
+  for (const [abbr, readings] of Object.entries(ABBR_READINGS)) {
+    if (readings.some(r => r.startsWith(hiraQuery) || hiraQuery.startsWith(r))) {
+      results.push(abbr)
+    }
+  }
+  // 英語クエリ→日本語読み
+  const lower = q.toLowerCase().replace(/[^a-z0-9]/g, '')
+  if (ABBR_READINGS[lower]) {
+    results.push(...ABBR_READINGS[lower])
+  }
+  // 部分一致: 辞書のキーが入力に含まれる or 入力がキーに含まれる
+  for (const [abbr, readings] of Object.entries(ABBR_READINGS)) {
+    if (lower.includes(abbr) || abbr.includes(lower)) {
+      results.push(abbr, ...readings)
+    }
+  }
+
+  return results.filter((v, i, a) => a.indexOf(v) === i)
 }
 
 // ツール+アプリのエントリ
