@@ -574,7 +574,6 @@ function EmailTemplates({ profile, mode }: { profile: Profile; mode: 'matching' 
                   <input
                     type="text"
                     value={fieldValues[f.key] || ''}
-                    onChange={e => updateField(f.key, e.target.value)}
                     onChange={f.key === 'zip' ? (e) => {
                       updateField(f.key, e.target.value)
                       const zip = e.target.value.replace(/[^\d]/g, '')
