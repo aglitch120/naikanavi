@@ -34,23 +34,29 @@ export function setStoredRole(role: UserRole) {
 
 interface Props {
   onSelect: (role: UserRole & string) => void
+  forceShow?: boolean
+  onClose?: () => void
 }
 
-export default function OnboardingModal({ onSelect }: Props) {
+export default function OnboardingModal({ onSelect, forceShow, onClose }: Props) {
   const [show, setShow] = useState(false)
   const [animateIn, setAnimateIn] = useState(false)
 
   useEffect(() => {
+    if (forceShow) {
+      setShow(true)
+      requestAnimationFrame(() => setAnimateIn(true))
+      return
+    }
     const stored = getStoredRole()
     if (!stored) {
-      // Small delay so the page paints first
       const t = setTimeout(() => {
         setShow(true)
         requestAnimationFrame(() => setAnimateIn(true))
       }, 600)
       return () => clearTimeout(t)
     }
-  }, [])
+  }, [forceShow])
 
   const handleSelect = (role: UserRole & string) => {
     setStoredRole(role)
@@ -58,6 +64,7 @@ export default function OnboardingModal({ onSelect }: Props) {
     setTimeout(() => {
       setShow(false)
       onSelect(role)
+      onClose?.()
     }, 200)
   }
 

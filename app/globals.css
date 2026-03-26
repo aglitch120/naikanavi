@@ -207,6 +207,34 @@
 .glow-btn-full > span:last-child { display: block; }
 .glow-btn-full > span:last-child > * { width: 100%; }
 
+/* ── 回転ボーダーグロウ（wrapper方式 — ホームfeaturedカード用） ── */
+.spin-glow {
+  position: relative;
+  padding: 2px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.spin-glow-ray {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent 30%, #2DD4BF 42%, #34D399 48%, #10B981 52%, #1B4F3A 58%, transparent 70%);
+  animation: spinGlow 2.5s linear infinite, spinGlowFade 7s ease-out forwards;
+  pointer-events: none;
+}
+.spin-glow-content {
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+}
+@keyframes spinGlow {
+  to { transform: rotate(360deg); }
+}
+@keyframes spinGlowFade {
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* ── 印刷用スタイル ── */
 @media print {
   /* ナビゲーション・フッター・BottomNav非表示 */

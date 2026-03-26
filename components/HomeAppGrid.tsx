@@ -67,9 +67,14 @@ function badgeStyle(badge: string) {
   }
 }
 
+const ROLE_LABELS: Record<string, string> = {
+  student: '医学生', resident: '初期研修医', fellow: '専攻医', attending: '医師',
+}
+
 export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
   const [role, setRole] = useState<UserRole>(null)
   const [showRecommend, setShowRecommend] = useState(false)
+  const [showRoleModal, setShowRoleModal] = useState(false)
 
   useEffect(() => {
     autoUpgradeRole()
@@ -88,6 +93,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
 
   const handleRoleSelect = (selected: UserRole & string) => {
     setRole(selected)
+    setShowRoleModal(false)
     localStorage.setItem('iwor_recommend_shown', '1')
     setTimeout(() => setShowRecommend(true), 100)
     setTimeout(() => setShowRecommend(false), 5000)
@@ -111,7 +117,17 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
 
   return (
     <>
-      <OnboardingModal onSelect={handleRoleSelect} />
+      <OnboardingModal onSelect={handleRoleSelect} forceShow={showRoleModal} onClose={() => setShowRoleModal(false)} />
+
+      {/* 属性表示 + 変更リンク */}
+      {role && (
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <span className="text-xs font-medium text-tx">{ROLE_LABELS[role]}モード</span>
+          <button onClick={() => setShowRoleModal(true)} className="text-[10px] text-muted hover:text-ac underline">
+            変更する
+          </button>
+        </div>
+      )}
 
       {/* Recommendation label */}
       {showRecommend && role && (
@@ -122,11 +138,14 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
         </div>
       )}
 
-      {/* Featured apps (臨床ツール + Study) */}
+      {/* Featured apps (臨床ツール + Study) — 回転グロウ付き */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3" aria-label="メインアプリ">
         {sortedApps.filter(a => a.featured).map(app => (
-            <Link key={app.href} href={app.href}
-              className="pro-cta-glow group flex flex-row items-center gap-3 rounded-2xl border py-5 px-4 sm:py-6 sm:px-5 transition-all bg-gradient-to-r from-[#1B4F3A]/[0.06] to-[#1B4F3A]/[0.02] border-[#1B4F3A]/20 hover:border-[#1B4F3A]/40 hover:shadow-lg"
+          <div key={app.href} className="spin-glow">
+            <div className="spin-glow-ray" />
+            <Link href={app.href}
+              className="spin-glow-content group flex flex-row items-center gap-3 py-5 px-4 sm:py-6 sm:px-5 transition-all hover:shadow-lg"
+              style={{ background: '#F5F4F0' }}
               aria-label={app.label}>
               <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{ background: '#1B4F3A', color: '#fff' }}>
@@ -145,6 +164,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
+          </div>
         ))}
       </div>
 
