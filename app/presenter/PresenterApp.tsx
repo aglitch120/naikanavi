@@ -3,6 +3,7 @@ import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import AppHeader from '@/components/AppHeader'
 import { PresenterTutorial } from '@/components/tutorials'
+import GlowButton from '@/components/GlowButton'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -510,15 +511,17 @@ ${settings.format === 'slide' ? `スライドごとに以下の形式で出力:
 
           {/* 生成ボタン — sticky */}
           <div className="sticky bottom-16 md:bottom-0 z-10 pt-2 pb-1" style={{ background: 'linear-gradient(transparent, var(--bg) 8px)' }}>
-            <button onClick={handleGenerate}
-              disabled={settings.topicSource === 'case' && (!settings.karteText || !settings.karteConsent)}
-              className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-40"
-              style={{ background: MC, boxShadow: `0 4px 14px ${MC}33` }}>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              テンプレートを生成
-            </button>
+            <GlowButton fullWidth radius={12}>
+              <button onClick={handleGenerate}
+                disabled={settings.topicSource === 'case' && (!settings.karteText || !settings.karteConsent)}
+                className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-40"
+                style={{ background: MC }}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                プロンプトを生成
+              </button>
+            </GlowButton>
           </div>
 
           {/* PRO teaser */}
