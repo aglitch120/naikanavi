@@ -672,7 +672,30 @@ function VisitChecklist({ isPro, onShowProModal }: { isPro: boolean; onShowProMo
         <div className="flex items-center justify-between mb-2">
           <p className="text-xs font-medium text-tx">準備の進捗</p>
           <div className="flex items-center gap-2">
-            <button onClick={() => isPro ? window.print() : onShowProModal?.()}
+            <button onClick={() => {
+              if (!isPro) { onShowProModal?.(); return }
+              const w = window.open('', '_blank', 'width=800,height=1100')
+              if (!w) return
+              let html = `<html><head><title>見学準備チェックリスト — iwor</title><style>
+                body{font-family:-apple-system,sans-serif;margin:24px;color:#222;font-size:13px;line-height:1.6}
+                h1{font-size:20px;margin-bottom:4px}
+                h2{font-size:15px;margin:16px 0 6px;border-bottom:1px solid #ddd;padding-bottom:4px}
+                .item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid #f0f0f0}
+                .cb{width:14px;height:14px;border:1.5px solid #999;border-radius:3px;flex-shrink:0;margin-top:2px}
+                .req{color:#B45309;font-weight:bold;font-size:11px}
+                .memo{border:1px solid #ddd;border-radius:4px;height:20px;flex:1;margin-left:8px}
+              </style></head><body>
+              <h1>見学準備チェックリスト</h1>
+              <p style="color:#888;font-size:11px;margin-bottom:12px">iwor.jp — ${new Date().toLocaleDateString('ja-JP')}</p>`
+              VISIT_CHECKLISTS.forEach(cat => {
+                html += `<h2>${cat.icon} ${cat.title}（${cat.items.length}項目）</h2>`
+                cat.items.forEach(item => {
+                  html += `<div class="item"><div class="cb"></div><span>${item.label}${item.required ? ' <span class="req">必須</span>' : ''}</span><div class="memo"></div></div>`
+                })
+              })
+              html += `<script>window.onload=function(){window.print()}<\/script></body></html>`
+              w.document.write(html); w.document.close()
+            }}
               className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-medium text-white" style={{ background: MC }}>
               印刷 {!isPro && '🔒'}
             </button>
@@ -1323,7 +1346,29 @@ function ResumeGuide({ isPro, onShowProModal }: { isPro: boolean; onShowProModal
         <div className="flex items-center justify-between mb-2">
           <p className="text-xs font-medium text-tx">履歴書チェック進捗</p>
           <div className="flex items-center gap-2">
-            <button onClick={() => isPro ? window.print() : onShowProModal?.()}
+            <button onClick={() => {
+              if (!isPro) { onShowProModal?.(); return }
+              const w = window.open('', '_blank', 'width=800,height=1100')
+              if (!w) return
+              let html = `<html><head><title>履歴書チェックリスト — iwor</title><style>
+                body{font-family:-apple-system,sans-serif;margin:24px;color:#222;font-size:13px;line-height:1.6}
+                h1{font-size:20px;margin-bottom:4px}
+                h2{font-size:15px;margin:16px 0 6px;border-bottom:1px solid #ddd;padding-bottom:4px}
+                .item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid #f0f0f0}
+                .cb{width:14px;height:14px;border:1.5px solid #999;border-radius:3px;flex-shrink:0;margin-top:2px}
+                .imp{color:#B45309;font-weight:bold;font-size:11px}
+              </style></head><body>
+              <h1>履歴書チェックリスト</h1>
+              <p style="color:#888;font-size:11px;margin-bottom:12px">iwor.jp — ${new Date().toLocaleDateString('ja-JP')}</p>`
+              RESUME_SECTIONS.forEach(sec => {
+                html += `<h2>${sec.icon} ${sec.title}（${sec.items.length}項目）</h2>`
+                sec.items.forEach(item => {
+                  html += `<div class="item"><div class="cb"></div><span>${item.label}${item.important ? ' <span class="imp">重要</span>' : ''}</span></div>`
+                })
+              })
+              html += `<script>window.onload=function(){window.print()}<\/script></body></html>`
+              w.document.write(html); w.document.close()
+            }}
               className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-medium text-white" style={{ background: MC }}>
               印刷 {!isPro && '🔒'}
             </button>
