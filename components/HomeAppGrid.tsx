@@ -119,22 +119,21 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
     <>
       <OnboardingModal onSelect={handleRoleSelect} forceShow={showRoleModal} onClose={() => setShowRoleModal(false)} />
 
-      {/* 属性表示 + 変更リンク */}
-      {role && (
-        <div className="flex items-center justify-center gap-2 mb-3">
-          <span className="text-xs font-medium text-tx">{ROLE_LABELS[role]}モード</span>
-          <button onClick={() => setShowRoleModal(true)} className="text-[10px] text-muted hover:text-ac underline">
-            変更する
-          </button>
-        </div>
-      )}
-
       {/* Recommendation label */}
       {showRecommend && role && (
         <div className="flex items-center justify-center gap-2 mb-3 animate-fade-in">
           <div className="w-6 h-px bg-ac/30 rounded-full" />
           <p className="text-xs text-ac font-medium">あなたにおすすめ</p>
           <div className="w-6 h-px bg-ac/30 rounded-full" />
+        </div>
+      )}
+
+      {/* 属性表示（右寄せ・小さく） */}
+      {role && (
+        <div className="flex justify-end mb-1">
+          <button onClick={() => setShowRoleModal(true)} className="text-[10px] text-muted hover:text-ac transition-colors">
+            {ROLE_LABELS[role]}モード <span className="underline">変更</span>
+          </button>
         </div>
       )}
 

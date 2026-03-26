@@ -213,6 +213,7 @@
   padding: 2px;
   border-radius: 16px;
   overflow: hidden;
+  background: #DDD9D2; /* グロウフェード後のborder色 */
 }
 .spin-glow-ray {
   position: absolute;
