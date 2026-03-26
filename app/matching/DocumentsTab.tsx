@@ -977,19 +977,14 @@ const COMPARE_CATEGORIES: CompareCategory[] = [
 // ── 病院検索コンポーネント ──
 function HospitalSearchInput({ value, onChange, allHospitals, color }: {
   value: string; onChange: (name: string) => void
-  allHospitals: { name: string; prefecture: string }[]; color: string
+  allHospitals: Hospital[]; color: string
 }) {
   const [query, setQuery] = useState(value)
   const [showSuggestions, setShowSuggestions] = useState(false)
 
   const suggestions = query.length >= 1
-    ? allHospitals.filter(h => h.name.includes(query) || h.prefecture.includes(query)).slice(0, 8)
+    ? allHospitals.filter(h => h.name.includes(query) || h.prefecture.includes(query) || (h.program && h.program.includes(query))).slice(0, 12)
     : []
-
-  // 重複除去（同名病院）
-  const uniqueSuggestions = suggestions.filter((h, i, arr) =>
-    arr.findIndex(a => a.name === h.name) === i
-  )
 
   return (
     <div className="relative">
@@ -1002,15 +997,20 @@ function HospitalSearchInput({ value, onChange, allHospitals, color }: {
         style={{ borderColor: color + '66', fontSize: '16px' }}
         placeholder="病院名を検索..."
       />
-      {showSuggestions && uniqueSuggestions.length > 0 && (
+      {showSuggestions && suggestions.length > 0 && (
         <div className="absolute z-20 left-0 right-0 mt-1 bg-s0 border border-br rounded-lg shadow-lg max-h-48 overflow-y-auto">
-          {uniqueSuggestions.map((h, i) => (
-            <button key={i} onClick={() => { setQuery(h.name); onChange(h.name); setShowSuggestions(false) }}
-              className="w-full px-3 py-2 text-left text-xs hover:bg-s1 transition-all flex justify-between">
-              <span className="font-medium">{h.name}</span>
-              <span className="text-muted">{h.prefecture}</span>
-            </button>
-          ))}
+          {suggestions.map((h, i) => {
+            const hasMultiple = suggestions.filter(s => s.name === h.name).length > 1
+            const displayName = hasMultiple ? `${h.name}（${h.program || 'プログラム'}）` : h.name
+            return (
+              <button key={h.id || i} onClick={() => { setQuery(displayName); onChange(displayName); setShowSuggestions(false) }}
+                className="w-full px-3 py-2 text-left text-xs hover:bg-s1 transition-all">
+                <span className="font-medium block">{h.name}</span>
+                {hasMultiple && h.program && <span className="text-[10px] text-muted block truncate">{h.program}</span>}
+                <span className="text-[10px] text-muted">{h.prefecture}</span>
+              </button>
+            )
+          })}
         </div>
       )}
     </div>
@@ -1144,7 +1144,7 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
                 next[hi] = name
                 setHospitalNames(next)
               }}
-              allHospitals={HOSPITALS.map(h => ({ name: h.name, prefecture: h.prefecture }))}
+              allHospitals={HOSPITALS}
               color={hospitalColors[hi]}
             />
           </div>
