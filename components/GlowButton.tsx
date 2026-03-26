@@ -46,32 +46,49 @@ export default function GlowButton({
         borderRadius: outerRadius,
       }}
     >
-      {/* 回転グローボーダー（シャープ） */}
+      {/* 回転グローボーダー — overflow:hiddenで外にはみ出さない */}
       <span
-        className="glow-btn-border"
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: -1.5,
           borderRadius: outerRadius,
-          background: 'conic-gradient(from var(--glow-angle, 0deg), transparent 55%, #2DB464 75%, #4ADE80 85%, #86EFAC 90%, #4ADE80 95%, #2DB464 100%)',
-          animation: 'glowSpin 4s linear infinite',
+          overflow: 'hidden',
         }}
-      />
-      {/* 回転グローボーダー（ぼかし＝オーラ） */}
+      >
+        <span
+          style={{
+            position: 'absolute',
+            top: '-50%', left: '-50%',
+            width: '200%', height: '200%',
+            background: 'conic-gradient(from 0deg, transparent 40%, #2DB464 50%, #4ADE80 55%, #86EFAC 58%, #4ADE80 62%, #2DB464 68%, transparent 75%)',
+            animation: 'glowBtnSpin 3s linear infinite',
+          }}
+        />
+      </span>
+      {/* ぼかしオーラ */}
       <span
-        className="glow-btn-aura"
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: -1.5,
           borderRadius: outerRadius,
-          background: 'conic-gradient(from var(--glow-angle, 0deg), transparent 55%, #2DB464 75%, #4ADE80 85%, #86EFAC 90%, #4ADE80 95%, #2DB464 100%)',
-          animation: 'glowSpin 4s linear infinite',
-          filter: `blur(${blurSize}px)`,
-          opacity: blurOpacity,
+          overflow: 'hidden',
         }}
-      />
+      >
+        <span
+          style={{
+            position: 'absolute',
+            top: '-50%', left: '-50%',
+            width: '200%', height: '200%',
+            background: 'conic-gradient(from 0deg, transparent 40%, #2DB464 50%, #4ADE80 55%, #86EFAC 58%, #4ADE80 62%, #2DB464 68%, transparent 75%)',
+            animation: 'glowBtnSpin 3s linear infinite',
+            filter: `blur(${blurSize}px)`,
+            opacity: blurOpacity,
+          }}
+        />
+      </span>
+      <style>{`@keyframes glowBtnSpin { to { transform: rotate(360deg); } }`}</style>
       {/* 子要素（ボタン本体） */}
       <span style={{ position: 'relative', display: fullWidth ? 'block' : 'inline-block', zIndex: 1 }}>
         {children}

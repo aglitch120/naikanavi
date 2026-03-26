@@ -180,29 +180,7 @@
   100%    { box-shadow: none; }
 }
 
-/* ── 回転ボーダーグロー（GlowButton用） ── */
-@property --glow-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-@keyframes glowSpin {
-  to { --glow-angle: 360deg; }
-}
-.glow-btn-border,
-.glow-btn-aura {
-  --glow-angle: 0deg;
-  animation: glowSpin 4s linear infinite;
-  background: conic-gradient(
-    from var(--glow-angle),
-    transparent 55%,
-    #2DB464 75%,
-    #4ADE80 85%,
-    #86EFAC 90%,
-    #4ADE80 95%,
-    #2DB464 100%
-  );
-}
+/* ── GlowButton用 ── */
 .glow-btn-full { width: 100%; }
 .glow-btn-full > span:last-child { display: block; }
 .glow-btn-full > span:last-child > * { width: 100%; }
