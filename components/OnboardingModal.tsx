@@ -18,7 +18,7 @@ const roles: RoleOption[] = [
   { key: 'attending', label: '医師',       sub: '臨床ツール・論文・マネー', emoji: '🩺' },
 ]
 
-const STORAGE_KEY = 'iwor_role'
+const STORAGE_KEY = 'iwor_user_role'
 
 export function getStoredRole(): UserRole {
   if (typeof window === 'undefined') return null
