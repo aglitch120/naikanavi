@@ -144,7 +144,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
             <div className="spin-glow-ray" />
             <Link href={app.href}
               className="spin-glow-content group flex flex-row items-center gap-3 py-5 px-4 sm:py-6 sm:px-5 transition-all hover:shadow-lg"
-              style={{ background: '#F5F4F0' }}
+              style={{ background: 'linear-gradient(135deg, #FEFEFC 0%, #F0EDE7 100%)' }}
               aria-label={app.label}>
               <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{ background: '#1B4F3A', color: '#fff' }}>
