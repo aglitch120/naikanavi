@@ -166,8 +166,8 @@ function SettingsScreen({ onStart, isPro }: { onStart: (s: InterviewSettings) =>
         AIによる面接練習ツールです。合否を保証しません。患者個人情報は入力しないでください。
       </p>
 
-      {/* 開始ボタン（ダーク背景+回転グロー） */}
-      <div className="rounded-2xl px-4 py-5" style={{ background: '#1A1917' }}>
+      {/* 開始ボタン */}
+      <div>
         <GlowButton fullWidth radius={12}>
           <button onClick={() => onStart({ duration, hospitalType, prefecture, pressure, useProfile })}
             className="w-full py-3.5 rounded-xl text-sm font-bold transition-all hover:opacity-90"

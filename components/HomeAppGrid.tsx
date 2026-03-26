@@ -178,7 +178,7 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
             isDisabled
               ? 'border-br/60 opacity-60 cursor-default'
               : highlighted
-                ? 'border-ac shadow-md ring-2 ring-ac/20 scale-[1.03]'
+                ? 'border-transparent'
                 : 'border-br hover:border-ac/30 hover:shadow-md',
           ].join(' ')
 
@@ -222,11 +222,21 @@ export default function HomeAppGrid({ apps }: { apps: AppItem[] }) {
             </>
           )
 
-          return isDisabled ? (
-            <div key={app.href} className={cls} aria-label={`${app.label}（準備中）`}>{inner}</div>
-          ) : (
-            <Link key={app.href} href={app.href} className={cls} aria-label={app.label}>{inner}</Link>
-          )
+          if (isDisabled) {
+            return <div key={app.href} className={cls} aria-label={`${app.label}（準備中）`}>{inner}</div>
+          }
+          const card = <Link key={app.href} href={app.href} className={cls} aria-label={app.label}>{inner}</Link>
+          if (highlighted) {
+            return (
+              <div key={app.href} className="spin-glow" style={{ borderRadius: 16 }}>
+                <div className="spin-glow-ray" />
+                <div className="spin-glow-content" style={{ background: '#FEFEFC', borderRadius: 14 }}>
+                  {card}
+                </div>
+              </div>
+            )
+          }
+          return card
         })}
       </div>
     </>
