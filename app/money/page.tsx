@@ -547,7 +547,7 @@ const relatedArticles = [
 ]
 
 // ─── メインページ ───
-type ToolKey = 'furusato' | 'tedori' | 'nisa' | 'creditcard' | 'baito'
+type ToolKey = 'furusato' | 'tedori' | 'nisa' | 'creditcard' | 'baito' | 'insurance'
 
 const tools: { key: ToolKey; label: string; icon: string }[] = [
   { key: 'furusato', label: 'ふるさと納税', icon: '🏠' },
@@ -555,6 +555,7 @@ const tools: { key: ToolKey; label: string; icon: string }[] = [
   { key: 'nisa', label: 'NISA運用', icon: '📈' },
   { key: 'creditcard', label: 'クレカ', icon: '💳' },
   { key: 'baito', label: 'バイト税金', icon: '🏥' },
+  { key: 'insurance', label: '医賠責保険', icon: '🛡️' },
 ]
 
 // ── ランキングデータ ──
@@ -582,6 +583,14 @@ const BAITO_SITES = [
   { rank: 5, name: 'マイナビDOCTOR', reason: '大手の安心感。初めてのバイトに', url: 'https://doctor.mynavi.jp/' },
 ]
 
+const INSURANCE_PICKS = [
+  { rank: 1, name: '民間医局の医師賠償責任保険', reason: '勤務医向けNo.1。加入者10万人超。免責なし。示談交渉サービス付き', premium: '勤務医: 約3万円/年〜', url: 'https://www.doctor-agent.com/' },
+  { rank: 2, name: '日本医師会 医師賠償責任保険（A会員）', reason: '日医会員なら自動付帯。1事故1億円。ただしA会員の年会費が高い', premium: 'A会員費に含む（約13万円/年）', url: '' },
+  { rank: 3, name: '全国医師協同組合連合会（全医協）', reason: '割安な掛金。組合員向け。1事故1億円・期間3億円', premium: '約2.5万円/年〜', url: '' },
+  { rank: 4, name: '東京海上日動 医師賠償責任保険', reason: '大手損保の安心感。個人加入可。オプションで感染症見舞金', premium: '約3.5万円/年〜', url: '' },
+  { rank: 5, name: '三井住友海上 医師賠償責任保険', reason: '法律相談サービス付き。勤務医・開業医両対応', premium: '約3万円/年〜', url: '' },
+]
+
 export default function MoneyPage() {
   const [activeTool, setActiveTool] = useState<ToolKey>('furusato')
 
@@ -590,7 +599,7 @@ export default function MoneyPage() {
       {/* Header */}
       <AppHeader
         title="マネー"
-        subtitle="ふるさと納税・手取り概算・NISA・クレカ・バイト会社"
+        subtitle="ふるさと納税・手取り・NISA・クレカ・バイト・医賠責保険"
         badge="NEW"
         favoriteSlug="app-money"
         favoriteHref="/money"
@@ -659,6 +668,38 @@ export default function MoneyPage() {
         }))} />
       )}
 
+      {activeTool === 'insurance' && (
+        <div className="space-y-4 mb-6">
+          <div className="bg-s0 border border-br rounded-2xl p-5">
+            <h2 className="text-base font-bold text-tx mb-2">🛡️ 医師賠償責任保険ランキング</h2>
+            <p className="text-xs text-muted mb-4">勤務医は個人で加入すべき。病院の保険だけでは個人訴訟に対応できません。</p>
+            <div className="space-y-3">
+              {INSURANCE_PICKS.map(ins => (
+                <div key={ins.rank} className="flex gap-3 items-start p-3 rounded-xl border border-br hover:border-ac/30 transition-all">
+                  <span className="text-lg font-bold flex-shrink-0" style={{ color: ins.rank <= 3 ? '#1B4F3A' : '#6B6760' }}>
+                    {ins.rank === 1 ? '🥇' : ins.rank === 2 ? '🥈' : ins.rank === 3 ? '🥉' : `${ins.rank}.`}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold text-tx">{ins.name}</p>
+                    <p className="text-[11px] text-muted mt-0.5">{ins.reason}</p>
+                    <p className="text-[10px] font-medium mt-1" style={{ color: '#1B4F3A' }}>{ins.premium}</p>
+                  </div>
+                  {ins.url && (
+                    <a href={ins.url} target="_blank" rel="noopener noreferrer"
+                      className="flex-shrink-0 px-3 py-1.5 rounded-lg text-[10px] font-bold text-white" style={{ background: '#1B4F3A' }}>
+                      詳細
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-wnl border border-wnb rounded-xl p-3 text-[11px] text-wn leading-relaxed">
+            ⚠️ 保険料・補償内容は変更される場合があります。加入前に必ず各社の最新情報をご確認ください。
+          </div>
+          <p className="text-[9px] text-muted">※ ランキングは一般的な情報に基づく参考です。保険の選択は自己責任で行ってください。</p>
+        </div>
+      )}
 
       {/* 関連記事 */}
       <section className="mb-8">
