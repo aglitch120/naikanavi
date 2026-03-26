@@ -126,7 +126,6 @@ function generateTemplate(s: Settings): { title: string; sections: TemplateSecti
 // ═══════════════════════════════════════
 export default function PresenterApp() {
   const searchParams = useSearchParams()
-  const [step, setStep] = useState<'settings' | 'result'>('settings')
   const [settings, setSettings] = useState<Settings>({
     type: 'conference', audience: 'resident', duration: 7, format: 'slide',
     topicSource: 'case', topic: '',
@@ -152,11 +151,6 @@ export default function PresenterApp() {
   }, [searchParams])
 
   const template = useMemo(() => generateTemplate(settings), [settings])
-
-  const handleGenerate = useCallback(() => {
-    setStep('result')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [])
 
   // AIプロンプト生成
   const generatePrompt = useCallback(() => {
@@ -373,270 +367,163 @@ ${settings.format === 'slide' ? `スライドごとに以下の形式で出力:
     setSettings(prev => ({ ...prev, [key]: value }))
   }
 
-  // ── 設定画面 ──
-  if (step === 'settings') {
-    return (
-      <>
-        <Header />
-        <div className="space-y-3">
-          {/* 発表タイプ */}
-          <Section title="1. 発表タイプ">
-            <div className="flex gap-2 flex-wrap">
-              {TYPES.map(t => (
-                <button key={t.id} onClick={() => updateSetting('type', t.id)}
-                  className={`px-3 py-2 rounded-lg text-xs font-medium border transition-all flex items-center gap-1.5 ${
-                    settings.type === t.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
-                  }`}><span>{t.icon}</span>{t.label}</button>
-              ))}
-            </div>
-          </Section>
-
-          {/* 対象者 + 発表時間（横並び） */}
-          <div className="grid grid-cols-2 gap-3">
-            <Section title="2. 対象者">
-              <div className="flex gap-1.5 flex-wrap">
-                {AUDIENCES.map(a => (
-                  <button key={a.id} onClick={() => updateSetting('audience', a.id)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                      settings.audience === a.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
-                    }`}>{a.label}</button>
-                ))}
-              </div>
-            </Section>
-
-            <Section title="3. 発表時間">
-              <div className="flex gap-1.5 flex-wrap">
-                {DURATIONS.map(d => (
-                  <button key={d} onClick={() => updateSetting('duration', d)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                      settings.duration === d ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
-                    }`}>{d}分</button>
-                ))}
-              </div>
-            </Section>
-          </div>
-
-          {/* 出力形式 */}
-          <Section title="4. 出力形式">
-            <div className="flex gap-2 flex-wrap">
-              {FORMATS.map(f => (
-                <button key={f.id} onClick={() => updateSetting('format', f.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all flex items-center gap-1.5 ${
-                    settings.format === f.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
-                  }`}><span>{f.icon}</span>{f.label}</button>
-              ))}
-            </div>
-          </Section>
-
-          {/* 出力オプション（枚数/文字数） */}
-          {(settings.format === 'slide' || settings.format === 'a4-handout') && (
-            <Section title="5. 枚数の目安">
-              <div className="flex gap-2 flex-wrap">
-                {[3,5,8,10,15,20].map(n => (
-                  <button key={n} onClick={() => updateSetting('slideCount', n)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${settings.slideCount === n ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'}`}>
-                    {n}枚
-                  </button>
-                ))}
-              </div>
-            </Section>
-          )}
-          {settings.format === 'abstract-doc' && (
-            <Section title="5. 抄録文字数">
-              <div className="flex gap-2 flex-wrap">
-                {[200,400,600,800,1200].map(n => (
-                  <button key={n} onClick={() => updateSetting('abstractChars', n)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${settings.abstractChars === n ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'}`}>
-                    {n}字
-                  </button>
-                ))}
-              </div>
-            </Section>
-          )}
-
-          {/* トピックの決め方（3分岐） */}
-          <Section title="6. トピックの決め方">
-            <div className="flex gap-2 flex-wrap mb-3">
-              {TOPIC_SOURCES.map(ts => (
-                <button key={ts.id} onClick={() => updateSetting('topicSource', ts.id)}
-                  className={`px-3 py-2 rounded-lg text-xs font-medium border transition-all flex items-center gap-1.5 ${
-                    settings.topicSource === ts.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
-                  }`}><span>{ts.icon}</span>{ts.label}</button>
-              ))}
-            </div>
-
-            {/* 症例: カルテ入力 */}
-            {settings.topicSource === 'case' && (
-              <div className="space-y-2">
-                <textarea
-                  value={settings.karteText}
-                  onChange={e => updateSetting('karteText', e.target.value)}
-                  placeholder="カルテ情報を貼り付け（年齢・性別・主訴・現病歴・検査結果・治療経過など）"
-                  rows={6}
-                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all resize-y"
-                />
-                <label className="flex items-start gap-2 text-[11px] text-muted bg-wnl border border-wnb rounded-lg p-2.5">
-                  <input type="checkbox" checked={settings.karteConsent} onChange={e => updateSetting('karteConsent', e.target.checked)}
-                    className="mt-0.5 accent-green-700" />
-                  <span>
-                    患者同意取得済み・施設の倫理基準を満たしている・個人情報は非匿名化処理済みであることを確認しました。
-                    データはブラウザ上でのみ使用され、サーバーに保存されません。
-                  </span>
-                </label>
-              </div>
-            )}
-
-            {/* 論文: PMID/DOI入力 */}
-            {settings.topicSource === 'paper' && (
-              <div className="space-y-2">
-                <input type="text" value={settings.paperQuery}
-                  onChange={e => updateSetting('paperQuery', e.target.value)}
-                  placeholder="PMID（例: 38157600）、DOI、または論文タイトルを入力"
-                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all" />
-                <p className="text-[10px] text-muted">AIが論文を検索・取得します。フルテキストが取得できない場合はPDFの貼り付けを求められます。</p>
-              </div>
-            )}
-
-            {/* テーマ: 自由入力 */}
-            {settings.topicSource === 'theme' && (
-              <div className="space-y-2">
-                <input type="text" value={settings.themeText}
-                  onChange={e => updateSetting('themeText', e.target.value)}
-                  placeholder="例: SGLT2阻害薬の心不全への効果、抗菌薬の選び方"
-                  className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all" />
-                <p className="text-[10px] text-muted">AIがエビデンスを検索して発表資料を構成します。</p>
-              </div>
-            )}
-          </Section>
-
-          {/* 生成ボタン — sticky */}
-          <div className="sticky bottom-16 md:bottom-0 z-10 pt-2 pb-1" style={{ background: 'linear-gradient(transparent, var(--bg) 8px)' }}>
-            <GlowButton fullWidth radius={12}>
-              <button onClick={handleGenerate}
-                disabled={settings.topicSource === 'case' && (!settings.karteText || !settings.karteConsent)}
-                className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-40"
-                style={{ background: MC }}>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                プロンプトを生成
-              </button>
-            </GlowButton>
-          </div>
-
-          {/* PRO teaser */}
-          <ProTeaser />
-        </div>
-        <PresenterTutorial />
-      </>
-    )
-  }
-
-  // ── 結果画面 ──
+  // ── 1ページ完結UI（病歴要約ジェネレーター風） ──
   return (
     <>
       <Header />
       <div className="space-y-4">
-        {/* 戻る + コピー */}
-        <div className="flex items-center justify-between">
-          <button onClick={() => setStep('settings')} className="flex items-center gap-1.5 text-xs text-muted hover:text-tx transition-colors">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-            設定に戻る
-          </button>
-          <button onClick={handleCopy}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium text-white transition-all"
-            style={{ background: MC }}>
-            {copied ? (
-              <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>コピー済み</>
-            ) : (
-              <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>全文コピー</>
-            )}
-          </button>
-        </div>
-
-        {/* AIで開くボタン */}
-        <div className="flex gap-2">
-          <a href={`https://chat.openai.com/?q=${encodeURIComponent(generatePrompt().slice(0, 2000))}`} target="_blank" rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-medium border border-br hover:border-ac/30 transition-all text-tx">
-            ChatGPT
-          </a>
-          <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-medium border border-br hover:border-ac/30 transition-all text-tx">
-            Claude
-          </a>
-          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-medium border border-br hover:border-ac/30 transition-all text-tx">
-            Gemini
-          </a>
-        </div>
-        <p className="text-[9px] text-muted text-center">プロンプトをコピーしてAIに貼り付けてください</p>
-
-        {/* サマリー */}
-        <div className="bg-s0 border border-br rounded-xl p-4">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-xl">{TYPES.find(t => t.id === settings.type)?.icon}</span>
+        {/* ═══ Step 1: 設定 ═══ */}
+        <Section title={<><span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-white text-xs font-bold mr-2" style={{ background: MC }}>1</span>発表の設定</>}>
+          {/* 発表タイプ */}
+          <div className="flex gap-1.5 flex-wrap mb-3">
+            {TYPES.map(t => (
+              <button key={t.id} onClick={() => updateSetting('type', t.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all flex items-center gap-1 ${
+                  settings.type === t.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
+                }`}><span>{t.icon}</span>{t.label}</button>
+            ))}
+          </div>
+          {/* 対象者 + 時間 + 形式 を横並び */}
+          <div className="grid grid-cols-3 gap-2 mb-2">
             <div>
-              <p className="text-base font-bold text-tx">{template.title}</p>
-              <p className="text-[11px] text-muted">
-                {AUDIENCES.find(a => a.id === settings.audience)?.label}向け · {settings.duration}分 · {FORMATS.find(f => f.id === settings.format)?.label}
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-3 text-[11px] mt-2">
-            <span className="px-2 py-1 rounded-lg" style={{ background: MCL, color: MC }}>スライド {template.totalSlides}枚目安</span>
-            <span className="px-2 py-1 rounded-lg" style={{ background: MCL, color: MC }}>文字数 {template.wordGuide}</span>
-          </div>
-        </div>
-
-        {/* セクション */}
-        {template.sections.map((sec, i) => (
-          <div key={i} className="bg-s0 border border-br rounded-xl p-4">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md flex items-center justify-center text-white text-[10px] font-bold" style={{ background: MC }}>{i + 1}</span>
-                <div>
-                  <h3 className="text-sm font-bold text-tx">{sec.title}</h3>
-                  {sec.subtitle && <p className="text-[10px] text-muted">{sec.subtitle}</p>}
-                </div>
+              <p className="text-[10px] text-muted mb-1">対象者</p>
+              <div className="flex gap-1 flex-wrap">
+                {AUDIENCES.map(a => (
+                  <button key={a.id} onClick={() => updateSetting('audience', a.id)}
+                    className={`px-2 py-1 rounded text-[10px] font-medium border transition-all ${
+                      settings.audience === a.id ? 'bg-ac text-white border-ac' : 'border-br text-muted'
+                    }`}>{a.label}</button>
+                ))}
               </div>
-              {sec.timeGuide && (
-                <span className="text-[10px] text-muted bg-s1 px-2 py-0.5 rounded">{sec.timeGuide}</span>
-              )}
             </div>
-            <ul className="space-y-1 mt-2">
-              {sec.bullets.map((b, j) => (
-                <li key={j} className="text-xs text-tx/80 leading-relaxed flex gap-2">
-                  <span className="text-ac flex-shrink-0 mt-0.5">•</span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-            {sec.slideNote && (
-              <p className="text-[10px] text-muted mt-2 italic">💡 {sec.slideNote}</p>
-            )}
+            <div>
+              <p className="text-[10px] text-muted mb-1">発表時間</p>
+              <div className="flex gap-1 flex-wrap">
+                {DURATIONS.map(d => (
+                  <button key={d} onClick={() => updateSetting('duration', d)}
+                    className={`px-2 py-1 rounded text-[10px] font-medium border transition-all ${
+                      settings.duration === d ? 'bg-ac text-white border-ac' : 'border-br text-muted'
+                    }`}>{d}分</button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-[10px] text-muted mb-1">出力形式</p>
+              <div className="flex gap-1 flex-wrap">
+                {FORMATS.map(f => (
+                  <button key={f.id} onClick={() => updateSetting('format', f.id)}
+                    className={`px-2 py-1 rounded text-[10px] font-medium border transition-all ${
+                      settings.format === f.id ? 'bg-ac text-white border-ac' : 'border-br text-muted'
+                    }`}>{f.label}</button>
+                ))}
+              </div>
+            </div>
           </div>
-        ))}
+          {/* 枚数/文字数（該当時のみ） */}
+          {(settings.format === 'slide' || settings.format === 'a4-handout') && (
+            <div className="flex items-center gap-2 mt-1">
+              <p className="text-[10px] text-muted">枚数:</p>
+              {[3,5,8,10,15,20].map(n => (
+                <button key={n} onClick={() => updateSetting('slideCount', n)}
+                  className={`px-2 py-0.5 rounded text-[10px] font-medium border transition-all ${settings.slideCount === n ? 'bg-ac text-white border-ac' : 'border-br text-muted'}`}>{n}</button>
+              ))}
+            </div>
+          )}
+          {settings.format === 'abstract-doc' && (
+            <div className="flex items-center gap-2 mt-1">
+              <p className="text-[10px] text-muted">文字数:</p>
+              {[200,400,600,800,1200].map(n => (
+                <button key={n} onClick={() => updateSetting('abstractChars', n)}
+                  className={`px-2 py-0.5 rounded text-[10px] font-medium border transition-all ${settings.abstractChars === n ? 'bg-ac text-white border-ac' : 'border-br text-muted'}`}>{n}字</button>
+              ))}
+            </div>
+          )}
+        </Section>
 
-        {/* プレゼンのコツ */}
-        <div className="bg-s1 border border-br rounded-xl p-4">
-          <h3 className="text-sm font-bold text-tx mb-2 flex items-center gap-1.5">
-            <span>🎯</span>プレゼンのコツ
-          </h3>
-          <ul className="space-y-1.5 text-xs text-muted">
-            <li className="flex gap-2"><span className="text-ac">•</span>1スライド = 1メッセージ。文字は最小限に</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>図・表・画像を活用。テキストの羅列を避ける</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>フォントサイズ: タイトル28pt以上、本文20pt以上</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>配色: 3色以内。背景は白 or 薄い色</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>発表練習: 時間を計って最低3回リハーサル</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>質疑応答: 想定質問を3-5個準備しておく</li>
-          </ul>
+        {/* ═══ Step 2: トピック入力 ═══ */}
+        <Section title={<><span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-white text-xs font-bold mr-2" style={{ background: MC }}>2</span>トピックを入力</>}>
+          <div className="flex gap-1.5 flex-wrap mb-3">
+            {TOPIC_SOURCES.map(ts => (
+              <button key={ts.id} onClick={() => updateSetting('topicSource', ts.id)}
+                className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium border transition-all text-center ${
+                  settings.topicSource === ts.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
+                }`}>{ts.icon} {ts.label}</button>
+            ))}
+          </div>
+
+          {settings.topicSource === 'case' && (
+            <div className="space-y-2">
+              <label className="flex items-start gap-2 text-[11px] text-muted bg-wnl border border-wnb rounded-lg p-2.5">
+                <input type="checkbox" checked={settings.karteConsent} onChange={e => updateSetting('karteConsent', e.target.checked)}
+                  className="mt-0.5 accent-green-700" />
+                <span>匿名化処理済み・患者同意取得済み・施設基準を満たしていることを確認しました。</span>
+              </label>
+              {settings.karteConsent ? (
+                <textarea value={settings.karteText} onChange={e => updateSetting('karteText', e.target.value)}
+                  placeholder="カルテ情報を貼り付け（主訴・現病歴・検査結果・治療経過など）"
+                  rows={5} className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac outline-none transition-all resize-y" />
+              ) : (
+                <div className="bg-s1 rounded-lg p-4 text-center text-xs text-muted">上のチェックを入れると入力欄が表示されます</div>
+              )}
+              <p className="text-[9px] text-muted">※ データはサーバーに送信されません。ページを閉じると消去されます。</p>
+            </div>
+          )}
+          {settings.topicSource === 'paper' && (
+            <div className="space-y-2">
+              <input type="text" value={settings.paperQuery} onChange={e => updateSetting('paperQuery', e.target.value)}
+                placeholder="PMID（例: 38157600）、DOI、または論文タイトル"
+                className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac outline-none transition-all" />
+              <p className="text-[9px] text-muted">AIが論文を検索します。フルテキスト取得不可の場合はPDF貼り付けを求められます。</p>
+            </div>
+          )}
+          {settings.topicSource === 'theme' && (
+            <div className="space-y-2">
+              <input type="text" value={settings.themeText} onChange={e => updateSetting('themeText', e.target.value)}
+                placeholder="例: SGLT2阻害薬の心不全への効果"
+                className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac outline-none transition-all" />
+              <p className="text-[9px] text-muted">AIがエビデンスを検索して発表資料を構成します。</p>
+            </div>
+          )}
+        </Section>
+
+        {/* ═══ Step 3: プロンプトをコピーしてAIに貼り付け ═══ */}
+        <Section title={<><span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-white text-xs font-bold mr-2" style={{ background: MC }}>3</span>プロンプトをコピーしてAIに貼り付け</>}>
+          {copied ? (
+            <div className="bg-acl border border-ac/20 rounded-lg p-3 text-center text-sm font-medium" style={{ color: MC }}>
+              クリップボードにコピーしました。下記AIサービスを開いて貼り付けてください。
+            </div>
+          ) : (
+            <GlowButton fullWidth radius={12}>
+              <button onClick={handleCopy}
+                disabled={settings.topicSource === 'case' && (!settings.karteText || !settings.karteConsent)}
+                className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all flex items-center justify-center gap-2 disabled:opacity-40"
+                style={{ background: MC }}>
+                プロンプトをコピー
+              </button>
+            </GlowButton>
+          )}
+          {/* AIリンクボタン */}
+          <div className="flex gap-2 mt-3">
+            <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer"
+              className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#10A37F' }}>ChatGPT</a>
+            <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer"
+              className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#D4A574' }}>Claude</a>
+            <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
+              className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#4285F4' }}>Gemini</a>
+          </div>
+          <p className="text-[9px] text-muted text-center mt-1">※ iworはプロンプト（書式指示文）を生成するのみです。外部AIでのデータ匿名化・施設規則遵守はユーザーの責任です。</p>
+        </Section>
+
+        {/* 技術仕様 */}
+        <div className="bg-s0 border border-br rounded-xl p-3 text-[10px] text-muted space-y-1">
+          <p className="font-bold text-tx">技術仕様</p>
+          <p>・AI不使用: テンプレートエンジンによる機械的な文字列処理のみ</p>
+          <p>・データ非保持: 入力内容はブラウザのメモリ上でのみ処理</p>
+          <p>・保存なし: localStorage・Cookie等への保存は一切なし</p>
+          <p>・ページを閉じると全データが消去されます</p>
         </div>
-
-        {/* PRO teaser */}
-        <ProTeaser />
       </div>
+      <PresenterTutorial />
     </>
   )
 }
@@ -654,7 +541,7 @@ function Header() {
   )
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children }: { title: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="bg-s0 border border-br rounded-xl p-4">
       <p className="text-xs font-bold text-tx mb-3">{title}</p>
@@ -663,25 +550,3 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   )
 }
 
-function ProTeaser() {
-  return (
-    <div className="bg-s0 border border-br rounded-xl p-5 relative overflow-hidden">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-sm">✨</span>
-        <p className="text-sm font-bold text-tx">Coming Soon — AI生成機能</p>
-        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: MCL, color: MC }}>PRO</span>
-      </div>
-      <div className="space-y-2 relative">
-        {['トピックを入力するだけでAIが原稿を自動生成', 'スライド（PPTX）のダウンロード', '論文ブックマークからの自動インポート', 'ポスター/抄録のPDF出力'].map((item, i) => (
-          <div key={i} className={`flex items-center gap-2 py-2 px-3 rounded-lg bg-s1 ${i > 0 ? 'select-none' : ''}`}>
-            <span className="text-xs text-muted">🔒</span>
-            <p className="text-xs text-muted">{item}</p>
-          </div>
-        ))}
-        <div className="absolute inset-0 top-10 backdrop-blur-sm bg-s0/70 rounded-lg flex items-center justify-center">
-          <p className="text-xs font-medium" style={{ color: MC }}>開発中 — お楽しみに</p>
-        </div>
-      </div>
-    </div>
-  )
-}

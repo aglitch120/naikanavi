@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo, useEffect, Suspense } from 'react'
 import IworLoader from '@/components/IworLoader'
+import GlowButton from '@/components/GlowButton'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { getTemplateByDisease, type DiseaseTemplate } from '@/lib/josler-templates'
@@ -196,11 +197,13 @@ function SummaryGeneratorInner() {
         </div>
 
         <div className="flex gap-2 mb-2">
-          <button onClick={() => handleCopyPrompt('new')}
-            className="flex-1 py-2.5 rounded-xl text-xs font-bold transition-all"
-            style={{ background: promptCopied === 'new' ? 'var(--ok)' : MC, color: '#fff' }}>
-            {promptCopied === 'new' ? '✓ コピー済み！' : `📋 病歴要約プロンプトをコピー${selectedDisease ? `（${selectedDisease}）` : ''}`}
-          </button>
+          <GlowButton fullWidth radius={12}>
+            <button onClick={() => handleCopyPrompt('new')}
+              className="w-full py-2.5 rounded-xl text-xs font-bold transition-all"
+              style={{ background: promptCopied === 'new' ? 'var(--ok)' : MC, color: '#fff' }}>
+              {promptCopied === 'new' ? '✓ コピー済み！' : `📋 病歴要約プロンプトをコピー${selectedDisease ? `（${selectedDisease}）` : ''}`}
+            </button>
+          </GlowButton>
         </div>
 
         {/* コピー後の誘導 */}
