@@ -1153,9 +1153,12 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
 
       {/* ハードデータ比較（DBから自動取得） */}
       {(() => {
-        const matchedHospitals = hospitalNames.slice(0, activeHospitals).map(name =>
-          HOSPITALS.find(h => h.name === name)
-        )
+        const matchedHospitals = hospitalNames.slice(0, activeHospitals).map(name => {
+          // 完全一致 → プログラム名付き一致 → 病院名部分一致
+          return HOSPITALS.find(h => h.name === name)
+            || HOSPITALS.find(h => `${h.name}（${h.program}）` === name)
+            || HOSPITALS.find(h => name.startsWith(h.name))
+        })
         const anyMatched = matchedHospitals.some(h => h)
         if (!anyMatched) return null
 
