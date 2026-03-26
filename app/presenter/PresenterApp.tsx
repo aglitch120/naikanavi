@@ -1,395 +1,376 @@
 'use client'
-import { useState, useMemo, useCallback, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState, useMemo, useCallback } from 'react'
 import AppHeader from '@/components/AppHeader'
-import { PresenterTutorial } from '@/components/tutorials'
+import GlowButton from '@/components/GlowButton'
+import { FeedbackRow } from '@/components/tools/ErrorReportButton'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
 
 // ── 型定義 ──
-type PresentationType = 'case-report' | 'conference' | 'consultation' | 'journal-club'
+type PresentationType = 'conference' | 'study-group' | 'consultation'
+type TopicSource = 'case' | 'paper' | 'theme'
 type Audience = 'specialist' | 'resident' | 'student' | 'mixed'
-type Format = 'slide' | 'poster' | 'abstract-doc' | 'a4-handout'
+type OutputFormat = 'slide' | 'poster' | 'a4-handout' | 'abstract-text' | 'text'
 
-interface Settings {
-  type: PresentationType
-  audience: Audience
-  duration: number // minutes
-  format: Format
-  topic: string
-  sections: string[] // custom sections to include
-}
+// ── 定数 ──
+const TYPES = [
+  { id: 'conference' as const, label: '学会発表', icon: '🎤', desc: '口演・ポスター' },
+  { id: 'study-group' as const, label: '勉強会・抄読会', icon: '📚', desc: 'ジャーナルクラブ等' },
+  { id: 'consultation' as const, label: 'コンサルテーション', icon: '🏥', desc: '他科コンサル要約' },
+]
+const TOPIC_SOURCES = [
+  { id: 'case' as const, label: '症例', icon: '📋', desc: 'カルテ情報から' },
+  { id: 'paper' as const, label: '特定の論文', icon: '📄', desc: 'PMID/DOIで指定' },
+  { id: 'theme' as const, label: 'テーマ', icon: '💡', desc: 'ざっくりテーマだけ' },
+]
+const AUDIENCES = [
+  { id: 'specialist' as const, label: '専門医' },
+  { id: 'resident' as const, label: '研修医' },
+  { id: 'student' as const, label: '医学生' },
+  { id: 'mixed' as const, label: '混合' },
+]
+const FORMATS = [
+  { id: 'slide' as const, label: 'スライド', icon: '🖥️', hasCount: true },
+  { id: 'poster' as const, label: 'ポスター', icon: '📊', hasCount: false },
+  { id: 'a4-handout' as const, label: 'A4配布資料', icon: '📋', hasCount: true },
+  { id: 'abstract-text' as const, label: '抄録文章', icon: '📝', hasCount: false, hasCharLimit: true },
+  { id: 'text' as const, label: 'テキスト', icon: '📃', hasCount: false },
+]
+const DURATIONS = [1, 3, 5, 7, 10, 15]
 
-const TYPES: { id: PresentationType; label: string; icon: string; desc: string }[] = [
-  { id: 'case-report', label: '症例報告', icon: '📋', desc: 'カンファ・症例検討会向け' },
-  { id: 'conference', label: '学会発表', icon: '🎤', desc: '学会口演・ポスター向け' },
-  { id: 'consultation', label: 'コンサルテーション', icon: '🏥', desc: '他科コンサル・紹介状向け' },
-  { id: 'journal-club', label: 'ジャーナルクラブ', icon: '📚', desc: '論文抄読会向け' },
+const AI_LINKS = [
+  { name: 'ChatGPT', url: 'https://chat.openai.com/', color: '#10A37F' },
+  { name: 'Claude', url: 'https://claude.ai/', color: '#CC785C' },
+  { name: 'Gemini', url: 'https://gemini.google.com/', color: '#4285F4' },
 ]
 
-const AUDIENCES: { id: Audience; label: string }[] = [
-  { id: 'specialist', label: '専門医' },
-  { id: 'resident', label: '研修医' },
-  { id: 'student', label: '医学生' },
-  { id: 'mixed', label: '混合' },
-]
+// ── プロンプト生成 ──
+function generatePrompt(opts: {
+  type: PresentationType; topicSource: TopicSource; audience: Audience
+  format: OutputFormat; duration: number; slideCount: number; charLimit: number
+  karteText: string; paperRef: string; themeText: string
+}): string {
+  const { type, topicSource, audience, format, duration, slideCount, charLimit, karteText, paperRef, themeText } = opts
 
-const FORMATS: { id: Format; label: string; icon: string }[] = [
-  { id: 'slide', label: 'スライド', icon: '🖥️' },
-  { id: 'poster', label: 'ポスター', icon: '📊' },
-  { id: 'abstract-doc', label: '抄録文書', icon: '📄' },
-  { id: 'a4-handout', label: 'A4配布資料', icon: '📋' },
-]
+  const audienceDesc = audience === 'specialist' ? '専門医（専門用語OK、エビデンスレベルを明示）'
+    : audience === 'resident' ? '研修医（基本的な略語は使用可、背景を簡潔に説明）'
+    : audience === 'student' ? '医学生（略語は初出時にフルスペル、基礎知識の補足を入れる）'
+    : '混合（専門用語は最小限に、重要な略語は注釈）'
 
-const DURATIONS = [3, 5, 7, 10, 15, 20, 30]
+  const formatDesc = format === 'slide' ? `スライド形式（${slideCount}枚目安、1スライド=1メッセージ）`
+    : format === 'poster' ? 'A0ポスター形式（Introduction/Methods/Results/Discussion/Conclusionの構成）'
+    : format === 'a4-handout' ? `A4配布資料（${slideCount}ページ目安）`
+    : format === 'abstract-text' ? `抄録文章（${charLimit}文字以内厳守）`
+    : 'テキスト原稿'
 
-// ── テンプレート定義 ──
-interface TemplateSection {
-  title: string
-  subtitle?: string
-  bullets: string[]
-  slideNote?: string
-  timeGuide?: string
-}
+  const typeDesc = type === 'conference' ? '学会発表（口演）'
+    : type === 'study-group' ? '勉強会・ジャーナルクラブ・抄読会'
+    : 'コンサルテーション要約'
 
-function generateTemplate(s: Settings): { title: string; sections: TemplateSection[]; totalSlides: number; wordGuide: string } {
-  const slidePerMin = s.duration <= 5 ? 1.5 : s.duration <= 10 ? 1.2 : 1
-  const totalSlides = Math.round(s.duration * slidePerMin)
-  const wordsPerMin = s.audience === 'specialist' ? 150 : 120
-  const wordGuide = `約${s.duration * wordsPerMin}字（${wordsPerMin}字/分 × ${s.duration}分）`
+  // 学会発表のスライドデザイン指示
+  const slideDesignGuide = format === 'slide' ? `
 
-  const audienceNote = s.audience === 'specialist' ? '専門用語OK、エビデンスレベルを明示'
-    : s.audience === 'resident' ? '基本的な略語は使用可、背景を簡潔に説明'
-    : s.audience === 'student' ? '略語は初出時にフルスペル、基礎知識の補足を入れる'
-    : '専門用語は最小限に、重要な略語は注釈'
+■ スライドデザインの原則（日本の学会慣習に準拠）:
+- タイトルスライド: 演題名（日本語）、発表者名・所属、日付、利益相反（COI）開示
+- フォント: タイトル28pt以上、本文20pt以上、注釈14pt以上
+- 配色: 3色以内（背景白、アクセント1色、強調1色）
+- 1スライド=1メッセージ。文字の羅列を避け、図表・画像を活用
+- 箇条書きは1スライド5行以内。キーワードのみ記載し、詳細は口頭で補足
+- グラフには軸ラベル・単位・n数を必ず記載
+- 最終スライドに参考文献リスト（Vancouver形式）
+- 発表時間${duration}分に対してスライド${slideCount}枚が目安` : ''
 
-  let sections: TemplateSection[] = []
+  const posterGuide = format === 'poster' ? `
 
-  switch (s.type) {
-    case 'case-report':
-      sections = [
-        { title: 'タイトルスライド', bullets: ['演題名（疾患名+特徴的なポイント）', '発表者名・所属', '日付・カンファレンス名'], timeGuide: '〜30秒' },
-        { title: '症例提示', subtitle: '患者背景', bullets: ['年齢・性別（例: 70歳代男性）', '主訴', '現病歴（時系列で簡潔に）', '既往歴・内服薬・アレルギー', '家族歴・社会歴（関連するもののみ）'], timeGuide: `〜${Math.round(s.duration * 0.15)}分` },
-        { title: '身体所見・検査所見', bullets: ['バイタルサイン', '身体所見（系統的に、異常所見を強調）', '血液検査（異常値をハイライト）', '画像所見（X線/CT/MRI/エコー）', '心電図・その他の検査'], timeGuide: `〜${Math.round(s.duration * 0.15)}分` },
-        { title: '臨床経過', bullets: ['入院後の治療経過（タイムライン推奨）', '治療内容と反応', '転帰'], timeGuide: `〜${Math.round(s.duration * 0.15)}分` },
-        { title: '考察', bullets: ['本症例の問題点・ポイント', '鑑別疾患の検討', '文献的考察（ガイドライン/エビデンス）', `対象: ${audienceNote}`], timeGuide: `〜${Math.round(s.duration * 0.35)}分` },
-        { title: 'まとめ・Take Home Message', bullets: ['本症例から学ぶべきポイント（2-3点）', '今後の課題'], timeGuide: `〜${Math.round(s.duration * 0.1)}分` },
-        { title: '参考文献', bullets: ['引用文献リスト（Vancouver形式）', '主要なガイドライン'], timeGuide: '表示のみ' },
-      ]
-      break
+■ ポスターデザインの原則:
+- サイズ: A0縦（841mm×1189mm）が標準
+- 構成: Title → Introduction → Methods → Results → Discussion → Conclusion → References
+- フォント: タイトル72pt以上、見出し36pt以上、本文24pt以上
+- 3段組みレイアウトが標準
+- 図表は大きく（ポスターの40-50%を占めるように）
+- 結論は箱で囲むなど視覚的に目立たせる
+- QRコード（補足資料やフルテキストへのリンク）を入れると好印象` : ''
 
-    case 'conference':
-      sections = [
-        { title: 'タイトルスライド', bullets: ['演題名', '発表者名・所属・共同演者', '利益相反（COI）の開示'], timeGuide: '〜30秒' },
-        { title: '背景・目的', bullets: ['臨床的背景（なぜこの研究/報告が重要か）', '先行研究の概要と限界', '研究目的（クリアに1-2文で）'], timeGuide: `〜${Math.round(s.duration * 0.15)}分`, slideNote: 'スライド2-3枚' },
-        { title: '方法', bullets: ['研究デザイン（RCT/コホート/症例報告等）', '対象患者・選択基準・除外基準', '主要評価項目(primary endpoint)', '統計解析方法'], timeGuide: `〜${Math.round(s.duration * 0.15)}分` },
-        { title: '結果', bullets: ['患者フローチャート（CONSORT図等）', '主要結果（図表で示す）', '副次的結果', '安全性・有害事象'], timeGuide: `〜${Math.round(s.duration * 0.3)}分`, slideNote: '結果は図表メイン。文字は最小限に' },
-        { title: '考察', bullets: ['結果の解釈と臨床的意義', '先行研究との比較', '研究の限界（Limitations）', '今後の展望'], timeGuide: `〜${Math.round(s.duration * 0.2)}分` },
-        { title: '結論', bullets: ['主要な結論（1-3点）', 'Clinical implications'], timeGuide: `〜${Math.round(s.duration * 0.1)}分` },
-        { title: '参考文献', bullets: ['引用文献リスト'], timeGuide: '表示のみ' },
-      ]
-      break
+  // トピックソース別の指示
+  let topicInstruction = ''
+  if (topicSource === 'case') {
+    topicInstruction = `
+■ トピック: 症例報告
+以下のカルテ情報を元に${typeDesc}の資料を作成してください。
 
-    case 'consultation':
-      sections = [
-        { title: 'コンサルテーション概要', bullets: ['依頼元（自科名）', '依頼先（コンサル先科名）', '依頼理由（具体的に1-2文）'], timeGuide: '〜30秒' },
-        { title: '患者情報', bullets: ['年齢・性別・入院日・病棟', '主病名・入院理由', '関連する既往歴・内服薬'], timeGuide: '〜1分' },
-        { title: '現在の問題点', bullets: ['コンサルの具体的な質問（明確に）', '関連する検査結果（バイタル/血液/画像）', '経過・これまでの対応'], timeGuide: '〜2分' },
-        { title: '依頼事項', bullets: ['診断の確認/治療方針の相談', '手技/処置の依頼', '具体的に何をしてほしいか'], timeGuide: '〜30秒' },
-      ]
-      break
+【カルテ情報】
+${karteText || '（カルテ情報が入力されていません。ユーザーにカルテ情報の入力を促してください）'}
 
-    case 'journal-club':
-      sections = [
-        { title: 'タイトル・論文情報', bullets: ['論文タイトル', '著者・雑誌・出版年', 'Impact Factor・引用数'], timeGuide: '〜30秒' },
-        { title: 'Clinical Question', bullets: ['PICO形式で整理', 'P(患者): 対象集団', 'I(介入): 何をしたか', 'C(対照): 何と比較したか', 'O(アウトカム): 何を測定したか'], timeGuide: `〜${Math.round(s.duration * 0.1)}分` },
-        { title: '研究デザイン・方法', bullets: ['研究デザイン（RCT/メタ解析等）', '組み入れ基準・除外基準', 'ランダム化・盲検化の方法', '主要/副次評価項目', 'サンプルサイズ計算'], timeGuide: `〜${Math.round(s.duration * 0.15)}分` },
-        { title: '結果', bullets: ['主要結果（Table/Figureを引用）', '副次的結果', 'サブグループ解析', 'NNT/NNH（計算可能なら）'], timeGuide: `〜${Math.round(s.duration * 0.25)}分` },
-        { title: '批判的吟味', bullets: ['内的妥当性: バイアスのリスク（選択/情報/交絡）', '外的妥当性: 日本の臨床に適用可能か', '統計的問題点', 'エビデンスレベルの評価'], timeGuide: `〜${Math.round(s.duration * 0.25)}分` },
-        { title: 'Clinical Bottom Line', bullets: ['この論文から何を学ぶか', '明日からの診療にどう活かすか', '残された疑問・今後の研究課題'], timeGuide: `〜${Math.round(s.duration * 0.1)}分` },
-      ]
-      break
+構成:
+1. タイトルスライド（演題名: 疾患名+特徴的なポイント）
+2. 症例提示（年齢・性別・主訴・現病歴・既往歴）
+3. 身体所見・検査所見（異常値をハイライト、画像所見）
+4. 臨床経過（タイムライン形式推奨）
+5. 考察（鑑別疾患、文献的考察、ガイドラインとの比較）
+6. まとめ・Take Home Message（2-3点）
+7. 参考文献（Vancouver形式）`
+  } else if (topicSource === 'paper') {
+    topicInstruction = `
+■ トピック: 特定の論文
+以下の論文を元に${typeDesc}の資料を作成してください。
+
+【論文情報】
+${paperRef || '（論文情報が入力されていません）'}
+
+まず、この論文のフルテキストを検索してください。
+- PubMed、Google Scholar、論文のDOIリンクから全文を取得してください
+- もしフルテキストが入手できない場合は、abstractから得られる情報で作成し、「フルテキストを入手して追加情報を提供してください」とユーザーに伝えてください
+
+構成（PICO形式で整理）:
+1. タイトル・論文情報（著者・雑誌・IF・出版年）
+2. Clinical Question（PICO形式）
+3. 研究デザイン・方法（組み入れ基準、盲検化、サンプルサイズ）
+4. 結果（主要結果を図表で。NNT/NNH算出可能なら含める）
+5. 批判的吟味（内的妥当性・外的妥当性・バイアスリスク）
+6. Clinical Bottom Line（明日からの診療にどう活かすか）
+7. 参考文献`
+  } else {
+    topicInstruction = `
+■ トピック: テーマベース
+以下のテーマで${typeDesc}の資料を作成してください。
+
+【テーマ】
+${themeText || '（テーマが入力されていません）'}
+
+まず、このテーマに関する最新のエビデンス（ガイドライン、システマティックレビュー、RCT等）をPubMed等で検索してください。
+- もしフルテキストが入手できない論文がある場合は、abstractベースで作成し、「以下の論文のフルテキストを提供していただけると、より詳細な資料が作成できます」とユーザーに伝えてください
+- 日本のガイドラインがある場合は優先的に引用
+
+構成:
+1. タイトル（テーマを簡潔に）
+2. 背景・臨床的意義（なぜこのテーマが重要か）
+3. 現在のエビデンス（主要な研究結果を図表で）
+4. ガイドラインの推奨（日本のガイドラインを優先）
+5. 臨床への応用（具体的な診療アルゴリズム）
+6. まとめ・Take Home Message
+7. 参考文献（Vancouver形式）`
   }
 
-  const title = s.topic || TYPES.find(t => t.id === s.type)?.label || 'プレゼンテーション'
+  return `あなたは日本の臨床医向けプレゼンテーション資料の専門家です。
 
-  return { title, sections, totalSlides, wordGuide }
+■ 発表タイプ: ${typeDesc}
+■ 対象者: ${audienceDesc}
+■ 発表時間: ${duration}分
+■ 出力形式: ${formatDesc}
+${topicInstruction}
+${slideDesignGuide}
+${posterGuide}
+
+■ 出力ルール:
+- すべて日本語で書いてください（英語の専門用語は適宜使用可）
+- 「以下の資料を作成しました」等のメタ説明は不要。資料本文のみ出力
+- ${format === 'abstract-text' ? `文字数は${charLimit}文字以内を厳守` : ''}
+- エビデンスレベルを明示（RCT、メタ解析、コホート研究等）
+- 引用文献はVancouver形式で番号付き
+- 図表の提案がある場合は「【図表案】」として説明を記載`.trim()
 }
 
 // ═══════════════════════════════════════
 export default function PresenterApp() {
-  const searchParams = useSearchParams()
-  const [step, setStep] = useState<'settings' | 'result'>('settings')
-  const [settings, setSettings] = useState<Settings>({
-    type: 'case-report', audience: 'resident', duration: 7, format: 'slide', topic: '', sections: [],
-  })
-  const [copied, setCopied] = useState(false)
+  const [type, setType] = useState<PresentationType>('conference')
+  const [topicSource, setTopicSource] = useState<TopicSource>('case')
+  const [audience, setAudience] = useState<Audience>('mixed')
+  const [format, setFormat] = useState<OutputFormat>('slide')
+  const [duration, setDuration] = useState(7)
+  const [slideCount, setSlideCount] = useState(10)
+  const [charLimit, setCharLimit] = useState(400)
 
-  // URL params からプリフィル（論文フィードからの遷移）
-  useEffect(() => {
-    const typeParam = searchParams.get('type') as PresentationType | null
-    const topicParam = searchParams.get('topic')
-    if (typeParam && TYPES.some(t => t.id === typeParam)) {
-      let topic = topicParam || ''
-      // journal-club: ブックマークからインポート
-      if (typeParam === 'journal-club' && !topicParam) {
-        try {
-          const bmRaw = localStorage.getItem('iwor_journal_bookmarks')
-          if (bmRaw) {
-            const bmIds: string[] = JSON.parse(bmRaw)
-            if (bmIds.length > 0) {
-              topic = `ブックマーク論文${bmIds.length}件から選択（PMID: ${bmIds.slice(0, 5).join(', ')}${bmIds.length > 5 ? '...' : ''}）`
-            }
-          }
-        } catch {}
-      }
-      setSettings(prev => ({
-        ...prev,
-        type: typeParam,
-        ...(topic ? { topic } : {}),
-        ...(typeParam === 'journal-club' ? { duration: 10, audience: 'resident' as Audience } : {}),
-      }))
-    }
-  }, [searchParams])
+  // トピック入力
+  const [karteText, setKarteText] = useState('')
+  const [karteConsent, setKarteConsent] = useState(false)
+  const [paperRef, setPaperRef] = useState('')
+  const [themeText, setThemeText] = useState('')
 
-  const template = useMemo(() => generateTemplate(settings), [settings])
+  // 結果
+  const [prompt, setPrompt] = useState('')
+  const [copied, setCopied] = useState('')
+
+  const canGenerate = useMemo(() => {
+    if (topicSource === 'case') return karteConsent && karteText.length > 10
+    if (topicSource === 'paper') return paperRef.length > 3
+    return themeText.length > 2
+  }, [topicSource, karteConsent, karteText, paperRef, themeText])
 
   const handleGenerate = useCallback(() => {
-    setStep('result')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const p = generatePrompt({ type, topicSource, audience, format, duration, slideCount, charLimit, karteText, paperRef, themeText })
+    setPrompt(p)
+    setTimeout(() => document.getElementById('prompt-result')?.scrollIntoView({ behavior: 'smooth' }), 100)
+  }, [type, topicSource, audience, format, duration, slideCount, charLimit, karteText, paperRef, themeText])
+
+  const handleCopy = useCallback((text: string, label: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(label)
+      setTimeout(() => setCopied(''), 2000)
+    })
   }, [])
 
-  const handleCopy = useCallback(() => {
-    const text = template.sections.map(s =>
-      `【${s.title}】${s.subtitle ? ` — ${s.subtitle}` : ''}\n${s.bullets.map(b => `・${b}`).join('\n')}${s.timeGuide ? `\n（時間目安: ${s.timeGuide}）` : ''}`
-    ).join('\n\n')
-    const header = `■ ${template.title}\n形式: ${FORMATS.find(f => f.id === settings.format)?.label} | 対象: ${AUDIENCES.find(a => a.id === settings.audience)?.label} | ${settings.duration}分\nスライド目安: ${template.totalSlides}枚 | 文字数目安: ${template.wordGuide}\n${'─'.repeat(40)}\n\n`
-    navigator.clipboard.writeText(header + text).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    })
-  }, [template, settings])
+  return (
+    <div className="max-w-2xl mx-auto px-4 py-6 pb-32">
+      <AppHeader title="プレゼン資料生成" subtitle="AIプロンプトを生成 → ChatGPT/Claudeに貼り付け" badge="FREE" favoriteSlug="app-presenter" favoriteHref="/presenter" />
 
-  const updateSetting = <K extends keyof Settings>(key: K, value: Settings[K]) => {
-    setSettings(prev => ({ ...prev, [key]: value }))
-  }
-
-  // ── 設定画面 ──
-  if (step === 'settings') {
-    return (
-      <>
-        <Header />
-        <div className="space-y-3">
-          {/* 発表タイプ */}
-          <Section title="1. 発表タイプ">
-            <div className="flex gap-2 flex-wrap">
-              {TYPES.map(t => (
-                <button key={t.id} onClick={() => updateSetting('type', t.id)}
-                  className={`px-3 py-2 rounded-lg text-xs font-medium border transition-all flex items-center gap-1.5 ${
-                    settings.type === t.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
-                  }`}><span>{t.icon}</span>{t.label}</button>
-              ))}
-            </div>
-          </Section>
-
-          {/* 対象者 + 発表時間（横並び） */}
+      <div className="space-y-3">
+        {/* 1. 発表タイプ + 対象者 */}
+        <div className="bg-s0 border border-br rounded-xl p-3">
           <div className="grid grid-cols-2 gap-3">
-            <Section title="2. 対象者">
-              <div className="flex gap-1.5 flex-wrap">
+            <div>
+              <p className="text-[10px] font-bold text-muted mb-1.5">発表タイプ</p>
+              <div className="flex flex-col gap-1">
+                {TYPES.map(t => (
+                  <button key={t.id} onClick={() => setType(t.id)}
+                    className={`px-2.5 py-1.5 rounded-lg text-[11px] font-medium border transition-all text-left ${
+                      type === t.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
+                    }`}>{t.icon} {t.label}</button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-muted mb-1.5">対象者</p>
+              <div className="flex flex-wrap gap-1">
                 {AUDIENCES.map(a => (
-                  <button key={a.id} onClick={() => updateSetting('audience', a.id)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                      settings.audience === a.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
+                  <button key={a.id} onClick={() => setAudience(a.id)}
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-all ${
+                      audience === a.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
                     }`}>{a.label}</button>
                 ))}
               </div>
-            </Section>
-
-            <Section title="3. 発表時間">
-              <div className="flex gap-1.5 flex-wrap">
+              <p className="text-[10px] font-bold text-muted mb-1.5 mt-3">発表時間</p>
+              <div className="flex flex-wrap gap-1">
                 {DURATIONS.map(d => (
-                  <button key={d} onClick={() => updateSetting('duration', d)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                      settings.duration === d ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
+                  <button key={d} onClick={() => setDuration(d)}
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-all ${
+                      duration === d ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
                     }`}>{d}分</button>
                 ))}
               </div>
-            </Section>
-          </div>
-
-          {/* 出力形式 */}
-          <Section title="4. 出力形式">
-            <div className="flex gap-2 flex-wrap">
-              {FORMATS.map(f => (
-                <button key={f.id} onClick={() => updateSetting('format', f.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all flex items-center gap-1.5 ${
-                    settings.format === f.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
-                  }`}><span>{f.icon}</span>{f.label}</button>
-              ))}
             </div>
-          </Section>
+          </div>
+        </div>
 
-          {/* トピック（任意） */}
-          <Section title="5. トピック（任意）">
-            <input type="text" value={settings.topic} onChange={e => updateSetting('topic', e.target.value)}
-              placeholder="例: 70歳男性のDKA症例、SGLT2阻害薬の有効性メタ解析"
-              className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-sm text-tx focus:border-ac focus:ring-1 focus:ring-ac/20 outline-none transition-all" />
-          </Section>
+        {/* 2. 出力形式 */}
+        <div className="bg-s0 border border-br rounded-xl p-3">
+          <p className="text-[10px] font-bold text-muted mb-1.5">出力形式</p>
+          <div className="flex flex-wrap gap-1.5">
+            {FORMATS.map(f => (
+              <button key={f.id} onClick={() => setFormat(f.id)}
+                className={`px-2.5 py-1.5 rounded-lg text-[11px] font-medium border transition-all ${
+                  format === f.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
+                }`}>{f.icon} {f.label}</button>
+            ))}
+          </div>
+          {/* 枚数/文字数 */}
+          {(format === 'slide' || format === 'a4-handout') && (
+            <div className="flex items-center gap-2 mt-2">
+              <span className="text-[10px] text-muted">枚数目安:</span>
+              <input type="number" value={slideCount} onChange={e => setSlideCount(Number(e.target.value))}
+                className="w-16 px-2 py-1 border border-br rounded-lg text-xs bg-bg text-tx text-center" min={1} max={50} />
+              <span className="text-[10px] text-muted">枚</span>
+            </div>
+          )}
+          {format === 'abstract-text' && (
+            <div className="flex items-center gap-2 mt-2">
+              <span className="text-[10px] text-muted">文字数上限:</span>
+              <input type="number" value={charLimit} onChange={e => setCharLimit(Number(e.target.value))}
+                className="w-20 px-2 py-1 border border-br rounded-lg text-xs bg-bg text-tx text-center" min={100} max={2000} step={50} />
+              <span className="text-[10px] text-muted">字</span>
+            </div>
+          )}
+        </div>
 
-          {/* 生成ボタン — sticky */}
-          <div className="sticky bottom-16 md:bottom-0 z-10 pt-2 pb-1" style={{ background: 'linear-gradient(transparent, var(--bg) 8px)' }}>
-            <button onClick={handleGenerate}
-              className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2"
-              style={{ background: MC, boxShadow: `0 4px 14px ${MC}33` }}>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              テンプレートを生成
-            </button>
+        {/* 3. トピック入力 */}
+        <div className="bg-s0 border border-br rounded-xl p-3">
+          <p className="text-[10px] font-bold text-muted mb-1.5">トピックの決め方</p>
+          <div className="flex gap-1.5 mb-3">
+            {TOPIC_SOURCES.map(ts => (
+              <button key={ts.id} onClick={() => setTopicSource(ts.id)}
+                className={`flex-1 px-2 py-2 rounded-lg text-[11px] font-medium border transition-all text-center ${
+                  topicSource === ts.id ? 'bg-ac text-white border-ac' : 'border-br text-muted hover:border-ac/30'
+                }`}>{ts.icon} {ts.label}</button>
+            ))}
           </div>
 
-          {/* PRO teaser */}
-          <ProTeaser />
-        </div>
-        <PresenterTutorial />
-      </>
-    )
-  }
+          {topicSource === 'case' && (
+            <>
+              <textarea value={karteText} onChange={e => setKarteText(e.target.value)}
+                placeholder="カルテ情報を貼り付けてください（主訴・現病歴・検査結果等）"
+                rows={4}
+                className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none resize-none mb-2" />
+              <label className="flex items-start gap-2 text-[10px] text-muted cursor-pointer">
+                <input type="checkbox" checked={karteConsent} onChange={e => setKarteConsent(e.target.checked)}
+                  className="mt-0.5 accent-green-700" />
+                <span>
+                  患者の同意取得済み・施設基準を満たしていること・非匿名化処理済みであることを確認しました。
+                  データはサーバーに送信・保存されません（ブラウザ上のテキスト操作のみ）。
+                </span>
+              </label>
+            </>
+          )}
 
-  // ── 結果画面 ──
-  return (
-    <>
-      <Header />
-      <div className="space-y-4">
-        {/* 戻る + コピー */}
-        <div className="flex items-center justify-between">
-          <button onClick={() => setStep('settings')} className="flex items-center gap-1.5 text-xs text-muted hover:text-tx transition-colors">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-            設定に戻る
-          </button>
-          <button onClick={handleCopy}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium text-white transition-all"
+          {topicSource === 'paper' && (
+            <div className="space-y-2">
+              <input type="text" value={paperRef} onChange={e => setPaperRef(e.target.value)}
+                placeholder="PMID、DOI、または論文タイトルを入力"
+                className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none" />
+              <p className="text-[9px] text-muted">例: PMID: 34587382 / DOI: 10.1056/NEJMoa2102953 / Inker LA, et al. NEJM 2021</p>
+            </div>
+          )}
+
+          {topicSource === 'theme' && (
+            <textarea value={themeText} onChange={e => setThemeText(e.target.value)}
+              placeholder="テーマを入力（例: SGLT2阻害薬の心不全への効果、高齢者の抗凝固療法）"
+              rows={2}
+              className="w-full px-3 py-2 border border-br rounded-lg bg-bg text-xs text-tx focus:border-ac outline-none resize-none" />
+          )}
+        </div>
+
+        {/* 生成ボタン */}
+        <GlowButton fullWidth radius={12}>
+          <button onClick={handleGenerate} disabled={!canGenerate}
+            className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all disabled:opacity-40"
             style={{ background: MC }}>
-            {copied ? (
-              <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>コピー済み</>
-            ) : (
-              <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>全文コピー</>
-            )}
+            プロンプトを生成
           </button>
-        </div>
+        </GlowButton>
 
-        {/* サマリー */}
-        <div className="bg-s0 border border-br rounded-xl p-4">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-xl">{TYPES.find(t => t.id === settings.type)?.icon}</span>
-            <div>
-              <p className="text-base font-bold text-tx">{template.title}</p>
-              <p className="text-[11px] text-muted">
-                {AUDIENCES.find(a => a.id === settings.audience)?.label}向け · {settings.duration}分 · {FORMATS.find(f => f.id === settings.format)?.label}
-              </p>
-            </div>
+        {/* AIリンク */}
+        {prompt && (
+          <div className="flex gap-2 justify-center">
+            {AI_LINKS.map(ai => (
+              <a key={ai.name} href={ai.url} target="_blank" rel="noopener noreferrer"
+                className="px-3 py-1.5 rounded-lg text-[10px] font-bold text-white" style={{ background: ai.color }}>
+                {ai.name}で開く
+              </a>
+            ))}
           </div>
-          <div className="flex gap-3 text-[11px] mt-2">
-            <span className="px-2 py-1 rounded-lg" style={{ background: MCL, color: MC }}>スライド {template.totalSlides}枚目安</span>
-            <span className="px-2 py-1 rounded-lg" style={{ background: MCL, color: MC }}>文字数 {template.wordGuide}</span>
-          </div>
-        </div>
+        )}
 
-        {/* セクション */}
-        {template.sections.map((sec, i) => (
-          <div key={i} className="bg-s0 border border-br rounded-xl p-4">
+        {/* 結果 */}
+        {prompt && (
+          <div id="prompt-result" className="bg-s0 border border-br rounded-xl p-4">
             <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md flex items-center justify-center text-white text-[10px] font-bold" style={{ background: MC }}>{i + 1}</span>
-                <div>
-                  <h3 className="text-sm font-bold text-tx">{sec.title}</h3>
-                  {sec.subtitle && <p className="text-[10px] text-muted">{sec.subtitle}</p>}
-                </div>
-              </div>
-              {sec.timeGuide && (
-                <span className="text-[10px] text-muted bg-s1 px-2 py-0.5 rounded">{sec.timeGuide}</span>
-              )}
+              <p className="text-xs font-bold text-tx">生成されたプロンプト</p>
+              <button onClick={() => handleCopy(prompt, 'prompt')}
+                className="px-3 py-1.5 rounded-lg text-[10px] font-bold text-white" style={{ background: MC }}>
+                {copied === 'prompt' ? '✓ コピー済み' : 'コピー'}
+              </button>
             </div>
-            <ul className="space-y-1 mt-2">
-              {sec.bullets.map((b, j) => (
-                <li key={j} className="text-xs text-tx/80 leading-relaxed flex gap-2">
-                  <span className="text-ac flex-shrink-0 mt-0.5">•</span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-            {sec.slideNote && (
-              <p className="text-[10px] text-muted mt-2 italic">💡 {sec.slideNote}</p>
-            )}
+            <pre className="text-[11px] text-tx/80 leading-relaxed whitespace-pre-wrap bg-bg rounded-lg p-3 max-h-64 overflow-y-auto border border-br">
+              {prompt}
+            </pre>
+            <p className="text-[9px] text-muted mt-2">
+              上のプロンプトをコピーしてChatGPT・Claude・Geminiに貼り付けてください。
+              フルテキストが必要な場合はAIから指示があります。
+            </p>
           </div>
-        ))}
-
-        {/* プレゼンのコツ */}
-        <div className="bg-s1 border border-br rounded-xl p-4">
-          <h3 className="text-sm font-bold text-tx mb-2 flex items-center gap-1.5">
-            <span>🎯</span>プレゼンのコツ
-          </h3>
-          <ul className="space-y-1.5 text-xs text-muted">
-            <li className="flex gap-2"><span className="text-ac">•</span>1スライド = 1メッセージ。文字は最小限に</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>図・表・画像を活用。テキストの羅列を避ける</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>フォントサイズ: タイトル28pt以上、本文20pt以上</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>配色: 3色以内。背景は白 or 薄い色</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>発表練習: 時間を計って最低3回リハーサル</li>
-            <li className="flex gap-2"><span className="text-ac">•</span>質疑応答: 想定質問を3-5個準備しておく</li>
-          </ul>
-        </div>
-
-        {/* PRO teaser */}
-        <ProTeaser />
+        )}
       </div>
-    </>
-  )
-}
 
-// ── 共通パーツ ──
-function Header() {
-  return (
-    <AppHeader
-      title="プレゼン資料生成"
-      subtitle="タイプ・対象者・時間を設定 → 構成テンプレートを生成"
-      badge="PRO"
-      favoriteSlug="app-presenter"
-      favoriteHref="/presenter"
-    />
-  )
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="bg-s0 border border-br rounded-xl p-4">
-      <p className="text-xs font-bold text-tx mb-3">{title}</p>
-      {children}
-    </div>
-  )
-}
-
-function ProTeaser() {
-  return (
-    <div className="bg-s0 border border-br rounded-xl p-5 relative overflow-hidden">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-sm">✨</span>
-        <p className="text-sm font-bold text-tx">Coming Soon — AI生成機能</p>
-        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: MCL, color: MC }}>PRO</span>
-      </div>
-      <div className="space-y-2 relative">
-        {['トピックを入力するだけでAIが原稿を自動生成', 'スライド（PPTX）のダウンロード', '論文ブックマークからの自動インポート', 'ポスター/抄録のPDF出力'].map((item, i) => (
-          <div key={i} className={`flex items-center gap-2 py-2 px-3 rounded-lg bg-s1 ${i > 0 ? 'select-none' : ''}`}>
-            <span className="text-xs text-muted">🔒</span>
-            <p className="text-xs text-muted">{item}</p>
-          </div>
-        ))}
-        <div className="absolute inset-0 top-10 backdrop-blur-sm bg-s0/70 rounded-lg flex items-center justify-center">
-          <p className="text-xs font-medium" style={{ color: MC }}>開発中 — お楽しみに</p>
-        </div>
-      </div>
+      <FeedbackRow appName="プレゼン資料生成" />
     </div>
   )
 }
