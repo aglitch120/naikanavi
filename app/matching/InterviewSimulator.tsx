@@ -43,6 +43,34 @@ interface InterviewReport {
   nextAdvice: string
 }
 
+interface SavedReport {
+  id: string
+  date: string
+  settings: { type: string; duration: number; hospitalType: string; pressure: string }
+  report: InterviewReport
+  messageCount: number
+}
+
+const REPORT_STORAGE_KEY = 'iwor_interview_reports'
+
+function loadSavedReports(): SavedReport[] {
+  try {
+    return JSON.parse(localStorage.getItem(REPORT_STORAGE_KEY) || '[]')
+  } catch { return [] }
+}
+
+function saveReport(saved: SavedReport) {
+  const reports = loadSavedReports()
+  reports.unshift(saved)
+  // 最大20件保持
+  localStorage.setItem(REPORT_STORAGE_KEY, JSON.stringify(reports.slice(0, 20)))
+}
+
+function deleteReport(id: string) {
+  const reports = loadSavedReports().filter(r => r.id !== id)
+  localStorage.setItem(REPORT_STORAGE_KEY, JSON.stringify(reports))
+}
+
 interface Props {
   isPro: boolean
   onShowProModal: () => void
@@ -177,12 +205,59 @@ function SettingsScreen({ onStart, isPro }: { onStart: (s: InterviewSettings) =>
         </GlowButton>
       </div>
 
-      {/* 練習回数（あれば） */}
-      {typeof window !== 'undefined' && parseInt(localStorage.getItem('iwor_interview_count') || '0', 10) > 0 && (
-        <p className="text-center text-[10px]" style={{ color: '#C8C4BC' }}>
-          練習回数: {localStorage.getItem('iwor_interview_count')}回
-        </p>
-      )}
+      {/* 過去のレポート+成長インサイト */}
+      {typeof window !== 'undefined' && (() => {
+        const reports = loadSavedReports()
+        if (reports.length === 0) return null
+        const grades = reports.map(r => {
+          const g = r.report.overallGrade.toUpperCase()
+          return g === 'S' ? 5 : g === 'A' ? 4 : g === 'B' ? 3 : g === 'C' ? 2 : 1
+        }).reverse()
+        const latest = reports[0]
+        const improving = grades.length >= 2 && grades[grades.length - 1] >= grades[grades.length - 2]
+        return (
+          <div className="mt-4 space-y-3">
+            {/* 成長グラフ */}
+            {grades.length >= 2 && (
+              <div className="bg-s0 border border-br rounded-xl p-3">
+                <p className="text-[11px] font-bold text-tx mb-2">成長トレンド {improving ? '📈' : '📉'}</p>
+                <div className="flex items-end gap-1 h-12">
+                  {grades.map((g, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center gap-0.5">
+                      <span className="text-[8px] font-bold" style={{ color: g >= 4 ? MC : '#6B6760' }}>{'DCBAS'[g]}</span>
+                      <div className="w-full rounded-t" style={{ height: `${g * 20}%`, background: i === grades.length - 1 ? MC : '#DDD9D2' }} />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[9px] text-muted mt-1">
+                  {reports.length}回練習 / 最新: {latest.report.overallGrade}
+                  {improving ? ' / 成長中！' : ''}
+                </p>
+              </div>
+            )}
+
+            {/* 過去のレポート一覧 */}
+            <div className="bg-s0 border border-br rounded-xl p-3">
+              <p className="text-[11px] font-bold text-tx mb-2">過去のレポート（{reports.length}件）</p>
+              <div className="space-y-1.5 max-h-40 overflow-y-auto">
+                {reports.slice(0, 10).map(r => (
+                  <div key={r.id} className="flex items-center justify-between text-[10px] py-1.5 border-b border-br/50 last:border-b-0">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold w-6 text-center" style={{ color: MC }}>{r.report.overallGrade}</span>
+                      <span className="text-muted">
+                        {new Date(r.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}
+                        {' '}{r.settings.duration}分 / {r.settings.hospitalType === 'university' ? '大学' : '市中'}
+                      </span>
+                    </div>
+                    <button onClick={() => { deleteReport(r.id); window.location.reload() }}
+                      className="text-muted hover:text-red-500 text-[9px]">削除</button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )
+      })()}
     </div>
   )
 }
@@ -1002,6 +1077,14 @@ ${s.useProfile && profileCtx ? `\n■ 受験者のプロフィール（手元の
 
       if (parsed && parsed.goodPoints.length > 0) {
         setReport(parsed)
+        // 自動保存
+        saveReport({
+          id: `r_${Date.now()}`,
+          date: new Date().toISOString(),
+          settings: { type: settings?.hospitalType === 'university' ? 'university' : 'community', duration: settings?.duration || 5, hospitalType: settings?.hospitalType || 'community', pressure: settings?.pressure || 'normal' },
+          report: parsed,
+          messageCount: messages.length,
+        })
       } else {
         // テキストからパース（フォールバック）
         setReport({
