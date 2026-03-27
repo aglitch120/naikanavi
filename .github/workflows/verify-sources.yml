@@ -25,10 +25,10 @@ jobs:
         continue-on-error: true
         run: node scripts/verify-sources.mjs
 
-      - name: ソースURLリンク切れ検証（週1回のみ）
+      - name: ソースURLリンク切れ+ガイドライン更新検証（週1回のみ）
         if: github.event.schedule != ''
         continue-on-error: true
-        run: CHECK_URLS=1 node scripts/verify-sources.mjs
+        run: CHECK_URLS=1 CHECK_GL=1 node scripts/verify-sources.mjs
 
       - name: レポートをアーティファクトとして保存
         if: always()

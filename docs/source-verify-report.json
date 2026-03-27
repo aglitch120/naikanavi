@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-03-27T02:39:13.564Z",
+  "timestamp": "2026-03-27T02:44:04.436Z",
   "summary": {
-    "pass": 1496,
-    "warn": 171,
+    "pass": 1547,
+    "warn": 120,
     "fail": 0
   },
   "tools": [
@@ -70,8 +70,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "PASS",
-          "message": "OK"
+          "status": "WARN",
+          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
         },
         {
           "check": "ZENKAKU",
@@ -112,8 +112,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -574,8 +574,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -616,8 +616,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -700,8 +700,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -1078,8 +1078,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -1162,8 +1162,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -1246,8 +1246,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -1414,8 +1414,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -1624,8 +1624,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -1708,8 +1708,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -1750,8 +1750,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "PASS",
-          "message": "OK"
+          "status": "WARN",
+          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
         },
         {
           "check": "ZENKAKU",
@@ -1792,8 +1792,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "PASS",
-          "message": "OK"
+          "status": "WARN",
+          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
         },
         {
           "check": "ZENKAKU",
@@ -1834,8 +1834,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "PASS",
-          "message": "OK"
+          "status": "WARN",
+          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
         },
         {
           "check": "ZENKAKU",
@@ -2002,8 +2002,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -2128,8 +2128,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -2254,8 +2254,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -2380,8 +2380,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -2422,8 +2422,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -2464,8 +2464,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "PASS",
-          "message": "OK"
+          "status": "WARN",
+          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
         },
         {
           "check": "ZENKAKU",
@@ -2506,8 +2506,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -2674,8 +2674,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3052,8 +3052,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3094,8 +3094,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3346,8 +3346,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3724,8 +3724,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3808,8 +3808,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3892,8 +3892,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3934,8 +3934,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -3976,8 +3976,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -4018,8 +4018,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -4060,8 +4060,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -4102,8 +4102,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -4438,8 +4438,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -4984,8 +4984,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -5152,8 +5152,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -5362,8 +5362,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -5740,8 +5740,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -5866,8 +5866,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -5950,8 +5950,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -6328,8 +6328,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "PASS",
-          "message": "OK"
+          "status": "WARN",
+          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
         },
         {
           "check": "ZENKAKU",
@@ -6454,8 +6454,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -6496,8 +6496,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -6580,8 +6580,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -7042,8 +7042,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -7252,8 +7252,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -7420,8 +7420,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -7672,8 +7672,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -7798,8 +7798,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -7840,8 +7840,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -7882,8 +7882,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8050,8 +8050,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8134,8 +8134,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8260,8 +8260,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8386,8 +8386,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8596,8 +8596,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8638,8 +8638,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8764,8 +8764,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -8932,8 +8932,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -9058,8 +9058,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -9100,8 +9100,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -9268,8 +9268,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",
@@ -9310,8 +9310,8 @@
         },
         {
           "check": "ZERO_DIV_GUARD",
-          "status": "WARN",
-          "message": "⚠️ 除算あり+ゼロ除算ガードが見つからない"
+          "status": "PASS",
+          "message": "OK"
         },
         {
           "check": "ZENKAKU",

@@ -375,6 +375,7 @@ function checkDoseFormat(content) {
 // ── メイン ──
 
 async function main() {
+  const delay = ms => new Promise(r => setTimeout(r, ms))
   const now = new Date().toISOString()
   console.log(`🔍 iwor 医学データ検証 — ${now}`)
   console.log('='.repeat(60))
@@ -471,8 +472,8 @@ async function main() {
     dangerWords.length ? report.summary.warn++ : report.summary.pass++
 
     // 入力値バリデーション（ゼロ除算・NaN防御）
-    const hasZeroDivGuard = /if\s*\(!|if\s*\(\s*\w+\s*===?\s*0|if\s*\(\s*!\s*\w+\s*\)/.test(content)
-    const hasDivision = /\/\s*\w+/.test(content) && /useMemo|result/.test(content)
+    const hasZeroDivGuard = /if\s*\(\s*!|return\s+null|isNaN|isFinite|!==?\s*0|\|\|\s*0|parseFloat.*\|\||Number.*\|\|/.test(content)
+    const hasDivision = /\/\s*[a-zA-Z]/.test(content) && /useMemo|const result/.test(content)
     const needsGuard = hasDivision && !hasZeroDivGuard
     toolReport.checks.push({
       check: 'ZERO_DIV_GUARD', status: needsGuard ? 'WARN' : 'PASS',
@@ -512,6 +513,34 @@ async function main() {
     ;(hasSource || hasUrl) ? report.summary.pass++ : report.summary.warn++
 
     report.tools.push(toolReport)
+  }
+
+  // ── ガイドライン更新チェック（CHECK_GL=1 で実行） ──
+  if (process.env.CHECK_GL === '1') {
+    console.log('\n📚 ガイドライン更新チェック:')
+    const GL_QUERIES = [
+      { id: 'ckd', query: 'CKD clinical practice guideline', since: '2024/01/01' },
+      { id: 'heart-failure', query: 'heart failure guideline', since: '2024/01/01' },
+      { id: 'sepsis', query: 'sepsis surviving guideline', since: '2024/01/01' },
+      { id: 'anticoagulation', query: 'anticoagulation atrial fibrillation guideline', since: '2024/01/01' },
+      { id: 'diabetes', query: 'diabetes mellitus guideline ADA', since: '2024/01/01' },
+      { id: 'hypertension', query: 'hypertension guideline JNC ESC', since: '2024/01/01' },
+      { id: 'copd', query: 'COPD GOLD guideline', since: '2024/01/01' },
+      { id: 'liver', query: 'liver cirrhosis guideline AASLD', since: '2024/01/01' },
+    ]
+    for (const gl of GL_QUERIES) {
+      try {
+        const url = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(gl.query + ' AND ("Practice Guideline"[pt])')}&mindate=${gl.since}&retmode=json&retmax=3`
+        const res = await fetch(url, { headers: { 'User-Agent': 'iwor-gl-checker/1.0' }, signal: AbortSignal.timeout(10000) })
+        const data = await res.json()
+        const count = parseInt(data?.esearchresult?.count || '0')
+        console.log(`  ${count > 0 ? '⚠️' : '✅'} ${gl.id}: ${count}件の新GL (since ${gl.since})`)
+        if (count > 0) report.summary.warn++; else report.summary.pass++
+      } catch {
+        console.log(`  ⚠️ ${gl.id}: チェック失敗`)
+      }
+      await delay(1500) // PubMed rate limit
+    }
   }
 
   // ── ソースURLリンク切れ検出（CHECK_URLS=1 で実行） ──
@@ -596,9 +625,17 @@ async function main() {
   writeFileSync(HASH_PATH, JSON.stringify(currentHashes, null, 2))
   writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2))
 
-  // 公開ステータス（UIに表示する最終検証日時）
+  // git commit hash取得（証拠保全用）
+  let gitHash = 'unknown'
+  try {
+    const { execSync } = await import('child_process')
+    gitHash = execSync('git rev-parse HEAD', { cwd: ROOT }).toString().trim().slice(0, 12)
+  } catch {}
+
+  // 公開ステータス（UIに表示する最終検証日時+証拠保全）
   const status = {
     lastVerified: now,
+    gitCommit: gitHash,
     calcPass: report.calculations.filter(c => c.status === 'PASS').length,
     calcTotal: report.calculations.length,
     toolsChecked: report.tools.length,
