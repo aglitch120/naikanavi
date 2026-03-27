@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-03-20T13:14:00.311Z",
+  "timestamp": "2026-03-27T01:52:32.106Z",
   "summary": {
-    "pass": 30,
-    "warn": 2,
+    "pass": 28,
+    "warn": 4,
     "fail": 0
   },
   "tools": [
@@ -13,8 +13,8 @@
       "checks": [
         {
           "check": "DATA_HASH",
-          "status": "PASS",
-          "message": "変更なし (b80e0b0dc5e8963a)"
+          "status": "WARN",
+          "message": "⚠️ 変更検出 b80e0b0dc5e8963a→d6302a9ba8b5f5c3"
         },
         {
           "check": "DOSE_FORMAT",
@@ -23,8 +23,8 @@
         },
         {
           "check": "SAMD_WORDING",
-          "status": "WARN",
-          "message": "⚠️ 「第一選択」"
+          "status": "PASS",
+          "message": "OK"
         }
       ]
     },
@@ -35,8 +35,8 @@
       "checks": [
         {
           "check": "DATA_HASH",
-          "status": "PASS",
-          "message": "変更なし (abe55245727068ef)"
+          "status": "WARN",
+          "message": "⚠️ 変更検出 abe55245727068ef→a3ff5fe9db27f24e"
         },
         {
           "check": "DOSE_FORMAT",
@@ -57,8 +57,8 @@
       "checks": [
         {
           "check": "DATA_HASH",
-          "status": "PASS",
-          "message": "変更なし (285b1ea4d4eebf39)"
+          "status": "WARN",
+          "message": "⚠️ 変更検出 285b1ea4d4eebf39→652a4ded37531f31"
         },
         {
           "check": "DOSE_FORMAT",
@@ -67,8 +67,8 @@
         },
         {
           "check": "SAMD_WORDING",
-          "status": "WARN",
-          "message": "⚠️ 「第一選択」"
+          "status": "PASS",
+          "message": "OK"
         }
       ]
     },
@@ -167,8 +167,8 @@
       "checks": [
         {
           "check": "DATA_HASH",
-          "status": "PASS",
-          "message": "変更なし (7d5a6e1f23380a19)"
+          "status": "WARN",
+          "message": "⚠️ 変更検出 7d5a6e1f23380a19→4957cdfad83a56c5"
         },
         {
           "check": "DOSE_FORMAT",
