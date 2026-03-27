@@ -742,9 +742,8 @@ function HospitalCard({
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 space-y-1">
                 <p className="text-[9px] font-bold text-amber-800">この数値の読み方</p>
                 <p className="text-[8px] text-amber-900/80 leading-relaxed">
-                  マッチ難易度は「席の奪い合いの激しさ」であり、研修の質を表すものではありません。
-                  聖路加・亀田・沖縄中部のように研修の質が極めて高い病院でも、本気の志望者だけが受験するため倍率が膨らまず、数値が控えめに出ることがあります。
-                  逆に都市部の大規模プログラムは、多くの受験生が併願するため数値が高くなる傾向があります。
+                  マッチ難易度は「席の奪い合いの激しさ」を数値化したもので、研修の質や教育体制の評価ではありません。
+                  立地・定員規模・併願パターンなど多くの要因が影響するため、数値が低い＝研修が劣るとは限りません。
                 </p>
                 <p className="text-[8px] text-amber-900/60 leading-relaxed">
                   JRMP公式データ（2022-2025）の統計処理に基づくiwor独自指標です。
