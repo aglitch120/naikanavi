@@ -99,11 +99,25 @@ for (const h of hospitals) {
   h.isUniversity = uniPatterns.some(p => h.name.includes(p) || h.program.includes(p))
 }
 
-// Recalculate popularityRank (based on new hensachi, higher = better rank)
-const sorted = [...hospitals].sort((a, b) => b.hensachi - a.hensachi || b._honkiBairitsu - a._honkiBairitsu)
-for (let i = 0; i < sorted.length; i++) {
-  sorted[i].popularityRank = i + 1
+// Deduplicate: pick each hospital's main program (largest capacity) for ranking
+// Sub-programs (小児科専門, 産婦人科専門 etc.) inherit the main program's rank
+const byName = {}
+for (const h of hospitals) {
+  if (!byName[h.name] || h.capacity > byName[h.name].capacity) {
+    byName[h.name] = h
+  }
 }
+const mainPrograms = Object.values(byName)
+const sorted = mainPrograms.sort((a, b) => b.hensachi - a.hensachi || b._honkiBairitsu - a._honkiBairitsu)
+const rankByName = {}
+for (let i = 0; i < sorted.length; i++) {
+  rankByName[sorted[i].name] = i + 1
+}
+// Assign rank to all programs (including sub-programs)
+for (const h of hospitals) {
+  h.popularityRank = rankByName[h.name] || 9999
+}
+console.log(`ランキング: ${mainPrograms.length}病院（${hospitals.length}プログラムから本体のみ抽出）`)
 
 // Print top 50 for verification
 console.log('\n=== TOP 50 ===')
