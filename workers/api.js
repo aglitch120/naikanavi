@@ -205,21 +205,24 @@ async function buildJournalDb(env) {
       }
     } catch {}
 
-    // PubMed検索（過去30日）— ISSNが多い場合はバッチ分割
+    // PubMed検索 — レート制限対策: バッチ間に1.5秒delay
+    const delay = ms => new Promise(r => setTimeout(r, ms));
     const issns = journals.map(j => j.issn);
-    const BATCH_SIZE = 15; // URL長制限対策
+    const BATCH_SIZE = 10; // URL長制限+レート制限対策
     let ids = [];
     for (let i = 0; i < issns.length; i += BATCH_SIZE) {
+      if (i > 0) await delay(1500); // PubMed rate limit: 3 req/sec without API key
       const batch = issns.slice(i, i + BATCH_SIZE);
-      // 記事タイプフィルタ: 臨床医に価値のある論文に限定（Letter/Comment/Editorial等を除外）
       const ptFilter = '("Journal Article"[pt] OR "Meta-Analysis"[pt] OR "Systematic Review"[pt] OR "Review"[pt] OR "Randomized Controlled Trial"[pt] OR "Clinical Trial"[pt] OR "Guideline"[pt] OR "Practice Guideline"[pt] OR "Multicenter Study"[pt] OR "Observational Study"[pt] OR "Comparative Study"[pt])';
       const ptExclude = 'NOT ("Letter"[pt] OR "Comment"[pt] OR "Editorial"[pt] OR "Erratum"[pt] OR "News"[pt] OR "Biography"[pt] OR "Published Erratum"[pt] OR "Retracted Publication"[pt])';
       const q = encodeURIComponent(`(${batch.map(issn => `${issn}[ISSN]`).join(" OR ")}) AND ("last 90 days"[dp]) AND ${ptFilter} ${ptExclude}`);
-      const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=200&sort=date&retmode=json`;
+      const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=100&sort=date&retmode=json`;
       try {
         const sRes = await fetch(sUrl);
         if (!sRes.ok) { console.error(`PubMed search error: ${sRes.status}`); continue; }
-        const sData = await sRes.json();
+        const sText = await sRes.text();
+        let sData;
+        try { sData = JSON.parse(sText); } catch { console.error("PubMed search non-JSON:", sText.slice(0, 100)); continue; }
         const batchIds = sData?.esearchresult?.idlist || [];
         ids = ids.concat(batchIds);
       } catch (err) {
@@ -233,14 +236,26 @@ async function buildJournalDb(env) {
     const newIds = ids.filter(id => !existingDb[id]);
     let newArticles = [];
 
+    // esummaryもバッチ分割（100件ずつ、delay付き）
     if (newIds.length > 0) {
-      const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${newIds.join(",")}&retmode=json`;
-      const fRes = await fetch(fUrl);
-      if (!fRes.ok) { console.error(`PubMed summary error: ${fRes.status}`); continue; }
-      const fText = await fRes.text();
-      let fData;
-      try { fData = JSON.parse(fText); } catch { console.error("PubMed returned non-JSON:", fText.slice(0, 200)); continue; }
-
+      const SUMMARY_BATCH = 80;
+      let fDataAll = {};
+      for (let i = 0; i < newIds.length; i += SUMMARY_BATCH) {
+        if (i > 0) await delay(1500);
+        const batch = newIds.slice(i, i + SUMMARY_BATCH);
+        const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${batch.join(",")}&retmode=json`;
+        try {
+          const fRes = await fetch(fUrl);
+          if (!fRes.ok) { console.error(`PubMed summary error: ${fRes.status}`); continue; }
+          const fText = await fRes.text();
+          let fData;
+          try { fData = JSON.parse(fText); } catch { console.error("PubMed summary non-JSON:", fText.slice(0, 100)); continue; }
+          if (fData?.result) Object.assign(fDataAll, fData.result);
+        } catch (err) {
+          console.error(`PubMed summary batch error:`, err);
+        }
+      }
+      const fData = { result: fDataAll };
       for (const id of newIds) {
         const d = fData?.result?.[id];
         if (!d || !d.title) continue;
