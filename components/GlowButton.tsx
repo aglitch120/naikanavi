@@ -89,8 +89,8 @@ export default function GlowButton({
         />
       </span>
       <style>{`@keyframes glowBtnSpin { to { transform: rotate(360deg); } }`}</style>
-      {/* 子要素（ボタン本体） */}
-      <span style={{ position: 'relative', display: fullWidth ? 'block' : 'inline-block', zIndex: 1 }}>
+      {/* 子要素（ボタン本体）— 不透明背景で回転グラデーションを隠す */}
+      <span style={{ position: 'relative', display: fullWidth ? 'block' : 'inline-block', zIndex: 1, borderRadius: radius, overflow: 'hidden' }}>
         {children}
       </span>
     </span>
