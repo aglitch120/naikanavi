@@ -55,12 +55,15 @@ export default function OgImage() {
 
           {/* サブタイトル */}
           <div style={{
+            display: 'flex',
+            flexDirection: 'column',
             fontSize: '36px',
             fontWeight: 600,
             color: 'rgba(255,255,255,0.75)',
             lineHeight: 1.4,
           }}>
-            J-OSLER・病歴要約・専門医試験・<br />キャリア・お金まで完全網羅
+            <span>J-OSLER・病歴要約・専門医試験・</span>
+            <span>キャリア・お金まで完全網羅</span>
           </div>
         </div>
 
