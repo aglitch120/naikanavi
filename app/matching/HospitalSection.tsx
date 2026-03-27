@@ -706,6 +706,39 @@ function HospitalCard({
                 </div>
               </div>
 
+              {/* 第1希望トレンドグラフ */}
+              {(h as any).firstChoiceTrend && Object.keys((h as any).firstChoiceTrend).length >= 2 && (() => {
+                const fct = (h as any).firstChoiceTrend as Record<string, number>
+                const years = Object.keys(fct).sort()
+                const values = years.map(y => fct[y])
+                const max = Math.max(...values, 1)
+                return (
+                  <div>
+                    <p className="text-[9px] font-medium text-tx mb-1.5">第1希望者数トレンド（中間発表）</p>
+                    <div className="flex items-end gap-1 h-16">
+                      {years.map((y, i) => {
+                        const pct = values[i] / max * 100
+                        const isLatest = i === years.length - 1
+                        return (
+                          <div key={y} className="flex-1 flex flex-col items-center gap-0.5">
+                            <span className="text-[8px] font-bold" style={{ color: isLatest ? MC : '#6B6760' }}>{values[i]}</span>
+                            <div className="w-full rounded-t" style={{ height: `${Math.max(pct, 8)}%`, background: isLatest ? MC : '#DDD9D2' }} />
+                            <span className="text-[7px] text-muted">{y.slice(2)}</span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                    {values.length >= 2 && (() => {
+                      const change = values[values.length - 1] - values[0]
+                      const pct = values[0] > 0 ? Math.round(change / values[0] * 100) : 0
+                      return <p className="text-[8px] mt-1" style={{ color: change > 0 ? '#166534' : change < 0 ? '#991B1B' : '#6B6760' }}>
+                        {change > 0 ? '📈' : change < 0 ? '📉' : '→'} {years[0]}→{years[years.length-1]}: {change > 0 ? '+' : ''}{change}人（{pct > 0 ? '+' : ''}{pct}%）
+                      </p>
+                    })()}
+                  </div>
+                )
+              })()}
+
               <p className="text-[8px] text-muted leading-relaxed">
                 iwor独自指標です。JRMP公式データ（2022-2025）を統計処理したもので、病院の研修の質を直接評価するものではありません。
               </p>
