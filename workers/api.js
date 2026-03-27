@@ -27,6 +27,8 @@
 //    DELETE /api/admin/order    — 管理者: 注文削除
 //    GET  /api/competitors/alerts — 競合アラート一覧（管理者認証）
 //    POST /api/competitors/dismiss — 競合アラート非表示（管理者認証）
+//    POST /api/conference/discover-regional — 地方会URL自動検知（管理者認証）
+//    GET  /api/conference/regional — 地方会URL取得（?ids=...）
 // ═══════════════════════════════════════════════════════════════
 
 // ── ジャーナルDB構築（cronおよび手動トリガーから呼ばれる） ──
@@ -2427,6 +2429,216 @@ ${profileCtx ? `\n受験者プロフィール:\n${profileCtx}` : ""}
         result[pmid] = stats[pmid] || { comments: 0, bookmarks: 0 };
       }
       return json({ ok: true, stats: result }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  POST /api/conference/discover-regional — 地方会URL自動検知
+    //  本部サイトのHTMLから「地方会」「支部」「regional」等のリンクを抽出
+    //  管理者認証（X-Admin-Key）必須
+    //  Body: { societies: [{id, society, url}] }
+    //  KVキー: conf-regional:{societyId}  → { regionalUrl, discoveredAt }
+    // ══════════════════════════════════════════════════
+    if (path === "/api/conference/discover-regional" && request.method === "POST") {
+      const adminKey = request.headers.get("X-Admin-Key") || "";
+      if (!adminKey || adminKey !== env.ADMIN_KEY) return json({ error: "Unauthorized" }, 401, request);
+
+      const body = await parseBody(request);
+      const societies = body?.societies || []; // [{id, society, url}]
+      if (!societies.length) return json({ error: "societies required: [{id, society, url}]" }, 400, request);
+
+      // 地方会リンク検出キーワード（日本語学会サイトで使われる表現）
+      const REGIONAL_KEYWORDS = [
+        '地方会', '支部', '地方部会', '支部例会', '地方例会', '地方学術集会',
+        'regional', 'branch', '地方', '支部会',
+      ];
+
+      // URLが地方会関連かどうかのパスキーワード
+      const REGIONAL_PATH_HINTS = [
+        'chihokai', 'chihou', 'shibu', 'regional', 'branch', 'local',
+        'district', 'area',
+      ];
+
+      // 学会名から「日本」「学会」等を除いて短縮キーワード生成
+      const extractSocietyKeyword = (name) => {
+        return name.replace(/日本|学会|科学|医学|医科/g, '').trim().slice(0, 4);
+      };
+
+      // スコアリング: リンクテキスト・href・コンテキストを総合判定
+      const scoreLink = (href, linkText, contextText) => {
+        let score = 0;
+        const hrefLower = href.toLowerCase();
+        const textLower = linkText.toLowerCase();
+        const ctxLower = (contextText || '').toLowerCase();
+
+        for (const kw of REGIONAL_KEYWORDS) {
+          if (textLower.includes(kw)) score += 10;
+          if (ctxLower.includes(kw)) score += 3;
+        }
+        for (const hint of REGIONAL_PATH_HINTS) {
+          if (hrefLower.includes(hint)) score += 5;
+        }
+        // ナビゲーション・メニュー内のリンクは加点
+        if (hrefLower.includes('about') || hrefLower.includes('info')) score -= 2;
+        // 外部サイトへの飛び出しリンクは減点
+        if (hrefLower.startsWith('http') && !hrefLower.includes('.or.jp') && !hrefLower.includes('.jp')) score -= 3;
+
+        return score;
+      };
+
+      // href を絶対URLに変換
+      const toAbsoluteUrl = (href, baseUrl) => {
+        if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:')) return null;
+        try {
+          return new URL(href, baseUrl).href;
+        } catch {
+          return null;
+        }
+      };
+
+      // HTMLからアンカータグを抽出（簡易パーサー）
+      const extractLinks = (html, baseUrl) => {
+        const links = [];
+        // <a href="..." ...>テキスト</a> パターン
+        const anchorRe = /<a\s[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+        let m;
+        while ((m = anchorRe.exec(html)) !== null) {
+          const href = m[1];
+          const rawText = m[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+          const absUrl = toAbsoluteUrl(href, baseUrl);
+          if (absUrl) {
+            // リンク周辺のコンテキスト（前後100文字）
+            const start = Math.max(0, m.index - 100);
+            const end = Math.min(html.length, m.index + m[0].length + 100);
+            const ctx = html.slice(start, end).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+            links.push({ href: absUrl, text: rawText, context: ctx });
+          }
+        }
+        return links;
+      };
+
+      const delay = ms => new Promise(r => setTimeout(r, ms));
+      const results = [];
+
+      for (const soc of societies.slice(0, 30)) {
+        await delay(1500); // 学会サイトへの礼儀 + Cloudflare subrequest制限考慮
+
+        if (!soc.url || !soc.id) {
+          results.push({ id: soc.id, society: soc.society, error: 'url or id missing', status: 'skip' });
+          continue;
+        }
+
+        try {
+          const res = await fetch(soc.url, {
+            headers: {
+              'User-Agent': 'iwor-conference-bot/1.0 (https://iwor.jp; contact: tellmedu.info@gmail.com)',
+              'Accept': 'text/html,application/xhtml+xml',
+              'Accept-Language': 'ja,en;q=0.9',
+            },
+            signal: AbortSignal.timeout(12000),
+            redirect: 'follow',
+          });
+
+          if (!res.ok) {
+            results.push({ id: soc.id, society: soc.society, error: `HTTP ${res.status}`, status: 'error' });
+            continue;
+          }
+
+          const html = await res.text();
+          const links = extractLinks(html, soc.url);
+
+          // スコアリングして降順ソート
+          const scored = links
+            .map(l => ({ ...l, score: scoreLink(l.href, l.text, l.context) }))
+            .filter(l => l.score > 0)
+            .sort((a, b) => b.score - a.score);
+
+          if (scored.length === 0) {
+            // フォールバック: サイトマップやナビから「地方」を含むURLを直接探す
+            const fallbackRe = /https?:\/\/[^\s"'<>]+(?:chihou|chihokai|shibu|regional|branch|local)[^\s"'<>]*/gi;
+            const fallbackMatches = [...html.matchAll(fallbackRe)].map(m => m[0]);
+            const uniqueFallback = [...new Set(fallbackMatches)];
+
+            if (uniqueFallback.length > 0) {
+              const url = uniqueFallback[0];
+              results.push({ id: soc.id, society: soc.society, regionalUrl: url, score: 1, method: 'path-fallback', status: 'found' });
+              await env.IWOR_KV.put(`conf-regional:${soc.id}`, JSON.stringify({ regionalUrl: url, discoveredAt: new Date().toISOString(), method: 'path-fallback' }), { expirationTtl: 60 * 60 * 24 * 90 });
+            } else {
+              results.push({ id: soc.id, society: soc.society, regionalUrl: null, status: 'not_found', note: 'No regional links detected' });
+            }
+            continue;
+          }
+
+          const best = scored[0];
+
+          // KVに保存（90日TTL）
+          await env.IWOR_KV.put(
+            `conf-regional:${soc.id}`,
+            JSON.stringify({
+              regionalUrl: best.href,
+              linkText: best.text,
+              score: best.score,
+              discoveredAt: new Date().toISOString(),
+              method: 'html-link',
+              candidates: scored.slice(0, 5).map(c => ({ url: c.href, text: c.text, score: c.score })),
+            }),
+            { expirationTtl: 60 * 60 * 24 * 90 }
+          );
+
+          results.push({
+            id: soc.id,
+            society: soc.society,
+            regionalUrl: best.href,
+            linkText: best.text,
+            score: best.score,
+            candidates: scored.length,
+            status: 'found',
+          });
+
+        } catch (err) {
+          results.push({ id: soc.id, society: soc.society, error: String(err), status: 'error' });
+        }
+      }
+
+      const found = results.filter(r => r.status === 'found').length;
+      const notFound = results.filter(r => r.status === 'not_found').length;
+      const errors = results.filter(r => r.status === 'error').length;
+
+      // サマリーをKVに保存
+      await env.IWOR_KV.put(
+        'conf-regional:_summary',
+        JSON.stringify({ found, notFound, errors, total: results.length, updatedAt: new Date().toISOString() })
+      );
+
+      return json({ ok: true, found, notFound, errors, total: results.length, results }, 200, request);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  GET /api/conference/regional — 地方会URL一覧取得
+    //  クエリ: ?ids=naika-2026,junkanki-2026,...（カンマ区切り）
+    //  認証: 不要（公開情報）
+    // ══════════════════════════════════════════════════
+    if (path === "/api/conference/regional" && request.method === "GET") {
+      const idsParam = url.searchParams.get("ids") || "";
+      const ids = idsParam.split(",").filter(Boolean).slice(0, 50);
+
+      if (!ids.length) {
+        // ids未指定: サマリー返却
+        const raw = await env.IWOR_KV.get("conf-regional:_summary");
+        const summary = raw ? JSON.parse(raw) : null;
+        return json({ ok: true, summary }, 200, request);
+      }
+
+      const regional = {};
+      for (const id of ids) {
+        try {
+          const raw = await env.IWOR_KV.get(`conf-regional:${id}`);
+          regional[id] = raw ? JSON.parse(raw) : null;
+        } catch {
+          regional[id] = null;
+        }
+      }
+
+      return json({ ok: true, regional }, 200, request);
     }
 
     // ══════════════════════════════════════════════════
