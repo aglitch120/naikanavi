@@ -711,21 +711,22 @@ function HospitalCard({
               </p>
             </div>
 
-            {/* FREE: blurモザイク（中身が透けて見える） */}
+            {/* FREE: 数値だけblur、タイトルは見える */}
             {!isPro && (
-              <>
-                <div className="absolute inset-0 rounded-xl backdrop-blur-[6px] z-10" />
-                <div className="absolute inset-0 rounded-xl z-20 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-s0/30 to-s0/60">
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-xl text-center">
-                    <p className="text-sm font-bold text-tx mb-1">独自分析スコア</p>
-                    <p className="text-[10px] text-muted mb-3">偏差値・穴場度・志望集中度・安定度・トレンド</p>
+              <div className="absolute inset-0 rounded-xl z-20 flex flex-col justify-end">
+                {/* 上部: タイトルは見える、数値部分だけblur */}
+                <div className="absolute top-[40px] left-0 right-0 bottom-0 backdrop-blur-[5px] rounded-b-xl" />
+                {/* CTA */}
+                <div className="relative z-30 flex justify-center pb-4">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-xl text-center">
+                    <p className="text-[10px] text-muted mb-2">数値を確認するにはPROが必要です</p>
                     <button onClick={e => { e.stopPropagation(); onShowPro?.() }}
                       className="pro-cta-glow px-5 py-2 rounded-xl text-xs font-bold text-white shadow-lg" style={{ background: MC }}>
                       PRO会員で分析を見る
                     </button>
                   </div>
                 </div>
-              </>
+              </div>
             )}
           </div>
 
