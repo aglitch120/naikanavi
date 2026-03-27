@@ -670,7 +670,7 @@ function HospitalCard({
               {/* スコア4つ横並び */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {[
-                  { label: '偏差値', value: (h as any).hensachi?.toFixed(1), desc: '本気志望者ベースの人気度' },
+                  { label: 'マッチ難易度', value: (h as any).hensachi?.toFixed(1), desc: '席の奪い合いの激しさ' },
                   { label: '穴場度', value: `${(h as any).anabaScore || 0}`, desc: '質が高く競争が少ない' },
                   { label: '志望集中度', value: honmei > 0 ? honmei.toFixed(2) : '--', desc: '第1希望率（同年）' },
                   { label: '安定度', value: `${(h as any).stabilityScore || 0}`, desc: '3年間の充足率のブレ' },
@@ -739,9 +739,17 @@ function HospitalCard({
                 )
               })()}
 
-              <p className="text-[8px] text-muted leading-relaxed">
-                iwor独自指標です。JRMP公式データ（2022-2025）を統計処理したもので、病院の研修の質を直接評価するものではありません。
-              </p>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 space-y-1">
+                <p className="text-[9px] font-bold text-amber-800">この数値の読み方</p>
+                <p className="text-[8px] text-amber-900/80 leading-relaxed">
+                  マッチ難易度は「席の奪い合いの激しさ」であり、研修の質を表すものではありません。
+                  聖路加・亀田・沖縄中部のように研修の質が極めて高い病院でも、本気の志望者だけが受験するため倍率が膨らまず、数値が控えめに出ることがあります。
+                  逆に都市部の大規模プログラムは、多くの受験生が併願するため数値が高くなる傾向があります。
+                </p>
+                <p className="text-[8px] text-amber-900/60 leading-relaxed">
+                  JRMP公式データ（2022-2025）の統計処理に基づくiwor独自指標です。
+                </p>
+              </div>
             </div>
 
             {/* FREE: 数値だけblur、タイトルは見える */}
