@@ -1235,11 +1235,11 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
       {/* 総合スコア */}
       <div className="bg-s0 border border-br rounded-xl p-4">
         <p className="text-xs font-bold text-tx mb-3">総合評価スコア（加重平均）</p>
-        <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${activeHospitals}, 1fr)` }}>
+        <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${activeHospitals}, minmax(0, 1fr))` }}>
           {Array.from({ length: activeHospitals }, (_, hi) => (
             <div
               key={hi}
-              className="rounded-xl p-3 text-center transition-all"
+              className="rounded-xl p-3 text-center transition-all min-w-0"
               style={{
                 background: hi === winnerIdx ? hospitalColors[hi] + '15' : '#F8F9FA',
                 border: hi === winnerIdx ? `2px solid ${hospitalColors[hi]}` : '2px solid transparent',
@@ -1280,9 +1280,9 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
                     <span className="text-[11px] font-bold w-3 text-center" style={{ color: MC }}>{weights[ci][ii]}</span>
                   </div>
                 </div>
-                <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${activeHospitals}, 1fr)` }}>
+                <div className="grid gap-2 overflow-hidden" style={{ gridTemplateColumns: `repeat(${activeHospitals}, minmax(0, 1fr))` }}>
                   {Array.from({ length: activeHospitals }, (_, hi) => (
-                    <div key={hi}>
+                    <div key={hi} className="min-w-0">
                       <p className="text-[10px] text-muted mb-1 truncate">{hospitalNames[hi]}</p>
                       <div className="flex gap-0.5">
                         {[1, 2, 3, 4, 5].map(star => (
