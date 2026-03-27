@@ -510,8 +510,9 @@ ${settings.format === 'slide' ? `スライドごとに以下の形式で出力:
         {/* ═══ Step 3: プロンプトをコピーしてAIに貼り付け ═══ */}
         <Section title={<><span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-white text-xs font-bold mr-2" style={{ background: MC }}>3</span>プロンプトをコピーしてAIに貼り付け</>}>
           {copied ? (
-            <div className="bg-acl border border-ac/20 rounded-lg p-3 text-center text-sm font-medium" style={{ color: MC }}>
-              クリップボードにコピーしました。下記AIサービスを開いて貼り付けてください。
+            <div className="bg-acl border border-ac/20 rounded-lg p-3 text-center" style={{ color: MC }}>
+              <p className="text-sm font-bold mb-1">クリップボードにコピーしました</p>
+              <p className="text-xs">下のリンクからAIを開き、貼り付けてください</p>
             </div>
           ) : (
             <GlowButton fullWidth radius={12}>
@@ -523,15 +524,17 @@ ${settings.format === 'slide' ? `スライドごとに以下の形式で出力:
               </button>
             </GlowButton>
           )}
-          {/* AIリンクボタン */}
-          <div className="flex gap-2 mt-3">
-            <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer"
-              className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#10A37F' }}>ChatGPT</a>
-            <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer"
-              className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#D4A574' }}>Claude</a>
-            <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
-              className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#4285F4' }}>Gemini</a>
-          </div>
+          {/* AIリンクボタン（コピー後に表示） */}
+          {copied && (
+            <div className="flex gap-2 mt-3">
+              <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer"
+                className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#10A37F' }}>ChatGPT</a>
+              <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer"
+                className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#D4A574' }}>Claude</a>
+              <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
+                className="flex-1 py-2.5 rounded-lg text-xs font-bold text-center text-white" style={{ background: '#4285F4' }}>Gemini</a>
+            </div>
+          )}
           <p className="text-[9px] text-muted text-center mt-1">※ iworはプロンプト（書式指示文）を生成するのみです。外部AIでのデータ匿名化・施設規則遵守はユーザーの責任です。</p>
         </Section>
 
