@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/generate-ogp-meta.mjs && node scripts/generate-search-index.mjs && node scripts/generate-admin-analysis.mjs && npx @opennextjs/cloudflare build",
+    "build": "node scripts/generate-ogp-meta.mjs && node scripts/generate-search-index.mjs && node scripts/generate-admin-analysis.mjs && next build",
     "dev": "node scripts/generate-ogp-meta.mjs && node scripts/generate-search-index.mjs && next dev",
     "start": "next start",
     "lint": "next lint",
