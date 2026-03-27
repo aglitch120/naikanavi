@@ -3,7 +3,6 @@ import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import AppHeader from '@/components/AppHeader'
 import { PresenterTutorial } from '@/components/tutorials'
-import GlowButton from '@/components/GlowButton'
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -522,14 +521,15 @@ ${settings.format === 'slide' ? `スライドごとに以下の形式で出力:
               <p className="text-xs">下のリンクからAIを開き、貼り付けてください</p>
             </div>
           ) : (
-            <GlowButton fullWidth radius={12}>
+            <div className="spin-glow" style={{ borderRadius: 12 }}>
+              <div className="spin-glow-ray" />
               <button onClick={handleCopy}
                 disabled={settings.topicSource === 'case' && (!settings.karteText || !settings.karteConsent)}
-                className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all flex items-center justify-center gap-2 disabled:opacity-40"
-                style={{ background: MC }}>
+                className="spin-glow-content w-full py-3 text-sm font-bold text-white transition-all flex items-center justify-center gap-2 disabled:opacity-40"
+                style={{ background: MC, borderRadius: 10 }}>
                 プロンプトをコピー
               </button>
-            </GlowButton>
+            </div>
           )}
           {/* AIリンクボタン（コピー後に表示） */}
           {copied && (

@@ -196,14 +196,15 @@ function SummaryGeneratorInner() {
           <h2 className="text-sm font-bold text-tx">プロンプトをコピーしてAIに貼り付け</h2>
         </div>
 
-        <div className="flex gap-2 mb-2">
-          <GlowButton fullWidth radius={12}>
+        <div className="mb-2">
+          <div className="spin-glow" style={{ borderRadius: 12 }}>
+            <div className="spin-glow-ray" />
             <button onClick={() => handleCopyPrompt('new')}
-              className="w-full py-2.5 rounded-xl text-xs font-bold transition-all"
-              style={{ background: promptCopied === 'new' ? 'var(--ok)' : MC, color: '#fff' }}>
+              className="spin-glow-content w-full py-2.5 text-xs font-bold transition-all"
+              style={{ background: promptCopied === 'new' ? 'var(--ok)' : MC, color: '#fff', borderRadius: 10 }}>
               {promptCopied === 'new' ? '✓ コピー済み！' : `📋 病歴要約プロンプトをコピー${selectedDisease ? `（${selectedDisease}）` : ''}`}
             </button>
-          </GlowButton>
+          </div>
         </div>
 
         {/* コピー後の誘導 */}
