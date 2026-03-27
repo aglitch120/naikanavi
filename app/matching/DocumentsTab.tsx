@@ -1162,15 +1162,17 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
         const anyMatched = matchedHospitals.some(h => h)
         if (!anyMatched) return null
 
-        const DATA_ROWS: { label: string; unit: string; key: keyof Hospital; format?: (v: any) => string; higher?: 'good' | 'bad' }[] = [
+        const DATA_ROWS: { label: string; unit: string; key: keyof Hospital; format?: (v: any, h?: any) => string; higher?: 'good' | 'bad'; pro?: boolean }[] = [
+          { label: 'タイプ', unit: '', key: 'name', format: (_v: any, h: any) => h?.programId?.startsWith('03') ? '🏥 市中' : '🎓 大学' },
+          { label: '都道府県', unit: '', key: 'prefecture' },
           { label: '募集定員', unit: '人', key: 'capacity' },
           { label: 'マッチ者数', unit: '人', key: 'matched' },
           { label: '空席数', unit: '人', key: 'vacancy' },
           { label: '第1希望者数', unit: '人', key: 'applicants' },
           { label: 'マッチ率', unit: '%', key: 'matchRate', higher: 'good' },
           { label: '人気度', unit: '倍', key: 'popularity', format: (v: number) => v.toFixed(1), higher: 'good' },
-          { label: '3年平均マッチ率', unit: '%', key: 'avgMatchRate3y' as any, higher: 'good' },
-          { label: '本命指数', unit: '', key: 'honmeiIndex' as any, format: (v: number) => v?.toFixed(2) || '—' },
+          { label: '3年平均マッチ率', unit: '%', key: 'avgMatchRate3y' as any, higher: 'good', pro: true },
+          { label: '本命指数', unit: '', key: 'honmeiIndex' as any, format: (v: number) => v?.toFixed(2) || '—', pro: true },
         ]
 
         return (
@@ -1192,20 +1194,6 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-t border-br">
-                    <td className="px-3 py-2 text-muted">タイプ</td>
-                    {matchedHospitals.map((h, i) => (
-                      <td key={i} className="px-3 py-2 text-center">
-                        {h ? (h.isUniversity ? '🎓 大学' : '🏥 市中') : '—'}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr className="border-t border-br">
-                    <td className="px-3 py-2 text-muted">都道府県</td>
-                    {matchedHospitals.map((h, i) => (
-                      <td key={i} className="px-3 py-2 text-center">{h?.prefecture || '—'}</td>
-                    ))}
-                  </tr>
                   {DATA_ROWS.map((row, ri) => {
                     const values = matchedHospitals.map(h => h ? (h as any)[row.key] : null)
                     const validValues = values.filter(v => v !== null && v !== undefined)
@@ -1213,15 +1201,18 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
                       row.higher === 'bad' ? Math.min(...validValues) : null
                     return (
                       <tr key={ri} className="border-t border-br">
-                        <td className="px-3 py-2 text-muted">{row.label}</td>
+                        <td className="px-3 py-2 text-muted">{row.label}{row.pro && !isPro && ' 🔒'}</td>
                         {matchedHospitals.map((h, i) => {
                           const v = h ? (h as any)[row.key] : null
                           const isBest = best !== null && v === best && validValues.length > 1
+                          const isLocked = row.pro && !isPro
                           return (
-                            <td key={i} className={`px-3 py-2 text-center font-mono ${isBest ? 'font-bold' : ''}`}
-                              style={isBest ? { color: hospitalColors[i] } : undefined}>
-                              {v !== null && v !== undefined
-                                ? `${row.format ? row.format(v) : v}${row.unit}`
+                            <td key={i} className={`px-3 py-2 text-center font-mono ${isBest && !isLocked ? 'font-bold' : ''}`}
+                              style={isBest && !isLocked ? { color: hospitalColors[i] } : undefined}>
+                              {isLocked ? (
+                                <span className="blur-[4px] select-none text-muted">{v !== null ? '0.00' : '—'}</span>
+                              ) : v !== null && v !== undefined
+                                ? `${row.format ? (row.format as any)(v, h) : v}${row.unit}`
                                 : '—'}
                             </td>
                           )
