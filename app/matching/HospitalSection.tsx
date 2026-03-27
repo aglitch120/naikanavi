@@ -649,92 +649,80 @@ function HospitalCard({
       {/* 展開エリア */}
       {expanded && (
         <div className="px-4 pb-4 border-t border-br pt-3 space-y-3">
-          <div className="grid grid-cols-2 gap-2 text-xs">
+          {/* 基本データ（FREE） */}
+          <div className="grid grid-cols-3 gap-2 text-xs">
             <StatBox label="定員" value={`${h.capacity}名`} />
             <StatBox label="マッチ者数" value={`${h.matched}名`} />
+            <StatBox label="空席" value={h.vacancy > 0 ? `${h.vacancy}名` : 'なし'} />
             <StatBox label="倍率" value={`${pop}倍`} highlight />
             <StatBox label="応募者数" value={`${h.applicants}名`} />
-            <StatBox label="マッチ率" value={`${h.matchRate}%`} />
-            <StatBox label="空席" value={h.vacancy > 0 ? `${h.vacancy}名` : 'なし'} />
+            <StatBox label="充足率" value={`${h.matchRate}%`} />
           </div>
 
-          {/* 本命度 — スコアはPRO限定、解説は全員に表示 */}
-          {honmei > 0 && (
-            <div className="bg-s1 rounded-lg p-3">
-              <p className="text-[10px] font-medium text-tx mb-1">本命度スコア</p>
-              {isPro ? (
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold" style={{ color: honmeiColor.text }}>{honmei.toFixed(2)}</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ background: honmeiColor.bg, color: honmeiColor.text }}>{honmeiColor.label}</span>
-                </div>
-              ) : (
-                <button onClick={e => { e.stopPropagation(); onShowPro?.() }}
-                  className="flex items-center gap-2 mb-2 px-3 py-1.5 rounded-lg text-[11px] font-bold text-white" style={{ background: MC }}>
-                  🔒 スコアを見る（PRO）
-                </button>
-              )}
-              <p className="text-[9px] text-muted leading-relaxed">
-                本命度 = 実際のマッチ者数 / 中間発表時点の第1希望者数（3年平均）.
-                1.0以上は中間でも最終でも第1希望に選ばれる「超本命」.
-                0.5以下は中間で候補に入れたが最終的に外した人が多い「おさえ」傾向.
-                この指標はiwor独自の算出であり, 病院の質を評価するものではありません.
+          {/* ── iwor独自分析（PRO限定） ── */}
+          <div className="relative">
+            <div className="bg-s1 rounded-xl p-3 space-y-3">
+              <p className="text-[11px] font-bold text-tx flex items-center gap-1">
+                📊 iwor独自分析
+                {!isPro && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: '#E8F0EC', color: MC }}>PRO</span>}
               </p>
-              {isPro && (h as any).avgMatchRate3y > 0 && (
-                <p className="text-[10px] text-muted mt-1">3年平均マッチ率: {(h as any).avgMatchRate3y}%</p>
-              )}
-            </div>
-          )}
 
-          {/* 穴場度分析 — PRO限定 */}
-          {(() => {
-            const vacancyRate = h.capacity > 0 ? h.vacancy / h.capacity : 0
-            const lowCompetition = pop < 2.0
-            const trend = (h as any).popularityTrend
-            const trendDown = trend !== undefined && trend < 0.8
-            const anabaScore = Math.round(
-              (vacancyRate * 40) +
-              (lowCompetition ? 30 : pop < 3 ? 15 : 0) +
-              (trendDown ? 20 : trend !== undefined && trend < 1.0 ? 10 : 0) +
-              (h.matchRate < 80 ? 10 : 0)
-            )
-            if (anabaScore < 10) return null
-            const anabaLabel = anabaScore >= 60 ? '超穴場' : anabaScore >= 40 ? '穴場' : anabaScore >= 20 ? 'やや穴場' : ''
-            const anabaColor = anabaScore >= 60 ? '#166534' : anabaScore >= 40 ? '#1B4F3A' : '#6B6760'
-            return (
-              <div className="relative">
-                <div className="bg-s1 rounded-lg p-3">
-                  <p className="text-[10px] font-medium text-tx mb-1">穴場度分析</p>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-lg font-bold" style={{ color: anabaColor }}>{anabaScore}点</span>
-                    {anabaLabel && <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ background: anabaScore >= 40 ? '#E8F0EC' : '#F5F4F0', color: anabaColor }}>{anabaLabel}</span>}
+              {/* スコア4つ横並び */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {[
+                  { label: '偏差値', value: (h as any).hensachi?.toFixed(1), desc: '全病院中の相対人気度' },
+                  { label: '穴場度', value: `${(h as any).anabaScore || 0}`, desc: '質が高く競争が少ない' },
+                  { label: '志望集中度', value: honmei > 0 ? honmei.toFixed(2) : '--', desc: '第1希望率（同年）' },
+                  { label: '安定度', value: `${(h as any).stabilityScore || 0}`, desc: '3年間の充足率のブレ' },
+                ].map((s, i) => (
+                  <div key={i} className="bg-white rounded-lg p-2 text-center">
+                    <p className="text-[9px] text-muted">{s.label}</p>
+                    <p className="text-base font-bold" style={{ color: MC }}>{s.value}</p>
+                    <p className="text-[8px] text-muted">{s.desc}</p>
                   </div>
-                  <div className="space-y-1 text-[9px] text-muted">
-                    {vacancyRate > 0 && <p>空席率 {Math.round(vacancyRate * 100)}%（{h.vacancy}/{h.capacity}）</p>}
-                    {lowCompetition && <p>低倍率（{pop}倍）</p>}
-                    {trendDown && <p>人気下降傾向（前年比 {((trend || 0) * 100).toFixed(0)}%）</p>}
-                    {(h as any).avgMatchRate3y !== undefined && <p>3年平均マッチ率: {(h as any).avgMatchRate3y}%</p>}
-                  </div>
-                  <p className="text-[8px] text-muted mt-2 leading-relaxed">
-                    穴場度 = 空席率(40) + 低倍率(30) + 人気下降(20) + マッチ率(10)の合計.
-                    iwor独自指標. 病院の質を評価するものではありません.
-                  </p>
-                </div>
-                {!isPro && (
-                  <div className="absolute inset-0 rounded-lg flex flex-col items-center justify-center" style={{ background: `linear-gradient(135deg, ${MC}, #2D7A5A)` }}>
-                    <div className="text-2xl mb-1">{anabaScore >= 40 ? '💎' : '🔍'}</div>
-                    <p className="text-xs font-bold text-white mb-0.5">
-                      {anabaScore >= 60 ? 'この病院は超穴場かも？' : anabaScore >= 40 ? '穴場スコアが高めです' : '穴場度を確認'}
-                    </p>
-                    <p className="text-[9px] text-white/60 mb-2">PRO会員でスコア詳細を表示</p>
-                    <button onClick={e => { e.stopPropagation(); onShowPro?.() }}
-                      className="pro-cta-glow px-4 py-1.5 rounded-lg text-[10px] font-bold bg-white shadow-sm" style={{ color: MC }}>
-                      穴場度を見る
-                    </button>
-                  </div>
+                ))}
+              </div>
+
+              {/* トレンド情報 */}
+              <div className="flex gap-3 text-[10px]">
+                {(h as any).popularityTrend && (h as any).popularityTrend !== 1.0 && (
+                  <span className={`px-2 py-0.5 rounded ${(h as any).popularityTrend > 1 ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+                    {(h as any).popularityTrend > 1 ? '📈' : '📉'} 志望者数 {Math.round(((h as any).popularityTrend - 1) * 100)}%{(h as any).popularityTrend > 1 ? '増' : '減'}（2年間）
+                  </span>
+                )}
+                {(h as any).risingScore > 0 && (
+                  <span className="px-2 py-0.5 rounded bg-green-50 text-green-700">🔥 上昇中</span>
+                )}
+                {(h as any).popularityRank && (
+                  <span className="px-2 py-0.5 rounded bg-s2 text-muted">人気順位 {(h as any).popularityRank}/{1470}</span>
                 )}
               </div>
-            )
-          })()}
+
+              {/* 充足率バー（3年） */}
+              <div>
+                <p className="text-[9px] text-muted mb-1">3年平均充足率: {(h as any).avgMatchRate3y || h.matchRate}%</p>
+                <div className="w-full h-2 bg-white rounded-full overflow-hidden">
+                  <div className="h-full rounded-full" style={{ width: `${Math.min((h as any).avgMatchRate3y || h.matchRate, 100)}%`, background: MC }} />
+                </div>
+              </div>
+
+              <p className="text-[8px] text-muted leading-relaxed">
+                iwor独自指標です。JRMP公式データ（2022-2025）を統計処理したもので、病院の研修の質を直接評価するものではありません。
+              </p>
+            </div>
+
+            {/* FREE: モザイク */}
+            {!isPro && (
+              <div className="absolute inset-0 rounded-xl flex flex-col items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(27,79,58,0.92), rgba(45,122,90,0.92))' }}>
+                <p className="text-sm font-bold text-white mb-1">独自分析スコア</p>
+                <p className="text-[10px] text-white/70 mb-3">偏差値・穴場度・志望集中度・安定度・トレンド</p>
+                <button onClick={e => { e.stopPropagation(); onShowPro?.() }}
+                  className="pro-cta-glow px-5 py-2 rounded-xl text-xs font-bold bg-white shadow-lg" style={{ color: MC }}>
+                  PRO会員で分析を見る
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* プログラム名 */}
           {h.program && (
