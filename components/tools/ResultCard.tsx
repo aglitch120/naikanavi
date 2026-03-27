@@ -24,6 +24,18 @@ export default function ResultCard({
   severity = 'neutral',
   details,
 }: ResultCardProps) {
+  // NaN/Infinity防御: 計算エラーの場合は結果を表示しない
+  const isInvalid = typeof value === 'number' && (!isFinite(value) || isNaN(value))
+  if (isInvalid) {
+    return (
+      <div className="border rounded-xl p-4 sm:p-5 bg-dnl border-dnb text-dn">
+        <p className="text-sm font-medium mb-1">{label}</p>
+        <p className="text-lg font-bold">計算エラー</p>
+        <p className="text-xs mt-1">入力値をご確認ください。</p>
+      </div>
+    )
+  }
+
   return (
     <div className={`border rounded-xl p-4 sm:p-5 overflow-hidden ${severityStyles[severity]}`}>
       {label && <p className="text-sm font-medium mb-1">{label}</p>}
@@ -44,6 +56,7 @@ export default function ResultCard({
           ))}
         </div>
       )}
+      <p className="text-[9px] mt-2 opacity-50">※ 参考値です。臨床判断の代替にはなりません。</p>
     </div>
   )
 }

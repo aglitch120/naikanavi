@@ -200,11 +200,13 @@ export default function CalculatorLayout({
 
       {/* 免責表示 */}
       <div className="bg-wnl border border-wnb rounded-lg p-4 mb-8 text-sm text-wn">
-        <p className="font-semibold mb-1">⚠️ 免責事項</p>
-        <p>
-          本ツールは公式文献の計算式・情報を転記したものです。
-          正確性は保証しません。必ず原典をご確認ください。
-        </p>
+        <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>
+        <ul className="space-y-1 text-xs leading-relaxed">
+          <li>本ツールは公式文献の計算式・情報を転記したものであり、<strong>正確性は保証しません</strong>。</li>
+          <li>計算結果は<strong>参考値</strong>であり、<strong>臨床判断の代替にはなりません</strong>。</li>
+          <li>本ツールは<strong>医療機器（SaMD）ではありません</strong>。診断・治療方針の決定には必ず原典と臨床判断を優先してください。</li>
+          <li>本ツールの利用により生じた損害について、運営者は<strong>一切の責任を負いません</strong>。</li>
+        </ul>
         <div className="mt-2 pt-2 border-t border-wnb/30 flex items-center justify-between">
           <ErrorReportButton toolName={title} />
           <button

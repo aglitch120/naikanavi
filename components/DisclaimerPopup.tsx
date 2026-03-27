@@ -56,10 +56,11 @@ export default function DisclaimerPopup() {
         <h2 className="text-base font-bold text-tx text-center mb-3">ご利用にあたって</h2>
 
         <div className="space-y-2 text-xs text-muted leading-relaxed">
-          <p>本サービスは<strong className="text-tx">医療従事者向け</strong>です。</p>
+          <p>本サービスは<strong className="text-tx">医療従事者向け</strong>の情報提供サービスです。</p>
           <p className="text-red-700 font-bold">患者の氏名・ID等の個人情報を入力しないでください。</p>
-          <p>掲載情報は公式文献の転記であり、正確性は保証しません。必ず原典をご確認ください。</p>
-          <p>本サービスの利用により生じた損害について運営者は責任を負いません。</p>
+          <p>本サービスは<strong className="text-tx">医療機器（SaMD）ではありません</strong>。掲載情報は公式文献の転記であり、正確性は保証しません。</p>
+          <p>計算結果は参考値であり、<strong className="text-tx">臨床判断の代替にはなりません</strong>。診断・治療の決定には必ず原典と臨床判断を優先してください。</p>
+          <p>本サービスの利用により生じた損害について運営者は<strong className="text-tx">一切の責任を負いません</strong>。</p>
         </div>
 
         <button

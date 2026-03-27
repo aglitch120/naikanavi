@@ -453,9 +453,13 @@ async function main() {
     const dangerWords = []
     const patterns = [
       { p: /を推奨/, l: '「を推奨」' },
-      { p: /すべき/, l: '「すべき」' },
+      { p: /すべき(?!COI)/, l: '「すべき」' },
       { p: /第一選択/, l: '「第一選択」' },
       { p: /臨床判断を補助/, l: '「臨床判断を補助」' },
+      { p: /投与してください/, l: '「投与してください」（指示表現）' },
+      { p: /直ちに[^。]*(?:中止|投与|開始)/, l: '直ちに〜（緊急指示表現）' },
+      { p: /診断(?:します|できます|される)/, l: '「診断します/できます」（診断確定表現）' },
+      { p: /治療(?:します|開始します)/, l: '「治療します/開始します」（治療決定表現）' },
     ]
     for (const { p, l } of patterns) {
       if (p.test(content)) dangerWords.push(l)
@@ -465,6 +469,16 @@ async function main() {
       message: dangerWords.length ? `⚠️ ${dangerWords.join(', ')}` : 'OK',
     })
     dangerWords.length ? report.summary.warn++ : report.summary.pass++
+
+    // 入力値バリデーション（ゼロ除算・NaN防御）
+    const hasZeroDivGuard = /if\s*\(!|if\s*\(\s*\w+\s*===?\s*0|if\s*\(\s*!\s*\w+\s*\)/.test(content)
+    const hasDivision = /\/\s*\w+/.test(content) && /useMemo|result/.test(content)
+    const needsGuard = hasDivision && !hasZeroDivGuard
+    toolReport.checks.push({
+      check: 'ZERO_DIV_GUARD', status: needsGuard ? 'WARN' : 'PASS',
+      message: needsGuard ? '⚠️ 除算あり+ゼロ除算ガードが見つからない' : 'OK',
+    })
+    needsGuard ? report.summary.warn++ : report.summary.pass++
 
     // 全角英数字チェック
     const zenIssues = []

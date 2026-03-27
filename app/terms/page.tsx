@@ -31,8 +31,9 @@ export default function TermsPage() {
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 my-4">
           <p className="text-amber-900 font-semibold text-sm mb-2">⚠ 医療情報に関する重要なお知らせ</p>
           <p className="text-amber-800 text-sm leading-relaxed">
-            本サービスは医療従事者の臨床判断を支援する目的で提供されており、診断・治療の代替とはなりません。
-            臨床計算ツール・薬剤情報等の結果は参考値であり、個別の患者への適用は各医師の責任において行ってください。
+            本サービスは医療従事者への情報提供を目的としており、<strong>プログラム医療機器（SaMD）ではありません</strong>。
+            診断・治療の代替とはならず、臨床判断の最終決定は各医師の責任において行ってください。
+            臨床計算ツール・薬剤情報等の結果は参考値であり、正確性は保証しません。必ず原典をご確認ください。
           </p>
         </div>
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 my-4">
