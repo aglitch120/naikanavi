@@ -6,18 +6,18 @@ import OnboardingModal, { type UserRole, getStoredRole } from './OnboardingModal
 
 // ── Role → アプリ並び順 ──
 const ORDER_BY_ROLE: Record<string, string[]> = {
-  student:   ['/study', '/tools', '/matching', '/matching/interview', '/presenter', '/journal', '/conferences', '/epoc', '/josler', '/josler/summary-generator', '/credits', '/money', '/shift', '/documents'],
-  resident:  ['/tools', '/study', '/epoc', '/presenter', '/documents', '/josler/summary-generator', '/shift', '/journal', '/conferences', '/credits', '/money', '/matching', '/matching/interview', '/josler'],
-  fellow:    ['/tools', '/study', '/josler', '/josler/summary-generator', '/documents', '/presenter', '/journal', '/shift', '/conferences', '/credits', '/money', '/matching', '/matching/interview', '/epoc'],
-  attending: ['/tools', '/study', '/documents', '/journal', '/conferences', '/credits', '/presenter', '/josler/summary-generator', '/shift', '/money', '/matching', '/matching/interview', '/epoc', '/josler'],
+  student:   ['/study', '/tools', '/matching', '/matching?tab=interview', '/presenter', '/journal', '/conferences', '/epoc', '/josler', '/josler/summary-generator', '/credits', '/money', '/shift', '/documents'],
+  resident:  ['/tools', '/study', '/epoc', '/documents', '/presenter', '/josler/summary-generator', '/shift', '/journal', '/conferences', '/credits', '/money', '/matching', '/matching?tab=interview', '/josler'],
+  fellow:    ['/tools', '/study', '/josler', '/josler/summary-generator', '/documents', '/presenter', '/journal', '/shift', '/conferences', '/credits', '/money', '/matching', '/matching?tab=interview', '/epoc'],
+  attending: ['/tools', '/study', '/documents', '/journal', '/conferences', '/credits', '/shift', '/money', '/presenter', '/josler/summary-generator', '/matching', '/matching?tab=interview', '/epoc', '/josler'],
 }
 
-// Role別のおすすめアプリ（初回5回表示）
+// Role別のおすすめアプリ
 const RECOMMEND_BY_ROLE: Record<string, string[]> = {
-  student:   ['/study', '/matching', '/matching/interview'],
-  resident:  ['/tools', '/study', '/epoc', '/presenter', '/documents'],
-  fellow:    ['/tools', '/josler', '/josler/summary-generator', '/documents', '/presenter'],
-  attending: ['/tools', '/documents', '/journal', '/conferences', '/credits', '/shift', '/josler'],
+  student:   ['/study', '/tools', '/matching', '/matching?tab=interview'],
+  resident:  ['/tools', '/study', '/epoc', '/documents', '/presenter', '/josler/summary-generator'],
+  fellow:    ['/tools', '/study', '/josler', '/josler/summary-generator', '/documents', '/presenter'],
+  attending: ['/tools', '/documents', '/journal', '/conferences', '/credits', '/shift', '/money'],
 }
 
 // Role別のラベル上書き
