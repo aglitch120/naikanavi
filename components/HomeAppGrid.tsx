@@ -14,7 +14,7 @@ const ORDER_BY_ROLE: Record<string, string[]> = {
 
 // Role別のおすすめアプリ
 const RECOMMEND_BY_ROLE: Record<string, string[]> = {
-  student:   ['/study', '/tools', '/matching', '/matching?tab=interview'],
+  student:   ['/study', '/tools', '/matching', '/matching?tab=interview', '/presenter', '/journal'],
   resident:  ['/tools', '/study', '/epoc', '/documents', '/presenter', '/josler/summary-generator'],
   fellow:    ['/tools', '/study', '/josler', '/josler/summary-generator', '/documents', '/presenter'],
   attending: ['/tools', '/documents', '/journal', '/conferences', '/credits', '/shift', '/money'],

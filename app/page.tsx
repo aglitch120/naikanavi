@@ -41,7 +41,7 @@ const apps = [
     href: '/josler/summary-generator',
     label: '病歴要約AI',
     sub: 'カルテから病歴要約を自動生成',
-    badge: 'NEW',
+    badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -88,7 +88,7 @@ const apps = [
     href: '/matching?tab=interview',
     label: '面接シミュレーションAI',
     sub: 'AIと面接練習・レポート',
-    badge: 'NEW',
+    badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
         <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -111,7 +111,7 @@ const apps = [
     href: '/documents',
     label: '文書支援',
     sub: '紹介状・退院サマリ・カルテ',
-    badge: 'NEW',
+    badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -149,7 +149,7 @@ const apps = [
     href: '/study',
     label: 'Study',
     sub: 'フラッシュカードで医学知識を毎日5分で定着',
-    badge: 'NEW',
+    badge: 'FREE',
     featured: true,
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -161,7 +161,7 @@ const apps = [
     href: '/money',
     label: 'マネー',
     sub: 'ふるさと納税・手取り・NISA',
-    badge: 'NEW',
+    badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
@@ -172,7 +172,7 @@ const apps = [
     href: '/shift',
     label: '当直シフト',
     sub: 'シフト自動作成&共有',
-    badge: 'NEW',
+    badge: 'FREE',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
