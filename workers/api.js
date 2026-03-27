@@ -218,7 +218,7 @@ async function buildJournalDb(env) {
       const q = encodeURIComponent(`(${batch.map(issn => `${issn}[ISSN]`).join(" OR ")}) AND ("last 90 days"[dp]) AND ${ptFilter} ${ptExclude}`);
       const sUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${q}&retmax=100&sort=date&retmode=json`;
       try {
-        const sRes = await fetch(sUrl);
+        const sRes = await fetch(sUrl, { headers: { 'User-Agent': 'iwor-journal-bot/1.0 (https://iwor.jp; tellmedu.info@gmail.com)' } });
         if (!sRes.ok) { console.error(`PubMed search error: ${sRes.status}`); continue; }
         const sText = await sRes.text();
         let sData;
@@ -245,7 +245,7 @@ async function buildJournalDb(env) {
         const batch = newIds.slice(i, i + SUMMARY_BATCH);
         const fUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${batch.join(",")}&retmode=json`;
         try {
-          const fRes = await fetch(fUrl);
+          const fRes = await fetch(fUrl, { headers: { 'User-Agent': 'iwor-journal-bot/1.0 (https://iwor.jp; tellmedu.info@gmail.com)' } });
           if (!fRes.ok) { console.error(`PubMed summary error: ${fRes.status}`); continue; }
           const fText = await fRes.text();
           let fData;
