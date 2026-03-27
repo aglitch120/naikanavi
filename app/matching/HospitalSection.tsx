@@ -670,7 +670,7 @@ function HospitalCard({
               {/* スコア4つ横並び */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {[
-                  { label: '偏差値', value: (h as any).hensachi?.toFixed(1), desc: '全病院中の相対人気度' },
+                  { label: '偏差値', value: (h as any).hensachi?.toFixed(1), desc: '本気志望者ベースの人気度' },
                   { label: '穴場度', value: `${(h as any).anabaScore || 0}`, desc: '質が高く競争が少ない' },
                   { label: '志望集中度', value: honmei > 0 ? honmei.toFixed(2) : '--', desc: '第1希望率（同年）' },
                   { label: '安定度', value: `${(h as any).stabilityScore || 0}`, desc: '3年間の充足率のブレ' },
