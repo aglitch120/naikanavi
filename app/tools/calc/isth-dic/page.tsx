@@ -27,7 +27,7 @@ export default function IsthDicPage() {
         details={[{ label: '判定', value: result.overt ? 'Overt DIC' : 'Non-overt' }]} />}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
-      references={[{ text: 'Taylor FB Jr, et al. Thromb Haemost 2001;86:1327-1330' }]}
+      references={[{ text: 'Taylor FB Jr, et al. Thromb Haemost 2001;86:1327-1330' }, { text: '※日本ではJSTH急性期DIC基準が主流。ISTHスコアとは閾値・配点が異なる' }]}
     >
       <div className="space-y-4">
         <SelectInput id="plt" label="血小板数" value={plt} onChange={setPlt} options={[

@@ -13,13 +13,13 @@ export default function CciPlateletPage() {
   const result = useMemo(() => {
     const post = parseFloat(pltPost), pre = parseFloat(pltPre), bsa = parseFloat(bsaVal), dose = parseFloat(pltDose)
     if (isNaN(post) || isNaN(pre) || !bsa || !dose) return null
-    const cci = ((post - pre) * 10000 * bsa) / (dose * 10000)
+    const cci = (post - pre) * 10000 * bsa / dose
     const cci1h = cci
     let severity: 'ok' | 'wn' | 'dn' = 'ok', interpretation = ''
-    if (cci1h >= 7.5) { interpretation = 'CCI ≧ 7,500 — 輸血効果良好（1時間値の場合）' }
-    else if (cci1h >= 5.0) { interpretation = 'CCI 5,000-7,500 — やや低下。抗体スクリーニング検討'; severity = 'wn' }
+    if (cci1h >= 7500) { interpretation = 'CCI ≧ 7,500 — 輸血効果良好（1時間値の場合）' }
+    else if (cci1h >= 5000) { interpretation = 'CCI 5,000-7,500 — やや低下。抗体スクリーニング検討'; severity = 'wn' }
     else { interpretation = 'CCI < 5,000 — 輸血不応。HLAマッチ血小板やIVIg考慮'; severity = 'dn' }
-    return { cci: (cci * 1000).toFixed(0), severity, interpretation }
+    return { cci: cci.toFixed(0), severity, interpretation }
   }, [pltPost, pltPre, bsaVal, pltDose])
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

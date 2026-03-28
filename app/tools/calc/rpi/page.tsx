@@ -40,6 +40,7 @@ export default function Page() {
       )}>
       <NumberInput id="f1" label="網赤血球数 (%)" value={retic} onChange={setRetic} min={0} step={0.1} />
       <NumberInput id="f2" label="Hct (%)" value={hct} onChange={setHct} min={0} step={1} />
+      <p className="text-xs text-muted mt-1">※正常Hctは男性45%/女性41%前後。性別で調整を推奨</p>
     </CalculatorLayout>
   )
 }

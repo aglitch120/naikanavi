@@ -26,7 +26,7 @@ export default function NRS2002Page(){
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="NRS 2002" value={result.score} unit="/7点" interpretation={result.label} severity={result.severity} />}
       explanation={undefined}
-      relatedTools={[]} references={[{text:'Kondrup J et al. Nutritional risk screening (NRS 2002): a new method based on an analysis of controlled clinical trials. Clin Nutr 2003;22:321-336'}]}
+      relatedTools={[]} references={[{text:'Kondrup J et al. Nutritional risk screening (NRS 2002): a new method based on an analysis of controlled clinical trials. Clin Nutr 2003;22:321-336'},{text:'※本ツールは本スクリーニング（詳細評価）です。初期スクリーニング（BMI<20.5等の4項目）で該当した場合に実施'}]}
     ><div className="space-y-4"><RadioGroup id="n" label="栄養状態の障害" options={nutrition} value={n} onChange={setN} /><RadioGroup id="d" label="疾患の重症度" options={disease} value={d} onChange={setD} /><CheckItem id="age70" label="70歳以上 (+1点)" checked={age70} onChange={setAge70} /></div></CalculatorLayout>
   )
 }

@@ -76,6 +76,7 @@ export default function CapriniPage() {
         <div className="space-y-2">{items2.map(c => <CheckItem key={c.id} id={c.id} label={c.label} points={c.points} checked={checks[c.id]} onChange={v => setChecks(p => ({...p,[c.id]:v}))} />)}</div>
         <div className="text-xs font-medium text-muted uppercase tracking-wider">3点項目</div>
         <div className="space-y-2">{items3.map(c => <CheckItem key={c.id} id={c.id} label={c.label} points={c.points} checked={checks[c.id]} onChange={v => setChecks(p => ({...p,[c.id]:v}))} />)}</div>
+        <p className="text-xs text-muted">※3点項目にはprothrombin 20210A、ホモシステイン上昇等も含まれる</p>
         <div className="text-xs font-medium text-muted uppercase tracking-wider">5点項目</div>
         <div className="space-y-2">{items5.map(c => <CheckItem key={c.id} id={c.id} label={c.label} points={c.points} checked={checks[c.id]} onChange={v => setChecks(p => ({...p,[c.id]:v}))} />)}</div>
       </div>

@@ -22,10 +22,10 @@ export default function FekPage() {
     if (fek < 6) {
       interpretation = 'FEK < 6% — 腎外性のK喪失を示唆（消化管喪失・細胞内移行など）'
       severity = 'wn'
-    } else if (fek <= 15) {
-      interpretation = 'FEK 6〜15% — 正常範囲'
+    } else if (fek <= 10) {
+      interpretation = 'FEK 6〜10% — 正常範囲'
     } else {
-      interpretation = 'FEK > 15% — 腎性K喪失を示唆（利尿薬・尿細管障害・アルドステロン過剰など）'
+      interpretation = 'FEK > 10% — 腎性K喪失を示唆（利尿薬・尿細管障害・アルドステロン過剰など）'
       severity = 'dn'
     }
     return { fek: fek.toFixed(2), severity, interpretation }
@@ -35,7 +35,7 @@ export default function FekPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`FEK = ${result.fek}%`} interpretation={result.interpretation} /> : null}
-      explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> FEK = (尿K × 血清Cr) / (血清K × 尿Cr) × 100</p><p><strong className="text-tx">低K血症の鑑別:</strong> FEK &gt; 6-10%: 腎性喪失（利尿薬・RTA・Bartter等）</p><p><strong className="text-tx">高K血症の鑑別:</strong> FEK &lt; 10%: 腎からの排泄低下（低アルドステロン・腎不全）</p></div>}
+      explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">計算式:</strong> FEK = (尿K × 血清Cr) / (血清K × 尿Cr) × 100</p><p><strong className="text-tx">低K血症の鑑別:</strong> FEK &gt; 10%: 腎性喪失（利尿薬・RTA・Bartter等）（文献により6-15%と幅あり）</p><p><strong className="text-tx">高K血症の鑑別:</strong> FEK &lt; 10%: 腎からの排泄低下（低アルドステロン・腎不全）</p></div>}
       relatedTools={[{ slug: 'fena', name: 'FENa' }, { slug: 'feua', name: 'FEUA' }, { slug: 'feun', name: 'FEUN' }, { slug: 'femg', name: 'FEMg' }]}
       references={toolDef.sources || []}
     >

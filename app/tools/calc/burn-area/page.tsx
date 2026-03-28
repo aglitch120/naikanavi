@@ -79,6 +79,7 @@ export default function BurnAreaPage() {
         </div>
         <NumberInput id="weight" label="体重" unit="kg" value={weight} onChange={setWeight} min={1} max={300} hint="Parkland公式の計算に使用" />
         <p className="text-xs text-muted font-medium">受傷部位を選択（{isChild ? '小児' : '成人'}・9の法則）</p>
+        {isChild && <p className="text-xs text-muted">※小児の体表面積は年齢で大きく変動。正確にはLund-Browder法を使用</p>}
         {regions.map(r => (
           <CheckItem
             key={r.id}

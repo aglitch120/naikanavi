@@ -35,7 +35,7 @@ export default function HisayamaPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity={result.severity} value={`スコア = ${result.score}点`}
-        interpretation={`${result.risk}\n\n※ これは簡易推算版です。正確な久山町スコアは動脈硬化性疾患予防ガイドライン2022年版のリスクチャートを参照してください。`} /> : null}
+        interpretation={`${result.risk}\n\n※非公式の簡易計算です。正確な評価にはガイドラインのリスクチャートを参照してください。\n※ これは簡易推算版です。正確な久山町スコアは動脈硬化性疾患予防ガイドライン2022年版のリスクチャートを参照してください。`} /> : null}
       explanation={<div className="text-sm text-muted"><p>日本人コホート（久山町研究）に基づく脳卒中・冠動脈疾患の10年リスク評価。吹田スコアと並ぶ日本人向け指標。</p></div>}
       relatedTools={[{slug:'suita-score',name:'吹田スコア'},{slug:'ascvd',name:'10年ASCVD'},{slug:'framingham',name:'フラミンガム'}]}
       references={toolDef.sources||[]}

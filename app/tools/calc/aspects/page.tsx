@@ -7,9 +7,9 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('aspects')!
 const regions=[
   {id:'c',label:'C: 尾状核'},{id:'l',label:'L: レンズ核'},{id:'ic',label:'IC: 内包'},
-  {id:'i',label:'I: 島皮質'},{id:'m1',label:'M1: 前MCA皮質（前頭葉眼窩面）'},
-  {id:'m2',label:'M2: 側方MCA皮質（側頭葉前部）'},{id:'m3',label:'M3: 後方MCA皮質（側頭葉後部）'},
-  {id:'m4',label:'M4: 上方MCA皮質（M1の上方、基底核上レベル）'},
+  {id:'i',label:'I: 島皮質'},{id:'m1',label:'M1: 前方MCA皮質（島レベル）'},
+  {id:'m2',label:'M2: 側方MCA皮質（島レベル）'},{id:'m3',label:'M3: 後方MCA皮質（島レベル）'},
+  {id:'m4',label:'M4: 前方MCA皮質（基底核上レベル）'},
   {id:'m5',label:'M5: 側方MCA皮質（基底核上レベル）'},{id:'m6',label:'M6: 後方MCA皮質（基底核上レベル）'},
 ]
 export default function ASPECTSPage(){

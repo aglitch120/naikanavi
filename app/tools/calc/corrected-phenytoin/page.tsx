@@ -73,7 +73,7 @@ export default function CorrectedPhenytoinPage() {
       <div className="space-y-4">
         <NumberInput id="level" label="実測フェニトイン濃度" unit="μg/mL" value={level} onChange={setLevel} min={0.1} max={50} step={0.1} />
         <NumberInput id="alb" label="血清アルブミン" unit="g/dL" value={alb} onChange={setAlb} min={0.5} max={6} step={0.1} />
-        <RadioGroup label="腎機能" name="renal" value={renal} onChange={setRenal} options={[{ value: 'normal', label: '正常' }, { value: 'impaired', label: '腎不全（CrCl < 20）' }]} />
+        <RadioGroup label="腎機能" name="renal" value={renal} onChange={setRenal} options={[{ value: 'normal', label: '正常' }, { value: 'impaired', label: '腎不全（CrCl < 15（末期腎不全））' }]} />
       </div>
     </CalculatorLayout>
   )

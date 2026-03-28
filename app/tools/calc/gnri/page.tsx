@@ -13,7 +13,7 @@ export default function GNRIPage(){
     const a=Number(alb)||0;const w=Number(weight)||0;const iw=Number(idealWeight)||1
     const wRatio=Math.min(w/iw,1)
     const gnri=14.89*a+41.7*wRatio
-    const sev=gnri>=98?'ok' as const:gnri>=92?'wn' as const:'dn' as const
+    const sev=gnri>=98?'ok' as const:gnri>=92?'wn' as const:gnri>=82?'wn' as const:'dn' as const
     const label=gnri>=98?'リスクなし（≧98）':gnri>=92?'軽度リスク（92-98）':gnri>=82?'中等度リスク（82-92）':'重度リスク（<82）'
     return {gnri:gnri.toFixed(1),severity:sev,label}
   },[alb,weight,idealWeight])

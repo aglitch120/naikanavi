@@ -21,9 +21,11 @@ const criteria = [
 ]
 
 function getInterpretation(score: number): { text: string; severity: 'ok' | 'wn' | 'dn' } {
-  if (score <= 1) return { text: '低リスク（年間出血率 1.0-3.4%）', severity: 'ok' }
-  if (score === 2) return { text: '中リスク（年間出血率 4.1%）', severity: 'wn' }
-  return { text: `高リスク（年間出血率 ${score >= 5 ? '>12' : score === 3 ? '5.8' : score === 4 ? '8.7' : '12.5'}%）— 是正可能な因子を確認`, severity: 'dn' }
+  if (score === 0) return { text: '低リスク（年間出血率 1.13% — Pisters 2010）', severity: 'ok' }
+  if (score === 1) return { text: '低リスク（年間出血率 1.02% — Pisters 2010）', severity: 'ok' }
+  if (score === 2) return { text: '中リスク（年間出血率 1.88% — Pisters 2010）', severity: 'wn' }
+  if (score === 3) return { text: '高リスク（年間出血率 3.74% — Pisters 2010）— 是正可能な因子を確認', severity: 'dn' }
+  return { text: `高リスク（年間出血率 ${score === 4 ? '8.7' : score === 5 ? '12.5' : '>12'}%）— 是正可能な因子を確認`, severity: 'dn' }
 }
 
 export default function HASBLEDPage() {

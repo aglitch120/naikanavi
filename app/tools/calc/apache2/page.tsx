@@ -273,6 +273,7 @@ export default function Apache2Page() {
             { value: '5', label: '5点 — 非手術 or 緊急手術後' },
           ]}
         />
+        <p className="text-xs text-muted">※臓器不全の定義: 肝(生検確認の肝硬変+門脈圧亢進), 心(NYHA IV), 腎(慢性透析), 肺(慢性呼吸不全), 免疫不全</p>
       </div>
     </CalculatorLayout>
   )

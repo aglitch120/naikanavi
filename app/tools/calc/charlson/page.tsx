@@ -55,7 +55,7 @@ export default function CharlsonPage() {
         details={[{ label: '併存疾患スコア', value: `${result.comorbScore}点` }, { label: '年齢スコア', value: `${result.agePoints}点` }]} />}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
-      references={[{ text: 'Charlson ME, et al. J Chronic Dis 1987;40:373-383' }]}
+      references={[{ text: 'Charlson ME, et al. J Chronic Dis 1987;40:373-383' }, { text: '※一部の現代版CCIでは中等度(門脈圧亢進なし)=1点、重度(門脈圧亢進あり)=3点と分けることもある' }]}
     >
       <div className="space-y-4">
         <NumberInput id="age" label="年齢" unit="歳" value={age} onChange={setAge} step={1} />

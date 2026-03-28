@@ -110,6 +110,7 @@ export default function NaCorrectionRatePage() {
           ]}
         />
         <p className="text-xs text-muted">高リスク: 慢性低Na・低K合併・アルコール・肝疾患・低栄養</p>
+        <p className="text-xs text-muted mt-1">※急性症候性低Na血症（発症&lt;48h）では最初1-2時間で4-6 mEq/L上昇が目標</p>
       </div>
     </CalculatorLayout>
   )
