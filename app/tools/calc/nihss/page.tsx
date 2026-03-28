@@ -66,7 +66,7 @@ const items: NihssItem[] = [
     ],
   },
   {
-    id: '5a', name: '5a. 上肢の運動（左）',
+    id: '5a', name: '5a. 上肢の運動（右）',
     options: [
       { label: '下垂なく90°(45°)を10秒保持', points: 0 },
       { label: '10秒以内に下垂', points: 1 },
@@ -76,7 +76,7 @@ const items: NihssItem[] = [
     ],
   },
   {
-    id: '5b', name: '5b. 上肢の運動（右）',
+    id: '5b', name: '5b. 上肢の運動（左）',
     options: [
       { label: '下垂なく90°(45°)を10秒保持', points: 0 },
       { label: '10秒以内に下垂', points: 1 },
@@ -86,7 +86,7 @@ const items: NihssItem[] = [
     ],
   },
   {
-    id: '6a', name: '6a. 下肢の運動（左）',
+    id: '6a', name: '6a. 下肢の運動（右）',
     options: [
       { label: '下垂なく30°を5秒保持', points: 0 },
       { label: '5秒以内に下垂', points: 1 },
@@ -96,7 +96,7 @@ const items: NihssItem[] = [
     ],
   },
   {
-    id: '6b', name: '6b. 下肢の運動（右）',
+    id: '6b', name: '6b. 下肢の運動（左）',
     options: [
       { label: '下垂なく30°を5秒保持', points: 0 },
       { label: '5秒以内に下垂', points: 1 },

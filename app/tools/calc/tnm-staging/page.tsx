@@ -362,7 +362,8 @@ const cancers: CancerDef[] = [
     ],
     rules: [
       { t:['T1','T2'], n:['N0'], m:['M0'], stage:'I〜II (※GG/PSAで細分)' },
-      { t:['T3a','T3b'], n:['N0'], m:['M0'], stage:'IIIB' },
+      { t:['T3a'], n:['N0'], m:['M0'], stage:'IIIA' },
+      { t:['T3b'], n:['N0'], m:['M0'], stage:'IIIB' },
       { t:['T4'], n:['N0'], m:['M0'], stage:'IIIB' },
       { t:['T1','T2','T3a','T3b','T4'], n:['N1'], m:['M0'], stage:'IVA' },
       { t:['T1','T2','T3a','T3b','T4'], n:['N0','N1'], m:['M1a','M1b','M1c'], stage:'IVB' },

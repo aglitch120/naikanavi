@@ -13,7 +13,7 @@ const D_DEPTH = [
   { value: 'D3', label: 'D3: 皮下組織までの損傷', score: 4 },
   { value: 'D4', label: 'D4: 皮下組織を超える損傷', score: 5 },
   { value: 'D5', label: 'D5: 関節腔・体腔に至る損傷', score: 6 },
-  { value: 'DU', label: 'DU: 判定不能（壊死組織で覆われ深さ不明 — 実際はD3-D5相当の可能性）', score: 4 },
+  { value: 'DU', label: 'DU: 判定不能（壊死組織で覆われ深さ不明 — 実際はD3-D5相当の可能性）', score: 0 },
 ]
 const E_EXUDATE = [
   { value: 'e0', label: 'e0: なし', score: 0 },
@@ -75,13 +75,16 @@ export default function DesignRPage() {
   }, [d, e, s, i, g, n, p])
 
   const severity = result.total === 0 ? 'ok' as const : result.total <= 9 ? 'ok' as const : result.total <= 20 ? 'wn' as const : 'dn' as const
-  const interpretation = result.total === 0 ? '褥瘡なし / 治癒' : result.total <= 9 ? '軽度褥瘡 — 局所ケアで管理可能' : result.total <= 20 ? '中等度褥瘡 — 専門的な創傷管理が必要' : '重度褥瘡 — 多職種による集中的介入が必要'
+  const isDU = d === 'DU'
+  const interpretation = (result.total === 0 && !isDU) ? '褥瘡なし / 治癒' : result.total <= 9 ? '軽度褥瘡 — 局所ケアで管理可能' : result.total <= 20 ? '中等度褥瘡 — 専門的な創傷管理が必要' : '重度褥瘡 — 多職種による集中的介入が必要'
+  const duNote = isDU ? '深さが判定不能のため合計スコアに含みません。壊死組織除去後に再評価してください。' : undefined
 
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<>
         <ResultCard label="DESIGN-R 合計スコア" value={`${result.total} 点`} interpretation={interpretation} severity={severity} />
+        {duNote && <p className="mt-2 text-xs text-wn bg-wnl border border-wnb rounded-lg px-3 py-2">{duNote}</p>}
         <div className="mt-3 p-3 rounded-lg bg-bg border border-br text-xs">
           <p className="font-medium text-tx mb-1">DESIGN-R 表記</p>
           <p className="font-mono text-ac text-sm">{result.notation}</p>

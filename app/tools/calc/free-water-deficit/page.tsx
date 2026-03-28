@@ -16,7 +16,7 @@ export default function FreeWaterDeficitPage() {
   const result = useMemo(() => {
     const w = parseFloat(weight)
     const na = parseFloat(currentNa)
-    if (!w || !na || na <= 140) return null
+    if (!w || !na || na <= 145) return null
 
     const tbwFactor = sex === 'male' ? 0.6 : 0.5
     const tbw = w * tbwFactor

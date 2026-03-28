@@ -77,7 +77,7 @@ export default function PancreatitisPrognosticPage() {
         {/* 9: 年齢 */}
         <label className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${ageChecked ? 'bg-wnl border border-wnb' : 'bg-s0 border border-br'}`}>
           <input type="checkbox" checked={ageChecked} onChange={() => setAgeChecked(!ageChecked)} className="accent-[var(--ac)]" />
-          <span className="text-sm text-tx">年齢 ≧ 75歳</span>
+          <span className="text-sm text-tx">年齢 ≧ 70歳</span>
         </label>
       </div>
     </CalculatorLayout>

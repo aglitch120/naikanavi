@@ -7,7 +7,7 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('canadian-cspine')!
 export default function CanadianCSpinePage(){
   const [step,setStep]=useState(1);const [result,setResult]=useState<{label:string,sev:'ok'|'wn'|'dn'}|null>(null)
-  const decide=(ct:boolean)=>setResult(ct?{label:'頚椎画像検査が必要',sev:'wn'}:{label:'低リスク（画像省略を検討できる）。最終判断は臨床医による',sev:'ok'})
+  const decide=(ct:boolean)=>setResult(ct?{label:'頚椎画像検査が必要（CT等の適切な検査を検討）',sev:'wn'}:{label:'低リスク（画像省略を検討できる）。最終判断は臨床医による',sev:'ok'})
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
@@ -17,11 +17,11 @@ export default function CanadianCSpinePage(){
     >
       <div className="space-y-4">
         {step===1&&!result&&(<div className="bg-s0 border border-br rounded-xl p-4"><p className="text-sm font-bold text-tx mb-3">Step 1: 高リスク因子はあるか?</p><p className="text-xs text-muted mb-3">65歳以上 / 危険な受傷機転 / 四肢のしびれ</p>
-          <div className="flex gap-2"><button onClick={()=>decide(true)} className="flex-1 py-2 bg-dn/10 text-dn rounded-lg text-sm font-medium border border-dn/20">はい → CT必要</button><button onClick={()=>setStep(2)} className="flex-1 py-2 bg-ac/10 text-ac rounded-lg text-sm font-medium border border-ac/20">いいえ → Step 2へ</button></div></div>)}
-        {step===2&&!result&&(<div className="bg-s0 border border-br rounded-xl p-4"><p className="text-sm font-bold text-tx mb-3">Step 2: 低リスク因子が1つ以上あるか?</p><p className="text-xs text-muted mb-3">単純な追突事故 / 受傷後に歩行できた / 遅発性の頸部痛 / 頸椎正中圧痛なし</p>
-          <div className="flex gap-2"><button onClick={()=>setStep(3)} className="flex-1 py-2 bg-ac/10 text-ac rounded-lg text-sm font-medium border border-ac/20">はい → Step 3へ</button><button onClick={()=>decide(true)} className="flex-1 py-2 bg-dn/10 text-dn rounded-lg text-sm font-medium border border-dn/20">いいえ → CT必要</button></div></div>)}
+          <div className="flex gap-2"><button onClick={()=>decide(true)} className="flex-1 py-2 bg-dn/10 text-dn rounded-lg text-sm font-medium border border-dn/20">はい → 画像検査が必要</button><button onClick={()=>setStep(2)} className="flex-1 py-2 bg-ac/10 text-ac rounded-lg text-sm font-medium border border-ac/20">いいえ → Step 2へ</button></div></div>)}
+        {step===2&&!result&&(<div className="bg-s0 border border-br rounded-xl p-4"><p className="text-sm font-bold text-tx mb-3">Step 2: 低リスク因子が1つ以上あるか?</p><p className="text-xs text-muted mb-3">単純な追突事故 / 受傷後に歩行できた / 遅発性の頸部痛 / 頸椎正中圧痛なし / 救急外来で座位保持が可能</p>
+          <div className="flex gap-2"><button onClick={()=>setStep(3)} className="flex-1 py-2 bg-ac/10 text-ac rounded-lg text-sm font-medium border border-ac/20">はい → Step 3へ</button><button onClick={()=>decide(true)} className="flex-1 py-2 bg-dn/10 text-dn rounded-lg text-sm font-medium border border-dn/20">いいえ → 画像検査が必要</button></div></div>)}
         {step===3&&!result&&(<div className="bg-s0 border border-br rounded-xl p-4"><p className="text-sm font-bold text-tx mb-3">Step 3: 能動的に頸部を左右45°回旋できるか?</p>
-          <div className="flex gap-2"><button onClick={()=>decide(false)} className="flex-1 py-2 bg-ac/10 text-ac rounded-lg text-sm font-medium border border-ac/20">はい → 画像不要</button><button onClick={()=>decide(true)} className="flex-1 py-2 bg-dn/10 text-dn rounded-lg text-sm font-medium border border-dn/20">いいえ → CT必要</button></div></div>)}
+          <div className="flex gap-2"><button onClick={()=>decide(false)} className="flex-1 py-2 bg-ac/10 text-ac rounded-lg text-sm font-medium border border-ac/20">はい → 画像不要</button><button onClick={()=>decide(true)} className="flex-1 py-2 bg-dn/10 text-dn rounded-lg text-sm font-medium border border-dn/20">いいえ → 画像検査が必要</button></div></div>)}
         {result&&<button onClick={()=>{setStep(1);setResult(null)}} className="text-sm text-ac hover:underline">最初からやり直す</button>}
       </div>
     </CalculatorLayout>

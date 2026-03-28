@@ -7,7 +7,7 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('opioid-conversion')!
 const drugs=[
   {id:'morphine-po',name:'モルヒネ経口',ratio:1},{id:'morphine-iv',name:'モルヒネ注射',ratio:3},
-  {id:'oxycodone-po',name:'オキシコドン経口',ratio:1.5},{id:'oxycodone-iv',name:'オキシコドン注射',ratio:3},
+  {id:'oxycodone-po',name:'オキシコドン経口',ratio:1.5},{id:'oxycodone-iv',name:'オキシコドン注射',ratio:2},
   {id:'hydromorphone-po',name:'ヒドロモルフォン経口',ratio:5},{id:'hydromorphone-iv',name:'ヒドロモルフォン注射',ratio:10},
   {id:'fentanyl-iv',name:'フェンタニル注射(μg/h)',ratio:2.4},{id:'fentanyl-patch',name:'フェンタニルパッチ(μg/h)',ratio:2.4},  // ※パッチは72時間持続製剤。注射とパッチでは臨床的な切替時に個別調整が必要
   {id:'tapentadol-po',name:'タペンタドール経口',ratio:0.3},{id:'tramadol-po',name:'トラマドール経口',ratio:0.2},

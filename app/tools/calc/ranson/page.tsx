@@ -71,7 +71,7 @@ export default function RansonPage() {
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}
-      explanation={<div className="text-sm text-muted space-y-1"><p>死亡率データはRanson 1974年原著より。現代集中治療管理下では改善している可能性あり。</p><p>本スコアはアルコール性膵炎を対象としています。胆石性膵炎にはGallstone Ranson基準も参照してください。</p></div>}
+      explanation={<div className="text-sm text-muted space-y-1"><p>死亡率データはRanson 1974年原著より。現代集中治療管理下では改善している可能性あり。</p><p>本スコアはアルコール性膵炎を対象としています。胆石性膵炎にはGallstone Ranson基準も参照してください。</p><p className="mt-2 p-2 bg-s1 rounded-lg text-xs">アルコール性基準で計算しています。胆石性膵炎では基準値が異なります（年齢 &gt; 70歳、WBC &gt; 18,000、血糖 &gt; 220、LDH &gt; 400、AST &gt; 250）。</p></div>}
       references={[
         { text: 'Ranson JH, et al. Surg Gynecol Obstet 1974;139:69-81' },
       ]}

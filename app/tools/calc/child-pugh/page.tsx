@@ -165,7 +165,7 @@ export default function ChildPughPage() {
                 name: 'Child-Pugh分類はどのような場面で使いますか？',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: '肝硬変の予後予測、手術適応の判断、肝移植の評価、薬剤投与量の調整などに使用されます。Class Cでは周術期死亡率が80%を超えるため、待機手術は原則禁忌とされます。',
+                  text: '肝硬変の予後予測、手術適応の判断、肝移植の評価、薬剤投与量の調整などに使用されます。Class Cでは周術期死亡率が80%を超えるため、待機手術の実施には肝臓専門医との慎重な検討が必要です。',
                 },
               },
               {
@@ -173,7 +173,7 @@ export default function ChildPughPage() {
                 name: 'Child-PughとMELDの違いは？',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Child-Pughは3段階のカテゴリ分類（A/B/C）で臨床的判断に適し、MELDは連続変数で算出され移植待機リストの優先順位決定に使われます。両者は補完的に使用されます。',
+                  text: 'Child-Pughは3段階のカテゴリ分類（A/B/C）で臨床的判断に適し、MELDは連続変数で算出され移植待機リストの優先順位決定に使われます。両者は補完的に使用されます。なおClass Cでは周術期死亡率が極めて高く、待機手術の判断は肝臓専門医との協議が必要です。',
                 },
               },
             ],
@@ -228,9 +228,9 @@ export default function ChildPughPage() {
             </div>
             {result.grade === 'C' && (
               <div className="bg-dnl border border-dnb rounded-xl p-4">
-                <p className="text-sm font-medium text-dn">⚠️ Class C — 待機手術は原則禁忌</p>
+                <p className="text-sm font-medium text-dn">⚠️ Class C — 待機手術は慎重な判断が必要です（肝臓専門医と相談）</p>
                 <p className="text-xs text-dn mt-1">
-                  周術期死亡率が極めて高く、肝移植の適応を積極的に検討してください。MELD スコアによる移植優先度評価を併用してください。
+                  周術期死亡率が極めて高く、肝移植の適応については肝臓専門医にご相談ください。MELD スコアによる移植優先度評価を併用してください。
                 </p>
               </div>
             )}

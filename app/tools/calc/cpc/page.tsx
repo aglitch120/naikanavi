@@ -20,7 +20,7 @@ export default function CPCPage(){
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="CPC" value={`CPC ${val}`} interpretation={v<=2?'良好な神経学的予後':v===3?'重度障害':'不良'} severity={sev} />}
       explanation={undefined}
-      relatedTools={[]} references={[{text:'Jennett B, Bond M. Assessment of outcome after severe brain damage. Lancet 1975;1:480-484'}]}
+      relatedTools={[]} references={[{text:'Brain Resuscitation Clinical Trial Study Group. JAMA 1986;255:244-249'}]}
     ><RadioGroup id="cpc" label="神経学的転帰" options={levels} value={val} onChange={setVal} /></CalculatorLayout>
   )
 }

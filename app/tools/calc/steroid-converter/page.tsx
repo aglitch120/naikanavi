@@ -22,7 +22,7 @@ const steroids: Steroid[] = [
   { id: 'psl', name: 'プレドニゾロン（PSL）', nameEn: 'Prednisolone', equivalentDose: 5, mineralocorticoid: '+', halfLife: '12-36h（生物学的半減期）', duration: '中間型' },
   { id: 'mpsl', name: 'メチルプレドニゾロン（mPSL）', nameEn: 'Methylprednisolone', equivalentDose: 4, mineralocorticoid: '0', halfLife: '12-36h', duration: '中間型' },
   { id: 'dex', name: 'デキサメタゾン（DEX）', nameEn: 'Dexamethasone', equivalentDose: 0.75, mineralocorticoid: '0', halfLife: '36-72h', duration: '長時間型' },
-  { id: 'bet', name: 'ベタメタゾン（BET）', nameEn: 'Betamethasone', equivalentDose: 0.6, mineralocorticoid: '0', halfLife: '36-72h', duration: '長時間型' },
+  { id: 'bet', name: 'ベタメタゾン（BET）', nameEn: 'Betamethasone', equivalentDose: 0.75, mineralocorticoid: '0', halfLife: '36-72h', duration: '長時間型' },
   { id: 'hc', name: 'ヒドロコルチゾン（HC）', nameEn: 'Hydrocortisone', equivalentDose: 20, mineralocorticoid: '++', halfLife: '8-12h', duration: '短時間型' },
   { id: 'cortisone', name: 'コルチゾン', nameEn: 'Cortisone', equivalentDose: 25, mineralocorticoid: '++', halfLife: '8-12h', duration: '短時間型' },
   { id: 'triamcinolone', name: 'トリアムシノロン', nameEn: 'Triamcinolone', equivalentDose: 4, mineralocorticoid: '0', halfLife: '12-36h', duration: '中間型' },

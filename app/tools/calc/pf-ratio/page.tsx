@@ -20,8 +20,8 @@ export default function PFRatioPage() {
 
     if (ratio >= 400) { label = '正常'; severity = 'ok' }
     else if (ratio >= 300) { label = '酸素化軽度低下（Berlin ARDS基準外）'; severity = 'wn' }
-    else if (ratio >= 200) { label = 'Berlin定義 軽症域 (P/F 200-300)'; severity = 'wn' }
-    else if (ratio >= 100) { label = 'Berlin定義 中等症域 (P/F 100-200)'; severity = 'dn' }
+    else if (ratio > 200) { label = 'Berlin定義 軽症 Mild ARDS (P/F 201-300, PEEP≧5)'; severity = 'wn' }
+    else if (ratio > 100) { label = 'Berlin定義 中等症 Moderate ARDS (P/F 101-200, PEEP≧5)'; severity = 'dn' }
     else { label = 'Berlin定義 重症域 (P/F <100)'; severity = 'dn' }
 
     return { ratio: Math.round(ratio), label, severity }
@@ -44,7 +44,7 @@ export default function PFRatioPage() {
             severity={result.severity}
             details={[
               { label: '判定', value: result.label },
-              { label: 'Berlin定義', value: result.ratio >= 300 ? '該当なし' : result.ratio >= 200 ? 'Mild ARDS (200-300)' : result.ratio >= 100 ? 'Moderate ARDS (100-200)' : 'Severe ARDS (<100)' },
+              { label: 'Berlin定義', value: result.ratio >= 300 ? '該当なし' : result.ratio > 200 ? 'Mild ARDS (201-300)' : result.ratio > 100 ? 'Moderate ARDS (101-200)' : 'Severe ARDS (≦100)' },
             ]}
           />
           {result.ratio < 300 && (

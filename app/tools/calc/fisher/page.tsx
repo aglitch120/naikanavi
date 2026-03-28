@@ -9,7 +9,7 @@ const grades = [
   {label:'Grade 1: 血液なし',value:'1',risk:'脳血管攣縮リスク: 低い (21%)'},
   {label:'Grade 2: びまん性の薄い血液層（<1mm）',value:'2',risk:'脳血管攣縮リスク: 中等度 (25%)'},
   {label:'Grade 3: 局所的な厚い血腫 or びまん性の厚い血液層（>1mm）',value:'3',risk:'脳血管攣縮リスク: 高い (37%)'},
-  {label:'Grade 4: くも膜下腔の血液なし、ただし脳室内または脳内血腫あり',value:'4',risk:'脳血管攣縮リスク: 中等度 (31%)'},
+  {label:'Grade 4: びまん性 or 局所的SAH + 脳室内または脳内血腫あり',value:'4',risk:'脳血管攣縮リスク: 中等度 (31%。少数例のため Grade 3 より低値)'},
 ]
 export default function FisherPage(){
   const [grade,setGrade]=useState('1')

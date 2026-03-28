@@ -9,8 +9,8 @@ const levels=[
   {label:'1: 非常に元気 — 活動的、精力的、意欲的',value:'1'},{label:'2: 元気 — 活動的だがレベル1ほどではない',value:'2'},
   {label:'3: うまく対処 — 医学的問題はあるが自立している',value:'3'},{label:'4: 脆弱 — 日常は自立だが活動が制限される',value:'4'},
   {label:'5: 軽度フレイル — IADLの一部に援助が必要',value:'5'},{label:'6: 中等度フレイル — 外出や家事に援助が必要',value:'6'},
-  {label:'7: 重度フレイル — ADL全般に依存。ただし安定',value:'7'},{label:'8: 非常に重度 — 完全依存、終末期に近い',value:'8'},
-  {label:'9: 終末期 — 予後が限られる可能性（個別の臨床評価が必要）',value:'9'},
+  {label:'7: 重度フレイル — ADL全般に依存。ただし安定',value:'7'},{label:'8: 非常に重度 — 完全依存（ただし終末期ではない）',value:'8'},
+  {label:'9: 終末期 — 余命6ヶ月未満と推定される（個別の臨床評価が必要）',value:'9'},
 ]
 export default function CFSPage(){
   const [val,setVal]=useState('1')

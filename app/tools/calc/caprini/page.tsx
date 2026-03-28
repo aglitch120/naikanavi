@@ -19,6 +19,8 @@ const items1 = [
   { id: 'lung', label: '重症肺疾患(含COPD)', points: 1 },
   { id: 'chf', label: '心不全（現在）', points: 1 },
   { id: 'bed', label: '床上安静中', points: 1 },
+  { id: 'ibd', label: '炎症性腸疾患（IBD）', points: 1 },
+  { id: 'ami', label: '最近の急性心筋梗塞（6週以内）', points: 1 },
 ]
 const items2 = [
   { id: 'age61', label: '年齢 61-74歳', points: 2 },

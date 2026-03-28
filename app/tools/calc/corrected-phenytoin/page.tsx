@@ -20,7 +20,7 @@ export default function CorrectedPhenytoinPage() {
 
     // Sheiner-Tozer式（アルブミン正常値 4.4 g/dL で正規化）
     const divisor = renal === 'normal'
-      ? 0.25 * (albVal / 4.4) + 0.1
+      ? 0.2 * (albVal / 4.4) + 0.1
       : 0.1 * (albVal / 4.4) + 0.1  // 腎不全時
 
     const corrected = lv / divisor

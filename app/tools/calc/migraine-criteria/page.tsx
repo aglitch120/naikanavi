@@ -23,7 +23,7 @@ export default function MigraineCriteriaPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity}
-        value={result.met ? '前兆のない片頭痛のICHD-3基準A〜Dを満たす（E: 他疾患の除外は臨床評価が必要）' : '基準を満たさない'}
+        value={result.met ? 'ICHD-3分類基準チェック: A〜D充足（確定診断には基準Eの臨床的除外が必要）' : '基準を満たさない'}
         interpretation={`ICHD-3 分類基準（前兆のない片頭痛 1.1）:\nA. ≧5回の発作: ${attacks?'✓':'✗'}\nB. 持続4-72時間: ${duration?'✓':'✗'}\nC. 頭痛の特徴 ≧2/4: ${result.charCount}/4\nD. 随伴症状 ≧1: ${result.assocCount}/2\nE. 他疾患の除外（臨床評価が必要）\n\n※本ツールはICHD-3分類基準のチェックリストです。確定診断は医師の臨床評価によります`} />}
       explanation={<div className="text-sm text-muted"><p>前兆のある片頭痛(1.2)は上記に加え、視覚/感覚/言語の前兆が5-60分持続。二次性頭痛の除外が前提。</p></div>}
       relatedTools={[{slug:'nihss',name:'NIHSS'}]}

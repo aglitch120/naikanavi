@@ -156,7 +156,7 @@ export default function CorrectedCaPage() {
                 <div className="bg-dnl border border-dnb rounded-xl p-4">
                   <p className="text-sm font-medium text-dn">⚠️ {result.corrCa > 14.0 ? '高Ca血症クリーゼ — 緊急対応' : '中等度以上の高Ca血症'}</p>
                   <p className="text-xs text-dn mt-1">
-                    緊急の専門医へのコンサルテーションが必要です。
+                    専門医へのコンサルテーションをご検討ください。
                   </p>
                 </div>
               )}
@@ -165,7 +165,7 @@ export default function CorrectedCaPage() {
                 <div className="bg-dnl border border-dnb rounded-xl p-4">
                   <p className="text-sm font-medium text-dn">⚠️ 低Ca血症</p>
                   <p className="text-xs text-dn mt-1">
-                    緊急の専門医へのコンサルテーションが必要です。
+                    専門医へのコンサルテーションをご検討ください。
                   </p>
                 </div>
               )}

@@ -14,7 +14,7 @@ const ETIOLOGY_INFO: Record<Etiology, { label: string; color: string; desc: stri
   tb: { label: '結核性髄膜炎疑い', color: '#D97706', desc: 'ADA測定、抗酸菌培養、PCR。治療開始の遅れが予後を悪化させる。' },
   fungal: { label: '真菌性髄膜炎疑い', color: '#7C3AED', desc: '墨汁染色、クリプトコッカス抗原、培養を確認。免疫不全の有無を評価。' },
   normal: { label: '正常範囲', color: '#059669', desc: '髄液所見は正常範囲内です。臨床症状との照合が必要です。' },
-  indeterminate: { label: '鑑別困難', color: '#6B7280', desc: '典型的パターンに合致しません。臨床経過と合わせて判断してください。' },
+  indeterminate: { label: '鑑別困難', color: '#6B7280', desc: '典型的パターンに合致しません。臨床経過と合わせて判断してください。※細菌性を除外できない。グラム染色・培養確認を行ってください。' },
 }
 
 export default function CSFAnalysisPage() {
@@ -44,8 +44,8 @@ export default function CSFAnalysisPage() {
     if (w <= 5 && p <= 45 && g >= 40) {
       etiology = 'normal'
     }
-    // 細菌性: 多核球優位、蛋白高、糖低
-    else if (w > 100 && (neutroPercent === null || neutroPercent > 50) && p > 100 && (g < 40 || (glucoseRatio !== null && glucoseRatio < 0.4))) {
+    // 細菌性: 細胞数>100かつ好中球>50%（蛋白>100は必須としない）
+    else if (w > 100 && (neutroPercent !== null && neutroPercent > 50)) {
       etiology = 'bacterial'
     }
     // 結核性: リンパ球優位、蛋白高、糖低（好中球未入力時も結核性を考慮）

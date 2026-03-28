@@ -33,7 +33,7 @@ export default function PercPage() {
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="PERC Rule" value={result.anyPositive ? '除外不可' : 'PE除外'} unit="" interpretation={result.label} severity={result.severity}
+      result={<ResultCard label="PERC Rule" value={result.anyPositive ? '除外不可' : 'D-dimer省略を支持（低事前確率下）'} unit="" interpretation={result.label} severity={result.severity}
         details={[{ label: '該当項目数', value: `${result.count} / 8` }]} />}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}

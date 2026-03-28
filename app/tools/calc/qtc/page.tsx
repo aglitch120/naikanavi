@@ -22,7 +22,7 @@ export default function QtcPage() {
     const bazett = qtVal / Math.sqrt(rr)
     const fridericia = qtVal / Math.cbrt(rr)
 
-    const upperLimit = sex === 'male' ? 450 : 470
+    const upperLimit = sex === 'male' ? 450 : 460
     const severity: 'ok' | 'wn' | 'dn' =
       bazett >= 500 ? 'dn' : bazett >= upperLimit ? 'wn' : 'ok'
 

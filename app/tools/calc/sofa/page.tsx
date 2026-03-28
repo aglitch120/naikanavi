@@ -58,9 +58,9 @@ const organs: OrganSystem[] = [
     options: [
       { label: 'MAP ≥70 mmHg（昇圧剤なし）', points: 0 },
       { label: 'MAP <70 mmHg（昇圧剤なし）', points: 1 },
-      { label: 'DOA ≤5 or DOB（any）', points: 2 },
-      { label: 'DOA >5 or Ad/NAd ≤0.1', points: 3 },
-      { label: 'DOA >15 or Ad/NAd >0.1', points: 4 },
+      { label: 'DOA ≤5 μg/kg/min or DOB（any dose）', points: 2 },
+      { label: 'DOA >5 μg/kg/min or Ad/NAd ≤0.1 μg/kg/min', points: 3 },
+      { label: 'DOA >15 μg/kg/min or Ad/NAd >0.1 μg/kg/min', points: 4 },
     ],
   },
   {

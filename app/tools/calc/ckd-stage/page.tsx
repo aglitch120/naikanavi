@@ -40,7 +40,7 @@ export default function CKDStagePage() {
     const aIdx = aStage ? ALBUMIN_STAGES.indexOf(aStage) : 0
     // KDIGO 2012 リスクマトリクス準拠
     if (gIdx >= 4 || (gIdx >= 3 && aIdx >= 1) || (gIdx >= 2 && aIdx >= 2)) riskLevel = 'very-high'
-    else if (gIdx >= 3 || (gIdx >= 2 && aIdx >= 1) || (gIdx >= 1 && aIdx >= 2)) riskLevel = 'high'
+    else if (gIdx >= 3 || (gIdx >= 2 && aIdx >= 1) || aIdx >= 2) riskLevel = 'high'
     else if (gIdx >= 2 || aIdx >= 1) riskLevel = 'moderate'
 
     const severity: 'ok' | 'wn' | 'dn' = riskLevel === 'low' ? 'ok' : riskLevel === 'moderate' ? 'wn' : 'dn'

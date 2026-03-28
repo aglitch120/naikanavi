@@ -23,8 +23,8 @@ export default function OaklandPage() {
     hb: { '>=160': 0, '130-159': 1, '110-129': 3, '90-109': 5, '70-89': 8, '<70': 10 },
   }
   const result = useMemo(() => {
-    const total = (scoreMap.age[age] || 0) + (scoreMap.sex[sex] || 0) + (scoreMap.prevAdm[prevAdm] || 0) +
-      (scoreMap.dre[dre] || 0) + (scoreMap.hr[hr] || 0) + (scoreMap.sbp[sbp] || 0) + (scoreMap.hb[hb] || 0)
+    const total = (scoreMap.age[age] ?? 0) + (scoreMap.sex[sex] ?? 0) + (scoreMap.prevAdm[prevAdm] ?? 0) +
+      (scoreMap.dre[dre] ?? 0) + (scoreMap.hr[hr] ?? 0) + (scoreMap.sbp[sbp] ?? 0) + (scoreMap.hb[hb] ?? 0)
     let severity: 'ok' | 'wn' | 'dn' = 'ok', interpretation = ''
     if (total <= 8) { interpretation = `${total}点 — 低リスク（外来管理を検討可能）。帰宅判断は臨床医による` }
     else if (total <= 12) { interpretation = `${total}点 — 入院観察を考慮`; severity = 'wn' }

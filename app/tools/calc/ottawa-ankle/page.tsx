@@ -9,12 +9,12 @@ const toolDef = getToolBySlug('ottawa-ankle')!
 const ankleCriteria = [
   { id: 'a1', label: '外果後縁 or 先端から6cm以内の骨圧痛' },
   { id: 'a2', label: '内果後縁 or 先端から6cm以内の骨圧痛' },
-  { id: 'a3', label: '受傷直後に4歩以上歩行不能' },
+  { id: 'a3', label: '受傷直後またはED受診時に4歩以上歩行不能' },
 ]
 const footCriteria = [
   { id: 'f1', label: '第5中足骨基部の骨圧痛' },
   { id: 'f2', label: '舟状骨の骨圧痛' },
-  { id: 'f3', label: '受傷直後に4歩以上歩行不能' },
+  { id: 'f3', label: '受傷直後またはED受診時に4歩以上歩行不能' },
 ]
 
 export default function OttawaAnklePage() {

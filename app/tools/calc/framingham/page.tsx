@@ -117,6 +117,7 @@ export default function FraminghamPage() {
       else if (points <= 22) risk = 17
       else if (points <= 23) risk = 22
       else if (points <= 24) risk = 27
+      else if (points <= 25) risk = 27
       else risk = 30
     }
 

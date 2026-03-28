@@ -75,13 +75,13 @@ export default function HbA1cGlucosePage() {
         case 'random':
           // 随時血糖は eAG に近似として ADAG式で計算
           estimatedA1c = (glu + 46.7) / 28.7
-          method = 'ADAG式（随時血糖 ≈ eAG として推算）'
+          method = 'ADAG式（随時血糖 ≈ eAG として推算）※科学的根拠が限定的な近似計算。空腹時血糖での換算を推奨'
           break
         case 'postprandial':
           // 食後2h血糖 → eAG ≈ 食後2h / 1.25 → ADAG式
           const eag = glu / 1.25
           estimatedA1c = (eag + 46.7) / 28.7
-          method = '食後2h血糖からの推算（eAG換算後ADAG式）'
+          method = '食後2h血糖からの推算（eAG換算後ADAG式）※科学的根拠が限定的な近似計算。空腹時血糖での換算を推奨'
           break
         default:
           return null
