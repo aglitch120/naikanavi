@@ -30,7 +30,7 @@ export default function LAClassificationPage() {
         details={[
           { label: 'Grade N/M', value: '非びらん性' },
           { label: 'Grade A/B', value: '軽症〜中等症' },
-          { label: 'Grade C/D', value: '重症（長期PPI・外科考慮）' },
+          { label: 'Grade C/D', value: '重症' },
         ]} />}
       references={[
         { text: 'Lundell LR, et al. Endoscopic assessment of oesophagitis: clinical and functional correlates and further validation of the Los Angeles classification. Gut 1999;45:172-180' },

@@ -11,8 +11,8 @@ export default function KawasakiPage(){
   const result=useMemo(()=>{
     const count=items.filter(i=>checks[i.id]).length
     const hasFever=checks['fever']
-    if(hasFever&&count>=5) return {count,severity:'dn' as const,label:'川崎病の可能性が高い（発熱+4/5症状）→ 小児科専門医へ紹介'}
-    if(hasFever&&count===4) return {count,severity:'wn' as const,label:'不全型川崎病の可能性（発熱+3/5症状）→ 心エコーで冠動脈病変確認・小児科へ紹介'}
+    if(hasFever&&count>=5) return {count,severity:'dn' as const,label:'川崎病の可能性が高い（発熱+4/5症状）— 詳細評価は担当医が判断'}
+    if(hasFever&&count===4) return {count,severity:'wn' as const,label:'不全型川崎病の可能性（発熱+3/5症状）— 詳細評価は担当医が判断'}
     if(!hasFever&&count>=4) return {count,severity:'wn' as const,label:'発熱が確認されていません — 川崎病は5日以上の発熱が必須条件です'}
     return {count,severity:'ok' as const,label:'川崎病の基準を満たさない → 他疾患の鑑別'}
   },[checks])

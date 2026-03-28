@@ -190,12 +190,12 @@ export default function MELDPage() {
               {result.meld >= 15 && (
                 <div className={`${result.meld >= 25 ? 'bg-dnl border-dnb' : 'bg-wnl border-wnb'} border rounded-xl p-4`}>
                   <p className={`text-sm font-medium ${result.meld >= 25 ? 'text-dn' : 'text-wn'}`}>
-                    {result.meld >= 25 ? '⚠️ 肝移植の早急な評価が必要' : '⚡ 肝移植センターへの紹介を検討'}
+                    {result.meld >= 25 ? '⚠️ 高リスク（MELD ≥25）' : '⚡ 中高リスク（MELD 15-24）'}
                   </p>
                   <p className={`text-xs mt-1 ${result.meld >= 25 ? 'text-dn' : 'text-wn'}`}>
                     {result.meld >= 25
-                      ? 'MELD ≥25 は3ヶ月死亡率が高く、早急に移植リストへの登録を検討してください。※米国UNOS基準。日本の脳死肝移植基準とは異なる。'
-                      : 'MELD 15-24 は移植のベネフィットが認められる範囲です。肝臓専門施設への紹介を検討してください。※米国UNOS基準。日本の脳死肝移植基準とは異なる。'}
+                      ? 'MELD ≥25 は3ヶ月死亡率が高い。治療方針は担当医が判断。※米国UNOS基準。日本の脳死肝移植基準とは異なる。'
+                      : 'MELD 15-24 は移植ベネフィットが認められる範囲。治療方針は担当医が判断。※米国UNOS基準。日本の脳死肝移植基準とは異なる。'}
                   </p>
                 </div>
               )}

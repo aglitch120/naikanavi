@@ -16,7 +16,7 @@ export default function IsthDicPage() {
     const score = [plt, fdp, pt, fib].reduce((a, b) => a + parseInt(b), 0)
     const overt = score >= 5
     const severity: 'ok'|'wn'|'dn' = overt ? 'dn' : score >= 3 ? 'wn' : 'ok'
-    const label = overt ? 'Overt DIC（≥5点）— 基礎疾患の治療+補充療法を検討（担当医が判断）' : score >= 3 ? 'DIC疑い（3-4点）— 1-2日後に再評価' : 'DICの可能性低い（<3点）'
+    const label = overt ? 'Overt DIC（≥5点）— 治療は担当医が判断' : score >= 3 ? 'DIC疑い（3-4点）' : 'DICの可能性低い（<3点）'
     return { score, severity, label, overt }
   }, [plt, fdp, pt, fib])
 
@@ -25,7 +25,7 @@ export default function IsthDicPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="ISTH DIC Score" value={result.score} unit="/ 8点" interpretation={result.label} severity={result.severity}
         details={[{ label: '判定', value: result.overt ? 'Overt DIC' : 'Non-overt' }]} />}
-      explanation={undefined}
+      explanation="日本臨床ではJSTH急性期DIC診断基準が主流です。本ツールはISTH基準（国際標準）を使用しており、閾値・配点がJSTH基準と異なります。"
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'Taylor FB Jr, et al. Thromb Haemost 2001;86:1327-1330' }, { text: '※日本ではJSTH急性期DIC基準が主流。ISTHスコアとは閾値・配点が異なる' }]}
     >

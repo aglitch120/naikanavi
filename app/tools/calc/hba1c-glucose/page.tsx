@@ -25,10 +25,10 @@ export default function HbA1cGlucosePage() {
       let interpretation = ''
       let severity: 'ok' | 'wn' | 'dn' = 'ok'
       if (a1c >= 10.0) {
-        interpretation = 'コントロール極めて不良 — 専門医への紹介・治療の見直しを検討'
+        interpretation = 'コントロール極めて不良 — 治療方針は担当医が判断'
         severity = 'dn'
       } else if (a1c >= 8.0) {
-        interpretation = 'コントロール不良 — 治療強化が必要（合併症進行リスク高）'
+        interpretation = 'コントロール不良（合併症進行リスク高）'
         severity = 'dn'
       } else if (a1c >= 7.0) {
         interpretation = 'コントロール不十分 — 合併症予防にはHbA1c 7.0%未満が目標'

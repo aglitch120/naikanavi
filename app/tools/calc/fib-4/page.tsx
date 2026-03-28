@@ -13,24 +13,28 @@ function calcFIB4(age: number, ast: number, alt: number, plt: number): number {
   return (age * ast) / (plt * Math.sqrt(alt))
 }
 
-function getInterpretation(fib4: number): { text: string; severity: 'ok' | 'wn' | 'dn'; fibrosis: string; recommendation: string } {
-  if (fib4 < 1.3) return {
-    text: '低リスク（F0-F1）',
+function getInterpretation(fib4: number, age: number): { text: string; severity: 'ok' | 'wn' | 'dn'; fibrosis: string; recommendation: string } {
+  // 65歳以上では低カットオフを2.0に引き上げ（McPherson 2017）
+  const lowCutoff = age >= 65 ? 2.0 : 1.3
+  const highCutoff = 2.67
+
+  if (fib4 < lowCutoff) return {
+    text: age >= 65 ? '低リスク（F0-F1）※65歳以上カットオフ適用' : '低リスク（F0-F1）',
     severity: 'ok',
     fibrosis: '進行した線維化の可能性は低い（NPV 90%以上）',
-    recommendation: '経過観察。原因疾患の治療を継続し、1-3年後に再評価。',
+    recommendation: '原因疾患の治療を継続。再評価の時期は担当医が判断。',
   }
-  if (fib4 <= 2.67) return {
+  if (fib4 <= highCutoff) return {
     text: '中間リスク（判定保留）',
     severity: 'wn',
     fibrosis: '線維化の程度が不確定',
-    recommendation: 'エラストグラフィ（FibroScan等）またはELFテストによる追加評価を検討。',
+    recommendation: '追加評価（エラストグラフィ等）の要否は担当医が判断。',
   }
   return {
     text: '高リスク（F3-F4）',
     severity: 'dn',
     fibrosis: '進行した線維化（F3-F4）の可能性が高い（PPV 65%以上）',
-    recommendation: '肝臓専門医への紹介を検討。肝生検・エラストグラフィ・画像評価を検討。肝硬変合併症のスクリーニングも必要。',
+    recommendation: '進行した線維化の可能性が高い。詳細評価の方針は担当医が判断。',
   }
 }
 
@@ -47,7 +51,7 @@ export default function FIB4Page() {
     const p = parseFloat(plt)
     if (isNaN(a) || isNaN(s) || isNaN(l) || isNaN(p) || a <= 0 || s <= 0 || l <= 0 || p <= 0) return null
     const fib4 = calcFIB4(a, s, l, p)
-    return { fib4: Math.round(fib4 * 100) / 100, ...getInterpretation(fib4) }
+    return { fib4: Math.round(fib4 * 100) / 100, ...getInterpretation(fib4, a) }
   }, [age, ast, alt, plt])
 
   const relatedTools = toolDef.relatedSlugs

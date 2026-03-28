@@ -146,7 +146,7 @@ export default function FraminghamPage() {
           details={[
             { label: 'ポイント', value: `${result.points}点` },
             { label: 'リスクカテゴリ', value: result.category },
-            { label: '注意', value: 'Framinghamスコアは欧米コホートで開発。日本人では1.5-2倍の過大評価が報告されており、吹田スコア・久山町スコアの使用を推奨' },
+            { label: '注意', value: 'Framinghamスコアは欧米コホートで開発。日本人では1.5-2倍の過大評価が報告されており、吹田スコア・久山町スコアがより適切とされる' },
           ]}
         />
       )}

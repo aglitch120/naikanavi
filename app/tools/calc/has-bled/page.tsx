@@ -110,10 +110,10 @@ export default function HASBLEDPage() {
                       <span className="mt-0.5">→</span>
                       <span>
                         <span className="font-medium">{c.label.split(':')[1]?.trim()}</span>
-                        {c.id === 'htn' && '：降圧目標の見直し'}
-                        {c.id === 'labile' && '：DOAC切替を検討'}
-                        {c.id === 'drugs' && '：不要なNSAID・抗血小板薬の中止'}
-                        {c.id === 'alcohol' && '：減酒指導'}
+                        {c.id === 'htn' && '（降圧コントロール）'}
+                        {c.id === 'labile' && '（INR不安定）'}
+                        {c.id === 'drugs' && '（出血リスク薬）'}
+                        {c.id === 'alcohol' && '（アルコール過剰）'}
                       </span>
                     </li>
                   ))}

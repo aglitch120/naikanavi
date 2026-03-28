@@ -17,8 +17,8 @@ export default function LRINECPage(){
   const [vals,setVals]=useState<Record<string,number>>(Object.fromEntries(items.map(i=>[i.id,0])))
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((a,b)=>a+b,0)
-    if(score>=8) return {score,severity:'dn' as const,label:'高リスク（≧8）: 壊死性筋膜炎の可能性高い → 外科コンサルト'}
-    if(score>=6) return {score,severity:'wn' as const,label:'中リスク（6-7）: 壊死性筋膜炎を疑う → CT/MRI + 外科コンサルト'}
+    if(score>=8) return {score,severity:'dn' as const,label:'高リスク（≧8）: 壊死性筋膜炎の可能性高い'}
+    if(score>=6) return {score,severity:'wn' as const,label:'中リスク（6-7）: 壊死性筋膜炎を疑う'}
     return {score,severity:'ok' as const,label:'低スコアだがLRINECの感度は約50-70%。臨床的に疑わしければ除外しないこと'}
   },[vals])
   return(

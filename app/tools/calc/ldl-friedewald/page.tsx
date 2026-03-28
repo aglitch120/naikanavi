@@ -77,7 +77,7 @@ export default function LdlFriedewaldPage() {
           details={[
             { label: 'non-HDL-C', value: `${result.nonHdl} mg/dL（目標: LDL目標+30）` },
             { label: 'LDL/HDL比', value: `${result.lhRatio}（2.0未満が目標）` },
-            ...(result.tgWarning ? [{ label: '⚠️ 注意', value: 'TG≧400: 直接法LDLを検討' }] : []),
+            ...(result.tgWarning ? [{ label: '⚠️ 注意', value: 'TG≧400: Friedewald式は不正確（直接法LDLの使用が望ましい）' }] : []),
           ]}
         />
       )}
@@ -93,7 +93,7 @@ export default function LdlFriedewaldPage() {
       <div className="space-y-4">
         <NumberInput id="tc" label="TC（総コレステロール）" unit="mg/dL" value={tc} onChange={setTc} min={50} max={600} step={1} />
         <NumberInput id="hdl" label="HDL-C" unit="mg/dL" value={hdl} onChange={setHdl} min={5} max={200} step={1} />
-        <NumberInput id="tg" label="TG（中性脂肪）" unit="mg/dL" hint="空腹時採血を検討。400以上では直接法LDLを使用" value={tg} onChange={setTg} min={10} max={3000} step={1} />
+        <NumberInput id="tg" label="TG（中性脂肪）" unit="mg/dL" hint="400以上では直接法LDLが必要" value={tg} onChange={setTg} min={10} max={3000} step={1} />
       </div>
     </CalculatorLayout>
   )

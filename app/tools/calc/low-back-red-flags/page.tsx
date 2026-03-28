@@ -26,9 +26,9 @@ export default function LowBackRedFlagsPage() {
     const count = checked.filter(Boolean).length
     const cats = new Set(flags.filter((_,i)=>checked[i]).map(f=>f.category))
     let severity: 'ok'|'wn'|'dn' = 'ok', interpretation = ''
-    if (cats.has('馬尾症候群')) { interpretation = '⚠️ 馬尾症候群の疑い → 緊急MRIを検討。専門科への相談を推奨'; severity = 'dn' }
-    else if (count > 0) { interpretation = `${count}項目該当。${Array.from(cats).join('・')}の可能性 → 画像検査(MRI)を検討`; severity = 'wn' }
-    else { interpretation = 'レッドフラッグなし。非特異的腰痛として保存的治療。4-6週で改善なければ再評価。' }
+    if (cats.has('馬尾症候群')) { interpretation = '馬尾症候群の疑い — 対応は担当医が判断'; severity = 'dn' }
+    else if (count > 0) { interpretation = `${count}項目該当。${Array.from(cats).join('・')}の可能性 — 詳細評価は担当医が判断`; severity = 'wn' }
+    else { interpretation = 'レッドフラッグなし' }
     return { count, severity, interpretation }
   }, [checked])
   return (

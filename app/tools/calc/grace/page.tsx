@@ -62,17 +62,17 @@ function getInHospitalMortality(score: number): { risk: string; severity: 'ok' |
   if (score <= 108) return {
     risk: '低リスク（院内死亡率 <1%）',
     severity: 'ok',
-    recommendation: '標準的治療。早期の侵襲的戦略は必ずしも必要ないが、個別のリスク評価に基づき判断。',
+    recommendation: '治療方針は担当医が判断。',
   }
   if (score <= 140) return {
     risk: '中リスク（院内死亡率 1-3%）',
     severity: 'wn',
-    recommendation: '早期の侵襲的戦略（24-72時間以内のCAG）を検討。抗血栓療法の強化も考慮。',
+    recommendation: '治療方針は担当医が判断。',
   }
   return {
     risk: '高リスク（院内死亡率 >3%）',
     severity: 'dn',
-    recommendation: '緊急〜早期の侵襲的戦略（24時間以内のCAG）を強く検討。詳細はガイドライン参照。',
+    recommendation: '治療方針は担当医が判断。ESC NSTE-ACS Guidelines 2020参照。',
   }
 }
 
@@ -162,7 +162,7 @@ export default function GRACEPage() {
                 name: 'GRACEスコアで高リスクの場合はどうしますか？',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'GRACE >140（高リスク）では早期の侵襲的戦略（24時間以内の冠動脈造影）が強く推奨されています。抗血栓療法の強化（DAPT + 抗凝固薬）や循環補助の検討も必要です。',
+                  text: 'GRACE >140（高リスク）は院内死亡率が高く、早急な治療方針の決定が求められます。具体的な対応は担当医がESC NSTE-ACSガイドラインを参照のうえ判断します。',
                 },
               },
               {
@@ -210,7 +210,7 @@ export default function GRACEPage() {
                 <p className={`text-sm font-medium ${
                   result.severity === 'dn' ? 'text-dn' : result.severity === 'wn' ? 'text-wn' : 'text-tx'
                 }`}>
-                  {result.severity === 'dn' ? '🚨 ESC参照: 早期侵襲的戦略' : result.severity === 'wn' ? '⚡ 侵襲的戦略を検討' : '✅ 参考マネジメント'}
+                  {result.severity === 'dn' ? '🚨 高リスク' : result.severity === 'wn' ? '⚡ 中リスク' : '✅ 低リスク'}
                 </p>
                 <p className={`text-xs mt-1 ${
                   result.severity === 'dn' ? 'text-dn' : result.severity === 'wn' ? 'text-wn' : 'text-muted'

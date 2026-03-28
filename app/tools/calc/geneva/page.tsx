@@ -18,9 +18,9 @@ export default function GenevaPage(){
   const [hrScore,setHrScore]=useState('0')
   const result=useMemo(()=>{
     let score=nonHrItems.filter(i=>checks[i.id]).reduce((s,i)=>s+i.points,0) + parseInt(hrScore)
-    if(score>=11) return {score,severity:'dn' as const,label:'高リスク: CT肺動脈造影(CTPA)を検討'}
-    if(score>=4) return {score,severity:'wn' as const,label:'中リスク: D-dimer → 陽性ならCTPA'}
-    return {score,severity:'ok' as const,label:'低リスク: D-dimer → 陰性なら除外'}
+    if(score>=11) return {score,severity:'dn' as const,label:'高リスク（≧11点）'}
+    if(score>=4) return {score,severity:'wn' as const,label:'中リスク（4-10点）'}
+    return {score,severity:'ok' as const,label:'低リスク（0-3点）'}
   },[checks,hrScore])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

@@ -27,7 +27,7 @@ export default function HeartScorePage() {
     const total = Object.values(scores).reduce((a, b) => a + parseInt(b), 0)
     const mace = total <= 3 ? '1.7%' : total <= 6 ? '12-16%' : '50-65%'
     const severity: 'ok' | 'wn' | 'dn' = total <= 3 ? 'ok' : total <= 6 ? 'wn' : 'dn'
-    const label = total <= 3 ? '低リスク — 早期退院を検討' : total <= 6 ? '中リスク — 入院・精査を検討' : '高リスク — 早期侵襲的治療を検討'
+    const label = total <= 3 ? '低リスク' : total <= 6 ? '中リスク' : '高リスク'
     return { total, mace, severity, label }
   }, [scores])
 

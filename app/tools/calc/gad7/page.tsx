@@ -28,9 +28,9 @@ export default function Gad7Page() {
     const total = scores.reduce((a, b) => a + parseInt(b), 0)
     let label = '', severity: 'ok'|'wn'|'dn' = 'ok'
     if (total <= 4) { label = '不安症状なし〜最小限'; severity = 'ok' }
-    else if (total <= 9) { label = '軽度不安 — 経過観察を検討'; severity = 'wn' }
-    else if (total <= 14) { label = '中等度不安 — 専門家への相談を検討'; severity = 'wn' }
-    else { label = '重度不安 — 専門家への受診を推奨'; severity = 'dn' }
+    else if (total <= 9) { label = '軽度不安'; severity = 'wn' }
+    else if (total <= 14) { label = '中等度不安'; severity = 'wn' }
+    else { label = '重度不安'; severity = 'dn' }
     return { total, severity, label }
   }, [scores])
 

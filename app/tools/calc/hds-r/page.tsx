@@ -21,7 +21,7 @@ export default function HDSRPage(){
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((s,v)=>s+Number(v),0)
     if(score>=21) return {score,severity:'ok' as const,label:'正常域（21-30点）'}
-    return {score,severity:'wn' as const,label:'認知症の疑い（≦20点）— 専門医による詳細評価を推奨'}
+    return {score,severity:'wn' as const,label:'認知症の疑い（≦20点）— 詳細評価は担当医が判断'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

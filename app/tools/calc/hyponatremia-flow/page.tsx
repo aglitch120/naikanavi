@@ -37,14 +37,14 @@ function getDiagnosis(osm: string, uosm: string, vol: string, una: string): Diag
   if (osm === 'iso') return { title: '等張性低Na血症（偽性）', detail: '高脂血症・高蛋白血症 → 浸透圧ギャップ確認。実際のNaは正常の可能性。', severity: 'ok' }
   if (osm === 'hyper') return { title: '高張性低Na血症', detail: '高血糖（補正Na = 実測Na + 1.6×(血糖-100)/100。Hillier式では係数2.4。血糖>400ではHillier式推奨）、マンニトール投与 → 原因除去で改善。', severity: 'wn' }
   if (osm !== 'hypo') return null
-  if (uosm === 'dilute') return { title: '水中毒 / 心因性多飲', detail: '腎の希釈能は正常。水制限が基本治療。Beer potomania、低栄養も鑑別。', severity: 'wn' }
+  if (uosm === 'dilute') return { title: '水中毒 / 心因性多飲', detail: '腎の希釈能は正常。Beer potomania、低栄養も鑑別。治療は担当医が判断。', severity: 'wn' }
   if (!vol) return null
-  if (vol === 'hypo' && una === 'low') return { title: '腎外性Na喪失', detail: '嘔吐・下痢・第三腔貯留・熱傷 → 生食輸液で補正。原因の治療。（参考。実際の治療は担当医が判断）', severity: 'wn' }
-  if (vol === 'hypo' && una === 'high') return { title: '腎性Na喪失', detail: '利尿薬・塩類喪失性腎症・副腎不全・CSW → 原因検索と対応を検討。（参考。実際の治療は担当医が判断）', severity: 'dn' }
-  if (vol === 'eu' && una === 'low') return { title: '甲状腺機能低下症', detail: 'TSH・fT4確認 → 内分泌専門医と相談。（参考。実際の治療は担当医が判断）', severity: 'wn' }
-  if (vol === 'eu' && una === 'high') return { title: 'SIADH / 副腎不全', detail: 'SIADH: 水制限800-1000mL/日。副腎不全: コルチゾール測定→ヒドロコルチゾン補充。（参考。実際の治療は担当医が判断）', severity: 'dn' }
-  if (vol === 'hyper' && una === 'low') return { title: '心不全 / 肝硬変 / ネフローゼ', detail: '有効循環血液量低下 → 水・Na制限+利尿薬。原疾患の治療。（参考。実際の治療は担当医が判断）', severity: 'dn' }
-  if (vol === 'hyper' && una === 'high') return { title: '腎不全', detail: 'eGFR低下による水排泄障害 → 腎臓専門医と相談。（参考。実際の治療は担当医が判断）', severity: 'dn' }
+  if (vol === 'hypo' && una === 'low') return { title: '腎外性Na喪失', detail: '嘔吐・下痢・第三腔貯留・熱傷が原因として考えられる。治療は担当医が判断。', severity: 'wn' }
+  if (vol === 'hypo' && una === 'high') return { title: '腎性Na喪失', detail: '利尿薬・塩類喪失性腎症・副腎不全・CSWが原因として考えられる。治療は担当医が判断。', severity: 'dn' }
+  if (vol === 'eu' && una === 'low') return { title: '甲状腺機能低下症', detail: 'TSH・fT4等の検索を担当医が判断。', severity: 'wn' }
+  if (vol === 'eu' && una === 'high') return { title: 'SIADH / 副腎不全', detail: 'SIADHまたは副腎不全が考えられる。治療は担当医が判断。', severity: 'dn' }
+  if (vol === 'hyper' && una === 'low') return { title: '心不全 / 肝硬変 / ネフローゼ', detail: '有効循環血液量低下が考えられる。原疾患の治療は担当医が判断。', severity: 'dn' }
+  if (vol === 'hyper' && una === 'high') return { title: '腎不全', detail: 'eGFR低下による水排泄障害が考えられる。治療は担当医が判断。', severity: 'dn' }
   return null
 }
 

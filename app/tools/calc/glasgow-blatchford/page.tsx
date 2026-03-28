@@ -60,10 +60,10 @@ export default function GlasgowBlatchfordPage() {
 
     const severity: 'ok' | 'wn' | 'dn' = score === 0 ? 'ok' : score <= 6 ? 'wn' : 'dn'
     const label = score === 0
-      ? '低リスク — 外来管理を検討可能'
+      ? '低リスク'
       : score <= 6
-        ? '中リスク — 入院・内視鏡を検討'
-        : '高リスク — 緊急内視鏡・集中治療を検討'
+        ? '中リスク'
+        : '高リスク'
 
     return { score, severity, label }
   }, [bun, hb, sex, sbp, hr, melena, syncope, liver, heartFailure])
@@ -79,7 +79,7 @@ export default function GlasgowBlatchfordPage() {
       result={
         <ResultCard label="Glasgow-Blatchford" value={result.score} unit="/ 23点"
           interpretation={result.label} severity={result.severity}
-          details={[{ label: '注目', value: 'スコア0 = 低リスク。外来管理の検討が可能（最終判断は臨床医による）' }]} />
+          details={[{ label: '注目', value: 'スコア0 = 低リスク（最終判断は臨床医による）' }]} />
       }
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}

@@ -22,7 +22,7 @@ export default function GOLDCOPDPage() {
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="GOLD分類" value={`GOLD ${spiro} / ${group}群`} interpretation={`参考: GOLD 2024ガイドラインに基づく一般的な治療方針。処方は担当医が個別に判断\n${group === 'A' ? 'LAMA or LABA単剤' : group === 'B' ? 'LAMA+LABA併用' : 'LAMA+LABA±ICS（好酸球≧300ならICS追加）'}`} severity={sev} />}
+      result={<ResultCard label="GOLD分類" value={`GOLD ${spiro} / ${group}群`} interpretation={`GOLD 2024分類。治療方針は担当医が個別に判断`} severity={sev} />}
       explanation={undefined}
       relatedTools={[]} references={[{ text: 'GOLD 2024 Report. Global Initiative for Chronic Obstructive Lung Disease' }]}
     >

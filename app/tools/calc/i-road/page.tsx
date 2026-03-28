@@ -12,9 +12,9 @@ export default function IROADPage(){
   const result=useMemo(()=>{
     const hasI=iItems.some(i=>checks[i.id])
     const roadCount=road.filter(i=>checks[i.id]).length
-    if(hasI) return {severity:'dn' as const,label:'重症（I群）: ICU管理\n参考（日本呼吸器学会GL）: 広域抗菌薬（CTRX or ABPC/SBT + AZM（重症例でTAZ/PIPC考慮。MEPMは限定的に使用））\n実際の抗菌薬選択は担当医・感染症科が判断'}
-    if(roadCount>=2) return {severity:'wn' as const,label:'中等症（ROAD 2項目以上）: 入院管理\n参考（日本呼吸器学会GL）: βラクタム + キノロン or マクロライド\n実際の抗菌薬選択は担当医・感染症科が判断'}
-    return {severity:'ok' as const,label:'軽症（ROAD 0-1項目）: 外来管理可 or 短期入院'}
+    if(hasI) return {severity:'dn' as const,label:'重症（I群）'}
+    if(roadCount>=2) return {severity:'wn' as const,label:'中等症（ROAD 2項目以上）'}
+    return {severity:'ok' as const,label:'軽症（ROAD 0-1項目）'}
   },[checks])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

@@ -11,7 +11,7 @@ export default function MurrayPage(){
   const result=useMemo(()=>{
     const total=Object.values(vals).reduce((s,v)=>s+Number(v),0)
     const score=total/4
-    if(score>2.5) return {score:score.toFixed(1),severity:'dn' as const,label:'重症ARDS（>2.5）: ECMO適応の参考（Murray LIS単独ではなく総合的に判断）'}
+    if(score>2.5) return {score:score.toFixed(1),severity:'dn' as const,label:'重症ARDS（>2.5）'}
     if(score>0.1) return {score:score.toFixed(1),severity:'wn' as const,label:'軽度〜中等度肺障害'}
     return {score:score.toFixed(1),severity:'ok' as const,label:'肺障害なし'}
   },[vals])

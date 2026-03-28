@@ -15,7 +15,7 @@ export default function McMahonPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries(items.map(i=>[i.id,false])))
   const result=useMemo(()=>{
     const score=items.filter(i=>checks[i.id]).reduce((s,i)=>s+i.points,0)
-    if(score>=6) return {score,severity:'dn' as const,label:'高リスク（≧6）: 死亡 or 腎不全→透析の確率高い → 積極的輸液+ICU'}
+    if(score>=6) return {score,severity:'dn' as const,label:'高リスク（≧6）: 死亡または透析を要する腎不全の確率が高い'}
     return {score,severity:'ok' as const,label:`低リスク（<6）: 輸液で管理。スコア${score}点`}
   },[checks])
   return(

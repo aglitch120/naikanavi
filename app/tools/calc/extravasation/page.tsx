@@ -9,13 +9,13 @@ const categories = [
     'ビンクリスチン','ビンブラスチン','ビノレルビン','ビンデシン',
     'パクリタキセル(高濃度)','ドセタキセル(高濃度)',
     'アクチノマイシンD','トラベクテジン','メクロレタミン',
-  ], action: '即座に投与中止→残液吸引→冷却(アントラサイクリン)/温罨法(ビンカ)→デクスラゾキサン(アントラサイクリン、※日本未承認)/ヒアルロニダーゼ(ビンカ)→皮膚科/形成外科コンサルト' },
+  ], action: '投与中止・残液吸引が基本。冷却/温罨法・解毒剤の適用は担当医が判断（参考: アントラサイクリンに冷却、ビンカアルカロイドに温罨法）' },
   { risk: '炎症性 (Irritant)', color: 'bg-wnl border-wnb', drugs: [
     'シスプラチン','カルボプラチン','オキサリプラチン',
     'シクロホスファミド','イホスファミド','ダカルバジン','テモゾロミド(注)',
     'エトポシド','イリノテカン','ゲムシタビン',
     'フルオロウラシル(5-FU)','メトトレキサート','ブレオマイシン',
-  ], action: '投与中止→残液吸引→冷却→経過観察。多くは自然軽快するが、大量漏出時は外科コンサルト考慮' },
+  ], action: '投与中止・残液吸引が基本。多くは自然軽快。対応は担当医が判断。' },
   { risk: '非壊死性 (Non-vesicant)', color: 'bg-okl border-okb', drugs: [
     'リツキシマブ','トラスツズマブ','ベバシズマブ','ニボルマブ','ペムブロリズマブ',
     'ボルテゾミブ','レナリドミド(注)','アザシチジン',
@@ -29,7 +29,7 @@ export default function ExtravasationPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
-      explanation={<div className="text-sm text-muted"><p>漏出を発見したら①即座に投与中止②可能な限り残液を吸引③リスク分類に応じた対応。写真記録を残す。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>漏出発見時の基本対応: ①即座に投与中止 ②可能な限り残液を吸引 ③リスク分類に応じた対応（担当医が判断）。写真記録を残す。</p></div>}
       relatedTools={[{slug:'ctcae',name:'CTCAE v5.0'}]}
       references={toolDef.sources||[]}
     >

@@ -24,9 +24,9 @@ export default function MapPage() {
       mapVal < 60 ? 'dn' : mapVal < 65 ? 'wn' : mapVal > 110 ? 'wn' : 'ok'
 
     let interpretation = ''
-    if (mapVal < 60) interpretation = 'MAP低下 — 臓器灌流不全のリスク。昇圧剤・輸液を検討'
-    else if (mapVal < 65) interpretation = 'MAP境界低値 — ICUでは65以上を目標に'
-    else if (mapVal > 110) interpretation = 'MAP高値 — 降圧治療を検討'
+    if (mapVal < 60) interpretation = 'MAP低下 — 臓器灌流不全のリスク'
+    else if (mapVal < 65) interpretation = 'MAP境界低値'
+    else if (mapVal > 110) interpretation = 'MAP高値'
     else interpretation = 'MAP正常範囲（65〜110 mmHg）'
 
     return { map: mapVal.toFixed(0), pp, severity, interpretation }

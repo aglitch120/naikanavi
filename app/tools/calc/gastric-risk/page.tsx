@@ -21,7 +21,7 @@ export default function GastricRiskPage() {
         <div key={r.group} className={`p-4 rounded-xl border border-br ${r.color}`}>
           <p className="text-sm font-bold text-tx">{r.group}</p>
           <p className="text-xs text-muted mt-1">{r.conditions}</p>
-          <p className="text-xs font-medium text-tx mt-1">推奨サーベイランス間隔: {r.interval}</p>
+          <p className="text-xs font-medium text-tx mt-1">参考サーベイランス間隔: {r.interval}</p>
         </div>
       ))}</div>
     </CalculatorLayout>
