@@ -1003,7 +1003,7 @@ function MatchProbabilityCard({
       <div className="bg-s0 border border-br rounded-xl p-4 relative overflow-hidden cursor-pointer" onClick={onShowProModal}>
         <div className="flex items-center gap-2 mb-3">
           <span className="text-sm">📊</span>
-          <p className="text-sm font-bold text-tx">マッチング成功確率</p>
+          <p className="text-sm font-bold text-tx">マッチング競争度シミュレーション</p>
         </div>
         <div className="relative">
           <div className="space-y-3 filter blur-[6px] pointer-events-none select-none" aria-hidden="true">
@@ -1045,7 +1045,7 @@ function MatchProbabilityCard({
     <div className="bg-s0 border border-br rounded-xl p-4 relative overflow-hidden">
       <div className="flex items-center gap-2 mb-3">
         <span className="text-sm">📊</span>
-        <p className="text-sm font-bold text-tx">マッチング成功確率</p>
+        <p className="text-sm font-bold text-tx">マッチング競争度シミュレーション</p>
       </div>
 
       {result.perHospital.length === 0 ? (
@@ -1094,10 +1094,9 @@ function MatchProbabilityCard({
 
           {/* 但し書き */}
           <p className="text-[9px] text-muted leading-relaxed mt-2">
-            ※ JRMP公式データ（2021-2025）の倍率・第1志望率・充足率から算出した統計的な推定値です。
-            個人の能力・面接力・筆記試験の結果等は考慮されていません。
-            「競争緩」と表示される病院は、第1志望として登録する受験生が定員より少ないことを意味しますが、面接等の選考は行われます。
-            実際のマッチング結果を保証するものではありません。
+            ※ このシミュレーションは「席がどれだけ埋まりやすいか」を示すもので、あなたがマッチする確率ではありません。
+            実際のマッチングは病院側の選考（面接・筆記試験・書類）で決まります。志望病院を増やすことでアンマッチリスクは下がりますが、個別の病院に受かりやすくなるわけではありません。
+            JRMP公式データ（2021-2025）に基づく統計的な参考値です。
           </p>
         </div>
       )}

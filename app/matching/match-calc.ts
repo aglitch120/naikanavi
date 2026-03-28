@@ -109,21 +109,21 @@ export function calculateMatchProbability(
 
   if (totalProbability >= 95) {
     safetyLevel = 'excellent'
-    recommendation = `推定マッチ確率${totalProbability}%。安全な志望リストです。面接対策に集中しましょう。`
+    recommendation = `競争度スコア${totalProbability}%。席の競争面では安全なリストです。あとは面接・筆記対策に集中しましょう。`
   } else if (totalProbability >= 85) {
     safetyLevel = 'good'
-    recommendation = `推定マッチ確率${totalProbability}%。良いバランスです。あと1〜2院追加するとさらに安心です。`
+    recommendation = `競争度スコア${totalProbability}%。良いバランスです。あと1〜2院追加するとアンマッチリスクがさらに下がります。`
   } else if (totalProbability >= 70) {
     safetyLevel = 'warning'
     const needed = estimateHospitalsNeeded(totalProbability)
-    recommendation = `推定マッチ確率${totalProbability}%。本気倍率2倍以下の病院をあと${needed}院追加すると安心です。`
+    recommendation = `競争度スコア${totalProbability}%。倍率の低い病院をあと${needed}院追加するとアンマッチリスクが下がります。`
   } else {
     safetyLevel = 'danger'
     const avgHonki = perHospital.reduce((s, h) => s + h.honkiBairitsu, 0) / perHospital.length
     if (avgHonki > 3) {
-      recommendation = `推定マッチ確率${totalProbability}%。競争の激しい病院に偏っています。本気倍率2倍以下の病院を追加しましょう。`
+      recommendation = `競争度スコア${totalProbability}%。競争の激しい病院に偏っています。倍率の低い病院を追加してアンマッチを防ぎましょう。`
     } else {
-      recommendation = `推定マッチ確率${totalProbability}%。志望先を増やすことを検討してください。3〜5院で95%を目指しましょう。`
+      recommendation = `競争度スコア${totalProbability}%。志望先を増やしてアンマッチリスクを下げましょう。`
     }
   }
 
