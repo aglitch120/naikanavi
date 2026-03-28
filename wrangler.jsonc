@@ -1,21 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "pages_build_output_dir": ".open-next/assets",
-  "main": ".open-next/worker.js",
   "name": "iwor",
+  "pages_build_output_dir": ".open-next/assets",
   "compatibility_date": "2025-09-27",
   "compatibility_flags": [
     "nodejs_compat"
-  ],
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "STATIC_ASSETS"
-  },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "iwor"
-    }
   ],
   "observability": {
     "enabled": true
