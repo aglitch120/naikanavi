@@ -1,5 +1,3 @@
-export const runtime = 'edge'
-
 import { getAllPostSlugs } from '@/lib/mdx'
 import fs from 'fs'
 import path from 'path'
