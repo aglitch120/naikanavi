@@ -16,7 +16,7 @@ export default function RockallPage() {
   const result = useMemo(() => {
     const score = [age, shock, comorbidity, diagnosis, stigmata].reduce((a, b) => a + parseInt(b), 0)
     const severity: 'ok'|'wn'|'dn' = score <= 2 ? 'ok' : score <= 5 ? 'wn' : 'dn'
-    const label = score <= 2 ? '低リスク — 再出血率 <5%、死亡率 <1%' : score <= 5 ? '中リスク — 再出血率 ~25%、死亡率 ~10%' : '高リスク — 再出血率 >40%、死亡率 >20%'
+    const label = score <= 2 ? '低リスク — 再出血率 ~5%（内視鏡後スコア）' : score <= 5 ? '中リスク — 再出血率 ~25%、死亡率 ~10-15%' : '高リスク — 再出血率 >40%、死亡率 >25%。最終判断は臨床医による'
     return { score, severity, label }
   }, [age, shock, comorbidity, diagnosis, stigmata])
 

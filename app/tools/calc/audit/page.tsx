@@ -135,9 +135,10 @@ export default function AuditPage() {
           severity={result.severity}
           details={[
             { label: '参考対応', value: result.recommendation },
-            { label: '低リスク', value: '0〜7' },
-            { label: '危険飲酒', value: '8〜15' },
-            { label: '依存疑い', value: '20以上' },
+            { label: '低リスク飲酒', value: '0〜7点' },
+            { label: '危険な飲酒（ハザーダス）', value: '8〜15点' },
+            { label: '有害な飲酒（ハームフル）', value: '16〜19点' },
+            { label: 'アルコール依存疑い', value: '20〜40点' },
           ]}
         />
       }

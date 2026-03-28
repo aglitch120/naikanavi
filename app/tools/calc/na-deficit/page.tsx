@@ -16,7 +16,7 @@ export default function NaDeficitPage() {
   const [sex, setSex] = useState('male')
   const [weight, setWeight] = useState('60')
   const [currentNa, setCurrentNa] = useState('125')
-  const [targetNa, setTargetNa] = useState('135')
+  const [targetNa, setTargetNa] = useState('130')
 
   const result = useMemo(() => {
     const w = parseFloat(weight)
@@ -45,18 +45,21 @@ export default function NaDeficitPage() {
       category={categoryLabels[toolDef.category]}
       categoryIcon={categoryIcons[toolDef.category]}
       result={result && (
-        <ResultCard
-          label="Na補充必要量"
-          value={result.deficit}
-          unit="mEq"
-          interpretation="⚠️ 最大10 mEq/L以下（推奨目標は6-8 mEq/L/日）。ODS予防"
-          severity="wn"
-          details={[
-            { label: 'TBW', value: `${result.tbw} L` },
-            { label: 'Na上昇幅', value: `${result.delta} mEq/L` },
-            { label: '3% NaCl換算', value: `約${result.threePercentNaCl} mL` },
-          ]}
-        />
+        <div className="space-y-2">
+          <ResultCard
+            label="Na補充必要量"
+            value={result.deficit}
+            unit="mEq"
+            interpretation="⚠️ 最大10 mEq/L以下（推奨目標は6-8 mEq/L/日）。ODS予防"
+            severity="wn"
+            details={[
+              { label: 'TBW', value: `${result.tbw} L` },
+              { label: 'Na上昇幅', value: `${result.delta} mEq/L` },
+              { label: '3% NaCl換算', value: `約${result.threePercentNaCl} mL` },
+            ]}
+          />
+          <p className="text-[10px] text-wn px-1">※推定値。実際の投与量・速度は繰り返しのNa測定と臨床状態を考慮して決定</p>
+        </div>
       )}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs

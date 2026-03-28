@@ -68,7 +68,6 @@ export default function RansonPage() {
           ]}
         />
       }
-      explanation={undefined}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

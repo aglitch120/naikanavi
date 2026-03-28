@@ -578,7 +578,7 @@ export default function TnmStagingPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={resultNode}
-      explanation={<div className="text-sm text-muted"><p>T・N・Mを選択するとStageが自動表示されます。最新版はUICC TNM分類原著を参照してください。</p></div>}
+      explanation={<div className="text-sm text-muted space-y-1"><p>T・N・Mを選択するとStageが自動表示されます。最新版はUICC TNM分類原著を参照してください。</p><p className="text-xs text-wn font-medium">本ツールの結果は参考であり、正式なステージングは担当科専門医・カンファレンスで確定すること</p></div>}
       relatedTools={[{slug:'ann-arbor',name:'Ann Arbor(リンパ腫)'},{slug:'ecog',name:'ECOG PS'}]}
       references={toolDef.sources||[]}
     >

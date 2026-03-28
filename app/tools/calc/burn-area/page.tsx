@@ -36,7 +36,7 @@ export default function BurnAreaPage() {
 
   const severity = result.tbsa >= 30 ? 'dn' as const : result.tbsa >= 15 ? 'wn' as const : 'ok' as const
   const label = result.tbsa >= 30
-    ? '重症熱傷（TBSA≧30%）→ 専門施設搬送'
+    ? '重症熱傷（TBSA≧30%）— 専門施設への搬送を検討'
     : result.tbsa >= 15
       ? '中等症熱傷（TBSA 15-29%）→ 大量輸液必要'
       : result.tbsa > 0

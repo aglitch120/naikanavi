@@ -55,7 +55,7 @@ export default function CapriniPage() {
     let label = '', prevention = ''
     if (score <= 0) { label = '最低リスク'; prevention = '早期離床' }
     else if (score <= 2) { label = '低リスク'; prevention = '弾性ストッキング or IPC' }
-    else if (score <= 4) { label = '中リスク'; prevention = '薬物的予防（低分子ヘパリン等）' }
+    else if (score <= 4) { label = '中リスク'; prevention = 'IPC推奨。薬物的予防は高リスク以上で検討（ACCP 2012）' }
     else { label = '高リスク'; prevention = '薬物的予防 + 弾性ストッキング/IPC' }
     return { score, severity, label, prevention }
   }, [checks])

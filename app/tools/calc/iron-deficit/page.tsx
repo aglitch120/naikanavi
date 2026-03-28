@@ -21,8 +21,8 @@ export default function Page() {
     // 貯蔵鉄: 体重>35kgで500mg、≤35kgで250mg
     const ironStores = w > 35 ? 500 : 250
     const deficit = w * (th - ah) * 2.4 + ironStores
-    // フェインジェクトは1回最大: 体重<50kgは500mg、≥50kgは1000mg
-    const maxPerSession = w < 50 ? 500 : 1000
+    // フェインジェクトは1回最大750mg（日本添付文書）
+    const maxPerSession = w < 50 ? 500 : 750
     const ferinjectTotal = Math.ceil(Math.max(0, deficit) / 500) * 500
     return { deficit: Math.max(0, deficit), ferinject: ferinjectTotal, ferinjectSessions: Math.ceil(ferinjectTotal / maxPerSession), maxPerSession }
   }, [weight, actualHb, targetHb])

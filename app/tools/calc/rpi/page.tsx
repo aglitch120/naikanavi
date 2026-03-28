@@ -12,7 +12,7 @@ const toolDef = getToolBySlug('rpi')!
 export default function Page() {
   const [retic, setRetic] = useState('')
   const [hct, setHct] = useState('')
-  const [normalHct] = useState('45')
+  const [normalHct, setNormalHct] = useState('45')
 
   const result = useMemo(() => {
     const r = parseFloat(retic), h = parseFloat(hct), nh = parseFloat(normalHct)
@@ -40,7 +40,7 @@ export default function Page() {
       )}>
       <NumberInput id="f1" label="網赤血球数 (%)" value={retic} onChange={setRetic} min={0} step={0.1} />
       <NumberInput id="f2" label="Hct (%)" value={hct} onChange={setHct} min={0} step={1} />
-      <p className="text-xs text-muted mt-1">※正常Hctは男性45%/女性41%前後。性別で調整を推奨</p>
+      <NumberInput id="f3" label="正常Hct (%)" value={normalHct} onChange={setNormalHct} min={1} step={1} hint="男性45% / 女性41%で計算（デフォルト: 男性45%）" />
     </CalculatorLayout>
   )
 }

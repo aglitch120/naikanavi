@@ -20,7 +20,7 @@ export default function CorrectedPhenytoinPage() {
 
     // Sheiner-Tozer式（アルブミン正常値 4.4 g/dL で正規化）
     const divisor = renal === 'normal'
-      ? 0.2 * (albVal / 4.4) + 0.1
+      ? 0.25 * (albVal / 4.4) + 0.1
       : 0.1 * (albVal / 4.4) + 0.1  // 腎不全時
 
     const corrected = lv / divisor
@@ -34,7 +34,7 @@ export default function CorrectedPhenytoinPage() {
       interpretation = '補正濃度は治療域内（10〜20 μg/mL）'
       severity = 'ok'
     } else {
-      interpretation = '補正濃度が治療域未満 — 増量を検討'
+      interpretation = '補正濃度が治療域未満 — 用量調整は担当医が判断'
       severity = 'wn'
     }
 

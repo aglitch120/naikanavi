@@ -13,7 +13,7 @@ const D_DEPTH = [
   { value: 'D3', label: 'D3: 皮下組織までの損傷', score: 4 },
   { value: 'D4', label: 'D4: 皮下組織を超える損傷', score: 5 },
   { value: 'D5', label: 'D5: 関節腔・体腔に至る損傷', score: 6 },
-  { value: 'DU', label: 'DU: 判定不能（壊死組織で覆われ深さ不明）', score: 0 },
+  { value: 'DU', label: 'DU: 判定不能（壊死組織で覆われ深さ不明 — 実際はD3-D5相当の可能性）', score: 4 },
 ]
 const E_EXUDATE = [
   { value: 'e0', label: 'e0: なし', score: 0 },

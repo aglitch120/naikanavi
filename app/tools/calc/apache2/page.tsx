@@ -91,7 +91,7 @@ function crScore(v: number, arf: boolean): number {
     if (v >= 2) return 3
     if (v >= 1.5) return 2
     if (v >= 0.6) return 0
-    return 2
+    return 0
   })()
   return arf ? base * 2 : base
 }

@@ -14,7 +14,7 @@ export default function BPSPage(){
   const [vals,setVals]=useState<Record<string,string>>(Object.fromEntries(items.map(i=>[i.id,'1'])))
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((s,v)=>s+Number(v),0)
-    return {score,severity:score>=6?'wn' as const:'ok' as const,label:score>=6?'有意な疼痛あり（≧6）→ 鎮痛薬投与/増量':'疼痛なし/軽度（3-5）'}
+    return {score,severity:score>=5?'wn' as const:'ok' as const,label:score>=5?'疼痛あり（≧5）— 鎮痛管理プロトコルに従い医師・看護師が評価':'疼痛なし/軽度（3-4）'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

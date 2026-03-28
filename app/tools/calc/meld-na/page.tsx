@@ -18,9 +18,11 @@ export default function MeldNaPage() {
   const result = useMemo(() => {
     let bil = parseFloat(bilirubin)
     let crVal = parseFloat(cr)
-    const inrVal = parseFloat(inr)
+    let inrVal = parseFloat(inr)
     let naVal = parseFloat(na)
     if (!bil || !crVal || !inrVal || !naVal) return null
+
+    if (inrVal < 1) inrVal = 1
 
     if (bil < 1) bil = 1
     if (crVal < 1) crVal = 1

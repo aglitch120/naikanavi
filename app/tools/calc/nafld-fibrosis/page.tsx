@@ -40,14 +40,14 @@ export default function NAFLDFibrosisPage() {
   return (
     <CalculatorLayout
       slug="nafld-fibrosis"
-      title="NAFLD線維化スコア (NFS)"
-      titleEn="NAFLD Fibrosis Score"
-      description="非アルコール性脂肪肝疾患(NAFLD)における肝線維化の進行度を非侵襲的に評価。肝生検の代替スクリーニング。"
+      title="MASLD線維化スコア (NFS)"
+      titleEn="MASLD Fibrosis Score (formerly NAFLD)"
+      description="代謝機能障害関連脂肪性肝疾患(MASLD、旧NAFLD)における肝線維化の進行度を非侵襲的に評価。肝生検の代替スクリーニング。"
       category="hepatology"
-      categoryIcon="🫁"
+      categoryIcon="🔬"
       result={result && (
         <ResultCard
-          label="NAFLD線維化スコア"
+          label="MASLD線維化スコア"
           value={`${result.nfs}`}
           severity={result.severity}
           details={[

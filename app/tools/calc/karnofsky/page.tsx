@@ -31,7 +31,7 @@ export default function KarnofskyPage() {
     if (selected >= 90) ecogEquiv = 'ECOG PS 0'
     else if (selected >= 70) ecogEquiv = 'ECOG PS 1'
     else if (selected >= 50) ecogEquiv = 'ECOG PS 2'
-    else if (selected >= 30) ecogEquiv = 'ECOG PS 3'
+    else if (selected >= 40) ecogEquiv = 'ECOG PS 3'
     else if (selected >= 10) ecogEquiv = 'ECOG PS 4'
     else ecogEquiv = 'ECOG PS 5'
   }

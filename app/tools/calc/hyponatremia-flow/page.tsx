@@ -39,11 +39,11 @@ function getDiagnosis(osm: string, uosm: string, vol: string, una: string): Diag
   if (osm !== 'hypo') return null
   if (uosm === 'dilute') return { title: '水中毒 / 心因性多飲', detail: '腎の希釈能は正常。水制限が基本治療。Beer potomania、低栄養も鑑別。', severity: 'wn' }
   if (!vol) return null
-  if (vol === 'hypo' && una === 'low') return { title: '腎外性Na喪失', detail: '嘔吐・下痢・第三腔貯留・熱傷 → 生食輸液で補正。原因の治療。', severity: 'wn' }
+  if (vol === 'hypo' && una === 'low') return { title: '腎外性Na喪失', detail: '嘔吐・下痢・第三腔貯留・熱傷 → 生食輸液で補正。原因の治療。（参考。実際の治療は担当医が判断）', severity: 'wn' }
   if (vol === 'hypo' && una === 'high') return { title: '腎性Na喪失', detail: '利尿薬・塩類喪失性腎症・副腎不全・CSW → 利尿薬中止、必要に応じフルドロコルチゾン。', severity: 'dn' }
   if (vol === 'eu' && una === 'low') return { title: '甲状腺機能低下症', detail: 'TSH・fT4確認 → レボチロキシン補充。', severity: 'wn' }
-  if (vol === 'eu' && una === 'high') return { title: 'SIADH / 副腎不全', detail: 'SIADH: 水制限800-1000mL/日。副腎不全: コルチゾール測定→ヒドロコルチゾン補充。', severity: 'dn' }
-  if (vol === 'hyper' && una === 'low') return { title: '心不全 / 肝硬変 / ネフローゼ', detail: '有効循環血液量低下 → 水・Na制限+利尿薬。原疾患の治療。', severity: 'dn' }
+  if (vol === 'eu' && una === 'high') return { title: 'SIADH / 副腎不全', detail: 'SIADH: 水制限800-1000mL/日。副腎不全: コルチゾール測定→ヒドロコルチゾン補充。（参考。実際の治療は担当医が判断）', severity: 'dn' }
+  if (vol === 'hyper' && una === 'low') return { title: '心不全 / 肝硬変 / ネフローゼ', detail: '有効循環血液量低下 → 水・Na制限+利尿薬。原疾患の治療。（参考。実際の治療は担当医が判断）', severity: 'dn' }
   if (vol === 'hyper' && una === 'high') return { title: '腎不全', detail: 'eGFR低下による水排泄障害 → 透析考慮。', severity: 'dn' }
   return null
 }

@@ -29,8 +29,8 @@ export default function Gad7Page() {
     let label = '', severity: 'ok'|'wn'|'dn' = 'ok'
     if (total <= 4) { label = '不安症状なし〜最小限'; severity = 'ok' }
     else if (total <= 9) { label = '軽度不安'; severity = 'ok' }
-    else if (total <= 14) { label = '中等度不安 — 治療を検討'; severity = 'wn' }
-    else { label = '重度不安 — 積極的治療が必要'; severity = 'dn' }
+    else if (total <= 14) { label = '中等度不安 — 専門家への相談を検討'; severity = 'wn' }
+    else { label = '重度不安 — 専門家への受診を推奨'; severity = 'dn' }
     return { total, severity, label }
   }, [scores])
 

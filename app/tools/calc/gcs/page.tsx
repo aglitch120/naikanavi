@@ -37,10 +37,9 @@ function getSeverity(score: number): 'ok' | 'wn' | 'dn' {
 }
 
 function getLabel(score: number): string {
-  if (score >= 13) return '軽症'
-  if (score >= 9) return '中等症'
-  if (score >= 4) return '重症 — 挿管を考慮'
-  return '最重症（GCS 3）— 気道確保・挿管を考慮'
+  if (score >= 13) return '軽症（13-15）'
+  if (score >= 9) return '中等症（9-12）'
+  return '重症（3-8）— GCS≦8は気道確保を考慮'
 }
 
 export default function GcsPage() {

@@ -13,8 +13,8 @@ export default function AbpcScorePage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries(items.map(i=>[i.id,false])))
   const result=useMemo(()=>{
     const count=items.filter(i=>checks[i.id]).length
-    if(count>=4) return {count,severity:'wn' as const,label:`${count}/6項目: 非定型肺炎の可能性高い → マクロライド系 or キノロン系`}
-    return {count,severity:'ok' as const,label:`${count}/6項目: 細菌性肺炎の可能性高い → βラクタム系`}
+    if(count>=4) return {count,severity:'wn' as const,label:`${count}/6項目: 非定型肺炎の可能性高い → マクロライド系等が選択肢（担当医が判断）`}
+    return {count,severity:'ok' as const,label:`${count}/6項目: 細菌性肺炎の可能性高い → βラクタム系等が選択肢（担当医が判断）`}
   },[checks])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

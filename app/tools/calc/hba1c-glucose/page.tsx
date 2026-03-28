@@ -40,7 +40,7 @@ export default function HbA1cGlucosePage() {
         interpretation = '境界域（糖尿病予備群） — 生活習慣の改善が示される'
         severity = 'wn'
       } else {
-        interpretation = '正常範囲（4.6〜6.2%）'
+        interpretation = '正常範囲（4.6〜5.5%）'
       }
 
       return {

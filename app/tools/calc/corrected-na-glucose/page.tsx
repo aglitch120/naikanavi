@@ -14,8 +14,9 @@ export default function CorrectedNaGlucosePage() {
     const katz = n + 1.6 * (g - 100) / 100
     const hillier = n + 2.4 * (g - 100) / 100
     let severity: 'ok' | 'wn' | 'dn' = 'ok'
-    if (katz < 135) severity = 'wn'
-    if (katz < 130) severity = 'dn'
+    // 補正Na値は「真の低Na血症か」の評価用。DKA/HHS文脈での解釈に注意
+    if (katz < 130) severity = 'wn'
+    if (katz < 125) severity = 'dn'
     return { katz: katz.toFixed(1), hillier: hillier.toFixed(1), severity }
   }, [na, glu])
   return (

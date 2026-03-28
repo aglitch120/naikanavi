@@ -28,6 +28,7 @@ export default function NyhaPage() {
           <p>HFrEF（EF低下型心不全）の基本薬物療法（Class II-IV）:</p>
           <p>RAS阻害薬（ACE-I, ARB, またはARNIから1剤選択）+ β遮断薬 + MRA + SGLT2i</p>
           <p className="text-xs text-dn font-medium">※ ACE-I/ARBとARNIの併用は禁忌。いずれか1剤を選択すること。</p>
+          <p className="text-xs text-muted">（参考情報。処方は心不全専門医が個別に判断）</p>
         </div>
       }
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}

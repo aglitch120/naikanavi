@@ -24,7 +24,7 @@ export default function TimiPage() {
     const score = criteria.filter(c => checks[c.id]).length
     const risk = ['4.7%', '4.7%', '8.3%', '13.2%', '19.9%', '26.2%', '40.9%', '40.9%'][score]
     const severity: 'ok' | 'wn' | 'dn' = score <= 2 ? 'ok' : score <= 4 ? 'wn' : 'dn'
-    const label = score <= 2 ? '低リスク' : score <= 4 ? '中リスク — 早期侵襲的戦略を検討' : '高リスク — 緊急侵襲的戦略を強く検討'
+    const label = score <= 2 ? '低リスク' : score <= 4 ? '中リスク — 早期侵襲的戦略を検討' : '高リスク — 循環器科と早期協議を検討（参考情報）'
     return { score, risk, severity, label }
   }, [checks])
 

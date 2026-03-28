@@ -18,7 +18,7 @@ export default function ASPECTSPage(){
     const involved=regions.filter(r=>checks[r.id]).length
     const score=10-involved
     const sev=score>=8?'ok' as const:score>=6?'wn' as const:'dn' as const
-    const label=score>=8?'良好（≧8）: 血管内治療の適応あり':score>=6?'中間（6-7）: 血管内治療を個別に判断':`不良（≦5）: 広範梗塞。治療ベネフィットが限定的（スコア${score}点）`
+    const label=score>=8?'良好（≧8）: 広範梗塞なし':score>=6?'中間（6-7）: 早期虚血変化あり — 治療方針は専門医が総合判断':`不良（≦5）: 広範な早期虚血変化 — リスク・ベネフィット比の慎重な評価が必要（スコア${score}点）`
     return {score,severity:sev,label}
   },[checks])
   return(

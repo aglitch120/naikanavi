@@ -100,7 +100,7 @@ const CATEGORIES: Category[] = [
         title: 'DPP-4阻害薬 + メトホルミン',
         drugs: [
           { brand: 'エクメット配合錠 LD/HD', generic: 'ビルダグリプチン/メトホルミン', composition: 'LD: ビルダグリプチン 50mg + メトホルミン 250mg / HD: 50mg + 500mg', note: '1日2回投与' },
-          { brand: 'イニシンク配合錠', generic: 'アログリプチン/メトホルミン', composition: 'アログリプチン 25mg + メトホルミン 500mg', note: '1日1回投与' },
+          { brand: 'イニシンク配合錠', generic: 'アログリプチン/メトホルミン', composition: 'アログリプチン 12.5mg + メトホルミン 500mg', note: '1日1回投与' },
         ],
       },
       {

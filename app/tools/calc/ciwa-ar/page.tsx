@@ -21,9 +21,9 @@ export default function CIWAArPage(){
   const [vals,setVals]=useState<Record<string,string>>(Object.fromEntries(items.map(i=>[i.id,'0'])))
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((s,v)=>s+Number(v),0)
-    if(score>=20) return {score,severity:'dn' as const,label:'重症（≧20）: ICU管理・積極的BZD投与。振戦せん妄(DT)の高リスク'}
-    if(score>=10) return {score,severity:'wn' as const,label:'中等症（10-19）: BZD投与検討。症状に基づくプロトコル(symptom-triggered)'}
-    return {score,severity:'ok' as const,label:'軽症（<10）: 経過観察。BZD不要の場合が多い'}
+    if(score>=20) return {score,severity:'dn' as const,label:'重症（≧20）: DT高リスク — 担当医の指示に従い管理'}
+    if(score>=10) return {score,severity:'wn' as const,label:'中等症（10-19）: 症状に基づくプロトコル(symptom-triggered)で担当医が評価'}
+    return {score,severity:'ok' as const,label:'軽症（<10）: 経過観察'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

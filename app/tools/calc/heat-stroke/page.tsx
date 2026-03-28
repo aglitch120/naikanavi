@@ -50,6 +50,7 @@ export default function HeatStrokePage() {
       )}
       references={[
         { text: '日本救急医学会 熱中症診療ガイドライン 2015', url: 'https://www.jaam.jp/info/2015/pdf/info-20150413.pdf' },
+        { text: '※2024年改訂版が公表されています。最新の分類・対応については日本救急医学会の公式サイトでご確認ください。' },
       ]}
     >
       <p className="text-sm font-medium text-tx mb-3">該当する症状を含む最も重い分類を選択</p>

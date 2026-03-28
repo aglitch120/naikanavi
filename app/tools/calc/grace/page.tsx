@@ -72,7 +72,7 @@ function getInHospitalMortality(score: number): { risk: string; severity: 'ok' |
   return {
     risk: '高リスク（院内死亡率 >3%）',
     severity: 'dn',
-    recommendation: '緊急〜早期の侵襲的戦略（24時間以内のCAG）を強く検討。GPIIb/IIIa阻害薬の使用も検討。',
+    recommendation: '緊急〜早期の侵襲的戦略（24時間以内のCAG）を強く検討。詳細はガイドライン参照。',
   }
 }
 

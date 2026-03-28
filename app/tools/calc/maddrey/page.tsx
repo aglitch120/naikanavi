@@ -19,7 +19,7 @@ export default function Page() {
     if (!p || !pc || !b) return null
     const mdf = 4.6 * (p - pc) + b
     const sev = mdf >= 32 ? 'dn' as const : 'ok' as const
-    const label = mdf >= 32 ? '重症 — ステロイド治療の適応' : '非重症'
+    const label = mdf >= 32 ? '重症 — ステロイド治療の適応を検討する基準（DF≧32）。最終判断は担当医による' : '非重症'
     return { mdf, sev, label }
   }, [pt, ptControl, bilirubin])
 

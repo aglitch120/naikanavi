@@ -5,7 +5,7 @@ import ResultCard from '@/components/tools/ResultCard'
 import { RadioGroup, CheckItem } from '@/components/tools/InputFields'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('pecarn')!
-const u2=[{id:'gcs_alt',label:'GCSの変化/意識状態異常'},{id:'skull_fx',label:'触知可能な頭蓋骨骨折'},{id:'loc5',label:'5秒以上の意識消失'},{id:'severe_mech',label:'重度の受傷機転'},{id:'scalp_hematoma',label:'後頭部以外の頭皮血腫（2歳未満は重要サイン）'},{id:'abnormal_behavior',label:'保護者から見て普段と異なる行動'}]
+const u2=[{id:'gcs_alt',label:'GCSの変化/意識状態異常'},{id:'skull_fx',label:'触知可能な頭蓋骨骨折'},{id:'loc5',label:'5秒以上の意識消失'},{id:'severe_mech',label:'重度の受傷機転'},{id:'scalp_hematoma',label:'前頭部以外の頭皮血腫（後頭部・側頭部・頭頂部）'},{id:'abnormal_behavior',label:'保護者から見て普段と異なる行動'}]
 const o2=[{id:'gcs_alt2',label:'GCSの変化/意識状態異常'},{id:'signs_skull',label:'頭蓋底骨折の徴候'},{id:'loc_any',label:'意識消失あり'},{id:'vomit',label:'嘔吐'},{id:'severe_mech2',label:'重度の受傷機転'},{id:'severe_headache',label:'重度の頭痛'}]
 export default function PECARNPage(){
   const [age,setAge]=useState<'under2'|'over2'>('under2')

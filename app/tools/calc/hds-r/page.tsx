@@ -9,7 +9,7 @@ const items=[
   {id:'age',label:'1. 年齢（2年までの誤差は正解）',max:1,options:[{label:'不正解',value:'0'},{label:'正解',value:'1'}]},
   {id:'date',label:'2. 今日の日付（年月日曜日、各1点）',max:4,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'},{label:'3点',value:'3'},{label:'4点',value:'4'}]},
   {id:'place',label:'3. 今いる場所（自発2点、5秒後ヒントで正解1点）',max:2,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'}]},
-  {id:'words',label:'4. 3つの言葉の復唱',max:3,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'},{label:'3点',value:'3'}]},
+  {id:'words',label:'4. 3つの言葉の復唱（採点なし — 遅延再生の前提として実施）',max:0,options:[{label:'実施済み',value:'0'}]},
   {id:'calc',label:'5. 100-7を2回（93→86、各1点）',max:2,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'}]},
   {id:'digits',label:'6. 数字の逆唱（6-8-2→2-8-6、3-5-2-9→9-2-5-3）',max:2,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'}]},
   {id:'recall',label:'7. 3つの言葉の遅延再生（自発2点/ヒント1点、各）',max:6,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'},{label:'3点',value:'3'},{label:'4点',value:'4'},{label:'5点',value:'5'},{label:'6点',value:'6'}]},

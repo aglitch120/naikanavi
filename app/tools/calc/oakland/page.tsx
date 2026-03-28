@@ -26,7 +26,7 @@ export default function OaklandPage() {
     const total = (scoreMap.age[age] || 0) + (scoreMap.sex[sex] || 0) + (scoreMap.prevAdm[prevAdm] || 0) +
       (scoreMap.dre[dre] || 0) + (scoreMap.hr[hr] || 0) + (scoreMap.sbp[sbp] || 0) + (scoreMap.hb[hb] || 0)
     let severity: 'ok' | 'wn' | 'dn' = 'ok', interpretation = ''
-    if (total <= 8) { interpretation = `${total}点 — 安全に帰宅可能（95%確率で安全）` }
+    if (total <= 8) { interpretation = `${total}点 — 低リスク（外来管理を検討可能）。帰宅判断は臨床医による` }
     else if (total <= 12) { interpretation = `${total}点 — 入院観察を考慮`; severity = 'wn' }
     else { interpretation = `${total}点 — 入院加療が必要`; severity = 'dn' }
     return { total, severity, interpretation }
@@ -43,7 +43,7 @@ export default function OaklandPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`Oakland = ${result.total}点`} interpretation={result.interpretation} />}
-      explanation={<div className="text-sm text-muted"><p>≦8点で安全な帰宅を予測。下部消化管出血の入院判断に使用。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>≦8点で低リスクと判定。帰宅・外来管理の可否は臨床医が総合的に判断する。下部消化管出血の入院判断に使用。</p></div>}
       relatedTools={[{ slug: 'glasgow-blatchford', name: 'Glasgow-Blatchford' }, { slug: 'rockall', name: 'Rockall' }]}
       references={toolDef.sources || []}
     >

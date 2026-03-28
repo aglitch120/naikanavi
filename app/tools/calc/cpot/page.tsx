@@ -15,7 +15,7 @@ export default function CPOTPage(){
   const [vals,setVals]=useState<Record<string,string>>(Object.fromEntries(items.map(i=>[i.id,'0'])))
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((s,v)=>s+Number(v),0)
-    return {score,severity:score>=3?'wn' as const:'ok' as const,label:score>=3?'疼痛あり（≧3）→ 鎮痛薬の投与/増量を検討':'疼痛なし/軽度（0-2）'}
+    return {score,severity:score>=3?'wn' as const:'ok' as const,label:score>=3?'疼痛あり（≧3）→ 疼痛管理プロトコルに従い医師・看護師が評価':'疼痛なし/軽度（0-2）'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

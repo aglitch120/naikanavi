@@ -27,7 +27,7 @@ export default function CentorPage() {
     if (score <= 0) recommendation = '検査・治療不要'
     else if (score <= 1) recommendation = '迅速抗原検査不要（GAS確率 <10%）'
     else if (score <= 3) recommendation = '迅速抗原検査を検討'
-    else recommendation = '経験的抗菌薬投与 or 迅速検査'
+    else recommendation = '迅速検査を検討（治療方針は担当医が判断）'
 
     return { score: Math.max(score, 0), gasProb, severity, recommendation }
   }, [fever, cough, tonsillar, lymph, ageGroup])

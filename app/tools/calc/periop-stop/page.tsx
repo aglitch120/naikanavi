@@ -13,8 +13,9 @@ export default function PeriopStopPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]} result={null}
       explanation={undefined}
-      relatedTools={[]} references={[{text:'日本麻酔科学会. 術前絶飲食ガイドライン 他'},{text:'各薬剤の添付文書・ガイドライン'}]}
+      relatedTools={[]} references={[{text:'各薬剤添付文書・日本循環器学会ガイドライン'},{text:'各学会ガイドライン（麻酔科・循環器科・糖尿病内科等）'}]}
     >
+      <p className="text-[10px] text-wn bg-wnl border border-wnb rounded-lg px-3 py-2 mb-4">休薬期間は担当科（循環器科・麻酔科）と相談のうえ個別に決定すること</p>
       <div className="space-y-6">{drugs.map(c=>(
         <div key={c.cat}><p className="text-sm font-bold text-ac mb-2">{c.cat}</p>
           <div className="space-y-2">{c.items.map(d=>(

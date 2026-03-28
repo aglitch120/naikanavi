@@ -133,7 +133,7 @@ const LAB_DATA: LabCategory[] = [
       { name: 'Trop-T (hs)', unit: 'ng/mL', male: '< 0.014', female: '< 0.014', note: '高感度。99パーセンタイル値' },
       { name: 'Trop-I (hs)', unit: 'pg/mL', male: '< 26.2', female: '< 11.6', note: '試薬依存（施設の99パーセンタイル値を参照）。例: Abbott hs-cTnI < 34.2（♂）/ < 15.6（♀）pg/mL' },
       { name: 'BNP', unit: 'pg/mL', male: '< 18.4', female: '< 18.4', note: '正常上限(参考値)。心不全スクリーニングカットオフは <100 pg/mL' },
-      { name: 'NT-proBNP', unit: 'pg/mL', male: '< 125', female: '< 125', note: '心不全除外カットオフ: <50歳 450 / 50-75歳 900 / >75歳 1800 pg/mL (ESC 2021)', ageAlt: [75, '< 1800', '< 1800'] },
+      { name: 'NT-proBNP', unit: 'pg/mL', male: '< 125', female: '< 125', note: '心不全除外カットオフ: <50歳 <450 / 50-75歳 <900 / >75歳 <1800 pg/mL (ESC 2021)', ageAlt: [50, '< 450', '< 450'] },
       { name: 'CK', unit: 'U/L', male: '59〜248', female: '41〜153' },
       { name: 'CK-MB', unit: 'ng/mL', male: '< 5.0', female: '< 5.0' },
     ],

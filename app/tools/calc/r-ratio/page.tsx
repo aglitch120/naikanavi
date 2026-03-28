@@ -35,7 +35,7 @@ export default function RRatioPage() {
       <NumberInput label="ALT (U/L)" value={alt} onChange={setAlt} />
       <NumberInput label="ALT基準上限 (U/L)" value={altUln} onChange={setAltUln} />
       <NumberInput label="ALP (U/L)" value={alp} onChange={setAlp} />
-      <NumberInput label="ALP基準上限 (U/L)" value={alpUln} onChange={setAlpUln} />
+      <NumberInput label="ALP基準上限 (U/L)" value={alpUln} onChange={setAlpUln} hint="JSCC法(慣用値)340 U/L。IFCC法の場合は約115 U/Lに変更してください" />
     </CalculatorLayout>
   )
 }

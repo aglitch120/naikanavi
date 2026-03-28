@@ -12,8 +12,8 @@ export default function IROADPage(){
   const result=useMemo(()=>{
     const hasI=iItems.some(i=>checks[i.id])
     const roadCount=road.filter(i=>checks[i.id]).length
-    if(hasI) return {severity:'dn' as const,label:'重症（I群）: ICU管理 + 広域抗菌薬（CTRX or ABPC/SBT + AZM（重症例でTAZ/PIPC考慮。MEPMは限定的に使用））'}
-    if(roadCount>=2) return {severity:'wn' as const,label:'中等症（ROAD 2項目以上）: 入院管理 + βラクタム + キノロン or マクロライド'}
+    if(hasI) return {severity:'dn' as const,label:'重症（I群）: ICU管理 + 広域抗菌薬（CTRX or ABPC/SBT + AZM（重症例でTAZ/PIPC考慮。MEPMは限定的に使用））（参考情報。抗菌薬の選択は担当医が判断）'}
+    if(roadCount>=2) return {severity:'wn' as const,label:'中等症（ROAD 2項目以上）: 入院管理 + βラクタム + キノロン or マクロライド（参考情報。抗菌薬の選択は担当医が判断）'}
     return {severity:'ok' as const,label:'軽症（ROAD 0-1項目）: 外来管理可 or 短期入院'}
   },[checks])
   return(

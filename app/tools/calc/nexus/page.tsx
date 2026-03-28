@@ -14,7 +14,7 @@ export default function NEXUSPage(){
   const result=useMemo(()=>{
     const pos=items.filter(i=>checks[i.id]).length
     if(pos>0) return {severity:'wn' as const,label:`${pos}項目陽性: 頚椎画像検査が必要`}
-    return {severity:'ok' as const,label:'全5項目陰性: 頚椎画像不要（感度99.6%）'}
+    return {severity:'ok' as const,label:'全5項目陰性: 低リスク（画像省略を検討できる）。最終判断は臨床医による（感度99.6%）'}
   },[checks])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

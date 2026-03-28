@@ -23,10 +23,10 @@ export default function MmsePage() {
     const total = scores.reduce((a, b) => a + b, 0)
     let severity: 'ok' | 'wn' | 'dn' = 'ok', interpretation = ''
     if (total >= 27) { interpretation = `${total}/30 — 正常範囲` }
-    else if (total >= 24) { interpretation = `${total}/30 — 軽度認知機能低下（MCI疑い）`; severity = 'wn' }
-    else if (total >= 20) { interpretation = `${total}/30 — 軽度認知症`; severity = 'wn' }
-    else if (total >= 10) { interpretation = `${total}/30 — 中等度認知症`; severity = 'dn' }
-    else { interpretation = `${total}/30 — 重度認知症`; severity = 'dn' }
+    else if (total >= 24) { interpretation = `${total}/30 — 軽度認知機能低下（MCI疑い）（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'wn' }
+    else if (total >= 20) { interpretation = `${total}/30 — 軽度認知症（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'wn' }
+    else if (total >= 10) { interpretation = `${total}/30 — 中等度認知症（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'dn' }
+    else { interpretation = `${total}/30 — 重度認知症（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'dn' }
     return { total, severity, interpretation }
   }, [scores])
   return (
