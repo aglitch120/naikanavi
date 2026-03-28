@@ -5,6 +5,8 @@ import {
   BUSYNESS_LABELS, ER_TYPES, SALARY_RANGES, MATCH_RATE_RANGES,
 } from './hospitals-data'
 import { calculateMatchProbability, MatchProbabilityResult } from './match-calc'
+import yearlyDataRaw from '@/lib/hospital-yearly-data.json'
+const yearlyData: Record<string, Record<string, { cap: number; matched: number; app: number; fc: number | null; honmei: number | null; bairitsu: number; matchRate: number }>> = yearlyDataRaw as any
 
 const MC = '#1B4F3A'
 const MCL = '#E8F0EC'
@@ -747,6 +749,46 @@ function HospitalCard({
                         {change > 0 ? '📈' : change < 0 ? '📉' : '→'} {years[0]}→{years[years.length-1]}: {change > 0 ? '+' : ''}{change}人（{pct > 0 ? '+' : ''}{pct}%）
                       </p>
                     })()}
+                  </div>
+                )
+              })()}
+
+              {/* 経年変化グラフ（5年分） */}
+              {(() => {
+                const yd = yearlyData[h.name]
+                if (!yd || Object.keys(yd).length < 2) return null
+                const years = Object.keys(yd).sort()
+                const bairitsuData = years.map(y => yd[y].bairitsu)
+                const matchRateData = years.map(y => yd[y].matchRate)
+                const appData = years.map(y => yd[y].app)
+                const maxApp = Math.max(...appData, 1)
+                const maxBairitsu = Math.max(...bairitsuData, 1)
+
+                return (
+                  <div style={!isPro ? { filter: 'blur(6px)', userSelect: 'none' } : undefined}>
+                    <p className="text-[9px] font-medium text-tx mb-2">経年変化（{years[0]}〜{years[years.length-1]}）</p>
+                    {/* 志望者数 + 倍率の複合グラフ */}
+                    <div className="flex items-end gap-1 h-20">
+                      {years.map((y, i) => {
+                        const appPct = appData[i] / maxApp * 100
+                        const isLatest = i === years.length - 1
+                        return (
+                          <div key={y} className="flex-1 flex flex-col items-center gap-0.5">
+                            <span className="text-[7px] font-bold" style={{ color: MC }}>{bairitsuData[i]}倍</span>
+                            <span className="text-[7px] text-muted">{appData[i]}人</span>
+                            <div className="w-full rounded-t relative" style={{ height: `${Math.max(appPct, 10)}%` }}>
+                              <div className="absolute inset-0 rounded-t" style={{ background: isLatest ? MC : '#DDD9D2', opacity: 0.7 }} />
+                              <div className="absolute bottom-0 left-0 right-0 rounded-t" style={{ height: `${Math.min(matchRateData[i], 100)}%`, background: isLatest ? MC : '#B0ADA6' }} />
+                            </div>
+                            <span className="text-[7px] text-muted">{y.slice(2)}</span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                    <div className="flex gap-3 mt-1 text-[7px] text-muted">
+                      <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm" style={{ background: MC }} /> 充足率</span>
+                      <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm" style={{ background: '#DDD9D2' }} /> 志望者数</span>
+                    </div>
                   </div>
                 )
               })()}
