@@ -467,12 +467,12 @@ export const tools: ToolDefinition[] = [
   // ── 電解質・輸液計算群 ──
   {
     slug: 'maintenance-fluid',
-    name: '維持輸液計算',
+    name: '維持輸液計算（4-2-1ルール）',
     nameEn: 'Maintenance Fluid Calculator',
-    description: '体重から維持輸液量を計算。病棟維持(25-30mL/kg/日)・術中(4-2-1ルール)・水分制限の3モード。',
+    description: '体重から維持輸液量を計算。4-2-1ルール（Holliday-Segar法）。主に術中輸液量の算出に使用。',
     category: 'electrolyte',
     tier: 2,
-    keywords: ['維持輸液', '4-2-1', 'Holliday-Segar', '輸液速度', '水分制限'],
+    keywords: ['維持輸液', '4-2-1', 'Holliday-Segar', '輸液速度'],
     relatedSlugs: ['na-deficit', 'free-water-deficit'],
     updatedAt: '2026-03',
     sources: [
