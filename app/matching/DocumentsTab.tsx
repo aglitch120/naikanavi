@@ -1169,6 +1169,7 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
           { label: 'マッチ者数', unit: '人', key: 'matched' },
           { label: '空席数', unit: '人', key: 'vacancy' },
           { label: '総志望者数', unit: '人', key: 'applicants' },
+          { label: '第1希望者数', unit: '人', key: 'honmeiIndex' as any, format: (_v: any, h: any) => h?.honmeiIndex && h?.applicants ? `${Math.round(h.honmeiIndex * h.applicants)}` : '—', pro: true },
           { label: 'マッチ率', unit: '%', key: 'matchRate', higher: 'good' },
           { label: '倍率', unit: '倍', key: 'popularity', format: (v: number) => v.toFixed(1), higher: 'good' },
           { label: '3年平均充足率', unit: '%', key: 'avgMatchRate3y' as any, higher: 'good', pro: true },
