@@ -21,7 +21,7 @@ export default function ADDRiskPage(){
   const result=useMemo(()=>{
     const catScores = cats.map(c=>c.items.some(i=>checks[i.id])?1:0) as number[]
     const score = catScores.reduce((a,b)=>a+b,0)
-    if(score>=2) return {score,severity:'dn' as const,label:'高リスク（2-3点）: 大動脈解離の可能性高い → 即座にCT造影'}
+    if(score>=2) return {score,severity:'dn' as const,label:'高リスク（2-3点）: 大動脈解離の可能性高い → CT造影を強く検討（最終判断は担当医）'}
     if(score===1) return {score,severity:'wn' as const,label:'中リスク（1点）: ADvISED研究ではADD-RS 0-1点+D-dimer<0.5で除外検討。CT造影も考慮'}
     return {score,severity:'ok' as const,label:'低リスク（0点）: D-dimer<0.5μg/mLで除外を支持する（確定的ではない）'}
   },[checks])

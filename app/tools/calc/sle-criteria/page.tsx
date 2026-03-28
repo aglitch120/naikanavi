@@ -71,7 +71,7 @@ export default function SLECriteriaPage() {
       score: total,
       met,
       label: met
-        ? 'SLE分類基準を満たす（≧10点）'
+        ? 'EULAR/ACR 2019 SLE分類基準を満たす（≧10点）※分類基準は診断基準ではない。確定診断は臨床的総合判断が必要'
         : `基準未達（${total}/10点）— 臨床的にSLEを疑う場合は経過観察`,
     }
   }, [ana, checks])

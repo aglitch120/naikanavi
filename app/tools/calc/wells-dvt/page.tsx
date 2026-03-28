@@ -26,7 +26,7 @@ function getInterpretation(score: number): { text: string; severity: 'ok' | 'wn'
     text: '低リスク',
     severity: 'ok',
     probability: '約5%',
-    recommendation: 'D-dimer検査を施行。陰性ならDVTを除外可能。',
+    recommendation: 'D-dimer検査を検討。陰性ならDVT除外を支持。',
   }
   if (score <= 2) return {
     text: '中リスク',
@@ -38,7 +38,7 @@ function getInterpretation(score: number): { text: string; severity: 'ok' | 'wn'
     text: '高リスク',
     severity: 'dn',
     probability: '約53%',
-    recommendation: '下肢静脈エコーを直接施行。陰性でも臨床的疑いが強ければ1週間後に再検。',
+    recommendation: '下肢静脈エコーを検討。陰性でも臨床的疑いが強ければ1週間後の再検を考慮。',
   }
 }
 

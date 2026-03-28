@@ -26,10 +26,10 @@ export default function WintersFormulaPage() {
 
     if (pco2Val) {
       if (pco2Val < expectedLow) {
-        interpretation = '実測pCO2 < 予測 — 呼吸性アルカローシスの合併'
+        interpretation = '実測pCO2 < 予測 — 呼吸性アルカローシスの合併を示唆'
         severity = 'wn'
       } else if (pco2Val > expectedHigh) {
-        interpretation = '実測pCO2 > 予測 — 呼吸性アシドーシスの合併'
+        interpretation = '実測pCO2 > 予測 — 呼吸性アシドーシスの合併を示唆'
         severity = 'dn'
       } else {
         interpretation = '適切な呼吸性代償（単純な代謝性アシドーシス）'

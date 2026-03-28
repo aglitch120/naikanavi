@@ -70,7 +70,7 @@ export default function DesignRPage() {
     const sc = (arr: {value:string;score:number}[], v: string) => arr.find(x => x.value === v)?.score ?? 0
     const scores = { d: sc(D_DEPTH, d), e: sc(E_EXUDATE, e), s: sc(S_SIZE, s), i: sc(I_INFLAM, i), g: sc(G_GRAN, g), n: sc(N_NECRO, n), p: sc(P_POCKET, p) }
     const total = Object.values(scores).reduce((a, b) => a + b, 0)
-    const notation = `${d}-${e}-${s}-${i}-${g}-${n}-${p}`
+    const notation = `${d}${e}${s}${i}${g}${n}${p}`
     return { total, notation, ...scores }
   }, [d, e, s, i, g, n, p])
 

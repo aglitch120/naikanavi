@@ -85,7 +85,7 @@ function getClassification(score: number): { grade: string; text: string; severi
   }
   return {
     grade: 'C',
-    text: 'Class C（重度・非代償性）— 周術期リスク極めて高い。肝臓専門医への相談を推奨',
+    text: 'Class C（重度・非代償性）— 周術期リスク極めて高い。肝臓専門医への相談を検討',
     severity: 'dn',
     survival1y: '45%',
     survival2y: '35%',

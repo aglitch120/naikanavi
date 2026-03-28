@@ -29,7 +29,7 @@ export default function Page() {
       result={result && (
         <ResultCard label="Maddrey DF" value={result.mdf.toFixed(1)} interpretation={result.label} severity={result.sev}
           details={[
-            { label: '≧32', value: '重症: プレドニゾロン 40mg/日×28日を検討（参考情報）' },
+            { label: '≧32', value: '重症: ステロイド治療を検討（用量・期間はガイドライン参照。担当医が決定）' },
             { label: '<32', value: '支持療法' },
             { label: 'Lille model', value: '治療7日後に再評価（>0.45で無効）' },
           ]} />

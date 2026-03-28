@@ -25,7 +25,7 @@ export default function HbA1cGlucosePage() {
       let interpretation = ''
       let severity: 'ok' | 'wn' | 'dn' = 'ok'
       if (a1c >= 10.0) {
-        interpretation = 'コントロール極めて不良 — 治療の見直し・入院管理を検討'
+        interpretation = 'コントロール極めて不良 — 専門医への紹介・治療の見直しを検討'
         severity = 'dn'
       } else if (a1c >= 8.0) {
         interpretation = 'コントロール不良 — 治療強化が必要（合併症進行リスク高）'
@@ -40,7 +40,7 @@ export default function HbA1cGlucosePage() {
         interpretation = '境界域（糖尿病予備群） — 生活習慣の改善が示される'
         severity = 'wn'
       } else {
-        interpretation = '正常範囲（4.6〜5.5%）'
+        interpretation = '正常範囲（4.6〜6.0%未満）'
       }
 
       return {

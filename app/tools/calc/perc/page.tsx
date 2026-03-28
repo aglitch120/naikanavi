@@ -26,7 +26,7 @@ export default function PercPage() {
     const severity: 'ok'|'dn' = anyPositive ? 'dn' : 'ok'
     const label = anyPositive
       ? 'PERC陽性 — PEを除外できない（D-dimer or CTを検討）'
-      : 'PERC陰性（全8項目なし）— PE除外可能（D-dimer不要）。※PEの事前確率が低い患者にのみ適用'
+      : 'PERC陰性（全8項目なし）— PE除外を支持（D-dimer省略を検討可能）。※PEの事前確率が低い患者にのみ適用'
     return { anyPositive, severity, label, count: criteria.filter(c => checks[c.id]).length }
   }, [checks])
 

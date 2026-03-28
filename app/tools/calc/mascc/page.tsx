@@ -29,8 +29,8 @@ export default function MasccPage() {
     const lowRisk = score >= 21
     const severity: 'ok'|'wn'|'dn' = lowRisk ? 'ok' : 'dn'
     const label = lowRisk
-      ? '低リスク（≥21点）— 外来治療を検討可能'
-      : '高リスク（<21点）— 入院治療が必要'
+      ? '低リスク（≥21点）— 外来治療の適否は担当医が個別に判断'
+      : '高リスク（<21点）— 入院治療を検討（担当医が判断）'
     const complication = lowRisk ? '重篤合併症 <5%' : '重篤合併症 >5%'
     return { score, severity, label, complication }
   }, [burden, hypotension, copd, solid, fungal, dehydration, outpatient, age60])

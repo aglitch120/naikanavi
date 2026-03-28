@@ -25,7 +25,7 @@ export default function DukeCriteriaPage(){
     const echoMajor = mChecks['echo_veg'] ? 1 : 0
     const mj = bcMajor + echoMajor
     const mn=minor.filter(i=>nChecks[i.id]).length
-    if(mj>=2||(mj>=1&&mn>=3)||(mn>=5)) return {severity:'dn' as const,label:'確定(Definite IE): 大基準2 or 大基準1+小基準3 or 小基準5'}
+    if(mj>=2||(mj>=1&&mn>=3)||(mn>=5)) return {severity:'dn' as const,label:'Modified Duke基準を満たす(Definite): 大基準2 or 大基準1+小基準3 or 小基準5（確定診断は臨床的総合判断が必要）'}
     if((mj>=1&&mn>=1)||(mn>=3)) return {severity:'wn' as const,label:'疑い(Possible IE): 大基準1+小基準1 or 小基準3'}
     return {severity:'ok' as const,label:'否定的(Rejected): 基準を満たさない or 別の確定診断あり'}
   },[mChecks,nChecks])

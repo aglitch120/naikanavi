@@ -24,25 +24,25 @@ function getInterpretation(score: number): { text: string; severity: 'ok' | 'wn'
     text: '低リスク',
     severity: 'ok',
     probability: '約3.6%',
-    recommendation: 'D-dimer検査を施行。陰性ならPEを除外可能（PERC ruleも参照）。',
+    recommendation: 'D-dimer検査を検討。陰性ならPE除外を支持（PERC ruleも参照）。',
   }
   if (score <= 6) return {
     text: '中リスク',
     severity: 'wn',
     probability: '約20.5%',
-    recommendation: 'D-dimer検査を施行。陽性なら造影CT（CTPA）を施行。',
+    recommendation: 'D-dimer検査を検討。陽性なら造影CT（CTPA）を検討。',
   }
   return {
     text: '高リスク',
     severity: 'dn',
     probability: '約66.7%',
-    recommendation: 'D-dimerを省略し造影CT（CTPA）を直接施行。不安定ならエコー・血栓溶解も検討。',
+    recommendation: '造影CT（CTPA）を検討（D-dimer省略可）。不安定な場合はエコー等で評価。治療方針は担当医が判断。',
   }
 }
 
 function getDichotomousInterpretation(score: number): { text: string; severity: 'ok' | 'dn' } {
-  if (score <= 4) return { text: 'PE unlikely（≤4点）— D-dimer検査で除外可能', severity: 'ok' }
-  return { text: 'PE likely（>4点）— 造影CT（CTPA）を施行', severity: 'dn' }
+  if (score <= 4) return { text: 'PE unlikely（≤4点）— D-dimer検査で除外を支持', severity: 'ok' }
+  return { text: 'PE likely（>4点）— 造影CT（CTPA）を検討', severity: 'dn' }
 }
 
 export default function WellsPEPage() {

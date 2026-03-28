@@ -58,7 +58,7 @@ export default function SteroidConverterPage() {
           label="PSL換算"
           value={result.pslEquiv}
           unit="mg"
-          interpretation={`${result.from.name} ${dose} mg の等価用量`}
+          interpretation={`${result.from.name} ${dose} mg の抗炎症作用等価用量（※ミネラルコルチコイド作用・骨代謝への影響は薬剤により異なる。用途に応じた調整は担当医が判断）`}
           severity="neutral"
         />
       }

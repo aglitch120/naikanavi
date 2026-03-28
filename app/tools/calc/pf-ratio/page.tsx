@@ -20,9 +20,9 @@ export default function PFRatioPage() {
 
     if (ratio >= 400) { label = '正常'; severity = 'ok' }
     else if (ratio >= 300) { label = '酸素化軽度低下（Berlin ARDS基準外）'; severity = 'wn' }
-    else if (ratio >= 200) { label = 'ARDS軽症 (Mild ARDS)'; severity = 'wn' }
-    else if (ratio >= 100) { label = 'ARDS中等症 (Moderate ARDS)'; severity = 'dn' }
-    else { label = 'ARDS重症 (Severe ARDS)'; severity = 'dn' }
+    else if (ratio >= 200) { label = 'Berlin定義 軽症域 (P/F 200-300)'; severity = 'wn' }
+    else if (ratio >= 100) { label = 'Berlin定義 中等症域 (P/F 100-200)'; severity = 'dn' }
+    else { label = 'Berlin定義 重症域 (P/F <100)'; severity = 'dn' }
 
     return { ratio: Math.round(ratio), label, severity }
   }, [pao2, fio2])

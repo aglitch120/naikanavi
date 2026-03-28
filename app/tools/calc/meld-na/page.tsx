@@ -47,8 +47,8 @@ export default function MeldNaPage() {
     else if (meldNaCapped >= 15) severity = 'wn'
 
     let interpretation = ''
-    if (meldNaCapped >= 30) interpretation = '3ヶ月死亡率 50%超 — 移植を積極的に検討'
-    else if (meldNaCapped >= 20) interpretation = '3ヶ月死亡率 約20% — 移植待機リスト上位'
+    if (meldNaCapped >= 30) interpretation = '3ヶ月死亡率 50%超 — 移植を積極的に検討（※米国UNOS基準。日本の脳死肝移植基準とは異なる）'
+    else if (meldNaCapped >= 20) interpretation = '3ヶ月死亡率 約20% — 移植待機リスト上位（※米国UNOS基準。日本の脳死肝移植基準とは異なる）'
     else if (meldNaCapped >= 10) interpretation = '中等度肝障害'
     else interpretation = '軽度肝障害'
 

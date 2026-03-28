@@ -16,11 +16,11 @@ export default function PSIPortPage(){
     let score=Number(age)||0
     ;[...demos.slice(1),...comorbid,...pe,...lab].forEach(i=>{if(checks[i.id])score+=(i.points??0)})
     let cls:'I'|'II'|'III'|'IV'|'V',label:string,sev:'ok'|'wn'|'dn'
-    if(score<=50){cls='I';label='Class I (≦50): 死亡率<0.1% → 外来治療 ※Class I判定には年齢≤50歳かつ併存疾患・バイタル異常なしの臨床基準も必要（Fine 1997）';sev='ok'}
-    else if(score<=70){cls='II';label='Class II (51-70): 死亡率0.6% → 外来治療';sev='ok'}
-    else if(score<=90){cls='III';label='Class III (71-90): 死亡率2.8% → 短期入院 or 外来';sev='wn'}
-    else if(score<=130){cls='IV';label='Class IV (91-130): 死亡率8.2% → 入院';sev='wn'}
-    else{cls='V';label='Class V (>130): 死亡率29.2% → 入院（ICU検討）';sev='dn'}
+    if(score<=50){cls='I';label='Class I (≦50): 死亡率<0.1% — 外来治療を検討可能 ※年齢≤50歳かつ併存疾患・バイタル異常なしの臨床基準も必要（Fine 1997）';sev='ok'}
+    else if(score<=70){cls='II';label='Class II (51-70): 死亡率0.6% — 外来治療を検討可能';sev='ok'}
+    else if(score<=90){cls='III';label='Class III (71-90): 死亡率2.8% — 短期入院 or 外来を検討';sev='wn'}
+    else if(score<=130){cls='IV';label='Class IV (91-130): 死亡率8.2% — 入院を検討';sev='wn'}
+    else{cls='V';label='Class V (>130): 死亡率29.2% — 入院を検討（最終判断は担当医による）';sev='dn'}
     return {score,cls,label,severity:sev}
   },[age,checks])
   return(

@@ -12,7 +12,7 @@ const essentialItems = [
   { id: 'urine_na', label: '尿中Na > 20-30 mEq/L（正常食塩摂取下）' },
   { id: 'euvolemic', label: '臨床的に体液量正常（浮腫なし・脱水なし）' },
 ]
-const exclusionItem = { id: 'exclude', label: '甲状腺機能低下症・副腎不全・利尿薬使用を除外済み' }
+const exclusionItem = { id: 'exclude', label: '甲状腺機能低下症・副腎不全・利尿薬使用・心不全・肝硬変・腎不全を除外済み' }
 
 export default function Page() {
   const [checks, setChecks] = useState<Record<string, boolean>>(

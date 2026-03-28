@@ -83,7 +83,7 @@ export default function DAS28Page() {
         <NumberInput label="腫脹関節数 (SJC28)" value={swollen} onChange={setSwollen} unit="関節" min={0} max={28} />
       </div>
       {useCRP ? (
-        <NumberInput label="CRP" value={crp} onChange={setCrp} unit="mg/dL" step={0.1} hint="mg/dL（日本標準）で入力。mg/L表示の施設は10で割って入力" />
+        <NumberInput label="CRP" value={crp} onChange={setCrp} unit="mg/dL" step={0.1} hint="⚠️ mg/dL（日本標準）で入力してください。mg/L表示の施設は÷10してmg/dLに変換してから入力（例: 15 mg/L → 1.5 mg/dL）" />
       ) : (
         <NumberInput label="ESR" value={esr} onChange={setEsr} unit="mm/h" />
       )}

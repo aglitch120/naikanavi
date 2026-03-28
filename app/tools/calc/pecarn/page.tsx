@@ -13,7 +13,7 @@ export default function PECARNPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries([...u2,...o2].map(i=>[i.id,false])))
   const hasHigh=age==='under2'?checks.gcs_alt||checks.skull_fx:checks.gcs_alt2||checks.signs_skull
   const hasMed=items.filter(i=>!['gcs_alt','skull_fx','gcs_alt2','signs_skull'].includes(i.id)).some(i=>checks[i.id])
-  const result=hasHigh?{sev:'dn' as const,label:'高リスク: 頭部CT検討（ciTBI 4.3%）'}:hasMed?{sev:'wn' as const,label:'中リスク: CT vs 経過観察を臨床判断（ciTBI <1%）。4-6h観察 or CT検討'}:{sev:'ok' as const,label:'低リスク: CT不要（ciTBI <0.02%）。帰宅指導'}
+  const result=hasHigh?{sev:'dn' as const,label:'高リスク: 頭部CTを検討（ciTBI 4.3%）。最終判断は担当医による'}:hasMed?{sev:'wn' as const,label:'中リスク: CT vs 経過観察を臨床判断（ciTBI <1%）。4-6h観察 or CT検討'}:{sev:'ok' as const,label:'低リスク: CT省略を検討可能（ciTBI <0.02%）。最終判断は担当医による'}
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}

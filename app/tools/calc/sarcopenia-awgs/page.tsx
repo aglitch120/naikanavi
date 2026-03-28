@@ -20,8 +20,8 @@ export default function SarcopeniaAWGSPage() {
 
     let diagnosis = ''
     let severity: 'ok'|'wn'|'dn' = 'ok'
-    if (lowSMI && (lowGrip || lowSpeed)) { diagnosis = 'サルコペニア'; severity = 'wn' }
-    if (lowSMI && lowGrip && lowSpeed) { diagnosis = '重症サルコペニア'; severity = 'dn' }
+    if (lowSMI && (lowGrip || lowSpeed)) { diagnosis = 'サルコペニアの可能性（参考。臨床医が総合的に判断）'; severity = 'wn' }
+    if (lowSMI && lowGrip && lowSpeed) { diagnosis = '重症サルコペニアの可能性（参考。臨床医が総合的に判断）'; severity = 'dn' }
     if (!lowSMI) { diagnosis = 'サルコペニアなし'; severity = 'ok' }
     if (lowSMI && !lowGrip && !lowSpeed) { diagnosis = '低筋肉量のみ（サルコペニア診断には筋力または身体機能低下が必要）'; severity = 'wn' }
 

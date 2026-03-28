@@ -14,13 +14,13 @@ const GRADES = [
   {
     grade: 'II度（中等症）',
     symptoms: ['頭痛・嘔気・嘔吐', '倦怠感・脱力感', '集中力低下'],
-    action: '医療機関受診. 体温管理, 点滴による補液',
+    action: '医療機関受診を検討。体温管理・補液等は担当医が判断',
     severity: 'wn' as const,
   },
   {
     grade: 'III度（重症）',
     symptoms: ['意識障害（JCS II群以上 or GCS≦14）', '痙攣', '深部体温>40度', '肝・腎機能障害', 'DIC'],
-    action: '救急搬送. ICU管理, 体表冷却, 冷却輸液, DIC治療',
+    action: '救急搬送を検討。ICU管理・体表冷却・冷却輸液等は担当医が判断',
     severity: 'dn' as const,
   },
 ]

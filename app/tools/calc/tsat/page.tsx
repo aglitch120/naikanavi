@@ -25,7 +25,7 @@ export default function TSATPage() {
       interpretation = 'TSAT著明低値 — 鉄欠乏が強く疑われる（機能的鉄欠乏含む）'
       severity = 'dn'
     } else if (tsat < 20) {
-      interpretation = 'TSAT低値 — 鉄欠乏を示唆。CKD患者ではESA治療前の鉄補充適応'
+      interpretation = 'TSAT低値 — 鉄欠乏を示唆。CKD患者では鉄補充を考慮（フェリチン値と合わせて担当医が判断）'
       severity = 'wn'
     } else if (tsat > 50) {
       interpretation = 'TSAT高値 — 鉄過剰を考慮（ヘモクロマトーシス・輸血後・鉄剤過量）'
@@ -61,7 +61,7 @@ export default function TSATPage() {
           severity={result.severity}
           details={[
             { label: '正常範囲', value: '20〜45%' },
-            { label: '鉄欠乏の閾値', value: '<20%（CKD: <20%で鉄補充適応）' },
+            { label: '鉄欠乏の閾値', value: '<20%（CKD: TSAT<20%かつフェリチン低値で鉄補充を考慮）' },
             { label: '鉄過剰の閾値', value: '>45%' },
           ]}
         />

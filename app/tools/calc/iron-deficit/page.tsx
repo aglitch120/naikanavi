@@ -31,7 +31,7 @@ export default function Page() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn}
       description={toolDef.description} category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result && (
-        <ResultCard label="鉄欠乏量" value={`${result.deficit.toFixed(0)} mg`} interpretation="Ganzoni formula" severity="ok"
+        <ResultCard label="鉄欠乏量" value={`${result.deficit.toFixed(0)} mg`} interpretation="Ganzoni formula（参考値。実際の投与量・製剤選択は担当医が決定）" severity="ok"
           details={[
             { label: '計算式', value: '体重×(目標Hb-実Hb)×2.4 + 貯蔵鉄: 体重>35kgは500mg、≤35kgは250mg' },
             { label: 'カルボキシマルトース鉄（フェインジェクト）', value: `${result.ferinject} mg（${result.ferinjectSessions}回、1回最大${result.maxPerSession}mg）` },

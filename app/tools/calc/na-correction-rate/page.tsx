@@ -44,7 +44,7 @@ export default function NaCorrectionRatePage() {
       label = '上限に近い — 注意して経過観察'
       severity = 'wn'
     } else {
-      label = `⚠ 24時間安全上限（最大値: ${limit24} mEq/L）超過リスク — 補正速度を下げてください`
+      label = `⚠ 24時間安全上限（最大値: ${limit24} mEq/L）超過リスク — 補正速度の見直しを担当医と検討`
       severity = 'dn'
     }
 

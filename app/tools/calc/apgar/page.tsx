@@ -17,8 +17,8 @@ export default function ApgarPage(){
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((s,v)=>s+Number(v),0)
     if(score>=7) return {score,severity:'ok' as const,label:'正常（7-10）: 良好な状態'}
-    if(score>=4) return {score,severity:'wn' as const,label:'中等度仮死（4-6）: 蘇生処置を要する状態を示唆'}
-    return {score,severity:'dn' as const,label:'重度仮死（0-3）: 積極的蘇生を要する状態を示唆（※蘇生判断はApgar単独ではなく心拍数・呼吸・筋緊張で行う）'}
+    if(score>=4) return {score,severity:'wn' as const,label:'低スコア（4-6）: 蘇生介入を要する可能性を示唆'}
+    return {score,severity:'dn' as const,label:'低スコア（0-3）: 積極的蘇生介入を要する可能性（※蘇生判断はApgar単独ではなく心拍数・呼吸・筋緊張で行う。AAP/ACOG 2015）'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

@@ -36,7 +36,7 @@ export default function PaduaPage() {
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="Padua Score" value={result.score} unit="/ 20点" interpretation={result.label} severity={result.severity}
+      result={<ResultCard label="Padua Score" value={result.score} unit="/ 21点" interpretation={result.label} severity={result.severity}
         details={[{ label: 'VTE発生率', value: result.vteRate }]} />}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}

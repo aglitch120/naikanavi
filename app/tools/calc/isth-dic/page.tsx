@@ -16,7 +16,7 @@ export default function IsthDicPage() {
     const score = [plt, fdp, pt, fib].reduce((a, b) => a + parseInt(b), 0)
     const overt = score >= 5
     const severity: 'ok'|'wn'|'dn' = overt ? 'dn' : score >= 3 ? 'wn' : 'ok'
-    const label = overt ? 'Overt DIC（≥5点）— 基礎疾患の治療 + 補充療法' : score >= 3 ? 'DIC疑い（3-4点）— 1-2日後に再評価' : 'DICの可能性低い（<3点）'
+    const label = overt ? 'Overt DIC（≥5点）— 基礎疾患の治療+補充療法を検討（担当医が判断）' : score >= 3 ? 'DIC疑い（3-4点）— 1-2日後に再評価' : 'DICの可能性低い（<3点）'
     return { score, severity, label, overt }
   }, [plt, fdp, pt, fib])
 
