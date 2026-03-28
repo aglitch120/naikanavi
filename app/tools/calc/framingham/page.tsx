@@ -15,8 +15,30 @@ function getAgePoints(age: number, sex: 'male' | 'female') {
   return 0
 }
 
-const MALE_TC_POINTS: Record<string, number[]> = { '160': [0,0,0,0,0], '200': [4,3,2,1,0], '240': [7,5,3,1,0], '280': [9,6,4,2,1], '999': [11,8,5,3,1] }
-const FEMALE_TC_POINTS: Record<string, number[]> = { '160': [0,0,0,0,0], '200': [4,3,2,1,1], '240': [8,6,4,2,1], '280': [11,8,5,3,2], '999': [13,10,7,4,2] }
+// TC points: keys are lower bounds of each TC range, values are [20-39, 40-49, 50-59, 60-69, 70-79]
+const MALE_TC_POINTS: [number, number[]][] = [[160,[0,0,0,0,0]],[200,[4,3,2,1,0]],[240,[7,5,3,1,0]],[280,[9,6,4,2,1]],[999,[11,8,5,3,1]]]
+const FEMALE_TC_POINTS: [number, number[]][] = [[160,[0,0,0,0,0]],[200,[4,3,2,1,1]],[240,[8,6,4,2,1]],[280,[11,8,5,3,2]],[999,[13,10,7,4,2]]]
+
+// Smoking points by age group index [20-39, 40-49, 50-59, 60-69, 70-79] (Wilson 1998)
+const MALE_SMOKE_POINTS = [8, 5, 3, 1, 1]
+const FEMALE_SMOKE_POINTS = [9, 7, 4, 2, 1]
+
+function getAgeGroupIndex(age: number): number {
+  if (age <= 39) return 0
+  if (age <= 49) return 1
+  if (age <= 59) return 2
+  if (age <= 69) return 3
+  return 4
+}
+
+function getTcPoints(tc: number, ageGroupIdx: number, sex: 'male' | 'female'): number {
+  const table = sex === 'male' ? MALE_TC_POINTS : FEMALE_TC_POINTS
+  let pts = 0
+  for (const [threshold, pointsByAge] of table) {
+    if (tc >= threshold) pts = pointsByAge[ageGroupIdx]
+  }
+  return pts
+}
 
 export default function FraminghamPage() {
   const [age, setAge] = useState('55')
@@ -34,6 +56,7 @@ export default function FraminghamPage() {
     const s = parseFloat(sbp)
     if (!a || !tc || !h || !s || a < 20 || a > 79) return null
 
+    const ageGroupIdx = getAgeGroupIndex(a)
     let points = getAgePoints(a, sex)
 
     // HDL points
@@ -57,14 +80,11 @@ export default function FraminghamPage() {
       else points += 0
     }
 
-    // Smoking — 原著は年齢別ポイント(20-39歳:8点等)だが簡易版として固定
-    // ※若年喫煙者のリスクを過小評価する可能性あり
-    if (smoker) points += (sex === 'male' ? 4 : 4)
+    // Smoking — Wilson 1998 age-stratified points
+    if (smoker) points += (sex === 'male' ? MALE_SMOKE_POINTS[ageGroupIdx] : FEMALE_SMOKE_POINTS[ageGroupIdx])
 
-    // TC (age-adjusted simplified)
-    if (tc >= 280) points += (sex === 'male' ? 3 : 4)
-    else if (tc >= 240) points += (sex === 'male' ? 2 : 3)
-    else if (tc >= 200) points += (sex === 'male' ? 1 : 2)
+    // TC (age-stratified, Wilson 1998 Table 2)
+    points += getTcPoints(tc, ageGroupIdx, sex)
 
     // Risk lookup (simplified)
     let risk = 0

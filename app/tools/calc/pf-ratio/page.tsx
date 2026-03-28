@@ -19,7 +19,7 @@ export default function PFRatioPage() {
     let label = ''
 
     if (ratio >= 400) { label = '正常'; severity = 'ok' }
-    else if (ratio >= 300) { label = '軽度低下'; severity = 'wn' }
+    else if (ratio >= 300) { label = '酸素化軽度低下（Berlin ARDS基準外）'; severity = 'wn' }
     else if (ratio >= 200) { label = 'ARDS軽症 (Mild ARDS)'; severity = 'wn' }
     else if (ratio >= 100) { label = 'ARDS中等症 (Moderate ARDS)'; severity = 'dn' }
     else { label = 'ARDS重症 (Severe ARDS)'; severity = 'dn' }
@@ -36,16 +36,24 @@ export default function PFRatioPage() {
       category="respiratory"
       categoryIcon="🫁"
       result={result && (
-        <ResultCard
-          label="P/F比"
-          value={`${result.ratio}`}
-          unit="mmHg"
-          severity={result.severity}
-          details={[
-            { label: '判定', value: result.label },
-            { label: 'Berlin定義', value: result.ratio >= 300 ? '該当なし' : result.ratio >= 200 ? 'Mild ARDS (200-300)' : result.ratio >= 100 ? 'Moderate ARDS (100-200)' : 'Severe ARDS (<100)' },
-          ]}
-        />
+        <div className="space-y-3">
+          <ResultCard
+            label="P/F比"
+            value={`${result.ratio}`}
+            unit="mmHg"
+            severity={result.severity}
+            details={[
+              { label: '判定', value: result.label },
+              { label: 'Berlin定義', value: result.ratio >= 300 ? '該当なし' : result.ratio >= 200 ? 'Mild ARDS (200-300)' : result.ratio >= 100 ? 'Moderate ARDS (100-200)' : 'Severe ARDS (<100)' },
+            ]}
+          />
+          {result.ratio < 300 && (
+            <div className="bg-wnl border border-wnb rounded-xl p-3">
+              <p className="text-xs font-medium text-wn">Berlin定義の適用条件</p>
+              <p className="text-xs text-wn mt-1">※ Berlin定義ではPEEP ≧5 cmH₂O下での評価が必要。PEEP条件未確認の場合はARDS診断不確定</p>
+            </div>
+          )}
+        </div>
       )}
       references={[
         { text: 'ARDS Definition Task Force. JAMA 2012;307:2526-33', url: 'https://pubmed.ncbi.nlm.nih.gov/22797452/' },

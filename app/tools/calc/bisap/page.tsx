@@ -24,10 +24,11 @@ export default function BisapPage() {
     let interpretation = ''
     let severity: 'ok' | 'wn' | 'dn' = 'ok'
     let mortality = ''
-    if (score <= 1) { interpretation = '低リスク'; mortality = '死亡率 < 2%'; severity = 'ok' }
-    else if (score === 2) { interpretation = '中リスク'; mortality = '死亡率 約4%'; severity = 'wn' }
-    else if (score === 3) { interpretation = '高リスク'; mortality = '死亡率 約13%'; severity = 'dn' }
-    else { interpretation = '最高リスク'; mortality = '死亡率 > 20%'; severity = 'dn' }
+    if (score <= 1) { interpretation = '低リスク'; mortality = '死亡率 < 1%'; severity = 'ok' }
+    else if (score === 2) { interpretation = '中リスク'; mortality = '死亡率 約2%'; severity = 'wn' }
+    else if (score === 3) { interpretation = '高リスク'; mortality = '死亡率 約5%'; severity = 'dn' }
+    else if (score === 4) { interpretation = '最高リスク'; mortality = '死亡率 約13%'; severity = 'dn' }
+    else { interpretation = '最高リスク'; mortality = '死亡率 約22%'; severity = 'dn' }
 
     return { score, interpretation, severity, mortality }
   }, [checked])

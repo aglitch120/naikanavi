@@ -54,7 +54,7 @@ const DRUGS: Drug[] = [
   { id:'propofol', name:'プロポフォール', nameEn:'Propofol', category:'sedative',
     unit:'mg/kg/h', weightBased:true, gammaMin:0.3, gammaMax:4, gammaUnit:'mg/kg/h', unitLabel:'mg',
     dilutions:[{label:'1%（10mg/mL）50mL',drugMg:500,totalMl:50},{label:'2%（20mg/mL）50mL',drugMg:1000,totalMl:50}],
-    notes:'ICU鎮静の標準。RASS 0〜-2目標。PRIS注意：4mg/kg/h超 or 48h超で乳酸↑・CK↑。'},
+    notes:'ICU鎮静の標準。RASS 0〜-2目標。PRIS: 高用量（>4-5mg/kg/h）・長期（>48h）・ステロイド/カテコラミン併用時にリスク増。代謝性アシドーシス・不整脈・横紋筋融解症に注意。'},
   { id:'midazolam', name:'ミダゾラム', nameEn:'Midazolam', category:'sedative',
     unit:'mg/kg/h', weightBased:true, gammaMin:0.02, gammaMax:0.2, gammaUnit:'mg/kg/h', unitLabel:'mg',
     dilutions:[{label:'50mg/50mL 生食',drugMg:50,totalMl:50},{label:'100mg/50mL 生食',drugMg:100,totalMl:50}],

@@ -8,7 +8,7 @@ const toolDef = getToolBySlug('heart-score')!
 
 const items = [
   { id: 'history', label: 'H: 病歴（History）', options: [
-    { value: '0', label: '0 — やや疑わしい' }, { value: '1', label: '1 — 中等度に疑わしい' }, { value: '2', label: '2 — 強く疑わしい' }] },
+    { value: '0', label: '0 — 非典型的（冠動脈疾患を示唆しない）' }, { value: '1', label: '1 — 中等度に疑わしい' }, { value: '2', label: '2 — 強く疑わしい' }] },
   { id: 'ecg', label: 'E: 心電図（ECG）', options: [
     { value: '0', label: '0 — 正常' }, { value: '1', label: '1 — 非特異的ST変化' }, { value: '2', label: '2 — 有意なST偏位' }] },
   { id: 'age', label: 'A: 年齢（Age）', options: [

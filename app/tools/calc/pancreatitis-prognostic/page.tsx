@@ -28,7 +28,7 @@ export default function PancreatitisPrognosticPage() {
   const [ageChecked, setAgeChecked] = useState(false)
 
   const sirsCount = sirsChecked.filter(Boolean).length
-  const sirsMet = sirsCount >= 3
+  const sirsMet = sirsCount >= 2
 
   const result = useMemo(() => {
     const total = checked.filter(Boolean).length + (sirsMet ? 1 : 0) + (ageChecked ? 1 : 0)
@@ -61,7 +61,7 @@ export default function PancreatitisPrognosticPage() {
           <div className="flex items-center gap-3 p-3">
             <input type="checkbox" checked={sirsMet} readOnly className="accent-[var(--ac)] pointer-events-none" />
             <span className={`text-sm font-medium ${sirsMet ? 'text-wn' : 'text-tx'}`}>
-              SIRS基準 3項目以上（{sirsCount}/4）
+              SIRS基準 2項目以上（{sirsCount}/4）
             </span>
           </div>
           <div className="px-3 pb-3 space-y-1.5">

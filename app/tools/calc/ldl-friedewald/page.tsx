@@ -15,7 +15,7 @@ function getLdlTarget(risk: string): { target: number; label: string } {
     case 'mid': return { target: 140, label: '中リスク（< 140 mg/dL）' }
     case 'high': return { target: 120, label: '高リスク（< 120 mg/dL）' }
     case 'secondary': return { target: 100, label: '二次予防（< 100 mg/dL）' }
-    case 'familial': return { target: 100, label: 'FH/ACS（< 70 mg/dL 考慮）' }
+    case 'familial': return { target: 70, label: 'FH/ACS（FH一次予防: <100 mg/dL、ACS二次予防: <70 mg/dL）' }
     default: return { target: 140, label: '中リスク（< 140 mg/dL）' }
   }
 }

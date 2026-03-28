@@ -44,7 +44,7 @@ export default function NaCorrectionRatePage() {
       label = '上限に近い — 注意して経過観察'
       severity = 'wn'
     } else {
-      label = `⚠ 24時間上限（${limit24} mEq/L）超過リスク — 補正速度を下げてください`
+      label = `⚠ 24時間安全上限（最大値: ${limit24} mEq/L）超過リスク — 補正速度を下げてください`
       severity = 'dn'
     }
 
@@ -78,12 +78,15 @@ export default function NaCorrectionRatePage() {
           details={[
             { label: 'Na変化量', value: `${result.change} mEq/L（${hours}時間）` },
             { label: '24時間換算変化量', value: `${result.projected24} mEq/L` },
-            { label: '24時間安全上限', value: `${result.limit24} mEq/L` },
-            { label: '48時間安全上限', value: `${result.limit48} mEq/L` },
+            { label: '推奨補正目標（24h）', value: '通常 6〜8 mEq/L' },
+            { label: '安全上限・最大値（24h）', value: `${result.limit24} mEq/L（超えてはならない最大値）` },
+            { label: '安全上限・最大値（48h）', value: `${result.limit48} mEq/L` },
           ]}
         />
       }
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted space-y-1">
+        <p>推奨補正目標: 通常 6〜8 mEq/L/24h。上限10 mEq/Lは超えてはならない最大値であり、治療目標ではありません。高リスク例（慢性低Na・低K・アルコール・肝疾患・低栄養）では上限8 mEq/L/24h。</p>
+      </div>}
       relatedTools={toolDef.relatedSlugs
         .map(s => {
           const t = implementedTools.has(s) ? getToolBySlug(s) : null

@@ -49,7 +49,7 @@ export default function MaintenanceFluidPage() {
         />
       )}
       explanation={<div className="text-sm text-muted space-y-1">
-        <p>本計算は主に術中輸液量の算出に使用されます。病棟での維持輸液量の決定にはそのまま適用しないでください。</p>
+        <p>Holliday-Segar法は小児の維持輸液量の目安として開発された計算式です。成人や術中・術後管理への適用は適切でない場合があり、個別の病態評価が必要です。</p>
       </div>}
       relatedTools={toolDef.relatedSlugs
         .map(s => {

@@ -25,10 +25,10 @@ export default function DueDatePage() {
     // Trimester
     let trimester = ''
     if (weeks < 0) trimester = '妊娠前'
-    else if (weeks < 14) trimester = '第1三半期（初期）'
-    else if (weeks < 28) trimester = '第2三半期（中期）'
-    else if (weeks <= 42) trimester = '第3三半期（後期）'
-    else trimester = '予定日超過'
+    else if (weeks < 14) trimester = '妊娠初期'
+    else if (weeks < 28) trimester = '妊娠中期'
+    else if (weeks < 42) trimester = '妊娠後期'
+    else trimester = '過期妊娠'
 
     const remaining = Math.ceil((edd.getTime() - now.getTime()) / 86400000)
 
@@ -48,7 +48,7 @@ export default function DueDatePage() {
       slug="due-date"
       title="出産予定日・妊娠週数"
       titleEn="Estimated Due Date / Gestational Age"
-      description="最終月経初日から出産予定日（Naegele式: LMP + 280日）と現在の妊娠週数を計算。"
+      description="最終月経初日から出産予定日（Naegele式: LMP + 280日）と現在の妊娠週数を計算。月経周期が28日以外の場合、超音波検査による修正が推奨されます。"
       category="obstetrics"
       categoryIcon="🤰"
       result={result && (
@@ -58,7 +58,7 @@ export default function DueDatePage() {
           severity="ok"
           details={[
             { label: '妊娠週数', value: result.ga },
-            { label: '三半期', value: result.trimester },
+            { label: '妊娠時期', value: result.trimester },
             { label: '予定日まで', value: result.remaining > 0 ? `あと${result.remaining}日` : '予定日超過' },
           ]}
         />

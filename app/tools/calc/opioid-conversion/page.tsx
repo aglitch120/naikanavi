@@ -25,7 +25,10 @@ export default function OpioidConversionPage(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="経口モルヒネ換算" value={result.morphineEq} unit="mg/日" interpretation={`フェンタニル注射換算: ${result.fentanylHourly} μg/h`} severity="ok" />}
+      result={<>
+        <ResultCard label="経口モルヒネ換算" value={result.morphineEq} unit="mg/日" interpretation={`フェンタニル注射換算: ${result.fentanylHourly} μg/h`} severity="ok" />
+        <div className="mt-3 p-3 bg-dnl border border-dnb rounded-xl text-xs text-dn font-medium leading-relaxed">⚠️ この換算値は参考値です。実際の投与量は緩和医療専門医が決定してください。オピオイドローテーション時は必ず25-50%減量して開始すること</div>
+      </>}
       explanation={<div className="text-sm text-muted space-y-1"><p>換算比は日本緩和医療学会ガイドライン2020年版および各添付文書に準拠。注射剤の経口:注射比は2:1（日本基準）。換算はあくまで目安であり、個々の患者に応じた用量調整が必要です。</p></div>}
       relatedTools={[]} references={[{text:'日本緩和医療学会. がん疼痛の薬物療法に関するガイドライン 2020年版'}]}
     >

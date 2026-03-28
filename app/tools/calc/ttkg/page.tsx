@@ -13,12 +13,13 @@ export default function TTKGPage(){
   const result=useMemo(()=>{
     const uk=Number(uK)||0;const sk=Number(sK)||1;const uo=Number(uOsm)||1;const so=Number(sOsm)||1
     const ttkg=(uk/(uo/so))/sk
-    // 高K: TTKG>7=腎排泄適切(ok), ≤7=腎性(dn)。低K: TTKG<3=腎性喪失(dn), ≥3=腎外性(ok)
+    // 高K: TTKG>7=腎排泄適切(ok), ≤7=腎排泄不十分=腎性(dn)
+    // 低K: TTKG<3=腎排泄適切=腎外性喪失(ok), TTKG≥3=腎排泄過多=腎性喪失(dn)
     const isHyperK = sk > 5.0
-    const sev = isHyperK ? (ttkg > 7 ? 'ok' as const : 'dn' as const) : (ttkg < 3 ? 'dn' as const : 'ok' as const)
+    const sev = isHyperK ? (ttkg > 7 ? 'ok' as const : 'dn' as const) : (ttkg < 3 ? 'ok' as const : 'dn' as const)
     let label=''
     if(sk>5.0) label=ttkg>7?'TTKG>7: 腎からのK排泄は適切（腎外性の原因を検索）':'TTKG≦7: 腎からのK排泄が不十分（腎性の高K血症）'
-    else label=ttkg<3?'TTKG<3: 腎からのK排泄が過多（腎性K喪失）':'TTKG≧3: 腎からのK排泄は適切（腎外性の低K血症）'
+    else label=ttkg<3?'TTKG<3: 腎からのK排泄は適切（腎外性K喪失：消化管・皮膚等）':'TTKG≧3: 腎からのK排泄が過多（腎性K喪失：アルドステロン症・利尿薬等）'
     return {ttkg:ttkg.toFixed(1),severity:sev,label}
   },[uK,sK,uOsm,sOsm])
   return(
@@ -26,7 +27,10 @@ export default function TTKGPage(){
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="TTKG" value={result.ttkg} interpretation={result.label} severity={result.severity} />}
       explanation={undefined}
-      relatedTools={[]} references={[{text:'Ethier JH et al. The transtubular potassium concentration in patients with hypokalemia and hyperkalemia. Am J Kidney Dis 1990;15:309-315'}]}
+      relatedTools={[]} references={[
+        {text:'Ethier JH et al. The transtubular potassium concentration in patients with hypokalemia and hyperkalemia. Am J Kidney Dis 1990;15:309-315'},
+        {text:'Kamel KS et al. Interpreting the urine electrolytes and osmolality in the pathophysiology of hypokalemia. Am J Kidney Dis 2014;64:489-495. ※TTKGは利尿薬使用中・腎機能障害例では信頼性が低下します'}
+      ]}
     >
       <div className="space-y-3">
         <NumberInput id="uK" label="尿中K" value={uK} onChange={setUK} unit="mEq/L" />

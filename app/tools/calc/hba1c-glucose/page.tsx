@@ -21,10 +21,6 @@ export default function HbA1cGlucosePage() {
 
       // ADAG Study (Nathan 2008): eAG (mg/dL) = 28.7 × HbA1c - 46.7
       const eag = 28.7 * a1c - 46.7
-      // 早朝空腹時血糖の推算（日本のデータ: Rohlfing 2002 近似）
-      const fasting = 17.4 * a1c - 30.0
-      // 食後2時間血糖の推算（概算: eAG × 1.2〜1.3、日本臨床データ参考）
-      const postprandial = eag * 1.25
 
       let interpretation = ''
       let severity: 'ok' | 'wn' | 'dn' = 'ok'
@@ -55,8 +51,6 @@ export default function HbA1cGlucosePage() {
         interpretation,
         details: [
           { label: 'ADAG式 eAG', value: `${Math.round(eag)} mg/dL` },
-          { label: '推定空腹時血糖', value: `約${Math.round(fasting)} mg/dL` },
-          { label: '推定食後2h血糖', value: `約${Math.round(postprandial)} mg/dL` },
           { label: 'HbA1c目標（一般）', value: '< 7.0%' },
         ],
       }

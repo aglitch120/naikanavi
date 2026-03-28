@@ -15,7 +15,7 @@ const data: CompareData = {
       indication: '2型糖尿病、慢性心不全（HFrEF/HFpEF）、CKD',
       halfLife: '約12.4時間',
       metabolism: 'グルクロン酸抱合（UGT2B7/1A3/1A9）',
-      renalAdjust: 'eGFR < 20: 新規投与は一般的でない（心不全・CKD適応では継続可能な場合あり）',
+      renalAdjust: '糖尿病: eGFR < 30で血糖降下効果減弱。心不全・CKD適応: eGFR ≥ 20で継続可能（添付文書要確認）',
       contraindication: '重症ケトーシス、糖尿病性昏睡、重症感染症、1型糖尿病',
     },
     {

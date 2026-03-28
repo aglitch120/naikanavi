@@ -54,12 +54,13 @@ export default function IbwPage() {
           label="理想体重（IBW）"
           value={result.ibw}
           unit="kg"
-          interpretation={result.isObese ? '実体重 > IBW×120% — 調整体重（ABW）を使用' : '実体重はIBW近傍 — IBWで投与量計算'}
+          interpretation={result.isObese ? '実体重 > IBW×120% — 調整体重（ABW）を使用' : (parseFloat(weight) > 0 && parseFloat(weight) <= parseFloat(result.ibw) ? '実体重がIBW以下のため、ABWは不適用' : '実体重はIBW近傍 — IBWで投与量計算')}
           severity="neutral"
           details={[
-            { label: '調整体重（ABW）', value: `${result.abw} kg` },
+            ...(result.isObese ? [{ label: '調整体重（ABW）', value: `${result.abw} kg` }] : []),
             ...(result.pctIbw ? [{ label: '実体重/IBW比', value: `${result.pctIbw}%` }] : []),
             { label: 'TV目安（6-8 mL/kg IBW）', value: `${result.tvRange6}〜${result.tvRange8} L` },
+            ...(parseFloat(height) < 152.4 ? [{ label: '⚠️ 注意', value: '身長152.4cm（60インチ）未満はDevine式の適用外' }] : []),
           ]}
         />
       )}

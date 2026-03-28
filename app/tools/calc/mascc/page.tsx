@@ -20,8 +20,8 @@ export default function MasccPage() {
     let score = parseInt(burden)
     if (!hypotension) score += 5
     if (!copd) score += 4
-    // 原著: 真菌感染の既往なし = +4点（がん種を問わない）
-    if (!fungal) score += 4
+    // 原著: 固形がん かつ 真菌感染の既往なし → +4点（Klastersky 2000）
+    if (solid && !fungal) score += 4
     if (!dehydration) score += 3
     if (outpatient) score += 3
     if (!age60) score += 2
@@ -53,7 +53,8 @@ export default function MasccPage() {
           ]} />
         <CheckItem id="hypotension" label="低血圧あり（SBP < 90）" sublabel="チェックなし = +5点" points={0} checked={hypotension} onChange={setHypotension} />
         <CheckItem id="copd" label="COPD あり" sublabel="チェックなし = +4点" points={0} checked={copd} onChange={setCopd} />
-        <CheckItem id="solid" label="固形がん（血液がんではない）" sublabel="チェックあり = +4点" points={4} checked={solid} onChange={setSolid} />
+        <CheckItem id="solid" label="固形がん（血液がんではない）" sublabel="固形がん かつ 真菌感染の既往なし = +4点" points={0} checked={solid} onChange={setSolid} />
+        <CheckItem id="fungal" label="真菌感染の既往あり" sublabel="固形がんでも既往あり = +0点（固形がんかつ既往なし = +4点）" points={0} checked={fungal} onChange={setFungal} />
         <CheckItem id="dehydration" label="脱水あり（輸液が必要）" sublabel="チェックなし = +3点" points={0} checked={dehydration} onChange={setDehydration} />
         <CheckItem id="outpatient" label="FN発症時に外来だった" sublabel="チェックあり = +3点" points={3} checked={outpatient} onChange={setOutpatient} />
         <CheckItem id="age60" label="年齢 ≥ 60歳" sublabel="チェックなし = +2点" points={0} checked={age60} onChange={setAge60} />

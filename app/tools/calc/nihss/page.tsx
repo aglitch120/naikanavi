@@ -162,11 +162,8 @@ function getLabel(score: number): string {
   return '最重症脳卒中'
 }
 
-function getTpaNote(score: number): string {
-  if (score >= 26) return 'NIHSS ≧26: 重篤な神経症状。rt-PA適応は慎重に判断（参考: 日本脳卒中学会ガイドライン）'
-  if (score >= 5 && score <= 25) return 'rt-PA静注療法の適応を検討（発症4.5時間以内、参考情報）'
-  if (score >= 1 && score <= 4) return '軽症でも症状の性質・推移により適応となり得る（2021年ガイドライン改訂）'
-  return 'NIHSS 0: 神経学的異常なし'
+function getTpaNote(_score: number): string {
+  return 'rt-PA適応はNIHSSスコアのみでは判断しない。発症時刻・禁忌事項を含め神経内科専門医が総合判断'
 }
 
 export default function NihssPage() {
@@ -200,7 +197,7 @@ export default function NihssPage() {
           interpretation={result.label}
           severity={result.severity}
           details={[
-            { label: 't-PA判断', value: result.tpaNote },
+            { label: 'rt-PA参考情報', value: result.tpaNote },
           ]}
         />
       }

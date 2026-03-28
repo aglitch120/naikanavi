@@ -51,15 +51,18 @@ export default function DAS28Page() {
       category="general"
       categoryIcon="🦴"
       result={result && (
-        <ResultCard
-          label={result.type}
-          value={`${result.score}`}
-          severity={result.severity}
-          details={[
-            { label: '疾患活動性', value: result.category },
-            { label: '判定基準', value: '<=2.6 寛解 / <=3.2 低 / <=5.1 中 / >5.1 高' },
-          ]}
-        />
+        <div className="space-y-2">
+          <ResultCard
+            label={result.type}
+            value={`${result.score}`}
+            severity={result.severity}
+            details={[
+              { label: '疾患活動性', value: result.category },
+              { label: '判定基準', value: '<=2.6 寛解 / <=3.2 低 / <=5.1 中 / >5.1 高' },
+            ]}
+          />
+          <p className="text-[10px] text-muted px-1">DAS28-CRP ≤2.6は寛解の一指標。SDAI/CDAI寛解基準とは一致しないことがある</p>
+        </div>
       )}
       references={[
         { text: 'Prevoo ML, et al. Modified disease activity scores that include twenty-eight-joint counts. Arthritis Rheum 1995;38:44-8', url: 'https://pubmed.ncbi.nlm.nih.gov/7818570/' },
@@ -80,7 +83,7 @@ export default function DAS28Page() {
         <NumberInput label="腫脹関節数 (SJC28)" value={swollen} onChange={setSwollen} unit="関節" min={0} max={28} />
       </div>
       {useCRP ? (
-        <NumberInput label="CRP" value={crp} onChange={setCrp} unit="mg/dL" step={0.1} />
+        <NumberInput label="CRP" value={crp} onChange={setCrp} unit="mg/dL" step={0.1} hint="mg/dL（日本標準）で入力。mg/L表示の施設は10で割って入力" />
       ) : (
         <NumberInput label="ESR" value={esr} onChange={setEsr} unit="mm/h" />
       )}

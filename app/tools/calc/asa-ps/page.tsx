@@ -8,8 +8,8 @@ const toolDef = getToolBySlug('asa-ps')!
 const levels=[
   {label:'I: 健康な患者（併存疾患なし、非喫煙者、飲酒なし〜少量）',value:'1'},
   {label:'II: 軽度の全身疾患（喫煙者、社会的飲酒、妊婦、肥満BMI30-40、コントロール良好なDM/HT）',value:'2'},
-  {label:'III: 重度の全身疾患（コントロール不良のDM/HT、COPD、BMI≧40、活動性肝炎、アルコール依存、PM/ICD、ESRD（定期透析）、60歳未満のMI/CVA/TIA/CAD歴）',value:'3'},
-  {label:'IV: 生命を脅かす重度の全身疾患（最近のMI/CVA/TIA、進行中の心虚血、重症弁膜症、重症EF低下、敗血症、DIC、ARDS、ESRD(非定期透析)）',value:'4'},
+  {label:'III: 重度の全身疾患（コントロール不良のDM/HT、COPD、BMI≧40、活動性肝炎、アルコール依存、PM/ICD、ESRD（定期透析）、既往のMI/CVA/TIA/CAD（3ヶ月以上経過））',value:'3'},
+  {label:'IV: 生命を脅かす重度の全身疾患（最近のMI/CVA/TIA（3ヶ月以内）、進行中の心虚血、重症弁膜症、重症EF低下、敗血症、DIC、ARDS、ESRD(非定期透析)）',value:'4'},
   {label:'V: 手術なしでは生存が期待できない瀕死状態（破裂AAA、重症外傷、頭蓋内出血(mass effect)、腸管虚血(心血管病変併存)）',value:'5'},
   {label:'VI: 脳死と判定された臓器提供ドナー',value:'6'},
 ]

@@ -32,7 +32,7 @@ export default function SjsTenDihsPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
-      explanation={<div className="text-sm text-muted"><p>重症薬疹は早期認識と原因薬剤の中止が最重要。眼科・皮膚科への緊急コンサルト必須。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>重症薬疹は早期認識と原因薬剤の中止が最重要。一般的に、眼科・皮膚科への早期コンサルテーションが推奨されています。</p></div>}
       relatedTools={[{slug:'ctcae',name:'CTCAE'},{slug:'naranjo',name:'Naranjo'}]}
       references={toolDef.sources||[]}
     >

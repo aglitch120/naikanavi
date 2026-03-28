@@ -20,8 +20,8 @@ function calcAAGradient(fio2: number, pao2: number, paco2: number, patm: number 
 }
 
 function getExpectedGradient(age: number): number {
-  // Expected A-a gradient = (Age + 10) / 4  (commonly used approximation)
-  return Math.round((age + 10) / 4 * 10) / 10
+  // Expected A-a gradient = Age / 4 + 4  (Kanber 1968, widely accepted approximation)
+  return Math.round((age / 4 + 4) * 10) / 10
 }
 
 function getInterpretation(gradient: number, expected: number): { text: string; severity: 'ok' | 'wn' | 'dn'; causes: string } {
@@ -115,7 +115,7 @@ export default function AAGradientPage() {
                 name: 'A-aDO₂の正常値は？',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: '年齢とともに上昇します。一般的な予測式は (年齢 + 10) / 4 で、若年成人では 5-15 mmHg、高齢者では 15-25 mmHg 程度が正常です。室内気（FiO₂ 0.21）での評価が基本です。',
+                  text: '年齢とともに上昇します。Kanber 1968 による予測式は 年齢/4 + 4 で、若年成人では 5-15 mmHg、高齢者では 15-25 mmHg 程度が正常です。室内気（FiO₂ 0.21）での評価が基本です。',
                 },
               },
               {
@@ -154,7 +154,7 @@ export default function AAGradientPage() {
                 interpretation={result.text}
                 severity={result.severity}
               />
-              <p className="text-[10px] text-muted px-1">年齢予測値: (Age+10)/4。Harris EA, et al. Clin Sci 1974; PMID: 4812393</p>
+              <p className="text-[10px] text-muted px-1">年齢予測値: Age/4 + 4。Kanber GJ, et al. Am Rev Respir Dis 1968; PMID: 5638002</p>
               <p className="text-[10px] text-wn px-1">※年齢予測正常値は室内気(FiO₂=0.21)にのみ適用。高流量酸素投与下では参考値として使用不可。</p>
 
               <div className="bg-s0 border border-br rounded-xl p-4">

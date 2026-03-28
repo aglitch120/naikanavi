@@ -54,13 +54,14 @@ export default function EgfrPage() {
   const result = useMemo(() => {
     const crVal = parseFloat(cr)
     const ageVal = parseInt(age)
-    if (!crVal || crVal <= 0 || !ageVal || ageVal < 18 || ageVal > 120) return null
+    if (!crVal || crVal <= 0 || !ageVal || ageVal > 120) return null
+    if (ageVal < 18) return { underAge: true, egfrCkdEpi: 0, egfrJsn: 0, ckd: { stage: '', label: '', severity: 'wn' as const } }
 
     const egfrCkdEpi = calculateEgfr(crVal, ageVal, sex as 'male' | 'female')
     const egfrJsn = calculateEgfrJsn(crVal, ageVal, sex as 'male' | 'female')
     const ckd = getCkdStage(egfrCkdEpi)
 
-    return { egfrCkdEpi, egfrJsn, ckd }
+    return { underAge: false, egfrCkdEpi, egfrJsn, ckd }
   }, [cr, age, sex])
 
   const relatedTools = toolDef.relatedSlugs
@@ -129,6 +130,11 @@ export default function EgfrPage() {
         ]}
         result={
           result && (
+            result.underAge ? (
+              <div className="bg-wnl border border-wnb rounded-xl p-4">
+                <p className="text-sm font-medium text-wn">18歳未満は小児用GFR推算式（Schwartz式等）を使用してください</p>
+              </div>
+            ) : (
             <div className="space-y-3">
               <ResultCard
                 label="eGFR（CKD-EPI 2021 × 日本人係数）"
@@ -140,6 +146,7 @@ export default function EgfrPage() {
                   { label: 'JSN推算式（参考）', value: `${result.egfrJsn.toFixed(1)} mL/min/1.73m²` },
                 ]}
               />
+              <p className="text-[10px] text-muted px-1">※CKD-EPI 2021への日本人係数0.813の適用は公式に検証されていません。日本腎臓学会推奨のJSN式との比較を推奨します</p>
 
               {/* CKDステージ早見表 */}
               <div className="bg-s0 border border-br rounded-xl p-4">
@@ -167,6 +174,7 @@ export default function EgfrPage() {
                 </div>
               </div>
             </div>
+            )
           )
         }
         explanation={undefined}

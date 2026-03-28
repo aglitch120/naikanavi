@@ -28,7 +28,12 @@ export default function CIWAArPage(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="CIWA-Ar" value={result.score} unit="/67点" interpretation={result.label} severity={result.severity} />}
+      result={
+        <div className="space-y-2">
+          <ResultCard label="CIWA-Ar" value={result.score} unit="/59点（簡略版）" interpretation={result.label} severity={result.severity} />
+          <p className="text-[10px] text-muted px-1">※本ツールは簡略版です。触覚障害・聴覚障害・視覚障害・頭痛の各項目を0-5点（0/1/3/5）で採点しているため、合計最大59点となります。完全版CIWA-Arは各項目0-7点（合計最大67点）。</p>
+        </div>
+      }
       explanation={undefined}
       relatedTools={[]} references={[{text:'Sullivan JT et al. Assessment of alcohol withdrawal: the revised clinical institute withdrawal assessment for alcohol scale (CIWA-Ar). Br J Addict 1989;84:1353-1357'}]}
     >

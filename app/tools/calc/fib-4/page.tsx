@@ -38,7 +38,7 @@ export default function FIB4Page() {
   const [age, setAge] = useState('55')
   const [ast, setAst] = useState('45')
   const [alt, setAlt] = useState('50')
-  const [plt, setPlt] = useState('15')
+  const [plt, setPlt] = useState('150')
 
   const result = useMemo(() => {
     const a = parseFloat(age)

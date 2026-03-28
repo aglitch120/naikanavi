@@ -46,18 +46,23 @@ export default function Abcd2Page() {
       category={categoryLabels[toolDef.category]}
       categoryIcon={categoryIcons[toolDef.category]}
       result={
-        <ResultCard
-          label="ABCD² スコア"
-          value={result.score}
-          unit="/ 7点"
-          interpretation={result.label}
-          severity={result.severity}
-          details={[
-            { label: '2日以内の脳梗塞リスク', value: result.risk2d },
-            { label: '7日以内', value: result.risk7d },
-            { label: '90日以内', value: result.risk90d },
-          ]}
-        />
+        <div className="space-y-3">
+          <div className="bg-dnl border border-dnb rounded-xl p-3">
+            <p className="text-xs font-semibold text-dn">ABCD²スコア単独での入院・外来判断は推奨されない（AHA/ASA 2021: Class III）。MRI-DWI所見・症状持続・施設状況を総合判断すること。</p>
+          </div>
+          <ResultCard
+            label="ABCD² スコア"
+            value={result.score}
+            unit="/ 7点"
+            interpretation={result.label}
+            severity={result.severity}
+            details={[
+              { label: '2日以内の脳梗塞リスク', value: result.risk2d },
+              { label: '7日以内', value: result.risk7d },
+              { label: '90日以内', value: result.risk90d },
+            ]}
+          />
+        </div>
       }
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs
@@ -68,6 +73,7 @@ export default function Abcd2Page() {
         .filter(Boolean) as { slug: string; name: string }[]}
       references={[
         { text: 'Johnston SC et al. Lancet 2007;369:283-292' },
+        { text: 'Kleindorfer DO et al. AHA/ASA Guideline for the Prevention of Stroke in Patients With Stroke and Transient Ischemic Attack. Stroke 2021;52(7):e364-e467' },
       ]}
     >
       <div className="space-y-4">

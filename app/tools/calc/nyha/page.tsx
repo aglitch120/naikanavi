@@ -23,7 +23,13 @@ export default function NyhaPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="NYHA" value={`Class ${cls.value}`} interpretation={cls.label} severity={cls.severity} />}
-      explanation={undefined}
+      explanation={
+        <div className="space-y-2 text-sm text-muted">
+          <p>HFrEF（EF低下型心不全）の基本薬物療法（Class II-IV）:</p>
+          <p>RAS阻害薬（ACE-I, ARB, またはARNIから1剤選択）+ β遮断薬 + MRA + SGLT2i</p>
+          <p className="text-xs text-dn font-medium">※ ACE-I/ARBとARNIの併用は禁忌。いずれか1剤を選択すること。</p>
+        </div>
+      }
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
       references={[{ text: 'The Criteria Committee of the NYHA. Diseases of the Heart and Blood Vessels, 6th ed. 1964' }]}
     >

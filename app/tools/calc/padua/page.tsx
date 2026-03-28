@@ -8,7 +8,7 @@ const toolDef = getToolBySlug('padua')!
 
 const criteria = [
   { id: 'cancer', label: '活動性のがん', points: 3 },
-  { id: 'vte_hx', label: 'VTE既往（表在性静脈血栓を除く）', points: 3 },
+  { id: 'vte_hx', label: 'VTE既往（DVTまたはPE。表在性血栓は除く）', points: 3 },
   { id: 'immobile', label: '3日以上の不動（トイレ移動程度）', points: 3 },
   { id: 'thrombophilia', label: '既知の血栓性素因', points: 3 },
   { id: 'trauma_surg', label: '最近（1ヶ月以内）の外傷 or 手術', points: 2 },

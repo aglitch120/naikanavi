@@ -15,7 +15,7 @@ export default function OaklandPage() {
   const [hb, setHb] = useState<string>('130-159')
   const scoreMap: Record<string, Record<string, number>> = {
     age: { '<40': 0, '40-69': 1, '>=70': 2 },
-    sex: { 'male': 0, 'female': 1 },
+    sex: { 'male': 1, 'female': 0 },
     prevAdm: { 'no': 0, 'yes': 1 },
     dre: { 'no-blood': 0, 'blood': 1 },
     hr: { '<70': 0, '70-89': 1, '90-109': 2, '>=110': 3 },
@@ -49,7 +49,7 @@ export default function OaklandPage() {
     >
       <div className="space-y-3">
         <Select label="年齢" value={age} onChange={setAge} options={[{ v: '<40', l: '<40歳 (0点)' }, { v: '40-69', l: '40-69歳 (1点)' }, { v: '>=70', l: '≧70歳 (2点)' }]} />
-        <Select label="性別" value={sex} onChange={setSex} options={[{ v: 'male', l: '男性 (0点)' }, { v: 'female', l: '女性 (1点)' }]} />
+        <Select label="性別" value={sex} onChange={setSex} options={[{ v: 'male', l: '男性 (1点)' }, { v: 'female', l: '女性 (0点)' }]} />
         <Select label="下部消化管出血での入院歴" value={prevAdm} onChange={setPrevAdm} options={[{ v: 'no', l: 'なし (0点)' }, { v: 'yes', l: 'あり (1点)' }]} />
         <Select label="直腸診 (DRE)" value={dre} onChange={setDre} options={[{ v: 'no-blood', l: '血液なし (0点)' }, { v: 'blood', l: '血液あり (1点)' }]} />
         <Select label="心拍数" value={hr} onChange={setHr} options={[{ v: '<70', l: '<70 (0点)' }, { v: '70-89', l: '70-89 (1点)' }, { v: '90-109', l: '90-109 (2点)' }, { v: '>=110', l: '≧110 (3点)' }]} />

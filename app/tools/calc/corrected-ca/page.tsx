@@ -156,9 +156,7 @@ export default function CorrectedCaPage() {
                 <div className="bg-dnl border border-dnb rounded-xl p-4">
                   <p className="text-sm font-medium text-dn">⚠️ {result.corrCa > 14.0 ? '高Ca血症クリーゼ — 緊急対応' : '中等度以上の高Ca血症'}</p>
                   <p className="text-xs text-dn mt-1">
-                    {result.corrCa > 14.0
-                      ? '生理食塩水による大量輸液 + カルシトニン ± ビスホスホネート。原因検索（PTH・PTHrP・VitD・悪性腫瘍）を並行して進めてください。'
-                      : '生理食塩水輸液と原因検索（副甲状腺機能亢進症・悪性腫瘍・薬剤性等）を開始してください。'}
+                    緊急の専門医へのコンサルテーションが必要です。
                   </p>
                 </div>
               )}
@@ -167,8 +165,7 @@ export default function CorrectedCaPage() {
                 <div className="bg-dnl border border-dnb rounded-xl p-4">
                   <p className="text-sm font-medium text-dn">⚠️ 低Ca血症</p>
                   <p className="text-xs text-dn mt-1">
-                    症状（テタニー・痙攣・QT延長）の有無を確認。症候性低Ca血症ではグルコン酸Ca静注を検討。
-                    原因検索（副甲状腺機能低下症・VitD欠乏・Mg欠乏・慢性腎臓病）を進めてください。
+                    緊急の専門医へのコンサルテーションが必要です。
                   </p>
                 </div>
               )}

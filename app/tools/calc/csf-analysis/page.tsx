@@ -95,7 +95,7 @@ export default function CSFAnalysisPage() {
           severity={result?.severity || 'neutral'}
         />
       }
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted"><p>初期結核性髄膜炎は蛋白・糖が正常域に近いことがあり、ウイルス性との鑑別が困難です。臨床的に疑う場合はADA・PCR等の追加検査を考慮してください。</p></div>}
       relatedTools={[]}
       references={[{ text: 'Seehusen DA, et al. Am Fam Physician 2003;68:1103-1108' }]}
     >

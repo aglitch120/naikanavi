@@ -7,7 +7,7 @@ const toolDef = getToolBySlug('pneumothorax-class')!
 const classes = [
   { grade: 'I度（軽度）', desc: '肺尖が鎖骨より上。虚脱率 <20%程度。', tx: '経過観察（安静+O₂投与）。小さければ自然吸収を期待。', color: 'bg-okl' },
   { grade: 'II度（中等度）', desc: '虚脱率 20-50%程度。Light index中等度。', tx: '脱気（穿刺吸引 or 胸腔ドレーン）。初回かつ呼吸困難なければ穿刺吸引を先行。', color: 'bg-wnl' },
-  { grade: 'III度（高度）', desc: '虚脱率 >50%。完全虚脱や緊張性気胸。', tx: '胸腔ドレーン挿入。緊張性気胸なら緊急脱気（第4-5肋間前腋窩線[安全の三角]が推奨。第2肋間鎖骨中線は古典的手技）。', color: 'bg-dnl' },
+  { grade: 'III度（高度）', desc: '虚脱率 >50%。完全虚脱や緊張性気胸。', tx: '胸腔ドレーン挿入。緊張性気胸なら緊急脱気（第4-5肋間中腋窩線（前腋窩線〜中腋窩線 = 安全の三角）が推奨。第2肋間鎖骨中線は古典的手技）。手技の最終判断は指導医と相談の上で行うこと。', color: 'bg-dnl' },
 ]
 export default function PneumothoraxClassPage() {
   const [selected, setSelected] = useState(0)

@@ -562,11 +562,16 @@ export default function TnmStagingPage() {
   }
 
   const resultNode = stage ? (
-    <ResultCard
-      value={`Stage ${stage}`}
-      label={`${tVal} / ${nVal} / ${mVal}`}
-      severity={stage.startsWith('IV') ? 'dn' : stage.startsWith('III') ? 'wn' : 'ok'}
-    />
+    <div className="space-y-2">
+      <ResultCard
+        value={`Stage ${stage}`}
+        label={`${tVal} / ${nVal} / ${mVal}`}
+        severity={stage.startsWith('IV') ? 'dn' : stage.startsWith('III') ? 'wn' : 'ok'}
+      />
+      {cancer.name === '食道癌' && (
+        <p className="text-[10px] text-muted px-1">※食道癌はUICC第8版で扁平上皮癌と腺癌でstage groupingが異なります。本ツールは腺癌準拠の参考値です</p>
+      )}
+    </div>
   ) : null
 
   return (

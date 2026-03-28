@@ -148,7 +148,7 @@ export default function QSOFAPage() {
                   <p>□ 乳酸値測定</p>
                   <p>□ 抗菌薬投与前に血液培養2セット採取</p>
                   <p>□ 広域抗菌薬の経験的投与</p>
-                  <p>□ 低血圧 or 乳酸≥4 → 30mL/kg 晶質液投与開始</p>
+                  <p>□ 低血圧 or 乳酸≥4 → 輸液反応性を評価しながら晶質液投与（30mL/kgは目安。個別調整要 — J-SSCG 2024参照）</p>
                   <p>□ 輸液後も低血圧持続 → 昇圧剤（MAP≥65目標）</p>
                 </div>
                 <p className="text-[10px] text-dn/70 mt-2">出典: Surviving Sepsis Campaign 2021; PMID: 34599691</p>

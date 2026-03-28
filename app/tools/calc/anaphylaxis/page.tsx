@@ -12,7 +12,7 @@ export default function Page(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="アナフィラキシー診断基準" value={count+'/'+items.length+'項目'} interpretation={count>=1?'3基準のうち1つ以上を満たす — アナフィラキシーの可能性あり（※各基準は独立して診断に十分）':'いずれの基準も満たさない'} severity={count>=1?'dn' as const:'ok' as const} />}
+      result={<ResultCard label="アナフィラキシー診断基準" value={count+'/'+items.length+'項目'} interpretation={count>=1?'アナフィラキシーの診断基準を満たす可能性あり（臨床的判断と合わせて評価）':'アナフィラキシーの診断基準を満たさない'} severity={count>=1?'dn' as const:'ok' as const} />}
       explanation={undefined}
       relatedTools={[]} references={[{text:'WAO 2020/アナフィラキシーGL 2022'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}/>)}</div></CalculatorLayout>

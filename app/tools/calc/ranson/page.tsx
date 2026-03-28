@@ -75,6 +75,7 @@ export default function RansonPage() {
       references={[
         { text: 'Ranson JH, et al. Surg Gynecol Obstet 1974;139:69-81' },
       ]}
+      explanation={<div className="text-sm text-muted space-y-1"><p>死亡率データはRanson 1974年原著より。現代集中治療管理下では改善している可能性あり。</p><p>本スコアはアルコール性膵炎を対象としています。胆石性膵炎にはGallstone Ranson基準も参照してください。</p></div>}
     >
       <div className="space-y-4">
         <p className="text-sm font-semibold text-tx">入院時（5項目）</p>

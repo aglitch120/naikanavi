@@ -29,7 +29,7 @@ export default function QtcPage() {
     let interpretation = ''
     if (bazett >= 500) interpretation = 'QTc著明延長 — TdPリスク高。原因薬剤の中止・電解質補正を'
     else if (bazett >= upperLimit) interpretation = `QTc延長（${sex === 'male' ? '男性' : '女性'}基準）— 原因検索を`
-    else if (bazett < 350) interpretation = 'QTc短縮（Short QT syndromeの診断基準は≦330-340ms。350ms未満は注意域）'
+    else if (bazett <= 360) interpretation = 'QTc ≤ 360ms: Short QT syndromeの可能性を考慮（2022 ESC基準）。≤ 340ms: 典型的SQTS範囲'
     else interpretation = 'QTc正常範囲'
 
     return { bazett: Math.round(bazett), fridericia: Math.round(fridericia), severity, interpretation, upperLimit }

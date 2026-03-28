@@ -14,7 +14,7 @@ const criteria = [
   { id: 'rebound', label: '反跳痛', points: 1 },
   { id: 'fever', label: '体温 ≥ 37.3°C', points: 1 },
   { id: 'leuko', label: '白血球 > 10,000/μL', points: 2 },
-  { id: 'shift', label: '好中球左方移動あり', points: 1 },
+  { id: 'shift', label: '好中球左方移動（好中球分画 > 75%: 分葉核球+桿状核球）', points: 1 },
 ]
 
 export default function AlvaradoPage() {

@@ -23,6 +23,7 @@ const riskData: Record<number, { risk: string; recommendation: string }> = {
   2: { risk: '10.1%', recommendation: '中リスク — 心機能評価を考慮' },
   3: { risk: '15%以上', recommendation: '高リスク — 心エコー・負荷検査を検討' },
 }
+// ※リスク値は外部検証コホートのデータ。原著Lee 1999のオリジナル値: 0点0.4%, 1点1.0%, 2点2.4%, 3点以上5.4%
 
 function getSeverity(score: number): 'ok' | 'wn' | 'dn' {
   if (score <= 1) return 'ok'
@@ -56,6 +57,7 @@ export default function RcriPage() {
           severity={result.severity}
           details={[
             { label: '主要心血管合併症リスク', value: result.risk },
+            { label: '※注記', value: 'リスク値は外部検証コホートのデータ。原著Lee 1999: 0点0.4%, 1点1.0%, 2点2.4%, 3点以上5.4%' },
           ]}
         />
       }

@@ -9,10 +9,10 @@ const items=[
   {id:'sbp',label:'S: 収縮期血圧 < 90mmHg',points:2},
   {id:'multilobar',label:'M: 胸部X線で多葉性浸潤影',points:1},
   {id:'albumin',label:'A: アルブミン < 3.5g/dL',points:1},
-  {id:'rr',label:'R: 呼吸数 ≧25（≧50歳）or ≧30（<50歳）',points:1},
+  {id:'rr',label:'R: 呼吸数 ≧25（<50歳）or ≧30（≧50歳）',points:1},
   {id:'tachy',label:'T: 頻脈 ≧125/min',points:1},
   {id:'confusion',label:'C: 意識変容（新規発症）',points:1},
-  {id:'o2',label:'O: PaO₂<70（<50歳）or <60（≧50歳）or SpO₂<93%',points:2},
+  {id:'o2',label:'O: PaO₂<70 or SpO₂<94%（<50歳）/ PaO₂<60 or SpO₂<90%（≧50歳）',points:2},
   {id:'ph',label:'P: pH < 7.35',points:2},
 ]
 export default function SMARTCOPPage(){

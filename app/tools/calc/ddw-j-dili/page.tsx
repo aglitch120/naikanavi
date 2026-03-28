@@ -50,8 +50,8 @@ export default function DdwjDiliPage() {
     const total = scores.reduce((a,b)=>a+b,0)
     let severity: 'ok'|'wn'|'dn' = 'ok', interpretation = ''
     if (total >= 6) { interpretation = `${total}点 — 可能性が高い (highly probable)`; severity = 'dn' }
-    else if (total >= 3) { interpretation = `${total}点 — 可能性あり (probable)`; severity = 'wn' }
-    else if (total >= 1) { interpretation = `${total}点 — 否定できない (possible)`; severity = 'wn' }
+    else if (total >= 4) { interpretation = `${total}点 — 可能性あり (probable)`; severity = 'wn' }
+    else if (total >= 2) { interpretation = `${total}点 — 否定できない (possible)`; severity = 'wn' }
     else { interpretation = `${total}点 — 可能性が低い (unlikely)` }
     return { total, severity, interpretation }
   }, [scores])

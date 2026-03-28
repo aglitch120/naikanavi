@@ -23,7 +23,7 @@ export default function TetanusPage(){
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="破傷風予防" value={label} severity={sev} />}
       explanation={undefined}
-      relatedTools={[]} references={[{text:'CDC. Tetanus: Prevention. Pink Book 2021'},{text:'日本外科感染症学会. 術後感染予防抗菌薬適正使用のためのガイドライン'}]}
+      relatedTools={[]} references={[{text:'CDC. Tetanus: Prevention. Pink Book 2021'},{text:'CDC. Epidemiology and Prevention of Vaccine-Preventable Diseases (Pink Book). 破傷風予防はCDC基準に準拠'}]}
     ><div className="space-y-4"><RadioGroup id="wound" label="創の性状" options={woundTypes} value={wound} onChange={setWound} /><RadioGroup id="vaccine" label="破傷風ワクチン接種歴" options={vaccineHistory} value={vaccine} onChange={setVaccine} /></div></CalculatorLayout>
   )
 }

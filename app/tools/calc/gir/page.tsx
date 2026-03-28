@@ -12,7 +12,7 @@ export default function GIRPage(){
   const result=useMemo(()=>{
     const w=Number(weight)||1;const g=Number(glucose)||0;const r=Number(rate)||0
     const gir=(g/100*r*1000)/(w*60)
-    const sev=gir>=4&&gir<=6?'ok' as const:gir<4?'wn' as const:'wn' as const
+    const sev=gir>=4&&gir<=6?'ok' as const:gir<4?'wn' as const:gir>8?'dn' as const:'wn' as const
     return {gir:gir.toFixed(2),severity:sev,label:gir<4?'投与速度低い（通常4-6が目標）':gir<=6?'適正範囲（4-6 mg/kg/min）':gir<=8?'やや高め（耐糖能に注意）':'高い（高血糖リスク）'}
   },[weight,glucose,rate])
   return(

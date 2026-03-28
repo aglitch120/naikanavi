@@ -42,7 +42,7 @@ export default function ASCVDPage() {
       baseline = 0.9144
       mean = 61.18
     } else {
-      sum = -29.799 * lnAge + 13.540 * lnAge * lnAge + 13.540 * lnTC - 3.114 * lnAge * lnTC
+      sum = -29.799 * lnAge + 4.884 * lnAge * lnAge + 13.540 * lnTC - 3.114 * lnAge * lnTC
         - 13.578 * lnHDL + 3.149 * lnAge * lnHDL
         + (bpTreat ? 2.019 * lnSBP : 1.957 * lnSBP)
         + (smoker ? 7.574 - 1.665 * lnAge : 0)
@@ -120,7 +120,7 @@ export default function ASCVDPage() {
           </label>
         ))}
       </div>
-      <p className="text-[10px] text-wn">※日本人にはPCEの過大評価の可能性あり。久山町スコア/吹田スコアも検討してください。</p>
+      <p className="text-xs text-wn">※日本人への適用には吹田スコア・久山町スコアを優先してください（PCEは過大評価の可能性）</p>
     </CalculatorLayout>
   )
 }

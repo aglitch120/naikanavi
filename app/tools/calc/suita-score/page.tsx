@@ -48,7 +48,7 @@ export default function SuitaScorePage() {
       description="日本人向け冠動脈疾患10年リスク評価。国立循環器病研究センター吹田研究に基づく簡易版（正確な評価にはガイドラインのリスクチャートを使用してください）。" category="cardiology" categoryIcon="&#10084;&#65039;"
       result={result && <ResultCard label="吹田スコア（簡易版）" value={`${result.pts}点`} severity={result.severity}
         interpretation="※簡易推算版です。正確な吹田スコアは動脈硬化性疾患予防ガイドラインのリスクチャートを参照してください。"
-        details={[{label:'リスク区分',value:result.risk},{label:'注意',value:'原著はTC(総コレステロール)ベース。本ツールはLDL-C代替の簡易版'}]} />}
+        details={[{label:'リスク区分',value:result.risk},{label:'注意',value:'原著はTC(総コレステロール)ベース。本ツールはLDL-C代替の簡易版'},{label:'⚠️ 非公式版',value:'本ツールは原著（TC基準）をLDL-C代替に簡易化した非公式版です。正式なリスク評価には動脈硬化性疾患予防ガイドライン2022のリスクチャートを使用してください'}]} />}
       references={[{text:'Nishimura K, et al. Predicting coronary heart disease using risk factor categories for a Japanese urban population. J Atheroscler Thromb 2014;21:784-98', url:'https://pubmed.ncbi.nlm.nih.gov/24671110/'}]}>
       <div className="grid grid-cols-2 gap-3">
         <NumberInput label="年齢" value={age} onChange={setAge} unit="歳" />

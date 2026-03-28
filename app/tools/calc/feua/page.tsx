@@ -22,10 +22,10 @@ export default function FeuaPage() {
     if (feua < 5) {
       interpretation = 'FEUA < 5% — 尿酸排泄低下（腎前性AKI・volume depletion・利尿薬使用）'
       severity = 'wn'
-    } else if (feua <= 12) {
-      interpretation = 'FEUA 5〜12% — 正常範囲'
+    } else if (feua <= 11) {
+      interpretation = 'FEUA 5〜11% — 正常範囲'
     } else {
-      interpretation = 'FEUA > 12% — 尿酸排泄亢進。SIADH（>11%）の鑑別に有用'
+      interpretation = 'FEUA > 11% — 尿酸排泄亢進。SIADH（Maesaka 1998: >11%）の鑑別に有用'
       severity = 'dn'
     }
     return { feua: feua.toFixed(2), severity, interpretation }

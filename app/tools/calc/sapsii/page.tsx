@@ -52,7 +52,7 @@ export default function SAPSIIPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="SAPS II" value={result.score} unit="点" interpretation={result.label} severity={result.severity} />}
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted"><p>※推定死亡率は個別患者の予後予測ではなく、集団レベルの統計的推定値です。</p></div>}
       relatedTools={[]} references={[{text:'Le Gall JR et al. A new Simplified Acute Physiology Score (SAPS II) based on a European/North American multicenter study. JAMA 1993;270:2957-2963'}]}
     >
       <div className="space-y-3">
@@ -61,7 +61,7 @@ export default function SAPSIIPage(){
         <NumberInput id="sbp" label="収縮期血圧" value={sbp} onChange={setSBP} unit="mmHg" />
         <NumberInput id="temp" label="体温" value={temp} onChange={setTemp} unit="°C" />
         <NumberInput id="gcs" label="GCS" value={gcsVal} onChange={setGCS} unit="/15" />
-        <NumberInput id="pao2" label="PaO₂/FiO₂ 比" value={pao2} onChange={setPaO2} unit="" hint="人工呼吸器装着時のみ入力（自発呼吸なら空欄にして0点）" />
+        <NumberInput id="pao2" label="PaO₂/FiO₂ 比" value={pao2} onChange={setPaO2} unit="" hint="人工呼吸器またはCPAP/NIV装着時の最悪値を入力（自発呼吸なら空欄にして0点）" />
         <NumberInput id="uo" label="尿量(24h)" value={uo} onChange={setUO} unit="mL/日" />
         <NumberInput id="bun" label="BUN" value={bun} onChange={setBUN} unit="mg/dL" />
         <NumberInput id="wbc" label="WBC" value={wbc} onChange={setWBC} unit="×10³/μL" />

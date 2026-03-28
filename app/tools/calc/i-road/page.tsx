@@ -5,7 +5,7 @@ import ResultCard from '@/components/tools/ResultCard'
 import { CheckItem } from '@/components/tools/InputFields'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('i-road')!
-const iItems=[{id:'icu',label:'I: ICU入室が必要 or ショック'},{id:'spo2',label:'SpO₂ > 90%維持にFiO₂ ≧ 0.35が必要'}]
+const iItems=[{id:'icu',label:'I: ICU入室が必要 or ショック'},{id:'spo2',label:'SpO₂ ≧90%の維持にFiO₂ ≧0.35が必要（室内気では低酸素）'}]
 const road=[{id:'chest',label:'R: 胸部X線で一側肺の2/3以上の陰影'},{id:'orientation',label:'O: 意識障害(JCS≧2 新規)'},{id:'age',label:'A: 年齢（男性≧70歳、女性≧75歳）'},{id:'dehydration',label:'D: 脱水 or BUN ≧ 25mg/dL'}]
 export default function IROADPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries([...iItems,...road].map(i=>[i.id,false])))

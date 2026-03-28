@@ -101,7 +101,12 @@ const CATEGORIES: Category[] = [
         drugs: [
           { brand: 'エクメット配合錠 LD/HD', generic: 'ビルダグリプチン/メトホルミン', composition: 'LD: ビルダグリプチン 50mg + メトホルミン 250mg / HD: 50mg + 500mg', note: '1日2回投与' },
           { brand: 'イニシンク配合錠', generic: 'アログリプチン/メトホルミン', composition: 'アログリプチン 25mg + メトホルミン 500mg', note: '1日1回投与' },
-          { brand: 'メタクト配合錠 LD/HD', generic: 'ピオグリタゾン/メトホルミン', composition: 'LD: ピオグリタゾン 15mg + メトホルミン 500mg / HD: 30mg + 500mg', note: 'チアゾリジン+ビグアナイド' },
+        ],
+      },
+      {
+        title: 'チアゾリジン系 + メトホルミン',
+        drugs: [
+          { brand: 'メタクト配合錠 LD/HD（チアゾリジン系 + メトホルミン）', generic: 'ピオグリタゾン/メトホルミン', composition: 'LD: ピオグリタゾン 15mg + メトホルミン 500mg / HD: 30mg + 500mg', note: 'ピオグリタゾンはDPP-4阻害薬ではなくチアゾリジン系（PPARγアゴニスト）' },
         ],
       },
       {

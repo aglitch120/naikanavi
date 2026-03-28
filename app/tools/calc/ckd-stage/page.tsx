@@ -38,7 +38,7 @@ export default function CKDStagePage() {
     let riskLevel = 'low'
     const gIdx = GFR_STAGES.indexOf(gStage)
     const aIdx = aStage ? ALBUMIN_STAGES.indexOf(aStage) : 0
-    if (gIdx >= 4 || aIdx >= 2) riskLevel = 'very-high'
+    if (gIdx >= 4 || aIdx >= 2 || (gIdx >= 3 && aIdx >= 1)) riskLevel = 'very-high'
     else if (gIdx >= 3 || (gIdx >= 2 && aIdx >= 1)) riskLevel = 'high'
     else if (gIdx >= 2 || aIdx >= 1) riskLevel = 'moderate'
 

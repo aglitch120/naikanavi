@@ -170,7 +170,7 @@ export default function GRACEPage() {
                 name: 'GRACE 2.0との違いは？',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'GRACE 2.0はオリジナルのGRACEスコアを簡略化したもので、院内死亡と退院後1年・3年死亡を連続的に予測できます。本ツールはオリジナルの入院時GRACEスコア（院内死亡予測）を計算します。',
+                  text: 'GRACE 2.0はオリジナルGRACEスコアの改良版で、外部検証を経て退院後1年・3年死亡まで予測可能です。本ツールはオリジナルの院内死亡予測スコアを計算しています。',
                 },
               },
             ],
@@ -261,7 +261,7 @@ export default function GRACEPage() {
             <CheckItem
               id="grace-arrest"
               label="入院時心停止"
-              sublabel="来院時または入院中の心停止"
+              sublabel="来院時（入院前）の心停止"
               points={39}
               checked={cardiacArrest}
               onChange={setCardiacArrest}

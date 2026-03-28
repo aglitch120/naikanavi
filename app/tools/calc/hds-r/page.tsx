@@ -14,7 +14,7 @@ const items=[
   {id:'digits',label:'6. 数字の逆唱（6-8-2→2-8-6、3-5-2-9→9-2-5-3）',max:2,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'}]},
   {id:'recall',label:'7. 3つの言葉の遅延再生（自発2点/ヒント1点、各）',max:6,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'},{label:'3点',value:'3'},{label:'4点',value:'4'},{label:'5点',value:'5'},{label:'6点',value:'6'}]},
   {id:'objects',label:'8. 5つの物品記銘（提示→隠す→回答、各1点）',max:5,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'},{label:'3点',value:'3'},{label:'4点',value:'4'},{label:'5点',value:'5'}]},
-  {id:'verbal',label:'9. 野菜の名前（60秒間、0-5個=0点、6個=1点、7個=2点…10個以上=5点）',max:5,options:[{label:'0点',value:'0'},{label:'1点',value:'1'},{label:'2点',value:'2'},{label:'3点',value:'3'},{label:'4点',value:'4'},{label:'5点',value:'5'}]},
+  {id:'verbal',label:'9. 野菜の名前（60秒間、0-4個=0点、5個=1点、6個=2点、7個=3点、8個=4点、9個以上=5点）',max:5,options:[{label:'0点（0-4個）',value:'0'},{label:'1点（5個）',value:'1'},{label:'2点（6個）',value:'2'},{label:'3点（7個）',value:'3'},{label:'4点（8個）',value:'4'},{label:'5点（9個以上）',value:'5'}]},
 ]
 export default function HDSRPage(){
   const [vals,setVals]=useState<Record<string,string>>(Object.fromEntries(items.map(i=>[i.id,'0'])))

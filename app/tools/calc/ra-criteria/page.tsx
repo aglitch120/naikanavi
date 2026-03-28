@@ -53,6 +53,12 @@ export default function RACriteriaPage() {
       description="2010年ACR/EULAR関節リウマチ分類基準。4ドメイン（関節病変・血清学・急性期反応物質・罹病期間）のスコアリング。6点以上でRAと分類。"
       category="general"
       categoryIcon="🦴"
+      explanation={
+        <div className="text-sm text-muted space-y-1">
+          <p><strong className="text-tx">適用前提:</strong> 少なくとも1関節に臨床的滑膜炎があり、他疾患で説明できないこと。</p>
+          <p>本基準は<strong className="text-wn">分類基準（研究目的）</strong>であり診断基準ではありません。臨床判断と組み合わせて使用してください。</p>
+        </div>
+      }
       result={(
         <ResultCard
           label="ACR/EULAR 2010"

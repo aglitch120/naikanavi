@@ -49,7 +49,7 @@ export default function NaDeficitPage() {
           label="Na補充必要量"
           value={result.deficit}
           unit="mEq"
-          interpretation="⚠️ 24時間で10 mEq/L以下の補正に留める（ODS予防）"
+          interpretation="⚠️ 最大10 mEq/L以下（推奨目標は6-8 mEq/L/日）。ODS予防"
           severity="wn"
           details={[
             { label: 'TBW', value: `${result.tbw} L` },

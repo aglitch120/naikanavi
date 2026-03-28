@@ -53,6 +53,7 @@ export default function News2Page() {
         <NumberInput id="spo2" label="SpO₂" unit="%" value={spo2} onChange={setSpo2} step={1} />
         <SelectInput id="scale2" label="SpO₂スケール" value={scale2} onChange={setScale2}
           options={[{ value: '1', label: 'スケール1（通常）' }, { value: '2', label: 'スケール2（高CO₂血症リスクのある COPD患者で目標SpO₂ 88-92%に設定されている場合のみ）' }]} />
+        {scale2 === '2' && <p className="text-xs text-muted bg-wnl border border-wnb rounded-lg px-3 py-2">スケール2はCOPD等で目標SpO₂ 88-92%の患者のみに使用。高SpO₂（93%以上）でも酸素投与中であれば高スコアとなります</p>}
         <SelectInput id="onO2" label="酸素投与" value={onO2} onChange={setOnO2}
           options={[{ value: 'no', label: 'なし（室内気）' }, { value: 'yes', label: 'あり' }]} />
         <NumberInput id="temp" label="体温" unit="°C" value={temp} onChange={setTemp} step={0.1} />
