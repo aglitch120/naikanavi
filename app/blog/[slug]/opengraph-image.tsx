@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 import ogpMeta from '@/lib/ogp-meta.json'
 
-export const runtime = 'nodejs'
+export const runtime = 'edge'
 export const alt = 'iwor'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
