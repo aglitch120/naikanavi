@@ -23,12 +23,14 @@ export default function Page() {
     const deltaAG = correctedAG - normalAG
     const deltaHCO3 = 24 - h
     const ratio = deltaHCO3 !== 0 ? deltaAG / deltaHCO3 : 0
+    const agElevated = correctedAG > normalAG
     let label = ''
     let sev: 'ok' | 'wn' | 'dn' = 'ok'
-    if (ratio < 1) { label = 'AG上昇 + 非AG性代謝性アシドーシスの合併'; sev = 'dn' }
+    if (!agElevated) { label = '※高AG代謝性アシドーシスが確認されない場合、Delta比の解釈は無効です'; sev = 'wn' }
+    else if (ratio < 1) { label = 'AG上昇 + 非AG性代謝性アシドーシスの合併'; sev = 'dn' }
     else if (ratio <= 2) { label = '純粋なAG上昇型代謝性アシドーシス'; sev = 'wn' }
     else { label = 'AG上昇 + 代謝性アルカローシスの合併'; sev = 'wn' }
-    return { correctedAG, deltaAG, deltaHCO3, ratio, label, sev }
+    return { correctedAG, deltaAG, deltaHCO3, ratio, label, sev, agElevated }
   }, [na, cl, hco3, albumin])
 
   return (

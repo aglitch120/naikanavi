@@ -21,7 +21,7 @@ export default function STONEPage(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="STONE" value={result.score} unit="/13点" interpretation={result.label} severity={result.severity} />}
+      result={<ResultCard label="STONE" value={result.score} unit="/12点" interpretation={result.label} severity={result.severity} />}
       explanation={undefined}
       relatedTools={[]} references={[{text:'Moore CL et al. Derivation and validation of a clinical prediction rule for uncomplicated ureteral stone. Acad Emerg Med 2014;21:1-10'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={`${i.label} (+${i.points}点)`} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>

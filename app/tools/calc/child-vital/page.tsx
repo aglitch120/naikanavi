@@ -7,7 +7,7 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('child-vital')!
 
 const ageGroups = [
-  { value: 'newborn', label: '新生児（0-28日）', hr: '120-160', sbp: '60-76', rr: '30-60', weight: '3-4 kg' },
+  { value: 'newborn', label: '新生児（0-28日）', hr: '100-160', sbp: '60-76', rr: '30-60', weight: '3-4 kg' },
   { value: 'infant1', label: '乳児（1-6ヶ月）', hr: '100-150', sbp: '70-90', rr: '30-50', weight: '4-8 kg' },
   { value: 'infant2', label: '乳児（6-12ヶ月）', hr: '90-130', sbp: '80-100', rr: '25-40', weight: '8-10 kg' },
   { value: 'toddler', label: '幼児（1-3歳）', hr: '80-120', sbp: '80-100', rr: '20-30', weight: '10-14 kg' },

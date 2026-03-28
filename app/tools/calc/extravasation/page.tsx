@@ -24,7 +24,7 @@ const categories = [
 ]
 export default function ExtravasationPage() {
   const [filter, setFilter] = useState('all')
-  const filtered = filter === 'all' ? categories : categories.filter(c => c.risk.includes(filter))
+  const filtered = filter === 'all' ? categories : categories.filter(c => c.risk.startsWith(filter))
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}

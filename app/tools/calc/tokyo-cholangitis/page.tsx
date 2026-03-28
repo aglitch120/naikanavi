@@ -16,7 +16,7 @@ const severityItems = [
   { label: '高熱(≧ 39℃)', grade: 2 },
   { label: 'WBC < 4,000 or > 12,000', grade: 2 },
   { label: 'Plt < 10万', grade: 2 },
-  { label: 'Alb < 2.5', grade: 2 },
+  { label: 'Alb < 3.0', grade: 2 },
   { label: '腎機能障害(BUN/Cr上昇)', grade: 2 },
   { label: 'PT-INR > 1.5', grade: 2 },
 ]

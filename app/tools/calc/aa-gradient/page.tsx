@@ -155,6 +155,7 @@ export default function AAGradientPage() {
                 severity={result.severity}
               />
               <p className="text-[10px] text-muted px-1">年齢予測値: (Age+10)/4。Harris EA, et al. Clin Sci 1974; PMID: 4812393</p>
+              <p className="text-[10px] text-wn px-1">※年齢予測正常値は室内気(FiO₂=0.21)にのみ適用。高流量酸素投与下では参考値として使用不可。</p>
 
               <div className="bg-s0 border border-br rounded-xl p-4">
                 <div className="grid grid-cols-3 gap-3 text-center">

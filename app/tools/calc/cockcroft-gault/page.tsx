@@ -52,13 +52,16 @@ export default function CockcroftGaultPage() {
       category={categoryLabels[toolDef.category]}
       categoryIcon={categoryIcons[toolDef.category]}
       result={result && (
-        <ResultCard
-          label="クレアチニンクリアランス"
-          value={result.ccr.toFixed(1)}
-          unit="mL/min"
-          interpretation={result.label}
-          severity={result.severity}
-        />
+        <div className="space-y-2">
+          <ResultCard
+            label="クレアチニンクリアランス"
+            value={result.ccr.toFixed(1)}
+            unit="mL/min"
+            interpretation={result.label}
+            severity={result.severity}
+          />
+          <p className="text-[10px] text-wn px-1">※肥満患者では理想体重(IBW)の使用を検討。CCr≠eGFR（体格補正なし）。薬剤投与量調整にはCCrを使用。</p>
+        </div>
       )}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs

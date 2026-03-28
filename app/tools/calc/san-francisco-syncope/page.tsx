@@ -21,7 +21,7 @@ export default function SFSyncopePage(){
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="SFSR (CHESS)" value={result.label} severity={result.severity} />}
       explanation={undefined}
-      relatedTools={[]} references={[{text:'Quinn JV et al. Derivation of the San Francisco Syncope Rule. Ann Emerg Med 2004;43:224-232'}]}
+      relatedTools={[]} references={[{text:'Quinn JV et al. Derivation of the San Francisco Syncope Rule. Ann Emerg Med 2004;43:224-232'},{text:'※外部検証では感度/特異度が元論文より低く、単独での使用には限界あり。臨床的判断との統合が必要（Birnbaum A, et al. Ann Emerg Med 2008）'}]}
     >
       <div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div>
     </CalculatorLayout>

@@ -35,7 +35,7 @@ interface Diagnosis {
 
 function getDiagnosis(osm: string, uosm: string, vol: string, una: string): Diagnosis | null {
   if (osm === 'iso') return { title: '等張性低Na血症（偽性）', detail: '高脂血症・高蛋白血症 → 浸透圧ギャップ確認。実際のNaは正常の可能性。', severity: 'ok' }
-  if (osm === 'hyper') return { title: '高張性低Na血症', detail: '高血糖（補正Na = 実測Na + 1.6×(血糖-100)/100）、マンニトール投与 → 原因除去で改善。', severity: 'wn' }
+  if (osm === 'hyper') return { title: '高張性低Na血症', detail: '高血糖（補正Na = 実測Na + 1.6×(血糖-100)/100。Hillier式では係数2.4。血糖>400ではHillier式推奨）、マンニトール投与 → 原因除去で改善。', severity: 'wn' }
   if (osm !== 'hypo') return null
   if (uosm === 'dilute') return { title: '水中毒 / 心因性多飲', detail: '腎の希釈能は正常。水制限が基本治療。Beer potomania、低栄養も鑑別。', severity: 'wn' }
   if (!vol) return null

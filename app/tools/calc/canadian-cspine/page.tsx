@@ -12,7 +12,7 @@ export default function CanadianCSpinePage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result?<ResultCard label="CCR判定" value={result.label} severity={result.sev} />:<ResultCard label="CCR" value="質問に回答してください" severity="ok" />}
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted"><p>※適用条件: GCS 15・頸部痛あり・受傷後48時間以内の成人患者。GCS低下、麻痺、既知の頸椎疾患がある場合は適用外。</p></div>}
       relatedTools={[]} references={[{text:'Stiell IG et al. The Canadian C-Spine Rule versus the NEXUS Low-Risk Criteria in Patients with Trauma. NEJM 2003;349:2510-2518'}]}
     >
       <div className="space-y-4">

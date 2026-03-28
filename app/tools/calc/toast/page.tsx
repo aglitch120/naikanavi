@@ -7,7 +7,7 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('toast')!
 const types=[
   {value:'laa',label:'大血管アテローム硬化性（LAA）',desc:'頸動脈/頭蓋内動脈の50%以上狭窄。抗血小板薬+CEA/CAS検討',sev:'wn' as const},
-  {value:'svo',label:'小血管閉塞性（SVO/ラクナ）',desc:'径<15mm。高血圧管理が二次予防の主体。抗血小板薬',sev:'ok' as const},
+  {value:'svo',label:'小血管閉塞性（SVO/ラクナ）',desc:'径<15mm + ラクナ症候（純粋運動性片麻痺等）の典型的臨床症候が必要。高血圧管理が二次予防の主体。抗血小板薬',sev:'ok' as const},
   {value:'ce',label:'心原性塞栓（CE）',desc:'AF等が塞栓源。抗凝固療法（DOAC/ワルファリン）が二次予防',sev:'dn' as const},
   {value:'other',label:'その他の原因',desc:'動脈解離・血管炎・もやもや病・凝固異常等',sev:'wn' as const},
   {value:'undetermined',label:'原因不明',desc:'複数の原因候補 or 精査後も不明',sev:'wn' as const},

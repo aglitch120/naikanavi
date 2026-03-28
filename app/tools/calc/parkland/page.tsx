@@ -63,7 +63,7 @@ export default function ParklandPage() {
           details={[
             { label: '最初8時間', value: `${result.first8h} mL（${result.rateFirst8} mL/h）` },
             { label: '次の16時間', value: `${result.next16h} mL（${result.rateNext16} mL/h）` },
-            { label: '尿量目標', value: `≧ ${result.urineTarget} mL/h（0.5 mL/kg/h）` },
+            { label: '尿量目標', value: `≧ ${result.urineTarget} mL/h（0.5 mL/kg/h）※小児では1 mL/kg/hが目標` },
           ]}
         />
       )}

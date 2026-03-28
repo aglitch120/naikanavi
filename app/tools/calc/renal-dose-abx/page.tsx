@@ -156,6 +156,7 @@ export default function RenalDoseAbxPage() {
     >
       <div className="space-y-4">
         <NumberInput id="egfr" label="eGFR / CrCl" unit="mL/min" value={egfr} onChange={setEgfr} step={1} />
+        <p className="text-[10px] text-wn">※薬剤投与量調整にはCCr(CG式)を使用。eGFR(mL/min/1.73m²)とは異なる（体格補正の有無）。</p>
 
         {/* CCr計算オプション */}
         <div>

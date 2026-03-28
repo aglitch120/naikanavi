@@ -18,7 +18,7 @@ export default function HolidaySegarPage(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="維持輸液量" value={result.daily} unit={`mL/日 (${result.hourly} mL/h)`} interpretation="4-2-1ルールによる維持輸液量" severity="ok" />}
+      result={<div className="space-y-2"><ResultCard label="維持輸液量" value={result.daily} unit={`mL/日 (${result.hourly} mL/h)`} interpretation="4-2-1ルールによる維持輸液量" severity="ok" /><p className="text-[10px] text-wn px-1">※現在は等張液(生食相当)の使用が推奨。低張液は医原性低Na血症のリスク（NICE 2015ガイドライン）</p></div>}
       explanation={undefined}
       relatedTools={[]} references={[{text:'Holliday MA, Segar WE. The maintenance need for water in parenteral fluid therapy. Pediatrics 1957;19:823-832'}]}
     >

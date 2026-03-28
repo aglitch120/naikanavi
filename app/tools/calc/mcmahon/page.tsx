@@ -9,7 +9,7 @@ const items=[
   {id:'age',label:'年齢 > 70歳',points:2},{id:'female',label:'女性',points:2},
   {id:'cr_init',label:'初診時Cr > 1.4mg/dL',points:2},{id:'ck',label:'初診時CK > 40,000 U/L',points:2},
   {id:'phosphate',label:'初診時リン > 5.4 mg/dL',points:2},{id:'calcium',label:'初診時Ca < 7.5 mg/dL',points:2},
-  {id:'cause',label:'原因: 筋炎 or NMS or 運動',points:-3},
+  {id:'cause',label:'原因: 筋炎 or 悪性症候群(NMS) or 運動',points:-3},
 ]
 export default function McMahonPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries(items.map(i=>[i.id,false])))

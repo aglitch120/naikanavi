@@ -29,7 +29,7 @@ export default function UrineOsmolalityPage() {
       interpretation = '希釈尿 — ADH抑制状態（水分過剰・尿崩症）の可能性'
       severity = 'wn'
     } else if (uosm35 > 800) {
-      interpretation = '高度濃縮尿 — 脱水・SIADH・腎濃縮能は保たれている'
+      interpretation = '高度濃縮尿 — 脱水が示唆される。腎濃縮能は保たれている'
       severity = 'wn'
     } else {
       interpretation = '等張〜軽度濃縮尿（正常範囲は300〜900 mOsm/kg で変動）'

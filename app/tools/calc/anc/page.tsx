@@ -58,7 +58,7 @@ export default function AncPage() {
           interpretation={result.interpretation}
           severity={result.severity}
           details={[
-            { label: 'FN基準', value: 'ANC < 500（または48h以内に< 500が予想）+ 体温 ≧ 38.3℃' },
+            { label: 'FN基準', value: 'ANC < 500（または48h以内に< 500が予想）+ 体温 ≧38.3℃の単発 or ≧38.0℃が1時間以上持続' },
           ]}
         />
       )}

@@ -72,6 +72,7 @@ export default function NaDeficitPage() {
     >
       <div className="space-y-4">
         <RadioGroup name="sex" label="性別" value={sex} onChange={setSex} options={[{ value: 'male', label: '男性（TBW係数0.6）' }, { value: 'female', label: '女性（TBW係数0.5）' }]} />
+        <p className="text-[10px] text-wn">※高齢者(男性0.5/女性0.45)や肥満患者ではTBW比が異なる。実際の補正速度はモニタリングしながら調整。</p>
         <NumberInput id="weight" label="体重" unit="kg" value={weight} onChange={setWeight} min={1} max={300} step={0.1} />
         <NumberInput id="currentNa" label="現在のNa" unit="mEq/L" value={currentNa} onChange={setCurrentNa} min={100} max={170} step={0.1} />
         <NumberInput id="targetNa" label="目標Na" unit="mEq/L" value={targetNa} onChange={setTargetNa} min={100} max={170} step={0.1} />

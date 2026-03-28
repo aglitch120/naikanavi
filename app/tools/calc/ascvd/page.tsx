@@ -120,7 +120,7 @@ export default function ASCVDPage() {
           </label>
         ))}
       </div>
-      <p className="text-[10px] text-muted">40-79歳が対象。日本人向けには久山町スコア/吹田スコアも検討ください。</p>
+      <p className="text-[10px] text-wn">※日本人にはPCEの過大評価の可能性あり。久山町スコア/吹田スコアも検討してください。</p>
     </CalculatorLayout>
   )
 }

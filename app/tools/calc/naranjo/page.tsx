@@ -22,9 +22,9 @@ export default function NaranjoPage(){
   const result=useMemo(()=>{
     const score=items.reduce((s,i)=>{const v=vals[i.id];return s+(v==='yes'?i.yes:v==='no'?i.no:i.unknown)},0)
     if(score>=9) return {score,severity:'dn' as const,label:'確実(Definite): ≧9点'}
-    if(score>=5) return {score,severity:'wn' as const,label:'probable: 5-8点'}
-    if(score>=1) return {score,severity:'ok' as const,label:'possible: 1-4点'}
-    return {score,severity:'ok' as const,label:'unlikely: ≦0点'}
+    if(score>=5) return {score,severity:'wn' as const,label:'ほぼ確実(probable): 5-8点'}
+    if(score>=1) return {score,severity:'ok' as const,label:'可能性あり(possible): 1-4点'}
+    return {score,severity:'ok' as const,label:'可能性低い(unlikely): ≦0点'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

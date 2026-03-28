@@ -23,7 +23,7 @@ export default function SarcopeniaAWGSPage() {
     if (lowSMI && (lowGrip || lowSpeed)) { diagnosis = 'サルコペニア'; severity = 'wn' }
     if (lowSMI && lowGrip && lowSpeed) { diagnosis = '重症サルコペニア'; severity = 'dn' }
     if (!lowSMI) { diagnosis = 'サルコペニアなし'; severity = 'ok' }
-    if (lowSMI && !lowGrip && !lowSpeed) { diagnosis = 'プレサルコペニア'; severity = 'wn' }
+    if (lowSMI && !lowGrip && !lowSpeed) { diagnosis = '筋肉量低下のみ（Possible sarcopenia, AWGS 2019）'; severity = 'wn' }
 
     return { diagnosis, severity, lowGrip, lowSpeed, lowSMI }
   }, [sex, gripStrength, gaitSpeed, smi])

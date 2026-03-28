@@ -14,8 +14,8 @@ const JOINT_OPTIONS = [
 
 const SEROLOGY_OPTIONS = [
   { label: 'RF陰性 かつ ACPA陰性', value: 0 },
-  { label: 'RF低力価陽性 または ACPA低力価陽性', value: 2 },
-  { label: 'RF高力価陽性 または ACPA高力価陽性', value: 3 },
+  { label: 'RF低力価陽性 または ACPA低力価陽性（低力価: ULN超〜3×ULN以下）', value: 2 },
+  { label: 'RF高力価陽性 または ACPA高力価陽性（高力価: 3×ULN超）', value: 3 },
 ]
 
 const APR_OPTIONS = [
