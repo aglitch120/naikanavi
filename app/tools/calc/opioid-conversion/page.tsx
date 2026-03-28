@@ -6,9 +6,9 @@ import { NumberInput, SelectInput } from '@/components/tools/InputFields'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('opioid-conversion')!
 const drugs=[
-  {id:'morphine-po',name:'モルヒネ経口',ratio:1},{id:'morphine-iv',name:'モルヒネ注射',ratio:3},
-  {id:'oxycodone-po',name:'オキシコドン経口',ratio:1.5},{id:'oxycodone-iv',name:'オキシコドン注射',ratio:2.25},
-  {id:'hydromorphone-po',name:'ヒドロモルフォン経口',ratio:5},{id:'hydromorphone-iv',name:'ヒドロモルフォン注射',ratio:20},
+  {id:'morphine-po',name:'モルヒネ経口',ratio:1},{id:'morphine-iv',name:'モルヒネ注射',ratio:2},
+  {id:'oxycodone-po',name:'オキシコドン経口',ratio:1.5},{id:'oxycodone-iv',name:'オキシコドン注射',ratio:2},
+  {id:'hydromorphone-po',name:'ヒドロモルフォン経口',ratio:5},{id:'hydromorphone-iv',name:'ヒドロモルフォン注射',ratio:25},
   {id:'fentanyl-iv',name:'フェンタニル注射(μg/h)',ratio:2.4},{id:'fentanyl-patch',name:'フェンタニルパッチ(μg/h)',ratio:2.4},
   {id:'tapentadol-po',name:'タペンタドール経口',ratio:0.3},{id:'tramadol-po',name:'トラマドール経口',ratio:0.2},
   {id:'codeine-po',name:'コデイン経口',ratio:0.15},
@@ -26,7 +26,7 @@ export default function OpioidConversionPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="経口モルヒネ換算" value={result.morphineEq} unit="mg/日" interpretation={`フェンタニル注射換算: ${result.fentanylHourly} μg/h`} severity="ok" />}
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted space-y-1"><p>換算比は日本緩和医療学会ガイドライン2020年版および各添付文書に準拠。注射剤の経口:注射比は2:1（日本基準）。換算はあくまで目安であり、個々の患者に応じた用量調整が必要です。</p></div>}
       relatedTools={[]} references={[{text:'日本緩和医療学会. がん疼痛の薬物療法に関するガイドライン 2020年版'}]}
     >
       <div className="space-y-4">
