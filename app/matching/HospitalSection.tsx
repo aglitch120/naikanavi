@@ -680,6 +680,7 @@ function HospitalCard({
             <StatBox label="空席" value={h.vacancy > 0 ? `${h.vacancy}名` : 'なし'} />
             <StatBox label="倍率" value={`${pop}倍`} highlight />
             <StatBox label="応募者数" value={`${h.applicants}名`} />
+            <StatBox label="第1希望者数" value={(h as any).firstChoice ? `${(h as any).firstChoice}名` : '—'} />
             <StatBox label="充足率" value={`${h.matchRate}%`} />
           </div>
 
