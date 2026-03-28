@@ -23,7 +23,7 @@ export default function GaHba1cPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={result ? <ResultCard severity="ok" value={result.label} interpretation={result.sub + '\n\n※ GA ≒ 3.6 × HbA1c − 1.73 (Furusyo式)\nGA反映期間: 過去約2-3週間（Alb半減期≒17日）\n透析・貧血・異常Hb症ではHbA1cが不正確 → GAを使用'} /> : null}
-      explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">換算式:</strong> GA = 3.6 × HbA1c − 1.73 (Furusyo N, et al.)</p><p><strong className="text-tx">GA反映期間:</strong> 過去約2週間（HbA1cは過去1-2ヶ月）</p><p><strong className="text-tx">GAが有用な場面:</strong> 透析患者、貧血、異常Hb症、急速な血糖変動の評価</p></div>}
+      explanation={<div className="space-y-2 text-sm text-muted"><p><strong className="text-tx">換算式:</strong> GA = 3.6 × HbA1c − 1.73 (Furusyo N, et al.)</p><p><strong className="text-tx">GA反映期間:</strong> 過去約2-3週間（アルブミン半減期≒17日。HbA1cは過去1-2ヶ月）</p><p><strong className="text-tx">GAが有用な場面:</strong> 透析患者、貧血、異常Hb症、急速な血糖変動の評価</p></div>}
       relatedTools={[{ slug: 'hba1c-glucose', name: 'HbA1c↔平均血糖' }, { slug: 'homa', name: 'HOMA-IR/β' }, { slug: 'cpi-index', name: 'CPI' }]}
       references={toolDef.sources || []}
     >

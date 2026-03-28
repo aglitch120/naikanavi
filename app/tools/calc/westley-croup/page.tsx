@@ -16,9 +16,9 @@ export default function WestleyPage(){
   const [vals,setVals]=useState<Record<string,string>>(Object.fromEntries(items.map(i=>[i.id,'0'])))
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((s,v)=>s+Number(v),0)
-    if(score>=8) return {score,severity:'dn' as const,label:'重症（≧8）: 気管挿管考慮 + アドレナリン吸入 + デキサメタゾン'}
-    if(score>=3) return {score,severity:'wn' as const,label:'中等症（3-7）: デキサメタゾン0.6mg/kg + アドレナリン吸入'}
-    return {score,severity:'ok' as const,label:'軽症（≦2）: デキサメタゾン0.6mg/kg単回'}
+    if(score>=8) return {score,severity:'dn' as const,label:'重症（≧8）: 気管挿管を含めた気道管理を専門医と検討 + アドレナリン吸入を検討 + デキサメタゾン'}
+    if(score>=3) return {score,severity:'wn' as const,label:'中等症（3-7）: デキサメタゾン0.6mg/kg（軽症では0.15mg/kgも選択肢。投与量は担当医が決定）+ アドレナリン吸入を検討'}
+    return {score,severity:'ok' as const,label:'軽症（≦2）: デキサメタゾン0.6mg/kg単回（軽症では0.15mg/kgも選択肢。投与量は担当医が決定）'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

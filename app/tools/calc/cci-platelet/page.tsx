@@ -18,7 +18,7 @@ export default function CciPlateletPage() {
     let severity: 'ok' | 'wn' | 'dn' = 'ok', interpretation = ''
     if (cci1h >= 7500) { interpretation = 'CCI ≧ 7,500 — 輸血効果良好（1時間値の場合）' }
     else if (cci1h >= 5000) { interpretation = 'CCI 5,000-7,500 — やや低下。抗体スクリーニング検討'; severity = 'wn' }
-    else { interpretation = 'CCI < 5,000 — 輸血不応。HLAマッチ血小板やIVIg考慮'; severity = 'dn' }
+    else { interpretation = 'CCI < 5,000 — 輸血不応。血小板不応が疑われる場合は輸血部・担当医と相談'; severity = 'dn' }
     return { cci: cci.toFixed(0), severity, interpretation }
   }, [pltPost, pltPre, bsaVal, pltDose])
   return (

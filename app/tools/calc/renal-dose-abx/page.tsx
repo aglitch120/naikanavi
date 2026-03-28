@@ -134,7 +134,7 @@ export default function RenalDoseAbxPage() {
           label="腎機能区分"
           value={egfrRanges[egfrIndex].label}
           unit=""
-          interpretation={`eGFR ${egfr} mL/min/1.73m² → ${egfrRanges[egfrIndex].label}`}
+          interpretation={`CCr ${egfr} mL/min → ${egfrRanges[egfrIndex].label}`}
           severity={egfrIndex <= 1 ? 'ok' : egfrIndex <= 2 ? 'wn' : 'dn'}
           details={[
             { label: '表示中の薬剤数', value: `${filteredAbx.length}剤` },
@@ -155,7 +155,7 @@ export default function RenalDoseAbxPage() {
       ]}
     >
       <div className="space-y-4">
-        <NumberInput id="egfr" label="eGFR / CrCl" unit="mL/min" value={egfr} onChange={setEgfr} step={1} />
+        <NumberInput id="egfr" label="CCr（Cockcroft-Gault式）" unit="mL/min" value={egfr} onChange={setEgfr} step={1} />
         <p className="text-[10px] text-wn">※薬剤投与量調整にはCCr(CG式)を使用。eGFR(mL/min/1.73m²)とは異なる（体格補正の有無）。</p>
 
         {/* CCr計算オプション */}

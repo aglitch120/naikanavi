@@ -34,9 +34,9 @@ export default function TokyoCholecystitisPage() {
     else if (a && (b || c)) dx = '疑診 (Suspected)'
     const g3 = sev.some((v,i)=>v&&sevItems[i].g===3)
     const g2count = sev.filter((v,i)=>v&&sevItems[i].g===2).length
-    let grade = 'Grade I（軽症）— 早期の腹腔鏡下胆摘', severity: 'ok'|'wn'|'dn' = 'ok'
-    if (g3) { grade = 'Grade III（重症）— ICU管理+胆嚢ドレナージ(PTGBD)'; severity = 'dn' }
-    else if (g2count >= 1) { grade = 'Grade II（中等症）— 早期の腹腔鏡下胆摘（高度炎症時はドレナージ先行）'; severity = 'wn' }
+    let grade = 'Grade I（軽症）— 早期の腹腔鏡下胆摘（参考。術式選択は担当医が判断）', severity: 'ok'|'wn'|'dn' = 'ok'
+    if (g3) { grade = 'Grade III（重症）— ICU管理+胆嚢ドレナージ/PTGBD（参考。術式選択は担当医が判断）'; severity = 'dn' }
+    else if (g2count >= 1) { grade = 'Grade II（中等症）— 早期の腹腔鏡下胆摘（高度炎症時はドレナージ先行）（参考。術式選択は担当医が判断）'; severity = 'wn' }
     return { dx, grade, severity }
   }, [diag, sev])
   let diagIdx = 0

@@ -18,7 +18,7 @@ export default function StopBangPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="STOP-Bang" value={result.score} unit="/8" interpretation={result.label} severity={result.severity} />}
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted"><p>※日本人では低BMIでもOSASリスクあり。本スコアはアジア人集団での検証データが限定的であり、結果は参考情報として扱うこと。</p></div>}
       relatedTools={[]} references={[{text:'Chung F et al. Chest 2016;149:631-638'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

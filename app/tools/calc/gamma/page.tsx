@@ -80,7 +80,7 @@ const DRUGS: Drug[] = [
   { id:'nitroglycerin', name:'ニトログリセリン', nameEn:'Nitroglycerin', category:'antihypertensive',
     unit:'μg/min', weightBased:false, gammaMin:5, gammaMax:200, gammaUnit:'μg/min', unitLabel:'mg',
     dilutions:[{label:'25mg/50mL 生食',drugMg:25,totalMl:50},{label:'50mg/100mL 生食',drugMg:50,totalMl:100}],
-    notes:'静脈拡張→前負荷↓。急性心不全・ACS・高血圧緊急症。高用量で動脈も拡張。頭痛・メトHb症に注意。'},
+    notes:'静脈拡張→前負荷↓。急性心不全・ACS・高血圧緊急症。高用量で動脈も拡張。頭痛・高用量では稀にメトHb症（ニトロプルシドではより重要）に注意。'},
   { id:'nitroprusside', name:'ニトロプルシド', nameEn:'Nitroprusside', category:'antihypertensive',
     unit:'μg/kg/min', weightBased:true, gammaMin:0.3, gammaMax:5, gammaUnit:'μg/kg/min', unitLabel:'mg',
     dilutions:[{label:'50mg/250mL 5%Glu',drugMg:50,totalMl:250}],

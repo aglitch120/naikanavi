@@ -23,7 +23,7 @@ export default function Page() {
     const ci = o / bsa
     const svri = ((m - (c || 0)) / ci) * 80
     const sev = svri < 1600 ? 'wn' as const : svri > 2400 ? 'dn' as const : 'ok' as const
-    const label = svri < 1600 ? '低値（分布異常性ショック等）' : svri > 2400 ? '高値（心原性ショック/低体温等）' : '正常範囲'
+    const label = svri < 1600 ? '低値（分布異常性ショック等）（参考。確定診断は行わない）' : svri > 2400 ? '高値（心原性ショック/低体温等）（参考。確定診断は行わない）' : '正常範囲'
     return { svri, ci, bsa, sev, label }
   }, [map, cvp, co, height, weight])
 

@@ -36,7 +36,7 @@ export default function AldretePage() {
   const result = useMemo(() => {
     const total = scores.reduce((a, b) => a + b, 0)
     let severity: 'ok' | 'wn' | 'dn' = 'ok', interpretation = ''
-    if (total >= 9) { interpretation = `${total}/10 — PACU退室可` }
+    if (total >= 9) { interpretation = `${total}/10 — 退室基準を満たす（退室は麻酔科医・担当医が判断）` }
     else if (total >= 7) { interpretation = `${total}/10 — 退室基準未達。経過観察継続`; severity = 'wn' }
     else { interpretation = `${total}/10 — 回復不十分。集中的モニタリング継続`; severity = 'dn' }
     return { total, severity, interpretation }
@@ -45,7 +45,7 @@ export default function AldretePage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={`Aldrete = ${result.total}/10`} interpretation={result.interpretation} />}
-      explanation={<div className="text-sm text-muted"><p>≧9点でPACU退室可。5項目各0-2点（計10点）。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>≧9点で退室基準を満たす。5項目各0-2点（計10点）。退室判断は麻酔科医・担当医が行う。</p></div>}
       relatedTools={[{ slug: 'asa-ps', name: 'ASA-PS' }, { slug: 'gcs', name: 'GCS' }]}
       references={toolDef.sources || []}
     >

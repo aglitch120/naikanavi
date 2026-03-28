@@ -38,7 +38,7 @@ export default function ChildVitalPage() {
           ]}
         />
       }
-      explanation={undefined}
+      explanation={<p className="text-sm text-muted">正常範囲は参考値であり、臨床判断が必要です。個々の患者の状態・基礎疾患・体格を考慮したうえで評価してください。</p>}
       relatedTools={[]}
       references={[
         { text: 'AHA PALS Provider Manual 2020' },

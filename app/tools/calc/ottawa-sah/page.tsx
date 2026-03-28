@@ -7,7 +7,7 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('ottawa-sah')!
 const items = [
   {id:'age40',label:'40歳以上'},{id:'neck',label:'頸部痛・硬直'},{id:'loc',label:'意識消失の目撃'},{id:'exertion',label:'労作時発症'},
-  {id:'thunderclap',label:'雷鳴頭痛（瞬時にピークに達する）'},{id:'flexion',label:'頸部の前屈制限'},
+  {id:'thunderclap',label:'雷鳴頭痛（瞬時にピークに達する）'},{id:'flexion',label:'項部硬直'},
 ]
 export default function OttawaSAHPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries(items.map(i=>[i.id,false])))

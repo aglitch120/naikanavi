@@ -14,7 +14,7 @@ export default function STONEPage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries(items.map(i=>[i.id,false])))
   const result=useMemo(()=>{
     const score=items.filter(i=>checks[i.id]).reduce((s,i)=>s+i.points,0)
-    if(score>=10) return {score,severity:'wn' as const,label:'高リスク（10-13）: 尿路結石の確率約90% → CT施行'}
+    if(score>=10) return {score,severity:'wn' as const,label:'高リスク（10-13）: 尿路結石の確率約90% → CT検査を検討（参考情報）'}
     if(score>=6) return {score,severity:'wn' as const,label:'中リスク（6-9）: 尿路結石の確率約50% → CT検討'}
     return {score,severity:'ok' as const,label:'低リスク（0-5）: 尿路結石の確率約10%'}
   },[checks])
@@ -22,7 +22,7 @@ export default function STONEPage(){
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="STONE" value={result.score} unit="/12点" interpretation={result.label} severity={result.severity} />}
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted"><p>※「非黒人（+3点）」の項目を含む本スコアは日本人コホートでの検証は行われていない。結果は参考情報として扱うこと。</p></div>}
       relatedTools={[]} references={[{text:'Moore CL et al. Derivation and validation of a clinical prediction rule for uncomplicated ureteral stone. Acad Emerg Med 2014;21:1-10'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={`${i.label} (+${i.points}点)`} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))} />)}</div></CalculatorLayout>
   )

@@ -18,7 +18,7 @@ export default function WFNSPage(){
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="WFNS Grade" value={`Grade ${result.grade}`} interpretation={result.grade<=2?'良好な予後':result.grade===3?'中等度':'不良な予後'} severity={result.severity} />}
+      result={<ResultCard label="WFNS Grade" value={`Grade ${result.grade}`} interpretation={result.grade<=2?'良好な予後（予後は他因子にも依存。本ツールは補助的参考）':result.grade===3?'中等度（予後は他因子にも依存。本ツールは補助的参考）':'不良な予後（予後は他因子にも依存。本ツールは補助的参考）'} severity={result.severity} />}
       explanation={undefined}
       relatedTools={[]} references={[{text:'Report of WFNS Committee on a Universal SAH Grading Scale. J Neurosurg 1988;68:985-986'}]}
     >

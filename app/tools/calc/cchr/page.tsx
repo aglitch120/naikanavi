@@ -25,7 +25,7 @@ export default function CCHRPage() {
   const result = useMemo(()=>{
     const h = highRisk.filter(c=>checks[c.id]).length
     const m = medRisk.filter(c=>checks[c.id]).length
-    if(h>0) return { score:h+m, severity:'dn' as const, label:'高リスク: 頭部CT必須（脳外科的介入が必要な損傷リスク）' }
+    if(h>0) return { score:h+m, severity:'dn' as const, label:'高リスク: 頭部CT検査を検討（脳外科的介入が必要な損傷リスク）' }
     if(m>0) return { score:m, severity:'wn' as const, label:'中リスク: 頭部CT検討（臨床的に重要な脳損傷リスク）' }
     return { score:0, severity:'ok' as const, label:'低リスク: CT不要（適応基準を満たさない）' }
   },[checks])
@@ -37,7 +37,7 @@ export default function CCHRPage() {
       relatedTools={[]} references={[{text:'Stiell IG et al. The Canadian CT Head Rule for patients with minor head injury. Lancet 2001;357:1391-1396'}]}
     >
       <div className="space-y-1">
-        <p className="text-xs font-bold text-dn mb-2">高リスク因子（1つでも→CT必須）</p>
+        <p className="text-xs font-bold text-dn mb-2">高リスク因子（1つでも→CT検査を検討）</p>
         {highRisk.map(c=><CheckItem key={c.id} id={c.id} label={c.label} checked={checks[c.id]} onChange={v=>setChecks(p=>({...p,[c.id]:v}))} />)}
         <p className="text-xs font-bold text-wn mb-2 mt-4">中リスク因子（1つでも→CT検討）</p>
         {medRisk.map(c=><CheckItem key={c.id} id={c.id} label={c.label} checked={checks[c.id]} onChange={v=>setChecks(p=>({...p,[c.id]:v}))} />)}
