@@ -1096,7 +1096,7 @@ function MatchProbabilityCard({
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 space-y-1.5 mt-2">
             <p className="text-[9px] font-bold text-amber-800">この数値について</p>
             <p className="text-[8px] text-amber-900/80 leading-relaxed">
-              「志望リストの病院が全部満席で行き場がなくなるリスク」を推定しています。各病院の席の空きやすさ（定員÷本気志望者数）から、全滅確率を計算しています。
+              各病院の「定員÷本気志望者数」から、席を巡る競争の激しさを推定しています。全病院で席が取れない確率（全滅リスク）を掛け合わせて算出しています。
             </p>
             <details className="text-[8px] text-amber-900/70">
               <summary className="cursor-pointer font-bold text-amber-800">このシミュレーションの限界</summary>
