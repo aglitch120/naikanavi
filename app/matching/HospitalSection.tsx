@@ -1092,12 +1092,25 @@ function MatchProbabilityCard({
             </p>
           </div>
 
-          {/* 但し書き */}
-          <p className="text-[9px] text-muted leading-relaxed mt-2">
-            ※ このシミュレーションは「席がどれだけ埋まりやすいか」を示すもので、あなたがマッチする確率ではありません。
-            実際のマッチングは病院側の選考（面接・筆記試験・書類）で決まります。志望病院を増やすことでアンマッチリスクは下がりますが、個別の病院に受かりやすくなるわけではありません。
-            JRMP公式データ（2021-2025）に基づく統計的な参考値です。
-          </p>
+          {/* 解説 */}
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 space-y-1.5 mt-2">
+            <p className="text-[9px] font-bold text-amber-800">この数値について</p>
+            <p className="text-[8px] text-amber-900/80 leading-relaxed">
+              「志望リストの病院が全部満席で行き場がなくなるリスク」を推定しています。各病院の席の空きやすさ（定員÷本気志望者数）から、全滅確率を計算しています。
+            </p>
+            <details className="text-[8px] text-amber-900/70">
+              <summary className="cursor-pointer font-bold text-amber-800">このシミュレーションの限界</summary>
+              <ul className="mt-1 space-y-0.5 leading-relaxed list-disc pl-3">
+                <li><b>計算できること</b>: 席が物理的に空いているか（過去5年の競争実績）</li>
+                <li><b>計算できないこと</b>: あなたが選ばれるか（面接・筆記・書類の評価は病院側が決める）</li>
+                <li>志望病院を増やすと<b>アンマッチリスクは下がります</b>が、個別の病院に受かりやすくなるわけではありません</li>
+                <li>志望順位を変えてもマッチ確率は変わりません（JRMPアルゴリズムの性質）</li>
+              </ul>
+            </details>
+            <p className="text-[8px] text-amber-900/60 leading-relaxed">
+              出所: JRMP公式データ（2021-2025）に基づくiwor独自の統計シミュレーションです。
+            </p>
+          </div>
         </div>
       )}
     </div>
