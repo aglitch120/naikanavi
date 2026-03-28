@@ -1168,7 +1168,7 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
           { label: '募集定員', unit: '人', key: 'capacity' },
           { label: 'マッチ者数', unit: '人', key: 'matched' },
           { label: '空席数', unit: '人', key: 'vacancy' },
-          { label: '第1希望者数', unit: '人', key: 'applicants' },
+          { label: '総志望者数', unit: '人', key: 'applicants' },
           { label: 'マッチ率', unit: '%', key: 'matchRate', higher: 'good' },
           { label: '倍率', unit: '倍', key: 'popularity', format: (v: number) => v.toFixed(1), higher: 'good' },
           { label: '3年平均充足率', unit: '%', key: 'avgMatchRate3y' as any, higher: 'good', pro: true },
@@ -1184,15 +1184,15 @@ export function HospitalCompare({ isPro, onShowProModal }: { isPro?: boolean; on
           <div className="bg-s0 border border-br rounded-xl overflow-hidden">
             <div className="px-4 py-3 border-b border-br flex items-center justify-between">
               <p className="text-sm font-bold text-tx">マッチングデータ比較</p>
-              <span className="text-[10px] text-muted">2024年度JRMP公式データ</span>
+              <span className="text-[10px] text-muted">2025年度JRMP公式データ</span>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-xs">
+              <table className="w-full text-xs" style={{ tableLayout: 'fixed' }}>
                 <thead className="bg-s1">
                   <tr>
-                    <th className="px-3 py-2 text-left text-muted font-medium w-28">指標</th>
+                    <th className="px-3 py-2 text-left text-muted font-medium" style={{ width: '7rem' }}>指標</th>
                     {matchedHospitals.map((h, i) => (
-                      <th key={i} className="px-3 py-2 text-center font-semibold" style={{ color: hospitalColors[i] }}>
+                      <th key={i} className="px-3 py-2 text-center font-semibold break-words" style={{ color: hospitalColors[i] }}>
                         {hospitalNames[i] || `病院${i + 1}`}
                       </th>
                     ))}
