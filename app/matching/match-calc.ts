@@ -66,6 +66,17 @@ export function calculateMatchProbability(
     // 基本確率: 定員 / 本気競争者数
     let prob = capacity / seriousApplicants
 
+    // カスケード補正: Gale-Shapleyでは上位病院から落ちた人がスライドしてくる
+    // 充足率が高い（毎年埋まる）のに本気倍率が低い病院 = スライド組で埋まっている
+    // → 確率を実態に合わせて下げる
+    const avgMatchRate = (h as any).avgMatchRate3y || h.matchRate || 0
+    if (honkiBairitsu < 1.0 && avgMatchRate >= 95) {
+      // 本気倍率は低いが毎年埋まる → 見かけより競争がある
+      // 実効倍率を最低1.5に引き上げ（スライド組の効果）
+      const effectiveBairitsu = Math.max(honkiBairitsu, 1.5)
+      prob = capacity / (capacity * effectiveBairitsu)
+    }
+
     // 注: 志望順位による補正なし（Gale-Shapleyは戦略耐性を持つ）
 
     // 空席ボーナス（過去に空席が出ている = 競争が緩い傾向）
