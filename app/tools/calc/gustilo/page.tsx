@@ -5,7 +5,8 @@ import ResultCard from '@/components/tools/ResultCard'
 import { RadioGroup } from '@/components/tools/InputFields'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('gustilo')!
-const types=[{label:'Type I: 創<1cm、清潔',value:'I',abx:'CEZ 24h',sev:'ok' as const},{label:'Type II: 創1-10cm、中等度損傷',value:'II',abx:'CEZ 24-48h',sev:'wn' as const},{label:'Type IIIA: 創>10cm、骨が被覆可能',value:'IIIA',abx:'CEZ+GM 72h',sev:'wn' as const},{label:'Type IIIB: 広範欠損、皮弁必要',value:'IIIB',abx:'CEZ+GM+PCG',sev:'dn' as const},{label:'Type IIIC: 動脈損傷合併',value:'IIIC',abx:'CEZ+GM+PCG 緊急',sev:'dn' as const}]
+// 抗菌薬は参考情報。現行ガイドライン(EAST等)ではβ-ラクタム系が中心、アミノグリコシドは非推奨傾向
+const types=[{label:'Type I: 創<1cm、清潔',value:'I',abx:'CEZ 24h（参考）',sev:'ok' as const},{label:'Type II: 創1-10cm、中等度損傷',value:'II',abx:'CEZ 24-48h（参考）',sev:'wn' as const},{label:'Type IIIA: 創>10cm、骨が被覆可能',value:'IIIA',abx:'CEZ（±ABPC/SBT）72h（参考。GMは腎毒性に注意）',sev:'wn' as const},{label:'Type IIIB: 広範欠損、皮弁必要',value:'IIIB',abx:'広域β-ラクタム（参考。土壌汚染ならPCG追加考慮）',sev:'dn' as const},{label:'Type IIIC: 動脈損傷合併',value:'IIIC',abx:'広域β-ラクタム 緊急（参考。整形外科・血管外科コンサルト）',sev:'dn' as const}]
 export default function GustiloPage(){
   const [type,setType]=useState('I')
   const t=types.find(t=>t.value===type)!

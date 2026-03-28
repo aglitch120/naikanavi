@@ -12,7 +12,10 @@ const levels = [
   { value: '3', label: '3', desc: '中程度' },
   { value: '4', label: '4', desc: 'やや強い' },
   { value: '5', label: '5', desc: '強い' },
+  { value: '6', label: '6', desc: '強い〜非常に強い' },
   { value: '7', label: '7', desc: '非常に強い' },
+  { value: '8', label: '8', desc: '非常に強い〜最大' },
+  { value: '9', label: '9', desc: 'ほぼ最大' },
   { value: '10', label: '10', desc: '最大' },
 ]
 export default function BorgPage() {

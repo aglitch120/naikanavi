@@ -5,13 +5,23 @@ import ResultCard from '@/components/tools/ResultCard'
 import { CheckItem } from '@/components/tools/InputFields'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('drip-score')!
-const items=[{id:'abx',label:'過去60日以内の抗菌薬使用',points:2},{id:'nursing',label:'施設入所中',points:2},{id:'tube',label:'経管栄養',points:2},{id:'mrsa',label:'過去1年以内にMRSA感染/保菌',points:2},{id:'prior_hosp',label:'過去60日以内の入院',points:2},{id:'chronic_wound',label:'慢性創傷',points:2},{id:'esrd',label:'慢性腎不全/透析',points:2},{id:'iv_abx',label:'過去60日以内の点滴抗菌薬',points:2},{id:'icu',label:'過去60日以内のICU入室',points:2},{id:'immunosuppression',label:'免疫抑制状態',points:2}]
+// Webb BJ 2016: 主要因子(2点)と副次因子(1点)を区別
+const items=[
+  {id:'immunosuppression',label:'免疫抑制状態',points:2},
+  {id:'mrsa',label:'過去1年以内にMRSA感染/保菌',points:2},
+  {id:'prior_hosp',label:'過去60日以内の入院・ICU・点滴抗菌薬',points:2},
+  {id:'tube',label:'経管栄養',points:2},
+  {id:'abx',label:'過去60日以内の経口抗菌薬使用',points:1},
+  {id:'chronic_wound',label:'慢性創傷',points:1},
+  {id:'nursing',label:'施設入所中',points:1},
+  {id:'esrd',label:'慢性腎不全/透析',points:1},
+]
 export default function DRIPScorePage(){
   const [checks,setChecks]=useState<Record<string,boolean>>(Object.fromEntries(items.map(i=>[i.id,false])))
   const result=useMemo(()=>{
     const score=items.filter(i=>checks[i.id]).reduce((s,i)=>s+i.points,0)
     if(score>=4) return {score,severity:'dn' as const,label:'DRIPリスク高（≧4）: MRSA/緑膿菌等の耐性菌カバーを検討'}
-    return {score,severity:'ok' as const,label:'DRIPリスク低: 標準的な市中肺炎の抗菌薬でOK'}
+    return {score,severity:'ok' as const,label:'DRIPリスク低: 標準的な市中肺炎の抗菌薬を参考に選択'}
   },[checks])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

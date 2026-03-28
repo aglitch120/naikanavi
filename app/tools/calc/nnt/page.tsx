@@ -18,6 +18,7 @@ export default function Page() {
     if (c === undefined || e === undefined || isNaN(c) || isNaN(e)) return null
     const cRate = c / 100, eRate = e / 100
     const arr = cRate - eRate
+    if (cRate === 0) return null // CER=0ではRRR計算不能
     const rrr = arr / cRate
     if (arr === 0) return null
     const nnt = 1 / Math.abs(arr)

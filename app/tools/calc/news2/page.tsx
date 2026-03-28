@@ -16,7 +16,7 @@ function tempScore(v: number) { if (v<=35) return 3; if (v<=36) return 1; if (v<
 function sbpScore(v: number) { if (v<=90) return 3; if (v<=100) return 2; if (v<=110) return 1; if (v<=219) return 0; return 3 }
 function hrScore(v: number) { if (v<=40) return 3; if (v<=50) return 1; if (v<=90) return 0; if (v<=110) return 1; if (v<=130) return 2; return 3 }
 // ACVPU: Alert=0, new Confusion=3, V/P/U=3
-function consScore(v: string) { return v === 'alert' ? 0 : 3 }
+function consScore(v: string) { return v === 'alert' ? 0 : 3 } // confusion and cvpu both = 3
 
 export default function News2Page() {
   const [rr, setRr] = useState('16')
@@ -52,14 +52,14 @@ export default function News2Page() {
         <NumberInput id="rr" label="呼吸数" unit="/min" value={rr} onChange={setRr} step={1} />
         <NumberInput id="spo2" label="SpO₂" unit="%" value={spo2} onChange={setSpo2} step={1} />
         <SelectInput id="scale2" label="SpO₂スケール" value={scale2} onChange={setScale2}
-          options={[{ value: '1', label: 'スケール1（通常）' }, { value: '2', label: 'スケール2（COPD等、目標88-92%）' }]} />
+          options={[{ value: '1', label: 'スケール1（通常）' }, { value: '2', label: 'スケール2（高CO₂血症リスクのある COPD患者で目標SpO₂ 88-92%に設定されている場合のみ）' }]} />
         <SelectInput id="onO2" label="酸素投与" value={onO2} onChange={setOnO2}
           options={[{ value: 'no', label: 'なし（室内気）' }, { value: 'yes', label: 'あり' }]} />
         <NumberInput id="temp" label="体温" unit="°C" value={temp} onChange={setTemp} step={0.1} />
         <NumberInput id="sbp" label="収縮期血圧" unit="mmHg" value={sbp} onChange={setSbp} step={1} />
         <NumberInput id="hr" label="心拍数" unit="/min" value={hr} onChange={setHr} step={1} />
         <SelectInput id="consciousness" label="意識レベル" value={consciousness} onChange={setConsciousness}
-          options={[{ value: 'alert', label: 'Alert（清明）' }, { value: 'cvpu', label: 'C/V/P/U（意識障害あり）' }]} />
+          options={[{ value: 'alert', label: 'Alert（清明）' }, { value: 'confusion', label: 'new Confusion（新規の混乱・せん妄）' }, { value: 'cvpu', label: 'V/P/U（音声/痛み/無反応）' }]} />
       </div>
     </CalculatorLayout>
   )

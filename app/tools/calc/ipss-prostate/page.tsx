@@ -21,6 +21,6 @@ export default function IPSSPage(){
       result={<ResultCard label="IPSS" value={result.score} unit="/35点" interpretation={result.label} severity={result.severity} />}
       explanation={undefined}
       relatedTools={[]} references={[{text:'Barry MJ et al. The American Urological Association symptom index for benign prostatic hyperplasia. J Urol 1992;148:1549-1557'}]}
-    ><div className="space-y-3">{qs.map(q=><RadioGroup key={q.id} id={q.id} label={q.label} options={opts} value={vals[q.id]} onChange={v=>setVals(p=>({...p,[q.id]:v}))} />)}</div></CalculatorLayout>
+    ><div className="space-y-3">{qs.map(q=><RadioGroup key={q.id} id={q.id} label={q.label} options={q.options || opts} value={vals[q.id]} onChange={v=>setVals(p=>({...p,[q.id]:v}))} />)}</div></CalculatorLayout>
   )
 }

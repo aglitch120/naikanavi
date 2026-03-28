@@ -11,7 +11,7 @@ const grades = [
   {label:'Grade III: 傾眠、軽度の局所神経脱落',value:'3',mort:'30日死亡率 15-20%'},
   {label:'Grade IV: 昏迷、中等度〜重度の片麻痺、除脳硬直初期',value:'4',mort:'30日死亡率 20-40%'},
   {label:'Grade V: 深昏睡、除脳硬直、瀕死状態',value:'5',mort:'30日死亡率 50-80%'},
-]
+] // ※動脈瘤性クモ膜下出血（aSAH）に適用。非動脈瘤性・外傷性SAHには適用外
 export default function HuntHessPage(){
   const [grade,setGrade]=useState('1')
   const result=useMemo(()=>{

@@ -15,7 +15,7 @@ export default function FisherPage(){
   const [grade,setGrade]=useState('1')
   const result=useMemo(()=>{
     const g=grades.find(g=>g.value===grade)!
-    const sev=grade==='3'?'dn' as const:grade==='1'?'ok' as const:'wn' as const
+    const sev=(grade==='3'||grade==='4')?'dn' as const:grade==='1'?'ok' as const:'wn' as const
     return {grade:Number(grade),risk:g.risk,severity:sev}
   },[grade])
   return(

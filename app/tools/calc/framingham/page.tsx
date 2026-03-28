@@ -57,7 +57,8 @@ export default function FraminghamPage() {
       else points += 0
     }
 
-    // Smoking (age-adjusted simplified)
+    // Smoking — 原著は年齢別ポイント(20-39歳:8点等)だが簡易版として固定
+    // ※若年喫煙者のリスクを過小評価する可能性あり
     if (smoker) points += (sex === 'male' ? 4 : 4)
 
     // TC (age-adjusted simplified)
@@ -113,7 +114,7 @@ export default function FraminghamPage() {
       slug="framingham"
       title="フラミンガムリスクスコア"
       titleEn="Framingham Risk Score"
-      description="10年間の冠動脈疾患（CHD）リスクを推算。年齢・性別・TC・HDL・血圧・喫煙から算出。"
+      description="10年間の冠動脈疾患（CHD）リスクを推算。年齢・性別・TC・HDL・血圧・喫煙から算出。※日本人には久山町スコア/吹田スコアがより適切（PCEは過大評価の可能性）。"
       category="cardiology"
       categoryIcon="❤️"
       result={result && (
