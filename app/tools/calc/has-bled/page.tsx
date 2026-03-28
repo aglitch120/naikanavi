@@ -24,8 +24,8 @@ function getInterpretation(score: number): { text: string; severity: 'ok' | 'wn'
   if (score === 0) return { text: '低リスク（年間出血率 1.13% — Pisters 2010）', severity: 'ok' }
   if (score === 1) return { text: '低リスク（年間出血率 1.02% — Pisters 2010）', severity: 'ok' }
   if (score === 2) return { text: '中リスク（年間出血率 1.88% — Pisters 2010）', severity: 'wn' }
-  if (score === 3) return { text: '高リスク（年間出血率 3.74% — Pisters 2010）— 是正可能な因子を確認', severity: 'dn' }
-  return { text: `高リスク（年間出血率 ${score === 4 ? '8.7' : score === 5 ? '12.5' : '>12'}%）— 是正可能な因子を確認`, severity: 'dn' }
+  if (score === 3) return { text: '高リスク（年間出血率 3.74% — Pisters 2010）— 是正可能な因子の有無に関する参考情報', severity: 'dn' }
+  return { text: `高リスク（年間出血率 ${score === 4 ? '8.7' : score === 5 ? '12.5' : '>12'}%）— 是正可能な因子の有無に関する参考情報`, severity: 'dn' }
 }
 
 export default function HASBLEDPage() {
@@ -102,7 +102,7 @@ export default function HASBLEDPage() {
               <div className="bg-s0 border border-br rounded-xl p-4">
                 <p className="text-sm font-medium text-tx mb-2">⚡ 是正可能なリスク因子</p>
                 <p className="text-xs text-muted mb-2">
-                  以下の因子は介入により出血リスクを低減できます。抗凝固中止の理由にはなりません。
+                  以下の因子は是正可能な因子として報告されています。抗凝固中止の理由にはなりません。
                 </p>
                 <ul className="space-y-1">
                   {result.modifiableChecked.map(c => (

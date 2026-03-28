@@ -13,9 +13,9 @@ export default function CpiIndexPage() {
     if (!c || !g) return null
     const cpi = c / g * 100
     let interpretation = '', severity: 'ok' | 'wn' | 'dn' = 'ok'
-    if (cpi >= 1.2) { interpretation = 'CPI ≧ 1.2 — インスリン分泌能保持。経口薬が有効な可能性が高い' }
-    else if (cpi >= 0.8) { interpretation = 'CPI 0.8〜1.2 — インスリン分泌能低下。インスリン療法を要するリスクが高まる（専門医と相談）'; severity = 'wn' }
-    else { interpretation = 'CPI < 0.8 — インスリン依存状態の可能性。インスリン療法を検討（専門医と相談）'; severity = 'dn' }
+    if (cpi >= 1.2) { interpretation = 'CPI ≧ 1.2 — インスリン分泌能保持（参考）' }
+    else if (cpi >= 0.8) { interpretation = 'CPI 0.8〜1.2 — インスリン分泌能低下の可能性（参考）'; severity = 'wn' }
+    else { interpretation = 'CPI < 0.8 — インスリン分泌能高度低下の可能性（参考）'; severity = 'dn' }
     return { cpi: cpi.toFixed(2), severity, interpretation }
   }, [cpr, glu])
   return (

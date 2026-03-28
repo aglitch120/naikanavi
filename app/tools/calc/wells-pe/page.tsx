@@ -163,14 +163,14 @@ export default function WellsPEPage() {
               </p>
             </div>
 
-            {/* 参考アクション */}
+            {/* 参考情報 */}
             <div className={`${
               result.severity === 'dn' ? 'bg-dnl border-dnb' : result.severity === 'wn' ? 'bg-wnl border-wnb' : 'bg-s0 border-br'
             } border rounded-xl p-4`}>
               <p className={`text-sm font-medium ${
                 result.severity === 'dn' ? 'text-dn' : result.severity === 'wn' ? 'text-wn' : 'text-tx'
               }`}>
-                {result.severity === 'dn' ? '🚨' : '⚡'} 参考アクション
+                {result.severity === 'dn' ? '🚨' : '⚡'} 参考情報
               </p>
               <p className={`text-xs mt-1 ${
                 result.severity === 'dn' ? 'text-dn' : result.severity === 'wn' ? 'text-wn' : 'text-muted'

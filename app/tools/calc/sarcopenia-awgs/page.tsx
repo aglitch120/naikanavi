@@ -15,7 +15,7 @@ export default function SarcopeniaAWGSPage() {
     if (isNaN(grip) || isNaN(speed) || isNaN(s)) return null
 
     const lowGrip = sex === 'male' ? grip < 28 : grip < 18
-    const lowSpeed = speed < 1.0
+    const lowSpeed = speed <= 1.0
     const lowSMI = sex === 'male' ? s < 7.0 : s < 5.7
 
     let diagnosis = ''

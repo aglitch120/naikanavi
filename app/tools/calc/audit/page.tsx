@@ -104,18 +104,17 @@ export default function AuditPage() {
 
     let interpretation = ''
     let severity: 'ok' | 'wn' | 'dn' = 'ok'
-    let recommendation = ''
     if (total <= 7) {
-      interpretation = '低リスク飲酒'; recommendation = '飲酒教育'; severity = 'ok'
+      interpretation = '低リスク飲酒'; severity = 'ok'
     } else if (total <= 15) {
-      interpretation = '危険な飲酒（ハザーダス）'; recommendation = '簡易介入（ブリーフインターベンション）'; severity = 'wn'
+      interpretation = '危険な飲酒（ハザーダス）'; severity = 'wn'
     } else if (total <= 19) {
-      interpretation = '有害な飲酒（ハームフル）'; recommendation = '簡易介入＋継続モニタリング'; severity = 'wn'
+      interpretation = '有害な飲酒（ハームフル）'; severity = 'wn'
     } else {
-      interpretation = 'アルコール依存が疑われる'; recommendation = '専門医療機関への紹介'; severity = 'dn'
+      interpretation = 'アルコール依存が疑われる'; severity = 'dn'
     }
 
-    return { total, interpretation, severity, recommendation }
+    return { total, interpretation, severity }
   }, [scores])
 
   return (
@@ -134,7 +133,6 @@ export default function AuditPage() {
           interpretation={result.interpretation}
           severity={result.severity}
           details={[
-            { label: '参考対応', value: result.recommendation },
             { label: '低リスク飲酒', value: '0〜7点' },
             { label: '危険な飲酒（ハザーダス）', value: '8〜15点' },
             { label: '有害な飲酒（ハームフル）', value: '16〜19点' },

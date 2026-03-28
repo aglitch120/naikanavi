@@ -44,9 +44,9 @@ export default function LdlFriedewaldPage() {
 
     let interpretation = ''
     if (tgWarning) interpretation = 'TG ≧ 400 mg/dL — Friedewald式は不正確。直接法LDLを測定してください'
-    else if (ldl >= 180) interpretation = 'LDL-C著明高値 — 家族性高コレステロール血症（FH）を鑑別'
-    else if (ldl >= 140) interpretation = 'LDL-C高値 — 動脈硬化リスク因子を評価し管理目標を設定'
-    else if (ldl >= 120) interpretation = 'LDL-C境界域高値 — リスクに応じて管理'
+    else if (ldl >= 180) interpretation = 'LDL-C著明高値（≥180 mg/dL）'
+    else if (ldl >= 140) interpretation = 'LDL-C高値（≥140 mg/dL）'
+    else if (ldl >= 120) interpretation = 'LDL-C境界域高値（120〜139 mg/dL）'
     else interpretation = 'LDL-C正常範囲'
 
     return {

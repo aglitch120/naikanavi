@@ -69,7 +69,7 @@ export default function ParklandPage() {
       )}
       explanation={
         <div className="text-sm text-muted space-y-1.5">
-          <p><strong className="text-wn">注意:</strong> 最初の8時間は<strong className="text-tx">受傷時から計測</strong>。受診時に受傷から時間が経過している場合は、残り時間で半量を投与してください。</p>
+          <p><strong className="text-wn">注意:</strong> 最初の8時間は<strong className="text-tx">受傷時から計測</strong>。受診時に受傷から時間が経過している場合は、残り時間での投与量調整が必要となる（担当医が判断）。</p>
           <p>本計算式は<strong className="text-tx">成人を対象</strong>。小児はGalveston式等の小児用計算式を使用してください。</p>
         </div>
       }

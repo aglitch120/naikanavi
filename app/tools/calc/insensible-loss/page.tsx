@@ -12,7 +12,7 @@ export default function InsensibleLossPage() {
     const w = parseFloat(weight), t = parseFloat(temp)
     if (!w) return null
     const base = 15 * w // 約15 mL/kg/日
-    const feverFactor = t > 37 ? Math.pow(1.15, t - 37) : 1
+    const feverFactor = t > 37 ? 1 + 0.15 * (t - 37) : 1
     const total = base * feverFactor
     const perHour = total / 24
     return { base: base.toFixed(0), total: total.toFixed(0), perHour: perHour.toFixed(0), feverFactor: feverFactor.toFixed(2) }

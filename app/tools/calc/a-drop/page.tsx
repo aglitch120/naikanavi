@@ -157,7 +157,7 @@ export default function ADROPPage() {
               <p className={`text-sm font-medium ${
                 result.score >= 3 ? 'text-dn' : result.score >= 1 ? 'text-wn' : 'text-tx'
               }`}>
-                {result.score >= 3 ? '🏥' : result.score >= 1 ? '⚡' : '✅'} 重症度分類（日本呼吸器学会ガイドライン）
+                {result.score >= 3 ? '⚠️' : result.score >= 1 ? '⚡' : '✅'} 重症度分類（日本呼吸器学会ガイドライン）
               </p>
               <p className={`text-xs mt-1 ${
                 result.score >= 3 ? 'text-dn' : result.score >= 1 ? 'text-wn' : 'text-muted'
@@ -170,7 +170,7 @@ export default function ADROPPage() {
               <div className="bg-dnl border border-dnb rounded-xl p-4">
                 <p className="text-sm font-medium text-dn">⚠️ 超重症群 — 30日死亡率 {result.mortality}</p>
                 <p className="text-xs text-dn mt-1">
-                  qSOFA/SOFAスコアによる敗血症評価との並行評価が参考になる。最終的な対応方針は担当医による判断が必要。
+                  qSOFA/SOFAスコアも参考値として使用されることがある。最終的な対応方針は担当医による判断が必要。
                 </p>
               </div>
             )}

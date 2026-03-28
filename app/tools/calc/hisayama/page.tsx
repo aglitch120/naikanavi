@@ -26,7 +26,7 @@ export default function HisayamaPage() {
     if (lv) score += 3
     if (sex === 'male') score += 2
     let severity: 'ok'|'wn'|'dn' = 'ok', risk = ''
-    if (score >= 15) { risk = '高リスク（10年発症率 >10%）'; severity = 'dn' }
+    if (score >= 15) { risk = '高リスク'; severity = 'dn' }
     else if (score >= 8) { risk = '中リスク'; severity = 'wn' }
     else { risk = '低リスク' }
     return { score, risk, severity }

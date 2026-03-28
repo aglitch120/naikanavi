@@ -23,7 +23,7 @@ function getInterpretation(score: number): { text: string; severity: 'ok' | 'wn'
   return {
     text: 'qSOFA 陽性（≥2点）— 敗血症を疑う',
     severity: 'dn',
-    recommendation: '敗血症（Sepsis-3）を疑う。SOFAスコアによる臓器障害評価を考慮。治療方針は担当医が判断。',
+    recommendation: '敗血症（Sepsis-3）を疑う。治療方針は担当医が判断。',
   }
 }
 
@@ -134,7 +134,7 @@ export default function QSOFAPage() {
               result.score >= 2 ? 'bg-dnl border-dnb' : 'bg-s0 border-br'
             } border rounded-xl p-4`}>
               <p className={`text-sm font-medium ${result.score >= 2 ? 'text-dn' : 'text-tx'}`}>
-                {result.score >= 2 ? '🚨 次のアクション' : '✅ 参考'}
+                {result.score >= 2 ? '🚨 参考情報' : '✅ 参考'}
               </p>
               <p className={`text-xs mt-1 ${result.score >= 2 ? 'text-dn' : 'text-muted'}`}>
                 {result.recommendation}
@@ -145,8 +145,7 @@ export default function QSOFAPage() {
               <div className="bg-dnl border border-dnb rounded-xl p-4">
                 <p className="text-sm font-medium text-dn">参考: Hour-1 Bundle（SSC 2021）</p>
                 <div className="text-xs text-dn mt-1 space-y-0.5">
-                  <p>詳細はSSC 2021ガイドライン参照。</p>
-                  <p className="text-[10px] text-dn/70 mt-1">治療実施の判断は担当医が行う。</p>
+                  <p>詳細はSSC 2021ガイドライン参照（担当医が判断）。</p>
                 </div>
                 <p className="text-[10px] text-dn/70 mt-2">出典: Surviving Sepsis Campaign 2021; PMID: 34599691</p>
               </div>

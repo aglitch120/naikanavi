@@ -23,13 +23,13 @@ export default function AnionGapPage() {
     const ag = naVal - clVal - hco3Val
     const albVal = parseFloat(alb)
     const correctedAg = !isNaN(albVal) && albVal > 0 ? ag + 2.5 * (4.0 - albVal) : null
-    const deltaAg = ag - 12
+    const effectiveAg = correctedAg ?? ag
+    const deltaAg = effectiveAg - 12
     const deltaHco3 = 24 - hco3Val
     const deltaRatio = deltaHco3 !== 0 ? deltaAg / deltaHco3 : null
 
     let interpretation = ''
     let severity: 'ok' | 'wn' | 'dn' = 'ok'
-    const effectiveAg = correctedAg ?? ag
 
     if (effectiveAg > 16) {
       interpretation = 'AG開大型代謝性アシドーシス'

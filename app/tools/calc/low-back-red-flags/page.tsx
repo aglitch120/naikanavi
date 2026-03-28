@@ -35,7 +35,7 @@ export default function LowBackRedFlagsPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={result.count > 0 ? `レッドフラッグ ${result.count}項目該当` : 'レッドフラッグなし'} interpretation={result.interpretation} />}
-      explanation={<div className="text-sm text-muted"><p>腰痛の85%は非特異的腰痛。レッドフラッグがなければ画像検査は不要（発症4-6週以内）。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>腰痛の85%は非特異的腰痛。ガイドラインでは発症4-6週以内でレッドフラッグがない場合、即時の画像検査は一般に推奨されていない。</p></div>}
       relatedTools={[]}
       references={toolDef.sources||[]}
     >

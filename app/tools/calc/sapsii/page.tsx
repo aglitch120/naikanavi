@@ -40,7 +40,7 @@ export default function SAPSIIPage(){
     const n=Number(na)||140;const naP=n<125?5:n>=145?1:0
     const hc=Number(hco3)||24;const hco3P=hc<15?6:hc<20?3:0
     const bl=Number(bili)||0.8;const biliP=bl<4?0:bl<6?4:9
-    const g=Number(gcsVal)||15;const gcsP=g<=6?26:g<=9?13:g<=10?7:g<=13?5:0
+    const g=Number(gcsVal)||15;const gcsP=g<=6?26:g<=9?13:g<=13?5:0
     const admP=Number(admType)
     const chronicP=chronicItems.filter(i=>checks[i.id]).reduce((s,i)=>s+i.points,0)
     const score=ageP+hrP+sbpP+tempP+pao2P+uoP+bunP+wbcP+kP+naP+hco3P+biliP+gcsP+admP+chronicP
