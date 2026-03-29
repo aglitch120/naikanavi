@@ -4,9 +4,9 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('kyoto-classification')!
 const findings = [
   { name: '萎縮 (Atrophy)', grades: ['C-0（なし）','C-1（前庭部限局）','C-2（体部小弯）','C-3（体部大弯に及ぶ）','O-1（体部全体）','O-2（前庭部にも及ぶ）','O-3（全体高度萎縮）'], significance: '木村・竹本分類。C→O→の順に萎縮進行。O-2以上では胃癌リスクの上昇が報告されている。' },
-  { name: '腸上皮化生 (IM)', grades: ['なし','軽度（限局的）','中等度','高度（広範囲）'], significance: 'IM+高度萎縮は最も胃癌リスクが高い。除菌後も発癌監視が必要。' },
+  { name: '腸上皮化生 (IM)', grades: ['なし','軽度（限局的）','中等度','高度（広範囲）'], significance: 'IM+高度萎縮は最も胃癌リスクが高いとされる。' },
   { name: 'びまん性発赤 (Diffuse redness)', grades: ['なし','軽度','高度'], significance: '現感染のマーカー。除菌成功後は消退。' },
-  { name: '皺襞腫大 (Enlarged folds)', grades: ['なし','あり'], significance: '体部主体の現感染所見。H.pylori除菌で改善。' },
+  { name: '皺襞腫大 (Enlarged folds)', grades: ['なし','あり'], significance: '体部主体の現感染所見。除菌成功後は消退しうる。' },
   { name: '鳥肌 (Nodularity)', grades: ['なし','あり'], significance: '若年女性に多い。未分化型胃癌のリスク因子とされる。' },
 ]
 export default function KyotoClassificationPage() {

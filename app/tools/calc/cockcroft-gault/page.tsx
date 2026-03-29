@@ -22,8 +22,8 @@ function getSeverity(ccr: number): 'ok' | 'wn' | 'dn' {
 function getLabel(ccr: number): string {
   if (ccr >= 90) return '正常'
   if (ccr >= 60) return '軽度低下'
-  if (ccr >= 30) return '中等度低下 — 多くの薬剤で用量調整が必要'
-  if (ccr >= 15) return '高度低下 — 要減量・禁忌薬剤の確認'
+  if (ccr >= 30) return '中等度低下'
+  if (ccr >= 15) return '高度低下'
   return '末期腎不全'
 }
 

@@ -332,14 +332,6 @@ export default function GammaCalcPage(){
         )}
       </div>
 
-      {/* メモ */}
-      {!isCustom&&(
-      <div className="bg-s0 border border-br rounded-xl p-4 mb-6">
-        <p className="text-xs font-bold text-tx mb-1">📝 {drug.name}（{drug.nameEn}）</p>
-        <p className="text-xs text-muted leading-relaxed">{drug.notes}</p>
-      </div>
-      )}
-
       {/* 免責 */}
       <div className="bg-wnl border border-wnb rounded-lg p-4 mb-8 text-sm text-wn">
         <p className="font-semibold mb-1">⚠️ 医療上の免責事項</p>

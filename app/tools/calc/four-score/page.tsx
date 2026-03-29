@@ -16,7 +16,7 @@ export default function FOURScorePage(){
   const result=useMemo(()=>{
     const score=Object.values(vals).reduce((s,v)=>s+Number(v),0)
     const sev=score>=13?'ok' as const:score>=9?'wn' as const:'dn' as const
-    const label=score===0?'全項目0: 重篤な意識障害 — 専門医による詳細評価が必要':score<=4?'重度意識障害':score<=8?'中等度意識障害':score<=12?'軽度意識障害':'ほぼ正常'
+    const label=score===0?'全項目0: 重篤な意識障害':score<=4?'重度意識障害':score<=8?'中等度意識障害':score<=12?'軽度意識障害':'ほぼ正常'
     return {score,severity:sev,label}
   },[vals])
   return(

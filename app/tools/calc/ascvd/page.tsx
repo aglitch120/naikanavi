@@ -81,7 +81,7 @@ export default function ASCVDPage() {
           details={[
             { label: 'リスクカテゴリ', value: result.category },
             { label: '判定基準', value: '<5%: 低 / 5-7.5%: ボーダーライン / 7.5-20%: 中 / >=20%: 高' },
-            { label: '注意', value: 'PCE（Pooled Cohort Equations）は主に欧米コホートで開発。日本人では過大評価の可能性があり、吹田スコア・久山町スコアの併用を推奨' },
+            { label: '注意', value: 'PCE（Pooled Cohort Equations）は主に欧米コホートで開発。日本人では過大評価の可能性がある。日本人向けには吹田スコア・久山町スコアが存在する' },
           ]}
         />
       )}
@@ -121,7 +121,7 @@ export default function ASCVDPage() {
           </label>
         ))}
       </div>
-      <p className="text-xs text-wn">※日本人への適用には吹田スコア・久山町スコアを優先してください（PCEは過大評価の可能性）</p>
+      <p className="text-xs text-wn">※PCEは日本人で過大評価の可能性。日本人向けには吹田スコア・久山町スコアが存在する</p>
     </CalculatorLayout>
   )
 }

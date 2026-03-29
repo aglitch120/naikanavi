@@ -27,7 +27,7 @@ export default function AncPage() {
       interpretation = '重度好中球減少（< 100） — 重症感染リスク極めて高い'
       severity = 'dn'
     } else if (anc < 500) {
-      interpretation = '高度好中球減少（< 500） — FN基準。感染対策強化'
+      interpretation = '高度好中球減少（< 500） — 発熱性好中球減少症(FN)の基準値'
       severity = 'dn'
     } else if (anc < 1000) {
       interpretation = '中等度好中球減少（500〜1000）'

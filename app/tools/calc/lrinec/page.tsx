@@ -19,7 +19,7 @@ export default function LRINECPage(){
     const score=Object.values(vals).reduce((a,b)=>a+b,0)
     if(score>=8) return {score,severity:'dn' as const,label:'高リスク（≧8）: 壊死性筋膜炎の可能性高い'}
     if(score>=6) return {score,severity:'wn' as const,label:'中リスク（6-7）: 壊死性筋膜炎を疑う'}
-    return {score,severity:'ok' as const,label:'低スコアだがLRINECの感度は約50-70%。臨床的に疑わしければ除外しないこと'}
+    return {score,severity:'ok' as const,label:'低リスク（<6）— ただしLRINECの感度は約50-70%であり、低スコアでも壊死性筋膜炎は除外できない'}
   },[vals])
   return(
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}

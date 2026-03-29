@@ -141,15 +141,6 @@ export default function QSOFAPage() {
               </p>
             </div>
 
-            {result.score >= 2 && (
-              <div className="bg-dnl border border-dnb rounded-xl p-4">
-                <p className="text-sm font-medium text-dn">参考: Hour-1 Bundle（SSC 2021）</p>
-                <div className="text-xs text-dn mt-1 space-y-0.5">
-                  <p>詳細はSSC 2021ガイドライン参照（担当医が判断）。</p>
-                </div>
-                <p className="text-[10px] text-dn/70 mt-2">出典: Surviving Sepsis Campaign 2021; PMID: 34599691</p>
-              </div>
-            )}
           </div>
         }
         explanation={undefined}

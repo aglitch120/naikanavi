@@ -19,7 +19,7 @@ export default function Page() {
     if (!p || !pc || !b) return null
     const mdf = 4.6 * (p - pc) + b
     const sev = mdf >= 32 ? 'dn' as const : 'ok' as const
-    const label = mdf >= 32 ? '重症 — ステロイド治療の適応を検討する基準（DF≧32）。最終判断は担当医による' : '非重症'
+    const label = mdf >= 32 ? '重症（DF≧32）' : '非重症'
     return { mdf, sev, label }
   }, [pt, ptControl, bilirubin])
 
@@ -29,9 +29,9 @@ export default function Page() {
       result={result && (
         <ResultCard label="Maddrey DF" value={result.mdf.toFixed(1)} interpretation={result.label} severity={result.sev}
           details={[
-            { label: '≧32', value: '重症: ステロイド治療を検討（用量・期間はガイドライン参照。担当医が決定）' },
-            { label: '<32', value: '支持療法' },
-            { label: 'Lille model', value: '治療7日後に再評価（>0.45で無効）' },
+            { label: '≧32', value: '重症アルコール性肝炎の基準値' },
+            { label: '<32', value: '非重症' },
+            { label: 'Lille model', value: '治療反応性の指標（>0.45で無効を示唆）' },
           ]} />
       )}>
       <NumberInput id="f1" label="PT秒 (患者)" value={pt} onChange={setPt} min={0} step={0.1} />

@@ -14,7 +14,7 @@ export default function Page(){
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="アナフィラキシー診断基準" value={count+'/'+items.length+'項目'} interpretation={count>=1?'アナフィラキシーの診断基準を満たす可能性あり — 緊急病態の可能性。直ちに担当医が評価・判断':'アナフィラキシーの診断基準を満たさない'} severity={count>=1?'dn' as const:'ok' as const} />}
       explanation={undefined}
-      relatedTools={[]} references={[{text:'WAO 2020/アナフィラキシーGL 2022'}]}
+      relatedTools={[]} references={[{text:'Sampson HA, et al. J Allergy Clin Immunol 2006;117:391-397 (NIAID/FAAN criteria)'},{text:'日本アレルギー学会. アナフィラキシーガイドライン2022'}]}
     ><div className="space-y-2">{items.map(i=><CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v=>setChecks(p=>({...p,[i.id]:v}))}/>)}</div></CalculatorLayout>
   )
 }

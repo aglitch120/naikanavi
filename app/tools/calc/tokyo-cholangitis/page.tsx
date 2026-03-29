@@ -12,7 +12,7 @@ const items = [
 const severityItems = [
   { label: '意識障害', grade: 3 },
   { label: '循環不全(DOA/NA使用)', grade: 3 },
-  { label: '黄疸(T-Bil ≧ 5mg/dL)', grade: 3 },
+  { label: '黄疸(T-Bil ≧ 5mg/dL)', grade: 2 },
   { label: '高熱(≧ 39℃)', grade: 2 },
   { label: 'WBC < 4,000 or > 12,000', grade: 2 },
   { label: 'Plt < 10万', grade: 2 },

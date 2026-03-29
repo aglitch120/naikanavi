@@ -156,20 +156,6 @@ export default function FIB4Page() {
                 <p className="text-xs text-muted">{result.fibrosis}</p>
               </div>
 
-              <div className={`${
-                result.severity === 'dn' ? 'bg-dnl border-dnb' : result.severity === 'wn' ? 'bg-wnl border-wnb' : 'bg-s0 border-br'
-              } border rounded-xl p-4`}>
-                <p className={`text-sm font-medium ${
-                  result.severity === 'dn' ? 'text-dn' : result.severity === 'wn' ? 'text-wn' : 'text-tx'
-                }`}>
-                  {result.severity === 'dn' ? '🏥' : result.severity === 'wn' ? '⚡' : '✅'} 参考アクション
-                </p>
-                <p className={`text-xs mt-1 ${
-                  result.severity === 'dn' ? 'text-dn' : result.severity === 'wn' ? 'text-wn' : 'text-muted'
-                }`}>
-                  {result.recommendation}
-                </p>
-              </div>
             </div>
           ) : (
             <div className="bg-s0 border border-br rounded-xl p-4 text-center">

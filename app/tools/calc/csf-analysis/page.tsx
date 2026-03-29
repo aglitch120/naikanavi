@@ -10,11 +10,11 @@ type Etiology = 'bacterial' | 'viral' | 'tb' | 'fungal' | 'normal' | 'indetermin
 
 const ETIOLOGY_INFO: Record<Etiology, { label: string; color: string; desc: string }> = {
   bacterial: { label: '細菌性髄膜炎疑い', color: '#DC2626', desc: '※参考所見のみ。臨床判断が必要です。グラム染色・培養・血液培養を確認。' },
-  viral: { label: 'ウイルス性髄膜炎疑い', color: '#2563EB', desc: '多くは自然軽快。PCR検査（HSV, エンテロウイルス等）を検討。' },
-  tb: { label: '結核性髄膜炎疑い', color: '#D97706', desc: 'ADA測定、抗酸菌培養、PCR。治療開始の遅れが予後を悪化させる。' },
-  fungal: { label: '真菌性髄膜炎疑い', color: '#7C3AED', desc: '墨汁染色、クリプトコッカス抗原、培養を確認。免疫不全の有無を評価。' },
+  viral: { label: 'ウイルス性髄膜炎疑い', color: '#2563EB', desc: '※参考所見のみ。確定診断には臨床判断が必要です。' },
+  tb: { label: '結核性髄膜炎疑い', color: '#D97706', desc: '※参考所見のみ。確定診断には臨床判断が必要です。' },
+  fungal: { label: '真菌性髄膜炎疑い', color: '#7C3AED', desc: '※参考所見のみ。確定診断には臨床判断が必要です。' },
   normal: { label: '正常範囲', color: '#059669', desc: '髄液所見は正常範囲内です。臨床症状との照合が必要です。' },
-  indeterminate: { label: '鑑別困難', color: '#6B7280', desc: '典型的パターンに合致しません。臨床経過と合わせて判断してください。※細菌性を除外できない。グラム染色・培養確認を行ってください。' },
+  indeterminate: { label: '鑑別困難', color: '#6B7280', desc: '典型的パターンに合致しません。臨床経過と合わせた総合判断が必要です。' },
 }
 
 export default function CSFAnalysisPage() {
@@ -95,7 +95,7 @@ export default function CSFAnalysisPage() {
           severity={result?.severity || 'neutral'}
         />
       }
-      explanation={<div className="text-sm text-muted"><p>初期結核性髄膜炎は蛋白・糖が正常域に近いことがあり、ウイルス性との鑑別が困難です。臨床的に疑う場合はADA・PCR等の追加検査を考慮してください。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>初期結核性髄膜炎は蛋白・糖が正常域に近いことがあり、ウイルス性との鑑別が困難な場合があります。本ツールは髄液所見の典型パターンとの照合のみを行います。確定診断には臨床経過との総合判断が必要です。</p></div>}
       relatedTools={[]}
       references={[{ text: 'Seehusen DA, et al. Am Fam Physician 2003;68:1103-1108' }]}
     >

@@ -32,7 +32,7 @@ export default function SjsTenDihsPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
-      explanation={<div className="text-sm text-muted"><p>重症薬疹は早期認識と原因薬剤の中止が最重要。一般に眼科・皮膚科との連携が重要とされています。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>重症薬疹（SJS/TEN/DIHS）の鑑別ポイント一覧。確定診断・治療方針は担当医が判断。</p></div>}
       relatedTools={[{slug:'ctcae',name:'CTCAE'},{slug:'naranjo',name:'Naranjo'}]}
       references={toolDef.sources||[]}
     >

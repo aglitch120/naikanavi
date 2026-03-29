@@ -41,7 +41,7 @@ export default function FreeWaterDeficitPage() {
           label="自由水欠乏量"
           value={result.deficit}
           unit="L"
-          interpretation="⚠️ 24時間で10 mEq/L以下のNa低下に留める"
+          interpretation="高Na血症における自由水欠乏量（参考値）"
           severity="wn"
           details={[
             { label: 'TBW', value: `${result.tbw} L` },

@@ -38,7 +38,7 @@ export default function AnionGapPage() {
       interpretation = 'AG軽度上昇 — 臨床的に再評価を'
       severity = 'wn'
     } else if (effectiveAg < 6) {
-      interpretation = 'AG低下 — 低Alb・Li中毒・多発性骨髄腫等を考慮'
+      interpretation = 'AG低下 — 低Alb・Li中毒・多発性骨髄腫等が原因となりうる'
       severity = 'wn'
     } else {
       interpretation = '正常AG'

@@ -32,7 +32,7 @@ export default function AnemiaCriteriaPage() {
       result={result ? <ResultCard severity={result.severity}
         value={result.isAnemia ? `${result.grade}（基準: Hb < ${result.threshold} g/dL）` : '貧血なし'}
         interpretation={result.mcvType ? `MCV分類: ${result.mcvType}\n\nWHO基準:\n• 成人男性: Hb < 13.0 g/dL\n• 成人女性(非妊娠): Hb < 12.0 g/dL\n• 妊婦: Hb < 11.0 g/dL` : ''} /> : null}
-      explanation={<div className="text-sm text-muted"><p>MCV分類により鑑別疾患を絞り込む。網赤血球(RPI)・血清鉄・フェリチン・TSAT・VitB12・葉酸で精査。</p></div>}
+      explanation={<div className="text-sm text-muted"><p>MCV分類により鑑別疾患の方向性が示される。関連検査項目: 網赤血球(RPI)・血清鉄・フェリチン・TSAT・VitB12・葉酸。</p></div>}
       relatedTools={[{slug:'tsat',name:'TSAT'},{slug:'rpi',name:'RPI'},{slug:'iron-deficit',name:'鉄欠乏量'}]}
       references={toolDef.sources||[]}
     >

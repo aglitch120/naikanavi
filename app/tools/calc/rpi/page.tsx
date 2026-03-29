@@ -18,7 +18,7 @@ export default function Page() {
     const r = parseFloat(retic), h = parseFloat(hct), nh = parseFloat(normalHct)
     if (!r || !h || !nh) return null
     // Correction factor for maturation time
-    const matFactor = h >= 36 ? 1 : h >= 25 ? 1.5 : h >= 15 ? 2 : 2.5
+    const matFactor = h >= 35 ? 1 : h >= 25 ? 1.5 : h >= 15 ? 2 : 2.5
     const correctedRetic = r * (h / nh)
     const rpi = correctedRetic / matFactor
     const sev = rpi < 2 ? 'wn' as const : 'ok' as const

@@ -35,9 +35,9 @@ export default function BishopPage() {
     const score = categories.reduce((sum, c) => sum + parseInt(vals[c.id] || '0'), 0)
     let interpretation = ''
     let severity: 'ok' | 'wn' | 'dn' = 'ok'
-    if (score >= 8) { interpretation = '頸管成熟 — 分娩誘発の成功率が高い'; severity = 'ok' }
-    else if (score >= 6) { interpretation = '中間 — 頸管熟化処置を考慮'; severity = 'wn' }
-    else { interpretation = '頸管未熟 — 頸管熟化処置が必要な可能性'; severity = 'wn' }
+    if (score >= 8) { interpretation = '頸管成熟（誘発分娩の成功率が高い）'; severity = 'ok' }
+    else if (score >= 6) { interpretation = '中間（頸管成熟度はやや不十分）'; severity = 'wn' }
+    else { interpretation = '頸管未熟'; severity = 'wn' }
     return { score, interpretation, severity }
   }, [vals])
 
@@ -47,8 +47,8 @@ export default function BishopPage() {
       result={<ResultCard label="Bishopスコア" value={`${result.score}`} unit="/ 13点" interpretation={result.interpretation} severity={result.severity}
         details={[
           { label: '≧8点', value: '頸管成熟（誘発分娩の成功率が高い）' },
-          { label: '6-7点', value: '中間（頸管熟化処置を考慮）' },
-          { label: '≦5点', value: '頸管未熟（熟化処置が必要な可能性）' },
+          { label: '6-7点', value: '中間（頸管成熟度はやや不十分）' },
+          { label: '≦5点', value: '頸管未熟' },
         ]} />}
       references={[{ text: 'Bishop EH. Pelvic scoring for elective induction. Obstet Gynecol 1964;24:266-268' }]}
     >

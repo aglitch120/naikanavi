@@ -35,7 +35,7 @@ export default function OpioidConversionPage(){
       <div className="space-y-4">
         <SelectInput id="from" label="現在の薬剤" value={from} onChange={setFrom} options={drugs.map(d=>({label:d.name,value:d.id}))} />
         <NumberInput id="dose" label="現在の1日量" value={dose} onChange={setDose} unit={from.includes('fentanyl')?'μg/h':'mg/日'} />
-        {Number(dose)>0&&(<div className="bg-acl border border-ac/20 rounded-xl p-4"><p className="text-xs font-bold text-ac mb-2">換算結果</p><div className="space-y-1">{result.conversions.map(c=>(<p key={c.name} className="text-sm text-tx"><span className="font-medium">{c.name}:</span> {c.dose} {c.name.includes('fentanyl')?'μg/h':'mg/日'}</p>))}</div></div>)}
+        {Number(dose)>0&&(<div className="bg-acl border border-ac/20 rounded-xl p-4"><p className="text-xs font-bold text-ac mb-2">換算結果</p><div className="space-y-1">{result.conversions.map(c=>(<p key={c.name} className="text-sm text-tx"><span className="font-medium">{c.name}:</span> {c.dose} {c.name.includes('フェンタニル')?'μg/h':'mg/日'}</p>))}</div></div>)}
       </div>
     </CalculatorLayout>
   )

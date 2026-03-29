@@ -153,21 +153,6 @@ export default function CURB65Page() {
             />
             <p className="text-[10px] text-muted px-1">30日死亡率: Lim WS, et al. Thorax 2003; PMID: 12728155</p>
 
-            {/* Disposition recommendation */}
-            <div className={`${
-              result.score >= 3 ? 'bg-dnl border-dnb' : result.score === 2 ? 'bg-wnl border-wnb' : 'bg-s0 border-br'
-            } border rounded-xl p-4`}>
-              <p className={`text-sm font-medium ${
-                result.score >= 3 ? 'text-dn' : result.score === 2 ? 'text-wn' : 'text-tx'
-              }`}>
-                {result.score >= 3 ? '⚠️' : result.score === 2 ? '⚡' : '✅'} 参考マネジメント
-              </p>
-              <p className={`text-xs mt-1 ${
-                result.score >= 3 ? 'text-dn' : result.score === 2 ? 'text-wn' : 'text-muted'
-              }`}>
-                {result.disposition}
-              </p>
-            </div>
           </div>
         }
         explanation={undefined}

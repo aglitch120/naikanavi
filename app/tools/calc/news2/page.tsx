@@ -42,7 +42,7 @@ export default function News2Page() {
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="NEWS2" value={result.total} unit="/ 19点" interpretation={result.label} severity={result.severity}
+      result={<ResultCard label="NEWS2" value={result.total} unit="/ 20点" interpretation={result.label} severity={result.severity}
         details={result.hasAny3 ? [{ label: '⚠ 注意', value: '個別パラメータ3点あり' }] : []} />}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
