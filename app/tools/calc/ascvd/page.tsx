@@ -81,7 +81,7 @@ export default function ASCVDPage() {
           details={[
             { label: 'リスクカテゴリ', value: result.category },
             { label: '判定基準', value: '<5%: 低 / 5-7.5%: ボーダーライン / 7.5-20%: 中 / >=20%: 高' },
-            { label: '注意', value: 'PCE（Pooled Cohort Equations）は主に欧米コホートで開発。日本人では過大評価の可能性がある。日本人向けには吹田スコア・久山町スコアが存在する' },
+            { label: '⚠ 日本人への適用', value: '本ツールは米国人集団で開発されたPCE（Pooled Cohort Equations）であり、日本人では心血管リスクを過大評価する可能性がある。日本人の動脈硬化リスク評価には久山町スコアの使用が推奨されている（動脈硬化性疾患予防GL 2022）' },
           ]}
         />
       )}

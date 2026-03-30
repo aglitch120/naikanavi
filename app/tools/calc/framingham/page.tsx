@@ -146,7 +146,7 @@ export default function FraminghamPage() {
           details={[
             { label: 'ポイント', value: `${result.points}点` },
             { label: 'リスクカテゴリ', value: result.category },
-            { label: '注意', value: 'Framinghamスコアは欧米コホートで開発。日本人では1.5-2倍の過大評価が報告されており、吹田スコア・久山町スコアがより適切とされる' },
+            { label: '⚠ 日本人への適用', value: '本スコアは米国Framingham研究に基づき、日本人ではCHDリスクを1.5-2倍過大評価する。日本人のリスク評価には久山町スコアが推奨されている（動脈硬化性疾患予防GL 2022）。米国でもPCE(2013)/PREVENT(2023)に移行済み' },
           ]}
         />
       )}
