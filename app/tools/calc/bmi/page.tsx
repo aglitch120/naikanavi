@@ -8,14 +8,14 @@ import { getToolBySlug, implementedTools, categoryLabels, categoryIcons } from '
 
 const toolDef = getToolBySlug('bmi')!
 
-function classifyBmi(bmi: number): { label: string; detail: string; severity: 'ok' | 'wn' | 'dn' } {
-  // 日本肥満学会基準
-  if (bmi < 18.5) return { label: '低体重（やせ）', detail: 'Underweight', severity: 'wn' }
-  if (bmi < 25) return { label: '普通体重', detail: 'Normal weight', severity: 'ok' }
-  if (bmi < 30) return { label: '肥満（1度）', detail: 'Obese class I', severity: 'wn' }
-  if (bmi < 35) return { label: '肥満（2度）', detail: 'Obese class II', severity: 'dn' }
-  if (bmi < 40) return { label: '肥満（3度）', detail: 'Obese class III', severity: 'dn' }
-  return { label: '肥満（4度）', detail: 'Obese class IV', severity: 'dn' }
+function classifyBmi(bmi: number): { label: string; who: string; severity: 'ok' | 'wn' | 'dn' } {
+  // 日本肥満学会 肥満症診療GL 2022 + WHO基準
+  if (bmi < 18.5) return { label: '低体重', who: 'WHO: Underweight', severity: 'wn' }
+  if (bmi < 25) return { label: '普通体重', who: 'WHO: Normal range', severity: 'ok' }
+  if (bmi < 30) return { label: '肥満（1度）', who: 'WHO: Pre-obese', severity: 'wn' }
+  if (bmi < 35) return { label: '肥満（2度）', who: 'WHO: Obese class I', severity: 'dn' }
+  if (bmi < 40) return { label: '高度肥満 — 肥満（3度）', who: 'WHO: Obese class II', severity: 'dn' }
+  return { label: '高度肥満 — 肥満（4度）', who: 'WHO: Obese class III', severity: 'dn' }
 }
 
 function idealWeight(height: number): { bmi22: number; bmi20: number; bmi25: number } {
@@ -57,7 +57,7 @@ export default function BmiPage() {
           interpretation={result.classification.label}
           severity={result.classification.severity}
           details={[
-            { label: '分類', value: result.classification.detail },
+            { label: 'WHO基準', value: result.classification.who },
             { label: '標準体重（BMI 22）', value: `${result.idealWeight.bmi22} kg` },
             { label: '適正範囲（BMI 20〜25）', value: `${result.idealWeight.bmi20}〜${result.idealWeight.bmi25} kg` },
           ]}
