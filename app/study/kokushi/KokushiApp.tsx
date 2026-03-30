@@ -117,7 +117,7 @@ export default function KokushiApp() {
   }
 
   return (
-    <div className="flex min-h-screen bg-bg text-tx font-sans">
+    <div className="flex min-h-screen bg-bg text-tx">
       {/* ── モバイルナビ ── */}
       <MobileNav
         tab={tab}

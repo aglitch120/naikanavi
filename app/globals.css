@@ -238,3 +238,17 @@
   tr { page-break-inside: avoid; }
   thead { display: table-header-group; }
 }
+
+/* ═══ Study フルスクリーンモード ═══ */
+/* .study-fullscreen が存在する場合、root layout の main 制約を解除 */
+main:has(.study-fullscreen) {
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+/* Study時はフッター非表示 */
+body:has(.study-fullscreen) > footer {
+  display: none;
+}

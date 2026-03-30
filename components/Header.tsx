@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import MobileMenu from './MobileMenu'
@@ -37,6 +38,7 @@ const menuGroups = [
 }))
 
 export default function Header() {
+  const pathname = usePathname()
   const [megaOpen, setMegaOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
@@ -53,6 +55,9 @@ export default function Header() {
   useEffect(() => {
     return () => clearTimeout(timerRef.current)
   }, [])
+
+  // Study アプリは独自ヘッダーを持つため非表示
+  if (pathname === '/study' || pathname.startsWith('/study/')) return null
 
   return (
     <header className="sticky top-0 z-50 bg-s0 border-b border-br">

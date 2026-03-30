@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+import Link from 'next/link'
 import { NAV_ITEMS } from './mock-data'
 import { SidebarContent } from './Sidebar'
 import type { Tab } from './types'
@@ -28,7 +30,9 @@ export default function MobileNav({
             <line x1="3" y1="16" x2="19" y2="16" />
           </svg>
         </button>
-        <div className="w-[26px] h-[26px] rounded-[7px] bg-ac flex items-center justify-center text-xs font-bold text-white">i</div>
+        <Link href="/">
+          <Image src="/icon.png" alt="iwor" width={26} height={26} className="rounded-[7px]" />
+        </Link>
         <span className="text-[13px] font-semibold flex-1">
           {NAV_ITEMS.find(n => n.id === tab)?.label}
         </span>
@@ -44,13 +48,13 @@ export default function MobileNav({
           <div className="absolute inset-0 bg-black/30" onClick={onClose} />
           <div className="absolute top-0 left-0 bottom-0 w-[260px] bg-s0 p-5 flex flex-col gap-0.5 shadow-xl overflow-y-auto animate-[slideRight_0.2s_ease]">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2.5">
-                <div className="w-[30px] h-[30px] rounded-[9px] bg-ac flex items-center justify-center text-sm font-bold text-white">i</div>
+              <Link href="/" className="flex items-center gap-2.5">
+                <Image src="/icon.png" alt="iwor" width={30} height={30} className="rounded-[9px]" />
                 <div>
                   <div className="text-sm font-semibold">iwor study</div>
                   <div className="text-[10px] text-muted font-medium">医師国家試験</div>
                 </div>
-              </div>
+              </Link>
               <button onClick={onClose} className="text-lg text-muted p-1">✕</button>
             </div>
             <SidebarContent
