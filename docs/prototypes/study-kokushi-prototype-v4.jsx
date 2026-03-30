@@ -212,6 +212,7 @@ export default function IworStudyV4() {
   const [deckView, setDeckView] = useState("list");
   const [deckPicker, setDeckPicker] = useState(null);
   const [showAddCards, setShowAddCards] = useState(false);
+  const [showDeckCreate, setShowDeckCreate] = useState(false);
   const [cardsTab, setCardsTab] = useState("mine"); // mine | shared
   const [deckFolder, setDeckFolder] = useState(null); // folder filter
   const [deckDetail, setDeckDetail] = useState(null); // deck id for card list
@@ -229,7 +230,7 @@ export default function IworStudyV4() {
     setActiveQ(false); setSelAns(null); setShowRes(false); setShowAI(false);
     setShowCardGen(false); setShowQList(null); setSelectMode(false);
     setSelected(new Set()); setShowSearch(false); setDrillField(null);
-    setDeckPicker(null); setShowAddCards(false); setDeckDetail(null); setDeckFolder(null);
+    setDeckPicker(null); setShowAddCards(false); setShowDeckCreate(false); setDeckDetail(null); setDeckFolder(null);
   };
 
   const totalQ = FIELDS.reduce((s, f) => s + f.subs.reduce((ss, sub) => ss + sub.total, 0), 0);
@@ -789,6 +790,23 @@ export default function IworStudyV4() {
                   {MARKS.filter(m => m.key !== "none").map(mk => (
                     <button key={mk.key} className="rating-btn" style={{ width: 36, height: 36, borderRadius: 8, border: `1.5px solid ${C.br}`, background: C.s0, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: 16, color: mk.color, fontWeight: 700 }}>{mk.icon}</button>
                   ))}
+                  {/* Attempt history */}
+                  <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ fontSize: 11, color: C.m2 }}>演習履歴：</span>
+                    {[
+                      { date: "03/20", result: "x" },
+                      { date: "03/25", result: "ok" },
+                      { date: "03/31", result: "ok" },
+                    ].map((a, i) => {
+                      const mk = MARKS.find(m => m.key === a.result);
+                      return (
+                        <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
+                          <span style={{ fontSize: 13, color: mk?.color, fontWeight: 700 }}>{mk?.icon}</span>
+                          <span style={{ fontSize: 8, color: C.m2 }}>{a.date}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 {/* 1. 正解の解説 */}
@@ -931,11 +949,30 @@ export default function IworStudyV4() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
               <h1 style={{ fontSize: 22, fontWeight: 700, margin: 0 }}>暗記カード</h1>
               <div style={{ display: "flex", gap: 8 }}>
-                <button onClick={() => setShowAddCards(true)} style={{ padding: "8px 16px", borderRadius: 8, border: "none", background: C.ac, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>+ デッキ作成</button>
+                <button style={{ padding: "8px 16px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 12, cursor: "pointer" }}>📁 フォルダ作成</button>
+                <button onClick={() => setShowDeckCreate(true)} style={{ padding: "8px 16px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 12, cursor: "pointer", fontWeight: 500 }}>+ デッキ作成</button>
               </div>
             </div>
 
             <TabBar items={[["mine", "自分のデッキ"], ["shared", "共有デッキ"]]} active={cardsTab} onChange={setCardsTab} />
+
+            {/* Deck create modal */}
+            {showDeckCreate && (
+              <Card style={{ marginBottom: 16, border: `2px solid ${C.ac}` }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                  <span style={{ fontSize: 14, fontWeight: 600 }}>新しいデッキを作成</span>
+                  <button onClick={() => setShowDeckCreate(false)} style={{ background: "none", border: "none", color: C.m, cursor: "pointer", fontSize: 16 }}>✕</button>
+                </div>
+                <input placeholder="デッキ名を入力" style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: `1.5px solid ${C.br}`, background: C.bg, fontSize: 14, outline: "none", marginBottom: 10 }} />
+                <div style={{ display: "flex", gap: 8 }}>
+                  <select style={{ padding: "8px 12px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 12 }}>
+                    <option>📁 フォルダを選択</option>
+                    <option>CBT</option><option>国試</option><option>カスタム</option>
+                  </select>
+                  <button onClick={() => setShowDeckCreate(false)} style={{ marginLeft: "auto", padding: "8px 20px", borderRadius: 8, border: "none", background: C.ac, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>作成</button>
+                </div>
+              </Card>
+            )}
 
             {/* Add cards modal */}
             {showAddCards && (
@@ -1045,6 +1082,7 @@ export default function IworStudyV4() {
             </div>
             {/* Deck settings bar */}
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
+              <button onClick={() => setShowAddCards(true)} style={{ padding: "6px 14px", borderRadius: 8, border: "none", background: C.ac, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>+ カードを追加</button>
               <div style={{ display: "flex", background: C.s1, borderRadius: 8, padding: 2, fontSize: 12 }}>
                 <button style={{ padding: "4px 12px", borderRadius: 6, background: C.s0, color: C.tx, border: "none", fontWeight: 600, cursor: "pointer", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>作成順</button>
                 <button style={{ padding: "4px 12px", borderRadius: 6, background: "transparent", color: C.m, border: "none", cursor: "pointer" }}>復習日順</button>
@@ -1056,6 +1094,33 @@ export default function IworStudyV4() {
                 <button style={{ padding: "5px 12px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 11, cursor: "pointer", color: C.dn }}>🗑 削除</button>
               </div>
             </div>
+            {/* Card addition modal (within deck detail) */}
+            {showAddCards && (
+              <Card style={{ marginBottom: 16, border: `2px solid ${C.ac}` }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                  <span style={{ fontSize: 14, fontWeight: 600 }}>カードを追加</span>
+                  <button onClick={() => setShowAddCards(false)} style={{ background: "none", border: "none", color: C.m, cursor: "pointer", fontSize: 16 }}>✕</button>
+                </div>
+                <div className="add-cards-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                  {[
+                    { icon: "✏️", label: "自分でテキスト入力", desc: "表面・裏面を手動で作成" },
+                    { icon: "✕", label: "間違えた問題から", desc: "✕マークの問題からAI生成" },
+                    { icon: "🔍", label: "特定の問題から", desc: "問題番号を指定してAI生成" },
+                    { icon: "📄", label: "CSVインポート", desc: "表面,裏面 のCSVファイル" },
+                    { icon: "📦", label: "Ankiファイル", desc: ".apkgファイル" },
+                    { icon: "🌐", label: "共有デッキから", desc: "他ユーザーのデッキ" },
+                  ].map(opt => (
+                    <button key={opt.label} style={{ padding: "12px 14px", borderRadius: 10, border: `1px solid ${C.br}`, background: C.s0, cursor: "pointer", textAlign: "left", display: "flex", alignItems: "flex-start", gap: 10 }} className="card-hover">
+                      <span style={{ fontSize: 18 }}>{opt.icon}</span>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 600 }}>{opt.label}</div>
+                        <div style={{ fontSize: 10, color: C.m2, marginTop: 1 }}>{opt.desc}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </Card>
+            )}
             {/* Card list */}
             <div style={{ background: C.s0, border: `1px solid ${C.br}`, borderRadius: 12, overflow: "hidden" }}>
               <div style={{ display: "grid", gridTemplateColumns: "40px 1fr 1fr 60px 30px", padding: "10px 16px", borderBottom: `1px solid ${C.br}`, fontSize: 11, color: C.m2 }}>
