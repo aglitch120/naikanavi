@@ -213,6 +213,8 @@ export default function IworStudyV4() {
   const [deckPicker, setDeckPicker] = useState(null);
   const [showAddCards, setShowAddCards] = useState(false);
   const [cardsTab, setCardsTab] = useState("mine"); // mine | shared
+  const [deckFolder, setDeckFolder] = useState(null); // folder filter
+  const [deckDetail, setDeckDetail] = useState(null); // deck id for card list
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [sidebarHover, setSidebarHover] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -227,7 +229,7 @@ export default function IworStudyV4() {
     setActiveQ(false); setSelAns(null); setShowRes(false); setShowAI(false);
     setShowCardGen(false); setShowQList(null); setSelectMode(false);
     setSelected(new Set()); setShowSearch(false); setDrillField(null);
-    setDeckPicker(null); setShowAddCards(false);
+    setDeckPicker(null); setShowAddCards(false); setDeckDetail(null); setDeckFolder(null);
   };
 
   const totalQ = FIELDS.reduce((s, f) => s + f.subs.reduce((ss, sub) => ss + sub.total, 0), 0);
@@ -781,6 +783,7 @@ export default function IworStudyV4() {
 
             {showRes && (
               <div className="fade-in">
+                {/* Self-eval mark */}
                 <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ fontSize: 12, color: C.m }}>自己評価：</span>
                   {MARKS.filter(m => m.key !== "none").map(mk => (
@@ -788,40 +791,72 @@ export default function IworStudyV4() {
                   ))}
                 </div>
 
+                {/* 1. 正解の解説 */}
+                <Card style={{ marginTop: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+                    <span style={{ color: C.ok, fontWeight: 600, fontSize: 14 }}>正解：a</span>
+                    <span style={{ color: C.m, fontSize: 13 }}>膵の萎縮を認める。</span>
+                    <Badge color="ai" style={{ marginLeft: "auto" }}>AI生成</Badge>
+                  </div>
+                  <p style={{ fontSize: 14, lineHeight: 1.8, color: C.m, margin: 0 }}>
+                    自己免疫性膵炎ではびまん性の<span style={{ color: C.tx, fontWeight: 600 }}>膵腫大（ソーセージ様）</span>が典型であり、萎縮ではなく腫大を認める。「膵の萎縮」は慢性膵炎の所見。
+                  </p>
+                </Card>
+
+                {/* 2. 各選択肢の解説 */}
+                <div style={{ marginTop: 4 }}>
+                  {[
+                    { l: "a", t: "膵の萎縮を認める。", ex: "自己免疫性膵炎ではびまん性膵腫大（ソーセージ様膵）が典型。萎縮は慢性膵炎の特徴。", wrong: true },
+                    { l: "b", t: "高齢男性に好発する。", ex: "50〜60歳代の男性に好発。男女比は約3〜4:1。" },
+                    { l: "c", t: "病理で線維化を認める。", ex: "高度のリンパ球浸潤とstoriform fibrosis（花筵状線維化）が特徴的所見。" },
+                    { l: "d", t: "IgG4関連疾患に含まれる。", ex: "1型はIgG4関連疾患の膵病変として位置づけられる。" },
+                    { l: "e", t: "グルココルチコイドが第一選択。", ex: "ステロイドが著効する。診断的治療としても使用。" },
+                  ].map(opt => (
+                    <div key={opt.l} style={{ display: "flex", gap: 12, padding: "12px 16px", borderLeft: `2px solid ${opt.wrong ? C.dn : C.ok}`, marginBottom: 2, background: opt.wrong ? C.dnl + "40" : "transparent", borderRadius: "0 8px 8px 0" }}>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: opt.wrong ? C.dn : C.ok, width: 20, flexShrink: 0 }}>{opt.wrong ? "✕" : "○"}{opt.l}</span>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 4 }}>{opt.t}</div>
+                        <div style={{ fontSize: 12.5, color: C.m, lineHeight: 1.6 }}>{opt.ex}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 3. 背景知識 */}
+                <Card style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ opacity: 0.5 }}>📚</span> 背景知識
+                  </div>
+                  <div style={{ fontSize: 13.5, lineHeight: 1.8, color: C.m }}>
+                    自己免疫性膵炎は1型（IgG4関連）と2型（好中球性）に分類。1型は膵外病変（硬化性胆管炎、後腹膜線維症、涙腺・唾液腺腫大）を伴いやすい。画像上びまん性の膵腫大（ソーセージ様膵）、被膜様低信号（capsule-like rim）が特徴。ステロイドへの反応性が診断基準の一つ。
+                  </div>
+                </Card>
+
+                {/* 4. 覚えるポイント */}
+                <div style={{ marginTop: 12, padding: "12px 14px", borderRadius: 10, background: C.wnl, border: `1px solid ${C.wnb}` }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: C.wn, marginBottom: 4 }}>💡 覚えるポイント</div>
+                  <p style={{ fontSize: 12.5, lineHeight: 1.6, margin: 0 }}>AIP = 膵腫大（ソーセージ様）＋ capsule-like rim。萎縮 = 慢性膵炎。ステロイド著効。1型はIgG4-RDの一部。</p>
+                </div>
+
+                {/* 5. 関連過去問 */}
+                <Card style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>関連する過去問</div>
+                  {[["115A12", "IgG4関連疾患の特徴", "78%"], ["112D33", "膵腫大の画像所見", "65%"], ["118C7", "IgG4関連疾患の治療", "82%"]].map(([id, th, rt], i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderTop: i ? `1px solid ${C.br}` : "none", cursor: "pointer" }}>
+                      <Badge>{id}</Badge>
+                      <span style={{ fontSize: 12, flex: 1, fontWeight: 500 }}>{th}</span>
+                      <span style={{ fontSize: 11, color: C.m2 }}>正答率 {rt}</span>
+                    </div>
+                  ))}
+                </Card>
+
+                {/* 6. AI actions — 最後にシームレスに配置 */}
                 <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
                   <GlowButton onClick={() => setShowAI(true)} style={{ flex: 1 }}>◇ AIに深掘り <span style={{ fontSize: 10, opacity: 0.7 }}>3cr</span></GlowButton>
                   <GlowButton onClick={() => setShowCardGen(true)} style={{ flex: 1 }}>⊞ カード生成 <span style={{ fontSize: 10, opacity: 0.7 }}>2cr</span></GlowButton>
                 </div>
 
-                <Card style={{ marginTop: 16 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-                    <span style={{ color: C.ok, fontWeight: 600 }}>正解：a</span>
-                    <Badge color="ai" style={{ marginLeft: "auto" }}>AI生成</Badge>
-                  </div>
-                  <p style={{ fontSize: 14, lineHeight: 1.8, color: C.m, margin: "0 0 16px" }}>
-                    自己免疫性膵炎ではびまん性の<span style={{ color: C.tx, fontWeight: 600 }}>膵腫大（ソーセージ様）</span>が典型。萎縮は慢性膵炎の所見。
-                  </p>
-                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>選択肢解説</div>
-                  {[
-                    { l: "a", t: "膵の萎縮を認める。", ex: "AIPではびまん性膵腫大が典型。萎縮は慢性膵炎。→誤り", wrong: true },
-                    { l: "b", t: "高齢男性に好発する。", ex: "50〜60歳代男性、男女比3〜4:1。正しい。" },
-                    { l: "c", t: "病理で線維化を認める。", ex: "storiform fibrosis（花筵状線維化）が特徴。正しい。" },
-                    { l: "d", t: "IgG4関連疾患に含まれる。", ex: "1型AIPはIgG4-RDの膵病変。正しい。" },
-                    { l: "e", t: "グルココルチコイドが第一選択。", ex: "ステロイド著効。診断的治療にも。正しい。" },
-                  ].map(opt => (
-                    <div key={opt.l} style={{ padding: "10px 14px", borderLeft: `3px solid ${opt.wrong ? C.dn : C.ok}`, marginBottom: 4, borderRadius: "0 8px 8px 0", background: opt.wrong ? C.dnl + "40" : "transparent" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-                        <span style={{ color: opt.wrong ? C.dn : C.ok, fontWeight: 700 }}>{opt.wrong ? "✕" : "○"}</span>
-                        <span style={{ fontSize: 13, fontWeight: 500 }}>{opt.l}. {opt.t}</span>
-                      </div>
-                      <div style={{ fontSize: 12.5, color: C.m, lineHeight: 1.6, marginLeft: 20 }}>{opt.ex}</div>
-                    </div>
-                  ))}
-                  <div style={{ marginTop: 14, padding: "12px 14px", borderRadius: 8, background: C.wnl, border: `1px solid ${C.wnb}` }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: C.wn, marginBottom: 4 }}>💡 覚えるポイント</div>
-                    <p style={{ fontSize: 12.5, lineHeight: 1.6, margin: 0 }}>AIP = 膵腫大 + capsule-like rim + ステロイド著効</p>
-                  </div>
-                </Card>
+                {/* 免責 */}
                 <div style={{ marginTop: 8, padding: "8px 12px", borderRadius: 8, background: C.s1, fontSize: 10.5, color: C.m, textAlign: "center" }}>⚠️ AI生成解説。正答は厚労省公式データ。</div>
               </div>
             )}
@@ -891,12 +926,11 @@ export default function IworStudyV4() {
         )}
 
         {/* ═══ CARDS — Deck Management ═══ */}
-        {tab === "cards" && deckView === "list" && (
+        {tab === "cards" && deckView === "list" && !deckDetail && (
           <div className="fade-in">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
               <h1 style={{ fontSize: 22, fontWeight: 700, margin: 0 }}>暗記カード</h1>
               <div style={{ display: "flex", gap: 8 }}>
-                <button style={{ padding: "8px 16px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 12, cursor: "pointer" }}>📁 フォルダ作成</button>
                 <button onClick={() => setShowAddCards(true)} style={{ padding: "8px 16px", borderRadius: 8, border: "none", background: C.ac, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>+ デッキ作成</button>
               </div>
             </div>
@@ -931,42 +965,44 @@ export default function IworStudyV4() {
               </Card>
             )}
 
-            {/* 自分のデッキ */}
+            {/* 自分のデッキ — folder filter tabs */}
             {cardsTab === "mine" && (
-              MOCK_DECKS.length === 0 ? (
-                <Card style={{ textAlign: "center", padding: "60px 20px" }}>
-                  <div style={{ fontSize: 40, marginBottom: 12 }}>⊞</div>
-                  <div style={{ fontSize: 14, color: C.m }}>デッキがありません</div>
-                  <div style={{ fontSize: 13, color: C.m2, marginTop: 4 }}>問題演習からカードを生成するか、手動で作成</div>
-                </Card>
-              ) : (
-                DECK_FOLDERS.map(folder => {
-                  const decks = MOCK_DECKS.filter(d => d.folder === folder);
-                  if (!decks.length) return null;
-                  return (
-                    <div key={folder} style={{ marginBottom: 20 }}>
-                      <div style={{ fontSize: 12, fontWeight: 600, color: C.m, marginBottom: 8 }}>📁 {folder}</div>
-                      {decks.map(d => (
-                        <Card key={d.id} style={{ marginBottom: 6, padding: "14px 18px", cursor: "pointer" }} className="card-hover" onClick={() => setDeckView("review")}>
-                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                            <div>
-                              <div style={{ fontWeight: 600 }}>{d.name}</div>
-                              <div style={{ fontSize: 11, color: C.m2, marginTop: 2 }}>{d.cards}枚</div>
-                            </div>
-                            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                              {d.due > 0 && <span style={{ fontSize: 13, fontWeight: 700, color: C.ac }}>{d.due}枚 復習</span>}
-                              <span style={{ color: C.m2 }}>›</span>
-                            </div>
+              <div>
+                <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
+                  <button onClick={() => setDeckFolder(null)} style={{ padding: "6px 14px", borderRadius: 20, border: `1.5px solid ${!deckFolder ? C.ac : C.br}`, background: !deckFolder ? C.acl : "transparent", color: !deckFolder ? C.ac : C.m, fontSize: 12, fontWeight: !deckFolder ? 600 : 500, cursor: "pointer" }}>すべて</button>
+                  {DECK_FOLDERS.map(f => (
+                    <button key={f} onClick={() => setDeckFolder(f)} style={{ padding: "6px 14px", borderRadius: 20, border: `1.5px solid ${deckFolder === f ? C.ac : C.br}`, background: deckFolder === f ? C.acl : "transparent", color: deckFolder === f ? C.ac : C.m, fontSize: 12, fontWeight: deckFolder === f ? 600 : 500, cursor: "pointer" }}>📁 {f}</button>
+                  ))}
+                </div>
+                {MOCK_DECKS.length === 0 ? (
+                  <Card style={{ textAlign: "center", padding: "60px 20px" }}>
+                    <div style={{ fontSize: 40, marginBottom: 12 }}>⊞</div>
+                    <div style={{ fontSize: 14, color: C.m }}>デッキがありません</div>
+                    <div style={{ fontSize: 13, color: C.m2, marginTop: 4 }}>問題演習からカードを生成するか、手動で作成</div>
+                  </Card>
+                ) : (
+                  MOCK_DECKS.filter(d => !deckFolder || d.folder === deckFolder).map(d => (
+                    <Card key={d.id} style={{ marginBottom: 8, padding: "14px 18px", cursor: "pointer" }} className="card-hover" onClick={() => setDeckDetail(d.id)}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <div>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <span style={{ fontWeight: 600 }}>{d.name}</span>
+                            <span style={{ fontSize: 10, color: C.m2, padding: "1px 6px", background: C.s1, borderRadius: 4 }}>{d.folder}</span>
                           </div>
-                        </Card>
-                      ))}
-                    </div>
-                  );
-                })
-              )
+                          <div style={{ fontSize: 11, color: C.m2, marginTop: 2 }}>{d.cards}枚</div>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                          {d.due > 0 && <span style={{ fontSize: 13, fontWeight: 700, color: C.ac }}>{d.due}枚 復習</span>}
+                          <span style={{ color: C.m2 }}>›</span>
+                        </div>
+                      </div>
+                    </Card>
+                  ))
+                )}
+              </div>
             )}
 
-            {/* 共有デッキ（マーケット） */}
+            {/* 共有デッキ */}
             {cardsTab === "shared" && (
               <div>
                 <input placeholder="デッキを検索…" style={{ width: "100%", padding: "12px 16px", borderRadius: 10, border: `1.5px solid ${C.br}`, background: C.s0, fontSize: 14, outline: "none", marginBottom: 16 }} />
@@ -999,10 +1035,61 @@ export default function IworStudyV4() {
           </div>
         )}
 
+        {/* ═══ CARDS — Deck Detail (card list) ═══ */}
+        {tab === "cards" && deckView === "list" && deckDetail && (
+          <div className="fade-in">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+              <button onClick={() => setDeckDetail(null)} style={{ background: "none", border: "none", color: C.m, cursor: "pointer", fontSize: 13 }}>← デッキ一覧</button>
+              <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0 }}>{MOCK_DECKS.find(d => d.id === deckDetail)?.name}</h2>
+              <Badge color="accent">{MOCK_DECKS.find(d => d.id === deckDetail)?.cards}枚</Badge>
+            </div>
+            {/* Deck settings bar */}
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", background: C.s1, borderRadius: 8, padding: 2, fontSize: 12 }}>
+                <button style={{ padding: "4px 12px", borderRadius: 6, background: C.s0, color: C.tx, border: "none", fontWeight: 600, cursor: "pointer", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>作成順</button>
+                <button style={{ padding: "4px 12px", borderRadius: 6, background: "transparent", color: C.m, border: "none", cursor: "pointer" }}>復習日順</button>
+                <button style={{ padding: "4px 12px", borderRadius: 6, background: "transparent", color: C.m, border: "none", cursor: "pointer" }}>ランダム</button>
+              </div>
+              <div style={{ marginLeft: "auto", display: "flex", gap: 6 }}>
+                <button style={{ padding: "5px 12px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 11, cursor: "pointer", color: C.m }}>🔒 Private</button>
+                <button style={{ padding: "5px 12px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 11, cursor: "pointer", color: C.m }}>✏️ 編集</button>
+                <button style={{ padding: "5px 12px", borderRadius: 8, border: `1px solid ${C.br}`, background: C.s0, fontSize: 11, cursor: "pointer", color: C.dn }}>🗑 削除</button>
+              </div>
+            </div>
+            {/* Card list */}
+            <div style={{ background: C.s0, border: `1px solid ${C.br}`, borderRadius: 12, overflow: "hidden" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "40px 1fr 1fr 60px 30px", padding: "10px 16px", borderBottom: `1px solid ${C.br}`, fontSize: 11, color: C.m2 }}>
+                <span>#</span><span>表面</span><span>裏面</span><span>次回</span><span></span>
+              </div>
+              {[
+                { front: "自己免疫性膵炎の画像所見は？", back: "びまん性膵腫大（ソーセージ様）+ capsule-like rim", next: "明日" },
+                { front: "IgG4クラススイッチを誘導するサイトカインは？", back: "IL-4, IL-10, IL-13", next: "3日後" },
+                { front: "AIPの治療 第一選択は？", back: "グルココルチコイド（ステロイド）", next: "1週後" },
+                { front: "AIP 1型 vs 2型の違い", back: "1型:IgG4関連,高齢男性 / 2型:好中球性,若年", next: "今日" },
+                { front: "IgG4-RDの診断基準は？", back: "①臓器腫大②IgG4高値③病理（リンパ球浸潤+線維化）", next: "2日後" },
+              ].map((card, i) => (
+                <div key={i} className="row-hover" style={{ display: "grid", gridTemplateColumns: "40px 1fr 1fr 60px 30px", padding: "12px 16px", borderBottom: `1px solid ${C.br}`, alignItems: "center", cursor: "pointer", fontSize: 13 }}>
+                  <span style={{ color: C.m2, fontFamily: mono, fontSize: 12 }}>{i + 1}</span>
+                  <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", paddingRight: 8 }}>{card.front}</span>
+                  <span style={{ color: C.m, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", paddingRight: 8 }}>{card.back}</span>
+                  <span style={{ fontSize: 11, color: card.next === "今日" ? C.ac : C.m2, fontWeight: card.next === "今日" ? 600 : 400 }}>{card.next}</span>
+                  <span style={{ color: C.m2 }}>✏️</span>
+                </div>
+              ))}
+            </div>
+            {/* Start buttons */}
+            <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
+              <button style={{ flex: 1, padding: "12px", borderRadius: 9, border: `1.5px solid ${C.br}`, background: C.s0, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>シャッフルで始める</button>
+              <button onClick={() => setDeckView("review")} style={{ flex: 1, padding: "12px", borderRadius: 9, border: "none", background: C.ac, color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>▶ 順番に始める</button>
+            </div>
+          </div>
+        )}
+
+        {/* ═══ CARDS — Review ═══ */}
         {tab === "cards" && deckView === "review" && (
           <div className="fade-in">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-              <button onClick={() => setDeckView("list")} style={{ background: "none", border: "none", color: C.m, cursor: "pointer", fontSize: 13 }}>← デッキ一覧</button>
+              <button onClick={() => setDeckView("list")} style={{ background: "none", border: "none", color: C.m, cursor: "pointer", fontSize: 13 }}>← 戻る</button>
               <span style={{ fontWeight: 600 }}>CBT基礎</span>
               <Badge>残り12枚</Badge>
             </div>
