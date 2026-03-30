@@ -47,7 +47,7 @@ export default function TokyoCholangitisPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={result.dx} interpretation={result.grade} />}
-      explanation={<div className="text-sm text-muted"><p>Charcot三徴(発熱+黄疸+腹痛)→Reynolds五徴(+意識障害+ショック)。TG18はA+B+Cで確診。</p></div>}
+      explanation={<div className="text-sm text-muted space-y-1"><p>Charcot三徴(発熱+黄疸+腹痛)→Reynolds五徴(+意識障害+ショック)。TG18はA+B+Cで確診。</p><p className="text-xs text-wn">注1: 肝硬変・慢性腎不全・抗凝固療法中は重症度判定に注意（別途参照）。注2: 診断後24時間以内および24-48時間の各時間帯で重症度判定を繰り返し評価する。</p></div>}
       relatedTools={[{slug:'tokyo-cholecystitis',name:'胆嚢炎 TG18'}]}
       references={toolDef.sources||[]}
     >

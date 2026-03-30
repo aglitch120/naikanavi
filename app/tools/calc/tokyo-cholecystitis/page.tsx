@@ -44,7 +44,7 @@ export default function TokyoCholecystitisPage() {
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard severity={result.severity} value={result.dx} interpretation={result.grade} />}
-      explanation={<div className="text-sm text-muted"><p>TG18: A(局所)+B(全身)+C(画像)で確診。A+BまたはA+Cで疑診。</p></div>}
+      explanation={<div className="text-sm text-muted space-y-1"><p>TG18: A(局所)+B(全身)+C(画像)で確診。A+BまたはA+Cで疑診。</p><p className="text-xs text-wn">注1: 肝硬変・慢性腎不全・抗凝固療法中は重症度判定に注意（別途参照）。注2: 診断後直ちに重症度判定を行い、非手術治療選択時は24時間以内に2回目の判定、以後適宜繰り返す。</p></div>}
       relatedTools={[{slug:'tokyo-cholangitis',name:'胆管炎 TG18'}]}
       references={toolDef.sources||[]}
     >

@@ -2,31 +2,89 @@
 import CalculatorLayout from '@/components/tools/CalculatorLayout'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('kyoto-classification')!
-const findings = [
-  { name: '萎縮 (Atrophy)', grades: ['C-0（なし）','C-1（前庭部限局）','C-2（体部小弯）','C-3（体部大弯に及ぶ）','O-1（体部全体）','O-2（前庭部にも及ぶ）','O-3（全体高度萎縮）'], significance: '木村・竹本分類。C→O→の順に萎縮進行。O-2以上では胃癌リスクの上昇が報告されている。' },
-  { name: '腸上皮化生 (IM)', grades: ['なし','軽度（限局的）','中等度','高度（広範囲）'], significance: 'IM+高度萎縮は最も胃癌リスクが高いとされる。' },
-  { name: 'びまん性発赤 (Diffuse redness)', grades: ['なし','軽度','高度'], significance: '現感染のマーカー。除菌成功後は消退。' },
-  { name: '皺襞腫大 (Enlarged folds)', grades: ['なし','あり'], significance: '体部主体の現感染所見。除菌成功後は消退しうる。' },
-  { name: '鳥肌 (Nodularity)', grades: ['なし','あり'], significance: '若年女性に多い。未分化型胃癌のリスク因子とされる。' },
+
+// ○=観察されることが多い △=観察されることがある ×=観察されない
+// 京都分類 表1: 胃炎の京都分類（内視鏡所見と H.pylori 感染状態）
+const findings: { location: string; items: { name: string; en: string; infected: string; uninfected: string; postErad: string }[] }[] = [
+  { location: '胃粘膜全体', items: [
+    { name: '萎縮', en: 'atrophy', infected: '○', uninfected: '×', postErad: '○〜×' },
+    { name: 'びまん性発赤', en: 'diffuse redness', infected: '○', uninfected: '×', postErad: '×' },
+    { name: '腺窩上皮過形成性ポリープ', en: 'foveolar-hyperplastic polyp', infected: '○', uninfected: '×', postErad: '○〜×' },
+    { name: '地図状発赤', en: 'map-like redness', infected: '×', uninfected: '×', postErad: '○' },
+    { name: '黄色腫', en: 'xanthoma', infected: '○', uninfected: '×', postErad: '○' },
+    { name: 'ヘマチン', en: 'hematin', infected: '△', uninfected: '○', postErad: '○' },
+    { name: '稜線状発赤', en: 'red streak', infected: '△', uninfected: '○', postErad: '○' },
+    { name: '腸上皮化生', en: 'intestinal metaplasia', infected: '○', uninfected: '×', postErad: '○〜△' },
+    { name: '粘膜腫脹', en: 'mucosal swelling', infected: '○', uninfected: '×', postErad: '×' },
+    { name: '斑状発赤', en: 'patchy redness', infected: '○', uninfected: '○', postErad: '○' },
+    { name: '陥凹型びらん', en: 'depressive erosion', infected: '○', uninfected: '○', postErad: '○' },
+  ]},
+  { location: '胃体部', items: [
+    { name: '皺襞腫大・蛇行', en: 'enlarged fold, tortuous fold', infected: '○', uninfected: '×', postErad: '×' },
+    { name: '白濁粘液', en: 'sticky mucus', infected: '○', uninfected: '×', postErad: '×' },
+  ]},
+  { location: '胃体部〜穹窿部', items: [
+    { name: '胃底腺ポリープ', en: 'fundic gland polyp', infected: '×', uninfected: '○', postErad: '○' },
+    { name: '点状発赤', en: 'spotty redness', infected: '○', uninfected: '×', postErad: '△〜×' },
+    { name: '多発性白色扁平隆起', en: 'multiple white and flat elevated lesions', infected: '△', uninfected: '○', postErad: '○' },
+  ]},
+  { location: '胃体下部小弯〜胃角', items: [
+    { name: 'RAC', en: 'regular arrangement of collecting venules', infected: '×', uninfected: '○', postErad: '×〜△' },
+  ]},
+  { location: '胃前庭部', items: [
+    { name: '鳥肌', en: 'nodularity', infected: '○', uninfected: '×', postErad: '△〜×' },
+    { name: '隆起型びらん', en: 'raised erosion', infected: '△', uninfected: '○', postErad: '○' },
+  ]},
 ]
+
 export default function KyotoClassificationPage() {
   return (
-    <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
+    <CalculatorLayout slug={toolDef.slug} title="胃炎の京都分類" titleEn="Kyoto Classification of Gastritis"
+      description="内視鏡所見からH.pylori感染状態（現感染・未感染・除菌後）を推定するための体系的分類。"
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={null}
-      explanation={<div className="text-sm text-muted"><p>5つの内視鏡所見からH.pylori感染状態と胃癌リスクを評価。未感染/現感染/既感染の判定に使用。</p></div>}
-      relatedTools={[{slug:'gastric-risk',name:'胃癌リスクスコア'},{slug:'la-classification',name:'LA分類'}]}
-      references={toolDef.sources||[]}
+      explanation={<div className="text-sm text-muted space-y-1">
+        <p>各内視鏡所見がH.pylori感染/未感染/除菌後のどの状態で観察されるかを示す。○=よく観察される △=観察されることがある ×=観察されない</p>
+        <p className="text-xs">※本分類はスコアリングツールではなく、内視鏡所見の体系的整理です。胃癌リスク評価には別途ガイドラインを参照してください。</p>
+      </div>}
+      relatedTools={[{slug:'la-classification',name:'LA分類'}]}
+      references={[
+        {text:'春間 賢ほか. 胃炎の京都分類 改訂第2版. 日本メディカルセンター, 2018'},
+        {text:'Sugano K, et al. Kyoto global consensus report on Helicobacter pylori gastritis. Gut. 2015;64:1353-1367'},
+      ]}
     >
-      <div className="space-y-4">{findings.map(f=>(
-        <div key={f.name} className="p-4 bg-s0 rounded-xl border border-br">
-          <h3 className="text-sm font-bold text-tx mb-1">{f.name}</h3>
-          <div className="flex flex-wrap gap-1.5 mb-2">
-            {f.grades.map((g,i)=><span key={i} className="text-[11px] bg-s1 px-2 py-0.5 rounded-full text-tx">{g}</span>)}
+      <div className="space-y-4">
+        {findings.map(section => (
+          <div key={section.location}>
+            <p className="text-xs font-bold text-ac mb-2">{section.location}</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs border-collapse">
+                <thead>
+                  <tr className="bg-s1">
+                    <th className="text-left p-1.5 text-tx font-medium border-b border-br">所見</th>
+                    <th className="text-center p-1.5 text-tx font-medium border-b border-br w-14">感染</th>
+                    <th className="text-center p-1.5 text-tx font-medium border-b border-br w-14">未感染</th>
+                    <th className="text-center p-1.5 text-tx font-medium border-b border-br w-14">除菌後</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.items.map(item => (
+                    <tr key={item.name} className="border-b border-br/50">
+                      <td className="p-1.5 text-tx">
+                        <span className="font-medium">{item.name}</span>
+                        <span className="text-muted ml-1">({item.en})</span>
+                      </td>
+                      <td className="text-center p-1.5">{item.infected}</td>
+                      <td className="text-center p-1.5">{item.uninfected}</td>
+                      <td className="text-center p-1.5">{item.postErad}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <p className="text-xs text-muted">{f.significance}</p>
-        </div>
-      ))}</div>
+        ))}
+      </div>
     </CalculatorLayout>
   )
 }
