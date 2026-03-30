@@ -18,9 +18,9 @@ const uosmOptions = [
   { label: '>100 (濃縮尿)', value: 'conc' },
 ]
 const volOptions = [
-  { label: '脱水（皮膚ツルゴール低下・頻脈）', value: 'hypo' },
-  { label: '正常（浮腫なし・脱水なし）', value: 'eu' },
-  { label: '体液過剰（浮腫・腹水）', value: 'hyper' },
+  { label: '細胞外液量減少（脱水・ツルゴール低下・頻脈）', value: 'hypo' },
+  { label: '細胞外液量ほぼ正常（浮腫なし・脱水なし）', value: 'eu' },
+  { label: '細胞外液量増加（浮腫・腹水・頸静脈怒張）', value: 'hyper' },
 ]
 const unaOptions = [
   { label: '<20 mEq/L', value: 'low' },
@@ -34,17 +34,21 @@ interface Diagnosis {
 }
 
 function getDiagnosis(osm: string, uosm: string, vol: string, una: string): Diagnosis | null {
-  if (osm === 'iso') return { title: '等張性低Na血症（偽性）', detail: '高脂血症・高蛋白血症 → 浸透圧ギャップ確認。実際のNaは正常の可能性。', severity: 'ok' }
-  if (osm === 'hyper') return { title: '高張性低Na血症', detail: '高血糖（補正Na = 実測Na + 1.6×(血糖-100)/100。Hillier式では係数2.4。血糖>400ではHillier式が用いられることがある）、マンニトール投与が原因として考えられる。', severity: 'wn' }
+  // 高張性・偽性
+  if (osm === 'iso') return { title: '偽性低Na血症', detail: '脂質異常症・異常蛋白血症（Paraproteinemia）など。血漿浸透圧は正常→実際のNaは正常の可能性。', severity: 'ok' }
+  if (osm === 'hyper') return { title: '高張性低Na血症', detail: '高血糖・グリセオール・マンニトール製剤使用など。高浸透圧物質により水が細胞内から移動しNaが希釈される。', severity: 'wn' }
   if (osm !== 'hypo') return null
-  if (uosm === 'dilute') return { title: '水中毒 / 心因性多飲', detail: '腎の希釈能は正常。Beer potomania、低栄養も鑑別。治療は担当医が判断。', severity: 'wn' }
+  // 低張性 → 細胞外液量で分岐
   if (!vol) return null
-  if (vol === 'hypo' && una === 'low') return { title: '腎外性Na喪失', detail: '嘔吐・下痢・第三腔貯留・熱傷が原因として考えられる。治療は担当医が判断。', severity: 'wn' }
-  if (vol === 'hypo' && una === 'high') return { title: '腎性Na喪失', detail: '利尿薬・塩類喪失性腎症・副腎不全・CSWが原因として考えられる。治療は担当医が判断。', severity: 'dn' }
-  if (vol === 'eu' && una === 'low') return { title: '甲状腺機能低下症', detail: 'TSH・fT4等の検索を担当医が判断。', severity: 'wn' }
-  if (vol === 'eu' && una === 'high') return { title: 'SIADH / 副腎不全', detail: 'SIADHまたは副腎不全が考えられる。治療は担当医が判断。', severity: 'dn' }
-  if (vol === 'hyper' && una === 'low') return { title: '心不全 / 肝硬変 / ネフローゼ', detail: '有効循環血液量低下が考えられる。原疾患の治療は担当医が判断。', severity: 'dn' }
-  if (vol === 'hyper' && una === 'high') return { title: '腎不全', detail: 'eGFR低下による水排泄障害が考えられる。治療は担当医が判断。', severity: 'dn' }
+  // 細胞外液量減少
+  if (vol === 'hypo' && una === 'high') return { title: '腎性Na喪失（細胞外液量減少+尿中Na>20）', detail: '利尿薬・浸透圧利尿・RSWS（塩類喪失性腎症）・CSWS（中枢性塩類喪失症候群）・Addison病', severity: 'dn' }
+  if (vol === 'hypo' && una === 'low') return { title: '腎外性Na喪失（細胞外液量減少+尿中Na<20）', detail: '嘔吐・下痢・膵炎・発汗過多・熱傷・低栄養', severity: 'wn' }
+  // 細胞外液量ほぼ正常
+  if (vol === 'eu' && uosm === 'conc' && una === 'high') return { title: 'SIADH / 甲状腺機能低下症 / 続発性副腎皮質機能低下症 / MRHE（尿浸透圧>100, 尿中Na>20）', detail: 'SIADH・甲状腺機能低下症・続発性副腎皮質機能低下症・MRHE（Mineralocorticoid-Responsive Hyponatremia of the Elderly）を鑑別', severity: 'dn' }
+  if (vol === 'eu' && (uosm === 'dilute' || una === 'low')) return { title: '精神的多飲 / 溶質不足（尿浸透圧<100, 尿中Na<20）', detail: '精神的多飲症（心因性多飲）・溶質不足（ビール多飲 = beer potomania）。腎の希釈能は正常。', severity: 'wn' }
+  // 細胞外液量増加
+  if (vol === 'hyper' && una === 'high') return { title: '腎不全（細胞外液量増加+尿中Na>20）', detail: '腎不全による水・Na排泄障害', severity: 'dn' }
+  if (vol === 'hyper' && una === 'low') return { title: '心不全 / 肝硬変 / ネフローゼ症候群（細胞外液量増加+尿中Na<20）', detail: '有効循環血液量低下 → RAA系活性化 → Na・水貯留。原疾患の評価が必要。', severity: 'dn' }
   return null
 }
 
@@ -56,10 +60,13 @@ export default function HyponatremiaFlowPage() {
 
   const activeSteps = useMemo((): Step[] => {
     const steps: Step[] = ['osm']
-    if (osm === 'hypo') { steps.push('uosm') }
-    if (osm === 'hypo' && uosm === 'conc') { steps.push('volume'); steps.push('una') }
+    if (osm === 'hypo') {
+      steps.push('volume')
+      if (vol === 'eu') { steps.push('uosm'); steps.push('una') }
+      else if (vol) { steps.push('una') }
+    }
     return steps
-  }, [osm, uosm])
+  }, [osm, vol])
 
   const diagnosis = useMemo(() => getDiagnosis(osm, uosm, vol, una), [osm, uosm, vol, una])
 
@@ -75,10 +82,10 @@ export default function HyponatremiaFlowPage() {
       explanation={undefined}
       relatedTools={[]}
       references={[
-        { text: 'Spasovski G et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol 2014;170:G1-G47' },
-        { text: 'Hoorn EJ, Zietse R. Diagnosis and treatment of hyponatremia: compilation of existing guidelines. J Am Soc Nephrol 2017;28:1340-1349' },
+        { text: '山口秀樹ほか. 日内会誌 2016;105(4):667-675' },
+        { text: '柴垣有吾（監修/深川雅史）. 体液電解質異常と輸液 改訂3版. 中外医学社; 2019' },
         { text: 'Sterns RH. Disorders of plasma sodium. N Engl J Med 2015;372:55-65' },
-        { text: 'Verbalis JG et al. Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations. Am J Med 2013;126:S1-S42' },
+        { text: 'Spasovski G, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol 2014;170:G1-G47' },
       ]}
     >
       <div className="space-y-5">
@@ -86,21 +93,21 @@ export default function HyponatremiaFlowPage() {
           <p className="text-xs font-bold text-ac">Step 1</p>
           <RadioGroup name="osm" label="血漿浸透圧 (mOsm/kg)" options={osmOptions} value={osm} onChange={v => { setOsm(v); setUosm(''); setVol(''); setUna('') }} />
         </div>
-        {activeSteps.includes('uosm') && (
-          <div className="space-y-1">
-            <p className="text-xs font-bold text-ac">Step 2</p>
-            <RadioGroup name="uosm" label="尿浸透圧 (mOsm/kg)" options={uosmOptions} value={uosm} onChange={v => { setUosm(v); setVol(''); setUna('') }} />
-          </div>
-        )}
         {activeSteps.includes('volume') && (
           <div className="space-y-1">
-            <p className="text-xs font-bold text-ac">Step 3</p>
-            <RadioGroup name="vol" label="体液量の評価" options={volOptions} value={vol} onChange={setVol} />
+            <p className="text-xs font-bold text-ac">Step 2: 細胞外液量の評価</p>
+            <RadioGroup name="vol" label="細胞外液量" options={volOptions} value={vol} onChange={v => { setVol(v); setUosm(''); setUna('') }} />
+          </div>
+        )}
+        {activeSteps.includes('uosm') && (
+          <div className="space-y-1">
+            <p className="text-xs font-bold text-ac">Step 3: 尿浸透圧</p>
+            <RadioGroup name="uosm" label="尿浸透圧 (mOsm/kg)" options={uosmOptions} value={uosm} onChange={v => { setUosm(v); setUna('') }} />
           </div>
         )}
         {activeSteps.includes('una') && (
           <div className="space-y-1">
-            <p className="text-xs font-bold text-ac">Step 4</p>
+            <p className="text-xs font-bold text-ac">Step {vol === 'eu' ? '4' : '3'}: 尿中Na濃度</p>
             <RadioGroup name="una" label="尿中Na濃度" options={unaOptions} value={una} onChange={setUna} />
           </div>
         )}
