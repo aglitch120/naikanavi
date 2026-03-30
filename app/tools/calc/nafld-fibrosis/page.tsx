@@ -7,7 +7,8 @@ import { NumberInput } from '@/components/tools/InputFields'
 
 export default function NAFLDFibrosisPage() {
   const [age, setAge] = useState('55')
-  const [bmi, setBmi] = useState('28')
+  const [height, setHeight] = useState('170')
+  const [weight, setWeight] = useState('80')
   const [diabetes, setDiabetes] = useState(false)
   const [ast, setAst] = useState('45')
   const [alt, setAlt] = useState('60')
@@ -16,12 +17,14 @@ export default function NAFLDFibrosisPage() {
 
   const result = useMemo(() => {
     const a = parseFloat(age)
-    const b = parseFloat(bmi)
+    const h = parseFloat(height)
+    const w = parseFloat(weight)
     const astV = parseFloat(ast)
     const altV = parseFloat(alt)
     const pltV = parseFloat(plt)
     const albV = parseFloat(albumin)
-    if (!a || !b || !astV || !altV || !pltV || !albV) return null
+    if (!a || !h || !w || !astV || !altV || !pltV || !albV) return null
+    const b = w / Math.pow(h / 100, 2) // BMI計算
 
     // NFS = -1.675 + 0.037 x age + 0.094 x BMI + 1.13 x IFG/diabetes + 0.99 x AST/ALT - 0.013 x PLT - 0.66 x Alb
     // 原著(Angulo 2007)はPLT ×10⁹/L単位。日本は万/μL入力のため×10で変換(18万/μL = 180×10⁹/L)
@@ -35,7 +38,7 @@ export default function NAFLDFibrosisPage() {
     else { category = '進行線維化（F3-F4）'; severity = 'dn' }
 
     return { nfs: rounded, category, severity }
-  }, [age, bmi, diabetes, ast, alt, plt, albumin])
+  }, [age, height, weight, diabetes, ast, alt, plt, albumin])
 
   return (
     <CalculatorLayout
@@ -60,10 +63,12 @@ export default function NAFLDFibrosisPage() {
         { text: 'Angulo P, et al. The NAFLD fibrosis score: a noninvasive system that identifies liver fibrosis in patients with NAFLD. Hepatology 2007;45:846-54', url: 'https://pubmed.ncbi.nlm.nih.gov/17393509/' },
       ]}
     >
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-3 gap-3">
         <NumberInput label="年齢" value={age} onChange={setAge} unit="歳" />
-        <NumberInput label="BMI" value={bmi} onChange={setBmi} unit="kg/m2" step={0.1} />
+        <NumberInput label="身長" value={height} onChange={setHeight} unit="cm" step={0.1} />
+        <NumberInput label="体重" value={weight} onChange={setWeight} unit="kg" step={0.1} />
       </div>
+      {height && weight && parseFloat(height) > 0 && <p className="text-xs text-muted">BMI: {(parseFloat(weight) / Math.pow(parseFloat(height) / 100, 2)).toFixed(1)} kg/m²</p>}
       <label className="flex items-center gap-2 text-sm cursor-pointer">
         <input type="checkbox" checked={diabetes} onChange={e => setDiabetes(e.target.checked)} className="rounded border-br" />
         <span className="text-tx">糖尿病 or 空腹時血糖異常（IFG）</span>

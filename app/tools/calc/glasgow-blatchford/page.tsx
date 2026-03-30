@@ -78,8 +78,7 @@ export default function GlasgowBlatchfordPage() {
       categoryIcon={categoryIcons[toolDef.category]}
       result={
         <ResultCard label="Glasgow-Blatchford" value={result.score} unit="/ 23点"
-          interpretation={result.label} severity={result.severity}
-          details={[{ label: '注目', value: 'スコア0 = 低リスク（最終判断は臨床医による）' }]} />
+          interpretation={result.label} severity={result.severity} />
       }
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs.map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null }).filter(Boolean) as { slug: string; name: string }[]}
