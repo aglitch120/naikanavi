@@ -41,7 +41,7 @@ export default function Page() {
               { label: 'DO2I', value: `${result.do2i.toFixed(0)} mL/min/m² (基準: 520-720)` },
               { label: 'CI', value: `${result.ci!.toFixed(2)} L/min/m²` },
             ] : []),
-            { label: '計算式', value: 'CaO2 = 1.34×Hb×SaO2 + 0.003×PaO2' },
+            { label: '計算式', value: 'CaO2 = 1.34×Hb×(SaO2/100) + 0.003×PaO2' },
           ]} />
       )}>
       <NumberInput id="f1" label="Hb (g/dL)" value={hb} onChange={setHb} min={0} step={0.1} />
