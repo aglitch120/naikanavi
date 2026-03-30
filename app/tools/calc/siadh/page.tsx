@@ -6,55 +6,75 @@ import { CheckItem } from '@/components/tools/InputFields'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('siadh')!
 
-const essentialItems = [
-  { id: 'hyponatremia', label: '血漿Na <135 mEq/L + 血漿浸透圧 <280 mOsm/kg（低張性低Na血症）' },
-  { id: 'urine_conc', label: '尿浸透圧 > 100 mOsm/kg（不適切な尿濃縮）' },
-  { id: 'urine_na', label: '尿中Na > 20-30 mEq/L（正常食塩摂取下）' },
-  { id: 'euvolemic', label: '臨床的に体液量正常（浮腫なし・脱水なし）' },
+// バゾプレシン分泌過剰症（SIADH）の診断と治療の手引き（平成22年度改訂）
+const clinicalItems = [
+  { id: 'no_dehydration', label: 'I-1. 脱水の所見を認めない' },
 ]
-const exclusionItem = { id: 'exclude', label: '甲状腺機能低下症・副腎不全・利尿薬使用・心不全・肝硬変・腎不全を除外済み' }
+const labItems = [
+  { id: 'hyponatremia', label: 'II-1. 血清Na < 135 mEq/L' },
+  { id: 'avp', label: 'II-2. 血清Na < 135 mEq/Lで血漿AVP(バゾプレシン)値が測定感度以上' },
+  { id: 'low_osm', label: 'II-3. 血漿浸透圧 < 280 mOsm/kg' },
+  { id: 'high_urine_osm', label: 'II-4. 尿浸透圧 > 300 mOsm/kg' },
+  { id: 'urine_na', label: 'II-5. 尿中Na ≧ 20 mEq/L' },
+  { id: 'renal_normal', label: 'II-6. 腎機能正常（血清Cr ≦ 1.2 mg/dL）' },
+  { id: 'adrenal_normal', label: 'II-7. 副腎皮質機能正常（早朝空腹時コルチゾール ≧ 6 μg/dL）' },
+]
+const refItems = [
+  { id: 'ref_disease', label: '参考1. 原疾患（肺疾患・中枢神経疾患・薬剤性等）の診断が確定' },
+  { id: 'ref_renin', label: '参考2. 血漿レニン活性 ≦ 5 ng/mL/h' },
+  { id: 'ref_ua', label: '参考3. 血清尿酸値 ≦ 5 mg/dL' },
+  { id: 'ref_water', label: '参考4. 水分制限で脱水なく低Na血症が改善する' },
+]
 
 export default function Page() {
   const [checks, setChecks] = useState<Record<string, boolean>>(
-    Object.fromEntries([...essentialItems, exclusionItem].map(i => [i.id, false]))
+    Object.fromEntries([...clinicalItems, ...labItems, ...refItems].map(i => [i.id, false]))
   )
   const result = useMemo(() => {
-    const essentialMet = essentialItems.every(i => checks[i.id])
-    const exclusionDone = checks[exclusionItem.id]
-    const allMet = essentialMet && exclusionDone
-    const essentialCount = essentialItems.filter(i => checks[i.id]).length
+    const clinicalMet = clinicalItems.every(i => checks[i.id])
+    const labMet = labItems.every(i => checks[i.id])
+    const labCount = labItems.filter(i => checks[i.id]).length
+    const refCount = refItems.filter(i => checks[i.id]).length
+    const definite = clinicalMet && labMet
 
-    let interpretation = ''
-    let severity: 'ok' | 'wn' | 'dn' = 'ok'
-    if (allMet) {
-      interpretation = 'SIADH診断基準を満たす可能性あり（全必須項目+除外が確認済み）'
-      severity = 'wn'
-    } else if (essentialMet && !exclusionDone) {
-      interpretation = '必須4項目は満たすが、除外診断が未完了'
-      severity = 'wn'
-    } else {
-      interpretation = `SIADH診断基準を満たさない（必須項目 ${essentialCount}/4）— 全項目を満たす必要があります`
+    if (definite) return {
+      severity: 'wn' as const,
+      label: '確実例: I-1 + II-1〜7 をすべて満たす',
+      detail: `主症候1/1 + 検査所見7/7 + 参考所見${refCount}/4`,
     }
-    return { count: essentialCount + (exclusionDone ? 1 : 0), interpretation, severity }
+    return {
+      severity: 'ok' as const,
+      label: '診断基準を満たさない（全項目を満たす必要あり）',
+      detail: `主症候${clinicalMet ? 1 : 0}/1 + 検査所見${labCount}/7`,
+    }
   }, [checks])
 
   return (
-    <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
+    <CalculatorLayout slug={toolDef.slug} title="SIADH診断基準（H22年改訂）" titleEn="SIADH Diagnostic Criteria (Japan 2010)"
+      description="バゾプレシン分泌過剰症（SIADH）の診断の手引き（平成22年度改訂）。主症候I-1 + 検査所見II-1〜7の全てを満たす場合に確実例。"
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard label="SIADH診断基準" value={result.count + '/5項目'}
-        interpretation={result.interpretation} severity={result.severity}
-        details={[{ label: '判定方法', value: '必須4項目すべて + 除外確認が必要（多数決ではない）' }]} />}
-      references={[{ text: 'Bartter FC, Schwartz WB. Am J Med 1967;42:790-806' }, { text: 'Verbalis JG, et al. Am J Med 2007;120:S1-S21' }]}
+      result={<ResultCard label="SIADH診断基準" value={result.label} severity={result.severity}
+        details={[{ label: '判定内訳', value: result.detail }]} />}
+      explanation={undefined}
+      relatedTools={[
+        { slug: 'hyponatremia-flow', name: '低Na血症フロー' },
+        { slug: 'na-correction-rate', name: 'Na補正速度' },
+        { slug: 'feua', name: 'FEUA' },
+      ]}
+      references={[
+        { text: '厚生労働省. バゾプレシン分泌過剰症（SIADH）の診断と治療の手引き（平成22年度改訂）' },
+        { text: 'Bartter FC, Schwartz WB. Am J Med 1967;42:790-806（原著）' },
+      ]}
     >
-      <div className="space-y-2">
-        <p className="text-xs font-bold text-ac">必須基準（すべて満たす必要あり）</p>
-        {essentialItems.map(i => (
-          <CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]}
-            onChange={v => setChecks(p => ({ ...p, [i.id]: v }))} />
-        ))}
-        <p className="text-xs font-bold text-muted mt-3">除外診断</p>
-        <CheckItem id={exclusionItem.id} label={exclusionItem.label} checked={checks[exclusionItem.id]}
-          onChange={v => setChecks(p => ({ ...p, [exclusionItem.id]: v }))} />
+      <div className="space-y-3">
+        <p className="text-xs font-bold text-ac">I. 主症候（必須）</p>
+        {clinicalItems.map(i => <CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v => setChecks(p => ({ ...p, [i.id]: v }))} />)}
+
+        <p className="text-xs font-bold text-ac mt-3">II. 検査所見（全7項目必須）</p>
+        {labItems.map(i => <CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v => setChecks(p => ({ ...p, [i.id]: v }))} />)}
+
+        <p className="text-xs font-bold text-muted mt-3">III. 参考所見</p>
+        {refItems.map(i => <CheckItem key={i.id} id={i.id} label={i.label} checked={checks[i.id]} onChange={v => setChecks(p => ({ ...p, [i.id]: v }))} />)}
       </div>
     </CalculatorLayout>
   )
