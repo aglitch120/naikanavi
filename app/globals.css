@@ -248,7 +248,16 @@ main:has(.study-fullscreen) {
   overflow: visible !important;
 }
 
-/* Study時はフッター非表示 */
-body:has(.study-fullscreen) > footer {
-  display: none;
+/* Study時はモバイルのみフッター非表示（PCは表示維持） */
+@media (max-width: 767px) {
+  body:has(.study-fullscreen) > footer {
+    display: none;
+  }
+}
+
+/* Study: モバイルのみBottomNav上余白調整 */
+@media (max-width: 767px) {
+  .study-fullscreen {
+    padding-bottom: var(--nav-h);
+  }
 }

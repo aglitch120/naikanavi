@@ -86,17 +86,22 @@ export default function Sidebar({
       {sidebarCollapsed && !sidebarHover && (
         <div
           onMouseEnter={onHoverEnter}
-          className="fixed top-0 left-0 w-2 h-screen z-50 cursor-e-resize max-md:hidden"
+          className="fixed left-0 w-2 z-50 cursor-e-resize max-md:hidden"
+          style={{ top: 56, height: 'calc(100vh - 56px)' }}
         />
       )}
 
       <nav
         onMouseEnter={() => { if (sidebarCollapsed) onHoverEnter() }}
         onMouseLeave={() => { if (sidebarCollapsed) onHoverLeave() }}
-        className={`flex flex-col gap-0.5 shrink-0 h-screen box-border bg-s0 overflow-y-auto overflow-x-hidden transition-all duration-200 max-md:hidden ${
-          sidebarCollapsed ? 'fixed top-0 left-0 z-[60]' : 'sticky top-0'
+        className={`flex flex-col gap-0.5 shrink-0 box-border bg-s0 overflow-y-auto overflow-x-hidden transition-all duration-200 max-md:hidden ${
+          sidebarCollapsed ? 'fixed left-0 z-[60]' : 'sticky'
         } ${sidebarCollapsed && sidebarHover ? 'shadow-xl' : ''}`}
+        // PCではメインヘッダー(h-14=56px)の下に配置
+        data-sidebar
         style={{
+          top: sidebarCollapsed ? 56 : 56,
+          height: 'calc(100vh - 56px)',
           width: sidebarVisible ? 220 : 0,
           minWidth: sidebarVisible ? 220 : 0,
           padding: sidebarVisible ? '20px 12px' : 0,

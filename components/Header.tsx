@@ -56,11 +56,11 @@ export default function Header() {
     return () => clearTimeout(timerRef.current)
   }, [])
 
-  // Study アプリは独自ヘッダーを持つため非表示
-  if (pathname === '/study' || pathname.startsWith('/study/')) return null
+  // Study: モバイルのみ非表示（PCはQBパターンで維持）
+  const isStudy = pathname === '/study' || pathname.startsWith('/study/')
 
   return (
-    <header className="sticky top-0 z-50 bg-s0 border-b border-br">
+    <header className={`sticky top-0 z-50 bg-s0 border-b border-br ${isStudy ? 'hidden md:block' : ''}`}>
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
