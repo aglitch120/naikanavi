@@ -19,46 +19,32 @@ function calcAAGradient(fio2: number, pao2: number, paco2: number, patm: number 
   return { pao2Alveolar: Math.round(pao2Alveolar * 10) / 10, aaGradient: Math.round(aaGradient * 10) / 10 }
 }
 
-function getExpectedGradient(age: number): number {
-  // Expected A-a gradient = Age / 4 + 4  (Kanber 1968, widely accepted approximation)
-  return Math.round((age / 4 + 4) * 10) / 10
-}
-
-function getInterpretation(gradient: number, expected: number): { text: string; severity: 'ok' | 'wn' | 'dn'; causes: string } {
-  if (gradient <= expected) return {
-    text: '正常範囲',
-    severity: 'ok',
-    causes: 'A-aDO₂正常の低酸素血症 → 肺胞低換気が原因。神経筋疾患、薬物中毒、中枢性呼吸抑制、高度肥満を鑑別。',
-  }
-  if (gradient <= expected + 10) return {
-    text: '軽度開大',
-    severity: 'wn',
-    causes: '換気血流不均等（V/Q mismatch）を示唆。早期の肺疾患、軽度の肺塞栓、間質性肺疾患初期を鑑別。',
-  }
-  return {
-    text: '著明な開大',
-    severity: 'dn',
-    causes: 'V/Q mismatch・シャント・拡散障害。肺炎、ARDS、肺塞栓、間質性肺疾患、心内シャントを鑑別。',
-  }
-}
-
 export default function AAGradientPage() {
-  const [age, setAge] = useState('50')
   const [fio2, setFio2] = useState('0.21')
   const [pao2, setPao2] = useState('80')
   const [paco2, setPaco2] = useState('40')
 
   const result = useMemo(() => {
-    const a = parseFloat(age)
     const f = parseFloat(fio2)
     const po = parseFloat(pao2)
     const pc = parseFloat(paco2)
-    if (isNaN(a) || isNaN(f) || isNaN(po) || isNaN(pc) || f <= 0 || f > 1 || po <= 0 || pc <= 0) return null
+    if (isNaN(f) || isNaN(po) || isNaN(pc) || f <= 0 || f > 1 || po <= 0 || pc <= 0) return null
 
     const { pao2Alveolar, aaGradient } = calcAAGradient(f, po, pc)
-    const expected = getExpectedGradient(a)
-    return { pao2Alveolar, aaGradient, expected, ...getInterpretation(aaGradient, expected) }
-  }, [age, fio2, pao2, paco2])
+    // 年齢予測値は使わず、固定的な正常範囲で判定
+    let text = '', severity: 'ok' | 'wn' | 'dn' = 'ok', causes = ''
+    if (aaGradient <= 15) {
+      text = '正常範囲'; severity = 'ok'
+      causes = 'A-aDO₂正常の低酸素血症 → 肺胞低換気が原因。神経筋疾患、薬物中毒、中枢性呼吸抑制、高度肥満を鑑別。'
+    } else if (aaGradient <= 30) {
+      text = '軽度開大'; severity = 'wn'
+      causes = '換気血流不均等（V/Q mismatch）を示唆。早期の肺疾患、軽度の肺塞栓、間質性肺疾患初期を鑑別。'
+    } else {
+      text = '著明な開大'; severity = 'dn'
+      causes = 'V/Q mismatch・シャント・拡散障害。肺炎、ARDS、肺塞栓、間質性肺疾患、心内シャントを鑑別。'
+    }
+    return { pao2Alveolar, aaGradient, text, severity, causes }
+  }, [fio2, pao2, paco2])
 
   const relatedTools = toolDef.relatedSlugs
     .map(slug => getToolBySlug(slug))
@@ -154,13 +140,12 @@ export default function AAGradientPage() {
                 interpretation={result.text}
                 severity={result.severity}
               />
-              <p className="text-[10px] text-muted px-1">年齢予測値: Age/4 + 4。Kanber GJ, et al. Am Rev Respir Dis 1968; PMID: 5638002</p>
-              <p className="text-[10px] text-wn px-1">※年齢予測正常値は室内気(FiO₂=0.21)にのみ適用。高流量酸素投与下では参考値として使用不可。</p>
+              <p className="text-[10px] text-muted px-1">正常値: 一般に ≤15 mmHg（若年）〜 ≤25 mmHg（高齢者）。室内気（FiO₂=0.21）での評価が基本。</p>
 
               <div className="bg-s0 border border-br rounded-xl p-4">
-                <div className="grid grid-cols-3 gap-3 text-center">
+                <div className="grid grid-cols-2 gap-3 text-center">
                   <div>
-                    <p className="text-xs text-muted">PAO₂</p>
+                    <p className="text-xs text-muted">PAO₂（肺胞気O₂分圧）</p>
                     <p className="text-base font-bold text-tx">{result.pao2Alveolar}</p>
                     <p className="text-[10px] text-muted">mmHg</p>
                   </div>
@@ -169,11 +154,6 @@ export default function AAGradientPage() {
                     <p className={`text-base font-bold ${result.severity === 'ok' ? 'text-ac' : result.severity === 'wn' ? 'text-wn' : 'text-dn'}`}>
                       {result.aaGradient}
                     </p>
-                    <p className="text-[10px] text-muted">mmHg</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted">年齢予測値</p>
-                    <p className="text-base font-bold text-tx">≤{result.expected}</p>
                     <p className="text-[10px] text-muted">mmHg</p>
                   </div>
                 </div>
@@ -203,7 +183,6 @@ export default function AAGradientPage() {
         explanation={undefined}
       >
         <div className="space-y-3">
-          <NumberInput id="aa-age" label="年齢" unit="歳" value={age} onChange={setAge} hint="例: 65" min={18} max={120} step={1} />
           <NumberInput id="aa-fio2" label="FiO₂" unit="（0.21 = 室内気）" value={fio2} onChange={setFio2} hint="例: 0.21" min={0.21} max={1.0} step={0.01} />
           <NumberInput id="aa-pao2" label="PaO₂" unit="mmHg" value={pao2} onChange={setPao2} hint="例: 75" min={1} max={600} step={1} />
           <NumberInput id="aa-paco2" label="PaCO₂" unit="mmHg" value={paco2} onChange={setPaco2} hint="例: 40" min={1} max={150} step={1} />

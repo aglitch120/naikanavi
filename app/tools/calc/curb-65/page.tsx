@@ -9,7 +9,7 @@ import { getToolBySlug, implementedTools, categoryLabels, categoryIcons } from '
 const toolDef = getToolBySlug('curb-65')!
 
 const criteria = [
-  { id: 'confusion', label: 'C: 意識障害（Confusion）', sublabel: 'AMT ≤8 または新規の見当識障害', points: 1 },
+  { id: 'confusion', label: 'C: 意識障害（Confusion）', sublabel: '新規の見当識障害（AMT: Abbreviated Mental Test ≤8、または時間・場所・人の見当識障害）', points: 1 },
   { id: 'urea', label: 'U: BUN >20 mg/dL（Urea >7 mmol/L）', sublabel: '血中尿素窒素の上昇', points: 1 },
   { id: 'respiratory', label: 'R: 呼吸数 ≥30 回/分（Respiratory rate）', sublabel: '頻呼吸', points: 1 },
   { id: 'bp', label: 'B: 血圧低下（Blood pressure）', sublabel: '収縮期 <90 mmHg または 拡張期 ≤60 mmHg', points: 1 },
