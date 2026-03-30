@@ -131,20 +131,13 @@ export default function CalculatorLayout({
     if (slug) trackToolUsage(slug)
   }, [slug])
 
-  // 管理者チェック: tellmedu.info@gmail.com のみモザイク解除
-  // URL: ?admin=tellmedu.info@gmail.com でlocalStorageに保存→以降自動解除
+  // 管理者チェック: ログイン済みユーザーのメールアドレスで判定
+  const ADMIN_EMAIL = 'tellmedu.info@gmail.com'
   const [isAdmin, setIsAdmin] = useState(false)
   useEffect(() => {
     try {
-      const params = new URLSearchParams(window.location.search)
-      const adminParam = params.get('admin')
-      if (adminParam === 'tellmedu.info@gmail.com') {
-        localStorage.setItem('iwor_admin_email', adminParam)
-        setIsAdmin(true)
-        return
-      }
-      const stored = localStorage.getItem('iwor_admin_email')
-      if (stored === 'tellmedu.info@gmail.com') setIsAdmin(true)
+      const email = localStorage.getItem('iwor_pro_email')
+      if (email === ADMIN_EMAIL) setIsAdmin(true)
     } catch {}
   }, [])
 

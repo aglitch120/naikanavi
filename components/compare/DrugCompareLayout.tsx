@@ -46,19 +46,12 @@ export default function DrugCompareLayout({ data }: { data: CompareData }) {
   const [sortCol, setSortCol] = useState<keyof DrugEntry | null>(null)
   const [highlightIdx, setHighlightIdx] = useState<number | null>(null)
 
-  // 管理者チェック
+  // 管理者チェック: ログイン済みユーザーのメールで判定
   const [isAdmin, setIsAdmin] = useState(false)
   useState(() => {
     if (typeof window === 'undefined') return
     try {
-      const params = new URLSearchParams(window.location.search)
-      const adminParam = params.get('admin')
-      if (adminParam === 'tellmedu.info@gmail.com') {
-        localStorage.setItem('iwor_admin_email', adminParam)
-        setIsAdmin(true)
-        return
-      }
-      if (localStorage.getItem('iwor_admin_email') === 'tellmedu.info@gmail.com') setIsAdmin(true)
+      if (localStorage.getItem('iwor_pro_email') === 'tellmedu.info@gmail.com') setIsAdmin(true)
     } catch {}
   })
 

@@ -159,9 +159,7 @@ export default function LabValuesPage() {
   useState(() => {
     if (typeof window === 'undefined') return
     try {
-      const params = new URLSearchParams(window.location.search)
-      if (params.get('admin') === 'tellmedu.info@gmail.com') { localStorage.setItem('iwor_admin_email', 'tellmedu.info@gmail.com'); setIsAdmin(true); return }
-      if (localStorage.getItem('iwor_admin_email') === 'tellmedu.info@gmail.com') setIsAdmin(true)
+      if (localStorage.getItem('iwor_pro_email') === 'tellmedu.info@gmail.com') setIsAdmin(true)
     } catch {}
   })
 
