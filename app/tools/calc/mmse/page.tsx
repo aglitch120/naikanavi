@@ -4,38 +4,56 @@ import CalculatorLayout from '@/components/tools/CalculatorLayout'
 import ResultCard from '@/components/tools/ResultCard'
 import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config'
 const toolDef = getToolBySlug('mmse')!
+
+// 著作権に配慮し、項目の概要のみ記載。具体的な質問文・刺激語は掲載しない。
 const sections = [
-  { name: '時間の見当識', max: 5, desc: '年/季節/月/日/曜日（各1点）' },
-  { name: '場所の見当識', max: 5, desc: '都道府県/市区町村/病院名/階/地方（各1点）' },
-  { name: '即時記銘', max: 3, desc: '3単語の復唱（各1点）' },
-  { name: '注意力と計算', max: 5, desc: '100から7を順に引く ×5回（各1点）' },
-  { name: '遅延再生', max: 3, desc: '3単語の想起（各1点）' },
-  { name: '呼称', max: 2, desc: '時計・鉛筆の名称（各1点）' },
-  { name: '復唱', max: 1, desc: '「みんなで力を合わせて綱を引きます」' },
-  { name: '3段階命令', max: 3, desc: '「右手で紙を取り、半分に折り、机の上に置く」' },
-  { name: '読字', max: 1, desc: '「目を閉じてください」を読んで実行' },
-  { name: '書字', max: 1, desc: '文章を書く' },
-  { name: '図形模写', max: 1, desc: '五角形2つの重なりを模写' },
+  { name: '① 時に関する見当識', max: 5, desc: '日、年、季節、曜日、月など5項目を確認する' },
+  { name: '② 場所に関する見当識', max: 5, desc: '都道府県、市町村、場所、階数、地方など5項目を確認する' },
+  { name: '③ 3つの言葉の記銘', max: 3, desc: '事前の記銘を指示後、3つの単語を1つずつ伝え、繰り返し言ってもらう。最大6回まで繰り返す' },
+  { name: '④ 100から7を引いていく計算問題', max: 5, desc: '100から7を引いた数を繰り返し言ってもらう。最大5回繰り返し' },
+  { name: '⑤ 3つの言葉の遅延再生', max: 3, desc: '③で覚えてもらった3つの言葉をもう一度言ってもらう' },
+  { name: '⑥ 物品の呼称', max: 2, desc: '物品を見せながら呼称してもらう、2問行う' },
+  { name: '⑦ 文章の復唱', max: 1, desc: '特定の文章をゆっくり伝え復唱してもらう' },
+  { name: '⑧ 口頭による命令動作', max: 3, desc: '口頭で3つの命令を行う' },
+  { name: '⑨ 読字理解', max: 1, desc: '読字後、指示どおりの動きができるかどうかを確認する' },
+  { name: '⑩ 自発書字', max: 1, desc: '自発書字を指示し、鉛筆と紙を渡す。文章はどんなものでも構わないが、意味のない文章は誤答' },
+  { name: '⑪ 図形描写', max: 1, desc: '図形描写を指示し、鉛筆と紙を渡す。交差する2つの五角形の図形が模写できれば正答' },
 ]
+
 export default function MmsePage() {
   const [scores, setScores] = useState(sections.map(s => s.max))
   const result = useMemo(() => {
     const total = scores.reduce((a, b) => a + b, 0)
     let severity: 'ok' | 'wn' | 'dn' = 'ok', interpretation = ''
     if (total >= 27) { interpretation = `${total}/30 — 正常範囲` }
-    else if (total >= 24) { interpretation = `${total}/30 — 軽度低下（正常下限〜境界域）（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'wn' }
-    else if (total >= 20) { interpretation = `${total}/30 — 軽度認知症（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'wn' }
-    else if (total >= 10) { interpretation = `${total}/30 — 中等度認知症（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'dn' }
-    else { interpretation = `${total}/30 — 重度認知症（スクリーニング結果。確定診断には専門的評価が必要）`; severity = 'dn' }
+    else if (total >= 24) { interpretation = `${total}/30 — 軽度低下（境界域）`; severity = 'wn' }
+    else if (total >= 20) { interpretation = `${total}/30 — 軽度認知症疑い`; severity = 'wn' }
+    else if (total >= 10) { interpretation = `${total}/30 — 中等度認知症疑い`; severity = 'dn' }
+    else { interpretation = `${total}/30 — 重度認知症疑い`; severity = 'dn' }
     return { total, severity, interpretation }
   }, [scores])
+
   return (
     <CalculatorLayout slug={toolDef.slug} title={toolDef.name} titleEn={toolDef.nameEn} description={toolDef.description}
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
-      result={<ResultCard severity={result.severity} value={`MMSE = ${result.total}/30`} interpretation={result.interpretation} />}
-      explanation={<div className="text-sm text-muted"><p>23/24点をカットオフとして認知症のスクリーニングに使用。教育歴の影響を受ける。HDS-Rと併用推奨。</p></div>}
-      relatedTools={[{ slug: 'hds-r', name: 'HDS-R' }, { slug: 'barthel-index', name: 'Barthel Index' }, { slug: 'iadl', name: 'IADL' }]}
-      references={toolDef.sources || []}
+      result={
+        <div className="space-y-2">
+          <ResultCard severity={result.severity} value={`MMSE = ${result.total}/30`} interpretation={result.interpretation} />
+        </div>
+      }
+      explanation={<div className="text-sm text-muted space-y-2">
+        <p>23/24点をカットオフとして認知症のスクリーニングに使用。教育歴の影響を受ける。HDS-Rと併用推奨。</p>
+        <div className="bg-dnl border border-dnb rounded-xl p-3">
+          <p className="text-xs font-bold text-dn">著作権に関する注意</p>
+          <p className="text-xs text-dn mt-1">MMSEの著作権は2001年にPsychological Assessment Resources（PAR）社に移管されており、具体的な質問文・刺激語の複製には同社のライセンスが必要です。本ツールでは各項目の概要のみを記載しています。</p>
+          <p className="text-xs text-dn mt-1">実際の施行には、PAR社との契約に基づき作成された正規日本語版「MMSE-J」（日本文化科学社）を購入または契約のうえ使用してください。</p>
+        </div>
+      </div>}
+      relatedTools={[{ slug: 'hds-r', name: 'HDS-R（長谷川式）' }, { slug: 'barthel-index', name: 'Barthel Index' }]}
+      references={[
+        { text: 'Folstein MF, et al. "Mini-mental state". A practical method for grading the cognitive state of patients for the clinician. J Psychiatr Res 1975;12(3):189-98. PMID: 1202204' },
+        { text: 'Newman JC, Feldman R. Copyright and open access at the bedside. N Engl J Med 2011;365(26):2447-9' },
+      ]}
     >
       <div className="space-y-3">
         {sections.map((s, i) => (
