@@ -64,16 +64,24 @@ export default function MeldNaPage() {
       category={categoryLabels[toolDef.category]}
       categoryIcon={categoryIcons[toolDef.category]}
       result={result && (
-        <ResultCard
-          label="MELD-Na"
-          value={result.meldNa}
-          unit="/ 40"
-          interpretation={result.interpretation}
-          severity={result.severity}
-          details={[
-            { label: 'MELD（Na補正前）', value: `${result.meld}` },
-          ]}
-        />
+        <div className="space-y-2">
+          <ResultCard
+            label="MELD-Na"
+            value={result.meldNa}
+            unit="/ 40"
+            interpretation={result.interpretation}
+            severity={result.severity}
+            details={[
+              { label: 'MELD（Na補正前）', value: `${result.meld}` },
+            ]}
+          />
+          <div className="text-[10px] text-muted px-1 space-y-0.5">
+            <p>MELD-Na = MELD + 1.32×(137−Na) − 0.033×MELD×(137−Na)（Kim 2008 / UNOS 2016）</p>
+            <p>Na補正はMELD &gt;11の場合に適用。Na: 125-137でクランプ。Cr: 1.0-4.0, T-Bil ≧1.0, INR ≧1.0。</p>
+            <p>透析患者（7日以内に2回以上の透析 or 24h CVVHD）はCr=4.0。スコアは整数（四捨五入）、6-40の範囲。</p>
+            <p>※日本の臓器移植ネットワークはオリジナル版MELD（Na補正なし）を基準としており、本スコアとは異なる。</p>
+          </div>
+        </div>
       )}
       explanation={undefined}
       relatedTools={toolDef.relatedSlugs
