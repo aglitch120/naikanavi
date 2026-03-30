@@ -50,6 +50,7 @@ export default function HbA1cGlucosePage() {
         severity,
         interpretation,
         details: [
+          { label: '計算式', value: 'eAG(mg/dL) = 28.7 × HbA1c − 46.7（ADAG Study, Nathan 2008）' },
           { label: 'ADAG式 eAG', value: `${Math.round(eag)} mg/dL` },
           { label: 'HbA1c目標（一般）', value: '< 7.0%' },
         ],
@@ -102,6 +103,13 @@ export default function HbA1cGlucosePage() {
         interpretation = '推定HbA1c 正常〜境界域'
       }
 
+      // 計算式の説明文
+      let formula = ''
+      if (glucoseType === 'eag') formula = 'HbA1c = (eAG + 46.7) / 28.7（ADAG逆算）'
+      else if (glucoseType === 'fasting') formula = 'HbA1c = (FPG + 30.0) / 17.4（Rohlfing 2002近似）'
+      else if (glucoseType === 'random') formula = 'HbA1c = (随時血糖 + 46.7) / 28.7（随時≈eAG近似）'
+      else formula = 'eAG = 食後2h血糖/1.25 → HbA1c = (eAG+46.7)/28.7'
+
       return {
         label: '推定HbA1c',
         value: estimatedA1c.toFixed(1),
@@ -109,6 +117,7 @@ export default function HbA1cGlucosePage() {
         severity,
         interpretation,
         details: [
+          { label: '計算式', value: formula },
           { label: '算出方法', value: method },
           { label: 'HbA1c目標（一般）', value: '< 7.0%' },
         ],
@@ -134,7 +143,12 @@ export default function HbA1cGlucosePage() {
           details={result.details}
         />
       )}
-      explanation={undefined}
+      explanation={<div className="text-sm text-muted space-y-1">
+        <p className="text-xs font-bold text-tx">使用している計算式:</p>
+        <p className="text-xs">① eAG(mg/dL) = 28.7 × HbA1c − 46.7（ADAG Study: Nathan DM, Diabetes Care 2008）</p>
+        <p className="text-xs">② HbA1c = (FPG + 30.0) / 17.4（空腹時血糖 近似: Rohlfing CL, Diabetes Care 2002）</p>
+        <p className="text-xs text-wn">③④ 随時血糖・食後血糖からの換算は科学的根拠が限定的。①②での換算を推奨。貧血・異常Hb・透析・妊娠ではHbA1cと実際の血糖が乖離する。</p>
+      </div>}
       relatedTools={toolDef.relatedSlugs
         .map(s => { const t = implementedTools.has(s) ? getToolBySlug(s) : null; return t ? { slug: t.slug, name: t.name } : null })
         .filter(Boolean) as { slug: string; name: string }[]}

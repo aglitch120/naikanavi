@@ -35,9 +35,9 @@ export default function BishopPage() {
     const score = categories.reduce((sum, c) => sum + parseInt(vals[c.id] || '0'), 0)
     let interpretation = ''
     let severity: 'ok' | 'wn' | 'dn' = 'ok'
-    if (score >= 8) { interpretation = '頸管成熟（誘発分娩の成功率が高い）'; severity = 'ok' }
-    else if (score >= 6) { interpretation = '中間（頸管成熟度はやや不十分）'; severity = 'wn' }
-    else { interpretation = '頸管未熟'; severity = 'wn' }
+    if (score >= 9) { interpretation = '頸管は成熟している（9-13点）'; severity = 'ok' }
+    else if (score >= 5) { interpretation = '分娩誘発の成功確率が高い（5-8点）'; severity = 'ok' }
+    else { interpretation = '頸管は未成熟である（0-4点）'; severity = 'wn' }
     return { score, interpretation, severity }
   }, [vals])
 
@@ -46,10 +46,11 @@ export default function BishopPage() {
       category={categoryLabels[toolDef.category]} categoryIcon={categoryIcons[toolDef.category]}
       result={<ResultCard label="Bishopスコア" value={`${result.score}`} unit="/ 13点" interpretation={result.interpretation} severity={result.severity}
         details={[
-          { label: '≧8点', value: '頸管成熟（誘発分娩の成功率が高い）' },
-          { label: '6-7点', value: '中間（頸管成熟度はやや不十分）' },
-          { label: '≦5点', value: '頸管未熟' },
+          { label: '9-13点', value: '頸管は成熟している' },
+          { label: '5-8点', value: '分娩誘発の成功確率が高い' },
+          { label: '0-4点', value: '頸管は未成熟である' },
         ]} />}
+      explanation={<div className="text-sm text-muted"><p className="text-xs text-wn">初産婦にのみ適応（経産婦には適用不可）</p></div>}
       references={[{ text: 'Bishop EH. Pelvic scoring for elective induction. Obstet Gynecol 1964;24:266-268' }]}
     >
       <div className="space-y-3">

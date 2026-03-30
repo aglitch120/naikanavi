@@ -18,14 +18,15 @@ interface Steroid {
   duration: string
 }
 
+// 画像（Hokuto）準拠。糖質作用・鉱質作用はHC=1基準の相対値。
 const steroids: Steroid[] = [
-  { id: 'psl', name: 'プレドニゾロン（PSL）', nameEn: 'Prednisolone', equivalentDose: 5, mineralocorticoid: '+', halfLife: '12-36h（生物学的半減期）', duration: '中間型' },
-  { id: 'mpsl', name: 'メチルプレドニゾロン（mPSL）', nameEn: 'Methylprednisolone', equivalentDose: 4, mineralocorticoid: '0', halfLife: '12-36h', duration: '中間型' },
-  { id: 'dex', name: 'デキサメタゾン（DEX）', nameEn: 'Dexamethasone', equivalentDose: 0.75, mineralocorticoid: '0', halfLife: '36-72h', duration: '長時間型' },
-  { id: 'bet', name: 'ベタメタゾン（BET）', nameEn: 'Betamethasone', equivalentDose: 0.75, mineralocorticoid: '0', halfLife: '36-72h', duration: '長時間型' },
-  { id: 'hc', name: 'ヒドロコルチゾン（HC）', nameEn: 'Hydrocortisone', equivalentDose: 20, mineralocorticoid: '++', halfLife: '8-12h', duration: '短時間型' },
-  { id: 'cortisone', name: 'コルチゾン', nameEn: 'Cortisone', equivalentDose: 25, mineralocorticoid: '++', halfLife: '8-12h', duration: '短時間型' },
-  { id: 'triamcinolone', name: 'トリアムシノロン', nameEn: 'Triamcinolone', equivalentDose: 4, mineralocorticoid: '0', halfLife: '12-36h', duration: '中間型' },
+  { id: 'hc', name: 'ヒドロコルチゾン（コートリル®/ソルコーテフ®）', nameEn: 'Hydrocortisone', equivalentDose: 20, mineralocorticoid: '1', halfLife: '8-12h', duration: '短時間型' },
+  { id: 'cortisone', name: 'コルチゾン（コートン®）', nameEn: 'Cortisone', equivalentDose: 25, mineralocorticoid: '0.8', halfLife: '8-12h', duration: '短時間型' },
+  { id: 'psl', name: 'プレドニゾロン（プレドニン®）', nameEn: 'Prednisolone', equivalentDose: 5, mineralocorticoid: '0.8', halfLife: '12-36h', duration: '中間型' },
+  { id: 'mpsl', name: 'メチルプレドニゾロン（メドロール®/ソル・メドロール®）', nameEn: 'Methylprednisolone', equivalentDose: 4, mineralocorticoid: '0.5', halfLife: '12-36h', duration: '中間型' },
+  { id: 'triamcinolone', name: 'トリアムシノロン（レダコート®）', nameEn: 'Triamcinolone', equivalentDose: 4, mineralocorticoid: '0', halfLife: '12-36h', duration: '中間型' },
+  { id: 'dex', name: 'デキサメタゾン（デカドロン®）', nameEn: 'Dexamethasone', equivalentDose: 0.75, mineralocorticoid: '0', halfLife: '36-72h', duration: '長時間型' },
+  { id: 'bet', name: 'ベタメタゾン（リンデロン®）', nameEn: 'Betamethasone', equivalentDose: 0.75, mineralocorticoid: '0', halfLife: '36-72h', duration: '長時間型' },
 ]
 
 export default function SteroidConverterPage() {
@@ -70,8 +71,8 @@ export default function SteroidConverterPage() {
         })
         .filter(Boolean) as { slug: string; name: string }[]}
       references={[
-        { text: 'Liu D, et al. Allergy Asthma Clin Immunol 2013;9:30' },
-        { text: 'UpToDate: Glucocorticoid effects and equivalencies' },
+        { text: 'Liu D, et al. A practical guide to the monitoring and management of the complications of systemic corticosteroid therapy. Allergy Asthma Clin Immunol 2013;9(1):30' },
+        { text: 'Bornstein SR, et al. J Clin Endocrinol Metab 2024;109(7):1657-1683' },
       ]}
     >
       <div className="space-y-4">

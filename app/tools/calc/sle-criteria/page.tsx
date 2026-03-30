@@ -66,13 +66,18 @@ export default function SLECriteriaPage() {
       return Math.max(...checked.map(i => i.points))
     })
     const total = domainScores.reduce((s, v) => s + v, 0)
-    const met = total >= 10
+    // 臨床ドメイン(全身症状〜腎): index 0-6。免疫ドメイン: index 7-9
+    const hasClinical = domainScores.slice(0, 7).some(s => s > 0)
+    const met = total >= 10 && hasClinical
     return {
       score: total,
       met,
+      hasClinical,
       label: met
-        ? 'EULAR/ACR 2019 SLE分類基準を満たす（≧10点）※分類基準は診断基準ではない。確定診断は臨床的総合判断が必要'
-        : `基準未達（${total}/10点）`,
+        ? 'EULAR/ACR 2019 SLE分類基準を満たす（臨床項目≧1 + 合計≧10点）'
+        : total >= 10 && !hasClinical
+          ? `合計${total}点だが臨床項目が0 → 基準を満たさない（臨床項目≧1が必要）`
+          : `基準未達（${total}/10点）`,
     }
   }, [ana, checks])
 
