@@ -59,7 +59,8 @@ export default function EgfrPage() {
 
     const egfrCkdEpi = calculateEgfr(crVal, ageVal, sex as 'male' | 'female')
     const egfrJsn = calculateEgfrJsn(crVal, ageVal, sex as 'male' | 'female')
-    const ckd = getCkdStage(egfrCkdEpi)
+    // 日本ではJSN式を主として使用
+    const ckd = getCkdStage(egfrJsn)
 
     return { underAge: false, egfrCkdEpi, egfrJsn, ckd }
   }, [cr, age, sex])
@@ -137,16 +138,16 @@ export default function EgfrPage() {
             ) : (
             <div className="space-y-3">
               <ResultCard
-                label="eGFR（CKD-EPI 2021 × 日本人係数）"
-                value={result.egfrCkdEpi.toFixed(1)}
+                label="eGFR（JSN推算式）"
+                value={result.egfrJsn.toFixed(1)}
                 unit="mL/min/1.73m²"
                 interpretation={`CKDステージ ${result.ckd.stage}: ${result.ckd.label}`}
                 severity={result.ckd.severity}
                 details={[
-                  { label: 'JSN推算式（参考）', value: `${result.egfrJsn.toFixed(1)} mL/min/1.73m²` },
+                  { label: 'CKD-EPI 2021 × 日本人係数0.813（参考）', value: `${result.egfrCkdEpi.toFixed(1)} mL/min/1.73m²` },
                 ]}
               />
-              <p className="text-[10px] text-muted px-1">※CKD-EPI 2021への日本人係数0.813の適用は公式に検証されていません。日本腎臓学会推奨のJSN式との比較を推奨します</p>
+              <p className="text-[10px] text-muted px-1">※JSN式: 194×Cr⁻¹·⁰⁹⁴×Age⁻⁰·²⁸⁷（女性×0.739）。筋肉量の影響が大きい場合はeGFRcys（シスタチンC）の併用を推奨</p>
 
               {/* CKDステージ早見表 */}
               <div className="bg-s0 border border-br rounded-xl p-4">

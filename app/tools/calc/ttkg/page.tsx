@@ -32,8 +32,9 @@ export default function TTKGPage(){
       result={
         <div className="space-y-3">
           <ResultCard label="TTKG" value={result.ttkg} interpretation={result.label} severity={result.severity} />
-          <div className="bg-wnl border border-wnb rounded-xl p-3">
-            <p className="text-xs text-wn">TTKGは利尿薬使用中・腎機能障害例では信頼性が低下します。これらの状況では尿K/Cr比の使用も検討してください。</p>
+          <div className="bg-dnl border border-dnb rounded-xl p-3 space-y-1">
+            <p className="text-xs font-bold text-dn">⚠ TTKGの信頼性に関する重要な注意</p>
+            <p className="text-xs text-dn">TTKGの前提（髄質集合管で溶質の再吸収がない）は、現在では髄質集合管で大量の尿素が再吸収されることが判明し成立しないことが明らかになっています。TTKG提唱者のHalperin自身も使用を推奨していません。結果の解釈には十分注意し、尿K/Cr比や24時間蓄尿Kなど他の指標も併用してください。</p>
           </div>
         </div>
       }

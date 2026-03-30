@@ -10,13 +10,13 @@ const items = [
   { id: 'history', label: 'H: 病歴（History）', options: [
     { value: '0', label: '0 — 非典型的（冠動脈疾患を示唆しない）' }, { value: '1', label: '1 — 中等度に疑わしい' }, { value: '2', label: '2 — 強く疑わしい' }] },
   { id: 'ecg', label: 'E: 心電図（ECG）', options: [
-    { value: '0', label: '0 — 正常' }, { value: '1', label: '1 — 非特異的ST変化' }, { value: '2', label: '2 — 有意なST偏位' }] },
+    { value: '0', label: '0 — 正常範囲内' }, { value: '1', label: '1 — 非特異的ST-T変化/左脚ブロック/ペースメーカ調律' }, { value: '2', label: '2 — 著明なST偏位' }] },
   { id: 'age', label: 'A: 年齢（Age）', options: [
     { value: '0', label: '0 — < 45歳' }, { value: '1', label: '1 — 45-65歳' }, { value: '2', label: '2 — > 65歳' }] },
-  { id: 'risk', label: 'R: リスク因子（Risk factors）', options: [
-    { value: '0', label: '0 — リスク因子なし' }, { value: '1', label: '1 — 1-2個' }, { value: '2', label: '2 — ≥3個 or 動脈硬化既往' }] },
+  { id: 'risk', label: 'R: リスク因子（Risk factors）', sublabel: '高血圧・糖尿病・脂質異常症・喫煙・肥満・冠動脈疾患家族歴', options: [
+    { value: '0', label: '0 — なし' }, { value: '1', label: '1 — 1-2個' }, { value: '2', label: '2 — ≥3個 or 動脈硬化性疾患の既往' }] },
   { id: 'troponin', label: 'T: トロポニン（Troponin）', options: [
-    { value: '0', label: '0 — 正常範囲' }, { value: '1', label: '1 — 1-3倍上昇' }, { value: '2', label: '2 — >3倍上昇' }] },
+    { value: '0', label: '0 — ≦正常上限値' }, { value: '1', label: '1 — 正常上限値の1-2倍' }, { value: '2', label: '2 — >正常上限値の2倍' }] },
 ]
 
 export default function HeartScorePage() {

@@ -7,7 +7,7 @@ import { getToolBySlug, categoryLabels, categoryIcons } from '@/lib/tools-config
 const toolDef = getToolBySlug('geneva')!
 const nonHrItems = [
   {id:'age65',label:'65歳以上',points:1},{id:'dvt_pe',label:'DVT or PE の既往',points:3},{id:'surgery',label:'1ヶ月以内の手術 or 骨折',points:2},
-  {id:'cancer',label:'活動性悪性腫瘍',points:2},{id:'unilateral',label:'片側下肢痛',points:3},{id:'hemoptysis',label:'喀血',points:2},
+  {id:'cancer',label:'活動性悪性腫瘍（診断・治療中 or 1年以内の寛解）',points:2},{id:'unilateral',label:'片側下肢痛',points:3},{id:'hemoptysis',label:'喀血',points:2},
   {id:'dvt_tender',label:'下肢深部静脈の触診での疼痛 + 片側浮腫',points:4},
 ]
 const hrOptions = [

@@ -175,7 +175,11 @@ export default function MELDPage() {
                 interpretation={`${result.text} — 3ヶ月死亡率 ${result.mortality3m}`}
                 severity={result.severity}
               />
-              <p className="text-[10px] text-muted px-1">3ヶ月死亡率: Wiesner R, et al. Gastroenterology 2003; PMID: 12512033</p>
+              <div className="text-[10px] text-muted px-1 space-y-0.5">
+                <p>3ヶ月死亡率: Wiesner 2003。スコアは整数(四捨五入)で表示。</p>
+                <p>検査値の適用範囲: Cr 1.0-4.0, T-Bil ≧1.0, INR ≧1.0。透析患者(7日以内に2回以上の透析 or 24h CVVHD)はCr=4.0。</p>
+                <p>※UNOSでは2016年よりMELD-Na（MELD&gt;11の場合にNa補正を加算）を使用。日本の臓器移植ネットワークはオリジナル版MELDを使用。</p>
+              </div>
 
               {result.meld3 !== null && (
                 <div className="bg-s0 border border-br rounded-xl p-4">

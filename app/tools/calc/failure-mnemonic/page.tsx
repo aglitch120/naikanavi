@@ -7,7 +7,7 @@ const items = [
   { letter: 'A', word: 'Arrhythmia / Anemia', ja: '不整脈・貧血', detail: '心房細動(新規/頻脈)、貧血(Hb低下)' },
   { letter: 'I', word: 'Ischemia / Infection', ja: '虚血・感染', detail: 'ACS、肺炎・尿路感染等' },
   { letter: 'L', word: 'Lifestyle', ja: '生活習慣', detail: '塩分過多・過剰飲水・アルコール' },
-  { letter: 'U', word: 'Upregulators', ja: '心負荷増大薬', detail: 'NSAIDs・ステロイド・Ca拮抗薬(一部)' },
+  { letter: 'U', word: 'Upregulators / Untreated', ja: '心負荷増大・未治療状態', detail: 'NSAIDs・甲状腺機能亢進症・妊娠・高血圧未治療' },
   { letter: 'R', word: 'Renal failure', ja: '腎不全悪化', detail: 'AKI/CKD進行 → 水Na貯留' },
   { letter: 'E', word: 'Embolism', ja: '肺塞栓', detail: 'PE → 急性右心不全' },
 ]
