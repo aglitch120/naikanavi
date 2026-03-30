@@ -1,0 +1,237 @@
+# Study 国試演習システム — 実装仕様書
+
+> 作成: 2026-03-31 Claude.ai
+> プロトタイプ: `docs/prototypes/study-kokushi-prototype-v4.jsx`
+> 設計書: → REF_STUDY_QB.md
+> ステータス: Claude Code実装待ち
+
+---
+
+## 概要
+
+iwor Studyに国試過去問演習システムを追加する。プロトタイプ（v4）で確定したUI/UXを、Next.js 14 App Router + TypeScript + Tailwind CSSで実装する。
+
+## ファイル構造
+
+```
+app/study/
+├── page.tsx              ← 既存（暗記カードトップ → 将来統合）
+├── StudyApp.tsx           ← 既存（FSRS暗記カード → 将来kokushi内「暗記カード」タブに統合）
+├── kokushi/
+│   ├── page.tsx           ← NEW: Server Component（metadata + KokushiApp呼び出し）
+│   ├── KokushiApp.tsx     ← NEW: メインClient Component（6タブ管理）
+│   └── [examId]/
+│       └── [questionId]/
+│           └── page.tsx   ← NEW: SSG個別問題ページ（SEO用）
+│
+components/study/
+├── DeckGrid.tsx           ← 既存
+├── kokushi/
+│   ├── Sidebar.tsx        ← NEW: PC用サイドバー（折りたたみ対応）
+│   ├── MobileNav.tsx      ← NEW: モバイルヘッダー + ドロワー
+│   ├── TabBar.tsx         ← NEW: タブ切り替え共用コンポーネント
+│   ├── Dashboard.tsx      ← NEW: ダッシュボードタブ
+│   ├── Practice.tsx       ← NEW: 演習タブ（分野別/回数別/問題セット）
+│   ├── QuestionList.tsx   ← NEW: 問題リスト（テーブル + 選択モード）
+│   ├── QuestionView.tsx   ← NEW: 演習画面（問題 + 選択肢 + 解説）
+│   ├── SearchPanel.tsx    ← NEW: 問題検索（フィルターパネル付き）
+│   ├── DeckManager.tsx    ← NEW: 暗記カードタブ（デッキ管理 + 共有デッキ）
+│   ├── CardReview.tsx     ← NEW: カード復習画面（FSRS連携）
+│   ├── Stats.tsx          ← NEW: 統計タブ（国試/カード分離）
+│   ├── AIChat.tsx         ← NEW: iwor AIタブ（フリー/履歴）
+│   ├── Notes.tsx          ← NEW: ノートタブ（フォルダ管理）
+│   ├── CardGeneration.tsx ← NEW: カード生成モーダル（デッキピッカー付き）
+│   ├── MarkSystem.tsx     ← NEW: 自己評価マーク（◎○△✕—）コンポーネント
+│   ├── GlowButton.tsx     ← 既存GlowButtonを流用可
+│   └── ProgressRing.tsx   ← NEW: SVG円グラフ
+```
+
+## タブ構成（6タブ）
+
+| タブ | コンポーネント | 機能 |
+|------|-------------|------|
+| ダッシュボード | Dashboard.tsx | 国試演習（棒グラフ+円グラフ統合カード）、暗記カード（StatCard+復習リング）、科目別（正答率/進捗トグル） |
+| 演習 | Practice.tsx | モード切替（すべて/国試/CBT/初期研修/専攻医/一般）、分野別ドリルダウン、回数別、問題セット、検索 |
+| 暗記カード | DeckManager.tsx | 2タブ（自分のデッキ/共有デッキ）、フォルダ管理、デッキ作成（6オプション）、FSRS復習 |
+| 統計 | Stats.tsx | 2タブ（国試演習/暗記カード）、ヒートマップ、科目別、回数別 |
+| iwor AI | AIChat.tsx | 2タブ（フリーチャット/履歴）、Claude API連携、クレジット消費 |
+| ノート | Notes.tsx | フォルダ管理、Markdownエディタ、自動保存 |
+
+## サイドバー仕様
+
+- **PC（769px以上）**: 左サイドバー220px固定表示
+  - フォーカスモード: 折りたたみボタンで格納 → マウスホバーで一時表示（position: fixed + shadow）
+  - サイドバー下部: クレジット残高 + PROバッジ
+- **モバイル（768px以下）**: サイドバー非表示
+  - 固定ヘッダー: ハンバーガー + iworロゴ + タブ名 + PROバッジ
+  - ハンバーガー → 左ドロワー（overlay + slideRight animation）
+  - 親AppHeader/BottomNavと共存（padding-top: 64px, padding-bottom: 100px）
+
+## ダッシュボード詳細
+
+### 国試演習カード（1枚に統合）
+- 左: 棒グラフ
+  - 演習数 ↔ 正答率 セグメントトグル
+  - 日/週/月/年 期間切替
+  - 棒は最新がアクセントカラー、他はs2
+  - 下部に合計値 + trend（vs先週）
+- 右: 円グラフ（borderLeftで区切り）
+  - 全問進捗 %（done/total）
+  - 「演習を始める」ボタン
+
+### 暗記カードカード（1枚に統合）
+- 左: StatCard 3枚（今日の復習/カード総数/ストリーク）
+- 右: 復習リング（紫色）+ 「復習を始める」ボタン
+
+### 科目別カード
+- 正答率 ↔ 演習進捗 トグル
+- 日/週/月/年 期間切替
+- 水平バー（色は閾値で変化）
+
+## 演習タブ詳細
+
+### モード切替
+- ピルボタン: すべて / 医師国家試験 / CBT / 初期研修 / 専攻医 / 一般医師
+- デフォルトはユーザー属性に応じて切替
+
+### 分野別ドリルダウン
+1. グループ一覧: A内科系メジャー → B外科系 → C周産期 → D横断
+   - 各グループ: マーク分布バー（◎紫/○緑/△黄/✕赤）+ done/total
+2. サブフィールド一覧: A1循環器, A2呼吸器...
+   - 各: 正答率% + done/total + マーク分布
+3. 問題リスト: テーブル（#/番号/問題文/マーク/最終）
+
+### 回数別
+- 第120回〜第100回のプログレスバー一覧
+- クリック → 問題リスト表示（いきなり演習開始しない）
+
+### 問題セット
+- 自作セット一覧 + 「新規作成」ボタン
+- クリック → 問題リスト表示
+
+### 問題検索
+- 検索バー + 右サイドの絞り込みパネル
+  - 結果マーク（◎○△✕/未演習）
+  - 形式（必修/総論/各論/一般/臨床）
+  - 回数（最新3回/5回/10回 + 個別チェック）
+  - 正答率スライダー
+  - 特性（2つ選べ/計算/画像あり）
+- 検索結果 → 問題リスト表示
+
+### 問題リスト共通
+- テーブル: #/問題番号/問題文/マーク/最終演習日
+- マークフィルターチップ
+- 「選択モード」: チェックボックス表示 →「すべて選択」→「セットに追加」or「新たなセット作成」
+- 「✕のみ」「シャッフル」「▶演習開始」ボタン
+
+## 演習画面詳細
+
+### ヘッダー（sticky）
+- ← 戻る / 問題番号Badge / 科目Badge / 進捗（1/24） / **次の問題 →ボタン（回答後のみ表示）**
+
+### 選択肢
+- a-e ボタン（選択 → 0.4秒後に正誤表示）
+- 正解: 緑背景 + ✓ / 不正解: 赤背景 + ✕
+
+### 回答後
+1. **自己評価マーク**: ◎○△✕ ボタン
+2. **AI GlowButton 2つ**: 「AIに深掘り 3cr」「カード生成 2cr」
+3. **解説カード**: 正答 + AI生成Badge + サマリー + **選択肢ごとの解説**（○/✕ + 理由） + 覚えるポイント
+4. **免責表示**: AI生成・厚労省公式データ
+
+### AI対話（サブビュー）
+- チャットUI（バブル形式）
+- 送信GlowButton + クレジット消費表示
+
+### カード生成（サブビュー）
+- 生成されたカード一覧
+- 各カードに [+] ボタン → クリックで既存デッキ or 新規デッキ選択
+- 「問題に戻る」ボタン
+
+## 暗記カード詳細
+
+### 2タブ
+- **自分のデッキ**: フォルダ → デッキ一覧 → 復習画面
+- **共有デッキ（デッキマーケット）**: 検索 + カテゴリチップ + デッキカード（DL数/★評価/作者）
+
+### デッキ作成オプション（6つ）
+1. ✏️ 自分でテキスト入力
+2. ✕ 間違えた問題から（AI生成）
+3. 🔍 特定の問題から（AI生成）
+4. 📄 CSVインポート
+5. 📦 Ankiファイルインポート
+6. 🌐 共有デッキからインポート
+
+## 統計詳細
+
+### 2タブ
+- **国試演習**: 総演習数 / 正答率（trend） / カバー率 / ヒートマップ / 科目別
+- **暗記カード**: カード総数 / 復習累計 / 保持率 / ストリーク / デッキ別
+
+## iwor AI詳細
+
+### 2タブ
+- **フリーチャット**: ウェルカムメッセージ + サジェスト3つ + 入力バー + GlowButton送信
+- **チャット履歴**: 過去の全チャット（演習中のAI対話もアーカイブ）
+
+## ノート詳細
+
+- フォルダ管理（ピルボタンでフィルター）
+- フォルダ作成 + ノート新規作成
+- ノートエディタ: Markdown対応textarea + 保存ボタン + 自動保存
+
+## デザイントークン（Tailwind）
+
+プロトタイプのinline styleを以下のTailwindクラスに変換:
+- `bg-bg` `bg-s0` `bg-s1` `bg-s2`
+- `border-br` `border-br2`
+- `text-tx` `text-muted` `text-ac`
+- `bg-ac` `bg-acl` `bg-ac2`
+- `bg-okl` `text-ok` `bg-dnl` `text-dn` `bg-wnl` `text-wn`
+- `font-mono` → DM Mono（既存）
+- `rounded-xl` → 12px, `rounded-lg` → 10px
+
+## 実装順序（推奨）
+
+1. ルーティング + KokushiApp.tsx シェル（サイドバー + タブ切替）
+2. Dashboard.tsx（棒グラフ + 円グラフ + 科目別）
+3. Practice.tsx + QuestionList.tsx（分野別ドリルダウン + 問題リスト）
+4. QuestionView.tsx（演習画面 + 解説）
+5. MarkSystem.tsx（自己評価マーク）
+6. DeckManager.tsx（暗記カードタブ — 既存FSRS連携）
+7. AIChat.tsx（Claude API連携）
+8. CardGeneration.tsx（AI生成 + デッキピッカー）
+9. SearchPanel.tsx（フィルター付き検索）
+10. Stats.tsx / Notes.tsx
+11. SSG個別問題ページ（SEO用8,000ページ）
+12. モバイル最適化
+
+## データ構造（Phase W0完了後）
+
+→ REF_STUDY_QB.md 参照
+
+```typescript
+interface Question {
+  id: string           // "119A1"
+  examYear: number     // 119
+  block: string        // "A"
+  num: number          // 1
+  field: string        // "A4" (臨床領域コード)
+  fieldLabel: string   // "肝胆膵"
+  type1: string        // "臨床" | "一般" | "長文"
+  type2: string        // "各論" | "総論" | "必修"
+  stem: string         // 問題文
+  choices: Choice[]    // 選択肢
+  answer: string       // "b" or "bd"（複数選択）
+  hasImage: boolean
+  explanation?: Explanation
+}
+
+interface UserProgress {
+  questionId: string
+  mark: 'dbl' | 'ok' | 'tri' | 'x' | 'none'
+  lastAttempted: string // ISO date
+  attempts: number
+  correct: boolean[]   // 直近の正誤履歴
+}
+```
