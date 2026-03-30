@@ -139,7 +139,7 @@ export default function KokushiApp() {
       />
 
       {/* ── メインコンテンツ ── */}
-      <main className="flex-1 p-8 max-w-[960px] min-w-0 overflow-y-auto max-md:px-4 max-md:pt-16 max-md:pb-24">
+      <main className="flex-1 p-8 max-w-[960px] mx-auto min-w-0 overflow-y-auto max-md:px-4 max-md:pt-16 max-md:pb-24">
         {tab === 'dashboard' && <Dashboard onSwitchTab={switchTab} />}
         {tab === 'practice' && renderPractice()}
         {tab === 'cards' && renderCards()}
