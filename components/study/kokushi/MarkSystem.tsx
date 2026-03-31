@@ -41,10 +41,11 @@ export function SelfEvalButtons({ onSelect }: { onSelect?: (mark: Mark) => void 
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs text-muted">自己評価：</span>
-      {MARKS.filter(m => m.key !== 'none').map(mk => (
+      {MARKS.map(mk => (
         <button
           key={mk.key}
           onClick={() => onSelect?.(mk.key)}
+          title={mk.label}
           className="w-9 h-9 rounded-lg border-[1.5px] border-br bg-s0 flex items-center justify-center cursor-pointer text-base font-bold hover:bg-s1 transition-colors"
           style={{ color: mk.color }}
         >

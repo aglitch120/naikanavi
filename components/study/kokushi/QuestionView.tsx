@@ -4,12 +4,14 @@ import { useState, useEffect, useRef } from 'react'
 import Badge from './Badge'
 import { SelfEvalButtons, AttemptHistory } from './MarkSystem'
 import KokushiGlowButton from './KokushiGlowButton'
+import { useProStatus } from '@/components/pro/useProStatus'
+import ProModal from '@/components/pro/ProModal'
 import type { Mark } from './types'
 
 interface QuestionViewProps {
   onBack: () => void
-  onShowAI: () => void
-  onShowCardGen: () => void
+  onShowAI?: () => void
+  onShowCardGen?: () => void
 }
 
 const CHOICES: { l: string; t: string; correct?: boolean }[] = [
@@ -35,12 +37,37 @@ const ATTEMPTS: { date: string; result: Mark }[] = [
 ]
 
 export default function QuestionView({ onBack, onShowAI, onShowCardGen }: QuestionViewProps) {
+  const { isPro, isLoading } = useProStatus()
   const [selAns, setSelAns] = useState<string | null>(null)
   const [showRes, setShowRes] = useState(false)
+  const [showAIOverlay, setShowAIOverlay] = useState(false)
+  const [showCardOverlay, setShowCardOverlay] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
+  const [showProModal, setShowProModal] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [])
+
+  // ── ページ離脱警告（回答後）──
+  useEffect(() => {
+    if (!showRes) return
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault()
+      e.returnValue = ''
+    }
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [showRes])
+
+  // ── 保存中アニメーション（PRO: 回答後に一時的に「保存中」表示）──
+  useEffect(() => {
+    if (!showRes || !isPro) return
+    setIsSaving(true)
+    const t = setTimeout(() => setIsSaving(false), 1200)
+    return () => clearTimeout(t)
+  }, [showRes, isPro])
 
   function handleChoiceClick(letter: string) {
     if (showRes) return
@@ -86,6 +113,31 @@ export default function QuestionView({ onBack, onShowAI, onShowCardGen }: Questi
         <Badge>119A1</Badge>
         <Badge color="accent">肝胆膵</Badge>
         <div className="ml-auto flex items-center gap-2">
+          {/* 保存ステータス */}
+          {!isLoading && (
+            isPro ? (
+              isSaving ? (
+                <span className="flex items-center gap-1 text-[11px] text-muted animate-pulse">
+                  <span>↻</span>
+                  <span>保存中...</span>
+                </span>
+              ) : (
+                <span className="flex items-center gap-1 text-[11px] text-muted">
+                  <span>☁</span>
+                  <span>保存済</span>
+                </span>
+              )
+            ) : (
+              <span className="flex items-center gap-1 text-[11px] text-wn">
+                <span>⚠</span>
+                <span>未保存</span>
+                <button
+                  onClick={() => setShowProModal(true)}
+                  className="text-ac font-semibold cursor-pointer hover:underline"
+                >PROで保存</button>
+              </span>
+            )
+          )}
           <span className="text-xs text-muted font-mono">1 / 24</span>
           {showRes && (
             <button className="px-3 py-1.5 rounded-lg bg-ac text-white text-xs font-semibold">
@@ -197,15 +249,129 @@ export default function QuestionView({ onBack, onShowAI, onShowCardGen }: Questi
       {showRes && (
         <div className="fixed bottom-[var(--nav-h,56px)] left-0 right-0 z-30 bg-gradient-to-t from-bg via-bg to-transparent pt-6 pb-4 px-4 md:px-8">
           <div className="flex gap-2.5 max-w-2xl mx-auto">
-            <KokushiGlowButton onClick={onShowAI} className="flex-1" small>
-              ◇ AIに深掘り <span className="text-[10px] opacity-70">3cr</span>
+            <KokushiGlowButton onClick={() => setShowAIOverlay(true)} className="flex-1" small>
+              ◇ AI深掘り <span className="text-[10px] opacity-70">3cr</span>
             </KokushiGlowButton>
-            <KokushiGlowButton onClick={onShowCardGen} className="flex-1" small>
-              ⊞ カード生成 <span className="text-[10px] opacity-70">2cr</span>
+            <KokushiGlowButton onClick={() => setShowCardOverlay(true)} className="flex-1" small>
+              ⊞ 暗記カード生成 <span className="text-[10px] opacity-70">2cr</span>
             </KokushiGlowButton>
           </div>
         </div>
       )}
+
+      {/* ── AI深掘り オーバーレイ ── */}
+      {showAIOverlay && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center">
+          <div
+            className="absolute inset-0 bg-bg/60 backdrop-blur-md"
+            onClick={() => setShowAIOverlay(false)}
+          />
+          <div
+            className="relative w-full max-w-2xl mx-auto h-[85vh] bg-s0 rounded-t-2xl border border-br shadow-xl flex flex-col overflow-hidden"
+            style={{ animation: 'slideUp .25s cubic-bezier(.4,0,.2,1) both' }}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-br">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-tx">◇ AI深掘り</span>
+                <Badge>119A1</Badge>
+              </div>
+              <button
+                onClick={() => setShowAIOverlay(false)}
+                className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-s1 text-muted"
+              >✕</button>
+            </div>
+            {/* Chat content */}
+            <div className="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
+              {/* AI greeting bubble */}
+              <div
+                className="flex gap-2.5 items-start"
+                style={{ animation: 'fadeIn .3s .2s cubic-bezier(.4,0,.2,1) both' }}
+              >
+                <div className="w-7 h-7 rounded-full bg-[rgba(108,92,231,0.12)] flex items-center justify-center text-xs shrink-0">◇</div>
+                <div className="bg-s1 rounded-[14px] rounded-tl-[4px] px-4 py-2.5 max-w-[80%] text-sm text-tx leading-relaxed">
+                  この問題について、わからないことや気になることはありますか？
+                </div>
+              </div>
+              {/* Preset questions */}
+              <div
+                className="flex flex-wrap gap-2 ml-9"
+                style={{ animation: 'fadeIn .3s .5s cubic-bezier(.4,0,.2,1) both' }}
+              >
+                <button className="px-3 py-1.5 rounded-lg bg-acl border border-ac/20 text-ac text-xs font-medium hover:bg-ac/10 transition-colors">なぜこれが正解？</button>
+                <button className="px-3 py-1.5 rounded-lg bg-acl border border-ac/20 text-ac text-xs font-medium hover:bg-ac/10 transition-colors">他の選択肢の間違いを解説</button>
+                <button className="px-3 py-1.5 rounded-lg bg-acl border border-ac/20 text-ac text-xs font-medium hover:bg-ac/10 transition-colors">関連知識をもっと教えて</button>
+              </div>
+            </div>
+            {/* Input area */}
+            <div className="border-t border-br px-5 py-3 bg-s0">
+              <div className="flex gap-2.5">
+                <input
+                  type="text"
+                  placeholder="質問を入力..."
+                  className="flex-1 bg-s1 border border-br rounded-lg px-3 py-2 text-sm text-tx placeholder:text-muted outline-none focus:border-ac"
+                />
+                <button className="px-4 py-2 rounded-lg bg-ac text-white text-sm font-semibold shrink-0">送信</button>
+              </div>
+              <p className="text-[10px] text-muted mt-1.5 text-center">1回の質問で3クレジット消費</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── 暗記カード生成 オーバーレイ ── */}
+      {showCardOverlay && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center">
+          <div
+            className="absolute inset-0 bg-bg/60 backdrop-blur-md"
+            onClick={() => setShowCardOverlay(false)}
+          />
+          <div
+            className="relative w-full max-w-2xl mx-auto h-[75vh] bg-s0 rounded-t-2xl border border-br shadow-xl flex flex-col overflow-hidden"
+            style={{ animation: 'slideUp .25s cubic-bezier(.4,0,.2,1) both' }}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-br">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-tx">⊞ 暗記カード生成</span>
+                <Badge color="ai">AI生成</Badge>
+              </div>
+              <button
+                onClick={() => setShowCardOverlay(false)}
+                className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-s1 text-muted"
+              >✕</button>
+            </div>
+            {/* Cards list */}
+            <div className="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
+              {[
+                { front: '自己免疫性膵炎の画像所見は？', back: 'びまん性膵腫大（ソーセージ様）+ capsule-like rim', type: '事実' },
+                { front: 'AIPの治療の第一選択は？', back: 'グルココルチコイド（ステロイド）投与', type: '治療' },
+                { front: 'AIPはどの疾患群に含まれるか？', back: 'IgG4関連疾患', type: '分類' },
+              ].map((card, i) => (
+                <div
+                  key={i}
+                  className="bg-s0 border border-br rounded-xl p-4"
+                  style={{ animation: `slideUp .3s ${0.15 + i * 0.12}s cubic-bezier(.4,0,.2,1) both` }}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge color="accent">{card.type}</Badge>
+                    <span className="text-xs text-muted">カード {i + 1}</span>
+                  </div>
+                  <p className="text-sm font-semibold text-tx mb-1.5">{card.front}</p>
+                  <div className="bg-s1 rounded-lg p-3 text-xs text-tx leading-relaxed">{card.back}</div>
+                </div>
+              ))}
+            </div>
+            {/* Footer */}
+            <div className="border-t border-br px-5 py-3 bg-s0">
+              <button className="w-full py-3 rounded-xl bg-ac text-white text-sm font-semibold">3枚をデッキに追加</button>
+              <p className="text-[10px] text-muted mt-1.5 text-center">カード生成で2クレジット消費</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showProModal && <ProModal feature="save" onClose={() => setShowProModal(false)} />}
     </>
   )
 }

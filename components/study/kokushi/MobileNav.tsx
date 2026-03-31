@@ -1,8 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { NAV_ITEMS } from './mock-data'
 import { SidebarContent } from './Sidebar'
+import { useProStatus } from '@/components/pro/useProStatus'
+import ProModal from '@/components/pro/ProModal'
 import type { Tab } from './types'
 
 export default function MobileNav({
@@ -18,32 +21,49 @@ export default function MobileNav({
   onClose: () => void
   onOpen: () => void
 }) {
+  const { isPro, isLoading } = useProStatus()
+  const [showProModal, setShowProModal] = useState(false)
+
   return (
     <>
       {/* ── モバイルヘッダー ── */}
-      <div className="fixed top-0 left-0 right-0 z-[100] bg-s0 border-b border-br px-4 py-2.5 items-center gap-3 hidden max-md:flex">
-        <button onClick={onOpen} className="p-1">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <line x1="3" y1="6" x2="19" y2="6" />
-            <line x1="3" y1="11" x2="19" y2="11" />
-            <line x1="3" y1="16" x2="19" y2="16" />
-          </svg>
-        </button>
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-[26px] h-[26px] rounded-[7px] bg-ac flex items-center justify-center">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 6.253v13M12 6.253C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      <div className="fixed top-0 left-0 right-0 z-[100] bg-s0 border-b border-br hidden max-md:block">
+        <div className="max-w-[960px] mx-auto px-4 py-2.5 flex items-center gap-3">
+          <button onClick={onOpen} className="p-1">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <line x1="3" y1="6" x2="19" y2="6" />
+              <line x1="3" y1="11" x2="19" y2="11" />
+              <line x1="3" y1="16" x2="19" y2="16" />
             </svg>
-          </div>
-        </Link>
-        <span className="text-[13px] font-semibold flex-1">
-          {NAV_ITEMS.find(n => n.id === tab)?.label}
-        </span>
-        <span
-          className="text-[9px] px-1.5 py-0.5 rounded font-semibold text-white"
-          style={{ background: 'linear-gradient(135deg,#1B4F3A,#2D6A4F)' }}
-        >PRO</span>
+          </button>
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-[26px] h-[26px] rounded-[7px] bg-ac flex items-center justify-center">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 6.253v13M12 6.253C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+          </Link>
+          <span className="text-[13px] font-semibold flex-1">
+            {NAV_ITEMS.find(n => n.id === tab)?.label}
+          </span>
+          {!isLoading && (
+            isPro ? (
+              <span
+                className="text-[9px] px-1.5 py-0.5 rounded font-semibold text-white"
+                style={{ background: 'linear-gradient(135deg,#1B4F3A,#2D6A4F)' }}
+              >✓ PRO</span>
+            ) : (
+              <button
+                onClick={() => setShowProModal(true)}
+                className="text-[9px] px-1.5 py-0.5 rounded font-semibold text-white cursor-pointer"
+                style={{ background: 'linear-gradient(135deg,#1B4F3A,#2D6A4F)' }}
+              >PRO</button>
+            )
+          )}
+        </div>
       </div>
+
+      {showProModal && <ProModal feature="full_access" onClose={() => setShowProModal(false)} />}
 
       {/* ── モバイルドロワー ── */}
       {mobileMenuOpen && (

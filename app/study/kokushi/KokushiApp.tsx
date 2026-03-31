@@ -86,8 +86,6 @@ export default function KokushiApp() {
         return (
           <QuestionView
             onBack={() => setPracticeView({ kind: 'browse' })}
-            onShowAI={() => setPracticeView({ kind: 'aiFromPractice' })}
-            onShowCardGen={() => setPracticeView({ kind: 'cardGeneration' })}
           />
         )
       case 'aiFromPractice':
@@ -155,6 +153,7 @@ export default function KokushiApp() {
       {/* ── アニメーション ── */}
       <style>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideRight { from { transform: translateX(-100%); } to { transform: translateX(0); } }
         @keyframes glowKokushiSpin { to { transform: rotate(360deg); } }
       `}</style>
