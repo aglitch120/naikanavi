@@ -28,7 +28,7 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": "B3-03",
+      "subfield": "B3-06",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -37,7 +37,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "注意欠如多動性障害（ADHD）"
+      "topic": "注意欠陥多動性障害（ADHD）"
     },
     {
       "num": 2,
@@ -98,7 +98,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": "D3-07",
+      "subfield": "D3-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -107,7 +107,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "腹腔鏡下手術〈周術期管理〉"
+      "topic": "周術期管理〈総論〉"
     },
     {
       "num": 4,
@@ -132,8 +132,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-01",
+      "field": "D1",
+      "subfield": "D1-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -167,8 +167,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-08",
+      "field": "A5",
+      "subfield": "A5-09",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -177,7 +177,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "膀胱鏡検査〈体位〉"
+      "topic": "膀胱鏡"
     },
     {
       "num": 6,
@@ -203,7 +203,7 @@
         "is_deleted": false
       },
       "field": "B1",
-      "subfield": "B1-06",
+      "subfield": "B1-05",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -212,7 +212,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "大腿骨頭壊死症"
+      "topic": "特発性大腿骨頭壊死症"
     },
     {
       "num": 7,
@@ -247,7 +247,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "難聴の精密検査"
+      "topic": "聴性脳幹反応・耳音響放射"
     },
     {
       "num": 8,
@@ -273,7 +273,7 @@
         "is_deleted": false
       },
       "field": "A7",
-      "subfield": "A7-04",
+      "subfield": "A7-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -282,7 +282,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "出血症状と疾患"
+      "topic": "出血傾向"
     },
     {
       "num": 9,
@@ -308,7 +308,7 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-06",
+      "subfield": "D2-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -317,7 +317,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "眼球提供の禁忌"
+      "topic": "臓器移植法"
     },
     {
       "num": 10,
@@ -352,7 +352,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "骨髄血塗抹染色体異常"
+      "topic": "急性前骨髄球性白血病（APL）"
     },
     {
       "num": 11,
@@ -378,7 +378,7 @@
         "is_deleted": false
       },
       "field": "B5",
-      "subfield": "B5-04",
+      "subfield": "B5-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -416,7 +416,7 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-01",
+      "subfield": "A8-10",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -454,7 +454,7 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-01",
+      "subfield": "A5-09",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -463,7 +463,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "下部尿路機能に関わる神経"
+      "topic": "蓄尿，排尿"
     },
     {
       "num": 14,
@@ -492,7 +492,7 @@
         "is_deleted": false
       },
       "field": "B4",
-      "subfield": "B4-05",
+      "subfield": "B4-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -501,7 +501,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "ウイルス性眼科疾患"
+      "topic": "ウイルス性結膜炎"
     },
     {
       "num": 15,
@@ -566,7 +566,7 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-05",
+      "subfield": "A4-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -601,7 +601,7 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-06",
+      "subfield": "A4-09",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -610,7 +610,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "肺動脈性肺高血圧症"
+      "topic": "肺高血圧症"
     },
     {
       "num": 18,
@@ -636,7 +636,7 @@
         "is_deleted": false
       },
       "field": "B2",
-      "subfield": "B2-07",
+      "subfield": "B2-11",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -670,8 +670,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A10",
-      "subfield": "A10-04",
+      "field": "A4",
+      "subfield": "A4-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -680,7 +680,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "サルコイドーシス〈グルココルチコイド適応〉"
+      "topic": "サルコイドーシス"
     },
     {
       "num": 20,
@@ -715,7 +715,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "先天色覚異常"
+      "topic": "色覚異常"
     },
     {
       "num": 21,
@@ -750,7 +750,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "脳出血"
+      "topic": "脳出血〈総論〉"
     },
     {
       "num": 22,
@@ -785,7 +785,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "SLE〈妊娠時の自己抗体〉"
+      "topic": "全身性エリテマトーデス（SLE）"
     },
     {
       "num": 23,
@@ -811,7 +811,7 @@
         "is_deleted": false
       },
       "field": "A6",
-      "subfield": "A6-02",
+      "subfield": "A6-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -845,8 +845,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-08",
+      "field": "B2",
+      "subfield": "B2-06",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -881,7 +881,7 @@
         "is_deleted": false
       },
       "field": "A10",
-      "subfield": "A10-02",
+      "subfield": "A10-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -890,7 +890,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "ラテックスアレルギー"
+      "topic": "職業性アレルギー"
     },
     {
       "num": 26,
@@ -925,7 +925,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "肺結核〈関節リウマチ治療中止薬〉"
+      "topic": "関節リウマチ（RA）"
     },
     {
       "num": 27,
@@ -960,7 +960,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "食道癌〈食道狭窄・ステント〉"
+      "topic": "食道癌"
     },
     {
       "num": 28,
@@ -986,7 +986,7 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-09",
+      "subfield": "A8-06",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -995,7 +995,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "筋萎縮性側索硬化症（ALS）〈呼吸管理〉"
+      "topic": "筋萎縮性側索硬化症（ALS）"
     },
     {
       "num": 29,
@@ -1020,8 +1020,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-07",
+      "field": "B5",
+      "subfield": "B5-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1030,7 +1030,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "急性喉頭蓋炎〈気道確保〉"
+      "topic": "急性喉頭蓋炎"
     },
     {
       "num": 30,
@@ -1090,8 +1090,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B2",
-      "subfield": "B2-06",
+      "field": "A9",
+      "subfield": "A9-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1100,7 +1100,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "蜂巣炎〈蜂窩織炎〉〈抗菌薬〉"
+      "topic": "蜂窩織炎"
     },
     {
       "num": 32,
@@ -1126,7 +1126,7 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-05",
+      "subfield": "A4-13",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1135,7 +1135,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "胚細胞腫瘍〈縦隔〉"
+      "topic": "胚細胞腫瘍（縦隔）"
     },
     {
       "num": 33,
@@ -1160,8 +1160,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C3",
-      "subfield": "C3-10",
+      "field": "A9",
+      "subfield": "A9-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1170,7 +1170,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "突発性発疹〈HHV-6〉"
+      "topic": "突発性発疹"
     },
     {
       "num": 34,
@@ -1196,7 +1196,7 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": "B3-07",
+      "subfield": "B3-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1205,7 +1205,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "心的外傷後ストレス障害（PTSD）"
+      "topic": "外傷後ストレス障害（PTSD）"
     },
     {
       "num": 35,
@@ -1231,7 +1231,7 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-10",
+      "subfield": "A8-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1240,7 +1240,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "筋ジストロフィー〈診断〉"
+      "topic": "Duchenne型筋ジストロフィー"
     },
     {
       "num": 36,
@@ -1266,7 +1266,7 @@
         "is_deleted": false
       },
       "field": "A3",
-      "subfield": "A3-03",
+      "subfield": "A3-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1275,7 +1275,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "原発性胆汁性胆管炎（PBC）"
+      "topic": "原発性胆汁性胆管炎（肝硬変）（PBC）"
     },
     {
       "num": 37,
@@ -1300,8 +1300,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C3",
-      "subfield": "C3-04",
+      "field": "A6",
+      "subfield": "A6-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1370,8 +1370,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A5",
-      "subfield": "A5-02",
+      "field": "A6",
+      "subfield": "A6-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1380,7 +1380,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "腎機能低下〈高カルシウム血症・活性型VitD中止〉"
+      "topic": "悪性腫瘍に伴う高カルシウム血症"
     },
     {
       "num": 40,
@@ -1406,7 +1406,7 @@
         "is_deleted": false
       },
       "field": "A7",
-      "subfield": "A7-02",
+      "subfield": "A7-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1415,7 +1415,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "急性白血病〈確定診断〉"
+      "topic": "急性白血病（AL）〈総論〉"
     },
     {
       "num": 41,
@@ -1450,7 +1450,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "外側半月板損傷・前十字靭帯損傷"
+      "topic": "膝半月板損傷"
     },
     {
       "num": 42,
@@ -1476,7 +1476,7 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-03",
+      "subfield": "A5-06",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1485,7 +1485,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "糖尿病腎症〈尿中アルブミン〉"
+      "topic": "糖尿病性腎症"
     },
     {
       "num": 43,
@@ -1511,7 +1511,7 @@
         "is_deleted": false
       },
       "field": "C2",
-      "subfield": "C2-01",
+      "subfield": "C2-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1520,7 +1520,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "子宮筋腫〈治療〉"
+      "topic": "子宮筋腫"
     },
     {
       "num": 44,
@@ -1546,7 +1546,7 @@
         "is_deleted": false
       },
       "field": "A7",
-      "subfield": "A7-05",
+      "subfield": "A7-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1555,7 +1555,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "無顆粒球症〈処置〉"
+      "topic": "無顆粒球症"
     },
     {
       "num": 45,
@@ -1581,7 +1581,7 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-01",
+      "subfield": "A8-10",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1590,7 +1590,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "緊張型頭痛〈アセトアミノフェン〉"
+      "topic": "緊張型頭痛"
     },
     {
       "num": 46,
@@ -1625,7 +1625,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "COPD〈患者説明〉"
+      "topic": "慢性閉塞性肺疾患（COPD）"
     },
     {
       "num": 47,
@@ -1660,7 +1660,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "急性心筋炎〈診断〉"
+      "topic": "心筋炎"
     },
     {
       "num": 48,
@@ -1686,7 +1686,7 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": "B3-08",
+      "subfield": "B3-05",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1721,7 +1721,7 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": "B3-05",
+      "subfield": "B3-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1730,7 +1730,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "パニック障害〈SSRI〉"
+      "topic": "パニック障害"
     },
     {
       "num": 50,
@@ -1755,8 +1755,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-06",
+      "field": "A6",
+      "subfield": "A6-06",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1765,7 +1765,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "アンドロゲン不応症〈染色体検査〉"
+      "topic": "アンドロゲン不応症"
     },
     {
       "num": 51,
@@ -1791,7 +1791,7 @@
         "is_deleted": false
       },
       "field": "A7",
-      "subfield": "A7-06",
+      "subfield": "A7-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1826,7 +1826,7 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-04",
+      "subfield": "A5-12",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1835,7 +1835,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "ロボット支援腹腔鏡下前立腺摘除術〈説明〉"
+      "topic": "前立腺癌"
     },
     {
       "num": 53,
@@ -1870,7 +1870,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "低ナトリウム血症〈高張食塩液〉"
+      "topic": "低ナトリウム血症"
     },
     {
       "num": 54,
@@ -1896,7 +1896,7 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-14",
+      "subfield": "C3-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1930,8 +1930,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A5",
-      "subfield": "A5-04",
+      "field": "D1",
+      "subfield": "D1-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1940,7 +1940,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "尿道損傷〈膀胱瘻〉"
+      "topic": "尿道外傷"
     },
     {
       "num": 56,
@@ -2010,7 +2010,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "急性動脈閉塞症〈下大静脈フィルター〉"
+      "topic": "急性動脈閉塞症"
     },
     {
       "num": 58,
@@ -2036,7 +2036,7 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-16",
+      "subfield": "C3-09",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2045,7 +2045,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "総肺静脈還流異常症"
+      "topic": "総肺静脈還流異常症（TAPVR）"
     },
     {
       "num": 59,
@@ -2071,7 +2071,7 @@
         "is_deleted": false
       },
       "field": "A3",
-      "subfield": "A3-04",
+      "subfield": "A3-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2080,7 +2080,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "肝門部胆管癌"
+      "topic": "胆管癌"
     },
     {
       "num": 60,
@@ -2106,7 +2106,7 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-07",
+      "subfield": "A4-13",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2115,7 +2115,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "気胸〈胸腔ドレナージ〉"
+      "topic": "気胸〈総論〉"
     },
     {
       "num": 61,
@@ -2150,7 +2150,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "コイン型リチウム電池誤飲"
+      "topic": "食道異物"
     },
     {
       "num": 62,
@@ -2175,8 +2175,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A2",
-      "subfield": "A2-03",
+      "field": "A9",
+      "subfield": "A9-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2185,7 +2185,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "Helicobacter pylori除菌〈ペニシリンアレルギー〉"
+      "topic": "ヘリコバクター・ピロリ感染症"
     },
     {
       "num": 63,
@@ -2281,7 +2281,7 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-04",
+      "subfield": "A8-10",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2290,7 +2290,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "側頭葉てんかん〈複雑部分発作〉"
+      "topic": "部分発作（焦点発作）"
     },
     {
       "num": 66,
@@ -2316,7 +2316,7 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-08",
+      "subfield": "A4-15",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2325,7 +2325,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "乳癌〈リスクファクター〉"
+      "topic": "乳癌"
     },
     {
       "num": 67,
@@ -2351,7 +2351,7 @@
         "is_deleted": false
       },
       "field": "A9",
-      "subfield": "A9-04",
+      "subfield": "A9-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2360,7 +2360,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "アメーバ性肝膿瘍〈感染経路〉"
+      "topic": "アメーバ赤痢"
     },
     {
       "num": 68,
@@ -2386,7 +2386,7 @@
         "is_deleted": false
       },
       "field": "B5",
-      "subfield": "B5-06",
+      "subfield": "B5-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2430,7 +2430,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "WPW症候群〈発作性上室頻拍〉"
+      "topic": "WPW症候群"
     },
     {
       "num": 70,
@@ -2459,7 +2459,7 @@
         "is_deleted": false
       },
       "field": "A6",
-      "subfield": "A6-01",
+      "subfield": "A6-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2468,7 +2468,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "Basedow病〈高値検査〉"
+      "topic": "Basedow病"
     },
     {
       "num": 71,
@@ -2497,7 +2497,7 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-04",
+      "subfield": "A5-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2506,7 +2506,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "腎盂腎炎〈治療〉"
+      "topic": "腎盂腎炎"
     },
     {
       "num": 72,
@@ -2544,7 +2544,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "肺結核〈治療効果判定〉"
+      "topic": "結核菌感染症（TB）"
     },
     {
       "num": 73,
@@ -2573,7 +2573,7 @@
         "is_deleted": false
       },
       "field": "B4",
-      "subfield": "B4-03",
+      "subfield": "B4-06",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2582,7 +2582,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "糖尿病網膜症〈治療〉"
+      "topic": "糖尿病網膜症"
     },
     {
       "num": 74,
@@ -2611,7 +2611,7 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
+      "subfield": "C1-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2620,7 +2620,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "前置胎盤・癒着胎盤"
+      "topic": "前置胎盤"
     },
     {
       "num": 75,
@@ -2649,8 +2649,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-12",
+      "field": "A3",
+      "subfield": "A3-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2659,7 +2659,7 @@
         "background": null,
         "key_point": null
       },
-      "topic": "NAFLD〈指導〉"
+      "topic": "非アルコール性脂肪性肝炎（NASH）"
     }
   ]
 }
