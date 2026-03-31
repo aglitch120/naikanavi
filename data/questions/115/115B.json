@@ -1,0 +1,1717 @@
+{
+  "exam_year": 115,
+  "block": "B",
+  "total_questions": 49,
+  "source": "厚生労働省 第115回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "115B1",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "リスクファクターと疾患の組合せで正しいのはどれか。\n酒\n食道癌\n睡眠時無呼吸症候群\nフレイル\n糖尿病\n虚血性心疾患",
+      "choices": {
+        "a": "飲",
+        "b": "低体重",
+        "c": "体重増加",
+        "d": "食物繊維の摂取",
+        "e": "n-3 系多価不飽和脂肪酸摂取"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "115B2",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "医療面接において解釈モデルを尋ねる目的として正しいのはどれか。",
+      "choices": {
+        "a": "患者の取り違えを防ぐ。",
+        "b": "患者の訴えの信憑性を評価する。",
+        "c": "精神疾患をスクリーニングする。",
+        "d": "医療機関に対する不満を把握する。",
+        "e": "疾患や診療に対する患者の考えを把握する。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "115B3",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "医師法に規定されないのはどれか。",
+      "choices": {
+        "a": "応召義務",
+        "b": "守秘義務",
+        "c": "臨床研修",
+        "d": "処方箋の交付",
+        "e": "診療録の記載"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "115B4",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "関節リウマチの関節外症状としてみられないのはどれか。",
+      "choices": {
+        "a": "皮下結節",
+        "b": "皮膚潰瘍",
+        "c": "心外膜炎",
+        "d": "間質性肺炎",
+        "e": "後腹膜線維症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "115B5",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "セカンドオピニオンについて正しいのはどれか。",
+      "choices": {
+        "a": "患者の権利に基づく。",
+        "b": "保険診療内で行われる。",
+        "c": "悪性腫瘍だけが対象になる。",
+        "d": "主治医の変更が目的である。",
+        "e": "受持ち患者からの依頼を拒否できる。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "115B6",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "ランダム化比較試験\u0010RCT\u0014について正しいのはどれか。",
+      "choices": {
+        "a": "内的妥当性が高い。",
+        "b": "二重盲検を要件とする。",
+        "c": "第\u0002相臨床試験で用いられる。",
+        "d": "メタ分析\u0010メタアナリシス\u0014の一種である。",
+        "e": "観察研究に比べて交絡因子の影響が大きい。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "115B7",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "膵臓癌の終末期で入院している52 歳の患者の在宅医療について誤っているのは\nどれか。",
+      "choices": {
+        "a": "介護保険が申請できる。",
+        "b": "患者本人の同意が必要である。",
+        "c": "在宅で点滴を受けることができる。",
+        "d": "家族が同居していることが必要である。",
+        "e": "在宅でリハビリテーションを受けることができる。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "115B8",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "妊娠、分娩、産褥期における母体血中ホルモン値の変化:別冊No. 1<を別に示す。\n実線Ａが表しているのはどれか。ただし、各線はａ〜ｅのいずれかに該当する。\n別\n冊",
+      "choices": {
+        "a": "エストロゲン",
+        "b": "プロラクチン",
+        "c": "プロゲステロン",
+        "d": "甲状腺刺激ホルモン",
+        "e": "絨毛性ゴナドトロピン"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "115B9",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "子宮内膜症を強く疑う所見はどれか。",
+      "choices": {
+        "a": "下腹部の筋性防御",
+        "b": "圧痛のある硬い子宮",
+        "c": "柔らかく腫大した子宮",
+        "d": "直腸子宮窩\u0010Douglas 窩\u0014の有痛性硬結",
+        "e": "可動性の良い無痛性で柔らかい球状腫瘤"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "115B10",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "24 時間蓄尿検査で摂取量が評価できるのはどれか。\n質\n塩",
+      "choices": {
+        "a": "脂",
+        "b": "食",
+        "c": "食物繊維",
+        "d": "エネルギー",
+        "e": "脂溶性ビタミン"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "115B11",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "研修医がコンサルテーションを依頼するときの配慮で適切でないのはどれか。",
+      "choices": {
+        "a": "簡潔なコンサルテーションを心掛ける。",
+        "b": "相手との良好な関係性を心掛ける。",
+        "c": "問題を具体化せず意見を求める。",
+        "d": "患者についての情報を集める。",
+        "e": "緊急性を考えて行う。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "115B12",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "貧血を認める患者の爪の写真:別冊No. 2<を別に示す。\n考えられるのはどれか。\n別\n冊",
+      "choices": {
+        "a": "腎性貧血",
+        "b": "鎌形赤血球症",
+        "c": "鉄欠乏性貧血",
+        "d": "巨赤芽球性貧血",
+        "e": "発作性夜間ヘモグロビン尿症"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "115B13",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "高齢者の嚥下障害の原因とならないのはどれか。",
+      "choices": {
+        "a": "嗅覚低下",
+        "b": "歯\u0007欠損",
+        "c": "舌運動低下",
+        "d": "唾液分泌低下",
+        "e": "咽頭収縮力低下"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "115B14",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "両側下肢に痙縮を呈する患者の歩容はどれか。",
+      "choices": {
+        "a": "開脚歩行",
+        "b": "動揺歩行",
+        "c": "小刻み歩行",
+        "d": "はさみ歩行",
+        "e": "分回し歩行"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "115B15",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "急性咳嗽の原因として頻度が高いのはどれか。",
+      "choices": {
+        "a": "COPD",
+        "b": "咳喘息",
+        "c": "胃食道逆流症",
+        "d": "副鼻腔気管支症候群",
+        "e": "マイコプラズマ肺炎"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "115B16",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "終末期における意思決定のプロセスについて正しいのはどれか。",
+      "choices": {
+        "a": "対象は癌患者である。",
+        "b": "意思決定は変化することはない。",
+        "c": "積極的安楽死が選択肢の一つとなる。",
+        "d": "可能な限り生命を維持したいと希望する患者は対象とならない。",
+        "e": "本人の意思が確認できない場合、家族等による推定意思が尊重される。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "115B17",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "疾患と症状の組合せで可能性が低いのはどれか。\n同名半盲\n語音明瞭度低下\n耳\n鳴\n動\n悸\n寝返り時のめまい",
+      "choices": {
+        "a": "小脳梗塞",
+        "b": "聴神経腫瘍",
+        "c": "突発性難聴",
+        "d": "パニック障害",
+        "e": "良性発作性頭位めまい症"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "115B18",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "強迫性障害の患者にみられる強迫行為について正しいのはどれか。",
+      "choices": {
+        "a": "行為中の記憶がない。",
+        "b": "行為は夕方増悪する。",
+        "c": "行為によって不安は緩和される。",
+        "d": "患者は行為を合理的であると考えている。",
+        "e": "｢行為をしなさい｣という命令が外から頭の中に吹き込まれる。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "115B19",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "左室にかかる前負荷が低下するのはどれか。",
+      "choices": {
+        "a": "僧帽弁狭窄症",
+        "b": "大動脈弁狭窄症",
+        "c": "三尖弁閉鎖不全症",
+        "d": "僧帽弁閉鎖不全症",
+        "e": "大動脈弁閉鎖不全症"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "115B20",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "採取した血液を容器に分注する際、検体量の不足による測定値への影響が大きい\nのはどれか。",
+      "choices": {
+        "a": "ALT",
+        "b": "白血球数",
+        "c": "ナトリウム",
+        "d": "クレアチニン",
+        "e": "活性化部分トロンボプラスチン時間\u0010APTT\u0014"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "115B21",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "生命の危険はないが、虐待が疑われる児童が来院した際に、まず通報すべき機関\nはどれか。",
+      "choices": {
+        "a": "警察署",
+        "b": "小学校",
+        "c": "保健所",
+        "d": "児童相談所",
+        "e": "市町村保健センター"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "115B22",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "腹部の触診で呼吸に応じて移動する腫瘤はどれか。",
+      "choices": {
+        "a": "膵囊胞",
+        "b": "胆囊癌",
+        "c": "腹部大動脈瘤",
+        "d": "腹膜偽粘液腫",
+        "e": "Krukenberg 腫瘍"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "115B23",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "市中肺炎に対する抗菌薬適正使用の原則について、適切なのはどれか。",
+      "choices": {
+        "a": "体温により抗菌薬を選択する。",
+        "b": "白血球数により抗菌薬を選択する。",
+        "c": "喀痰培養の最終結果が出てから開始する。",
+        "d": "喀痰のGram 染色を確認してから開始する。",
+        "e": "治療効果の判定はCRP の正常化を指標とする。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "115B24",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "肝硬変患者の肝性脳症の誘因とならないのはどれか。\n染\n水\n秘",
+      "choices": {
+        "a": "感",
+        "b": "脱",
+        "c": "便",
+        "d": "蛋白制限",
+        "e": "消化管出血"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "115B25",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "繰り返す突然の発汗、日中の疲労感と動悸を主訴にした54 歳の女性において、\n上昇していると考えられるホルモンはどれか。",
+      "choices": {
+        "a": "GH",
+        "b": "FSH",
+        "c": "オキシトシン",
+        "d": "プロラクチン",
+        "e": "プロゲステロン"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "115B26",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "82 歳の男性。発熱、嘔吐および水様下痢を主訴に来院した。\u0004日前から38 ℃前\n後の発熱、嘔吐および\u0002日\b回の水様下痢が持続しているという。経口水分摂取が\n困難であるため入院した。入院時検査で便中ノロウイルス抗原が陽性であった。診\n察にあたり、①アルコール手指消毒を行ったのち、②ビニールガウンを着用し、③\nプラスチック手袋を着用した。その後腹部の聴診と触診を行った。診察後はプラス\nチック手袋とビニールガウンを外し、④聴診器を白衣のポケットにしまい、⑤石け\nんと流水での手洗いを行った。\n下線部のうち感染対策として誤っているのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "115B27",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "82 歳の男性。気が遠くなることを主訴に来院した。日常の活動度は最大でも\u0003\n分程度の杖歩行である。\u0005か月前に行った健康診断で心房細動を初めて指摘された\nが、症状に乏しいため医療機関を受診していなかった。昨日、家の中で一時的に意\n識が遠のき転倒するというエピソードが\u0005回あった。心配になった家人に連れられ\nて来院した。来院時の意識は清明。脈拍96/分、不整。血圧136/78 mmHg。呼吸\n数16/分。SpO2 97 %:room air<。心音と呼吸音とに異常を認めない。\nこの時点で行う検査として適切でないのはどれか。\n12 誘導心電図",
+      "choices": {
+        "a": "血液検査",
+        "b": "心エコー検査",
+        "c": "Holter 心電図",
+        "d": "",
+        "e": "Master 二階段負荷試験"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "115B28",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "63 歳の男性。病院の待合室で倒れているところを医療スタッフが発見した。患\n者の意識と自発呼吸はなく、頸動脈は触知できなかった。心停止状態と判断し、心\n肺蘇生を開始した。すぐに心電図モニターを装着し、胸骨圧迫を一時中断してモニ\nター画面を確認すると、心拍数20/分の波形がみられた。このとき、患者の意識は\nないままで、頸動脈も触知できなかった。\n次に行うべき処置はどれか。",
+      "choices": {
+        "a": "気管挿管",
+        "b": "胸骨圧迫",
+        "c": "電気的除細動",
+        "d": "アトロピン静注",
+        "e": "リドカイン静注"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "115B29",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "60 歳の男性。突然起こった激しい後頭部痛、悪心および嘔吐を主訴に来院した。\n症状出現後、後頭部痛は少しやわらいだが、市販の鎮痛薬を服薬しても継続したた\nめ受診した。来院時、意識は清明で項部硬直は認めなかった。頭部CT:別冊No.\n3<を別に示す。\n診断として最も考えられるのはどれか。\n別\n冊",
+      "choices": {
+        "a": "髄膜炎",
+        "b": "片頭痛",
+        "c": "脳幹出血",
+        "d": "くも膜下出血",
+        "e": "急性硬膜下血腫"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "115B30",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "\u0005歳の男児。発熱、咳嗽および喘鳴を主訴に母親に連れられて来院した。数日前\nから鼻汁と咳嗽を認め、今朝から発熱が出現し、息苦しそうであったため受診し\nた。意識は清明。①体温37.8 ℃。②脈拍120/分、整。③呼吸数48/分。④SpO2\n98 %:room air<。⑤毛細血管再充満時間\u0002秒。呼気性喘鳴を聴取する。顔色はやや\n不良で、口唇チアノーゼは認めない。咽頭発赤を認める。胸骨上部と肋間に陥没呼\n吸を認める。\n下線部のうち緊急性が高いことを示唆するのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "115B31",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "42 歳の男性。発熱と咳嗽を主訴に来院した。\u0004日前から38 ℃台の発熱と咳嗽が\n出現した。昨日から黄色調の喀痰も伴い、症状が悪化してきたため受診した。\u0004年\n前に高血圧症と診断され、降圧薬の内服治療を受けている。意識は清明。体温\n38.2 ℃。脈拍98/分、整。血圧126/68 mmHg。呼吸数26/分。SpO2 93 % :room\nair<。眼瞼結膜は蒼白。心雑音を聴取しない。右下側胸部にcoarse crackles を聴取\nする。腹部は平坦、軟で、肝・脾を触知しない。血液所見：赤血球290 万、Hb\n8.2 g/dL、Ht 26 %、白血球54,300:芽球95 %、分葉核好中球\u0002%、単球\u0002%、リ\nンパ球\u0004%<、血小板3.2 万。血液生化学所見：総蛋白7.8 g/dL、アルブミン3.3\ng/dL、AST 38 U/L、ALT 20 U/L、LD 1,863 U/L:基準120〜245<、ALP 288 U/L\n:基準115〜359<、尿素窒素35 mg/dL、クレアチニン0.8 mg/dL。CRP 12\nmg/dL。喀痰Gram 染色でGram 陽性双球菌を認める。尿中肺炎球菌迅速抗原検\n査が陽性である。胸部エックス線写真で右中下肺野に浸潤影を認める。\nこの患者の診療録を作成するにあたり、プロブレムリストにあげるプロブレムと\nして適切でないのはどれか。",
+      "choices": {
+        "a": "高血圧症",
+        "b": "血小板低値",
+        "c": "抗菌薬の投与",
+        "d": "肺炎球菌による肺炎",
+        "e": "芽球を伴う白血球増多"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 32,
+      "id": "115B32",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "A 60-year-old man presented with sensory disturbance of his fingers and toes.\nHe lived alone and drank alcohol every day.\nThe amount of his alcohol intake was\nover 60 g/day.\nHe had muscle weakness and burning sensation of his extremities.\nExaminations showed nystagmus and heart failure.\nWhich one of the following vitamins is related to his symptoms?",
+      "choices": {
+        "a": "Vitamin A",
+        "b": "Vitamin B1",
+        "c": "Vitamin B6",
+        "d": "Vitamin C",
+        "e": "Vitamin D"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 33,
+      "id": "115B33",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "26 歳の男性。研修医。診療中にHIV 抗原・抗体陽性者の体液に曝露したことを\n指導医に報告してきた。オートバイの転倒事故による多発外傷で救急搬送された\n38 歳の男性患者の診療をした。意識障害のため当初は患者の基本情報がなかった\nが、駆け付けた患者家族によりHIV 感染者であることが判明した。事実が判明す\nるまでに、研修医は気管挿管、末\u001c静脈路の確保、血液検体採取、尿道カテーテル\n留置を行った。いずれも標準予防策として手袋、サージカルマスク及びプラスチッ\nクエプロンを着用した。針刺しなどの受傷はないが、尿道カテーテル留置の際に腕\nの皮膚に患者の尿が飛散した。\n研修医に対する指導医の対応として誤っているのはどれか。",
+      "choices": {
+        "a": "尿が付着した皮膚を流水と石けんで洗浄させる。",
+        "b": "尿が付着した皮膚に外傷がないか確認する。",
+        "c": "患者の血液が付着していないか確認する。",
+        "d": "直ちに抗HIV 薬の内服を開始させる。",
+        "e": "研修医の心理的反応に配慮する。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 34,
+      "id": "115B34",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "歳の男児。\u0002週間持続する咳嗽を主訴に母親に連れられて来院した。母親と診\n察医との会話を示す。\n医師：｢今日はどうされましたか｣\n母親：｢咳が\u0002週間続いているのできました｣\n医師：｢①症状について詳しく教えてください｣\n母親：｢咳は夜寝ているときと明け方が多いです。日中はあまり出ていません。咳\nとともに胸のあたりがゼーゼーいっている感じがします｣\n医師：｢②熱や鼻汁はありますか｣\n母親：｢ありません｣\n医師：｢③周囲に同じような症状の人はいますか｣\n母親：｢いません｣\n医師：｢④食べ物や薬のアレルギーはありますか｣\n母親：｢卵アレルギーがあります｣\n医師：｢⑤ご両親にアレルギーはありますか｣\n母親：｢私がアトピー性皮膚炎です｣\n医師：｢それでは診察しましょう｣\n下線部の質問の中で開放型質問はどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 35,
+      "id": "115B35",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "68 歳の女性。黄疸を主訴に来院した。\u0005週前から6怠感を自覚し、\u0002週前に感\n冒症状があり市販の総合感冒薬を服用した。昨日、家族から眼の黄染を指摘された\nため受診した。50 歳台から\u0005型糖尿病で内服治療中である。意識は清明。体温\n36.7 ℃。脈拍76/分、整。血圧136/80 mmHg。呼吸数12/分。眼瞼結膜に貧血を\n認めない。眼球結膜に黄染を認める。心音と呼吸音とに異常を認めない。腹部は平\n坦、軟で、右季肋部に肝を\u0002cm 触知する。血液所見：赤血球413 万、Hb 13.8\ng/dL、Ht 41 %、白血球8,300、血小板20 万。血液生化学所見：総蛋白7.1 g/dL、\nアルブミン3.8 g/dL、総ビリルビン5.9 mg/dL、直接ビリルビン4.7 mg/dL、\nAST 292 U/L、ALT 356 U/L、LD 577 U/L :基準120〜245<、ALP 693 U/L :基準\n115〜359<、γ-GT 352 U/L:基準\b〜50<、アミラーゼ95 U/L:基準37〜160<、尿素\n窒素34 mg/dL、クレアチニン1.3 mg/dL、血糖118 mg/dL、HbA1c 7.8 %:基準\n4.6〜6.2<、総コレステロール226 mg/dL、トリグリセリド160 mg/dL、Na 138\nmEq/L、K 4.3 mEq/L、Cl 101 mEq/L。免疫血清学所見：CRP 1.9 mg/dL、HBs\n抗原陰性、HCV 抗体陰性。\nまず行うべきなのはどれか。",
+      "choices": {
+        "a": "腹部造影CT",
+        "b": "Coombs 試験",
+        "c": "腹部超音波検査",
+        "d": "腫瘍マーカー測定",
+        "e": "薬剤リンパ球刺激試験"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 36,
+      "id": "115B36",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "38 歳の女性。労作時の息切れを主訴に来院した。\u0004日前から通勤のための最寄\nりの駅までの歩行で息切れを感じるようになった。昨日は歩行中に気が遠くなる感\nじも出現したため受診した。受診時の心電図:別冊No. 4<を別に示す。\n胸部の聴診で特徴的に聴取されるのはどれか。\n別\n冊",
+      "choices": {
+        "a": "Ⅰ音の大砲音",
+        "b": "Ⅱ音の亢進",
+        "c": "Ⅲ音",
+        "d": "Ⅳ音",
+        "e": "心膜摩擦音"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 37,
+      "id": "115B37",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "82 歳の女性。肺炎球菌性髄膜炎のため入院中である。意識障害が遷延している\nため、経鼻胃管による経管栄養を開始することになった。意識レベルはJCSⅠ-3\nからⅡ-10 で経過している。体温36.8 ℃。脈拍76/分。血圧120/80 mmHg。呼吸\n数12/分。SpO2 98 %:room air<。日中はベッド上で、半座位で過ごしている。\n経管栄養のための経鼻胃管について誤っているのはどれか。",
+      "choices": {
+        "a": "患者を左側臥位として挿入する。",
+        "b": "胃内容物を吸引しpH を確認する。",
+        "c": "初回の栄養投与は日中に実施する。",
+        "d": "栄養投与前に聴診器で気泡音を確認する。",
+        "e": "留置後にエックス線撮影で位置を確認する。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 38,
+      "id": "115B38",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "59 歳の女性。手指の腫脹を主訴に来院した。\u0004週前から急に手指末節が腫脹し、\n爪甲が隆起し軽度の\u0002痛を伴うようになったため受診した。数日前から同様の症状\nが足趾にも生じてきた。関節痛はない。手指の写真:別冊No. 5<を別に示す。\n精査すべきなのはどれか。\n癌\n癌\n癌\n別\n冊",
+      "choices": {
+        "a": "子宮癌",
+        "b": "腎",
+        "c": "乳",
+        "d": "肺",
+        "e": "卵巣癌"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 39,
+      "id": "115B39",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "68 歳の男性。左肩痛を主訴に来院した。\u0005か月前に左肩痛が出現し、増悪した\nため受診した。喫煙歴は30 本/日を40 年間、\u0005年前から禁煙している。脈拍\n60/分、整。血圧120/88 mmHg。呼吸数16/分。胸部エックス線写真:別冊No. 6\nＡ<及び胸部造影CT:別冊No. 6Ｂ<を別に示す。経気管支肺生検で肺腺癌と診断さ\nれた。\n認める可能性が高いのはどれか。\n別\n冊\nＡ、Ｂ",
+      "choices": {
+        "a": "左散瞳",
+        "b": "顔面浮腫",
+        "c": "左眼瞼下垂",
+        "d": "左上肢の浮腫",
+        "e": "左側の発汗増加"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 40,
+      "id": "115B40",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "20 歳の女性。四肢の皮疹を主訴に来院した。\u0005週前に手掌に皮疹が出現し、そ\nの後下肢に皮疹が広がったため受診した。発熱や盗汗、腹痛や体重減少はない。既\n往歴として\u0005年前のクラミジアによる骨盤腹膜炎がある。意識は清明。バイタルサ\nインに異常を認めない。心音と呼吸音とに異常を認めない。腹部は平坦、軟で、\n肝・脾を触知しない。両側頸部、腋窩および鼠径部にリンパ節腫脹を認める。手掌\nと足底の皮疹の写真:別冊No. 7<を別に示す。血清RPR は陽性である。\n病原体はどれか。\n別\n冊\n次の文を読み、41、42 の問いに答えよ。\n59 歳の男性。\u0002時間持続する前胸部痛のために救急車で搬入された。\n現病歴\n：\n\u0002か月前から階段昇降時に前胸部絞扼感を自覚していたが、安静にする\nと\u0003分間ほどで消失した。本日早朝に前胸部絞扼感で覚醒した。しばらく我慢して\nいたが次第に増強し、自力で歩けなくなったため救急搬送された。\n既往歴\n：\n\u0003年前から高血圧症で降圧薬を服用している。\n生活歴\n：\n自営業。喫煙は20 本/日を39 年間。飲酒はビールを500 mL/日。\n現\n症\n：\n意識は清明。身長168 cm、体重82 kg。体温36.6 ℃。心拍数104/分、\n整。血圧160/94 mmHg。呼吸数24/分。SpO2 96 %:room air<。冷汗を伴い、四肢\nは冷たい。心雑音はないが、奔馬調律を聴取する。呼吸音に異常を認めない。腹部\nは平坦で、肝・脾を触知しない。下肢に浮腫を認めない。\n検査所見\n：\n心電図では明らかなST-T 変化を認めない。\n急性心筋梗塞を疑い、心筋トロポニンT を測定することとした。発症からの時\n間経過から感度は60 %、特異度は90 % であるとする。この患者の検査前確率を\n80 % と考えたが、結果は陰性であった。",
+      "choices": {
+        "a": "Haemophilus ducreyi",
+        "b": "Staphylococcus aureus",
+        "c": "Streptococcus agalactiae",
+        "d": "Treponema pallidum",
+        "e": "Vibrio cholerae"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 41,
+      "id": "115B41",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "陰性結果にもかかわらず急性心筋梗塞である確率はどれか。\n80 %\n72 %\n64 %\n54 %\n50 %",
+      "choices": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": "",
+        "e": ""
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 42,
+      "id": "115B42",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "検査の結果は陰性であったが、担当医は病歴や症状から急性冠症候群である可能\n性が否定できないと判断し、患者にここまでの状況を説明することとした。\n担当医が患者にかける言葉の中で、説明内容に対する患者の理解を確認している\nものはどれか。\n次の文を読み、43、44 の問いに答えよ。\n36 歳の女性。頭痛を主訴に来院した。\n現病歴\n：\n本日午前 時頃から視界にきらきらした点が現れ、その後に頭痛、悪心\nが出現したため、同日昼に病院を受診した。頭痛は徐々に出現し、増悪はしていな\nい。21 歳時から年に数回同様の頭痛を経験しており、頭痛は毎回\u0002日で改善する。\n今回よりも強い頭痛を経験したことがあるという。\n既往歴\n：\n\u0003歳時に急性虫垂炎で手術。\n生活歴\n：\n喫煙歴はない。飲酒は機会飲酒。\n家族歴\n：\n母が頭痛持ちであった。\n現\n症\n：\n意識は清明。身長160 cm、体重50 kg。体温36.5 ℃。脈拍72/分、整。\n血圧126/76 mmHg。呼吸数12/分。SpO2 98 %:room air<。眼瞼結膜に貧血を認め\nない。瞳孔は左右差なく、対光反射は迅速。眼球運動に異常は認めない。心音と呼\n吸音とに異常を認めない。項部硬直を認めない。四肢の筋力は保たれており、感覚\n障害も認めない。四肢の腱反射は正常であり、病的反射は認めない。\n検査所見\n：\n血液所見：赤血球372 万、Hb 12.2 g/dL、Ht 40 %、白血球6,800、\n血小板16 万。血液生化学所見：AST 29 U/L、ALT 21 U/L、LD 171 U/L :基準\n120〜245<、ALP 350 U/L :基準115〜359<、尿素窒素10 mg/dL、クレアチニン\n0.5 mg/dL、Na 135 mEq/L、K 4.2 mEq/L、Cl 98 mEq/L。CRP 0.1 mg/dL。\n頭痛に関する文献を調べると、｢突然発症である｣、｢増悪している｣、｢これまで\n経験した中で最悪の頭痛である｣の\u0004項目について、該当項目数に応じた重篤な原\n因による頭痛の尤度比が以下のように掲載されていた。\n該当項目数\n重篤な原因による頭痛の尤度比\n0\n0.1\n1\n2.1\n2\n9.1\n3\n12.5\n43\nこの患者が重篤な原因による頭痛を起こしている可能性について、事前確率と比\nべた事後確率の変化として適切なのはどれか。\n44\nこの頭痛の特徴はどれか。\n次の文を読み、45、46 の問いに答えよ。",
+      "choices": {
+        "a": "男性に多い。",
+        "b": "高齢者に多い。",
+        "c": "光過敏を伴う。",
+        "d": "NSAID は無効である。",
+        "e": "動き回ると痛みが軽減する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 43,
+      "id": "115B43",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "歳の男性。熱傷のため救急車で搬入された。\n現病歴\n：\n揚げ物の調理中に着衣に着火し、職場の同僚が救急要請した。\n既往歴\n：\n高血圧症と脂質異常症について食事療法中。\n生活歴\n：\n飲食店の調理場で働いている。喫煙は10 本/日を10 年間、飲酒はビー\nルを350 mL/日。妻と\u0005人暮らし。\n家族歴\n：\n両親が高血圧症。\n現\n症\n：\n意識レベルはJCSⅡ-10。身長170 cm、体重70 kg。体温37.1 ℃。心拍\n数90/分、整。血圧90/60 mmHg。呼吸数36/分。SpO2 93 %:リザーバー付マスク\n10 L/分酸素投与下<。頭髪の前面と眉毛が焦げている。顔面、両上肢および胸腹部\nに、38 % TBSA\u0010total body surface area\u0014のⅡ〜Ⅲ度熱傷を認める。口腔と咽頭の\n粘膜には煤が付着していた。嗄声が認められる。\n検査所見\n：\n血液所見：赤血球550 万、Hb 17.0 g/dL、Ht 49 %、白血球7,200、\n血小板30 万。血液生化学所見：総蛋白6.1 g/dL、AST 45 U/L、ALT 17 U/L、\nLD 499 U/L:基準120〜245<、尿素窒素22 mg/dL、クレアチニン0.5 mg/dL、Na\n132 mEq/L、K 4.4 mEq/L、Cl 99 mEq/L。",
+      "choices": {},
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 45,
+      "id": "115B45",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "搬入時の輸液として適切なのはどれか。\n10 % 食塩液\n25 % アルブミン液",
+      "choices": {
+        "a": "",
+        "b": "新鮮凍結血漿",
+        "c": "\u0003% ブドウ糖液",
+        "d": "乳酸リンゲル液",
+        "e": ""
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 46,
+      "id": "115B46",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "気道熱傷と診断し、気管挿管を行った。\n換気を行った際、気管内に正しく挿管が行われていないと判断されるものはどれ\nか。\n次の文を読み、47、48 の問いに答えよ。\n37 歳の女性。全身6怠感と頭痛を主訴に来院した。\n現病歴\n：\n半年前から6怠感を自覚していた。\u0004か月前から頭痛も出現するように\nなった。\u0002か月前からは起きた時にも強い全身6怠感があるため、仕事を休むよう\nになった。頭痛の程度は軽いが、\u0005か月前に脇から出てくる自転車に気付かずに接\n触し、転倒したことがあった。",
+      "choices": {
+        "a": "呼気にCO2 が検出される。",
+        "b": "胸郭の動きが左右対称である。",
+        "c": "心窩部で送気音が聴取される。",
+        "d": "両側肺野で同等の呼吸音が聴取される。",
+        "e": "気管チューブ内壁に呼気時の曇りがみられる。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 47,
+      "id": "115B47",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "さらに情報を集めるとき、システムレビューに相当する質問はどれか。\nさらに医療面接と診察を進めた。\n現病歴\n：\n頭痛は眼の奥が重く痛むようなものである。\u0004か月前から無月経になっ\nている。食欲も落ちており、体重は半年で\u0004kg 低下している。癌なのではないか\nと心配している。睡眠障害はない。\u0004か月前から便秘が悪化している。\n既往歴\n：\n特記すべきことはない。\n生活歴\n：\n会社員。夫と子どもと\u0004人暮らし。喫煙歴と飲酒歴はない。\n家族歴\n：\n特記すべきことはない。\n現\n症\n：\n意識は清明。身長153 cm、体重48.2 kg。脈拍72/分、整。血圧98/56\nmmHg。呼吸数16/分。眼瞼結膜と眼球結膜とに異常を認めない。甲状腺腫を認め\nない。胸部では乳頭の圧迫で白色乳汁分泌を認める。腹部に異常を認めない。両耳\n側半盲を認める。\n検査所見\n：\n血液所見：赤血球357 万、Hb 11.1 g/dL、Ht 34 %、白血球4,200、\n血小板18 万。血液生化学所見：AST 21 U/L、ALT 14 U/L、LD 146 U/L :基準\n120〜245<、尿素窒素15 mg/dL、クレアチニン0.7 mg/dL、血糖78 mg/dL、Na\n131 mEq/L、K 4.4 mEq/L、Cl 97 mEq/L。内分泌検査所見：ACTH!pg/mL:基\n準60 以下<、コルチゾール1.9 μg/dL:基準5.2〜12.6<、TSH 0.76 μU/mL:基準\n0.500〜5.00<、FT3 2.27 pg/mL :基準2.30〜4.30<、FT4 0.51 ng/dL :基準\n0.90〜1.70<、LH 0.3 mIU/mL\n:基\n準1.8〜7.6<、FSH 4.4 mIU/mL\n:基\n準\n5.2〜14.4<、エストラジオール< 10 pg/mL:基準11〜230<、プロゲステロン0.2\nng/mL:基準0.5 以下<、プロラクチン198 ng/mL:基準15 以下<。頭部造影MRI\nで下垂体腺腫を認める。",
+      "choices": {
+        "a": "｢血の繋がった方で、何かご病気をされた方はいますか｣",
+        "b": "｢ご自分ではどのような病気を心配されていますか｣",
+        "c": "｢これまでに大きな病気をしたことはありますか｣",
+        "d": "｢頭痛はどのような痛みですか｣",
+        "e": "｢食欲や睡眠はいかがですか｣"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 48,
+      "id": "115B48",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "治療で誤っているのはどれか。\n次の文を読み、49、50 の問いに答えよ。\n52 歳の男性。腹部膨満感を主訴に来院した。\n現病歴\n：\n\u0004週前から腹部膨満感を自覚するようになった。食欲はあるがすぐに満\n腹を感じ、食事摂取量が減っている。腹痛や悪心はない。便通は毎日あり、便の性\n状は以前と変わっていない。\u0002か月で体重が\u0002kg 減少した。\n既往歴\n：\n特記すべきことはない。\n生活歴\n：\n会社員で事務職。喫煙歴はない。飲酒は機会飲酒。\n家族歴\n：\n父が高血圧症。母が糖尿病。\n現\n症\n：\n意識は清明。身長174 cm、体重67 kg。体温36.3 ℃。脈拍76/分、整。\n血圧124/78 mmHg。呼吸数18/分。SpO2 98 %:room air<。眼瞼結膜と眼球結膜に\n異常を認めない。心音と呼吸音とに異常を認めない。腹部はやや膨隆し、右肋骨弓\n下に肝を\u0002cm、左肋骨弓下に脾を\u0005cm 触知する。臍左側に径\bcm の弾性硬の無\n痛性腫瘤を触知し、可動性や呼吸性移動や拍動を認めない。両側頸部と鼠径部に径\n\u0005〜\u0004cm のリンパ節を複数触知する。いずれも弾性硬で可動性があり、圧痛はな\nい。下Õに浮腫を認めない。\n検査所見\n：\n尿所見：蛋白:安<、潜血:安<。血液所見：赤血球452 万、Hb 14.5\ng/dL、Ht 41 %、白血球7,200:好中球68 %、好酸球\u0005%、好塩基球\"%、単球\n%、リンパ球26 %<、血小板37 万。血液生化学所見：総蛋白6.5 g/dL、アルブミ\nン4.0 g/dL、総ビリルビン0.3 mg/dL、AST 18 U/L、ALT 16 U/L、LD 765 U/L\n:基準120〜245<、ALP 221 U/L:基準115〜359<、γ-GT 28 U/L:基準\b〜50<、尿\n素窒素32 mg/dL、クレアチニン0.6 mg/dL、血糖98 mg/dL、CEA\u0004ng/mL:基\n準\u0003 以下<、CA19-9\n12 U/mL :基準37 以下<。免疫血清学所見：CRP 0.1\nmg/dL、可溶性IL-2 受容体5,920 U/mL:基準157〜474<。",
+      "choices": {
+        "a": "薬物療法で腫瘍の縮小が期待できる。",
+        "b": "発熱時は副腎皮質ステロイド補充を減量する。",
+        "c": "手術を行う場合、下垂体機能評価を事前に行う。",
+        "d": "ホルモン補充は副腎皮質ステロイドから開始する。",
+        "e": "副腎皮質ステロイド補充開始後は尿崩症の出現に注意する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 49,
+      "id": "115B49",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "この患者でみられる身体所見はどれか。",
+      "choices": {
+        "a": "反跳痛",
+        "b": "腸雑音の亢進",
+        "c": "腹壁静脈の怒張",
+        "d": "Traube 三角の濁音",
+        "e": "肋骨脊柱角の叩打痛"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 50,
+      "id": "115B50",
+      "exam_year": 115,
+      "block": "B",
+      "stem": "胸腹部CT で後腹膜、縦隔などにも腫瘤を認めた。\n今後の治療方針を確定するために最も重要な検査はどれか。",
+      "choices": {
+        "a": "腹部MRI",
+        "b": "FDG-PET",
+        "c": "腹部血管造影検査",
+        "d": "表在リンパ節からの組織診",
+        "e": "後腹膜腫瘤からのCT ガイド下#刺吸引細胞診"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

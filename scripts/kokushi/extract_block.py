@@ -25,6 +25,11 @@ REPO = Path(__file__).resolve().parents[2]
 # 118: tp240424-01{block_letter}_01.pdf / tp240424-01seitou.pdf
 # 119: tp250428-01{block_letter}_01.pdf / tp250428-01seitou.pdf
 PDF_PREFIXES = {
+    112: "tp180511-01",
+    113: "tp190415-01",
+    114: "tp200421-01",
+    115: "tp210416-01",
+    116: "tp220421-01",
     117: "tp220502-01",
     118: "tp240424-01",
     119: "tp250428-01",
@@ -36,11 +41,10 @@ BLOCK_LETTERS = {
 
 BLOCK_SIZES = {"A": 75, "B": 50, "C": 75, "D": 75, "E": 50, "F": 75}
 
-ANSWER_HEADER_KEYWORDS = {
-    117: ('第117回', '医師国家試験', '正答値表', '問№', '正答１', '正答２', '正答３'),
-    118: ('第118回', '医師国家試験', '正答値表', '問№', '正答１', '正答２', '正答３'),
-    119: ('第119回', '医師国家試験', '正答値表', '問№', '正答１', '正答２', '正答３'),
-}
+def _answer_header(year):
+    return (f'第{year}回', '医師国家試験', '正答値表', '問№', '正答１', '正答２', '正答３')
+
+ANSWER_HEADER_KEYWORDS = {y: _answer_header(y) for y in range(100, 120)}
 
 PDF_BASE = Path("/Users/tasuku/Downloads/医師国家試験過去問")
 
@@ -289,36 +293,46 @@ def parse_single_question(num, raw_text, year, block):
     if '禁忌' in full:
         has_kinki = True
 
+    # 全角→半角の変換テーブル
+    zenkaku_to_hankaku = str.maketrans('ａｂｃｄｅｆｇｈｉｊ', 'abcdefghij')
+    pending_choice_letter = None  # 2行形式の選択肢記号を保持
+
     for line in lines:
         s = line.strip()
         if not s:
             continue
 
-        # 選択肢: ａ　テキスト（全角a-e）
-        choice_m = re.match(r'^([ａ-ｅ])\s+(.+)', s)
+        # 2行形式の選択肢テキスト回収: 前の行で記号のみだった場合
+        if pending_choice_letter:
+            # この行が選択肢テキスト（別の選択肢記号や問題番号でない）
+            if not re.match(r'^[ａ-ｊa-j]$', s) and not re.match(r'^\d{1,2}[\u3000\s]', s):
+                choices[pending_choice_letter] = s
+                pending_choice_letter = None
+                continue
+            else:
+                # 記号のみで次もまた記号 → 空の選択肢（画像問題等）
+                choices[pending_choice_letter] = ''
+                pending_choice_letter = None
+
+        # 選択肢: ａ　テキスト（全角a-j、1行形式）
+        choice_m = re.match(r'^([ａ-ｊ])\s+(.+)', s)
         if choice_m:
-            letter = choice_m.group(1).translate(str.maketrans('ａｂｃｄｅ', 'abcde'))
+            letter = choice_m.group(1).translate(zenkaku_to_hankaku)
             choices[letter] = choice_m.group(2).strip()
             continue
 
-        # 選択肢: a テキスト（半角、まれ）
-        choice_m2 = re.match(r'^([a-e])\s{2,}(.+)', s)
+        # 選択肢: a テキスト（半角、1行形式）
+        choice_m2 = re.match(r'^([a-j])\s{2,}(.+)', s)
         if choice_m2:
-            letter = choice_m2.group(1)
-            choices[letter] = choice_m2.group(2).strip()
+            choices[choice_m2.group(1)] = choice_m2.group(2).strip()
             continue
 
-        # 選択肢: a〜eが6個以上ある問題（f, g, h...）
-        choice_m3 = re.match(r'^([ｆ-ｊ])\s+(.+)', s)
-        if choice_m3:
-            letter = choice_m3.group(1).translate(
-                str.maketrans('ｆｇｈｉｊ', 'fghij'))
-            choices[letter] = choice_m3.group(2).strip()
+        # 選択肢: 記号のみの行（2行形式 — 116回以前）
+        if re.match(r'^[ａ-ｊ]$', s):
+            pending_choice_letter = s.translate(zenkaku_to_hankaku)
             continue
-
-        choice_m4 = re.match(r'^([f-j])\s{2,}(.+)', s)
-        if choice_m4:
-            choices[choice_m4.group(1)] = choice_m4.group(2).strip()
+        if re.match(r'^[a-j]$', s):
+            pending_choice_letter = s
             continue
 
         # 別冊参照行はstemに含めない（ただしhas_imageフラグは立てる）
