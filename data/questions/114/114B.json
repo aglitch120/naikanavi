@@ -377,9 +377,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A7",
-      "subfield": "A7-03",
-      "topic": "急性白血病（AL）〈総論〉",
+      "field": "A8",
+      "subfield": "A8-06",
+      "topic": "筋萎縮性側索硬化症（ALS）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -447,9 +447,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-04",
-      "topic": "僧帽弁閉鎖不全症（MR）",
+      "field": "D2",
+      "subfield": "D2-06",
+      "topic": "問題志向型医療記録（POMR）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -727,9 +727,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "B3",
+      "subfield": "B3-03",
+      "topic": "統合失調症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -832,9 +832,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "A4",
+      "subfield": "A4-01",
+      "topic": "呼吸器疾患と症候の組合せ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1148,8 +1148,8 @@
         "is_deleted": false
       },
       "field": "A1",
-      "subfield": "A1-04",
-      "topic": "僧帽弁狭窄症（MS）",
+      "subfield": "A1-01",
+      "topic": "急性下肢動脈閉塞症後の虚血再灌流障害〈MNMS〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1252,9 +1252,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A7",
-      "subfield": "A7-03",
-      "topic": "真性赤血球増加症（PV）",
+      "field": "A1",
+      "subfield": "A1-02",
+      "topic": "期外収縮",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1287,9 +1287,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "A8",
+      "subfield": "A8-06",
+      "topic": "亜急性脊髄連合変性症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1357,9 +1357,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "D1",
+      "subfield": "D1-07",
+      "topic": "敗血症性ショック",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1463,8 +1463,8 @@
         "is_deleted": false
       },
       "field": "A1",
-      "subfield": "A1-04",
-      "topic": "大動脈弁狭窄症（AS）",
+      "subfield": "A1-07",
+      "topic": "閉塞性動脈硬化症（ASO）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1532,9 +1532,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "D1",
+      "subfield": "D1-06",
+      "topic": "熱中症〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1672,9 +1672,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-03",
-      "topic": "狭心症（AP）〈総論〉",
+      "field": "D2",
+      "subfield": "D2-06",
+      "topic": "叙述的記録の記載方法（SOAP）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1709,7 +1709,7 @@
       },
       "field": "A10",
       "subfield": "A10-04",
-      "topic": "関節リウマチ（RA）",
+      "topic": "悪性関節リウマチ（MRA）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1744,7 +1744,7 @@
       },
       "field": "A10",
       "subfield": "A10-04",
-      "topic": "関節リウマチ（RA）",
+      "topic": "悪性関節リウマチ（MRA）",
       "action": null,
       "knowledge_type": null,
       "explanation": {

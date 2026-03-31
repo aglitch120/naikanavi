@@ -206,8 +206,10 @@ def _score_match(normalized_theme, key_terms, topic_name):
         if topic_clean in term and len(topic_clean) >= 3:
             s = 0.4 + 0.3 * len(topic_clean) / len(term)
             score = max(score, s)
-        # 略称マッチ
+        # 略称マッチ（3文字以上の略称のみ）
         for abbr in topic_abbrs:
+            if len(abbr) < 3:
+                continue  # 「症」「型」等の1文字略称は誤マッチの温床
             if abbr == term or abbr in term or term in abbr:
                 score = max(score, 0.7)
 

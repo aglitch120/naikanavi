@@ -63,8 +63,8 @@
         "is_deleted": false
       },
       "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "subfield": "C2-02",
+      "topic": "無月経〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -98,8 +98,8 @@
         "is_deleted": false
       },
       "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "subfield": "C2-04",
+      "topic": "骨盤内炎症性疾患（PID）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -307,9 +307,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": null,
+      "subfield": null,
+      "topic": "三角筋での筋肉注射が遠位側にずれることで起こる合併症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -342,9 +342,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "D2",
+      "subfield": "D2-12",
+      "topic": "生活習慣病のリスク因子",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -447,9 +447,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "A9",
+      "subfield": "A9-01",
+      "topic": "免疫疾患と特徴的な症候との組合せ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -692,9 +692,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "A5",
+      "subfield": "A5-01",
+      "topic": "初発症状が肉眼的血尿でない悪性腫瘍",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -797,9 +797,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": null,
+      "subfield": null,
+      "topic": "第一次世界大戦と同時期にパンデミックがみられた感染症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -972,9 +972,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A4",
-      "subfield": "A4-08",
-      "topic": "過敏性肺（臓）炎",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "臓器提供ができる根拠",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1393,8 +1393,8 @@
         "is_deleted": false
       },
       "field": "A1",
-      "subfield": "A1-04",
-      "topic": "大動脈弁狭窄症（AS）",
+      "subfield": "A1-07",
+      "topic": "閉塞性動脈硬化症（ASO）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1567,9 +1567,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": "C2-03",
-      "topic": "子宮腔癒着（症）",
+      "field": "A9",
+      "subfield": "A9-07",
+      "topic": "新型コロナウイルス感染症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1602,9 +1602,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-04",
-      "topic": "大動脈弁閉鎖不全症（AR）〈総論〉",
+      "field": "A9",
+      "subfield": "A9-07",
+      "topic": "重症急性呼吸器症候群（SARS）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
