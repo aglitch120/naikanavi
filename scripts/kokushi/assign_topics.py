@@ -54,7 +54,7 @@ SUBJECT_TO_FIELDS = {
     "24.公衆衛生": ["D1"],
     "25.医学総論": ["D1", "D2"],
     "26.その他": [],
-    # medu4の科目番号なしのケースにも対応
+    # external_refの科目番号なしのケースにも対応
     "腎": ["A5"],
     "内分泌代謝": ["A8"],
     "血液": ["A7"],
@@ -222,7 +222,7 @@ def _score_match(normalized_theme, key_terms, topic_name):
     return score
 
 
-def parse_medu4_meta(filepath):
+def parse_reference_meta(filepath):
     """参考メタデータをパース"""
     text = open(filepath).read()
     lines = text.split('\n')
@@ -308,7 +308,7 @@ def main():
         print(f"File not found: {meta_path}")
         return
 
-    meta = parse_medu4_meta(str(meta_path))
+    meta = parse_reference_meta(str(meta_path))
     print(f"Metadata: {len(meta)} questions loaded")
 
     # Process each block
