@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { NAV_ITEMS } from './mock-data'
 import { SidebarContent } from './Sidebar'
@@ -30,8 +29,12 @@ export default function MobileNav({
             <line x1="3" y1="16" x2="19" y2="16" />
           </svg>
         </button>
-        <Link href="/">
-          <Image src="/icon.png" alt="iwor" width={26} height={26} className="rounded-[7px]" />
+        <Link href="/" className="flex items-center gap-2">
+          <div className="w-[26px] h-[26px] rounded-[7px] bg-ac flex items-center justify-center">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 6.253v13M12 6.253C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
         </Link>
         <span className="text-[13px] font-semibold flex-1">
           {NAV_ITEMS.find(n => n.id === tab)?.label}
@@ -49,11 +52,12 @@ export default function MobileNav({
           <div className="absolute top-0 left-0 bottom-0 w-[260px] bg-s0 p-5 flex flex-col gap-0.5 shadow-xl overflow-y-auto animate-[slideRight_0.2s_ease]">
             <div className="flex items-center justify-between mb-4">
               <Link href="/" className="flex items-center gap-2.5">
-                <Image src="/icon.png" alt="iwor" width={30} height={30} className="rounded-[9px]" />
-                <div>
-                  <div className="text-sm font-semibold">iwor study</div>
-                  <div className="text-[10px] text-muted font-medium">医師国家試験</div>
+                <div className="w-[30px] h-[30px] rounded-[9px] bg-ac flex items-center justify-center">
+                  <svg className="w-4 h-4" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 6.253v13M12 6.253C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
                 </div>
+                <span className="text-sm font-semibold">iwor Study</span>
               </Link>
               <button onClick={onClose} className="text-lg text-muted p-1">✕</button>
             </div>

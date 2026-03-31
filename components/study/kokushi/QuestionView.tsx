@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Badge from './Badge'
 import { SelfEvalButtons, AttemptHistory } from './MarkSystem'
 import KokushiGlowButton from './KokushiGlowButton'
@@ -29,14 +29,18 @@ const CHOICE_EXPLANATIONS = [
 ]
 
 const ATTEMPTS: { date: string; result: Mark }[] = [
-  { date: '03/20', result: 'x' },
-  { date: '03/25', result: 'ok' },
-  { date: '03/31', result: 'ok' },
+  { date: '03/20 14:32', result: 'x' },
+  { date: '03/25 09:15', result: 'ok' },
+  { date: '03/31 21:48', result: 'ok' },
 ]
 
 export default function QuestionView({ onBack, onShowAI, onShowCardGen }: QuestionViewProps) {
   const [selAns, setSelAns] = useState<string | null>(null)
   const [showRes, setShowRes] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
 
   function handleChoiceClick(letter: string) {
     if (showRes) return
@@ -69,7 +73,7 @@ export default function QuestionView({ onBack, onShowAI, onShowCardGen }: Questi
   }
 
   return (
-    <div className="px-4 pt-3 pb-10">
+    <div ref={containerRef} className="px-4 pt-3 pb-10">
       {/* Sticky header */}
       <div className="flex items-center gap-2 sticky top-0 bg-bg pb-3 z-10">
         <button
@@ -178,19 +182,23 @@ export default function QuestionView({ onBack, onShowAI, onShowCardGen }: Questi
             </div>
           </div>
 
-          {/* Glow action buttons */}
-          <div className="flex gap-2.5 mt-4">
-            <KokushiGlowButton small onClick={onShowAI} className="flex-1">
-              ◇ AIに深掘り 3cr
-            </KokushiGlowButton>
-            <KokushiGlowButton small onClick={onShowCardGen} className="flex-1">
-              ⊞ カード生成 2cr
-            </KokushiGlowButton>
-          </div>
-
           {/* Disclaimer */}
           <div className="mt-2 bg-s1 rounded-lg p-2 text-center text-[10.5px] text-muted">
             AI生成コンテンツは参考情報です。正確性は国試公式資料でご確認ください。
+          </div>
+        </div>
+      )}
+
+      {/* Sticky floating action buttons — shown only after answer is revealed */}
+      {showRes && (
+        <div className="sticky bottom-0 z-20 bg-gradient-to-t from-bg via-bg to-transparent pt-6 pb-4 -mx-8 px-8 max-md:-mx-4 max-md:px-4">
+          <div className="flex gap-2.5">
+            <KokushiGlowButton onClick={onShowAI} className="flex-1" small>
+              ◇ AIに深掘り <span className="text-[10px] opacity-70">3cr</span>
+            </KokushiGlowButton>
+            <KokushiGlowButton onClick={onShowCardGen} className="flex-1" small>
+              ⊞ カード生成 <span className="text-[10px] opacity-70">2cr</span>
+            </KokushiGlowButton>
           </div>
         </div>
       )}

@@ -46,16 +46,18 @@ export default function AIFromPractice({ onBack }: AIFromPracticeProps) {
         </div>
       </div>
 
-      <div className="flex gap-2 pt-3 border-t border-br">
-        <input
-          value={chatInput}
-          onChange={(e) => setChatInput(e.target.value)}
-          placeholder="追加で質問…"
-          className="flex-1 px-4 py-3 rounded-xl border border-br bg-s0 text-sm text-tx outline-none focus:border-ac transition-colors"
-        />
-        <KokushiGlowButton small onClick={() => setChatInput('')}>
-          送信
-        </KokushiGlowButton>
+      <div className="sticky bottom-0 z-20 bg-s0 border-t border-br px-4 py-3 -mx-8 max-md:-mx-4 max-md:pb-[calc(var(--nav-h)+8px)]">
+        <div className="flex gap-2.5 max-w-[960px] mx-auto">
+          <input
+            value={chatInput}
+            onChange={(e) => setChatInput(e.target.value)}
+            placeholder="追加で質問…"
+            className="flex-1 px-4 py-3 rounded-xl border border-br bg-s0 text-sm text-tx outline-none focus:border-ac transition-colors"
+          />
+          <KokushiGlowButton small onClick={() => setChatInput('')}>
+            送信
+          </KokushiGlowButton>
+        </div>
       </div>
     </div>
   )

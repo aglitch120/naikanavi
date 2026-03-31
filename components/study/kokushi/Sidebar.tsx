@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { NAV_ITEMS } from './mock-data'
 import type { Tab } from './types'
@@ -112,17 +111,12 @@ export default function Sidebar({
         {/* ロゴ（ホームリンク）+ 折りたたみ */}
         <div className="flex items-center gap-2.5 px-3 py-2 mb-4" style={{ minWidth: 196 }}>
           <Link href="/" className="flex items-center gap-2.5 flex-1 min-w-0">
-            <Image
-              src="/icon.png"
-              alt="iwor"
-              width={30}
-              height={30}
-              className="rounded-[9px] shrink-0"
-            />
-            <div className="min-w-0">
-              <div className="text-sm font-semibold">iwor study</div>
-              <div className="text-[10px] text-muted font-medium">医師国家試験</div>
+            <div className="w-[30px] h-[30px] rounded-[9px] bg-ac flex items-center justify-center shrink-0">
+              <svg className="w-4 h-4" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 6.253v13M12 6.253C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
             </div>
+            <span className="text-sm font-semibold">iwor Study</span>
           </Link>
           <button
             onClick={onToggleCollapse}

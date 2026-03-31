@@ -46,16 +46,18 @@ export default function AIChat() {
             </div>
           </div>
 
-          <div className="flex gap-2 pt-3 border-t border-br">
-            <input
-              value={chatInput}
-              onChange={(e) => setChatInput(e.target.value)}
-              placeholder="質問を入力…"
-              className="flex-1 px-4 py-3 rounded-xl border border-br bg-s0 text-sm text-tx outline-none focus:border-ac transition-colors"
-            />
-            <KokushiGlowButton small onClick={() => setChatInput('')}>
-              送信 3cr
-            </KokushiGlowButton>
+          <div className="sticky bottom-0 z-20 bg-s0 border-t border-br -mx-8 px-8 py-3 max-md:-mx-4 max-md:px-4 max-md:pb-[calc(var(--nav-h)+8px)]">
+            <div className="flex gap-2.5">
+              <input
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                placeholder="質問を入力…"
+                className="flex-1 px-4 py-3 rounded-xl border border-br bg-s0 text-sm text-tx outline-none focus:border-ac transition-colors"
+              />
+              <KokushiGlowButton small onClick={() => setChatInput('')}>
+                送信 3cr
+              </KokushiGlowButton>
+            </div>
           </div>
         </div>
       ) : (

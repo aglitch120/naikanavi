@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Tab, DeckView } from '@/components/study/kokushi/types'
 import Sidebar from '@/components/study/kokushi/Sidebar'
 import MobileNav from '@/components/study/kokushi/MobileNav'
@@ -45,6 +45,10 @@ export default function KokushiApp() {
 
   // ── Cards サブビュー ──
   const [cardsView, setCardsView] = useState<CardsSubView>({ kind: 'list' })
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [tab, practiceView, cardsView])
 
   const switchTab = (t: Tab) => {
     setTab(t)
