@@ -28,8 +28,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-05",
-      "topic": "医師法〈総論〉",
+      "subfield": "D2-09",
+      "topic": "診療補助行為",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -62,9 +62,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A5",
-      "subfield": "A5-09",
-      "topic": "泌尿器の解剖〈総論〉",
+      "field": "D3",
+      "subfield": "D3-06",
+      "topic": "腹部診察",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -169,7 +169,7 @@
       },
       "field": "D3",
       "subfield": "D3-06",
-      "topic": "身体診察〈総論〉",
+      "topic": "輸液路確保",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -204,7 +204,7 @@
       },
       "field": "D2",
       "subfield": "D2-08",
-      "topic": "医療安全管理",
+      "topic": "インシデント（ヒヤリ・ハット）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -238,8 +238,8 @@
         "is_deleted": false
       },
       "field": "B1",
-      "subfield": "B1-01",
-      "topic": "骨折〈総論〉",
+      "subfield": "B1-11",
+      "topic": "関節の解剖",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -342,9 +342,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-12",
-      "topic": "リハビリテーション〈総論〉",
+      "field": "D3",
+      "subfield": "D3-04",
+      "topic": "高齢者リハビリテーション〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -378,8 +378,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-02",
-      "topic": "疫学的因果関係",
+      "subfield": "D2-04",
+      "topic": "医学研究の倫理指針",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -483,8 +483,8 @@
         "is_deleted": false
       },
       "field": "A6",
-      "subfield": "A6-08",
-      "topic": "脂質異常症（高脂血症）",
+      "subfield": "A6-07",
+      "topic": "糖尿病（DM）〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -519,7 +519,7 @@
       },
       "field": "D3",
       "subfield": "D3-04",
-      "topic": "高齢者の病態〈総論〉",
+      "topic": "高齢者の薬物治療",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -659,7 +659,7 @@
       },
       "field": "D2",
       "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "topic": "医療面接",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -693,8 +693,8 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": "B3-03",
-      "topic": "統合失調症",
+      "subfield": "B3-01",
+      "topic": "妄想",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -728,8 +728,8 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": "D3-05",
-      "topic": "輸液〈総論〉",
+      "subfield": "D3-01",
+      "topic": "周術期管理〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -762,9 +762,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-01",
-      "topic": "脳脊髄の構造",
+      "field": "D3",
+      "subfield": "D3-06",
+      "topic": "神経系診察",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -799,7 +799,7 @@
       },
       "field": "D2",
       "subfield": "D2-08",
-      "topic": "医療安全管理",
+      "topic": "アクシデント（医療事故）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -869,7 +869,7 @@
       },
       "field": "D2",
       "subfield": "D2-04",
-      "topic": "インフォームド・コンセント",
+      "topic": "臨床試験・治験",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -904,7 +904,7 @@
       },
       "field": "D2",
       "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "topic": "服薬アドヒアランス",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -939,7 +939,7 @@
       },
       "field": "D2",
       "subfield": "D2-07",
-      "topic": "緩和ケアの概念",
+      "topic": "疼痛マネジメント（ペインコントロール）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1079,7 +1079,7 @@
       },
       "field": "C3",
       "subfield": "C3-05",
-      "topic": "正常新生児",
+      "topic": "新生児蘇生法",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1114,7 +1114,7 @@
       },
       "field": "D3",
       "subfield": "D3-04",
-      "topic": "フレイル",
+      "topic": "ロコモティブシンドローム",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1149,7 +1149,7 @@
       },
       "field": "D3",
       "subfield": "D3-06",
-      "topic": "診察のあり方",
+      "topic": "胃管挿入",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1219,7 +1219,7 @@
       },
       "field": "A4",
       "subfield": "A4-13",
-      "topic": "縦隔炎",
+      "topic": "気胸〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1359,7 +1359,7 @@
       },
       "field": "A5",
       "subfield": "A5-03",
-      "topic": "原発性ネフローゼ症候群〈総論〉",
+      "topic": "微小変化群（MCNS）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1393,8 +1393,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "subfield": "C1-02",
+      "topic": "HELLP症候群",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1428,8 +1428,8 @@
         "is_deleted": false
       },
       "field": "A3",
-      "subfield": "A3-02",
-      "topic": "ウイルス性肝炎〈総論〉",
+      "subfield": "A3-01",
+      "topic": "肝性脳症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1463,8 +1463,8 @@
         "is_deleted": false
       },
       "field": "A3",
-      "subfield": "A3-02",
-      "topic": "ウイルス性肝炎〈総論〉",
+      "subfield": "A3-01",
+      "topic": "肝性脳症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1498,8 +1498,8 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-03",
-      "topic": "脳血管障害",
+      "subfield": "A8-01",
+      "topic": "神経疾患の治療〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1533,8 +1533,8 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-03",
-      "topic": "脳出血〈総論〉",
+      "subfield": "A8-13",
+      "topic": "急性硬膜下血腫",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1673,8 +1673,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-09",
-      "topic": "チーム医療〈総論〉",
+      "subfield": "D2-10",
+      "topic": "社会保障制度",
       "action": null,
       "knowledge_type": null,
       "explanation": {

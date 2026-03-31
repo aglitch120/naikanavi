@@ -28,8 +28,8 @@
         "is_deleted": false
       },
       "field": "B6",
-      "subfield": "B6-01",
-      "topic": "放射線総論",
+      "subfield": "B6-04",
+      "topic": "放射線診断の検査〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -133,8 +133,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-09",
-      "topic": "医療法〈総論〉",
+      "subfield": "D2-05",
+      "topic": "医師法〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -168,8 +168,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-06",
-      "topic": "死産証書・死胎検案書",
+      "subfield": "D2-13",
+      "topic": "死産（統計）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -239,7 +239,7 @@
       },
       "field": "A3",
       "subfield": "A3-01",
-      "topic": "肝・胆・膵の検査〈総論〉",
+      "topic": "肝・胆・膵の生理〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -274,7 +274,7 @@
       },
       "field": "D2",
       "subfield": "D2-21",
-      "topic": "振動障害",
+      "topic": "職業性腰痛",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -343,8 +343,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-15",
-      "topic": "ノーマライゼーションの概念〈総論〉",
+      "subfield": "D2-20",
+      "topic": "学校保健統計",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -414,7 +414,7 @@
       },
       "field": "A8",
       "subfield": "A8-01",
-      "topic": "神経病巣",
+      "topic": "伝導路",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -448,8 +448,8 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": "B3-03",
-      "topic": "統合失調症",
+      "subfield": "B3-01",
+      "topic": "自我の障害",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -554,7 +554,7 @@
       },
       "field": "C2",
       "subfield": "C2-08",
-      "topic": "子宮頸部上皮内腫瘍",
+      "topic": "子宮頸癌",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -587,9 +587,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A2",
-      "subfield": "A2-01",
-      "topic": "消化管の内視鏡検査",
+      "field": "A3",
+      "subfield": "A3-01",
+      "topic": "肝・胆・膵の解剖〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -659,7 +659,7 @@
       },
       "field": "D2",
       "subfield": "D2-14",
-      "topic": "介護保険の居宅サービス（介護予防サービス）",
+      "topic": "在宅医療〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -693,8 +693,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-20",
-      "topic": "学校での健康診断",
+      "subfield": "D2-21",
+      "topic": "職業癌",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -728,8 +728,8 @@
         "is_deleted": false
       },
       "field": "B5",
-      "subfield": "B5-01",
-      "topic": "内耳の解剖",
+      "subfield": "B5-02",
+      "topic": "前庭神経炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -863,7 +863,7 @@
       },
       "field": "A6",
       "subfield": "A6-02",
-      "topic": "視床下部疾患-下垂体疾患〈総論〉",
+      "topic": "プロラクチノーマ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -933,7 +933,7 @@
       },
       "field": "D2",
       "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "topic": "患者の権利",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -967,8 +967,8 @@
         "is_deleted": false
       },
       "field": "A6",
-      "subfield": "A6-07",
-      "topic": "糖尿病（DM）〈総論〉",
+      "subfield": "A6-13",
+      "topic": "肥満〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1003,7 +1003,7 @@
       },
       "field": "A7",
       "subfield": "A7-01",
-      "topic": "骨髄，リンパ組織，脾臓",
+      "topic": "血球",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1041,7 +1041,7 @@
       },
       "field": "D2",
       "subfield": "D2-17",
-      "topic": "感染症法〈総論〉",
+      "topic": "ワクチンの種類",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1298,8 +1298,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-11",
-      "topic": "睡眠時無呼吸症候群（SAS）",
+      "subfield": "A4-01",
+      "topic": "呼吸機能検査〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1404,7 +1404,7 @@
       },
       "field": "D2",
       "subfield": "D2-09",
-      "topic": "チーム医療〈総論〉",
+      "topic": "トリアージ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1508,8 +1508,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "subfield": "C1-05",
+      "topic": "子宮破裂",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1542,9 +1542,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A4",
-      "subfield": "A4-03",
-      "topic": "インフルエンザ〈総論〉",
+      "field": "D2",
+      "subfield": "D2-17",
+      "topic": "インフルエンザ（動向と対応）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1578,8 +1578,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "subfield": "C1-02",
+      "topic": "妊娠高血圧症候群（PIH）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1928,8 +1928,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "subfield": "C1-05",
+      "topic": "分娩時異常出血",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1964,7 +1964,7 @@
       },
       "field": "D2",
       "subfield": "D2-22",
-      "topic": "水質汚濁",
+      "topic": "上水道・下水道",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1998,8 +1998,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-06",
-      "topic": "診療録（カルテ）",
+      "subfield": "D2-07",
+      "topic": "司法解剖・行政解剖・病理解剖・系統解剖",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2035,9 +2035,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C3",
-      "subfield": "C3-13",
-      "topic": "ビタミンK欠乏症",
+      "field": "A7",
+      "subfield": "A7-04",
+      "topic": "（先天性）血友病",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2074,8 +2074,8 @@
         "is_deleted": false
       },
       "field": "D1",
-      "subfield": "D1-08",
-      "topic": "熱傷〈総論〉",
+      "subfield": "D1-06",
+      "topic": "熱中症〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2144,8 +2144,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-11",
-      "topic": "睡眠時無呼吸症候群（SAS）",
+      "subfield": "A4-01",
+      "topic": "気管支内視鏡",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2183,7 +2183,7 @@
       },
       "field": "D2",
       "subfield": "D2-07",
-      "topic": "緩和ケアの概念",
+      "topic": "リビングウィル",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2218,7 +2218,7 @@
       },
       "field": "D2",
       "subfield": "D2-02",
-      "topic": "尤度比",
+      "topic": "検査前確率・検査後確率",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2253,7 +2253,7 @@
       },
       "field": "A2",
       "subfield": "A2-01",
-      "topic": "消化管の内視鏡検査",
+      "topic": "消化管の検査〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2287,8 +2287,8 @@
         "is_deleted": false
       },
       "field": "A2",
-      "subfield": "A2-01",
-      "topic": "消化管の内視鏡検査",
+      "subfield": "A2-03",
+      "topic": "早期胃癌",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2326,7 +2326,7 @@
       },
       "field": "D1",
       "subfield": "D1-08",
-      "topic": "腹腔内出血",
+      "topic": "高エネルギー外傷",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2501,7 +2501,7 @@
       },
       "field": "D2",
       "subfield": "D2-07",
-      "topic": "緩和ケアの概念",
+      "topic": "リビングウィル",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2564,8 +2564,8 @@
         "is_deleted": false
       },
       "field": "A6",
-      "subfield": "A6-07",
-      "topic": "糖尿病（DM）〈総論〉",
+      "subfield": "A6-11",
+      "topic": "高ナトリウム血症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2623,7 +2623,7 @@
       },
       "field": "A5",
       "subfield": "A5-01",
-      "topic": "腎・泌尿器の解剖〈総論〉",
+      "topic": "腎・泌尿器の検査〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {

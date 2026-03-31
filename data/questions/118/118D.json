@@ -63,8 +63,8 @@
         "is_deleted": false
       },
       "field": "A9",
-      "subfield": "A9-05",
-      "topic": "リケッチア",
+      "subfield": "A9-07",
+      "topic": "エボラ出血熱",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -97,9 +97,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-01",
-      "topic": "食中毒〈総論〉",
+      "field": "A1",
+      "subfield": "A1-02",
+      "topic": "心室細動（VF）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -169,7 +169,7 @@
       },
       "field": "A2",
       "subfield": "A2-05",
-      "topic": "ヘルニア〈総論〉",
+      "topic": "鼠径ヘルニア〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -203,8 +203,8 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-14",
-      "topic": "膀胱炎",
+      "subfield": "A5-08",
+      "topic": "腎盂腎炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -239,7 +239,7 @@
       },
       "field": "A5",
       "subfield": "A5-01",
-      "topic": "腎・泌尿器の解剖〈総論〉",
+      "topic": "人工透析〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -273,8 +273,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-11",
-      "topic": "睡眠時無呼吸症候群（SAS）",
+      "subfield": "A4-09",
+      "topic": "急性呼吸窮迫症候群（ARDS）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -309,7 +309,7 @@
       },
       "field": "A3",
       "subfield": "A3-03",
-      "topic": "胆石症",
+      "topic": "原発性硬化性胆管炎（PSC）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -343,8 +343,8 @@
         "is_deleted": false
       },
       "field": "B4",
-      "subfield": "B4-04",
-      "topic": "角結膜障害",
+      "subfield": "B4-10",
+      "topic": "穿孔性眼外傷",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -417,7 +417,7 @@
       },
       "field": "A5",
       "subfield": "A5-01",
-      "topic": "乏尿",
+      "topic": "慢性腎臓病（CKD）〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -534,7 +534,7 @@
       },
       "field": "D3",
       "subfield": "D3-04",
-      "topic": "加齢変化",
+      "topic": "高齢者の転倒",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -639,7 +639,7 @@
       },
       "field": "A6",
       "subfield": "A6-02",
-      "topic": "視床下部疾患-下垂体疾患〈総論〉",
+      "topic": "プロラクチノーマ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -709,7 +709,7 @@
       },
       "field": "A2",
       "subfield": "A2-04",
-      "topic": "炎症性腸疾患〈総論〉",
+      "topic": "偽膜性腸炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -989,7 +989,7 @@
       },
       "field": "A4",
       "subfield": "A4-13",
-      "topic": "縦隔気腫",
+      "topic": "気胸〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1023,8 +1023,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "subfield": "C1-02",
+      "topic": "前置胎盤",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1198,8 +1198,8 @@
         "is_deleted": false
       },
       "field": "B1",
-      "subfield": "B1-07",
-      "topic": "総腓骨神経麻痺",
+      "subfield": "B1-03",
+      "topic": "腰椎椎間板ヘルニア",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1297,8 +1297,8 @@
         "is_deleted": false
       },
       "field": "B1",
-      "subfield": "B1-02",
-      "topic": "反復性肩関節脱臼",
+      "subfield": "B1-04",
+      "topic": "腱板障害",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1367,8 +1367,8 @@
         "is_deleted": false
       },
       "field": "D1",
-      "subfield": "D1-08",
-      "topic": "コンパートメント症候群",
+      "subfield": "D1-07",
+      "topic": "異物の誤飲誤食〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1403,7 +1403,7 @@
       },
       "field": "A5",
       "subfield": "A5-03",
-      "topic": "続発性ネフローゼ症候群",
+      "topic": "膜性腎症（MN）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1508,7 +1508,7 @@
       },
       "field": "C1",
       "subfield": "C1-02",
-      "topic": "流産〈総論〉",
+      "topic": "前期破水（PROM）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1578,7 +1578,7 @@
       },
       "field": "A8",
       "subfield": "A8-02",
-      "topic": "頭蓋内圧亢進",
+      "topic": "不随意運動〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1611,9 +1611,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-07",
-      "topic": "糖尿病性昏睡",
+      "field": "A5",
+      "subfield": "A5-06",
+      "topic": "糖尿病性腎症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1648,7 +1648,7 @@
       },
       "field": "A4",
       "subfield": "A4-13",
-      "topic": "神経原性腫瘍",
+      "topic": "縦隔腫瘍〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1886,8 +1886,8 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-08",
-      "topic": "筋強直性ジストロフィー",
+      "subfield": "A8-09",
+      "topic": "顔面神経麻痺",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1921,8 +1921,8 @@
         "is_deleted": false
       },
       "field": "A9",
-      "subfield": "A9-01",
-      "topic": "感染症総論〈総論〉",
+      "subfield": "A9-02",
+      "topic": "緑膿菌感染症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1991,8 +1991,8 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-03",
-      "topic": "脳血管障害",
+      "subfield": "A8-13",
+      "topic": "慢性硬膜下血腫",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2061,8 +2061,8 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": "B3-05",
-      "topic": "睡眠障害〈総論〉",
+      "subfield": "B3-06",
+      "topic": "人格障害〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2097,7 +2097,7 @@
       },
       "field": "A10",
       "subfield": "A10-04",
-      "topic": "関節リウマチ（RA）",
+      "topic": "強皮症（SSc）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2194,9 +2194,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C3",
-      "subfield": "C3-05",
-      "topic": "新生児の生理学的特徴",
+      "field": "A6",
+      "subfield": "A6-07",
+      "topic": "アセトン血性嘔吐症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2230,8 +2230,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-05",
-      "topic": "間質性肺炎〈総論〉",
+      "subfield": "A4-08",
+      "topic": "過敏性肺（臓）炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2266,7 +2266,7 @@
       },
       "field": "A9",
       "subfield": "A9-02",
-      "topic": "グラム陽性球菌",
+      "topic": "猩紅熱",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2376,8 +2376,8 @@
         "is_deleted": false
       },
       "field": "A6",
-      "subfield": "A6-03",
-      "topic": "甲状腺機能亢進症〈総論〉",
+      "subfield": "A6-05",
+      "topic": "Cushing症候群〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2528,8 +2528,8 @@
         "is_deleted": false
       },
       "field": "B6",
-      "subfield": "B6-01",
-      "topic": "放射線総論",
+      "subfield": "B6-02",
+      "topic": "放射線障害〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {

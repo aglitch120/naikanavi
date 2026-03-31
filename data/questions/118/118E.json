@@ -27,9 +27,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-10",
-      "topic": "褥瘡",
+      "field": "D3",
+      "subfield": "D3-06",
+      "topic": "診察の基本手技",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -99,7 +99,7 @@
       },
       "field": "A9",
       "subfield": "A9-01",
-      "topic": "感染症総論〈総論〉",
+      "topic": "血液培養",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -133,8 +133,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-12",
-      "topic": "たばこ対策",
+      "subfield": "D2-02",
+      "topic": "疫学的因果関係",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -237,9 +237,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "頭頸部診察",
+      "field": "A9",
+      "subfield": "A9-01",
+      "topic": "咽頭ぬぐい",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -274,7 +274,7 @@
       },
       "field": "A9",
       "subfield": "A9-01",
-      "topic": "感染症総論〈総論〉",
+      "topic": "感染症の治療〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -308,8 +308,8 @@
         "is_deleted": false
       },
       "field": "A3",
-      "subfield": "A3-03",
-      "topic": "胆石症",
+      "subfield": "A3-02",
+      "topic": "閉塞性黄疸",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -342,9 +342,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-01",
-      "topic": "吸入麻酔〈総論〉",
+      "field": "D2",
+      "subfield": "D2-04",
+      "topic": "医師憲章",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -378,8 +378,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-12",
-      "topic": "健康増進法",
+      "subfield": "D2-01",
+      "topic": "ヘルスプロモーション",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -414,7 +414,7 @@
       },
       "field": "D3",
       "subfield": "D3-06",
-      "topic": "診察のあり方",
+      "topic": "穿刺",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -484,7 +484,7 @@
       },
       "field": "A4",
       "subfield": "A4-01",
-      "topic": "呼吸器の症候〈総論〉",
+      "topic": "咳嗽",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -518,8 +518,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-05",
-      "topic": "医師法〈総論〉",
+      "subfield": "D2-04",
+      "topic": "医師の職業倫理指針",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -589,7 +589,7 @@
       },
       "field": "A5",
       "subfield": "A5-01",
-      "topic": "腎・泌尿器の解剖〈総論〉",
+      "topic": "腎・泌尿器の検査〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -624,7 +624,7 @@
       },
       "field": "D2",
       "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "topic": "告知，SPIKES",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -729,7 +729,7 @@
       },
       "field": "D3",
       "subfield": "D3-06",
-      "topic": "診察のあり方",
+      "topic": "直腸診",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -798,8 +798,8 @@
         "is_deleted": false
       },
       "field": "D1",
-      "subfield": "D1-01",
-      "topic": "食中毒〈総論〉",
+      "subfield": "D1-07",
+      "topic": "気道の異物〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -828,7 +828,7 @@
       },
       "field": "A6",
       "subfield": "A6-13",
-      "topic": "ビタミン欠乏症〈総論〉",
+      "topic": "肥満〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -862,8 +862,8 @@
         "is_deleted": false
       },
       "field": "D1",
-      "subfield": "D1-08",
-      "topic": "コンパートメント症候群",
+      "subfield": "D1-07",
+      "topic": "ショック〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -898,7 +898,7 @@
       },
       "field": "A1",
       "subfield": "A1-09",
-      "topic": "高血圧緊急症",
+      "topic": "本態性高血圧症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -931,9 +931,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "field": "A5",
+      "subfield": "A5-08",
+      "topic": "精巣捻転症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -966,9 +966,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "field": "D3",
+      "subfield": "D3-06",
+      "topic": "診察のあり方",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1001,9 +1001,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A4",
-      "subfield": "A4-05",
-      "topic": "間質性肺炎〈総論〉",
+      "field": "B5",
+      "subfield": "B5-03",
+      "topic": "急性中耳炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1030,9 +1030,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-01",
-      "topic": "食中毒〈総論〉",
+      "field": "D2",
+      "subfield": "D2-05",
+      "topic": "副作用の報告制度",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1065,9 +1065,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "field": "C1",
+      "subfield": "C1-02",
+      "topic": "異所性妊娠",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1100,9 +1100,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-03",
-      "topic": "急性心筋梗塞（AMI）",
+      "field": "C3",
+      "subfield": "C3-16",
+      "topic": "細菌性髄膜炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1136,8 +1136,8 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-02",
-      "topic": "糸球体腎炎〈総論〉",
+      "subfield": "A5-12",
+      "topic": "前立腺肥大症〈BPH〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1170,9 +1170,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A4",
-      "subfield": "A4-13",
-      "topic": "胸腺腫",
+      "field": "C1",
+      "subfield": "C1-03",
+      "topic": "妊娠糖尿病",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1199,9 +1199,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-12",
-      "topic": "言語聴覚士",
+      "field": "D2",
+      "subfield": "D2-07",
+      "topic": "緩和ケアの概念",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1234,9 +1234,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "field": "D3",
+      "subfield": "D3-06",
+      "topic": "腹部診察",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1269,9 +1269,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-06",
-      "topic": "Parkinson病",
+      "field": "D2",
+      "subfield": "D2-07",
+      "topic": "緩和ケアの概念",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1304,9 +1304,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A3",
-      "subfield": "A3-03",
-      "topic": "胆石症",
+      "field": "D2",
+      "subfield": "D2-14",
+      "topic": "在宅医療〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1339,9 +1339,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-08",
-      "topic": "疥癬",
+      "field": "A8",
+      "subfield": "A8-06",
+      "topic": "Parkinson病",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1374,9 +1374,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-10",
-      "topic": "てんかん〈総論〉",
+      "field": "D2",
+      "subfield": "D2-14",
+      "topic": "介護保険の居宅サービス（介護予防サービス）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1409,9 +1409,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A3",
-      "subfield": "A3-02",
-      "topic": "原発性胆汁性胆管炎（肝硬変）（PBC）",
+      "field": "D1",
+      "subfield": "D1-07",
+      "topic": "ショック〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1444,9 +1444,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-01",
-      "topic": "骨折〈総論〉",
+      "field": "A8",
+      "subfield": "A8-03",
+      "topic": "くも膜下出血〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1479,9 +1479,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-07",
-      "topic": "水痘・帯状疱疹",
+      "field": "B3",
+      "subfield": "B3-03",
+      "topic": "双極性障害",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1514,9 +1514,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-04",
-      "topic": "僧帽弁狭窄症（MS）",
+      "field": "B3",
+      "subfield": "B3-03",
+      "topic": "双極性障害",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1549,9 +1549,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C1",
-      "subfield": "C1-03",
-      "topic": "合併症妊娠〈総論〉",
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "小脳の障害",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1584,9 +1584,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-07",
-      "topic": "腕神経叢麻痺",
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "小脳の障害",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1619,9 +1619,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A2",
-      "subfield": "A2-04",
-      "topic": "急性虫垂炎",
+      "field": "A4",
+      "subfield": "A4-08",
+      "topic": "気管支喘息",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1655,8 +1655,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-13",
-      "topic": "胸腺腫",
+      "subfield": "A4-08",
+      "topic": "気管支喘息",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1689,9 +1689,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C3",
-      "subfield": "C3-09",
-      "topic": "Fallot四徴症（TOF）",
+      "field": "A6",
+      "subfield": "A6-10",
+      "topic": "高尿酸血症〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1724,9 +1724,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A4",
-      "subfield": "A4-15",
-      "topic": "乳癌",
+      "field": "A6",
+      "subfield": "A6-10",
+      "topic": "高尿酸血症〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
