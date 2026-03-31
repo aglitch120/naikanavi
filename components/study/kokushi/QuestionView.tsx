@@ -73,7 +73,8 @@ export default function QuestionView({ onBack, onShowAI, onShowCardGen }: Questi
   }
 
   return (
-    <div ref={containerRef} className="px-4 pt-3 pb-10">
+    <>
+    <div ref={containerRef} className="px-4 pt-3 pb-28">
       {/* Sticky header */}
       <div className="flex items-center gap-2 sticky top-0 bg-bg pb-3 z-10">
         <button
@@ -189,10 +190,13 @@ export default function QuestionView({ onBack, onShowAI, onShowCardGen }: Questi
         </div>
       )}
 
-      {/* Sticky floating action buttons — shown only after answer is revealed */}
+    </div>
+
+      {/* Fixed bottom action buttons — shown only after answer is revealed */}
+      {/* Fixed bottom action buttons — shown only after answer is revealed */}
       {showRes && (
-        <div className="sticky bottom-0 z-20 bg-gradient-to-t from-bg via-bg to-transparent pt-6 pb-4 -mx-8 px-8 max-md:-mx-4 max-md:px-4">
-          <div className="flex gap-2.5">
+        <div className="fixed bottom-[var(--nav-h,56px)] left-0 right-0 z-30 bg-gradient-to-t from-bg via-bg to-transparent pt-6 pb-4 px-4 md:px-8">
+          <div className="flex gap-2.5 max-w-2xl mx-auto">
             <KokushiGlowButton onClick={onShowAI} className="flex-1" small>
               ◇ AIに深掘り <span className="text-[10px] opacity-70">3cr</span>
             </KokushiGlowButton>
@@ -202,6 +206,6 @@ export default function QuestionView({ onBack, onShowAI, onShowCardGen }: Questi
           </div>
         </div>
       )}
-    </div>
+    </>
   )
 }
