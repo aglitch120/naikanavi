@@ -27,11 +27,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B5",
-      "subfield": null,
-      "disease": [
-        "鶏眼"
-      ],
+      "field": "B2",
+      "subfield": "B2-14",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -39,7 +36,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "皮膚の症候〈総論〉"
     },
     {
       "num": 2,
@@ -65,10 +63,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": null,
-      "disease": [
-        "EBM"
-      ],
+      "subfield": "D2-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -76,7 +71,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "EBM（根拠に基づいた医療）"
     },
     {
       "num": 3,
@@ -102,10 +98,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": null,
-      "disease": [
-        "在宅医療"
-      ],
+      "subfield": "D2-14",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -113,7 +106,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "在宅医療〈総論〉"
     },
     {
       "num": 4,
@@ -139,10 +133,7 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": null,
-      "disease": [
-        "老人性難聴"
-      ],
+      "subfield": "B5-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -150,7 +141,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "老人性難聴"
     },
     {
       "num": 5,
@@ -176,10 +168,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": null,
-      "disease": [
-        "地域包括支援センター"
-      ],
+      "subfield": "D2-14",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -187,7 +176,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "地域包括支援センター"
     },
     {
       "num": 6,
@@ -212,11 +202,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A10",
-      "subfield": null,
-      "disease": [
-        "改訂長谷川式簡易知能評価スケール"
-      ],
+      "field": "A8",
+      "subfield": "A8-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -224,7 +211,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "認知症〈総論〉"
     },
     {
       "num": 7,
@@ -249,11 +237,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "共感的対応"
-      ],
+      "field": "D2",
+      "subfield": "D2-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -261,7 +246,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "医療面接"
     },
     {
       "num": 8,
@@ -286,11 +272,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "細菌培養検査"
-      ],
+      "field": "D2",
+      "subfield": "D2-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -298,7 +281,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "医療安全管理"
     },
     {
       "num": 9,
@@ -324,10 +308,7 @@
         "is_deleted": false
       },
       "field": "A1",
-      "subfield": null,
-      "disease": [
-        "大動脈弁狭窄症"
-      ],
+      "subfield": "A1-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -335,7 +316,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "大動脈弁狭窄症（AS）"
     },
     {
       "num": 10,
@@ -360,11 +342,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "医療保険制度"
-      ],
+      "field": "D2",
+      "subfield": "D2-10",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -372,7 +351,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "医療保険"
     },
     {
       "num": 11,
@@ -398,10 +378,7 @@
         "is_deleted": false
       },
       "field": "A7",
-      "subfield": null,
-      "disease": [
-        "チアノーゼ"
-      ],
+      "subfield": "A1-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -409,7 +386,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "チアノーゼ"
     },
     {
       "num": 12,
@@ -435,10 +413,7 @@
         "is_deleted": false
       },
       "field": "B1",
-      "subfield": null,
-      "disease": [
-        "脊柱側弯症"
-      ],
+      "subfield": "B1-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -446,7 +421,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "脊柱側弯症"
     },
     {
       "num": 13,
@@ -471,11 +447,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C1",
-      "subfield": null,
-      "disease": [
-        "思春期"
-      ],
+      "field": "C2",
+      "subfield": "C2-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -483,7 +456,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "月経"
     },
     {
       "num": 14,
@@ -508,11 +482,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "在宅医療・介護サービス"
-      ],
+      "field": "D2",
+      "subfield": "D2-14",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -520,7 +491,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "介護保険法〈総論〉"
     },
     {
       "num": 15,
@@ -545,11 +517,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A3",
-      "subfield": null,
-      "disease": [
-        "上部内視鏡検査"
-      ],
+      "field": "A2",
+      "subfield": "A2-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -557,7 +526,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "消化管の内視鏡検査"
     },
     {
       "num": 16,
@@ -583,10 +553,7 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": null,
-      "disease": [
-        "急性中耳炎"
-      ],
+      "subfield": "B5-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -594,7 +561,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "急性中耳炎"
     },
     {
       "num": 17,
@@ -620,10 +588,7 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": null,
-      "disease": [
-        "末期腎不全"
-      ],
+      "subfield": "A5-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -631,7 +596,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "慢性腎臓病（CKD）〈総論〉"
     },
     {
       "num": 18,
@@ -657,10 +623,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": null,
-      "disease": [
-        "動脈採血"
-      ],
+      "subfield": "D3-06",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -668,7 +631,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "穿刺"
     },
     {
       "num": 19,
@@ -694,10 +658,7 @@
         "is_deleted": false
       },
       "field": "B3",
-      "subfield": null,
-      "disease": [
-        "めまい"
-      ],
+      "subfield": "B5-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -705,7 +666,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "良性発作性頭位眩暈症"
     },
     {
       "num": 20,
@@ -731,10 +693,7 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": null,
-      "disease": [
-        "胎動"
-      ],
+      "subfield": "C1-01",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -742,7 +701,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "胎児心拍数モニタリング"
     },
     {
       "num": 21,
@@ -767,11 +727,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C1",
-      "subfield": null,
-      "disease": [
-        "続発性無月経"
-      ],
+      "field": "C2",
+      "subfield": "C2-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -779,7 +736,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "無月経〈総論〉"
     },
     {
       "num": 22,
@@ -804,11 +762,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "個人情報保護"
-      ],
+      "field": "D2",
+      "subfield": "D2-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -816,7 +771,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "患者情報の保護（個人情報保護法）"
     },
     {
       "num": 23,
@@ -841,11 +797,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": null,
-      "disease": [
-        "乳児バイタルサイン"
-      ],
+      "field": "C3",
+      "subfield": "C3-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -853,7 +806,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "小児のバイタルサイン"
     },
     {
       "num": 24,
@@ -878,11 +832,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "臓器移植"
-      ],
+      "field": "D2",
+      "subfield": "D2-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -890,7 +841,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "臓器移植法"
     },
     {
       "num": 25,
@@ -915,11 +867,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "保険医登録取消"
-      ],
+      "field": "D2",
+      "subfield": "D2-05",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -927,7 +876,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "医師法〈総論〉"
     },
     {
       "num": 26,
@@ -953,10 +903,7 @@
         "is_deleted": false
       },
       "field": "D1",
-      "subfield": null,
-      "disease": [
-        "心肺停止"
-      ],
+      "subfield": "D1-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -964,7 +911,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "心停止（CPA）〈総論〉"
     },
     {
       "num": 27,
@@ -989,11 +937,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C2",
-      "subfield": null,
-      "disease": [
-        "発達評価"
-      ],
+      "field": "C3",
+      "subfield": "C3-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1001,7 +946,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "精神運動発達"
     },
     {
       "num": 28,
@@ -1026,11 +972,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A2",
-      "subfield": null,
-      "disease": [
-        "COPD急性増悪"
-      ],
+      "field": "A4",
+      "subfield": "A4-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1038,7 +981,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "慢性閉塞性肺疾患（COPD）"
     },
     {
       "num": 29,
@@ -1064,10 +1008,7 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": null,
-      "disease": [
-        "糖尿病合併妊娠"
-      ],
+      "subfield": "C1-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1075,7 +1016,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "糖尿病合併妊娠"
     },
     {
       "num": 30,
@@ -1101,10 +1043,7 @@
         "is_deleted": false
       },
       "field": "D1",
-      "subfield": null,
-      "disease": [
-        "敗血症性ショック"
-      ],
+      "subfield": "D1-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1112,7 +1051,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "敗血症性ショック"
     },
     {
       "num": 31,
@@ -1138,10 +1078,7 @@
         "is_deleted": false
       },
       "field": "A6",
-      "subfield": null,
-      "disease": [
-        "低血糖"
-      ],
+      "subfield": "A6-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1149,7 +1086,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "低血糖症"
     },
     {
       "num": 32,
@@ -1175,10 +1113,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": null,
-      "disease": [
-        "肺水腫"
-      ],
+      "subfield": "A4-09",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1186,7 +1121,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "心原性肺水腫"
     },
     {
       "num": 33,
@@ -1211,11 +1147,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "労働災害"
-      ],
+      "field": "D2",
+      "subfield": "D2-21",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1223,7 +1156,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "労働者災害補償保険法"
     },
     {
       "num": 34,
@@ -1248,11 +1182,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "患者中心性"
-      ],
+      "field": "D2",
+      "subfield": "D2-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1260,7 +1191,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "患者医師関係"
     },
     {
       "num": 35,
@@ -1286,10 +1218,7 @@
         "is_deleted": false
       },
       "field": "A3",
-      "subfield": null,
-      "disease": [
-        "急性虫垂炎"
-      ],
+      "subfield": "A2-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1297,7 +1226,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "急性虫垂炎"
     },
     {
       "num": 36,
@@ -1322,11 +1252,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "NST"
-      ],
+      "field": "D2",
+      "subfield": "D2-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1334,7 +1261,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "クリニカルパス"
     },
     {
       "num": 37,
@@ -1360,10 +1288,7 @@
         "is_deleted": false
       },
       "field": "B4",
-      "subfield": null,
-      "disease": [
-        "水腎症"
-      ],
+      "subfield": "A5-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1371,7 +1296,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "水腎症"
     },
     {
       "num": 38,
@@ -1397,10 +1323,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": null,
-      "disease": [
-        "転倒リスク"
-      ],
+      "subfield": "D3-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1408,7 +1331,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "高齢者の転倒"
     },
     {
       "num": 39,
@@ -1433,11 +1357,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "終末期ケア"
-      ],
+      "field": "D2",
+      "subfield": "D2-07",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1445,7 +1366,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "緩和ケアの概念"
     },
     {
       "num": 40,
@@ -1470,11 +1392,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A2",
-      "subfield": null,
-      "disease": [
-        "上縦隔腫瘍"
-      ],
+      "field": "A4",
+      "subfield": "A4-13",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1482,7 +1401,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "縦隔腫瘍〈総論〉"
     },
     {
       "num": 41,
@@ -1508,10 +1428,7 @@
         "is_deleted": false
       },
       "field": "D3",
-      "subfield": null,
-      "disease": [
-        "脂質異常症"
-      ],
+      "subfield": "A6-08",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1519,7 +1436,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "脂質異常症（高脂血症）"
     },
     {
       "num": 42,
@@ -1544,11 +1462,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": null,
-      "disease": [
-        "行動変容ステージ"
-      ],
+      "field": "D2",
+      "subfield": "D2-12",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1556,7 +1471,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "健康増進法"
     },
     {
       "num": 43,
@@ -1581,11 +1497,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A10",
-      "subfield": null,
-      "disease": [
-        "頸動脈狭窄"
-      ],
+      "field": "A8",
+      "subfield": "A8-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1593,7 +1506,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "一過性脳虚血発作（TIA）"
     },
     {
       "num": 44,
@@ -1618,11 +1532,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A10",
-      "subfield": null,
-      "disease": [
-        "頸動脈狭窄"
-      ],
+      "field": "A8",
+      "subfield": "A8-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1630,7 +1541,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "一過性脳虚血発作（TIA）"
     },
     {
       "num": 45,
@@ -1655,11 +1567,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A3",
-      "subfield": null,
-      "disease": [
-        "解釈モデル"
-      ],
+      "field": "D2",
+      "subfield": "D2-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1667,7 +1576,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "医療面接"
     },
     {
       "num": 46,
@@ -1692,11 +1602,8 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A3",
-      "subfield": null,
-      "disease": [
-        "消化性潰瘍"
-      ],
+      "field": "A2",
+      "subfield": "A2-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1704,7 +1611,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "胃・十二指腸潰瘍〈総論〉"
     },
     {
       "num": 47,
@@ -1730,10 +1638,7 @@
         "is_deleted": false
       },
       "field": "B6",
-      "subfield": null,
-      "disease": [
-        "アルコール性肝障害"
-      ],
+      "subfield": "A3-02",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1741,7 +1646,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "アルコール性肝障害〈総論〉"
     },
     {
       "num": 48,
@@ -1767,10 +1673,7 @@
         "is_deleted": false
       },
       "field": "B6",
-      "subfield": null,
-      "disease": [
-        "アルコール依存症"
-      ],
+      "subfield": "B3-04",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1778,7 +1681,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "アルコール依存症〈総論〉"
     },
     {
       "num": 49,
@@ -1804,10 +1708,7 @@
         "is_deleted": false
       },
       "field": "B6",
-      "subfield": null,
-      "disease": [
-        "統合失調症"
-      ],
+      "subfield": "B3-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1815,7 +1716,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "統合失調症"
     },
     {
       "num": 50,
@@ -1841,10 +1743,7 @@
         "is_deleted": false
       },
       "field": "B6",
-      "subfield": null,
-      "disease": [
-        "統合失調症"
-      ],
+      "subfield": "B3-03",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1852,7 +1751,8 @@
         "choices": {},
         "background": null,
         "key_point": null
-      }
+      },
+      "topic": "統合失調症"
     }
   ]
 }
