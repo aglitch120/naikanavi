@@ -27,9 +27,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-09",
-      "topic": "診療補助行為",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "医師の指示があっても採血できない職種",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -62,9 +62,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "腹部診察",
+      "field": "A5",
+      "subfield": "A5-01",
+      "topic": "腹部骨盤部の触診",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -98,8 +98,8 @@
         "is_deleted": false
       },
       "field": "A8",
-      "subfield": "A8-10",
-      "topic": "熱性けいれん",
+      "subfield": "A8-02",
+      "topic": "けいれん",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -167,9 +167,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "輸液路確保",
+      "field": null,
+      "subfield": null,
+      "topic": "静脈留置針による末梢静脈路の確保手技",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -237,9 +237,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-11",
-      "topic": "関節の解剖",
+      "field": "A1",
+      "subfield": "A1-04",
+      "topic": "僧帽弁閉鎖不全症（MR）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -272,9 +272,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "頭頸部診察",
+      "field": null,
+      "subfield": null,
+      "topic": "正常の頸部診察で触知が困難な組織",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -307,9 +307,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-02",
-      "topic": "介入研究",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "ランダム化比較試験〈RCT〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -342,9 +342,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-04",
-      "topic": "高齢者リハビリテーション〈総論〉",
+      "field": "B1",
+      "subfield": "B1-12",
+      "topic": "リハビリテーション〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -377,9 +377,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "医学研究の倫理指針",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "臨床研究における患者・市民参画",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -447,9 +447,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-08",
-      "topic": "熱傷〈総論〉",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -482,9 +482,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-07",
-      "topic": "糖尿病（DM）〈総論〉",
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "飲酒がリスクファクターとならない病態",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -519,7 +519,7 @@
       },
       "field": "D3",
       "subfield": "D3-04",
-      "topic": "高齢者の薬物治療",
+      "topic": "高齢者血圧",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -553,8 +553,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-03",
-      "topic": "体液区分",
+      "subfield": "C3-01",
+      "topic": "体液量に占める細胞外液量の割合が最も高い時期",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -623,8 +623,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-06",
-      "topic": "死亡診断書・死体検案書",
+      "subfield": "D2-07",
+      "topic": "死体検案",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -657,9 +657,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "医療面接",
+      "field": null,
+      "subfield": null,
+      "topic": "解釈モデルを知るための質問",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -692,9 +692,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B3",
-      "subfield": "B3-01",
-      "topic": "妄想",
+      "field": "B6",
+      "subfield": "B6-01",
+      "topic": "妄想を疑う発言",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -727,9 +727,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-01",
-      "topic": "周術期管理〈総論〉",
+      "field": null,
+      "subfield": null,
+      "topic": "術前診察時の患者情報と周術期のリスクとの組合せ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -762,9 +762,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "神経系診察",
+      "field": "A6",
+      "subfield": "A6-01",
+      "topic": "多毛，脱毛，男性化徴候",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -832,9 +832,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B3",
-      "subfield": "B3-02",
-      "topic": "社会不安障害",
+      "field": "D2",
+      "subfield": "D2-10",
+      "topic": "社会福祉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -867,9 +867,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "臨床試験・治験",
+      "field": null,
+      "subfield": null,
+      "topic": "16歳未満を対象にした臨床研究で得る\"賛意\"の名称",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -902,9 +902,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "服薬アドヒアランス",
+      "field": null,
+      "subfield": null,
+      "topic": "「薬は始めたくない」と言う患者への声かけ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -937,9 +937,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-07",
-      "topic": "疼痛マネジメント（ペインコントロール）",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "疼痛緩和の第一目標とする痛み",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -972,9 +972,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "field": "A4",
+      "subfield": "A4-07",
+      "topic": "肺小細胞癌",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1008,8 +1008,8 @@
         "is_deleted": false
       },
       "field": "A9",
-      "subfield": "A9-02",
-      "topic": "結核菌感染症（TB）",
+      "subfield": "A9-01",
+      "topic": "空気感染",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1042,9 +1042,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-01",
-      "topic": "行動変容・意識変容",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "行動変容ステージで関心期（熟考期）にある患者に有効な声がけ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1078,8 +1078,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-05",
-      "topic": "新生児蘇生法",
+      "subfield": "C3-01",
+      "topic": "迅速な対応を要する1か月児のバイタル所見",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1147,9 +1147,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "胃管挿入",
+      "field": null,
+      "subfield": null,
+      "topic": "胃管が30cm抜けた患者への経管栄養再開前の対応",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1184,7 +1184,7 @@
       },
       "field": "B4",
       "subfield": "B4-09",
-      "topic": "閉塞隅角緑内障",
+      "topic": "緑内障〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1218,8 +1218,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-13",
-      "topic": "気胸〈総論〉",
+      "subfield": "A4-01",
+      "topic": "気胸に直ちに行うべき治療",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1252,9 +1252,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "診察のあり方",
+      "field": null,
+      "subfield": null,
+      "topic": "創縫合を行った患者への帰宅前の指導",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1287,9 +1287,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-03",
-      "topic": "梅毒",
+      "field": "A10",
+      "subfield": "A10-01",
+      "topic": "梅毒の治療薬",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1497,9 +1497,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-01",
-      "topic": "神経疾患の治療〈総論〉",
+      "field": "A6",
+      "subfield": "A6-01",
+      "topic": "呼吸困難をみる患者に優先すべき対応",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1637,9 +1637,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-09",
-      "topic": "医療法〈総論〉",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "患者に情報提供する制度",
       "action": null,
       "knowledge_type": null,
       "explanation": {

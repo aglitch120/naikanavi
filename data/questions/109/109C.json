@@ -1,0 +1,690 @@
+{
+  "exam_year": 109,
+  "block": "C",
+  "total_questions": 20,
+  "source": "厚生労働省 第109回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "109C1",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "治療方針の検討段階における医師のパターナリズムに該当するのはどれか。",
+      "choices": {
+        "a": "患者の治療に対する価値観や感情を尊重する。",
+        "b": "患者の家庭・社会生活に関する背景を尊重する。",
+        "c": "患者の状態に対する医学的な適切性を優先する。",
+        "d": "治療が患者に与える影響を患者とともに検討する。",
+        "e": "治療に対する患者の希望や解釈モデルを尊重する。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "パターナリズム",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "109C2",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "新たな治療法の臨床試験への参加を打診する場合の医師の発言として適切でない\nのはどれか。",
+      "choices": {
+        "a": "「ご家族と相談されても結構です」",
+        "b": "「参加されるかされないかは自由意思です」",
+        "c": "「参加後は途中でやめることはできません」",
+        "d": "「十分理解し、納得されてから参加してください」",
+        "e": "「参加されなくても不利益が生じることはありません」"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-04",
+      "topic": "臨床試験・治験",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "109C3",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "正しいのはどれか。\nTP01doc-Cor-6\n2\n4 　6 歳児の所見として正常なのはどれか。\n5 　医療面接における非言語的コミュニケーションはどれか。\n6 　タール便の患者で高値を示す血液検査項目はどれか。\nTP01doc-Cor-7\n3\n7 　全身の浮腫を最もきたしにくいのはどれか。\n8 　頭部外傷で救急搬送された患者が、痛み刺激で開眼せず、意味不明の発声があり、\n疼痛刺激部分からの逃避運動をするとき、Glasgow coma scale による評価で正しい\nのはどれか。\n9 　研究を行う本人が患者や対象者の集団に働きかけて直接データを収集しないのは\nどれか。\nTP01doc-Cor-8",
+      "choices": {
+        "a": "コホート研究",
+        "b": "症例対照研究",
+        "c": "ランダム化比較試験",
+        "d": "ケースシリーズ研究",
+        "e": "メタ分析〈メタアナリシス〉"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-06",
+      "topic": "死亡診断書・死体検案書",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "109C4",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "10　ショックを呈した際に初期から徐脈となるのはどれか。\n11　妊娠中の深部静脈血栓症の発症に最も注意すべきなのはどれか。\n12　関節炎を示唆しない症候はどれか。\nTP01doc-Cor-9",
+      "choices": {
+        "a": "紫　斑",
+        "b": "腫　脹",
+        "c": "疼　痛",
+        "d": "熱　感",
+        "e": "発　赤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-01",
+      "topic": "6歳児",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "109C5",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "13　服薬アドヒアランスに及ぼす影響が最も小さいのはどれか。\n14　身長180 cm、体重90 kg で、高血圧のある事務職の男性に勧めるべき摂取エネ\nルギーと食塩量の組合せで適切なのはどれか。\n摂取エネルギー\n（kcal/日）\n食塩\n（g/日）",
+      "choices": {
+        "a": "1,400",
+        "b": "薬剤の形状",
+        "c": "薬剤の色調",
+        "d": "薬剤に関する医師の説明",
+        "e": "薬剤に対する患者の認識"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "非言語的コミュニケーション",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "109C6",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "10\n6\n10\n10\n15　こころの健康について正しいのはどれか。\nTP01doc-Cor-10\n6\n16　40 歳の男性。ふらつきを主訴に来院した。半年前に人間関係のストレスのため退\n職し引きこもるようになった。食事は即席麺やおにぎり、スナック菓子をスポーツ\nドリンクやビールとともに摂取するのみであった。2 か月前から歩行時にふらつく\nようになり、四肢末端のしびれ感が徐々に増強するため受診した。意識は清明。脈\n拍68/分、整。血圧148/86 mmHg。Mini-Mental State Examination〈MMSE〉30 点\n（30 点満点）。四肢の腱反射は左右差なく減弱し、手袋靴下型の表在覚と振動覚の\n低下を認める。\nこの患者で欠乏しているのはどれか。\nTP01doc-Cor-11",
+      "choices": {
+        "b": "ビタミンB1",
+        "c": "ビタミンB12",
+        "d": "ビタミンC",
+        "e": "ビタミンD",
+        "a": "ビタミンA"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A2",
+      "subfield": "A2-01",
+      "topic": "タール便患者の検査値",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "109C7",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "17　25 歳の男性。臨床研修医。患者の採血を行った後、採血管に分注しようとして\n誤って自分の指に針を刺した。患者は鼠径ヘルニアの手術目的で入院した59 歳の\n男性で、7 日前に施行した術前検査ではB 型肝炎ウイルス、C 型肝炎ウイルス及び\nHIV の感染は指摘されていない。直ちに汚染部位を絞り出し、流水で洗浄を行っ\nた。\nこの研修医に対して洗浄の後に行う対応として適切なのはどれか。\n18　35 歳の女性。3 か月以上続く頭重感を主訴に総合内科を受診した。症状は午後\nから夜に増悪するが日常生活に支障はない。これまで複数の病院を受診して頭部\nCT と頭部MRI とを施行されており異常はないと言われていたが、頭部MRI をも\nう一度行ってほしいと患者は強く希望している。\nこの患者にまず医師がかける言葉として適切なのはどれか。\nTP01doc-Cor-12",
+      "choices": {
+        "a": "「私に任せなさい」",
+        "b": "「医療費の無駄遣いです」",
+        "c": "「頭部MRI の予約をします」",
+        "d": "「脳神経外科を受診しなさい」",
+        "e": "「頭の重いのが続くのが心配なのですね」"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A1",
+      "subfield": "A1-01",
+      "topic": "全身の浮腫をきたしにくい疾患",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "109C8",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "19　75 歳の女性。左眼の霧視を主訴に来院した。昨日から左眼のかすみを自覚し、\n次第に見えにくくなってきた。今朝からは左眼の痛み、頭痛および悪心も生じたた\nめ受診した。矯正視力は右1.5、左0.4。左眼の前眼部写真（別冊No. 1）を別に示す。\n治療として適切なのはどれか。\nTP01doc-Cor-13",
+      "choices": {
+        "a": "アトロピンの点眼",
+        "b": "副腎皮質ステロイドの点滴",
+        "c": "レーザー虹彩切開術",
+        "d": "汎網膜光凝固",
+        "e": "硝子体手術"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-02",
+      "topic": "GCS・JCS",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "109C9",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "20　40 歳の男性。喀痰、咳嗽および微熱を主訴に来院した。2 か月前から喀痰と咳\n嗽とを自覚していたが徐々に増加し、微熱が出現し寝汗をかくようになったため受\n診した。5 年前に糖尿病を指摘されたがそのままにしていた。身長174 cm、体重\n90 kg。体温37.1 ℃。脈拍72/分。血圧138/88 mmHg。呼吸数18/分。SpO2 98 ％\n（room air）。血液所見：赤血球532 万、Hb 16.0 g/dL、Ht 46 ％、白血球7,300、\n血小板24 万。血液生化学所見：血糖320 mg/dL、HbA1c 13.0 ％（基準4.6〜6.2）。\nCRP 2.1 mg/dL。胸部エックス線写真（別冊No. 2）を別に示す。\n次に行うべき検査はどれか。\nTP01doc-Cor-14",
+      "choices": {
+        "a": "胸部MRI",
+        "b": "FDG-PET",
+        "c": "呼吸機能検査",
+        "d": "喀痰塗抹検査",
+        "e": "気管支内視鏡検査"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "研究モデル",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "109C10",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "21　24 歳の女性。下腹部痛と性器出血とを主訴に来院した。2 週前に妊娠6 週0 日と\n診断された。その後、軽度の下腹部痛が続き、昨日初めて性器出血を認めたため受\n診した。腟鏡診で暗赤色の血液を少量認めるが、子宮口からの血液流出はない。内\n診で子宮は鵞卵大で軟、子宮口は閉鎖している。経腟超音波検査で子宮内に胎嚢が\n認められ、その中の胎児は頭殿長〈CRL〉1.5 cm で心拍動が同定され、胎囊の外側\nに3 × 3 × 2 cm の低エコー領域を認めた。\n診断として正しいのはどれか。\n22　64歳の女性。頻脈と息切れとを主訴に来院した。高血圧症で治療中である。約2\n週前から家庭血圧の測定で脈拍が90/分を超えるようになり、1 週前からは2 階まで\nの階段の昇降で息切れを自覚するようになったため受診した。食生活に偏りはなく、\n過去1 年の体重はほとんど変化なく、便通はやや頻回で暗赤色便であったという。\n体温36.2 ℃。脈拍96/分、整。血圧132/72 mmHg。呼吸数24/分。眼瞼結膜は貧\n血様である。眼球結膜に黄染を認めない。甲状腺腫を触知しない。心基部にⅠ/Ⅵ\nの収縮期雑音を聴取する。呼吸音に異常を認めない。腹部は平坦、軟で、肝・脾を\n触知しない。\n次に診察する部位で最も適切なのはどれか。\nTP01doc-Cor-15",
+      "choices": {
+        "a": "眼　底",
+        "b": "上　肢",
+        "c": "乳　房",
+        "d": "直　腸",
+        "e": "下　肢"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-07",
+      "topic": "ショック〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "109C11",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "23　1 歳の女児。夕方にイチゴジャム様の便を認めたため母親に連れられて来院した。\n今朝から嘔吐を数回認め、間欠的に機嫌が悪かった。身長75 cm、体重8.8 ㎏。体\n温37.0 ℃。脈拍108/分、整。SpO2 96 ％（room air）。心音と呼吸音とに異常を認\nめない。腹部は平坦、軟であるが、臍部右横に5 cm 大の軟らかい腫瘤を触知する。\n腹部超音波像（別冊No. 3）を別に示す。\n患児の家族への説明として正しいのはどれか。\nTP01doc-Cor-16",
+      "choices": {
+        "a": "「抗菌薬を処方します」",
+        "b": "「鎮痛薬をお尻に入れます」",
+        "c": "「制吐薬をお尻に入れます」",
+        "d": "「すぐに開腹手術が必要です」",
+        "e": "「圧をかけた浣腸による整復が必要です」"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "109C12",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "24　20 歳の男性。オートバイ事故にて受傷し救急搬送された。来院時、発語はなく呼\nびかけに対して開眼は認められない。頭部と顔面とに打撲痕が認められ、鼻腔と口\n腔から呼気時に血液があふれ出てきている。脈拍60/分、整。血圧140/80 mmHg。\n呼吸数32/分。SpO2 88 ％（リザーバー付マスク10 L/分酸素投与下）。\n最も優先すべきなのはどれか。\nTP01doc-Cor-17",
+      "choices": {
+        "a": "輸　血",
+        "b": "頭部CT",
+        "c": "気管挿管",
+        "d": "鼻出血の止血",
+        "e": "救急隊からの病歴聴取"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B1",
+      "subfield": "B1-06",
+      "topic": "化膿性関節炎",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "109C13",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "25　52 歳の男性。意識障害のため搬入された。勤務していた工場で作業中に倒れ、\n同僚が119 番と110 番に通報し救急搬送された。搬入時、意識レベルはJCSⅢ-300。\n体温41.0 ℃。脈拍120/分、整。血圧80/50 mmHg。呼吸数28/分。搬入時には家\n族に連絡がとれず既往歴や生活歴が分からなかった。同僚から患者は不眠症で複数\nの医療機関から薬を処方されていたようだとの話があった。熱中症を疑い、状況を\n確認するため連絡した問い合わせ先と、その返答とを表に示す。\n問い合わせ先\n返　答\n①\n救急隊員\n現場の状況を医師に伝えるのは救急隊員の役割ではありません。\n②\n警察官\n発症現場でなく、病院を所轄する警察署が取り扱うべき事件です。\n③\n産業医\n事業所の労働環境の管理は産業医の職務でも責任でもありません。\n④\nかかりつけ医\n一般に睡眠導入薬は熱中症に影響せず、私には無関係です。\n⑤\nかかりつけ\n薬局の薬剤師\n個人情報ですが非常事態なので調剤の内容を伝えます。\n正しいのはどれか。\nTP01doc-Cor-18",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-04",
+      "topic": "服薬アドヒアランス",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "109C14",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "次の文を読み、26、27 の問いに答えよ。\n65 歳の女性。動悸を訴え、外来の処置室で臥床している。\n現病歴　：　本日、眼底検査のため来院し眼科外来の待合室の長椅子に座って待って\nいた。看護師が声かけしたところ、応答が鈍く、冷汗がみられた。体調について尋\nねたところ、患者は動悸を訴えた。処置室へ移動するために、立ち上がろうとした\nときにふらつきがみられた。処置室で臥床後も動悸は続いている。\n既往歴　：　5 年前から高血圧症と糖尿病とで内科で治療中である。カルシウム拮抗\n薬、利尿薬、スルホニル尿素薬およびビグアナイド薬を内服し血圧は150/92 mmHg\n程度、この1 年間のHbA1c は8.5 ％程度。\n生活歴　：　喫煙は10 本/日を40 年間。\n家族歴　：　姉が脳梗塞で右片麻痺。弟が急性心筋梗塞のため60 歳で死亡。\nTP01doc-Cor-19",
+      "choices": {},
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "高血圧をもつ事務職男性に勧めるべき摂取エネルギーと食塩量",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "109C15",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "26　現時点でのこの患者への質問として最も適切なのはどれか。\n現　症　：　意識レベルはJCSⅠ- 1 。体温36.4 ℃。脈拍108/分、整。血圧\n166/96 mmHg。呼吸数22/分。SpO2 98 ％（room air）。\n直ちに行うべき検査はどれか。\n27\nTP01doc-Cor-20",
+      "choices": {
+        "a": "血糖測定",
+        "b": "頭部MRI",
+        "c": "心エコー検査",
+        "d": "甲状腺機能検査",
+        "e": "胸部エックス線撮影"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "こころの健康",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "109C16",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "次の文を読み、28、29 の問いに答えよ。\n60 歳の女性。めまいを主訴に来院した。\n現病歴　：　昨日の午後、昼寝から起き上がろうとしたところ天井がぐるぐる回るよ\nうなめまいが出現した。横になったところ、めまいは約30 秒で軽快した。その後、\nめまいは安静にしていると生じないが、起き上がったり寝返りを打ったりすると出\n現していた。今朝も同様のめまいが起こったため受診した。頭痛や難聴はない。こ\nれまでに同様の症状を経験したことはない。\n既往歴　：　28 歳時に腎盂腎炎。\n家族歴　：　父親が脳梗塞。母親が糖尿病。\n現　症　：　意識は清明。身長155 cm、体重52 kg。体温36.6 ℃。脈拍84/分、整。\n血圧132/78 mmHg。呼吸数16/分。SpO2 98 ％（room air）。皮膚に異常を認めない。\n心音と呼吸音とに異常を認めない。腹部は平坦、軟で、肝・脾を触知しない。脳神\n経に異常を認めず、腱反射に異常を認めない。運動麻痺、感覚異常および運動失調\nを認めない。\n検査所見　：　血糖98 mg/dL。\nTP01doc-Cor-21",
+      "choices": {},
+      "answer": "b",
+      "format": {
+        "type1": "臨床",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A6",
+      "subfield": "A6-13",
+      "topic": "ビタミン欠乏症〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "109C17",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "28　この患者に認められる可能性が高い症候はどれか。\n29　診断のために行う頭位眼振検査で正しいのはどれか。\nTP01doc-Cor-22",
+      "choices": {
+        "a": "患者を閉眼させて行う。",
+        "b": "頸部を前屈させて行う。",
+        "c": "Frenzel 眼鏡を用いて行う。",
+        "d": "検者の指先を注視させて行う。",
+        "e": "片方の外耳道に冷水を注入する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "臨床",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A9",
+      "subfield": "A9-01",
+      "topic": "針刺し事故",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "109C18",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "次の文を読み、30、31 の問いに答えよ。\n45 歳の女性。動悸と体重減少とを主訴に来院した。\n現病歴　：　1 か月前から動悸、発汗および手指振戦が出現し改善しないため受診し\nた。食欲は普通だが1 か月間で体重が5 kg 減少した。口渇、多飲および多尿は自\n覚していない。\n既往歴　：　9 歳で虫垂炎。\n生活歴　：　喫煙歴と飲酒歴とはない。\n家族歴　：　姉が脂質異常症で治療中。\n現　症　：　意識は清明。身長163 cm、体重58 kg。体温37.1 ℃。脈拍102/分、不\n整。血圧116/64 mmHg。眼瞼結膜は貧血様でない。眼瞼短縮を伴う眼球突出を認\nめる。甲状腺はびまん性に腫大している。心音と呼吸音とに異常を認めない。腹部\nは平坦、軟で、肝・脾を触知しない。皮膚は湿潤。下腿に浮腫を認めない。\n検査所見　：　血液所見：赤血球470 万、Hb 12.9 g/dL、Ht 40 ％、白血球4,800、\n血小板21 万。血液生化学所見：ALP 478 IU/L（基準115〜359）、空腹時血糖\n92 mg/dL、総コレステロール122 mg/dL、TSH 0.02 nU/mL 未満（基準0.4〜4.0）、\nFT4 8.5 ng/dL（基準0.8〜1.8）。\nTP01doc-Cor-23",
+      "choices": {},
+      "answer": "e",
+      "format": {
+        "type1": "臨床",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "共感的対応となる発言",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "109C19",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "30　診断のために追加すべき検査項目はどれか。",
+      "choices": {
+        "a": "抗GAD 抗体",
+        "b": "血中カテコラミン",
+        "c": "抗TSH 受容体抗体",
+        "d": "脳性ナトリウム利尿ペプチド〈BNP〉",
+        "e": "抗甲状腺ペルオキシダーゼ〈TPO〉抗体"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "臨床",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B4",
+      "subfield": "B4-09",
+      "topic": "閉塞隅角緑内障",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "109C31",
+      "exam_year": 109,
+      "block": "C",
+      "stem": "内服治療の開始早期に、変動に最も注意すべき検査項目はどれか。\nTP01doc-Cor-24\nTP01doc-Cor-25\nTP01doc-Cor-26\nTP01doc-Cor-27\nTP01doc-Cor-28",
+      "choices": {
+        "a": "ALP",
+        "b": "顆粒球数",
+        "c": "網赤血球数",
+        "d": "クレアチニン",
+        "e": "HDL コレステロール"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "長文",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A6",
+      "subfield": "A6-03",
+      "topic": "Basedow病",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

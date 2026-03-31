@@ -62,9 +62,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B6",
-      "subfield": "B6-02",
-      "topic": "放射線障害〈総論〉",
+      "field": "D2",
+      "subfield": "D2-21",
+      "topic": "気圧による障害（締め付け障害，減圧症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -97,9 +97,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-08",
-      "topic": "骨盤骨折",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "骨盤外傷を疑う患者の診察",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -169,7 +169,7 @@
       },
       "field": "D2",
       "subfield": "D2-13",
-      "topic": "母子保健統計〈総論〉",
+      "topic": "健やか親子21",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -204,7 +204,7 @@
       },
       "field": "A7",
       "subfield": "A7-01",
-      "topic": "輸血〈総論〉",
+      "topic": "血液疾患と治療薬の組合せ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -237,9 +237,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-17",
-      "topic": "院内感染対策",
+      "field": null,
+      "subfield": null,
+      "topic": "手袋脱衣の順番",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -307,9 +307,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-04",
-      "topic": "高齢者の薬物治療",
+      "field": null,
+      "subfield": null,
+      "topic": "お薬手帳の役割",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -378,8 +378,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-03",
-      "topic": "合併症妊娠〈総論〉",
+      "subfield": "C1-01",
+      "topic": "母体に投与した薬剤と児への影響との組合せ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -413,8 +413,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "subfield": "C1-01",
+      "topic": "経産婦の一般的な分娩第2期の所要時間",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -447,9 +447,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-01",
-      "topic": "循環器の生理〈総論〉",
+      "field": "A4",
+      "subfield": "A4-08",
+      "topic": "過敏性肺（臓）炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -484,7 +484,7 @@
       },
       "field": "D2",
       "subfield": "D2-10",
-      "topic": "社会保障制度",
+      "topic": "生活保護",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -519,7 +519,7 @@
       },
       "field": "D2",
       "subfield": "D2-21",
-      "topic": "産業医",
+      "topic": "作業環境管理",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -589,7 +589,7 @@
       },
       "field": "A7",
       "subfield": "A7-01",
-      "topic": "リンパ節腫脹",
+      "topic": "著明な脾腫をきたす血液疾患",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -623,8 +623,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-04",
-      "topic": "正常分娩",
+      "subfield": "C1-01",
+      "topic": "児頭の回旋所見（パルトグラム）の判読",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -657,9 +657,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "診察のあり方",
+      "field": null,
+      "subfield": null,
+      "topic": "臨床病理検討会〈CPC〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -729,7 +729,7 @@
       },
       "field": "D3",
       "subfield": "D3-04",
-      "topic": "加齢変化",
+      "topic": "高齢者血圧",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -762,9 +762,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-01",
-      "topic": "人工血管，人工弁",
+      "field": "A4",
+      "subfield": "A4-08",
+      "topic": "過敏性肺（臓）炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -798,8 +798,8 @@
         "is_deleted": false
       },
       "field": "D2",
-      "subfield": "D2-02",
-      "topic": "偶然誤差",
+      "subfield": "D2-03",
+      "topic": "悪性新生物（統計）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -833,8 +833,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-04",
-      "topic": "授乳・離乳",
+      "subfield": "C3-01",
+      "topic": "離乳開始の目安となる乳児の発達",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -867,9 +867,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B3",
-      "subfield": "B3-01",
-      "topic": "離人症",
+      "field": "B6",
+      "subfield": "B6-01",
+      "topic": "知覚の障害に分類される精神科用語",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -903,8 +903,8 @@
         "is_deleted": false
       },
       "field": "A1",
-      "subfield": "A1-07",
-      "topic": "動脈硬化",
+      "subfield": "A1-01",
+      "topic": "頸部を圧迫した際に閉塞しない脈管",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -937,9 +937,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-14",
-      "topic": "介護保険法〈総論〉",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "後期高齢者医療費の財源負担割合",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1009,7 +1009,7 @@
       },
       "field": "A6",
       "subfield": "A6-07",
-      "topic": "糖尿病（DM）〈総論〉",
+      "topic": "インスリン自己免疫症候群",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1120,7 +1120,7 @@
       },
       "field": "B4",
       "subfield": "B4-01",
-      "topic": "動眼神経麻痺",
+      "topic": "複視をきたす疾患",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1158,7 +1158,7 @@
       },
       "field": "D2",
       "subfield": "D2-20",
-      "topic": "学校保健安全法〈総論〉",
+      "topic": "学校医",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1194,9 +1194,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A10",
-      "subfield": "A10-01",
-      "topic": "低補体血症",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1234,7 +1234,7 @@
       },
       "field": "D2",
       "subfield": "D2-21",
-      "topic": "職業癌",
+      "topic": "健康管理（健康診断）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1268,8 +1268,8 @@
         "is_deleted": false
       },
       "field": "B5",
-      "subfield": "B5-08",
-      "topic": "声帯ポリープ",
+      "subfield": "B5-01",
+      "topic": "声帯麻痺",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1374,7 +1374,7 @@
       },
       "field": "C3",
       "subfield": "C3-05",
-      "topic": "新生児の成熟度の評価",
+      "topic": "正常新生児",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1444,7 +1444,7 @@
       },
       "field": "C3",
       "subfield": "C3-05",
-      "topic": "新生児けいれん",
+      "topic": "薬剤の副作用（新生児）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1547,9 +1547,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-22",
-      "topic": "化学物質過敏症",
+      "field": "D1",
+      "subfield": "D1-03",
+      "topic": "シックハウス症候群",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1582,9 +1582,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-04",
-      "topic": "日常生活動作（ADL）",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1653,8 +1653,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-06",
-      "topic": "染色体異常〈総論〉",
+      "subfield": "C3-01",
+      "topic": "患児と同じ疾患を持つ可能性が高い親族",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1687,9 +1687,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-01",
-      "topic": "周術期管理〈総論〉",
+      "field": "A7",
+      "subfield": "A7-03",
+      "topic": "本態性血小板血症（ET）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1723,8 +1723,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-04",
-      "topic": "授乳・離乳",
+      "subfield": "C3-01",
+      "topic": "体重増加不良の10か月児の母親へ説明する対応方針",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1757,9 +1757,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-16",
-      "topic": "精神保健福祉センター",
+      "field": "B3",
+      "subfield": "B3-03",
+      "topic": "うつ病",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1793,8 +1793,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-03",
-      "topic": "精神運動発達",
+      "subfield": "C3-01",
+      "topic": "1歳6か月児で発達の遅れがみられる項目",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1897,9 +1897,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-14",
-      "topic": "在宅医療〈総論〉",
+      "field": "A4",
+      "subfield": "A4-03",
+      "topic": "誤嚥性肺炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1967,9 +1967,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-07",
-      "topic": "気道確保",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "気管挿管困難な患者に直ちに行う処置",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2002,9 +2002,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-17",
-      "topic": "予防接種（定期・臨時・任意）",
+      "field": "C3",
+      "subfield": "C3-01",
+      "topic": "ロタウイルスワクチンの接種を不適当と判断する理由",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2153,9 +2153,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-02",
-      "topic": "骨膜炎",
+      "field": "B1",
+      "subfield": "B1-06",
+      "topic": "化膿性関節炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2188,9 +2188,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-02",
-      "topic": "黄色ブドウ球菌",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2258,9 +2258,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "徒手筋力テスト",
+      "field": "A7",
+      "subfield": "A7-03",
+      "topic": "多発性骨髄腫（MM）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2328,9 +2328,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-12",
-      "topic": "リハビリテーションの用具",
+      "field": "B2",
+      "subfield": "B2-01",
+      "topic": "自宅療養に適切な装具・福祉用具",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2367,8 +2367,8 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-09",
-      "topic": "排尿障害",
+      "subfield": "A5-01",
+      "topic": "排尿困難をきたす薬剤",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2406,8 +2406,8 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-08",
-      "topic": "腎盂腎炎",
+      "subfield": "A5-01",
+      "topic": "変更先の抗菌薬と投与方法",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2478,9 +2478,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-07",
-      "topic": "心停止（CPA）〈総論〉",
+      "field": "A8",
+      "subfield": "A8-02",
+      "topic": "意識障害〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2513,9 +2513,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-02",
-      "topic": "睡眠薬依存・中毒",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "自殺企図が疑われる患者の息子に対する重要な質問",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2548,9 +2548,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-02",
-      "topic": "薬物中毒の処置〈総論〉",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "考えられるトキシドローム",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2583,9 +2583,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-07",
-      "topic": "ショック〈総論〉",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "研修医が優先すべき対応",
       "action": null,
       "knowledge_type": null,
       "explanation": {

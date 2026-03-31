@@ -97,9 +97,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A1",
-      "subfield": "A1-02",
-      "topic": "心室細動（VF）",
+      "field": "D1",
+      "subfield": "D1-07",
+      "topic": "ショック〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -132,9 +132,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B3",
-      "subfield": "B3-06",
-      "topic": "チック〈総論〉",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -239,7 +239,7 @@
       },
       "field": "A5",
       "subfield": "A5-01",
-      "topic": "人工透析〈総論〉",
+      "topic": "血液透析に比較した腹膜透析",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -344,7 +344,7 @@
       },
       "field": "B4",
       "subfield": "B4-10",
-      "topic": "穿孔性眼外傷",
+      "topic": "吹き抜け骨折",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -532,9 +532,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-04",
-      "topic": "高齢者の転倒",
+      "field": "A6",
+      "subfield": "A6-12",
+      "topic": "骨粗鬆症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -672,9 +672,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A10",
-      "subfield": "A10-04",
-      "topic": "多発性筋炎・皮膚筋炎（PM／DM）",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -743,8 +743,8 @@
         "is_deleted": false
       },
       "field": "B2",
-      "subfield": "B2-05",
-      "topic": "掌蹠膿疱症",
+      "subfield": "B2-06",
+      "topic": "尋常性狼瘡",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -918,8 +918,8 @@
         "is_deleted": false
       },
       "field": "A5",
-      "subfield": "A5-13",
-      "topic": "腎・尿路結石",
+      "subfield": "A5-01",
+      "topic": "膀胱結石",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -988,8 +988,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-13",
-      "topic": "気胸〈総論〉",
+      "subfield": "A4-01",
+      "topic": "胸腔穿刺，胸腔ドレナージ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1094,7 +1094,7 @@
       },
       "field": "A1",
       "subfield": "A1-02",
-      "topic": "心室頻拍（VT）",
+      "topic": "発作性上室頻拍（PSVT）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1197,9 +1197,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B1",
-      "subfield": "B1-03",
-      "topic": "腰椎椎間板ヘルニア",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1269,7 +1269,7 @@
       },
       "field": "B1",
       "subfield": "B1-04",
-      "topic": "腱板障害",
+      "topic": "腱断裂",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1337,9 +1337,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-07",
-      "topic": "異物の誤飲誤食〈総論〉",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "加熱式たばこスティック誤飲への対応",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1444,7 +1444,7 @@
       },
       "field": "A4",
       "subfield": "A4-13",
-      "topic": "縦隔腫瘍〈総論〉",
+      "topic": "胚細胞腫瘍（縦隔）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1582,9 +1582,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A5",
-      "subfield": "A5-06",
-      "topic": "糖尿病性腎症",
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "腎機能低下を抑制するために追加する薬剤",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1619,7 +1619,7 @@
       },
       "field": "A4",
       "subfield": "A4-13",
-      "topic": "縦隔腫瘍〈総論〉",
+      "topic": "神経原性腫瘍",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1688,8 +1688,8 @@
         "is_deleted": false
       },
       "field": "C2",
-      "subfield": "C2-06",
-      "topic": "卵巣過剰刺激症候群（OHSS）",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1792,9 +1792,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-07",
-      "topic": "伝染性単核症",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1897,9 +1897,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-02",
-      "topic": "緑膿菌感染症",
+      "field": "A10",
+      "subfield": "A10-01",
+      "topic": "多剤耐性緑膿菌〈MDRP〉検出後の感染予防策",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2037,9 +2037,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B3",
-      "subfield": "B3-06",
-      "topic": "人格障害〈総論〉",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2142,9 +2142,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A3",
-      "subfield": "A3-04",
-      "topic": "急性膵炎",
+      "field": "A4",
+      "subfield": "A4-08",
+      "topic": "過敏性肺（臓）炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2177,9 +2177,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-07",
-      "topic": "アセトン血性嘔吐症",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2212,9 +2212,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-02",
-      "topic": "猩紅熱",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2323,9 +2323,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-05",
-      "topic": "Cushing症候群〈総論〉",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2363,7 +2363,7 @@
       },
       "field": "A1",
       "subfield": "A1-02",
-      "topic": "心房細動（AF）",
+      "topic": "心房粗動（AFL）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2475,9 +2475,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B6",
-      "subfield": "B6-02",
-      "topic": "放射線障害〈総論〉",
+      "field": "D2",
+      "subfield": "D2-21",
+      "topic": "放射線障害の管理",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2581,9 +2581,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-05",
-      "topic": "輸液〈総論〉",
+      "field": null,
+      "subfield": null,
+      "topic": "ブドウ糖液投与量の算出《計算問題》",
       "action": null,
       "knowledge_type": null,
       "explanation": {

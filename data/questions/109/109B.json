@@ -1,0 +1,1040 @@
+{
+  "exam_year": 109,
+  "block": "B",
+  "total_questions": 30,
+  "source": "厚生労働省 第109回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "109B1",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "対麻痺患者の参加制約にあたるのはどれか。",
+      "choices": {
+        "a": "抑うつ気分になる。",
+        "b": "仙骨部に褥瘡がある。",
+        "c": "1 日4 回自己導尿している。",
+        "d": "移動には電動車椅子が必要である。",
+        "e": "3 段の段差のあるカフェで会食できない。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "対麻痺患者の参加制約",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "109B2",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "在宅ケアについて正しいのはどれか。",
+      "choices": {
+        "a": "人工呼吸療法は在宅で可能である。",
+        "b": "ケアプランは介護福祉士が作成する。",
+        "c": "訪問介護には医師の指示書が必要である。",
+        "d": "往診は計画的・定期的に行う在宅医療である。",
+        "e": "通所リハビリテーションには医療保険が適用される。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "在宅ケア",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "109B3",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "リハビリテーションに重点が置かれているのはどれか。\nTP01doc-Bor-8\n2\n4 　世界保健機関〈WHO〉について正しいのはどれか。\n5 　不慮の事故のうち、「交通事故」、「転倒・転落」、「溺死及び溺水」、「窒息」、「中\n毒」の5 種類における死亡数の年次推移を図に示す。\n①の予防になるのはどれか。\n平成7 年\n0\n2,000\n4,000\n6,000\n8,000\n10,000\n12,000\n14,000\n16,000\n（人）\n死\n亡\n数\n平成12 年\n平成17 年\n平成22 年\n平成24 年\n①\n②\n③\n④\n⑤\nTP01doc-Bor-9\n3\n6 　児童相談所の業務はどれか。\n7 　我が国の感染症対策において発生数の全数把握を行っているのはどれか。\n8 　水道法に基づく水質基準で検出されないことと規定されているのはどれか。\nTP01doc-Bor-10",
+      "choices": {
+        "a": "塩素酸",
+        "b": "大腸菌",
+        "c": "カルシウム",
+        "d": "マグネシウム",
+        "e": "総トリハロメタン"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B1",
+      "subfield": "B1-12",
+      "topic": "リハビリテーション〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "109B4",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "9 　蝶形骨にあるのはどれか。\n10　大動脈弓の高さにおける解剖学的位置関係で誤っているのはどれか。\n11　器質性精神障害に特徴的なのはどれか。\nTP01doc-Bor-11",
+      "choices": {
+        "a": "保　続",
+        "b": "観念奔逸",
+        "c": "思考制止",
+        "d": "自生思考",
+        "e": "情動麻痺"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-23",
+      "topic": "世界保健機関（WHO）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "109B5",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "12　糖代謝の臨床的評価で正しいのはどれか。\n13　日齢10 の新生児で日齢0 の新生児より低値を示すのはどれか。\n14　思春期前後の男子において誤っているのはどれか。\nTP01doc-Bor-12",
+      "choices": {
+        "a": "女子より思春期到来が早い。",
+        "b": "声変りの前に恥毛が発生する。",
+        "c": "女子より骨端線の閉鎖が早い。",
+        "d": "二次性徴はTanner 分類で評価する。",
+        "e": "二次性徴の開始時には精巣容積が増大する。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-03",
+      "topic": "不慮の事故（統計）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "109B6",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "15　隣接遺伝子症候群はどれか。\n16　好中球の異常によるのはどれか。\n17　造影剤腎症の発生に関係がないのはどれか。\nTP01doc-Bor-13",
+      "choices": {
+        "a": "年　齢",
+        "b": "腎機能",
+        "c": "検査前の飲水量",
+        "d": "造影剤の投与量",
+        "e": "気管支喘息の既往"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-13",
+      "topic": "児童相談所",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "109B7",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "18　医療計画に含まれないのはどれか。\n19　自律神経障害による突然死に最も注意すべきなのはどれか。\n20　身長について誤っているのはどれか。\nTP01doc-Bor-14",
+      "choices": {
+        "a": "出生時の平均は50 cm である。",
+        "b": "出生時は4 頭身である。",
+        "c": "11 歳の女児は男児より高い。",
+        "d": "12 歳で出生時の3 倍になる。",
+        "e": "思春期に1 年間の伸び率が最大になる。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "109B8",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "21　新生児期に死亡率が最も高い先天性疾患はどれか。\n22　母体の抗SS-A 抗体のクラスで新生児の心拍数に異常をきたすのはどれか。\n23　皮膚検査の陽性所見の写真（別冊No. 1）を別に示す。\nこの検査はどれか。\nTP01doc-Bor-15",
+      "choices": {
+        "a": "針反応",
+        "b": "硝子圧法",
+        "c": "皮膚描記法",
+        "d": "皮内テスト",
+        "e": "光線テスト"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "『水道法』における水質基準で検出されないもの",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "109B9",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "24　検査用の試験紙（別冊No. 2）を別に示す。\nこの試験紙を用いて診断するのはどれか。\n25　経口摂取ができない高齢者の栄養管理について正しいのはどれか。\n26　一般的に異所性移植が行われるのはどれか。\nTP01doc-Bor-16",
+      "choices": {
+        "a": "肺",
+        "b": "心　臓",
+        "c": "肝　臓",
+        "d": "膵　臓",
+        "e": "小　腸"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B5",
+      "subfield": "B5-01",
+      "topic": "蝶形骨を構成する骨",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "109B10",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "27　脳血管障害とその治療の組合せで適切なのはどれか。\n28　右中殿筋不全患者の歩行時にみられるのはどれか。\n29　平成20〜24 年の社会状況で正しいのはどれか。2 つ選べ。\nTP01doc-Bor-17",
+      "choices": {
+        "a": "完全失業率は2 ％以下である。",
+        "b": "非正規雇用の割合は増加している。",
+        "c": "完全失業率は40〜50 歳が最も高い。",
+        "d": "父母がいる児童の世帯の約80 ％で父母とも仕事をしている。",
+        "e": "児童のいる世帯の母の仕事は正規雇用より非正規の割合が高い。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A4",
+      "subfield": "A4-01",
+      "topic": "大動脈弓の高さにおける解剖学的位置関係",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "109B11",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "30　健康増進法に規定されているのはどれか。2 つ選べ。\n31　学校医の職務はどれか。2 つ選べ。\n32　心臓について正しいのはどれか。2 つ選べ。\nTP01doc-Bor-18",
+      "choices": {
+        "a": "僧帽弁は半月弁である。",
+        "b": "三尖弁には腱索が付着する。",
+        "c": "僧帽弁前尖は左室流出路を形成する。",
+        "d": "僧帽弁のすべての腱索は1 本の乳頭筋に付着している。",
+        "e": "肺動脈弁と大動脈弁とは線維性組織を隔てて隣接している。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B3",
+      "subfield": "B3-04",
+      "topic": "器質性精神障害",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "109B12",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "33　造血部位の組合せで正しいのはどれか。2 つ選べ。\n34　胎盤について正しいのはどれか。2 つ選べ。\n35　児への直接の授乳を避けることで母乳を介した母子感染予防効果がある病原体は\nどれか。2 つ選べ。\nTP01doc-Bor-19",
+      "choices": {
+        "a": "E 型肝炎ウイルス",
+        "b": "インフルエンザウイルス",
+        "c": "ヒト免疫不全ウイルス〈HIV〉",
+        "d": "ヒトパピローマウイルス〈HPV〉",
+        "e": "ヒトT 細胞白血病ウイルス〈HTLV-Ⅰ〉"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-03",
+      "topic": "糖代謝異常合併妊娠〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "109B13",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "36　婦人科疾患と帯下の特徴の組合せで正しいのはどれか。2 つ選べ。\n37　がんの緩和医療について正しいのはどれか。2 つ選べ。\n38　閉塞性ショックをきたすのはどれか。3 つ選べ。\nTP01doc-Bor-20",
+      "choices": {
+        "a": "肺塞栓症",
+        "b": "消化管出血",
+        "c": "緊張性気胸",
+        "d": "心タンポナーデ",
+        "e": "アナフィラキシー"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 3,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-05",
+      "topic": "薬剤の副作用（新生児）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "109B14",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "39　Kiesselbach 部位から出血している高齢者に聴取すべき既往はどれか。3 つ選べ。\n40　84 歳の女性。全身倦怠感と食欲不振とを主訴に来院した。6 か月前に肺転移を\n伴う高度進行胃癌の診断を受けた。抗癌化学療法などの積極的治療を拒否し自宅で\n療養していたが、2 週前から倦怠感が出現し、徐々に食欲の減退を自覚するように\nなったため受診した。現在は薬剤の内服と1 日600 kcal 程度の軟らかい食事の摂\n取は可能である。がんによる悪液質が進行しており余命は1 か月程度と考えられる。\n長男夫婦と3 人暮らしで患者本人と家族はともに延命治療を望まず、このまま自然\nに任せることを希望している。\n今後の方針として適切なのはどれか。\nTP01doc-Bor-21",
+      "choices": {
+        "a": "在宅での看取り",
+        "b": "外来での末梢静脈栄養",
+        "c": "在宅での経鼻経管栄養",
+        "d": "在宅での中心静脈栄養",
+        "e": "入院での経皮的内視鏡下胃瘻造設"
+      },
+      "answer": [
+        "a",
+        "c"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 3,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-03",
+      "topic": "二次性徴",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "109B15",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "41　60 歳の男性。1 か月前から続く咳嗽を主訴に来院した。身長165 cm、体重70 kg。\n血圧120/82 mmHg。喫煙は20 本/日を40 年間。飲酒は日本酒1 合/日を30 年間。\n運動は通勤時に1 日平均5,000 歩。胸部エックス線写真と喀痰細胞診とに異常を認\nめない。\n咳嗽の治療とともに指導すべきなのはどれか。\n42　6 歳の女児。発達の遅れを心配した母親に連れられて来院した。乳幼児期から言\n葉や歩行の発達が遅れ、知的障害を伴っていた。遺伝性の疾患が心配で受診が遅れ\nたが、地域に同じような症状を訴える人がいることがわかり心配になって受診した。\n妹も同じ症状がある。感染症を示唆する所見はない。医師が相談した保健所のその\n後の調査により、言語障害、歩行障害および知的障害のいずれかを認める多数の患\n者の存在が次第に明らかになった。患者が居住する人口約10 万人の湾岸地域にお\nける環境汚染物質による曝露が疑われるが、原因は特定できていない。\nこのような状況で、患者集団に対する初期の対応として適切なのはどれか。\nTP01doc-Bor-22",
+      "choices": {
+        "a": "地域住民の集団移転",
+        "b": "裁判による患者認定",
+        "c": "患者の生体試料の収集",
+        "d": "患者と家族の遺伝子検査",
+        "e": "行政による被害認定のための審査"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "109B16",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "43　生後3 日の新生児。体動は活発で泣き声は強く哺乳も良好である。外表に奇形を\n認めない。\nこの児に合致しないのはどれか。\n44　89 歳の女性。大腿骨骨折で入院中である。10 年前にAlzheimer 型認知症と診断\nされ内服治療中である。2 日前に室内で転倒し動けなくなり救急車で搬送された。\n左大腿骨転子部骨折を認め、昨日、骨接合術を受けた。手術当日の経過は順調で夜\n間も良眠した。術後1 日目の夕方から落ち着かなくなり、夜になって立ち上がろう\nとして一晩中大声で看護師を呼び続けていた。\n対応として適切なのはどれか。\nTP01doc-Bor-23",
+      "choices": {
+        "a": "強く叱責する。",
+        "b": "疼痛管理を見直す。",
+        "c": "体幹抑制を終日行う。",
+        "d": "ナースコールを取り外す。",
+        "e": "同様に叫ぶ患者と同室にする。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "109B17",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "45　34 歳の男性。全身の皮疹を主訴に来院した。数年前から白色の鱗屑を伴う紅斑\nが体幹と四肢とに多数みられ痒みを伴っていた。1 か月前から皮疹が増加したため\n受診した。背部の写真（別冊No. 3）を別に示す。\nこの患者でみられるのはどれか。\nTP01doc-Bor-24",
+      "choices": {
+        "a": "Darier 徴候",
+        "b": "Köbner 現象",
+        "c": "Leser-Trélat 徴候",
+        "d": "Nikolsky 現象",
+        "e": "Tinel 徴候"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "109B18",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "46　70 歳の女性。咳嗽、喀痰および息切れを主訴に来院した。6 年前から咳嗽と喀\n痰とを自覚していた。1 年前から坂道や階段を昇るときに呼吸困難を感じるように\nなり、風邪をひくと喘鳴が出現することがあった。1 か月前から100 m 歩くと息\n切れを自覚し休むようになったため受診した。喫煙は20 本/日を45 年間。身長\n153 cm、体重42 kg。脈拍88/分、整。血圧134/84 mmHg。呼吸数24/分。頸部の\n胸鎖乳突筋が肥大し、吸気時に肋間や鎖骨上窩の陥入がみられる。呼気は延長し、\n聴診では呼吸音の減弱がみられるが副雑音は聴取しない。\n最も考えられる疾患はどれか。\nTP01doc-Bor-25",
+      "choices": {
+        "a": "過敏性肺炎",
+        "b": "気管支拡張症",
+        "c": "肺血栓塞栓症",
+        "d": "特発性肺線維症",
+        "e": "慢性閉塞性肺疾患"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-09",
+      "topic": "医療計画〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "109B19",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "47　35 歳の女性。未経妊。挙児を希望して来院した。月経周期は28 日型、整。基礎\n体温は二相性。既往歴に特記すべきことはない。経腟超音波検査で子宮に異常を認\nめる。子宮卵管造影像（別冊No. 4）を別に示す。\n最も考えられる疾患はどれか。\nTP01doc-Bor-26",
+      "choices": {
+        "a": "子宮奇形",
+        "b": "子宮筋腫",
+        "c": "子宮腺筋症",
+        "d": "子宮内膜炎",
+        "e": "子宮内膜ポリープ"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "自律神経障害",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "109B20",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "48　79 歳の男性。呼吸困難のため搬入された。10 年前から高血圧症、脂質異常症お\nよび2 型糖尿病で加療中である。1 年6 か月前に急性心筋梗塞を発症し、左前下行\n枝の完全閉塞に対しカテーテル治療を施行された。その後、抗血小板薬、利尿薬お\nよびb 遮断薬を投与され、日常生活で心不全の症状を認めなかった。数日前から\n労作時の息切れを自覚し、数時間前から安静時にも強い呼吸困難を生じたため救急\n搬送された。意識は清明。脈拍104/分、整。血圧154/102 mmHg。呼吸数24/分。\nSpO2 100 ％（リザーバー付マスク10 L/分酸素投与下）。心尖部を最強点とするⅣ/\nⅥの収縮期雑音を聴取する。両側の胸部にcoarse crackles とwheezes とを聴取す\nる。血液生化学所見：AST 22 IU/L、ALT 19 IU/L、LD 218 IU/L（基準176〜353）、\nCK 52 IU/L（基準30〜140）、脳性ナトリウム利尿ペプチド〈BNP〉952 pg/mL（基準\n18.4 以下）。胸部エックス線写真（別冊No. 5Ａ）と心エコー図（別冊No. 5Ｂ）とを別\nに示す。\n呼吸困難の原因として考えられるのはどれか。\nTP01doc-Bor-27",
+      "choices": {
+        "a": "心室中隔穿孔",
+        "b": "心タンポナーデ",
+        "c": "三尖弁閉鎖不全症",
+        "d": "僧帽弁閉鎖不全症",
+        "e": "大動脈弁閉鎖不全症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-03",
+      "topic": "小児の身体所見",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "109B21",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "49　28 歳の男性。右頸部腫瘤を主訴に来院した。2 か月前から右頸部腫瘤が増大し、\n1 週前から発熱が出現したため受診した。体温38.2 ℃。右頸部と左鎖骨上窩とに\n径3 cm の圧痛のないリンパ節を2 個触知する。頸部リンパ節生検で、びまん性大\n細胞性B 細胞型リンパ腫と診断された。PET/CT では右頸部、左鎖骨上窩および\n縦隔に取り込みを認めた。\n治療開始に際して適切なのはどれか。2 つ選べ。\nTP01doc-Bor-28",
+      "choices": {
+        "a": "治療は無菌室が空くのを待ち行う。",
+        "b": "挙児希望であったので精子保存をする。",
+        "c": "病状の説明に主治医の他に看護師も同席する。",
+        "d": "後方視的臨床研究の結果をもとに治療計画を立てる。",
+        "e": "セカンドオピニオンを希望したので自分の父親が経営する病院を紹介する。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A7",
+      "subfield": "A7-04",
+      "topic": "（先天性）血友病",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "109B22",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "次の文を読み、50〜52 の問いに答えよ。\n43 歳の男性。発熱を主訴に来院した。\n現病歴　：　半年前から全身倦怠感を自覚していた。1 か月前から37 ℃前半の微熱\nと乾性咳嗽とが出現した。2 週前に自宅近くの診療所を受診し総合感冒薬を処方さ\nれたが改善しなかった。そのころから体温は38 ℃を超えるようになり、1 週前か\nら階段昇降時に呼吸困難を自覚するようになった。精査のため診療所から紹介され\nて受診した。\n既往歴　：　22 歳時にB 型急性肝炎。35 歳時に帯状疱疹。\n生活歴　：　会社員。独身。一人暮らし。喫煙歴はない。飲酒は機会飲酒。\n家族歴　：　父親がうつ病で通院治療中。\n現　症　：　意識は清明。身長173 cm、体重58 kg（半年前は68 kg）。体温38.6 ℃。\n脈拍96/分、整。血圧104/58 mmHg。呼吸数20/分。SpO2 94 ％（room air）。前額\nと鼻唇溝とに黄白色の鱗屑を伴う紅斑を認める。眼瞼結膜と眼球結膜とに異常を認\nめない。口腔内に多発する白苔を認める。頸静脈の怒張を認めない。径1 〜2 cm\nのリンパ節を右頸部に7 個、左頸部に5 個触知する。心音に異常を認めない。両側\nの胸部にfine crackles を聴取する。腹部は平坦、軟で、肝・脾を触知しない。腸\n雑音は正常である。下腿に浮腫を認めない。\n検査所見　：　血液所見：赤血球454 万、Hb 15.1 g/dL、Ht 42 ％、白血球3,100、血\n小板12 万。血液生化学所見：総ビリルビン0.9 mg/dL、クレアチニン1.0 mg/dL。\n免疫血清学所見：CRP 0.6 mg/dL、b-D-グルカン486 pg/mL（基準10 以下）。動脈\n血ガス分析（room air）：pH 7.47、PaCO2 34 Torr、PaO2 76 Torr、HCO3\n- 24 mEq/L。\n胸部エックス線写真（別冊No. 6Ａ）と胸部CT（別冊No. 6Ｂ）とを別に示す。\nTP01doc-Bor-29",
+      "choices": {},
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A10",
+      "subfield": "A10-04",
+      "topic": "Sjögren症候群（SS）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "109B23",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "50　この患者の白血球分画で割合が減少しているのはどれか。\n51　肺病変の原因として最も考えられるのはどれか。\n52　口腔内の白苔に対する治療薬はどれか。\nTP01doc-Bor-30",
+      "choices": {
+        "a": "ST 合剤",
+        "b": "アシクロビル",
+        "c": "イソニアジド",
+        "d": "アムホテリシンB",
+        "e": "ペニシリン系抗菌薬"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B2",
+      "subfield": "B2-14",
+      "topic": "皮膚描記法",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "109B24",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "次の文を読み、53〜55 の問いに答えよ。\n81 歳の男性。発熱を主訴に来院した。\n現病歴　：　5 日前から37 ℃台の発熱が出現し、3 日前から腰痛が出現した。腰痛\nは鈍痛で、運動時と安静時ともに自覚していた。自宅で様子をみていたが改善しな\nいため受診した。\n既往歴　：　61 歳から糖尿病のため内服加療中。\n家族歴　：　父親が胃癌。母親が大腸癌。\n生活歴　：　妻との2 人暮らし。海外渡航歴はない。\n現　症　：　意識は清明。身長165 cm、体重57 kg。体温38.2 ℃。脈拍96/分、整。\n血圧138/80 mmHg。呼吸数22/分。SpO2 98 ％（room air）。眼瞼結膜と眼球結膜と\nに異常を認めない。頸部リンパ節を触知しない。心音と呼吸音とに異常を認めない。\n腰部正中に叩打痛を認める。足背動脈の触知は良好で左右差を認めない。下腿に浮\n腫を認めない。神経学的所見に異常を認めない。\n検査所見　：　尿所見：蛋白（-）、糖（-）、ケトン体1 +、潜血（-）、沈渣に白血球\nを認めない。血液所見：赤血球476 万、Hb 12.9 g/dL、Ht 40 ％、白血球13,300（桿\n状核好中球32 ％、分葉核好中球54 ％、好酸球1 ％、好塩基球1 ％、単球2 ％、リン\nパ球10 ％）、血小板43 万。血液生化学所見：総蛋白7.5 g/dL、アルブミン3.8 g/dL、\n総ビリルビン0.9 mg/dL、直接ビリルビン0.3 mg/dL、AST 30 IU/L、ALT 28 IU/L、\nLD 170 IU/L（基準176〜353）、ALP 402 IU/L（基準115〜359）、c-GTP 49 IU/L（基\n準8 〜50）、アミラーゼ121 IU/L（基準37〜160）、CK 58 IU/L（基準30〜140）、尿\n素窒素19 mg/dL、クレアチニン1.0 mg/dL、尿酸7.1 mg/dL、血糖148 mg/dL、\nHbA1c 8.5 ％（基準4.6〜6.2）、総コレステロール199 mg/dL、トリグリセリド180\nmg/dL、Na 130 mEq/L、K 4.4 mEq/L、Cl 98 mEq/L。CRP 3.2 mg/dL。動脈血\nガス分析（room air）：pH 7.37、PaCO2 36 Torr、PaO2 98 Torr、HCO3\n- 20 mEq/L。\n12 誘導心電図で異常を認めない。胸部エックス線写真に異常を認めない。腹部CT\nに異常を認めない。腰部MRI（別冊No. 7Ａ、Ｂ）を別に示す。\nTP01doc-Bor-31",
+      "choices": {},
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A9",
+      "subfield": "A9-02",
+      "topic": "結核菌感染症（TB）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "109B25",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "53　この患者の状態はどれか。\n54　4 時間後、検査室から血液検体でGram 陽性球菌が検出されたとの報告があった。\nこの時点で追加すべき検査はどれか。\n55　原因菌として最も考えられるのはどれか。\nTP01doc-Bor-32",
+      "choices": {
+        "a": "腸球菌",
+        "b": "溶連菌",
+        "c": "髄膜炎菌",
+        "d": "肺炎球菌",
+        "e": "黄色ブドウ球菌"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D3",
+      "subfield": "D3-04",
+      "topic": "高齢者の栄養管理",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "109B26",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "次の文を読み、56〜58 の問いに答えよ。\n67 歳の男性。人間ドックで異常を指摘され来院した。\n現病歴　：　5 年前に退職してから健康診断を受けていなかった。妻に勧められて初\nめて受診した人間ドックで肥満、耐糖能障害および脂質異常症を指摘され、妻とと\nもに来院した。\n既往歴　：　特記すべきことはない。\n生活歴　：　喫煙歴はない。飲酒は機会飲酒。\n家族歴　：　父親が胃癌。\n現　症　：　意識は清明。身長170 cm、体重80 kg。体温36.5 ℃。脈拍68/分、整。\n血圧130/94 mmHg。呼吸数18/分。眉弓部の膨隆、下顎の突出、鼻と口唇の肥大\nおよび巨大舌を認める。眼瞼結膜と眼球結膜とに異常を認めない。咽頭に発赤を認\nめない。頸静脈の怒張を認めない。甲状腺腫と頸部リンパ節とを触知しない。心音\nと呼吸音とに異常を認めない。手足の体積の増大を認める。腹部は平坦、軟で、\n肝・脾を触知しない。腱反射に異常を認めない。\n検査所見　：　尿所見：蛋白（-）、糖（-）、ケトン体（-）、潜血（!）、沈渣に白血球\nを認めない。血液所見：赤血球487 万、Hb 14.6 g/dL、Ht 43 ％、白血球4,000、血\n小板23 万、PT 115 ％（基準80〜120）。血液生化学所見：総蛋白7.2 g/dL、アルブ\nミン4.2 g/dL、総ビリルビン0.6 mg/dL、AST 21 IU/L、ALT 28 IU/L、LD 185\nIU/L（基準176〜353）、ALP 277 IU/L（基準115〜359）、c-GTP 34 IU/L（基準8 〜\n50）、アミラーゼ76 IU/L（基準37〜160）、CK 135 IU/L（基準30〜140）、尿素窒素\n14 mg/dL、クレアチニン0.7 mg/dL、尿酸5.9 mg/dL、血糖127 mg/dL、HbA1c\n7.0 ％（基準4.6〜6.2）、トリグリセリド162 mg/dL、HDL コレステロール75 mg/dL、\nLDL コレステロール146 mg/dL、Na 142 mEq/L、K 4.6 mEq/L、Cl 102 mEq/L、Ca\n9.3 mg/dL、P 4.0 mg/dL、TSH 0.6 nU/mL（基準0.4〜4.0）、FT4 1.1 ng/dL（基準\n0.8〜1.8）。心電図に異常を認めない。胸部エックス線写真で心胸郭比54 ％。頭部\nエックス線写真（別冊No. 8）を別に示す。頭部MRI で下垂体に限局した腫瘤を認める。\nTP01doc-Bor-33",
+      "choices": {},
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "異所性移植が行われるもの",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "109B27",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "56　この患者に行うべき検査として有用でないのはどれか。\n57　現時点で行うべき治療はどれか。\n58　今後の経過中に起こりうる合併症として考えにくいのはどれか。\nTP01doc-Bor-34",
+      "choices": {
+        "a": "大腸癌",
+        "b": "高血圧症",
+        "c": "縦隔腫瘍",
+        "d": "虚血性心疾患",
+        "e": "睡眠時無呼吸症候群"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-03",
+      "topic": "脳血管障害",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "109B28",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "次の文を読み、59〜61 の問いに答えよ。\n78 歳の女性。右利き。会話が困難になったため搬入された。\n現病歴　：　今朝、食事中に会話のつじつまが合わないことに家族が気付き、改善が\nみられないため救急車を要請した。昨夜の就寝までは異常はなかったという。\n既往歴　：　50 歳時の健康診断で耐糖能異常を指摘されたがそのままにしていた。\n生活歴　：　息子夫婦と3 人暮らし。喫煙歴はない。飲酒は機会飲酒。\n家族歴　：　両親ともに高血圧。父親が脳出血で死亡。\n現　症　：　意識は清明。身長148 cm、体重43 kg。体温36.1 ℃。脈拍104/分、不\n整。血圧152/74 mmHg。呼吸数16/分。過剰心音と心雑音とを認めない。呼吸音\nに異常を認めない。発語は流暢であるが、錯語がみられ、言語理解が悪く、物品呼\n称も障害されている。復唱は可能である。読字は困難で、書字は可能であるが文意\nがとれない。構音障害を含め脳神経に異常を認めない。四肢の運動系と感覚系に異\n常を認めない。腱反射は正常で、Babinski 徴候は陰性。\n検査所見　：　尿所見に異常を認めない。血液所見：赤血球412 万、Hb 12.1 g/dL、\nHt 40 ％、白血球6,300、血小板20 万、PT-INR〈prothrombin time-international\nnormalized ratio〉1.09（基準0.9〜1.1）、APTT 24.3 秒（基準対照32.2）、血漿\nフィブリノゲン306 mg/dL（基準200〜400）、D ダイマー2.2 ng/mL（基準1.0 以下）。\n血液生化学所見：総蛋白6.1 g/dL、アルブミン3.5 g/dL、AST 26 IU/L、ALT 18\nIU/L、LD 232 IU/L（基準176〜353）、血糖138 mg/dL、HbA1c 6.6 ％（基準4.6〜\n6.2）、トリグリセリド154 mg/dL、HDL コレステロール38 mg/dL、LDL コレス\nテロール143 mg/dL。12 誘導心電図で心房細動を認める。胸部エックス線写真で\n心胸郭比52 ％。心エコー検査で左室壁運動は良好で、弁膜症を認めない。頸動脈\nエコー検査で左右とも有意な狭窄を認めない。頭部MRI の拡散強調像（別冊No. 9\nＡ、Ｂ）を別に示す。同時に行った頭部MRA に異常を認めない。\nTP01doc-Bor-35",
+      "choices": {},
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B2",
+      "subfield": "B2-01",
+      "topic": "右中殿筋不全患者の歩行時の姿勢",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "109B29",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "59　この患者の失語はどれか。\n60　病変部位はどれか。\n61　治療として適切なのはどれか。\nTP01doc-Bor-36",
+      "choices": {
+        "a": "抗凝固療法",
+        "b": "血栓溶解療法",
+        "c": "抗血小板療法",
+        "d": "抗脳浮腫療法",
+        "e": "ステント留置術"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "平成20〜24年の社会状況",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "109B30",
+      "exam_year": 109,
+      "block": "B",
+      "stem": "62　Na 濃度50 mEq/L の液500 mL に10 ％NaCl 液20 mL を追加したときのNa 濃\n度を求めよ。\nただし、NaCl 1 g はNa 17 mEq に相当するものとし、追加後の体積は520 mL\nとする。\nまた、小数点以下の数値が得られた場合には、小数点以下第1 位を四捨五入する\nこと。\n解答：①\n②\n③mEq/L\n①　　②　　③\n0 　　0 　　0\n1 　　1 　　1\n2 　　2 　　2\n3 　　3 　　3\n4 　　4 　　4\n5 　　5 　　5\n6 　　6 　　6\n7 　　7 　　7\n8 　　8 　　8\n9 　　9 　　9\nTP01doc-Bor-37\nTP01doc-Bor-38\nTP01doc-Bor-39\nTP01doc-Bor-40",
+      "choices": {},
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": true,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-12",
+      "topic": "健康増進法",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

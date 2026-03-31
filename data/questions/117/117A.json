@@ -32,8 +32,8 @@
         "is_deleted": false
       },
       "field": "C1",
-      "subfield": "C1-03",
-      "topic": "合併症妊娠〈総論〉",
+      "subfield": "C1-01",
+      "topic": "母体背景と胎児疾患の組合せ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -69,9 +69,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A10",
-      "subfield": "A10-01",
-      "topic": "IgE，特異的IgE検査",
+      "field": "B5",
+      "subfield": "B5-06",
+      "topic": "アレルギー性鼻炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -108,9 +108,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A2",
-      "subfield": "A2-03",
-      "topic": "胃切除後症候群〈総論〉",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -178,9 +178,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B3",
-      "subfield": "B3-01",
-      "topic": "精神科の症候〈総論〉",
+      "field": "B6",
+      "subfield": "B6-01",
+      "topic": "女性に多い精神科疾患",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -251,9 +251,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A2",
-      "subfield": "A2-03",
-      "topic": "慢性胃炎",
+      "field": "A7",
+      "subfield": "A7-01",
+      "topic": "自己免疫性胃炎〈A型胃炎〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -286,9 +286,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-12",
-      "topic": "がん対策（がん検診・がん登録）",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "対策型がん検診で行われる乳がんの検査方法",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -361,8 +361,8 @@
         "is_deleted": false
       },
       "field": "A1",
-      "subfield": "A1-08",
-      "topic": "深部静脈血栓症",
+      "subfield": "A1-02",
+      "topic": "心室頻拍（VT）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -430,9 +430,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-03",
-      "topic": "梅毒",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -465,9 +465,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-13",
-      "topic": "ビタミン欠乏症〈総論〉",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -536,8 +536,8 @@
         "is_deleted": false
       },
       "field": "B2",
-      "subfield": "B2-04",
-      "topic": "水疱性類天疱瘡",
+      "subfield": "B2-13",
+      "topic": "中毒性表皮壊死症（TEN）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -572,7 +572,7 @@
       },
       "field": "A1",
       "subfield": "A1-01",
-      "topic": "慢性心不全",
+      "topic": "心不全〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -713,9 +713,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "患者医師関係",
+      "field": null,
+      "subfield": null,
+      "topic": "標準治療と本人の希望が異なる場合の対応",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -750,7 +750,7 @@
       },
       "field": "B4",
       "subfield": "B4-04",
-      "topic": "細菌性（匐行性）角膜潰瘍",
+      "topic": "角膜炎〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -784,8 +784,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-07",
-      "topic": "先天性食道閉鎖症",
+      "subfield": "C3-01",
+      "topic": "漏斗胸",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -855,7 +855,7 @@
       },
       "field": "B4",
       "subfield": "B4-04",
-      "topic": "ウイルス性結膜炎",
+      "topic": "結膜炎〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -890,7 +890,7 @@
       },
       "field": "B4",
       "subfield": "B4-01",
-      "topic": "細隙灯顕微鏡検査",
+      "topic": "眼内鉄片異物の診断に有用な検査",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -993,9 +993,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-09",
-      "topic": "Ramsay-Hunt症候群",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1030,7 +1030,7 @@
       },
       "field": "A1",
       "subfield": "A1-03",
-      "topic": "乳頭筋断裂",
+      "topic": "急性心筋梗塞（AMI）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1063,9 +1063,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C1",
-      "subfield": "C1-05",
-      "topic": "羊水塞栓症",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1275,7 +1275,7 @@
       },
       "field": "A2",
       "subfield": "A2-04",
-      "topic": "結腸憩室症",
+      "topic": "腸憩室〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1343,9 +1343,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-08",
-      "topic": "重症筋無力症（MG）",
+      "field": "A7",
+      "subfield": "A7-03",
+      "topic": "MGUS",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1379,8 +1379,8 @@
         "is_deleted": false
       },
       "field": "B2",
-      "subfield": "B2-11",
-      "topic": "悪性黒色腫",
+      "subfield": "B2-06",
+      "topic": "脱色素性母斑",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1415,7 +1415,7 @@
       },
       "field": "A6",
       "subfield": "A6-03",
-      "topic": "甲状腺悪性腫瘍〈総論〉",
+      "topic": "乳頭癌",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1449,8 +1449,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-13",
-      "topic": "縦隔腫瘍〈総論〉",
+      "subfield": "A4-01",
+      "topic": "気管腫瘍で聴取される呼吸音",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1521,9 +1521,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-03",
-      "topic": "梅毒",
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "梅毒の妊婦",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1668,8 +1668,8 @@
         "is_deleted": false
       },
       "field": "B4",
-      "subfield": "B4-07",
-      "topic": "視神経炎",
+      "subfield": "B4-02",
+      "topic": "調節性内斜視",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1737,9 +1737,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-14",
-      "topic": "介護保険法〈総論〉",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1807,9 +1807,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-05",
-      "topic": "輸液〈総論〉",
+      "field": null,
+      "subfield": null,
+      "topic": "胃癌手術までの栄養方法",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1951,8 +1951,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-14",
-      "topic": "胸郭の異常〈総論〉",
+      "subfield": "A4-02",
+      "topic": "横隔神経麻痺",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1986,8 +1986,8 @@
         "is_deleted": false
       },
       "field": "A2",
-      "subfield": "A2-04",
-      "topic": "大腸癌〈総論〉",
+      "subfield": "A2-01",
+      "topic": "消化管の内視鏡検査",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2061,7 +2061,7 @@
       },
       "field": "A2",
       "subfield": "A2-02",
-      "topic": "食道癌",
+      "topic": "胃食道逆流症（GERD）〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2130,8 +2130,8 @@
         "is_deleted": false
       },
       "field": "A1",
-      "subfield": "A1-06",
-      "topic": "心臓粘液腫",
+      "subfield": "A1-01",
+      "topic": "左房粘液腫",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2274,7 +2274,7 @@
       },
       "field": "A3",
       "subfield": "A3-04",
-      "topic": "膵癌",
+      "topic": "膵腫瘍",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2342,9 +2342,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C3",
-      "subfield": "C3-07",
-      "topic": "腸回転異常症",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2556,8 +2556,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-06",
-      "topic": "染色体異常〈総論〉",
+      "subfield": "C3-09",
+      "topic": "動脈管開存症（PDA）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2594,8 +2594,8 @@
         "is_deleted": false
       },
       "field": "C3",
-      "subfield": "C3-06",
-      "topic": "遺伝形式〈総論〉",
+      "subfield": "C3-09",
+      "topic": "心房中隔欠損症（ASD）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2630,7 +2630,7 @@
       },
       "field": "A2",
       "subfield": "A2-05",
-      "topic": "鼠径ヘルニア〈総論〉",
+      "topic": "ヘルニア〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -2666,9 +2666,9 @@
         "has_kinki": false,
         "is_deleted": true
       },
-      "field": "A4",
-      "subfield": "A4-01",
-      "topic": "動脈血液ガス分析",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "動脈血ガス分析の解釈（最初の変化と代償性変化）",
       "action": null,
       "knowledge_type": null,
       "explanation": {

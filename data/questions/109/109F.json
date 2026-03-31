@@ -1,0 +1,733 @@
+{
+  "exam_year": 109,
+  "block": "F",
+  "total_questions": 18,
+  "source": "厚生労働省 第109回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "109F1",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "医師に関わる利益相反について正しいのはどれか。",
+      "choices": {
+        "a": "少額の寄付金では発生しない。",
+        "b": "罰則規定が医師法に記載されている。",
+        "c": "関連する情報は原則として公開しない。",
+        "d": "患者と家族の対立した利益を調整することである。",
+        "e": "医師の私的利益と社会的役割が衝突することである。"
+      },
+      "answer": [
+        "e",
+        "g",
+        "e",
+        "h",
+        "b"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "医師に関わる利益相反",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "109F2",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "特定保健指導について正しいのはどれか。",
+      "choices": {
+        "a": "実施主体は国である。",
+        "b": "健康増進法に規定されている。",
+        "c": "20 歳から64 歳までの被保険者が対象である。",
+        "d": "ポピュレーションストラテジーが根底にある。",
+        "e": "リスクの高い生活習慣を有する者が対象である。"
+      },
+      "answer": [
+        "e",
+        "g",
+        "b",
+        "h",
+        "b"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-12",
+      "topic": "特定健康診査・特定保健指導",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "109F3",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "血液検査項目の組合せで、2 回に分けて採血すべきなのはどれか。\nTP01doc-For-6\n2\n4 　妊娠10 週の初妊婦で最も認められるのはどれか。\n5 　胸痛の特徴と疑われる疾患の組合せで適切でないのはどれか。\n6 　頭部造影MRI（別冊No. 1 ①〜⑤）を別に示す。\n対麻痺をきたすのはどれか。\nTP01doc-For-7\n3\n7 　記銘力の評価に有用な質問はどれか。\n8 　肋骨脊柱角の叩打痛の診察方法で正しいのはどれか。\n9 　月経の異常はどれか。\nTP01doc-For-8",
+      "choices": {
+        "a": "持続期間5 日",
+        "b": "周期28 日",
+        "c": "周期の変動2 日",
+        "d": "初経12 歳",
+        "e": "閉経38 歳"
+      },
+      "answer": [
+        "e",
+        "g",
+        "d",
+        "h",
+        "d"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "2回に分けて採血すべき血液検査項目の組合せ",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "109F4",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "10　事前確率が20 ％のときに尤度比4 の所見があれば事後確率はどれか。\n11　咽頭痛、喘鳴および呼吸困難を訴える成人が救急外来を受診した際に、バイタル\nサインを確認しながらまず準備するのはどれか。\n12　パニック障害におけるパニック発作の特徴はどれか。\nTP01doc-For-9",
+      "choices": {
+        "a": "予期しない状況で起こる。",
+        "b": "特定の社会的状況で起こる。",
+        "c": "客観的に危険な状況で起こる。",
+        "d": "ストレス刺激に反応して起こる。",
+        "e": "身近な家族から離れていると起こる。"
+      },
+      "answer": [
+        "a",
+        "g",
+        "d",
+        "h",
+        "a"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "109F5",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "13　ヒトヘルペスウイルスによる疾患はどれか。\n14　経鼻胃管を挿入する際に正しいのはどれか。\n15　習慣的な運動によって発症リスクが低下するのはどれか。\nTP01doc-For-10",
+      "choices": {
+        "a": "胃　癌",
+        "b": "肺　癌",
+        "c": "食道癌",
+        "d": "結腸癌",
+        "e": "膀胱癌"
+      },
+      "answer": [
+        "d",
+        "g",
+        "e",
+        "h",
+        "d"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A1",
+      "subfield": "A1-01",
+      "topic": "胸痛の特徴と疑われる疾患の組合せ",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "109F6",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "16　56 歳の男性。褥瘡の治療のため入院中である。38 歳時に交通事故で脊髄を損傷\nし完全対麻痺となり、車椅子の生活である。自分で車を運転し営業職に就いている。\n3 か月前から褥瘡に対し外来治療を継続していたが、悪化したため手術目的で入院\nした。術前に、手術の概要と術後1 週はベッド上安静が必要であることを説明した\nところ、ベッド上安静になると筋力が低下し車に乗れなくなるので困るといって術\n後の安静を拒否した。\n患者の心理的状態に配慮した対応はどれか。\n17　74 歳の男性。脳梗塞で入院中である。1 か月前、四肢麻痺にて緊急入院し、脳\n幹梗塞と診断された。入院中に肺炎を発症し、抗菌薬にて治療後に回復期リハビリ\nテーション病棟に転棟した。転棟時、意識は清明。不全四肢麻痺のため車椅子への\n移乗と食事とに介助を要する。体温36.4 ℃。血液所見：赤血球421 万、Hb 13.4\ng/dL、Ht 42 ％、白血球6,400、血小板21 万。胸部エックス線写真に異常を認め\nない。転棟前に実施した喀痰培養でメチシリン耐性黄色ブドウ球菌〈MRSA〉陽性\nが判明した。リハビリテーションは訓練室で実施している。\nこの患者への対応で誤っているのはどれか。\nTP01doc-For-11",
+      "choices": {
+        "a": "院内で情報を共有する。",
+        "b": "リハビリテーションは継続する。",
+        "c": "バンコマイシン点滴静注を開始する。",
+        "d": "食事介助の際にマスクとガウンを着用する。",
+        "e": "使用したティッシュペーパーは感染性廃棄物とする。"
+      },
+      "answer": [
+        "a",
+        "g",
+        "e",
+        "h",
+        "d"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A1",
+      "subfield": "A1-04",
+      "topic": "僧帽弁閉鎖不全症（MR）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "109F7",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "18　19 歳の男性。鼻汁と咽頭痛とを主訴に来院した。2 日前から透明な鼻汁が多く、\n咽頭痛とともに少し咳が出るため受診した。痰は少量で透明な色調である。軽度の\n頭重感があるが食事は普通に摂取できている。同居している家族も同様の症状を呈\nしている。既往歴に特記すべきことはない。体温37.3 ℃。咽頭に軽度発赤を認め\nる。頸部リンパ節を触知しない。呼吸音に異常を認めない。\n最も考えられるのはどれか。\n19　生後25 日の新生児。数日前から啼泣時に口唇が紫色になることを心配した母親\nに連れられて来院した。出生後から異常は指摘されていない。SpO2 89 ％（room air）。\n胸骨左縁第2 肋間を最強点とするⅢ/Ⅵの収縮期駆出性雑音を聴取する。\n考えられるのはどれか。\nTP01doc-For-12",
+      "choices": {
+        "a": "Fallot 四徴症",
+        "b": "三尖弁閉鎖症",
+        "c": "肺動脈閉鎖症",
+        "d": "完全大血管転位症",
+        "e": "総肺静脈還流異常症"
+      },
+      "answer": [
+        "e",
+        "g",
+        "b",
+        "h",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B6",
+      "subfield": "B6-01",
+      "topic": "記銘力の評価に有用な質問",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "109F8",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "20　40 歳の女性。嚥下困難と嘔吐とを主訴に来院した。35 歳を過ぎたころから前胸\n部に食物のつかえを感じるようになった。1 年前から食物がつかえたときにお茶で\n流し込むことが月に2 回程度あった。最近、食後に嘔吐するようになったため受診\nした。吐物はほとんど飲み込んだ食物であり体重減少はない。上部消化管造影像\n（別冊No. 2）を別に示す。\n考えられるのはどれか。\n21　50 歳の女性。料理中に包丁で指を切ったため来院した。左中指に巻いているハ\nンカチから血液がしたたり落ちている。意識は清明。体温36.2 ℃。脈拍80/分、\n整。血圧106/78 mmHg。呼吸数12/分。左中指に1.5 cm の切創を認める。\nまず確認すべきなのはどれか。\nTP01doc-For-13",
+      "choices": {
+        "a": "異　物",
+        "b": "腱損傷",
+        "c": "神経損傷",
+        "d": "指動脈損傷",
+        "e": "皮膚欠損範囲"
+      },
+      "answer": [
+        "e",
+        "g",
+        "a",
+        "h",
+        "b"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A5",
+      "subfield": "A5-01",
+      "topic": "肋骨脊柱角の叩打痛の診察方法",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "109F9",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "22　48 歳の女性。頭痛を主訴に来院した。2 日前に突然の頭痛が生じたが軽快した\nためそのままにしていた。本日、夕食中に再び後頭部痛が生じ、直後に嘔吐したた\nめ夫に付き添われて受診した。既往歴に特記すべきことはない。意識は清明。体温\n35.8 ℃。脈拍80/分、整。血圧152/88 mmHg。呼吸数16/分。SpO2 95 ％（room\nair）。神経学的所見に異常を認めない。血糖132 mg/dL。\nまず行うべき検査はどれか。\n23　3 か月の乳児。呼吸困難と口唇チアノーゼとを主訴に母親に連れられて来院した。\n数日前から鼻汁と咳嗽とを認め、今朝から多呼吸と呼気性喘鳴とが出現し、息苦し\nそうであったため受診した。口唇チアノーゼを認め、診察中に無呼吸がみられた。\n白血球増多を認めず、CRP は陰性であった。胸部エックス線写真で肺野全体に微\n細な無気肺と肺の過膨張とを認める。\n最も考えられるのはどれか。\nTP01doc-For-14",
+      "choices": {
+        "a": "百日咳",
+        "b": "咽後膿瘍",
+        "c": "喉頭軟化症",
+        "d": "急性細気管支炎",
+        "e": "クループ症候群"
+      },
+      "answer": [
+        "e",
+        "g",
+        "c",
+        "h",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "月経の異常と考えられる状況",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "109F10",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "24　70 歳の男性。痩せと全身倦怠感とを主訴に家族に付き添われて来院した。5 年\n前に大腸癌の手術をした。3 年前に肝臓と肺の多発転移が判明し、1 年前から自宅\n近くの診療所で緩和ケアを受けていた。徐々に食欲不振と痩せとが進行し、1 か月\n前からほとんど食事をとらず寝たきりとなっていた。本人と妻は宗教心があつく毎\n日のお祈りを欠かさない。妻と長男夫婦が付き添っているが、身近に迫る患者の死\nを前にして強い不安がうかがわれる。\n家族に対する対応として適切なのはどれか。\nTP01doc-For-15",
+      "choices": {
+        "a": "奇跡を祈るよう促す。",
+        "b": "感情の表出を支援する。",
+        "c": "毎日のお祈りをやめさせる。",
+        "d": "取り乱さないよう指導する。",
+        "e": "不安を感じてはいけないと諭す。"
+      },
+      "answer": [
+        "d",
+        "g",
+        "b",
+        "h",
+        "c"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-02",
+      "topic": "尤度比",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "109F11",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "25　44 歳の男性。航空会社の職員に付き添われて空港内の診療所を受診した。持参\nした英文紹介状の一部を示す。\nThis patient is a 44-year-old man with a complaint of right flank pain＊.\nThe pain suddenly occurred while he was on the airplane.  It was colicky\nand radiated to the right inguinal region.  Neither nausea nor diarrhea was\nassociated.  He had appendectomy when he was 8 years old.\nUrinalysis results: Protein （-）, Sugar （-）, Occult blood （2+）\n\b\n＊flank pain: lateral abdominal pain\n出張のため近隣国へ向かう飛行機内で上記の症状を認めたため、到着直後に現地\nの空港内の診療所を受診し鎮痛薬を投与された。疼痛は我慢できる程度になり、予\n定を変更して次の便で日本に帰国した。現在、紹介状に書かれた症状は我慢できる\n程度に続いており、新たに生じた症状はない。意識は清明。身長165 cm、体重\n68 kg。体温37.1 ℃。脈拍76/分、整。血圧136/76 mmHg。\nこの患者にみられる可能性の高い身体診察所見はどれか。\nTP01doc-For-16",
+      "choices": {
+        "a": "腸雑音亢進",
+        "b": "陰囊の透光性",
+        "c": "腹部血管雑音",
+        "d": "Blumberg 徴候",
+        "e": "肋骨脊柱角の叩打痛"
+      },
+      "answer": [
+        "a",
+        "g",
+        "a",
+        "c",
+        "h",
+        "c"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B5",
+      "subfield": "B5-01",
+      "topic": "咽頭痛",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "109F12",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "次の文を読み、26、27 の問いに答えよ。\n51 歳の男性。上腹部痛を主訴に来院した。\n現病歴　：　3 日前から上腹部の強い痛みと悪心とを自覚していた。これまでも時々、\n空腹時に上腹部膨満感が出現することがあり市販の薬を内服していた。便通は毎日\nあり、もともと軟らかい方である。今朝から倦怠感を少し感じたため受診した。発\n熱や息切れはない。\n既往歴　：　特記すべきことはない。\n生活歴　：　喫煙歴はない。飲酒はウイスキー60 mL/日を30 年間。\n家族歴　：　母親が60 歳時にくも膜下出血で死亡。父親がAlzheimer 型認知症を発\n症し72 歳時に胃癌で死亡。\n医療面接は以下のように続いた。\n患　者「・・・ということで当時は親戚中がもめており、父が亡くなったときは正直\n言ってホッとしたことを思い出します」\n医　師「そうでしたか。つらい思い出をお話しくださってありがとうございました」\n患　者「いえいえ。もうずいぶん前のことですから大丈夫ですよ」\n医　師「それで、今回のおなかの痛みについて何か思い当たることはありますか」\n患　者「実は、父が自分と同じように長い間胃が悪くて、検査の結果ピロリ菌陽性\nだったそうで、ひょっとしたら自分もそうではないかと」\n医　師「そういうご事情があったのですね」\nTP01doc-For-17",
+      "choices": {},
+      "answer": [
+        "a",
+        "g",
+        "a",
+        "b",
+        "h",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B3",
+      "subfield": "B3-02",
+      "topic": "パニック障害",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "109F13",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "26　下線部に該当する病歴情報はどれか。\n現　症　：　意識は清明。身長174 cm、体重67 kg。体温36.5 ℃。脈拍96/分、\n整。血圧100/62 mmHg。呼吸数20/分。SpO2 97 ％（room air）。皮疹を認めな\nい。眼瞼結膜は貧血様である。眼球結膜に黄染を認めない。心音と呼吸音とに\n異常を認めない。肝・脾を触知しない。心窩部から右季肋部にかけて圧痛を認\nめる。反跳痛を認めない。直腸指診で異常を認めない。\n検査所見　：　血液所見：赤血球340 万、Hb 10.0 g/dL、Ht 35 ％、白血球7,200、\n血小板16 万。CRP 1.5 mg/dL。腹部超音波検査で異常を認めない。\n次に行う検査の前に再度確認しておくべきなのはどれか。\n27\nTP01doc-For-18",
+      "choices": {
+        "a": "輸血歴",
+        "b": "緑内障",
+        "c": "気管支喘息",
+        "d": "卵アレルギー",
+        "e": "アトピー性皮膚炎"
+      },
+      "answer": [
+        "c",
+        "g",
+        "c",
+        "e",
+        "h",
+        "d"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A10",
+      "subfield": "A10-01",
+      "topic": "ヒトヘルペスウイルス〈HHV〉による疾患",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "109F14",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "次の文を読み、28、29 の問いに答えよ。\n68 歳の男性。発熱と全身倦怠感とを主訴に来院した。\n現病歴　：　昨日から38 ℃台の発熱、頭痛、全身倦怠感および筋肉痛を認め、食欲\nも低下したため朝になって受診した。\n既往歴　：　30 年前から高血圧症の治療を受けている。\n生活歴　：　妻、長男夫婦、小学生の孫1 人と同居している。喫煙歴はない。飲酒は\n日本酒1 合/日を30 年間。\n家族歴　：　10 日前に孫が、5 日前に長男がそれぞれ高熱を出して学校や仕事を休ん\nでいた。\n現　症　：　意識は清明。体温38.4 ℃。脈拍96/分、整。血圧138/76 mmHg。呼吸\n数20/分。SpO2 97 ％（room air）。咽頭に軽度発赤を認める。甲状腺腫と頸部リン\nパ節とを触知しない。項部硬直を認めない。心音と呼吸音とに異常を認めない。腹\n部は平坦、軟で、圧痛を認めない。肋骨脊柱角に叩打痛を認めない。四肢に浮腫を\n認めない。\nTP01doc-For-19",
+      "choices": {},
+      "answer": [
+        "d",
+        "g",
+        "b",
+        "e",
+        "h",
+        "c"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "経鼻胃管を挿入する方法",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "109F15",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "28　この患者の診断のため鼻咽頭ぬぐい液を綿棒で採取し、外来で迅速検査を行うこ\nとにした。\nこの検査について正しいのはどれか。\n29　検査の結果は陰性であった。\n患者がこの疾患に罹患している検査前確率を75 ％としたときの検査後確率に最\nも近いのはどれか。\nただし、この検査の感度は60 ％、特異度は96 ％とする。\nTP01doc-For-20",
+      "choices": {
+        "a": "4 ％",
+        "b": "18 ％",
+        "c": "40 ％",
+        "d": "44 ％",
+        "e": "56 ％"
+      },
+      "answer": [
+        "d",
+        "g",
+        "a",
+        "d",
+        "h",
+        "b"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "109F16",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "次の文を読み、30、31 の問いに答えよ。\n72 歳の男性。意識障害のため搬入された。\n現病歴　：　1 週前から咳と痰とがみられた。次第に元気がなくなり、今朝から家族\nが呼びかけても反応が悪くなったため救急搬送された。\n既往歴　：　10 歳で虫垂炎。25 年前から高血圧症で治療中。\n生活歴　：　喫煙歴はない。飲酒は機会飲酒。\n家族歴　：　父親が心筋梗塞のため83 歳で死亡。\n現　症　：　意識レベルはJCSⅠ- 3 。身長173 cm、体重58 kg。体温38.2 ℃。脈拍\n112/分（微弱）、整。血圧86/64 mmHg。呼吸数30/分。SpO2 94 ％（マスク4 L/分 酸\n素投与下）。眼瞼結膜と眼球結膜とに異常を認めない。甲状腺腫と頸部リンパ節と\nを触知しない。心音に異常を認めない。右の背下部にcoarse crackles を聴取する。\n腹部は平坦、軟で、肝・脾を触知しない。顔面と四肢とに麻痺を認めない。腱反射\nに異常を認めない。四肢に浮腫を認めない。排尿がないため尿検査は実施していな\nい。\nTP01doc-For-21",
+      "choices": {},
+      "answer": [
+        "d",
+        "g",
+        "a",
+        "d",
+        "h",
+        "a"
+      ],
+      "format": {
+        "type1": "臨床",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "心理的状況に配慮した対応",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "109F17",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "30　まず行うべき治療はどれか。",
+      "choices": {
+        "a": "アトロピンの急速静注",
+        "b": "アドレナリンの急速静注",
+        "c": "ジゴキシンの急速静注",
+        "d": "生理食塩液の急速輸液",
+        "e": "副腎皮質ステロイドの急速静注"
+      },
+      "answer": [
+        "c",
+        "g",
+        "d",
+        "e",
+        "h",
+        "b"
+      ],
+      "format": {
+        "type1": "臨床",
+        "type2": "必修",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A1",
+      "subfield": "A1-04",
+      "topic": "僧帽弁閉鎖不全症（MR）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "109F31",
+      "exam_year": 109,
+      "block": "F",
+      "stem": "酸素投与、モニター装着および静脈路確保を行い治療を開始した。\n検査所見　：　血液所見：赤血球456 万、Hb 13.9 g/dL、Ht 44 ％、白血球15,200\n（桿状核好中球15 ％、分葉核好中球65 ％、単球3 ％、リンパ球17 ％）、血小\n板20 万。血液生化学所見：総蛋白6.6 g/dL、アルブミン3.2 g/dL、AST 19\nIU/L、ALT 17 IU/L、LD 292 IU/L（基準176〜353）、ALP 256 IU/L（基準115\n〜359）、c-GTP 41 IU/L（基準8 〜50）、CK 108 IU/L（基準30〜140）、尿素窒\n素25 mg/dL、クレアチニン1.1 mg/dL、血糖110 mg/dL、Na 133 mEq/L、\nK 4.0 mEq/L、Cl 96 mEq/L。CRP 12.5 mg/dL。12 誘導心電図は洞調律で心\n拍数112/分。ポータブル胸部エックス線写真で右下肺野に肺炎像を認めるが、\n肺うっ血を認めない。喀痰のGram 染色と培養検査を指示した。\n今後の対応として適切でないのはどれか。\nTP01doc-For-22\nTP01doc-For-23\nTP01doc-For-24\nTP01doc-For-25\nTP01doc-For-26\nTP01doc-For-27\nTP01doc-For-28",
+      "choices": {
+        "a": "心電図モニターで心拍数を監視する。",
+        "b": "留置した尿道カテーテルで時間尿量を監視する。",
+        "c": "抗菌薬は喀痰培養で感受性が判明してから開始する。",
+        "d": "経皮的酸素飽和度〈SpO2〉を参考に酸素投与量を調節する。",
+        "e": "異なる部位から採取した複数セットの血液培養を提出する。"
+      },
+      "answer": [
+        "c",
+        "g",
+        "e"
+      ],
+      "format": {
+        "type1": "臨床",
+        "type2": "各論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A3",
+      "subfield": "A3-03",
+      "topic": "急性胆管炎",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,1787 @@
+{
+  "exam_year": 111,
+  "block": "B",
+  "total_questions": 50,
+  "source": "厚生労働省 第111回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "111B1",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "検者が右利きの場合、腰椎\n刺を行うのに最も適切な被検者の体位はどれか。\n位",
+      "choices": {
+        "a": "座",
+        "b": "砕石位",
+        "c": "腹臥位",
+        "d": "右側臥位",
+        "e": "左側臥位"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "右利きの検者が腰椎穿刺を行う際の被験者の体位",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "111B2",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "医療、介護および福祉の分野で連携する職種の専門性や主たる役割について最も\n適切なのはどれか。",
+      "choices": {
+        "a": "介護支援専門員は要介護度を判定する。",
+        "b": "管理栄養士は高齢者施設で調理を担当する。",
+        "c": "作業療法士は基本的動作能力の回復を図る。",
+        "d": "言語聴覚士は摂食・嚥下の機能回復を図る。",
+        "e": "民生委員は生活保護の受給資格を判定する。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "医療従事者と職務",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "111B3",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "高血圧性心疾患の患者が、肺水腫を急激に発症し、急性心不全と診断された。洞\n性頻脈で血圧は170/100 mmHg である。浮腫などの体液貯留を認めない。\n呼吸管理とともにまず行う治療はどれか。",
+      "choices": {
+        "a": "利尿薬の投与",
+        "b": "ジギタリスの投与",
+        "c": "血管拡張薬の投与",
+        "d": "ドブタミンの投与",
+        "e": "生理食塩液の急速輸液"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A1",
+      "subfield": "A1-01",
+      "topic": "急性心不全",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "111B4",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "正常妊娠で妊娠初期に比べ後期に低下するのはどれか。",
+      "choices": {
+        "a": "循環血液量",
+        "b": "空腹時血糖",
+        "c": "血中プロラクチン",
+        "d": "血中コレステロール",
+        "e": "血中アルカリフォスファターゼ"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "妊娠初期に比べ後期に低下する指標",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "111B5",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "脳卒中後、早期にリハビリテーションを開始することで予防できるのはどれか。",
+      "choices": {
+        "a": "不整脈",
+        "b": "関節拘縮",
+        "c": "消化性潰瘍",
+        "d": "脳卒中再発",
+        "e": "大骨頸部骨折"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-03",
+      "topic": "脳卒中",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "111B6",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "舌根と喉頭の協調運動によって喉頭蓋が傾いて誤嚥を防止する。\nこの協調運動において喉頭が移動する方向はどれか。\n方\n方",
+      "choices": {
+        "a": "前上方",
+        "b": "前",
+        "c": "前下方",
+        "d": "後",
+        "e": "後下方"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "嚥下時に喉頭が移動する方向",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "111B7",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "分娩時の異常と発症時期との組合せで誤っているのはどれか。\n分娩第\u0002期\n分娩第\u0004期\n分娩第\u0004期\n分娩第\u0002期\n分娩第\u0004期",
+      "choices": {
+        "a": "臍帯下垂",
+        "b": "会陰裂傷",
+        "c": "過強陣痛",
+        "d": "不正軸進入",
+        "e": "子宮内反症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "111B8",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "母親の情報について母子健康手帳から得られる可能性が最も高いのはどれか。\n歴\n得\n歴",
+      "choices": {
+        "a": "学",
+        "b": "所",
+        "c": "職",
+        "d": "婚姻歴",
+        "e": "喫煙状況"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-13",
+      "topic": "母子健康手帳",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "111B9",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "ポリソムノグラフィに含まれないのはどれか。\n波\n圧",
+      "choices": {
+        "a": "脳",
+        "b": "血",
+        "c": "筋電図",
+        "d": "心電図",
+        "e": "SpO2"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A4",
+      "subfield": "A4-01",
+      "topic": "ポリソムノグラフィ",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "111B10",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "正期産で出生した生後\u0005日の新生児の所見として精査が必要なのはどれか。",
+      "choices": {
+        "a": "心拍数60/分",
+        "b": "呼吸数50/分",
+        "c": "\u0002日\u0006回の溢乳",
+        "d": "哺乳\u0006時間後の啼泣",
+        "e": "\u0002日\u0005回の黄色水様便"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-05",
+      "topic": "薬剤の副作用（新生児）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "111B11",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "内視鏡による止血が困難であった十二指腸潰瘍出血に対するインターベンショナ\nルラジオロジーÎIVR×で使用するのはどれか。",
+      "choices": {
+        "a": "エタノール",
+        "b": "クリップ",
+        "c": "コイル",
+        "d": "ステント",
+        "e": "フィルター"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A2",
+      "subfield": "A2-03",
+      "topic": "十二指腸潰瘍",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "111B12",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "精神障害の一次予防はどれか。",
+      "choices": {
+        "a": "職場のストレスチェック",
+        "b": "統合失調症に対する就労支援",
+        "c": "アルコール依存症に対する認知療法",
+        "d": "うつ病性障害寛解後の薬物療法の継続",
+        "e": "不安性障害の状況依存的不安に対する抗不安薬投与"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B3",
+      "subfield": "B3-04",
+      "topic": "器質性精神障害",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "111B13",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "1990 年から2014 年までの日本、韓国、アメリカ、イタリア及びスウェーデンに\nおける65 歳以上の人口比率の推移を示す。\n30 %\n25 %\n20 %\n15 %\n10 %\n5 %\n0 %\n①\n②\n③\n④\n⑤\n1990\n1992\n1994\n1996\n1998\n2000\n2002\n2004\n2006\n2008\n2010\n2012\n2014\n年\n日本はどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "日本における65歳以上の人口比率",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "111B14",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "我が国の主要死因別にみた死亡率\u001e人口10 万対 の推移を示す。\n1940\n1950\n1960\n1970\n1980\n1990\n2000\n2010\n年\n300\n250\n200\n150\n100\n50\n0\n死亡率（人口10 万対）\nⒶ\nA はどれか。\n炎",
+      "choices": {
+        "a": "肺",
+        "b": "心疾患",
+        "c": "悪性新生物",
+        "d": "脳血管疾患",
+        "e": "不慮の事故"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "主要死因別にみた死亡率",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "111B15",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "外用剤の経皮吸収について正しいのはどれか。",
+      "choices": {
+        "a": "毛孔からは経皮吸収は起きない。",
+        "b": "角層が厚いほど経皮吸収は高まる。",
+        "c": "陰囊の経皮吸収は掌蹠に比べて低い。",
+        "d": "分子量が小さい物質は経皮吸収が低い。",
+        "e": "閉鎖密封法ÎODT×は経皮吸収を高める。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B3",
+      "subfield": "B3-01",
+      "topic": "外用剤の経皮吸収",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "111B16",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "脊椎の加齢性変化について正しいのはどれか。",
+      "choices": {
+        "a": "椎間板変性は胸椎に多い。",
+        "b": "後縦靱帯骨化は頸椎に多い。",
+        "c": "骨粗鬆症の頻度に性差はない。",
+        "d": "最も多い症状は間欠性跛行である。",
+        "e": "脊椎圧迫骨折が多いのは第\u0005腰椎である。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D3",
+      "subfield": "D3-04",
+      "topic": "加齢変化",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "111B17",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "腹腔鏡手術の適応となるのはどれか。",
+      "choices": {
+        "a": "尿管結石症",
+        "b": "後腹膜線維症",
+        "c": "腎動脈狭窄症",
+        "d": "前立腺肥大症",
+        "e": "原発性アルドステロン症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "腹腔鏡手術の適応となる疾患",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "111B18",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "正常な成人男性の胸部MRI\u001e別冊No. 1 を別に示す。\n図に示す部位と名称の組合せで誤っているのはどれか。\n左心室\n肺動脈\n下行大動脈\n右心房\n心室中隔\n別\n冊",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A1",
+      "subfield": "A1-04",
+      "topic": "僧帽弁閉鎖不全症（MR）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "111B19",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "妊娠20 週の胎児について正しいのはどれか。",
+      "choices": {
+        "a": "網膜が完成する。",
+        "b": "造血は主に骨髄で行われる。",
+        "c": "生理的臍帯ヘルニアを認める。",
+        "d": "肺では肺胞の発達が完成する。",
+        "e": "心拍出量は右心室からが左心室からよりも多い。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "妊娠20週の胎児",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "111B20",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "腹部症状を生じないのはどれか。",
+      "choices": {
+        "a": "急性心筋炎",
+        "b": "急性冠症候群",
+        "c": "劇症\u0002型糖尿病",
+        "d": "高カルシウム血症",
+        "e": "頸椎椎間板ヘルニア"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "111B21",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "厚生労働省の簡易生命表\u001e平成27 年 で80 歳の日本人女性の平均余命に最も近い\nのはどれか。\n3 年\n6 年\n12 年\n18 年\n24 年",
+      "choices": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": "",
+        "e": ""
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "80歳の日本人女性の平均余命",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "111B22",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "多毛をきたすのはどれか。",
+      "choices": {
+        "a": "Sheehan 症候群",
+        "b": "甲状腺機能亢進症",
+        "c": "多囊胞性卵巣症候群",
+        "d": "17-α 水酸化酵素欠損症",
+        "e": "原発性アルドステロン症"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "多毛をきたす疾患",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "111B23",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "Friedman 曲線に用いられる分娩進行の評価項目はどれか。",
+      "choices": {
+        "a": "頸管の展退\u001e%",
+        "b": "子宮口の開大\u001ecm",
+        "c": "陣痛発作の持続時間\u001e秒",
+        "d": "頸部の硬さ\u001e軟、中、硬",
+        "e": "子宮口の位置\u001e前、中、後"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "Friedman曲線に用いられる分娩進行の評価項目",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "111B24",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "肝臓の構造について正しいのはどれか。",
+      "choices": {
+        "a": "短肝静脈は中肝静脈に流入する。",
+        "b": "小葉内では動脈と静脈が併走する。",
+        "c": "Cantlie 線から左側が外科的左葉である。",
+        "d": "外側区域の静脈血は右肝静脈に流入する。",
+        "e": "肝門部では門脈は胆管の腹側に位置する。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A4",
+      "subfield": "A4-01",
+      "topic": "肺の構造",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "111B25",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "血液中の副甲状腺ホルモンÎPTH×とカルシウムが同方向に変化\u001e両方とも増加、\nまたは、両方とも減少 するのはどれか。",
+      "choices": {
+        "a": "腫瘍性液性因子性高カルシウム血症ÎHHM×",
+        "b": "特発性副甲状腺機能低下症",
+        "c": "偽性副甲状腺機能低下症",
+        "d": "ビタミンD 欠乏症",
+        "e": "慢性腎不全"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "PTHとカルシウムが同方向に変化する病態",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "111B26",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "甲状軟骨の左側に刺創を認める患者の身体所見において、それだけでは緊急手術\nの適応とならないのはどれか。",
+      "choices": {
+        "a": "拡大する血腫",
+        "b": "広頸筋の断裂",
+        "c": "進行する皮下気腫",
+        "d": "振戦Îthrill×の触知",
+        "e": "ショックを伴う外出血"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "甲状軟骨左の刺創で緊急手術を考える状況",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "111B27",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "介護保険について正しいのはどれか。",
+      "choices": {
+        "a": "被保険者は65 歳以上である。",
+        "b": "介護保険料は全国一律である。",
+        "c": "主治医意見書には要介護度を記入する。",
+        "d": "認知機能の障害は介護保険の対象となる。",
+        "e": "地域包括支援センターは二次医療圏ごとに設置される。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-14",
+      "topic": "介護保険法〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "111B28",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "二次予防について正しいのはどれか。",
+      "choices": {
+        "a": "性感染症に対してコンドーム使用を推奨",
+        "b": "新生児マススクリーニングの施行",
+        "c": "河川に遊泳禁止の看板を掲示",
+        "d": "適切な睡眠時間を指導",
+        "e": "ワクチンの接種"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "二次予防",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "111B29",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "正期産児より早産児にみられる所見はどれか。",
+      "choices": {
+        "a": "うぶ毛が多い。",
+        "b": "耳介軟骨が厚い。",
+        "c": "皮下脂肪が厚い。",
+        "d": "皮膚角化層が厚い。",
+        "e": "足底のしわが多い。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-01",
+      "topic": "正期産児により早産児にみられる所見",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "111B30",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "保健所の業務はどれか。",
+      "choices": {
+        "a": "生活保護の認定",
+        "b": "食品に関する営業者の監視",
+        "c": "予防接種後の健康被害救済",
+        "d": "地域包括支援センターの設置",
+        "e": "休日夜間急患センターの設置"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-11",
+      "topic": "保健所",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "111B31",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "2015 年における我が国の人口構造について正しいのはどれか。\n65 歳以上の者のみの世帯は全世帯の約25 % である。",
+      "choices": {
+        "a": "老年化指数は約100 % である。",
+        "b": "出生数は死亡数を上回っている。",
+        "c": "生産年齢人口割合は増加している。",
+        "d": "合計特殊出生率は1.5 を超えている。",
+        "e": ""
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "2015年における我が国の人口構造",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 32,
+      "id": "111B32",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "正期産児で新生児マススクリーニングを行うのに最も適切な時期はどれか。",
+      "choices": {
+        "a": "出生当日",
+        "b": "生後5 日",
+        "c": "生後10 日",
+        "d": "生後20 日",
+        "e": "生後30 日"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-13",
+      "topic": "新生児マススクリーニング",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 33,
+      "id": "111B33",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "癌とリスクファクターの組合せで正しいのはどれか。\n高脂肪食\n癌\n低身体活動\n飲\n酒\n癌\n高食塩食\nヒトパピローマウイルスÎHPV×",
+      "choices": {
+        "a": "食道癌",
+        "b": "胃",
+        "c": "大腸癌",
+        "d": "乳",
+        "e": "子宮体癌"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "癌とリスクファクターの組合せ",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 34,
+      "id": "111B34",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "眼振とめまい疾患の組合せで正しいのはどれか。\u0002つ選べ。\n小脳梗塞\n起立性調節障害\nめまいを随伴する突発性難聴\n動揺病\n前庭神経炎",
+      "choices": {
+        "a": "垂直眼振",
+        "b": "注視眼振",
+        "c": "水平眼振",
+        "d": "純回旋眼振",
+        "e": "頭位変換眼振"
+      },
+      "answer": [
+        "a",
+        "c"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A8",
+      "subfield": "A8-02",
+      "topic": "めまい",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 35,
+      "id": "111B35",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "尿中Na の排泄低下を伴う低ナトリウム血症をきたすのはどれか。\u0002つ選べ。",
+      "choices": {
+        "a": "尿細管障害",
+        "b": "Addison 病",
+        "c": "SIADH",
+        "d": "肝硬変",
+        "e": "心不全"
+      },
+      "answer": [
+        "d",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 36,
+      "id": "111B36",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "高齢者の特徴で正しいのはどれか。\u0002つ選べ。",
+      "choices": {
+        "a": "血漿浸透圧が高くても口渇を感じにくい。",
+        "b": "腎でのナトリウム保持能が亢進している。",
+        "c": "糸球体濾過量が増加している。",
+        "d": "細胞内液量が増加している。",
+        "e": "腎濃縮力が低下している。"
+      },
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D3",
+      "subfield": "D3-04",
+      "topic": "高齢者血圧",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 37,
+      "id": "111B37",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "乳汁分泌を抑制するのはどれか。\u0002つ選べ。",
+      "choices": {
+        "a": "スルピリド",
+        "b": "オキシトシン",
+        "c": "プロラクチン",
+        "d": "エストロゲン",
+        "e": "ブロモクリプチン"
+      },
+      "answer": [
+        "d",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "乳汁分泌を抑制する薬剤",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 38,
+      "id": "111B38",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "ヒトのサーカディアンリズムについて正しいのはどれか。\u0002つ選べ。",
+      "choices": {
+        "a": "高照度光によって変化する。",
+        "b": "深部体温の日内変動が指標となる。",
+        "c": "成人における周期は約27 時間である。",
+        "d": "加齢によって後退し睡眠時間帯が遅くなる。",
+        "e": "時差への適応は、後退よりも前進させる方が容易である。"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B3",
+      "subfield": "B3-01",
+      "topic": "サーカディアンリズム",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 39,
+      "id": "111B39",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "食物アレルギー症状を引き起こすことが明らかになった食品のうち、加工食品に\n表示が義務付けられている特定原材料はどれか。\u0003つ選べ。\n麦\nば\n豆",
+      "choices": {
+        "a": "卵",
+        "b": "小",
+        "c": "そ",
+        "d": "大",
+        "e": "ゼラチン"
+      },
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "加工食品に表示が義務付けられている特定原材料",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 40,
+      "id": "111B40",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "53 歳の男性。視床出血後の左片麻痺のため回復期リハビリテーション病棟に入\n院中である。発症して\u0004か月が経過している。左上肢は前頭部まで挙上できるが、\n随意運動時に振戦を認める。握力は\u0002kg である。徒手筋力テストで左股関節屈\n曲・伸展と左膝関節屈曲・伸展の筋力はともに\b、左足関節屈曲・伸展の筋力は\n\u0004。左足クローヌスを認める。左半身の感覚は脱失している。平行棒内での歩行は\n可能だが、左下肢立脚相に膝関節は過伸展し足関節は内反する。患者は屋外歩行を\n希望している。歩行補助具の写真\u001e別冊No. 2 ①〜⑤ を別に示す。\nこの患者に用いるのに適切なのはどれか。\n別\n冊\n①〜⑤",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "片麻痺患者が屋外歩行のために利用すべき装具",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 41,
+      "id": "111B41",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "46 歳の女性。多尿を主訴に来院した。半年くらい前からトイレが近いことを\n徐々に自覚するようになった。最近になり就寝後にも\u0004回程度トイレに行くように\nなったため受診した。排尿後は夜間であっても大量の水を飲んでしまうという。他\nに腹痛などの自覚症状はない。\u0004年前から肝疾患で内服治療中である。身長156\ncm、体重54 kg。脈拍68/分、整。血圧144/92 mmHg。心音と呼吸音とに異常を\n認めない。腹部は平坦、軟で、肝・脾を触知しない。四肢に異常を認めない。尿所\n見：比重1.004、蛋白\u001e安 、糖\u001e安 、ケトン体\u001e安 。血液所見：赤血球421 万、\nHb 13.2 g/dL、Ht 40 %。血液生化学所見：アルブミン4.2 g/dL、AST 38 U/L、\nALT 42 U/L、血糖124 mg/dL、HbA1c 6.2 % \u001e基準4.6〜6.2 、Na 143 mEq/L、\nK 2.7 mEq/L、Cl 102 mEq/L、Ca 10.0 mg/dL、P 3.2 mg/dL。\n多尿の原因として最も考えられるのはどれか。",
+      "choices": {
+        "a": "耐糖能異常",
+        "b": "間質性膀胱炎",
+        "c": "心因性多飲症",
+        "d": "中枢性尿崩症",
+        "e": "低カリウム血症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A6",
+      "subfield": "A6-11",
+      "topic": "低カリウム血症",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 42,
+      "id": "111B42",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "77 歳の女性。持続性の上腹部痛を主訴に来院した。\u0006か月前から食欲不振を認\nめ、精査の結果、胃癌とその肝転移であると診断された。抗癌化学療法などの積極\n的な治療を希望せず、経過観察することとなった。\u0006週間前から上腹部痛が出現\nし、次第に増強した。外来で非ステロイド性抗炎症薬ÎNSAIDs×が投与され一時的\nに\u0002痛は軽減したが、\u0004日前から再び増悪したため受診した。\u0002痛コントロール目\n的でオピオイドの投与を開始することとなった。\n対応として適切なのはどれか。",
+      "choices": {
+        "a": "緩下薬を併用する。",
+        "b": "持続的皮下投与を行う。",
+        "c": "NSAIDs の投与を中止する。",
+        "d": "悪心が出現した場合は中止する。",
+        "e": "神経障害性\u0002痛治療薬を併用する。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D3",
+      "subfield": "D3-01",
+      "topic": "オピオイド",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 43,
+      "id": "111B43",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "49 歳の女性。頭重感と眼痛とを主訴に来院した。仕事で長時間パソコンを使用\nすると、症状が増悪する。視力は右1.0\u001e1.2庵安0.5 D 、左0.8\u001e1.2庵安1.0 D 。\n眼圧は右15 mmHg、左16 mmHg。瞳孔は正円同大で、対光反応は正常。\nSchirmer 試験は右\u0005mm、左\bmm\u001e基準10〜15 。フルオレセイン染色後の細隙\n灯顕微鏡写真\u001e別冊No. 3 を別に示す。\n治療として適切な点眼薬はどれか。\n別\n冊",
+      "choices": {
+        "a": "抗菌薬",
+        "b": "縮瞳薬",
+        "c": "β 遮断薬",
+        "d": "人工涙液",
+        "e": "副腎皮質ステロイド"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B4",
+      "subfield": "B4-01",
+      "topic": "ドライアイ",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 44,
+      "id": "111B44",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "20 年前、機械工場から化学物質が大気中に流出した。直後から地域で気管支喘\n息様の症状を訴える者がみられたが、一時的な流出で数か月後には症状を訴える者\nはいなくなった。当時の調査では、個人の曝露量と急性の気管支喘息様症状の有病\n率とに相関が認められた。最近になって、この物質に曝露すると\u0005年後から肝臓悪\n性腫瘍による死亡率が増加することが海外で報告された。このため、所管する地方\n自治体が周辺住民への健康影響を再評価することとなった。当時の個人の曝露量の\nデータは自治体に保管されている。\n健康影響の評価のために最初に着手するのはどれか。",
+      "choices": {
+        "a": "当時の情報をすべて破棄する。",
+        "b": "前向き研究のデザインに着手する。",
+        "c": "この地域の肝臓悪性腫瘍による死亡率を調べる。",
+        "d": "現在の工場周辺の大気中化学物質濃度を測定する。",
+        "e": "肝臓悪性腫瘍の入院患者による症例対照研究を開始する。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "公害による健康影響の評価で最初に着手すべきこと",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 45,
+      "id": "111B45",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "\bか月の乳児。健康診査のため母親に連れられて来院した。母親と健診医との会\n話を以下に示す。\n健診医\n｢お子さんはミルクをよく飲みますか｣\n母親\n①｢母乳ですが、足りないようなので粉ミルクを足しています｣\n健診医\n｢あやしたときに笑いますか｣\n母親\n②｢はい、よく笑います｣\n健診医\n｢お母さんの声の方を振り向きますか｣\n母親\n③｢はい、振り向きます｣\n健診医\n｢首はすわっていますか｣\n母親\n④｢まだすわっていないようです｣\n健診医\n｢寝返りをしますか｣\n母親\n⑤｢まだしません｣\n異常である可能性が高いのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-01",
+      "topic": "4か月児の健診で異常である可能性が高い事項",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 46,
+      "id": "111B46",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "70 歳の男性。下の皮疹を主訴に来院した。約\u0006週間前に両下に皮疹が出現\nし、一過性に両膝関節痛と腹部の疝痛があった。数日前から皮疹が増悪したため受\n診した。身長168 cm、体重57 kg。体温36.8 ℃。脈拍84/分、整。血圧150/82\nmmHg。腹部は平坦、軟で、肝・脾を触知しない。両下に皮疹を認める。両側\nの足背に軽度の浮腫を認める。尿所見：蛋白\u0002袷、潜血\u0006袷、沈渣に赤血球多\n数/1 視野、尿蛋白1.8 g/日。血液所見：赤血球420 万、Hb 12.2 g/dL、Ht 36 %、\n白血球9,400\u001e分葉核好中球64 %、好酸球\u0006%、好塩基球\u0002%、単球\u000b%、リンパ\n球25 % 、血小板19 万。血液生化学所見：総蛋白6.8 g/dL、アルブミン3.8\ng/dL、尿素窒素32 mg/dL、クレアチニン1.5 mg/dL。免疫血清学所見：抗核抗\n体陰性、MPO-ANCA 陰性。尿中Bence-Jones 蛋白陰性。診断のため腎生検を行\nった。下の皮膚所見\u001e別冊No. 4Ａ 、腎生検のPAM 染色標本\u001e別冊No. 4Ｂ 及び\n蛍光抗体IgA 染色標本\u001e別冊No. 4Ｃ を別に示す。\nこの患者で正しいのはどれか。\n別\n冊\nＡ、Ｂ、Ｃ",
+      "choices": {
+        "a": "腎機能の予後が悪い。",
+        "b": "消化管出血は起こらない。",
+        "c": "心電図異常を高率に合併する。",
+        "d": "皮膚生検で真皮深層にIgG が沈着する。",
+        "e": "悪性腫瘍のスクリーニングが必要である。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A7",
+      "subfield": "A7-04",
+      "topic": "IgA血管炎",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 47,
+      "id": "111B47",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "45 歳の男性。会社員。課長に昇進後、半年が経過した頃から寝つきが悪くなり、\n仕事でケアレスミスをするようになった。その後、めまい、怠感および食欲不振\nが出現し、会社の産業医に勧められ受診した。妻と子供の\u0006人暮らし。抑うつ状態\nで軽度の希死念慮を認め、うつ病と診断されたため入院となった。抗うつ薬などに\nよる治療を\b週間行ったところ、症状は消失し退院可能となった。\n主治医の今後の対応として最も適切なのはどれか。",
+      "choices": {
+        "a": "退院前に抗うつ薬を減量する。",
+        "b": "職場での配置転換を会社に指示する。",
+        "c": "退院直後の職場復帰を本人へ指導する。",
+        "d": "家族に対して本人への接し方を助言する。",
+        "e": "発症前のペースで業務が行えるよう励ます。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B3",
+      "subfield": "B3-03",
+      "topic": "うつ病",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 48,
+      "id": "111B48",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "47 歳の男性。頸椎脱臼骨折で入院中である。\f週間前に高所で作業中に転落し、\n第\u0005頸椎脱臼骨折に対して観血的後方固定術が行われた。今回、離床を目指したリ\nハビリテーションを開始することとした。徒手筋力テストでは両側とも上腕二頭筋\n\b、橈側手根伸筋\u0006、上腕三頭筋\r、深指屈筋\rである。体幹筋と下肢筋の随意運\n動は不可能。両上肢尺側、体幹および両下肢の感覚は脱失している。\n適切な対応はどれか。\u0002つ選べ。",
+      "choices": {
+        "a": "頸椎間欠牽引",
+        "b": "起坐時の血圧計測",
+        "c": "移乗時の立ち上がり訓練",
+        "d": "車椅子座位でのクッション材使用",
+        "e": "短下肢装具を用いた立位保持訓練"
+      },
+      "answer": [
+        "b",
+        "d"
+      ],
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B2",
+      "subfield": "B2-01",
+      "topic": "C5脱臼骨折後の離床を目指したリハビリでの対応",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 49,
+      "id": "111B49",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "55 歳の男性。両側の手掌と足底に半年前から認める皮疹を主訴に来院した。鱗\n屑の苛性カリÎKOH×直接鏡検法で真菌を認めない。初診時の右足底の写真\u001e別冊\n診断に有用なのはどれか。\u0002つ選べ。\n別\n冊\n次の文を読み、50〜52 の問いに答えよ。\n78 歳の男性。怠感と口渇を訴え、通院中の病院を受診した。\n現病歴\n：\n68 歳時に人間ドックで高血糖を指摘されて治療を開始した。\u0006か月ご\nとに定期受診しており毎朝\u0002錠の内服薬で、これまでHbA1c は\f% 台であった。\n\u0002か月前から怠感とのどの渇きが出現した。\n既往歴\n：\n特記すべきことはない。\n生活歴\n：\n喫煙歴と飲酒歴はない。\n家族歴\n：\n父親は肺癌で死亡。母親は胃癌で死亡。糖尿病の家族歴はない。\n現\n症\n：\n意識は清明。身長162 cm、体重53 kg。体温36.2 ℃。脈拍80/分、整。\n血圧134/82 mmHg。呼吸数18/分。眼瞼結膜と眼球結膜とに異常を認めない。口\n腔内は軽度乾燥している。頸静脈の怒張を認めない。甲状腺腫と頸部リンパ節とを\n触知しない。心音と呼吸音とに異常を認めない。腹部は平坦、軟で、肝・脾を触知\nしない。振動覚と腱反射は正常である。\n検査所見\n：\n尿所見：蛋白\u001e案 、糖\u0006袷、ケトン体\u0002袷、潜血\u001e安 、沈渣に異常を\n認めない。血液所見：赤血球444 万、Hb 12.9 g/dL、Ht 43 %、白血球6,000\u001e好中\n球54 %、好酸球\u0004%、好塩基球\r%、単球\u000e%、リンパ球36 % 、血小板19 万。\n血液生化学所見：総蛋白6.9 g/dL、アルブミン3.5 g/dL、総ビリルビン0.6\nmg/dL、直接ビリルビン0.3 mg/dL、AST 22 U/L、ALT 19 U/L、LD 186 U/L\n基準176〜353 、ALP 186 U/L\u001e基準115〜359 、γ-GTP 17 U/L\u001e基準\u000e〜50 、ア\nミラーゼ352 U/L \u001e基準37〜160 、CK 132 U/L \u001e基準30〜140 、尿素窒素20\nmg/dL、クレアチニン0.8 mg/dL、尿酸4.0 mg/dL、血糖235 mg/dL、HbA1c\n8.9 % \u001e基準4.6〜6.2 、総コレステロール147 mg/dL、トリグリセリド64\nmg/dL、HDL コレステロール51 mg/dL、Na 140 mEq/L、K 4.4 mEq/L、Cl 105\nmEq/L、Ca 9.1 mg/dL、P 3.0 mg/dL、TSH 3.0 μU/mL \u001e基準0.2〜4.0 、FT4\n1.2 ng/dL\u001e基準0.8〜2.2 。心電図と胸部エックス線写真とに異常を認めない。",
+      "choices": {
+        "a": "喫煙歴",
+        "b": "飲酒歴",
+        "c": "海外渡航歴",
+        "d": "歯科治療歴",
+        "e": "ペット飼育歴"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": "臨床",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B2",
+      "subfield": "B2-05",
+      "topic": "掌蹠膿疱症",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 50,
+      "id": "111B50",
+      "exam_year": 111,
+      "block": "B",
+      "stem": "確認すべきなのはどれか。\u0003つ選べ。\n51\nMini-Mental State ExaminationÎMMSE×を行うこととした。\n注意点はどれか。\u0003つ選べ。\n52\n精査の結果、腹部CT で膵尾部に径\u0004cm の腫瘤影を認め、膵癌と診断された。\n本人や家族と相談の結果、膵尾部切除術を行うこととなった。\n術前の血糖コントロールの方法として適切なのはどれか。\n次の文を読み、53〜55 の問いに答えよ。\n58 歳の男性。筋力低下と嚥下困難とを主訴に来院した。\n現病歴\n：\n\u0002か月前から階段を昇るときに手すりが必要になった。\u0002週間前から固\n形物を飲み込むのが難しくなり、昨日、洋式トイレで妻の助けがないと立ち上がる\nことができなかったため受診した。\n既往歴\n：\n10 年前から高血圧症で内服治療中。\n家族歴\n：\n特記すべきことはない。\n現\n症\n：\n意識は清明。身長176 cm、体重65 kg。体温36.2 ℃。脈拍72/分、整。\n血圧138/76 mmHg。呼吸数12/分。SpO2 98 %\u001eroom air 。両肘頭に軽度の紅斑を\n認める。胸腹部に異常を認めない。表在リンパ節を触知しない。四肢近位筋に左右\n対称性の把握痛と徒手筋力テストで\u0006〜\bの筋力低下とを認める。感覚障害と小脳\n性運動失調とを認めない。\n検査所見\n：\n血液所見：赤血球504 万、Hb 15.8 g/dL、Ht 45 %、白血球7,700、\n血小板35 万。血液生化学所見：総蛋白7.2 g/dL、アルブミン3.3 g/dL、総ビリ\nルビン0.6 mg/dL、AST 96 U/L、ALT 112 U/L、CK 2,380 U/L\u001e基準30〜140 、\nNa 139 mEq/L、K 4.3 mEq/L、Cl 108 mEq/L。胸腹部CT に異常を認めない。右\n大部MRI のT1 強調像\u001e別冊No. 6Ａ とT2 強調像\u001e別冊No. 6Ｂ とを別に示す。\n別\n冊\nＡ、Ｂ\n53\nこの患者でみられる症状はどれか。\u0002つ選べ。\n54\nこの患者の電気生理学的検査所見で正しいのはどれか。\n55\nこの患者に最初に投与すべき薬剤はどれか。\n次の文を読み、56〜58 の問いに答えよ。\n72 歳の女性。発熱、咽頭痛および咳嗽を主訴に来院した。\n現病歴\n：\n\u0004日前から37 ℃台の発熱、咽頭痛および咳嗽が出現した。風邪をひい\nたと考え市販の感冒薬を服用したが、内服後\f時間程度で再び発熱したため受診し\nた。咳をすると両側のこめかみと腰に軽度の痛みを感じる。腹痛と下痢はない。\n既往歴\n：\n45 歳時に胆石症と胆囊炎とで手術。60 歳から変形性腰椎症と骨粗鬆症\nとで総合病院の整形外科を定期受診している。\n生活歴\n：\n40 歳まで縫製工場で工員、その後65 歳まで同工場の給食調理。現在は\n家族の炊事を担当するとともに、地域のボランティア活動などに参加している。\n夫、娘夫婦および11 歳と\f歳の孫の\f人家族。喫煙歴はないが夫が喫煙者。飲酒\nは機会飲酒。ペットは飼っていない。海外渡航歴はない。\n現\n症\n：\n意識は清明。身長154 cm、体重68 kg。体温37.3 ℃。脈拍80/分、整。\n血圧126/62 mmHg。呼吸数16/分。SpO2 96 %\u001eroom air 。皮膚は軽度に汗ばんで\nいる。両側の眼瞼結膜と咽頭後壁とに発赤を認める。後鼻漏を認める。両側の下顎\n角直下のリンパ節に軽度の圧痛を認める。項部硬直を認めない。心音と呼吸音とに\n異常を認めない。腹部は平坦、軟で、肝・脾を触知しない。頭頸部、体幹および四\n肢に皮疹を認めない。両側下に軽度の圧痕を残す浮腫を認める。\n56\nこの患者の鑑別診断において最も有用な質問はどれか。\n57\nこの患者の病態を検討するのに、有用な所見が得られる可能性が高い身体診察は\nどれか。\u0003つ選べ。\n58\nこの患者への薬物治療を検討するのに有用でない情報はどれか。\n次の文を読み、59〜61 の問いに答えよ。\n63 歳の男性。吐血のため救急車で搬入された。\n現病歴\n：\n\u0004年前から食後に心窩部痛を感じていたが、多忙であったために医療機\n関を受診していなかった。最近になって、常に心窩部不快感があり食欲低下と全身\n怠感とを感じるようになった。\u0004日前に便が黒いことに気付いたが、今朝、排便\n後に真っ赤な血を大量に吐いたため救急車を要請した。\n59\nこの患者への対応として必要性が低いのはどれか。\n既往歴\n：\n50 歳ごろに脳梗塞。抗血小板薬を処方されている。\n生活歴\n：\n喫煙は20 本/日を43 年間。飲酒は焼酎\u0002合/日を38 年間。\n家族歴\n：\n父親が胃癌。母親が高血圧症。\n現\n症\n：\n意識は清明。身長168 cm、体重72 kg。体温36.3 ℃。心拍数96/分、\n整。血圧98/68 mmHg。呼吸数20/分。SpO2 96 %\u001eroom air 。眼瞼結膜は貧血様\nだが眼球結膜に黄染を認めない。心音と呼吸音とに異常を認めない。腹部は平坦、\n軟で、心窩部に軽度圧痛を認める。表在リンパ節を触知しない。\n検査所見\n：\n血液所見：赤血球276 万、Hb 8.7 g/dL、Ht 28 %、白血球6,400、血\n小板28 万。血液生化学所見：総蛋白6.8 g/dL、アルブミン3.4 g/dL、総ビリル\nビン0.8 mg/dL、AST 45 U/L、ALT 56 U/L、LD 344 U/L\u001e基準176〜353 、ALP\n322 U/L\u001e基準115〜359 、γ-GTP 87 U/L\u001e基準\u000e〜50 、アミラーゼ120 U/L\u001e基準\n37〜160 、CK 78 U/L \u001e基準30〜140 、尿素窒素28 mg/dL、クレアチニン0.8\nmg/dL、尿酸6.3 mg/dL、血糖108 mg/dL、HbA1c 5.8 %\u001e基準4.6〜6.2 、総コ\nレステロール250 mg/dL、トリグリセリド190 mg/dL、Na 140 mEq/L、K 4.2\nmEq/L、Cl 100 mEq/L。上部消化管内視鏡像\u001e別冊No. 7 を別に示す。\n別\n冊\n60\n治療として適切なのはどれか。\n61\nその後の治療薬として適切なのはどれか。\n62\n体重65 kg の心不全患者にドパミンを\u0005μg/kg/分で静脈内投与する。\nドパミン100 mg/100 mL の注射薬を用いて投与する場合、微量輸液ポンプに設\n定する注入速度を求めよ。\nただし、小数第\u0004位以下の数値が得られた場合は、小数第\u0004位を四捨五入するこ\nと。\n解答：①\n②．③mL/時間\n①\n②\n③\n\u0002\n\u0002\n\u0002\n\u0004\n\u0004\n\u0004\n\u0006\n\u0006\n\u0006\n\b\n\b\n\b\n\u0005\n\u0005\n\u0005\n\u000e\n\u000e\n\u000e\n\u000f\n\u000f\n\u000f",
+      "choices": {
+        "a": "消化酵素薬",
+        "b": "胃粘膜保護薬",
+        "c": "運動機能改善薬",
+        "d": "蛋白分解酵素阻害薬",
+        "e": "プロトンポンプ阻害薬"
+      },
+      "answer": [
+        "c",
+        "d",
+        "e"
+      ],
+      "format": {
+        "type1": "長文",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": true,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A6",
+      "subfield": "A6-07",
+      "topic": "糖尿病（DM）〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

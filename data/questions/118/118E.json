@@ -27,9 +27,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "診察の基本手技",
+      "field": null,
+      "subfield": null,
+      "topic": "褥瘡ができやすい部位",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -97,9 +97,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-01",
-      "topic": "血液培養",
+      "field": "A10",
+      "subfield": "A10-01",
+      "topic": "常在菌の汚染菌〈コンタミネーション〉と解釈する場合",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -132,9 +132,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-02",
-      "topic": "疫学的因果関係",
+      "field": null,
+      "subfield": null,
+      "topic": "リスクファクターと癌の組合せ（英語問題）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -167,9 +167,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-07",
-      "topic": "緩和ケアの概念",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "終末期癌患者の死亡3日以内の身体所見の変化",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -272,9 +272,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A9",
-      "subfield": "A9-01",
-      "topic": "感染症の治療〈総論〉",
+      "field": "A10",
+      "subfield": "A10-01",
+      "topic": "ディスポーザブル手袋を着用せずに取り扱える対象",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -342,9 +342,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "医師憲章",
+      "field": null,
+      "subfield": null,
+      "topic": "ノーベル生理学・医学賞を受賞した日本人研究者と研究内容の組合せ",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -377,9 +377,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-01",
-      "topic": "ヘルスプロモーション",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "非感染性疾患〈NCDs〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -412,9 +412,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "穿刺",
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "髄液検査",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -447,9 +447,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "インフォームド・コンセント",
+      "field": null,
+      "subfield": null,
+      "topic": "共同意思決定〈シェアードディシジョンメイキング〉の説明",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -484,7 +484,7 @@
       },
       "field": "A4",
       "subfield": "A4-01",
-      "topic": "咳嗽",
+      "topic": "湿性咳嗽をきたす疾患",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -553,8 +553,8 @@
         "is_deleted": false
       },
       "field": "A4",
-      "subfield": "A4-15",
-      "topic": "乳癌",
+      "subfield": "A4-01",
+      "topic": "乳癌を疑う所見",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -587,9 +587,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A5",
-      "subfield": "A5-01",
-      "topic": "腎・泌尿器の検査〈総論〉",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "腎機能",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -622,9 +622,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-04",
-      "topic": "告知，SPIKES",
+      "field": null,
+      "subfield": null,
+      "topic": "患者に進行がんの告知をする際の注意点",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -727,9 +727,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "直腸診",
+      "field": null,
+      "subfield": null,
+      "topic": "肛門直腸の診察に用いる器具",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -797,9 +797,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-07",
-      "topic": "気道の異物〈総論〉",
+      "field": "D2",
+      "subfield": "D2-01",
+      "topic": "窒息後に意識を消失して倒れた人にまず行うべき対応",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -832,9 +832,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-13",
-      "topic": "肥満〈総論〉",
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "健康成人の総エネルギー摂取量に占める栄養素の割合",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -869,7 +869,7 @@
       },
       "field": "A1",
       "subfield": "A1-09",
-      "topic": "本態性高血圧症",
+      "topic": "高血圧症〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -937,9 +937,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "診察のあり方",
+      "field": "A8",
+      "subfield": "A8-02",
+      "topic": "意識障害〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1007,9 +1007,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-05",
-      "topic": "副作用の報告制度",
+      "field": "C3",
+      "subfield": "C3-05",
+      "topic": "薬剤の副作用（新生児）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1077,9 +1077,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "C3",
-      "subfield": "C3-16",
-      "topic": "細菌性髄膜炎",
+      "field": "A8",
+      "subfield": "A8-07",
+      "topic": "髄膜炎〈総論〉",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1182,9 +1182,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-07",
-      "topic": "緩和ケアの概念",
+      "field": null,
+      "subfield": null,
+      "topic": "退院後の方針の話し合い",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1217,9 +1217,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D3",
-      "subfield": "D3-06",
-      "topic": "腹部診察",
+      "field": "A2",
+      "subfield": "A2-04",
+      "topic": "急性虫垂炎",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1252,9 +1252,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-07",
-      "topic": "緩和ケアの概念",
+      "field": null,
+      "subfield": null,
+      "topic": "「もう終わりにしたい」と訴える患者に対する医師の返答",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1287,9 +1287,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D2",
-      "subfield": "D2-14",
-      "topic": "在宅医療〈総論〉",
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "患者の適切な退院先",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1392,9 +1392,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "D1",
-      "subfield": "D1-07",
-      "topic": "ショック〈総論〉",
+      "field": "A8",
+      "subfield": "A8-02",
+      "topic": "GCS・JCS",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1462,9 +1462,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "B3",
-      "subfield": "B3-03",
-      "topic": "双極性障害",
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1532,9 +1532,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-01",
-      "topic": "小脳の障害",
+      "field": "C3",
+      "subfield": "C3-16",
+      "topic": "急性小脳失調症",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1567,9 +1567,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A8",
-      "subfield": "A8-01",
-      "topic": "小脳の障害",
+      "field": "A6",
+      "subfield": "A6-01",
+      "topic": "小脳失調患者の神経診察でみられる所見",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1674,7 +1674,7 @@
       },
       "field": "A6",
       "subfield": "A6-10",
-      "topic": "高尿酸血症〈総論〉",
+      "topic": "痛風",
       "action": null,
       "knowledge_type": null,
       "explanation": {
@@ -1707,9 +1707,9 @@
         "has_kinki": false,
         "is_deleted": false
       },
-      "field": "A6",
-      "subfield": "A6-10",
-      "topic": "高尿酸血症〈総論〉",
+      "field": "A8",
+      "subfield": "A8-01",
+      "topic": "痛風発作時にまず投与すべき薬剤",
       "action": null,
       "knowledge_type": null,
       "explanation": {

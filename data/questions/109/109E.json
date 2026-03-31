@@ -1,0 +1,1343 @@
+{
+  "exam_year": 109,
+  "block": "E",
+  "total_questions": 38,
+  "source": "厚生労働省 第109回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "109E1",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "要因A が疾患B のリスクファクターとなる条件として不可欠なのはどれか。",
+      "choices": {
+        "a": "要因A が疾患B の発症に先行する。",
+        "b": "要因A を疾患B の多くが有している。",
+        "c": "要因A が存在しないと疾患B は発症しない。",
+        "d": "要因A が疾患B に対して量-反応関係がある。",
+        "e": "要因A によって疾患B が発症することを動物実験で再現できる。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "要因Aが疾患Bのリスクファクターとなる条件",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "109E2",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "社会保障制度について正しいのはどれか。",
+      "choices": {
+        "a": "国民医療費はこの10 年間で3 倍に増加した。",
+        "b": "診療録の保存義務期間は終診時から2 年間である。",
+        "c": "国民健康保険組合の被保険者数は6 千万人より多い。",
+        "d": "介護保険第1 号被保険者数は第2 号被保険者数より多い。",
+        "e": "結核患者の医療費の公費負担は感染症法に規定されている。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-10",
+      "topic": "社会保障制度",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "109E3",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "我が国の母子保健制度について正しいのはどれか。\nTP01doc-Eor-8\n2\n4 　医師の指示の下に行う診療補助行為として適切なのはどれか。\n5 　へき地医療について正しいのはどれか。\n6 　職場の一般健康診断後の保健指導における産業医の役割でないのはどれか。\nTP01doc-Eor-9\n3\n7 　我が国におけるある疾患の人口10 万人当たりの死亡率の推移を年齢階級別に示\nす。\nこの疾患はどれか。\n80〜89 歳\n（人口10 万対）\n60〜69 歳\n50〜59 歳\n70〜79 歳\n40〜49 歳\n30〜39 歳\nTP01doc-Eor-10",
+      "choices": {
+        "a": "女性の胃癌",
+        "b": "男性の肝癌",
+        "c": "女性の乳癌",
+        "d": "女性の食道癌",
+        "e": "男性の前立腺癌"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "わが国の母子保健制度",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "109E4",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "8 　我が国の合計特殊出生率、妊産婦死亡率、新生児死亡率、乳児死亡率、死産率の\n推移（別冊No. 1）を別に示す。それぞれ2010 年における数値を1 としたときの\n1950 年からの変化である。\n妊産婦死亡率はどれか。\nTP01doc-Eor-11",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-09",
+      "topic": "診療補助行為",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "109E5",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "9 　ある感染症を発症した患者数をその発症日ごとに図に示す。\nこの感染症の発生状況の要因として最も考えられるのはどれか。\n10　過重労働対策で正しいのはどれか。\n2月12日\n2月19日\n2月26日\n3月5日\n3月12日\n3月19日\n3月26日\n4月2日\n4月9日\nTP01doc-Eor-12",
+      "choices": {
+        "a": "被ばく管理",
+        "b": "がん検診の活用",
+        "c": "作業環境の測定",
+        "d": "衛生委員会での審議",
+        "e": "在宅での時間外勤務の奨励"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-09",
+      "topic": "へき地医療",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "109E6",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "11　副腎皮質ステロイドの外用が適応となる脱毛症はどれか。\n12　呼吸運動に最も関与するのはどれか。\n13　上腹部の脈管の解剖で正しいのはどれか。\nTP01doc-Eor-13",
+      "choices": {
+        "a": "Glisson 鞘には肝動脈、肝静脈および胆管が存在する。",
+        "b": "総肝動脈と総胆管とは伴走する。",
+        "c": "脾動脈は腹腔動脈から分岐する。",
+        "d": "上腸間膜静脈と下腸間膜静脈とが合流して門脈を形成する。",
+        "e": "上腸間膜動脈は十二指腸水平部から上行部の背側を走行する。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-21",
+      "topic": "健康管理（健康診断）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "109E7",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "14　頭部単純MRI のT1 強調像（別冊No. 2）を別に示す。\nみられるのはどれか。\n15　血清補体価（CH50）が低下する疾患はどれか。\n16　陣痛発来とする所見はどれか。\nTP01doc-Eor-14",
+      "choices": {
+        "a": "胎動減少",
+        "b": "胎児下降",
+        "c": "血性帯下増加",
+        "d": "子宮頸管短縮",
+        "e": "規則的子宮収縮"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "性別と年齢階級ごとの癌による死亡率の推移",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "109E8",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "17　妊娠10 週の時点で臍帯内に存在する胎児臓器はどれか。\n18　要介護高齢者の褥瘡予防に最も有効なのはどれか。\n19　ある化学物質について、ヒトの発がん性を調べた疫学研究では発がん性の十分な\n証拠が得られたが、動物実験では発がん性が認められなかった。\nヒトへの発がん性評価について正しいのはどれか。\nTP01doc-Eor-15",
+      "choices": {
+        "a": "発がん性の判定は保留する。",
+        "b": "新たに細胞実験を行って判定する。",
+        "c": "動物の種を変えて動物実験を行う。",
+        "d": "ヒトの疫学研究に基づいて判定する。",
+        "e": "化学物質の生体内代謝に基づいて判定する。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-13",
+      "topic": "妊産婦死亡",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "109E9",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "20　体液平衡について正しいのはどれか。\n21　監察医が行う行政解剖の目的として適切なのはどれか。\n22　症候とその説明の組合せで正しいのはどれか。\nTP01doc-Eor-16",
+      "choices": {
+        "a": "強迫観念 　　　　 自分のものでない考えが勝手に浮かんでくる。",
+        "b": "思考途絶 　　　　 思考が不活発で考えが前に進まない。",
+        "c": "支配観念 　　　　 思考が外部から支配される。",
+        "d": "反響言語 　　　　 主題はそれないが細部にこだわる。",
+        "e": "連合弛緩 　　　　 関連のない観念が浮かんでまとまらない。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-17",
+      "topic": "感染症法〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "109E10",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "23　妊娠41 週で児頭骨盤不均衡を示唆する児頭の所見はどれか。\n24　嗄声を主訴に来院した成人にまず行う発声機能検査はどれか。\n25　胎児超音波検査で診断が最も困難な疾患はどれか。\nTP01doc-Eor-17",
+      "choices": {
+        "a": "鎖　肛",
+        "b": "水腎症",
+        "c": "卵巣囊腫",
+        "d": "横隔膜ヘルニア",
+        "e": "十二指腸閉鎖症"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D2",
+      "subfield": "D2-21",
+      "topic": "過重労働対策",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "109E11",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "26　治療法の模式図を示す。\nこの治療法はどれか。\n27　肺癌患者において放射線治療の適応でないのはどれか。\n抗凝固薬\n血液製剤\n血流ポンプ\n脱血\n（体外へ）\n返血\n（体内へ）\n廃棄液\n血\n漿\n分\n離\n器\nTP01doc-Eor-18",
+      "choices": {
+        "a": "限局型小細胞癌",
+        "b": "上大静脈症候群",
+        "c": "癌性胸膜炎",
+        "d": "骨転移",
+        "e": "脳転移"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "109E12",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "28　急性胆囊炎の診断で超音波ガイド下に経皮経肝胆囊ドレナージを行うこととなっ\nた。腹部超音波像（別冊No. 3）を別に示す。\n穿刺経路として最も適切なのはどれか。\n29　膝関節の徒手検査手技（別冊No. 4）を別に示す。\n診断する病変部位はどれか。\nTP01doc-Eor-19",
+      "choices": {
+        "a": "内側側副靱帯",
+        "b": "外側側副靱帯",
+        "c": "前十字靱帯",
+        "d": "半月板",
+        "e": "膝蓋腱"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A4",
+      "subfield": "A4-01",
+      "topic": "呼吸運動",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "109E13",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "30　CO2 ナルコーシスについて正しいのはどれか。\n31　高齢者総合機能評価〈CGA〉に含まれない内容はどれか。\n32　標準的な1 歳6 か月児の成長・発達の所見で正しいのはどれか。2 つ選べ。\nTP01doc-Eor-20",
+      "choices": {
+        "a": "生歯が12 本",
+        "b": "頭囲が胸囲より大",
+        "c": "体重が出生時の6 倍",
+        "d": "身長が出生時の2 倍",
+        "e": "パラシュート反射の存在",
+        "f": "情緒と気分"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A2",
+      "subfield": "A2-01",
+      "topic": "上腹部の脈管の解剖",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "109E14",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "33　正常な腎の機能について正しいのはどれか。2 つ選べ。\n34　カテーテル関連血流感染症の診断に必要な検査はどれか。2 つ選べ。\n35　間接ビリルビン優位の黄疸を呈するのはどれか。2 つ選べ。\nTP01doc-Eor-21",
+      "choices": {
+        "a": "総胆管結石",
+        "b": "溶血性貧血",
+        "c": "Rotor 症候群",
+        "d": "Gilbert 症候群",
+        "e": "Dubin-Johnson 症候群"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A1",
+      "subfield": "A1-04",
+      "topic": "僧帽弁閉鎖不全症（MR）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "109E15",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "36　3 歳児健康診査で実施される項目で一次予防はどれか。2 つ選べ。\n37　真菌の染色法として適切なのはどれか。2 つ選べ。\n38　再生可能なエネルギー源はどれか。3 つ選べ。\nTP01doc-Eor-22",
+      "choices": {
+        "a": "風　力",
+        "b": "火　力",
+        "c": "地　熱",
+        "d": "原子力",
+        "e": "バイオマス"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 3,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A9",
+      "subfield": "A9-01",
+      "topic": "血清補体価（CH50）が低下する疾患",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "109E16",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "39　乳幼児突然死症候群のリスクファクターはどれか。3 つ選べ。\n40　50 歳の女性。乳がん検診のマンモグラフィで乳癌を疑われ精査のため来院した。\n腫瘤は触知しない。検診のマンモグラム（別冊No. 5）を別に示す。\n次に行うのはどれか。\nTP01doc-Eor-23",
+      "choices": {
+        "a": "CT",
+        "b": "PET/CT",
+        "c": "超音波検査",
+        "d": "経皮的針生検",
+        "e": "マンモグラフィ再検"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 3,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "陣痛発来とする所見",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "109E17",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "41　36 歳の男性。プログラマー。職場の健康診断で異常を指摘されて来院した。仕\n事は不規則で、納期が近づくと会社に泊まり込んで仕事をしなくては間に合わない。\n独身で一人暮らし。喫煙は20 本/日を16 年間。既往歴に特記すべきことはない。\n身長168 cm、体重82 kg、腹囲101 cm。血圧138/88 mmHg。血液生化学所見：空\n腹時血糖98 mg/dL、HbA1c 6.2 ％（基準4.6〜6.2）、トリグリセリド178 mg/dL、\nHDL コレステロール42 mg/dL、LDL コレステロール178 mg/dL。\n現時点で、患者の行動変容のための対応として適切なのはどれか。\n42　生後2 か月の乳児。ワクチン接種の相談のため母親に連れられて来院した。成長\nと発達とに異常を認めない。母親の話では、近隣の市から引っ越してきたばかりで、\nこれまで予防接種を受けたことがない。\nまず受けるように勧める予防接種の対象疾患はどれか。\nTP01doc-Eor-24",
+      "choices": {
+        "a": "水　痘",
+        "b": "日本脳炎",
+        "c": "Hib 感染症",
+        "d": "麻疹と風疹",
+        "e": "流行性耳下腺炎"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A4",
+      "subfield": "A4-08",
+      "topic": "過敏性肺（臓）炎",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "109E18",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "43　36 歳の初妊婦。妊娠28 週。昨夜からの反復する腹痛を主訴に来院した。これま\nでの妊婦健康診査では特に異常を指摘されていなかった。1 週前から腹部緊満感を\n自覚していた。子宮底長36 cm、腹囲95 cm。下腿に軽度の浮腫を認める。腟鏡診\nで分泌物は白色少量。内診で子宮口は閉鎖している。経腟超音波検査で頸管長\n10 mm、内子宮口の楔状の開大を認める。腹部超音波検査で胎児に明らかな形態異\n常はなく、胎児推定体重は1,100 g、羊水指数〈AFI〉38 cm（基準5 〜25）。胎児心\n拍数陣痛図で10 分周期の子宮収縮を認め、胎児心拍数波形に異常を認めない。\n治療として適切なのはどれか。\n44　34 歳の女性。1 回経妊1 回経産婦。妊娠39 週に陣痛発来し入院した。妊娠中の\n異常は指摘されていない。陣痛開始7 時間後に児を娩出するまでの経過に異常はな\nかった。児娩出30 分後に胎盤が娩出したが、直後から強い下腹部痛と大量の性器\n出血とがみられた。呼吸困難はない。意識は清明。脈拍104/分、整。血圧104/62\nmmHg。呼吸数18/分。腹部の触診で子宮底を触れない。内診で腟内に手拳大の充\n実性腫瘤を触れる。腹部超音波検査で腹腔内に液体貯留を認めない。この時点まで\nの外出血量は1,400 mL で、性器出血は次第に減少してきているが下腹部痛は持続\nしている。輸液を開始するとともに、輸血の準備を開始した。\n次に行う対応として適切なのはどれか。\nTP01doc-Eor-25",
+      "choices": {
+        "a": "子宮整復",
+        "b": "腟血腫除去術",
+        "c": "子宮動脈塞栓術",
+        "d": "単純子宮全摘術",
+        "e": "子宮底輪状マッサージ"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": null,
+      "subfield": null,
+      "topic": "要介護高齢者の褥瘡予防",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "109E19",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "45　1 か月の乳児。健康診査のため母親に連れられて来院した。母親の妊娠・分娩経\n過に異常はなく、母乳栄養で体重は27 g/日増加している。便は黄色である。皮膚\nはやや黄染している。胸腹部に異常を認めない。\nこの児で正しいのはどれか。\n46　21 歳の女性。両眼痛と流涙とを主訴に来院した。昨晩、ハードコンタクトレン\nズを装用したまま就寝し、午前4 時ころコンタクトレンズを外した。その直後から\n強い眼痛が生じたため家族に付き添われて受診した。\nまず行うべき検査はどれか。\nTP01doc-Eor-26",
+      "choices": {
+        "a": "角膜知覚検査",
+        "b": "涙液分泌検査",
+        "c": "角膜曲率測定",
+        "d": "角膜擦過培養検査",
+        "e": "フルオレセイン染色検査"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "ヒトへの発がん性評価",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "109E20",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "47　12 歳の女児。間欠的腹痛と下痢とを主訴に来院した。生来健康であったが、3\nか月前から間欠性の腹痛と1 日数回の下痢とが出現した。2 か月前から体重が\n2 kg 減少し、腹痛と下痢とが改善しないため受診した。痔瘻を認める。粘血便を\n認めない。血液所見：赤血球400 万、Hb 9.8 g/dL、Ht 33 ％、白血球6,000、血小\n板35 万。血液生化学所見：総蛋白6.3 g/dL、アルブミン3.0 g/dL、総ビリルビン\n0.9 mg/dL、AST 30 IU/L、ALT 35 IU/L。CRP 2.5 mg/dL。\n下部消化管内視鏡検査で予想されるのはどれか。\n48　86 歳の男性。なんとなく元気がないと家族から往診の依頼があった。数日前か\nら食欲が低下し、いつもより元気がないと同居の妻から説明を受けた。本人は何と\nもないと言う。ほぼベッド上の生活で食事摂取は自立しているが、それ以外の\nADL には介助を必要としている。5 年前から脳梗塞後遺症（左片麻痺）、混合型認\n知症、高血圧症、前立腺肥大症および胆石症で訪問診療を受けている。意識レベル\nはJCSⅠ- 2 。体温36.5 ℃。脈拍112/分、整。血圧110/80 mmHg。呼吸数16/分。\nSpO2 96 ％（room air）。眼瞼結膜は貧血様でない。眼球結膜に黄染を認めない。心\n音と呼吸音とに異常を認めない。腹部では腸雑音がやや亢進し、右季肋部の触診を\n行うと右手で払いのけようとする。下腿に浮腫を認めない。\n正しい判断はどれか。\nTP01doc-Eor-27",
+      "choices": {
+        "a": "浮腫を認めないので心不全ではない。",
+        "b": "腹痛の訴えがないので胆嚢炎ではない。",
+        "c": "SpO2 が96 ％なので呼吸不全ではない。",
+        "d": "体温が36.5 ℃なので腎盂腎炎ではない。",
+        "e": "眼瞼結膜が貧血様でないので消化管出血ではない。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A5",
+      "subfield": "A5-01",
+      "topic": "体液平衡",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "109E21",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "49　3 か月の男児。陰囊の大きさに左右差があることに気付いた母親に連れられて来\n院した。母親の妊娠中には異常はなかった。在胎38 週2 日、2,600 g で出生。1 か\n月健康診査では異常を指摘されていない。母乳栄養で嘔吐はない。1 週前にオムツ\nの交換の際に右陰囊が大きいことに気付かれた。意識は清明。体重5,300 g。体温\n36.5 ℃。脈拍124/分、整。SpO2 97 ％（room air）。心音と呼吸音とに異常を認め\nない。腹部は平坦、軟で、肝・脾を触知しない。陰茎は包皮に覆われているが尿道\n口は確認できる。陰囊は皮膚色に左右差はないが、右側は左側の約2 倍の大きさで\n軟である。肛門に異常を認めない。\n診断に有用な診察器具はどれか。\nTP01doc-Eor-28",
+      "choices": {
+        "a": "ルーペ",
+        "b": "聴診器",
+        "c": "打腱器",
+        "d": "舌圧子",
+        "e": "ペンライト"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "監察医が行う行政解剖の目的",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "109E22",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "50　68 歳の女性。下肢の筋力低下を主訴に来院した。3 か月前から下肢の筋力低下\nを自覚し、和式トイレから立ち上がれなくなり、階段昇降もできないようになった。\n同じころから足先にジンジンする感じを自覚するようになった。下肢の筋力低下は\n少し改善したが症状が長引くので受診した。意識は清明。脈拍68/分、整。血圧\n134/82 mmHg。心音と呼吸音とに異常を認めない。脳神経に異常を認めない。徒\n手筋力テストで左右差なく、大腿四頭筋は4 、前脛骨筋は4 で筋萎縮はみられない。\n表在感覚は正常で下肢振動覚は軽度低下し、四肢腱反射は消失している。自律神経\n障害はない。血糖98 mg/dL、HbA1c 5.8 ％（基準4.6〜6.2）。心電図と心エコー図\nとに異常を認めない。運動神経伝導検査の結果（別冊No. 6）を別に示す。\n最も考えられるのはどれか。\nTP01doc-Eor-29",
+      "choices": {
+        "a": "Guillain-Barré 症候群",
+        "b": "糖尿病性末梢神経障害",
+        "c": "Charcot-Marie-Tooth 病",
+        "d": "アミロイドニューロパチー",
+        "e": "慢性炎症性脱髄性多発根神経炎"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B6",
+      "subfield": "B6-01",
+      "topic": "精神科用語とその説明の組合せ",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "109E23",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "51　30 歳の女性。自閉的な生活を心配した両親に伴われて来院した。17 歳ころ、周\nりの人が自分を避けるのは変な臭いがしているからだと言い始め、自室に閉じこも\nるようになったため精神科で治療を受けた。治療によって外出できるようになり作\n業所に通所していた。28 歳ころから幻聴が出現し「噂話をされている。何かやろ\nうとするといちいち文句を言われる」と言うようになり、再び外出することはなく\nなり、哲学書を繰り返し読むだけの生活になっていた。3 か月前からは通院せず、\n服薬もしなくなったため、両親が転医を希望し新たな医療機関を受診した。診察時\nは感情表出に乏しく受動的で、断片的に幻覚や妄想を思わせる訴えが認められる。\n身体所見に異常を認めない。\nこの患者に対する心理・精神機能検査として有用でないのはどれか。\nTP01doc-Eor-30",
+      "choices": {
+        "a": "バウムテスト",
+        "b": "Minnesota 多面人格検査〈MMPI〉",
+        "c": "Mini-Mental State Examination〈MMSE〉",
+        "d": "ウィスコンシンカードソーティングテスト〈WCST〉",
+        "e": "簡易精神症状評価尺度［Brief Psychiatric Rating Scale〈BPRS〉］"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-05",
+      "topic": "児頭骨盤不均衡（CPD）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "109E24",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "52　2 歳の男児。息が荒く喘鳴があることに気付いた母親に連れられて来院した。2\n日前から発熱と咳とがあり近くの診療所で上気道炎として治療されていたが喘鳴が\n出現したため救急外来を受診した。体温37.5 ℃。咽頭に軽度の発赤を認める。胸\n部聴診で吸気時に喘鳴を認める。頸部エックス線写真の正面像（別冊No. 7Ａ）と側\n面像（別冊No. 7Ｂ）を別に示す。\n考えられる疾患はどれか。\nTP01doc-Eor-31",
+      "choices": {
+        "a": "アデノイド",
+        "b": "喉頭軟化症",
+        "c": "急性喉頭蓋炎",
+        "d": "気管喉頭異物",
+        "e": "クループ症候群"
+      },
+      "answer": "e",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B5",
+      "subfield": "B5-01",
+      "topic": "発声機能検査",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "109E25",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "53　82 歳の男性。易疲労感を主訴に来院した。3 か月前から顔面が蒼白であること\nを指摘され、息切れと易疲労感とを自覚するようになった。2 か月前から味覚異常\nと手足のしびれとを感じていた。3 週前から易疲労感が増悪するため受診した。20\n年前に胃癌に対し胃全摘術を受けたが、10 年前から自らの判断で通院をやめてい\nた。身長172 cm、体重56 kg。体温36.2 ℃。脈拍92/分、整。血圧102/66 mmHg。\n呼吸数18/分。眼瞼結膜は貧血様である。眼球結膜に黄染を認めない。下腿に軽度\nの浮腫を認める。下腿から遠位に感覚障害を認める。血液所見：赤血球172 万、\nHb 6.8 g/dL、Ht 21 ％、白血球3,300、血小板11 万。血液生化学所見：総蛋白\n5.8 g/dL、アルブミン2.8 g/dL、総ビリルビン1.2 mg/dL、AST 24 IU/L、ALT\n32 IU/L、LD 648 IU/L（基準176〜353）、尿素窒素11 mg/dL、クレアチニン0.9\nmg/dL、血糖106 mg/dL。\nまず投与すべきなのはどれか。\nTP01doc-Eor-32",
+      "choices": {
+        "a": "鉄　剤",
+        "b": "亜鉛製剤",
+        "c": "ニコチン酸製剤",
+        "d": "カルシウム製剤",
+        "e": "ビタミンB12 製剤"
+      },
+      "answer": "a",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C1",
+      "subfield": "C1-01",
+      "topic": "胎児超音波",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "109E26",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "54　70 歳の男性。開腹手術のため全身麻酔中である。プロポフォールで導入後、セ\nボフルラン、レミフェンタニル及びロクロニウムで維持している。酢酸リンゲル液\nを輸液中である。手術開始前、皮膚の消毒中に血圧と心拍数とが低下してきた。膀\n胱温36.0 ℃。SpO2 99 ％。呼気終末二酸化炭素濃度〈ETCO2〉37 mmHg（基準35〜\n45）。気道内圧10 cmH2O。皮膚に発赤を認めない。心音と呼吸音とに異常を認め\nない。\n皮膚切開までの対応として適切なのはどれか。\nTP01doc-Eor-33",
+      "choices": {
+        "a": "アドレナリン投与",
+        "b": "ニトログリセリン投与",
+        "c": "オピオイドの拮抗薬投与",
+        "d": "ロクロニウムの拮抗薬投与",
+        "e": "セボフルランの吸入濃度減量"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A7",
+      "subfield": "A7-01",
+      "topic": "血漿交換",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "109E27",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "55　76 歳の女性。歩行が不安定になったことを主訴に来院した。3 年前にParkinson\n病と診断され内服治療を受けている。最近、小刻み歩行が悪化し転倒が2 回あった。\n通所リハビリテーションを始め、歩行補助具の使用を勧められて相談のため受診し\nた。小刻み歩行とバランス障害とを認める。徒手筋力テストで下肢は4 に低下して\nいる。50 歳時に関節リウマチと診断され、現在は寛解状態であるが、手指の変形\nは強く握力は5 kg 程度である。6 年前に夫と死別し一人暮らしになったため軽費\n老人ホーム〈ケアハウス〉に入居している。歩行補助具の写真（別冊No. 8 ①〜⑤）を\n別に示す。\nこの患者に適切な歩行補助具はどれか。\nTP01doc-Eor-34",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B6",
+      "subfield": "B6-03",
+      "topic": "放射線治療〈総論〉",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "109E28",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "56　82 歳の男性。胃体上部の進行胃癌に対し、胃全摘術、リンパ節郭清術および空\n腸瘻造設術を行った。手術翌日の腹部エックス線写真（別冊No. 9）を別に示す。\n腹腔ドレーンの留置部位はどれか。2 つ選べ。\nTP01doc-Eor-35",
+      "choices": {
+        "a": "右横隔膜下",
+        "b": "左横隔膜下",
+        "c": "Winslow 孔",
+        "d": "左傍結腸溝",
+        "e": "直腸膀胱窩"
+      },
+      "answer": "b",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A3",
+      "subfield": "A3-01",
+      "topic": "経皮経肝胆嚢ドレナージ〈PTGBD〉の穿刺経路",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "109E29",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "57　72 歳の男性。頻尿を主訴に来院した。3 年前から夜間に尿意で目が覚めてトイ\nレに行くようになり、3 か月前からはその頻度が増してきた。自宅近くの医療機関\nを受診しa1 遮断薬の内服を1 か月続けたが軽快しないため紹介されて受診した。\n起床時に下着はぬれていない。腹部は平坦、軟。直腸指診で小鶏卵大で弾性硬の前\n立腺を触知する。尿所見に異常を認めない。PSA 2.3 ng/mL（基準4.0 以下）。腹部\n超音波検査で前立腺体積は34 mL で残尿量は30 mL。国際前立腺症状スコア12 点\n（軽症0 〜7 点、中等症8 〜19 点、重症20〜35 点）。頻度・尿量記録（別冊No. 10）\nを別に示す。\nこの患者にみられるのはどれか。2 つ選べ。\nTP01doc-Eor-36",
+      "choices": {
+        "a": "心因性多尿",
+        "b": "昼間頻尿",
+        "c": "夜間頻尿",
+        "d": "夜間多尿",
+        "e": "夜間遺尿"
+      },
+      "answer": "c",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "B2",
+      "subfield": "B2-01",
+      "topic": "前十字靭帯損傷の評価方法（ラックマンテスト）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "109E30",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "58　58 歳の男性。右上肢麻痺を主訴に来院した。3 か月前から右上肢の疼痛としびれ\nがあり、複数の医療機関を受診したが診断に至らなかった。1 か月前から右上肢麻\n痺が現れ次第に悪化したため自宅近くの診療所を受診し、胸部エックス線写真で異\n常陰影を指摘されたため紹介されて受診した。既往歴に特記すべきことはない。喫\n煙は30 本/日を37 年間。意識は清明。身長165 cm、体重62 kg。体温36.6 ℃。脈\n拍72/分、整。血圧130/102 mmHg。呼吸数14/分。SpO2 98 ％（room air）。持参し\nた胸部エックス線写真（別冊No. 11Ａ）と胸部造影CT（別冊No. 11Ｂ、Ｃ）とを別に\n示す。\nこの患者の身体所見として考えられるのはどれか。3 つ選べ。\nTP01doc-Eor-37",
+      "choices": {
+        "a": "右上肢内側感覚低下",
+        "b": "顔面浮腫",
+        "c": "嚥下障害",
+        "d": "発汗異常",
+        "e": "鷲　手"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 3,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A4",
+      "subfield": "A4-11",
+      "topic": "CO2ナルコーシス",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "109E31",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "59　86 歳の女性。歩行が不安定であることを主訴に娘に連れられて来院した。10 年\n前から高血圧症、変形性膝関節症および変形性脊椎症で通院していたが、徐々に足\nの力が弱くなり歩行が不安定になったため受診した。自分で立ち上がり、どうにか\n屋内の伝い歩きをすることはできるが、月1 回の通院以外はほとんど外出すること\nはない。食事と排泄とはかろうじて自立しているが、入浴には一部介助が必要であ\nる。夫は5 年前に肺癌で死亡し、現在は一人暮らしで隣に住む娘が介護している。\n半年前から1 週間に2 回の訪問介護を利用している。本人と家族に相談の上、訪問\nリハビリテーションを開始することになった。\nリハビリテーションの到達目標設定のために必要な情報はどれか。3 つ選べ。\nTP01doc-Eor-38",
+      "choices": {
+        "a": "高血圧症である。",
+        "b": "屋内は伝い歩きである。",
+        "c": "入浴に部分介助が必要である。",
+        "d": "夫の死因は肺癌である。",
+        "e": "娘が介護している。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 3,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D3",
+      "subfield": "D3-04",
+      "topic": "高齢者総合機能評価（CGA）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 32,
+      "id": "109E32",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "次の文を読み、60〜62 の問いに答えよ。\n63 歳の女性。腹部膨隆と尿失禁とを主訴に来院した。\n現病歴　：　2 年前から腹部膨満感を認めるようになった。次第に腹部膨隆が目立つ\nようになり、食欲はあるが食事をとるのがつらく、時々尿失禁を認めるようになっ\nたため受診した。\n既往歴　：　30 歳時に子宮内膜症。\n生活歴　：　幼少期に両親が離婚して母親と2 人で暮らしていたが、母親が死亡した\nため3 年前からは一人暮らし。\n家族歴　：　父親は詳細不明。母親が肺炎のため85 歳で死亡。\n現　症　：　意識は清明。身長157 cm、体重55 kg。体温36.5 ℃。脈拍84/分、整。\n血圧166/90 mmHg。呼吸数18/分。SpO2 98 ％（room air）。眼瞼結膜と眼球結膜と\nに異常を認めない。頸静脈の怒張を認めない。甲状腺腫と頸部リンパ節とを触知し\nない。心音と呼吸音とに異常を認めない。腹部は著明に膨隆し、腫大した肝と腫瘤\nとを腹部全体に触知する。腸雑音に異常を認めない。四肢に異常を認めない。\n検査所見　：　尿所見：蛋白（-）、糖（-）、ケトン体1 +、潜血1 +、沈渣に白血球\nを認めない。血液所見：赤血球406 万、Hb 12.3 g/dL、Ht 41 ％、白血球6,130、\n血小板22 万。血液生化学所見：総蛋白7.8 g/dL、アルブミン4.5 g/dL、総ビリ\nルビン0.4 mg/dL、AST 18 IU/L、ALT 9 IU/L、LD 157 IU/L（基準176〜353）、\nALP 288 IU/L（基準115〜359）、c-GTP 44 IU/L（基準8 〜50）、アミラーゼ95 IU/L\n（基準37〜160）、尿素窒素24 mg/dL、クレアチニン1.2 mg/dL、尿酸6.3 mg/dL、\n血糖98 mg/dL、総コレステロール195 mg/dL、トリグリセリド152 mg/dL、\nNa 140 mEq/L、K 3.9 mEq/L、Cl 103 mEq/L。腹部単純CT の冠状断像（別冊\nTP01doc-Eor-39",
+      "choices": {},
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C3",
+      "subfield": "C3-01",
+      "topic": "標準的な1歳6か月児の成長・発達",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 33,
+      "id": "109E33",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "60　今後経過中に出現すると考えられる症候として可能性が最も高いのはどれか。\n61　この時点での対応として適切でないのはどれか。\n62　3 か月後に発熱と腰背部痛とに加えて尿量が減少したため再度来院した。左腰背\n部に叩打痛を認め腎囊胞の感染を疑った。\n正しいのはどれか。\nTP01doc-Eor-40",
+      "choices": {
+        "a": "尿培養検査が高率に陽性となる。",
+        "b": "Gram 陰性菌が原因である可能性が高い。",
+        "c": "MRI は囊胞感染の診断に特異度が高い。",
+        "d": "感染囊胞ドレナージは有用性が低い。",
+        "e": "腎摘出術は禁忌である。"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": true,
+        "is_deleted": false
+      },
+      "field": "A5",
+      "subfield": "A5-01",
+      "topic": "正常な腎の機能",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 34,
+      "id": "109E34",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "次の文を読み、63〜65 の問いに答えよ。\n67 歳の男性。交通事故で受傷したため搬入された。\n現病歴　：　道路を歩いて横断中、自動車に衝突され跳ね飛ばされ転倒した。直ちに\n救急車が要請された。救急隊到着時、意識は清明で右殿部を痛がり、歩行不能で\nあった。四肢に明らかな麻痺はなかった。救急車で救命救急センターに搬送された。\n既往歴　：　高血圧症で内服治療中。\n生活歴　：　妻と2 人暮らし。定年退職後は無職。日常生活は自立し毎朝の散歩を日\n課にしていた。\n家族歴　：　父親が高血圧性脳内出血で死亡。母親が認知症。\n現　症　：　病院到着時は不穏。体温36.0 ℃。心拍数136/分、整。血圧70/38 mmHg。\n呼吸数32/分。SpO2 95 ％（リザーバー付マスク10 L/分100 ％酸素投与下）。右腰部\nに皮下出血がみられ、仙骨部に圧痛を認める。腹部は平坦で、軽度の反跳痛を認め\nる。外尿道口から出血を認める。\n63　この患者にポータブルエックス線撮影を指示した。\n次に優先すべき検査はどれか。\nTP01doc-Eor-41",
+      "choices": {
+        "a": "腰椎MRI",
+        "b": "頭部単純CT",
+        "c": "腹部血管造影",
+        "d": "骨盤部造影CT",
+        "e": "迅速超音波検査〈FAST〉"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "C2",
+      "subfield": "C2-03",
+      "topic": "子宮腔癒着（症）",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 35,
+      "id": "109E35",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "検査所見　：　血液所見：赤血球243 万、Hb 5.4 g/dL、Ht 22 ％、白血球8,400、\n血小板12 万。血液生化学所見：AST 56 IU/L、ALT 42 IU/L、尿素窒素24\nmg/dL、クレアチニン1.4 mg/dL。CRP 5.2 mg/dL。\nこの患者に、まず赤血球濃厚液4 単位を輸血した場合のHb（g/dL）として最も考\nえられるのはどれか。\nなお、患者の体重は60 kg、輸血に使用した血液のHb は1 単位28 g、循環血液\n量は体重の7 ％とし、さらなる失血と輸液の影響は考慮しないものとする。\n65　実際には輸血後のHb は6.0 g/dL であった。\nこの患者に想定される合併損傷のうち最優先で対処する必要があるのはどれか。\n64\nTP01doc-Eor-42",
+      "choices": {
+        "a": "脳挫傷",
+        "b": "尿道損傷",
+        "c": "直腸損傷",
+        "d": "骨盤部動脈損傷",
+        "e": "腰椎横突起骨折"
+      },
+      "answer": [
+        "b",
+        "d"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A3",
+      "subfield": "A3-01",
+      "topic": "間接ビリルビン優位の黄疸を呈する病態",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 36,
+      "id": "109E36",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "次の文を読み、66〜68 の問いに答えよ。\n58 歳の男性。前胸部圧迫感を主訴に来院した。\n現病歴　：　午前11 時ころ、庭仕事中に頸部に放散する前胸部圧迫感を初めて自覚\nした。2 分以上続き冷汗も出現するため、看護師をしている妻に助けを求めた。居\n間にいた妻が駆けつけたときに橈骨動脈の拍動は微弱であり、冷汗を伴う前胸部圧\n迫感も続くため救急車を要請した。午前11 時15 分に救急車が現場に到着した際、\n胸部症状はかなり改善していた。直ちに搬送が開始され、午前11 時30 分に病院に\n到着したときには症状は完全に消失していた。\n既往歴　：　36 歳時に十二指腸潰瘍。\n家族歴　：　父親が胃癌のため76 歳で死亡。\n生活歴　：　喫煙は20 本/日を38 年間。\n現　症　：　意識は清明。身長168 cm、体重72 kg。体温36.2 ℃。脈拍76/分、整。\n血圧122/78 mmHg。呼吸数16/分。SpO2 100 ％（マスク4 L/分酸素投与下）。心\n音と呼吸音とに異常を認めない。腹部は平坦、軟で、肝・脾を触知しない。神経学\n的所見に異常を認めない。\n検査所見　：　採血時間：午前11 時32 分　血液所見：赤血球455 万、Hb 12.8 g/dL、\nHt 38 ％、白血球7,800、血小板21 万、D ダイマー0.8 ng/mL（基準1.0 以下）。血\n液生化学所見：総蛋白7.2 g/dL、アルブミン3.8 g/dL、心筋トロポニンT 陰性、\n総ビリルビン0.9 mg/dL、AST 32 IU/L、ALT 28 IU/L、LD 222 IU/L（基準176〜\n353）、ALP 352 IU/L（基準115〜359）、c-GTP 42 IU/L（基準8 〜50）、アミラーゼ\n88 IU/L（基準37〜160）、CK 42 IU/L（基準30〜140）、尿素窒素12 mg/dL、クレアチ\nニン0.6 mg/dL、血糖98 mg/dL、HbA1c 6.2 ％（基準4.6〜6.2）、Na 138 mEq/L、\nK 4.4 mEq/L、Cl 101 mEq/L。胸部エックス線写真で心胸郭比48 ％、肺野に異常\nを認めない。心電図（別冊No. 13）を別に示す。続いて行った心エコー検査で左室の\n前側壁から心尖部にかけて収縮の低下を認めた。\nTP01doc-Eor-43",
+      "choices": {},
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "3歳児健康診査で実施される項目で一次予防に該当するもの",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 37,
+      "id": "109E37",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "66　妻が初めに駆けつけたときの収縮期血圧として予想されるのはどれか。\n67　予想される病態として正しいのはどれか。\n68　まず考慮すべき初期治療として適切なのはどれか。3 つ選べ。\nTP01doc-Eor-44",
+      "choices": {
+        "a": "ヘパリン",
+        "b": "冠拡張薬",
+        "c": "ジギタリス",
+        "d": "抗血小板薬",
+        "e": "アドレナリン"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 3,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "A10",
+      "subfield": "A10-01",
+      "topic": "真菌の染色法",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 38,
+      "id": "109E38",
+      "exam_year": 109,
+      "block": "E",
+      "stem": "69　中心静脈から電解質輸液（20 ％ブドウ糖と3 ％アミノ酸とを含有）1,500 mL を、\n末梢静脈から20 ％脂肪乳剤250 mL（450 kcal）を投与した場合の総エネルギーを求\nめよ。\nただし、ブドウ糖は4 kcal/g、アミノ酸は4 kcal/g とする。\n解答：①,\n②  ③\n0 kcal\n①　　②　　③\n0 　　0 　　0\n1 　　1 　　1\n2 　　2 　　2\n3 　　3 　　3\n4 　　4 　　4\n5 　　5 　　5\n6 　　6 　　6\n7 　　7 　　7\n8 　　8 　　8\n9 　　9 　　9\n千\n百\n十一の位\nTP01doc-Eor-45\nTP01doc-Eor-46\nTP01doc-Eor-47\nTP01doc-Eor-48",
+      "choices": {},
+      "answer": [
+        "a",
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": "一般",
+        "type2": "総論",
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "is_deleted": false
+      },
+      "field": "D1",
+      "subfield": "D1-01",
+      "topic": "再生可能なエネルギー源",
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}
