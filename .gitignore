@@ -16,3 +16,6 @@ public/admin-analysis.json
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# ローカル専用データ（解説リファレンス等、絶対にpushしない）
+data/.local/
