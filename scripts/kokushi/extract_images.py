@@ -120,10 +120,11 @@ def extract_page_mapping(pdf_path, block):
 
 
 def detect_rotated_pages(pdf_path):
-    """Detect pages where content is rotated 90° CCW using 'No.' text x-coordinate.
+    """Detect pages where content is rotated 90° CCW using 'No.' text direction.
 
-    Normal pages: 'No.' appears at top center (x > 200)
-    Rotated pages: 'No.' appears at left side (x < 200)
+    Normal pages: 'No.' text is horizontal (line dir ≈ (1,0), bbox w > h)
+    Rotated pages: 'No.' text is vertical (line dir ≈ (0,-1), bbox w < h)
+    Two-column pages have 'No.' at x < 200 but horizontal — must NOT be flagged.
     Returns set of 1-based page numbers that need 90° CW rotation.
     """
     if not HAS_FITZ:
@@ -142,7 +143,12 @@ def detect_rotated_pages(pdf_path):
                 for line in block['lines']:
                     for span in line['spans']:
                         if 'No.' in span['text']:
-                            if span['bbox'][0] < 200:
+                            bbox = span['bbox']
+                            w = bbox[2] - bbox[0]
+                            h = bbox[3] - bbox[1]
+                            # Rotated text: w < h (vertical), x < 200
+                            # Two-column text: w > h (horizontal), x < 200 — NOT rotated
+                            if bbox[0] < 200 and h > 0 and w / h < 0.9:
                                 rotated.add(page_num + 1)
                             found = True
                             break
@@ -169,7 +175,7 @@ def rotate_image_cw90(img_path):
         return False
 
 
-def smart_trim(img_path, is_rotated=False, padding=10, header_pct=0.12, footer_pct=0.13):
+def smart_trim(img_path, is_rotated=False, padding=10, header_pct=0.13, footer_pct=0.13):
     """Remove header/footer and trim whitespace from extracted page image.
 
     Header: "No. X （A 問題XX）" occupies top ~6-8% of the page.
@@ -361,11 +367,10 @@ def process_year(year, dry_run=False, force=False):
                      '-cropbox', str(pdf_for_q), str(out_path).replace('.png', '')],
                     capture_output=True
                 )
-                # Rename pdftoppm output
-                for f in out_path.parent.glob(f"{out_path.stem}*.png"):
-                    if f != out_path:
-                        f.rename(out_path)
-                        break
+                # Rename pdftoppm output (pattern: {prefix}-{page}.png)
+                for f in out_path.parent.glob(f"{out_path.stem}-*.png"):
+                    f.rename(out_path)
+                    break
 
                 # Auto-rotate if page is detected as rotated
                 is_rotated = page in rotated_set
