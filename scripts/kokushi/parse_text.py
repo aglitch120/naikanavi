@@ -20,7 +20,7 @@ import argparse
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-BLOCK_SIZES = {"A": 75, "B": 50, "C": 75, "D": 75, "E": 50, "F": 75}
+BLOCK_SIZES = {"A": 75, "B": 50, "C": 75, "D": 75, "E": 50, "F": 75, "G": 75, "H": 50, "I": 75}
 
 # UI要素のスキップリスト
 SKIP_LINES = {
