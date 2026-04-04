@@ -163,11 +163,16 @@ def rotate_image_cw90(img_path):
         return False
 
 
-def smart_trim(img_path, is_rotated=False, padding=15, footer_pct=0.10):
-    """Remove footer and trim whitespace from extracted page image.
+def smart_trim(img_path, is_rotated=False, padding=10, header_pct=0.12, footer_pct=0.13):
+    """Remove header/footer and trim whitespace from extracted page image.
 
-    Footer (page number + DKIX code) occupies bottom ~8-10% of portrait pages.
-    For rotated pages (90° CW), the footer moves to the left edge.
+    Header: "No. X （A 問題XX）" occupies top ~6-8% of the page.
+    Footer: "— XX —" + DKIX code occupies bottom ~10-13%.
+
+    For rotated pages (originally landscape, rotated 90° CW to portrait):
+    - Original bottom (footer) → LEFT edge after rotation
+    - Original left (No. header) → TOP after rotation
+    So we remove TOP (header) and LEFT (footer).
     """
     if not HAS_PIL or not HAS_NUMPY:
         return False
@@ -177,19 +182,26 @@ def smart_trim(img_path, is_rotated=False, padding=15, footer_pct=0.10):
         w, h = img.size
         arr = np.array(img)
 
-        # Remove footer area
         if is_rotated:
-            footer_width = int(w * footer_pct)
-            arr[:, :footer_width] = 255
+            # After 90° CW rotation of landscape page:
+            # - No. header (original left) → now at TOP
+            # - Footer/page num (original bottom) → now at LEFT edge
+            header_h = int(h * header_pct)
+            footer_w = int(w * footer_pct)
+            arr[:header_h, :] = 255   # Remove header from top
+            arr[:, :footer_w] = 255   # Remove footer from left edge
         else:
-            footer_height = int(h * footer_pct)
-            arr[h - footer_height:, :] = 255
+            # Normal portrait: header at top, footer at bottom
+            header_h = int(h * header_pct)
+            footer_h = int(h * footer_pct)
+            arr[:header_h, :] = 255
+            arr[h - footer_h:, :] = 255
 
         img = Image.fromarray(arr)
 
-        # Detect content bounds
+        # Detect content bounds with tight threshold
         gray = np.array(img.convert('L'))
-        mask = gray < 240
+        mask = gray < 245
         rows = np.any(mask, axis=1)
         cols = np.any(mask, axis=0)
 
