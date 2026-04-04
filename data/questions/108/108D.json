@@ -1,0 +1,2407 @@
+{
+  "exam_year": 108,
+  "block": "D",
+  "total_questions": 60,
+  "source": "厚生労働省 第108回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "108D1",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "アルコール依存症の治療について適切なのはどれか。",
+      "choices": {
+        "a": "断酒会は匿名参加が原則である。",
+        "b": "断酒より容易な節酒を目標とする。",
+        "c": "離脱症状にベンゾジアゼピン系薬を投与する。",
+        "d": "脳症の予防としてビタミンDを大量に投与する。",
+        "e": "抗酒薬を患者に知らせず家族に食事に混ぜさせる。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "e"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "108D2",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "網膜芽細胞腫について正しいのはどれか。",
+      "choices": {
+        "a": "男児に多い。",
+        "b": "良性腫瘍である。",
+        "c": "学童期にみられる。",
+        "d": "石灰化がみられる。",
+        "e": "結膜充血がみられる。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "108D3",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "サルコイドーシスで治療の対象とならないのはどれか。",
+      "choices": {
+        "a": "骨病変",
+        "b": "神経病変",
+        "c": "高カルシウム血症",
+        "d": "完全房室ブロック",
+        "e": "両側肺門リンパ節腫脹"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "108D4",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "肺高血圧を伴わないのはどれか。",
+      "choices": {
+        "a": "強皮症",
+        "b": "肺血栓塞栓症",
+        "c": "僧帽弁狭窄症",
+        "d": "急性心筋梗塞",
+        "e": "心タンポナーデ"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "108D5",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "ダイナミックCTの動脈相を別に示す。\nこの患者の肝細胞癌の主たる占拠区域はどれか。",
+      "choices": {
+        "a": "尾状葉",
+        "b": "右葉前区域",
+        "c": "右葉後区域",
+        "d": "左葉内側区域",
+        "e": "左葉外側区域"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "108D6",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "高齢者の複雑部分発作の治療薬として最も適切なのはどれか。",
+      "choices": {
+        "a": "バルプロ酸",
+        "b": "ジアゼパム",
+        "c": "クロナゼパム",
+        "d": "カルバマゼピン",
+        "e": "フェノバルビタール"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "108D7",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "Wiskott-Aldrich症候群でみられるのはどれか。",
+      "choices": {
+        "a": "血便",
+        "b": "口蓋裂",
+        "c": "小脳失調",
+        "d": "テタニー",
+        "e": "毛細血管拡張"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "108D8",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "Creutzfeldt-Jakob病が疑われる患者の脳外科手術に用いた金属器具の滅菌法で最も適切なのはどれか。",
+      "choices": {
+        "a": "蟻酸浸漬",
+        "b": "ポビドンヨード液浸漬",
+        "c": "通常のオートクレーブ法",
+        "d": "グルタールアルデヒド浸漬",
+        "e": "ドデシル硫酸ナトリウム〈SDS〉煮沸"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "108D9",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "適応障害に含まれるのはどれか。",
+      "choices": {
+        "a": "気分変調症",
+        "b": "短期抑うつ反応",
+        "c": "うつ病エピソード",
+        "d": "急性ストレス障害",
+        "e": "外傷後ストレス障害"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "108D10",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "味覚検査で異常を示した領域（①～⑤）を別に示す。\n左中耳手術後に味覚障害を生じた患者でみられるのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "108D11",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "内痔核について正しいのはどれか。",
+      "choices": {
+        "a": "直腸癌の合併が多い。",
+        "b": "排便時痛が特徴である。",
+        "c": "歯状線の肛門側に発生する。",
+        "d": "基本術式は痔核核出術である。",
+        "e": "3時、7時、11時方向に好発する。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "108D12",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "造血器腫瘍細胞の染色体検査写真を別に示す。\nこの異常を生じるのはどれか。",
+      "choices": {
+        "a": "濾胞性リンパ腫",
+        "b": "慢性骨髄性白血病",
+        "c": "急性骨髄性白血病（M2）",
+        "d": "マントル細胞型リンパ腫",
+        "e": "急性前骨髄球性白血病（M3）"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "108D13",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "約3年前から転びやすくなった68歳の男性で、筋強剛と立ち直り反射障害があるが振戦はなく頭部MRIでは異常を認めない。\n最も考えられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "Parkinson病",
+        "b": "多系統萎縮症",
+        "c": "正常圧水頭症",
+        "d": "進行性核上性麻痺",
+        "e": "大脳皮質基底核変性症"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": true,
+        "deleted_type": "excluded"
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "108D14",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "職場での心理的負荷による精神障害について、ストレスの度合いが最も強いと考えられるのはどれか。",
+      "choices": {
+        "a": "顧客から無理な注文を受けた。",
+        "b": "同僚に資料の落丁を指摘された。",
+        "c": "達成困難な業績目標を設定した。",
+        "d": "大きな説明会で発表せざるを得なくなった。",
+        "e": "顧客に2か月以上の入院を要する怪我を負わせた。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "108D15",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "胎児肺低形成を伴うのはどれか。2つ選べ。",
+      "choices": {
+        "a": "食道閉鎖",
+        "b": "Potter症候群",
+        "c": "十二指腸閉鎖",
+        "d": "完全大血管転位症",
+        "e": "先天性横隔膜ヘルニア"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "108D16",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "骨髄異形成症候群の予後の指標となるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "血清LD値",
+        "b": "染色体異常",
+        "c": "血球形態異常",
+        "d": "骨髄芽球比率",
+        "e": "網状赤血球数"
+      },
+      "answer": [
+        "b",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "108D17",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "先天性副腎皮質過形成（21α-hydroxylase欠損症：塩喪失型）の検査所見として考えられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "ACTH高値",
+        "b": "低カリウム血症",
+        "c": "低カルシウム血症",
+        "d": "低ナトリウム血症",
+        "e": "代謝性アルカローシス"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "108D18",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "腹部造影CTを別に示す。\nこの患者の血液検査項目で低値と予想されるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "アルブミン",
+        "b": "アンモニア",
+        "c": "γ-グロブリン",
+        "d": "血小板",
+        "e": "総ビリルビン"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "108D19",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "神経性食思不振症について正しいのはどれか。3つ選べ。",
+      "choices": {
+        "a": "強迫行為を示すものが多い。",
+        "b": "安静時にも頻脈であることが多い。",
+        "c": "過食・嘔吐を伴うものは含まない。",
+        "d": "抑うつの合併が高率に認められる。",
+        "e": "わが国では10年以内に約10％の患者が死亡する。"
+      },
+      "answer": [
+        "a",
+        "d",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 3,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "108D20",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "8歳の男児。学校へ行きたがらないことを主訴に母親に連れられて来院した。成績は中程度であるものの文字を書くことが苦手で、特に漢字を見本通りに書き写すことができない。このために教師や親から叱責されることが多くなり学校に行きたがらなくなった。友達関係に問題なく、運動も普通にできる。手先はやや不器用であるものの神経学的診察で他に異常を認めない。\nこの疾患について誤っているのはどれか。",
+      "choices": {
+        "a": "男児に多い。",
+        "b": "知能は正常範囲であることが多い。",
+        "c": "注意欠如多動性障害の合併が多い。",
+        "d": "成人まで基本症状は持続することが多い。",
+        "e": "作業に真剣に取り組ませると書字は改善することが多い。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "108D21",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "52歳の女性。咳嗽と胸痛とを主訴に来院した。5か月前から咳嗽を自覚していた。昨日から吸気時に右胸痛を自覚するようになったため受診した。既往歴と家族歴とに特記すべきことはない。毎年秋から冬に猪の生肉を自宅で調理して食べる習慣があった。意識は清明。身長157cm、体重57kg。体温36.5℃。脈拍64/分、整。血圧110/72mmHg。呼吸数16/分。SpO2 97％（room air）。心音と呼吸音とに異常を認めない。血液所見：赤血球418万、Hb 13.6g/dL、Ht 42％、白血球6,300（桿状核好中球2％、分葉核好中球38％、好酸球28％、単球2％、リンパ球30％）、血小板20万。CRP 0.2mg/dL。肺野条件の胸部単純CT（A、B）を別に示す。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "肺結核症",
+        "b": "肺化膿症",
+        "c": "肺吸虫症",
+        "d": "肺クリプトコックス症",
+        "e": "敗血症性肺血栓塞栓症"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "108D22",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "49歳の男性。右頸部腫瘤を主訴に来院した。7か月前から右頸部腫瘤を自覚していたがそのままにしていた。1か月前から咽喉頭異常感も出現したため受診した。頸部造影CT（A、B）を別に示す。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "喉頭癌",
+        "b": "上顎癌",
+        "c": "耳下腺癌",
+        "d": "中咽頭癌",
+        "e": "甲状腺癌"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "108D23",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "65歳の男性。胸部異常陰影を指摘され来院した。既往歴に特記すべきことはない。喫煙は30本/日を30年間。意識は清明。身長170cm、体重62kg。体温36.8℃。脈拍92/分、整。血圧130/84mmHg。呼吸数16/分。SpO2 98％（room air）。心音と呼吸音とに異常を認めない。血液所見：赤血球517万、Hb 17.0g/dL、Ht 50％、白血球6,200、血小板22万。血液生化学所見：総蛋白7.0g/dL、アルブミン4.6g/dL、総ビリルビン1.1mg/dL、AST 18U/L、ALT 6U/L、LD 410U/L（基準176～353）、クレアチニン1.0mg/dL、Na 145mEq/L、K 4.2mEq/L、Cl 108mEq/L。CRP 0.1mg/dL。呼吸機能検査所見：％VC 93％、FEV1％ 73％。心電図に異常を認めない。初診時の胸部エックス線写真を別に示す。気管支内視鏡検査を行い左B3から肺生検で腺癌の診断を得た。\nこの患者の手術適応を決定する上で有用でないのはどれか。",
+      "choices": {
+        "a": "PET/CT",
+        "b": "頭部造影MRI",
+        "c": "腫瘍マーカー",
+        "d": "胸腹部造影CT",
+        "e": "腹部超音波検査"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "108D24",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "67歳の男性。腹部全体の持続する強い痛みを主訴に来院した。3年前から虚血性心疾患と心房細動とで通院中である。10時間前に腹痛が突然出現し、徐々に増強した。体温36.7℃。脈拍88/分、不整。血圧124/78mmHg。呼吸数16/分。SpO2 97％（room air）。腹部は全体に膨隆し、腸雑音を聴取しない。腹部全体に圧痛とBlumberg徴候とを認める。血液所見：赤血球512万、Hb 16.2g/dL、Ht 48％、白血球12,800（桿状核好中球28％、分葉核好中球46％、好酸球2％、好塩基球1％、単球6％、リンパ球17％）、血小板18万。血液生化学所見：総蛋白7.6g/dL、アルブミン4.6g/dL、総ビリルビン0.6mg/dL、AST 112U/L、ALT 35U/L、LD 482U/L（基準176～353）、アミラーゼ124U/L（基準37～160）、CK 186U/L（基準30～140）。腹部造影CT（頭側から順にA、B、C）を別に示す。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "腸重積症",
+        "b": "消化管穿孔",
+        "c": "腸管軸捻転症",
+        "d": "絞扼性イレウス",
+        "e": "上腸間膜動脈閉塞症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "108D25",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "42歳の男性。微熱を主訴に来院した。4か月前から微熱を自覚していた。3週前から全身倦怠感と手足の関節痛とが出現し、微熱も続いているため心配になって受診した。1週前に数秒間の眼前暗黒感を生じたという。4か月間で5kgの体重減少がある。意識は清明。身長163cm、体重62kg。体温37.2℃。脈拍80/分、整。血圧136/82mmHg。呼吸数18/分。SpO2 98％（room air）。眼瞼結膜に貧血を認めない。眼球結膜に黄染を認めない。甲状腺腫と頸部リンパ節とを触知しない。心尖部に体位によって強さが変化する拡張期の心雑音を聴取する。呼吸音に異常を認めない。腹部は平坦、軟で、肝・脾を触知しない。腸雑音は正常。関節の腫脹を認めない。尿所見に異常を認めない。血液所見：赤血球468万、Hb 13.9g/dL、Ht 42％、白血球12,300（桿状核好中球30％、分葉核好中球45％、好酸球1％、好塩基球1％、単球6％、リンパ球17％）、血小板21万。血液生化学所見に異常を認めない。免疫血清学所見：CRP 1.0mg/dL、リウマトイド因子〈RF〉陰性、抗核抗体陰性、CH50 36U/mL（基準30～40）、C3 52mg/dL（基準52～112）、C4 20mg/dL（基準16～51）、ツベルクリン反応陰性。血液培養は陰性。心電図と胸部エックス線写真とに異常を認めない。\n診断のために有用な検査はどれか。",
+      "choices": {
+        "a": "心エコー",
+        "b": "骨髄穿刺",
+        "c": "腹部単純CT",
+        "d": "上部消化管内視鏡検査",
+        "e": "全身Gaシンチグラフィ"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "108D26",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "52歳の男性。右季肋部痛を主訴に来院した。昨夜、夕食後に右季肋部痛が出現し今朝まで持続している。体温36.5℃。脈拍84/分、整。血圧124/68mmHg。眼球結膜に黄染を認めない。腹部は平坦で右季肋部に圧痛を認める。反跳痛を認めない。肝・脾を触知しない。血液所見：赤血球456万、Hb 14.5g/dL、Ht 44％、白血球11,000（桿状核好中球8％、分葉核好中球60％、好酸球2％、リンパ球30％）、血小板21万。血液生化学所見：総ビリルビン2.0mg/dL、AST 158U/L、ALT 145U/L、ALP 580U/L（基準115～359）、γ-GT 182U/L（基準8～50）、アミラーゼ125U/L（基準37～160）。CRP 3.4mg/dL。腹部超音波検査で異常を認めたため行ったERCPを別に示す。\n治療として最も適切なのはどれか。",
+      "choices": {
+        "a": "蛋白分解酵素阻害薬投与",
+        "b": "経口胆石溶解薬投与",
+        "c": "体外衝撃波結石破砕術",
+        "d": "内視鏡的結石除去術",
+        "e": "膵頭十二指腸切除術"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "108D27",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "63歳の女性。腹痛のため搬入された。2日前から徐々に増悪する下腹部の持続痛を自覚していたが、本日突然に激痛となり、動けなくなったため救急搬送された。約5年前から時々下腹部痛を自覚し、自宅近くの診療所で内服薬を投与されて軽快していた。身体所見では腹部にBlumberg徴候と筋性防御を認めた。胸腹部エックス線写真でfree airを、腹部CTでfree air、腹水貯留およびS状結腸の壁肥厚を認めたため、大腸穿孔による腹膜炎と診断して緊急手術を行った。術式はS状結腸切除術と人工肛門造設術であった。摘出されたS状結腸の標本の写真を別に示す。\n穿孔の原因となったのはどれか。",
+      "choices": {
+        "a": "大腸癌",
+        "b": "腸結核",
+        "c": "大腸憩室炎",
+        "d": "潰瘍性大腸炎",
+        "e": "大腸ポリポーシス"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "108D28",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "33歳の女性。2か月前の健康診断で高血圧を指摘され来院した。1年前の健康診断時は正常血圧であった。既往歴と家族歴とに特記すべきことはない。脈拍76/分、整。血圧180/110mmHg。尿所見：蛋白（−）、糖（−）、潜血（−）。血液所見：赤血球455万、Hb 12.8g/dL、Ht 38％、白血球5,800。血液生化学所見：総蛋白6.7g/dL、アルブミン4.3g/dL、尿素窒素14mg/dL、クレアチニン0.8mg/dL、総コレステロール208mg/dL、Na 143mEq/L、K 3.6mEq/L、Cl 102mEq/L、ACTH 14.4pg/mL（基準60以下）、コルチゾール8.3μg/dL（基準5.2～12.6）、アルドステロン15ng/dL（基準5～10）、血漿レニン活性51ng/mL/時間（基準1.2～2.5）。CRP 0.2mg/dL。腹部大動脈造影像（A）と左腎動脈造影像（B）とを別に示す。\nこの病態について正しいのはどれか。",
+      "choices": {
+        "a": "粥状硬化が原因となる。",
+        "b": "好酸球増多症がみられる。",
+        "c": "経皮的血管形成術の適応となる。",
+        "d": "尿中カリウム排泄が低下している。",
+        "e": "アンジオテンシン変換酵素〈ACE〉阻害薬投与でレニンは低下する。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "108D29",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "32歳の女性。未経妊。挙児希望を主訴に来院した。29歳時に結婚し避妊はしていない。不正性器出血はない。初経12歳。月経周期40～90日、不整。身長160cm、体重70kg。内診で子宮は正常大で付属器を触知しない。卵巣の経腟超音波像を別に示す。\nこの患者の不妊症の検査として有用性が低いのはどれか。",
+      "choices": {
+        "a": "夫の精液検査",
+        "b": "基礎体温の測定",
+        "c": "プロゲステロン試験",
+        "d": "血中LH、FSHの測定",
+        "e": "血中テストステロンの測定"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "108D30",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "60歳の男性。嚥下障害を主訴に来院した。35歳ころに下肢の筋力低下が出現し、徐々に進行した。40歳ころには上肢にも筋力低下が出現し、両手に粗大な動作時振戦がみられるようになった。50歳ころには、ろれつが回りにくくなり、半年前から嚥下障害が出現し鼻声になった。平地歩行はかろうじて可能である。発話の際に顔面筋の線維束性収縮が認められる。患者は3人兄弟の末子で兄が同じ症状を示すという。挺舌時の写真を別に示す。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "Huntington病",
+        "b": "球脊髄性筋萎縮症",
+        "c": "遺伝性脊髄小脳変性症",
+        "d": "Charcot-Marie-Tooth病",
+        "e": "Becker型進行性筋ジストロフィー"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "108D31",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "11歳の男児。左足の靴下が履けない、走りにくい、床から起き上がりにくいことを主訴に来院した。5か月前に野球でスライディングをし、その後から左大腿部から膝部にかけての痛みが出現した。その後も野球を続けていたが、練習後の夜間に疼痛があり、朝には改善することを繰り返していた。安静時痛はなかった。2か月前には友人から跛行を指摘されたが、疼痛が改善傾向であったため様子を見ていた。1週前に、患児が立ったままでは左足の靴下を履けないことに父親が気付いた。身長155cm、体重62kg。股関節前面部に圧痛と運動時痛とを認める。左股関節可動域は屈曲30°、伸展-10°、内旋0°、外旋40°。血液生化学所見に異常を認めない。来院時の両側股関節のエックス線写真（A、B、C）を別に示す。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "Perthes病",
+        "b": "大腿骨骨頭骨折",
+        "c": "坐骨結節骨端症",
+        "d": "大腿骨頭すべり症",
+        "e": "発育性股関節形成不全"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 32,
+      "id": "108D32",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "65歳の女性。手指を伸ばせないことを主訴に来院した。数日前に絵を描いていたら、右手から前腕に痛みが走り、環指と小指とを自力では伸ばせなくなったという。手指を伸ばすように指示した際の手の写真（A）と手関節部エックス線写真（B）とを別に示す。環指と小指の中手指節関節を他動的に伸展させることは可能であり、屈曲は自動、他動共に可能である。また母指、示指、中指および手関節の自動伸展と自動屈曲は可能である。感覚障害はない。15年前に関節リウマチの診断を受け、現在はメトトレキサートとプレドニゾロンにて治療中である。\n病態として考えられるのはどれか。",
+      "choices": {
+        "a": "頸椎性脊髄症",
+        "b": "手根管症候群",
+        "c": "橈骨神経麻痺",
+        "d": "指伸筋腱断裂",
+        "e": "中手指節関節強直"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 33,
+      "id": "108D33",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "76歳の女性。両下肢のしびれ感を主訴に来院した。5週前に両足先のしびれ感を自覚し、その後しびれ感は徐々に上行した。3週前から37℃台の発熱、10日前から両足に紫斑が出現した。5日前からは歩行困難を自覚したため受診した。体温37.2℃。脈拍76/分、整。血圧148/88mmHg。眼瞼結膜は貧血様である。心音と呼吸音とに異常を認めない。腹部は平坦、軟で、肝・脾を触知しない。両側の膝下から足先までの痛覚と触覚の低下、両側の足の振動覚と位置覚の低下を認める。徒手筋力テストで右足関節の背屈は2、底屈は4、左足関節の背屈は3、底屈は4と低下している。両側の膝蓋腱反射とアキレス腱反射は消失している。病的反射はない。尿所見：蛋白2＋、潜血2＋、沈渣に赤血球円柱1～4/1視野。血液所見：赤血球318万、Hb 10.1g/dL、Ht 31％、白血球9,980（分葉核好中球49％、好酸球5％、単球6％、リンパ球40％）、血小板21万。血液生化学所見：総蛋白7.4g/dL、アルブミン3.2g/dL、IgG 1,980mg/dL（基準960～1,960）、IgA 297mg/dL（基準110～410）、IgM 113mg/dL（基準65～350）、AST 28U/L、ALT 16U/L、LD 177U/L（基準176～353）、CK 27U/L（基準30～140）、尿素窒素21mg/dL、クレアチニン1.1mg/dL、Na 135mEq/L、K 4.4mEq/L、Cl 98mEq/L。CRP 2.9mg/dL。下肢の写真を別に示す。\n診断として考えられるのはどれか。",
+      "choices": {
+        "a": "老人性紫斑",
+        "b": "Goodpasture症候群",
+        "c": "顕微鏡的多発血管炎",
+        "d": "巨細胞性動脈炎〈側頭動脈炎〉",
+        "e": "アレルギー性肉芽腫性血管炎〈Churg-Strauss症候群〉"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 34,
+      "id": "108D34",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "2歳の男児。早朝から発熱を認め、四肢に皮疹が出現したため母親に連れられて来院した。口腔内に疼痛はあるが、全身状態は良好である。来院時の手の写真を別に示す。\n原因ウイルスはどれか。",
+      "choices": {
+        "a": "ライノウイルス",
+        "b": "アデノウイルス",
+        "c": "コクサッキーウイルス",
+        "d": "ヒトパピローマウイルス",
+        "e": "パラインフルエンザウイルス"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 35,
+      "id": "108D35",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "28歳の初妊婦。妊娠34週0日。妊婦健康診査で妊娠高血圧症候群と診断され入院中である。身長160cm、体重62kg。体温37.0℃。脈拍72/分、整。血圧154/106mmHg。尿所見：蛋白3.5g/日、糖（−）。内診所見で子宮口は1cm開大、児頭下降度はSP－3cmで未破水である。腹部超音波検査で胎児推定体重は1,980g（－1.5SD）で胎児形態異常は認めない。診察中に突然、強直性間代性けいれんを発症した。ジアゼパムの静注によって、けいれんは消失し意識も清明となった。帝王切開を決定しその準備を開始した。この時の胎児心拍数陣痛図を別に示す。\nこの時点で投与する薬剤として適切なのはどれか。",
+      "choices": {
+        "a": "ペンタゾシン",
+        "b": "硫酸マグネシウム",
+        "c": "炭酸水素ナトリウム",
+        "d": "ガベキサートメシル酸塩",
+        "e": "麦角アルカロイド（エルゴメトリン）"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "e"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 36,
+      "id": "108D36",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "78歳の女性。白内障手術目的で入院中である。1年前から記銘力低下がみられるようになり、Alzheimer型認知症と診断されて薬物療法が開始され、介護サービスを受けながら独居生活を続けていた。数年来の視力低下のために日常生活での支障が大きくなり、白内障手術目的で入院となった。入院翌日、ベッドから起き上がらず、朝食も摂らず、まとまりのないことを小声でつぶやくのみで質問に対してほとんど反応がなかった。身体所見に異常はなく、血液生化学所見でも術前検査と比較して有意な変化はなかった。また、頭部CTでも半年前と比較して新たな病変はみられなかった。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "せん妄",
+        "b": "適応障害",
+        "c": "解離性障害",
+        "d": "うつ病性昏迷",
+        "e": "急性ストレス障害"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 37,
+      "id": "108D37",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "22歳の女性。皮疹と発熱とを主訴に来院した。3日前から、感冒様症状に対して市販の総合感冒薬を内服している。総合感冒薬には非ステロイド性抗炎症薬が含まれることは判明しているが、詳細は不明である。昨日から発熱と皮疹とが出現した。意識は清明。身長152cm、体重48kg。体温39.2℃。脈拍84/分、整。血圧104/66mmHg。呼吸数28/分。顔面、四肢および体幹の広範囲の皮膚に紅斑、水疱およびびらんがみられる。水疱とびらんの範囲は体表面積の50％以上である。眼瞼結膜は発赤、眼球結膜は充血している。口腔粘膜にもびらんがみられる。尿所見：蛋白（±）、糖（−）。血液所見：赤血球360万、Hb 11.4g/dL、Ht 38％、白血球9,800、血小板42万。血液生化学所見：総蛋白5.8g/dL、アルブミン2.8g/dL、AST 64U/L、ALT 78U/L、LD 440U/L（基準176～353）、ALP 250U/L（基準115～359）、γ-GT 43U/L（基準8～50）、尿素窒素28mg/dL、クレアチニン0.8mg/dL。CRP 3.8mg/dL。両手背と腹部の写真を別に示す。\nまず投与する治療薬として適切なのはどれか。",
+      "choices": {
+        "a": "免疫抑制薬",
+        "b": "抗TNF-α抗体製剤",
+        "c": "副腎皮質ステロイド",
+        "d": "プロスタグランディン",
+        "e": "非ステロイド性抗炎症薬〈NSAID〉"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "e"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 38,
+      "id": "108D38",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "71歳の男性。左眼で物がゆがんで見えることを主訴に来院した。3か月前に気付いたが回復しないという。矯正視力は右1.2、左0.4。左眼の眼底写真（A）と光干渉断層法〈OCT〉の結果（B）を別に示す。\n左眼の治療法として適切なのはどれか。",
+      "choices": {
+        "a": "硝子体手術",
+        "b": "放射線治療",
+        "c": "網膜光凝固",
+        "d": "抗凝固薬内服",
+        "e": "炭酸脱水酵素阻害薬内服"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "c"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 39,
+      "id": "108D39",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "46歳の男性。腰痛と食欲不振とを主訴に来院した。2年前に肺扁平上皮癌のため手術を受けた。8か月前に両側の肺と肝臓とにそれぞれ多発転移を認めた。3か月にわたり抗癌化学療法を受け、腫瘍はいずれも著明に縮小した。2か月前に腰痛を自覚し、CTにて第2腰椎への転移を認めた。非ステロイド性抗炎症薬の投与と腰椎への放射線治療を行ったところ良好な疼痛コントロールが得られた。しかし2週前から腰痛が強くなり、同時に全身倦怠感と食欲低下もあり、日中の半分以上を臥床して過ごすようになった。特に最近数日間は腰痛がひどく、内服薬と水分しか摂れなくなった。意識は清明。身長168cm、体重49kg。体温36.9℃。脈拍92/分、整。血圧110/72mmHg。呼吸数18/分。SpO2 96％（room air）。るいそうを認める。胸部に異常を認めない。腹部では右季肋部から心窩部にかけて固い腫瘤を触知する。下腿に浮腫を認める。全身精査を行ったところ、肺、肝臓、骨それぞれの転移巣はいずれも以前と比べて増大していた。血液所見：赤血球240万、Hb 7.9g/dL、Ht 23％、白血球8,800、血小板25万。血液生化学所見：総蛋白6.4g/dL、アルブミン2.4g/dL、総ビリルビン0.9mg/dL、AST 38U/L、ALT 40U/L、LD 826U/L（基準176～353）、尿素窒素15mg/dL、クレアチニン0.8mg/dL、Na 130mEq/L、K 4.5mEq/L、Cl 110mEq/L。CRP 3.3mg/dL。\n対応として適切なのはどれか。",
+      "choices": {
+        "a": "維持輸液",
+        "b": "肝動脈塞栓術",
+        "c": "モルヒネ投与",
+        "d": "抗癌化学療法",
+        "e": "赤血球濃厚液輸血"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 40,
+      "id": "108D40",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "42歳の男性。高血圧治療の定期受診のため来院した。2年前から本態性高血圧と診断され、朝1回、降圧薬を服用している。これまでの外来における診察室血圧は130/80mmHg前後であった。家庭血圧の自己測定を始めたところ、早朝起床時に162/96mmHg前後であるという。喫煙歴はない。身長165cm、体重82kg。受診時、脈拍88/分、整。診察室血圧128/78mmHg。心音と呼吸音とに異常を認めない。下腿に浮腫を認めない。\n今後の対応として適切でないのはどれか。",
+      "choices": {
+        "a": "降圧薬の内服状況を再確認する。",
+        "b": "降圧薬の追加や投与時間の変更を検討する。",
+        "c": "定期的に高血圧に伴う臓器障害を評価する。",
+        "d": "24時間自由行動下血圧〈ABPM〉を測定する。",
+        "e": "血圧測定を降圧薬の内服後に変更するよう指導する。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 41,
+      "id": "108D41",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "33歳の女性。会社の健康診断で肝機能異常を指摘され来院した。3年前から肝機能異常を指摘されていたが、これまでに比較し悪化したため受診した。身長162cm、体重72kg。腹部は軽度膨隆、軟で、肝・脾を触知しない。飲酒はワイン300mL/日を10年間。血液所見：赤血球458万、Hb 14.3g/dL、Ht 44％、白血球6,300、血小板26万、PT 98％（基準80～120）。血液生化学所見：アルブミン4.4g/dL、総ビリルビン0.8mg/dL、AST 102U/L、ALT 146U/L、ALP 326U/L（基準115～359）、γ-GT 92U/L（基準8～50）、クレアチニン0.9mg/dL、血糖98mg/dL、HbA1c（NGSP） 5.9％（基準4.6～6.2）。免疫血清学所見：HBs抗原陰性、HBc抗体陰性、HCV抗体陰性。\n次に行うべき検査はどれか。",
+      "choices": {
+        "a": "PET/CT",
+        "b": "腹部単純CT",
+        "c": "腹部造影MRI",
+        "d": "腹部超音波検査",
+        "e": "磁気共鳴胆管膵管撮影〈MRCP〉"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 42,
+      "id": "108D42",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "42歳の女性。2日間の咽頭痛と40℃の発熱を主訴に来院した。2か月前に甲状腺機能亢進症と診断され、チアマゾール30mg/日を1か月前から内服している。身長155cm、体重45kg。体温40.2℃。脈拍92/分、整。血圧106/68mmHg。呼吸数40/分。SpO2 98％（room air）。両側の頸部に圧痛を伴う径1～2cmのリンパ節を数個触知する。咽頭の著しい発赤と腫脹を認める。血液所見：赤血球468万、Hb 13.9g/dL、Ht 42％、網赤血球6％、白血球1,300（桿状核好中球0％、分葉核好中球0％、単球1％、リンパ球99％）、血小板21万。血液生化学所見：TSH 0.03μU/mL未満（基準0.2～4.0）、FT3 4.0pg/mL（基準2.5～4.5）、FT4 1.1ng/dL（基準0.8～2.2）。CRP 26mg/dL。胸部エックス線写真に異常を認めない。\n抗菌薬の投与とともに行うべきなのはどれか。",
+      "choices": {
+        "a": "顆粒球輸血を行う。",
+        "b": "赤血球輸血を行う。",
+        "c": "昇圧薬を投与する。",
+        "d": "チアマゾールを中止する。",
+        "e": "副腎皮質ステロイドを投与する。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 43,
+      "id": "108D43",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "52歳の女性。ふらつきと視力低下とを主訴に来院した。1か月前から頭重感があり、1週前からふらつきと左眼の見にくさとを自覚していた。既往歴に特記すべきことはない。母親が高血圧。意識は清明。身長157cm、体重56kg。体温36.0℃。脈拍96/分、整。血圧268/166mmHg。呼吸数16/分。頸静脈の怒張を認めない。甲状腺腫を触知しない。心音と呼吸音とに異常を認めない。腹部は平坦、軟で、肝・脾を触知しない。下肢に浮腫を認めない。尿所見：蛋白1＋、糖（−）、潜血（−）、沈渣に円柱を認めない。血液所見：赤血球382万、Hb 10.5g/dL、Ht 32％、白血球4,000、血小板2.5万。血液生化学所見：総蛋白7.6g/dL、アルブミン4.9g/dL、尿素窒素38mg/dL、クレアチニン2.6mg/dL、尿酸6.2mg/dL、血糖106mg/dL、HbA1c（NGSP） 5.8％（基準4.6～6.2）、総コレステロール242mg/dL、Na 141mEq/L、K 3.8mEq/L、Cl 107mEq/L、Ca 9.6mg/dL、P 4.0mg/dL。心電図で左室肥大所見を認める。胸部エックス線写真で心胸郭比56％。腹部超音波検査で腎尿路系に異常を認めない。各種ホルモン検査を提出した。\n次に行う検査として適切なのはどれか。",
+      "choices": {
+        "a": "脳波検査",
+        "b": "眼底検査",
+        "c": "呼吸機能検査",
+        "d": "腎生検",
+        "e": "静脈性尿路造影"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "d",
+          "e"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 44,
+      "id": "108D44",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "63歳の女性。筋層浸潤性膀胱癌の精査加療目的で入院中である。入院前に施行した血液検査では異常を認めなかった。膀胱内視鏡検査では、膀胱三角部から膀胱頸部に広がる広基性非乳頭状腫瘍を認め、両側の尿管口は同定できなかった。胸腹部造影CTでは明らかな転移は認めなかった。入院後、全身倦怠感を訴えている。1日尿量は急に低下してきている。緊急に行った血液生化学検査では尿素窒素63mg/dL、クレアチニン5.6mg/dL、K 4.8mEq/Lであった。腹部超音波像（A、B）を別に示す。残尿量は40mLであった。\n対応として適切なのはどれか。",
+      "choices": {
+        "a": "血液透析",
+        "b": "腎瘻造設術",
+        "c": "膀胱全摘術",
+        "d": "尿管ステント留置",
+        "e": "経尿道的膀胱腫瘍切除術"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 45,
+      "id": "108D45",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "35歳の女性。脱力を主訴に来院した。9か月前から徐々に歩行時の疲れやすさを自覚し、2か月前に手すりにつかまらないと階段を昇れないことに気付いた。1か月前から洗髪時に腕を挙げるのが難しくなり、洋式便器から立ち上がることができなくなった。身長164cm、体重56kg。胸腹部と脳神経とに異常を認めない。徒手筋力テストで頸部屈筋は2、四肢筋力は左右対称に近位筋は3、遠位筋は4と低下している。筋痛、筋把握痛はない。血液生化学所見：総蛋白7.5g/dL、アルブミン3.7g/dL、AST 52U/L、ALT 42U/L、CK 870U/L（基準30～140）。脳脊髄液所見に異常を認めない。左上腕二頭筋生検のH-E染色標本を別に示す。\nこの患者でみられるのはどれか。",
+      "choices": {
+        "a": "末梢神経伝導速度低下",
+        "b": "ミトコンドリアDNAの欠失",
+        "c": "抗アセチルコリン受容体抗体陽性",
+        "d": "針筋電図で刺入時ミオトニー放電",
+        "e": "四肢MRIのT2強調像で筋内の高信号"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 46,
+      "id": "108D46",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "57歳の女性。3回経妊3回経産婦。52歳で閉経。尿失禁を主訴に来院した。2年前から咳嗽時に下着が濡れることに気付いていた。半年前から笑ったり重い荷物を持ち上げたりするときにも漏れるようになったため受診した。頻尿、排尿痛および尿意切迫感を認めない。少量用尿とりパッドを1日1枚交換している。尿所見に異常を認めない。腹部超音波検査で残尿を認めない。1時間パッドテストでの尿失禁量は5gである。\nまず行う対応として適切なのはどれか。",
+      "choices": {
+        "a": "水分摂取制限",
+        "b": "α1遮断薬の内服",
+        "c": "尿道スリング手術",
+        "d": "経腟式膀胱頸部挙上術",
+        "e": "骨盤底筋訓練〈骨盤底筋体操〉"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 47,
+      "id": "108D47",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "61歳の男性。手のこわばりを主訴に来院した。4か月前からRaynaud現象と手のこわばりとを自覚していた。意識は清明。体温37.3℃。脈拍72/分、整。血圧130/84mmHg。呼吸数16/分。SpO2 95％（room air）。上肢と体幹に皮膚硬化を認める。心音に異常を認めない。呼吸音は両側の背下部にfine cracklesを聴取する。腹部は平坦、軟で、肝・脾を触知しない。尿所見：蛋白1＋、潜血（−）、沈渣に硝子円柱1/数視野。血液所見：赤血球383万、Hb 12.0g/dL、Ht 35％、白血球9,200、血小板28万。血液生化学所見：総蛋白6.9g/dL、アルブミン3.5g/dL、IgG 1,686mg/dL（基準960～1,960）、IgA 255mg/dL（基準110～410）、IgM 70mg/dL（基準65～350）、AST 20U/L、ALT 12U/L、LD 177U/L（基準176～353）、尿素窒素11.1mg/dL、クレアチニン0.9mg/dL、尿酸6.9mg/dL、血糖98mg/dL、Na 139mEq/L、K 3.9mEq/L、Cl 104mEq/L。免疫血清学所見：CRP 1.3mg/dL、抗核抗体1,280倍（基準値20以下）、抗Scl-70抗体陽性。胸部CTで両側下葉に網状影を認める。皮膚硬化に対してプレドニゾロン30mg/日を投与した。1週後に血圧が180/100mmHgに上昇し、クレアチニン1.9mg/dL、尿酸9.0mg/dL、Na 138mEq/L、K 4.5mEq/L、Cl 106mEq/Lとなった。\n現時点での治療法として最も適切なのはどれか。",
+      "choices": {
+        "a": "利尿薬の投与",
+        "b": "免疫抑制薬の投与",
+        "c": "尿酸排泄促進薬の投与",
+        "d": "副腎皮質ステロイドの増量",
+        "e": "アンジオテンシン変換酵素〈ACE〉阻害薬の投与"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 48,
+      "id": "108D48",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "70歳の女性。3週前に右大腿部の蜂窩織炎で入院した。セファゾリンの投与により軽快したが、2日前から38℃の発熱と1日10回の下痢が出現した。意識は清明。体温38.5℃。脈拍120/分、整。血圧110/60mmHg。呼吸数20/分。血液所見：赤血球320万、Hb 10.3g/dL、Ht 31％、白血球19,300（分葉核好中球72％、好酸球2％、単球10％、リンパ球16％）、血小板19万。血液生化学所見：アルブミン2.8g/dL、尿素窒素50mg/dL、クレアチニン3.8mg/dL（5日前は0.8mg/dL）、Na 138mEq/L、K 4.7mEq/L、Cl 109mEq/L。下部消化管内視鏡像を別に示す。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "Crohn病",
+        "b": "偽膜性腸炎",
+        "c": "虚血性大腸炎",
+        "d": "潰瘍性大腸炎",
+        "e": "腸管出血性大腸菌感染症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 49,
+      "id": "108D49",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "39歳の男性。上腹部痛を主訴に来院した。昨日、夕食に自分で釣ってきたアジ、イカなどの刺身と天ぷらを家族4人と食べ、日本酒3合を飲酒した。その後約3時間で上腹部痛が出現した。家族に症状はない。今朝まで症状が持続しているため受診した。体温36.0℃。脈拍72/分、整。血圧122/76mmHg。呼吸数12/分。腹部は平坦で、心窩部に圧痛があるが、反跳痛と筋性防御とは認めない。血液所見：赤血球464万、Hb 14.0g/dL、Ht 42％、白血球8,800（桿状核好中球23％、分葉核好中球45％、好酸球10％、好塩基球1％、単球5％、リンパ球16％）、血小板21万。血液生化学所見：アルブミン4.0g/dL、総ビリルビン0.9mg/dL、AST 29U/L、ALT 17U/L、LD 187U/L（基準176～353）、ALP 321U/L（基準115～359）、γ-GT 32U/L（基準8～50）、アミラーゼ85U/L（基準37～160）、クレアチニン0.6mg/dL。CRP 0.3mg/dL。\n確定診断に有用なのはどれか。",
+      "choices": {
+        "a": "腹部造影CT",
+        "b": "腹部超音波検査",
+        "c": "腹部エックス線撮影",
+        "d": "上部消化管内視鏡検査",
+        "e": "内視鏡的逆行性胆管膵管造影〈ERCP〉"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 50,
+      "id": "108D50",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "生後8日の新生児。哺乳量の低下と発熱とを主訴に母親に連れられて来院した。3,000gにて出生。昨日から哺乳量の低下があり、本日38℃の発熱を認めた。顔色不良で大泉門は膨隆し、易刺激性があった。血液所見：赤血球412万、Hb 12.1g/dL、Ht 36％、白血球25,000（桿状核好中球15％、分葉核好中球65％、単球10％、リンパ球10％）、血小板15万。血液生化学所見：血糖98mg/dL、Na 136mEq/L、K 4.5mEq/L、Cl 100mEq/L。CRP 8.9mg/dL。脳脊髄液所見：細胞数4,200/mm3（基準0～2）（単核球22％、多形核球78％）、蛋白80mg/dL（基準15～45）、糖5mg/dL（基準50～75）。\n原因菌として考えられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "結核菌",
+        "b": "大腸菌",
+        "c": "肺炎球菌",
+        "d": "インフルエンザ桿菌",
+        "e": "B群レンサ球菌〈GBS〉"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 51,
+      "id": "108D51",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "26歳の初妊婦。妊娠37週。2時間前からの上腹部痛と悪心を主訴に来院した。前回までの妊婦健康診査では特に異常を指摘されていない。意識は清明。身長160cm、体重66kg（非妊時58kg）。体温37.0℃。脈拍72/分、整。血圧146/92mmHg。子宮底長31cm、腹囲95cm。下腿に軽度浮腫を認める。尿所見：蛋白2＋、糖（−）。血液所見：赤血球450万、Hb 13.0g/dL、Ht 42％、白血球10,300、血小板7.0万、血漿フィブリノゲン432mg/dL（基準200～400）。血液生化学所見：総蛋白6.8g/dL、アルブミン4.0g/dL、総ビリルビン1.6mg/dL、直接ビリルビン0.3mg/dL、AST 184U/L、ALT 230U/L、LD 830U/L（基準176～353）、γ-GT 34U/L（基準8～50）、尿素窒素5.0mg/dL、クレアチニン0.5mg/dL、尿酸6.9mg/dL、血糖96mg/dL、Na 142mEq/L、K 4.0mEq/L、Cl 105mEq/L。超音波検査で胎児発育は正常であった。\n今後合併に注意すべき病態はどれか。2つ選べ。",
+      "choices": {
+        "a": "羊水過多",
+        "b": "急性腎不全",
+        "c": "妊娠糖尿病",
+        "d": "児頭骨盤不均衡〈CPD〉",
+        "e": "播種性血管内凝固〈DIC〉"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 52,
+      "id": "108D52",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "68歳の男性。動悸と易疲労感とを主訴に来院した。身長165cm、体重63kg。体温36.5℃。脈拍92/分、整。血圧122/68mmHg。皮膚は灰褐色で眼瞼結膜は貧血様である。眼球結膜に黄染を認めない。頸部、腋窩および鼠径部の表在リンパ節は触知しない。胸骨左縁第2肋間にII/VIの収縮期雑音を聴取する。腹部は平坦、軟で、肝・脾を触知しない。下肢に浮腫や紫斑を認めない。血液所見：赤血球233万、Hb 7.1g/dL、Ht 20％、網赤血球0％、白血球9,400（桿状核好中球6％、分葉核好中球54％、単球3％、リンパ球37％）、血小板32万。血液生化学所見：総蛋白6.8g/dL、アルブミン3.4g/dL、AST 56U/L、ALT 71U/L、LD 438U/L（基準176～353）、尿素窒素14mg/dL、クレアチニン0.7mg/dL、血糖98mg/dL、Fe 234μg/dL（基準59～161）、不飽和鉄結合能〈UIBC〉67μg/dL（基準163～251）。骨髄は正形成で巨核球を散見する。胸部エックス線写真（A）、胸部CT（B）及び骨髄血塗抹May-Giemsa染色標本（C）を別に示す。\n考えられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "肺癌",
+        "b": "胸腺腫",
+        "c": "赤芽球癆",
+        "d": "溶血性貧血",
+        "e": "再生不良性貧血"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 53,
+      "id": "108D53",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "38歳の女性。健康診断で高血圧を指摘され来院した。数年前から高血圧を指摘されていたが、時に頭痛や動悸がする程度だったのでそのままにしていた。家族歴に高血圧症や糖尿病はない。身長154cm、体重49kg。脈拍72/分、整。血圧172/110mmHg。心音と呼吸音とに異常を認めない。腹部は平坦、軟で、血管雑音は聴取しない。尿所見：蛋白（±）、糖（−）。血液所見：赤血球430万、Hb 13.4g/dL、Ht 38％、白血球4,300、血小板18万。血液生化学所見：尿素窒素11mg/dL、クレアチニン0.7mg/dL、Na 144mEq/L、K 3.6mEq/L、Cl 98mEq/L。心電図で軽度の左室肥大所見を認める。胸部エックス線写真に異常を認めない。\n次に行うべき検査はどれか。2つ選べ。",
+      "choices": {
+        "a": "腹部単純CT",
+        "b": "MIBIシンチグラフィ",
+        "c": "MIBGシンチグラフィ",
+        "d": "選択的副腎静脈血サンプリング",
+        "e": "血漿レニン活性/アルドステロン濃度比測定"
+      },
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 54,
+      "id": "108D54",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "6歳の男児。左肘の痛みと腫れを主訴に母親に連れられて来院した。遊具から転落し左肘をついて受傷したとのことである。来院時、右手で左肘を支え、動かそうとしない。左肘部に開放創はないが、肘部全体に高度な腫脹を認める。手指の感覚障害は本人の協力が得られず不明だが、手指の自動運動は可能で、橈骨動脈の拍動は手関節部で良好に触知する。肘関節のエックス線写真（A、B）を別に示す。\n考えられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "肘内障",
+        "b": "肘関節脱臼",
+        "c": "Monteggia骨折",
+        "d": "上腕骨顆上骨折",
+        "e": "上腕骨外側顆骨折"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 55,
+      "id": "108D55",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "52歳の男性。発熱と咳嗽とを主訴に来院した。3日前から39.2℃の発熱が出現し、市販の総合感冒薬を内服したが症状が改善しなかった。昨日から咳嗽、喀痰および息切れを自覚するようになり受診した。既往歴と家族歴とに特記すべきことはない。ペットは飼育していない。1週前に温泉に行ったという。意識は清明。体温38.5℃。脈拍96/分、整。血圧142/84mmHg。呼吸数30/分。SpO2 93％（リザーバー付マスク10L/分酸素投与下）。心音に異常を認めない。右胸部にfine cracklesとcoarse cracklesとを聴取する。血液所見：赤血球390万、Hb 13.8g/dL、Ht 39％、白血球8,300（桿状核好中球8％、分葉核好中球79％、好酸球1％、単球2％、リンパ球10％）、血小板24万。血液生化学所見：総蛋白5.6g/dL、アルブミン2.8g/dL、AST 40U/L、ALT 38U/L、LD 340U/L（基準176～353）、CK 350U/L（基準30～140）、尿素窒素27mg/dL、クレアチニン0.9mg/dL、Na 128mEq/L、K 3.6mEq/L、Cl 102mEq/L。CRP 35mg/dL。喀痰のヒメネス〈Gimenez〉染色標本で桿菌を認める。胸部エックス線写真にて右中下肺野に浸潤影を認める。肺野条件の胸部単純CTを別に示す。\n抗菌薬として適切なのはどれか。2つ選べ。",
+      "choices": {
+        "a": "セファロスポリン系",
+        "b": "ニューキノロン系",
+        "c": "マクロライド系",
+        "d": "カルバペネム系",
+        "e": "ペニシリン系"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 56,
+      "id": "108D56",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "74歳の男性。胸やけを主訴に来院した。1年前から食後に胸やけが出現し、徐々に増悪して夜間に目覚めるようになったため受診した。既往歴に特記すべきことはない。喫煙歴はない。飲酒は機会飲酒。意識は清明。身長165cm、体重78kg。脈拍76/分、整。血圧124/80mmHg。心音と呼吸音とに異常を認めない。腹部は平坦、軟で、圧痛を認めない。血液所見：赤血球467万、Hb 14.1g/dL、Ht 42％、白血球6,600、血小板29万。血液生化学所見に異常を認めない。上部消化管内視鏡像を別に示す。薬物治療を開始する予定だが、それ以外に患者から生活上の注意について質問された。\n生活指導として適切なのはどれか。2つ選べ。",
+      "choices": {
+        "a": "「体重を減らしましょう」",
+        "b": "「就寝前に軽食を食べましょう」",
+        "c": "「食後には横になって休みましょう」",
+        "d": "「上半身を少し高くして眠るようにしましょう」",
+        "e": "「症状が出たら前かがみの姿勢をとってみましょう」"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 57,
+      "id": "108D57",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "68歳の男性。健康診断で肺野の異常陰影を指摘され精査のため来院した。身長175cm、体重71kg。体温36.7℃。脈拍64/分、整。血圧134/68mmHg。呼吸数12/分。心音と呼吸音とに異常を認めない。血液所見：赤血球410万、Hb 13.1g/dL、Ht 37％、白血球5,700、血小板21万。血液生化学所見：総蛋白7.1g/dL、アルブミン3.7g/dL、AST 37U/L、ALT 31U/L、LD 126U/L（基準176～353）、尿素窒素19mg/dL、クレアチニン1.0mg/dL、Na 136mEq/L、K 4.5mEq/L、Cl 109mEq/L、Ca 9.2mg/dL。CRP 0.2mg/dL。呼吸機能検査所見：％VC 83％、FEV1％ 74％。肺野条件の胸部CT（A）と腹部造影CT再構成三次元画像（B）とを別に示す。\n治療法として適切なのはどれか。2つ選べ。",
+      "choices": {
+        "a": "放射線治療",
+        "b": "右腎摘出術",
+        "c": "分子標的薬の経口投与",
+        "d": "選択的右腎動脈塞栓術",
+        "e": "シスプラチンの点滴静注"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 58,
+      "id": "108D58",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "72歳の女性。咳と労作時息切れとを主訴に来院した。1年前から乾性咳嗽と労作時呼吸困難とを自覚し、時に朝方のこわばりも自覚していた。1か月前から増悪するため受診した。既往歴に特記すべきことはない。意識は清明。身長162cm、体重62kg。体温36.8℃。脈拍76/分、整。血圧130/60mmHg。皮疹を認めない。心音に異常を認めない。両側の背下部にfine cracklesを聴取する。両側手指の変形、腫脹および圧痛は認めない。血液所見：赤血球269万、Hb 8.7g/dL、Ht 25％、白血球9,700（桿状核好中球5％、分葉核好中球74％、好酸球2％、単球4％、リンパ球13％）、血小板22万。血液生化学所見：総蛋白6.8g/dL、アルブミン2.8g/dL、AST 22U/L、ALT 12U/L、LD 253U/L（基準176～353）、尿素窒素18mg/dL、クレアチニン1.1mg/dL、尿酸5.9mg/dL、脳性ナトリウム利尿ペプチド〈BNP〉10pg/mL（基準18.4以下）、KL-6 996U/mL（基準500未満）。免疫血清学所見：CRP 8.7mg/dL、リウマトイド因子〈RF〉315IU/mL（基準20未満）、抗CCP抗体65U/mL（基準4.5未満）、抗核抗体80倍（基準20以下）、サーファクタントプロテインD〈SP-D〉178ng/mL（基準0～109）。動脈血ガス分析（room air）：pH 7.47、PaCO2 34Torr、PaO2 63Torr、HCO3- 24mEq/L。呼吸機能検査所見：％VC 63％、FEV1％ 79％、％DLco 35.6％。胸部エックス線写真（A）と肺野条件の胸部単純CT（B）とを別に示す。\n治療薬として適切なのはどれか。2つ選べ。",
+      "choices": {
+        "a": "利尿薬",
+        "b": "抗菌薬",
+        "c": "免疫抑制薬",
+        "d": "副腎皮質ステロイド",
+        "e": "ロイコトリエン受容体拮抗薬"
+      },
+      "answer": [
+        "c",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 59,
+      "id": "108D59",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "39歳の女性。全身倦怠感を主訴に来院した。10日前から倦怠感が出現し、増強してきたという。35歳の第1子分娩時に輸血歴がある。分娩後も無月経が持続している。2か月前に、職場での健康診断を契機に甲状腺機能低下症と診断され、自宅近くの診療所でサイロキシン補充療法が開始されている。家族歴に特記すべきことはない。身長154cm、体重48kg。脈拍76/分、整。血圧104/70mmHg。顔面の表情はやや乏しく、顔面を含め全身の皮膚の色調は白い。眼瞼結膜と眼球結膜とに異常を認めない。甲状腺腫を触知しない。浮腫を認めない。尿所見：蛋白（−）、糖（−）。\n異常がみられる可能性が高いのはどれか。3つ選べ。",
+      "choices": {
+        "a": "K",
+        "b": "Na",
+        "c": "血糖",
+        "d": "白血球分画",
+        "e": "クレアチニン"
+      },
+      "answer": [
+        "b",
+        "c",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 3,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 60,
+      "id": "108D60",
+      "exam_year": 108,
+      "block": "D",
+      "stem": "急性心筋梗塞を発症した患者のデータを示す。\n心拍数90/分、血圧98/58mmHg、呼吸数18/分、SpO2 95％（room air）、1回心拍出量40mL、体表面積1.80m2。\n心係数を求めよ。\nただし、小数点第2位以下の数値が得られた場合には、小数点第2位を四捨五入すること。\n解答：□.□ L/分/m2",
+      "choices": {},
+      "answer": {
+        "type": "numeric",
+        "value": "20"
+      },
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": true,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

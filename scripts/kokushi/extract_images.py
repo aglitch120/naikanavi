@@ -66,6 +66,27 @@ def find_booklet_pdfs(year):
                 # else already have this block
             continue
 
+    # Pattern 4: 106-108回 — filename has no block/booklet marker.
+    # Detect booklets by reading page-0 text for "別 冊" or "別冊" + block letter.
+    if not results and HAS_FITZ:
+        for pdf in pdfs:
+            try:
+                doc = fitz.open(str(pdf))
+                text = doc[0].get_text()
+                doc.close()
+                if '別' in text and '冊' in text:
+                    # Extract block: look for "108 Ａ 別 冊" pattern (fullwidth letter)
+                    m2 = re.search(r'(\d+)\s*([Ａ-Ｉ])\s*別\s*冊', text)
+                    if m2:
+                        # Convert fullwidth to ASCII
+                        fw = m2.group(2)
+                        block = chr(ord(fw) - 0xFEE0)  # Ａ→A
+                        existing = [r for r in results if r[0] == block]
+                        if not existing:
+                            results.append((block, pdf))
+            except Exception:
+                continue
+
     return results
 
 
@@ -302,8 +323,8 @@ def process_year(year, dry_run=False, force=False):
         with open(json_path) as f:
             data = json.load(f)
 
-        # Real image questions: "別に示す" in stem
-        real_img_qs = {q['num']: q for q in data['questions'] if '別に示す' in q['stem']}
+        # Real image questions: "別に示す" in stem OR has_image=True (108回等ではstemから別冊参照が除去されている)
+        real_img_qs = {q['num']: q for q in data['questions'] if '別に示す' in q['stem'] or q.get('format', {}).get('has_image', False)}
 
         if not real_img_qs:
             continue
