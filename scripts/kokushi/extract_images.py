@@ -213,11 +213,14 @@ def smart_trim(img_path, is_rotated=False, padding=10, header_pct=0.13, footer_p
 
         img = Image.fromarray(arr)
 
-        # Detect content bounds with tight threshold
+        # Detect content bounds with robust threshold (ignore sparse noise pixels)
         gray = np.array(img.convert('L'))
         mask = gray < 245
-        rows = np.any(mask, axis=1)
-        cols = np.any(mask, axis=0)
+        # Require at least 0.5% of row/col to be dark (avoids single-pixel noise)
+        min_row_px = max(3, int(w * 0.005))
+        min_col_px = max(3, int(h * 0.005))
+        rows = np.sum(mask, axis=1) >= min_row_px
+        cols = np.sum(mask, axis=0) >= min_col_px
 
         if not rows.any():
             return False
