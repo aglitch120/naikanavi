@@ -97,9 +97,15 @@ def extract_page_mapping(pdf_path, block):
         # Reversed: 問題 51 ） （A  — happens when text wraps
         for m in re.findall(rf'問題\s*(\d+)\s*[）)]\s*[（(]?\s*{block_pat}', flat):
             matches.add(int(m))
+        # No-paren format: "A 問題 18" or "問題 18 A" (115回等)
+        if not matches:
+            for m in re.findall(rf'{block_pat}\s+問題\s*(\d+)', flat):
+                matches.add(int(m))
+            for m in re.findall(rf'問題\s*(\d+)\s+{block_pat}', flat):
+                matches.add(int(m))
         # Fallback: 問題 XX with block letter somewhere on same page
         if not matches:
-            has_block = re.search(rf'[（(]\s*{block_pat}', flat)
+            has_block = re.search(rf'[（(]?\s*{block_pat}', flat)
             if has_block:
                 for m in re.findall(r'問題\s*(\d+)', flat):
                     matches.add(int(m))
@@ -186,7 +192,9 @@ def smart_trim(img_path, is_rotated=False, padding=10, header_pct=0.12, footer_p
             # After 90° CW rotation of landscape page:
             # - No. header (original left) → now at TOP
             # - Footer/page num (original bottom) → now at LEFT edge
-            header_h = int(h * header_pct)
+            # Rotated pages need wider header strip (No. text at ~15% from edge)
+            rot_header_pct = max(header_pct, 0.18)
+            header_h = int(h * rot_header_pct)
             footer_w = int(w * footer_pct)
             arr[:header_h, :] = 255   # Remove header from top
             arr[:, :footer_w] = 255   # Remove footer from left edge

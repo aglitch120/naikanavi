@@ -20,7 +20,12 @@ import argparse
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-BLOCK_SIZES = {"A": 75, "B": 50, "C": 75, "D": 75, "E": 50, "F": 75, "G": 75, "H": 50, "I": 75}
+# 112回以降: A75,B50,C75,D75,E50,F75 / 102-111回: A60,B62,C31,D60,E69,F31,G69,H38,I80
+# 100回: A60,B80,C30,D50,E50,F60,G120,H40,I40 / 101回: A60,B120,C50,D50,E30,F80,G60,H50
+BLOCK_SIZES = {
+    "A": 75, "B": 50, "C": 75, "D": 75, "E": 50, "F": 75,
+    "G": 69, "H": 38, "I": 80,
+}
 
 # UI要素のスキップリスト
 SKIP_LINES = {
@@ -34,8 +39,8 @@ def parse_text_file(filepath):
     """手打ちテキストをパースして(公開データ, 解説データ)のリストを返す"""
     text = Path(filepath).read_text(encoding='utf-8')
 
-    # 問題IDで分割
-    pattern = re.compile(r'^(\d{3}[A-F]\d{1,2})\s*$', re.MULTILINE)
+    # 問題IDで分割（A-Iブロック対応、問題番号1-3桁）
+    pattern = re.compile(r'^(\d{3}[A-I]\d{1,3})\s*$', re.MULTILINE)
     splits = list(pattern.finditer(text))
 
     public_questions = []
@@ -107,10 +112,14 @@ def parse_single(qid, block_text):
         # 正解行 → 以降は解説セクション
         if s.startswith('正解：') or s.startswith('正解:'):
             phase = "meta"
-            raw = s.split('：')[-1].split(':')[-1].strip().lower()
-            letters = [c for c in raw.replace(',', '').replace('、', '').replace(' ', '')
-                       if c in 'abcdefghij']
-            answer = letters[0] if len(letters) == 1 else (letters if letters else None)
+            raw = s.split('：')[-1].split(':')[-1].strip()
+            # 数値解答（計算問題）
+            if re.match(r'^[\d.]+$', raw):
+                answer = {"type": "numeric", "value": raw}
+            else:
+                letters = [c for c in raw.lower().replace(',', '').replace('、', '').replace(' ', '')
+                           if c in 'abcdefghij']
+                answer = letters[0] if len(letters) == 1 else (letters if letters else None)
             continue
 
         if s.startswith('正答率：') or s.startswith('正答率:'):
@@ -140,15 +149,15 @@ def parse_single(qid, block_text):
             pass
 
         elif phase == "explanation":
-            # 選択肢解説: "  a テキスト" (インデント付き)
-            em = re.match(r'^\s+([a-j])\s+(.+)', s)
-            if em:
+            # 選択肢解説: "a テキスト" or "  a テキスト"（インデント有無両対応）
+            em = re.match(r'^\s*([a-j])\s+(.+)', s)
+            if em and em.group(1) in choices:
                 cur_choice_key = em.group(1)
                 choice_expls[cur_choice_key] = em.group(2).strip()
                 continue
 
-            # 解説の続き行
-            if cur_choice_key and s and not re.match(r'^\s+[a-j]\s', s):
+            # 解説の続き行（現在の選択肢キーに追記）
+            if cur_choice_key and s and not re.match(r'^\s*[a-j]\s', s):
                 choice_expls[cur_choice_key] = choice_expls.get(cur_choice_key, '') + '\n' + s
                 continue
 
@@ -157,7 +166,7 @@ def parse_single(qid, block_text):
                 cur_choice_key = None
 
     # Parse qid
-    m = re.match(r'(\d{3})([A-F])(\d+)', qid)
+    m = re.match(r'(\d{3})([A-I])(\d+)', qid)
     if not m:
         return None, None
 
@@ -165,13 +174,46 @@ def parse_single(qid, block_text):
     block = m.group(2)
     num = int(m.group(3))
     stem = '\n'.join(stem_lines).strip()
-    num_answers = len(answer) if isinstance(answer, list) else (1 if answer else 0)
+
+    # 計算問題の検出（数値解答 or キーワード）
+    is_calculation = (
+        isinstance(answer, dict) and answer.get("type") == "numeric"
+    ) or '求めよ' in stem or '算出せよ' in stem or '計算せよ' in stem
+
+    # num_answers（計算問題は1とカウント）
+    if isinstance(answer, dict):
+        num_answers = 1
+    elif isinstance(answer, list):
+        num_answers = len(answer)
+    else:
+        num_answers = 1 if answer else 0
 
     # 画像参照の検出
-    has_image = '別冊' in stem or '写真' in stem or '画像' in stem
+    has_image = '別冊' in stem or '写真' in stem or '画像' in stem or '別に示す' in stem
 
-    # 計算問題の検出
-    is_calculation = '求めよ' in stem or '算出せよ' in stem
+    # 連問の検出（テーマの【長文N/M】マーカーから）
+    linked_group = None
+    linked_order = None
+    linked_total = None
+    if theme:
+        lm = re.search(r'【長文(\d+)/(\d+)】', theme)
+        if lm:
+            linked_order = int(lm.group(1))
+            linked_total = int(lm.group(2))
+            first_num = num - linked_order + 1
+            last_num = first_num + linked_total - 1
+            linked_group = f"{year}{block}{first_num}-{last_num}"
+
+    # 禁忌肢の検出（解説テキストから「禁忌」を含む選択肢を特定）
+    kinki_choices = []
+    for ck, cv in choice_expls.items():
+        if '禁忌' in cv:
+            # 「禁忌」が否定文脈でなく、その選択肢自体が禁忌の場合
+            # "禁忌である" "禁忌。" "確実な禁忌" 等 → その選択肢が禁忌
+            # ただし正解の選択肢は禁忌肢ではない（正解を選ぶべきなので）
+            ans_letters = answer if isinstance(answer, list) else ([answer] if isinstance(answer, str) else [])
+            if ck not in ans_letters:
+                kinki_choices.append(ck)
 
     # --- 公開データ（解説なし） ---
     pub = {
@@ -188,9 +230,13 @@ def parse_single(qid, block_text):
             'num_answers': num_answers,
             'has_image': has_image,
             'is_calculation': is_calculation,
-            'has_kinki': False,
+            'has_kinki': len(kinki_choices) > 0,
+            'kinki_choices': kinki_choices if kinki_choices else None,
             'is_deleted': False,
         },
+        'linked_group': linked_group,
+        'linked_order': linked_order,
+        'linked_total': linked_total,
         'field': None,
         'subfield': None,
         'topic': None,
