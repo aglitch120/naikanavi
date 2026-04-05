@@ -66,7 +66,7 @@ def find_booklet_pdfs(year):
                 # else already have this block
             continue
 
-    # Pattern 4: 106-108回 — filename has no block/booklet marker.
+    # Pattern 4: 105-108回 — filename has no block/booklet marker.
     # Detect booklets by reading page-0 text for "別 冊" or "別冊" + block letter.
     if not results and HAS_FITZ:
         for pdf in pdfs:
@@ -75,12 +75,17 @@ def find_booklet_pdfs(year):
                 text = doc[0].get_text()
                 doc.close()
                 if '別' in text and '冊' in text:
-                    # Extract block: look for "108 Ａ 別 冊" pattern (fullwidth letter)
-                    m2 = re.search(r'(\d+)\s*([Ａ-Ｉ])\s*別\s*冊', text)
+                    # Normalize: remove newlines, collapse whitespace
+                    flat = re.sub(r'\s+', ' ', text)
+                    # Try fullwidth block letter: "１０５ Ａ 別 冊" or "108 Ａ 別 冊"
+                    m2 = re.search(r'[０-９\d]+\s*([Ａ-ＩA-I])\s*別\s*冊', flat)
                     if m2:
-                        # Convert fullwidth to ASCII
-                        fw = m2.group(2)
-                        block = chr(ord(fw) - 0xFEE0)  # Ａ→A
+                        raw = m2.group(1)
+                        # Convert fullwidth to ASCII if needed
+                        if 'Ａ' <= raw <= 'Ｉ':
+                            block = chr(ord(raw) - 0xFEE0)
+                        else:
+                            block = raw.upper()
                         existing = [r for r in results if r[0] == block]
                         if not existing:
                             results.append((block, pdf))
@@ -88,6 +93,11 @@ def find_booklet_pdfs(year):
                 continue
 
     return results
+
+
+def _normalize_fullwidth_digits(text):
+    """Convert fullwidth digits (０-９) to ASCII (0-9)."""
+    return text.translate(str.maketrans('０１２３４５６７８９', '0123456789'))
 
 
 def extract_page_mapping(pdf_path, block):
@@ -108,7 +118,7 @@ def extract_page_mapping(pdf_path, block):
     block_pat = f'[{hw}{fw}]'
 
     for i, page_text in enumerate(pages, 1):
-        flat = re.sub(r'\s+', ' ', page_text)
+        flat = _normalize_fullwidth_digits(re.sub(r'\s+', ' ', page_text))
 
         # Match "（A 問題 15）" patterns (flexible whitespace, multi-line flattened)
         matches = set()
