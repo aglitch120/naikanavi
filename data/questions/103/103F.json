@@ -1,0 +1,1217 @@
+{
+  "exam_year": 103,
+  "block": "F",
+  "total_questions": 31,
+  "source": "厚生労働省 第103回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "103F1",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "年齢による体組織の変化を図に示す。\nこのような変化がみられるのはどれか。",
+      "choices": {
+        "a": "骨格筋",
+        "b": "脂肪",
+        "c": "神経",
+        "d": "脈管",
+        "e": "骨"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "103F2",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "介護保険制度で正しいのはどれか。",
+      "choices": {
+        "a": "保険者は都道府県である。",
+        "b": "被保険者は75歳以上である。",
+        "c": "要支援者に対して介護給付が行われる。",
+        "d": "地域包括支援センターは高齢者に対する虐待への対応を行う。",
+        "e": "地域包括支援センターの活動対象は要介護区分1、2の者である。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "103F3",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "乳児の診察で最後に診るのはどれか。",
+      "choices": {
+        "a": "大泉門",
+        "b": "咽頭",
+        "c": "心音",
+        "d": "肝",
+        "e": "深部反射"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "103F4",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "予防にoral vaccineを使用するのはどれか。（編注：制度の変更により正答が無くなってしまったため改変した）",
+      "choices": {
+        "a": "Japanese encephalitis",
+        "b": "German measles",
+        "c": "whooping cough",
+        "d": "Rotavirus",
+        "e": "measles"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "103F5",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "災害時に、自発呼吸があり意識混濁を伴うショック状態の患者につけるトリアージタッグの色で正しいのはどれか。",
+      "choices": {
+        "a": "緑",
+        "b": "黄",
+        "c": "赤",
+        "d": "黒",
+        "e": "白"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "103F6",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "糸球体濾過量〈GFR〉を推算するのに用いられる血漿中の物質はどれか。",
+      "choices": {
+        "a": "カリウム",
+        "b": "カルシウム",
+        "c": "クレアチン",
+        "d": "ナトリウム",
+        "e": "クレアチニン"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "103F7",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "ピンク色で泡沫状の痰を伴うのはどれか。",
+      "choices": {
+        "a": "肺癌",
+        "b": "肺炎",
+        "c": "肺水腫",
+        "d": "肺梗塞",
+        "e": "気管支喘息"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "103F8",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "入院時に使用する用紙を別に示す。\n主に使用するチーム（組織）はどれか。",
+      "choices": {
+        "a": "医療安全管理室",
+        "b": "栄養サポートチーム",
+        "c": "感染対策チーム",
+        "d": "緩和ケアチーム",
+        "e": "褥瘡管理チーム"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "103F9",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "入院診療計画書の作成と交付およびその適切な説明は、患者が入院した日から何日以内に行うべきか。",
+      "choices": {
+        "a": "1日",
+        "b": "3日",
+        "c": "7日",
+        "d": "14日",
+        "e": "28日"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "103F10",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "採血に使用する医療材料（①～⑤）を別に示す。\n適切でないのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "103F11",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "針刺し事故を起こした医療従事者に対し、事故後48時間以内に抗HBsヒト免疫グロブリン投与を行うべき組合せはどれか。",
+      "choices": {
+        "a": "患者HBs抗原：＋、患者HBs抗体：－、医療従事者HBs抗原：－、医療従事者HBs抗体：＋",
+        "b": "患者HBs抗原：＋、患者HBs抗体：－、医療従事者HBs抗原：－、医療従事者HBs抗体：－",
+        "c": "患者HBs抗原：－、患者HBs抗体：＋、医療従事者HBs抗原：－、医療従事者HBs抗体：＋",
+        "d": "患者HBs抗原：－、患者HBs抗体：＋、医療従事者HBs抗原：－、医療従事者HBs抗体：－",
+        "e": "患者HBs抗原：－、患者HBs抗体：＋、医療従事者HBs抗原：＋、医療従事者HBs抗体：－"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "103F12",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "正しいのはどれか。",
+      "choices": {
+        "a": "医療事故では医療側にのみ過失がある。",
+        "b": "臨床試験では治験審査委員会を施設外に設ける。",
+        "c": "インシデントレポートの提出は医療過誤に限られる。",
+        "d": "インフォームドコンセントは自己決定権行使の前提となる。",
+        "e": "GCP〈good clinical practice〉とは治療成績が良好な治療のことである。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "103F13",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "臨床疫学的指標について正しいのはどれか。",
+      "choices": {
+        "a": "ROC曲線は感度と尤度比から描ける。",
+        "b": "バイアスとは交絡因子のことである。",
+        "c": "信頼区間は相対危険度から計算できる。",
+        "d": "検査後確率は対象集団によって変わらない。",
+        "e": "特異度は疾病を有さない者のうちの検査陰性者の割合である。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "103F14",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "貧血への代償機序としての症候はどれか。",
+      "choices": {
+        "a": "浮腫",
+        "b": "頭痛",
+        "c": "失神",
+        "d": "頻脈",
+        "e": "便秘"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "103F15",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "がんの転移によるリンパ節腫脹の特徴はどれか。",
+      "choices": {
+        "a": "軟らかい。",
+        "b": "圧痛がない。",
+        "c": "可動性がある。",
+        "d": "皮膚に熱感がある。",
+        "e": "相互の癒合がない。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "103F16",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "50歳の男性。30年の喫煙歴があり、禁煙のため薬物療法を受けたいと来院した。\n薬物療法が最も良い適応となる患者の状況はどれか。",
+      "choices": {
+        "a": "「食後につい吸ってしまいます」",
+        "b": "「1日の喫煙本数は10本くらいです」",
+        "c": "「朝、目覚めるとすぐにタバコを吸います」",
+        "d": "「徐々に喫煙本数を減らしたいと考えています」",
+        "e": "「病院や映画館などで吸えなくても別に平気です」"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "103F17",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "ある腫瘍マーカーを肺癌患者100人と非肺癌患者1,000人とで測定したところ、表のような結果が得られた。\n腫瘍マーカー値（ng/mL）\t肺癌患者（人）\t非肺癌患者（人）\n1.5以上\t60\t50\n1.5未満\t40\t950\n合計\t100\t1,000\nこの測定値が2.0ng/mLのとき、肺癌である検査後確率はどれか。\nただし、肺癌の検査前確率を20％と仮定する。",
+      "choices": {
+        "a": "20％",
+        "b": "25％",
+        "c": "50％",
+        "d": "75％",
+        "e": "80％"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "103F18",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "45歳の男性。意識障害のため搬入された。身長175cm、体重95kg。体温35.7℃。脈拍112/分、整。血圧110/70mmHg。尿所見：蛋白（±）、糖（−）。血液所見：赤血球650万、Hb 17.5g/dL、Ht 56％、白血球13,000、血小板10万。血液生化学所見：血糖40mg/dL、HbA1c 10.0％、尿素窒素30mg/dL、クレアチニン1.1mg/dL、尿酸8.0mg/dL、総コレステロール250mg/dL、トリグリセリド300mg/dL、Na 145mEq/L、K 5.2mEq/L、Cl 105mEq/L。CRP 3.0mg/dL。動脈血ガス分析（自発呼吸、room air）：pH 7.50、PaO2 106Torr、PaCO2 34Torr、HCO3- 20mEq/L。\n検査項目でパニック値はどれか。",
+      "choices": {
+        "a": "ヘモグロビン〈Hb〉",
+        "b": "血小板",
+        "c": "血糖",
+        "d": "カリウム",
+        "e": "pH"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "103F19",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "80歳の女性。食欲低下を主訴に入院していた。3日前に風邪をひいたことを契機に、食事がとれなくなった。肝転移を伴う胃癌があるが、患者も家族も積極的な治療は望んでいない。娘夫婦が病院から車で30分の距離に住んでいる。10年前に心筋梗塞の既往があり、ステント留置術を受けている。\n午前3時の検温時に呼吸していることを看護師が確認していたが、脈拍は測定しなかった。午前6時05分の検温時に、ベッド上で心肺停止状態であるのを看護師が発見し、医師と家族とに連絡した。先に到着した研修医がモニター心電図を装着して自己心拍を認めないことを確認した。午前6時15分に指導医が到着し一緒に診察を開始した。体温35.0 ℃（直腸温）。自己心拍と自発呼吸とは認めず、瞳孔は左右同大で散大していた。午前6時20分に診察を終了し、心肺蘇生は行わなかった。\n午前6時45分に娘夫婦が到着した。状況の説明後、死因の特定のために病理解剖の同意を求めたが承諾を得られず、死亡診断書を記載することになった。\n死亡診断書に記載する死亡時刻で正しいのはどれか。",
+      "choices": {
+        "a": "午前3時00分",
+        "b": "午前6時05分",
+        "c": "午前6時15分",
+        "d": "午前6時20分",
+        "e": "午前6時45分"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "103F20",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "48歳の男性。下血を主訴に来院した。精査にて大腸癌が発見され、手術目的で外科病棟に入院した。20歳で統合失調症を発症し、作業所に通所中であった。患者が手術を嫌がり同意が得られないため精神科医師がコンサルテーションを受けた。\n精神科医師の対応で誤っているのはどれか。",
+      "choices": {
+        "a": "医療保護入院の手続きをとる。",
+        "b": "手術の説明と同意の取得に協力する。",
+        "c": "外科スタッフに精神医学的説明を行う。",
+        "d": "社会福祉士と協力して家族との連携を図る。",
+        "e": "外科スタッフとともに周術期の精神科薬物療法を計画する。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "103F21",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "30歳の女性。右眼の痛みを主訴に来院した。3日前から右眼の充血と違和感とがあり改善しない。右眼の眼瞼皮膚に発赤と腫脹とを認めず、眼球結膜に充血を認める。右角膜中央に直径約2mmの白色円形病変を認め、病変の中央はフルオレセインナトリウムで染色される。前房に炎症細胞を認めない。左眼に異常を認めない。\n病原体同定のために採取が必要なのはどれか。",
+      "choices": {
+        "a": "涙液",
+        "b": "前房水",
+        "c": "硝子体液",
+        "d": "眼瞼皮膚擦過物",
+        "e": "角膜病巣擦過物"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "103F22",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "26歳の女性。未経妊。性器出血を主訴に来院した。最近不正出血が時々あり、がんではないかと心配している。月経は初経から不順であるが、治療は受けていない。子宮頸癌検診は22歳から毎年受けているが、異常は指摘されていない。内診で腟分泌物は褐色で少量、子宮は正常大で可動性良好。経腟超音波検査で子宮内膜厚は16 mm、両側卵巣は多嚢胞性である。\n説明の内容として適切なのはどれか。",
+      "choices": {
+        "a": "「腟炎による出血だと思います」",
+        "b": "「子宮体癌の検査をしましょう」",
+        "c": "「止血剤で出血が止まれば大丈夫です」",
+        "d": "「腟分泌物の細菌培養検査をしましょう」",
+        "e": "「子宮頸部から組織を採取して検査をしましょう」"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "103F23",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "46歳の男性。近医で右肺尖部の異常陰影を指摘され来院した。胸部造影CTを撮影した直後に呼吸困難を訴え始めた。意識は清明。呼吸数36/分。脈拍140/分、整。血圧78/44 mmHg。全身の皮膚に発赤を認め、呼気時に喘鳴を聴取する。\n直ちに投与すべき薬剤はどれか。",
+      "choices": {
+        "a": "ドパミン",
+        "b": "モルヒネ",
+        "c": "リドカイン",
+        "d": "アドレナリン",
+        "e": "プロプラノロール"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "103F24",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "60歳の女性。進行肺癌のため入院しているが、終末期の状態で緩和ケアのみが行われている。回診時の医師と患者との会話を以下に示す。\n患　者「あと何日くらい生きることができますか」\n医　師「これから外来があるので、そのことについてはまた今度…」\nこの医師の態度はどれか。",
+      "choices": {
+        "a": "理解的態度",
+        "b": "評価的態度",
+        "c": "解釈的態度",
+        "d": "調査的態度",
+        "e": "逃避的態度"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "103F25",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "20歳の女性。前頸部の腫大を主訴に来院した。半年前から次第に増大する前頸部腫大に気付き、動悸と発汗増加とを自覚した。最近、手指が震えるようになった。意識は清明。身長160cm、体重48kg。体温37.1℃。脈拍112/分、整。血圧134/58 mmHg。皮膚は湿潤。手指に振戦を認める。前頸部の写真を別に示す。\n腫大部位でみられるのはどれか。",
+      "choices": {
+        "a": "圧痛",
+        "b": "表面不整",
+        "c": "皮膚との癒着",
+        "d": "嚥下運動に連動",
+        "e": "硬さは硬軟が混在"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "103F26",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "次の文を読み、以下の問いに答えよ。\n28歳の初妊婦。下腹部痛と性器出血とを主訴に来院した。最終月経開始日から起算して妊娠7週3日。\n現病歴：21日前、市販のキットで妊娠検査を行ったところ陽性だった。3日前から左下腹部の重苦しい痛みを感じていた。来院当日朝、少量の性器出血を認めた。下腹部痛の増強は認めない。妊娠悪阻症状はない。\n既往歴・生活歴・家族歴：特記すべきことはない。\n月経歴：周期28日型、持続5日間、中等量、月経痛は認めない。\n現　症：意識は清明。身長158cm、体重45kg。体温37.3℃。脈拍76/分、整。血圧98/72mmHg。腟鏡診で外子宮口から中等量の出血の持続を認める。内診で子宮は前傾前屈、やや腫大し、やや軟、軽度の圧痛を認める。左付属器領域に軽度の圧痛を認めるが、腫瘤は触知しない。\n検査所見：尿所見：蛋白（−）、糖（−）。尿hCG検査：陽性。経腟超音波検査で子宮腔内に内膜の肥厚を認める。胎嚢は認めない。腹水や腹腔内出血は認めない。両側付属器に明らかな腫瘤を認めない。\n考えにくいのはどれか。",
+      "choices": {
+        "a": "正常妊娠",
+        "b": "進行流産",
+        "c": "不全流産",
+        "d": "稽留流産",
+        "e": "子宮外妊娠"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "103F26-27",
+      "linked_order": 1,
+      "linked_total": 2,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "103F27",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "対応として適切なのはどれか。",
+      "choices": {
+        "a": "経過観察",
+        "b": "骨盤部MRI",
+        "c": "腹腔鏡検査",
+        "d": "Douglas窩穿刺",
+        "e": "子宮内容除去術"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "103F26-27",
+      "linked_order": 2,
+      "linked_total": 2,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "103F28",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "次の文を読み、以下の問いに答えよ。\n53歳の男性。1か月以上続く咳と37 ℃台の微熱とを主訴に来院した。\n既往歴：23歳時に肺結核で1年間入院治療した。\n家族歴：母（76歳、降圧薬服用中）、妻（51歳、高脂血症薬服用中）、長男（29歳、交通事故による下肢切断で義足装着中）、長男の妻（27歳、気管支喘息で気管支拡張薬服用中）、孫（生後1か月）。\n現　症：身長165 cm、体重55 kg。体温37.2 ℃。呼吸数18/分。脈拍84/分、整。血圧116/72 mmHg。眼瞼結膜と眼球結膜とに異常を認めない。心音と呼吸音とに異常を認めない。腹部は平坦、軟で、圧痛や抵抗を認めない。\n検査所見：胸部エックス線写真で右上肺野に石灰化陰影とその周囲に軟らかい浸潤陰影とを認める。結核菌の喀痰塗抹検査は陰性であった。\n臨床経過：担当医は結核症の可能性が極めて高いと判断し、治療を開始することとした。患者は外来治療を希望していたが、担当医は同居家族の状況から入院治療が必要と判断した。入院後、抗結核薬の4剤併用投与を開始した。治療開始前に行った喀痰培養で結核菌が陽性で、薬剤感受性菌であることが後日判明した。治療開始後2か月目に結核菌培養が陰性となったため退院とした。外来で治療を継続したが、退院4か月後ころから自覚症状と胸部エックス線陰影とが増悪して喀痰塗抹検査が陽性となり、結核菌が証明された。抗結核薬の服用が不規則で飲み残しの多いことが判明し、担当医は入院を指示し規則的な服薬を強く指導した。\n初回の入院治療が必要であると判断したのはどの家族のためか。",
+      "choices": {
+        "a": "母",
+        "b": "妻",
+        "c": "長男",
+        "d": "長男の妻",
+        "e": "孫"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "103F28-29",
+      "linked_order": 1,
+      "linked_total": 2,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "103F29",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "抗結核薬の不規則な服用で起こるのはどれか。",
+      "choices": {
+        "a": "薬物アレルギー",
+        "b": "薬物依存",
+        "c": "薬物耐性",
+        "d": "薬物相互作用",
+        "e": "薬物性胃腸障害"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "103F28-29",
+      "linked_order": 2,
+      "linked_total": 2,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "103F30",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "次の文を読み、以下の問いに答えよ。\n29歳の男性。動悸と労作時呼吸困難とを主訴に来院した。\n現病歴：学生のころから心雑音を指摘されていたが放置していた。1週前から誘因なく階段を昇るときの息切れを自覚し次第に増悪した。\n既往歴：幼少時から背が高い。両腕が長く既製服を着用できない。強度の近視がある。\n現　症：意識は清明。身長182 cm、体重52 kg。痩せ型で両側前腕と手指が長い。体温36.6 ℃。脈拍96/分、整。血圧116/48 mmHg。第2肋間胸骨右縁に3/6度の収縮期雑音と心尖部に放散する3/6度の拡張期雑音とを認める。呼吸音に異常を認めない。腹部は平坦、軟で、肝・脾を触知しない。両下腿に浮腫を認めない。\n検査所見：尿所見：蛋白（−）、糖（−）、潜血（−）。血液所見：赤血球430万、Hb 14.1 g/dL、白血球6,800、血小板28万。血液生化学所見：総蛋白7.2 g/dL、アルブミン4.8 g/dL、AST 30 U/L、ALT 24 U/L、尿素窒素18 mg/dL、クレアチニン1.0 mg/dL、総コレステロール182 mg/dL。CRP 0.3 mg/dL。\nこの患者の拡張期雑音を最も強く聴取するのはどれか。",
+      "choices": {
+        "a": "立位",
+        "b": "前屈位",
+        "c": "仰臥位",
+        "d": "右側臥位",
+        "e": "左側臥位"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "103F30-31",
+      "linked_order": 1,
+      "linked_total": 2,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "103F31",
+      "exam_year": 103,
+      "block": "F",
+      "stem": "診断に有用なのはどれか。",
+      "choices": {
+        "a": "冠動脈造影",
+        "b": "心エコー検査",
+        "c": "Holter心電図",
+        "d": "心筋シンチグラフィ",
+        "e": "トレッドミル運動負荷試験"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "103F30-31",
+      "linked_order": 2,
+      "linked_total": 2,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}
