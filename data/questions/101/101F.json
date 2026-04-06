@@ -1,0 +1,3242 @@
+{
+  "exam_year": 101,
+  "block": "F",
+  "total_questions": 80,
+  "source": "厚生労働省 第101回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "101F1",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "羊水過多症が起こりやすいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "過期妊娠",
+        "b": "二分脊椎",
+        "c": "胎児食道閉鎖",
+        "d": "胎盤機能不全",
+        "e": "胎児腎低形成"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "101F2",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "双胎妊娠で正しいのはどれか。（編注：出題時は2つ選ばせる問題であったが、現在の正解は1つ）",
+      "choices": {
+        "a": "妊婦貧血の発症率が高い。",
+        "b": "1卵性双胎は1絨毛膜性双胎となる。",
+        "c": "妊娠高血圧症候群の発症率は単胎と差がない。",
+        "d": "体外受精の結果発生する双胎のほとんどは2卵性である。",
+        "e": "2絨毛膜性双胎は1絨毛膜性双胎に比較して周産期のリスクが高い。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "101F3",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "糖尿病合併妊娠で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "治療にはインスリンを用いる。",
+        "b": "新生児は高血糖をきたしやすい。",
+        "c": "妊娠高血圧症候群を合併しやすい。",
+        "d": "血糖値の管理は妊娠中期以降に開始する。",
+        "e": "食後2時間の血糖値を150mg/dL以下に保つ。"
+      },
+      "answer": [
+        "a",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "101F4",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "癒着胎盤の危険因子とならないのはどれか。",
+      "choices": {
+        "a": "子宮奇形",
+        "b": "前置胎盤",
+        "c": "子宮内膜症",
+        "d": "帝王切開術の既往",
+        "e": "子宮内容除去術の既往"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "101F5",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "胎児水腫について正しいのはどれか。",
+      "choices": {
+        "a": "児の予後は良好である。",
+        "b": "児の腎機能低下で起こる。",
+        "c": "出生前診断は困難である。",
+        "d": "ウイルス感染が原因となる。",
+        "e": "染色体異常とは無関係である。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "101F6",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "染色体の構造異常がみられるのはどれか。",
+      "choices": {
+        "a": "Down症候群",
+        "b": "猫鳴き症候群",
+        "c": "Marfan症候群",
+        "d": "Turner症候群",
+        "e": "Klinefelter症候群"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "101F7",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "せん妄について正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "幻視が出現する。",
+        "b": "意識障害を認める。",
+        "c": "追想が可能である。",
+        "d": "見当識は保たれる。",
+        "e": "常同姿勢を呈する。"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "101F8",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "うつ病でみられるのはどれか。",
+      "choices": {
+        "a": "思考制止",
+        "b": "思考途絶",
+        "c": "思考化声",
+        "d": "妄想知覚",
+        "e": "アンビバレンス"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "101F9",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "小児の自閉症で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "女児に多い。",
+        "b": "多動はない。",
+        "c": "反響言語がある。",
+        "d": "常同的行動がある。",
+        "e": "3歳以降に発症する。"
+      },
+      "answer": [
+        "c",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "101F10",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "Kaposi水痘様発疹症の病因はどれか。",
+      "choices": {
+        "a": "EBウイルス",
+        "b": "ヒト乳頭腫ウイルス",
+        "c": "サイトメガロウイルス",
+        "d": "単純ヘルペスウイルス",
+        "e": "水痘・帯状疱疹ウイルス"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "101F11",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "疾患と発生母地の組合せで正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "Merkel細胞癌 --------- 局面状類乾癬",
+        "b": "有棘細胞癌 --------- 慢性放射性皮膚炎",
+        "c": "悪性黒色腫 --------- 先天性巨大色素性母斑",
+        "d": "Paget病 --------- 黒色表皮腫",
+        "e": "血管肉腫 --------- 尋常性狼瘡"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "101F12",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "細菌の外毒素が起こす皮膚病変はどれか。2つ選べ。",
+      "choices": {
+        "a": "丹毒",
+        "b": "瘭疽",
+        "c": "伝染性膿痂疹",
+        "d": "蜂巣炎〈蜂窩織炎〉",
+        "e": "ブドウ球菌性熱傷様皮膚症候群"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "101F13",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "弱視をきたしにくいのはどれか。",
+      "choices": {
+        "a": "近視",
+        "b": "遠視",
+        "c": "不同視",
+        "d": "斜視",
+        "e": "先天白内障"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "101F14",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "レーザー光凝固が有効なのはどれか。",
+      "choices": {
+        "a": "黄斑円孔",
+        "b": "黄斑前膜",
+        "c": "網膜色素変性",
+        "d": "網膜中心動脈閉塞症",
+        "e": "中心性漿液性網脈絡膜症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "101F15",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "硝子体出血をきたすのはどれか。2つ選べ。",
+      "choices": {
+        "a": "網膜裂孔",
+        "b": "網膜色素変性",
+        "c": "虚血性視神経症",
+        "d": "網膜中心静脈閉塞症",
+        "e": "Vogt-小柳-原田症候群"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "101F16",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "副鼻腔エックス線単純写真で両側の副鼻腔に充満する陰影を認めた。\n最も考えられるのはどれか。",
+      "choices": {
+        "a": "鼻癤",
+        "b": "肥厚性鼻炎",
+        "c": "鼻中隔彎曲症",
+        "d": "慢性副鼻腔炎",
+        "e": "上顎洞癌"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "101F17",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "ドレナージの適応となるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "膿胸",
+        "b": "肺水腫",
+        "c": "肺気腫",
+        "d": "肺線維症",
+        "e": "急性縦隔炎"
+      },
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "101F18",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "アスピリン喘息で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "小児よりも成人で多い。",
+        "b": "鼻ポリープの合併が多い。",
+        "c": "ピリンアレルギーである。",
+        "d": "IgE抗体を介して発症する。",
+        "e": "ラテックスアレルギーを合併しやすい。"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "101F19",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "特発性肺線維症の症候はどれか。2つ選べ。",
+      "choices": {
+        "a": "喘鳴",
+        "b": "発熱",
+        "c": "乾性咳嗽",
+        "d": "口すぼめ呼吸",
+        "e": "fine crackles"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "101F20",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "乳腺線維腺腫で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "20、30歳代に好発する。",
+        "b": "多くは単発性である。",
+        "c": "乳頭から血性分泌がみられる。",
+        "d": "えくぼ徴候がみられる。",
+        "e": "圧痛を認める。"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "101F21",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "ジギタリスの適応はどれか。",
+      "choices": {
+        "a": "貧血",
+        "b": "狭心症",
+        "c": "慢性心房細動",
+        "d": "完全房室ブロック",
+        "e": "甲状腺機能亢進症"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "d"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "101F22",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "いびきが診断の手掛かりになるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "副鼻腔炎",
+        "b": "アデノイド",
+        "c": "気管狭窄症",
+        "d": "ポリープ様声帯",
+        "e": "睡眠時無呼吸症候群"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "101F23",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "右心不全の徴候はどれか。2つ選べ。",
+      "choices": {
+        "a": "肝腫大",
+        "b": "呼気延長",
+        "c": "肺うっ血",
+        "d": "起座呼吸",
+        "e": "頸静脈怒張"
+      },
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "101F24",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "疾患と心血管異常の組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "DiGeorge症候群 --------- Fallot四徴症",
+        "b": "Marfan症候群 --------- 僧帽弁逸脱症候群",
+        "c": "Osler病〈遺伝性出血性末梢血管拡張症〉 --------- 肺動静脈瘻",
+        "d": "Turner症候群 --------- 大動脈縮窄症",
+        "e": "先天性風疹症候群 --------- 完全大血管転位症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "101F25",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "Blalock-Taussig短絡手術の適応はどれか。2つ選べ。",
+      "choices": {
+        "a": "大動脈縮窄症",
+        "b": "肺動脈閉鎖症",
+        "c": "Fallot四徴症",
+        "d": "心内膜床欠損症",
+        "e": "総肺静脈還流異常症"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "101F26",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "心原性脳塞栓症を起こす頻度が最も高いのはどれか。",
+      "choices": {
+        "a": "三尖弁閉鎖不全症",
+        "b": "僧帽弁閉鎖不全症",
+        "c": "僧帽弁狭窄症",
+        "d": "大動脈弁閉鎖不全症",
+        "e": "大動脈弁狭窄症"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "101F27",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "低酸素発作を起こすのはどれか。",
+      "choices": {
+        "a": "心室中隔欠損症",
+        "b": "心内膜床欠損症",
+        "c": "動脈管開存症",
+        "d": "Fallot四徴症",
+        "e": "総肺静脈還流異常症"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "101F28",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "急性心筋梗塞の患者に新たに収縮期心雑音が出現した。考えられる合併症はどれか。",
+      "choices": {
+        "a": "心室瘤",
+        "b": "心内膜炎",
+        "c": "心室中隔穿孔",
+        "d": "左室自由壁破裂",
+        "e": "大動脈弁閉鎖不全症"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "101F29",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "前縦隔に発生する頻度が高いのはどれか。2つ選べ。",
+      "choices": {
+        "a": "胸腺腫",
+        "b": "奇形腫",
+        "c": "神経原性腫瘍",
+        "d": "気管支性嚢胞",
+        "e": "Bochdalek孔ヘルニア"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "101F30",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "胃全摘術後にきたしやすいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "ペラグラ",
+        "b": "胆石症",
+        "c": "巨赤芽球性貧血",
+        "d": "血小板増多症",
+        "e": "高尿酸血症"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "101F31",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "大腸疾患と合併症の組合せで正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "腸結核───────溶血性尿毒症症候群",
+        "b": "アメーバ赤痢────肝膿瘍",
+        "c": "潰瘍性大腸炎────原発性硬化性胆管炎",
+        "d": "過敏性腸症候群───ぶどう膜炎",
+        "e": "大腸カルチノイド──結節性紅斑"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 32,
+      "id": "101F32",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "小児の肛門周囲膿瘍について正しいのはどれか。",
+      "choices": {
+        "a": "結核性が多い。",
+        "b": "乳児期に好発する。",
+        "c": "自然治癒はまれである。",
+        "d": "真菌感染が原因である。",
+        "e": "おむつかぶれから発生する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 33,
+      "id": "101F33",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "C型慢性肝炎に対するインターフェロン療法で高いウイルス排除効果が期待できるのはどれか。",
+      "choices": {
+        "a": "血小板8万",
+        "b": "ALT 80IU/L",
+        "c": "総コレステロール110mg/dL",
+        "d": "ウイルス遺伝子型2型",
+        "e": "肝線維化ステージF4"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 34,
+      "id": "101F34",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "肝硬変が進展すると低下するのはどれか。2つ選べ。",
+      "choices": {
+        "a": "白血球数",
+        "b": "食後血糖値",
+        "c": "血清AST/ALT比",
+        "d": "総コレステロール値",
+        "e": "ICG 15分停滞率"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 35,
+      "id": "101F35",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "肝細胞癌に対する動脈塞栓術が適応とならないのはどれか。",
+      "choices": {
+        "a": "破裂した腫瘍",
+        "b": "径8cm大の腫瘍",
+        "c": "両葉に存在する腫瘍",
+        "d": "肝表面に突出する腫瘍",
+        "e": "門脈本幹が腫瘍塞栓で閉塞した腫瘍"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 36,
+      "id": "101F36",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "胆道疾患と治療の組合せで正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "先天性総胆管拡張症 --------- 総胆管消化管吻合術",
+        "b": "総胆管結石 --------- 内視鏡的十二指腸乳頭切開術",
+        "c": "急性胆嚢炎 --------- 体外衝撃波結石破砕術",
+        "d": "胆嚢腺筋腫症 --------- 胆嚢粘膜切除術",
+        "e": "急性胆管炎 --------- 内視鏡的胆道ドレナージ"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 37,
+      "id": "101F37",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "重症急性膵炎でみられないのはどれか。",
+      "choices": {
+        "a": "低血糖",
+        "b": "白血球増多",
+        "c": "高尿素窒素血症",
+        "d": "高LD血症",
+        "e": "低カルシウム血症"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 38,
+      "id": "101F38",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "大腿ヘルニアで正しいのはどれか。",
+      "choices": {
+        "a": "鼠径部のヘルニアの約半数を占める。",
+        "b": "中年男性に多い。",
+        "c": "両側性に発生する。",
+        "d": "大腿動脈の外側に脱出する。",
+        "e": "嵌頓しやすい。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 39,
+      "id": "101F39",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "鉄欠乏性貧血に対する鉄剤投与終了の指標はどれか。",
+      "choices": {
+        "a": "自覚症状の消失",
+        "b": "赤血球数の正常化",
+        "c": "ヘモグロビン値の正常化",
+        "d": "トランスフェリン飽和度の正常化",
+        "e": "血清フェリチン値の正常化"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 40,
+      "id": "101F40",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "遺伝性球状赤血球症で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "伴性劣性遺伝である。",
+        "b": "赤血球膜脂質の欠損がある。",
+        "c": "脾腫がみられる。",
+        "d": "正色素性貧血を示す。",
+        "e": "赤血球浸透圧抵抗が減弱している。"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 41,
+      "id": "101F41",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "Hodgkin病について正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "加齢とともに発症頻度は上昇する。",
+        "b": "頸部リンパ節が好発部位である。",
+        "c": "持続する発熱はB症状に含まれる。",
+        "d": "限局性のものに対しては抗癌化学療法は行わない。",
+        "e": "限局性のものであっても予後は不良である。"
+      },
+      "answer": [
+        "b",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 42,
+      "id": "101F42",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "血友病Aとvon Willebrand病とに共通しているのはどれか。",
+      "choices": {
+        "a": "遺伝形式",
+        "b": "主な出血部位",
+        "c": "出血時間延長",
+        "d": "APTT延長",
+        "e": "血小板粘着能低下"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 43,
+      "id": "101F43",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "急性糸球体腎炎について正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "A群β溶血性レンサ球菌感染が関連する。",
+        "b": "上気道炎とほぼ同時に腎炎の症状が出現する。",
+        "c": "突然の浮腫と血尿とで発症する。",
+        "d": "腎生検では糸球体に半月体形成を認める。",
+        "e": "無治療では慢性腎不全に至る。"
+      },
+      "answer": [
+        "a",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 44,
+      "id": "101F44",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "血清補体価が低下するのはどれか。",
+      "choices": {
+        "a": "IgA腎症",
+        "b": "膜性腎症",
+        "c": "紫斑病性腎炎",
+        "d": "巣状糸球体硬化症",
+        "e": "膜性増殖性糸球体腎炎"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 45,
+      "id": "101F45",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "分泌亢進が高血圧をきたすのはどれか。2つ選べ。",
+      "choices": {
+        "a": "レニン",
+        "b": "プロラクチン",
+        "c": "カルシトニン",
+        "d": "コルチゾール",
+        "e": "バソプレシン"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 46,
+      "id": "101F46",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "病態と酸塩基平衡障害の組合せで正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "COPD --------- 呼吸性アルカローシス",
+        "b": "嘔吐 --------- 代謝性アルカローシス",
+        "c": "下痢 --------- 代謝性アルカローシス",
+        "d": "過換気 --------- 呼吸性アシドーシス",
+        "e": "慢性腎不全 --------- 代謝性アシドーシス"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 47,
+      "id": "101F47",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "日本人の尿路結石で最も多いのはどれか。",
+      "choices": {
+        "a": "尿酸結石",
+        "b": "シスチン結石",
+        "c": "リン酸カルシウム結石",
+        "d": "シュウ酸カルシウム結石",
+        "e": "リン酸マグネシウムアンモニウム結石"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 48,
+      "id": "101F48",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "子宮内膜症で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "閉経後に好発する。",
+        "b": "不妊の原因となる。",
+        "c": "性交痛はまれである。",
+        "d": "仙骨子宮靭帯に好発する。",
+        "e": "卵巣癌の発生とは関連しない。"
+      },
+      "answer": [
+        "b",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 49,
+      "id": "101F49",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "尖圭コンジローマで誤っているのはどれか。",
+      "choices": {
+        "a": "性感染症である。",
+        "b": "外陰部に好発する。",
+        "c": "発症まで数週から数か月の潜伏期間がある。",
+        "d": "乳幼児の喉頭乳頭腫は産道感染が原因である。",
+        "e": "16, 18型ヒト乳頭腫〈human papilloma〉ウイルスが原因である。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 50,
+      "id": "101F50",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "移行上皮に発生するのはどれか。2つ選べ。",
+      "choices": {
+        "a": "腎盂腫瘍",
+        "b": "膀胱腫瘍",
+        "c": "前立腺腫瘍",
+        "d": "精巣腫瘍",
+        "e": "陰茎腫瘍"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 51,
+      "id": "101F51",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "卵巣過剰刺激症候群でみられないのはどれか。",
+      "choices": {
+        "a": "多尿",
+        "b": "腹水貯留",
+        "c": "血液濃縮",
+        "d": "凝固能亢進",
+        "e": "低蛋白血症"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 52,
+      "id": "101F52",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "閉経後の女性に対するエストロゲン補充療法の禁忌はどれか。",
+      "choices": {
+        "a": "認知症",
+        "b": "うつ病",
+        "c": "骨粗鬆症",
+        "d": "脂質異常症",
+        "e": "静脈血栓症"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 53,
+      "id": "101F53",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "動眼神経麻痺をきたしやすいのはどれか。",
+      "choices": {
+        "a": "内頸動脈瘤",
+        "b": "椎骨動脈瘤",
+        "c": "前大脳動脈瘤",
+        "d": "前交通動脈瘤",
+        "e": "中大脳動脈瘤"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 54,
+      "id": "101F54",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "頭部単純MRIのT1強調像（①～⑤）を別に示す。\n聴力障害を主訴とするのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      },
+      "has_image": true
+    },
+    {
+      "num": 55,
+      "id": "101F55",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "筋ジストロフィーでX連鎖性遺伝形式をとるのはどれか。",
+      "choices": {
+        "a": "顔面肩甲上腕型",
+        "b": "先天性福山型",
+        "c": "Becker型",
+        "d": "筋強直性",
+        "e": "肢帯型"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 56,
+      "id": "101F56",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "心筋が障害されないのはどれか。",
+      "choices": {
+        "a": "Friedreich失調症",
+        "b": "Kearns-Sayre症候群",
+        "c": "副腎白質ジストロフィー",
+        "d": "筋強直性ジストロフィー",
+        "e": "Duchenne型筋ジストロフィー"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 57,
+      "id": "101F57",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "てんかんの発作型と抗けいれん薬の組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "欠神発作 --------- フェノバルビタール",
+        "b": "脱力発作 --------- パルプロ酸ナトリウム",
+        "c": "強直間代発作 --------- フェニトイン",
+        "d": "ミオクロニー発作 --------- クロナゼパム",
+        "e": "West症候群〈点頭てんかん〉 --------- ACTH"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 58,
+      "id": "101F58",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "Parkinson病の特徴でないのはどれか。",
+      "choices": {
+        "a": "小刻み歩行",
+        "b": "分回し歩行",
+        "c": "加速歩行",
+        "d": "すくみ足",
+        "e": "突進現象"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 59,
+      "id": "101F59",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "West症候群〈点頭てんかん〉について正しいのはどれか。",
+      "choices": {
+        "a": "生後3か月以内に好発する。",
+        "b": "発作は発熱時に多い。",
+        "c": "発作は群発する。",
+        "d": "脳波で3Hz棘徐波を認める。",
+        "e": "精神発達は正常である。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 60,
+      "id": "101F60",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "視床下部腫瘍でみられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "無月経",
+        "b": "ACTH高値",
+        "c": "口渇感低下",
+        "d": "精神運動興奮",
+        "e": "プロラクチン低値"
+      },
+      "answer": [
+        "a",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 61,
+      "id": "101F61",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "甲状腺乳頭癌について正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "女性に多い。",
+        "b": "高齢者に多い。",
+        "c": "血中サイログロブリンが低値となる。",
+        "d": "甲状腺超音波検査で砂粒腫がみられる。",
+        "e": "予後は濾胞癌より悪い。"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 62,
+      "id": "101F62",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "原発性副甲状腺機能亢進症に合併するのはどれか。",
+      "choices": {
+        "a": "緑内障",
+        "b": "消化性潰瘍",
+        "c": "原発性胆汁性胆管炎",
+        "d": "嚢胞腎",
+        "e": "関節リウマチ"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 63,
+      "id": "101F63",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "Cushing症候群でみられるのはどれか。",
+      "choices": {
+        "a": "乏尿",
+        "b": "抑うつ",
+        "c": "るいそう",
+        "d": "白血球減少",
+        "e": "低カルシウム尿症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 64,
+      "id": "101F64",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "薬剤と主な副作用の組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "スルホニル尿素薬 --------- 低血糖",
+        "b": "ビグアナイド薬 --------- 浮腫",
+        "c": "チアゾリジン薬 --------- 体重増加",
+        "d": "ACE阻害薬 --------- 咳嗽",
+        "e": "HMG-CoA還元酵素阻害薬 --------- 横紋筋融解症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 65,
+      "id": "101F65",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "ケトン性低血糖症で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "小児期の低血糖の中で最も多い。",
+        "b": "血中乳酸が増加する。",
+        "c": "ロイシン負荷試験で低血糖が誘発される。",
+        "d": "カテコラミンの皮下注射が有効である。",
+        "e": "10歳ころまでに自然軽快する。"
+      },
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 66,
+      "id": "101F66",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "気管支肺胞洗浄液中のリンパ球のCD4/CD8比が1以下になるのはどれか。",
+      "choices": {
+        "a": "気管支喘息",
+        "b": "ベリリウム肺",
+        "c": "夏型過敏性肺炎",
+        "d": "特発性肺線維症",
+        "e": "サルコイドーシス"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 67,
+      "id": "101F67",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "血小板数が減少するのはどれか。",
+      "choices": {
+        "a": "毛細血管拡張性失調症〈ataxiatelangiectasia〉",
+        "b": "Bruton型無ガンマグロブリン血症",
+        "c": "DiGeorge症候群",
+        "d": "高IgM血症",
+        "e": "Wiskott-Aldrich症候群"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 68,
+      "id": "101F68",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "強皮症でみられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "環状紅斑",
+        "b": "光線過敏",
+        "c": "指尖部潰瘍",
+        "d": "口腔内びらん",
+        "e": "Raynaud症状"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 69,
+      "id": "101F69",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "疾患と症候の組合せで正しいのはどれか。",
+      "choices": {
+        "a": "結節性多発動脈炎 --------- 黄疸",
+        "b": "Behçet病 --------- 結節性紅斑",
+        "c": "Wegener肉芽腫症 --------- 点状出血",
+        "d": "大動脈炎症候群 --------- 紫斑",
+        "e": "過敏性血管炎 --------- 血圧の左右差"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 70,
+      "id": "101F70",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "麻疹について正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "白血球数は増加する。",
+        "b": "潜伏期は3週間である。",
+        "c": "細胞性免疫が抑制される。",
+        "d": "Koplik斑は発疹出現後にみられる。",
+        "e": "亜急性硬化性全脳炎の原因となる。"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 71,
+      "id": "101F71",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "母体の感染と胎児・新生児疾患の組合せで正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "梅毒トレポネーマ --------- 骨軟骨炎",
+        "b": "B型肝炎ウイルス --------- 水頭症",
+        "c": "B群溶血性レンサ球菌 --------- 心奇形",
+        "d": "単純ヘルペスウイルス --------- 脳炎",
+        "e": "パルボウイルスB19 --------- 白内障"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 72,
+      "id": "101F72",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "Ramsay Hunt症候群を起こすのはどれか。",
+      "choices": {
+        "a": "EBウイルス",
+        "b": "アデノウイルス",
+        "c": "サイトメガロウイルス",
+        "d": "コクサッキーウイルス",
+        "e": "水痘・帯状疱疹ウイルス"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 73,
+      "id": "101F73",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "成人の細菌性髄膜炎の主要な原因菌はどれか。2つ選べ。",
+      "choices": {
+        "a": "大腸菌",
+        "b": "肺炎球菌",
+        "c": "髄膜炎菌",
+        "d": "リステリア菌",
+        "e": "インフルエンザ桿菌"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 74,
+      "id": "101F74",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "粘血便を最もきたしやすいのはどれか。",
+      "choices": {
+        "a": "ノロウイルス腸炎",
+        "b": "ロタウイルス腸炎",
+        "c": "ブドウ球菌腸炎",
+        "d": "コレラ",
+        "e": "カンピロバクター腸炎"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 75,
+      "id": "101F75",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "肺に空洞を形成しやすいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "肺膿瘍",
+        "b": "肺結核",
+        "c": "肺炎球菌肺炎",
+        "d": "過敏性肺炎",
+        "e": "マイコプラズマ肺炎"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 76,
+      "id": "101F76",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "組合せで正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "フグ───────テトロドトキシン",
+        "b": "ホタテ──────ムスカリン",
+        "c": "カキ〈牡蠣〉───アフラトキシン",
+        "d": "ツキヨタケ────d-ツボクラリン",
+        "e": "ジャガイモの芽──ソラニン"
+      },
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 77,
+      "id": "101F77",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "Korsakoff精神病で正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "急性アルコール精神病である。",
+        "b": "慢性の覚醒剤精神病である。",
+        "c": "側頭葉の萎縮が目立つ。",
+        "d": "自律神経症状を伴う。",
+        "e": "作話を伴う。"
+      },
+      "answer": [
+        "c",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 78,
+      "id": "101F78",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "有機溶剤と尿中代謝物の組合せで正しいのはどれか。2つ選べ。",
+      "choices": {
+        "a": "トルエン --------- 馬尿酸",
+        "b": "キシレン --------- マンデル酸",
+        "c": "スチレン --------- メチル馬尿酸",
+        "d": "ノルマルヘキサン --------- n-メチルホルムアミド",
+        "e": "トリクロロエチレン --------- 総三塩化物"
+      },
+      "answer": [
+        "a",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 79,
+      "id": "101F79",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "原因物質と疾患の組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "ヒ素─────────皮膚癌",
+        "b": "石綿─────────胸膜中皮腫",
+        "c": "ベンゼン────────再生不良性貧血",
+        "d": "塩化ビニルモノマー───肝血管肉腫",
+        "e": "クロロメチルエーテル──膀胱癌"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 80,
+      "id": "101F80",
+      "exam_year": 101,
+      "block": "F",
+      "stem": "職業性アレルギーの原因とならないのはどれか。",
+      "choices": {
+        "a": "イソシアネート",
+        "b": "ウルシオール",
+        "c": "クロム",
+        "d": "トルエン",
+        "e": "ラテックス"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

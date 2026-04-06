@@ -1,0 +1,1963 @@
+{
+  "exam_year": 101,
+  "block": "C",
+  "total_questions": 50,
+  "source": "厚生労働省 第101回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "101C1",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "治験について正しいのはどれか。",
+      "choices": {
+        "a": "治験の結果は非公開である。",
+        "b": "遺伝カウンセリングは必須である。",
+        "c": "臨床研究の倫理指針の遵守は十分条件である。",
+        "d": "治験終了時はIRB〈施設内倫理委員会〉に終了報告する。",
+        "e": "治験実施医療機関には個人情報管理者の設置が必須である。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "101C2",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "医学研究に関する世界医師会ヘルシンキ宣言について誤っているのはどれか。",
+      "choices": {
+        "a": "人類の健康を向上させ、守ることは、医師の責務であり、医師の知識と良心はこの責務達成のために捧げられる。",
+        "b": "被験者の福利に対する配慮よりも、多数者の福利向上を目指す科学的および社会的利益が優先される。",
+        "c": "自ら同意することができない又は拒否することができない人々に対しては、特別な注意が必要である。",
+        "d": "被験者の生命、健康、プライバシーおよび尊厳を守ることは、医学研究に携わる医師の責務である。",
+        "e": "被験者は十分な説明を受けた上でその研究プロジェクトに参加する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "101C3",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "診療録に関して誤っているのはどれか。",
+      "choices": {
+        "a": "電子媒体による保存が認められている。",
+        "b": "患者の請求があれば開示してよい。",
+        "c": "保存は医療機関内に限られる。",
+        "d": "見読性の確保が必要である。",
+        "e": "保存性の確保が必要である。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "101C4",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "死体検案で正しいのはどれか。",
+      "choices": {
+        "a": "監察医が専任で行う。",
+        "b": "異状死体が対象となる。",
+        "c": "解剖を行う行為を含む。",
+        "d": "遺族の承諾が必要である。",
+        "e": "検案後は警察への届出義務がある。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "101C5",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "患者の権利でないのはどれか。",
+      "choices": {
+        "a": "自分の病状について家族に知らせないよう医師に求める権利",
+        "b": "医師が示した見解に対して他の医師の意見を求める権利",
+        "c": "診療録中の記載の誤りを医師に訂正するよう求める権利",
+        "d": "医学的に妥当でない治療でも医師から受ける権利",
+        "e": "真実を知ることを放棄する権利"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "101C6",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "成人患者が手術の当日に「手術は死んでもいやです」と担当看護師に訴えている旨の報告を受けた。既に、手術について説明し同意は得られている。\n担当医の対応として適切なのはどれか。",
+      "choices": {
+        "a": "予定どおり手術を行う。",
+        "b": "手術以外の治療法を考える。",
+        "c": "ほかの病院への転院を勧める。",
+        "d": "患者の説得を家族に依頼する。",
+        "e": "患者から直接話を聴いてから判断する。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "a"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "101C7",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "分娩経過に影響しないのはどれか。",
+      "choices": {
+        "a": "骨産道",
+        "b": "軟産道",
+        "c": "胎向",
+        "d": "胎位",
+        "e": "胎勢"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "101C8",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "正常新生児で正しいのはどれか。",
+      "choices": {
+        "a": "主に胸式呼吸である。",
+        "b": "体重は出生直後から増加する。",
+        "c": "体重当たりの体表面積は成人より狭い。",
+        "d": "体液量に占める細胞外液量の割合は成人より高い。",
+        "e": "胎児ヘモグロビンは成人ヘモグロビンより酸素親和性が低い。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "101C9",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "成人の安静時で異常値はどれか。",
+      "choices": {
+        "a": "血圧 --------- 116/78mmmHg",
+        "b": "呼吸数 --------- 28/分",
+        "c": "体温 --------- 36.5℃",
+        "d": "脈拍 --------- 68/分",
+        "e": "経皮的動脈血酸素飽和度 --------- 98％"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "101C10",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "一般外来における初診患者に対し、本人の確認を行った後の医師の発言として適切なのはどれか。",
+      "choices": {
+        "a": "「これまでに大きな病気にかかったことがありますか」",
+        "b": "「家族に大きな病気にかかった方がおられますか」",
+        "c": "「今日はどんなことでおいでになりましたか」",
+        "d": "「現在の症状を手短に述べていただけますか」",
+        "e": "「どこか痛いところがありますか」"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "101C11",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "医療面接での医師の態度として適切なのはどれか。",
+      "choices": {
+        "a": "患者の要求はすべて受け入れる。",
+        "b": "答えにくい質問の時は話題を変える。",
+        "c": "できるだけ視線を合わせないようにする。",
+        "d": "患者の感情の動きを受け入れるようにする。",
+        "e": "沈黙が起こった時は、まず医師から話しかける。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "101C12",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "嗄声について正しいのはどれか。",
+      "choices": {
+        "a": "咳ができる。",
+        "b": "息がしにくい。",
+        "c": "高調な声である。",
+        "d": "呂律が回らない。",
+        "e": "大きな声が出せる。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "101C13",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "癌の転移によるリンパ節腫脹の特徴はどれか。",
+      "choices": {
+        "a": "軟らかい。",
+        "b": "圧痛がない。",
+        "c": "可動性がある。",
+        "d": "皮膚に熱感がある。",
+        "e": "相互の癒合がない。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "101C14",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "膨疹の特徴はどれか。",
+      "choices": {
+        "a": "浮腫",
+        "b": "苔癬化",
+        "c": "色素沈着",
+        "d": "水疱形成",
+        "e": "鱗屑付着"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "101C15",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "症候と病態の組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "嗄声 --------- 反回神経麻痺",
+        "b": "喀血 --------- 肺アスペルギルス症",
+        "c": "喘鳴 --------- 間質性肺炎",
+        "d": "呼吸困難 --------- 低酸素血症",
+        "e": "顔面浮腫 --------- 上大静脈閉塞"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "101C16",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "掻痒を生じることが多いのはどれか。",
+      "choices": {
+        "a": "アルコール性肝障害",
+        "b": "原発性胆汁性胆管炎",
+        "c": "慢性肝炎",
+        "d": "急性膵炎",
+        "e": "胆石症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "101C17",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "蛋白尿について正しいのはどれか。（編注：ｂは「試験紙法では」と考えよ）",
+      "choices": {
+        "a": "蛋白で尿は混濁する。",
+        "b": "造影剤投与で偽陽性を示す。",
+        "c": "成分の大部分はグロブリンである。",
+        "d": "起立時の蛋白尿は腎生検の適応となる。",
+        "e": "尿蛋白量は慢性糸球体腎炎の予後に影響する。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "101C18",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "脱水の症候として特徴的なのはどれか。",
+      "choices": {
+        "a": "口渇",
+        "b": "徐脈",
+        "c": "血圧上昇",
+        "d": "呼吸困難",
+        "e": "チアノーゼ"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "101C19",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "新生児の呼吸困難を表す症候はどれか。",
+      "choices": {
+        "a": "呻吟",
+        "b": "嗄声",
+        "c": "傾眠傾向",
+        "d": "四肢の冷感",
+        "e": "筋緊張低下"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "101C20",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "胎児発育に必須の胎児臓器はどれか。",
+      "choices": {
+        "a": "脳",
+        "b": "肺",
+        "c": "心臓",
+        "d": "小腸",
+        "e": "腎臓"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "101C21",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "III音の聴取で正しいのはどれか。",
+      "choices": {
+        "a": "I音の前後に注目する。",
+        "b": "左側臥位で聴取しやすい。",
+        "c": "聴診器は膜型を使用する。",
+        "d": "下肢を挙上すると減弱する。",
+        "e": "胸骨左縁第4肋間で最強となる。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "101C22",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "打診で鼓音を呈するのはどれか。",
+      "choices": {
+        "a": "肺炎",
+        "b": "肺気腫",
+        "c": "無気肺",
+        "d": "肺水腫",
+        "e": "肺線維症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "101C23",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "筋性防御を伴わないのはどれか。",
+      "choices": {
+        "a": "十二指腸潰瘍穿孔",
+        "b": "麻痺性イレウス",
+        "c": "汎発性腹膜炎",
+        "d": "急性胆嚢炎",
+        "e": "急性虫垂炎"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "101C24",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "徒手筋力テストで重力に抗して完全に運動できる最小の段階はどれか。",
+      "choices": {
+        "a": "5〈Normal〉",
+        "b": "4〈Good〉",
+        "c": "3〈Fair〉",
+        "d": "2〈Poor〉",
+        "e": "1〈Trace〉"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "101C25",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "「イー」と言わせたとき、口角に左右差がみられる患者が障害を受けているのはどれか。",
+      "choices": {
+        "a": "第IV脳神経",
+        "b": "第V脳神経",
+        "c": "第VI脳神経",
+        "d": "第VII脳神経",
+        "e": "第VIII脳神経"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "101C26",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "10か月の乳児の発達評価に適しているのはどれか。",
+      "choices": {
+        "a": "深部反射",
+        "b": "姿勢反射",
+        "c": "原始反射",
+        "d": "病的反射",
+        "e": "表在反射"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "101C27",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "溶血が検査値に影響を与えるのはどれか。",
+      "choices": {
+        "a": "LD",
+        "b": "尿酸",
+        "c": "中性脂肪",
+        "d": "ナトリウム",
+        "e": "カルシウム"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "101C28",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "免疫法による便潜血検査の特徴はどれか。",
+      "choices": {
+        "a": "保存条件の影響を受けにくい。",
+        "b": "腸内細菌の影響を受けにくい。",
+        "c": "食事制限が必要である。",
+        "d": "特異度が高い。",
+        "e": "感度が低い。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "101C29",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "急性上部消化管出血の診断で、上部内視鏡検査の感度は90％、特異度は95％である。\n上部内視鏡検査で出血が陽性のときの尤度比はどれか。",
+      "choices": {
+        "a": "0.95",
+        "b": "1.06",
+        "c": "18",
+        "d": "90",
+        "e": "95"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "101C30",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "関節痛患者の診断について、指導医が「この検査が陰性なら、SLEは考えにくい」と話していた。\nこの検査で正しいのはどれか。",
+      "choices": {
+        "a": "感度は低い。",
+        "b": "感度は高い。",
+        "c": "特異度は高い。",
+        "d": "特異度は低い。",
+        "e": "感度と特異度はほぼ等しい。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "101C31",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "事前確率が変わると変化するのはどれか。",
+      "choices": {
+        "a": "感度",
+        "b": "特異度",
+        "c": "適中度",
+        "d": "ROC曲線",
+        "e": "偽陰性率"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 32,
+      "id": "101C32",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "血液検査で食後に増加しないのはどれか。",
+      "choices": {
+        "a": "クレアチニン",
+        "b": "β-リポ蛋白",
+        "c": "インスリン",
+        "d": "中性脂肪",
+        "e": "血糖"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 33,
+      "id": "101C33",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "頭部単純CTを別に示す。\n診断はどれか。",
+      "choices": {
+        "a": "脳出血",
+        "b": "脳梗塞",
+        "c": "くも膜下出血",
+        "d": "急性硬膜外血腫",
+        "e": "急性硬膜下血腫"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      },
+      "has_image": true
+    },
+    {
+      "num": 34,
+      "id": "101C34",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "AEDを用いた除細動に関して正しいのはどれか。",
+      "choices": {
+        "a": "医学生はAEDを使用してはいけない。",
+        "b": "呼吸がある場合はAEDを装着しない。",
+        "c": "汗で胸がぬれている場合は拭いてからAEDを装着する。",
+        "d": "AEDを装着する前に胸骨圧迫式心マッサージを10分間行う。",
+        "e": "AEDを装着した状態で胸骨圧迫式心マッサージを行ってはいけない。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 35,
+      "id": "101C35",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "駅の構内で中年男性が倒れているのを発見した。\nまず行うのはどれか。",
+      "choices": {
+        "a": "脈の触知",
+        "b": "呼吸の確認",
+        "c": "気道の確保",
+        "d": "意識状態の確認",
+        "e": "対光反射の確認"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 36,
+      "id": "101C36",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "肝硬変の検査所見で正しいのはどれか。",
+      "choices": {
+        "a": "血小板増加",
+        "b": "プロトロンビン時間延長",
+        "c": "アルブミン増加",
+        "d": "γ-グロブリン減少",
+        "e": "コリンエステラーゼ増加"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 37,
+      "id": "101C37",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "片頭痛でみられないのはどれか。",
+      "choices": {
+        "a": "拍動性頭痛",
+        "b": "視覚の異常",
+        "c": "音への過敏",
+        "d": "悪心・嘔吐",
+        "e": "けいれん"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 38,
+      "id": "101C38",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "仕事ができないという患者の訴えで、うつ病の可能性が高いのはどれか。",
+      "choices": {
+        "a": "「やりたくないので仕事のことは考えないようにしています」",
+        "b": "「やらないといけないのですが頭が回りません」",
+        "c": "「上司にすぐ怒られるので、したくありません」",
+        "d": "「この仕事は自分にはあっていません」",
+        "e": "「ものを考えるとすぐ眠くなります」"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 39,
+      "id": "101C39",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "特発性てんかんで正しいのはどれか。",
+      "choices": {
+        "a": "環境要因が原因として重要である。",
+        "b": "脳腫瘍が原因となることがある。",
+        "c": "有病率は10％である。",
+        "d": "幼小児期の発症が多い。",
+        "e": "女性に多い。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 40,
+      "id": "101C40",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "清潔に手袋を装着する操作（①～⑤）を別に示す。\n適切でないのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      },
+      "has_image": true
+    },
+    {
+      "num": 41,
+      "id": "101C41",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "中間型インスリン製剤の正しい注射部位はどれか。",
+      "choices": {
+        "a": "皮内",
+        "b": "皮下",
+        "c": "筋肉",
+        "d": "静脈",
+        "e": "動脈"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 42,
+      "id": "101C42",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "褥瘡への対応で正しいのはどれか。",
+      "choices": {
+        "a": "1週ごとの観察",
+        "b": "1か月ごとの栄養管理",
+        "c": "8時間ごとの体位変換",
+        "d": "壊死組織のデブリドマン",
+        "e": "ホルムアルデヒドによる洗浄"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 43,
+      "id": "101C43",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "地域医療現場におけるチーム医療で適切なのはどれか。",
+      "choices": {
+        "a": "医師の意見が最優先される。",
+        "b": "患者の家族もチームの一員である。",
+        "c": "事務職員を入れるのは不適切である。",
+        "d": "合同カンファレンスの開催は重要ではない。",
+        "e": "それぞれの役割に干渉しないことが重要である。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 44,
+      "id": "101C44",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "ある死因の性別年次死亡者数推移（A）と都道府県別死亡率（B）とを別に示す。\n死因はどれか。",
+      "choices": {
+        "a": "がん",
+        "b": "自殺",
+        "c": "心疾患",
+        "d": "糖尿病",
+        "e": "不慮の事故"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      },
+      "has_image": true
+    },
+    {
+      "num": 45,
+      "id": "101C45",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "不眠を訴える患者の生活指導で適切なのはどれか。",
+      "choices": {
+        "a": "就床直前に長く入浴する。",
+        "b": "日光をできるだけ浴びない。",
+        "c": "日中はできるだけ仮眠しない。",
+        "d": "就床直前に激しい運動をする。",
+        "e": "夕食はできるだけ遅い時刻に摂る。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 46,
+      "id": "101C46",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "成人患者の自己決定権を尊重する理由はどれか。",
+      "choices": {
+        "a": "医師法の応召義務のため",
+        "b": "医事訴訟での責任回避のため",
+        "c": "患者の説得には時間がかかるため",
+        "d": "ヘルシンキ宣言に規定があるため",
+        "e": "患者の価値判断を最優先するため"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 47,
+      "id": "101C47",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "行動変容の援助に当たって望ましくないのはどれか。",
+      "choices": {
+        "a": "患者自身の考えや思いを聞く。",
+        "b": "患者が努力していることを前向きに評価する。",
+        "c": "患者の甘えを断ち切るような高い行動目標を設定する。",
+        "d": "具体的に取り組めそうなことを患者自身に考えるように促す。",
+        "e": "低下した自己効力感に働きかけ、今度はやってみようという意欲を促す。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 48,
+      "id": "101C48",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "組合せで誤っているのはどれか",
+      "choices": {
+        "a": "医療の質の確保 ───── クリニカルパス",
+        "b": "患者の安全 ─────── 転落防止柵",
+        "c": "医療者の安全 ────── 針刺し事故防止策",
+        "d": "院内感染対策 ────── 抗菌薬の適正使用",
+        "e": "血液製剤の使用 ───── PDCAサイクル〈デミングサイクル〉"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 49,
+      "id": "101C49",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "日本とアメリカ、ドイツ、フランスおよびイギリスとの国際比較で、日本について正しいのはどれか。",
+      "choices": {
+        "a": "平均在院日数が最短",
+        "b": "人口1,000人当たりの病床数が最少",
+        "c": "国内総生産〈GDP〉に対する国民医療費が最大",
+        "d": "自殺率（人口10万人当たりの自殺者数）が最高",
+        "e": "高齢化率（65歳以上人口の総人口に対する比率）が最低"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 50,
+      "id": "101C50",
+      "exam_year": 101,
+      "block": "C",
+      "stem": "死にゆく人の心の動きを、否認、怒り、取引き、抑うつ、受容の5段階で表し、ターミナルケアの在り方に影響を与えた作品 \"On death and dying\"（死ぬ瞬間）の著者は誰か。",
+      "choices": {
+        "a": "Mother Teresa（マザー・テレサ）",
+        "b": "William Osler（ウィリアム・オスラー）",
+        "c": "Helen Adams Keller（ヘレン・アダムス・ケラー）",
+        "d": "Albert Schweitzer（アルベルト・シュバイツァー）",
+        "e": "Elisabeth Kübler-Ross（エリザベス・キュブラー-ロス）"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}
