@@ -1,0 +1,1203 @@
+{
+  "exam_year": 100,
+  "block": "C",
+  "total_questions": 30,
+  "source": "厚生労働省 第100回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "100C1",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n70歳の男性。肺癌の手術目的で入院した。\n現病歴：3か月前から咳が出現した。近医にて胸部エックス線撮影、胸部CTおよび気管支鏡検査を受け、左上葉原発の肺癌と診断された。\n既往歴：38歳から高血圧症で降圧薬を服用中である。40歳から腎不全に対して週3回の血液透析を受け、無尿で経過している。\n現　症：身長165cm、体重60kg。脈拍64/分、整。血圧148/88mmHg。皮膚は乾燥し、左前腕に内シャントを認める。心音と呼吸音とに異常を認めない。\n検査所見：血液所見：赤血球380万、Hb 10.1g/dL、Ht 35％、白血球6,800、血小板32万。血清生化学所見：尿素窒素72mg/dL、クレアチニン7.6mg/dL、Na 140mEq/L、K 5.1mEq/L、Cl 104mEq/L。心電図上、洞調律であり虚血を疑う所見はない。手術前日に血液透析を受けた。\n手術・麻酔経過：右側臥位にて左肺上葉切除を予定した。麻酔は全身麻酔で換気は左右分離肺換気で行った。開胸操作までは脈拍64/分、血圧160/96mmHg前後で推移したが、胸腔内操作が始まって1時間後、肺動脈からの出血が始まり、電解質液、代用血漿製剤1,000mLを投与した。10分後、出血量が1,900mLを超え、血圧が64/48mmHgへと低下した。赤血球濃厚液1,600mLを急速に輸血したところ、心電図上T波が尖鋭化し心室細動となった。純酸素による両肺換気、術者による心マッサージ、電気的除細動によって3分後に回復し、リドカイン1mg/kg/時間と塩酸ドパミン5μg/kg/分の持続投与で、以後洞調律で安定した。心拍再開後の瞳孔径は左右とも2mmであり、麻酔からの覚醒に問題はなかった。心室細動時の動脈血ガス分析（両肺換気、100％酸素）ではpH 7.30、PaO2 592Torr、PaCO2 37Torr、BE －6.5mEq/L。Hb 9.6g/dLであった。\n急速輸血を開始した時の出血量は患者の推定循環血液量の約何パーセントか。",
+      "choices": {
+        "a": "10％",
+        "b": "20％",
+        "c": "30％",
+        "d": "40％",
+        "e": "50％"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C1-3",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "100C2",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "この患者の心室細動の原因はどれか。",
+      "choices": {
+        "a": "高ナトリウム血症",
+        "b": "高カリウム血症",
+        "c": "高カルシウム血症",
+        "d": "高リン血症",
+        "e": "高マグネシウム血症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C1-3",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "100C3",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "この患者の心室細動に対する静注薬として最も適切なのはどれか。",
+      "choices": {
+        "a": "ループ利尿薬",
+        "b": "塩化カリウム",
+        "c": "副腎皮質ステロイド薬",
+        "d": "グルコン酸カルシウム",
+        "e": "非カテコラミン系昇圧薬"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "b"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": "100C1-3",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "100C4",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n32歳の1回経産婦。妊娠30週に少量の性器出血と発熱とを主訴に来院した。\n月経歴：初経14歳。周期は28日型、整。\n妊娠・分娩歴：30歳時、妊娠32週で1,800gの男児を早産した。\n現病歴：6か月前、無月経を主訴に受診し、双胎妊娠と診断された。この時の経腟超音波写真（A）と妊娠22週妊婦健康診査時の経腟超音波検査による子宮頸管写真（B）とを別に示す。その後も定期的に妊婦健康診査を受けており、胎児の発育は両児とも順調で、母体の異常を指摘されたこともない。妊娠29週で定期健康診査を受けたが、異常を指摘されなかった。昨夜から軽い不規則な子宮収縮を感じていたが放置していた。\n現　症：意識は清明。身長158cm、体重60kg。体温38.1℃。呼吸数16/分。脈拍92/分、整。血圧120/80mmHg。顔貌正常。胸部に異常はない。下腿に浮腫はない。子宮底長30cm。Leopold触診で第1児は頭位、第2児は骨盤位。両児とも胎動は活発である。腟鏡診で少量の出血がみられる。内診で外子宮口は閉鎖している。この時の経腟超音波検査による子宮頸管写真（C）を別に示す。\n検査所見：尿所見：蛋白（−）、糖（−）。血液所見：赤血球378万、Hb 11.1g/dL、Ht 33％、白血球18,000、血小板32万。CRP 7.0mg/dL。\nこの双胎妊娠で正しいのはどれか。",
+      "choices": {
+        "a": "無絨毛膜1羊膜",
+        "b": "1絨毛膜1羊膜",
+        "c": "1絨毛膜2羊膜",
+        "d": "2絨毛膜1羊膜",
+        "e": "2絨毛膜2羊膜"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C4-6",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "100C5",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "入院時考えられるのはどれか。",
+      "choices": {
+        "a": "前置胎盤",
+        "b": "切迫子宮破裂",
+        "c": "絨毛膜羊膜炎",
+        "d": "頸管熟化不全",
+        "e": "妊娠高血圧症候群"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C4-6",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "100C6",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "投与する薬で適切なのはどれか。2つ選べ。",
+      "choices": {
+        "a": "抗菌薬",
+        "b": "オキシトシン",
+        "c": "インドメタシン",
+        "d": "塩酸リトドリン",
+        "e": "プロスタグランディン"
+      },
+      "answer": [
+        "a",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C4-6",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "100C7",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n66歳の男性。腹部膨満感を主訴に来院した。\n現病歴：20年前から慢性肝炎の診断で近医に通院中であった。3週前から下腹部が張る感じがあり、最近増強した。この1か月で体重が5kg増加した。\n既往歴：25歳の時に十二指腸潰瘍の出血で輸血を受けた。\n現　症：意識は清明。身長166cm、体重60kg。体温36.7℃。脈拍76/分、整。血圧146/60mmHg。眼球結膜に黄染を認める。手掌紅斑と胸部のクモ状血管腫とを認める。腹部は全体的に膨隆し、緊満している。肝は触知せず、脾濁音界は拡大し、脾辺縁を触知する。下肢に浮腫を認める。\n検査所見：尿所見：蛋白（−）、糖（−）、ウロビリノゲン2＋、ビリルビン1＋、潜血（−）。血液所見：赤血球380万、Hb 11.9g/dL、Ht 37％、白血球3,500、血小板6万、プロトロンビン時間67％（基準80～120）。血清生化学所見：空腹時血糖92mg/dL、総蛋白5.3g/dL、アルブミン2.1g/dL、γ-グロブリン35.5％、尿素窒素8.3mg/dL、クレアチニン0.7mg/dL、アンモニア42μg/dL（基準18～48）、総コレステロール130mg/dL、総ビリルビン4.7mg/dL、直接ビリルビン2.9mg/dL、AST 89U/L、ALT 45U/L、ALP 366U/L（基準260以下）、γ-GT 392U/L（基準8～50）、Na 136mEq/L、K 3.9mEq/L、Cl 103mEq/L。免疫学所見：CRP 0.1mg/dL、HBs抗原（−）、HCV抗体（＋）、AFP 16ng/mL（基準20以下）。腹部超音波検査では大量の腹水の貯留を認め、肝辺縁は鈍化し、表面は不整、肝実質も不均一である。結節像は認めない。\n腹水の性状で予想されるのはどれか。",
+      "choices": {
+        "a": "淡黄色透明",
+        "b": "混濁",
+        "c": "血性",
+        "d": "乳び様",
+        "e": "ゼリー状"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C7-9",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "100C8",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "過剰摂取に最も注意するのはどれか。",
+      "choices": {
+        "a": "ビタミン",
+        "b": "糖質",
+        "c": "蛋白質",
+        "d": "脂肪",
+        "e": "塩分"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C7-9",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "100C9",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "利尿薬とともに投与するのに最も適切なのはどれか。",
+      "choices": {
+        "a": "5％ブドウ糖液",
+        "b": "生理食塩液",
+        "c": "赤血球濃厚液",
+        "d": "新鮮凍結血漿",
+        "e": "アルブミン製剤"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C7-9",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "100C10",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n59歳の女性。言動の変化を心配した夫に付き添われ来院した。\n現病歴：夫は「妻は元来料理が得意であったが、最近献立が毎日同じで味付けもまずくなった。しかも料理を焦がすことが多い」と訴える。市場に買い物に出て迷子になり、隣人に連れられ帰宅したこともあった。\n既往歴：特記すべきことはない。\n生活歴：25歳で現在の夫と結婚。専業主婦で一男二女をもうけた。元来明るく家事育児も問題なくこなした。\n現　症：意識は清明。身だしなみは整っている。本人はニコニコ笑って「ちょっと体の調子が悪いんです」と答える。\nこの患者に認められる症状はどれか。",
+      "choices": {
+        "a": "失語",
+        "b": "保続",
+        "c": "徘徊",
+        "d": "不穏",
+        "e": "記憶障害"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C10-12",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "100C11",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "有用な検査はどれか。2つ選べ。",
+      "choices": {
+        "a": "脳脊髄液検査",
+        "b": "脳波",
+        "c": "脳血管造影",
+        "d": "頭部単純MRI",
+        "e": "脳SPECT"
+      },
+      "answer": [
+        "d",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C10-12",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "100C12",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "治療薬として適切なのはどれか。",
+      "choices": {
+        "a": "β受容体遮断薬",
+        "b": "ドパミン遮断薬",
+        "c": "ベンゾジアゼピン系薬",
+        "d": "コリンエステラーゼ阻害薬",
+        "e": "モノアミン再取り込み阻害薬"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C10-12",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "100C13",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n78歳の女性。発熱、咳および痰を主訴に家族に連れられて来院した。\n現病歴：3日前から38℃台の発熱と咳とが出現した。昨日から黄色の痰を多量に喀出するようになった。\n既往歴：60歳から高血圧症で降圧薬を服用している。\n家族歴：特記すべきことはない。\n生活状況：夫とは死別し、息子夫婦と同居している。降圧薬を服用するようになったころからつまずきやすくなり、杖を使うようになって、近くの公園にも出かけなくなった。朝は自分で起きて、洗面後、家族と朝食をとる。息子夫婦が出かけたあとは家でテレビを見たり、盆栽に水をやったりして暮らしている。息子の休日には、一緒に公園まで出かける。買い物は息子夫婦に任せて、郵便物だけは郵便受けに取りに行く。かかってきた電話に受け答えはできる。排尿・排便は自力でできる。\n現　症：意識は清明。身長154cm、体重54kg。体温37.2℃。呼吸数16/分。脈拍64/分、整。血圧120/80mmHg。貧血と黄疸とはない。皮膚はやや乾燥している。心雑音はない。右胸部下肺野にcoarse cracklesを聴取する。腹部には異常を認めない。\n検査所見：尿所見：異常を認めない。血液所見：赤血球420万、Hb 13.0g/dL、Ht 40％、白血球11,200。血清生化学所見：総蛋白6.0g/dL、アルブミン3.4g/dL、AST 36U/L、ALT 30U/L、LD 342U/L（基準176～353）。CRP 15.6mg/dL。\n経　過：治療のため個室に入院した。痰の喀出が不十分で、常時ではないが、のどの奥の痰の吸引が必要である。喀痰のグラム染色の結果ではグラム陽性球菌が優勢である。細菌培養の結果はまだ判明していない。\n障害老人の日常生活自立度（寝たきり度）判定基準（A）を別に示す。\nこの患者の入院前の自立度はどれか。",
+      "choices": {
+        "a": "J-1",
+        "b": "J-2",
+        "c": "A-1",
+        "d": "A-2",
+        "e": "B-1"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C13-15",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "100C14",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "医療従事者が身につける物品（B①～⑤）を別に示す。\n痰の吸引のために入室する際に必要でないのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C13-15",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "100C15",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "検査所見（①～⑤）を別に示す。\nこの患者に合致しないのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C13-15",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "100C16",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n1歳6か月の男児。発熱と顔色不良とを主訴に来院した。\n現病歴：昨夕、不機嫌、38℃台の発熱および顔色不良に気付いた。夜は眠ったが今朝も不機嫌で元気がなかった。\n出生歴：在胎40週、自然分娩で出生した。出生時の身長51cm、体重3,240g、頭位33.5cm、胸囲33.0cm。Apgarスコア10点（1分）。\n発育歴・既往歴：精神運動発達は正常である。9か月時に突発性発疹に罹患した。\n現　症：身長82cm、体重10.2kg。体温37.8℃。呼吸数48/分。脈拍160/分、整。血圧96/64mmHg。意識はやや傾眠状態。顔色不良で顔貌は無欲状である。大泉門は閉鎖している。咽頭は軽度に発赤し、粘膜疹はない。リンパ節は触知しない。鼓膜の発赤はない。胸部に異常所見はない。仰臥位で、頸部を前屈すると股関節と膝関節とで下肢が屈曲し、両下肢を伸展位で挙上すると膝が屈曲する。足底をさすると母趾は底屈する。\n検査所見：尿所見：異常なし。血液所見：赤血球394万、Hb 10.7g/dL、白血球15,900（後骨髄球2％、桿状核好中球10％、分葉核好中球54％、単球12％、リンパ球22％）、血小板12万。CRP 11.2mg/dL。\nこの患児が1歳時にできたと考えられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "つかまって歩く。",
+        "b": "両手を使っておもちゃで遊ぶ。",
+        "c": "積み木を2つ重ねる。",
+        "d": "上着を脱ぐ。",
+        "e": "二語文を言う。"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C16-18",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "100C17",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "この患児でみられるのはどれか。2つ選べ。",
+      "choices": {
+        "a": "Babinski徴候",
+        "b": "Blumberg徴候",
+        "c": "Brudzinski徴候",
+        "d": "Kernig徴候",
+        "e": "Romberg徴候"
+      },
+      "answer": [
+        "c",
+        "d"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C16-18",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "100C18",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "診断に最も有用なのはどれか。",
+      "choices": {
+        "a": "咽頭培養",
+        "b": "血清ウイルス抗体価",
+        "c": "脳波",
+        "d": "頭部単純CT",
+        "e": "脳脊髄液検査"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C16-18",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "100C19",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n28歳の男性。意識障害のため救急車で搬入された。\n現病歴：6年前、入社時の健康診断で高血糖と尿糖とを指摘されたが、症状がないため放置していた。半年前から口渇と多尿とがあり、ジュースやスポーツドリンクをよく飲むようになっていた。最大体重27歳時94kgであった。1か月前から体重が急激に減少し、倦怠感が増強していた。今朝からぐったりとなり意識がもうろうとなった。\n既往歴：子供のころから肥満であった。\n家族歴：父と兄とが糖尿病である。\n現　症：傾眠傾向で、大声で呼ぶと開眼する。身長176cm、体重84kg。体温36.2℃。呼吸数22/分。脈拍96/分、整。血圧132/88mmHg。眼瞼結膜に貧血を認めず、眼球結膜に黄疸を認めない。口唇と舌とは乾燥している。心雑音は聴取しない。肝は右肋骨弓下に2cm触知する。浮腫は認めない。アキレス腱反射は両側消失している。\n検査所見：尿所見：比重1.036、蛋白（−）、糖4＋、ケトン体3＋。血液所見：赤血球480万、Hb 14.6g/dL、Ht 46％、白血球9,800、血小板22万。血清生化学所見：血糖820mg/dL、HbA1c 14.6％（基準4.3～5.8）、総蛋白7.4g/dL、アルブミン3.8g/dL、尿素窒素34mg/dL、総コレステロール282mg/dL、トリグリセライド340mg/dL、AST 32U/L、ALT 48U/L。\nこの患者の検査所見で予想されるのはどれか。",
+      "choices": {
+        "a": "GAD抗体陽性",
+        "b": "低カリウム血症",
+        "c": "高インスリン血症",
+        "d": "代謝性アシドーシス",
+        "e": "アニオンギャップ減少"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C19-21",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "100C20",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "この患者にまず行う処置はどれか。2つ選べ。",
+      "choices": {
+        "a": "酸素吸入",
+        "b": "生理食塩液輸液",
+        "c": "スルホニル尿素薬投与",
+        "d": "重炭酸ナトリウム静注",
+        "e": "速効型インスリン静脈内持続注入"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C19-21",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "100C21",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "この患者の治療中に注意すべき心電図所見はどれか。",
+      "choices": {
+        "a": "U波",
+        "b": "異常Q波",
+        "c": "心房細動",
+        "d": "テント状T波",
+        "e": "右脚ブロック"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C19-21",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "100C22",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n65歳の女性。閉経後の性器出血を主訴に来院した。\n現病歴：3か月前から少量の性器出血が持続し、2週前から増量している。3回経妊、3回経産。閉経52歳。\n既往歴：60歳から高血圧症で降圧薬を服用している。\n現　症：身長157cm、体重68kg。体温36.4℃。脈拍72/分、整。血圧148/88mmHg。表在リンパ節に腫大を認めない。心音と呼吸音とは正常である。腹部は平坦で、腫瘤を触れない。下肢に浮腫を認めない。内診で腟分泌物は暗赤色、中等量。子宮腟部に異常を認めない。双合診で子宮体部は鵞卵大に腫大しているが、付属器は触れない。直腸診で子宮傍組織は軟らかい。\n検査所見：尿所見：蛋白（−）、糖（−）、潜血（−）。血液所見：赤血球316万、Hb 10.2g/dL、Ht 31％、白血球6,400、血小板28万。血清生化学所見：総蛋白7.2g/dL、アルブミン4.8g/dL、尿素窒素18mg/dL、クレアチニン1.3mg/dL、AST 18U/L、ALT 14U/L、LD 248U/L（基準176～353）。免疫学所見：CEA 3.7ng/mL（基準5以下）、CA19-9 33U/mL（基準37以下）、CA125 248U/mL（基準35以下）。子宮頸部細胞診クラスI。胸部エックス線撮影で異常を認めない。経腟超音波写真を別に示す。\n診断に有用な検査はどれか。2つ選べ。",
+      "choices": {
+        "a": "プロゲステロン負荷テスト",
+        "b": "子宮内膜組織診",
+        "c": "子宮卵管造影",
+        "d": "コルポスコピィ",
+        "e": "ヒステロスコピィ"
+      },
+      "answer": [
+        "b",
+        "e"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C22-24",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "100C23",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "その後悪性所見が確認された。\nこの疾患の広がりの検索に必要性が最も低いのはどれか。",
+      "choices": {
+        "a": "骨盤部MRI",
+        "b": "腹部造影CT",
+        "c": "骨盤血管造影",
+        "d": "膀胱鏡検査",
+        "e": "直腸鏡検査"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C22-24",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "100C24",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "全身検索で遠隔転移を認めなかった。\n治療法として最も適切なのはどれか。",
+      "choices": {
+        "a": "手術",
+        "b": "抗癌化学療法",
+        "c": "温熱療法",
+        "d": "放射線治療",
+        "e": "ホルモン療法"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C22-24",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "100C25",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n55歳の男性。激しい胸痛のため救急車で搬入された。\n現病歴：1週前から階段を昇るときに前胸部痛を自覚したが安静にて消失するため放置していた。今朝から激しい前胸部痛が出現し持続している。\n既往歴：48歳から脂質異常症で加療中である。\n現　症：意識は清明。顔面は苦悶様である。体温36.6℃。呼吸数25/分。脈拍64/分、整。血圧144/96mmHg。貧血と黄疸とを認めない。皮膚は冷汗をかき湿潤である。心雑音はない。呼吸音に異常を認めない。腹部は平坦。下腿に浮腫を認めない。\n検査所見：尿所見：比重1.018、蛋白（−）、糖（−）、潜血（−）、沈渣に異常を認めない。血液所見：赤血球520万、Hb 16.7g/dL、Ht 50％、白血球10,400、血小板26万。血清生化学所見：尿素窒素28mg/dL、クレアチニン1.1mg/dL、AST 55U/L、ALT 20U/L、LD 350U/L（基準176～353）、CK 680U/L（基準10～40）、Na 144mEq/L、K 4.2mEq/L、Cl 106mEq/L。心電図（A）を別に示す。\nまず行う処置はどれか。2つ選べ。",
+      "choices": {
+        "a": "酸素吸入",
+        "b": "静脈路確保",
+        "c": "利尿薬投与",
+        "d": "アドレナリン投与",
+        "e": "電気的除細動"
+      },
+      "answer": [
+        "a",
+        "b"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C25-27",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "100C26",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "心エコー検査中に意識が低下した。そのときの心電図（B）を別に示す。\n行う処置はどれか。",
+      "choices": {
+        "a": "ジギタリス投与",
+        "b": "プロプラノロール投与",
+        "c": "ニトログリセリン投与",
+        "d": "緊急ペーシング",
+        "e": "IABP"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C25-27",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "100C27",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次に行う検査はどれか。",
+      "choices": {
+        "a": "心臓MRI",
+        "b": "胸部単純CT",
+        "c": "タリウム心筋シンチグラフィ",
+        "d": "運動負荷心電図",
+        "e": "冠動脈造影"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C25-27",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "100C28",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "次の文を読み、以下の問いに答えよ。\n56歳の女性。右乳癌の治療のため外科病棟に入院していたが、夜間急に興奮状態となった。\n現病歴：3週前に右乳房切除術を受け、続いて抗癌化学療法を開始した。次第に上腹部不快感、抑うつ気分および不眠が強まった。「私はこのまま死んでいきたい。もう治療は受けたくない」と訴え、食事をとらなくなった。夜になって急に言動に脈絡がなくなり、点滴を自ら外そうとした。それを止めようとした看護師に物を投げつけ、「悪魔め、私の子供を殺すな」などと激しくののしった。\n既往歴：特記すべきことはない。\n家族歴：特記すべきことはない。\n現　症：かけつけた当直医が話しかけても、うわの空だったり、興奮したりする。ここが病院であることを理解していない様子である。\nこの状態はどれか。",
+      "choices": {
+        "a": "せん妄",
+        "b": "誇大妄想",
+        "c": "被害妄想",
+        "d": "心因反応",
+        "e": "もうろう状態"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C28-30",
+      "linked_order": 1,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "100C29",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "この状態への対応として適切なのはどれか。",
+      "choices": {
+        "a": "隔離する。",
+        "b": "興奮を自制させる。",
+        "c": "抗不安薬を投与する。",
+        "d": "抗精神病薬を投与する。",
+        "e": "抗てんかん薬を投与する。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": "100C28-30",
+      "linked_order": 2,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "100C30",
+      "exam_year": 100,
+      "block": "C",
+      "stem": "翌日になると、うって変わって落ち着き、担当医や看護師と会話をするが、談話内容は悲観的である。昨夜の出来事はほとんど覚えていない。\n対応として適切なのはどれか。",
+      "choices": {
+        "a": "昨夜の出来事をよく説明する。",
+        "b": "うつ状態の改善を図る。",
+        "c": "夜間は手足を抑制する。",
+        "d": "心理検査を行う。",
+        "e": "退院を考慮する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": true,
+        "kinki_choices": [
+          "c"
+        ],
+        "is_deleted": false
+      },
+      "linked_group": "100C28-30",
+      "linked_order": 3,
+      "linked_total": 3,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}

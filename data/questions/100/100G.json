@@ -1,0 +1,4691 @@
+{
+  "exam_year": 100,
+  "block": "G",
+  "total_questions": 120,
+  "source": "厚生労働省 第100回医師国家試験",
+  "questions": [
+    {
+      "num": 1,
+      "id": "100G1",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "正しいのはどれか。",
+      "choices": {
+        "a": "健康とは社会的にも良好な状態をいう。",
+        "b": "補助具の使用は日常生活動作〈ADL〉を低下させる。",
+        "c": "バリアフリーは社会的不利〈handicap〉を拡大する。",
+        "d": "社会的支援〈social support〉は年齢調整死亡率を上昇させる。",
+        "e": "ノーマライゼーション〈normalization〉は社会参加の機会を減らす。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 2,
+      "id": "100G2",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "保健所における精神保健福祉の専門相談で対象とならないのはどれか。",
+      "choices": {
+        "a": "老人介護",
+        "b": "薬物依存",
+        "c": "労働災害",
+        "d": "思春期の悩み",
+        "e": "アルコール依存"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 3,
+      "id": "100G3",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "ヘルスプロモーションの概念に合っているのはどれか。",
+      "choices": {
+        "a": "健康至上主義",
+        "b": "代替療法の普及",
+        "c": "地球温暖化の防止",
+        "d": "高度先進医療の推進",
+        "e": "健康を支援する環境づくり"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 4,
+      "id": "100G4",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "正しいのはどれか。",
+      "choices": {
+        "a": "地域医療支援病院は救急医療を行わない。",
+        "b": "特定機能病院は患者の収容施設を持たない。",
+        "c": "介護老人福祉施設は公的医療保険が適用されない。",
+        "d": "介護老人保健施設はリハビリテーションを行わない。",
+        "e": "介護療養型医療施設は介護保険が適用されない。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 5,
+      "id": "100G5",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "検疫感染症はどれか。（編注：制度の変更により正答が無くなってしまったため改変した）",
+      "choices": {
+        "a": "麻疹",
+        "b": "黄熱",
+        "c": "結核",
+        "d": "破傷風",
+        "e": "デング熱"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 6,
+      "id": "100G6",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "正しい組合せはどれか。",
+      "choices": {
+        "a": "守秘義務 --------- 医療法",
+        "b": "診療録の保存 --------- 医師法",
+        "c": "死亡診断書の交付 --------- 死体解剖保存法",
+        "d": "療養方法の指導 --------- 健康増進法",
+        "e": "処方せんの交付 --------- 薬剤師法"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 7,
+      "id": "100G7",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "虐待が疑われる子供を診察した医師の対応として適切なのはどれか。",
+      "choices": {
+        "a": "外来で治療する。",
+        "b": "警察へ通報する。",
+        "c": "児童相談所へ通告する。",
+        "d": "虐待の事実を立証する。",
+        "e": "親との関わりは避ける。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 8,
+      "id": "100G8",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "個人情報保護法に基づき、医療機関が患者情報を取り扱う上で誤っているのはどれか。",
+      "choices": {
+        "a": "内容を最新に保つ。",
+        "b": "利用目的を特定する。",
+        "c": "漏えい防止措置を講じる。",
+        "d": "本人に対しても非開示とする。",
+        "e": "取り扱いに関する苦情処理を行う。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 9,
+      "id": "100G9",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "病院など多数の者が利用する施設の管理者に受動喫煙防止策を義務付けている法律はどれか。",
+      "choices": {
+        "a": "地域保健法",
+        "b": "健康増進法",
+        "c": "環境基本法",
+        "d": "建築物衛生法",
+        "e": "健康保険法"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 10,
+      "id": "100G10",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "誤っているのはどれか。",
+      "choices": {
+        "a": "国際疾病分類〈ICD〉は世界保健機関〈WHO〉が定めている。",
+        "b": "世界保健機関は発展途上国に対する国際保健協力を行う。",
+        "c": "国際労働機関〈ILO〉は労働者の健康保護について勧告を行う。",
+        "d": "国際協力機構〈JICA〉の国際保健協力は世界保健機関を通じて実施される。",
+        "e": "非政府機関〈NGO〉は民間による国際保健協力を担っている。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 11,
+      "id": "100G11",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "我が国の国民医療費に含まれるのはどれか。",
+      "choices": {
+        "a": "正常分娩の費用",
+        "b": "健康診断の費用",
+        "c": "予防接種の費用",
+        "d": "調剤の費用",
+        "e": "入院時室料差額"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 12,
+      "id": "100G12",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "内因性心停止成人患者にマスク・バッグによる用手人工呼吸を開始したが、胸郭の挙上は充分ではない。\n直ちに行うのはどれか。",
+      "choices": {
+        "a": "エアウェーの挿入",
+        "b": "ラリンゲアルマスクの挿入",
+        "c": "気管挿管",
+        "d": "気管切開",
+        "e": "心マッサージの中止"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 13,
+      "id": "100G13",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "「健やか親子21」の目標でないのはどれか。（編注：2015〜2024年は第2次。100回当時は第1次であったため、最新の選択肢ではないので注意されたい）",
+      "choices": {
+        "a": "思春期の健康教育の推進",
+        "b": "妊娠・出産の安全性の確保",
+        "c": "不妊への支援",
+        "d": "育児不安の軽減",
+        "e": "遺伝子診断の啓発"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 14,
+      "id": "100G14",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "介護保険について正しいのはどれか。",
+      "choices": {
+        "a": "被保険者は65歳以上である。",
+        "b": "保険料は2年ごとに見直される。",
+        "c": "保健師がケアプランを作成する。",
+        "d": "給付費は平成12年度以降全国的に低下している。",
+        "e": "介護老人福祉施設の利用は介護保険が適用される。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 15,
+      "id": "100G15",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "一次予防はどれか。",
+      "choices": {
+        "a": "健康診断",
+        "b": "理学療法",
+        "c": "予防接種",
+        "d": "人間ドック",
+        "e": "機能訓練"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 16,
+      "id": "100G16",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "40～59歳の男性30,000人を対象に、肺癌死亡について10年間観察した。結果を表に示す。\n1日喫煙本数\t肺癌死亡率（人/1,000人年）\n0（非喫煙）\t0.10\n1～19本\t0.55\n20本以上\t1.50\n誤っているのはどれか。",
+      "choices": {
+        "a": "研究手法はコホート研究である。",
+        "b": "この研究は喫煙と肺癌の因果関係を証明している。",
+        "c": "喫煙本数と肺癌死亡率の間に量・反応関係がある。",
+        "d": "この結果から喫煙による肺癌死亡の寄与危険度が計算できる。",
+        "e": "1～19本の喫煙の非喫煙に対する肺癌死亡の相対危険度は5.5である。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 17,
+      "id": "100G17",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "我が国の最近5年間の母子保健動向で誤っているのはどれか。",
+      "choices": {
+        "a": "年間出生数は約180万である。",
+        "b": "20歳代の母からの出生数は減少している。",
+        "c": "40歳以上の母からの出生数は増加している。",
+        "d": "妊産婦死亡率（出産10万対）は10以下である。",
+        "e": "0歳の死因は「先天奇形、変形及び染色体異常」が最も多い。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 18,
+      "id": "100G18",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "院内感染症で正しいのはどれか。",
+      "choices": {
+        "a": "保健所に発症24時間以内に届け出る。",
+        "b": "院内肺炎は肺炎球菌によるものが多い。",
+        "c": "使用済み注射針はキャップをしてから廃棄する。",
+        "d": "接触予防策〈contact precaution〉は結核患者に実施する。",
+        "e": "標準予防策〈standard precaution〉は患者全員に実施する。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 19,
+      "id": "100G19",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "牛海綿状脳症〈BSE〉について正しいのはどれか。",
+      "choices": {
+        "a": "ウイルス感染症に分類される。",
+        "b": "我が国では報告されていない。",
+        "c": "検査に遺伝子増幅法を用いる。",
+        "d": "発生数はヨーロッパが一番多い。",
+        "e": "対策は感染症法に基づいて行われる。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 20,
+      "id": "100G20",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "非電離放射線はどれか。",
+      "choices": {
+        "a": "α線",
+        "b": "β線",
+        "c": "γ線",
+        "d": "紫外線",
+        "e": "中性子線"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 21,
+      "id": "100G21",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "学校伝染病と出席停止期間の基準の組合せで誤っているのはどれか。（編注：法改正により現在の正答は2つ）",
+      "choices": {
+        "a": "インフルエンザ --------- 解熱するまで",
+        "b": "風疹 --------- 発疹が消失するまで",
+        "c": "流行性耳下腺炎 --------- 耳下腺の腫脹が消失するまで",
+        "d": "麻疹 --------- 解熱した後3日を経過するまで",
+        "e": "水痘 --------- すべての発疹が痂皮化するまで"
+      },
+      "answer": [
+        "a",
+        "c"
+      ],
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 2,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 22,
+      "id": "100G22",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "感染症の最近の動向で正しいのはどれか。",
+      "choices": {
+        "a": "日本脳炎は小児に多発傾向がある。",
+        "b": "細菌性赤痢の推定感染地は海外が多い。",
+        "c": "つつが虫病は毎年10件ほどの届け出がある。",
+        "d": "1類感染症届け出数は年間5～10件である。",
+        "e": "2類感染症で届け出数が最も多いのはコレラである。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 23,
+      "id": "100G23",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "「ゴールドプラン21」が属する施策はどれか。",
+      "choices": {
+        "a": "がん予防",
+        "b": "国民健康増進",
+        "c": "小児保健福祉",
+        "d": "精神保健福祉",
+        "e": "高齢者保健福祉"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 24,
+      "id": "100G24",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "患者対照研究で正しいのはどれか。",
+      "choices": {
+        "a": "人年法を用いる。",
+        "b": "後ろ向き研究である。",
+        "c": "相対危険度を算出できる。",
+        "d": "寄与危険度を算出できる。",
+        "e": "コホート集団を設定する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 25,
+      "id": "100G25",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "我が国の平成15年の死因順位で第5位までに含まれないのはどれか。",
+      "choices": {
+        "a": "脳血管疾患",
+        "b": "肺炎",
+        "c": "心疾患",
+        "d": "糖尿病",
+        "e": "不慮の事故"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 26,
+      "id": "100G26",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "調査日の通院者数が分かるのはどれか。",
+      "choices": {
+        "a": "国勢調査",
+        "b": "人口動態調査",
+        "c": "国民生活基礎調査",
+        "d": "国民健康・栄養調査",
+        "e": "身体障害者実態調査"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 27,
+      "id": "100G27",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "動脈硬化症のリスク要因でないのはどれか。",
+      "choices": {
+        "a": "肥満",
+        "b": "喫煙",
+        "c": "糖尿病",
+        "d": "不整脈",
+        "e": "家族歴"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 28,
+      "id": "100G28",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "精神障害者の保健・医療・福祉について誤っているのはどれか。",
+      "choices": {
+        "a": "措置入院は2人以上の精神保健指定医の判断を必要とする。",
+        "b": "精神科作業療法は入院患者、外来患者ともに適応がある。",
+        "c": "精神保健福祉センターは各都道府県に設置されている。",
+        "d": "精神科デイケアは患者の社会復帰に役立つ。",
+        "e": "医療保護入院は本人の同意が必要である。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 29,
+      "id": "100G29",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "我が国で毎年3万人前後の患者が新たに発生しているのはどれか。",
+      "choices": {
+        "a": "結核",
+        "b": "マラリア",
+        "c": "エイズ",
+        "d": "赤痢",
+        "e": "コレラ"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 30,
+      "id": "100G30",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "正しいのはどれか。",
+      "choices": {
+        "a": "医師は産業医の資格を有する。",
+        "b": "産業医は業務上疾病の認定を行う。",
+        "c": "産業医は月に一度は職場巡視をする。",
+        "d": "産業医は衛生日誌記載の義務がある。",
+        "e": "産業医は職場の総括安全衛生管理者になる。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 31,
+      "id": "100G31",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "中毒で尿蛋白がみられるのはどれか。",
+      "choices": {
+        "a": "ヒ素",
+        "b": "マンガン",
+        "c": "有機水銀",
+        "d": "カドミウム",
+        "e": "6価クロム"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 32,
+      "id": "100G32",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "腟粘膜 --------- 重層扁平上皮",
+        "b": "子宮頸管腺 --------- 円柱上皮",
+        "c": "子宮内膜 --------- 移行上皮",
+        "d": "子宮体部筋層 --------- 平滑筋細胞",
+        "e": "卵管粘膜 --------- 線毛上皮"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 33,
+      "id": "100G33",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "動脈管について正しいのはどれか。",
+      "choices": {
+        "a": "肺静脈と大動脈を連結している。",
+        "b": "機能的閉鎖は生後3か月である。",
+        "c": "アスピリンによって拡張する。",
+        "d": "胎児では心拍出量の50％以上が流れる。",
+        "e": "動脈血二酸化炭素分圧の上昇によって閉鎖する。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 34,
+      "id": "100G34",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "仰臥位で直接喉頭鏡で喉頭を展開した。\n最も背側に見えるのはどれか。",
+      "choices": {
+        "a": "舌根",
+        "b": "喉頭蓋",
+        "c": "咽頭後壁",
+        "d": "梨状陥凹",
+        "e": "披裂部粘膜"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 35,
+      "id": "100G35",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "眼窩内に存在するのはどれか。",
+      "choices": {
+        "a": "涙腺",
+        "b": "視索",
+        "c": "鼻涙管",
+        "d": "視交叉",
+        "e": "海綿静脈洞"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 36,
+      "id": "100G36",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "呼吸困難をきたすのはどれか。",
+      "choices": {
+        "a": "両側顔面神経麻痺",
+        "b": "両側軟口蓋麻痺",
+        "c": "両側舌下神経麻痺",
+        "d": "両側舌咽神経麻痺",
+        "e": "両側反回神経麻痺"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 37,
+      "id": "100G37",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "味覚検査で異常を示した領域（①～⑤）を別に示す。\n左末梢性顔面神経麻痺でみられるのはどれか。",
+      "choices": {
+        "a": "①",
+        "b": "②",
+        "c": "③",
+        "d": "④",
+        "e": "⑤"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 38,
+      "id": "100G38",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "肺表面活性物質を産生するのはどれか。",
+      "choices": {
+        "a": "線毛上皮細胞",
+        "b": "杯細胞",
+        "c": "II型肺胞上皮細胞",
+        "d": "線維芽細胞",
+        "e": "毛細血管内皮細胞"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 39,
+      "id": "100G39",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "血管の構造で正しいのはどれか。",
+      "choices": {
+        "a": "動脈壁は4層からなる。",
+        "b": "動脈では外膜が最も厚い層である。",
+        "c": "外膜は平滑筋細胞からなる。",
+        "d": "中膜と外膜とは内弾性板で区切られている。",
+        "e": "血管壁の内腔側は単層の内皮細胞からなる。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 40,
+      "id": "100G40",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "脈管の走行で正しいのはどれか。",
+      "choices": {
+        "a": "内頸静脈は総頸動脈の内側を走行する。",
+        "b": "鎖骨下静脈は鎖骨と第1肋骨の間を走行する。",
+        "c": "胸管は右鎖骨下静脈に合流することが多い。",
+        "d": "肋間動脈は肋骨上縁を走行する。",
+        "e": "大腿静脈は大腿動脈の外側を走行する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 41,
+      "id": "100G41",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "循環血液量減少を示す身体所見はどれか。",
+      "choices": {
+        "a": "徐脈",
+        "b": "下腿の浮腫",
+        "c": "腋窩の湿り気",
+        "d": "起立時の血圧上昇",
+        "e": "臥位の頸静脈拍動消失"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 42,
+      "id": "100G42",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "消化管ホルモンと作用の組合せで正しいのはどれか。",
+      "choices": {
+        "a": "ガストリン --------- 胃液分泌抑制",
+        "b": "グルカゴン --------- 膵液分泌促進",
+        "c": "コレシストキニン --------- 胆汁分泌抑制",
+        "d": "セクレチン --------- 胆汁分泌促進",
+        "e": "ソマトスタチン --------- 膵液分泌促進"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 43,
+      "id": "100G43",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "血球の産生について正しいのはどれか。",
+      "choices": {
+        "a": "出生時は骨髄と脾臓とで行われる。",
+        "b": "多能性幹細胞は自己複製能を持つ。",
+        "c": "Tリンパ球は多能性幹細胞に由来しない。",
+        "d": "成人では脛骨と胸骨との造血能は同等である。",
+        "e": "赤血球の産生にエリスロポエチンは必須でない。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 44,
+      "id": "100G44",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "遠位尿細管の機能はどれか。",
+      "choices": {
+        "a": "リン再吸収",
+        "b": "レニン分泌",
+        "c": "カリウム分泌",
+        "d": "アミノ酸再吸収",
+        "e": "ブドウ糖再吸収"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 45,
+      "id": "100G45",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "正しいのはどれか。",
+      "choices": {
+        "a": "腎臓は腹膜腔内に存在する。",
+        "b": "右精巣静脈は右腎静脈に流入する。",
+        "c": "尿管は大腰筋の背側を走行する。",
+        "d": "尿管は総腸骨動脈の腹側を走行する。",
+        "e": "尿道は精嚢を貫いて走行する。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 46,
+      "id": "100G46",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "睡眠について正しいのはどれか。",
+      "choices": {
+        "a": "深睡眠は朝方に増加する。",
+        "b": "深睡眠期に夢をみることが多い。",
+        "c": "REM睡眠は乳幼児では少ない。",
+        "d": "REM睡眠では寝返りを打たない。",
+        "e": "総睡眠時間は青年期以降一定である。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 47,
+      "id": "100G47",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "頭部単純MRIのT1強調像を別に示す。\n観察されるのはどれか。",
+      "choices": {
+        "a": "松果体",
+        "b": "下垂体",
+        "c": "中脳",
+        "d": "橋",
+        "e": "延髄"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 48,
+      "id": "100G48",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "関節軟骨の加齢変化はどれか。",
+      "choices": {
+        "a": "硝子様軟骨の菲薄化",
+        "b": "細胞数の増加",
+        "c": "弾性線維の減少",
+        "d": "II型コラーゲンの増加",
+        "e": "プロテオグリカンの増加"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 49,
+      "id": "100G49",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "片脚立位時に骨盤支持に最も重要な筋はどれか。",
+      "choices": {
+        "a": "内転筋",
+        "b": "中殿筋",
+        "c": "縫工筋",
+        "d": "半膜様筋",
+        "e": "大腿三頭筋"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 50,
+      "id": "100G50",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "体液量が増加すると血中で上昇するのはどれか。",
+      "choices": {
+        "a": "デヒドロエピアンドロステロンサルフェート〈DHEAS〉",
+        "b": "カテコラミン",
+        "c": "バソプレシン",
+        "d": "レニン活性",
+        "e": "ナトリウム利尿ペプチド"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 51,
+      "id": "100G51",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "免疫グロブリンについて正しいのはどれか。",
+      "choices": {
+        "a": "lgE量は最も多い。",
+        "b": "IgGは胎盤を通過する。",
+        "c": "IgDは分泌液中に存在する。",
+        "d": "IgMは分子量が最も小さい。",
+        "e": "IgAは即時型アレルギーに関与する。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 52,
+      "id": "100G52",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "妊婦で循環血液量が減少するのはどれか。",
+      "choices": {
+        "a": "前置胎盤",
+        "b": "切迫早産",
+        "c": "妊娠糖尿病",
+        "d": "血液型不適合妊娠",
+        "e": "重症妊娠高血圧症候群"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 53,
+      "id": "100G53",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "正常分娩で正しいのはどれか。",
+      "choices": {
+        "a": "骨盤入口面は横径より前後径が長い。",
+        "b": "児頭の第1回旋では顎は胸に近づく。",
+        "c": "児頭の第1回旋を分娩第1期の始まりとする。",
+        "d": "矢状縫合は児頭の第3回旋で骨盤横径に一致する。",
+        "e": "分娩第3期は胎盤娩出後から始まる。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 54,
+      "id": "100G54",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "出産後の母体変化で正しいのはどれか。",
+      "choices": {
+        "a": "循環血液量は12時間で非妊時に戻る。",
+        "b": "初乳は4日で成乳に変わる。",
+        "c": "妊娠線は1週で消失する。",
+        "d": "体重は1週で非妊時に戻る。",
+        "e": "子宮は2週で正常大に戻る。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 55,
+      "id": "100G55",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "妊娠中期の超音波計測値で妊娠週数推定の精度が最も高いのはどれか。",
+      "choices": {
+        "a": "胎嚢径",
+        "b": "頭殿長",
+        "c": "胎児腹囲",
+        "d": "児頭大横径",
+        "e": "胎児胸郭横径"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 56,
+      "id": "100G56",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "周産期死亡に含まれるのはどれか。",
+      "choices": {
+        "a": "妊娠6週の枯死卵",
+        "b": "妊娠14週の胞状奇胎",
+        "c": "妊娠23週の子宮内胎児死亡",
+        "d": "妊娠40週の分娩後母体死亡",
+        "e": "生後2週の新生児死亡"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 57,
+      "id": "100G57",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "新生児の未成熟徴候はどれか。",
+      "choices": {
+        "a": "皮膚が厚い。",
+        "b": "うぶ毛が多い。",
+        "c": "皮下脂肪が厚い。",
+        "d": "耳介軟骨が厚い。",
+        "e": "足底のしわが多い。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 58,
+      "id": "100G58",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "性早熟症が疑われるのはどれか。",
+      "choices": {
+        "a": "9歳未満での初経",
+        "b": "10歳未満での乳房発育",
+        "c": "12歳未満での睾丸の発育",
+        "d": "12歳未満女児での陰毛発生",
+        "e": "13歳未満男児での陰毛発生"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 59,
+      "id": "100G59",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "高齢者の自立度の低下が最もよくみられるのはどれか。",
+      "choices": {
+        "a": "歩行",
+        "b": "摂食",
+        "c": "排泄",
+        "d": "入浴",
+        "e": "着替え"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 60,
+      "id": "100G60",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "がん抑制遺伝子はどれか。",
+      "choices": {
+        "a": "bcl-2",
+        "b": "c-myc",
+        "c": "erbB-2",
+        "d": "K-ras",
+        "e": "Rb"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 61,
+      "id": "100G61",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "広義の多臓器不全の診断基準に含まれる検査はどれか。",
+      "choices": {
+        "a": "脳波",
+        "b": "心電図",
+        "c": "骨髄穿刺",
+        "d": "中心静脈圧",
+        "e": "尿蛋白定量"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 62,
+      "id": "100G62",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "ホルモンとその過剰による病態の組合せで正しいのはどれか。",
+      "choices": {
+        "a": "エストロゲン --------- 多血症",
+        "b": "ガストリン --------- 萎縮性胃炎",
+        "c": "グルカゴン --------- 低血糖",
+        "d": "コルチゾール --------- 白血球増多",
+        "e": "サイロキシン --------- 脂質異常症"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 63,
+      "id": "100G63",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "三大栄養素の過剰摂取が関係するのはどれか。",
+      "choices": {
+        "a": "脂質異常症",
+        "b": "1型糖尿病",
+        "c": "巨赤芽球性貧血",
+        "d": "高カルシウム血症",
+        "e": "甲状腺機能亢進症"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 64,
+      "id": "100G64",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "身体依存が最も形成されやすいのはどれか。",
+      "choices": {
+        "a": "アルコール",
+        "b": "コーヒー",
+        "c": "解熱薬",
+        "d": "覚醒剤",
+        "e": "有機溶剤"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 65,
+      "id": "100G65",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "脳死の判定を行えないのはどれか。",
+      "choices": {
+        "a": "年齢が17歳",
+        "b": "直腸温が35℃",
+        "c": "痛み刺激に無反応",
+        "d": "瞳孔径が左右7mm",
+        "e": "収縮期血圧が80mmHg"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 66,
+      "id": "100G66",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "疾患とリスク要因の組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "骨粗鬆症 --------- 閉経",
+        "b": "高血圧 --------- 肥満",
+        "c": "虚血性心疾患 --------- 低HDL-コレステロール血症",
+        "d": "胆道癌 --------- ヘリコバクター・ピロリ",
+        "e": "糖尿病 --------- 遺伝的素因"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 67,
+      "id": "100G67",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "心奇形の合併頻度が最も高いのはどれか。",
+      "choices": {
+        "a": "Down症候群",
+        "b": "Fanconi症候群",
+        "c": "Klinefelter症候群",
+        "d": "Potter症候群",
+        "e": "Turner症候群"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 68,
+      "id": "100G68",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "二分脊椎の発生予防に効果があるのはどれか。",
+      "choices": {
+        "a": "葉酸",
+        "b": "ビタミンA",
+        "c": "ビタミンC",
+        "d": "ビタミンE",
+        "e": "α-リノレン酸"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 69,
+      "id": "100G69",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "創傷治癒について正しいのはどれか。",
+      "choices": {
+        "a": "死腔〈dead space〉は創傷治癒遷延の原因となる。",
+        "b": "壊死組織のデブリドマンは創傷治癒を遅らせる。",
+        "c": "開放創の洗浄に生理食塩液は用いない。",
+        "d": "創の感染には組織の血行は関係がない。",
+        "e": "感染創は縫合して一次治癒とする。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 70,
+      "id": "100G70",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "褥瘡を起こしにくいのはどれか。",
+      "choices": {
+        "a": "やせ",
+        "b": "貧血",
+        "c": "関節拘縮",
+        "d": "皮膚の乾燥",
+        "e": "低アルブミン血症"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 71,
+      "id": "100G71",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "WHO西太平洋地域で根絶が確認されている疾病はどれか。",
+      "choices": {
+        "a": "狂犬病",
+        "b": "ポリオ",
+        "c": "結核",
+        "d": "日本脳炎",
+        "e": "マラリア"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 72,
+      "id": "100G72",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "自己免疫疾患でないのはどれか。",
+      "choices": {
+        "a": "原発性胆汁性胆管炎",
+        "b": "進行性筋ジストロフィー",
+        "c": "重症筋無力症",
+        "d": "慢性甲状腺炎",
+        "e": "強皮症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 73,
+      "id": "100G73",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "髄膜刺激症候でないのはどれか。",
+      "choices": {
+        "a": "頭痛",
+        "b": "けいれん",
+        "c": "項部硬直",
+        "d": "Kernig徴候",
+        "e": "Brudzinski徴候"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 74,
+      "id": "100G74",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "末梢性眩暈の発作時に出現しないのはどれか。",
+      "choices": {
+        "a": "眼振",
+        "b": "嘔気",
+        "c": "回転感",
+        "d": "歩行障害",
+        "e": "眼前暗黒感"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 75,
+      "id": "100G75",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "強い回転性めまいを反復するのはどれか。",
+      "choices": {
+        "a": "Ménière病",
+        "b": "前庭神経炎",
+        "c": "中毒性平衡障害",
+        "d": "聴神経腫瘍",
+        "e": "基底核出血"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 76,
+      "id": "100G76",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "結節性紅斑を伴うのはどれか。",
+      "choices": {
+        "a": "強皮症",
+        "b": "Behçet病",
+        "c": "アレルギー性紫斑病",
+        "d": "全身性エリテマトーデス",
+        "e": "粘膜・皮膚・眼症候群〈Stevens-Johnson症候群〉"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 77,
+      "id": "100G77",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "眼痛を伴うのはどれか。",
+      "choices": {
+        "a": "結膜下出血",
+        "b": "虹彩毛様体炎",
+        "c": "硝子体出血",
+        "d": "裂孔原性網膜剥離",
+        "e": "網膜中心動脈閉塞症"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 78,
+      "id": "100G78",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "長期喫煙の影響で誤っているのはどれか。",
+      "choices": {
+        "a": "気道分泌を抑制する。",
+        "b": "末梢気道を障害する。",
+        "c": "肺のガス交換を障害する。",
+        "d": "気管支喘息を増悪させる。",
+        "e": "発癌のリスクを高める。"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 79,
+      "id": "100G79",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "血痰をきたしやすいのはどれか。",
+      "choices": {
+        "a": "肺胞蛋白症",
+        "b": "過敏性肺炎",
+        "c": "Goodpasture症候群",
+        "d": "マイコプラズマ肺炎",
+        "e": "肺リンパ管筋腫症〈LAM〉"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 80,
+      "id": "100G80",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "灰白色便に関係する胆汁成分はどれか。",
+      "choices": {
+        "a": "胆汁酸",
+        "b": "コレステロール",
+        "c": "ビリルビン",
+        "d": "リン脂質",
+        "e": "カルシウム"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 81,
+      "id": "100G81",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "肝硬変でみられないのはどれか。",
+      "choices": {
+        "a": "黄疸",
+        "b": "腹水",
+        "c": "女性化乳房",
+        "d": "腹壁血管怒張",
+        "e": "表在リンパ節腫脹"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 82,
+      "id": "100G82",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "貧血を伴わないのはどれか。",
+      "choices": {
+        "a": "脾腫",
+        "b": "悪性腫瘍",
+        "c": "単純性紫斑",
+        "d": "骨髄異形成症候群",
+        "e": "遺伝性球状赤血球症"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 83,
+      "id": "100G83",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "紅斑について正しいのはどれか。",
+      "choices": {
+        "a": "伝染性単核症では顔面に蝶形紅斑が生じる。",
+        "b": "突発性発疹では網目レース状になる。",
+        "c": "伝染性紅斑では小水疱が混じる。",
+        "d": "風疹では融合し大型となる。",
+        "e": "麻疹では色素沈着を残す。"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 84,
+      "id": "100G84",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "正しいのはどれか。",
+      "choices": {
+        "a": "躁病では関係妄想が多い。",
+        "b": "うつ病では血統妄想が多い。",
+        "c": "認知症では誇大妄想が多い。",
+        "d": "アルコール依存症では嫉妬妄想が多い。",
+        "e": "統合失調症では盗害（物盗られ）妄想が多い。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 85,
+      "id": "100G85",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "一側下肢の運動麻痺、深部感覚障害と対側下肢の温痛覚障害とを生じるのはどれか。",
+      "choices": {
+        "a": "馬尾神経障害",
+        "b": "横断性脊髄障害",
+        "c": "中心性脊髄障害",
+        "d": "前脊髄動脈症候群",
+        "e": "Brown-Séquard症候群"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 86,
+      "id": "100G86",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "肥満をきたすのはどれか。",
+      "choices": {
+        "a": "肝硬変",
+        "b": "食道アカラシア",
+        "c": "アルコール依存症",
+        "d": "甲状腺機能低下症",
+        "e": "Zollinger-Ellison症候群"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 87,
+      "id": "100G87",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "胎児心拍数陣痛図で、変動一過性徐脈と最も関係するのはどれか。",
+      "choices": {
+        "a": "児頭圧迫",
+        "b": "肺低形成",
+        "c": "臍帯圧迫",
+        "d": "先天性心疾患",
+        "e": "胎盤循環不全"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 88,
+      "id": "100G88",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "妊娠末期の妊婦健康診査で重要でないのはどれか。",
+      "choices": {
+        "a": "胎位",
+        "b": "胎向",
+        "c": "頸管成熟度",
+        "d": "児頭下降度",
+        "e": "陣痛"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 89,
+      "id": "100G89",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "医師の放射線被曝が避けられないのはどれか。",
+      "choices": {
+        "a": "CT",
+        "b": "MRI",
+        "c": "超音波検査",
+        "d": "CR〈コンピューテッドラジオグラフィ〉",
+        "e": "DSA〈digital subtraction angiography〉"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 90,
+      "id": "100G90",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "認知症を評価する検査はどれか。",
+      "choices": {
+        "a": "Rorschachテスト",
+        "b": "状態特性不安検査〈STAI〉",
+        "c": "簡易精神症状評価尺度〈BPRS〉",
+        "d": "Minnesota多面人格検査〈MMPI〉",
+        "e": "Mini-Mental State Examination〈MMSE〉"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 91,
+      "id": "100G91",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "検査と疾患の組合せで誤っているのはどれか。",
+      "choices": {
+        "a": "食道内圧検査──食道アカラシア",
+        "b": "胃液検査──Zollinger-Ellison症候群",
+        "c": "ICG試験──肝硬変",
+        "d": "消化吸収試験──蛋白漏出性胃腸症",
+        "e": "BT-PABA試験──急性膵炎"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 92,
+      "id": "100G92",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "パルスオキシメーターによるSpO2の測定で正しいのはどれか。",
+      "choices": {
+        "a": "SpO2 80％は正常範囲である。",
+        "b": "測定時は軽く呼吸を停止する。",
+        "c": "動脈血酸素飽和度を反映する。",
+        "d": "二酸化炭素濃度の影響を受ける。",
+        "e": "一酸化炭素中毒患者のモニターに有用である。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 93,
+      "id": "100G93",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "淡水での溺水でみられないのはどれか。",
+      "choices": {
+        "a": "肺水腫",
+        "b": "循環血液量増加",
+        "c": "高カリウム血症",
+        "d": "低ナトリウム血症",
+        "e": "代謝性アルカローシス"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 94,
+      "id": "100G94",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "腰椎穿刺による脳脊髄液検査について正しいのはどれか。",
+      "choices": {
+        "a": "通常第2、3腰椎間で行う。",
+        "b": "頸静脈を圧迫すると髄液圧は低下する。",
+        "c": "終了後は約1時間の床上安静が必要である。",
+        "d": "一側性のうっ血乳頭であれば問題なく施行できる。",
+        "e": "穿刺部に感染巣がある場合には抗菌薬投与下に行う。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 95,
+      "id": "100G95",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "性交時の性器出血を訴える女性でまず行うのはどれか。",
+      "choices": {
+        "a": "細胞診",
+        "b": "組織診",
+        "c": "コルポスコピィ",
+        "d": "ヒステロスコピィ",
+        "e": "腫瘍マーカー測定"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 96,
+      "id": "100G96",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "心電図を別に示す。\n考えられるのはどれか。",
+      "choices": {
+        "a": "右軸偏位",
+        "b": "左軸偏位",
+        "c": "心房細動",
+        "d": "心筋梗塞",
+        "e": "誘導肢の取り違え"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": true,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 97,
+      "id": "100G97",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "神経筋接合部の障害でみられる筋電図所見はどれか。",
+      "choices": {
+        "a": "多相性の活動電位",
+        "b": "安静時電位の異常",
+        "c": "刺入時電位の異常",
+        "d": "高振幅の活動電位",
+        "e": "神経伝導速度正常"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 98,
+      "id": "100G98",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "新生児マススクリーニングで発見される頻度が最も高いのはどれか。",
+      "choices": {
+        "a": "先天性甲状腺機能低下症",
+        "b": "先天性副腎皮質過形成症",
+        "c": "メープルシロップ尿症",
+        "d": "フェニルケトン尿症",
+        "e": "ガラクトース血症"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 99,
+      "id": "100G99",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "内視鏡下生検が診断に有用なのはどれか。",
+      "choices": {
+        "a": "食道癌",
+        "b": "食道憩室",
+        "c": "食道破裂",
+        "d": "食道アカラシア",
+        "e": "Mallory-Weiss症候群"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 100,
+      "id": "100G100",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "新生児のマイクロバブルテストに用いるのはどれか。",
+      "choices": {
+        "a": "唾液",
+        "b": "胃液",
+        "c": "尿",
+        "d": "糞便",
+        "e": "血液"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 101,
+      "id": "100G101",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "尿流測定で分からないのはどれか。",
+      "choices": {
+        "a": "排尿量",
+        "b": "残尿量",
+        "c": "排尿時間",
+        "d": "最大尿流量率",
+        "e": "排尿パターン"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 102,
+      "id": "100G102",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "呼吸機能について正しいのはどれか。",
+      "choices": {
+        "a": "無気肺では1秒率が低下する。",
+        "b": "慢性気管支炎では1秒率が低下する。",
+        "c": "肺気腫では肺活量は保たれる。",
+        "d": "間質性肺炎では1秒率が低下する。",
+        "e": "肺線維症では肺活量は保たれる。"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 103,
+      "id": "100G103",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "病態と検査の組合せで正しいのはどれか。",
+      "choices": {
+        "a": "低カリウム血症 ── ブドウ糖負荷試験",
+        "b": "低カルシウム血症 ── Ellsworth-Howard試験",
+        "c": "低クロール血症 ── 高張食塩水負荷試験",
+        "d": "低ナトリウム血症 ── ピトレッシン試験",
+        "e": "低リン血症 ── Fishberg濃縮試験"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 104,
+      "id": "100G104",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "急性腎不全で血液透析を考慮すべき検査値はどれか。",
+      "choices": {
+        "a": "赤血球 --------- 319万",
+        "b": "血清尿素窒素 --------- 58mg/dL",
+        "c": "血清クレアチニン --------- 12.2mg/dL",
+        "d": "血清カリウム --------- 5.5mEq/L",
+        "e": "動脈血HCO3- --------- 20mEq/L"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 105,
+      "id": "100G105",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "重症心身障害児の早期療育でまず行うのはどれか。",
+      "choices": {
+        "a": "理学療法",
+        "b": "言語療法",
+        "c": "行動療法",
+        "d": "音楽療法",
+        "e": "遊戯療法"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 106,
+      "id": "100G106",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "内視鏡治療の適応でないのはどれか。",
+      "choices": {
+        "a": "食道静脈瘤",
+        "b": "出血性胃潰瘍",
+        "c": "大腸ポリープ",
+        "d": "偽膜性腸炎",
+        "e": "総胆管結石"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 107,
+      "id": "100G107",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "早期の癌で根治的放射線治療の対象とならないのはどれか。",
+      "choices": {
+        "a": "咽頭癌",
+        "b": "喉頭癌",
+        "c": "食道癌",
+        "d": "大腸癌",
+        "e": "前立腺癌"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 108,
+      "id": "100G108",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "心臓死の本人が生前に角膜（眼球）提供の意思を示していたと家族が申し出た。\n提供に必須なのはどれか。",
+      "choices": {
+        "a": "意思表示カードによる同意",
+        "b": "アイバンクへの登録",
+        "c": "家族の書面での同意",
+        "d": "病理解剖の承諾",
+        "e": "担当医の承諾"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 109,
+      "id": "100G109",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "自己血輸血の適応となるのはどれか。",
+      "choices": {
+        "a": "常位胎盤早期剥離",
+        "b": "前置胎盤",
+        "c": "子宮破裂",
+        "d": "頸管裂傷",
+        "e": "弛緩出血"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 110,
+      "id": "100G110",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "点鼻薬で治療するのはどれか。",
+      "choices": {
+        "a": "中枢性尿崩症",
+        "b": "下垂体性小人症",
+        "c": "原発性性腺機能低下症",
+        "d": "甲状腺機能低下症",
+        "e": "副甲状腺機能低下症"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 111,
+      "id": "100G111",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "活性型ビタミンD外用薬が有効なのはどれか。",
+      "choices": {
+        "a": "接触皮膚炎",
+        "b": "蕁麻疹",
+        "c": "乾癬",
+        "d": "癜風",
+        "e": "疥癬"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 112,
+      "id": "100G112",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "劇症肝炎の原因として最も多いのはどれか。",
+      "choices": {
+        "a": "A型肝炎ウイルス",
+        "b": "B型肝炎ウイルス",
+        "c": "C型肝炎ウイルス",
+        "d": "アルコール",
+        "e": "自己免疫"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 113,
+      "id": "100G113",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "うつ病に最も適切な治療薬はどれか。",
+      "choices": {
+        "a": "モノアミン再取り込み阻害薬",
+        "b": "ベンゾジアゼピン系薬",
+        "c": "バルビツレート系薬",
+        "d": "抗ヒスタミン薬",
+        "e": "抗コリン薬"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 114,
+      "id": "100G114",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "腎不全患者で投与量を減らすのはどれか。",
+      "choices": {
+        "a": "バンコマイシン",
+        "b": "リファンピシン",
+        "c": "ニフェジピン",
+        "d": "フロセミド",
+        "e": "リドカイン"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 115,
+      "id": "100G115",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "薬剤性肺炎の治療として適切なのはどれか。",
+      "choices": {
+        "a": "抗菌薬",
+        "b": "利尿薬",
+        "c": "ACE阻害薬",
+        "d": "ロイコトリエン拮抗薬",
+        "e": "副腎皮質ステロイド薬"
+      },
+      "answer": "e",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 116,
+      "id": "100G116",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "維持血液透析で正しいのはどれか。",
+      "choices": {
+        "a": "高蛋白食を指導する。",
+        "b": "水分摂取量は自由にする。",
+        "c": "透析間体重増加を少なくする。",
+        "d": "月1回5時間の透析を施行する。",
+        "e": "血液ヘモグロビン濃度を9g/dL以下に維持する。"
+      },
+      "answer": "c",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 117,
+      "id": "100G117",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "放射線治療が標準的治療として用いられるのはどれか。",
+      "choices": {
+        "a": "子宮頸部扁平上皮癌",
+        "b": "子宮平滑筋肉腫",
+        "c": "子宮体癌",
+        "d": "卵巣癌",
+        "e": "卵管癌"
+      },
+      "answer": "a",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 118,
+      "id": "100G118",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "小児の先天性心疾患でカテーテル治療が最もよく行われるのはどれか。",
+      "choices": {
+        "a": "大動脈縮窄症",
+        "b": "僧帽弁狭窄症",
+        "c": "大動脈弁狭窄症",
+        "d": "肺動脈弁狭窄症",
+        "e": "上大静脈狭窄症"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 119,
+      "id": "100G119",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "人工肛門について正しいのはどれか。",
+      "choices": {
+        "a": "ストーマの位置は術中に決定する。",
+        "b": "ストーマケアは無菌的に行う。",
+        "c": "訓練によって便の随意排泄が可能となる。",
+        "d": "合併症で最も多いのは皮膚障害である。",
+        "e": "身体障害者認定は受けられない。"
+      },
+      "answer": "d",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    },
+    {
+      "num": 120,
+      "id": "100G120",
+      "exam_year": 100,
+      "block": "G",
+      "stem": "動脈性出血を伴う胃潰瘍に対してまず行う止血処置はどれか。",
+      "choices": {
+        "a": "止血薬投与",
+        "b": "内視鏡的止血術",
+        "c": "経カテーテル的動脈塞栓術",
+        "d": "腹腔鏡下胃切開止血術",
+        "e": "胃切除"
+      },
+      "answer": "b",
+      "format": {
+        "type1": null,
+        "type2": null,
+        "num_answers": 1,
+        "has_image": false,
+        "is_calculation": false,
+        "has_kinki": false,
+        "kinki_choices": null,
+        "is_deleted": false
+      },
+      "linked_group": null,
+      "linked_order": null,
+      "linked_total": null,
+      "field": null,
+      "subfield": null,
+      "topic": null,
+      "action": null,
+      "knowledge_type": null,
+      "explanation": {
+        "summary": null,
+        "choices": {},
+        "background": null,
+        "key_point": null
+      }
+    }
+  ]
+}
